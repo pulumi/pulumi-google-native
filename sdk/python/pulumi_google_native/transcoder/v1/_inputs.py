@@ -35,7 +35,12 @@ __all__ = [
     'FairplayArgs',
     'Fmp4ConfigArgs',
     'H264CodecSettingsArgs',
+    'H264ColorFormatHLGArgs',
+    'H264ColorFormatSDRArgs',
     'H265CodecSettingsArgs',
+    'H265ColorFormatHDR10Args',
+    'H265ColorFormatHLGArgs',
+    'H265ColorFormatSDRArgs',
     'ImageArgs',
     'InputArgs',
     'JobConfigArgs',
@@ -57,6 +62,8 @@ __all__ = [
     'TextStreamArgs',
     'VideoStreamArgs',
     'Vp9CodecSettingsArgs',
+    'Vp9ColorFormatHLGArgs',
+    'Vp9ColorFormatSDRArgs',
     'WidevineArgs',
     'YadifConfigArgs',
 ]
@@ -1275,13 +1282,16 @@ class H264CodecSettingsArgs:
                  crf_level: Optional[pulumi.Input[int]] = None,
                  enable_two_pass: Optional[pulumi.Input[bool]] = None,
                  entropy_coder: Optional[pulumi.Input[str]] = None,
+                 frame_rate_conversion_strategy: Optional[pulumi.Input['H264CodecSettingsFrameRateConversionStrategy']] = None,
                  gop_duration: Optional[pulumi.Input[str]] = None,
                  gop_frame_count: Optional[pulumi.Input[int]] = None,
                  height_pixels: Optional[pulumi.Input[int]] = None,
+                 hlg: Optional[pulumi.Input['H264ColorFormatHLGArgs']] = None,
                  pixel_format: Optional[pulumi.Input[str]] = None,
                  preset: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_control_mode: Optional[pulumi.Input[str]] = None,
+                 sdr: Optional[pulumi.Input['H264ColorFormatSDRArgs']] = None,
                  tune: Optional[pulumi.Input[str]] = None,
                  vbv_fullness_bits: Optional[pulumi.Input[int]] = None,
                  vbv_size_bits: Optional[pulumi.Input[int]] = None,
@@ -1289,7 +1299,7 @@ class H264CodecSettingsArgs:
         """
         H264 codec settings.
         :param pulumi.Input[int] bitrate_bps: The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.
-        :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         :param pulumi.Input[bool] allow_open_gop: Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
         :param pulumi.Input[float] aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
         :param pulumi.Input[int] b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H264CodecSettings.gop_frame_count if set. The default is 0.
@@ -1297,13 +1307,16 @@ class H264CodecSettingsArgs:
         :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
         :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
         :param pulumi.Input[str] entropy_coder: The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
+        :param pulumi.Input['H264CodecSettingsFrameRateConversionStrategy'] frame_rate_conversion_strategy: Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
         :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
+        :param pulumi.Input['H264ColorFormatHLGArgs'] hlg: Optional. HLG color format setting for H264.
         :param pulumi.Input[str] pixel_format: Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         :param pulumi.Input[str] preset: Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
         :param pulumi.Input[str] profile: Enforces the specified codec profile. The following profiles are supported: * `baseline` * `main` * `high` (default) The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
         :param pulumi.Input[str] rate_control_mode: Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        :param pulumi.Input['H264ColorFormatSDRArgs'] sdr: Optional. SDR color format setting for H264.
         :param pulumi.Input[str] tune: Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
         :param pulumi.Input[int] vbv_fullness_bits: Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
         :param pulumi.Input[int] vbv_size_bits: Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to H264CodecSettings.bitrate_bps.
@@ -1325,12 +1338,16 @@ class H264CodecSettingsArgs:
             pulumi.set(__self__, "enable_two_pass", enable_two_pass)
         if entropy_coder is not None:
             pulumi.set(__self__, "entropy_coder", entropy_coder)
+        if frame_rate_conversion_strategy is not None:
+            pulumi.set(__self__, "frame_rate_conversion_strategy", frame_rate_conversion_strategy)
         if gop_duration is not None:
             pulumi.set(__self__, "gop_duration", gop_duration)
         if gop_frame_count is not None:
             pulumi.set(__self__, "gop_frame_count", gop_frame_count)
         if height_pixels is not None:
             pulumi.set(__self__, "height_pixels", height_pixels)
+        if hlg is not None:
+            pulumi.set(__self__, "hlg", hlg)
         if pixel_format is not None:
             pulumi.set(__self__, "pixel_format", pixel_format)
         if preset is not None:
@@ -1339,6 +1356,8 @@ class H264CodecSettingsArgs:
             pulumi.set(__self__, "profile", profile)
         if rate_control_mode is not None:
             pulumi.set(__self__, "rate_control_mode", rate_control_mode)
+        if sdr is not None:
+            pulumi.set(__self__, "sdr", sdr)
         if tune is not None:
             pulumi.set(__self__, "tune", tune)
         if vbv_fullness_bits is not None:
@@ -1364,7 +1383,7 @@ class H264CodecSettingsArgs:
     @pulumi.getter(name="frameRate")
     def frame_rate(self) -> pulumi.Input[float]:
         """
-        The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         """
         return pulumi.get(self, "frame_rate")
 
@@ -1457,6 +1476,18 @@ class H264CodecSettingsArgs:
         pulumi.set(self, "entropy_coder", value)
 
     @property
+    @pulumi.getter(name="frameRateConversionStrategy")
+    def frame_rate_conversion_strategy(self) -> Optional[pulumi.Input['H264CodecSettingsFrameRateConversionStrategy']]:
+        """
+        Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        """
+        return pulumi.get(self, "frame_rate_conversion_strategy")
+
+    @frame_rate_conversion_strategy.setter
+    def frame_rate_conversion_strategy(self, value: Optional[pulumi.Input['H264CodecSettingsFrameRateConversionStrategy']]):
+        pulumi.set(self, "frame_rate_conversion_strategy", value)
+
+    @property
     @pulumi.getter(name="gopDuration")
     def gop_duration(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1491,6 +1522,18 @@ class H264CodecSettingsArgs:
     @height_pixels.setter
     def height_pixels(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "height_pixels", value)
+
+    @property
+    @pulumi.getter
+    def hlg(self) -> Optional[pulumi.Input['H264ColorFormatHLGArgs']]:
+        """
+        Optional. HLG color format setting for H264.
+        """
+        return pulumi.get(self, "hlg")
+
+    @hlg.setter
+    def hlg(self, value: Optional[pulumi.Input['H264ColorFormatHLGArgs']]):
+        pulumi.set(self, "hlg", value)
 
     @property
     @pulumi.getter(name="pixelFormat")
@@ -1542,6 +1585,18 @@ class H264CodecSettingsArgs:
 
     @property
     @pulumi.getter
+    def sdr(self) -> Optional[pulumi.Input['H264ColorFormatSDRArgs']]:
+        """
+        Optional. SDR color format setting for H264.
+        """
+        return pulumi.get(self, "sdr")
+
+    @sdr.setter
+    def sdr(self, value: Optional[pulumi.Input['H264ColorFormatSDRArgs']]):
+        pulumi.set(self, "sdr", value)
+
+    @property
+    @pulumi.getter
     def tune(self) -> Optional[pulumi.Input[str]]:
         """
         Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
@@ -1590,6 +1645,24 @@ class H264CodecSettingsArgs:
 
 
 @pulumi.input_type
+class H264ColorFormatHLGArgs:
+    def __init__(__self__):
+        """
+        Convert the input video to a Hybrid Log Gamma (HLG) video.
+        """
+        pass
+
+
+@pulumi.input_type
+class H264ColorFormatSDRArgs:
+    def __init__(__self__):
+        """
+        Convert the input video to a Standard Dynamic Range (SDR) video.
+        """
+        pass
+
+
+@pulumi.input_type
 class H265CodecSettingsArgs:
     def __init__(__self__, *,
                  bitrate_bps: pulumi.Input[int],
@@ -1600,13 +1673,17 @@ class H265CodecSettingsArgs:
                  b_pyramid: Optional[pulumi.Input[bool]] = None,
                  crf_level: Optional[pulumi.Input[int]] = None,
                  enable_two_pass: Optional[pulumi.Input[bool]] = None,
+                 frame_rate_conversion_strategy: Optional[pulumi.Input['H265CodecSettingsFrameRateConversionStrategy']] = None,
                  gop_duration: Optional[pulumi.Input[str]] = None,
                  gop_frame_count: Optional[pulumi.Input[int]] = None,
+                 hdr10: Optional[pulumi.Input['H265ColorFormatHDR10Args']] = None,
                  height_pixels: Optional[pulumi.Input[int]] = None,
+                 hlg: Optional[pulumi.Input['H265ColorFormatHLGArgs']] = None,
                  pixel_format: Optional[pulumi.Input[str]] = None,
                  preset: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_control_mode: Optional[pulumi.Input[str]] = None,
+                 sdr: Optional[pulumi.Input['H265ColorFormatSDRArgs']] = None,
                  tune: Optional[pulumi.Input[str]] = None,
                  vbv_fullness_bits: Optional[pulumi.Input[int]] = None,
                  vbv_size_bits: Optional[pulumi.Input[int]] = None,
@@ -1614,20 +1691,24 @@ class H265CodecSettingsArgs:
         """
         H265 codec settings.
         :param pulumi.Input[int] bitrate_bps: The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 800,000,000.
-        :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         :param pulumi.Input[bool] allow_open_gop: Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
         :param pulumi.Input[float] aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
         :param pulumi.Input[int] b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than H265CodecSettings.gop_frame_count if set. The default is 0.
         :param pulumi.Input[bool] b_pyramid: Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
         :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
         :param pulumi.Input[bool] enable_two_pass: Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
+        :param pulumi.Input['H265CodecSettingsFrameRateConversionStrategy'] frame_rate_conversion_strategy: Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
         :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
+        :param pulumi.Input['H265ColorFormatHDR10Args'] hdr10: Optional. HDR10 color format setting for H265.
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
+        :param pulumi.Input['H265ColorFormatHLGArgs'] hlg: Optional. HLG color format setting for H265.
         :param pulumi.Input[str] pixel_format: Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         :param pulumi.Input[str] preset: Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
         :param pulumi.Input[str] profile: Enforces the specified codec profile. The following profiles are supported: * 8-bit profiles * `main` (default) * `main-intra` * `mainstillpicture` * 10-bit profiles * `main10` (default) * `main10-intra` * `main422-10` * `main422-10-intra` * `main444-10` * `main444-10-intra` * 12-bit profiles * `main12` (default) * `main12-intra` * `main422-12` * `main422-12-intra` * `main444-12` * `main444-12-intra` The available options are [FFmpeg-compatible](https://x265.readthedocs.io/). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
         :param pulumi.Input[str] rate_control_mode: Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
+        :param pulumi.Input['H265ColorFormatSDRArgs'] sdr: Optional. SDR color format setting for H265.
         :param pulumi.Input[str] tune: Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
         :param pulumi.Input[int] vbv_fullness_bits: Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
         :param pulumi.Input[int] vbv_size_bits: Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
@@ -1647,12 +1728,18 @@ class H265CodecSettingsArgs:
             pulumi.set(__self__, "crf_level", crf_level)
         if enable_two_pass is not None:
             pulumi.set(__self__, "enable_two_pass", enable_two_pass)
+        if frame_rate_conversion_strategy is not None:
+            pulumi.set(__self__, "frame_rate_conversion_strategy", frame_rate_conversion_strategy)
         if gop_duration is not None:
             pulumi.set(__self__, "gop_duration", gop_duration)
         if gop_frame_count is not None:
             pulumi.set(__self__, "gop_frame_count", gop_frame_count)
+        if hdr10 is not None:
+            pulumi.set(__self__, "hdr10", hdr10)
         if height_pixels is not None:
             pulumi.set(__self__, "height_pixels", height_pixels)
+        if hlg is not None:
+            pulumi.set(__self__, "hlg", hlg)
         if pixel_format is not None:
             pulumi.set(__self__, "pixel_format", pixel_format)
         if preset is not None:
@@ -1661,6 +1748,8 @@ class H265CodecSettingsArgs:
             pulumi.set(__self__, "profile", profile)
         if rate_control_mode is not None:
             pulumi.set(__self__, "rate_control_mode", rate_control_mode)
+        if sdr is not None:
+            pulumi.set(__self__, "sdr", sdr)
         if tune is not None:
             pulumi.set(__self__, "tune", tune)
         if vbv_fullness_bits is not None:
@@ -1686,7 +1775,7 @@ class H265CodecSettingsArgs:
     @pulumi.getter(name="frameRate")
     def frame_rate(self) -> pulumi.Input[float]:
         """
-        The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         """
         return pulumi.get(self, "frame_rate")
 
@@ -1767,6 +1856,18 @@ class H265CodecSettingsArgs:
         pulumi.set(self, "enable_two_pass", value)
 
     @property
+    @pulumi.getter(name="frameRateConversionStrategy")
+    def frame_rate_conversion_strategy(self) -> Optional[pulumi.Input['H265CodecSettingsFrameRateConversionStrategy']]:
+        """
+        Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        """
+        return pulumi.get(self, "frame_rate_conversion_strategy")
+
+    @frame_rate_conversion_strategy.setter
+    def frame_rate_conversion_strategy(self, value: Optional[pulumi.Input['H265CodecSettingsFrameRateConversionStrategy']]):
+        pulumi.set(self, "frame_rate_conversion_strategy", value)
+
+    @property
     @pulumi.getter(name="gopDuration")
     def gop_duration(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1791,6 +1892,18 @@ class H265CodecSettingsArgs:
         pulumi.set(self, "gop_frame_count", value)
 
     @property
+    @pulumi.getter
+    def hdr10(self) -> Optional[pulumi.Input['H265ColorFormatHDR10Args']]:
+        """
+        Optional. HDR10 color format setting for H265.
+        """
+        return pulumi.get(self, "hdr10")
+
+    @hdr10.setter
+    def hdr10(self, value: Optional[pulumi.Input['H265ColorFormatHDR10Args']]):
+        pulumi.set(self, "hdr10", value)
+
+    @property
     @pulumi.getter(name="heightPixels")
     def height_pixels(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1801,6 +1914,18 @@ class H265CodecSettingsArgs:
     @height_pixels.setter
     def height_pixels(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "height_pixels", value)
+
+    @property
+    @pulumi.getter
+    def hlg(self) -> Optional[pulumi.Input['H265ColorFormatHLGArgs']]:
+        """
+        Optional. HLG color format setting for H265.
+        """
+        return pulumi.get(self, "hlg")
+
+    @hlg.setter
+    def hlg(self, value: Optional[pulumi.Input['H265ColorFormatHLGArgs']]):
+        pulumi.set(self, "hlg", value)
 
     @property
     @pulumi.getter(name="pixelFormat")
@@ -1852,6 +1977,18 @@ class H265CodecSettingsArgs:
 
     @property
     @pulumi.getter
+    def sdr(self) -> Optional[pulumi.Input['H265ColorFormatSDRArgs']]:
+        """
+        Optional. SDR color format setting for H265.
+        """
+        return pulumi.get(self, "sdr")
+
+    @sdr.setter
+    def sdr(self, value: Optional[pulumi.Input['H265ColorFormatSDRArgs']]):
+        pulumi.set(self, "sdr", value)
+
+    @property
+    @pulumi.getter
     def tune(self) -> Optional[pulumi.Input[str]]:
         """
         Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
@@ -1897,6 +2034,33 @@ class H265CodecSettingsArgs:
     @width_pixels.setter
     def width_pixels(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width_pixels", value)
+
+
+@pulumi.input_type
+class H265ColorFormatHDR10Args:
+    def __init__(__self__):
+        """
+        Convert the input video to a High Dynamic Range 10 (HDR10) video.
+        """
+        pass
+
+
+@pulumi.input_type
+class H265ColorFormatHLGArgs:
+    def __init__(__self__):
+        """
+        Convert the input video to a Hybrid Log Gamma (HLG) video.
+        """
+        pass
+
+
+@pulumi.input_type
+class H265ColorFormatSDRArgs:
+    def __init__(__self__):
+        """
+        Convert the input video to a Standard Dynamic Range (SDR) video.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -3175,42 +3339,54 @@ class Vp9CodecSettingsArgs:
                  bitrate_bps: pulumi.Input[int],
                  frame_rate: pulumi.Input[float],
                  crf_level: Optional[pulumi.Input[int]] = None,
+                 frame_rate_conversion_strategy: Optional[pulumi.Input['Vp9CodecSettingsFrameRateConversionStrategy']] = None,
                  gop_duration: Optional[pulumi.Input[str]] = None,
                  gop_frame_count: Optional[pulumi.Input[int]] = None,
                  height_pixels: Optional[pulumi.Input[int]] = None,
+                 hlg: Optional[pulumi.Input['Vp9ColorFormatHLGArgs']] = None,
                  pixel_format: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  rate_control_mode: Optional[pulumi.Input[str]] = None,
+                 sdr: Optional[pulumi.Input['Vp9ColorFormatSDRArgs']] = None,
                  width_pixels: Optional[pulumi.Input[int]] = None):
         """
         VP9 codec settings.
         :param pulumi.Input[int] bitrate_bps: The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
-        :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
+        :param pulumi.Input['Vp9CodecSettingsFrameRateConversionStrategy'] frame_rate_conversion_strategy: Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
         :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
+        :param pulumi.Input['Vp9ColorFormatHLGArgs'] hlg: Optional. HLG color format setting for VP9.
         :param pulumi.Input[str] pixel_format: Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         :param pulumi.Input[str] profile: Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
         :param pulumi.Input[str] rate_control_mode: Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
+        :param pulumi.Input['Vp9ColorFormatSDRArgs'] sdr: Optional. SDR color format setting for VP9.
         :param pulumi.Input[int] width_pixels: The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         """
         pulumi.set(__self__, "bitrate_bps", bitrate_bps)
         pulumi.set(__self__, "frame_rate", frame_rate)
         if crf_level is not None:
             pulumi.set(__self__, "crf_level", crf_level)
+        if frame_rate_conversion_strategy is not None:
+            pulumi.set(__self__, "frame_rate_conversion_strategy", frame_rate_conversion_strategy)
         if gop_duration is not None:
             pulumi.set(__self__, "gop_duration", gop_duration)
         if gop_frame_count is not None:
             pulumi.set(__self__, "gop_frame_count", gop_frame_count)
         if height_pixels is not None:
             pulumi.set(__self__, "height_pixels", height_pixels)
+        if hlg is not None:
+            pulumi.set(__self__, "hlg", hlg)
         if pixel_format is not None:
             pulumi.set(__self__, "pixel_format", pixel_format)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
         if rate_control_mode is not None:
             pulumi.set(__self__, "rate_control_mode", rate_control_mode)
+        if sdr is not None:
+            pulumi.set(__self__, "sdr", sdr)
         if width_pixels is not None:
             pulumi.set(__self__, "width_pixels", width_pixels)
 
@@ -3230,7 +3406,7 @@ class Vp9CodecSettingsArgs:
     @pulumi.getter(name="frameRate")
     def frame_rate(self) -> pulumi.Input[float]:
         """
-        The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         """
         return pulumi.get(self, "frame_rate")
 
@@ -3249,6 +3425,18 @@ class Vp9CodecSettingsArgs:
     @crf_level.setter
     def crf_level(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "crf_level", value)
+
+    @property
+    @pulumi.getter(name="frameRateConversionStrategy")
+    def frame_rate_conversion_strategy(self) -> Optional[pulumi.Input['Vp9CodecSettingsFrameRateConversionStrategy']]:
+        """
+        Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        """
+        return pulumi.get(self, "frame_rate_conversion_strategy")
+
+    @frame_rate_conversion_strategy.setter
+    def frame_rate_conversion_strategy(self, value: Optional[pulumi.Input['Vp9CodecSettingsFrameRateConversionStrategy']]):
+        pulumi.set(self, "frame_rate_conversion_strategy", value)
 
     @property
     @pulumi.getter(name="gopDuration")
@@ -3287,6 +3475,18 @@ class Vp9CodecSettingsArgs:
         pulumi.set(self, "height_pixels", value)
 
     @property
+    @pulumi.getter
+    def hlg(self) -> Optional[pulumi.Input['Vp9ColorFormatHLGArgs']]:
+        """
+        Optional. HLG color format setting for VP9.
+        """
+        return pulumi.get(self, "hlg")
+
+    @hlg.setter
+    def hlg(self, value: Optional[pulumi.Input['Vp9ColorFormatHLGArgs']]):
+        pulumi.set(self, "hlg", value)
+
+    @property
     @pulumi.getter(name="pixelFormat")
     def pixel_format(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3323,6 +3523,18 @@ class Vp9CodecSettingsArgs:
         pulumi.set(self, "rate_control_mode", value)
 
     @property
+    @pulumi.getter
+    def sdr(self) -> Optional[pulumi.Input['Vp9ColorFormatSDRArgs']]:
+        """
+        Optional. SDR color format setting for VP9.
+        """
+        return pulumi.get(self, "sdr")
+
+    @sdr.setter
+    def sdr(self, value: Optional[pulumi.Input['Vp9ColorFormatSDRArgs']]):
+        pulumi.set(self, "sdr", value)
+
+    @property
     @pulumi.getter(name="widthPixels")
     def width_pixels(self) -> Optional[pulumi.Input[int]]:
         """
@@ -3333,6 +3545,24 @@ class Vp9CodecSettingsArgs:
     @width_pixels.setter
     def width_pixels(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width_pixels", value)
+
+
+@pulumi.input_type
+class Vp9ColorFormatHLGArgs:
+    def __init__(__self__):
+        """
+        Convert the input video to a Hybrid Log Gamma (HLG) video.
+        """
+        pass
+
+
+@pulumi.input_type
+class Vp9ColorFormatSDRArgs:
+    def __init__(__self__):
+        """
+        Convert the input video to a Standard Dynamic Range (SDR) video.
+        """
+        pass
 
 
 @pulumi.input_type

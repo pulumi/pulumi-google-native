@@ -27,10 +27,13 @@ class NotebookRuntimeTemplateArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  machine_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1MachineSpecArgs']] = None,
                  network_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1NetworkSpecArgs']] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  notebook_runtime_template_id: Optional[pulumi.Input[str]] = None,
                  notebook_runtime_type: Optional[pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_account: Optional[pulumi.Input[str]] = None):
+                 reservation_affinity: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs']] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_vm_config: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs']] = None):
         """
         The set of arguments for constructing a NotebookRuntimeTemplate resource.
         :param pulumi.Input[str] display_name: The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -42,9 +45,12 @@ class NotebookRuntimeTemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1MachineSpecArgs'] machine_spec: Optional. Immutable. The specification of a single machine for the template.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1NetworkSpecArgs'] network_spec: Optional. Network spec.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         :param pulumi.Input[str] notebook_runtime_template_id: Optional. User specified ID for the notebook runtime template.
         :param pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType'] notebook_runtime_type: Optional. Immutable. The type of the notebook runtime template.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs'] reservation_affinity: Optional. Reservation Affinity of the notebook runtime template.
         :param pulumi.Input[str] service_account: The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs'] shielded_vm_config: Optional. Immutable. Runtime Shielded VM spec.
         """
         pulumi.set(__self__, "display_name", display_name)
         if data_persistent_disk_spec is not None:
@@ -65,14 +71,20 @@ class NotebookRuntimeTemplateArgs:
             pulumi.set(__self__, "machine_spec", machine_spec)
         if network_spec is not None:
             pulumi.set(__self__, "network_spec", network_spec)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
         if notebook_runtime_template_id is not None:
             pulumi.set(__self__, "notebook_runtime_template_id", notebook_runtime_template_id)
         if notebook_runtime_type is not None:
             pulumi.set(__self__, "notebook_runtime_type", notebook_runtime_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if shielded_vm_config is not None:
+            pulumi.set(__self__, "shielded_vm_config", shielded_vm_config)
 
     @property
     @pulumi.getter(name="displayName")
@@ -192,6 +204,18 @@ class NotebookRuntimeTemplateArgs:
         pulumi.set(self, "network_spec", value)
 
     @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_tags", value)
+
+    @property
     @pulumi.getter(name="notebookRuntimeTemplateId")
     def notebook_runtime_template_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -225,6 +249,18 @@ class NotebookRuntimeTemplateArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs']]:
+        """
+        Optional. Reservation Affinity of the notebook runtime template.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @reservation_affinity.setter
+    def reservation_affinity(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs']]):
+        pulumi.set(self, "reservation_affinity", value)
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
@@ -235,6 +271,18 @@ class NotebookRuntimeTemplateArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="shieldedVmConfig")
+    def shielded_vm_config(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs']]:
+        """
+        Optional. Immutable. Runtime Shielded VM spec.
+        """
+        return pulumi.get(self, "shielded_vm_config")
+
+    @shielded_vm_config.setter
+    def shielded_vm_config(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs']]):
+        pulumi.set(self, "shielded_vm_config", value)
 
 
 class NotebookRuntimeTemplate(pulumi.CustomResource):
@@ -252,10 +300,13 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  machine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1MachineSpecArgs']]] = None,
                  network_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NetworkSpecArgs']]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  notebook_runtime_template_id: Optional[pulumi.Input[str]] = None,
                  notebook_runtime_type: Optional[pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs']]] = None,
                  __props__=None):
         """
         Creates a NotebookRuntimeTemplate.
@@ -272,9 +323,12 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1MachineSpecArgs']] machine_spec: Optional. Immutable. The specification of a single machine for the template.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NetworkSpecArgs']] network_spec: Optional. Network spec.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         :param pulumi.Input[str] notebook_runtime_template_id: Optional. User specified ID for the notebook runtime template.
         :param pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType'] notebook_runtime_type: Optional. Immutable. The type of the notebook runtime template.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs']] reservation_affinity: Optional. Reservation Affinity of the notebook runtime template.
         :param pulumi.Input[str] service_account: The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs']] shielded_vm_config: Optional. Immutable. Runtime Shielded VM spec.
         """
         ...
     @overload
@@ -311,10 +365,13 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  machine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1MachineSpecArgs']]] = None,
                  network_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NetworkSpecArgs']]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  notebook_runtime_template_id: Optional[pulumi.Input[str]] = None,
                  notebook_runtime_type: Optional[pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,10 +393,13 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["machine_spec"] = machine_spec
             __props__.__dict__["network_spec"] = network_spec
+            __props__.__dict__["network_tags"] = network_tags
             __props__.__dict__["notebook_runtime_template_id"] = notebook_runtime_template_id
             __props__.__dict__["notebook_runtime_type"] = notebook_runtime_type
             __props__.__dict__["project"] = project
+            __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["shielded_vm_config"] = shielded_vm_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["is_default"] = None
             __props__.__dict__["name"] = None
@@ -381,10 +441,13 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
         __props__.__dict__["machine_spec"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_spec"] = None
+        __props__.__dict__["network_tags"] = None
         __props__.__dict__["notebook_runtime_template_id"] = None
         __props__.__dict__["notebook_runtime_type"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["service_account"] = None
+        __props__.__dict__["shielded_vm_config"] = None
         __props__.__dict__["update_time"] = None
         return NotebookRuntimeTemplate(resource_name, opts=opts, __props__=__props__)
 
@@ -490,6 +553,14 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
         return pulumi.get(self, "network_spec")
 
     @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
     @pulumi.getter(name="notebookRuntimeTemplateId")
     def notebook_runtime_template_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -511,12 +582,28 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> pulumi.Output['outputs.GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse']:
+        """
+        Optional. Reservation Affinity of the notebook runtime template.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[str]:
         """
         The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedVmConfig")
+    def shielded_vm_config(self) -> pulumi.Output['outputs.GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse']:
+        """
+        Optional. Immutable. Runtime Shielded VM spec.
+        """
+        return pulumi.get(self, "shielded_vm_config")
 
     @property
     @pulumi.getter(name="updateTime")

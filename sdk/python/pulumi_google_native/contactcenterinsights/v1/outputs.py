@@ -25,6 +25,8 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse',
     'GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse',
     'GoogleCloudContactcenterinsightsV1ConversationParticipantResponse',
+    'GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse',
+    'GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse',
     'GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse',
@@ -946,7 +948,7 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse(dict):
 @pulumi.output_type
 class GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse(dict):
     """
-    The conversation source, which is a combination of transcript, audio, and metadata.
+    The conversation source, which is a combination of transcript and audio.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -971,7 +973,7 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse(dict):
                  dialogflow_source: 'outputs.GoogleCloudContactcenterinsightsV1DialogflowSourceResponse',
                  gcs_source: 'outputs.GoogleCloudContactcenterinsightsV1GcsSourceResponse'):
         """
-        The conversation source, which is a combination of transcript, audio, and metadata.
+        The conversation source, which is a combination of transcript and audio.
         :param 'GoogleCloudContactcenterinsightsV1DialogflowSourceResponse' dialogflow_source: The source when the conversation comes from Dialogflow.
         :param 'GoogleCloudContactcenterinsightsV1GcsSourceResponse' gcs_source: A Cloud Storage location specification for the audio and transcript.
         """
@@ -1137,6 +1139,160 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
         A user-specified ID representing the participant.
         """
         return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse(dict):
+    """
+    Information about an agent involved in the conversation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentId":
+            suggest = "agent_id"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "dispositionCode":
+            suggest = "disposition_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent_id: str,
+                 display_name: str,
+                 disposition_code: str,
+                 team: str):
+        """
+        Information about an agent involved in the conversation.
+        :param str agent_id: A user-specified string representing the agent.
+        :param str display_name: The agent's name.
+        :param str disposition_code: A user-provided string indicating the outcome of the agent's segment of the call.
+        :param str team: A user-specified string representing the agent's team.
+        """
+        pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "disposition_code", disposition_code)
+        pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> str:
+        """
+        A user-specified string representing the agent.
+        """
+        return pulumi.get(self, "agent_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The agent's name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="dispositionCode")
+    def disposition_code(self) -> str:
+        """
+        A user-provided string indicating the outcome of the agent's segment of the call.
+        """
+        return pulumi.get(self, "disposition_code")
+
+    @property
+    @pulumi.getter
+    def team(self) -> str:
+        """
+        A user-specified string representing the agent's team.
+        """
+        return pulumi.get(self, "team")
+
+
+@pulumi.output_type
+class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse(dict):
+    """
+    Conversation metadata related to quality management.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentInfo":
+            suggest = "agent_info"
+        elif key == "customerSatisfactionRating":
+            suggest = "customer_satisfaction_rating"
+        elif key == "menuPath":
+            suggest = "menu_path"
+        elif key == "waitDuration":
+            suggest = "wait_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent_info: Sequence['outputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse'],
+                 customer_satisfaction_rating: int,
+                 menu_path: str,
+                 wait_duration: str):
+        """
+        Conversation metadata related to quality management.
+        :param Sequence['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse'] agent_info: Information about agents involved in the call.
+        :param int customer_satisfaction_rating: An arbitrary integer value indicating the customer's satisfaction rating.
+        :param str menu_path: An arbitrary string value specifying the menu path the customer took.
+        :param str wait_duration: The amount of time the customer waited to connect with an agent.
+        """
+        pulumi.set(__self__, "agent_info", agent_info)
+        pulumi.set(__self__, "customer_satisfaction_rating", customer_satisfaction_rating)
+        pulumi.set(__self__, "menu_path", menu_path)
+        pulumi.set(__self__, "wait_duration", wait_duration)
+
+    @property
+    @pulumi.getter(name="agentInfo")
+    def agent_info(self) -> Sequence['outputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoResponse']:
+        """
+        Information about agents involved in the call.
+        """
+        return pulumi.get(self, "agent_info")
+
+    @property
+    @pulumi.getter(name="customerSatisfactionRating")
+    def customer_satisfaction_rating(self) -> int:
+        """
+        An arbitrary integer value indicating the customer's satisfaction rating.
+        """
+        return pulumi.get(self, "customer_satisfaction_rating")
+
+    @property
+    @pulumi.getter(name="menuPath")
+    def menu_path(self) -> str:
+        """
+        An arbitrary string value specifying the menu path the customer took.
+        """
+        return pulumi.get(self, "menu_path")
+
+    @property
+    @pulumi.getter(name="waitDuration")
+    def wait_duration(self) -> str:
+        """
+        The amount of time the customer waited to connect with an agent.
+        """
+        return pulumi.get(self, "wait_duration")
 
 
 @pulumi.output_type

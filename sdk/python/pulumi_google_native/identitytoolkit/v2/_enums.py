@@ -10,6 +10,7 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState',
     'GoogleCloudIdentitytoolkitAdminV2ProviderConfigState',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction',
     'GoogleIamV1AuditLogConfigLogType',
 ]
@@ -107,6 +108,28 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementSt
     ENFORCE = "ENFORCE"
     """
     reCAPTCHA assessment is created, result is used to enforce.
+    """
+
+
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType(str, Enum):
+    """
+    The client's platform type.
+    """
+    CLIENT_TYPE_UNSPECIFIED = "CLIENT_TYPE_UNSPECIFIED"
+    """
+    Client type is not specified.
+    """
+    WEB = "WEB"
+    """
+    Client type is web.
+    """
+    IOS = "IOS"
+    """
+    Client type is iOS.
+    """
+    ANDROID = "ANDROID"
+    """
+    Client type is Android.
     """
 
 

@@ -15,6 +15,8 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs',
     'GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs',
     'GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs',
+    'GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs',
+    'GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs',
     'GoogleCloudContactcenterinsightsV1DialogflowSourceArgs',
     'GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs',
     'GoogleCloudContactcenterinsightsV1GcsSourceArgs',
@@ -22,6 +24,8 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs',
     'GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs',
     'GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs',
+    'GoogleCloudContactcenterinsightsV1RedactionConfigArgs',
+    'GoogleCloudContactcenterinsightsV1SpeechConfigArgs',
 ]
 
 @pulumi.input_type
@@ -294,7 +298,7 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs:
                  dialogflow_source: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1DialogflowSourceArgs']] = None,
                  gcs_source: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1GcsSourceArgs']] = None):
         """
-        The conversation source, which is a combination of transcript, audio, and metadata.
+        The conversation source, which is a combination of transcript and audio.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1DialogflowSourceArgs'] dialogflow_source: The source when the conversation comes from Dialogflow.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1GcsSourceArgs'] gcs_source: A Cloud Storage location specification for the audio and transcript.
         """
@@ -326,6 +330,150 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs:
     @gcs_source.setter
     def gcs_source(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1GcsSourceArgs']]):
         pulumi.set(self, "gcs_source", value)
+
+
+@pulumi.input_type
+class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs:
+    def __init__(__self__, *,
+                 agent_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 disposition_code: Optional[pulumi.Input[str]] = None,
+                 team: Optional[pulumi.Input[str]] = None):
+        """
+        Information about an agent involved in the conversation.
+        :param pulumi.Input[str] agent_id: A user-specified string representing the agent.
+        :param pulumi.Input[str] display_name: The agent's name.
+        :param pulumi.Input[str] disposition_code: A user-provided string indicating the outcome of the agent's segment of the call.
+        :param pulumi.Input[str] team: A user-specified string representing the agent's team.
+        """
+        if agent_id is not None:
+            pulumi.set(__self__, "agent_id", agent_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if disposition_code is not None:
+            pulumi.set(__self__, "disposition_code", disposition_code)
+        if team is not None:
+            pulumi.set(__self__, "team", team)
+
+    @property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-specified string representing the agent.
+        """
+        return pulumi.get(self, "agent_id")
+
+    @agent_id.setter
+    def agent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "agent_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The agent's name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="dispositionCode")
+    def disposition_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-provided string indicating the outcome of the agent's segment of the call.
+        """
+        return pulumi.get(self, "disposition_code")
+
+    @disposition_code.setter
+    def disposition_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disposition_code", value)
+
+    @property
+    @pulumi.getter
+    def team(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-specified string representing the agent's team.
+        """
+        return pulumi.get(self, "team")
+
+    @team.setter
+    def team(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "team", value)
+
+
+@pulumi.input_type
+class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs:
+    def __init__(__self__, *,
+                 agent_info: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs']]]] = None,
+                 customer_satisfaction_rating: Optional[pulumi.Input[int]] = None,
+                 menu_path: Optional[pulumi.Input[str]] = None,
+                 wait_duration: Optional[pulumi.Input[str]] = None):
+        """
+        Conversation metadata related to quality management.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs']]] agent_info: Information about agents involved in the call.
+        :param pulumi.Input[int] customer_satisfaction_rating: An arbitrary integer value indicating the customer's satisfaction rating.
+        :param pulumi.Input[str] menu_path: An arbitrary string value specifying the menu path the customer took.
+        :param pulumi.Input[str] wait_duration: The amount of time the customer waited to connect with an agent.
+        """
+        if agent_info is not None:
+            pulumi.set(__self__, "agent_info", agent_info)
+        if customer_satisfaction_rating is not None:
+            pulumi.set(__self__, "customer_satisfaction_rating", customer_satisfaction_rating)
+        if menu_path is not None:
+            pulumi.set(__self__, "menu_path", menu_path)
+        if wait_duration is not None:
+            pulumi.set(__self__, "wait_duration", wait_duration)
+
+    @property
+    @pulumi.getter(name="agentInfo")
+    def agent_info(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs']]]]:
+        """
+        Information about agents involved in the call.
+        """
+        return pulumi.get(self, "agent_info")
+
+    @agent_info.setter
+    def agent_info(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoArgs']]]]):
+        pulumi.set(self, "agent_info", value)
+
+    @property
+    @pulumi.getter(name="customerSatisfactionRating")
+    def customer_satisfaction_rating(self) -> Optional[pulumi.Input[int]]:
+        """
+        An arbitrary integer value indicating the customer's satisfaction rating.
+        """
+        return pulumi.get(self, "customer_satisfaction_rating")
+
+    @customer_satisfaction_rating.setter
+    def customer_satisfaction_rating(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "customer_satisfaction_rating", value)
+
+    @property
+    @pulumi.getter(name="menuPath")
+    def menu_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        An arbitrary string value specifying the menu path the customer took.
+        """
+        return pulumi.get(self, "menu_path")
+
+    @menu_path.setter
+    def menu_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "menu_path", value)
+
+    @property
+    @pulumi.getter(name="waitDuration")
+    def wait_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The amount of time the customer waited to connect with an agent.
+        """
+        return pulumi.get(self, "wait_duration")
+
+    @wait_duration.setter
+    def wait_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait_duration", value)
 
 
 @pulumi.input_type
@@ -572,5 +720,69 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs:
     @negated.setter
     def negated(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negated", value)
+
+
+@pulumi.input_type
+class GoogleCloudContactcenterinsightsV1RedactionConfigArgs:
+    def __init__(__self__, *,
+                 deidentify_template: Optional[pulumi.Input[str]] = None,
+                 inspect_template: Optional[pulumi.Input[str]] = None):
+        """
+        DLP resources used for redaction while ingesting conversations.
+        :param pulumi.Input[str] deidentify_template: The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}`
+        :param pulumi.Input[str] inspect_template: The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`
+        """
+        if deidentify_template is not None:
+            pulumi.set(__self__, "deidentify_template", deidentify_template)
+        if inspect_template is not None:
+            pulumi.set(__self__, "inspect_template", inspect_template)
+
+    @property
+    @pulumi.getter(name="deidentifyTemplate")
+    def deidentify_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}`
+        """
+        return pulumi.get(self, "deidentify_template")
+
+    @deidentify_template.setter
+    def deidentify_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deidentify_template", value)
+
+    @property
+    @pulumi.getter(name="inspectTemplate")
+    def inspect_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}`
+        """
+        return pulumi.get(self, "inspect_template")
+
+    @inspect_template.setter
+    def inspect_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inspect_template", value)
+
+
+@pulumi.input_type
+class GoogleCloudContactcenterinsightsV1SpeechConfigArgs:
+    def __init__(__self__, *,
+                 speech_recognizer: Optional[pulumi.Input[str]] = None):
+        """
+        Speech-to-Text configuration.
+        :param pulumi.Input[str] speech_recognizer: The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+        """
+        if speech_recognizer is not None:
+            pulumi.set(__self__, "speech_recognizer", speech_recognizer)
+
+    @property
+    @pulumi.getter(name="speechRecognizer")
+    def speech_recognizer(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+        """
+        return pulumi.get(self, "speech_recognizer")
+
+    @speech_recognizer.setter
+    def speech_recognizer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "speech_recognizer", value)
 
 

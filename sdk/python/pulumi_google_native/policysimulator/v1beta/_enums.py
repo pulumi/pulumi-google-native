@@ -5,8 +5,47 @@
 from enum import Enum
 
 __all__ = [
+    'GoogleCloudOrgpolicyV2CustomConstraintActionType',
+    'GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem',
     'GoogleCloudPolicysimulatorV1betaReplayConfigLogSource',
 ]
+
+
+class GoogleCloudOrgpolicyV2CustomConstraintActionType(str, Enum):
+    """
+    Allow or deny type.
+    """
+    ACTION_TYPE_UNSPECIFIED = "ACTION_TYPE_UNSPECIFIED"
+    """
+    Unspecified. Results in an error.
+    """
+    ALLOW = "ALLOW"
+    """
+    Allowed action type.
+    """
+    DENY = "DENY"
+    """
+    Deny action type.
+    """
+
+
+class GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem(str, Enum):
+    METHOD_TYPE_UNSPECIFIED = "METHOD_TYPE_UNSPECIFIED"
+    """
+    Unspecified. Results in an error.
+    """
+    CREATE = "CREATE"
+    """
+    Constraint applied when creating the resource.
+    """
+    UPDATE = "UPDATE"
+    """
+    Constraint applied when updating the resource.
+    """
+    DELETE = "DELETE"
+    """
+    Constraint applied when deleting the resource. Not supported yet.
+    """
 
 
 class GoogleCloudPolicysimulatorV1betaReplayConfigLogSource(str, Enum):

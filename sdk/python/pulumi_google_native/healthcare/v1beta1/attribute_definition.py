@@ -34,7 +34,7 @@ class AttributeDefinitionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         :param pulumi.Input[str] description: Optional. A description of the attribute.
-        :param pulumi.Input[str] name: Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+        :param pulumi.Input[str] name: Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
         pulumi.set(__self__, "allowed_values", allowed_values)
         pulumi.set(__self__, "attribute_definition_id", attribute_definition_id)
@@ -157,7 +157,7 @@ class AttributeDefinitionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+        Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
         return pulumi.get(self, "name")
 
@@ -203,7 +203,7 @@ class AttributeDefinition(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         :param pulumi.Input[str] description: Optional. A description of the attribute.
-        :param pulumi.Input[str] name: Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+        :param pulumi.Input[str] name: Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
         ...
     @overload
@@ -374,7 +374,7 @@ class AttributeDefinition(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+        Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
         return pulumi.get(self, "name")
 

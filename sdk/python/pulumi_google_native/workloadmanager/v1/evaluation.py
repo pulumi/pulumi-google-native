@@ -17,6 +17,7 @@ __all__ = ['EvaluationArgs', 'Evaluation']
 class EvaluationArgs:
     def __init__(__self__, *,
                  evaluation_id: pulumi.Input[str],
+                 big_query_destination: Optional[pulumi.Input['BigQueryDestinationArgs']] = None,
                  custom_rules_bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -30,6 +31,7 @@ class EvaluationArgs:
         """
         The set of arguments for constructing a Evaluation resource.
         :param pulumi.Input[str] evaluation_id: Required. Id of the requesting object
+        :param pulumi.Input['BigQueryDestinationArgs'] big_query_destination: Optional. BigQuery destination
         :param pulumi.Input[str] custom_rules_bucket: The Cloud Storage bucket name for custom rules.
         :param pulumi.Input[str] description: Description of the Evaluation
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
@@ -40,6 +42,8 @@ class EvaluationArgs:
         :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         """
         pulumi.set(__self__, "evaluation_id", evaluation_id)
+        if big_query_destination is not None:
+            pulumi.set(__self__, "big_query_destination", big_query_destination)
         if custom_rules_bucket is not None:
             pulumi.set(__self__, "custom_rules_bucket", custom_rules_bucket)
         if description is not None:
@@ -72,6 +76,18 @@ class EvaluationArgs:
     @evaluation_id.setter
     def evaluation_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "evaluation_id", value)
+
+    @property
+    @pulumi.getter(name="bigQueryDestination")
+    def big_query_destination(self) -> Optional[pulumi.Input['BigQueryDestinationArgs']]:
+        """
+        Optional. BigQuery destination
+        """
+        return pulumi.get(self, "big_query_destination")
+
+    @big_query_destination.setter
+    def big_query_destination(self, value: Optional[pulumi.Input['BigQueryDestinationArgs']]):
+        pulumi.set(self, "big_query_destination", value)
 
     @property
     @pulumi.getter(name="customRulesBucket")
@@ -193,6 +209,7 @@ class Evaluation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 big_query_destination: Optional[pulumi.Input[pulumi.InputType['BigQueryDestinationArgs']]] = None,
                  custom_rules_bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  evaluation_id: Optional[pulumi.Input[str]] = None,
@@ -207,11 +224,10 @@ class Evaluation(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new Evaluation in a given project and location.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['BigQueryDestinationArgs']] big_query_destination: Optional. BigQuery destination
         :param pulumi.Input[str] custom_rules_bucket: The Cloud Storage bucket name for custom rules.
         :param pulumi.Input[str] description: Description of the Evaluation
         :param pulumi.Input[str] evaluation_id: Required. Id of the requesting object
@@ -230,8 +246,6 @@ class Evaluation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Evaluation in a given project and location.
-        Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-        on Google Cloud even though it will be deleted from Pulumi state.
 
         :param str resource_name: The name of the resource.
         :param EvaluationArgs args: The arguments to use to populate this resource's properties.
@@ -248,6 +262,7 @@ class Evaluation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 big_query_destination: Optional[pulumi.Input[pulumi.InputType['BigQueryDestinationArgs']]] = None,
                  custom_rules_bucket: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  evaluation_id: Optional[pulumi.Input[str]] = None,
@@ -268,6 +283,7 @@ class Evaluation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EvaluationArgs.__new__(EvaluationArgs)
 
+            __props__.__dict__["big_query_destination"] = big_query_destination
             __props__.__dict__["custom_rules_bucket"] = custom_rules_bucket
             __props__.__dict__["description"] = description
             if evaluation_id is None and not opts.urn:
@@ -309,6 +325,7 @@ class Evaluation(pulumi.CustomResource):
 
         __props__ = EvaluationArgs.__new__(EvaluationArgs)
 
+        __props__.__dict__["big_query_destination"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["custom_rules_bucket"] = None
         __props__.__dict__["description"] = None
@@ -325,6 +342,14 @@ class Evaluation(pulumi.CustomResource):
         __props__.__dict__["schedule"] = None
         __props__.__dict__["update_time"] = None
         return Evaluation(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bigQueryDestination")
+    def big_query_destination(self) -> pulumi.Output['outputs.BigQueryDestinationResponse']:
+        """
+        Optional. BigQuery destination
+        """
+        return pulumi.get(self, "big_query_destination")
 
     @property
     @pulumi.getter(name="createTime")

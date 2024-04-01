@@ -43,6 +43,7 @@ __all__ = [
     'ReportSummaryVMWareNodeResponse',
     'SoleTenancyPreferencesResponse',
     'SoleTenantNodeTypeResponse',
+    'StatusResponse',
     'UploadFileInfoResponse',
     'ValidationReportResponse',
     'VirtualMachinePreferencesNetworkCostParametersResponse',
@@ -83,7 +84,7 @@ class ComputeEnginePreferencesResponse(dict):
                  persistent_disk_type: str):
         """
         The user preferences relating to Compute Engine target platform.
-        :param str license_type: License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+        :param str license_type: Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         :param 'MachinePreferencesResponse' machine_preferences: Preferences concerning the machine types to consider on Compute Engine.
         :param str persistent_disk_type: Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
         """
@@ -95,7 +96,7 @@ class ComputeEnginePreferencesResponse(dict):
     @pulumi.getter(name="licenseType")
     def license_type(self) -> str:
         """
-        License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+        Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         """
         return pulumi.get(self, "license_type")
 
@@ -778,8 +779,8 @@ class ReportSummaryAssetAggregateStatsResponse(dict):
         :param 'ReportSummaryHistogramChartDataResponse' memory_bytes_histogram: Histogram showing a distribution of memory sizes.
         :param 'ReportSummaryChartDataResponse' memory_utilization: Total memory split into Used/Free buckets.
         :param 'ReportSummaryUtilizationChartDataResponse' memory_utilization_chart: Total memory split into Used/Free buckets.
-        :param 'ReportSummaryChartDataResponse' operating_system: Count of assets grouped by Operating System families.
-        :param 'ReportSummaryHistogramChartDataResponse' storage_bytes_histogram: Histogram showing a distribution of memory sizes.
+        :param 'ReportSummaryChartDataResponse' operating_system: Count of assets grouped by Operating System families. Only present for virtual machines.
+        :param 'ReportSummaryHistogramChartDataResponse' storage_bytes_histogram: Histogram showing a distribution of storage sizes.
         :param 'ReportSummaryChartDataResponse' storage_utilization: Total storage split into Used/Free buckets.
         :param 'ReportSummaryUtilizationChartDataResponse' storage_utilization_chart: Total memory split into Used/Free buckets.
         :param str total_assets: Count of the number of unique assets in this collection.
@@ -845,7 +846,7 @@ class ReportSummaryAssetAggregateStatsResponse(dict):
     @pulumi.getter(name="operatingSystem")
     def operating_system(self) -> 'outputs.ReportSummaryChartDataResponse':
         """
-        Count of assets grouped by Operating System families.
+        Count of assets grouped by Operating System families. Only present for virtual machines.
         """
         return pulumi.get(self, "operating_system")
 
@@ -853,7 +854,7 @@ class ReportSummaryAssetAggregateStatsResponse(dict):
     @pulumi.getter(name="storageBytesHistogram")
     def storage_bytes_histogram(self) -> 'outputs.ReportSummaryHistogramChartDataResponse':
         """
-        Histogram showing a distribution of memory sizes.
+        Histogram showing a distribution of storage sizes.
         """
         return pulumi.get(self, "storage_bytes_histogram")
 
@@ -1015,8 +1016,8 @@ class ReportSummaryGroupFindingResponse(dict):
         """
         Summary Findings for a specific Group.
         :param 'ReportSummaryAssetAggregateStatsResponse' asset_aggregate_stats: Summary statistics for all the assets in this group.
-        :param str description: Description for the Group.
-        :param str display_name: Display Name for the Group.
+        :param str description: Description for this group finding.
+        :param str display_name: Display Name for this group finding.
         :param str overlapping_asset_count: This field is deprecated, do not rely on it having a value.
         :param Sequence['ReportSummaryGroupPreferenceSetFindingResponse'] preference_set_findings: Findings for each of the PreferenceSets for this group.
         """
@@ -1038,7 +1039,7 @@ class ReportSummaryGroupFindingResponse(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description for the Group.
+        Description for this group finding.
         """
         return pulumi.get(self, "description")
 
@@ -1046,7 +1047,7 @@ class ReportSummaryGroupFindingResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Display Name for the Group.
+        Display Name for this group finding.
         """
         return pulumi.get(self, "display_name")
 
@@ -1138,19 +1139,19 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
         Summary Findings for a specific Group/PreferenceSet combination.
         :param str description: Description for the Preference Set.
         :param str display_name: Display Name of the Preference Set
-        :param 'ReportSummaryMachineFindingResponse' machine_finding: A set of findings that applies to all machines in the input.
+        :param 'ReportSummaryMachineFindingResponse' machine_finding: A set of findings that applies to all virtual machines in the input. Only present for virtual machines.
         :param 'VirtualMachinePreferencesResponse' machine_preferences: A set of preferences that applies to all machines in the context.
         :param 'MoneyResponse' monthly_cost_compute: Compute monthly cost for this preference set.
-        :param 'MoneyResponse' monthly_cost_network_egress: Network Egress monthly cost for this preference set.
-        :param 'MoneyResponse' monthly_cost_os_license: Licensing monthly cost for this preference set.
+        :param 'MoneyResponse' monthly_cost_network_egress: Network Egress monthly cost for this preference set. Only present for virtual machines.
+        :param 'MoneyResponse' monthly_cost_os_license: Operating system licensing monthly cost for this preference set. Only present for virtual machines.
         :param 'MoneyResponse' monthly_cost_other: Miscellaneous monthly cost for this preference set.
         :param 'MoneyResponse' monthly_cost_storage: Storage monthly cost for this preference set.
         :param 'MoneyResponse' monthly_cost_total: Total monthly cost for this preference set.
         :param str preferred_region: Target region for this Preference Set
         :param str pricing_track: Text describing the pricing track specified for this Preference Set
-        :param 'ReportSummarySoleTenantFindingResponse' sole_tenant_finding: A set of findings that applies to Stole-Tenant machines in the input.
+        :param 'ReportSummarySoleTenantFindingResponse' sole_tenant_finding: A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines.
         :param str top_priority: Text describing the business priority specified for this Preference Set
-        :param 'ReportSummaryVMWareEngineFindingResponse' vmware_engine_finding: A set of findings that applies to VMWare machines in the input.
+        :param 'ReportSummaryVMWareEngineFindingResponse' vmware_engine_finding: A set of findings that applies to VMWare machines in the input. Only present for virtual machines.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -1188,7 +1189,7 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
     @pulumi.getter(name="machineFinding")
     def machine_finding(self) -> 'outputs.ReportSummaryMachineFindingResponse':
         """
-        A set of findings that applies to all machines in the input.
+        A set of findings that applies to all virtual machines in the input. Only present for virtual machines.
         """
         return pulumi.get(self, "machine_finding")
 
@@ -1212,7 +1213,7 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
     @pulumi.getter(name="monthlyCostNetworkEgress")
     def monthly_cost_network_egress(self) -> 'outputs.MoneyResponse':
         """
-        Network Egress monthly cost for this preference set.
+        Network Egress monthly cost for this preference set. Only present for virtual machines.
         """
         return pulumi.get(self, "monthly_cost_network_egress")
 
@@ -1220,7 +1221,7 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
     @pulumi.getter(name="monthlyCostOsLicense")
     def monthly_cost_os_license(self) -> 'outputs.MoneyResponse':
         """
-        Licensing monthly cost for this preference set.
+        Operating system licensing monthly cost for this preference set. Only present for virtual machines.
         """
         return pulumi.get(self, "monthly_cost_os_license")
 
@@ -1268,7 +1269,7 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
     @pulumi.getter(name="soleTenantFinding")
     def sole_tenant_finding(self) -> 'outputs.ReportSummarySoleTenantFindingResponse':
         """
-        A set of findings that applies to Stole-Tenant machines in the input.
+        A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines.
         """
         return pulumi.get(self, "sole_tenant_finding")
 
@@ -1284,7 +1285,7 @@ class ReportSummaryGroupPreferenceSetFindingResponse(dict):
     @pulumi.getter(name="vmwareEngineFinding")
     def vmware_engine_finding(self) -> 'outputs.ReportSummaryVMWareEngineFindingResponse':
         """
-        A set of findings that applies to VMWare machines in the input.
+        A set of findings that applies to VMWare machines in the input. Only present for virtual machines.
         """
         return pulumi.get(self, "vmware_engine_finding")
 
@@ -1533,7 +1534,7 @@ class ReportSummaryResponse(dict):
                  group_findings: Sequence['outputs.ReportSummaryGroupFindingResponse']):
         """
         Describes the Summary view of a Report, which contains aggregated values for all the groups and preference sets included in this Report.
-        :param 'ReportSummaryAssetAggregateStatsResponse' all_assets_stats: Aggregate statistics for all the assets across all the groups.
+        :param 'ReportSummaryAssetAggregateStatsResponse' all_assets_stats: Aggregate statistics for unique assets across all the groups.
         :param Sequence['ReportSummaryGroupFindingResponse'] group_findings: Findings for each Group included in this report.
         """
         pulumi.set(__self__, "all_assets_stats", all_assets_stats)
@@ -1543,7 +1544,7 @@ class ReportSummaryResponse(dict):
     @pulumi.getter(name="allAssetsStats")
     def all_assets_stats(self) -> 'outputs.ReportSummaryAssetAggregateStatsResponse':
         """
-        Aggregate statistics for all the assets across all the groups.
+        Aggregate statistics for unique assets across all the groups.
         """
         return pulumi.get(self, "all_assets_stats")
 
@@ -1984,6 +1985,50 @@ class SoleTenantNodeTypeResponse(dict):
         Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
         """
         return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class StatusResponse(dict):
+    """
+    The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 details: Sequence[Mapping[str, str]],
+                 message: str):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Sequence[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

@@ -63,7 +63,7 @@ class GetPolicyTagResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+        Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
         """
         return pulumi.get(self, "name")
 

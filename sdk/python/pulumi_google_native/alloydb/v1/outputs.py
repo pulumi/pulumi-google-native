@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AuthorizedNetworkResponse',
     'AutomatedBackupPolicyResponse',
     'BackupSourceResponse',
     'ClientConnectionConfigResponse',
@@ -20,6 +21,7 @@ __all__ = [
     'EncryptionConfigResponse',
     'EncryptionInfoResponse',
     'GoogleTypeTimeOfDayResponse',
+    'InstanceNetworkConfigResponse',
     'MachineConfigResponse',
     'MigrationSourceResponse',
     'NetworkConfigResponse',
@@ -35,6 +37,45 @@ __all__ = [
     'UserPasswordResponse',
     'WeeklyScheduleResponse',
 ]
+
+@pulumi.output_type
+class AuthorizedNetworkResponse(dict):
+    """
+    AuthorizedNetwork contains metadata for an authorized network.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrRange":
+            suggest = "cidr_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorizedNetworkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorizedNetworkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorizedNetworkResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_range: str):
+        """
+        AuthorizedNetwork contains metadata for an authorized network.
+        :param str cidr_range: CIDR range for one authorzied network of the instance.
+        """
+        pulumi.set(__self__, "cidr_range", cidr_range)
+
+    @property
+    @pulumi.getter(name="cidrRange")
+    def cidr_range(self) -> str:
+        """
+        CIDR range for one authorzied network of the instance.
+        """
+        return pulumi.get(self, "cidr_range")
+
 
 @pulumi.output_type
 class AutomatedBackupPolicyResponse(dict):
@@ -550,6 +591,58 @@ class GoogleTypeTimeOfDayResponse(dict):
 
 
 @pulumi.output_type
+class InstanceNetworkConfigResponse(dict):
+    """
+    Metadata related to instance level network configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedExternalNetworks":
+            suggest = "authorized_external_networks"
+        elif key == "enablePublicIp":
+            suggest = "enable_public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorized_external_networks: Sequence['outputs.AuthorizedNetworkResponse'],
+                 enable_public_ip: bool):
+        """
+        Metadata related to instance level network configuration.
+        :param Sequence['AuthorizedNetworkResponse'] authorized_external_networks: Optional. A list of external network authorized to access this instance.
+        :param bool enable_public_ip: Optional. Enabling public ip for the instance.
+        """
+        pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="authorizedExternalNetworks")
+    def authorized_external_networks(self) -> Sequence['outputs.AuthorizedNetworkResponse']:
+        """
+        Optional. A list of external network authorized to access this instance.
+        """
+        return pulumi.get(self, "authorized_external_networks")
+
+    @property
+    @pulumi.getter(name="enablePublicIp")
+    def enable_public_ip(self) -> bool:
+        """
+        Optional. Enabling public ip for the instance.
+        """
+        return pulumi.get(self, "enable_public_ip")
+
+
+@pulumi.output_type
 class MachineConfigResponse(dict):
     """
     MachineConfig describes the configuration of a machine.
@@ -681,7 +774,7 @@ class NetworkConfigResponse(dict):
         """
         Metadata related to network configuration.
         :param str allocated_ip_range: Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
-        :param str network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        :param str network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "network", network)
@@ -698,7 +791,7 @@ class NetworkConfigResponse(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         return pulumi.get(self, "network")
 

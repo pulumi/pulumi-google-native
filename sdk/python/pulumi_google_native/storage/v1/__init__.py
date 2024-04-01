@@ -12,11 +12,13 @@ from .bucket_iam_member import *
 from .bucket_iam_policy import *
 from .bucket_object import *
 from .default_object_access_control import *
+from .folder import *
 from .get_bucket import *
 from .get_bucket_access_control import *
 from .get_bucket_iam_policy import *
 from .get_bucket_object import *
 from .get_default_object_access_control import *
+from .get_folder import *
 from .get_hmac_key import *
 from .get_managed_folder import *
 from .get_managed_folder_iam_policy import *

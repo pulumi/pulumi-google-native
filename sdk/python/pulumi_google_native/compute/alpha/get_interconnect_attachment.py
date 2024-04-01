@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectAttachmentResult:
-    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_ipv6_subnets=None, candidate_subnets=None, cloud_router_ip_address=None, cloud_router_ipv6_address=None, cloud_router_ipv6_interface_id=None, configuration_constraints=None, creation_timestamp=None, customer_router_ip_address=None, customer_router_ipv6_address=None, customer_router_ipv6_interface_id=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, google_reference_id=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, remote_service=None, router=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, subnet_length=None, type=None, vlan_tag8021q=None):
+    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_ipv6_subnets=None, candidate_subnets=None, cloud_router_ip_address=None, cloud_router_ipv6_address=None, cloud_router_ipv6_interface_id=None, configuration_constraints=None, creation_timestamp=None, customer_router_ip_address=None, customer_router_ipv6_address=None, customer_router_ipv6_interface_id=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, google_reference_id=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, multicast_enabled=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, remote_service=None, router=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, subnet_length=None, type=None, vlan_tag8021q=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -89,6 +89,9 @@ class GetInterconnectAttachmentResult:
         if mtu and not isinstance(mtu, int):
             raise TypeError("Expected argument 'mtu' to be a int")
         pulumi.set(__self__, "mtu", mtu)
+        if multicast_enabled and not isinstance(multicast_enabled, bool):
+            raise TypeError("Expected argument 'multicast_enabled' to be a bool")
+        pulumi.set(__self__, "multicast_enabled", multicast_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -329,6 +332,14 @@ class GetInterconnectAttachmentResult:
         return pulumi.get(self, "mtu")
 
     @property
+    @pulumi.getter(name="multicastEnabled")
+    def multicast_enabled(self) -> bool:
+        """
+        Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+        """
+        return pulumi.get(self, "multicast_enabled")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -494,6 +505,7 @@ class AwaitableGetInterconnectAttachmentResult(GetInterconnectAttachmentResult):
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
             mtu=self.mtu,
+            multicast_enabled=self.multicast_enabled,
             name=self.name,
             operational_status=self.operational_status,
             pairing_key=self.pairing_key,
@@ -551,6 +563,7 @@ def get_interconnect_attachment(interconnect_attachment: Optional[str] = None,
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),
         mtu=pulumi.get(__ret__, 'mtu'),
+        multicast_enabled=pulumi.get(__ret__, 'multicast_enabled'),
         name=pulumi.get(__ret__, 'name'),
         operational_status=pulumi.get(__ret__, 'operational_status'),
         pairing_key=pulumi.get(__ret__, 'pairing_key'),

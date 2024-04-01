@@ -37,9 +37,14 @@ __all__ = [
     'GoogleCloudAiplatformV1FeatureNoiseSigmaArgs',
     'GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScalingArgs',
     'GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs',
+    'GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointArgs',
+    'GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedArgs',
     'GoogleCloudAiplatformV1FeatureViewBigQuerySourceArgs',
     'GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupArgs',
     'GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs',
+    'GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfigArgs',
+    'GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfigArgs',
+    'GoogleCloudAiplatformV1FeatureViewIndexConfigArgs',
     'GoogleCloudAiplatformV1FeatureViewSyncConfigArgs',
     'GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisArgs',
     'GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysisArgs',
@@ -51,13 +56,17 @@ __all__ = [
     'GoogleCloudAiplatformV1FractionSplitArgs',
     'GoogleCloudAiplatformV1GcsDestinationArgs',
     'GoogleCloudAiplatformV1GcsSourceArgs',
+    'GoogleCloudAiplatformV1GenieSourceArgs',
     'GoogleCloudAiplatformV1InputDataConfigArgs',
     'GoogleCloudAiplatformV1IntegratedGradientsAttributionArgs',
     'GoogleCloudAiplatformV1MachineSpecArgs',
     'GoogleCloudAiplatformV1ManualBatchTuningParametersArgs',
+    'GoogleCloudAiplatformV1ModelBaseModelSourceArgs',
     'GoogleCloudAiplatformV1ModelContainerSpecArgs',
+    'GoogleCloudAiplatformV1ModelDataStatsArgs',
     'GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfigArgs',
     'GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfigArgs',
+    'GoogleCloudAiplatformV1ModelGardenSourceArgs',
     'GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfigArgs',
     'GoogleCloudAiplatformV1ModelMonitoringAlertConfigArgs',
     'GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselineArgs',
@@ -76,6 +85,7 @@ __all__ = [
     'GoogleCloudAiplatformV1NfsMountArgs',
     'GoogleCloudAiplatformV1NotebookEucConfigArgs',
     'GoogleCloudAiplatformV1NotebookIdleShutdownConfigArgs',
+    'GoogleCloudAiplatformV1NotebookReservationAffinityArgs',
     'GoogleCloudAiplatformV1PersistentDiskSpecArgs',
     'GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs',
     'GoogleCloudAiplatformV1PipelineJobArgs',
@@ -88,12 +98,19 @@ __all__ = [
     'GoogleCloudAiplatformV1ProbeExecActionArgs',
     'GoogleCloudAiplatformV1ProbeArgs',
     'GoogleCloudAiplatformV1PythonPackageSpecArgs',
+    'GoogleCloudAiplatformV1RayMetricSpecArgs',
+    'GoogleCloudAiplatformV1RaySpecArgs',
+    'GoogleCloudAiplatformV1ResourcePoolAutoscalingSpecArgs',
+    'GoogleCloudAiplatformV1ResourcePoolArgs',
+    'GoogleCloudAiplatformV1ResourceRuntimeSpecArgs',
     'GoogleCloudAiplatformV1SampleConfigArgs',
     'GoogleCloudAiplatformV1SampledShapleyAttributionArgs',
     'GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfigArgs',
     'GoogleCloudAiplatformV1SamplingStrategyArgs',
     'GoogleCloudAiplatformV1SavedQueryArgs',
     'GoogleCloudAiplatformV1SchedulingArgs',
+    'GoogleCloudAiplatformV1ServiceAccountSpecArgs',
+    'GoogleCloudAiplatformV1ShieldedVmConfigArgs',
     'GoogleCloudAiplatformV1SmoothGradConfigArgs',
     'GoogleCloudAiplatformV1StratifiedSplitArgs',
     'GoogleCloudAiplatformV1StudySpecConvexAutomatedStoppingSpecArgs',
@@ -353,8 +370,8 @@ class GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigArgs:
                  key_field: Optional[pulumi.Input[str]] = None):
         """
         Configuration defining how to transform batch prediction input instances to the instances that the Model accepts.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_fields: Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_fields: Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_fields: Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_fields: Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         :param pulumi.Input[str] instance_type: The format of the instance that the Model accepts. Vertex AI will convert compatible batch prediction input instance formats to the specified format. Supported values are: * `object`: Each input is converted to JSON object format. * For `bigquery`, each row is converted to an object. * For `jsonl`, each line of the JSONL input must be an object. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. * `array`: Each input is converted to JSON array format. * For `bigquery`, each row is converted to an array. The order of columns is determined by the BigQuery column order, unless included_fields is populated. included_fields must be populated for specifying field orders. * For `jsonl`, if each line of the JSONL input is an object, included_fields must be populated for specifying field orders. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. If not specified, Vertex AI converts the batch prediction input as follows: * For `bigquery` and `csv`, the behavior is the same as `array`. The order of columns is the same as defined in the file or table, unless included_fields is populated. * For `jsonl`, the prediction instance format is determined by each line of the input. * For `tf-record`/`tf-record-gzip`, each record will be converted to an object in the format of `{"b64": }`, where `` is the Base64-encoded string of the content of the record. * For `file-list`, each file in the list will be converted to an object in the format of `{"b64": }`, where `` is the Base64-encoded string of the content of the file.
         :param pulumi.Input[str] key_field: The name of the field that is considered as a key. The values identified by the key field is not included in the transformed instances that is sent to the Model. This is similar to specifying this name of the field in excluded_fields. In addition, the batch prediction output will not include the instances. Instead the output will only include the value of the key field, in a field named `key` in the output: * For `jsonl` output format, the output will have a `key` field instead of the `instance` field. * For `csv`/`bigquery` output format, the output will have have a `key` column instead of the instance feature columns. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
         """
@@ -371,7 +388,7 @@ class GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigArgs:
     @pulumi.getter(name="excludedFields")
     def excluded_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         """
         return pulumi.get(self, "excluded_fields")
 
@@ -383,7 +400,7 @@ class GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigArgs:
     @pulumi.getter(name="includedFields")
     def included_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         """
         return pulumi.get(self, "included_fields")
 
@@ -675,7 +692,9 @@ class GoogleCloudAiplatformV1CustomJobSpecArgs:
                  enable_web_access: Optional[pulumi.Input[bool]] = None,
                  experiment: Optional[pulumi.Input[str]] = None,
                  experiment_run: Optional[pulumi.Input[str]] = None,
+                 models: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 persistent_resource_id: Optional[pulumi.Input[str]] = None,
                  protected_artifact_location_id: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['GoogleCloudAiplatformV1SchedulingArgs']] = None,
@@ -689,7 +708,9 @@ class GoogleCloudAiplatformV1CustomJobSpecArgs:
         :param pulumi.Input[bool] enable_web_access: Optional. Whether you want Vertex AI to enable [interactive shell access](https://cloud.google.com/vertex-ai/docs/training/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by CustomJob.web_access_uris or Trial.web_access_uris (within HyperparameterTuningJob.trials).
         :param pulumi.Input[str] experiment: Optional. The Experiment associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
         :param pulumi.Input[str] experiment_run: Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] models: Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
         :param pulumi.Input[str] network: Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
+        :param pulumi.Input[str] persistent_resource_id: Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
         :param pulumi.Input[str] protected_artifact_location_id: The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location. List of supported locations: https://cloud.google.com/vertex-ai/docs/general/locations
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_ranges: Optional. A list of names for the reserved ip ranges under the VPC network that can be used for this job. If set, we will deploy the job within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         :param pulumi.Input['GoogleCloudAiplatformV1SchedulingArgs'] scheduling: Scheduling options for a CustomJob.
@@ -707,8 +728,12 @@ class GoogleCloudAiplatformV1CustomJobSpecArgs:
             pulumi.set(__self__, "experiment", experiment)
         if experiment_run is not None:
             pulumi.set(__self__, "experiment_run", experiment_run)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if persistent_resource_id is not None:
+            pulumi.set(__self__, "persistent_resource_id", persistent_resource_id)
         if protected_artifact_location_id is not None:
             pulumi.set(__self__, "protected_artifact_location_id", protected_artifact_location_id)
         if reserved_ip_ranges is not None:
@@ -794,6 +819,18 @@ class GoogleCloudAiplatformV1CustomJobSpecArgs:
 
     @property
     @pulumi.getter
+    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+        """
+        return pulumi.get(self, "models")
+
+    @models.setter
+    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "models", value)
+
+    @property
+    @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
@@ -803,6 +840,18 @@ class GoogleCloudAiplatformV1CustomJobSpecArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="persistentResourceId")
+    def persistent_resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+        """
+        return pulumi.get(self, "persistent_resource_id")
+
+    @persistent_resource_id.setter
+    def persistent_resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "persistent_resource_id", value)
 
     @property
     @pulumi.getter(name="protectedArtifactLocationId")
@@ -1369,7 +1418,7 @@ class GoogleCloudAiplatformV1FeatureGroupBigQueryArgs:
         """
         Input source type for BigQuery Tables and Views.
         :param pulumi.Input['GoogleCloudAiplatformV1BigQuerySourceArgs'] big_query_source: Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] entity_id_columns: Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entity_id_columns: Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         """
         pulumi.set(__self__, "big_query_source", big_query_source)
         if entity_id_columns is not None:
@@ -1391,7 +1440,7 @@ class GoogleCloudAiplatformV1FeatureGroupBigQueryArgs:
     @pulumi.getter(name="entityIdColumns")
     def entity_id_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+        Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         """
         return pulumi.get(self, "entity_id_columns")
 
@@ -1540,12 +1589,30 @@ class GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs:
 
 
 @pulumi.input_type
+class GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointArgs:
+    def __init__(__self__):
+        """
+        The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedArgs:
+    def __init__(__self__):
+        """
+        Optimized storage type
+        """
+        pass
+
+
+@pulumi.input_type
 class GoogleCloudAiplatformV1FeatureViewBigQuerySourceArgs:
     def __init__(__self__, *,
                  entity_id_columns: pulumi.Input[Sequence[pulumi.Input[str]]],
                  uri: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] entity_id_columns: Columns to construct entity_id / row keys. Start by supporting 1 only.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entity_id_columns: Columns to construct entity_id / row keys.
         :param pulumi.Input[str] uri: The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
         """
         pulumi.set(__self__, "entity_id_columns", entity_id_columns)
@@ -1555,7 +1622,7 @@ class GoogleCloudAiplatformV1FeatureViewBigQuerySourceArgs:
     @pulumi.getter(name="entityIdColumns")
     def entity_id_columns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Columns to construct entity_id / row keys. Start by supporting 1 only.
+        Columns to construct entity_id / row keys.
         """
         return pulumi.get(self, "entity_id_columns")
 
@@ -1617,12 +1684,16 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupArgs:
 @pulumi.input_type
 class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs:
     def __init__(__self__, *,
-                 feature_groups: pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupArgs']]]):
+                 feature_groups: pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupArgs']]],
+                 project_number: Optional[pulumi.Input[str]] = None):
         """
         A Feature Registry source for features that need to be synced to Online Store.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupArgs']]] feature_groups: List of features that need to be synced to Online Store.
+        :param pulumi.Input[str] project_number: Optional. The project number of the parent project of the Feature Groups.
         """
         pulumi.set(__self__, "feature_groups", feature_groups)
+        if project_number is not None:
+            pulumi.set(__self__, "project_number", project_number)
 
     @property
     @pulumi.getter(name="featureGroups")
@@ -1636,12 +1707,178 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs:
     def feature_groups(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupArgs']]]):
         pulumi.set(self, "feature_groups", value)
 
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The project number of the parent project of the Feature Groups.
+        """
+        return pulumi.get(self, "project_number")
+
+    @project_number.setter
+    def project_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_number", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfigArgs:
+    def __init__(__self__):
+        """
+        Configuration options for using brute force search.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfigArgs:
+    def __init__(__self__, *,
+                 leaf_node_embedding_count: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration options for the tree-AH algorithm.
+        :param pulumi.Input[str] leaf_node_embedding_count: Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        if leaf_node_embedding_count is not None:
+            pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
+
+    @property
+    @pulumi.getter(name="leafNodeEmbeddingCount")
+    def leaf_node_embedding_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        return pulumi.get(self, "leaf_node_embedding_count")
+
+    @leaf_node_embedding_count.setter
+    def leaf_node_embedding_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "leaf_node_embedding_count", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1FeatureViewIndexConfigArgs:
+    def __init__(__self__, *,
+                 brute_force_config: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfigArgs']] = None,
+                 crowding_column: Optional[pulumi.Input[str]] = None,
+                 distance_measure_type: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType']] = None,
+                 embedding_column: Optional[pulumi.Input[str]] = None,
+                 embedding_dimension: Optional[pulumi.Input[int]] = None,
+                 filter_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tree_ah_config: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfigArgs']] = None):
+        """
+        Configuration for vector indexing.
+        :param pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfigArgs'] brute_force_config: Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+        :param pulumi.Input[str] crowding_column: Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+        :param pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType'] distance_measure_type: Optional. The distance measure used in nearest neighbor search.
+        :param pulumi.Input[str] embedding_column: Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+        :param pulumi.Input[int] embedding_dimension: Optional. The number of dimensions of the input embedding.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] filter_columns: Optional. Columns of features that're used to filter vector search results.
+        :param pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfigArgs'] tree_ah_config: Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        """
+        if brute_force_config is not None:
+            pulumi.set(__self__, "brute_force_config", brute_force_config)
+        if crowding_column is not None:
+            pulumi.set(__self__, "crowding_column", crowding_column)
+        if distance_measure_type is not None:
+            pulumi.set(__self__, "distance_measure_type", distance_measure_type)
+        if embedding_column is not None:
+            pulumi.set(__self__, "embedding_column", embedding_column)
+        if embedding_dimension is not None:
+            pulumi.set(__self__, "embedding_dimension", embedding_dimension)
+        if filter_columns is not None:
+            pulumi.set(__self__, "filter_columns", filter_columns)
+        if tree_ah_config is not None:
+            pulumi.set(__self__, "tree_ah_config", tree_ah_config)
+
+    @property
+    @pulumi.getter(name="bruteForceConfig")
+    def brute_force_config(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfigArgs']]:
+        """
+        Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+        """
+        return pulumi.get(self, "brute_force_config")
+
+    @brute_force_config.setter
+    def brute_force_config(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfigArgs']]):
+        pulumi.set(self, "brute_force_config", value)
+
+    @property
+    @pulumi.getter(name="crowdingColumn")
+    def crowding_column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+        """
+        return pulumi.get(self, "crowding_column")
+
+    @crowding_column.setter
+    def crowding_column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crowding_column", value)
+
+    @property
+    @pulumi.getter(name="distanceMeasureType")
+    def distance_measure_type(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType']]:
+        """
+        Optional. The distance measure used in nearest neighbor search.
+        """
+        return pulumi.get(self, "distance_measure_type")
+
+    @distance_measure_type.setter
+    def distance_measure_type(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType']]):
+        pulumi.set(self, "distance_measure_type", value)
+
+    @property
+    @pulumi.getter(name="embeddingColumn")
+    def embedding_column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+        """
+        return pulumi.get(self, "embedding_column")
+
+    @embedding_column.setter
+    def embedding_column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "embedding_column", value)
+
+    @property
+    @pulumi.getter(name="embeddingDimension")
+    def embedding_dimension(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of dimensions of the input embedding.
+        """
+        return pulumi.get(self, "embedding_dimension")
+
+    @embedding_dimension.setter
+    def embedding_dimension(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "embedding_dimension", value)
+
+    @property
+    @pulumi.getter(name="filterColumns")
+    def filter_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Columns of features that're used to filter vector search results.
+        """
+        return pulumi.get(self, "filter_columns")
+
+    @filter_columns.setter
+    def filter_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "filter_columns", value)
+
+    @property
+    @pulumi.getter(name="treeAhConfig")
+    def tree_ah_config(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfigArgs']]:
+        """
+        Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        """
+        return pulumi.get(self, "tree_ah_config")
+
+    @tree_ah_config.setter
+    def tree_ah_config(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfigArgs']]):
+        pulumi.set(self, "tree_ah_config", value)
+
 
 @pulumi.input_type
 class GoogleCloudAiplatformV1FeatureViewSyncConfigArgs:
     def __init__(__self__, *,
                  cron: Optional[pulumi.Input[str]] = None):
         """
+        Configuration for Sync. Only one option is set.
         :param pulumi.Input[str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         if cron is not None:
@@ -2103,6 +2340,29 @@ class GoogleCloudAiplatformV1GcsSourceArgs:
 
 
 @pulumi.input_type
+class GoogleCloudAiplatformV1GenieSourceArgs:
+    def __init__(__self__, *,
+                 base_model_uri: pulumi.Input[str]):
+        """
+        Contains information about the source of the models generated from Generative AI Studio.
+        :param pulumi.Input[str] base_model_uri: The public base model URI.
+        """
+        pulumi.set(__self__, "base_model_uri", base_model_uri)
+
+    @property
+    @pulumi.getter(name="baseModelUri")
+    def base_model_uri(self) -> pulumi.Input[str]:
+        """
+        The public base model URI.
+        """
+        return pulumi.get(self, "base_model_uri")
+
+    @base_model_uri.setter
+    def base_model_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "base_model_uri", value)
+
+
+@pulumi.input_type
 class GoogleCloudAiplatformV1InputDataConfigArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
@@ -2453,6 +2713,46 @@ class GoogleCloudAiplatformV1ManualBatchTuningParametersArgs:
 
 
 @pulumi.input_type
+class GoogleCloudAiplatformV1ModelBaseModelSourceArgs:
+    def __init__(__self__, *,
+                 genie_source: Optional[pulumi.Input['GoogleCloudAiplatformV1GenieSourceArgs']] = None,
+                 model_garden_source: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelGardenSourceArgs']] = None):
+        """
+        User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        :param pulumi.Input['GoogleCloudAiplatformV1GenieSourceArgs'] genie_source: Information about the base model of Genie models.
+        :param pulumi.Input['GoogleCloudAiplatformV1ModelGardenSourceArgs'] model_garden_source: Source information of Model Garden models.
+        """
+        if genie_source is not None:
+            pulumi.set(__self__, "genie_source", genie_source)
+        if model_garden_source is not None:
+            pulumi.set(__self__, "model_garden_source", model_garden_source)
+
+    @property
+    @pulumi.getter(name="genieSource")
+    def genie_source(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1GenieSourceArgs']]:
+        """
+        Information about the base model of Genie models.
+        """
+        return pulumi.get(self, "genie_source")
+
+    @genie_source.setter
+    def genie_source(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1GenieSourceArgs']]):
+        pulumi.set(self, "genie_source", value)
+
+    @property
+    @pulumi.getter(name="modelGardenSource")
+    def model_garden_source(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ModelGardenSourceArgs']]:
+        """
+        Source information of Model Garden models.
+        """
+        return pulumi.get(self, "model_garden_source")
+
+    @model_garden_source.setter
+    def model_garden_source(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelGardenSourceArgs']]):
+        pulumi.set(self, "model_garden_source", value)
+
+
+@pulumi.input_type
 class GoogleCloudAiplatformV1ModelContainerSpecArgs:
     def __init__(__self__, *,
                  image_uri: pulumi.Input[str],
@@ -2460,6 +2760,7 @@ class GoogleCloudAiplatformV1ModelContainerSpecArgs:
                  command: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_timeout: Optional[pulumi.Input[str]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1EnvVarArgs']]]] = None,
+                 grpc_ports: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1PortArgs']]]] = None,
                  health_probe: Optional[pulumi.Input['GoogleCloudAiplatformV1ProbeArgs']] = None,
                  health_route: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1PortArgs']]]] = None,
@@ -2471,14 +2772,15 @@ class GoogleCloudAiplatformV1ModelContainerSpecArgs:
         :param pulumi.Input[str] image_uri: Immutable. URI of the Docker image to be used as the custom container for serving predictions. This URI must identify an image in Artifact Registry or Container Registry. Learn more about the [container publishing requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing), including permissions requirements for the Vertex AI Service Agent. The container image is ingested upon ModelService.UploadModel, stored internally, and this original path is afterwards not used. To learn about the requirements for the Docker image itself, see [Custom container requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#). You can use the URI to one of Vertex AI's [pre-built container images for prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers) in this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `command` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Immutable. Specifies the command that runs when the container starts. This overrides the container's [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint). Specify this field as an array of executable and arguments, similar to a Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not specify this field, then the container's `ENTRYPOINT` runs, in conjunction with the args field or the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd), if either exists. If this field is not specified and the container does not have an `ENTRYPOINT`, then refer to the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). If you specify this field, then you can also specify the `args` field to provide additional arguments for this command. However, if you specify this field, then the container's `CMD` is ignored. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `command` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-        :param pulumi.Input[str] deployment_timeout: Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+        :param pulumi.Input[str] deployment_timeout: Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1EnvVarArgs']]] env: Immutable. List of environment variables to set in the container. After the container starts running, code running in the container can read these environment variables. Additionally, the command and args fields can reference these variables. Later entries in this list can also reference earlier entries. For example, the following example sets the variable `VAR_2` to have the value `foo bar`: ```json [ { "name": "VAR_1", "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ] ``` If you switch the order of the variables in the example, then the expansion does not occur. This field corresponds to the `env` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-        :param pulumi.Input['GoogleCloudAiplatformV1ProbeArgs'] health_probe: Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1PortArgs']]] grpc_ports: Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        :param pulumi.Input['GoogleCloudAiplatformV1ProbeArgs'] health_probe: Immutable. Specification for Kubernetes readiness probe.
         :param pulumi.Input[str] health_route: Immutable. HTTP path on the container to send health checks to. Vertex AI intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health). For example, if you set this field to `/bar`, then Vertex AI intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/ DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1PortArgs']]] ports: Immutable. List of ports to expose from the container. Vertex AI sends any prediction requests that it receives to the first port on this list. Vertex AI also sends [liveness and health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness) to this port. If you do not specify this field, it defaults to following value: ```json [ { "containerPort": 8080 } ] ``` Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         :param pulumi.Input[str] predict_route: Immutable. HTTP path on the container to send prediction requests to. Vertex AI forwards requests sent using projects.locations.endpoints.predict to this path on the container's IP address and port. Vertex AI then returns the container's response in the API response. For example, if you set this field to `/foo`, then when Vertex AI receives a prediction request, it forwards the request body in a POST request to the `/foo` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
-        :param pulumi.Input[str] shared_memory_size_mb: Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
-        :param pulumi.Input['GoogleCloudAiplatformV1ProbeArgs'] startup_probe: Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+        :param pulumi.Input[str] shared_memory_size_mb: Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+        :param pulumi.Input['GoogleCloudAiplatformV1ProbeArgs'] startup_probe: Immutable. Specification for Kubernetes startup probe.
         """
         pulumi.set(__self__, "image_uri", image_uri)
         if args is not None:
@@ -2489,6 +2791,8 @@ class GoogleCloudAiplatformV1ModelContainerSpecArgs:
             pulumi.set(__self__, "deployment_timeout", deployment_timeout)
         if env is not None:
             pulumi.set(__self__, "env", env)
+        if grpc_ports is not None:
+            pulumi.set(__self__, "grpc_ports", grpc_ports)
         if health_probe is not None:
             pulumi.set(__self__, "health_probe", health_probe)
         if health_route is not None:
@@ -2542,7 +2846,7 @@ class GoogleCloudAiplatformV1ModelContainerSpecArgs:
     @pulumi.getter(name="deploymentTimeout")
     def deployment_timeout(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         """
         return pulumi.get(self, "deployment_timeout")
 
@@ -2563,10 +2867,22 @@ class GoogleCloudAiplatformV1ModelContainerSpecArgs:
         pulumi.set(self, "env", value)
 
     @property
+    @pulumi.getter(name="grpcPorts")
+    def grpc_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1PortArgs']]]]:
+        """
+        Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        """
+        return pulumi.get(self, "grpc_ports")
+
+    @grpc_ports.setter
+    def grpc_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAiplatformV1PortArgs']]]]):
+        pulumi.set(self, "grpc_ports", value)
+
+    @property
     @pulumi.getter(name="healthProbe")
     def health_probe(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ProbeArgs']]:
         """
-        Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. Specification for Kubernetes readiness probe.
         """
         return pulumi.get(self, "health_probe")
 
@@ -2614,7 +2930,7 @@ class GoogleCloudAiplatformV1ModelContainerSpecArgs:
     @pulumi.getter(name="sharedMemorySizeMb")
     def shared_memory_size_mb(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
         """
         return pulumi.get(self, "shared_memory_size_mb")
 
@@ -2626,13 +2942,117 @@ class GoogleCloudAiplatformV1ModelContainerSpecArgs:
     @pulumi.getter(name="startupProbe")
     def startup_probe(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ProbeArgs']]:
         """
-        Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. Specification for Kubernetes startup probe.
         """
         return pulumi.get(self, "startup_probe")
 
     @startup_probe.setter
     def startup_probe(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ProbeArgs']]):
         pulumi.set(self, "startup_probe", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1ModelDataStatsArgs:
+    def __init__(__self__, *,
+                 test_annotations_count: Optional[pulumi.Input[str]] = None,
+                 test_data_items_count: Optional[pulumi.Input[str]] = None,
+                 training_annotations_count: Optional[pulumi.Input[str]] = None,
+                 training_data_items_count: Optional[pulumi.Input[str]] = None,
+                 validation_annotations_count: Optional[pulumi.Input[str]] = None,
+                 validation_data_items_count: Optional[pulumi.Input[str]] = None):
+        """
+        Stats of data used for train or evaluate the Model.
+        :param pulumi.Input[str] test_annotations_count: Number of Annotations that are used for evaluating this Model. If the Model is evaluated multiple times, this will be the number of test Annotations used by the first evaluation. If the Model is not evaluated, the number is 0.
+        :param pulumi.Input[str] test_data_items_count: Number of DataItems that were used for evaluating this Model. If the Model is evaluated multiple times, this will be the number of test DataItems used by the first evaluation. If the Model is not evaluated, the number is 0.
+        :param pulumi.Input[str] training_annotations_count: Number of Annotations that are used for training this Model.
+        :param pulumi.Input[str] training_data_items_count: Number of DataItems that were used for training this Model.
+        :param pulumi.Input[str] validation_annotations_count: Number of Annotations that are used for validating this Model during training.
+        :param pulumi.Input[str] validation_data_items_count: Number of DataItems that were used for validating this Model during training.
+        """
+        if test_annotations_count is not None:
+            pulumi.set(__self__, "test_annotations_count", test_annotations_count)
+        if test_data_items_count is not None:
+            pulumi.set(__self__, "test_data_items_count", test_data_items_count)
+        if training_annotations_count is not None:
+            pulumi.set(__self__, "training_annotations_count", training_annotations_count)
+        if training_data_items_count is not None:
+            pulumi.set(__self__, "training_data_items_count", training_data_items_count)
+        if validation_annotations_count is not None:
+            pulumi.set(__self__, "validation_annotations_count", validation_annotations_count)
+        if validation_data_items_count is not None:
+            pulumi.set(__self__, "validation_data_items_count", validation_data_items_count)
+
+    @property
+    @pulumi.getter(name="testAnnotationsCount")
+    def test_annotations_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of Annotations that are used for evaluating this Model. If the Model is evaluated multiple times, this will be the number of test Annotations used by the first evaluation. If the Model is not evaluated, the number is 0.
+        """
+        return pulumi.get(self, "test_annotations_count")
+
+    @test_annotations_count.setter
+    def test_annotations_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "test_annotations_count", value)
+
+    @property
+    @pulumi.getter(name="testDataItemsCount")
+    def test_data_items_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of DataItems that were used for evaluating this Model. If the Model is evaluated multiple times, this will be the number of test DataItems used by the first evaluation. If the Model is not evaluated, the number is 0.
+        """
+        return pulumi.get(self, "test_data_items_count")
+
+    @test_data_items_count.setter
+    def test_data_items_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "test_data_items_count", value)
+
+    @property
+    @pulumi.getter(name="trainingAnnotationsCount")
+    def training_annotations_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of Annotations that are used for training this Model.
+        """
+        return pulumi.get(self, "training_annotations_count")
+
+    @training_annotations_count.setter
+    def training_annotations_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "training_annotations_count", value)
+
+    @property
+    @pulumi.getter(name="trainingDataItemsCount")
+    def training_data_items_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of DataItems that were used for training this Model.
+        """
+        return pulumi.get(self, "training_data_items_count")
+
+    @training_data_items_count.setter
+    def training_data_items_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "training_data_items_count", value)
+
+    @property
+    @pulumi.getter(name="validationAnnotationsCount")
+    def validation_annotations_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of Annotations that are used for validating this Model during training.
+        """
+        return pulumi.get(self, "validation_annotations_count")
+
+    @validation_annotations_count.setter
+    def validation_annotations_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation_annotations_count", value)
+
+    @property
+    @pulumi.getter(name="validationDataItemsCount")
+    def validation_data_items_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of DataItems that were used for validating this Model during training.
+        """
+        return pulumi.get(self, "validation_data_items_count")
+
+    @validation_data_items_count.setter
+    def validation_data_items_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation_data_items_count", value)
 
 
 @pulumi.input_type
@@ -2715,6 +3135,29 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfigArgs:
 
 
 @pulumi.input_type
+class GoogleCloudAiplatformV1ModelGardenSourceArgs:
+    def __init__(__self__, *,
+                 public_model_name: pulumi.Input[str]):
+        """
+        Contains information about the source of the models generated from Model Garden.
+        :param pulumi.Input[str] public_model_name: The model garden source model resource name.
+        """
+        pulumi.set(__self__, "public_model_name", public_model_name)
+
+    @property
+    @pulumi.getter(name="publicModelName")
+    def public_model_name(self) -> pulumi.Input[str]:
+        """
+        The model garden source model resource name.
+        """
+        return pulumi.get(self, "public_model_name")
+
+    @public_model_name.setter
+    def public_model_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "public_model_name", value)
+
+
+@pulumi.input_type
 class GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfigArgs:
     def __init__(__self__, *,
                  user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2745,6 +3188,7 @@ class GoogleCloudAiplatformV1ModelMonitoringAlertConfigArgs:
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        The alert config for model monitoring.
         :param pulumi.Input['GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfigArgs'] email_alert_config: Email alert config.
         :param pulumi.Input[bool] enable_logging: Dump the anomalies to Cloud Logging. The anomalies will be put to json payload encoded from proto google.cloud.aiplatform.logging.ModelMonitoringAnomaliesLogEntry. This can be further sinked to Pub/Sub or any other services supported by Cloud Logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Resource names of the NotificationChannels to send alert. Must be of the format `projects//notificationChannels/`
@@ -3182,7 +3626,9 @@ class GoogleCloudAiplatformV1ModelArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  artifact_uri: Optional[pulumi.Input[str]] = None,
+                 base_model_source: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelBaseModelSourceArgs']] = None,
                  container_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelContainerSpecArgs']] = None,
+                 data_stats: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelDataStatsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1EncryptionSpecArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -3198,8 +3644,10 @@ class GoogleCloudAiplatformV1ModelArgs:
         """
         A trained machine learning Model.
         :param pulumi.Input[str] display_name: The display name of the Model. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[str] artifact_uri: Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
-        :param pulumi.Input['GoogleCloudAiplatformV1ModelContainerSpecArgs'] container_spec: Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+        :param pulumi.Input[str] artifact_uri: Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
+        :param pulumi.Input['GoogleCloudAiplatformV1ModelBaseModelSourceArgs'] base_model_source: Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        :param pulumi.Input['GoogleCloudAiplatformV1ModelContainerSpecArgs'] container_spec: Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
+        :param pulumi.Input['GoogleCloudAiplatformV1ModelDataStatsArgs'] data_stats: Stats of data used for training or evaluating the Model. Only populated when the Model is trained by a TrainingPipeline with data_input_config.
         :param pulumi.Input[str] description: The description of the Model.
         :param pulumi.Input['GoogleCloudAiplatformV1EncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Model. If set, this Model and all sub-resources of this Model will be secured by this key.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
@@ -3216,8 +3664,12 @@ class GoogleCloudAiplatformV1ModelArgs:
         pulumi.set(__self__, "display_name", display_name)
         if artifact_uri is not None:
             pulumi.set(__self__, "artifact_uri", artifact_uri)
+        if base_model_source is not None:
+            pulumi.set(__self__, "base_model_source", base_model_source)
         if container_spec is not None:
             pulumi.set(__self__, "container_spec", container_spec)
+        if data_stats is not None:
+            pulumi.set(__self__, "data_stats", data_stats)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encryption_spec is not None:
@@ -3259,7 +3711,7 @@ class GoogleCloudAiplatformV1ModelArgs:
     @pulumi.getter(name="artifactUri")
     def artifact_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+        Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
         """
         return pulumi.get(self, "artifact_uri")
 
@@ -3268,16 +3720,40 @@ class GoogleCloudAiplatformV1ModelArgs:
         pulumi.set(self, "artifact_uri", value)
 
     @property
+    @pulumi.getter(name="baseModelSource")
+    def base_model_source(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ModelBaseModelSourceArgs']]:
+        """
+        Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        """
+        return pulumi.get(self, "base_model_source")
+
+    @base_model_source.setter
+    def base_model_source(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelBaseModelSourceArgs']]):
+        pulumi.set(self, "base_model_source", value)
+
+    @property
     @pulumi.getter(name="containerSpec")
     def container_spec(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ModelContainerSpecArgs']]:
         """
-        Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+        Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
         """
         return pulumi.get(self, "container_spec")
 
     @container_spec.setter
     def container_spec(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelContainerSpecArgs']]):
         pulumi.set(self, "container_spec", value)
+
+    @property
+    @pulumi.getter(name="dataStats")
+    def data_stats(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ModelDataStatsArgs']]:
+        """
+        Stats of data used for training or evaluating the Model. Only populated when the Model is trained by a TrainingPipeline with data_input_config.
+        """
+        return pulumi.get(self, "data_stats")
+
+    @data_stats.setter
+    def data_stats(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ModelDataStatsArgs']]):
+        pulumi.set(self, "data_stats", value)
 
     @property
     @pulumi.getter
@@ -3881,6 +4357,61 @@ class GoogleCloudAiplatformV1NotebookIdleShutdownConfigArgs:
     @idle_shutdown_disabled.setter
     def idle_shutdown_disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "idle_shutdown_disabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1NotebookReservationAffinityArgs:
+    def __init__(__self__, *,
+                 consume_reservation_type: pulumi.Input['GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType'],
+                 key: Optional[pulumi.Input[str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Notebook Reservation Affinity for consuming Zonal reservation.
+        :param pulumi.Input['GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType'] consume_reservation_type: Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+        :param pulumi.Input[str] key: Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+        """
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> pulumi.Input['GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType']:
+        """
+        Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @consume_reservation_type.setter
+    def consume_reservation_type(self, value: pulumi.Input['GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType']):
+        pulumi.set(self, "consume_reservation_type", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
@@ -4572,6 +5103,269 @@ class GoogleCloudAiplatformV1PythonPackageSpecArgs:
 
 
 @pulumi.input_type
+class GoogleCloudAiplatformV1RayMetricSpecArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Ray metrics.
+        :param pulumi.Input[bool] disabled: Optional. Flag to disable the Ray metrics collection.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag to disable the Ray metrics collection.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1RaySpecArgs:
+    def __init__(__self__, *,
+                 head_node_resource_pool_id: Optional[pulumi.Input[str]] = None,
+                 image_uri: Optional[pulumi.Input[str]] = None,
+                 ray_metric_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1RayMetricSpecArgs']] = None,
+                 resource_pool_images: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
+        :param pulumi.Input[str] head_node_resource_pool_id: Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
+        :param pulumi.Input[str] image_uri: Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
+        :param pulumi.Input['GoogleCloudAiplatformV1RayMetricSpecArgs'] ray_metric_spec: Optional. Ray metrics configurations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_pool_images: Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
+        """
+        if head_node_resource_pool_id is not None:
+            pulumi.set(__self__, "head_node_resource_pool_id", head_node_resource_pool_id)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if ray_metric_spec is not None:
+            pulumi.set(__self__, "ray_metric_spec", ray_metric_spec)
+        if resource_pool_images is not None:
+            pulumi.set(__self__, "resource_pool_images", resource_pool_images)
+
+    @property
+    @pulumi.getter(name="headNodeResourcePoolId")
+    def head_node_resource_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
+        """
+        return pulumi.get(self, "head_node_resource_pool_id")
+
+    @head_node_resource_pool_id.setter
+    def head_node_resource_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "head_node_resource_pool_id", value)
+
+    @property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_uri", value)
+
+    @property
+    @pulumi.getter(name="rayMetricSpec")
+    def ray_metric_spec(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1RayMetricSpecArgs']]:
+        """
+        Optional. Ray metrics configurations.
+        """
+        return pulumi.get(self, "ray_metric_spec")
+
+    @ray_metric_spec.setter
+    def ray_metric_spec(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1RayMetricSpecArgs']]):
+        pulumi.set(self, "ray_metric_spec", value)
+
+    @property
+    @pulumi.getter(name="resourcePoolImages")
+    def resource_pool_images(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
+        """
+        return pulumi.get(self, "resource_pool_images")
+
+    @resource_pool_images.setter
+    def resource_pool_images(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_pool_images", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1ResourcePoolAutoscalingSpecArgs:
+    def __init__(__self__, *,
+                 max_replica_count: Optional[pulumi.Input[str]] = None,
+                 min_replica_count: Optional[pulumi.Input[str]] = None):
+        """
+        The min/max number of replicas allowed if enabling autoscaling
+        :param pulumi.Input[str] max_replica_count: Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error
+        :param pulumi.Input[str] min_replica_count: Optional. min replicas in the node pool, must be ≤ replica_count and < max_replica_count or will throw error
+        """
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_replica_count", value)
+
+    @property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. min replicas in the node pool, must be ≤ replica_count and < max_replica_count or will throw error
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_replica_count", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1ResourcePoolArgs:
+    def __init__(__self__, *,
+                 machine_spec: pulumi.Input['GoogleCloudAiplatformV1MachineSpecArgs'],
+                 autoscaling_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1ResourcePoolAutoscalingSpecArgs']] = None,
+                 disk_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1DiskSpecArgs']] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 replica_count: Optional[pulumi.Input[str]] = None):
+        """
+        Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators, in a PersistentResource.
+        :param pulumi.Input['GoogleCloudAiplatformV1MachineSpecArgs'] machine_spec: Immutable. The specification of a single machine.
+        :param pulumi.Input['GoogleCloudAiplatformV1ResourcePoolAutoscalingSpecArgs'] autoscaling_spec: Optional. Optional spec to configure GKE autoscaling
+        :param pulumi.Input['GoogleCloudAiplatformV1DiskSpecArgs'] disk_spec: Optional. Disk spec for the machine in this node pool.
+        :param pulumi.Input[str] id: Immutable. The unique ID in a PersistentResource for referring to this resource pool. User can specify it if necessary. Otherwise, it's generated automatically.
+        :param pulumi.Input[str] replica_count: Optional. The total number of machines to use for this resource pool.
+        """
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        if autoscaling_spec is not None:
+            pulumi.set(__self__, "autoscaling_spec", autoscaling_spec)
+        if disk_spec is not None:
+            pulumi.set(__self__, "disk_spec", disk_spec)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
+
+    @property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> pulumi.Input['GoogleCloudAiplatformV1MachineSpecArgs']:
+        """
+        Immutable. The specification of a single machine.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @machine_spec.setter
+    def machine_spec(self, value: pulumi.Input['GoogleCloudAiplatformV1MachineSpecArgs']):
+        pulumi.set(self, "machine_spec", value)
+
+    @property
+    @pulumi.getter(name="autoscalingSpec")
+    def autoscaling_spec(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ResourcePoolAutoscalingSpecArgs']]:
+        """
+        Optional. Optional spec to configure GKE autoscaling
+        """
+        return pulumi.get(self, "autoscaling_spec")
+
+    @autoscaling_spec.setter
+    def autoscaling_spec(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ResourcePoolAutoscalingSpecArgs']]):
+        pulumi.set(self, "autoscaling_spec", value)
+
+    @property
+    @pulumi.getter(name="diskSpec")
+    def disk_spec(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1DiskSpecArgs']]:
+        """
+        Optional. Disk spec for the machine in this node pool.
+        """
+        return pulumi.get(self, "disk_spec")
+
+    @disk_spec.setter
+    def disk_spec(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1DiskSpecArgs']]):
+        pulumi.set(self, "disk_spec", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The unique ID in a PersistentResource for referring to this resource pool. User can specify it if necessary. Otherwise, it's generated automatically.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The total number of machines to use for this resource pool.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @replica_count.setter
+    def replica_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replica_count", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1ResourceRuntimeSpecArgs:
+    def __init__(__self__, *,
+                 ray_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1RaySpecArgs']] = None,
+                 service_account_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1ServiceAccountSpecArgs']] = None):
+        """
+        Configuration for the runtime on a PersistentResource instance, including but not limited to: * Service accounts used to run the workloads. * Whether to make it a dedicated Ray Cluster.
+        :param pulumi.Input['GoogleCloudAiplatformV1RaySpecArgs'] ray_spec: Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
+        :param pulumi.Input['GoogleCloudAiplatformV1ServiceAccountSpecArgs'] service_account_spec: Optional. Configure the use of workload identity on the PersistentResource
+        """
+        if ray_spec is not None:
+            pulumi.set(__self__, "ray_spec", ray_spec)
+        if service_account_spec is not None:
+            pulumi.set(__self__, "service_account_spec", service_account_spec)
+
+    @property
+    @pulumi.getter(name="raySpec")
+    def ray_spec(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1RaySpecArgs']]:
+        """
+        Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
+        """
+        return pulumi.get(self, "ray_spec")
+
+    @ray_spec.setter
+    def ray_spec(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1RaySpecArgs']]):
+        pulumi.set(self, "ray_spec", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountSpec")
+    def service_account_spec(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ServiceAccountSpecArgs']]:
+        """
+        Optional. Configure the use of workload identity on the PersistentResource
+        """
+        return pulumi.get(self, "service_account_spec")
+
+    @service_account_spec.setter
+    def service_account_spec(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ServiceAccountSpecArgs']]):
+        pulumi.set(self, "service_account_spec", value)
+
+
+@pulumi.input_type
 class GoogleCloudAiplatformV1SampleConfigArgs:
     def __init__(__self__, *,
                  following_batch_sample_percentage: Optional[pulumi.Input[int]] = None,
@@ -4822,6 +5616,69 @@ class GoogleCloudAiplatformV1SchedulingArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timeout", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1ServiceAccountSpecArgs:
+    def __init__(__self__, *,
+                 enable_custom_service_account: pulumi.Input[bool],
+                 service_account: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for the use of custom service account to run the workloads.
+        :param pulumi.Input[bool] enable_custom_service_account: If true, custom user-managed service account is enforced to run any workloads (for example, Vertex Jobs) on the resource. Otherwise, uses the [Vertex AI Custom Code Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+        :param pulumi.Input[str] service_account: Optional. Default service account that this PersistentResource's workloads run as. The workloads include: * Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to PersistentResource, if no other service account specified in the job specs. Only works when custom service account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account. Required if any containers are specified in `ResourceRuntimeSpec`.
+        """
+        pulumi.set(__self__, "enable_custom_service_account", enable_custom_service_account)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="enableCustomServiceAccount")
+    def enable_custom_service_account(self) -> pulumi.Input[bool]:
+        """
+        If true, custom user-managed service account is enforced to run any workloads (for example, Vertex Jobs) on the resource. Otherwise, uses the [Vertex AI Custom Code Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+        """
+        return pulumi.get(self, "enable_custom_service_account")
+
+    @enable_custom_service_account.setter
+    def enable_custom_service_account(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_custom_service_account", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Default service account that this PersistentResource's workloads run as. The workloads include: * Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to PersistentResource, if no other service account specified in the job specs. Only works when custom service account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account. Required if any containers are specified in `ResourceRuntimeSpec`.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1ShieldedVmConfigArgs:
+    def __init__(__self__, *,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None):
+        """
+        A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        :param pulumi.Input[bool] enable_secure_boot: Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+        """
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
 
 
 @pulumi.input_type
@@ -6295,8 +7152,8 @@ class GoogleIamV1BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['GoogleTypeExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -6321,7 +7178,7 @@ class GoogleIamV1BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -6333,7 +7190,7 @@ class GoogleIamV1BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 

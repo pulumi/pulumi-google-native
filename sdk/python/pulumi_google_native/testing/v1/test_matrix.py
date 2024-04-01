@@ -236,6 +236,7 @@ class TestMatrix(pulumi.CustomResource):
             if test_specification is None and not opts.urn:
                 raise TypeError("Missing required property 'test_specification'")
             __props__.__dict__["test_specification"] = test_specification
+            __props__.__dict__["extended_invalid_matrix_details"] = None
             __props__.__dict__["invalid_matrix_details"] = None
             __props__.__dict__["outcome_summary"] = None
             __props__.__dict__["state"] = None
@@ -268,6 +269,7 @@ class TestMatrix(pulumi.CustomResource):
 
         __props__.__dict__["client_info"] = None
         __props__.__dict__["environment_matrix"] = None
+        __props__.__dict__["extended_invalid_matrix_details"] = None
         __props__.__dict__["fail_fast"] = None
         __props__.__dict__["flaky_test_attempts"] = None
         __props__.__dict__["invalid_matrix_details"] = None
@@ -297,6 +299,14 @@ class TestMatrix(pulumi.CustomResource):
         The devices the tests are being executed on.
         """
         return pulumi.get(self, "environment_matrix")
+
+    @property
+    @pulumi.getter(name="extendedInvalidMatrixDetails")
+    def extended_invalid_matrix_details(self) -> pulumi.Output[Sequence['outputs.MatrixErrorDetailResponse']]:
+        """
+        Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list.
+        """
+        return pulumi.get(self, "extended_invalid_matrix_details")
 
     @property
     @pulumi.getter(name="failFast")

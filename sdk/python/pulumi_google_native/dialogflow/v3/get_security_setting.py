@@ -138,7 +138,7 @@ class GetSecuritySettingResult:
     @pulumi.getter(name="retentionWindowDays")
     def retention_window_days(self) -> int:
         """
-        Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
+        Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL. When data retention configuration is changed, it only applies to the data created after the change; the TTL of existing data created before the change stays intact.
         """
         return pulumi.get(self, "retention_window_days")
 

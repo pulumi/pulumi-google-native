@@ -277,10 +277,12 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["service_config"] = service_config
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_messages"] = None
             __props__.__dict__["update_time"] = None
+            __props__.__dict__["upgrade_info"] = None
             __props__.__dict__["url"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -307,6 +309,7 @@ class Function(pulumi.CustomResource):
         __props__ = FunctionArgs.__new__(FunctionArgs)
 
         __props__.__dict__["build_config"] = None
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["environment"] = None
         __props__.__dict__["event_trigger"] = None
@@ -321,6 +324,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["state_messages"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["upgrade_info"] = None
         __props__.__dict__["url"] = None
         return Function(resource_name, opts=opts, __props__=__props__)
 
@@ -331,6 +335,14 @@ class Function(pulumi.CustomResource):
         Describes the Build step of the function that builds a container from the given source.
         """
         return pulumi.get(self, "build_config")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -437,6 +449,14 @@ class Function(pulumi.CustomResource):
         The last update timestamp of a Cloud Function.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="upgradeInfo")
+    def upgrade_info(self) -> pulumi.Output['outputs.UpgradeInfoResponse']:
+        """
+        UpgradeInfo for this Cloud Function
+        """
+        return pulumi.get(self, "upgrade_info")
 
     @property
     @pulumi.getter

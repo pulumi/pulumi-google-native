@@ -60,6 +60,7 @@ from .get_organization_partner_tenant_iam_policy import *
 from .get_organization_partner_tenant_proxy_config_iam_policy import *
 from .get_partner_tenant import *
 from .get_proxy_config import *
+from .get_security_gateway import *
 from .get_subscription import *
 from .net_connection_iam_binding import *
 from .net_connection_iam_member import *
@@ -75,6 +76,7 @@ from .organization_partner_tenant_proxy_config_iam_member import *
 from .organization_partner_tenant_proxy_config_iam_policy import *
 from .partner_tenant import *
 from .proxy_config import *
+from .security_gateway import *
 from .subscription import *
 from ._inputs import *
 from . import outputs

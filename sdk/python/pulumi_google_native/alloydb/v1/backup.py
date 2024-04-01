@@ -310,6 +310,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["expiry_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["reconciling"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["size_bytes"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
@@ -358,6 +359,7 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["size_bytes"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
@@ -518,6 +520,14 @@ class Backup(pulumi.CustomResource):
         Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="sizeBytes")

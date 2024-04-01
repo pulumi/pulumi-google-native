@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAgentResult:
-    def __init__(__self__, advanced_settings=None, answer_feedback_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, gen_app_builder_settings=None, git_integration_settings=None, locked=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, text_to_speech_settings=None, time_zone=None):
+    def __init__(__self__, advanced_settings=None, answer_feedback_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, gen_app_builder_settings=None, git_integration_settings=None, locked=None, name=None, personalization_settings=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, text_to_speech_settings=None, time_zone=None):
         if advanced_settings and not isinstance(advanced_settings, dict):
             raise TypeError("Expected argument 'advanced_settings' to be a dict")
         pulumi.set(__self__, "advanced_settings", advanced_settings)
@@ -56,6 +56,9 @@ class GetAgentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if personalization_settings and not isinstance(personalization_settings, dict):
+            raise TypeError("Expected argument 'personalization_settings' to be a dict")
+        pulumi.set(__self__, "personalization_settings", personalization_settings)
         if security_settings and not isinstance(security_settings, str):
             raise TypeError("Expected argument 'security_settings' to be a str")
         pulumi.set(__self__, "security_settings", security_settings)
@@ -172,6 +175,14 @@ class GetAgentResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="personalizationSettings")
+    def personalization_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse':
+        """
+        Optional. Settings for end user personalization.
+        """
+        return pulumi.get(self, "personalization_settings")
+
+    @property
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> str:
         """
@@ -238,6 +249,7 @@ class AwaitableGetAgentResult(GetAgentResult):
             git_integration_settings=self.git_integration_settings,
             locked=self.locked,
             name=self.name,
+            personalization_settings=self.personalization_settings,
             security_settings=self.security_settings,
             speech_to_text_settings=self.speech_to_text_settings,
             start_flow=self.start_flow,
@@ -273,6 +285,7 @@ def get_agent(agent_id: Optional[str] = None,
         git_integration_settings=pulumi.get(__ret__, 'git_integration_settings'),
         locked=pulumi.get(__ret__, 'locked'),
         name=pulumi.get(__ret__, 'name'),
+        personalization_settings=pulumi.get(__ret__, 'personalization_settings'),
         security_settings=pulumi.get(__ret__, 'security_settings'),
         speech_to_text_settings=pulumi.get(__ret__, 'speech_to_text_settings'),
         start_flow=pulumi.get(__ret__, 'start_flow'),

@@ -696,6 +696,7 @@ class EnvironmentArgs:
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  service_kms_key_name: Optional[pulumi.Input[str]] = None,
                  service_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 streaming_mode: Optional[pulumi.Input['EnvironmentStreamingMode']] = None,
                  temp_storage_prefix: Optional[pulumi.Input[str]] = None,
                  user_agent: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -714,6 +715,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] service_account_email: Identity to run virtual machines as. Defaults to the default account.
         :param pulumi.Input[str] service_kms_key_name: If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
+        :param pulumi.Input['EnvironmentStreamingMode'] streaming_mode: Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
         :param pulumi.Input[str] temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_agent: A description of the process that generated the request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version: A structure describing which components and their versions of the service are required in order to run the job.
@@ -741,6 +743,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "service_kms_key_name", service_kms_key_name)
         if service_options is not None:
             pulumi.set(__self__, "service_options", service_options)
+        if streaming_mode is not None:
+            pulumi.set(__self__, "streaming_mode", streaming_mode)
         if temp_storage_prefix is not None:
             pulumi.set(__self__, "temp_storage_prefix", temp_storage_prefix)
         if user_agent is not None:
@@ -873,6 +877,18 @@ class EnvironmentArgs:
     @service_options.setter
     def service_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_options", value)
+
+    @property
+    @pulumi.getter(name="streamingMode")
+    def streaming_mode(self) -> Optional[pulumi.Input['EnvironmentStreamingMode']]:
+        """
+        Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+        """
+        return pulumi.get(self, "streaming_mode")
+
+    @streaming_mode.setter
+    def streaming_mode(self, value: Optional[pulumi.Input['EnvironmentStreamingMode']]):
+        pulumi.set(self, "streaming_mode", value)
 
     @property
     @pulumi.getter(name="tempStoragePrefix")
@@ -1492,11 +1508,12 @@ class RuntimeEnvironmentArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  num_workers: Optional[pulumi.Input[int]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
+                 streaming_mode: Optional[pulumi.Input['RuntimeEnvironmentStreamingMode']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  worker_zone: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
-        The environment values to set at runtime.
+        The environment values to set at runtime. LINT.IfChange
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
         :param pulumi.Input[str] worker_region: The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: Optional. Additional experiment flags for the job, specified with the `--experiments` option.
@@ -1511,6 +1528,7 @@ class RuntimeEnvironmentArgs:
         :param pulumi.Input[str] network: Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
         :param pulumi.Input[int] num_workers: Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
         :param pulumi.Input[str] service_account_email: Optional. The email address of the service account to run the job as.
+        :param pulumi.Input['RuntimeEnvironmentStreamingMode'] streaming_mode: Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
         :param pulumi.Input[str] subnetwork: Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
         :param pulumi.Input[str] worker_zone: Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
         :param pulumi.Input[str] zone: Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
@@ -1541,6 +1559,8 @@ class RuntimeEnvironmentArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
+        if streaming_mode is not None:
+            pulumi.set(__self__, "streaming_mode", streaming_mode)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if worker_zone is not None:
@@ -1717,6 +1737,18 @@ class RuntimeEnvironmentArgs:
         pulumi.set(self, "service_account_email", value)
 
     @property
+    @pulumi.getter(name="streamingMode")
+    def streaming_mode(self) -> Optional[pulumi.Input['RuntimeEnvironmentStreamingMode']]:
+        """
+        Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+        """
+        return pulumi.get(self, "streaming_mode")
+
+    @streaming_mode.setter
+    def streaming_mode(self, value: Optional[pulumi.Input['RuntimeEnvironmentStreamingMode']]):
+        pulumi.set(self, "streaming_mode", value)
+
+    @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1763,7 +1795,7 @@ class RuntimeUpdatableParamsArgs:
         Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
         :param pulumi.Input[int] max_num_workers: The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
         :param pulumi.Input[int] min_num_workers: The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
-        :param pulumi.Input[float] worker_utilization_hint: Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        :param pulumi.Input[float] worker_utilization_hint: Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
         """
         if max_num_workers is not None:
             pulumi.set(__self__, "max_num_workers", max_num_workers)
@@ -1800,7 +1832,7 @@ class RuntimeUpdatableParamsArgs:
     @pulumi.getter(name="workerUtilizationHint")
     def worker_utilization_hint(self) -> Optional[pulumi.Input[float]]:
         """
-        Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
         """
         return pulumi.get(self, "worker_utilization_hint")
 

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFeatureGroupFeatureResult:
-    def __init__(__self__, create_time=None, description=None, disable_monitoring=None, etag=None, labels=None, monitoring_config=None, monitoring_stats=None, monitoring_stats_anomalies=None, name=None, update_time=None, value_type=None, version_column_name=None):
+    def __init__(__self__, create_time=None, description=None, disable_monitoring=None, etag=None, labels=None, monitoring_config=None, monitoring_stats=None, monitoring_stats_anomalies=None, name=None, point_of_contact=None, update_time=None, value_type=None, version_column_name=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -47,6 +47,9 @@ class GetFeatureGroupFeatureResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if point_of_contact and not isinstance(point_of_contact, str):
+            raise TypeError("Expected argument 'point_of_contact' to be a str")
+        pulumi.set(__self__, "point_of_contact", point_of_contact)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -133,6 +136,14 @@ class GetFeatureGroupFeatureResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pointOfContact")
+    def point_of_contact(self) -> str:
+        """
+        Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+        """
+        return pulumi.get(self, "point_of_contact")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -152,7 +163,7 @@ class GetFeatureGroupFeatureResult:
     @pulumi.getter(name="versionColumnName")
     def version_column_name(self) -> str:
         """
-        Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         """
         return pulumi.get(self, "version_column_name")
 
@@ -172,6 +183,7 @@ class AwaitableGetFeatureGroupFeatureResult(GetFeatureGroupFeatureResult):
             monitoring_stats=self.monitoring_stats,
             monitoring_stats_anomalies=self.monitoring_stats_anomalies,
             name=self.name,
+            point_of_contact=self.point_of_contact,
             update_time=self.update_time,
             value_type=self.value_type,
             version_column_name=self.version_column_name)
@@ -203,6 +215,7 @@ def get_feature_group_feature(feature_group_id: Optional[str] = None,
         monitoring_stats=pulumi.get(__ret__, 'monitoring_stats'),
         monitoring_stats_anomalies=pulumi.get(__ret__, 'monitoring_stats_anomalies'),
         name=pulumi.get(__ret__, 'name'),
+        point_of_contact=pulumi.get(__ret__, 'point_of_contact'),
         update_time=pulumi.get(__ret__, 'update_time'),
         value_type=pulumi.get(__ret__, 'value_type'),
         version_column_name=pulumi.get(__ret__, 'version_column_name'))

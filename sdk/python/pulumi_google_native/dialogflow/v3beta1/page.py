@@ -21,6 +21,7 @@ class PageArgs:
                  display_name: pulumi.Input[str],
                  flow_id: pulumi.Input[str],
                  advanced_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs']] = None,
@@ -35,6 +36,7 @@ class PageArgs:
         The set of arguments for constructing a Page resource.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the flow.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[str] description: The description of the page. The maximum length is 500 characters.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
@@ -49,6 +51,8 @@ class PageArgs:
         pulumi.set(__self__, "flow_id", flow_id)
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if entry_fulfillment is not None:
             pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         if event_handlers is not None:
@@ -111,6 +115,18 @@ class PageArgs:
     @advanced_settings.setter
     def advanced_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]):
         pulumi.set(self, "advanced_settings", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the page. The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="entryFulfillment")
@@ -234,6 +250,7 @@ class Page(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]]] = None,
@@ -253,6 +270,7 @@ class Page(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[str] description: The description of the page. The maximum length is 500 characters.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the flow.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -289,6 +307,7 @@ class Page(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]]] = None,
@@ -314,6 +333,7 @@ class Page(pulumi.CustomResource):
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
+            __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -356,6 +376,7 @@ class Page(pulumi.CustomResource):
 
         __props__.__dict__["advanced_settings"] = None
         __props__.__dict__["agent_id"] = None
+        __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["entry_fulfillment"] = None
         __props__.__dict__["event_handlers"] = None
@@ -382,6 +403,14 @@ class Page(pulumi.CustomResource):
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "agent_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of the page. The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")

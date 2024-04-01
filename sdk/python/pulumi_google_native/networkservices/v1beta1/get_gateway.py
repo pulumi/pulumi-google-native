@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetGatewayResult:
-    def __init__(__self__, addresses=None, certificate_urls=None, create_time=None, description=None, gateway_security_policy=None, labels=None, name=None, network=None, ports=None, scope=None, self_link=None, server_tls_policy=None, subnetwork=None, type=None, update_time=None):
+    def __init__(__self__, addresses=None, certificate_urls=None, create_time=None, description=None, envoy_headers=None, gateway_security_policy=None, ip_version=None, labels=None, name=None, network=None, ports=None, scope=None, self_link=None, server_tls_policy=None, subnetwork=None, type=None, update_time=None):
         if addresses and not isinstance(addresses, list):
             raise TypeError("Expected argument 'addresses' to be a list")
         pulumi.set(__self__, "addresses", addresses)
@@ -31,9 +31,15 @@ class GetGatewayResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if envoy_headers and not isinstance(envoy_headers, str):
+            raise TypeError("Expected argument 'envoy_headers' to be a str")
+        pulumi.set(__self__, "envoy_headers", envoy_headers)
         if gateway_security_policy and not isinstance(gateway_security_policy, str):
             raise TypeError("Expected argument 'gateway_security_policy' to be a str")
         pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
+        if ip_version and not isinstance(ip_version, str):
+            raise TypeError("Expected argument 'ip_version' to be a str")
+        pulumi.set(__self__, "ip_version", ip_version)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -98,12 +104,28 @@ class GetGatewayResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> str:
+        """
+        Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        """
+        return pulumi.get(self, "envoy_headers")
+
+    @property
     @pulumi.getter(name="gatewaySecurityPolicy")
     def gateway_security_policy(self) -> str:
         """
         Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "gateway_security_policy")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> str:
+        """
+        Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        """
+        return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
@@ -196,7 +218,9 @@ class AwaitableGetGatewayResult(GetGatewayResult):
             certificate_urls=self.certificate_urls,
             create_time=self.create_time,
             description=self.description,
+            envoy_headers=self.envoy_headers,
             gateway_security_policy=self.gateway_security_policy,
+            ip_version=self.ip_version,
             labels=self.labels,
             name=self.name,
             network=self.network,
@@ -228,7 +252,9 @@ def get_gateway(gateway_id: Optional[str] = None,
         certificate_urls=pulumi.get(__ret__, 'certificate_urls'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        envoy_headers=pulumi.get(__ret__, 'envoy_headers'),
         gateway_security_policy=pulumi.get(__ret__, 'gateway_security_policy'),
+        ip_version=pulumi.get(__ret__, 'ip_version'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),

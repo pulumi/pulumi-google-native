@@ -7,14 +7,17 @@ from enum import Enum
 __all__ = [
     'ConversationState',
     'DataStoreContentConfig',
+    'DataStoreConversationState',
     'DataStoreIndustryVertical',
     'DataStoreSolutionTypesItem',
+    'EngineConversationState',
     'EngineIndustryVertical',
     'EngineSolutionType',
     'GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState',
     'GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem',
     'GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier',
     'GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem',
+    'TargetSiteType',
 ]
 
 
@@ -58,6 +61,24 @@ class DataStoreContentConfig(str, Enum):
     """
 
 
+class DataStoreConversationState(str, Enum):
+    """
+    The state of the Conversation.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Unknown.
+    """
+    IN_PROGRESS = "IN_PROGRESS"
+    """
+    Conversation is currently open.
+    """
+    COMPLETED = "COMPLETED"
+    """
+    Conversation has been completed.
+    """
+
+
 class DataStoreIndustryVertical(str, Enum):
     """
     Immutable. The industry vertical that the data store registers.
@@ -73,6 +94,10 @@ class DataStoreIndustryVertical(str, Enum):
     MEDIA = "MEDIA"
     """
     The media industry vertical.
+    """
+    HEALTHCARE_FHIR = "HEALTHCARE_FHIR"
+    """
+    The healthcare FHIR vertical.
     """
 
 
@@ -93,6 +118,28 @@ class DataStoreSolutionTypesItem(str, Enum):
     """
     Used for use cases related to the Generative AI agent.
     """
+    SOLUTION_TYPE_GENERATIVE_CHAT = "SOLUTION_TYPE_GENERATIVE_CHAT"
+    """
+    Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+    """
+
+
+class EngineConversationState(str, Enum):
+    """
+    The state of the Conversation.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Unknown.
+    """
+    IN_PROGRESS = "IN_PROGRESS"
+    """
+    Conversation is currently open.
+    """
+    COMPLETED = "COMPLETED"
+    """
+    Conversation has been completed.
+    """
 
 
 class EngineIndustryVertical(str, Enum):
@@ -110,6 +157,10 @@ class EngineIndustryVertical(str, Enum):
     MEDIA = "MEDIA"
     """
     The media industry vertical.
+    """
+    HEALTHCARE_FHIR = "HEALTHCARE_FHIR"
+    """
+    The healthcare FHIR vertical.
     """
 
 
@@ -132,6 +183,10 @@ class EngineSolutionType(str, Enum):
     SOLUTION_TYPE_CHAT = "SOLUTION_TYPE_CHAT"
     """
     Used for use cases related to the Generative AI agent.
+    """
+    SOLUTION_TYPE_GENERATIVE_CHAT = "SOLUTION_TYPE_GENERATIVE_CHAT"
+    """
+    Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
     """
 
 
@@ -206,4 +261,22 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReason
     LLM_ADDON_NOT_ENABLED = "LLM_ADDON_NOT_ENABLED"
     """
     The LLM addon not enabled case. Google skips the summary if the LLM addon is not enabled.
+    """
+
+
+class TargetSiteType(str, Enum):
+    """
+    The type of the target site, e.g., whether the site is to be included or excluded.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    This value is unused. In this case, server behavior defaults to Type.INCLUDE.
+    """
+    INCLUDE = "INCLUDE"
+    """
+    Include the target site.
+    """
+    EXCLUDE = "EXCLUDE"
+    """
+    Exclude the target site.
     """

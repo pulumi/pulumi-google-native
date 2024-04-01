@@ -183,6 +183,10 @@ class ServiceIngress(str, Enum):
     """
     Both internal and Google Cloud Load Balancer traffic is allowed.
     """
+    INGRESS_TRAFFIC_NONE = "INGRESS_TRAFFIC_NONE"
+    """
+    No ingress traffic is allowed.
+    """
 
 
 class ServiceLaunchStage(str, Enum):

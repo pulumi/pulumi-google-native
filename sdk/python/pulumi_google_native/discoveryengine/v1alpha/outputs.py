@@ -14,7 +14,16 @@ from ._enums import *
 __all__ = [
     'GoogleCloudDiscoveryengineV1alphaConversationContextResponse',
     'GoogleCloudDiscoveryengineV1alphaConversationMessageResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestrictionResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse',
     'GoogleCloudDiscoveryengineV1alphaDocumentContentResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse',
     'GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponse',
     'GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse',
     'GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse',
@@ -25,10 +34,23 @@ __all__ = [
     'GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse',
     'GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigResponse',
     'GoogleCloudDiscoveryengineV1alphaFieldConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaIdpConfigResponse',
+    'GoogleCloudDiscoveryengineV1alphaPrincipalResponse',
     'GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse',
     'GoogleCloudDiscoveryengineV1alphaReplyResponse',
+    'GoogleCloudDiscoveryengineV1alphaSchemaResponse',
+    'GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadataResponse',
+    'GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse',
+    'GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse',
+    'GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse',
+    'GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse',
     'GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse',
     'GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse',
+    'GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse',
+    'GoogleCloudDiscoveryengineV1alphaSiteVerificationInfoResponse',
+    'GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse',
+    'GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonResponse',
     'GoogleCloudDiscoveryengineV1alphaTextInputResponse',
 ]
 
@@ -148,6 +170,50 @@ class GoogleCloudDiscoveryengineV1alphaConversationMessageResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestrictionResponse(dict):
+    """
+    AclRestriction to model complex inheritance restrictions. Example: Modeling a "Both Permit" inheritance, where to access a child document, user needs to have access to parent document. Document Hierarchy - Space_S --> Page_P. Readers: Space_S: group_1, user_1 Page_P: group_2, group_3, user_2 Space_S ACL Restriction - { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" } ] } ] } } Page_P ACL Restriction. { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_2" }, { "group_id": "group_3" }, { "user_id": "user_2" } ], }, { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" } ], } ] } }
+    """
+    def __init__(__self__, *,
+                 principals: Sequence['outputs.GoogleCloudDiscoveryengineV1alphaPrincipalResponse']):
+        """
+        AclRestriction to model complex inheritance restrictions. Example: Modeling a "Both Permit" inheritance, where to access a child document, user needs to have access to parent document. Document Hierarchy - Space_S --> Page_P. Readers: Space_S: group_1, user_1 Page_P: group_2, group_3, user_2 Space_S ACL Restriction - { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" } ] } ] } } Page_P ACL Restriction. { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_2" }, { "group_id": "group_3" }, { "user_id": "user_2" } ], }, { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" } ], } ] } }
+        :param Sequence['GoogleCloudDiscoveryengineV1alphaPrincipalResponse'] principals: List of principals.
+        """
+        pulumi.set(__self__, "principals", principals)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> Sequence['outputs.GoogleCloudDiscoveryengineV1alphaPrincipalResponse']:
+        """
+        List of principals.
+        """
+        return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse(dict):
+    """
+    ACL Information of the Document.
+    """
+    def __init__(__self__, *,
+                 readers: Sequence['outputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestrictionResponse']):
+        """
+        ACL Information of the Document.
+        :param Sequence['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestrictionResponse'] readers: Readers of the document.
+        """
+        pulumi.set(__self__, "readers", readers)
+
+    @property
+    @pulumi.getter
+    def readers(self) -> Sequence['outputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestrictionResponse']:
+        """
+        Readers of the document.
+        """
+        return pulumi.get(self, "readers")
+
+
+@pulumi.output_type
 class GoogleCloudDiscoveryengineV1alphaDocumentContentResponse(dict):
     """
     Unstructured data linked to this document.
@@ -179,7 +245,7 @@ class GoogleCloudDiscoveryengineV1alphaDocumentContentResponse(dict):
         Unstructured data linked to this document.
         :param str mime_type: The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
         :param str raw_bytes: The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json.
-        :param str uri: The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+        :param str uri: The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
         """
         pulumi.set(__self__, "mime_type", mime_type)
         pulumi.set(__self__, "raw_bytes", raw_bytes)
@@ -205,9 +271,317 @@ class GoogleCloudDiscoveryengineV1alphaDocumentContentResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+        The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse(dict):
+    """
+    Configuration for the layout based chunking.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chunkSize":
+            suggest = "chunk_size"
+        elif key == "includeAncestorHeadings":
+            suggest = "include_ancestor_headings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chunk_size: int,
+                 include_ancestor_headings: bool):
+        """
+        Configuration for the layout based chunking.
+        :param int chunk_size: The token size limit for each chunk. Supported values: 100-500 (inclusive). Default value: 500.
+        :param bool include_ancestor_headings: Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss. Default value: False.
+        """
+        pulumi.set(__self__, "chunk_size", chunk_size)
+        pulumi.set(__self__, "include_ancestor_headings", include_ancestor_headings)
+
+    @property
+    @pulumi.getter(name="chunkSize")
+    def chunk_size(self) -> int:
+        """
+        The token size limit for each chunk. Supported values: 100-500 (inclusive). Default value: 500.
+        """
+        return pulumi.get(self, "chunk_size")
+
+    @property
+    @pulumi.getter(name="includeAncestorHeadings")
+    def include_ancestor_headings(self) -> bool:
+        """
+        Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss. Default value: False.
+        """
+        return pulumi.get(self, "include_ancestor_headings")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse(dict):
+    """
+    Configuration for chunking config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layoutBasedChunkingConfig":
+            suggest = "layout_based_chunking_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layout_based_chunking_config: 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse'):
+        """
+        Configuration for chunking config.
+        :param 'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse' layout_based_chunking_config: Configuration for the layout based chunking.
+        """
+        pulumi.set(__self__, "layout_based_chunking_config", layout_based_chunking_config)
+
+    @property
+    @pulumi.getter(name="layoutBasedChunkingConfig")
+    def layout_based_chunking_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigResponse':
+        """
+        Configuration for the layout based chunking.
+        """
+        return pulumi.get(self, "layout_based_chunking_config")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse(dict):
+    """
+    The digital parsing configurations for documents.
+    """
+    def __init__(__self__):
+        """
+        The digital parsing configurations for documents.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfigResponse(dict):
+    """
+    The layout parsing configurations for documents.
+    """
+    def __init__(__self__):
+        """
+        The layout parsing configurations for documents.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse(dict):
+    """
+    The OCR parsing configurations for documents.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enhancedDocumentElements":
+            suggest = "enhanced_document_elements"
+        elif key == "useNativeText":
+            suggest = "use_native_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enhanced_document_elements: Sequence[str],
+                 use_native_text: bool):
+        """
+        The OCR parsing configurations for documents.
+        :param Sequence[str] enhanced_document_elements: Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+        :param bool use_native_text: If true, will use native text instead of OCR text on pages containing native text.
+        """
+        pulumi.set(__self__, "enhanced_document_elements", enhanced_document_elements)
+        pulumi.set(__self__, "use_native_text", use_native_text)
+
+    @property
+    @pulumi.getter(name="enhancedDocumentElements")
+    def enhanced_document_elements(self) -> Sequence[str]:
+        """
+        Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+        """
+        return pulumi.get(self, "enhanced_document_elements")
+
+    @property
+    @pulumi.getter(name="useNativeText")
+    def use_native_text(self) -> bool:
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+        return pulumi.get(self, "use_native_text")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse(dict):
+    """
+    Related configurations applied to a specific type of document parser.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "digitalParsingConfig":
+            suggest = "digital_parsing_config"
+        elif key == "layoutParsingConfig":
+            suggest = "layout_parsing_config"
+        elif key == "ocrParsingConfig":
+            suggest = "ocr_parsing_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 digital_parsing_config: 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse',
+                 layout_parsing_config: 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfigResponse',
+                 ocr_parsing_config: 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse'):
+        """
+        Related configurations applied to a specific type of document parser.
+        :param 'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse' digital_parsing_config: Configurations applied to digital parser.
+        :param 'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfigResponse' layout_parsing_config: Configurations applied to layout parser.
+        :param 'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse' ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        pulumi.set(__self__, "digital_parsing_config", digital_parsing_config)
+        pulumi.set(__self__, "layout_parsing_config", layout_parsing_config)
+        pulumi.set(__self__, "ocr_parsing_config", ocr_parsing_config)
+
+    @property
+    @pulumi.getter(name="digitalParsingConfig")
+    def digital_parsing_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse':
+        """
+        Configurations applied to digital parser.
+        """
+        return pulumi.get(self, "digital_parsing_config")
+
+    @property
+    @pulumi.getter(name="layoutParsingConfig")
+    def layout_parsing_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfigResponse':
+        """
+        Configurations applied to layout parser.
+        """
+        return pulumi.get(self, "layout_parsing_config")
+
+    @property
+    @pulumi.getter(name="ocrParsingConfig")
+    def ocr_parsing_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse':
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        return pulumi.get(self, "ocr_parsing_config")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse(dict):
+    """
+    A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chunkingConfig":
+            suggest = "chunking_config"
+        elif key == "defaultParsingConfig":
+            suggest = "default_parsing_config"
+        elif key == "parsingConfigOverrides":
+            suggest = "parsing_config_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chunking_config: 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse',
+                 default_parsing_config: 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse',
+                 name: str,
+                 parsing_config_overrides: Mapping[str, str]):
+        """
+        A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+        :param 'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse' chunking_config: Whether chunking mode is enabled.
+        :param 'GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse' default_parsing_config: Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+        :param str name: The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        :param Mapping[str, str] parsing_config_overrides: Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+        """
+        pulumi.set(__self__, "chunking_config", chunking_config)
+        pulumi.set(__self__, "default_parsing_config", default_parsing_config)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parsing_config_overrides", parsing_config_overrides)
+
+    @property
+    @pulumi.getter(name="chunkingConfig")
+    def chunking_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigResponse':
+        """
+        Whether chunking mode is enabled.
+        """
+        return pulumi.get(self, "chunking_config")
+
+    @property
+    @pulumi.getter(name="defaultParsingConfig")
+    def default_parsing_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigResponse':
+        """
+        Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+        """
+        return pulumi.get(self, "default_parsing_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parsingConfigOverrides")
+    def parsing_config_overrides(self) -> Mapping[str, str]:
+        """
+        Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+        """
+        return pulumi.get(self, "parsing_config_overrides")
 
 
 @pulumi.output_type
@@ -237,15 +611,18 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig
     def __init__(__self__, *,
                  business: str,
                  default_language_code: str,
+                 location: str,
                  time_zone: str):
         """
         Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
         :param str business: Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
         :param str default_language_code: The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+        :param str location: Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
         :param str time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         """
         pulumi.set(__self__, "business", business)
         pulumi.set(__self__, "default_language_code", default_language_code)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "time_zone", time_zone)
 
     @property
@@ -263,6 +640,14 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig
         The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
         """
         return pulumi.get(self, "default_language_code")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="timeZone")
@@ -303,7 +688,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse(dict):
         """
         Configurations for a Chat Engine.
         :param 'GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfigResponse' agent_creation_config: The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
-        :param str dialogflow_agent_to_link: The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use chat_engine_metadata.dialogflow_agent for actual agent association after Engine is created.
+        :param str dialogflow_agent_to_link: The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
         """
         pulumi.set(__self__, "agent_creation_config", agent_creation_config)
         pulumi.set(__self__, "dialogflow_agent_to_link", dialogflow_agent_to_link)
@@ -320,7 +705,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse(dict):
     @pulumi.getter(name="dialogflowAgentToLink")
     def dialogflow_agent_to_link(self) -> str:
         """
-        The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use chat_engine_metadata.dialogflow_agent for actual agent association after Engine is created.
+        The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
         """
         return pulumi.get(self, "dialogflow_agent_to_link")
 
@@ -390,7 +775,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse(dict):
                  company_name: str):
         """
         Common configurations for an Engine.
-        :param str company_name: The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+        :param str company_name: Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
         """
         pulumi.set(__self__, "company_name", company_name)
 
@@ -398,7 +783,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse(dict):
     @pulumi.getter(name="companyName")
     def company_name(self) -> str:
         """
-        The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+        Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
         """
         return pulumi.get(self, "company_name")
 
@@ -488,10 +873,10 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResp
                  type: str):
         """
         Additional config specs for a Media Recommendation engine.
-        :param str optimization_objective: The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
+        :param str optimization_objective: The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
         :param 'GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse' optimization_objective_config: Name and value of the custom threshold for cvr optimization_objective. For target_field `watch-time`, target_field_value must be an integer value indicating the media progress time in seconds between (0, 86400] (excludes 0, includes 86400) (e.g., 90). For target_field `watch-percentage`, the target_field_value must be a valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
         :param str training_state: The training state that the engine is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train engine in order to control cost. If not specified: the default value for `CreateEngine` method is `TRAINING`. The default value for `UpdateEngine` method is to keep the state the same as before.
-        :param str type: The type of engine e.g. `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        :param str type: The type of engine. e.g., `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
         """
         pulumi.set(__self__, "optimization_objective", optimization_objective)
         pulumi.set(__self__, "optimization_objective_config", optimization_objective_config)
@@ -502,7 +887,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResp
     @pulumi.getter(name="optimizationObjective")
     def optimization_objective(self) -> str:
         """
-        The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
+        The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr`
         """
         return pulumi.get(self, "optimization_objective")
 
@@ -526,7 +911,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResp
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of engine e.g. `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        The type of engine. e.g., `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
         """
         return pulumi.get(self, "type")
 
@@ -817,6 +1202,149 @@ class GoogleCloudDiscoveryengineV1alphaFieldConfigResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse(dict):
+    """
+    Third party IDP Config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workforcePoolName":
+            suggest = "workforce_pool_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 workforce_pool_name: str):
+        """
+        Third party IDP Config.
+        :param str workforce_pool_name: Workforce pool name. Example: "locations/global/workforcePools/pool_id"
+        """
+        pulumi.set(__self__, "workforce_pool_name", workforce_pool_name)
+
+    @property
+    @pulumi.getter(name="workforcePoolName")
+    def workforce_pool_name(self) -> str:
+        """
+        Workforce pool name. Example: "locations/global/workforcePools/pool_id"
+        """
+        return pulumi.get(self, "workforce_pool_name")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaIdpConfigResponse(dict):
+    """
+    Identity Provider Config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalIdpConfig":
+            suggest = "external_idp_config"
+        elif key == "idpType":
+            suggest = "idp_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaIdpConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaIdpConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaIdpConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_idp_config: 'outputs.GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse',
+                 idp_type: str):
+        """
+        Identity Provider Config.
+        :param 'GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse' external_idp_config: External Identity provider config.
+        :param str idp_type: Identity provider type configured.
+        """
+        pulumi.set(__self__, "external_idp_config", external_idp_config)
+        pulumi.set(__self__, "idp_type", idp_type)
+
+    @property
+    @pulumi.getter(name="externalIdpConfig")
+    def external_idp_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfigResponse':
+        """
+        External Identity provider config.
+        """
+        return pulumi.get(self, "external_idp_config")
+
+    @property
+    @pulumi.getter(name="idpType")
+    def idp_type(self) -> str:
+        """
+        Identity provider type configured.
+        """
+        return pulumi.get(self, "idp_type")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaPrincipalResponse(dict):
+    """
+    Principal identifier of a user or a group.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaPrincipalResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaPrincipalResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaPrincipalResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_id: str,
+                 user_id: str):
+        """
+        Principal identifier of a user or a group.
+        :param str group_id: Group identifier. For Google Workspace user account, group_id should be the google workspace group email. For non-google identity provider user account, group_id is the mapped group identifier configured during the workforcepool config.
+        :param str user_id: User identifier. For Google Workspace user account, user_id should be the google workspace user email. For non-google identity provider user account, user_id is the mapped user identifier configured during the workforcepool config.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        Group identifier. For Google Workspace user account, group_id should be the google workspace group email. For non-google identity provider user account, group_id is the mapped group identifier configured during the workforcepool config.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        User identifier. For Google Workspace user account, user_id should be the google workspace user email. For non-google identity provider user account, user_id is the mapped user identifier configured during the workforcepool config.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
 class GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse(dict):
     """
     Defines reference in reply.
@@ -936,6 +1464,328 @@ class GoogleCloudDiscoveryengineV1alphaReplyResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSchemaResponse(dict):
+    """
+    Defines the structure and layout of a type of document data.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldConfigs":
+            suggest = "field_configs"
+        elif key == "jsonSchema":
+            suggest = "json_schema"
+        elif key == "structSchema":
+            suggest = "struct_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSchemaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSchemaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSchemaResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_configs: Sequence['outputs.GoogleCloudDiscoveryengineV1alphaFieldConfigResponse'],
+                 json_schema: str,
+                 name: str,
+                 struct_schema: Mapping[str, str]):
+        """
+        Defines the structure and layout of a type of document data.
+        :param Sequence['GoogleCloudDiscoveryengineV1alphaFieldConfigResponse'] field_configs: Configurations for fields of the schema.
+        :param str json_schema: The JSON representation of the schema.
+        :param str name: Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        :param Mapping[str, str] struct_schema: The structured representation of the schema.
+        """
+        pulumi.set(__self__, "field_configs", field_configs)
+        pulumi.set(__self__, "json_schema", json_schema)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "struct_schema", struct_schema)
+
+    @property
+    @pulumi.getter(name="fieldConfigs")
+    def field_configs(self) -> Sequence['outputs.GoogleCloudDiscoveryengineV1alphaFieldConfigResponse']:
+        """
+        Configurations for fields of the schema.
+        """
+        return pulumi.get(self, "field_configs")
+
+    @property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> str:
+        """
+        The JSON representation of the schema.
+        """
+        return pulumi.get(self, "json_schema")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="structSchema")
+    def struct_schema(self) -> Mapping[str, str]:
+        """
+        The structured representation of the schema.
+        """
+        return pulumi.get(self, "struct_schema")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadataResponse(dict):
+    """
+    Citation metadata.
+    """
+    def __init__(__self__, *,
+                 citations: Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse']):
+        """
+        Citation metadata.
+        :param Sequence['GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse'] citations: Citations for segments.
+        """
+        pulumi.set(__self__, "citations", citations)
+
+    @property
+    @pulumi.getter
+    def citations(self) -> Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse']:
+        """
+        Citations for segments.
+        """
+        return pulumi.get(self, "citations")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse(dict):
+    """
+    Citation info for a segment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endIndex":
+            suggest = "end_index"
+        elif key == "startIndex":
+            suggest = "start_index"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_index: str,
+                 sources: Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse'],
+                 start_index: str):
+        """
+        Citation info for a segment.
+        :param str end_index: End of the attributed segment, exclusive.
+        :param Sequence['GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse'] sources: Citation sources for the attributed segment.
+        :param str start_index: Index indicates the start of the segment, measured in bytes/unicode.
+        """
+        pulumi.set(__self__, "end_index", end_index)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "start_index", start_index)
+
+    @property
+    @pulumi.getter(name="endIndex")
+    def end_index(self) -> str:
+        """
+        End of the attributed segment, exclusive.
+        """
+        return pulumi.get(self, "end_index")
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse']:
+        """
+        Citation sources for the attributed segment.
+        """
+        return pulumi.get(self, "sources")
+
+    @property
+    @pulumi.getter(name="startIndex")
+    def start_index(self) -> str:
+        """
+        Index indicates the start of the segment, measured in bytes/unicode.
+        """
+        return pulumi.get(self, "start_index")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse(dict):
+    """
+    Citation source.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceIndex":
+            suggest = "reference_index"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reference_index: str):
+        """
+        Citation source.
+        :param str reference_index: Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+        """
+        pulumi.set(__self__, "reference_index", reference_index)
+
+    @property
+    @pulumi.getter(name="referenceIndex")
+    def reference_index(self) -> str:
+        """
+        Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+        """
+        return pulumi.get(self, "reference_index")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse(dict):
+    """
+    Chunk content.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pageIdentifier":
+            suggest = "page_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content: str,
+                 page_identifier: str):
+        """
+        Chunk content.
+        :param str content: Chunk textual content.
+        :param str page_identifier: Page identifier.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "page_identifier", page_identifier)
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        Chunk textual content.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="pageIdentifier")
+    def page_identifier(self) -> str:
+        """
+        Page identifier.
+        """
+        return pulumi.get(self, "page_identifier")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse(dict):
+    """
+    Document reference.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chunkContents":
+            suggest = "chunk_contents"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chunk_contents: Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse'],
+                 document: str,
+                 title: str,
+                 uri: str):
+        """
+        Document reference.
+        :param Sequence['GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse'] chunk_contents: List of cited chunk contents derived from document content.
+        :param str document: Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        :param str title: Title of the document.
+        :param str uri: Cloud Storage or HTTP uri for the document.
+        """
+        pulumi.set(__self__, "chunk_contents", chunk_contents)
+        pulumi.set(__self__, "document", document)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="chunkContents")
+    def chunk_contents(self) -> Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContentResponse']:
+        """
+        List of cited chunk contents derived from document content.
+        """
+        return pulumi.get(self, "chunk_contents")
+
+    @property
+    @pulumi.getter
+    def document(self) -> str:
+        """
+        Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        """
+        return pulumi.get(self, "document")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Title of the document.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Cloud Storage or HTTP uri for the document.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse(dict):
     """
     Summary of the top N search result specified by the summary spec.
@@ -949,6 +1799,8 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse(dict):
             suggest = "summary_skipped_reasons"
         elif key == "summaryText":
             suggest = "summary_text"
+        elif key == "summaryWithMetadata":
+            suggest = "summary_with_metadata"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse. Access the value via the '{suggest}' property getter instead.")
@@ -964,16 +1816,19 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse(dict):
     def __init__(__self__, *,
                  safety_attributes: 'outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse',
                  summary_skipped_reasons: Sequence[str],
-                 summary_text: str):
+                 summary_text: str,
+                 summary_with_metadata: 'outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse'):
         """
         Summary of the top N search result specified by the summary spec.
         :param 'GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResponse' safety_attributes: A collection of Safety Attribute categories and their associated confidence scores.
         :param Sequence[str] summary_skipped_reasons: Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set.
         :param str summary_text: The summary content.
+        :param 'GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse' summary_with_metadata: Summary with metadata information.
         """
         pulumi.set(__self__, "safety_attributes", safety_attributes)
         pulumi.set(__self__, "summary_skipped_reasons", summary_skipped_reasons)
         pulumi.set(__self__, "summary_text", summary_text)
+        pulumi.set(__self__, "summary_with_metadata", summary_with_metadata)
 
     @property
     @pulumi.getter(name="safetyAttributes")
@@ -998,6 +1853,14 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse(dict):
         The summary content.
         """
         return pulumi.get(self, "summary_text")
+
+    @property
+    @pulumi.getter(name="summaryWithMetadata")
+    def summary_with_metadata(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse':
+        """
+        Summary with metadata information.
+        """
+        return pulumi.get(self, "summary_with_metadata")
 
 
 @pulumi.output_type
@@ -1031,6 +1894,197 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributesResp
         The confidence scores of the each category, higher value means higher confidence. Order matches the Categories.
         """
         return pulumi.get(self, "scores")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse(dict):
+    """
+    Summary with metadata information.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "citationMetadata":
+            suggest = "citation_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 citation_metadata: 'outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadataResponse',
+                 references: Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse'],
+                 summary: str):
+        """
+        Summary with metadata information.
+        :param 'GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadataResponse' citation_metadata: Citation metadata for given summary.
+        :param Sequence['GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse'] references: Document References.
+        :param str summary: Summary text with no citation information.
+        """
+        pulumi.set(__self__, "citation_metadata", citation_metadata)
+        pulumi.set(__self__, "references", references)
+        pulumi.set(__self__, "summary", summary)
+
+    @property
+    @pulumi.getter(name="citationMetadata")
+    def citation_metadata(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryCitationMetadataResponse':
+        """
+        Citation metadata for given summary.
+        """
+        return pulumi.get(self, "citation_metadata")
+
+    @property
+    @pulumi.getter
+    def references(self) -> Sequence['outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceResponse']:
+        """
+        Document References.
+        """
+        return pulumi.get(self, "references")
+
+    @property
+    @pulumi.getter
+    def summary(self) -> str:
+        """
+        Summary text with no citation information.
+        """
+        return pulumi.get(self, "summary")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaSiteVerificationInfoResponse(dict):
+    """
+    Verification information for target sites in advanced site search.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteVerificationState":
+            suggest = "site_verification_state"
+        elif key == "verifyTime":
+            suggest = "verify_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaSiteVerificationInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSiteVerificationInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaSiteVerificationInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 site_verification_state: str,
+                 verify_time: str):
+        """
+        Verification information for target sites in advanced site search.
+        :param str site_verification_state: Site verification state indicating the ownership and validity.
+        :param str verify_time: Latest site verification time.
+        """
+        pulumi.set(__self__, "site_verification_state", site_verification_state)
+        pulumi.set(__self__, "verify_time", verify_time)
+
+    @property
+    @pulumi.getter(name="siteVerificationState")
+    def site_verification_state(self) -> str:
+        """
+        Site verification state indicating the ownership and validity.
+        """
+        return pulumi.get(self, "site_verification_state")
+
+    @property
+    @pulumi.getter(name="verifyTime")
+    def verify_time(self) -> str:
+        """
+        Latest site verification time.
+        """
+        return pulumi.get(self, "verify_time")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse(dict):
+    """
+    Failed due to insufficient quota.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalRequiredQuota":
+            suggest = "total_required_quota"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_required_quota: str):
+        """
+        Failed due to insufficient quota.
+        :param str total_required_quota: This number is an estimation on how much total quota this project needs to successfully complete indexing.
+        """
+        pulumi.set(__self__, "total_required_quota", total_required_quota)
+
+    @property
+    @pulumi.getter(name="totalRequiredQuota")
+    def total_required_quota(self) -> str:
+        """
+        This number is an estimation on how much total quota this project needs to successfully complete indexing.
+        """
+        return pulumi.get(self, "total_required_quota")
+
+
+@pulumi.output_type
+class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonResponse(dict):
+    """
+    Site search indexing failure reasons.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quotaFailure":
+            suggest = "quota_failure"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 quota_failure: 'outputs.GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse'):
+        """
+        Site search indexing failure reasons.
+        :param 'GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse' quota_failure: Failed due to insufficient quota.
+        """
+        pulumi.set(__self__, "quota_failure", quota_failure)
+
+    @property
+    @pulumi.getter(name="quotaFailure")
+    def quota_failure(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailureResponse':
+        """
+        Failed due to insufficient quota.
+        """
+        return pulumi.get(self, "quota_failure")
 
 
 @pulumi.output_type

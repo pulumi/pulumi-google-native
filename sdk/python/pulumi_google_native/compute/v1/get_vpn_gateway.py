@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetVpnGatewayResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
+    def __init__(__self__, creation_timestamp=None, description=None, gateway_ip_version=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if gateway_ip_version and not isinstance(gateway_ip_version, str):
+            raise TypeError("Expected argument 'gateway_ip_version' to be a str")
+        pulumi.set(__self__, "gateway_ip_version", gateway_ip_version)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -69,6 +72,14 @@ class GetVpnGatewayResult:
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gatewayIpVersion")
+    def gateway_ip_version(self) -> str:
+        """
+        The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        """
+        return pulumi.get(self, "gateway_ip_version")
 
     @property
     @pulumi.getter
@@ -151,6 +162,7 @@ class AwaitableGetVpnGatewayResult(GetVpnGatewayResult):
         return GetVpnGatewayResult(
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            gateway_ip_version=self.gateway_ip_version,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -179,6 +191,7 @@ def get_vpn_gateway(project: Optional[str] = None,
     return AwaitableGetVpnGatewayResult(
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
+        gateway_ip_version=pulumi.get(__ret__, 'gateway_ip_version'),
         kind=pulumi.get(__ret__, 'kind'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),

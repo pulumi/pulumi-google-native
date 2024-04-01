@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetFolderPolicyResult:
-    def __init__(__self__, alternate=None, dry_run_spec=None, name=None, spec=None):
+    def __init__(__self__, alternate=None, dry_run_spec=None, etag=None, name=None, spec=None):
         if alternate and not isinstance(alternate, dict):
             raise TypeError("Expected argument 'alternate' to be a dict")
         pulumi.set(__self__, "alternate", alternate)
         if dry_run_spec and not isinstance(dry_run_spec, dict):
             raise TypeError("Expected argument 'dry_run_spec' to be a dict")
         pulumi.set(__self__, "dry_run_spec", dry_run_spec)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -54,6 +57,14 @@ class GetFolderPolicyResult:
 
     @property
     @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
@@ -77,6 +88,7 @@ class AwaitableGetFolderPolicyResult(GetFolderPolicyResult):
         return GetFolderPolicyResult(
             alternate=self.alternate,
             dry_run_spec=self.dry_run_spec,
+            etag=self.etag,
             name=self.name,
             spec=self.spec)
 
@@ -96,6 +108,7 @@ def get_folder_policy(folder_id: Optional[str] = None,
     return AwaitableGetFolderPolicyResult(
         alternate=pulumi.get(__ret__, 'alternate'),
         dry_run_spec=pulumi.get(__ret__, 'dry_run_spec'),
+        etag=pulumi.get(__ret__, 'etag'),
         name=pulumi.get(__ret__, 'name'),
         spec=pulumi.get(__ret__, 'spec'))
 

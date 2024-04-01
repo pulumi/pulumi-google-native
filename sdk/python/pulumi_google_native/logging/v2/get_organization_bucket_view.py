@@ -47,7 +47,7 @@ class GetOrganizationBucketViewResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Describes this view.
+        Optional. Describes this view.
         """
         return pulumi.get(self, "description")
 
@@ -55,7 +55,7 @@ class GetOrganizationBucketViewResult:
     @pulumi.getter
     def filter(self) -> str:
         """
-        Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
         """
         return pulumi.get(self, "filter")
 

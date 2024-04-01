@@ -121,7 +121,7 @@ class GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse(dict):
         """
         Defines the Automated Agent to connect to a conversation.
         :param str agent: ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
-        :param str session_ttl: Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+        :param str session_ttl: Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
         """
         pulumi.set(__self__, "agent", agent)
         pulumi.set(__self__, "session_ttl", session_ttl)
@@ -138,7 +138,7 @@ class GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse(dict):
     @pulumi.getter(name="sessionTtl")
     def session_ttl(self) -> str:
         """
-        Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+        Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
         """
         return pulumi.get(self, "session_ttl")
 
@@ -786,6 +786,8 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
             suggest = "conversation_process_config"
         elif key == "disableAgentQueryLogging":
             suggest = "disable_agent_query_logging"
+        elif key == "enableConversationAugmentedQuery":
+            suggest = "enable_conversation_augmented_query"
         elif key == "enableEventBasedSuggestion":
             suggest = "enable_event_based_suggestion"
         elif key == "queryConfig":
@@ -810,6 +812,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
                  conversation_model_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse',
                  conversation_process_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse',
                  disable_agent_query_logging: bool,
+                 enable_conversation_augmented_query: bool,
                  enable_event_based_suggestion: bool,
                  query_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse',
                  suggestion_feature: 'outputs.GoogleCloudDialogflowV2beta1SuggestionFeatureResponse',
@@ -819,6 +822,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse' conversation_model_config: Configs of custom conversation model.
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse' conversation_process_config: Configs for processing conversation.
         :param bool disable_agent_query_logging: Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+        :param bool enable_conversation_augmented_query: Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
         :param bool enable_event_based_suggestion: Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION, KNOWLEDGE_ASSIST.
         :param 'GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse' query_config: Configs of query.
         :param 'GoogleCloudDialogflowV2beta1SuggestionFeatureResponse' suggestion_feature: The suggestion feature.
@@ -827,6 +831,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
         pulumi.set(__self__, "conversation_model_config", conversation_model_config)
         pulumi.set(__self__, "conversation_process_config", conversation_process_config)
         pulumi.set(__self__, "disable_agent_query_logging", disable_agent_query_logging)
+        pulumi.set(__self__, "enable_conversation_augmented_query", enable_conversation_augmented_query)
         pulumi.set(__self__, "enable_event_based_suggestion", enable_event_based_suggestion)
         pulumi.set(__self__, "query_config", query_config)
         pulumi.set(__self__, "suggestion_feature", suggestion_feature)
@@ -855,6 +860,14 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
         Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
         """
         return pulumi.get(self, "disable_agent_query_logging")
+
+    @property
+    @pulumi.getter(name="enableConversationAugmentedQuery")
+    def enable_conversation_augmented_query(self) -> bool:
+        """
+        Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+        """
+        return pulumi.get(self, "enable_conversation_augmented_query")
 
     @property
     @pulumi.getter(name="enableEventBasedSuggestion")
@@ -4152,7 +4165,7 @@ class GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse(dict):
                  use_timeout_based_endpointing: bool):
         """
         Configures speech transcription for ConversationProfile.
-        :param str model: Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        :param str model: Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
         :param str speech_model_variant: The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
         :param bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
         """
@@ -4164,7 +4177,7 @@ class GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse(dict):
     @pulumi.getter
     def model(self) -> str:
         """
-        Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
         """
         return pulumi.get(self, "model")
 

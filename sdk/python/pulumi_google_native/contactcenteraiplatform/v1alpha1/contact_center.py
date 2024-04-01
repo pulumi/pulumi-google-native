@@ -341,6 +341,7 @@ class ContactCenter(pulumi.CustomResource):
             __props__.__dict__["saml_params"] = saml_params
             __props__.__dict__["user_email"] = user_email
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["private_components"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["uris"] = None
@@ -379,6 +380,7 @@ class ContactCenter(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["private_components"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["saml_params"] = None
@@ -472,6 +474,14 @@ class ContactCenter(pulumi.CustomResource):
         name of resource
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateComponents")
+    def private_components(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+        """
+        return pulumi.get(self, "private_components")
 
     @property
     @pulumi.getter

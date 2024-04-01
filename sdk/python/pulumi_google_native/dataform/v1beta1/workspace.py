@@ -17,15 +17,19 @@ class WorkspaceArgs:
                  repository_id: pulumi.Input[str],
                  workspace_id: pulumi.Input[str],
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Workspace resource.
         :param pulumi.Input[str] workspace_id: Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
+        :param pulumi.Input[str] name: Identifier. The workspace's name.
         """
         pulumi.set(__self__, "repository_id", repository_id)
         pulumi.set(__self__, "workspace_id", workspace_id)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -61,6 +65,18 @@ class WorkspaceArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier. The workspace's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -75,16 +91,17 @@ class Workspace(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new Workspace in a given Repository.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: Identifier. The workspace's name.
         :param pulumi.Input[str] workspace_id: Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
         """
         ...
@@ -95,7 +112,6 @@ class Workspace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Workspace in a given Repository.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param WorkspaceArgs args: The arguments to use to populate this resource's properties.
@@ -113,6 +129,7 @@ class Workspace(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
@@ -126,6 +143,7 @@ class Workspace(pulumi.CustomResource):
             __props__ = WorkspaceArgs.__new__(WorkspaceArgs)
 
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
@@ -133,7 +151,6 @@ class Workspace(pulumi.CustomResource):
             if workspace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workspace_id'")
             __props__.__dict__["workspace_id"] = workspace_id
-            __props__.__dict__["name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id", "workspace_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Workspace, __self__).__init__(
@@ -174,7 +191,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The workspace's name.
+        Identifier. The workspace's name.
         """
         return pulumi.get(self, "name")
 

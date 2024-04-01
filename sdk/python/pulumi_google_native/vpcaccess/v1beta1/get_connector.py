@@ -19,13 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectorResult:
-    def __init__(__self__, connected_projects=None, ip_cidr_range=None, machine_type=None, max_instances=None, max_throughput=None, min_instances=None, min_throughput=None, name=None, network=None, state=None, subnet=None):
+    def __init__(__self__, connected_projects=None, create_time=None, ip_cidr_range=None, last_restart_time=None, machine_type=None, max_instances=None, max_throughput=None, min_instances=None, min_throughput=None, name=None, network=None, state=None, subnet=None):
         if connected_projects and not isinstance(connected_projects, list):
             raise TypeError("Expected argument 'connected_projects' to be a list")
         pulumi.set(__self__, "connected_projects", connected_projects)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
             raise TypeError("Expected argument 'ip_cidr_range' to be a str")
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if last_restart_time and not isinstance(last_restart_time, str):
+            raise TypeError("Expected argument 'last_restart_time' to be a str")
+        pulumi.set(__self__, "last_restart_time", last_restart_time)
         if machine_type and not isinstance(machine_type, str):
             raise TypeError("Expected argument 'machine_type' to be a str")
         pulumi.set(__self__, "machine_type", machine_type)
@@ -63,12 +69,28 @@ class GetConnectorResult:
         return pulumi.get(self, "connected_projects")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the connector.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> str:
         """
         The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         """
         return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="lastRestartTime")
+    def last_restart_time(self) -> str:
+        """
+        The last restart time of the connector.
+        """
+        return pulumi.get(self, "last_restart_time")
 
     @property
     @pulumi.getter(name="machineType")
@@ -150,7 +172,9 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             yield self
         return GetConnectorResult(
             connected_projects=self.connected_projects,
+            create_time=self.create_time,
             ip_cidr_range=self.ip_cidr_range,
+            last_restart_time=self.last_restart_time,
             machine_type=self.machine_type,
             max_instances=self.max_instances,
             max_throughput=self.max_throughput,
@@ -178,7 +202,9 @@ def get_connector(connector_id: Optional[str] = None,
 
     return AwaitableGetConnectorResult(
         connected_projects=pulumi.get(__ret__, 'connected_projects'),
+        create_time=pulumi.get(__ret__, 'create_time'),
         ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        last_restart_time=pulumi.get(__ret__, 'last_restart_time'),
         machine_type=pulumi.get(__ret__, 'machine_type'),
         max_instances=pulumi.get(__ret__, 'max_instances'),
         max_throughput=pulumi.get(__ret__, 'max_throughput'),

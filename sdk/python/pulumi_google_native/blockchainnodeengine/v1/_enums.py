@@ -78,7 +78,7 @@ class EthereumDetailsNetwork(str, Enum):
     """
     TESTNET_GOERLI_PRATER = "TESTNET_GOERLI_PRATER"
     """
-    The Ethereum Testnet based on Goerli protocol.
+    Deprecated: The Ethereum Testnet based on Goerli protocol. Holesky (TESTNET_HOLESKY) is the recommended testnet to replace Goerli.
     """
     TESTNET_SEPOLIA = "TESTNET_SEPOLIA"
     """

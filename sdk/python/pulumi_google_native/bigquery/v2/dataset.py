@@ -17,45 +17,53 @@ __all__ = ['DatasetArgs', 'Dataset']
 @pulumi.input_type
 class DatasetArgs:
     def __init__(__self__, *,
+                 dataset_reference: pulumi.Input['DatasetReferenceArgs'],
                  access: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]] = None,
-                 dataset_reference: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
+                 default_rounding_mode: Optional[pulumi.Input['DatasetDefaultRoundingMode']] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external_dataset_reference: Optional[pulumi.Input['ExternalDatasetReferenceArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linked_dataset_source: Optional[pulumi.Input['LinkedDatasetSourceArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage_billing_model: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]] = None):
+                 storage_billing_model: Optional[pulumi.Input['DatasetStorageBillingModel']] = None):
         """
         The set of arguments for constructing a Dataset resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-        :param pulumi.Input['DatasetReferenceArgs'] dataset_reference: [Required] A reference that identifies the dataset.
-        :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
-        :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
-        :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
-        :param pulumi.Input['ExternalDatasetReferenceArgs'] external_dataset_reference: [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
-        :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
-        :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
+        :param pulumi.Input['DatasetReferenceArgs'] dataset_reference: A reference that identifies the dataset.
+        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]] access: Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        :param pulumi.Input[str] default_collation: Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
+        :param pulumi.Input['EncryptionConfigurationArgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+        :param pulumi.Input[str] default_partition_expiration_ms: This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
+        :param pulumi.Input['DatasetDefaultRoundingMode'] default_rounding_mode: Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+        :param pulumi.Input[str] default_table_expiration_ms: Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        :param pulumi.Input[str] description: Optional. A user-friendly description of the dataset.
+        :param pulumi.Input['ExternalDatasetReferenceArgs'] external_dataset_reference: Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
+        :param pulumi.Input[str] friendly_name: Optional. A descriptive name for the dataset.
+        :param pulumi.Input[bool] is_case_insensitive: Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-        :param pulumi.Input[str] max_time_travel_hours: [Optional] Number of hours for the max time travel for all tables in the dataset.
-        :param pulumi.Input[str] storage_billing_model: [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
-        :param pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        :param pulumi.Input['LinkedDatasetSourceArgs'] linked_dataset_source: Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+        :param pulumi.Input[str] location: The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] max_time_travel_hours: Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
+        :param pulumi.Input['DatasetStorageBillingModel'] storage_billing_model: Optional. Updates storage_billing_model for the dataset.
         """
+        pulumi.set(__self__, "dataset_reference", dataset_reference)
         if access is not None:
             pulumi.set(__self__, "access", access)
-        if dataset_reference is not None:
-            pulumi.set(__self__, "dataset_reference", dataset_reference)
+        if default_collation is not None:
+            pulumi.set(__self__, "default_collation", default_collation)
         if default_encryption_configuration is not None:
             pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
         if default_partition_expiration_ms is not None:
             pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+        if default_rounding_mode is not None:
+            pulumi.set(__self__, "default_rounding_mode", default_rounding_mode)
         if default_table_expiration_ms is not None:
             pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
         if description is not None:
@@ -68,6 +76,8 @@ class DatasetArgs:
             pulumi.set(__self__, "is_case_insensitive", is_case_insensitive)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if linked_dataset_source is not None:
+            pulumi.set(__self__, "linked_dataset_source", linked_dataset_source)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if max_time_travel_hours is not None:
@@ -76,14 +86,24 @@ class DatasetArgs:
             pulumi.set(__self__, "project", project)
         if storage_billing_model is not None:
             pulumi.set(__self__, "storage_billing_model", storage_billing_model)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="datasetReference")
+    def dataset_reference(self) -> pulumi.Input['DatasetReferenceArgs']:
+        """
+        A reference that identifies the dataset.
+        """
+        return pulumi.get(self, "dataset_reference")
+
+    @dataset_reference.setter
+    def dataset_reference(self, value: pulumi.Input['DatasetReferenceArgs']):
+        pulumi.set(self, "dataset_reference", value)
 
     @property
     @pulumi.getter
     def access(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]]:
         """
-        [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         """
         return pulumi.get(self, "access")
 
@@ -92,20 +112,23 @@ class DatasetArgs:
         pulumi.set(self, "access", value)
 
     @property
-    @pulumi.getter(name="datasetReference")
-    def dataset_reference(self) -> Optional[pulumi.Input['DatasetReferenceArgs']]:
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] A reference that identifies the dataset.
+        Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
         """
-        return pulumi.get(self, "dataset_reference")
+        return pulumi.get(self, "default_collation")
 
-    @dataset_reference.setter
-    def dataset_reference(self, value: Optional[pulumi.Input['DatasetReferenceArgs']]):
-        pulumi.set(self, "dataset_reference", value)
+    @default_collation.setter
+    def default_collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_collation", value)
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
     def default_encryption_configuration(self) -> Optional[pulumi.Input['EncryptionConfigurationArgs']]:
+        """
+        The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+        """
         return pulumi.get(self, "default_encryption_configuration")
 
     @default_encryption_configuration.setter
@@ -116,7 +139,7 @@ class DatasetArgs:
     @pulumi.getter(name="defaultPartitionExpirationMs")
     def default_partition_expiration_ms(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+        This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
 
@@ -125,10 +148,22 @@ class DatasetArgs:
         pulumi.set(self, "default_partition_expiration_ms", value)
 
     @property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> Optional[pulumi.Input['DatasetDefaultRoundingMode']]:
+        """
+        Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+        """
+        return pulumi.get(self, "default_rounding_mode")
+
+    @default_rounding_mode.setter
+    def default_rounding_mode(self, value: Optional[pulumi.Input['DatasetDefaultRoundingMode']]):
+        pulumi.set(self, "default_rounding_mode", value)
+
+    @property
     @pulumi.getter(name="defaultTableExpirationMs")
     def default_table_expiration_ms(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         """
         return pulumi.get(self, "default_table_expiration_ms")
 
@@ -140,7 +175,7 @@ class DatasetArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] A user-friendly description of the dataset.
+        Optional. A user-friendly description of the dataset.
         """
         return pulumi.get(self, "description")
 
@@ -152,7 +187,7 @@ class DatasetArgs:
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> Optional[pulumi.Input['ExternalDatasetReferenceArgs']]:
         """
-        [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
         """
         return pulumi.get(self, "external_dataset_reference")
 
@@ -164,7 +199,7 @@ class DatasetArgs:
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] A descriptive name for the dataset.
+        Optional. A descriptive name for the dataset.
         """
         return pulumi.get(self, "friendly_name")
 
@@ -176,7 +211,7 @@ class DatasetArgs:
     @pulumi.getter(name="isCaseInsensitive")
     def is_case_insensitive(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates if table names are case insensitive in the dataset.
+        Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
         """
         return pulumi.get(self, "is_case_insensitive")
 
@@ -197,10 +232,22 @@ class DatasetArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="linkedDatasetSource")
+    def linked_dataset_source(self) -> Optional[pulumi.Input['LinkedDatasetSourceArgs']]:
+        """
+        Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+        """
+        return pulumi.get(self, "linked_dataset_source")
+
+    @linked_dataset_source.setter
+    def linked_dataset_source(self, value: Optional[pulumi.Input['LinkedDatasetSourceArgs']]):
+        pulumi.set(self, "linked_dataset_source", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -212,7 +259,7 @@ class DatasetArgs:
     @pulumi.getter(name="maxTimeTravelHours")
     def max_time_travel_hours(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Number of hours for the max time travel for all tables in the dataset.
+        Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
         """
         return pulumi.get(self, "max_time_travel_hours")
 
@@ -231,27 +278,15 @@ class DatasetArgs:
 
     @property
     @pulumi.getter(name="storageBillingModel")
-    def storage_billing_model(self) -> Optional[pulumi.Input[str]]:
+    def storage_billing_model(self) -> Optional[pulumi.Input['DatasetStorageBillingModel']]:
         """
-        [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        Optional. Updates storage_billing_model for the dataset.
         """
         return pulumi.get(self, "storage_billing_model")
 
     @storage_billing_model.setter
-    def storage_billing_model(self, value: Optional[pulumi.Input[str]]):
+    def storage_billing_model(self, value: Optional[pulumi.Input['DatasetStorageBillingModel']]):
         pulumi.set(self, "storage_billing_model", value)
-
-    @property
-    @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]]:
-        """
-        [Optional]The tags associated with this dataset. Tag keys are globally unique.
-        """
-        return pulumi.get(self, "tags")
-
-    @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]]):
-        pulumi.set(self, "tags", value)
 
 
 class Dataset(pulumi.CustomResource):
@@ -261,19 +296,21 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
                  dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
+                 default_rounding_mode: Optional[pulumi.Input['DatasetDefaultRoundingMode']] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linked_dataset_source: Optional[pulumi.Input[pulumi.InputType['LinkedDatasetSourceArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage_billing_model: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
+                 storage_billing_model: Optional[pulumi.Input['DatasetStorageBillingModel']] = None,
                  __props__=None):
         """
         Creates a new empty dataset.
@@ -281,25 +318,28 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-        :param pulumi.Input[pulumi.InputType['DatasetReferenceArgs']] dataset_reference: [Required] A reference that identifies the dataset.
-        :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
-        :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
-        :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
-        :param pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']] external_dataset_reference: [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
-        :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
-        :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]] access: Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        :param pulumi.Input[pulumi.InputType['DatasetReferenceArgs']] dataset_reference: A reference that identifies the dataset.
+        :param pulumi.Input[str] default_collation: Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
+        :param pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+        :param pulumi.Input[str] default_partition_expiration_ms: This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
+        :param pulumi.Input['DatasetDefaultRoundingMode'] default_rounding_mode: Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+        :param pulumi.Input[str] default_table_expiration_ms: Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        :param pulumi.Input[str] description: Optional. A user-friendly description of the dataset.
+        :param pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']] external_dataset_reference: Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
+        :param pulumi.Input[str] friendly_name: Optional. A descriptive name for the dataset.
+        :param pulumi.Input[bool] is_case_insensitive: Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-        :param pulumi.Input[str] max_time_travel_hours: [Optional] Number of hours for the max time travel for all tables in the dataset.
-        :param pulumi.Input[str] storage_billing_model: [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        :param pulumi.Input[pulumi.InputType['LinkedDatasetSourceArgs']] linked_dataset_source: Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+        :param pulumi.Input[str] location: The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] max_time_travel_hours: Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
+        :param pulumi.Input['DatasetStorageBillingModel'] storage_billing_model: Optional. Updates storage_billing_model for the dataset.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[DatasetArgs] = None,
+                 args: DatasetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new empty dataset.
@@ -322,19 +362,21 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
                  dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
+                 default_rounding_mode: Optional[pulumi.Input['DatasetDefaultRoundingMode']] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linked_dataset_source: Optional[pulumi.Input[pulumi.InputType['LinkedDatasetSourceArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage_billing_model: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
+                 storage_billing_model: Optional[pulumi.Input['DatasetStorageBillingModel']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -345,28 +387,34 @@ class Dataset(pulumi.CustomResource):
             __props__ = DatasetArgs.__new__(DatasetArgs)
 
             __props__.__dict__["access"] = access
+            if dataset_reference is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_reference'")
             __props__.__dict__["dataset_reference"] = dataset_reference
+            __props__.__dict__["default_collation"] = default_collation
             __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
+            __props__.__dict__["default_rounding_mode"] = default_rounding_mode
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["description"] = description
             __props__.__dict__["external_dataset_reference"] = external_dataset_reference
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["is_case_insensitive"] = is_case_insensitive
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["linked_dataset_source"] = linked_dataset_source
             __props__.__dict__["location"] = location
             __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
             __props__.__dict__["project"] = project
             __props__.__dict__["storage_billing_model"] = storage_billing_model
-            __props__.__dict__["tags"] = tags
             __props__.__dict__["creation_time"] = None
-            __props__.__dict__["default_collation"] = None
-            __props__.__dict__["default_rounding_mode"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["last_modified_time"] = None
+            __props__.__dict__["linked_dataset_metadata"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["tags"] = None
+            __props__.__dict__["type"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Dataset, __self__).__init__(
@@ -407,20 +455,24 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["last_modified_time"] = None
+        __props__.__dict__["linked_dataset_metadata"] = None
+        __props__.__dict__["linked_dataset_source"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["max_time_travel_hours"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["storage_billing_model"] = None
         __props__.__dict__["tags"] = None
+        __props__.__dict__["type"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def access(self) -> pulumi.Output[Sequence['outputs.DatasetAccessItemResponse']]:
         """
-        [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         """
         return pulumi.get(self, "access")
 
@@ -436,7 +488,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="datasetReference")
     def dataset_reference(self) -> pulumi.Output['outputs.DatasetReferenceResponse']:
         """
-        [Required] A reference that identifies the dataset.
+        A reference that identifies the dataset.
         """
         return pulumi.get(self, "dataset_reference")
 
@@ -444,20 +496,23 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="defaultCollation")
     def default_collation(self) -> pulumi.Output[str]:
         """
-        The default collation of the dataset.
+        Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
         """
         return pulumi.get(self, "default_collation")
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
     def default_encryption_configuration(self) -> pulumi.Output['outputs.EncryptionConfigurationResponse']:
+        """
+        The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+        """
         return pulumi.get(self, "default_encryption_configuration")
 
     @property
     @pulumi.getter(name="defaultPartitionExpirationMs")
     def default_partition_expiration_ms(self) -> pulumi.Output[str]:
         """
-        [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+        This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
 
@@ -465,7 +520,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="defaultRoundingMode")
     def default_rounding_mode(self) -> pulumi.Output[str]:
         """
-        The default rounding mode of the dataset.
+        Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
         """
         return pulumi.get(self, "default_rounding_mode")
 
@@ -473,7 +528,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="defaultTableExpirationMs")
     def default_table_expiration_ms(self) -> pulumi.Output[str]:
         """
-        [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         """
         return pulumi.get(self, "default_table_expiration_ms")
 
@@ -481,7 +536,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        [Optional] A user-friendly description of the dataset.
+        Optional. A user-friendly description of the dataset.
         """
         return pulumi.get(self, "description")
 
@@ -497,7 +552,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> pulumi.Output['outputs.ExternalDatasetReferenceResponse']:
         """
-        [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
         """
         return pulumi.get(self, "external_dataset_reference")
 
@@ -505,7 +560,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> pulumi.Output[str]:
         """
-        [Optional] A descriptive name for the dataset.
+        Optional. A descriptive name for the dataset.
         """
         return pulumi.get(self, "friendly_name")
 
@@ -513,7 +568,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="isCaseInsensitive")
     def is_case_insensitive(self) -> pulumi.Output[bool]:
         """
-        [Optional] Indicates if table names are case insensitive in the dataset.
+        Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
         """
         return pulumi.get(self, "is_case_insensitive")
 
@@ -537,15 +592,31 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> pulumi.Output[str]:
         """
-        The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        The date when this dataset was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter(name="linkedDatasetMetadata")
+    def linked_dataset_metadata(self) -> pulumi.Output['outputs.LinkedDatasetMetadataResponse']:
+        """
+        Metadata about the LinkedDataset. Filled out when the dataset type is LINKED.
+        """
+        return pulumi.get(self, "linked_dataset_metadata")
+
+    @property
+    @pulumi.getter(name="linkedDatasetSource")
+    def linked_dataset_source(self) -> pulumi.Output['outputs.LinkedDatasetSourceResponse']:
+        """
+        Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+        """
+        return pulumi.get(self, "linked_dataset_source")
 
     @property
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -553,7 +624,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="maxTimeTravelHours")
     def max_time_travel_hours(self) -> pulumi.Output[str]:
         """
-        [Optional] Number of hours for the max time travel for all tables in the dataset.
+        Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
         """
         return pulumi.get(self, "max_time_travel_hours")
 
@@ -561,6 +632,14 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -582,7 +661,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="storageBillingModel")
     def storage_billing_model(self) -> pulumi.Output[str]:
         """
-        [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        Optional. Updates storage_billing_model for the dataset.
         """
         return pulumi.get(self, "storage_billing_model")
 
@@ -590,7 +669,15 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence['outputs.DatasetTagsItemResponse']]:
         """
-        [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        Tags for the Dataset.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, * EXTERNAL - dataset with definition in external metadata catalog. -- *BIGLAKE_METASTORE - dataset that references a database created in BigLakeMetastore service. --
+        """
+        return pulumi.get(self, "type")
 

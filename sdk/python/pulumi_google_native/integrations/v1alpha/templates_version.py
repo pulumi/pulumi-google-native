@@ -21,6 +21,7 @@ class TemplatesVersionArgs:
                  product_id: pulumi.Input[str],
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_variable_masking: Optional[pulumi.Input[bool]] = None,
                  error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class TemplatesVersionArgs:
         The set of arguments for constructing a TemplatesVersion resource.
         :param pulumi.Input['TemplatesVersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
+        :param pulumi.Input[bool] enable_variable_masking: Optional. True if variable masking feature should be turned on for generated workflows
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]] error_catcher_configs: Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
         :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] parent_integration_version_id: Optional. ID of the IntegrationVersion that was used to create this IntegrationTemplateVersion
@@ -50,6 +52,8 @@ class TemplatesVersionArgs:
             pulumi.set(__self__, "database_persistence_policy", database_persistence_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_variable_masking is not None:
+            pulumi.set(__self__, "enable_variable_masking", enable_variable_masking)
         if error_catcher_configs is not None:
             pulumi.set(__self__, "error_catcher_configs", error_catcher_configs)
         if last_modifier_email is not None:
@@ -112,6 +116,18 @@ class TemplatesVersionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableVariableMasking")
+    def enable_variable_masking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. True if variable masking feature should be turned on for generated workflows
+        """
+        return pulumi.get(self, "enable_variable_masking")
+
+    @enable_variable_masking.setter
+    def enable_variable_masking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_variable_masking", value)
 
     @property
     @pulumi.getter(name="errorCatcherConfigs")
@@ -235,6 +251,7 @@ class TemplatesVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_variable_masking: Optional[pulumi.Input[bool]] = None,
                  error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
                  integrationtemplate_id: Optional[pulumi.Input[str]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
@@ -258,6 +275,7 @@ class TemplatesVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['TemplatesVersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
+        :param pulumi.Input[bool] enable_variable_masking: Optional. True if variable masking feature should be turned on for generated workflows
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] error_catcher_configs: Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
         :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] parent_integration_version_id: Optional. ID of the IntegrationVersion that was used to create this IntegrationTemplateVersion
@@ -296,6 +314,7 @@ class TemplatesVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_variable_masking: Optional[pulumi.Input[bool]] = None,
                  error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
                  integrationtemplate_id: Optional[pulumi.Input[str]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
@@ -319,6 +338,7 @@ class TemplatesVersion(pulumi.CustomResource):
 
             __props__.__dict__["database_persistence_policy"] = database_persistence_policy
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_variable_masking"] = enable_variable_masking
             __props__.__dict__["error_catcher_configs"] = error_catcher_configs
             if integrationtemplate_id is None and not opts.urn:
                 raise TypeError("Missing required property 'integrationtemplate_id'")
@@ -367,6 +387,7 @@ class TemplatesVersion(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database_persistence_policy"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["enable_variable_masking"] = None
         __props__.__dict__["error_catcher_configs"] = None
         __props__.__dict__["integrationtemplate_id"] = None
         __props__.__dict__["last_modifier_email"] = None
@@ -408,6 +429,14 @@ class TemplatesVersion(pulumi.CustomResource):
         Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableVariableMasking")
+    def enable_variable_masking(self) -> pulumi.Output[bool]:
+        """
+        Optional. True if variable masking feature should be turned on for generated workflows
+        """
+        return pulumi.get(self, "enable_variable_masking")
 
     @property
     @pulumi.getter(name="errorCatcherConfigs")

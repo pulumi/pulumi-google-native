@@ -120,7 +120,7 @@ class GetInstanceResult:
     @pulumi.getter(name="directoryServices")
     def directory_services(self) -> 'outputs.DirectoryServicesConfigResponse':
         """
-        Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
         """
         return pulumi.get(self, "directory_services")
 

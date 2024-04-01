@@ -11,10 +11,63 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
+    'BigQueryDestinationResponse',
     'GceInstanceFilterResponse',
     'ResourceFilterResponse',
     'ResourceStatusResponse',
 ]
+
+@pulumi.output_type
+class BigQueryDestinationResponse(dict):
+    """
+    Message describing big query destination
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createNewResultsTable":
+            suggest = "create_new_results_table"
+        elif key == "destinationDataset":
+            suggest = "destination_dataset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigQueryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigQueryDestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigQueryDestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_new_results_table: bool,
+                 destination_dataset: str):
+        """
+        Message describing big query destination
+        :param bool create_new_results_table: Optional. determine if results will be saved in a new table
+        :param str destination_dataset: Optional. destination dataset to save evaluation results
+        """
+        pulumi.set(__self__, "create_new_results_table", create_new_results_table)
+        pulumi.set(__self__, "destination_dataset", destination_dataset)
+
+    @property
+    @pulumi.getter(name="createNewResultsTable")
+    def create_new_results_table(self) -> bool:
+        """
+        Optional. determine if results will be saved in a new table
+        """
+        return pulumi.get(self, "create_new_results_table")
+
+    @property
+    @pulumi.getter(name="destinationDataset")
+    def destination_dataset(self) -> str:
+        """
+        Optional. destination dataset to save evaluation results
+        """
+        return pulumi.get(self, "destination_dataset")
+
 
 @pulumi.output_type
 class GceInstanceFilterResponse(dict):

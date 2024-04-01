@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, annotations=None, automated_backup_policy=None, backup_source=None, cluster_type=None, continuous_backup_config=None, continuous_backup_info=None, create_time=None, database_version=None, delete_time=None, display_name=None, encryption_config=None, encryption_info=None, etag=None, initial_user=None, labels=None, migration_source=None, name=None, network=None, network_config=None, primary_config=None, reconciling=None, secondary_config=None, ssl_config=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, automated_backup_policy=None, backup_source=None, cluster_type=None, continuous_backup_config=None, continuous_backup_info=None, create_time=None, database_version=None, delete_time=None, display_name=None, encryption_config=None, encryption_info=None, etag=None, initial_user=None, labels=None, migration_source=None, name=None, network=None, network_config=None, primary_config=None, reconciling=None, satisfies_pzs=None, secondary_config=None, ssl_config=None, state=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -83,6 +83,9 @@ class GetClusterResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if secondary_config and not isinstance(secondary_config, dict):
             raise TypeError("Expected argument 'secondary_config' to be a dict")
         pulumi.set(__self__, "secondary_config", secondary_config)
@@ -239,10 +242,10 @@ class GetClusterResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         """
-        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""")
+        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""")
 
         return pulumi.get(self, "network")
 
@@ -266,6 +269,14 @@ class GetClusterResult:
         Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="secondaryConfig")
@@ -335,6 +346,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             network_config=self.network_config,
             primary_config=self.primary_config,
             reconciling=self.reconciling,
+            satisfies_pzs=self.satisfies_pzs,
             secondary_config=self.secondary_config,
             ssl_config=self.ssl_config,
             state=self.state,
@@ -380,6 +392,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         network_config=pulumi.get(__ret__, 'network_config'),
         primary_config=pulumi.get(__ret__, 'primary_config'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         secondary_config=pulumi.get(__ret__, 'secondary_config'),
         ssl_config=pulumi.get(__ret__, 'ssl_config'),
         state=pulumi.get(__ret__, 'state'),

@@ -26,6 +26,7 @@ class EntryArgs:
                  dataset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatasetSpecArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 feature_online_store_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs']] = None,
                  fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs']] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']] = None,
@@ -54,6 +55,7 @@ class EntryArgs:
         :param pulumi.Input['GoogleCloudDatacatalogV1DatasetSpecArgs'] dataset_spec: Specification that applies to a dataset.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
+        :param pulumi.Input['GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs'] feature_online_store_spec: FeatureonlineStore spec for Vertex AI Feature Store.
         :param pulumi.Input['GoogleCloudDatacatalogV1FilesetSpecArgs'] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[str] fully_qualified_name: [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries. 
         :param pulumi.Input['GoogleCloudDatacatalogV1GcsFilesetSpecArgs'] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
@@ -87,6 +89,8 @@ class EntryArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if feature_online_store_spec is not None:
+            pulumi.set(__self__, "feature_online_store_spec", feature_online_store_spec)
         if fileset_spec is not None:
             pulumi.set(__self__, "fileset_spec", fileset_spec)
         if fully_qualified_name is not None:
@@ -228,6 +232,18 @@ class EntryArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="featureOnlineStoreSpec")
+    def feature_online_store_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs']]:
+        """
+        FeatureonlineStore spec for Vertex AI Feature Store.
+        """
+        return pulumi.get(self, "feature_online_store_spec")
+
+    @feature_online_store_spec.setter
+    def feature_online_store_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs']]):
+        pulumi.set(self, "feature_online_store_spec", value)
 
     @property
     @pulumi.getter(name="filesetSpec")
@@ -454,6 +470,7 @@ class Entry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
+                 feature_online_store_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs']]] = None,
                  fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']]] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']]] = None,
@@ -487,6 +504,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] entry_id: Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs']] feature_online_store_spec: FeatureonlineStore spec for Vertex AI Feature Store.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[str] fully_qualified_name: [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries. 
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
@@ -538,6 +556,7 @@ class Entry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
+                 feature_online_store_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs']]] = None,
                  fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']]] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']]] = None,
@@ -578,6 +597,7 @@ class Entry(pulumi.CustomResource):
             if entry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_id'")
             __props__.__dict__["entry_id"] = entry_id
+            __props__.__dict__["feature_online_store_spec"] = feature_online_store_spec
             __props__.__dict__["fileset_spec"] = fileset_spec
             __props__.__dict__["fully_qualified_name"] = fully_qualified_name
             __props__.__dict__["gcs_fileset_spec"] = gcs_fileset_spec
@@ -638,6 +658,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["entry_group_id"] = None
         __props__.__dict__["entry_id"] = None
+        __props__.__dict__["feature_online_store_spec"] = None
         __props__.__dict__["fileset_spec"] = None
         __props__.__dict__["fully_qualified_name"] = None
         __props__.__dict__["gcs_fileset_spec"] = None
@@ -755,6 +776,14 @@ class Entry(pulumi.CustomResource):
         return pulumi.get(self, "entry_id")
 
     @property
+    @pulumi.getter(name="featureOnlineStoreSpec")
+    def feature_online_store_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponse']:
+        """
+        FeatureonlineStore spec for Vertex AI Feature Store.
+        """
+        return pulumi.get(self, "feature_online_store_spec")
+
+    @property
     @pulumi.getter(name="filesetSpec")
     def fileset_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1FilesetSpecResponse']:
         """
@@ -827,7 +856,7 @@ class Entry(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+        Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 

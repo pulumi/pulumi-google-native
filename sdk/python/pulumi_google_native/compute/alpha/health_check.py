@@ -20,6 +20,7 @@ class HealthCheckArgs:
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input['GRPCHealthCheckArgs']] = None,
+                 grpc_tls_health_check: Optional[pulumi.Input['GRPCTLSHealthCheckArgs']] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input['HTTP2HealthCheckArgs']] = None,
                  http_health_check: Optional[pulumi.Input['HTTPHealthCheckArgs']] = None,
@@ -56,6 +57,8 @@ class HealthCheckArgs:
             pulumi.set(__self__, "description", description)
         if grpc_health_check is not None:
             pulumi.set(__self__, "grpc_health_check", grpc_health_check)
+        if grpc_tls_health_check is not None:
+            pulumi.set(__self__, "grpc_tls_health_check", grpc_tls_health_check)
         if healthy_threshold is not None:
             pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if http2_health_check is not None:
@@ -121,6 +124,15 @@ class HealthCheckArgs:
     @grpc_health_check.setter
     def grpc_health_check(self, value: Optional[pulumi.Input['GRPCHealthCheckArgs']]):
         pulumi.set(self, "grpc_health_check", value)
+
+    @property
+    @pulumi.getter(name="grpcTlsHealthCheck")
+    def grpc_tls_health_check(self) -> Optional[pulumi.Input['GRPCTLSHealthCheckArgs']]:
+        return pulumi.get(self, "grpc_tls_health_check")
+
+    @grpc_tls_health_check.setter
+    def grpc_tls_health_check(self, value: Optional[pulumi.Input['GRPCTLSHealthCheckArgs']]):
+        pulumi.set(self, "grpc_tls_health_check", value)
 
     @property
     @pulumi.getter(name="healthyThreshold")
@@ -302,6 +314,7 @@ class HealthCheck(pulumi.CustomResource):
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCHealthCheckArgs']]] = None,
+                 grpc_tls_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCTLSHealthCheckArgs']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input[pulumi.InputType['HTTP2HealthCheckArgs']]] = None,
                  http_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPHealthCheckArgs']]] = None,
@@ -363,6 +376,7 @@ class HealthCheck(pulumi.CustomResource):
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCHealthCheckArgs']]] = None,
+                 grpc_tls_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCTLSHealthCheckArgs']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input[pulumi.InputType['HTTP2HealthCheckArgs']]] = None,
                  http_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPHealthCheckArgs']]] = None,
@@ -391,6 +405,7 @@ class HealthCheck(pulumi.CustomResource):
             __props__.__dict__["check_interval_sec"] = check_interval_sec
             __props__.__dict__["description"] = description
             __props__.__dict__["grpc_health_check"] = grpc_health_check
+            __props__.__dict__["grpc_tls_health_check"] = grpc_tls_health_check
             __props__.__dict__["healthy_threshold"] = healthy_threshold
             __props__.__dict__["http2_health_check"] = http2_health_check
             __props__.__dict__["http_health_check"] = http_health_check
@@ -439,6 +454,7 @@ class HealthCheck(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["grpc_health_check"] = None
+        __props__.__dict__["grpc_tls_health_check"] = None
         __props__.__dict__["healthy_threshold"] = None
         __props__.__dict__["http2_health_check"] = None
         __props__.__dict__["http_health_check"] = None
@@ -488,6 +504,11 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> pulumi.Output['outputs.GRPCHealthCheckResponse']:
         return pulumi.get(self, "grpc_health_check")
+
+    @property
+    @pulumi.getter(name="grpcTlsHealthCheck")
+    def grpc_tls_health_check(self) -> pulumi.Output['outputs.GRPCTLSHealthCheckResponse']:
+        return pulumi.get(self, "grpc_tls_health_check")
 
     @property
     @pulumi.getter(name="healthyThreshold")

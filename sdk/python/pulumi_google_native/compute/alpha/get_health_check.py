@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetHealthCheckResult:
-    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_check=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, kind=None, log_config=None, name=None, region=None, self_link=None, self_link_with_id=None, source_regions=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, udp_health_check=None, unhealthy_threshold=None):
+    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_check=None, grpc_tls_health_check=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, kind=None, log_config=None, name=None, region=None, self_link=None, self_link_with_id=None, source_regions=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, udp_health_check=None, unhealthy_threshold=None):
         if check_interval_sec and not isinstance(check_interval_sec, int):
             raise TypeError("Expected argument 'check_interval_sec' to be a int")
         pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -32,6 +32,9 @@ class GetHealthCheckResult:
         if grpc_health_check and not isinstance(grpc_health_check, dict):
             raise TypeError("Expected argument 'grpc_health_check' to be a dict")
         pulumi.set(__self__, "grpc_health_check", grpc_health_check)
+        if grpc_tls_health_check and not isinstance(grpc_tls_health_check, dict):
+            raise TypeError("Expected argument 'grpc_tls_health_check' to be a dict")
+        pulumi.set(__self__, "grpc_tls_health_check", grpc_tls_health_check)
         if healthy_threshold and not isinstance(healthy_threshold, int):
             raise TypeError("Expected argument 'healthy_threshold' to be a int")
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
@@ -112,6 +115,11 @@ class GetHealthCheckResult:
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> 'outputs.GRPCHealthCheckResponse':
         return pulumi.get(self, "grpc_health_check")
+
+    @property
+    @pulumi.getter(name="grpcTlsHealthCheck")
+    def grpc_tls_health_check(self) -> 'outputs.GRPCTLSHealthCheckResponse':
+        return pulumi.get(self, "grpc_tls_health_check")
 
     @property
     @pulumi.getter(name="healthyThreshold")
@@ -242,6 +250,7 @@ class AwaitableGetHealthCheckResult(GetHealthCheckResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             grpc_health_check=self.grpc_health_check,
+            grpc_tls_health_check=self.grpc_tls_health_check,
             healthy_threshold=self.healthy_threshold,
             http2_health_check=self.http2_health_check,
             http_health_check=self.http_health_check,
@@ -278,6 +287,7 @@ def get_health_check(health_check: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         grpc_health_check=pulumi.get(__ret__, 'grpc_health_check'),
+        grpc_tls_health_check=pulumi.get(__ret__, 'grpc_tls_health_check'),
         healthy_threshold=pulumi.get(__ret__, 'healthy_threshold'),
         http2_health_check=pulumi.get(__ret__, 'http2_health_check'),
         http_health_check=pulumi.get(__ret__, 'http_health_check'),

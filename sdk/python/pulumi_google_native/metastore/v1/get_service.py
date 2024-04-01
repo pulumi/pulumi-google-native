@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, artifact_gcs_uri=None, create_time=None, database_type=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, network_config=None, port=None, release_channel=None, scaling_config=None, state=None, state_message=None, telemetry_config=None, tier=None, uid=None, update_time=None):
+    def __init__(__self__, artifact_gcs_uri=None, create_time=None, database_type=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, network_config=None, port=None, release_channel=None, scaling_config=None, scheduled_backup=None, state=None, state_message=None, telemetry_config=None, tier=None, uid=None, update_time=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
@@ -68,6 +68,9 @@ class GetServiceResult:
         if scaling_config and not isinstance(scaling_config, dict):
             raise TypeError("Expected argument 'scaling_config' to be a dict")
         pulumi.set(__self__, "scaling_config", scaling_config)
+        if scheduled_backup and not isinstance(scheduled_backup, dict):
+            raise TypeError("Expected argument 'scheduled_backup' to be a dict")
+        pulumi.set(__self__, "scheduled_backup", scheduled_backup)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -216,6 +219,14 @@ class GetServiceResult:
         return pulumi.get(self, "scaling_config")
 
     @property
+    @pulumi.getter(name="scheduledBackup")
+    def scheduled_backup(self) -> 'outputs.ScheduledBackupResponse':
+        """
+        Optional. The configuration of scheduled backup for the metastore service.
+        """
+        return pulumi.get(self, "scheduled_backup")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -286,6 +297,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             port=self.port,
             release_channel=self.release_channel,
             scaling_config=self.scaling_config,
+            scheduled_backup=self.scheduled_backup,
             state=self.state,
             state_message=self.state_message,
             telemetry_config=self.telemetry_config,
@@ -325,6 +337,7 @@ def get_service(location: Optional[str] = None,
         port=pulumi.get(__ret__, 'port'),
         release_channel=pulumi.get(__ret__, 'release_channel'),
         scaling_config=pulumi.get(__ret__, 'scaling_config'),
+        scheduled_backup=pulumi.get(__ret__, 'scheduled_backup'),
         state=pulumi.get(__ret__, 'state'),
         state_message=pulumi.get(__ret__, 'state_message'),
         telemetry_config=pulumi.get(__ret__, 'telemetry_config'),

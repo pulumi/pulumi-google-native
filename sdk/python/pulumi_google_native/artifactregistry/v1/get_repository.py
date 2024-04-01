@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_config=None, format=None, kms_key_name=None, labels=None, maven_config=None, mode=None, name=None, remote_repository_config=None, satisfies_pzs=None, size_bytes=None, update_time=None, virtual_repository_config=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, disallow_unspecified_mode=None, docker_config=None, format=None, kms_key_name=None, labels=None, maven_config=None, mode=None, name=None, remote_repository_config=None, satisfies_pzs=None, size_bytes=None, update_time=None, virtual_repository_config=None):
         if cleanup_policies and not isinstance(cleanup_policies, dict):
             raise TypeError("Expected argument 'cleanup_policies' to be a dict")
         pulumi.set(__self__, "cleanup_policies", cleanup_policies)
@@ -32,6 +32,9 @@ class GetRepositoryResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disallow_unspecified_mode and not isinstance(disallow_unspecified_mode, bool):
+            raise TypeError("Expected argument 'disallow_unspecified_mode' to be a bool")
+        pulumi.set(__self__, "disallow_unspecified_mode", disallow_unspecified_mode)
         if docker_config and not isinstance(docker_config, dict):
             raise TypeError("Expected argument 'docker_config' to be a dict")
         pulumi.set(__self__, "docker_config", docker_config)
@@ -100,6 +103,14 @@ class GetRepositoryResult:
         The user-provided description of the repository.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disallowUnspecifiedMode")
+    def disallow_unspecified_mode(self) -> bool:
+        """
+        Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+        """
+        return pulumi.get(self, "disallow_unspecified_mode")
 
     @property
     @pulumi.getter(name="dockerConfig")
@@ -208,6 +219,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             cleanup_policy_dry_run=self.cleanup_policy_dry_run,
             create_time=self.create_time,
             description=self.description,
+            disallow_unspecified_mode=self.disallow_unspecified_mode,
             docker_config=self.docker_config,
             format=self.format,
             kms_key_name=self.kms_key_name,
@@ -241,6 +253,7 @@ def get_repository(location: Optional[str] = None,
         cleanup_policy_dry_run=pulumi.get(__ret__, 'cleanup_policy_dry_run'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        disallow_unspecified_mode=pulumi.get(__ret__, 'disallow_unspecified_mode'),
         docker_config=pulumi.get(__ret__, 'docker_config'),
         format=pulumi.get(__ret__, 'format'),
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),

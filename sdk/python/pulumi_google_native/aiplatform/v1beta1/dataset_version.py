@@ -15,14 +15,18 @@ __all__ = ['DatasetVersionArgs', 'DatasetVersion']
 class DatasetVersionArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DatasetVersion resource.
+        :param pulumi.Input[str] display_name: The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if location is not None:
@@ -38,6 +42,18 @@ class DatasetVersionArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -76,6 +92,7 @@ class DatasetVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -86,6 +103,7 @@ class DatasetVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] display_name: The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         ...
@@ -114,6 +132,7 @@ class DatasetVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -129,11 +148,13 @@ class DatasetVersion(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
+            __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["big_query_dataset_name"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["metadata"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "location", "project"])
@@ -163,8 +184,10 @@ class DatasetVersion(pulumi.CustomResource):
         __props__.__dict__["big_query_dataset_name"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["dataset_id"] = None
+        __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
@@ -192,6 +215,14 @@ class DatasetVersion(pulumi.CustomResource):
         return pulumi.get(self, "dataset_id")
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -203,6 +234,14 @@ class DatasetVersion(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output[Any]:
+        """
+        Additional information about the DatasetVersion.
+        """
+        return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter

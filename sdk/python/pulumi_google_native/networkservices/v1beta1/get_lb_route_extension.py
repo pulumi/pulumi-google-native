@@ -81,7 +81,7 @@ class GetLbRouteExtensionResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+        Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
         """
         return pulumi.get(self, "labels")
 
@@ -97,7 +97,7 @@ class GetLbRouteExtensionResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+        Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
         """
         return pulumi.get(self, "name")
 

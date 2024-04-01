@@ -213,3 +213,7 @@ class RepositoryMode(str, Enum):
     """
     A remote repository to serve artifacts from a remote source.
     """
+    AOSS_REPOSITORY = "AOSS_REPOSITORY"
+    """
+    An AOSS repository provides artifacts from AOSS upstreams.
+    """

@@ -24,6 +24,12 @@ from .experiment import *
 from .feature_group import *
 from .feature_group_feature import *
 from .feature_online_store import *
+from .feature_online_store_feature_view_iam_binding import *
+from .feature_online_store_feature_view_iam_member import *
+from .feature_online_store_feature_view_iam_policy import *
+from .feature_online_store_iam_binding import *
+from .feature_online_store_iam_member import *
+from .feature_online_store_iam_policy import *
 from .feature_store_feature import *
 from .feature_view import *
 from .featurestore import *
@@ -49,6 +55,8 @@ from .get_experiment import *
 from .get_feature_group import *
 from .get_feature_group_feature import *
 from .get_feature_online_store import *
+from .get_feature_online_store_feature_view_iam_policy import *
+from .get_feature_online_store_iam_policy import *
 from .get_feature_store_feature import *
 from .get_feature_view import *
 from .get_featurestore import *
@@ -59,6 +67,7 @@ from .get_index import *
 from .get_index_endpoint import *
 from .get_metadata_schema import *
 from .get_metadata_store import *
+from .get_model import *
 from .get_model_deployment_monitoring_job import *
 from .get_model_iam_policy import *
 from .get_nas_job import *
@@ -66,6 +75,8 @@ from .get_notebook_runtime_template import *
 from .get_notebook_runtime_template_iam_policy import *
 from .get_persistent_resource import *
 from .get_pipeline_job import *
+from .get_rag_corpora import *
+from .get_reasoning_engine import *
 from .get_run import *
 from .get_schedule import *
 from .get_specialist_pool import *
@@ -79,6 +90,7 @@ from .index import *
 from .index_endpoint import *
 from .metadata_schema import *
 from .metadata_store import *
+from .model import *
 from .model_deployment_monitoring_job import *
 from .model_iam_binding import *
 from .model_iam_member import *
@@ -90,6 +102,8 @@ from .notebook_runtime_template_iam_member import *
 from .notebook_runtime_template_iam_policy import *
 from .persistent_resource import *
 from .pipeline_job import *
+from .rag_corpora import *
+from .reasoning_engine import *
 from .run import *
 from .schedule import *
 from .specialist_pool import *

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, admin_settings=None, consumer_network=None, create_time=None, custom_domain=None, deny_maintenance_period=None, egress_public_ip=None, encryption_config=None, ingress_private_ip=None, ingress_public_ip=None, last_deny_maintenance_period=None, looker_uri=None, looker_version=None, maintenance_schedule=None, maintenance_window=None, name=None, oauth_config=None, platform_edition=None, private_ip_enabled=None, public_ip_enabled=None, reserved_range=None, state=None, update_time=None, user_metadata=None):
+    def __init__(__self__, admin_settings=None, consumer_network=None, create_time=None, custom_domain=None, deny_maintenance_period=None, egress_public_ip=None, encryption_config=None, ingress_private_ip=None, ingress_public_ip=None, last_deny_maintenance_period=None, linked_lsp_project_number=None, looker_uri=None, looker_version=None, maintenance_schedule=None, maintenance_window=None, name=None, oauth_config=None, platform_edition=None, private_ip_enabled=None, public_ip_enabled=None, reserved_range=None, state=None, update_time=None, user_metadata=None):
         if admin_settings and not isinstance(admin_settings, dict):
             raise TypeError("Expected argument 'admin_settings' to be a dict")
         pulumi.set(__self__, "admin_settings", admin_settings)
@@ -50,6 +50,9 @@ class GetInstanceResult:
         if last_deny_maintenance_period and not isinstance(last_deny_maintenance_period, dict):
             raise TypeError("Expected argument 'last_deny_maintenance_period' to be a dict")
         pulumi.set(__self__, "last_deny_maintenance_period", last_deny_maintenance_period)
+        if linked_lsp_project_number and not isinstance(linked_lsp_project_number, str):
+            raise TypeError("Expected argument 'linked_lsp_project_number' to be a str")
+        pulumi.set(__self__, "linked_lsp_project_number", linked_lsp_project_number)
         if looker_uri and not isinstance(looker_uri, str):
             raise TypeError("Expected argument 'looker_uri' to be a str")
         pulumi.set(__self__, "looker_uri", looker_uri)
@@ -166,6 +169,14 @@ class GetInstanceResult:
         Last computed maintenance denial period for this instance.
         """
         return pulumi.get(self, "last_deny_maintenance_period")
+
+    @property
+    @pulumi.getter(name="linkedLspProjectNumber")
+    def linked_lsp_project_number(self) -> str:
+        """
+        Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+        """
+        return pulumi.get(self, "linked_lsp_project_number")
 
     @property
     @pulumi.getter(name="lookerUri")
@@ -288,6 +299,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             ingress_private_ip=self.ingress_private_ip,
             ingress_public_ip=self.ingress_public_ip,
             last_deny_maintenance_period=self.last_deny_maintenance_period,
+            linked_lsp_project_number=self.linked_lsp_project_number,
             looker_uri=self.looker_uri,
             looker_version=self.looker_version,
             maintenance_schedule=self.maintenance_schedule,
@@ -328,6 +340,7 @@ def get_instance(instance_id: Optional[str] = None,
         ingress_private_ip=pulumi.get(__ret__, 'ingress_private_ip'),
         ingress_public_ip=pulumi.get(__ret__, 'ingress_public_ip'),
         last_deny_maintenance_period=pulumi.get(__ret__, 'last_deny_maintenance_period'),
+        linked_lsp_project_number=pulumi.get(__ret__, 'linked_lsp_project_number'),
         looker_uri=pulumi.get(__ret__, 'looker_uri'),
         looker_version=pulumi.get(__ret__, 'looker_version'),
         maintenance_schedule=pulumi.get(__ret__, 'maintenance_schedule'),

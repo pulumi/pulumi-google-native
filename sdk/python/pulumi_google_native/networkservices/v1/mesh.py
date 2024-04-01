@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['MeshArgs', 'Mesh']
 
@@ -16,6 +17,7 @@ class MeshArgs:
     def __init__(__self__, *,
                  mesh_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input['MeshEnvoyHeaders']] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -25,6 +27,7 @@ class MeshArgs:
         The set of arguments for constructing a Mesh resource.
         :param pulumi.Input[str] mesh_id: Required. Short name of the Mesh resource to be created.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input['MeshEnvoyHeaders'] envoy_headers: Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
         :param pulumi.Input[int] interception_port: Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] name: Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
@@ -32,6 +35,8 @@ class MeshArgs:
         pulumi.set(__self__, "mesh_id", mesh_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if envoy_headers is not None:
+            pulumi.set(__self__, "envoy_headers", envoy_headers)
         if interception_port is not None:
             pulumi.set(__self__, "interception_port", interception_port)
         if labels is not None:
@@ -66,6 +71,18 @@ class MeshArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> Optional[pulumi.Input['MeshEnvoyHeaders']]:
+        """
+        Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        """
+        return pulumi.get(self, "envoy_headers")
+
+    @envoy_headers.setter
+    def envoy_headers(self, value: Optional[pulumi.Input['MeshEnvoyHeaders']]):
+        pulumi.set(self, "envoy_headers", value)
 
     @property
     @pulumi.getter(name="interceptionPort")
@@ -128,6 +145,7 @@ class Mesh(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input['MeshEnvoyHeaders']] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -141,6 +159,7 @@ class Mesh(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input['MeshEnvoyHeaders'] envoy_headers: Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
         :param pulumi.Input[int] interception_port: Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] mesh_id: Required. Short name of the Mesh resource to be created.
@@ -171,6 +190,7 @@ class Mesh(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input['MeshEnvoyHeaders']] = None,
                  interception_port: Optional[pulumi.Input[int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -187,6 +207,7 @@ class Mesh(pulumi.CustomResource):
             __props__ = MeshArgs.__new__(MeshArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["envoy_headers"] = envoy_headers
             __props__.__dict__["interception_port"] = interception_port
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -224,6 +245,7 @@ class Mesh(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["envoy_headers"] = None
         __props__.__dict__["interception_port"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
@@ -249,6 +271,14 @@ class Mesh(pulumi.CustomResource):
         Optional. A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> pulumi.Output[str]:
+        """
+        Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        """
+        return pulumi.get(self, "envoy_headers")
 
     @property
     @pulumi.getter(name="interceptionPort")

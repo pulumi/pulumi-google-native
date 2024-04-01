@@ -26,7 +26,7 @@ class EntryGroupArgs:
         :param pulumi.Input[str] entry_group_id: Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.
         :param pulumi.Input[str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-        :param pulumi.Input[str] name: The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+        :param pulumi.Input[str] name: Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         """
         pulumi.set(__self__, "entry_group_id", entry_group_id)
         if description is not None:
@@ -89,7 +89,7 @@ class EntryGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+        Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 
@@ -127,7 +127,7 @@ class EntryGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
         :param pulumi.Input[str] entry_group_id: Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.
-        :param pulumi.Input[str] name: The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+        :param pulumi.Input[str] name: Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         """
         ...
     @overload
@@ -251,7 +251,7 @@ class EntryGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+        Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 

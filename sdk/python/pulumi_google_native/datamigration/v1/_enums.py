@@ -180,6 +180,10 @@ class CloudSqlSettingsDatabaseVersion(str, Enum):
     """
     The database major version is MySQL 8.0 and the minor version is 34.
     """
+    MYSQL8035 = "MYSQL_8_0_35"
+    """
+    The database major version is MySQL 8.0 and the minor version is 35.
+    """
     POSTGRES96 = "POSTGRES_9_6"
     """
     PostgreSQL 9.6.
@@ -234,23 +238,23 @@ class ConnectionProfileProvider(str, Enum):
     """
     DATABASE_PROVIDER_UNSPECIFIED = "DATABASE_PROVIDER_UNSPECIFIED"
     """
-    The database provider is unknown.
+    Use this value for on-premise source database instances.
     """
     CLOUDSQL = "CLOUDSQL"
     """
-    CloudSQL runs the database.
+    Cloud SQL is the source instance provider.
     """
     RDS = "RDS"
     """
-    RDS runs the database.
+    Amazon RDS is the source instance provider.
     """
     AURORA = "AURORA"
     """
-    Amazon Aurora.
+    Amazon Aurora is the source instance provider.
     """
     ALLOYDB = "ALLOYDB"
     """
-    AlloyDB.
+    AlloyDB for PostgreSQL is the source instance provider.
     """
 
 
@@ -308,6 +312,10 @@ class DatabaseEngineInfoEngine(str, Enum):
     """
     The source engine is PostgreSQL.
     """
+    SQLSERVER = "SQLSERVER"
+    """
+    The source engine is SQL Server.
+    """
     ORACLE = "ORACLE"
     """
     The source engine is Oracle.
@@ -330,6 +338,10 @@ class DatabaseTypeEngine(str, Enum):
     """
     The source engine is PostgreSQL.
     """
+    SQLSERVER = "SQLSERVER"
+    """
+    The source engine is SQL Server.
+    """
     ORACLE = "ORACLE"
     """
     The source engine is Oracle.
@@ -342,23 +354,23 @@ class DatabaseTypeProvider(str, Enum):
     """
     DATABASE_PROVIDER_UNSPECIFIED = "DATABASE_PROVIDER_UNSPECIFIED"
     """
-    The database provider is unknown.
+    Use this value for on-premise source database instances.
     """
     CLOUDSQL = "CLOUDSQL"
     """
-    CloudSQL runs the database.
+    Cloud SQL is the source instance provider.
     """
     RDS = "RDS"
     """
-    RDS runs the database.
+    Amazon RDS is the source instance provider.
     """
     AURORA = "AURORA"
     """
-    Amazon Aurora.
+    Amazon Aurora is the source instance provider.
     """
     ALLOYDB = "ALLOYDB"
     """
-    AlloyDB.
+    AlloyDB for PostgreSQL is the source instance provider.
     """
 
 

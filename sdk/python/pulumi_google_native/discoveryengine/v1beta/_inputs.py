@@ -14,9 +14,24 @@ __all__ = [
     'GoogleCloudDiscoveryengineV1betaConversationContextArgs',
     'GoogleCloudDiscoveryengineV1betaConversationMessageArgs',
     'GoogleCloudDiscoveryengineV1betaDocumentContentArgs',
+    'GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs',
+    'GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs',
+    'GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs',
+    'GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs',
+    'GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs',
+    'GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs',
+    'GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs',
+    'GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs',
     'GoogleCloudDiscoveryengineV1betaReplyReferenceArgs',
     'GoogleCloudDiscoveryengineV1betaReplyArgs',
+    'GoogleCloudDiscoveryengineV1betaSchemaArgs',
+    'GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs',
+    'GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs',
+    'GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs',
+    'GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs',
+    'GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs',
     'GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs',
+    'GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs',
     'GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs',
     'GoogleCloudDiscoveryengineV1betaTextInputArgs',
 ]
@@ -111,7 +126,7 @@ class GoogleCloudDiscoveryengineV1betaDocumentContentArgs:
         Unstructured data linked to this document.
         :param pulumi.Input[str] mime_type: The MIME type of the content. Supported types: * `application/pdf` (PDF, only native PDFs are supported for now) * `text/html` (HTML) * `application/vnd.openxmlformats-officedocument.wordprocessingml.document` (DOCX) * `application/vnd.openxmlformats-officedocument.presentationml.presentation` (PPTX) * `text/plain` (TXT) See https://www.iana.org/assignments/media-types/media-types.xhtml.
         :param pulumi.Input[str] raw_bytes: The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json.
-        :param pulumi.Input[str] uri: The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+        :param pulumi.Input[str] uri: The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
         """
         if mime_type is not None:
             pulumi.set(__self__, "mime_type", mime_type)
@@ -148,13 +163,332 @@ class GoogleCloudDiscoveryengineV1betaDocumentContentArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+        The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs:
+    def __init__(__self__):
+        """
+        The digital parsing configurations for documents.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs:
+    def __init__(__self__, *,
+                 enhanced_document_elements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_native_text: Optional[pulumi.Input[bool]] = None):
+        """
+        The OCR parsing configurations for documents.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enhanced_document_elements: Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+        :param pulumi.Input[bool] use_native_text: If true, will use native text instead of OCR text on pages containing native text.
+        """
+        if enhanced_document_elements is not None:
+            pulumi.set(__self__, "enhanced_document_elements", enhanced_document_elements)
+        if use_native_text is not None:
+            pulumi.set(__self__, "use_native_text", use_native_text)
+
+    @property
+    @pulumi.getter(name="enhancedDocumentElements")
+    def enhanced_document_elements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+        """
+        return pulumi.get(self, "enhanced_document_elements")
+
+    @enhanced_document_elements.setter
+    def enhanced_document_elements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enhanced_document_elements", value)
+
+    @property
+    @pulumi.getter(name="useNativeText")
+    def use_native_text(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, will use native text instead of OCR text on pages containing native text.
+        """
+        return pulumi.get(self, "use_native_text")
+
+    @use_native_text.setter
+    def use_native_text(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_native_text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs:
+    def __init__(__self__, *,
+                 digital_parsing_config: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs']] = None,
+                 ocr_parsing_config: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs']] = None):
+        """
+        Related configurations applied to a specific type of document parser.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs'] digital_parsing_config: Configurations applied to digital parser.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs'] ocr_parsing_config: Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        if digital_parsing_config is not None:
+            pulumi.set(__self__, "digital_parsing_config", digital_parsing_config)
+        if ocr_parsing_config is not None:
+            pulumi.set(__self__, "ocr_parsing_config", ocr_parsing_config)
+
+    @property
+    @pulumi.getter(name="digitalParsingConfig")
+    def digital_parsing_config(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs']]:
+        """
+        Configurations applied to digital parser.
+        """
+        return pulumi.get(self, "digital_parsing_config")
+
+    @digital_parsing_config.setter
+    def digital_parsing_config(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs']]):
+        pulumi.set(self, "digital_parsing_config", value)
+
+    @property
+    @pulumi.getter(name="ocrParsingConfig")
+    def ocr_parsing_config(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs']]:
+        """
+        Configurations applied to OCR parser. Currently it only applies to PDFs.
+        """
+        return pulumi.get(self, "ocr_parsing_config")
+
+    @ocr_parsing_config.setter
+    def ocr_parsing_config(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs']]):
+        pulumi.set(self, "ocr_parsing_config", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs:
+    def __init__(__self__, *,
+                 default_parsing_config: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parsing_config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs'] default_parsing_config: Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+        :param pulumi.Input[str] name: The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parsing_config_overrides: Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+        """
+        if default_parsing_config is not None:
+            pulumi.set(__self__, "default_parsing_config", default_parsing_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parsing_config_overrides is not None:
+            pulumi.set(__self__, "parsing_config_overrides", parsing_config_overrides)
+
+    @property
+    @pulumi.getter(name="defaultParsingConfig")
+    def default_parsing_config(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs']]:
+        """
+        Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+        """
+        return pulumi.get(self, "default_parsing_config")
+
+    @default_parsing_config.setter
+    def default_parsing_config(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs']]):
+        pulumi.set(self, "default_parsing_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parsingConfigOverrides")
+    def parsing_config_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+        """
+        return pulumi.get(self, "parsing_config_overrides")
+
+    @parsing_config_overrides.setter
+    def parsing_config_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "parsing_config_overrides", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs:
+    def __init__(__self__, *,
+                 default_language_code: pulumi.Input[str],
+                 time_zone: pulumi.Input[str],
+                 business: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None):
+        """
+        Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        :param pulumi.Input[str] default_language_code: The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+        :param pulumi.Input[str] time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        :param pulumi.Input[str] business: Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        :param pulumi.Input[str] location: Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+        """
+        pulumi.set(__self__, "default_language_code", default_language_code)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if business is not None:
+            pulumi.set(__self__, "business", business)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter(name="defaultLanguageCode")
+    def default_language_code(self) -> pulumi.Input[str]:
+        """
+        The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+        """
+        return pulumi.get(self, "default_language_code")
+
+    @default_language_code.setter
+    def default_language_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_language_code", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[str]:
+        """
+        The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter
+    def business(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+        """
+        return pulumi.get(self, "business")
+
+    @business.setter
+    def business(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "business", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs:
+    def __init__(__self__, *,
+                 agent_creation_config: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs']] = None,
+                 dialogflow_agent_to_link: Optional[pulumi.Input[str]] = None):
+        """
+        Configurations for a Chat Engine.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs'] agent_creation_config: The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        :param pulumi.Input[str] dialogflow_agent_to_link: The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+        """
+        if agent_creation_config is not None:
+            pulumi.set(__self__, "agent_creation_config", agent_creation_config)
+        if dialogflow_agent_to_link is not None:
+            pulumi.set(__self__, "dialogflow_agent_to_link", dialogflow_agent_to_link)
+
+    @property
+    @pulumi.getter(name="agentCreationConfig")
+    def agent_creation_config(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs']]:
+        """
+        The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        """
+        return pulumi.get(self, "agent_creation_config")
+
+    @agent_creation_config.setter
+    def agent_creation_config(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs']]):
+        pulumi.set(self, "agent_creation_config", value)
+
+    @property
+    @pulumi.getter(name="dialogflowAgentToLink")
+    def dialogflow_agent_to_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+        """
+        return pulumi.get(self, "dialogflow_agent_to_link")
+
+    @dialogflow_agent_to_link.setter
+    def dialogflow_agent_to_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dialogflow_agent_to_link", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs:
+    def __init__(__self__, *,
+                 company_name: Optional[pulumi.Input[str]] = None):
+        """
+        Common configurations for an Engine.
+        :param pulumi.Input[str] company_name: Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+        """
+        if company_name is not None:
+            pulumi.set(__self__, "company_name", company_name)
+
+    @property
+    @pulumi.getter(name="companyName")
+    def company_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+        """
+        return pulumi.get(self, "company_name")
+
+    @company_name.setter
+    def company_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "company_name", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs:
+    def __init__(__self__, *,
+                 search_add_ons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem']]]] = None,
+                 search_tier: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier']] = None):
+        """
+        Configurations for a Search Engine.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem']]] search_add_ons: The add-on that this search engine enables.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier'] search_tier: The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        """
+        if search_add_ons is not None:
+            pulumi.set(__self__, "search_add_ons", search_add_ons)
+        if search_tier is not None:
+            pulumi.set(__self__, "search_tier", search_tier)
+
+    @property
+    @pulumi.getter(name="searchAddOns")
+    def search_add_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem']]]]:
+        """
+        The add-on that this search engine enables.
+        """
+        return pulumi.get(self, "search_add_ons")
+
+    @search_add_ons.setter
+    def search_add_ons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem']]]]):
+        pulumi.set(self, "search_add_ons", value)
+
+    @property
+    @pulumi.getter(name="searchTier")
+    def search_tier(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier']]:
+        """
+        The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        """
+        return pulumi.get(self, "search_tier")
+
+    @search_tier.setter
+    def search_tier(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier']]):
+        pulumi.set(self, "search_tier", value)
 
 
 @pulumi.input_type
@@ -292,6 +626,277 @@ class GoogleCloudDiscoveryengineV1betaReplyArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaSchemaArgs:
+    def __init__(__self__, *,
+                 json_schema: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 struct_schema: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Defines the structure and layout of a type of document data.
+        :param pulumi.Input[str] json_schema: The JSON representation of the schema.
+        :param pulumi.Input[str] name: Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_schema: The structured representation of the schema.
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if struct_schema is not None:
+            pulumi.set(__self__, "struct_schema", struct_schema)
+
+    @property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The JSON representation of the schema.
+        """
+        return pulumi.get(self, "json_schema")
+
+    @json_schema.setter
+    def json_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json_schema", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="structSchema")
+    def struct_schema(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The structured representation of the schema.
+        """
+        return pulumi.get(self, "struct_schema")
+
+    @struct_schema.setter
+    def struct_schema(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "struct_schema", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs:
+    def __init__(__self__, *,
+                 citations: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs']]]] = None):
+        """
+        Citation metadata.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs']]] citations: Citations for segments.
+        """
+        if citations is not None:
+            pulumi.set(__self__, "citations", citations)
+
+    @property
+    @pulumi.getter
+    def citations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs']]]]:
+        """
+        Citations for segments.
+        """
+        return pulumi.get(self, "citations")
+
+    @citations.setter
+    def citations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs']]]]):
+        pulumi.set(self, "citations", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs:
+    def __init__(__self__, *,
+                 reference_index: Optional[pulumi.Input[str]] = None):
+        """
+        Citation source.
+        :param pulumi.Input[str] reference_index: Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+        """
+        if reference_index is not None:
+            pulumi.set(__self__, "reference_index", reference_index)
+
+    @property
+    @pulumi.getter(name="referenceIndex")
+    def reference_index(self) -> Optional[pulumi.Input[str]]:
+        """
+        Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+        """
+        return pulumi.get(self, "reference_index")
+
+    @reference_index.setter
+    def reference_index(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reference_index", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs:
+    def __init__(__self__, *,
+                 end_index: Optional[pulumi.Input[str]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs']]]] = None,
+                 start_index: Optional[pulumi.Input[str]] = None):
+        """
+        Citation info for a segment.
+        :param pulumi.Input[str] end_index: End of the attributed segment, exclusive.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs']]] sources: Citation sources for the attributed segment.
+        :param pulumi.Input[str] start_index: Index indicates the start of the segment, measured in bytes/unicode.
+        """
+        if end_index is not None:
+            pulumi.set(__self__, "end_index", end_index)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+        if start_index is not None:
+            pulumi.set(__self__, "start_index", start_index)
+
+    @property
+    @pulumi.getter(name="endIndex")
+    def end_index(self) -> Optional[pulumi.Input[str]]:
+        """
+        End of the attributed segment, exclusive.
+        """
+        return pulumi.get(self, "end_index")
+
+    @end_index.setter
+    def end_index(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_index", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs']]]]:
+        """
+        Citation sources for the attributed segment.
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs']]]]):
+        pulumi.set(self, "sources", value)
+
+    @property
+    @pulumi.getter(name="startIndex")
+    def start_index(self) -> Optional[pulumi.Input[str]]:
+        """
+        Index indicates the start of the segment, measured in bytes/unicode.
+        """
+        return pulumi.get(self, "start_index")
+
+    @start_index.setter
+    def start_index(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_index", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs:
+    def __init__(__self__, *,
+                 content: Optional[pulumi.Input[str]] = None,
+                 page_identifier: Optional[pulumi.Input[str]] = None):
+        """
+        Chunk content.
+        :param pulumi.Input[str] content: Chunk textual content.
+        :param pulumi.Input[str] page_identifier: Page identifier.
+        """
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if page_identifier is not None:
+            pulumi.set(__self__, "page_identifier", page_identifier)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        Chunk textual content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="pageIdentifier")
+    def page_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Page identifier.
+        """
+        return pulumi.get(self, "page_identifier")
+
+    @page_identifier.setter
+    def page_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "page_identifier", value)
+
+
+@pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs:
+    def __init__(__self__, *,
+                 document: pulumi.Input[str],
+                 chunk_contents: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs']]]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        Document reference.
+        :param pulumi.Input[str] document: Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs']]] chunk_contents: List of cited chunk contents derived from document content.
+        :param pulumi.Input[str] title: Title of the document.
+        :param pulumi.Input[str] uri: Cloud Storage or HTTP uri for the document.
+        """
+        pulumi.set(__self__, "document", document)
+        if chunk_contents is not None:
+            pulumi.set(__self__, "chunk_contents", chunk_contents)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def document(self) -> pulumi.Input[str]:
+        """
+        Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        """
+        return pulumi.get(self, "document")
+
+    @document.setter
+    def document(self, value: pulumi.Input[str]):
+        pulumi.set(self, "document", value)
+
+    @property
+    @pulumi.getter(name="chunkContents")
+    def chunk_contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs']]]]:
+        """
+        List of cited chunk contents derived from document content.
+        """
+        return pulumi.get(self, "chunk_contents")
+
+    @chunk_contents.setter
+    def chunk_contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs']]]]):
+        pulumi.set(self, "chunk_contents", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title of the document.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Storage or HTTP uri for the document.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs:
     def __init__(__self__, *,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -332,16 +937,74 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs:
+    def __init__(__self__, *,
+                 citation_metadata: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs']] = None,
+                 references: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs']]]] = None,
+                 summary: Optional[pulumi.Input[str]] = None):
+        """
+        Summary with metadata information.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs'] citation_metadata: Citation metadata for given summary.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs']]] references: Document References.
+        :param pulumi.Input[str] summary: Summary text with no citation information.
+        """
+        if citation_metadata is not None:
+            pulumi.set(__self__, "citation_metadata", citation_metadata)
+        if references is not None:
+            pulumi.set(__self__, "references", references)
+        if summary is not None:
+            pulumi.set(__self__, "summary", summary)
+
+    @property
+    @pulumi.getter(name="citationMetadata")
+    def citation_metadata(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs']]:
+        """
+        Citation metadata for given summary.
+        """
+        return pulumi.get(self, "citation_metadata")
+
+    @citation_metadata.setter
+    def citation_metadata(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs']]):
+        pulumi.set(self, "citation_metadata", value)
+
+    @property
+    @pulumi.getter
+    def references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs']]]]:
+        """
+        Document References.
+        """
+        return pulumi.get(self, "references")
+
+    @references.setter
+    def references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs']]]]):
+        pulumi.set(self, "references", value)
+
+    @property
+    @pulumi.getter
+    def summary(self) -> Optional[pulumi.Input[str]]:
+        """
+        Summary text with no citation information.
+        """
+        return pulumi.get(self, "summary")
+
+    @summary.setter
+    def summary(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "summary", value)
+
+
+@pulumi.input_type
 class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs:
     def __init__(__self__, *,
                  safety_attributes: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs']] = None,
                  summary_skipped_reasons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem']]]] = None,
-                 summary_text: Optional[pulumi.Input[str]] = None):
+                 summary_text: Optional[pulumi.Input[str]] = None,
+                 summary_with_metadata: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs']] = None):
         """
         Summary of the top N search result specified by the summary spec.
         :param pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs'] safety_attributes: A collection of Safety Attribute categories and their associated confidence scores.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem']]] summary_skipped_reasons: Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set.
         :param pulumi.Input[str] summary_text: The summary content.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs'] summary_with_metadata: Summary with metadata information.
         """
         if safety_attributes is not None:
             pulumi.set(__self__, "safety_attributes", safety_attributes)
@@ -349,6 +1012,8 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs:
             pulumi.set(__self__, "summary_skipped_reasons", summary_skipped_reasons)
         if summary_text is not None:
             pulumi.set(__self__, "summary_text", summary_text)
+        if summary_with_metadata is not None:
+            pulumi.set(__self__, "summary_with_metadata", summary_with_metadata)
 
     @property
     @pulumi.getter(name="safetyAttributes")
@@ -385,6 +1050,18 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs:
     @summary_text.setter
     def summary_text(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "summary_text", value)
+
+    @property
+    @pulumi.getter(name="summaryWithMetadata")
+    def summary_with_metadata(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs']]:
+        """
+        Summary with metadata information.
+        """
+        return pulumi.get(self, "summary_with_metadata")
+
+    @summary_with_metadata.setter
+    def summary_with_metadata(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs']]):
+        pulumi.set(self, "summary_with_metadata", value)
 
 
 @pulumi.input_type

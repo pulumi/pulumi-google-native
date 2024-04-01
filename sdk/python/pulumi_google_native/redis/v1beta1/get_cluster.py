@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, authorization_mode=None, create_time=None, discovery_endpoints=None, name=None, psc_configs=None, psc_connections=None, replica_count=None, shard_count=None, size_gb=None, state=None, state_info=None, transit_encryption_mode=None, uid=None):
+    def __init__(__self__, authorization_mode=None, create_time=None, discovery_endpoints=None, name=None, node_type=None, persistence_config=None, precise_size_gb=None, psc_configs=None, psc_connections=None, redis_configs=None, replica_count=None, shard_count=None, size_gb=None, state=None, state_info=None, transit_encryption_mode=None, uid=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -32,12 +32,24 @@ class GetClusterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if node_type and not isinstance(node_type, str):
+            raise TypeError("Expected argument 'node_type' to be a str")
+        pulumi.set(__self__, "node_type", node_type)
+        if persistence_config and not isinstance(persistence_config, dict):
+            raise TypeError("Expected argument 'persistence_config' to be a dict")
+        pulumi.set(__self__, "persistence_config", persistence_config)
+        if precise_size_gb and not isinstance(precise_size_gb, float):
+            raise TypeError("Expected argument 'precise_size_gb' to be a float")
+        pulumi.set(__self__, "precise_size_gb", precise_size_gb)
         if psc_configs and not isinstance(psc_configs, list):
             raise TypeError("Expected argument 'psc_configs' to be a list")
         pulumi.set(__self__, "psc_configs", psc_configs)
         if psc_connections and not isinstance(psc_connections, list):
             raise TypeError("Expected argument 'psc_connections' to be a list")
         pulumi.set(__self__, "psc_connections", psc_connections)
+        if redis_configs and not isinstance(redis_configs, dict):
+            raise TypeError("Expected argument 'redis_configs' to be a dict")
+        pulumi.set(__self__, "redis_configs", redis_configs)
         if replica_count and not isinstance(replica_count, int):
             raise TypeError("Expected argument 'replica_count' to be a int")
         pulumi.set(__self__, "replica_count", replica_count)
@@ -93,6 +105,30 @@ class GetClusterResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> str:
+        """
+        Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> 'outputs.ClusterPersistenceConfigResponse':
+        """
+        Optional. Persistence config (RDB, AOF) for the cluster.
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @property
+    @pulumi.getter(name="preciseSizeGb")
+    def precise_size_gb(self) -> float:
+        """
+        Precise value of redis memory size in GB for the entire cluster.
+        """
+        return pulumi.get(self, "precise_size_gb")
+
+    @property
     @pulumi.getter(name="pscConfigs")
     def psc_configs(self) -> Sequence['outputs.PscConfigResponse']:
         """
@@ -107,6 +143,14 @@ class GetClusterResult:
         PSC connections for discovery of the cluster topology and accessing the cluster.
         """
         return pulumi.get(self, "psc_connections")
+
+    @property
+    @pulumi.getter(name="redisConfigs")
+    def redis_configs(self) -> Mapping[str, str]:
+        """
+        Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+        """
+        return pulumi.get(self, "redis_configs")
 
     @property
     @pulumi.getter(name="replicaCount")
@@ -128,7 +172,7 @@ class GetClusterResult:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> int:
         """
-        Redis memory size in GB for the entire cluster.
+        Redis memory size in GB for the entire cluster rounded up to the next integer.
         """
         return pulumi.get(self, "size_gb")
 
@@ -175,8 +219,12 @@ class AwaitableGetClusterResult(GetClusterResult):
             create_time=self.create_time,
             discovery_endpoints=self.discovery_endpoints,
             name=self.name,
+            node_type=self.node_type,
+            persistence_config=self.persistence_config,
+            precise_size_gb=self.precise_size_gb,
             psc_configs=self.psc_configs,
             psc_connections=self.psc_connections,
+            redis_configs=self.redis_configs,
             replica_count=self.replica_count,
             shard_count=self.shard_count,
             size_gb=self.size_gb,
@@ -205,8 +253,12 @@ def get_cluster(cluster_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         discovery_endpoints=pulumi.get(__ret__, 'discovery_endpoints'),
         name=pulumi.get(__ret__, 'name'),
+        node_type=pulumi.get(__ret__, 'node_type'),
+        persistence_config=pulumi.get(__ret__, 'persistence_config'),
+        precise_size_gb=pulumi.get(__ret__, 'precise_size_gb'),
         psc_configs=pulumi.get(__ret__, 'psc_configs'),
         psc_connections=pulumi.get(__ret__, 'psc_connections'),
+        redis_configs=pulumi.get(__ret__, 'redis_configs'),
         replica_count=pulumi.get(__ret__, 'replica_count'),
         shard_count=pulumi.get(__ret__, 'shard_count'),
         size_gb=pulumi.get(__ret__, 'size_gb'),

@@ -30,7 +30,7 @@ class GetDatasetResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+        Identifier. Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         """
         return pulumi.get(self, "name")
 

@@ -21,6 +21,7 @@ class RepositoryArgs:
                  cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disallow_unspecified_mode: Optional[pulumi.Input[bool]] = None,
                  docker_config: Optional[pulumi.Input['DockerRepositoryConfigArgs']] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,7 @@ class RepositoryArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         :param pulumi.Input[bool] cleanup_policy_dry_run: Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input[bool] disallow_unspecified_mode: Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
         :param pulumi.Input['DockerRepositoryConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
         :param pulumi.Input['RepositoryFormat'] format: Optional. The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
@@ -55,6 +57,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disallow_unspecified_mode is not None:
+            pulumi.set(__self__, "disallow_unspecified_mode", disallow_unspecified_mode)
         if docker_config is not None:
             pulumi.set(__self__, "docker_config", docker_config)
         if format is not None:
@@ -125,6 +129,18 @@ class RepositoryArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disallowUnspecifiedMode")
+    def disallow_unspecified_mode(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+        """
+        return pulumi.get(self, "disallow_unspecified_mode")
+
+    @disallow_unspecified_mode.setter
+    def disallow_unspecified_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disallow_unspecified_mode", value)
 
     @property
     @pulumi.getter(name="dockerConfig")
@@ -261,6 +277,7 @@ class Repository(pulumi.CustomResource):
                  cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disallow_unspecified_mode: Optional[pulumi.Input[bool]] = None,
                  docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -282,6 +299,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         :param pulumi.Input[bool] cleanup_policy_dry_run: Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input[bool] disallow_unspecified_mode: Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
         :param pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
         :param pulumi.Input['RepositoryFormat'] format: Optional. The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
@@ -320,6 +338,7 @@ class Repository(pulumi.CustomResource):
                  cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disallow_unspecified_mode: Optional[pulumi.Input[bool]] = None,
                  docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -344,6 +363,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["cleanup_policies"] = cleanup_policies
             __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
             __props__.__dict__["description"] = description
+            __props__.__dict__["disallow_unspecified_mode"] = disallow_unspecified_mode
             __props__.__dict__["docker_config"] = docker_config
             __props__.__dict__["format"] = format
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -390,6 +410,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["cleanup_policy_dry_run"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["disallow_unspecified_mode"] = None
         __props__.__dict__["docker_config"] = None
         __props__.__dict__["format"] = None
         __props__.__dict__["kms_key_name"] = None
@@ -438,6 +459,14 @@ class Repository(pulumi.CustomResource):
         The user-provided description of the repository.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disallowUnspecifiedMode")
+    def disallow_unspecified_mode(self) -> pulumi.Output[bool]:
+        """
+        Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+        """
+        return pulumi.get(self, "disallow_unspecified_mode")
 
     @property
     @pulumi.getter(name="dockerConfig")

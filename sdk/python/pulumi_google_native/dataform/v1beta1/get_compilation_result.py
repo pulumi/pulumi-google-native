@@ -89,7 +89,7 @@ class GetCompilationResultResult:
     @pulumi.getter(name="releaseConfig")
     def release_config(self) -> str:
         """
-        Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         """
         return pulumi.get(self, "release_config")
 

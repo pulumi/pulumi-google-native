@@ -16,6 +16,7 @@ __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse',
@@ -181,6 +182,18 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse(dict):
+    """
+    An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+    """
+    def __init__(__self__):
+        """
+        An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+        """
+        pass
+
+
+@pulumi.output_type
 class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse(dict):
     """
     A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
@@ -200,7 +213,9 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "setHeader":
+        if key == "includeRecaptchaScript":
+            suggest = "include_recaptcha_script"
+        elif key == "setHeader":
             suggest = "set_header"
 
         if suggest:
@@ -217,6 +232,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionResponse(dict):
     def __init__(__self__, *,
                  allow: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse',
                  block: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse',
+                 include_recaptcha_script: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse',
                  redirect: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse',
                  set_header: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse',
                  substitute: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse'):
@@ -224,12 +240,14 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionResponse(dict):
         An individual action. Each action represents what to do if a policy matches.
         :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse' allow: The user request did not match any policy and should be allowed access to the requested resource.
         :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse' block: This action will deny access to a given page. The user will get an HTTP error code.
+        :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse' include_recaptcha_script: This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
         :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse' redirect: This action will redirect the request to a ReCaptcha interstitial to attach a token.
         :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse' set_header: This action will set a custom header but allow the request to continue to the customer backend.
         :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse' substitute: This action will transparently serve a different page to an offending user.
         """
         pulumi.set(__self__, "allow", allow)
         pulumi.set(__self__, "block", block)
+        pulumi.set(__self__, "include_recaptcha_script", include_recaptcha_script)
         pulumi.set(__self__, "redirect", redirect)
         pulumi.set(__self__, "set_header", set_header)
         pulumi.set(__self__, "substitute", substitute)
@@ -249,6 +267,14 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionResponse(dict):
         This action will deny access to a given page. The user will get an HTTP error code.
         """
         return pulumi.get(self, "block")
+
+    @property
+    @pulumi.getter(name="includeRecaptchaScript")
+    def include_recaptcha_script(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse':
+        """
+        This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+        """
+        return pulumi.get(self, "include_recaptcha_script")
 
     @property
     @pulumi.getter

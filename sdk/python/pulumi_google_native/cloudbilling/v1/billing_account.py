@@ -21,7 +21,7 @@ class BillingAccountArgs:
         The set of arguments for constructing a BillingAccount resource.
         :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
-        :param pulumi.Input[str] parent: Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        :param pulumi.Input[str] parent: Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -58,7 +58,7 @@ class BillingAccountArgs:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
         """
         return pulumi.get(self, "parent")
 
@@ -86,7 +86,7 @@ class BillingAccount(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
-        :param pulumi.Input[str] parent: Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        :param pulumi.Input[str] parent: Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
         """
         ...
     @overload
@@ -189,7 +189,7 @@ class BillingAccount(pulumi.CustomResource):
     @pulumi.getter
     def open(self) -> pulumi.Output[bool]:
         """
-        True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+        True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it are unable to use paid services.
         """
         return pulumi.get(self, "open")
 
@@ -197,7 +197,7 @@ class BillingAccount(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
         """
         return pulumi.get(self, "parent")
 

@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AggregationThresholdPolicyArgs',
     'ArgumentArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
@@ -29,7 +30,6 @@ __all__ = [
     'DatasetAccessEntryArgs',
     'DatasetAccessItemArgs',
     'DatasetReferenceArgs',
-    'DatasetTagsItemArgs',
     'DestinationTablePropertiesArgs',
     'EncryptionConfigurationArgs',
     'ExprArgs',
@@ -44,19 +44,24 @@ __all__ = [
     'JobConfigurationArgs',
     'JobReferenceArgs',
     'JsonOptionsArgs',
+    'LinkedDatasetSourceArgs',
     'MaterializedViewDefinitionArgs',
     'ModelDefinitionModelOptionsArgs',
     'ModelDefinitionArgs',
+    'ModelExtractOptionsArgs',
     'ModelReferenceArgs',
     'ParquetOptionsArgs',
+    'PrivacyPolicyArgs',
     'QueryParameterTypeStructTypesItemArgs',
     'QueryParameterTypeArgs',
     'QueryParameterValueArgs',
     'QueryParameterArgs',
     'RangePartitioningRangeArgs',
     'RangePartitioningArgs',
+    'RangeValueArgs',
     'RemoteFunctionOptionsArgs',
     'RoutineReferenceArgs',
+    'ScriptOptionsArgs',
     'SparkOptionsArgs',
     'StandardSqlDataTypeArgs',
     'StandardSqlFieldArgs',
@@ -72,11 +77,52 @@ __all__ = [
     'TableFieldSchemaRangeElementTypeArgs',
     'TableFieldSchemaArgs',
     'TableReferenceArgs',
+    'TableReplicationInfoArgs',
     'TableSchemaArgs',
     'TimePartitioningArgs',
     'UserDefinedFunctionResourceArgs',
     'ViewDefinitionArgs',
 ]
+
+@pulumi.input_type
+class AggregationThresholdPolicyArgs:
+    def __init__(__self__, *,
+                 privacy_unit_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None):
+        """
+        Represents privacy policy associated with "aggregation threshold" method.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privacy_unit_columns: Optional. The privacy unit column(s) associated with this policy. For now, only one column per data source object (table, view) is allowed as a privacy unit column. Representing as a repeated field in metadata for extensibility to multiple columns in future. Duplicates and Repeated struct fields are not allowed. For nested fields, use dot notation ("outer.inner")
+        :param pulumi.Input[str] threshold: Optional. The threshold for the "aggregation threshold" policy.
+        """
+        if privacy_unit_columns is not None:
+            pulumi.set(__self__, "privacy_unit_columns", privacy_unit_columns)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="privacyUnitColumns")
+    def privacy_unit_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The privacy unit column(s) associated with this policy. For now, only one column per data source object (table, view) is allowed as a privacy unit column. Representing as a repeated field in metadata for extensibility to multiple columns in future. Duplicates and Repeated struct fields are not allowed. For nested fields, use dot notation ("outer.inner")
+        """
+        return pulumi.get(self, "privacy_unit_columns")
+
+    @privacy_unit_columns.setter
+    def privacy_unit_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "privacy_unit_columns", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The threshold for the "aggregation threshold" policy.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold", value)
+
 
 @pulumi.input_type
 class ArgumentArgs:
@@ -251,7 +297,8 @@ class AvroOptionsArgs:
     def __init__(__self__, *,
                  use_avro_logical_types: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] use_avro_logical_types: [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        Options for external data sources.
+        :param pulumi.Input[bool] use_avro_logical_types: Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         """
         if use_avro_logical_types is not None:
             pulumi.set(__self__, "use_avro_logical_types", use_avro_logical_types)
@@ -260,7 +307,7 @@ class AvroOptionsArgs:
     @pulumi.getter(name="useAvroLogicalTypes")
     def use_avro_logical_types(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         """
         return pulumi.get(self, "use_avro_logical_types")
 
@@ -272,71 +319,68 @@ class AvroOptionsArgs:
 @pulumi.input_type
 class BigLakeConfigurationArgs:
     def __init__(__self__, *,
-                 connection_id: Optional[pulumi.Input[str]] = None,
-                 file_format: Optional[pulumi.Input[str]] = None,
-                 storage_uri: Optional[pulumi.Input[str]] = None,
-                 table_format: Optional[pulumi.Input[str]] = None):
+                 connection_id: pulumi.Input[str],
+                 file_format: pulumi.Input['BigLakeConfigurationFileFormat'],
+                 storage_uri: pulumi.Input[str],
+                 table_format: pulumi.Input['BigLakeConfigurationTableFormat']):
         """
-        :param pulumi.Input[str] connection_id: [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
-        :param pulumi.Input[str] file_format: [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
-        :param pulumi.Input[str] storage_uri: [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
-        :param pulumi.Input[str] table_format: [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        Configuration for BigLake managed tables.
+        :param pulumi.Input[str] connection_id: The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form "<project\\_id>.<location\\_id>.<connection\\_id>" or "projects/<project\\_id>/locations/<location\\_id>/connections/<connection\\_id>".
+        :param pulumi.Input['BigLakeConfigurationFileFormat'] file_format: The file format the table data is stored in.
+        :param pulumi.Input[str] storage_uri: The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        :param pulumi.Input['BigLakeConfigurationTableFormat'] table_format: The table format the metadata only snapshots are stored in.
         """
-        if connection_id is not None:
-            pulumi.set(__self__, "connection_id", connection_id)
-        if file_format is not None:
-            pulumi.set(__self__, "file_format", file_format)
-        if storage_uri is not None:
-            pulumi.set(__self__, "storage_uri", storage_uri)
-        if table_format is not None:
-            pulumi.set(__self__, "table_format", table_format)
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "storage_uri", storage_uri)
+        pulumi.set(__self__, "table_format", table_format)
 
     @property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[str]]:
+    def connection_id(self) -> pulumi.Input[str]:
         """
-        [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+        The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form "<project\\_id>.<location\\_id>.<connection\\_id>" or "projects/<project\\_id>/locations/<location\\_id>/connections/<connection\\_id>".
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[str]]):
+    def connection_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "connection_id", value)
 
     @property
     @pulumi.getter(name="fileFormat")
-    def file_format(self) -> Optional[pulumi.Input[str]]:
+    def file_format(self) -> pulumi.Input['BigLakeConfigurationFileFormat']:
         """
-        [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        The file format the table data is stored in.
         """
         return pulumi.get(self, "file_format")
 
     @file_format.setter
-    def file_format(self, value: Optional[pulumi.Input[str]]):
+    def file_format(self, value: pulumi.Input['BigLakeConfigurationFileFormat']):
         pulumi.set(self, "file_format", value)
 
     @property
     @pulumi.getter(name="storageUri")
-    def storage_uri(self) -> Optional[pulumi.Input[str]]:
+    def storage_uri(self) -> pulumi.Input[str]:
         """
-        [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+        The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
         """
         return pulumi.get(self, "storage_uri")
 
     @storage_uri.setter
-    def storage_uri(self, value: Optional[pulumi.Input[str]]):
+    def storage_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "storage_uri", value)
 
     @property
     @pulumi.getter(name="tableFormat")
-    def table_format(self) -> Optional[pulumi.Input[str]]:
+    def table_format(self) -> pulumi.Input['BigLakeConfigurationTableFormat']:
         """
-        [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        The table format the metadata only snapshots are stored in.
         """
         return pulumi.get(self, "table_format")
 
     @table_format.setter
-    def table_format(self, value: Optional[pulumi.Input[str]]):
+    def table_format(self, value: pulumi.Input['BigLakeConfigurationTableFormat']):
         pulumi.set(self, "table_format", value)
 
 
@@ -349,11 +393,12 @@ class BigtableColumnFamilyArgs:
                  only_read_latest: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]] columns: [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
-        :param pulumi.Input[str] encoding: [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        Information related to a Bigtable column family.
+        :param pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]] columns: Optional. Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
+        :param pulumi.Input[str] encoding: Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
         :param pulumi.Input[str] family_id: Identifier of the column family.
-        :param pulumi.Input[bool] only_read_latest: [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
-        :param pulumi.Input[str] type: [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        :param pulumi.Input[bool] only_read_latest: Optional. If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        :param pulumi.Input[str] type: Optional. The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): * BYTES * STRING * INTEGER * FLOAT * BOOLEAN * JSON Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
         """
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
@@ -370,7 +415,7 @@ class BigtableColumnFamilyArgs:
     @pulumi.getter
     def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]]]:
         """
-        [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
+        Optional. Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
         """
         return pulumi.get(self, "columns")
 
@@ -382,7 +427,7 @@ class BigtableColumnFamilyArgs:
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
         """
         return pulumi.get(self, "encoding")
 
@@ -406,7 +451,7 @@ class BigtableColumnFamilyArgs:
     @pulumi.getter(name="onlyReadLatest")
     def only_read_latest(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        Optional. If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
         """
         return pulumi.get(self, "only_read_latest")
 
@@ -418,7 +463,7 @@ class BigtableColumnFamilyArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        Optional. The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): * BYTES * STRING * INTEGER * FLOAT * BOOLEAN * JSON Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
         """
         return pulumi.get(self, "type")
 
@@ -437,11 +482,13 @@ class BigtableColumnArgs:
                  qualifier_string: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] encoding: [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
-        :param pulumi.Input[str] field_name: [Optional] If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
-        :param pulumi.Input[bool] only_read_latest: [Optional] If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
-        :param pulumi.Input[str] qualifier_encoded: [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as field_name.
-        :param pulumi.Input[str] type: [Optional] The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+        Information related to a Bigtable column.
+        :param pulumi.Input[str] encoding: Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+        :param pulumi.Input[str] field_name: Optional. If the qualifier is not a valid BigQuery field identifier i.e. does not match a-zA-Z*, a valid identifier must be provided as the column field name and is used as field name in queries.
+        :param pulumi.Input[bool] only_read_latest: Optional. If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+        :param pulumi.Input[str] qualifier_encoded: [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match a-zA-Z*, a valid identifier must be provided as field_name.
+        :param pulumi.Input[str] qualifier_string: Qualifier string.
+        :param pulumi.Input[str] type: Optional. The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): * BYTES * STRING * INTEGER * FLOAT * BOOLEAN * JSON Default type is BYTES. 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
         """
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
@@ -460,7 +507,7 @@ class BigtableColumnArgs:
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
+        Optional. The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
         """
         return pulumi.get(self, "encoding")
 
@@ -472,7 +519,7 @@ class BigtableColumnArgs:
     @pulumi.getter(name="fieldName")
     def field_name(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.
+        Optional. If the qualifier is not a valid BigQuery field identifier i.e. does not match a-zA-Z*, a valid identifier must be provided as the column field name and is used as field name in queries.
         """
         return pulumi.get(self, "field_name")
 
@@ -484,7 +531,7 @@ class BigtableColumnArgs:
     @pulumi.getter(name="onlyReadLatest")
     def only_read_latest(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
+        Optional. If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.
         """
         return pulumi.get(self, "only_read_latest")
 
@@ -496,7 +543,7 @@ class BigtableColumnArgs:
     @pulumi.getter(name="qualifierEncoded")
     def qualifier_encoded(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as field_name.
+        [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match a-zA-Z*, a valid identifier must be provided as field_name.
         """
         return pulumi.get(self, "qualifier_encoded")
 
@@ -507,6 +554,9 @@ class BigtableColumnArgs:
     @property
     @pulumi.getter(name="qualifierString")
     def qualifier_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        Qualifier string.
+        """
         return pulumi.get(self, "qualifier_string")
 
     @qualifier_string.setter
@@ -517,7 +567,7 @@ class BigtableColumnArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
+        Optional. The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): * BYTES * STRING * INTEGER * FLOAT * BOOLEAN * JSON Default type is BYTES. 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
         """
         return pulumi.get(self, "type")
 
@@ -531,16 +581,21 @@ class BigtableOptionsArgs:
     def __init__(__self__, *,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnFamilyArgs']]]] = None,
                  ignore_unspecified_column_families: Optional[pulumi.Input[bool]] = None,
+                 output_column_families_as_json: Optional[pulumi.Input[bool]] = None,
                  read_rowkey_as_string: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BigtableColumnFamilyArgs']]] column_families: [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
-        :param pulumi.Input[bool] ignore_unspecified_column_families: [Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
-        :param pulumi.Input[bool] read_rowkey_as_string: [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+        Options specific to Google Cloud Bigtable data sources.
+        :param pulumi.Input[Sequence[pulumi.Input['BigtableColumnFamilyArgs']]] column_families: Optional. List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
+        :param pulumi.Input[bool] ignore_unspecified_column_families: Optional. If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+        :param pulumi.Input[bool] output_column_families_as_json: Optional. If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+        :param pulumi.Input[bool] read_rowkey_as_string: Optional. If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
         """
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
         if ignore_unspecified_column_families is not None:
             pulumi.set(__self__, "ignore_unspecified_column_families", ignore_unspecified_column_families)
+        if output_column_families_as_json is not None:
+            pulumi.set(__self__, "output_column_families_as_json", output_column_families_as_json)
         if read_rowkey_as_string is not None:
             pulumi.set(__self__, "read_rowkey_as_string", read_rowkey_as_string)
 
@@ -548,7 +603,7 @@ class BigtableOptionsArgs:
     @pulumi.getter(name="columnFamilies")
     def column_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnFamilyArgs']]]]:
         """
-        [Optional] List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
+        Optional. List of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.
         """
         return pulumi.get(self, "column_families")
 
@@ -560,7 +615,7 @@ class BigtableOptionsArgs:
     @pulumi.getter(name="ignoreUnspecifiedColumnFamilies")
     def ignore_unspecified_column_families(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+        Optional. If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
         """
         return pulumi.get(self, "ignore_unspecified_column_families")
 
@@ -569,10 +624,22 @@ class BigtableOptionsArgs:
         pulumi.set(self, "ignore_unspecified_column_families", value)
 
     @property
+    @pulumi.getter(name="outputColumnFamiliesAsJson")
+    def output_column_families_as_json(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
+        """
+        return pulumi.get(self, "output_column_families_as_json")
+
+    @output_column_families_as_json.setter
+    def output_column_families_as_json(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "output_column_families_as_json", value)
+
+    @property
     @pulumi.getter(name="readRowkeyAsString")
     def read_rowkey_as_string(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
+        Optional. If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
         """
         return pulumi.get(self, "read_rowkey_as_string")
 
@@ -590,8 +657,8 @@ class BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -616,7 +683,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -628,7 +695,7 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -646,20 +713,35 @@ class BqmlIterationResultArgs:
                  learn_rate: Optional[pulumi.Input[float]] = None,
                  training_loss: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[str] duration_ms: [Output-only, Beta] Time taken to run the training iteration in milliseconds.
-        :param pulumi.Input[float] eval_loss: [Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as no_split or auto_split with input data size less than 500 rows.
-        :param pulumi.Input[int] index: [Output-only, Beta] Index of the ML training iteration, starting from zero for each training run.
-        :param pulumi.Input[float] learn_rate: [Output-only, Beta] Learning rate used for this iteration, it varies for different training iterations if learn_rate_strategy option is not constant.
-        :param pulumi.Input[float] training_loss: [Output-only, Beta] Training loss computed on the training data at the end of the iteration. The training loss function is defined by model type.
+        :param pulumi.Input[str] duration_ms: Deprecated.
+        :param pulumi.Input[float] eval_loss: Deprecated.
+        :param pulumi.Input[int] index: Deprecated.
+        :param pulumi.Input[float] learn_rate: Deprecated.
+        :param pulumi.Input[float] training_loss: Deprecated.
         """
+        if duration_ms is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""duration_ms is deprecated: Deprecated.""")
         if duration_ms is not None:
             pulumi.set(__self__, "duration_ms", duration_ms)
         if eval_loss is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""eval_loss is deprecated: Deprecated.""")
+        if eval_loss is not None:
             pulumi.set(__self__, "eval_loss", eval_loss)
+        if index is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""index is deprecated: Deprecated.""")
         if index is not None:
             pulumi.set(__self__, "index", index)
         if learn_rate is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""learn_rate is deprecated: Deprecated.""")
+        if learn_rate is not None:
             pulumi.set(__self__, "learn_rate", learn_rate)
+        if training_loss is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""training_loss is deprecated: Deprecated.""")
         if training_loss is not None:
             pulumi.set(__self__, "training_loss", training_loss)
 
@@ -667,8 +749,11 @@ class BqmlIterationResultArgs:
     @pulumi.getter(name="durationMs")
     def duration_ms(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output-only, Beta] Time taken to run the training iteration in milliseconds.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""duration_ms is deprecated: Deprecated.""")
+
         return pulumi.get(self, "duration_ms")
 
     @duration_ms.setter
@@ -679,8 +764,11 @@ class BqmlIterationResultArgs:
     @pulumi.getter(name="evalLoss")
     def eval_loss(self) -> Optional[pulumi.Input[float]]:
         """
-        [Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as no_split or auto_split with input data size less than 500 rows.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""eval_loss is deprecated: Deprecated.""")
+
         return pulumi.get(self, "eval_loss")
 
     @eval_loss.setter
@@ -691,8 +779,11 @@ class BqmlIterationResultArgs:
     @pulumi.getter
     def index(self) -> Optional[pulumi.Input[int]]:
         """
-        [Output-only, Beta] Index of the ML training iteration, starting from zero for each training run.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""index is deprecated: Deprecated.""")
+
         return pulumi.get(self, "index")
 
     @index.setter
@@ -703,8 +794,11 @@ class BqmlIterationResultArgs:
     @pulumi.getter(name="learnRate")
     def learn_rate(self) -> Optional[pulumi.Input[float]]:
         """
-        [Output-only, Beta] Learning rate used for this iteration, it varies for different training iterations if learn_rate_strategy option is not constant.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""learn_rate is deprecated: Deprecated.""")
+
         return pulumi.get(self, "learn_rate")
 
     @learn_rate.setter
@@ -715,8 +809,11 @@ class BqmlIterationResultArgs:
     @pulumi.getter(name="trainingLoss")
     def training_loss(self) -> Optional[pulumi.Input[float]]:
         """
-        [Output-only, Beta] Training loss computed on the training data at the end of the iteration. The training loss function is defined by model type.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""training_loss is deprecated: Deprecated.""")
+
         return pulumi.get(self, "training_loss")
 
     @training_loss.setter
@@ -737,7 +834,7 @@ class BqmlTrainingRunTrainingOptionsArgs:
                  min_rel_progress: Optional[pulumi.Input[float]] = None,
                  warm_start: Optional[pulumi.Input[bool]] = None):
         """
-        [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        Deprecated.
         """
         if early_stop is not None:
             pulumi.set(__self__, "early_stop", early_stop)
@@ -848,17 +945,29 @@ class BqmlTrainingRunArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  training_options: Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]] iteration_results: [Output-only, Beta] List of each iteration results.
-        :param pulumi.Input[str] start_time: [Output-only, Beta] Training run start time in milliseconds since the epoch.
-        :param pulumi.Input[str] state: [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-        :param pulumi.Input['BqmlTrainingRunTrainingOptionsArgs'] training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        :param pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]] iteration_results: Deprecated.
+        :param pulumi.Input[str] start_time: Deprecated.
+        :param pulumi.Input[str] state: Deprecated.
+        :param pulumi.Input['BqmlTrainingRunTrainingOptionsArgs'] training_options: Deprecated.
         """
+        if iteration_results is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""iteration_results is deprecated: Deprecated.""")
         if iteration_results is not None:
             pulumi.set(__self__, "iteration_results", iteration_results)
         if start_time is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""start_time is deprecated: Deprecated.""")
+        if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
         if state is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""state is deprecated: Deprecated.""")
+        if state is not None:
             pulumi.set(__self__, "state", state)
+        if training_options is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""training_options is deprecated: Deprecated.""")
         if training_options is not None:
             pulumi.set(__self__, "training_options", training_options)
 
@@ -866,8 +975,11 @@ class BqmlTrainingRunArgs:
     @pulumi.getter(name="iterationResults")
     def iteration_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]]:
         """
-        [Output-only, Beta] List of each iteration results.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""iteration_results is deprecated: Deprecated.""")
+
         return pulumi.get(self, "iteration_results")
 
     @iteration_results.setter
@@ -878,8 +990,11 @@ class BqmlTrainingRunArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output-only, Beta] Training run start time in milliseconds since the epoch.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""start_time is deprecated: Deprecated.""")
+
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -890,8 +1005,11 @@ class BqmlTrainingRunArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""state is deprecated: Deprecated.""")
+
         return pulumi.get(self, "state")
 
     @state.setter
@@ -902,8 +1020,11 @@ class BqmlTrainingRunArgs:
     @pulumi.getter(name="trainingOptions")
     def training_options(self) -> Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']]:
         """
-        [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""training_options is deprecated: Deprecated.""")
+
         return pulumi.get(self, "training_options")
 
     @training_options.setter
@@ -916,7 +1037,8 @@ class ClusteringArgs:
     def __init__(__self__, *,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
+        Configures table clustering.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The ordering of the clustering fields should be prioritized from most to least important for filtering purposes. Additional information on limitations can be found here: https://cloud.google.com/bigquery/docs/creating-clustered-tables#limitations
         """
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
@@ -925,7 +1047,7 @@ class ClusteringArgs:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
+        One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The ordering of the clustering fields should be prioritized from most to least important for filtering purposes. Additional information on limitations can be found here: https://cloud.google.com/bigquery/docs/creating-clustered-tables#limitations
         """
         return pulumi.get(self, "fields")
 
@@ -940,8 +1062,9 @@ class ConnectionPropertyArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key: [Required] Name of the connection property to set.
-        :param pulumi.Input[str] value: [Required] Value of the connection property.
+        A connection-level property to customize query behavior. Under JDBC, these correspond directly to connection properties passed to the DriverManager. Under ODBC, these correspond to properties in the connection string. Currently supported connection properties: * **dataset_project_id**: represents the default project for datasets that are used in the query. Setting the system variable `@@dataset_project_id` achieves the same behavior. For more information about system variables, see: https://cloud.google.com/bigquery/docs/reference/system-variables * **time_zone**: represents the default timezone used to run the query. * **session_id**: associates the query with a given session. * **query_label**: associates the query with a given job label. If set, all subsequent queries in a script or session will have this label. For the format in which a you can specify a query label, see labels in the JobConfiguration resource type: https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration Additional properties are allowed, but ignored. Specifying multiple connection properties with the same key returns an error.
+        :param pulumi.Input[str] key: The key of the property to set.
+        :param pulumi.Input[str] value: The value of the property to set.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -952,7 +1075,7 @@ class ConnectionPropertyArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] Name of the connection property to set.
+        The key of the property to set.
         """
         return pulumi.get(self, "key")
 
@@ -964,7 +1087,7 @@ class ConnectionPropertyArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] Value of the connection property.
+        The value of the property to set.
         """
         return pulumi.get(self, "value")
 
@@ -985,14 +1108,15 @@ class CsvOptionsArgs:
                  quote: Optional[pulumi.Input[str]] = None,
                  skip_leading_rows: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_jagged_rows: [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
-        :param pulumi.Input[bool] allow_quoted_newlines: [Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
-        :param pulumi.Input[str] encoding: [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
-        :param pulumi.Input[str] field_delimiter: [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator. The default value is a comma (',').
-        :param pulumi.Input[str] null_marker: [Optional] An custom string that will represent a NULL value in CSV import data.
-        :param pulumi.Input[bool] preserve_ascii_control_characters: [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
-        :param pulumi.Input[str] quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-        :param pulumi.Input[str] skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+        Information related to a CSV data source.
+        :param pulumi.Input[bool] allow_jagged_rows: Optional. Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
+        :param pulumi.Input[bool] allow_quoted_newlines: Optional. Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
+        :param pulumi.Input[str] encoding: Optional. The character encoding of the data. The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
+        :param pulumi.Input[str] field_delimiter: Optional. The separator character for fields in a CSV file. The separator is interpreted as a single byte. For files encoded in ISO-8859-1, any single character can be used as a separator. For files encoded in UTF-8, characters represented in decimal range 1-127 (U+0001-U+007F) can be used without any modification. UTF-8 characters encoded with multiple bytes (i.e. U+0080 and above) will have only the first byte used for separating fields. The remaining bytes will be treated as a part of the field. BigQuery also supports the escape sequence "\\t" (U+0009) to specify a tab separator. The default value is comma (",", U+002C).
+        :param pulumi.Input[str] null_marker: [Optional] A custom string that will represent a NULL value in CSV import data.
+        :param pulumi.Input[bool] preserve_ascii_control_characters: Optional. Indicates if the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') are preserved.
+        :param pulumi.Input[str] quote: Optional. The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ("). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character ' " ', use ' "" '.
+        :param pulumi.Input[str] skip_leading_rows: Optional. The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
         if allow_jagged_rows is not None:
             pulumi.set(__self__, "allow_jagged_rows", allow_jagged_rows)
@@ -1015,7 +1139,7 @@ class CsvOptionsArgs:
     @pulumi.getter(name="allowJaggedRows")
     def allow_jagged_rows(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
+        Optional. Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
         """
         return pulumi.get(self, "allow_jagged_rows")
 
@@ -1027,7 +1151,7 @@ class CsvOptionsArgs:
     @pulumi.getter(name="allowQuotedNewlines")
     def allow_quoted_newlines(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
+        Optional. Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
         """
         return pulumi.get(self, "allow_quoted_newlines")
 
@@ -1039,7 +1163,7 @@ class CsvOptionsArgs:
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
+        Optional. The character encoding of the data. The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
         """
         return pulumi.get(self, "encoding")
 
@@ -1051,7 +1175,7 @@ class CsvOptionsArgs:
     @pulumi.getter(name="fieldDelimiter")
     def field_delimiter(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator. The default value is a comma (',').
+        Optional. The separator character for fields in a CSV file. The separator is interpreted as a single byte. For files encoded in ISO-8859-1, any single character can be used as a separator. For files encoded in UTF-8, characters represented in decimal range 1-127 (U+0001-U+007F) can be used without any modification. UTF-8 characters encoded with multiple bytes (i.e. U+0080 and above) will have only the first byte used for separating fields. The remaining bytes will be treated as a part of the field. BigQuery also supports the escape sequence "\\t" (U+0009) to specify a tab separator. The default value is comma (",", U+002C).
         """
         return pulumi.get(self, "field_delimiter")
 
@@ -1063,7 +1187,7 @@ class CsvOptionsArgs:
     @pulumi.getter(name="nullMarker")
     def null_marker(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] An custom string that will represent a NULL value in CSV import data.
+        [Optional] A custom string that will represent a NULL value in CSV import data.
         """
         return pulumi.get(self, "null_marker")
 
@@ -1075,7 +1199,7 @@ class CsvOptionsArgs:
     @pulumi.getter(name="preserveAsciiControlCharacters")
     def preserve_ascii_control_characters(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        Optional. Indicates if the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') are preserved.
         """
         return pulumi.get(self, "preserve_ascii_control_characters")
 
@@ -1087,7 +1211,7 @@ class CsvOptionsArgs:
     @pulumi.getter
     def quote(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+        Optional. The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ("). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character ' " ', use ' "" '.
         """
         return pulumi.get(self, "quote")
 
@@ -1099,7 +1223,7 @@ class CsvOptionsArgs:
     @pulumi.getter(name="skipLeadingRows")
     def skip_leading_rows(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+        Optional. The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
         return pulumi.get(self, "skip_leading_rows")
 
@@ -1114,7 +1238,9 @@ class DatasetAccessEntryArgs:
                  dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
                  target_types: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItem']]]] = None):
         """
-        :param pulumi.Input['DatasetReferenceArgs'] dataset: [Required] The dataset this entry applies to.
+        Grants all resources of particular types in a particular dataset read access to the current dataset. Similar to how individually authorized views work, updates to any resource granted through its dataset (including creation of new resources) requires read permission to referenced resources, plus write permission to the authorizing dataset.
+        :param pulumi.Input['DatasetReferenceArgs'] dataset: The dataset this entry applies to
+        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItem']]] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future.
         """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
@@ -1125,7 +1251,7 @@ class DatasetAccessEntryArgs:
     @pulumi.getter
     def dataset(self) -> Optional[pulumi.Input['DatasetReferenceArgs']]:
         """
-        [Required] The dataset this entry applies to.
+        The dataset this entry applies to
         """
         return pulumi.get(self, "dataset")
 
@@ -1136,6 +1262,9 @@ class DatasetAccessEntryArgs:
     @property
     @pulumi.getter(name="targetTypes")
     def target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItem']]]]:
+        """
+        Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future.
+        """
         return pulumi.get(self, "target_types")
 
     @target_types.setter
@@ -1156,15 +1285,16 @@ class DatasetAccessItemArgs:
                  user_by_email: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input['TableReferenceArgs']] = None):
         """
+        An object that defines dataset access for an entity.
         :param pulumi.Input['DatasetAccessEntryArgs'] dataset: [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
         :param pulumi.Input[str] domain: [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
         :param pulumi.Input[str] group_by_email: [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
         :param pulumi.Input[str] iam_member: [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
-        :param pulumi.Input[str] role: [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+        :param pulumi.Input[str] role: An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER <=> roles/bigquery.dataOwner WRITER <=> roles/bigquery.dataEditor READER <=> roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
         :param pulumi.Input['RoutineReferenceArgs'] routine: [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
         :param pulumi.Input[str] special_group: [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
         :param pulumi.Input[str] user_by_email: [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
-        :param pulumi.Input['TableReferenceArgs'] view: [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+        :param pulumi.Input['TableReferenceArgs'] view: [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to views/tables/routines in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
         """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
@@ -1237,7 +1367,7 @@ class DatasetAccessItemArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+        An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER <=> roles/bigquery.dataOwner WRITER <=> roles/bigquery.dataEditor READER <=> roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
         """
         return pulumi.get(self, "role")
 
@@ -1285,7 +1415,7 @@ class DatasetAccessItemArgs:
     @pulumi.getter
     def view(self) -> Optional[pulumi.Input['TableReferenceArgs']]:
         """
-        [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+        [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to views/tables/routines in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
         """
         return pulumi.get(self, "view")
 
@@ -1297,79 +1427,39 @@ class DatasetAccessItemArgs:
 @pulumi.input_type
 class DatasetReferenceArgs:
     def __init__(__self__, *,
-                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] dataset_id: [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        :param pulumi.Input[str] project: [Optional] The ID of the project containing this dataset.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[str] project: Optional. The ID of the project containing this dataset.
         """
-        if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[str]]:
+    def dataset_id(self) -> pulumi.Input[str]:
         """
-        [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[str]]):
+    def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
 
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The ID of the project containing this dataset.
+        Optional. The ID of the project containing this dataset.
         """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
-
-
-@pulumi.input_type
-class DatasetTagsItemArgs:
-    def __init__(__self__, *,
-                 tag_key: Optional[pulumi.Input[str]] = None,
-                 tag_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] tag_key: [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
-        :param pulumi.Input[str] tag_value: [Required] Friendly short name of the tag value, e.g. "production".
-        """
-        if tag_key is not None:
-            pulumi.set(__self__, "tag_key", tag_key)
-        if tag_value is not None:
-            pulumi.set(__self__, "tag_value", tag_value)
-
-    @property
-    @pulumi.getter(name="tagKey")
-    def tag_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
-        """
-        return pulumi.get(self, "tag_key")
-
-    @tag_key.setter
-    def tag_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tag_key", value)
-
-    @property
-    @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] Friendly short name of the tag value, e.g. "production".
-        """
-        return pulumi.get(self, "tag_value")
-
-    @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tag_value", value)
 
 
 @pulumi.input_type
@@ -1380,10 +1470,11 @@ class DestinationTablePropertiesArgs:
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] description: [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
-        :param pulumi.Input[str] expiration_time: [Internal] This field is for Google internal use only.
-        :param pulumi.Input[str] friendly_name: [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
+        Properties for the destination table.
+        :param pulumi.Input[str] description: Optional. The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
+        :param pulumi.Input[str] expiration_time: Internal use only.
+        :param pulumi.Input[str] friendly_name: Optional. Friendly name for the destination table. If the table already exists, it should be same as the existing friendly name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -1398,7 +1489,7 @@ class DestinationTablePropertiesArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
+        Optional. The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
         """
         return pulumi.get(self, "description")
 
@@ -1410,7 +1501,7 @@ class DestinationTablePropertiesArgs:
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> Optional[pulumi.Input[str]]:
         """
-        [Internal] This field is for Google internal use only.
+        Internal use only.
         """
         return pulumi.get(self, "expiration_time")
 
@@ -1422,7 +1513,7 @@ class DestinationTablePropertiesArgs:
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail.
+        Optional. Friendly name for the destination table. If the table already exists, it should be same as the existing friendly name.
         """
         return pulumi.get(self, "friendly_name")
 
@@ -1434,7 +1525,7 @@ class DestinationTablePropertiesArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        [Optional] The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
+        Optional. The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail.
         """
         return pulumi.get(self, "labels")
 
@@ -1547,15 +1638,16 @@ class ExternalDataConfigurationArgs:
                  compression: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  csv_options: Optional[pulumi.Input['CsvOptionsArgs']] = None,
-                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 file_set_spec_type: Optional[pulumi.Input[str]] = None,
+                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalDataConfigurationDecimalTargetTypesItem']]]] = None,
+                 file_set_spec_type: Optional[pulumi.Input['ExternalDataConfigurationFileSetSpecType']] = None,
                  google_sheets_options: Optional[pulumi.Input['GoogleSheetsOptionsArgs']] = None,
                  hive_partitioning_options: Optional[pulumi.Input['HivePartitioningOptionsArgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
+                 json_extension: Optional[pulumi.Input['ExternalDataConfigurationJsonExtension']] = None,
                  json_options: Optional[pulumi.Input['JsonOptionsArgs']] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
-                 metadata_cache_mode: Optional[pulumi.Input[str]] = None,
-                 object_metadata: Optional[pulumi.Input[str]] = None,
+                 metadata_cache_mode: Optional[pulumi.Input['ExternalDataConfigurationMetadataCacheMode']] = None,
+                 object_metadata: Optional[pulumi.Input['ExternalDataConfigurationObjectMetadata']] = None,
                  parquet_options: Optional[pulumi.Input['ParquetOptionsArgs']] = None,
                  reference_file_schema_uri: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
@@ -1563,24 +1655,25 @@ class ExternalDataConfigurationArgs:
                  source_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] autodetect: Try to detect schema and format options automatically. Any option specified explicitly will be honored.
-        :param pulumi.Input['AvroOptionsArgs'] avro_options: Additional properties to set if sourceFormat is set to Avro.
-        :param pulumi.Input['BigtableOptionsArgs'] bigtable_options: [Optional] Additional options if sourceFormat is set to BIGTABLE.
-        :param pulumi.Input[str] compression: [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
-        :param pulumi.Input[str] connection_id: [Optional, Trusted Tester] Connection for external data source.
-        :param pulumi.Input['CsvOptionsArgs'] csv_options: Additional properties to set if sourceFormat is set to CSV.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
-        :param pulumi.Input[str] file_set_spec_type: [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
-        :param pulumi.Input['GoogleSheetsOptionsArgs'] google_sheets_options: [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
-        :param pulumi.Input['HivePartitioningOptionsArgs'] hive_partitioning_options: [Optional] Options to configure hive partitioning support.
-        :param pulumi.Input[bool] ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
-        :param pulumi.Input['JsonOptionsArgs'] json_options: Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
-        :param pulumi.Input[int] max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
-        :param pulumi.Input[str] metadata_cache_mode: [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
-        :param pulumi.Input[str] object_metadata: ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
-        :param pulumi.Input['ParquetOptionsArgs'] parquet_options: Additional properties to set if sourceFormat is set to Parquet.
-        :param pulumi.Input[str] reference_file_schema_uri: [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
-        :param pulumi.Input['TableSchemaArgs'] schema: [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
-        :param pulumi.Input[str] source_format: [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
+        :param pulumi.Input['AvroOptionsArgs'] avro_options: Optional. Additional properties to set if sourceFormat is set to AVRO.
+        :param pulumi.Input['BigtableOptionsArgs'] bigtable_options: Optional. Additional options if sourceFormat is set to BIGTABLE.
+        :param pulumi.Input[str] compression: Optional. The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats. An empty string is an invalid value.
+        :param pulumi.Input[str] connection_id: Optional. The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection_id can have the form "<project\\_id>.<location\\_id>.<connection\\_id>" or "projects/<project\\_id>/locations/<location\\_id>/connections/<connection\\_id>".
+        :param pulumi.Input['CsvOptionsArgs'] csv_options: Optional. Additional properties to set if sourceFormat is set to CSV.
+        :param pulumi.Input[Sequence[pulumi.Input['ExternalDataConfigurationDecimalTargetTypesItem']]] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        :param pulumi.Input['ExternalDataConfigurationFileSetSpecType'] file_set_spec_type: Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        :param pulumi.Input['GoogleSheetsOptionsArgs'] google_sheets_options: Optional. Additional options if sourceFormat is set to GOOGLE_SHEETS.
+        :param pulumi.Input['HivePartitioningOptionsArgs'] hive_partitioning_options: Optional. When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
+        :param pulumi.Input[bool] ignore_unknown_values: Optional. Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored. ORC: This setting is ignored. Parquet: This setting is ignored.
+        :param pulumi.Input['ExternalDataConfigurationJsonExtension'] json_extension: Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+        :param pulumi.Input['JsonOptionsArgs'] json_options: Optional. Additional properties to set if sourceFormat is set to JSON.
+        :param pulumi.Input[int] max_bad_records: Optional. The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats.
+        :param pulumi.Input['ExternalDataConfigurationMetadataCacheMode'] metadata_cache_mode: Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        :param pulumi.Input['ExternalDataConfigurationObjectMetadata'] object_metadata: Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+        :param pulumi.Input['ParquetOptionsArgs'] parquet_options: Optional. Additional properties to set if sourceFormat is set to PARQUET.
+        :param pulumi.Input[str] reference_file_schema_uri: Optional. When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
+        :param pulumi.Input['TableSchemaArgs'] schema: Optional. The schema for the data. Schema is required for CSV and JSON formats if autodetect is not on. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+        :param pulumi.Input[str] source_format: [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". For Apache Iceberg tables, specify "ICEBERG". For ORC files, specify "ORC". For Parquet files, specify "PARQUET". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
         """
         if autodetect is not None:
@@ -1605,6 +1698,8 @@ class ExternalDataConfigurationArgs:
             pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         if ignore_unknown_values is not None:
             pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
+        if json_extension is not None:
+            pulumi.set(__self__, "json_extension", json_extension)
         if json_options is not None:
             pulumi.set(__self__, "json_options", json_options)
         if max_bad_records is not None:
@@ -1640,7 +1735,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="avroOptions")
     def avro_options(self) -> Optional[pulumi.Input['AvroOptionsArgs']]:
         """
-        Additional properties to set if sourceFormat is set to Avro.
+        Optional. Additional properties to set if sourceFormat is set to AVRO.
         """
         return pulumi.get(self, "avro_options")
 
@@ -1652,7 +1747,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="bigtableOptions")
     def bigtable_options(self) -> Optional[pulumi.Input['BigtableOptionsArgs']]:
         """
-        [Optional] Additional options if sourceFormat is set to BIGTABLE.
+        Optional. Additional options if sourceFormat is set to BIGTABLE.
         """
         return pulumi.get(self, "bigtable_options")
 
@@ -1664,7 +1759,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter
     def compression(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        Optional. The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats. An empty string is an invalid value.
         """
         return pulumi.get(self, "compression")
 
@@ -1676,7 +1771,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional, Trusted Tester] Connection for external data source.
+        Optional. The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection_id can have the form "<project\\_id>.<location\\_id>.<connection\\_id>" or "projects/<project\\_id>/locations/<location\\_id>/connections/<connection\\_id>".
         """
         return pulumi.get(self, "connection_id")
 
@@ -1688,7 +1783,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="csvOptions")
     def csv_options(self) -> Optional[pulumi.Input['CsvOptionsArgs']]:
         """
-        Additional properties to set if sourceFormat is set to CSV.
+        Optional. Additional properties to set if sourceFormat is set to CSV.
         """
         return pulumi.get(self, "csv_options")
 
@@ -1698,33 +1793,33 @@ class ExternalDataConfigurationArgs:
 
     @property
     @pulumi.getter(name="decimalTargetTypes")
-    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExternalDataConfigurationDecimalTargetTypesItem']]]]:
         """
-        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         """
         return pulumi.get(self, "decimal_target_types")
 
     @decimal_target_types.setter
-    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalDataConfigurationDecimalTargetTypesItem']]]]):
         pulumi.set(self, "decimal_target_types", value)
 
     @property
     @pulumi.getter(name="fileSetSpecType")
-    def file_set_spec_type(self) -> Optional[pulumi.Input[str]]:
+    def file_set_spec_type(self) -> Optional[pulumi.Input['ExternalDataConfigurationFileSetSpecType']]:
         """
-        [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
         """
         return pulumi.get(self, "file_set_spec_type")
 
     @file_set_spec_type.setter
-    def file_set_spec_type(self, value: Optional[pulumi.Input[str]]):
+    def file_set_spec_type(self, value: Optional[pulumi.Input['ExternalDataConfigurationFileSetSpecType']]):
         pulumi.set(self, "file_set_spec_type", value)
 
     @property
     @pulumi.getter(name="googleSheetsOptions")
     def google_sheets_options(self) -> Optional[pulumi.Input['GoogleSheetsOptionsArgs']]:
         """
-        [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
+        Optional. Additional options if sourceFormat is set to GOOGLE_SHEETS.
         """
         return pulumi.get(self, "google_sheets_options")
 
@@ -1736,7 +1831,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="hivePartitioningOptions")
     def hive_partitioning_options(self) -> Optional[pulumi.Input['HivePartitioningOptionsArgs']]:
         """
-        [Optional] Options to configure hive partitioning support.
+        Optional. When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
         """
         return pulumi.get(self, "hive_partitioning_options")
 
@@ -1748,7 +1843,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="ignoreUnknownValues")
     def ignore_unknown_values(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
+        Optional. Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored. ORC: This setting is ignored. Parquet: This setting is ignored.
         """
         return pulumi.get(self, "ignore_unknown_values")
 
@@ -1757,10 +1852,22 @@ class ExternalDataConfigurationArgs:
         pulumi.set(self, "ignore_unknown_values", value)
 
     @property
+    @pulumi.getter(name="jsonExtension")
+    def json_extension(self) -> Optional[pulumi.Input['ExternalDataConfigurationJsonExtension']]:
+        """
+        Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+        """
+        return pulumi.get(self, "json_extension")
+
+    @json_extension.setter
+    def json_extension(self, value: Optional[pulumi.Input['ExternalDataConfigurationJsonExtension']]):
+        pulumi.set(self, "json_extension", value)
+
+    @property
     @pulumi.getter(name="jsonOptions")
     def json_options(self) -> Optional[pulumi.Input['JsonOptionsArgs']]:
         """
-        Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+        Optional. Additional properties to set if sourceFormat is set to JSON.
         """
         return pulumi.get(self, "json_options")
 
@@ -1772,7 +1879,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="maxBadRecords")
     def max_bad_records(self) -> Optional[pulumi.Input[int]]:
         """
-        [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        Optional. The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats.
         """
         return pulumi.get(self, "max_bad_records")
 
@@ -1782,33 +1889,33 @@ class ExternalDataConfigurationArgs:
 
     @property
     @pulumi.getter(name="metadataCacheMode")
-    def metadata_cache_mode(self) -> Optional[pulumi.Input[str]]:
+    def metadata_cache_mode(self) -> Optional[pulumi.Input['ExternalDataConfigurationMetadataCacheMode']]:
         """
-        [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
         """
         return pulumi.get(self, "metadata_cache_mode")
 
     @metadata_cache_mode.setter
-    def metadata_cache_mode(self, value: Optional[pulumi.Input[str]]):
+    def metadata_cache_mode(self, value: Optional[pulumi.Input['ExternalDataConfigurationMetadataCacheMode']]):
         pulumi.set(self, "metadata_cache_mode", value)
 
     @property
     @pulumi.getter(name="objectMetadata")
-    def object_metadata(self) -> Optional[pulumi.Input[str]]:
+    def object_metadata(self) -> Optional[pulumi.Input['ExternalDataConfigurationObjectMetadata']]:
         """
-        ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+        Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
         """
         return pulumi.get(self, "object_metadata")
 
     @object_metadata.setter
-    def object_metadata(self, value: Optional[pulumi.Input[str]]):
+    def object_metadata(self, value: Optional[pulumi.Input['ExternalDataConfigurationObjectMetadata']]):
         pulumi.set(self, "object_metadata", value)
 
     @property
     @pulumi.getter(name="parquetOptions")
     def parquet_options(self) -> Optional[pulumi.Input['ParquetOptionsArgs']]:
         """
-        Additional properties to set if sourceFormat is set to Parquet.
+        Optional. Additional properties to set if sourceFormat is set to PARQUET.
         """
         return pulumi.get(self, "parquet_options")
 
@@ -1820,7 +1927,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="referenceFileSchemaUri")
     def reference_file_schema_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+        Optional. When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         """
         return pulumi.get(self, "reference_file_schema_uri")
 
@@ -1832,7 +1939,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input['TableSchemaArgs']]:
         """
-        [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
+        Optional. The schema for the data. Schema is required for CSV and JSON formats if autodetect is not on. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
         """
         return pulumi.get(self, "schema")
 
@@ -1844,7 +1951,7 @@ class ExternalDataConfigurationArgs:
     @pulumi.getter(name="sourceFormat")
     def source_format(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
+        [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". For Apache Iceberg tables, specify "ICEBERG". For ORC files, specify "ORC". For Parquet files, specify "PARQUET". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
         """
         return pulumi.get(self, "source_format")
 
@@ -1868,39 +1975,38 @@ class ExternalDataConfigurationArgs:
 @pulumi.input_type
 class ExternalDatasetReferenceArgs:
     def __init__(__self__, *,
-                 connection: Optional[pulumi.Input[str]] = None,
-                 external_source: Optional[pulumi.Input[str]] = None):
+                 connection: pulumi.Input[str],
+                 external_source: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] connection: [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
-        :param pulumi.Input[str] external_source: [Required] External source that backs this dataset.
+        Configures the access a dataset defined in an external metadata storage.
+        :param pulumi.Input[str] connection: The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        :param pulumi.Input[str] external_source: External source that backs this dataset.
         """
-        if connection is not None:
-            pulumi.set(__self__, "connection", connection)
-        if external_source is not None:
-            pulumi.set(__self__, "external_source", external_source)
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "external_source", external_source)
 
     @property
     @pulumi.getter
-    def connection(self) -> Optional[pulumi.Input[str]]:
+    def connection(self) -> pulumi.Input[str]:
         """
-        [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
         """
         return pulumi.get(self, "connection")
 
     @connection.setter
-    def connection(self, value: Optional[pulumi.Input[str]]):
+    def connection(self, value: pulumi.Input[str]):
         pulumi.set(self, "connection", value)
 
     @property
     @pulumi.getter(name="externalSource")
-    def external_source(self) -> Optional[pulumi.Input[str]]:
+    def external_source(self) -> pulumi.Input[str]:
         """
-        [Required] External source that backs this dataset.
+        External source that backs this dataset.
         """
         return pulumi.get(self, "external_source")
 
     @external_source.setter
-    def external_source(self, value: Optional[pulumi.Input[str]]):
+    def external_source(self, value: pulumi.Input[str]):
         pulumi.set(self, "external_source", value)
 
 
@@ -1910,8 +2016,9 @@ class GoogleSheetsOptionsArgs:
                  range: Optional[pulumi.Input[str]] = None,
                  skip_leading_rows: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] range: [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
-        :param pulumi.Input[str] skip_leading_rows: [Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+        Options specific to Google Sheets data sources.
+        :param pulumi.Input[str] range: Optional. Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
+        :param pulumi.Input[str] skip_leading_rows: Optional. The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
         if range is not None:
             pulumi.set(__self__, "range", range)
@@ -1922,7 +2029,7 @@ class GoogleSheetsOptionsArgs:
     @pulumi.getter
     def range(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
+        Optional. Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
         """
         return pulumi.get(self, "range")
 
@@ -1934,7 +2041,7 @@ class GoogleSheetsOptionsArgs:
     @pulumi.getter(name="skipLeadingRows")
     def skip_leading_rows(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+        Optional. The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
         return pulumi.get(self, "skip_leading_rows")
 
@@ -1950,9 +2057,10 @@ class HivePartitioningOptionsArgs:
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  source_uri_prefix: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] mode: [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
-        :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter explicitly set to true will fail.
-        :param pulumi.Input[str] source_uri_prefix: [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
+        Options for configuring hive partitioning detect.
+        :param pulumi.Input[str] mode: Optional. When set, what mode of hive partitioning to use when reading data. The following modes are supported: * AUTO: automatically infer partition key name(s) and type(s). * STRINGS: automatically infer partition key name(s). All types are strings. * CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+        :param pulumi.Input[bool] require_partition_filter: Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with require_partition_filter explicitly set to true will fail.
+        :param pulumi.Input[str] source_uri_prefix: Optional. When hive partition detection is requested, a common prefix for all source uris must be required. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout: gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/. CUSTOM detection requires encoding the partitioning schema immediately after the common prefix. For CUSTOM, any of * gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:INTEGER} * gs://bucket/path_to_table/{dt:STRING}/{country:STRING}/{id:INTEGER} * gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:STRING} would all be valid source URI prefixes.
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
@@ -1965,7 +2073,7 @@ class HivePartitioningOptionsArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
+        Optional. When set, what mode of hive partitioning to use when reading data. The following modes are supported: * AUTO: automatically infer partition key name(s) and type(s). * STRINGS: automatically infer partition key name(s). All types are strings. * CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
         """
         return pulumi.get(self, "mode")
 
@@ -1977,7 +2085,7 @@ class HivePartitioningOptionsArgs:
     @pulumi.getter(name="requirePartitionFilter")
     def require_partition_filter(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter explicitly set to true will fail.
+        Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with require_partition_filter explicitly set to true will fail.
         """
         return pulumi.get(self, "require_partition_filter")
 
@@ -1989,7 +2097,7 @@ class HivePartitioningOptionsArgs:
     @pulumi.getter(name="sourceUriPrefix")
     def source_uri_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
+        Optional. When hive partition detection is requested, a common prefix for all source uris must be required. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout: gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/. CUSTOM detection requires encoding the partitioning schema immediately after the common prefix. For CUSTOM, any of * gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:INTEGER} * gs://bucket/path_to_table/{dt:STRING}/{country:STRING}/{id:INTEGER} * gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:STRING} would all be valid source URI prefixes.
         """
         return pulumi.get(self, "source_uri_prefix")
 
@@ -2006,20 +2114,23 @@ class JobConfigurationExtractArgs:
                  destination_uri: Optional[pulumi.Input[str]] = None,
                  destination_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  field_delimiter: Optional[pulumi.Input[str]] = None,
+                 model_extract_options: Optional[pulumi.Input['ModelExtractOptionsArgs']] = None,
                  print_header: Optional[pulumi.Input[bool]] = None,
                  source_model: Optional[pulumi.Input['ModelReferenceArgs']] = None,
                  source_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
                  use_avro_logical_types: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] compression: [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
-        :param pulumi.Input[str] destination_format: [Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
+        JobConfigurationExtract configures a job that exports data from a BigQuery table into Google Cloud Storage.
+        :param pulumi.Input[str] compression: Optional. The compression type to use for exported files. Possible values include DEFLATE, GZIP, NONE, SNAPPY, and ZSTD. The default value is NONE. Not all compression formats are support for all file formats. DEFLATE is only supported for Avro. ZSTD is only supported for Parquet. Not applicable when extracting models.
+        :param pulumi.Input[str] destination_format: Optional. The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET, or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
         :param pulumi.Input[str] destination_uri: [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified Google Cloud Storage URI where the extracted table should be written.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_uris: [Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
-        :param pulumi.Input[str] field_delimiter: [Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
-        :param pulumi.Input[bool] print_header: [Optional] Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
+        :param pulumi.Input[str] field_delimiter: Optional. When extracting data in CSV format, this defines the delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
+        :param pulumi.Input['ModelExtractOptionsArgs'] model_extract_options: Optional. Model extract options only applicable when extracting models.
+        :param pulumi.Input[bool] print_header: Optional. Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
         :param pulumi.Input['ModelReferenceArgs'] source_model: A reference to the model being exported.
         :param pulumi.Input['TableReferenceArgs'] source_table: A reference to the table being exported.
-        :param pulumi.Input[bool] use_avro_logical_types: [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
+        :param pulumi.Input[bool] use_avro_logical_types: Whether to use logical types when extracting to AVRO format. Not applicable when extracting models.
         """
         if compression is not None:
             pulumi.set(__self__, "compression", compression)
@@ -2031,6 +2142,8 @@ class JobConfigurationExtractArgs:
             pulumi.set(__self__, "destination_uris", destination_uris)
         if field_delimiter is not None:
             pulumi.set(__self__, "field_delimiter", field_delimiter)
+        if model_extract_options is not None:
+            pulumi.set(__self__, "model_extract_options", model_extract_options)
         if print_header is not None:
             pulumi.set(__self__, "print_header", print_header)
         if source_model is not None:
@@ -2044,7 +2157,7 @@ class JobConfigurationExtractArgs:
     @pulumi.getter
     def compression(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
+        Optional. The compression type to use for exported files. Possible values include DEFLATE, GZIP, NONE, SNAPPY, and ZSTD. The default value is NONE. Not all compression formats are support for all file formats. DEFLATE is only supported for Avro. ZSTD is only supported for Parquet. Not applicable when extracting models.
         """
         return pulumi.get(self, "compression")
 
@@ -2056,7 +2169,7 @@ class JobConfigurationExtractArgs:
     @pulumi.getter(name="destinationFormat")
     def destination_format(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
+        Optional. The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET, or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
         """
         return pulumi.get(self, "destination_format")
 
@@ -2092,7 +2205,7 @@ class JobConfigurationExtractArgs:
     @pulumi.getter(name="fieldDelimiter")
     def field_delimiter(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
+        Optional. When extracting data in CSV format, this defines the delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
         """
         return pulumi.get(self, "field_delimiter")
 
@@ -2101,10 +2214,22 @@ class JobConfigurationExtractArgs:
         pulumi.set(self, "field_delimiter", value)
 
     @property
+    @pulumi.getter(name="modelExtractOptions")
+    def model_extract_options(self) -> Optional[pulumi.Input['ModelExtractOptionsArgs']]:
+        """
+        Optional. Model extract options only applicable when extracting models.
+        """
+        return pulumi.get(self, "model_extract_options")
+
+    @model_extract_options.setter
+    def model_extract_options(self, value: Optional[pulumi.Input['ModelExtractOptionsArgs']]):
+        pulumi.set(self, "model_extract_options", value)
+
+    @property
     @pulumi.getter(name="printHeader")
     def print_header(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
+        Optional. Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
         """
         return pulumi.get(self, "print_header")
 
@@ -2140,7 +2265,7 @@ class JobConfigurationExtractArgs:
     @pulumi.getter(name="useAvroLogicalTypes")
     def use_avro_logical_types(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
+        Whether to use logical types when extracting to AVRO format. Not applicable when extracting models.
         """
         return pulumi.get(self, "use_avro_logical_types")
 
@@ -2157,18 +2282,19 @@ class JobConfigurationLoadArgs:
                  autodetect: Optional[pulumi.Input[bool]] = None,
                  clustering: Optional[pulumi.Input['ClusteringArgs']] = None,
                  connection_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]]] = None,
+                 copy_files_only: Optional[pulumi.Input[bool]] = None,
                  create_disposition: Optional[pulumi.Input[str]] = None,
                  create_session: Optional[pulumi.Input[bool]] = None,
-                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigurationLoadDecimalTargetTypesItem']]]] = None,
                  destination_encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
                  destination_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
                  destination_table_properties: Optional[pulumi.Input['DestinationTablePropertiesArgs']] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  field_delimiter: Optional[pulumi.Input[str]] = None,
-                 file_set_spec_type: Optional[pulumi.Input[str]] = None,
+                 file_set_spec_type: Optional[pulumi.Input['JobConfigurationLoadFileSetSpecType']] = None,
                  hive_partitioning_options: Optional[pulumi.Input['HivePartitioningOptionsArgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
-                 json_extension: Optional[pulumi.Input[str]] = None,
+                 json_extension: Optional[pulumi.Input['JobConfigurationLoadJsonExtension']] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
                  null_marker: Optional[pulumi.Input[str]] = None,
                  parquet_options: Optional[pulumi.Input['ParquetOptionsArgs']] = None,
@@ -2188,41 +2314,43 @@ class JobConfigurationLoadArgs:
                  use_avro_logical_types: Optional[pulumi.Input[bool]] = None,
                  write_disposition: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_jagged_rows: [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+        JobConfigurationLoad contains the configuration properties for loading data into a destination table.
+        :param pulumi.Input[bool] allow_jagged_rows: Optional. Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
         :param pulumi.Input[bool] allow_quoted_newlines: Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
-        :param pulumi.Input[bool] autodetect: [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
-        :param pulumi.Input['ClusteringArgs'] clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]] connection_properties: Connection properties.
-        :param pulumi.Input[str] create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-        :param pulumi.Input[bool] create_session: If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
-        :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
+        :param pulumi.Input[bool] autodetect: Optional. Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+        :param pulumi.Input['ClusteringArgs'] clustering: Clustering specification for the destination table.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]] connection_properties: Optional. Connection properties which can modify the load job behavior. Currently, only the 'session_id' connection property is supported, and is used to resolve _SESSION appearing as the dataset id.
+        :param pulumi.Input[bool] copy_files_only: Optional. [Experimental] Configures the load job to only copy files to the destination BigLake managed table with an external storage_uri, without reading file content and writing them to new files. Copying files only is supported when: * source_uris are in the same external storage system as the destination table but they do not overlap with storage_uri of the destination table. * source_format is the same file format as the destination table. * destination_table is an existing BigLake managed table. Its schema does not have default value expression. It schema does not have type parameters other than precision and scale. * No options other than the above are specified.
+        :param pulumi.Input[str] create_disposition: Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        :param pulumi.Input[bool] create_session: Optional. If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic.
+        :param pulumi.Input[Sequence[pulumi.Input['JobConfigurationLoadDecimalTargetTypesItem']]] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
         :param pulumi.Input['TableReferenceArgs'] destination_table: [Required] The destination table to load the data into.
-        :param pulumi.Input['DestinationTablePropertiesArgs'] destination_table_properties: [Beta] [Optional] Properties with which to create the destination table if it is new.
-        :param pulumi.Input[str] encoding: [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
-        :param pulumi.Input[str] field_delimiter: [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator. The default value is a comma (',').
-        :param pulumi.Input[str] file_set_spec_type: [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
-        :param pulumi.Input['HivePartitioningOptionsArgs'] hive_partitioning_options: [Optional] Options to configure hive partitioning support.
-        :param pulumi.Input[bool] ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
-        :param pulumi.Input[str] json_extension: [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
-        :param pulumi.Input[int] max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.
-        :param pulumi.Input[str] null_marker: [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
-        :param pulumi.Input['ParquetOptionsArgs'] parquet_options: [Optional] Options to configure parquet support.
-        :param pulumi.Input[bool] preserve_ascii_control_characters: [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        :param pulumi.Input['DestinationTablePropertiesArgs'] destination_table_properties: Optional. [Experimental] Properties with which to create the destination table if it is new.
+        :param pulumi.Input[str] encoding: Optional. The character encoding of the data. The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the `quote` and `fieldDelimiter` properties. If you don't specify an encoding, or if you specify a UTF-8 encoding when the CSV file is not UTF-8 encoded, BigQuery attempts to convert the data to UTF-8. Generally, your data loads successfully, but it may not match byte-for-byte what you expect. To avoid this, specify the correct encoding by using the `--encoding` flag. If BigQuery can't convert a character other than the ASCII `0` character, BigQuery converts the character to the standard Unicode replacement character: �.
+        :param pulumi.Input[str] field_delimiter: Optional. The separator character for fields in a CSV file. The separator is interpreted as a single byte. For files encoded in ISO-8859-1, any single character can be used as a separator. For files encoded in UTF-8, characters represented in decimal range 1-127 (U+0001-U+007F) can be used without any modification. UTF-8 characters encoded with multiple bytes (i.e. U+0080 and above) will have only the first byte used for separating fields. The remaining bytes will be treated as a part of the field. BigQuery also supports the escape sequence "\\t" (U+0009) to specify a tab separator. The default value is comma (",", U+002C).
+        :param pulumi.Input['JobConfigurationLoadFileSetSpecType'] file_set_spec_type: Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems.
+        :param pulumi.Input['HivePartitioningOptionsArgs'] hive_partitioning_options: Optional. When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
+        :param pulumi.Input[bool] ignore_unknown_values: Optional. Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names in the table schema Avro, Parquet, ORC: Fields in the file schema that don't exist in the table schema.
+        :param pulumi.Input['JobConfigurationLoadJsonExtension'] json_extension: Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+        :param pulumi.Input[int] max_bad_records: Optional. The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid. This is only supported for CSV and NEWLINE_DELIMITED_JSON file formats.
+        :param pulumi.Input[str] null_marker: Optional. Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
+        :param pulumi.Input['ParquetOptionsArgs'] parquet_options: Optional. Additional properties to set if sourceFormat is set to PARQUET.
+        :param pulumi.Input[bool] preserve_ascii_control_characters: Optional. When sourceFormat is set to "CSV", this indicates whether the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') are preserved.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
-        :param pulumi.Input[str] quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
-        :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-        :param pulumi.Input[str] reference_file_schema_uri: User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
-        :param pulumi.Input['TableSchemaArgs'] schema: [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
+        :param pulumi.Input[str] quote: Optional. The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character ' " ', use ' "" '. @default "
+        :param pulumi.Input['RangePartitioningArgs'] range_partitioning: Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
+        :param pulumi.Input[str] reference_file_schema_uri: Optional. The user can provide a reference file with the reader schema. This file is only loaded if it is part of source URIs, but is not loaded otherwise. It is enabled for the following formats: AVRO, PARQUET, ORC.
+        :param pulumi.Input['TableSchemaArgs'] schema: Optional. The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
         :param pulumi.Input[str] schema_inline: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
         :param pulumi.Input[str] schema_inline_format: [Deprecated] The format of the schemaInline property.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        :param pulumi.Input[int] skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
-        :param pulumi.Input[str] source_format: [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+        :param pulumi.Input[int] skip_leading_rows: Optional. The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
+        :param pulumi.Input[str] source_format: Optional. The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
         :param pulumi.Input['TimePartitioningArgs'] time_partitioning: Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
-        :param pulumi.Input[bool] use_avro_logical_types: [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
-        :param pulumi.Input[str] write_disposition: [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        :param pulumi.Input[bool] use_avro_logical_types: Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        :param pulumi.Input[str] write_disposition: Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints and uses the schema from the load job. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         if allow_jagged_rows is not None:
             pulumi.set(__self__, "allow_jagged_rows", allow_jagged_rows)
@@ -2234,6 +2362,8 @@ class JobConfigurationLoadArgs:
             pulumi.set(__self__, "clustering", clustering)
         if connection_properties is not None:
             pulumi.set(__self__, "connection_properties", connection_properties)
+        if copy_files_only is not None:
+            pulumi.set(__self__, "copy_files_only", copy_files_only)
         if create_disposition is not None:
             pulumi.set(__self__, "create_disposition", create_disposition)
         if create_session is not None:
@@ -2305,7 +2435,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="allowJaggedRows")
     def allow_jagged_rows(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+        Optional. Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
         """
         return pulumi.get(self, "allow_jagged_rows")
 
@@ -2329,7 +2459,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter
     def autodetect(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+        Optional. Indicates if we should automatically infer the options and schema for CSV and JSON sources.
         """
         return pulumi.get(self, "autodetect")
 
@@ -2341,7 +2471,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter
     def clustering(self) -> Optional[pulumi.Input['ClusteringArgs']]:
         """
-        [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
+        Clustering specification for the destination table.
         """
         return pulumi.get(self, "clustering")
 
@@ -2353,7 +2483,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="connectionProperties")
     def connection_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]]]:
         """
-        Connection properties.
+        Optional. Connection properties which can modify the load job behavior. Currently, only the 'session_id' connection property is supported, and is used to resolve _SESSION appearing as the dataset id.
         """
         return pulumi.get(self, "connection_properties")
 
@@ -2362,10 +2492,22 @@ class JobConfigurationLoadArgs:
         pulumi.set(self, "connection_properties", value)
 
     @property
+    @pulumi.getter(name="copyFilesOnly")
+    def copy_files_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. [Experimental] Configures the load job to only copy files to the destination BigLake managed table with an external storage_uri, without reading file content and writing them to new files. Copying files only is supported when: * source_uris are in the same external storage system as the destination table but they do not overlap with storage_uri of the destination table. * source_format is the same file format as the destination table. * destination_table is an existing BigLake managed table. Its schema does not have default value expression. It schema does not have type parameters other than precision and scale. * No options other than the above are specified.
+        """
+        return pulumi.get(self, "copy_files_only")
+
+    @copy_files_only.setter
+    def copy_files_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "copy_files_only", value)
+
+    @property
     @pulumi.getter(name="createDisposition")
     def create_disposition(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         return pulumi.get(self, "create_disposition")
 
@@ -2377,7 +2519,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="createSession")
     def create_session(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+        Optional. If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic.
         """
         return pulumi.get(self, "create_session")
 
@@ -2387,21 +2529,21 @@ class JobConfigurationLoadArgs:
 
     @property
     @pulumi.getter(name="decimalTargetTypes")
-    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigurationLoadDecimalTargetTypesItem']]]]:
         """
-        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         """
         return pulumi.get(self, "decimal_target_types")
 
     @decimal_target_types.setter
-    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConfigurationLoadDecimalTargetTypesItem']]]]):
         pulumi.set(self, "decimal_target_types", value)
 
     @property
     @pulumi.getter(name="destinationEncryptionConfiguration")
     def destination_encryption_configuration(self) -> Optional[pulumi.Input['EncryptionConfigurationArgs']]:
         """
-        Custom encryption configuration (e.g., Cloud KMS keys).
+        Custom encryption configuration (e.g., Cloud KMS keys)
         """
         return pulumi.get(self, "destination_encryption_configuration")
 
@@ -2425,7 +2567,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="destinationTableProperties")
     def destination_table_properties(self) -> Optional[pulumi.Input['DestinationTablePropertiesArgs']]:
         """
-        [Beta] [Optional] Properties with which to create the destination table if it is new.
+        Optional. [Experimental] Properties with which to create the destination table if it is new.
         """
         return pulumi.get(self, "destination_table_properties")
 
@@ -2437,7 +2579,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
+        Optional. The character encoding of the data. The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the `quote` and `fieldDelimiter` properties. If you don't specify an encoding, or if you specify a UTF-8 encoding when the CSV file is not UTF-8 encoded, BigQuery attempts to convert the data to UTF-8. Generally, your data loads successfully, but it may not match byte-for-byte what you expect. To avoid this, specify the correct encoding by using the `--encoding` flag. If BigQuery can't convert a character other than the ASCII `0` character, BigQuery converts the character to the standard Unicode replacement character: �.
         """
         return pulumi.get(self, "encoding")
 
@@ -2449,7 +2591,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="fieldDelimiter")
     def field_delimiter(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator. The default value is a comma (',').
+        Optional. The separator character for fields in a CSV file. The separator is interpreted as a single byte. For files encoded in ISO-8859-1, any single character can be used as a separator. For files encoded in UTF-8, characters represented in decimal range 1-127 (U+0001-U+007F) can be used without any modification. UTF-8 characters encoded with multiple bytes (i.e. U+0080 and above) will have only the first byte used for separating fields. The remaining bytes will be treated as a part of the field. BigQuery also supports the escape sequence "\\t" (U+0009) to specify a tab separator. The default value is comma (",", U+002C).
         """
         return pulumi.get(self, "field_delimiter")
 
@@ -2459,21 +2601,21 @@ class JobConfigurationLoadArgs:
 
     @property
     @pulumi.getter(name="fileSetSpecType")
-    def file_set_spec_type(self) -> Optional[pulumi.Input[str]]:
+    def file_set_spec_type(self) -> Optional[pulumi.Input['JobConfigurationLoadFileSetSpecType']]:
         """
-        [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems.
         """
         return pulumi.get(self, "file_set_spec_type")
 
     @file_set_spec_type.setter
-    def file_set_spec_type(self, value: Optional[pulumi.Input[str]]):
+    def file_set_spec_type(self, value: Optional[pulumi.Input['JobConfigurationLoadFileSetSpecType']]):
         pulumi.set(self, "file_set_spec_type", value)
 
     @property
     @pulumi.getter(name="hivePartitioningOptions")
     def hive_partitioning_options(self) -> Optional[pulumi.Input['HivePartitioningOptionsArgs']]:
         """
-        [Optional] Options to configure hive partitioning support.
+        Optional. When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
         """
         return pulumi.get(self, "hive_partitioning_options")
 
@@ -2485,7 +2627,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="ignoreUnknownValues")
     def ignore_unknown_values(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
+        Optional. Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names in the table schema Avro, Parquet, ORC: Fields in the file schema that don't exist in the table schema.
         """
         return pulumi.get(self, "ignore_unknown_values")
 
@@ -2495,21 +2637,21 @@ class JobConfigurationLoadArgs:
 
     @property
     @pulumi.getter(name="jsonExtension")
-    def json_extension(self) -> Optional[pulumi.Input[str]]:
+    def json_extension(self) -> Optional[pulumi.Input['JobConfigurationLoadJsonExtension']]:
         """
-        [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
+        Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
         """
         return pulumi.get(self, "json_extension")
 
     @json_extension.setter
-    def json_extension(self, value: Optional[pulumi.Input[str]]):
+    def json_extension(self, value: Optional[pulumi.Input['JobConfigurationLoadJsonExtension']]):
         pulumi.set(self, "json_extension", value)
 
     @property
     @pulumi.getter(name="maxBadRecords")
     def max_bad_records(self) -> Optional[pulumi.Input[int]]:
         """
-        [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.
+        Optional. The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid. This is only supported for CSV and NEWLINE_DELIMITED_JSON file formats.
         """
         return pulumi.get(self, "max_bad_records")
 
@@ -2521,7 +2663,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="nullMarker")
     def null_marker(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
+        Optional. Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
         """
         return pulumi.get(self, "null_marker")
 
@@ -2533,7 +2675,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="parquetOptions")
     def parquet_options(self) -> Optional[pulumi.Input['ParquetOptionsArgs']]:
         """
-        [Optional] Options to configure parquet support.
+        Optional. Additional properties to set if sourceFormat is set to PARQUET.
         """
         return pulumi.get(self, "parquet_options")
 
@@ -2545,7 +2687,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="preserveAsciiControlCharacters")
     def preserve_ascii_control_characters(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        Optional. When sourceFormat is set to "CSV", this indicates whether the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') are preserved.
         """
         return pulumi.get(self, "preserve_ascii_control_characters")
 
@@ -2569,7 +2711,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter
     def quote(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+        Optional. The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character ' " ', use ' "" '. @default "
         """
         return pulumi.get(self, "quote")
 
@@ -2581,7 +2723,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="rangePartitioning")
     def range_partitioning(self) -> Optional[pulumi.Input['RangePartitioningArgs']]:
         """
-        [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         """
         return pulumi.get(self, "range_partitioning")
 
@@ -2593,7 +2735,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="referenceFileSchemaUri")
     def reference_file_schema_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+        Optional. The user can provide a reference file with the reader schema. This file is only loaded if it is part of source URIs, but is not loaded otherwise. It is enabled for the following formats: AVRO, PARQUET, ORC.
         """
         return pulumi.get(self, "reference_file_schema_uri")
 
@@ -2605,7 +2747,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input['TableSchemaArgs']]:
         """
-        [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
+        Optional. The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
         """
         return pulumi.get(self, "schema")
 
@@ -2647,7 +2789,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="schemaUpdateOptions")
     def schema_update_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+        Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         """
         return pulumi.get(self, "schema_update_options")
 
@@ -2659,7 +2801,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="skipLeadingRows")
     def skip_leading_rows(self) -> Optional[pulumi.Input[int]]:
         """
-        [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+        Optional. The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
         return pulumi.get(self, "skip_leading_rows")
 
@@ -2671,7 +2813,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="sourceFormat")
     def source_format(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
+        Optional. The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
         """
         return pulumi.get(self, "source_format")
 
@@ -2707,7 +2849,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="useAvroLogicalTypes")
     def use_avro_logical_types(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         """
         return pulumi.get(self, "use_avro_logical_types")
 
@@ -2719,7 +2861,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="writeDisposition")
     def write_disposition(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints and uses the schema from the load job. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         return pulumi.get(self, "write_disposition")
 
@@ -2750,6 +2892,7 @@ class JobConfigurationQueryArgs:
                  query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
                  schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 script_options: Optional[pulumi.Input['ScriptOptionsArgs']] = None,
                  table_definitions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_partitioning: Optional[pulumi.Input['TimePartitioningArgs']] = None,
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None,
@@ -2757,31 +2900,33 @@ class JobConfigurationQueryArgs:
                  user_defined_function_resources: Optional[pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]]] = None,
                  write_disposition: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_large_results: [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
-        :param pulumi.Input['ClusteringArgs'] clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]] connection_properties: Connection properties.
+        JobConfigurationQuery configures a BigQuery query job.
+        :param pulumi.Input[bool] allow_large_results: Optional. If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For GoogleSQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        :param pulumi.Input['ClusteringArgs'] clustering: Clustering specification for the destination table.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]] connection_properties: Connection properties which can modify the query behavior.
         :param pulumi.Input[bool] continuous: [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
-        :param pulumi.Input[str] create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-        :param pulumi.Input[bool] create_session: If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
-        :param pulumi.Input['DatasetReferenceArgs'] default_dataset: [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
-        :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
-        :param pulumi.Input['TableReferenceArgs'] destination_table: [Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results. This property must be set for large results that exceed the maximum response size.
-        :param pulumi.Input[bool] flatten_results: [Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
-        :param pulumi.Input[int] maximum_billing_tier: [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
-        :param pulumi.Input[str] maximum_bytes_billed: [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
-        :param pulumi.Input[str] parameter_mode: Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+        :param pulumi.Input[str] create_disposition: Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        :param pulumi.Input[bool] create_session: If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic.
+        :param pulumi.Input['DatasetReferenceArgs'] default_dataset: Optional. Specifies the default dataset to use for unqualified table names in the query. This setting does not alter behavior of unqualified dataset names. Setting the system variable `@@dataset_id` achieves the same behavior. See https://cloud.google.com/bigquery/docs/reference/system-variables for more information on system variables.
+        :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
+        :param pulumi.Input['TableReferenceArgs'] destination_table: Optional. Describes the table where the query results should be stored. This property must be set for large results that exceed the maximum response size. For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
+        :param pulumi.Input[bool] flatten_results: Optional. If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For GoogleSQL queries, this flag is ignored and results are never flattened.
+        :param pulumi.Input[int] maximum_billing_tier: Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.
+        :param pulumi.Input[str] maximum_bytes_billed: Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
+        :param pulumi.Input[str] parameter_mode: GoogleSQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
         :param pulumi.Input[bool] preserve_nulls: [Deprecated] This property is deprecated.
-        :param pulumi.Input[str] priority: [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
-        :param pulumi.Input[str] query: [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] query_parameters: Query parameters for standard SQL queries.
-        :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] table_definitions: [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        :param pulumi.Input[str] priority: Optional. Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+        :param pulumi.Input[str] query: [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or GoogleSQL.
+        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] query_parameters: Query parameters for GoogleSQL queries.
+        :param pulumi.Input['RangePartitioningArgs'] range_partitioning: Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+        :param pulumi.Input['ScriptOptionsArgs'] script_options: Options controlling the execution of scripts.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] table_definitions: Optional. You can specify external table definitions, which operate as ephemeral tables that can be queried. These definitions are configured using a JSON map, where the string key represents the table identifier, and the value is the corresponding external data configuration object.
         :param pulumi.Input['TimePartitioningArgs'] time_partitioning: Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
-        :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
-        :param pulumi.Input[bool] use_query_cache: [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
+        :param pulumi.Input[bool] use_legacy_sql: Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
+        :param pulumi.Input[bool] use_query_cache: Optional. Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
         :param pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]] user_defined_function_resources: Describes user-defined function resources used in the query.
-        :param pulumi.Input[str] write_disposition: [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        :param pulumi.Input[str] write_disposition: Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints, and uses the schema from the query result. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         if allow_large_results is not None:
             pulumi.set(__self__, "allow_large_results", allow_large_results)
@@ -2804,6 +2949,9 @@ class JobConfigurationQueryArgs:
         if flatten_results is not None:
             pulumi.set(__self__, "flatten_results", flatten_results)
         if maximum_billing_tier is not None:
+            warnings.warn("""Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.""", DeprecationWarning)
+            pulumi.log.warn("""maximum_billing_tier is deprecated: Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.""")
+        if maximum_billing_tier is not None:
             pulumi.set(__self__, "maximum_billing_tier", maximum_billing_tier)
         if maximum_bytes_billed is not None:
             pulumi.set(__self__, "maximum_bytes_billed", maximum_bytes_billed)
@@ -2824,6 +2972,8 @@ class JobConfigurationQueryArgs:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if schema_update_options is not None:
             pulumi.set(__self__, "schema_update_options", schema_update_options)
+        if script_options is not None:
+            pulumi.set(__self__, "script_options", script_options)
         if table_definitions is not None:
             pulumi.set(__self__, "table_definitions", table_definitions)
         if time_partitioning is not None:
@@ -2841,7 +2991,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="allowLargeResults")
     def allow_large_results(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        Optional. If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For GoogleSQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         """
         return pulumi.get(self, "allow_large_results")
 
@@ -2853,7 +3003,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter
     def clustering(self) -> Optional[pulumi.Input['ClusteringArgs']]:
         """
-        [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
+        Clustering specification for the destination table.
         """
         return pulumi.get(self, "clustering")
 
@@ -2865,7 +3015,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="connectionProperties")
     def connection_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]]]:
         """
-        Connection properties.
+        Connection properties which can modify the query behavior.
         """
         return pulumi.get(self, "connection_properties")
 
@@ -2889,7 +3039,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="createDisposition")
     def create_disposition(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         return pulumi.get(self, "create_disposition")
 
@@ -2901,7 +3051,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="createSession")
     def create_session(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
+        If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic.
         """
         return pulumi.get(self, "create_session")
 
@@ -2913,7 +3063,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="defaultDataset")
     def default_dataset(self) -> Optional[pulumi.Input['DatasetReferenceArgs']]:
         """
-        [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+        Optional. Specifies the default dataset to use for unqualified table names in the query. This setting does not alter behavior of unqualified dataset names. Setting the system variable `@@dataset_id` achieves the same behavior. See https://cloud.google.com/bigquery/docs/reference/system-variables for more information on system variables.
         """
         return pulumi.get(self, "default_dataset")
 
@@ -2925,7 +3075,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="destinationEncryptionConfiguration")
     def destination_encryption_configuration(self) -> Optional[pulumi.Input['EncryptionConfigurationArgs']]:
         """
-        Custom encryption configuration (e.g., Cloud KMS keys).
+        Custom encryption configuration (e.g., Cloud KMS keys)
         """
         return pulumi.get(self, "destination_encryption_configuration")
 
@@ -2937,7 +3087,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="destinationTable")
     def destination_table(self) -> Optional[pulumi.Input['TableReferenceArgs']]:
         """
-        [Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results. This property must be set for large results that exceed the maximum response size.
+        Optional. Describes the table where the query results should be stored. This property must be set for large results that exceed the maximum response size. For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
         """
         return pulumi.get(self, "destination_table")
 
@@ -2949,7 +3099,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="flattenResults")
     def flatten_results(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+        Optional. If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For GoogleSQL queries, this flag is ignored and results are never flattened.
         """
         return pulumi.get(self, "flatten_results")
 
@@ -2961,8 +3111,11 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="maximumBillingTier")
     def maximum_billing_tier(self) -> Optional[pulumi.Input[int]]:
         """
-        [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
+        Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.
         """
+        warnings.warn("""Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.""", DeprecationWarning)
+        pulumi.log.warn("""maximum_billing_tier is deprecated: Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.""")
+
         return pulumi.get(self, "maximum_billing_tier")
 
     @maximum_billing_tier.setter
@@ -2973,7 +3126,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="maximumBytesBilled")
     def maximum_bytes_billed(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
+        Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
         """
         return pulumi.get(self, "maximum_bytes_billed")
 
@@ -2985,7 +3138,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="parameterMode")
     def parameter_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+        GoogleSQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
         """
         return pulumi.get(self, "parameter_mode")
 
@@ -3012,7 +3165,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+        Optional. Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         """
         return pulumi.get(self, "priority")
 
@@ -3024,7 +3177,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
         """
-        [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or GoogleSQL.
         """
         return pulumi.get(self, "query")
 
@@ -3036,7 +3189,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="queryParameters")
     def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]]:
         """
-        Query parameters for standard SQL queries.
+        Query parameters for GoogleSQL queries.
         """
         return pulumi.get(self, "query_parameters")
 
@@ -3048,7 +3201,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="rangePartitioning")
     def range_partitioning(self) -> Optional[pulumi.Input['RangePartitioningArgs']]:
         """
-        [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         """
         return pulumi.get(self, "range_partitioning")
 
@@ -3060,7 +3213,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="schemaUpdateOptions")
     def schema_update_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+        Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         """
         return pulumi.get(self, "schema_update_options")
 
@@ -3069,10 +3222,22 @@ class JobConfigurationQueryArgs:
         pulumi.set(self, "schema_update_options", value)
 
     @property
+    @pulumi.getter(name="scriptOptions")
+    def script_options(self) -> Optional[pulumi.Input['ScriptOptionsArgs']]:
+        """
+        Options controlling the execution of scripts.
+        """
+        return pulumi.get(self, "script_options")
+
+    @script_options.setter
+    def script_options(self, value: Optional[pulumi.Input['ScriptOptionsArgs']]):
+        pulumi.set(self, "script_options", value)
+
+    @property
     @pulumi.getter(name="tableDefinitions")
     def table_definitions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        Optional. You can specify external table definitions, which operate as ephemeral tables that can be queried. These definitions are configured using a JSON map, where the string key represents the table identifier, and the value is the corresponding external data configuration object.
         """
         return pulumi.get(self, "table_definitions")
 
@@ -3096,7 +3261,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="useLegacySql")
     def use_legacy_sql(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
+        Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
         """
         return pulumi.get(self, "use_legacy_sql")
 
@@ -3108,7 +3273,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="useQueryCache")
     def use_query_cache(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
+        Optional. Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
         """
         return pulumi.get(self, "use_query_cache")
 
@@ -3132,7 +3297,7 @@ class JobConfigurationQueryArgs:
     @pulumi.getter(name="writeDisposition")
     def write_disposition(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints, and uses the schema from the query result. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         return pulumi.get(self, "write_disposition")
 
@@ -3146,21 +3311,22 @@ class JobConfigurationTableCopyArgs:
     def __init__(__self__, *,
                  create_disposition: Optional[pulumi.Input[str]] = None,
                  destination_encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
-                 destination_expiration_time: Optional[Any] = None,
+                 destination_expiration_time: Optional[pulumi.Input[str]] = None,
                  destination_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
-                 operation_type: Optional[pulumi.Input[str]] = None,
+                 operation_type: Optional[pulumi.Input['JobConfigurationTableCopyOperationType']] = None,
                  source_table: Optional[pulumi.Input['TableReferenceArgs']] = None,
                  source_tables: Optional[pulumi.Input[Sequence[pulumi.Input['TableReferenceArgs']]]] = None,
                  write_disposition: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        JobConfigurationTableCopy configures a job that copies data from one table to another. For more information on copying tables, see [Copy a table](https://cloud.google.com/bigquery/docs/managing-tables#copy-table).
+        :param pulumi.Input[str] create_disposition: Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
-        :param Any destination_expiration_time: [Optional] The time when the destination table expires. Expired tables will be deleted and their storage reclaimed.
-        :param pulumi.Input['TableReferenceArgs'] destination_table: [Required] The destination table
-        :param pulumi.Input[str] operation_type: [Optional] Supported operation types in table copy job.
+        :param pulumi.Input[str] destination_expiration_time: Optional. The time when the destination table expires. Expired tables will be deleted and their storage reclaimed.
+        :param pulumi.Input['TableReferenceArgs'] destination_table: [Required] The destination table.
+        :param pulumi.Input['JobConfigurationTableCopyOperationType'] operation_type: Optional. Supported operation types in table copy job.
         :param pulumi.Input['TableReferenceArgs'] source_table: [Pick one] Source table to copy.
         :param pulumi.Input[Sequence[pulumi.Input['TableReferenceArgs']]] source_tables: [Pick one] Source tables to copy.
-        :param pulumi.Input[str] write_disposition: [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        :param pulumi.Input[str] write_disposition: Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema and table constraints from the source table. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         if create_disposition is not None:
             pulumi.set(__self__, "create_disposition", create_disposition)
@@ -3183,7 +3349,7 @@ class JobConfigurationTableCopyArgs:
     @pulumi.getter(name="createDisposition")
     def create_disposition(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         return pulumi.get(self, "create_disposition")
 
@@ -3205,21 +3371,21 @@ class JobConfigurationTableCopyArgs:
 
     @property
     @pulumi.getter(name="destinationExpirationTime")
-    def destination_expiration_time(self) -> Optional[Any]:
+    def destination_expiration_time(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The time when the destination table expires. Expired tables will be deleted and their storage reclaimed.
+        Optional. The time when the destination table expires. Expired tables will be deleted and their storage reclaimed.
         """
         return pulumi.get(self, "destination_expiration_time")
 
     @destination_expiration_time.setter
-    def destination_expiration_time(self, value: Optional[Any]):
+    def destination_expiration_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "destination_expiration_time", value)
 
     @property
     @pulumi.getter(name="destinationTable")
     def destination_table(self) -> Optional[pulumi.Input['TableReferenceArgs']]:
         """
-        [Required] The destination table
+        [Required] The destination table.
         """
         return pulumi.get(self, "destination_table")
 
@@ -3229,14 +3395,14 @@ class JobConfigurationTableCopyArgs:
 
     @property
     @pulumi.getter(name="operationType")
-    def operation_type(self) -> Optional[pulumi.Input[str]]:
+    def operation_type(self) -> Optional[pulumi.Input['JobConfigurationTableCopyOperationType']]:
         """
-        [Optional] Supported operation types in table copy job.
+        Optional. Supported operation types in table copy job.
         """
         return pulumi.get(self, "operation_type")
 
     @operation_type.setter
-    def operation_type(self, value: Optional[pulumi.Input[str]]):
+    def operation_type(self, value: Optional[pulumi.Input['JobConfigurationTableCopyOperationType']]):
         pulumi.set(self, "operation_type", value)
 
     @property
@@ -3267,7 +3433,7 @@ class JobConfigurationTableCopyArgs:
     @pulumi.getter(name="writeDisposition")
     def write_disposition(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema and table constraints from the source table. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         """
         return pulumi.get(self, "write_disposition")
 
@@ -3288,9 +3454,9 @@ class JobConfigurationArgs:
                  query: Optional[pulumi.Input['JobConfigurationQueryArgs']] = None):
         """
         :param pulumi.Input['JobConfigurationTableCopyArgs'] copy: [Pick one] Copies a table.
-        :param pulumi.Input[bool] dry_run: [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
+        :param pulumi.Input[bool] dry_run: Optional. If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
         :param pulumi.Input['JobConfigurationExtractArgs'] extract: [Pick one] Configures an extract job.
-        :param pulumi.Input[str] job_timeout_ms: [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        :param pulumi.Input[str] job_timeout_ms: Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery might attempt to stop the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
         :param pulumi.Input['JobConfigurationLoadArgs'] load: [Pick one] Configures a load job.
         :param pulumi.Input['JobConfigurationQueryArgs'] query: [Pick one] Configures a query job.
@@ -3326,7 +3492,7 @@ class JobConfigurationArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
+        Optional. If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
         """
         return pulumi.get(self, "dry_run")
 
@@ -3350,7 +3516,7 @@ class JobConfigurationArgs:
     @pulumi.getter(name="jobTimeoutMs")
     def job_timeout_ms(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery might attempt to stop the job.
         """
         return pulumi.get(self, "job_timeout_ms")
 
@@ -3398,38 +3564,49 @@ class JobConfigurationArgs:
 @pulumi.input_type
 class JobReferenceArgs:
     def __init__(__self__, *,
-                 job_id: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 job_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 location: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] job_id: [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
-        :param pulumi.Input[str] location: The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-        :param pulumi.Input[str] project: [Required] The ID of the project containing this job.
+        A job reference is a fully qualified identifier for referring to a job.
+        :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
+        :param pulumi.Input[str] project: The ID of the project containing this job.
+        :param pulumi.Input[str] location: Optional. The geographic location of the job. The default value is US. For more information about BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations
         """
-        if job_id is not None:
-            pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project", project)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[str]]:
+    def job_id(self) -> pulumi.Input[str]:
         """
-        [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
+        The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[str]]):
+    def job_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The ID of the project containing this job.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+        Optional. The geographic location of the job. The default value is US. For more information about BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations
         """
         return pulumi.get(self, "location")
 
@@ -3437,25 +3614,14 @@ class JobReferenceArgs:
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] The ID of the project containing this job.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
-
 
 @pulumi.input_type
 class JsonOptionsArgs:
     def __init__(__self__, *,
                  encoding: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] encoding: [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        Json Options for load and make external tables.
+        :param pulumi.Input[str] encoding: Optional. The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
         """
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
@@ -3464,7 +3630,7 @@ class JsonOptionsArgs:
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        Optional. The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
         """
         return pulumi.get(self, "encoding")
 
@@ -3474,36 +3640,72 @@ class JsonOptionsArgs:
 
 
 @pulumi.input_type
+class LinkedDatasetSourceArgs:
+    def __init__(__self__, *,
+                 source_dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None):
+        """
+        A dataset source type which refers to another BigQuery dataset.
+        :param pulumi.Input['DatasetReferenceArgs'] source_dataset: The source dataset reference contains project numbers and not project ids.
+        """
+        if source_dataset is not None:
+            pulumi.set(__self__, "source_dataset", source_dataset)
+
+    @property
+    @pulumi.getter(name="sourceDataset")
+    def source_dataset(self) -> Optional[pulumi.Input['DatasetReferenceArgs']]:
+        """
+        The source dataset reference contains project numbers and not project ids.
+        """
+        return pulumi.get(self, "source_dataset")
+
+    @source_dataset.setter
+    def source_dataset(self, value: Optional[pulumi.Input['DatasetReferenceArgs']]):
+        pulumi.set(self, "source_dataset", value)
+
+
+@pulumi.input_type
 class MaterializedViewDefinitionArgs:
     def __init__(__self__, *,
+                 query: pulumi.Input[str],
                  allow_non_incremental_definition: Optional[pulumi.Input[bool]] = None,
                  enable_refresh: Optional[pulumi.Input[bool]] = None,
                  max_staleness: Optional[pulumi.Input[str]] = None,
-                 query: Optional[pulumi.Input[str]] = None,
                  refresh_interval_ms: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] allow_non_incremental_definition: [Optional] Allow non incremental materialized view definition. The default value is "false".
-        :param pulumi.Input[bool] enable_refresh: [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
+        Definition and configuration of a materialized view.
+        :param pulumi.Input[str] query: A query whose results are persisted.
+        :param pulumi.Input[bool] allow_non_incremental_definition: Optional. This option declares authors intention to construct a materialized view that will not be refreshed incrementally.
+        :param pulumi.Input[bool] enable_refresh: Optional. Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         :param pulumi.Input[str] max_staleness: [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
-        :param pulumi.Input[str] query: [Required] A query whose result is persisted.
-        :param pulumi.Input[str] refresh_interval_ms: [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
+        :param pulumi.Input[str] refresh_interval_ms: Optional. The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         """
+        pulumi.set(__self__, "query", query)
         if allow_non_incremental_definition is not None:
             pulumi.set(__self__, "allow_non_incremental_definition", allow_non_incremental_definition)
         if enable_refresh is not None:
             pulumi.set(__self__, "enable_refresh", enable_refresh)
         if max_staleness is not None:
             pulumi.set(__self__, "max_staleness", max_staleness)
-        if query is not None:
-            pulumi.set(__self__, "query", query)
         if refresh_interval_ms is not None:
             pulumi.set(__self__, "refresh_interval_ms", refresh_interval_ms)
+
+    @property
+    @pulumi.getter
+    def query(self) -> pulumi.Input[str]:
+        """
+        A query whose results are persisted.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query", value)
 
     @property
     @pulumi.getter(name="allowNonIncrementalDefinition")
     def allow_non_incremental_definition(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Allow non incremental materialized view definition. The default value is "false".
+        Optional. This option declares authors intention to construct a materialized view that will not be refreshed incrementally.
         """
         return pulumi.get(self, "allow_non_incremental_definition")
 
@@ -3515,7 +3717,7 @@ class MaterializedViewDefinitionArgs:
     @pulumi.getter(name="enableRefresh")
     def enable_refresh(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
+        Optional. Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         """
         return pulumi.get(self, "enable_refresh")
 
@@ -3536,22 +3738,10 @@ class MaterializedViewDefinitionArgs:
         pulumi.set(self, "max_staleness", value)
 
     @property
-    @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] A query whose result is persisted.
-        """
-        return pulumi.get(self, "query")
-
-    @query.setter
-    def query(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "query", value)
-
-    @property
     @pulumi.getter(name="refreshIntervalMs")
     def refresh_interval_ms(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
+        Optional. The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         """
         return pulumi.get(self, "refresh_interval_ms")
 
@@ -3567,7 +3757,7 @@ class ModelDefinitionModelOptionsArgs:
                  loss_type: Optional[pulumi.Input[str]] = None,
                  model_type: Optional[pulumi.Input[str]] = None):
         """
-        [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        Deprecated.
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -3610,11 +3800,17 @@ class ModelDefinitionArgs:
                  model_options: Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']] = None,
                  training_runs: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]] = None):
         """
-        :param pulumi.Input['ModelDefinitionModelOptionsArgs'] model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-        :param pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]] training_runs: [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
+        :param pulumi.Input['ModelDefinitionModelOptionsArgs'] model_options: Deprecated.
+        :param pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]] training_runs: Deprecated.
         """
         if model_options is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""model_options is deprecated: Deprecated.""")
+        if model_options is not None:
             pulumi.set(__self__, "model_options", model_options)
+        if training_runs is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""training_runs is deprecated: Deprecated.""")
         if training_runs is not None:
             pulumi.set(__self__, "training_runs", training_runs)
 
@@ -3622,8 +3818,11 @@ class ModelDefinitionArgs:
     @pulumi.getter(name="modelOptions")
     def model_options(self) -> Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']]:
         """
-        [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""model_options is deprecated: Deprecated.""")
+
         return pulumi.get(self, "model_options")
 
     @model_options.setter
@@ -3634,13 +3833,40 @@ class ModelDefinitionArgs:
     @pulumi.getter(name="trainingRuns")
     def training_runs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]]:
         """
-        [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""training_runs is deprecated: Deprecated.""")
+
         return pulumi.get(self, "training_runs")
 
     @training_runs.setter
     def training_runs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]]):
         pulumi.set(self, "training_runs", value)
+
+
+@pulumi.input_type
+class ModelExtractOptionsArgs:
+    def __init__(__self__, *,
+                 trial_id: Optional[pulumi.Input[str]] = None):
+        """
+        Options related to model extraction.
+        :param pulumi.Input[str] trial_id: The 1-based ID of the trial to be exported from a hyperparameter tuning model. If not specified, the trial with id = [Model](/bigquery/docs/reference/rest/v2/models#resource:-model).defaultTrialId is exported. This field is ignored for models not trained with hyperparameter tuning.
+        """
+        if trial_id is not None:
+            pulumi.set(__self__, "trial_id", trial_id)
+
+    @property
+    @pulumi.getter(name="trialId")
+    def trial_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The 1-based ID of the trial to be exported from a hyperparameter tuning model. If not specified, the trial with id = [Model](/bigquery/docs/reference/rest/v2/models#resource:-model).defaultTrialId is exported. This field is ignored for models not trained with hyperparameter tuning.
+        """
+        return pulumi.get(self, "trial_id")
+
+    @trial_id.setter
+    def trial_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trial_id", value)
 
 
 @pulumi.input_type
@@ -3650,6 +3876,7 @@ class ModelReferenceArgs:
                  model_id: pulumi.Input[str],
                  project: pulumi.Input[str]):
         """
+        Id path of a model.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this model.
         :param pulumi.Input[str] model_id: The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[str] project: The ID of the project containing this model.
@@ -3701,8 +3928,9 @@ class ParquetOptionsArgs:
                  enable_list_inference: Optional[pulumi.Input[bool]] = None,
                  enum_as_string: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enable_list_inference: [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
-        :param pulumi.Input[bool] enum_as_string: [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        Parquet Options for load and make external tables.
+        :param pulumi.Input[bool] enable_list_inference: Optional. Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        :param pulumi.Input[bool] enum_as_string: Optional. Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
         """
         if enable_list_inference is not None:
             pulumi.set(__self__, "enable_list_inference", enable_list_inference)
@@ -3713,7 +3941,7 @@ class ParquetOptionsArgs:
     @pulumi.getter(name="enableListInference")
     def enable_list_inference(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        Optional. Indicates whether to use schema inference specifically for Parquet LIST logical type.
         """
         return pulumi.get(self, "enable_list_inference")
 
@@ -3725,7 +3953,7 @@ class ParquetOptionsArgs:
     @pulumi.getter(name="enumAsString")
     def enum_as_string(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        Optional. Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
         """
         return pulumi.get(self, "enum_as_string")
 
@@ -3735,28 +3963,64 @@ class ParquetOptionsArgs:
 
 
 @pulumi.input_type
+class PrivacyPolicyArgs:
+    def __init__(__self__, *,
+                 aggregation_threshold_policy: Optional[pulumi.Input['AggregationThresholdPolicyArgs']] = None):
+        """
+        Represents privacy policy that contains the privacy requirements specified by the data owner. Currently, this is only supported on views.
+        :param pulumi.Input['AggregationThresholdPolicyArgs'] aggregation_threshold_policy: Optional. Policy used for aggregation thresholds.
+        """
+        if aggregation_threshold_policy is not None:
+            pulumi.set(__self__, "aggregation_threshold_policy", aggregation_threshold_policy)
+
+    @property
+    @pulumi.getter(name="aggregationThresholdPolicy")
+    def aggregation_threshold_policy(self) -> Optional[pulumi.Input['AggregationThresholdPolicyArgs']]:
+        """
+        Optional. Policy used for aggregation thresholds.
+        """
+        return pulumi.get(self, "aggregation_threshold_policy")
+
+    @aggregation_threshold_policy.setter
+    def aggregation_threshold_policy(self, value: Optional[pulumi.Input['AggregationThresholdPolicyArgs']]):
+        pulumi.set(self, "aggregation_threshold_policy", value)
+
+
+@pulumi.input_type
 class QueryParameterTypeStructTypesItemArgs:
     def __init__(__self__, *,
+                 type: pulumi.Input['QueryParameterTypeArgs'],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: [Optional] Human-oriented description of the field.
-        :param pulumi.Input[str] name: [Optional] The name of this field.
-        :param pulumi.Input['QueryParameterTypeArgs'] type: [Required] The type of this field.
+        The type of a struct parameter.
+        :param pulumi.Input['QueryParameterTypeArgs'] type: The type of this field.
+        :param pulumi.Input[str] description: Optional. Human-oriented description of the field.
+        :param pulumi.Input[str] name: Optional. The name of this field.
         """
+        pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['QueryParameterTypeArgs']:
+        """
+        The type of this field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['QueryParameterTypeArgs']):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Human-oriented description of the field.
+        Optional. Human-oriented description of the field.
         """
         return pulumi.get(self, "description")
 
@@ -3768,7 +4032,7 @@ class QueryParameterTypeStructTypesItemArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The name of this field.
+        Optional. The name of this field.
         """
         return pulumi.get(self, "name")
 
@@ -3776,42 +4040,46 @@ class QueryParameterTypeStructTypesItemArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
-        """
-        [Required] The type of this field.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class QueryParameterTypeArgs:
     def __init__(__self__, *,
+                 type: pulumi.Input[str],
                  array_type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None,
-                 struct_types: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterTypeStructTypesItemArgs']]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 range_element_type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None,
+                 struct_types: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterTypeStructTypesItemArgs']]]] = None):
         """
-        :param pulumi.Input['QueryParameterTypeArgs'] array_type: [Optional] The type of the array's elements, if this is an array.
-        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterTypeStructTypesItemArgs']]] struct_types: [Optional] The types of the fields of this struct, in order, if this is a struct.
-        :param pulumi.Input[str] type: [Required] The top level type of this field.
+        The type of a query parameter.
+        :param pulumi.Input[str] type: The top level type of this field.
+        :param pulumi.Input['QueryParameterTypeArgs'] array_type: Optional. The type of the array's elements, if this is an array.
+        :param pulumi.Input['QueryParameterTypeArgs'] range_element_type: Optional. The element type of the range, if this is a range.
+        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterTypeStructTypesItemArgs']]] struct_types: Optional. The types of the fields of this struct, in order, if this is a struct.
         """
+        pulumi.set(__self__, "type", type)
         if array_type is not None:
             pulumi.set(__self__, "array_type", array_type)
+        if range_element_type is not None:
+            pulumi.set(__self__, "range_element_type", range_element_type)
         if struct_types is not None:
             pulumi.set(__self__, "struct_types", struct_types)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The top level type of this field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="arrayType")
     def array_type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
         """
-        [Optional] The type of the array's elements, if this is an array.
+        Optional. The type of the array's elements, if this is an array.
         """
         return pulumi.get(self, "array_type")
 
@@ -3820,10 +4088,22 @@ class QueryParameterTypeArgs:
         pulumi.set(self, "array_type", value)
 
     @property
+    @pulumi.getter(name="rangeElementType")
+    def range_element_type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
+        """
+        Optional. The element type of the range, if this is a range.
+        """
+        return pulumi.get(self, "range_element_type")
+
+    @range_element_type.setter
+    def range_element_type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
+        pulumi.set(self, "range_element_type", value)
+
+    @property
     @pulumi.getter(name="structTypes")
     def struct_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterTypeStructTypesItemArgs']]]]:
         """
-        [Optional] The types of the fields of this struct, in order, if this is a struct.
+        Optional. The types of the fields of this struct, in order, if this is a struct.
         """
         return pulumi.get(self, "struct_types")
 
@@ -3831,32 +4111,25 @@ class QueryParameterTypeArgs:
     def struct_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterTypeStructTypesItemArgs']]]]):
         pulumi.set(self, "struct_types", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] The top level type of this field.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class QueryParameterValueArgs:
     def __init__(__self__, *,
                  array_values: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterValueArgs']]]] = None,
+                 range_value: Optional[pulumi.Input['RangeValueArgs']] = None,
                  struct_values: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterValueArgs']]] array_values: [Optional] The array values, if this is an array type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_values: [Optional] The struct field values, in order of the struct type's declaration.
-        :param pulumi.Input[str] value: [Optional] The value of this value, if a simple scalar type.
+        The value of a query parameter.
+        :param pulumi.Input[Sequence[pulumi.Input['QueryParameterValueArgs']]] array_values: Optional. The array values, if this is an array type.
+        :param pulumi.Input['RangeValueArgs'] range_value: Optional. The range value, if this is a range type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_values: The struct field values.
+        :param pulumi.Input[str] value: Optional. The value of this value, if a simple scalar type.
         """
         if array_values is not None:
             pulumi.set(__self__, "array_values", array_values)
+        if range_value is not None:
+            pulumi.set(__self__, "range_value", range_value)
         if struct_values is not None:
             pulumi.set(__self__, "struct_values", struct_values)
         if value is not None:
@@ -3866,7 +4139,7 @@ class QueryParameterValueArgs:
     @pulumi.getter(name="arrayValues")
     def array_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterValueArgs']]]]:
         """
-        [Optional] The array values, if this is an array type.
+        Optional. The array values, if this is an array type.
         """
         return pulumi.get(self, "array_values")
 
@@ -3875,10 +4148,22 @@ class QueryParameterValueArgs:
         pulumi.set(self, "array_values", value)
 
     @property
+    @pulumi.getter(name="rangeValue")
+    def range_value(self) -> Optional[pulumi.Input['RangeValueArgs']]:
+        """
+        Optional. The range value, if this is a range type.
+        """
+        return pulumi.get(self, "range_value")
+
+    @range_value.setter
+    def range_value(self, value: Optional[pulumi.Input['RangeValueArgs']]):
+        pulumi.set(self, "range_value", value)
+
+    @property
     @pulumi.getter(name="structValues")
     def struct_values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        [Optional] The struct field values, in order of the struct type's declaration.
+        The struct field values.
         """
         return pulumi.get(self, "struct_values")
 
@@ -3890,7 +4175,7 @@ class QueryParameterValueArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The value of this value, if a simple scalar type.
+        Optional. The value of this value, if a simple scalar type.
         """
         return pulumi.get(self, "value")
 
@@ -3902,56 +4187,55 @@ class QueryParameterValueArgs:
 @pulumi.input_type
 class QueryParameterArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 parameter_type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None,
-                 parameter_value: Optional[pulumi.Input['QueryParameterValueArgs']] = None):
+                 parameter_type: pulumi.Input['QueryParameterTypeArgs'],
+                 parameter_value: pulumi.Input['QueryParameterValueArgs'],
+                 name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
-        :param pulumi.Input['QueryParameterTypeArgs'] parameter_type: [Required] The type of this parameter.
-        :param pulumi.Input['QueryParameterValueArgs'] parameter_value: [Required] The value of this parameter.
+        A parameter given to a query.
+        :param pulumi.Input['QueryParameterTypeArgs'] parameter_type: The type of this parameter.
+        :param pulumi.Input['QueryParameterValueArgs'] parameter_value: The value of this parameter.
+        :param pulumi.Input[str] name: Optional. If unset, this is a positional parameter. Otherwise, should be unique within a query.
         """
+        pulumi.set(__self__, "parameter_type", parameter_type)
+        pulumi.set(__self__, "parameter_value", parameter_value)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if parameter_type is not None:
-            pulumi.set(__self__, "parameter_type", parameter_type)
-        if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @property
+    @pulumi.getter(name="parameterType")
+    def parameter_type(self) -> pulumi.Input['QueryParameterTypeArgs']:
+        """
+        The type of this parameter.
+        """
+        return pulumi.get(self, "parameter_type")
+
+    @parameter_type.setter
+    def parameter_type(self, value: pulumi.Input['QueryParameterTypeArgs']):
+        pulumi.set(self, "parameter_type", value)
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> pulumi.Input['QueryParameterValueArgs']:
+        """
+        The value of this parameter.
+        """
+        return pulumi.get(self, "parameter_value")
+
+    @parameter_value.setter
+    def parameter_value(self, value: pulumi.Input['QueryParameterValueArgs']):
+        pulumi.set(self, "parameter_value", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
+        Optional. If unset, this is a positional parameter. Otherwise, should be unique within a query.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="parameterType")
-    def parameter_type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
-        """
-        [Required] The type of this parameter.
-        """
-        return pulumi.get(self, "parameter_type")
-
-    @parameter_type.setter
-    def parameter_type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
-        pulumi.set(self, "parameter_type", value)
-
-    @property
-    @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['QueryParameterValueArgs']]:
-        """
-        [Required] The value of this parameter.
-        """
-        return pulumi.get(self, "parameter_value")
-
-    @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['QueryParameterValueArgs']]):
-        pulumi.set(self, "parameter_value", value)
 
 
 @pulumi.input_type
@@ -3961,10 +4245,10 @@ class RangePartitioningRangeArgs:
                  interval: Optional[pulumi.Input[str]] = None,
                  start: Optional[pulumi.Input[str]] = None):
         """
-        [TrustedTester] [Required] Defines the ranges for range partitioning.
-        :param pulumi.Input[str] end: [TrustedTester] [Required] The end of range partitioning, exclusive.
-        :param pulumi.Input[str] interval: [TrustedTester] [Required] The width of each interval.
-        :param pulumi.Input[str] start: [TrustedTester] [Required] The start of range partitioning, inclusive.
+        [Experimental] Defines the ranges for range partitioning.
+        :param pulumi.Input[str] end: [Experimental] The end of range partitioning, exclusive.
+        :param pulumi.Input[str] interval: [Experimental] The width of each interval.
+        :param pulumi.Input[str] start: [Experimental] The start of range partitioning, inclusive.
         """
         if end is not None:
             pulumi.set(__self__, "end", end)
@@ -3977,7 +4261,7 @@ class RangePartitioningRangeArgs:
     @pulumi.getter
     def end(self) -> Optional[pulumi.Input[str]]:
         """
-        [TrustedTester] [Required] The end of range partitioning, exclusive.
+        [Experimental] The end of range partitioning, exclusive.
         """
         return pulumi.get(self, "end")
 
@@ -3989,7 +4273,7 @@ class RangePartitioningRangeArgs:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[str]]:
         """
-        [TrustedTester] [Required] The width of each interval.
+        [Experimental] The width of each interval.
         """
         return pulumi.get(self, "interval")
 
@@ -4001,7 +4285,7 @@ class RangePartitioningRangeArgs:
     @pulumi.getter
     def start(self) -> Optional[pulumi.Input[str]]:
         """
-        [TrustedTester] [Required] The start of range partitioning, inclusive.
+        [Experimental] The start of range partitioning, inclusive.
         """
         return pulumi.get(self, "start")
 
@@ -4013,40 +4297,79 @@ class RangePartitioningRangeArgs:
 @pulumi.input_type
 class RangePartitioningArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[str]] = None,
+                 field: pulumi.Input[str],
                  range: Optional[pulumi.Input['RangePartitioningRangeArgs']] = None):
         """
-        :param pulumi.Input[str] field: [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
-        :param pulumi.Input['RangePartitioningRangeArgs'] range: [TrustedTester] [Required] Defines the ranges for range partitioning.
+        :param pulumi.Input[str] field: [Experimental] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        :param pulumi.Input['RangePartitioningRangeArgs'] range: [Experimental] Defines the ranges for range partitioning.
         """
-        if field is not None:
-            pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "field", field)
         if range is not None:
             pulumi.set(__self__, "range", range)
 
     @property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[str]]:
+    def field(self) -> pulumi.Input[str]:
         """
-        [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        [Experimental] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[str]]):
+    def field(self, value: pulumi.Input[str]):
         pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter
     def range(self) -> Optional[pulumi.Input['RangePartitioningRangeArgs']]:
         """
-        [TrustedTester] [Required] Defines the ranges for range partitioning.
+        [Experimental] Defines the ranges for range partitioning.
         """
         return pulumi.get(self, "range")
 
     @range.setter
     def range(self, value: Optional[pulumi.Input['RangePartitioningRangeArgs']]):
         pulumi.set(self, "range", value)
+
+
+@pulumi.input_type
+class RangeValueArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input['QueryParameterValueArgs']] = None,
+                 start: Optional[pulumi.Input['QueryParameterValueArgs']] = None):
+        """
+        Represents the value of a range.
+        :param pulumi.Input['QueryParameterValueArgs'] end: Optional. The end value of the range. A missing value represents an unbounded end.
+        :param pulumi.Input['QueryParameterValueArgs'] start: Optional. The start value of the range. A missing value represents an unbounded start.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input['QueryParameterValueArgs']]:
+        """
+        Optional. The end value of the range. A missing value represents an unbounded end.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input['QueryParameterValueArgs']]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input['QueryParameterValueArgs']]:
+        """
+        Optional. The start value of the range. A missing value represents an unbounded start.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input['QueryParameterValueArgs']]):
+        pulumi.set(self, "start", value)
 
 
 @pulumi.input_type
@@ -4128,6 +4451,7 @@ class RoutineReferenceArgs:
                  project: pulumi.Input[str],
                  routine_id: pulumi.Input[str]):
         """
+        Id path of a routine.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine.
         :param pulumi.Input[str] project: The ID of the project containing this routine.
         :param pulumi.Input[str] routine_id: The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
@@ -4171,6 +4495,62 @@ class RoutineReferenceArgs:
     @routine_id.setter
     def routine_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "routine_id", value)
+
+
+@pulumi.input_type
+class ScriptOptionsArgs:
+    def __init__(__self__, *,
+                 key_result_statement: Optional[pulumi.Input['ScriptOptionsKeyResultStatement']] = None,
+                 statement_byte_budget: Optional[pulumi.Input[str]] = None,
+                 statement_timeout_ms: Optional[pulumi.Input[str]] = None):
+        """
+        Options related to script execution.
+        :param pulumi.Input['ScriptOptionsKeyResultStatement'] key_result_statement: Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST.
+        :param pulumi.Input[str] statement_byte_budget: Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+        :param pulumi.Input[str] statement_timeout_ms: Timeout period for each statement in a script.
+        """
+        if key_result_statement is not None:
+            pulumi.set(__self__, "key_result_statement", key_result_statement)
+        if statement_byte_budget is not None:
+            pulumi.set(__self__, "statement_byte_budget", statement_byte_budget)
+        if statement_timeout_ms is not None:
+            pulumi.set(__self__, "statement_timeout_ms", statement_timeout_ms)
+
+    @property
+    @pulumi.getter(name="keyResultStatement")
+    def key_result_statement(self) -> Optional[pulumi.Input['ScriptOptionsKeyResultStatement']]:
+        """
+        Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST.
+        """
+        return pulumi.get(self, "key_result_statement")
+
+    @key_result_statement.setter
+    def key_result_statement(self, value: Optional[pulumi.Input['ScriptOptionsKeyResultStatement']]):
+        pulumi.set(self, "key_result_statement", value)
+
+    @property
+    @pulumi.getter(name="statementByteBudget")
+    def statement_byte_budget(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
+        """
+        return pulumi.get(self, "statement_byte_budget")
+
+    @statement_byte_budget.setter
+    def statement_byte_budget(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statement_byte_budget", value)
+
+    @property
+    @pulumi.getter(name="statementTimeoutMs")
+    def statement_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timeout period for each statement in a script.
+        """
+        return pulumi.get(self, "statement_timeout_ms")
+
+    @statement_timeout_ms.setter
+    def statement_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statement_timeout_ms", value)
 
 
 @pulumi.input_type
@@ -4503,29 +4883,38 @@ class StandardSqlTableTypeArgs:
 @pulumi.input_type
 class TableConstraintsForeignKeysItemColumnReferencesItemArgs:
     def __init__(__self__, *,
-                 referenced_column: Optional[pulumi.Input[str]] = None,
-                 referencing_column: Optional[pulumi.Input[str]] = None):
-        if referenced_column is not None:
-            pulumi.set(__self__, "referenced_column", referenced_column)
-        if referencing_column is not None:
-            pulumi.set(__self__, "referencing_column", referencing_column)
+                 referenced_column: pulumi.Input[str],
+                 referencing_column: pulumi.Input[str]):
+        """
+        The pair of the foreign key column and primary key column.
+        :param pulumi.Input[str] referenced_column: The column in the primary key that are referenced by the referencing_column.
+        :param pulumi.Input[str] referencing_column: The column that composes the foreign key.
+        """
+        pulumi.set(__self__, "referenced_column", referenced_column)
+        pulumi.set(__self__, "referencing_column", referencing_column)
 
     @property
     @pulumi.getter(name="referencedColumn")
-    def referenced_column(self) -> Optional[pulumi.Input[str]]:
+    def referenced_column(self) -> pulumi.Input[str]:
+        """
+        The column in the primary key that are referenced by the referencing_column.
+        """
         return pulumi.get(self, "referenced_column")
 
     @referenced_column.setter
-    def referenced_column(self, value: Optional[pulumi.Input[str]]):
+    def referenced_column(self, value: pulumi.Input[str]):
         pulumi.set(self, "referenced_column", value)
 
     @property
     @pulumi.getter(name="referencingColumn")
-    def referencing_column(self) -> Optional[pulumi.Input[str]]:
+    def referencing_column(self) -> pulumi.Input[str]:
+        """
+        The column that composes the foreign key.
+        """
         return pulumi.get(self, "referencing_column")
 
     @referencing_column.setter
-    def referencing_column(self, value: Optional[pulumi.Input[str]]):
+    def referencing_column(self, value: pulumi.Input[str]):
         pulumi.set(self, "referencing_column", value)
 
 
@@ -4573,11 +4962,15 @@ class TableConstraintsForeignKeysItemReferencedTableArgs:
 @pulumi.input_type
 class TableConstraintsForeignKeysItemArgs:
     def __init__(__self__, *,
-                 column_references: Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]] = None,
+                 column_references: pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]],
                  name: Optional[pulumi.Input[str]] = None,
                  referenced_table: Optional[pulumi.Input['TableConstraintsForeignKeysItemReferencedTableArgs']] = None):
-        if column_references is not None:
-            pulumi.set(__self__, "column_references", column_references)
+        """
+        Represents a foreign key constraint on a table's columns.
+        :param pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]] column_references: The columns that compose the foreign key.
+        :param pulumi.Input[str] name: Optional. Set only if the foreign key constraint is named.
+        """
+        pulumi.set(__self__, "column_references", column_references)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if referenced_table is not None:
@@ -4585,16 +4978,22 @@ class TableConstraintsForeignKeysItemArgs:
 
     @property
     @pulumi.getter(name="columnReferences")
-    def column_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]]:
+    def column_references(self) -> pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]:
+        """
+        The columns that compose the foreign key.
+        """
         return pulumi.get(self, "column_references")
 
     @column_references.setter
-    def column_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]]):
+    def column_references(self, value: pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]):
         pulumi.set(self, "column_references", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Set only if the foreign key constraint is named.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -4614,20 +5013,23 @@ class TableConstraintsForeignKeysItemArgs:
 @pulumi.input_type
 class TableConstraintsPrimaryKeyArgs:
     def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 columns: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        [Optional] The primary key of the table.
+        Represents the primary key constraint on a table's columns.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] columns: The columns that are composed of the primary key constraint.
         """
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
+        pulumi.set(__self__, "columns", columns)
 
     @property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def columns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The columns that are composed of the primary key constraint.
+        """
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def columns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "columns", value)
 
 
@@ -4637,8 +5039,9 @@ class TableConstraintsArgs:
                  foreign_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]]] = None,
                  primary_key: Optional[pulumi.Input['TableConstraintsPrimaryKeyArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]] foreign_keys: [Optional] The foreign keys of the tables.
-        :param pulumi.Input['TableConstraintsPrimaryKeyArgs'] primary_key: [Optional] The primary key of the table.
+        The TableConstraints defines the primary key and foreign key.
+        :param pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]] foreign_keys: Optional. Present only if the table has a foreign key. The foreign key is not enforced.
+        :param pulumi.Input['TableConstraintsPrimaryKeyArgs'] primary_key: Represents the primary key constraint on a table's columns.
         """
         if foreign_keys is not None:
             pulumi.set(__self__, "foreign_keys", foreign_keys)
@@ -4649,7 +5052,7 @@ class TableConstraintsArgs:
     @pulumi.getter(name="foreignKeys")
     def foreign_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]]]:
         """
-        [Optional] The foreign keys of the tables.
+        Optional. Present only if the table has a foreign key. The foreign key is not enforced.
         """
         return pulumi.get(self, "foreign_keys")
 
@@ -4661,7 +5064,7 @@ class TableConstraintsArgs:
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input['TableConstraintsPrimaryKeyArgs']]:
         """
-        [Optional] The primary key of the table.
+        Represents the primary key constraint on a table's columns.
         """
         return pulumi.get(self, "primary_key")
 
@@ -4675,9 +5078,12 @@ class TableFieldSchemaCategoriesArgs:
     def __init__(__self__, *,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        [Optional] The categories attached to this field, used for field-level access control.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        Deprecated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Deprecated.
         """
+        if names is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""names is deprecated: Deprecated.""")
         if names is not None:
             pulumi.set(__self__, "names", names)
 
@@ -4685,8 +5091,11 @@ class TableFieldSchemaCategoriesArgs:
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""names is deprecated: Deprecated.""")
+
         return pulumi.get(self, "names")
 
     @names.setter
@@ -4699,7 +5108,8 @@ class TableFieldSchemaPolicyTagsArgs:
     def __init__(__self__, *,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        Optional. The policy tags attached to this field, used for field-level access control. If not set, defaults to empty policy_tags.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of policy tag resource names. For example, "projects/1/locations/eu/taxonomies/2/policyTags/3". At most 1 policy tag is currently allowed.
         """
         if names is not None:
             pulumi.set(__self__, "names", names)
@@ -4708,7 +5118,7 @@ class TableFieldSchemaPolicyTagsArgs:
     @pulumi.getter
     def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        A list of policy tag resource names. For example, "projects/1/locations/eu/taxonomies/2/policyTags/3". At most 1 policy tag is currently allowed.
         """
         return pulumi.get(self, "names")
 
@@ -4720,30 +5130,31 @@ class TableFieldSchemaPolicyTagsArgs:
 @pulumi.input_type
 class TableFieldSchemaRangeElementTypeArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: pulumi.Input[str]):
         """
-        Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
-        :param pulumi.Input[str] type: The field element type of a RANGE
+        Represents the type of a field element.
+        :param pulumi.Input[str] type: The type of a field element. For more information, see TableFieldSchema.type.
         """
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> pulumi.Input[str]:
         """
-        The field element type of a RANGE
+        The type of a field element. For more information, see TableFieldSchema.type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class TableFieldSchemaArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
                  categories: Optional[pulumi.Input['TableFieldSchemaCategoriesArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  default_value_expression: Optional[pulumi.Input[str]] = None,
@@ -4751,28 +5162,33 @@ class TableFieldSchemaArgs:
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]] = None,
                  max_length: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  policy_tags: Optional[pulumi.Input['TableFieldSchemaPolicyTagsArgs']] = None,
                  precision: Optional[pulumi.Input[str]] = None,
                  range_element_type: Optional[pulumi.Input['TableFieldSchemaRangeElementTypeArgs']] = None,
-                 rounding_mode: Optional[pulumi.Input[str]] = None,
-                 scale: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 rounding_mode: Optional[pulumi.Input['TableFieldSchemaRoundingMode']] = None,
+                 scale: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['TableFieldSchemaCategoriesArgs'] categories: [Optional] The categories attached to this field, used for field-level access control.
-        :param pulumi.Input[str] collation: Optional. Collation specification of the field. It only can be set on string type field.
-        :param pulumi.Input[str] default_value_expression: Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
-        :param pulumi.Input[str] description: [Optional] The field description. The maximum length is 1,024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
-        :param pulumi.Input[str] max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
-        :param pulumi.Input[str] mode: [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
-        :param pulumi.Input[str] name: [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
-        :param pulumi.Input[str] precision: [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
-        :param pulumi.Input['TableFieldSchemaRangeElementTypeArgs'] range_element_type: Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
-        :param pulumi.Input[str] rounding_mode: Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
-        :param pulumi.Input[str] scale: [Optional] See documentation for precision.
-        :param pulumi.Input[str] type: [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
+        A field in TableSchema
+        :param pulumi.Input[str] name: The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
+        :param pulumi.Input[str] type: The field data type. Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE * TIME * DATETIME * GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or STRUCT) * RANGE ([Preview](/products/#product-launch-stages)) Use of RECORD/STRUCT indicates that the field contains a nested schema.
+        :param pulumi.Input['TableFieldSchemaCategoriesArgs'] categories: Deprecated.
+        :param pulumi.Input[str] collation: Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
+        :param pulumi.Input[str] default_value_expression: Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
+        :param pulumi.Input[str] description: Optional. The field description. The maximum length is 1,024 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: Optional. Describes the nested schema fields if the type property is set to RECORD.
+        :param pulumi.Input[str] max_length: Optional. Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
+        :param pulumi.Input[str] mode: Optional. The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
+        :param pulumi.Input['TableFieldSchemaPolicyTagsArgs'] policy_tags: Optional. The policy tags attached to this field, used for field-level access control. If not set, defaults to empty policy_tags.
+        :param pulumi.Input[str] precision: Optional. Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: * Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] * Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: * If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. * If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): * If type = "NUMERIC": 1 ≤ precision ≤ 29. * If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        :param pulumi.Input['TableFieldSchemaRangeElementTypeArgs'] range_element_type: Represents the type of a field element.
+        :param pulumi.Input['TableFieldSchemaRoundingMode'] rounding_mode: Optional. Specifies the rounding mode to be used when storing values of NUMERIC and BIGNUMERIC type.
+        :param pulumi.Input[str] scale: Optional. See documentation for precision.
         """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if categories is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""categories is deprecated: Deprecated.""")
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
         if collation is not None:
@@ -4787,8 +5203,6 @@ class TableFieldSchemaArgs:
             pulumi.set(__self__, "max_length", max_length)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if policy_tags is not None:
             pulumi.set(__self__, "policy_tags", policy_tags)
         if precision is not None:
@@ -4799,15 +5213,40 @@ class TableFieldSchemaArgs:
             pulumi.set(__self__, "rounding_mode", rounding_mode)
         if scale is not None:
             pulumi.set(__self__, "scale", scale)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The field data type. Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE * TIME * DATETIME * GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or STRUCT) * RANGE ([Preview](/products/#product-launch-stages)) Use of RECORD/STRUCT indicates that the field contains a nested schema.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
     def categories(self) -> Optional[pulumi.Input['TableFieldSchemaCategoriesArgs']]:
         """
-        [Optional] The categories attached to this field, used for field-level access control.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""categories is deprecated: Deprecated.""")
+
         return pulumi.get(self, "categories")
 
     @categories.setter
@@ -4818,7 +5257,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter
     def collation(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Collation specification of the field. It only can be set on string type field.
+        Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
         """
         return pulumi.get(self, "collation")
 
@@ -4830,7 +5269,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter(name="defaultValueExpression")
     def default_value_expression(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
+        Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         """
         return pulumi.get(self, "default_value_expression")
 
@@ -4842,7 +5281,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The field description. The maximum length is 1,024 characters.
+        Optional. The field description. The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -4854,7 +5293,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]]:
         """
-        [Optional] Describes the nested schema fields if the type property is set to RECORD.
+        Optional. Describes the nested schema fields if the type property is set to RECORD.
         """
         return pulumi.get(self, "fields")
 
@@ -4866,7 +5305,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter(name="maxLength")
     def max_length(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
+        Optional. Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
         """
         return pulumi.get(self, "max_length")
 
@@ -4878,7 +5317,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
+        Optional. The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
         """
         return pulumi.get(self, "mode")
 
@@ -4887,20 +5326,11 @@ class TableFieldSchemaArgs:
         pulumi.set(self, "mode", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="policyTags")
     def policy_tags(self) -> Optional[pulumi.Input['TableFieldSchemaPolicyTagsArgs']]:
+        """
+        Optional. The policy tags attached to this field, used for field-level access control. If not set, defaults to empty policy_tags.
+        """
         return pulumi.get(self, "policy_tags")
 
     @policy_tags.setter
@@ -4911,7 +5341,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter
     def precision(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        Optional. Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: * Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] * Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: * If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. * If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): * If type = "NUMERIC": 1 ≤ precision ≤ 29. * If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
         """
         return pulumi.get(self, "precision")
 
@@ -4923,7 +5353,7 @@ class TableFieldSchemaArgs:
     @pulumi.getter(name="rangeElementType")
     def range_element_type(self) -> Optional[pulumi.Input['TableFieldSchemaRangeElementTypeArgs']]:
         """
-        Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        Represents the type of a field element.
         """
         return pulumi.get(self, "range_element_type")
 
@@ -4933,21 +5363,21 @@ class TableFieldSchemaArgs:
 
     @property
     @pulumi.getter(name="roundingMode")
-    def rounding_mode(self) -> Optional[pulumi.Input[str]]:
+    def rounding_mode(self) -> Optional[pulumi.Input['TableFieldSchemaRoundingMode']]:
         """
-        Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+        Optional. Specifies the rounding mode to be used when storing values of NUMERIC and BIGNUMERIC type.
         """
         return pulumi.get(self, "rounding_mode")
 
     @rounding_mode.setter
-    def rounding_mode(self, value: Optional[pulumi.Input[str]]):
+    def rounding_mode(self, value: Optional[pulumi.Input['TableFieldSchemaRoundingMode']]):
         pulumi.set(self, "rounding_mode", value)
 
     @property
     @pulumi.getter
     def scale(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] See documentation for precision.
+        Optional. See documentation for precision.
         """
         return pulumi.get(self, "scale")
 
@@ -4955,72 +5385,95 @@ class TableFieldSchemaArgs:
     def scale(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scale", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class TableReferenceArgs:
     def __init__(__self__, *,
-                 dataset_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 table_id: Optional[pulumi.Input[str]] = None):
+                 dataset_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 table_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] dataset_id: [Required] The ID of the dataset containing this table.
-        :param pulumi.Input[str] project: [Required] The ID of the project containing this table.
-        :param pulumi.Input[str] table_id: [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] project: The ID of the project containing this table.
+        :param pulumi.Input[str] table_id: The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`.
         """
-        if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if table_id is not None:
-            pulumi.set(__self__, "table_id", table_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "table_id", table_id)
 
     @property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[str]]:
+    def dataset_id(self) -> pulumi.Input[str]:
         """
-        [Required] The ID of the dataset containing this table.
+        The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[str]]):
+    def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
 
     @property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
+    def project(self) -> pulumi.Input[str]:
         """
-        [Required] The ID of the project containing this table.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
+    def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tableId")
-    def table_id(self) -> Optional[pulumi.Input[str]]:
+    def table_id(self) -> pulumi.Input[str]:
         """
-        [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`.
         """
         return pulumi.get(self, "table_id")
 
     @table_id.setter
-    def table_id(self, value: Optional[pulumi.Input[str]]):
+    def table_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "table_id", value)
+
+
+@pulumi.input_type
+class TableReplicationInfoArgs:
+    def __init__(__self__, *,
+                 replication_interval_ms: pulumi.Input[str],
+                 source_table: pulumi.Input['TableReferenceArgs']):
+        """
+        Replication info of a table created using `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+        :param pulumi.Input[str] replication_interval_ms: Specifies the interval at which the source table is polled for updates.
+        :param pulumi.Input['TableReferenceArgs'] source_table: Source table reference that is replicated.
+        """
+        pulumi.set(__self__, "replication_interval_ms", replication_interval_ms)
+        pulumi.set(__self__, "source_table", source_table)
+
+    @property
+    @pulumi.getter(name="replicationIntervalMs")
+    def replication_interval_ms(self) -> pulumi.Input[str]:
+        """
+        Specifies the interval at which the source table is polled for updates.
+        """
+        return pulumi.get(self, "replication_interval_ms")
+
+    @replication_interval_ms.setter
+    def replication_interval_ms(self, value: pulumi.Input[str]):
+        pulumi.set(self, "replication_interval_ms", value)
+
+    @property
+    @pulumi.getter(name="sourceTable")
+    def source_table(self) -> pulumi.Input['TableReferenceArgs']:
+        """
+        Source table reference that is replicated.
+        """
+        return pulumi.get(self, "source_table")
+
+    @source_table.setter
+    def source_table(self, value: pulumi.Input['TableReferenceArgs']):
+        pulumi.set(self, "source_table", value)
 
 
 @pulumi.input_type
@@ -5028,6 +5481,7 @@ class TableSchemaArgs:
     def __init__(__self__, *,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]] = None):
         """
+        Schema of a table
         :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: Describes the fields in a table.
         """
         if fields is not None:
@@ -5049,29 +5503,44 @@ class TableSchemaArgs:
 @pulumi.input_type
 class TimePartitioningArgs:
     def __init__(__self__, *,
+                 type: pulumi.Input[str],
                  expiration_ms: Optional[pulumi.Input[str]] = None,
                  field: Optional[pulumi.Input[str]] = None,
-                 require_partition_filter: Optional[pulumi.Input[bool]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 require_partition_filter: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] expiration_ms: [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
-        :param pulumi.Input[str] field: [Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
-        :param pulumi.Input[str] type: [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. When the type is not specified, the default behavior is DAY.
+        :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively.
+        :param pulumi.Input[str] expiration_ms: Optional. Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
+        :param pulumi.Input[str] field: Optional. If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED. A wrapper is used here because an empty string is an invalid value.
+        :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. This field is deprecated; please set the field with the same name on the table itself instead. This field needs a wrapper because we want to output the default value, false, if the user explicitly set it.
         """
+        pulumi.set(__self__, "type", type)
         if expiration_ms is not None:
             pulumi.set(__self__, "expiration_ms", expiration_ms)
         if field is not None:
             pulumi.set(__self__, "field", field)
         if require_partition_filter is not None:
+            warnings.warn("""If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. This field is deprecated; please set the field with the same name on the table itself instead. This field needs a wrapper because we want to output the default value, false, if the user explicitly set it.""", DeprecationWarning)
+            pulumi.log.warn("""require_partition_filter is deprecated: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. This field is deprecated; please set the field with the same name on the table itself instead. This field needs a wrapper because we want to output the default value, false, if the user explicitly set it.""")
+        if require_partition_filter is not None:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="expirationMs")
     def expiration_ms(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
+        Optional. Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
         """
         return pulumi.get(self, "expiration_ms")
 
@@ -5083,7 +5552,7 @@ class TimePartitioningArgs:
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
         """
-        [Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED.
+        Optional. If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED. A wrapper is used here because an empty string is an invalid value.
         """
         return pulumi.get(self, "field")
 
@@ -5094,23 +5563,17 @@ class TimePartitioningArgs:
     @property
     @pulumi.getter(name="requirePartitionFilter")
     def require_partition_filter(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. This field is deprecated; please set the field with the same name on the table itself instead. This field needs a wrapper because we want to output the default value, false, if the user explicitly set it.
+        """
+        warnings.warn("""If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. This field is deprecated; please set the field with the same name on the table itself instead. This field needs a wrapper because we want to output the default value, false, if the user explicitly set it.""", DeprecationWarning)
+        pulumi.log.warn("""require_partition_filter is deprecated: If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. This field is deprecated; please set the field with the same name on the table itself instead. This field needs a wrapper because we want to output the default value, false, if the user explicitly set it.""")
+
         return pulumi.get(self, "require_partition_filter")
 
     @require_partition_filter.setter
     def require_partition_filter(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "require_partition_filter", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. When the type is not specified, the default behavior is DAY.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -5119,7 +5582,7 @@ class UserDefinedFunctionResourceArgs:
                  inline_code: Optional[pulumi.Input[str]] = None,
                  resource_uri: Optional[pulumi.Input[str]] = None):
         """
-        This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
+         This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of GoogleSQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
         :param pulumi.Input[str] inline_code: [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
         :param pulumi.Input[str] resource_uri: [Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
         """
@@ -5156,18 +5619,22 @@ class UserDefinedFunctionResourceArgs:
 @pulumi.input_type
 class ViewDefinitionArgs:
     def __init__(__self__, *,
-                 query: Optional[pulumi.Input[str]] = None,
+                 query: pulumi.Input[str],
+                 privacy_policy: Optional[pulumi.Input['PrivacyPolicyArgs']] = None,
                  use_explicit_column_names: Optional[pulumi.Input[bool]] = None,
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None,
                  user_defined_function_resources: Optional[pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]]] = None):
         """
-        :param pulumi.Input[str] query: [Required] A query that BigQuery executes when the view is referenced.
-        :param pulumi.Input[bool] use_explicit_column_names: True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
-        :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
+        Describes the definition of a logical view.
+        :param pulumi.Input[str] query: A query that BigQuery executes when the view is referenced.
+        :param pulumi.Input['PrivacyPolicyArgs'] privacy_policy: Optional. Specifices the privacy policy for the view.
+        :param pulumi.Input[bool] use_explicit_column_names: True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set for GoogleSQL views.
+        :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value. A wrapper is used here because the default value is True.
         :param pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]] user_defined_function_resources: Describes user-defined function resources used in the query.
         """
-        if query is not None:
-            pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "query", query)
+        if privacy_policy is not None:
+            pulumi.set(__self__, "privacy_policy", privacy_policy)
         if use_explicit_column_names is not None:
             pulumi.set(__self__, "use_explicit_column_names", use_explicit_column_names)
         if use_legacy_sql is not None:
@@ -5177,21 +5644,33 @@ class ViewDefinitionArgs:
 
     @property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[str]]:
+    def query(self) -> pulumi.Input[str]:
         """
-        [Required] A query that BigQuery executes when the view is referenced.
+        A query that BigQuery executes when the view is referenced.
         """
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[str]]):
+    def query(self, value: pulumi.Input[str]):
         pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="privacyPolicy")
+    def privacy_policy(self) -> Optional[pulumi.Input['PrivacyPolicyArgs']]:
+        """
+        Optional. Specifices the privacy policy for the view.
+        """
+        return pulumi.get(self, "privacy_policy")
+
+    @privacy_policy.setter
+    def privacy_policy(self, value: Optional[pulumi.Input['PrivacyPolicyArgs']]):
+        pulumi.set(self, "privacy_policy", value)
 
     @property
     @pulumi.getter(name="useExplicitColumnNames")
     def use_explicit_column_names(self) -> Optional[pulumi.Input[bool]]:
         """
-        True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+        True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set for GoogleSQL views.
         """
         return pulumi.get(self, "use_explicit_column_names")
 
@@ -5203,7 +5682,7 @@ class ViewDefinitionArgs:
     @pulumi.getter(name="useLegacySql")
     def use_legacy_sql(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
+        Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value. A wrapper is used here because the default value is True.
         """
         return pulumi.get(self, "use_legacy_sql")
 

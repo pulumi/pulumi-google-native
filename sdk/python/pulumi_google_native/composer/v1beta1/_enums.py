@@ -5,11 +5,32 @@
 from enum import Enum
 
 __all__ = [
+    'AirflowMetadataRetentionPolicyConfigRetentionMode',
     'EnvironmentConfigEnvironmentSize',
     'EnvironmentConfigResilienceMode',
     'EnvironmentState',
     'NetworkingConfigConnectionType',
+    'SoftwareConfigWebServerPluginsMode',
+    'TaskLogsRetentionConfigStorageMode',
 ]
+
+
+class AirflowMetadataRetentionPolicyConfigRetentionMode(str, Enum):
+    """
+    Optional. Retention can be either enabled or disabled.
+    """
+    RETENTION_MODE_UNSPECIFIED = "RETENTION_MODE_UNSPECIFIED"
+    """
+    Default mode doesn't change environment parameters.
+    """
+    RETENTION_MODE_ENABLED = "RETENTION_MODE_ENABLED"
+    """
+    Retention policy is enabled.
+    """
+    RETENTION_MODE_DISABLED = "RETENTION_MODE_DISABLED"
+    """
+    Retention policy is disabled.
+    """
 
 
 class EnvironmentConfigEnvironmentSize(str, Enum):
@@ -93,4 +114,40 @@ class NetworkingConfigConnectionType(str, Enum):
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
     """
     Requests the use of Private Service Connect for connecting the Customer and Tenant projects.
+    """
+
+
+class SoftwareConfigWebServerPluginsMode(str, Enum):
+    """
+    Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+    """
+    WEB_SERVER_PLUGINS_MODE_UNSPECIFIED = "WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"
+    """
+    Default mode.
+    """
+    PLUGINS_DISABLED = "PLUGINS_DISABLED"
+    """
+    Web server plugins are not supported.
+    """
+    PLUGINS_ENABLED = "PLUGINS_ENABLED"
+    """
+    Web server plugins are supported.
+    """
+
+
+class TaskLogsRetentionConfigStorageMode(str, Enum):
+    """
+    Optional. The mode of storage for Airflow workers task logs.
+    """
+    TASK_LOGS_STORAGE_MODE_UNSPECIFIED = "TASK_LOGS_STORAGE_MODE_UNSPECIFIED"
+    """
+    This configuration is not specified by the user.
+    """
+    CLOUD_LOGGING_AND_CLOUD_STORAGE = "CLOUD_LOGGING_AND_CLOUD_STORAGE"
+    """
+    Store task logs in Cloud Logging and in the environment's Cloud Storage bucket.
+    """
+    CLOUD_LOGGING_ONLY = "CLOUD_LOGGING_ONLY"
+    """
+    Store task logs in Cloud Logging only.
     """

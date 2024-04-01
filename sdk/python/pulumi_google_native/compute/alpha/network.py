@@ -25,6 +25,7 @@ class NetworkArgs:
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
+                 network_placement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input['NetworkRoutingConfigArgs']] = None):
@@ -38,6 +39,7 @@ class NetworkArgs:
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1300 and the maximum value is 8896. The suggested value is 1500, which is the default MTU used on the Internet, or 8896 if you want to use Jumbo frames. If unspecified, the value defaults to 1460.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder'] network_firewall_policy_enforcement_order: The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        :param pulumi.Input[str] network_placement: A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['NetworkRoutingConfigArgs'] routing_config: The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
         """
@@ -60,6 +62,8 @@ class NetworkArgs:
             pulumi.set(__self__, "name", name)
         if network_firewall_policy_enforcement_order is not None:
             pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
+        if network_placement is not None:
+            pulumi.set(__self__, "network_placement", network_placement)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -167,6 +171,18 @@ class NetworkArgs:
         pulumi.set(self, "network_firewall_policy_enforcement_order", value)
 
     @property
+    @pulumi.getter(name="networkPlacement")
+    def network_placement(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+        """
+        return pulumi.get(self, "network_placement")
+
+    @network_placement.setter
+    def network_placement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_placement", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -213,6 +229,7 @@ class Network(pulumi.CustomResource):
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
+                 network_placement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
@@ -230,6 +247,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1300 and the maximum value is 8896. The suggested value is 1500, which is the default MTU used on the Internet, or 8896 if you want to use Jumbo frames. If unspecified, the value defaults to 1460.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder'] network_firewall_policy_enforcement_order: The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        :param pulumi.Input[str] network_placement: A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']] routing_config: The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
         """
@@ -265,6 +283,7 @@ class Network(pulumi.CustomResource):
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
+                 network_placement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
@@ -285,6 +304,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
+            __props__.__dict__["network_placement"] = network_placement
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["routing_config"] = routing_config
@@ -333,6 +353,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["mtu"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_firewall_policy_enforcement_order"] = None
+        __props__.__dict__["network_placement"] = None
         __props__.__dict__["peerings"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
@@ -441,6 +462,14 @@ class Network(pulumi.CustomResource):
         The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
         """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @property
+    @pulumi.getter(name="networkPlacement")
+    def network_placement(self) -> pulumi.Output[str]:
+        """
+        A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+        """
+        return pulumi.get(self, "network_placement")
 
     @property
     @pulumi.getter

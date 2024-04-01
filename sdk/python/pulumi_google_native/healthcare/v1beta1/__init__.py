@@ -19,6 +19,9 @@ from .dataset_annotation_store_iam_policy import *
 from .dataset_consent_store_iam_binding import *
 from .dataset_consent_store_iam_member import *
 from .dataset_consent_store_iam_policy import *
+from .dataset_data_mapper_workspace_iam_binding import *
+from .dataset_data_mapper_workspace_iam_member import *
+from .dataset_data_mapper_workspace_iam_policy import *
 from .dataset_dicom_store_iam_binding import *
 from .dataset_dicom_store_iam_member import *
 from .dataset_dicom_store_iam_policy import *
@@ -42,6 +45,7 @@ from .get_consent_store import *
 from .get_dataset import *
 from .get_dataset_annotation_store_iam_policy import *
 from .get_dataset_consent_store_iam_policy import *
+from .get_dataset_data_mapper_workspace_iam_policy import *
 from .get_dataset_dicom_store_iam_policy import *
 from .get_dataset_fhir_store_iam_policy import *
 from .get_dataset_hl7_v2_store_iam_policy import *

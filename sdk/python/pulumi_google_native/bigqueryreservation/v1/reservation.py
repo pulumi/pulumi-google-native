@@ -24,18 +24,24 @@ class ReservationArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 original_primary_location: Optional[pulumi.Input[str]] = None,
+                 primary_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input['AutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
-        :param pulumi.Input[str] concurrency: Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        :param pulumi.Input[str] concurrency: Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         :param pulumi.Input['ReservationEdition'] edition: Edition of the reservation.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+        :param pulumi.Input[str] original_primary_location: Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        :param pulumi.Input[str] primary_location: Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
         :param pulumi.Input[str] reservation_id: The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+        :param pulumi.Input[str] secondary_location: Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
         :param pulumi.Input[str] slot_capacity: Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes.
         """
         if autoscale is not None:
@@ -52,10 +58,16 @@ class ReservationArgs:
             pulumi.set(__self__, "multi_region_auxiliary", multi_region_auxiliary)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if original_primary_location is not None:
+            pulumi.set(__self__, "original_primary_location", original_primary_location)
+        if primary_location is not None:
+            pulumi.set(__self__, "primary_location", primary_location)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_id is not None:
             pulumi.set(__self__, "reservation_id", reservation_id)
+        if secondary_location is not None:
+            pulumi.set(__self__, "secondary_location", secondary_location)
         if slot_capacity is not None:
             pulumi.set(__self__, "slot_capacity", slot_capacity)
 
@@ -75,7 +87,7 @@ class ReservationArgs:
     @pulumi.getter
     def concurrency(self) -> Optional[pulumi.Input[str]]:
         """
-        Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         """
         return pulumi.get(self, "concurrency")
 
@@ -141,6 +153,30 @@ class ReservationArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="originalPrimaryLocation")
+    def original_primary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        """
+        return pulumi.get(self, "original_primary_location")
+
+    @original_primary_location.setter
+    def original_primary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "original_primary_location", value)
+
+    @property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        """
+        return pulumi.get(self, "primary_location")
+
+    @primary_location.setter
+    def primary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_location", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -160,6 +196,18 @@ class ReservationArgs:
     @reservation_id.setter
     def reservation_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "reservation_id", value)
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
+        """
+        return pulumi.get(self, "secondary_location")
+
+    @secondary_location.setter
+    def secondary_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_location", value)
 
     @property
     @pulumi.getter(name="slotCapacity")
@@ -186,8 +234,11 @@ class Reservation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 original_primary_location: Optional[pulumi.Input[str]] = None,
+                 primary_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -196,12 +247,15 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature.
-        :param pulumi.Input[str] concurrency: Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        :param pulumi.Input[str] concurrency: Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         :param pulumi.Input['ReservationEdition'] edition: Edition of the reservation.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+        :param pulumi.Input[str] original_primary_location: Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        :param pulumi.Input[str] primary_location: Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
         :param pulumi.Input[str] reservation_id: The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+        :param pulumi.Input[str] secondary_location: Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
         :param pulumi.Input[str] slot_capacity: Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes.
         """
         ...
@@ -235,8 +289,11 @@ class Reservation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 original_primary_location: Optional[pulumi.Input[str]] = None,
+                 primary_location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
+                 secondary_location: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -254,8 +311,11 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
             __props__.__dict__["name"] = name
+            __props__.__dict__["original_primary_location"] = original_primary_location
+            __props__.__dict__["primary_location"] = primary_location
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_id"] = reservation_id
+            __props__.__dict__["secondary_location"] = secondary_location
             __props__.__dict__["slot_capacity"] = slot_capacity
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["update_time"] = None
@@ -291,8 +351,11 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["multi_region_auxiliary"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["original_primary_location"] = None
+        __props__.__dict__["primary_location"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["reservation_id"] = None
+        __props__.__dict__["secondary_location"] = None
         __props__.__dict__["slot_capacity"] = None
         __props__.__dict__["update_time"] = None
         return Reservation(resource_name, opts=opts, __props__=__props__)
@@ -309,7 +372,7 @@ class Reservation(pulumi.CustomResource):
     @pulumi.getter
     def concurrency(self) -> pulumi.Output[str]:
         """
-        Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         """
         return pulumi.get(self, "concurrency")
 
@@ -359,6 +422,22 @@ class Reservation(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="originalPrimaryLocation")
+    def original_primary_location(self) -> pulumi.Output[str]:
+        """
+        Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        """
+        return pulumi.get(self, "original_primary_location")
+
+    @property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> pulumi.Output[str]:
+        """
+        Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        """
+        return pulumi.get(self, "primary_location")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
@@ -370,6 +449,14 @@ class Reservation(pulumi.CustomResource):
         The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         """
         return pulumi.get(self, "reservation_id")
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> pulumi.Output[str]:
+        """
+        Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
+        """
+        return pulumi.get(self, "secondary_location")
 
     @property
     @pulumi.getter(name="slotCapacity")

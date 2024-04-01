@@ -15,10 +15,12 @@ __all__ = [
     'GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse',
     'GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse',
     'GoogleCloudDialogflowCxV3AdvancedSettingsResponse',
+    'GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse',
     'GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettingsResponse',
     'GoogleCloudDialogflowCxV3AgentGenAppBuilderSettingsResponse',
     'GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettingsResponse',
     'GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse',
+    'GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse',
     'GoogleCloudDialogflowCxV3AudioInputResponse',
     'GoogleCloudDialogflowCxV3BargeInConfigResponse',
     'GoogleCloudDialogflowCxV3ConversationTurnResponse',
@@ -47,6 +49,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3FulfillmentResponse',
     'GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse',
     'GoogleCloudDialogflowCxV3GcsDestinationResponse',
+    'GoogleCloudDialogflowCxV3GeneratorPlaceholderResponse',
     'GoogleCloudDialogflowCxV3InputAudioConfigResponse',
     'GoogleCloudDialogflowCxV3IntentInputResponse',
     'GoogleCloudDialogflowCxV3IntentParameterResponse',
@@ -56,6 +59,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse',
     'GoogleCloudDialogflowCxV3NluSettingsResponse',
     'GoogleCloudDialogflowCxV3PageResponse',
+    'GoogleCloudDialogflowCxV3PhraseResponse',
     'GoogleCloudDialogflowCxV3QueryInputResponse',
     'GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessResponse',
     'GoogleCloudDialogflowCxV3ResponseMessageEndInteractionResponse',
@@ -83,6 +87,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3VariantsHistoryResponse',
     'GoogleCloudDialogflowCxV3VersionVariantsResponse',
     'GoogleCloudDialogflowCxV3VersionVariantsVariantResponse',
+    'GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse',
     'GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse',
     'GoogleCloudDialogflowCxV3WebhookResponse',
     'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse',
@@ -218,6 +223,8 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsResponse(dict):
             suggest = "dtmf_settings"
         elif key == "loggingSettings":
             suggest = "logging_settings"
+        elif key == "speechSettings":
+            suggest = "speech_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3AdvancedSettingsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -233,16 +240,19 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsResponse(dict):
     def __init__(__self__, *,
                  audio_export_gcs_destination: 'outputs.GoogleCloudDialogflowCxV3GcsDestinationResponse',
                  dtmf_settings: 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse',
-                 logging_settings: 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse'):
+                 logging_settings: 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse',
+                 speech_settings: 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse'):
         """
         Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
         :param 'GoogleCloudDialogflowCxV3GcsDestinationResponse' audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
         :param 'GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettingsResponse' dtmf_settings: Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level.
         :param 'GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse' logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
+        :param 'GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse' speech_settings: Settings for speech to text detection. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level
         """
         pulumi.set(__self__, "audio_export_gcs_destination", audio_export_gcs_destination)
         pulumi.set(__self__, "dtmf_settings", dtmf_settings)
         pulumi.set(__self__, "logging_settings", logging_settings)
+        pulumi.set(__self__, "speech_settings", speech_settings)
 
     @property
     @pulumi.getter(name="audioExportGcsDestination")
@@ -267,6 +277,90 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsResponse(dict):
         Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         """
         return pulumi.get(self, "logging_settings")
+
+    @property
+    @pulumi.getter(name="speechSettings")
+    def speech_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse':
+        """
+        Settings for speech to text detection. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level
+        """
+        return pulumi.get(self, "speech_settings")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse(dict):
+    """
+    Define behaviors of speech to text detection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointerSensitivity":
+            suggest = "endpointer_sensitivity"
+        elif key == "noSpeechTimeout":
+            suggest = "no_speech_timeout"
+        elif key == "useTimeoutBasedEndpointing":
+            suggest = "use_timeout_based_endpointing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpointer_sensitivity: int,
+                 models: Mapping[str, str],
+                 no_speech_timeout: str,
+                 use_timeout_based_endpointing: bool):
+        """
+        Define behaviors of speech to text detection.
+        :param int endpointer_sensitivity: Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        :param Mapping[str, str] models: Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        :param str no_speech_timeout: Timeout before detecting no speech.
+        :param bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        pulumi.set(__self__, "endpointer_sensitivity", endpointer_sensitivity)
+        pulumi.set(__self__, "models", models)
+        pulumi.set(__self__, "no_speech_timeout", no_speech_timeout)
+        pulumi.set(__self__, "use_timeout_based_endpointing", use_timeout_based_endpointing)
+
+    @property
+    @pulumi.getter(name="endpointerSensitivity")
+    def endpointer_sensitivity(self) -> int:
+        """
+        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        """
+        return pulumi.get(self, "endpointer_sensitivity")
+
+    @property
+    @pulumi.getter
+    def models(self) -> Mapping[str, str]:
+        """
+        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        """
+        return pulumi.get(self, "models")
+
+    @property
+    @pulumi.getter(name="noSpeechTimeout")
+    def no_speech_timeout(self) -> str:
+        """
+        Timeout before detecting no speech.
+        """
+        return pulumi.get(self, "no_speech_timeout")
+
+    @property
+    @pulumi.getter(name="useTimeoutBasedEndpointing")
+    def use_timeout_based_endpointing(self) -> bool:
+        """
+        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        return pulumi.get(self, "use_timeout_based_endpointing")
 
 
 @pulumi.output_type
@@ -459,6 +553,45 @@ class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse(dict):
+    """
+    Settings for end user personalization.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultEndUserMetadata":
+            suggest = "default_end_user_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_end_user_metadata: Mapping[str, str]):
+        """
+        Settings for end user personalization.
+        :param Mapping[str, str] default_end_user_metadata: Optional. Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }. The data will be merged with the QueryParameters.end_user_metadata in DetectIntentRequest.query_params during query processing.
+        """
+        pulumi.set(__self__, "default_end_user_metadata", default_end_user_metadata)
+
+    @property
+    @pulumi.getter(name="defaultEndUserMetadata")
+    def default_end_user_metadata(self) -> Mapping[str, str]:
+        """
+        Optional. Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }. The data will be merged with the QueryParameters.end_user_metadata in DetectIntentRequest.query_params during query processing.
+        """
+        return pulumi.get(self, "default_end_user_metadata")
+
+
+@pulumi.output_type
 class GoogleCloudDialogflowCxV3AudioInputResponse(dict):
     """
     Represents the natural speech audio to be processed.
@@ -494,7 +627,7 @@ class GoogleCloudDialogflowCxV3AudioInputResponse(dict):
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3BargeInConfigResponse(dict):
     """
-    Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the the start of the input audio. The flow goes like below: --> Time without speech detection | utterance only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+ No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -519,7 +652,7 @@ class GoogleCloudDialogflowCxV3BargeInConfigResponse(dict):
                  no_barge_in_duration: str,
                  total_duration: str):
         """
-        Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the the start of the input audio. The flow goes like below: --> Time without speech detection | utterance only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+ No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+        Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length from the the start of the input audio. No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
         :param str no_barge_in_duration: Duration that is not eligible for barge-in at the beginning of the input audio.
         :param str total_duration: Total duration for the playback at the beginning of the input audio.
         """
@@ -2002,6 +2135,28 @@ class GoogleCloudDialogflowCxV3GcsDestinationResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDialogflowCxV3GeneratorPlaceholderResponse(dict):
+    """
+    Represents a custom placeholder in the prompt text.
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        Represents a custom placeholder in the prompt text.
+        :param str name: Custom placeholder value in the prompt text.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Custom placeholder value in the prompt text.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GoogleCloudDialogflowCxV3InputAudioConfigResponse(dict):
     """
     Instructs the speech recognizer on how to process the audio content.
@@ -2017,6 +2172,8 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse(dict):
             suggest = "enable_word_info"
         elif key == "modelVariant":
             suggest = "model_variant"
+        elif key == "optOutConformerModelMigration":
+            suggest = "opt_out_conformer_model_migration"
         elif key == "phraseHints":
             suggest = "phrase_hints"
         elif key == "sampleRateHertz":
@@ -2041,6 +2198,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse(dict):
                  enable_word_info: bool,
                  model: str,
                  model_variant: str,
+                 opt_out_conformer_model_migration: bool,
                  phrase_hints: Sequence[str],
                  sample_rate_hertz: int,
                  single_utterance: bool):
@@ -2049,8 +2207,9 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse(dict):
         :param str audio_encoding: Audio encoding of the audio content to process.
         :param 'GoogleCloudDialogflowCxV3BargeInConfigResponse' barge_in_config: Configuration of barge-in behavior during the streaming of input audio.
         :param bool enable_word_info: Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
-        :param str model: Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
+        :param str model: Optional. Which Speech model to select for the given request. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
         :param str model_variant: Optional. Which variant of the Speech model to use.
+        :param bool opt_out_conformer_model_migration: If `true`, the request will opt out for STT conformer model migration. This field will be deprecated once force migration takes place in June 2024. Please refer to [Dialogflow CX Speech model migration](https://cloud.google.com/dialogflow/cx/docs/concept/speech-model-migration).
         :param Sequence[str] phrase_hints: Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
         :param int sample_rate_hertz: Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
         :param bool single_utterance: Optional. If `false` (default), recognition does not cease until the client closes the stream. If `true`, the recognizer will detect a single spoken utterance in input audio. Recognition ceases when it detects the audio's voice has stopped or paused. In this case, once a detected intent is received, the client should close the stream and start a new request with a new stream as needed. Note: This setting is relevant only for streaming methods.
@@ -2060,6 +2219,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse(dict):
         pulumi.set(__self__, "enable_word_info", enable_word_info)
         pulumi.set(__self__, "model", model)
         pulumi.set(__self__, "model_variant", model_variant)
+        pulumi.set(__self__, "opt_out_conformer_model_migration", opt_out_conformer_model_migration)
         pulumi.set(__self__, "phrase_hints", phrase_hints)
         pulumi.set(__self__, "sample_rate_hertz", sample_rate_hertz)
         pulumi.set(__self__, "single_utterance", single_utterance)
@@ -2092,7 +2252,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse(dict):
     @pulumi.getter
     def model(self) -> str:
         """
-        Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
+        Optional. Which Speech model to select for the given request. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
         """
         return pulumi.get(self, "model")
 
@@ -2103,6 +2263,14 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse(dict):
         Optional. Which variant of the Speech model to use.
         """
         return pulumi.get(self, "model_variant")
+
+    @property
+    @pulumi.getter(name="optOutConformerModelMigration")
+    def opt_out_conformer_model_migration(self) -> bool:
+        """
+        If `true`, the request will opt out for STT conformer model migration. This field will be deprecated once force migration takes place in June 2024. Please refer to [Dialogflow CX Speech model migration](https://cloud.google.com/dialogflow/cx/docs/concept/speech-model-migration).
+        """
+        return pulumi.get(self, "opt_out_conformer_model_migration")
 
     @property
     @pulumi.getter(name="phraseHints")
@@ -2624,6 +2792,7 @@ class GoogleCloudDialogflowCxV3PageResponse(dict):
 
     def __init__(__self__, *,
                  advanced_settings: 'outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse',
+                 description: str,
                  display_name: str,
                  entry_fulfillment: 'outputs.GoogleCloudDialogflowCxV3FulfillmentResponse',
                  event_handlers: Sequence['outputs.GoogleCloudDialogflowCxV3EventHandlerResponse'],
@@ -2635,6 +2804,7 @@ class GoogleCloudDialogflowCxV3PageResponse(dict):
         """
         A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
         :param 'GoogleCloudDialogflowCxV3AdvancedSettingsResponse' advanced_settings: Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param str description: The description of the page. The maximum length is 500 characters.
         :param str display_name: The human-readable name of the page, unique within the flow.
         :param 'GoogleCloudDialogflowCxV3FulfillmentResponse' entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param Sequence['GoogleCloudDialogflowCxV3EventHandlerResponse'] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -2645,6 +2815,7 @@ class GoogleCloudDialogflowCxV3PageResponse(dict):
         :param Sequence['GoogleCloudDialogflowCxV3TransitionRouteResponse'] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
         pulumi.set(__self__, "advanced_settings", advanced_settings)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "entry_fulfillment", entry_fulfillment)
         pulumi.set(__self__, "event_handlers", event_handlers)
@@ -2661,6 +2832,14 @@ class GoogleCloudDialogflowCxV3PageResponse(dict):
         Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
         """
         return pulumi.get(self, "advanced_settings")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the page. The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
@@ -2728,9 +2907,31 @@ class GoogleCloudDialogflowCxV3PageResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDialogflowCxV3PhraseResponse(dict):
+    """
+    Text input which can be used for prompt or banned phrases.
+    """
+    def __init__(__self__, *,
+                 text: str):
+        """
+        Text input which can be used for prompt or banned phrases.
+        :param str text: Text input which can be used for prompt or banned phrases.
+        """
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        Text input which can be used for prompt or banned phrases.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
 class GoogleCloudDialogflowCxV3QueryInputResponse(dict):
     """
-    Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
+    Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value. 6. The results of a tool executed by the client.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2757,7 +2958,7 @@ class GoogleCloudDialogflowCxV3QueryInputResponse(dict):
                  language_code: str,
                  text: 'outputs.GoogleCloudDialogflowCxV3TextInputResponse'):
         """
-        Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
+        Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value. 6. The results of a tool executed by the client.
         :param 'GoogleCloudDialogflowCxV3AudioInputResponse' audio: The natural language speech audio to be processed.
         :param 'GoogleCloudDialogflowCxV3DtmfInputResponse' dtmf: The DTMF event to be handled.
         :param 'GoogleCloudDialogflowCxV3EventInputResponse' event: The event to be triggered.
@@ -3580,7 +3781,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse(dict)
         Settings for exporting audio.
         :param str audio_export_pattern: Filename pattern for exported audio.
         :param str audio_format: File format for exported audio file. Currently only in telephony recordings.
-        :param bool enable_audio_redaction: Enable audio redaction if it is true.
+        :param bool enable_audio_redaction: Enable audio redaction if it is true. Note that this only redacts end-user audio data; Synthesised audio from the virtual agent is not redacted.
         :param str gcs_bucket: Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
         """
         pulumi.set(__self__, "audio_export_pattern", audio_export_pattern)
@@ -3608,7 +3809,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse(dict)
     @pulumi.getter(name="enableAudioRedaction")
     def enable_audio_redaction(self) -> bool:
         """
-        Enable audio redaction if it is true.
+        Enable audio redaction if it is true. Note that this only redacts end-user audio data; Synthesised audio from the virtual agent is not redacted.
         """
         return pulumi.get(self, "enable_audio_redaction")
 
@@ -3889,7 +4090,7 @@ class GoogleCloudDialogflowCxV3TextInputResponse(dict):
                  text: str):
         """
         Represents the natural language text to be processed.
-        :param str text: The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+        :param str text: The UTF-8 encoded natural language text to be processed.
         """
         pulumi.set(__self__, "text", text)
 
@@ -3897,7 +4098,7 @@ class GoogleCloudDialogflowCxV3TextInputResponse(dict):
     @pulumi.getter
     def text(self) -> str:
         """
-        The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+        The UTF-8 encoded natural language text to be processed.
         """
         return pulumi.get(self, "text")
 
@@ -4188,6 +4389,82 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariantResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse(dict):
+    """
+    Represents configuration of OAuth client credential flow for 3rd party API authentication.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "tokenEndpoint":
+            suggest = "token_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: str,
+                 client_secret: str,
+                 scopes: Sequence[str],
+                 token_endpoint: str):
+        """
+        Represents configuration of OAuth client credential flow for 3rd party API authentication.
+        :param str client_id: The client ID provided by the 3rd party platform.
+        :param str client_secret: The client secret provided by the 3rd party platform.
+        :param Sequence[str] scopes: Optional. The OAuth scopes to grant.
+        :param str token_endpoint: The token endpoint provided by the 3rd party platform to exchange an access token.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client ID provided by the 3rd party platform.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> str:
+        """
+        The client secret provided by the 3rd party platform.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        Optional. The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> str:
+        """
+        The token endpoint provided by the 3rd party platform to exchange an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+
+@pulumi.output_type
 class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
     """
     Represents configuration for a generic web service.
@@ -4199,12 +4476,16 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
             suggest = "allowed_ca_certs"
         elif key == "httpMethod":
             suggest = "http_method"
+        elif key == "oauthConfig":
+            suggest = "oauth_config"
         elif key == "parameterMapping":
             suggest = "parameter_mapping"
         elif key == "requestBody":
             suggest = "request_body"
         elif key == "requestHeaders":
             suggest = "request_headers"
+        elif key == "serviceAgentAuth":
+            suggest = "service_agent_auth"
         elif key == "webhookType":
             suggest = "webhook_type"
 
@@ -4222,10 +4503,12 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
     def __init__(__self__, *,
                  allowed_ca_certs: Sequence[str],
                  http_method: str,
+                 oauth_config: 'outputs.GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse',
                  parameter_mapping: Mapping[str, str],
                  password: str,
                  request_body: str,
                  request_headers: Mapping[str, str],
+                 service_agent_auth: str,
                  uri: str,
                  username: str,
                  webhook_type: str):
@@ -4233,20 +4516,24 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
         Represents configuration for a generic web service.
         :param Sequence[str] allowed_ca_certs: Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req -days 200 -in example.com.csr \\ -signkey example.com.key \\ -out example.com.crt \\ -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'") ```
         :param str http_method: Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+        :param 'GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse' oauth_config: Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
         :param Mapping[str, str] parameter_mapping: Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
         :param str password: The password for HTTP Basic authentication.
         :param str request_body: Optional. Defines a custom JSON object as request body to send to flexible webhook.
         :param Mapping[str, str] request_headers: The HTTP request headers to send together with webhook requests.
+        :param str service_agent_auth: Optional. Indicate the auth token type generated from the [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is sent in the Authorization header.
         :param str uri: The webhook URI for receiving POST requests. It must use https protocol.
         :param str username: The user name for HTTP Basic authentication.
         :param str webhook_type: Optional. Type of the webhook.
         """
         pulumi.set(__self__, "allowed_ca_certs", allowed_ca_certs)
         pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "oauth_config", oauth_config)
         pulumi.set(__self__, "parameter_mapping", parameter_mapping)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "request_body", request_body)
         pulumi.set(__self__, "request_headers", request_headers)
+        pulumi.set(__self__, "service_agent_auth", service_agent_auth)
         pulumi.set(__self__, "uri", uri)
         pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "webhook_type", webhook_type)
@@ -4266,6 +4553,14 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
         Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
         """
         return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> 'outputs.GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfigResponse':
+        """
+        Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
+        """
+        return pulumi.get(self, "oauth_config")
 
     @property
     @pulumi.getter(name="parameterMapping")
@@ -4298,6 +4593,14 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(dict):
         The HTTP request headers to send together with webhook requests.
         """
         return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter(name="serviceAgentAuth")
+    def service_agent_auth(self) -> str:
+        """
+        Optional. Indicate the auth token type generated from the [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is sent in the Authorization header.
+        """
+        return pulumi.get(self, "service_agent_auth")
 
     @property
     @pulumi.getter

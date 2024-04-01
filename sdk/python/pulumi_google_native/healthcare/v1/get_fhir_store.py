@@ -109,7 +109,7 @@ class GetFhirStoreResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         """
         return pulumi.get(self, "name")
 

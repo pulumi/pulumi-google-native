@@ -7,11 +7,19 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'AuthConfigAuthType',
+    'ConfigVariableTemplateEnumSource',
+    'ConfigVariableTemplateLocationType',
+    'ConfigVariableTemplateState',
+    'ConfigVariableTemplateValueType',
     'ConnectionEventingEnablementType',
     'CustomConnectorCustomConnectorType',
     'EncryptionKeyType',
     'EventSubscriptionDestinationType',
+    'FieldComparisonComparator',
     'JMSType',
+    'LogicalExpressionLogicalOperator',
+    'ResourceType',
+    'RoleGrantPrincipal',
     'SslConfigClientCertType',
     'SslConfigServerCertType',
     'SslConfigTrustModel',
@@ -72,6 +80,102 @@ class AuthConfigAuthType(str, Enum):
     GOOGLE_AUTHENTICATION = "GOOGLE_AUTHENTICATION"
     """
     Google authentication
+    """
+
+
+class ConfigVariableTemplateEnumSource(str, Enum):
+    """
+    Optional. enum source denotes the source of api to fill the enum options
+    """
+    ENUM_SOURCE_UNSPECIFIED = "ENUM_SOURCE_UNSPECIFIED"
+    """
+    Api type unspecified.
+    """
+    EVENT_TYPES_API = "EVENT_TYPES_API"
+    """
+    list event types.
+    """
+
+
+class ConfigVariableTemplateLocationType(str, Enum):
+    """
+    Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+    """
+    LOCATION_TYPE_UNSPECIFIED = "LOCATION_TYPE_UNSPECIFIED"
+    """
+    Location type unspecified.
+    """
+    HEADER = "HEADER"
+    """
+    Request header.
+    """
+    PAYLOAD = "PAYLOAD"
+    """
+    Request Payload.
+    """
+    QUERY_PARAM = "QUERY_PARAM"
+    """
+    Request query param.
+    """
+    PATH_PARAM = "PATH_PARAM"
+    """
+    Request path param.
+    """
+
+
+class ConfigVariableTemplateState(str, Enum):
+    """
+    State of the config variable.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Status is unspecified.
+    """
+    ACTIVE = "ACTIVE"
+    """
+    Config variable is active
+    """
+    DEPRECATED = "DEPRECATED"
+    """
+    Config variable is deprecated.
+    """
+
+
+class ConfigVariableTemplateValueType(str, Enum):
+    """
+    Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+    """
+    VALUE_TYPE_UNSPECIFIED = "VALUE_TYPE_UNSPECIFIED"
+    """
+    Value type is not specified.
+    """
+    STRING = "STRING"
+    """
+    Value type is string.
+    """
+    INT = "INT"
+    """
+    Value type is integer.
+    """
+    BOOL = "BOOL"
+    """
+    Value type is boolean.
+    """
+    SECRET = "SECRET"
+    """
+    Value type is secret.
+    """
+    ENUM = "ENUM"
+    """
+    Value type is enum.
+    """
+    AUTHORIZATION_CODE = "AUTHORIZATION_CODE"
+    """
+    Value type is authorization code.
+    """
+    ENCRYPTION_KEY = "ENCRYPTION_KEY"
+    """
+    Encryption Key.
     """
 
 
@@ -143,6 +247,24 @@ class EventSubscriptionDestinationType(str, Enum):
     """
 
 
+class FieldComparisonComparator(str, Enum):
+    """
+    Comparator to use for comparing the field value.
+    """
+    COMPARATOR_UNSPECIFIED = "COMPARATOR_UNSPECIFIED"
+    """
+    The default value.
+    """
+    EQUALS = "EQUALS"
+    """
+    The field value must be equal to the specified value.
+    """
+    NOT_EQUALS = "NOT_EQUALS"
+    """
+    The field value must not be equal to the specified value.
+    """
+
+
 class JMSType(str, Enum):
     """
     Optional. Type of the JMS Source. i.e. Queue or Topic
@@ -158,6 +280,64 @@ class JMSType(str, Enum):
     TOPIC = "TOPIC"
     """
     JMS Topic.
+    """
+
+
+class LogicalExpressionLogicalOperator(str, Enum):
+    """
+    The logical operator to use between the fields and conditions.
+    """
+    OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED"
+    """
+    The default value.
+    """
+    AND_ = "AND"
+    """
+    AND operator; The conditions must all be true.
+    """
+    OR_ = "OR"
+    """
+    OR operator; At least one of the conditions must be true.
+    """
+
+
+class ResourceType(str, Enum):
+    """
+    Different types of resource supported.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Value type is not specified.
+    """
+    GCP_PROJECT = "GCP_PROJECT"
+    """
+    Google Cloud Project Resource.
+    """
+    GCP_RESOURCE = "GCP_RESOURCE"
+    """
+    Any Google Cloud Resource which is identified uniquely by IAM.
+    """
+    GCP_SECRETMANAGER_SECRET = "GCP_SECRETMANAGER_SECRET"
+    """
+    Google Cloud Secret Resource.
+    """
+    GCP_SECRETMANAGER_SECRET_VERSION = "GCP_SECRETMANAGER_SECRET_VERSION"
+    """
+    Google Cloud Secret Version Resource.
+    """
+
+
+class RoleGrantPrincipal(str, Enum):
+    """
+    Prinicipal/Identity for whom the role need to assigned.
+    """
+    PRINCIPAL_UNSPECIFIED = "PRINCIPAL_UNSPECIFIED"
+    """
+    Value type is not specified.
+    """
+    CONNECTOR_SA = "CONNECTOR_SA"
+    """
+    Service Account used for Connector workload identity This is either the default service account if unspecified or Service Account provided by Customers through BYOSA.
     """
 
 

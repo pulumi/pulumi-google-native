@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSessionResult:
-    def __init__(__self__, approximate_last_use_time=None, create_time=None, creator_role=None, labels=None, name=None):
+    def __init__(__self__, approximate_last_use_time=None, create_time=None, creator_role=None, labels=None, multiplexed=None, name=None):
         if approximate_last_use_time and not isinstance(approximate_last_use_time, str):
             raise TypeError("Expected argument 'approximate_last_use_time' to be a str")
         pulumi.set(__self__, "approximate_last_use_time", approximate_last_use_time)
@@ -31,6 +31,9 @@ class GetSessionResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if multiplexed and not isinstance(multiplexed, bool):
+            raise TypeError("Expected argument 'multiplexed' to be a bool")
+        pulumi.set(__self__, "multiplexed", multiplexed)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -69,6 +72,14 @@ class GetSessionResult:
 
     @property
     @pulumi.getter
+    def multiplexed(self) -> bool:
+        """
+        Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+        """
+        return pulumi.get(self, "multiplexed")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The name of the session. This is always system-assigned.
@@ -86,6 +97,7 @@ class AwaitableGetSessionResult(GetSessionResult):
             create_time=self.create_time,
             creator_role=self.creator_role,
             labels=self.labels,
+            multiplexed=self.multiplexed,
             name=self.name)
 
 
@@ -110,6 +122,7 @@ def get_session(database_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         creator_role=pulumi.get(__ret__, 'creator_role'),
         labels=pulumi.get(__ret__, 'labels'),
+        multiplexed=pulumi.get(__ret__, 'multiplexed'),
         name=pulumi.get(__ret__, 'name'))
 
 

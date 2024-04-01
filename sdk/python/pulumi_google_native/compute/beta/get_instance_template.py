@@ -140,6 +140,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
 
 def get_instance_template(instance_template: Optional[str] = None,
                           project: Optional[str] = None,
+                          view: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTemplateResult:
     """
     Returns the specified instance template.
@@ -147,6 +148,7 @@ def get_instance_template(instance_template: Optional[str] = None,
     __args__ = dict()
     __args__['instanceTemplate'] = instance_template
     __args__['project'] = project
+    __args__['view'] = view
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getInstanceTemplate', __args__, opts=opts, typ=GetInstanceTemplateResult).value
 
@@ -165,6 +167,7 @@ def get_instance_template(instance_template: Optional[str] = None,
 @_utilities.lift_output_func(get_instance_template)
 def get_instance_template_output(instance_template: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 view: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
     """
     Returns the specified instance template.

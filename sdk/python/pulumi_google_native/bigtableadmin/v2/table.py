@@ -19,6 +19,7 @@ class TableArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  table_id: pulumi.Input[str],
+                 automated_backup_policy: Optional[pulumi.Input['AutomatedBackupPolicyArgs']] = None,
                  change_stream_config: Optional[pulumi.Input['ChangeStreamConfigArgs']] = None,
                  column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -29,6 +30,7 @@ class TableArgs:
         """
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] table_id: The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
+        :param pulumi.Input['AutomatedBackupPolicyArgs'] automated_backup_policy: If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
         :param pulumi.Input['ChangeStreamConfigArgs'] change_stream_config: If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         :param pulumi.Input[bool] deletion_protection: Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
@@ -38,6 +40,8 @@ class TableArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "table_id", table_id)
+        if automated_backup_policy is not None:
+            pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
         if change_stream_config is not None:
             pulumi.set(__self__, "change_stream_config", change_stream_config)
         if column_families is not None:
@@ -73,6 +77,18 @@ class TableArgs:
     @table_id.setter
     def table_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "table_id", value)
+
+    @property
+    @pulumi.getter(name="automatedBackupPolicy")
+    def automated_backup_policy(self) -> Optional[pulumi.Input['AutomatedBackupPolicyArgs']]:
+        """
+        If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+        """
+        return pulumi.get(self, "automated_backup_policy")
+
+    @automated_backup_policy.setter
+    def automated_backup_policy(self, value: Optional[pulumi.Input['AutomatedBackupPolicyArgs']]):
+        pulumi.set(self, "automated_backup_policy", value)
 
     @property
     @pulumi.getter(name="changeStreamConfig")
@@ -161,6 +177,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['AutomatedBackupPolicyArgs']]] = None,
                  change_stream_config: Optional[pulumi.Input[pulumi.InputType['ChangeStreamConfigArgs']]] = None,
                  column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -176,6 +193,7 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AutomatedBackupPolicyArgs']] automated_backup_policy: If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
         :param pulumi.Input[pulumi.InputType['ChangeStreamConfigArgs']] change_stream_config: If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         :param pulumi.Input[bool] deletion_protection: Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
@@ -208,6 +226,7 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['AutomatedBackupPolicyArgs']]] = None,
                  change_stream_config: Optional[pulumi.Input[pulumi.InputType['ChangeStreamConfigArgs']]] = None,
                  column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -226,6 +245,7 @@ class Table(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableArgs.__new__(TableArgs)
 
+            __props__.__dict__["automated_backup_policy"] = automated_backup_policy
             __props__.__dict__["change_stream_config"] = change_stream_config
             __props__.__dict__["column_families"] = column_families
             __props__.__dict__["deletion_protection"] = deletion_protection
@@ -266,6 +286,7 @@ class Table(pulumi.CustomResource):
 
         __props__ = TableArgs.__new__(TableArgs)
 
+        __props__.__dict__["automated_backup_policy"] = None
         __props__.__dict__["change_stream_config"] = None
         __props__.__dict__["cluster_states"] = None
         __props__.__dict__["column_families"] = None
@@ -277,6 +298,14 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["restore_info"] = None
         __props__.__dict__["stats"] = None
         return Table(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="automatedBackupPolicy")
+    def automated_backup_policy(self) -> pulumi.Output['outputs.AutomatedBackupPolicyResponse']:
+        """
+        If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+        """
+        return pulumi.get(self, "automated_backup_policy")
 
     @property
     @pulumi.getter(name="changeStreamConfig")

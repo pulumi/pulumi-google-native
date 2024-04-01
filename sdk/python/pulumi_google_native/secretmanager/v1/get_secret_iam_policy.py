@@ -78,7 +78,8 @@ class AwaitableGetSecretIamPolicyResult(GetSecretIamPolicyResult):
             version=self.version)
 
 
-def get_secret_iam_policy(options_requested_policy_version: Optional[int] = None,
+def get_secret_iam_policy(location: Optional[str] = None,
+                          options_requested_policy_version: Optional[int] = None,
                           project: Optional[str] = None,
                           secret_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretIamPolicyResult:
@@ -86,6 +87,7 @@ def get_secret_iam_policy(options_requested_policy_version: Optional[int] = None
     Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
     """
     __args__ = dict()
+    __args__['location'] = location
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
     __args__['project'] = project
     __args__['secretId'] = secret_id
@@ -100,7 +102,8 @@ def get_secret_iam_policy(options_requested_policy_version: Optional[int] = None
 
 
 @_utilities.lift_output_func(get_secret_iam_policy)
-def get_secret_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
+def get_secret_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
+                                 options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  secret_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretIamPolicyResult]:

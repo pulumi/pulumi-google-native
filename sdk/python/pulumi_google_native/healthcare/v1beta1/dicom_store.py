@@ -18,7 +18,7 @@ __all__ = ['DicomStoreArgs', 'DicomStore']
 class DicomStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 dicom_store_id: Optional[pulumi.Input[str]] = None,
+                 dicom_store_id: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -27,15 +27,14 @@ class DicomStoreArgs:
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]]] = None):
         """
         The set of arguments for constructing a DicomStore resource.
-        :param pulumi.Input[str] dicom_store_id: The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        :param pulumi.Input[str] dicom_store_id: Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        :param pulumi.Input[str] name: Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        :param pulumi.Input[str] name: Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification destination for new DICOM instances. Supplied by the client.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]] stream_configs: Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        if dicom_store_id is not None:
-            pulumi.set(__self__, "dicom_store_id", dicom_store_id)
+        pulumi.set(__self__, "dicom_store_id", dicom_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -60,14 +59,14 @@ class DicomStoreArgs:
 
     @property
     @pulumi.getter(name="dicomStoreId")
-    def dicom_store_id(self) -> Optional[pulumi.Input[str]]:
+    def dicom_store_id(self) -> pulumi.Input[str]:
         """
-        The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
         """
         return pulumi.get(self, "dicom_store_id")
 
     @dicom_store_id.setter
-    def dicom_store_id(self, value: Optional[pulumi.Input[str]]):
+    def dicom_store_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dicom_store_id", value)
 
     @property
@@ -95,7 +94,7 @@ class DicomStoreArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -156,9 +155,9 @@ class DicomStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] dicom_store_id: The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        :param pulumi.Input[str] dicom_store_id: Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        :param pulumi.Input[str] name: Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        :param pulumi.Input[str] name: Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification destination for new DICOM instances. Supplied by the client.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1DicomStreamConfigArgs']]]] stream_configs: Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
@@ -206,6 +205,8 @@ class DicomStore(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
+            if dicom_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dicom_store_id'")
             __props__.__dict__["dicom_store_id"] = dicom_store_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -213,7 +214,7 @@ class DicomStore(pulumi.CustomResource):
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
             __props__.__dict__["stream_configs"] = stream_configs
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "dicom_store_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DicomStore, __self__).__init__(
             'google-native:healthcare/v1beta1:DicomStore',
@@ -254,9 +255,9 @@ class DicomStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dicomStoreId")
-    def dicom_store_id(self) -> pulumi.Output[Optional[str]]:
+    def dicom_store_id(self) -> pulumi.Output[str]:
         """
-        The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
         """
         return pulumi.get(self, "dicom_store_id")
 
@@ -277,7 +278,7 @@ class DicomStore(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         """
         return pulumi.get(self, "name")
 

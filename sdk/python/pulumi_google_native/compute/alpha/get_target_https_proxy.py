@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetHttpsProxyResult:
-    def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, http_keep_alive_timeout_sec=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, http_keep_alive_timeout_sec=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, tls_early_data=None, url_map=None):
         if authentication and not isinstance(authentication, str):
             raise TypeError("Expected argument 'authentication' to be a str")
         pulumi.set(__self__, "authentication", authentication)
@@ -76,6 +76,9 @@ class GetTargetHttpsProxyResult:
         if ssl_policy and not isinstance(ssl_policy, str):
             raise TypeError("Expected argument 'ssl_policy' to be a str")
         pulumi.set(__self__, "ssl_policy", ssl_policy)
+        if tls_early_data and not isinstance(tls_early_data, str):
+            raise TypeError("Expected argument 'tls_early_data' to be a str")
+        pulumi.set(__self__, "tls_early_data", tls_early_data)
         if url_map and not isinstance(url_map, str):
             raise TypeError("Expected argument 'url_map' to be a str")
         pulumi.set(__self__, "url_map", url_map)
@@ -239,6 +242,14 @@ class GetTargetHttpsProxyResult:
         return pulumi.get(self, "ssl_policy")
 
     @property
+    @pulumi.getter(name="tlsEarlyData")
+    def tls_early_data(self) -> str:
+        """
+         Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+        """
+        return pulumi.get(self, "tls_early_data")
+
+    @property
     @pulumi.getter(name="urlMap")
     def url_map(self) -> str:
         """
@@ -272,6 +283,7 @@ class AwaitableGetTargetHttpsProxyResult(GetTargetHttpsProxyResult):
             server_tls_policy=self.server_tls_policy,
             ssl_certificates=self.ssl_certificates,
             ssl_policy=self.ssl_policy,
+            tls_early_data=self.tls_early_data,
             url_map=self.url_map)
 
 
@@ -307,6 +319,7 @@ def get_target_https_proxy(project: Optional[str] = None,
         server_tls_policy=pulumi.get(__ret__, 'server_tls_policy'),
         ssl_certificates=pulumi.get(__ret__, 'ssl_certificates'),
         ssl_policy=pulumi.get(__ret__, 'ssl_policy'),
+        tls_early_data=pulumi.get(__ret__, 'tls_early_data'),
         url_map=pulumi.get(__ret__, 'url_map'))
 
 

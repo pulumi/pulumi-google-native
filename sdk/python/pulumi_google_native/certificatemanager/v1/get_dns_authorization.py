@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDnsAuthorizationResult:
-    def __init__(__self__, create_time=None, description=None, dns_resource_record=None, domain=None, labels=None, name=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, dns_resource_record=None, domain=None, labels=None, name=None, type=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -38,6 +38,9 @@ class GetDnsAuthorizationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -91,6 +94,14 @@ class GetDnsAuthorizationResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+        """
+        return pulumi.get(self, "type")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -111,6 +122,7 @@ class AwaitableGetDnsAuthorizationResult(GetDnsAuthorizationResult):
             domain=self.domain,
             labels=self.labels,
             name=self.name,
+            type=self.type,
             update_time=self.update_time)
 
 
@@ -135,6 +147,7 @@ def get_dns_authorization(dns_authorization_id: Optional[str] = None,
         domain=pulumi.get(__ret__, 'domain'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

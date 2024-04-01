@@ -73,6 +73,7 @@ class ClusterArgs:
                  release_channel: Optional[pulumi.Input['ReleaseChannelArgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ResourceUsageExportConfigArgs']] = None,
+                 secret_manager_config: Optional[pulumi.Input['SecretManagerConfigArgs']] = None,
                  security_posture_config: Optional[pulumi.Input['SecurityPostureConfigArgs']] = None,
                  shielded_nodes: Optional[pulumi.Input['ShieldedNodesArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -139,6 +140,7 @@ class ClusterArgs:
         :param pulumi.Input['ReleaseChannelArgs'] release_channel: Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input['ResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
+        :param pulumi.Input['SecretManagerConfigArgs'] secret_manager_config: Secret CSI driver configuration.
         :param pulumi.Input['SecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         :param pulumi.Input['ShieldedNodesArgs'] shielded_nodes: Shielded Nodes configuration.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
@@ -285,6 +287,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if secret_manager_config is not None:
+            pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if security_posture_config is not None:
             pulumi.set(__self__, "security_posture_config", security_posture_config)
         if shielded_nodes is not None:
@@ -1001,6 +1005,18 @@ class ClusterArgs:
         pulumi.set(self, "resource_usage_export_config", value)
 
     @property
+    @pulumi.getter(name="secretManagerConfig")
+    def secret_manager_config(self) -> Optional[pulumi.Input['SecretManagerConfigArgs']]:
+        """
+        Secret CSI driver configuration.
+        """
+        return pulumi.get(self, "secret_manager_config")
+
+    @secret_manager_config.setter
+    def secret_manager_config(self, value: Optional[pulumi.Input['SecretManagerConfigArgs']]):
+        pulumi.set(self, "secret_manager_config", value)
+
+    @property
     @pulumi.getter(name="securityPostureConfig")
     def security_posture_config(self) -> Optional[pulumi.Input['SecurityPostureConfigArgs']]:
         """
@@ -1173,6 +1189,7 @@ class Cluster(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
+                 secret_manager_config: Optional[pulumi.Input[pulumi.InputType['SecretManagerConfigArgs']]] = None,
                  security_posture_config: Optional[pulumi.Input[pulumi.InputType['SecurityPostureConfigArgs']]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -1243,6 +1260,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
+        :param pulumi.Input[pulumi.InputType['SecretManagerConfigArgs']] secret_manager_config: Secret CSI driver configuration.
         :param pulumi.Input[pulumi.InputType['SecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         :param pulumi.Input[pulumi.InputType['ShieldedNodesArgs']] shielded_nodes: Shielded Nodes configuration.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
@@ -1333,6 +1351,7 @@ class Cluster(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
+                 secret_manager_config: Optional[pulumi.Input[pulumi.InputType['SecretManagerConfigArgs']]] = None,
                  security_posture_config: Optional[pulumi.Input[pulumi.InputType['SecurityPostureConfigArgs']]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -1407,6 +1426,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+            __props__.__dict__["secret_manager_config"] = secret_manager_config
             __props__.__dict__["security_posture_config"] = security_posture_config
             __props__.__dict__["shielded_nodes"] = shielded_nodes
             __props__.__dict__["subnetwork"] = subnetwork
@@ -1516,6 +1536,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["release_channel"] = None
         __props__.__dict__["resource_labels"] = None
         __props__.__dict__["resource_usage_export_config"] = None
+        __props__.__dict__["secret_manager_config"] = None
         __props__.__dict__["security_posture_config"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["services_ipv4_cidr"] = None
@@ -2053,6 +2074,14 @@ class Cluster(pulumi.CustomResource):
         Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
         """
         return pulumi.get(self, "resource_usage_export_config")
+
+    @property
+    @pulumi.getter(name="secretManagerConfig")
+    def secret_manager_config(self) -> pulumi.Output['outputs.SecretManagerConfigResponse']:
+        """
+        Secret CSI driver configuration.
+        """
+        return pulumi.get(self, "secret_manager_config")
 
     @property
     @pulumi.getter(name="securityPostureConfig")

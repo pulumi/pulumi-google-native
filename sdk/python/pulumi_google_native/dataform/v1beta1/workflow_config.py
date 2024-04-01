@@ -22,6 +22,7 @@ class WorkflowConfigArgs:
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  invocation_config: Optional[pulumi.Input['InvocationConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
@@ -30,6 +31,7 @@ class WorkflowConfigArgs:
         :param pulumi.Input[str] workflow_config_id: Required. The ID to use for the workflow config, which will become the final component of the workflow config's resource name.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic execution of this workflow config.
         :param pulumi.Input['InvocationConfigArgs'] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[str] name: Identifier. The workflow config's name.
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
         pulumi.set(__self__, "release_config", release_config)
@@ -41,6 +43,8 @@ class WorkflowConfigArgs:
             pulumi.set(__self__, "invocation_config", invocation_config)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if time_zone is not None:
@@ -114,6 +118,18 @@ class WorkflowConfigArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier. The workflow config's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -142,6 +158,7 @@ class WorkflowConfig(pulumi.CustomResource):
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  invocation_config: Optional[pulumi.Input[pulumi.InputType['InvocationConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_config: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -150,12 +167,12 @@ class WorkflowConfig(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new WorkflowConfig in a given Repository.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic execution of this workflow config.
         :param pulumi.Input[pulumi.InputType['InvocationConfigArgs']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[str] name: Identifier. The workflow config's name.
         :param pulumi.Input[str] release_config: The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         :param pulumi.Input[str] workflow_config_id: Required. The ID to use for the workflow config, which will become the final component of the workflow config's resource name.
@@ -168,7 +185,6 @@ class WorkflowConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new WorkflowConfig in a given Repository.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param WorkflowConfigArgs args: The arguments to use to populate this resource's properties.
@@ -188,6 +204,7 @@ class WorkflowConfig(pulumi.CustomResource):
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  invocation_config: Optional[pulumi.Input[pulumi.InputType['InvocationConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_config: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -205,6 +222,7 @@ class WorkflowConfig(pulumi.CustomResource):
             __props__.__dict__["cron_schedule"] = cron_schedule
             __props__.__dict__["invocation_config"] = invocation_config
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             if release_config is None and not opts.urn:
                 raise TypeError("Missing required property 'release_config'")
@@ -216,7 +234,6 @@ class WorkflowConfig(pulumi.CustomResource):
             if workflow_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workflow_config_id'")
             __props__.__dict__["workflow_config_id"] = workflow_config_id
-            __props__.__dict__["name"] = None
             __props__.__dict__["recent_scheduled_execution_records"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id", "workflow_config_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -279,7 +296,7 @@ class WorkflowConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The workflow config's name.
+        Identifier. The workflow config's name.
         """
         return pulumi.get(self, "name")
 

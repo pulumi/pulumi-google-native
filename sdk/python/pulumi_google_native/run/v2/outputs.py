@@ -22,9 +22,11 @@ __all__ = [
     'GoogleCloudRunV2EnvVarSourceResponse',
     'GoogleCloudRunV2ExecutionReferenceResponse',
     'GoogleCloudRunV2ExecutionTemplateResponse',
+    'GoogleCloudRunV2GCSVolumeSourceResponse',
     'GoogleCloudRunV2GRPCActionResponse',
     'GoogleCloudRunV2HTTPGetActionResponse',
     'GoogleCloudRunV2HTTPHeaderResponse',
+    'GoogleCloudRunV2NFSVolumeSourceResponse',
     'GoogleCloudRunV2NetworkInterfaceResponse',
     'GoogleCloudRunV2ProbeResponse',
     'GoogleCloudRunV2ResourceRequirementsResponse',
@@ -73,13 +75,16 @@ class GoogleCloudRunV2BinaryAuthorizationResponse(dict):
 
     def __init__(__self__, *,
                  breakglass_justification: str,
+                 policy: str,
                  use_default: bool):
         """
         Settings for Binary Authorization feature.
         :param str breakglass_justification: If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param str policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param bool use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         pulumi.set(__self__, "breakglass_justification", breakglass_justification)
+        pulumi.set(__self__, "policy", policy)
         pulumi.set(__self__, "use_default", use_default)
 
     @property
@@ -89,6 +94,14 @@ class GoogleCloudRunV2BinaryAuthorizationResponse(dict):
         If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         """
         return pulumi.get(self, "breakglass_justification")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        """
+        return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter(name="useDefault")
@@ -756,6 +769,56 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudRunV2GCSVolumeSourceResponse(dict):
+    """
+    Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2GCSVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2GCSVolumeSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2GCSVolumeSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: str,
+                 read_only: bool):
+        """
+        Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+        :param str bucket: Cloud Storage Bucket name.
+        :param bool read_only: If true, the volume will be mounted as read only for all mounts.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Cloud Storage Bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        """
+        If true, the volume will be mounted as read only for all mounts.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
 class GoogleCloudRunV2GRPCActionResponse(dict):
     """
     GRPCAction describes an action involving a GRPC port.
@@ -880,6 +943,67 @@ class GoogleCloudRunV2HTTPHeaderResponse(dict):
         The header field value
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2NFSVolumeSourceResponse(dict):
+    """
+    Represents an NFS mount.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2NFSVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2NFSVolumeSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2NFSVolumeSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 read_only: bool,
+                 server: str):
+        """
+        Represents an NFS mount.
+        :param str path: Path that is exported by the NFS server.
+        :param bool read_only: If true, the volume will be mounted as read only for all mounts.
+        :param str server: Hostname or IP address of the NFS server
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "read_only", read_only)
+        pulumi.set(__self__, "server", server)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path that is exported by the NFS server.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        """
+        If true, the volume will be mounted as read only for all mounts.
+        """
+        return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        """
+        Hostname or IP address of the NFS server
+        """
+        return pulumi.get(self, "server")
 
 
 @pulumi.output_type
@@ -1071,8 +1195,8 @@ class GoogleCloudRunV2ResourceRequirementsResponse(dict):
                  startup_cpu_boost: bool):
         """
         ResourceRequirements describes the compute resource requirements.
-        :param bool cpu_idle: Determines whether CPU should be throttled or not outside of requests.
-        :param Mapping[str, str] limits: Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        :param bool cpu_idle: Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
+        :param Mapping[str, str] limits: Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         :param bool startup_cpu_boost: Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
         pulumi.set(__self__, "cpu_idle", cpu_idle)
@@ -1083,7 +1207,7 @@ class GoogleCloudRunV2ResourceRequirementsResponse(dict):
     @pulumi.getter(name="cpuIdle")
     def cpu_idle(self) -> bool:
         """
-        Determines whether CPU should be throttled or not outside of requests.
+        Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
         """
         return pulumi.get(self, "cpu_idle")
 
@@ -1091,7 +1215,7 @@ class GoogleCloudRunV2ResourceRequirementsResponse(dict):
     @pulumi.getter
     def limits(self) -> Mapping[str, str]:
         """
-        Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         """
         return pulumi.get(self, "limits")
 
@@ -1168,6 +1292,8 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
             suggest = "encryption_key"
         elif key == "executionEnvironment":
             suggest = "execution_environment"
+        elif key == "healthCheckDisabled":
+            suggest = "health_check_disabled"
         elif key == "maxInstanceRequestConcurrency":
             suggest = "max_instance_request_concurrency"
         elif key == "serviceAccount":
@@ -1193,6 +1319,7 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
                  containers: Sequence['outputs.GoogleCloudRunV2ContainerResponse'],
                  encryption_key: str,
                  execution_environment: str,
+                 health_check_disabled: bool,
                  labels: Mapping[str, str],
                  max_instance_request_concurrency: int,
                  revision: str,
@@ -1208,12 +1335,13 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
         :param Sequence['GoogleCloudRunV2ContainerResponse'] containers: Holds the single container that defines the unit of execution for this Revision.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision.
+        :param bool health_check_disabled: Optional. Disables health checking containers during deployment.
         :param Mapping[str, str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param int max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param 'GoogleCloudRunV2RevisionScalingResponse' scaling: Scaling settings for this Revision.
         :param str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-        :param bool session_affinity: Enable session affinity.
+        :param bool session_affinity: Optional. Enable session affinity.
         :param str timeout: Max allowed time for an instance to respond to a request.
         :param Sequence['GoogleCloudRunV2VolumeResponse'] volumes: A list of Volumes to make available to containers.
         :param 'GoogleCloudRunV2VpcAccessResponse' vpc_access: VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
@@ -1222,6 +1350,7 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "execution_environment", execution_environment)
+        pulumi.set(__self__, "health_check_disabled", health_check_disabled)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         pulumi.set(__self__, "revision", revision)
@@ -1263,6 +1392,14 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
         The sandbox environment to host this Revision.
         """
         return pulumi.get(self, "execution_environment")
+
+    @property
+    @pulumi.getter(name="healthCheckDisabled")
+    def health_check_disabled(self) -> bool:
+        """
+        Optional. Disables health checking containers during deployment.
+        """
+        return pulumi.get(self, "health_check_disabled")
 
     @property
     @pulumi.getter
@@ -1308,7 +1445,7 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> bool:
         """
-        Enable session affinity.
+        Optional. Enable session affinity.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -1457,7 +1594,7 @@ class GoogleCloudRunV2ServiceScalingResponse(dict):
                  min_instance_count: int):
         """
         Scaling settings applied at the service level rather than at the revision level.
-        :param int min_instance_count: total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+        :param int min_instance_count: total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
         """
         pulumi.set(__self__, "min_instance_count", min_instance_count)
 
@@ -1465,7 +1602,7 @@ class GoogleCloudRunV2ServiceScalingResponse(dict):
     @pulumi.getter(name="minInstanceCount")
     def min_instance_count(self) -> int:
         """
-        total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+        total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
         """
         return pulumi.get(self, "min_instance_count")
 
@@ -1858,18 +1995,24 @@ class GoogleCloudRunV2VolumeResponse(dict):
     def __init__(__self__, *,
                  cloud_sql_instance: 'outputs.GoogleCloudRunV2CloudSqlInstanceResponse',
                  empty_dir: 'outputs.GoogleCloudRunV2EmptyDirVolumeSourceResponse',
+                 gcs: 'outputs.GoogleCloudRunV2GCSVolumeSourceResponse',
                  name: str,
+                 nfs: 'outputs.GoogleCloudRunV2NFSVolumeSourceResponse',
                  secret: 'outputs.GoogleCloudRunV2SecretVolumeSourceResponse'):
         """
         Volume represents a named volume in a container.
         :param 'GoogleCloudRunV2CloudSqlInstanceResponse' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         :param 'GoogleCloudRunV2EmptyDirVolumeSourceResponse' empty_dir: Ephemeral storage used as a shared volume.
+        :param 'GoogleCloudRunV2GCSVolumeSourceResponse' gcs: Persistent storage backed by a Google Cloud Storage bucket.
         :param str name: Volume's name.
+        :param 'GoogleCloudRunV2NFSVolumeSourceResponse' nfs: For NFS Voumes, contains the path to the nfs Volume
         :param 'GoogleCloudRunV2SecretVolumeSourceResponse' secret: Secret represents a secret that should populate this volume.
         """
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "empty_dir", empty_dir)
+        pulumi.set(__self__, "gcs", gcs)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nfs", nfs)
         pulumi.set(__self__, "secret", secret)
 
     @property
@@ -1890,11 +2033,27 @@ class GoogleCloudRunV2VolumeResponse(dict):
 
     @property
     @pulumi.getter
+    def gcs(self) -> 'outputs.GoogleCloudRunV2GCSVolumeSourceResponse':
+        """
+        Persistent storage backed by a Google Cloud Storage bucket.
+        """
+        return pulumi.get(self, "gcs")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Volume's name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def nfs(self) -> 'outputs.GoogleCloudRunV2NFSVolumeSourceResponse':
+        """
+        For NFS Voumes, contains the path to the nfs Volume
+        """
+        return pulumi.get(self, "nfs")
 
     @property
     @pulumi.getter
@@ -2080,8 +2239,8 @@ class GoogleIamV1BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'GoogleTypeExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -2099,7 +2258,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -2107,7 +2266,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 

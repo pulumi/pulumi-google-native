@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEventSubscriptionResult:
-    def __init__(__self__, create_time=None, destinations=None, event_type_id=None, jms=None, name=None, status=None, subscriber=None, subscriber_link=None, update_time=None):
+    def __init__(__self__, create_time=None, destinations=None, event_type_id=None, jms=None, name=None, status=None, subscriber=None, subscriber_link=None, trigger_config_variables=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -44,6 +44,9 @@ class GetEventSubscriptionResult:
         if subscriber_link and not isinstance(subscriber_link, str):
             raise TypeError("Expected argument 'subscriber_link' to be a str")
         pulumi.set(__self__, "subscriber_link", subscriber_link)
+        if trigger_config_variables and not isinstance(trigger_config_variables, list):
+            raise TypeError("Expected argument 'trigger_config_variables' to be a list")
+        pulumi.set(__self__, "trigger_config_variables", trigger_config_variables)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -113,6 +116,14 @@ class GetEventSubscriptionResult:
         return pulumi.get(self, "subscriber_link")
 
     @property
+    @pulumi.getter(name="triggerConfigVariables")
+    def trigger_config_variables(self) -> Sequence['outputs.ConfigVariableResponse']:
+        """
+        Optional. Configuration for configuring the trigger
+        """
+        return pulumi.get(self, "trigger_config_variables")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -135,6 +146,7 @@ class AwaitableGetEventSubscriptionResult(GetEventSubscriptionResult):
             status=self.status,
             subscriber=self.subscriber,
             subscriber_link=self.subscriber_link,
+            trigger_config_variables=self.trigger_config_variables,
             update_time=self.update_time)
 
 
@@ -163,6 +175,7 @@ def get_event_subscription(connection_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         subscriber=pulumi.get(__ret__, 'subscriber'),
         subscriber_link=pulumi.get(__ret__, 'subscriber_link'),
+        trigger_config_variables=pulumi.get(__ret__, 'trigger_config_variables'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

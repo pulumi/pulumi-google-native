@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNotebookRuntimeTemplateResult:
-    def __init__(__self__, create_time=None, data_persistent_disk_spec=None, description=None, display_name=None, etag=None, euc_config=None, idle_shutdown_config=None, is_default=None, labels=None, machine_spec=None, name=None, network_spec=None, notebook_runtime_type=None, service_account=None, update_time=None):
+    def __init__(__self__, create_time=None, data_persistent_disk_spec=None, description=None, display_name=None, etag=None, euc_config=None, idle_shutdown_config=None, is_default=None, labels=None, machine_spec=None, name=None, network_spec=None, network_tags=None, notebook_runtime_type=None, reservation_affinity=None, service_account=None, shielded_vm_config=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -56,12 +56,21 @@ class GetNotebookRuntimeTemplateResult:
         if network_spec and not isinstance(network_spec, dict):
             raise TypeError("Expected argument 'network_spec' to be a dict")
         pulumi.set(__self__, "network_spec", network_spec)
+        if network_tags and not isinstance(network_tags, list):
+            raise TypeError("Expected argument 'network_tags' to be a list")
+        pulumi.set(__self__, "network_tags", network_tags)
         if notebook_runtime_type and not isinstance(notebook_runtime_type, str):
             raise TypeError("Expected argument 'notebook_runtime_type' to be a str")
         pulumi.set(__self__, "notebook_runtime_type", notebook_runtime_type)
+        if reservation_affinity and not isinstance(reservation_affinity, dict):
+            raise TypeError("Expected argument 'reservation_affinity' to be a dict")
+        pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
         pulumi.set(__self__, "service_account", service_account)
+        if shielded_vm_config and not isinstance(shielded_vm_config, dict):
+            raise TypeError("Expected argument 'shielded_vm_config' to be a dict")
+        pulumi.set(__self__, "shielded_vm_config", shielded_vm_config)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -163,6 +172,14 @@ class GetNotebookRuntimeTemplateResult:
         return pulumi.get(self, "network_spec")
 
     @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Sequence[str]:
+        """
+        Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
     @pulumi.getter(name="notebookRuntimeType")
     def notebook_runtime_type(self) -> str:
         """
@@ -171,12 +188,28 @@ class GetNotebookRuntimeTemplateResult:
         return pulumi.get(self, "notebook_runtime_type")
 
     @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> 'outputs.GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse':
+        """
+        Optional. Reservation Affinity of the notebook runtime template.
+        """
+        return pulumi.get(self, "reservation_affinity")
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
         The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedVmConfig")
+    def shielded_vm_config(self) -> 'outputs.GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse':
+        """
+        Optional. Immutable. Runtime Shielded VM spec.
+        """
+        return pulumi.get(self, "shielded_vm_config")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -205,8 +238,11 @@ class AwaitableGetNotebookRuntimeTemplateResult(GetNotebookRuntimeTemplateResult
             machine_spec=self.machine_spec,
             name=self.name,
             network_spec=self.network_spec,
+            network_tags=self.network_tags,
             notebook_runtime_type=self.notebook_runtime_type,
+            reservation_affinity=self.reservation_affinity,
             service_account=self.service_account,
+            shielded_vm_config=self.shielded_vm_config,
             update_time=self.update_time)
 
 
@@ -237,8 +273,11 @@ def get_notebook_runtime_template(location: Optional[str] = None,
         machine_spec=pulumi.get(__ret__, 'machine_spec'),
         name=pulumi.get(__ret__, 'name'),
         network_spec=pulumi.get(__ret__, 'network_spec'),
+        network_tags=pulumi.get(__ret__, 'network_tags'),
         notebook_runtime_type=pulumi.get(__ret__, 'notebook_runtime_type'),
+        reservation_affinity=pulumi.get(__ret__, 'reservation_affinity'),
         service_account=pulumi.get(__ret__, 'service_account'),
+        shielded_vm_config=pulumi.get(__ret__, 'shielded_vm_config'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

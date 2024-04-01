@@ -152,15 +152,17 @@ class AllocationPolicyArgs:
                  location: Optional[pulumi.Input['LocationPolicyArgs']] = None,
                  network: Optional[pulumi.Input['NetworkPolicyArgs']] = None,
                  placement: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
-                 service_account: Optional[pulumi.Input['ServiceAccountArgs']] = None):
+                 service_account: Optional[pulumi.Input['ServiceAccountArgs']] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job.
         :param pulumi.Input[Sequence[pulumi.Input['InstancePolicyOrTemplateArgs']]] instances: Describe instances that can be created by this AllocationPolicy. Only instances[0] is supported now.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to all VM instances and other resources created by AllocationPolicy. Labels could be user provided or system generated. You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
         :param pulumi.Input['LocationPolicyArgs'] location: Location where compute resources should be allocated for the Job.
-        :param pulumi.Input['NetworkPolicyArgs'] network: The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+        :param pulumi.Input['NetworkPolicyArgs'] network: The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
         :param pulumi.Input['PlacementPolicyArgs'] placement: The placement policy.
-        :param pulumi.Input['ServiceAccountArgs'] service_account: Service account that VMs will run as.
+        :param pulumi.Input['ServiceAccountArgs'] service_account: Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
         """
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
@@ -174,6 +176,8 @@ class AllocationPolicyArgs:
             pulumi.set(__self__, "placement", placement)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -215,7 +219,7 @@ class AllocationPolicyArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input['NetworkPolicyArgs']]:
         """
-        The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+        The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
         """
         return pulumi.get(self, "network")
 
@@ -239,13 +243,25 @@ class AllocationPolicyArgs:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input['ServiceAccountArgs']]:
         """
-        Service account that VMs will run as.
+        Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input['ServiceAccountArgs']]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -326,11 +342,26 @@ class BarrierArgs:
 
 @pulumi.input_type
 class CloudLoggingOptionArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 use_generic_task_monitored_resource: Optional[pulumi.Input[bool]] = None):
         """
-        CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+        `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
+        :param pulumi.Input[bool] use_generic_task_monitored_resource: Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
         """
-        pass
+        if use_generic_task_monitored_resource is not None:
+            pulumi.set(__self__, "use_generic_task_monitored_resource", use_generic_task_monitored_resource)
+
+    @property
+    @pulumi.getter(name="useGenericTaskMonitoredResource")
+    def use_generic_task_monitored_resource(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+        """
+        return pulumi.get(self, "use_generic_task_monitored_resource")
+
+    @use_generic_task_monitored_resource.setter
+    def use_generic_task_monitored_resource(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_generic_task_monitored_resource", value)
 
 
 @pulumi.input_type
@@ -394,6 +425,7 @@ class ContainerArgs:
     def __init__(__self__, *,
                  block_external_network: Optional[pulumi.Input[bool]] = None,
                  commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_image_streaming: Optional[pulumi.Input[bool]] = None,
                  entrypoint: Optional[pulumi.Input[str]] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
@@ -404,17 +436,20 @@ class ContainerArgs:
         Container runnable.
         :param pulumi.Input[bool] block_external_network: If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
+        :param pulumi.Input[bool] enable_image_streaming: Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
         :param pulumi.Input[str] entrypoint: Overrides the `ENTRYPOINT` specified in the container.
         :param pulumi.Input[str] image_uri: The URI to pull the container image from.
         :param pulumi.Input[str] options: Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
-        :param pulumi.Input[str] password: Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
-        :param pulumi.Input[str] username: Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+        :param pulumi.Input[str] password: Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
+        :param pulumi.Input[str] username: Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volumes: Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
         """
         if block_external_network is not None:
             pulumi.set(__self__, "block_external_network", block_external_network)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
+        if enable_image_streaming is not None:
+            pulumi.set(__self__, "enable_image_streaming", enable_image_streaming)
         if entrypoint is not None:
             pulumi.set(__self__, "entrypoint", entrypoint)
         if image_uri is not None:
@@ -451,6 +486,18 @@ class ContainerArgs:
     @commands.setter
     def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "commands", value)
+
+    @property
+    @pulumi.getter(name="enableImageStreaming")
+    def enable_image_streaming(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+        """
+        return pulumi.get(self, "enable_image_streaming")
+
+    @enable_image_streaming.setter
+    def enable_image_streaming(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_image_streaming", value)
 
     @property
     @pulumi.getter
@@ -492,7 +539,7 @@ class ContainerArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+        Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         """
         return pulumi.get(self, "password")
 
@@ -504,7 +551,7 @@ class ContainerArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+        Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         """
         return pulumi.get(self, "username")
 
@@ -1019,7 +1066,7 @@ class LogsPolicyArgs:
                  logs_path: Optional[pulumi.Input[str]] = None):
         """
         LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
-        :param pulumi.Input['CloudLoggingOptionArgs'] cloud_logging_option: Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+        :param pulumi.Input['CloudLoggingOptionArgs'] cloud_logging_option: Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
         :param pulumi.Input['LogsPolicyDestination'] destination: Where logs should be saved.
         :param pulumi.Input[str] logs_path: The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
         """
@@ -1034,7 +1081,7 @@ class LogsPolicyArgs:
     @pulumi.getter(name="cloudLoggingOption")
     def cloud_logging_option(self) -> Optional[pulumi.Input['CloudLoggingOptionArgs']]:
         """
-        Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+        Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
         """
         return pulumi.get(self, "cloud_logging_option")
 
@@ -1458,8 +1505,8 @@ class ScriptArgs:
                  text: Optional[pulumi.Input[str]] = None):
         """
         Script runnable.
-        :param pulumi.Input[str] path: Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
-        :param pulumi.Input[str] text: Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+        :param pulumi.Input[str] path: Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
+        :param pulumi.Input[str] text: Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
         """
         if path is not None:
             pulumi.set(__self__, "path", path)
@@ -1470,7 +1517,7 @@ class ScriptArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+        Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
         """
         return pulumi.get(self, "path")
 
@@ -1482,7 +1529,7 @@ class ScriptArgs:
     @pulumi.getter
     def text(self) -> Optional[pulumi.Input[str]]:
         """
-        Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+        Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
         """
         return pulumi.get(self, "text")
 
@@ -1498,8 +1545,8 @@ class ServiceAccountArgs:
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Carries information about a Google Cloud service account.
-        :param pulumi.Input[str] email: Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        :param pulumi.Input[str] email: Email address of the service account.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List of scopes to be enabled for this service account.
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -1510,7 +1557,7 @@ class ServiceAccountArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+        Email address of the service account.
         """
         return pulumi.get(self, "email")
 
@@ -1522,7 +1569,7 @@ class ServiceAccountArgs:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        List of scopes to be enabled for this service account.
         """
         return pulumi.get(self, "scopes")
 
@@ -1538,6 +1585,7 @@ class TaskGroupArgs:
                  parallelism: Optional[pulumi.Input[str]] = None,
                  permissive_ssh: Optional[pulumi.Input[bool]] = None,
                  require_hosts_file: Optional[pulumi.Input[bool]] = None,
+                 run_as_non_root: Optional[pulumi.Input[bool]] = None,
                  scheduling_policy: Optional[pulumi.Input['TaskGroupSchedulingPolicy']] = None,
                  task_count: Optional[pulumi.Input[str]] = None,
                  task_count_per_node: Optional[pulumi.Input[str]] = None,
@@ -1547,7 +1595,8 @@ class TaskGroupArgs:
         :param pulumi.Input['TaskSpecArgs'] task_spec: Tasks in the group share the same task spec.
         :param pulumi.Input[str] parallelism: Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
         :param pulumi.Input[bool] permissive_ssh: When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
-        :param pulumi.Input[bool] require_hosts_file: When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+        :param pulumi.Input[bool] require_hosts_file: When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
+        :param pulumi.Input[bool] run_as_non_root: Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
         :param pulumi.Input['TaskGroupSchedulingPolicy'] scheduling_policy: Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
         :param pulumi.Input[str] task_count: Number of Tasks in the TaskGroup. Default is 1.
         :param pulumi.Input[str] task_count_per_node: Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
@@ -1560,6 +1609,8 @@ class TaskGroupArgs:
             pulumi.set(__self__, "permissive_ssh", permissive_ssh)
         if require_hosts_file is not None:
             pulumi.set(__self__, "require_hosts_file", require_hosts_file)
+        if run_as_non_root is not None:
+            pulumi.set(__self__, "run_as_non_root", run_as_non_root)
         if scheduling_policy is not None:
             pulumi.set(__self__, "scheduling_policy", scheduling_policy)
         if task_count is not None:
@@ -1609,13 +1660,25 @@ class TaskGroupArgs:
     @pulumi.getter(name="requireHostsFile")
     def require_hosts_file(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+        When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
         """
         return pulumi.get(self, "require_hosts_file")
 
     @require_hosts_file.setter
     def require_hosts_file(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "require_hosts_file", value)
+
+    @property
+    @pulumi.getter(name="runAsNonRoot")
+    def run_as_non_root(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
+        """
+        return pulumi.get(self, "run_as_non_root")
+
+    @run_as_non_root.setter
+    def run_as_non_root(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_as_non_root", value)
 
     @property
     @pulumi.getter(name="schedulingPolicy")
@@ -1684,7 +1747,7 @@ class TaskSpecArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environments: Deprecated: please use environment(non-plural) instead.
         :param pulumi.Input[Sequence[pulumi.Input['LifecyclePolicyArgs']]] lifecycle_policies: Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
         :param pulumi.Input[int] max_retry_count: Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
-        :param pulumi.Input[str] max_run_duration: Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        :param pulumi.Input[str] max_run_duration: Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
         :param pulumi.Input[Sequence[pulumi.Input['RunnableArgs']]] runnables: The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically (if they have not already exited) a short time after all foreground runnables have completed. Even though this is likely to result in a non-zero exit status for the background runnable, these automatic kills are not treated as Task failures.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: Volumes to mount before running Tasks using this TaskSpec.
         """
@@ -1775,7 +1838,7 @@ class TaskSpecArgs:
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
         """
         return pulumi.get(self, "max_run_duration")
 

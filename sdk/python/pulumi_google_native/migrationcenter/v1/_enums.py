@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'ComputeEnginePreferencesLicenseType',
+    'ComputeEnginePreferencesPersistentDiskType',
     'ImportDataFileFormat',
     'ReportState',
     'ReportType',
@@ -34,6 +35,28 @@ class ComputeEnginePreferencesLicenseType(str, Enum):
     LICENSE_TYPE_BRING_YOUR_OWN_LICENSE = "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"
     """
     Bring-your-own-license (BYOL) plan. User provides the OS license.
+    """
+
+
+class ComputeEnginePreferencesPersistentDiskType(str, Enum):
+    """
+    Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+    """
+    PERSISTENT_DISK_TYPE_UNSPECIFIED = "PERSISTENT_DISK_TYPE_UNSPECIFIED"
+    """
+    Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.
+    """
+    PERSISTENT_DISK_TYPE_STANDARD = "PERSISTENT_DISK_TYPE_STANDARD"
+    """
+    Standard HDD Persistent Disk.
+    """
+    PERSISTENT_DISK_TYPE_BALANCED = "PERSISTENT_DISK_TYPE_BALANCED"
+    """
+    Balanced Persistent Disk.
+    """
+    PERSISTENT_DISK_TYPE_SSD = "PERSISTENT_DISK_TYPE_SSD"
+    """
+    SSD Persistent Disk.
     """
 
 
@@ -170,6 +193,10 @@ class SourceType(str, Enum):
     SOURCE_TYPE_CUSTOM = "SOURCE_TYPE_CUSTOM"
     """
     Third-party owned sources.
+    """
+    SOURCE_TYPE_DISCOVERY_CLIENT = "SOURCE_TYPE_DISCOVERY_CLIENT"
+    """
+    Discovery clients
     """
 
 

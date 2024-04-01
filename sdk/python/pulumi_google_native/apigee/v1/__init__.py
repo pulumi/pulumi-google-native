@@ -29,6 +29,7 @@ from .get_alias import *
 from .get_api import *
 from .get_api_product import *
 from .get_apicategory import *
+from .get_apidoc import *
 from .get_app_group_app import *
 from .get_app_group_app_key import *
 from .get_appgroup import *

@@ -12,10 +12,10 @@ from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['NodeArgs', 'Node']
+__all__ = ['NodeInitArgs', 'Node']
 
 @pulumi.input_type
-class NodeArgs:
+class NodeInitArgs:
     def __init__(__self__, *,
                  runtime_version: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
@@ -334,19 +334,19 @@ class Node(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NodeArgs,
+                 args: NodeInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a node.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
-        :param NodeArgs args: The arguments to use to populate this resource's properties.
+        :param NodeInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NodeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NodeInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -379,7 +379,7 @@ class Node(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NodeArgs.__new__(NodeArgs)
+            __props__ = NodeInitArgs.__new__(NodeInitArgs)
 
             __props__.__dict__["accelerator_config"] = accelerator_config
             __props__.__dict__["accelerator_type"] = accelerator_type
@@ -431,7 +431,7 @@ class Node(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = NodeArgs.__new__(NodeArgs)
+        __props__ = NodeInitArgs.__new__(NodeInitArgs)
 
         __props__.__dict__["accelerator_config"] = None
         __props__.__dict__["accelerator_type"] = None

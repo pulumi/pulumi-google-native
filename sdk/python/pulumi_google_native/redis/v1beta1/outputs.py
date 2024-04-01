@@ -12,6 +12,8 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AOFConfigResponse',
+    'ClusterPersistenceConfigResponse',
     'DiscoveryEndpointResponse',
     'MaintenancePolicyResponse',
     'MaintenanceScheduleResponse',
@@ -19,12 +21,115 @@ __all__ = [
     'PersistenceConfigResponse',
     'PscConfigResponse',
     'PscConnectionResponse',
+    'RDBConfigResponse',
     'StateInfoResponse',
     'TimeOfDayResponse',
     'TlsCertificateResponse',
     'UpdateInfoResponse',
     'WeeklyMaintenanceWindowResponse',
 ]
+
+@pulumi.output_type
+class AOFConfigResponse(dict):
+    """
+    Configuration of the AOF based persistence.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendFsync":
+            suggest = "append_fsync"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AOFConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AOFConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AOFConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_fsync: str):
+        """
+        Configuration of the AOF based persistence.
+        :param str append_fsync: Optional. fsync configuration.
+        """
+        pulumi.set(__self__, "append_fsync", append_fsync)
+
+    @property
+    @pulumi.getter(name="appendFsync")
+    def append_fsync(self) -> str:
+        """
+        Optional. fsync configuration.
+        """
+        return pulumi.get(self, "append_fsync")
+
+
+@pulumi.output_type
+class ClusterPersistenceConfigResponse(dict):
+    """
+    Configuration of the persistence functionality.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aofConfig":
+            suggest = "aof_config"
+        elif key == "rdbConfig":
+            suggest = "rdb_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPersistenceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPersistenceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPersistenceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aof_config: 'outputs.AOFConfigResponse',
+                 mode: str,
+                 rdb_config: 'outputs.RDBConfigResponse'):
+        """
+        Configuration of the persistence functionality.
+        :param 'AOFConfigResponse' aof_config: Optional. AOF configuration. This field will be ignored if mode is not AOF.
+        :param str mode: Optional. The mode of persistence.
+        :param 'RDBConfigResponse' rdb_config: Optional. RDB configuration. This field will be ignored if mode is not RDB.
+        """
+        pulumi.set(__self__, "aof_config", aof_config)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rdb_config", rdb_config)
+
+    @property
+    @pulumi.getter(name="aofConfig")
+    def aof_config(self) -> 'outputs.AOFConfigResponse':
+        """
+        Optional. AOF configuration. This field will be ignored if mode is not AOF.
+        """
+        return pulumi.get(self, "aof_config")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Optional. The mode of persistence.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="rdbConfig")
+    def rdb_config(self) -> 'outputs.RDBConfigResponse':
+        """
+        Optional. RDB configuration. This field will be ignored if mode is not RDB.
+        """
+        return pulumi.get(self, "rdb_config")
+
 
 @pulumi.output_type
 class DiscoveryEndpointResponse(dict):
@@ -442,6 +547,58 @@ class PscConnectionResponse(dict):
         The PSC connection id of the forwarding rule connected to the service attachment.
         """
         return pulumi.get(self, "psc_connection_id")
+
+
+@pulumi.output_type
+class RDBConfigResponse(dict):
+    """
+    Configuration of the RDB based persistence.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rdbSnapshotPeriod":
+            suggest = "rdb_snapshot_period"
+        elif key == "rdbSnapshotStartTime":
+            suggest = "rdb_snapshot_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RDBConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RDBConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RDBConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rdb_snapshot_period: str,
+                 rdb_snapshot_start_time: str):
+        """
+        Configuration of the RDB based persistence.
+        :param str rdb_snapshot_period: Optional. Period between RDB snapshots.
+        :param str rdb_snapshot_start_time: Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+        pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> str:
+        """
+        Optional. Period between RDB snapshots.
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
+
+    @property
+    @pulumi.getter(name="rdbSnapshotStartTime")
+    def rdb_snapshot_start_time(self) -> str:
+        """
+        Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        return pulumi.get(self, "rdb_snapshot_start_time")
 
 
 @pulumi.output_type

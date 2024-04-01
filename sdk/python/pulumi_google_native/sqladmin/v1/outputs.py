@@ -21,6 +21,7 @@ __all__ = [
     'DenyMaintenancePeriodResponse',
     'DiskEncryptionConfigurationResponse',
     'DiskEncryptionStatusResponse',
+    'GeminiInstanceConfigResponse',
     'InsightsConfigResponse',
     'InstanceFailoverReplicaResponse',
     'InstanceReferenceResponse',
@@ -35,6 +36,7 @@ __all__ = [
     'PasswordValidationPolicyResponse',
     'PscConfigResponse',
     'ReplicaConfigurationResponse',
+    'ReplicationClusterResponse',
     'SettingsResponse',
     'SqlActiveDirectoryConfigResponse',
     'SqlOutOfDiskReportResponse',
@@ -177,6 +179,8 @@ class BackupConfigurationResponse(dict):
             suggest = "start_time"
         elif key == "transactionLogRetentionDays":
             suggest = "transaction_log_retention_days"
+        elif key == "transactionalLogStorageState":
+            suggest = "transactional_log_storage_state"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in BackupConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
@@ -198,7 +202,8 @@ class BackupConfigurationResponse(dict):
                  point_in_time_recovery_enabled: bool,
                  replication_log_archiving_enabled: bool,
                  start_time: str,
-                 transaction_log_retention_days: int):
+                 transaction_log_retention_days: int,
+                 transactional_log_storage_state: str):
         """
         Database instance backup configuration.
         :param 'BackupRetentionSettingsResponse' backup_retention_settings: Backup retention settings.
@@ -210,6 +215,7 @@ class BackupConfigurationResponse(dict):
         :param bool replication_log_archiving_enabled: Reserved for future use.
         :param str start_time: Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
         :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
+        :param str transactional_log_storage_state: This value contains the storage location of transactional logs for the database for point-in-time recovery.
         """
         pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
@@ -220,6 +226,7 @@ class BackupConfigurationResponse(dict):
         pulumi.set(__self__, "replication_log_archiving_enabled", replication_log_archiving_enabled)
         pulumi.set(__self__, "start_time", start_time)
         pulumi.set(__self__, "transaction_log_retention_days", transaction_log_retention_days)
+        pulumi.set(__self__, "transactional_log_storage_state", transactional_log_storage_state)
 
     @property
     @pulumi.getter(name="backupRetentionSettings")
@@ -292,6 +299,14 @@ class BackupConfigurationResponse(dict):
         The number of days of transaction logs we retain for point in time restore, from 1-7.
         """
         return pulumi.get(self, "transaction_log_retention_days")
+
+    @property
+    @pulumi.getter(name="transactionalLogStorageState")
+    def transactional_log_storage_state(self) -> str:
+        """
+        This value contains the storage location of transactional logs for the database for point-in-time recovery.
+        """
+        return pulumi.get(self, "transactional_log_storage_state")
 
 
 @pulumi.output_type
@@ -582,6 +597,108 @@ class DiskEncryptionStatusResponse(dict):
 
 
 @pulumi.output_type
+class GeminiInstanceConfigResponse(dict):
+    """
+    Gemini configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeQueryEnabled":
+            suggest = "active_query_enabled"
+        elif key == "flagRecommenderEnabled":
+            suggest = "flag_recommender_enabled"
+        elif key == "googleVacuumMgmtEnabled":
+            suggest = "google_vacuum_mgmt_enabled"
+        elif key == "indexAdvisorEnabled":
+            suggest = "index_advisor_enabled"
+        elif key == "oomSessionCancelEnabled":
+            suggest = "oom_session_cancel_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeminiInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeminiInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeminiInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_query_enabled: bool,
+                 entitled: bool,
+                 flag_recommender_enabled: bool,
+                 google_vacuum_mgmt_enabled: bool,
+                 index_advisor_enabled: bool,
+                 oom_session_cancel_enabled: bool):
+        """
+        Gemini configuration.
+        :param bool active_query_enabled: Whether active query is enabled.
+        :param bool entitled: Whether gemini is enabled.
+        :param bool flag_recommender_enabled: Whether flag recommender is enabled.
+        :param bool google_vacuum_mgmt_enabled: Whether vacuum management is enabled.
+        :param bool index_advisor_enabled: Whether index advisor is enabled.
+        :param bool oom_session_cancel_enabled: Whether oom session cancel is enabled.
+        """
+        pulumi.set(__self__, "active_query_enabled", active_query_enabled)
+        pulumi.set(__self__, "entitled", entitled)
+        pulumi.set(__self__, "flag_recommender_enabled", flag_recommender_enabled)
+        pulumi.set(__self__, "google_vacuum_mgmt_enabled", google_vacuum_mgmt_enabled)
+        pulumi.set(__self__, "index_advisor_enabled", index_advisor_enabled)
+        pulumi.set(__self__, "oom_session_cancel_enabled", oom_session_cancel_enabled)
+
+    @property
+    @pulumi.getter(name="activeQueryEnabled")
+    def active_query_enabled(self) -> bool:
+        """
+        Whether active query is enabled.
+        """
+        return pulumi.get(self, "active_query_enabled")
+
+    @property
+    @pulumi.getter
+    def entitled(self) -> bool:
+        """
+        Whether gemini is enabled.
+        """
+        return pulumi.get(self, "entitled")
+
+    @property
+    @pulumi.getter(name="flagRecommenderEnabled")
+    def flag_recommender_enabled(self) -> bool:
+        """
+        Whether flag recommender is enabled.
+        """
+        return pulumi.get(self, "flag_recommender_enabled")
+
+    @property
+    @pulumi.getter(name="googleVacuumMgmtEnabled")
+    def google_vacuum_mgmt_enabled(self) -> bool:
+        """
+        Whether vacuum management is enabled.
+        """
+        return pulumi.get(self, "google_vacuum_mgmt_enabled")
+
+    @property
+    @pulumi.getter(name="indexAdvisorEnabled")
+    def index_advisor_enabled(self) -> bool:
+        """
+        Whether index advisor is enabled.
+        """
+        return pulumi.get(self, "index_advisor_enabled")
+
+    @property
+    @pulumi.getter(name="oomSessionCancelEnabled")
+    def oom_session_cancel_enabled(self) -> bool:
+        """
+        Whether oom session cancel is enabled.
+        """
+        return pulumi.get(self, "oom_session_cancel_enabled")
+
+
+@pulumi.output_type
 class InsightsConfigResponse(dict):
     """
     Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
@@ -802,8 +919,8 @@ class IpConfigurationResponse(dict):
         :param bool ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         :param 'PscConfigResponse' psc_config: PSC settings for this instance.
-        :param bool require_ssl: Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
-        :param str ssl_mode: Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+        :param bool require_ssl: Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the `require_ssl` flag.
+        :param str ssl_mode: Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
@@ -866,7 +983,7 @@ class IpConfigurationResponse(dict):
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> bool:
         """
-        Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+        Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the `require_ssl` flag.
         """
         return pulumi.get(self, "require_ssl")
 
@@ -874,7 +991,7 @@ class IpConfigurationResponse(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
         """
-        Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+        Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -1525,7 +1642,7 @@ class PasswordValidationPolicyResponse(dict):
         """
         Database instance local user password validation policy
         :param str complexity: The complexity of the password.
-        :param bool disallow_compromised_credentials: Disallow credentials that have been previously compromised by a public data breach.
+        :param bool disallow_compromised_credentials: This field is deprecated and will be removed in a future version of the API.
         :param bool disallow_username_substring: Disallow username as a part of the password.
         :param bool enable_password_policy: Whether the password policy is enabled or not.
         :param int min_length: Minimum number of characters allowed.
@@ -1552,8 +1669,11 @@ class PasswordValidationPolicyResponse(dict):
     @pulumi.getter(name="disallowCompromisedCredentials")
     def disallow_compromised_credentials(self) -> bool:
         """
-        Disallow credentials that have been previously compromised by a public data breach.
+        This field is deprecated and will be removed in a future version of the API.
         """
+        warnings.warn("""This field is deprecated and will be removed in a future version of the API.""", DeprecationWarning)
+        pulumi.log.warn("""disallow_compromised_credentials is deprecated: This field is deprecated and will be removed in a future version of the API.""")
+
         return pulumi.get(self, "disallow_compromised_credentials")
 
     @property
@@ -1726,6 +1846,58 @@ class ReplicaConfigurationResponse(dict):
 
 
 @pulumi.output_type
+class ReplicationClusterResponse(dict):
+    """
+    Primary-DR replica pair
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drReplica":
+            suggest = "dr_replica"
+        elif key == "failoverDrReplicaName":
+            suggest = "failover_dr_replica_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReplicationClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReplicationClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReplicationClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dr_replica: bool,
+                 failover_dr_replica_name: str):
+        """
+        Primary-DR replica pair
+        :param bool dr_replica: read-only field that indicates if the replica is a dr_replica; not set for a primary.
+        :param str failover_dr_replica_name: Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+        """
+        pulumi.set(__self__, "dr_replica", dr_replica)
+        pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+
+    @property
+    @pulumi.getter(name="drReplica")
+    def dr_replica(self) -> bool:
+        """
+        read-only field that indicates if the replica is a dr_replica; not set for a primary.
+        """
+        return pulumi.get(self, "dr_replica")
+
+    @property
+    @pulumi.getter(name="failoverDrReplicaName")
+    def failover_dr_replica_name(self) -> str:
+        """
+        Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+        """
+        return pulumi.get(self, "failover_dr_replica_name")
+
+
+@pulumi.output_type
 class SettingsResponse(dict):
     """
     Database instance settings.
@@ -1763,6 +1935,8 @@ class SettingsResponse(dict):
             suggest = "deletion_protection_enabled"
         elif key == "denyMaintenancePeriods":
             suggest = "deny_maintenance_periods"
+        elif key == "enableGoogleMlIntegration":
+            suggest = "enable_google_ml_integration"
         elif key == "insightsConfig":
             suggest = "insights_config"
         elif key == "ipConfiguration":
@@ -1819,6 +1993,7 @@ class SettingsResponse(dict):
                  deletion_protection_enabled: bool,
                  deny_maintenance_periods: Sequence['outputs.DenyMaintenancePeriodResponse'],
                  edition: str,
+                 enable_google_ml_integration: bool,
                  insights_config: 'outputs.InsightsConfigResponse',
                  ip_configuration: 'outputs.IpConfigurationResponse',
                  kind: str,
@@ -1853,6 +2028,7 @@ class SettingsResponse(dict):
         :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param Sequence['DenyMaintenancePeriodResponse'] deny_maintenance_periods: Deny maintenance periods
         :param str edition: Optional. The edition of the instance.
+        :param bool enable_google_ml_integration: Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
         :param 'InsightsConfigResponse' insights_config: Insights configuration, for now relevant only for Postgres.
         :param 'IpConfigurationResponse' ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
         :param str kind: This is always `sql#settings`.
@@ -1886,6 +2062,7 @@ class SettingsResponse(dict):
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
         pulumi.set(__self__, "edition", edition)
+        pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         pulumi.set(__self__, "insights_config", insights_config)
         pulumi.set(__self__, "ip_configuration", ip_configuration)
         pulumi.set(__self__, "kind", kind)
@@ -2040,6 +2217,14 @@ class SettingsResponse(dict):
         Optional. The edition of the instance.
         """
         return pulumi.get(self, "edition")
+
+    @property
+    @pulumi.getter(name="enableGoogleMlIntegration")
+    def enable_google_ml_integration(self) -> bool:
+        """
+        Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+        """
+        return pulumi.get(self, "enable_google_ml_integration")
 
     @property
     @pulumi.getter(name="insightsConfig")

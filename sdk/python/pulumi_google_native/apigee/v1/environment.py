@@ -34,7 +34,7 @@ class EnvironmentArgs:
         :param pulumi.Input['EnvironmentDeploymentType'] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
-        :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input['GoogleCloudApigeeV1NodeConfigArgs'] node_config: Optional. NodeConfig of the environment.
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
@@ -123,7 +123,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="forwardProxyUri")
     def forward_proxy_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
         """
         return pulumi.get(self, "forward_proxy_uri")
 
@@ -215,7 +215,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input['EnvironmentDeploymentType'] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
-        :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        :param pulumi.Input[str] forward_proxy_uri: Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1NodeConfigArgs']] node_config: Optional. NodeConfig of the environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Optional. Key-value pairs that may be used for customizing the environment.
@@ -365,7 +365,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter(name="forwardProxyUri")
     def forward_proxy_uri(self) -> pulumi.Output[str]:
         """
-        Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
         """
         return pulumi.get(self, "forward_proxy_uri")
 

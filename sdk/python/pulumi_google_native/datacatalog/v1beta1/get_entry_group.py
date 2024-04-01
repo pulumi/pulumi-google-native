@@ -61,7 +61,7 @@ class GetEntryGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+        Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 

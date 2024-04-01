@@ -17,6 +17,7 @@ __all__ = [
     'EthereumDetailsResponse',
     'EthereumEndpointsResponse',
     'GethDetailsResponse',
+    'ValidatorConfigResponse',
 ]
 
 @pulumi.output_type
@@ -137,8 +138,6 @@ class EthereumDetailsResponse(dict):
             suggest = "api_enable_admin"
         elif key == "apiEnableDebug":
             suggest = "api_enable_debug"
-        elif key == "beaconFeeRecipient":
-            suggest = "beacon_fee_recipient"
         elif key == "consensusClient":
             suggest = "consensus_client"
         elif key == "executionClient":
@@ -147,6 +146,8 @@ class EthereumDetailsResponse(dict):
             suggest = "geth_details"
         elif key == "nodeType":
             suggest = "node_type"
+        elif key == "validatorConfig":
+            suggest = "validator_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EthereumDetailsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -163,33 +164,33 @@ class EthereumDetailsResponse(dict):
                  additional_endpoints: 'outputs.EthereumEndpointsResponse',
                  api_enable_admin: bool,
                  api_enable_debug: bool,
-                 beacon_fee_recipient: str,
                  consensus_client: str,
                  execution_client: str,
                  geth_details: 'outputs.GethDetailsResponse',
                  network: str,
-                 node_type: str):
+                 node_type: str,
+                 validator_config: 'outputs.ValidatorConfigResponse'):
         """
         Ethereum-specific blockchain node details.
         :param 'EthereumEndpointsResponse' additional_endpoints: Ethereum-specific endpoint information.
         :param bool api_enable_admin: Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`.
         :param bool api_enable_debug: Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
-        :param str beacon_fee_recipient: An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
         :param str consensus_client: Immutable. The consensus client.
         :param str execution_client: Immutable. The execution client
         :param 'GethDetailsResponse' geth_details: Details for the Geth execution client.
         :param str network: Immutable. The Ethereum environment being accessed.
         :param str node_type: Immutable. The type of Ethereum node.
+        :param 'ValidatorConfigResponse' validator_config: Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
         """
         pulumi.set(__self__, "additional_endpoints", additional_endpoints)
         pulumi.set(__self__, "api_enable_admin", api_enable_admin)
         pulumi.set(__self__, "api_enable_debug", api_enable_debug)
-        pulumi.set(__self__, "beacon_fee_recipient", beacon_fee_recipient)
         pulumi.set(__self__, "consensus_client", consensus_client)
         pulumi.set(__self__, "execution_client", execution_client)
         pulumi.set(__self__, "geth_details", geth_details)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "node_type", node_type)
+        pulumi.set(__self__, "validator_config", validator_config)
 
     @property
     @pulumi.getter(name="additionalEndpoints")
@@ -214,14 +215,6 @@ class EthereumDetailsResponse(dict):
         Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
         """
         return pulumi.get(self, "api_enable_debug")
-
-    @property
-    @pulumi.getter(name="beaconFeeRecipient")
-    def beacon_fee_recipient(self) -> str:
-        """
-        An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-        """
-        return pulumi.get(self, "beacon_fee_recipient")
 
     @property
     @pulumi.getter(name="consensusClient")
@@ -262,6 +255,14 @@ class EthereumDetailsResponse(dict):
         Immutable. The type of Ethereum node.
         """
         return pulumi.get(self, "node_type")
+
+    @property
+    @pulumi.getter(name="validatorConfig")
+    def validator_config(self) -> 'outputs.ValidatorConfigResponse':
+        """
+        Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+        """
+        return pulumi.get(self, "validator_config")
 
 
 @pulumi.output_type
@@ -366,5 +367,70 @@ class GethDetailsResponse(dict):
         Immutable. Blockchain garbage collection mode.
         """
         return pulumi.get(self, "garbage_collection_mode")
+
+
+@pulumi.output_type
+class ValidatorConfigResponse(dict):
+    """
+    Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "beaconFeeRecipient":
+            suggest = "beacon_fee_recipient"
+        elif key == "managedValidatorClient":
+            suggest = "managed_validator_client"
+        elif key == "mevRelayUrls":
+            suggest = "mev_relay_urls"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValidatorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValidatorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValidatorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 beacon_fee_recipient: str,
+                 managed_validator_client: bool,
+                 mev_relay_urls: Sequence[str]):
+        """
+        Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+        :param str beacon_fee_recipient: An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+        :param bool managed_validator_client: Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+        :param Sequence[str] mev_relay_urls: URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+        """
+        pulumi.set(__self__, "beacon_fee_recipient", beacon_fee_recipient)
+        pulumi.set(__self__, "managed_validator_client", managed_validator_client)
+        pulumi.set(__self__, "mev_relay_urls", mev_relay_urls)
+
+    @property
+    @pulumi.getter(name="beaconFeeRecipient")
+    def beacon_fee_recipient(self) -> str:
+        """
+        An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+        """
+        return pulumi.get(self, "beacon_fee_recipient")
+
+    @property
+    @pulumi.getter(name="managedValidatorClient")
+    def managed_validator_client(self) -> bool:
+        """
+        Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+        """
+        return pulumi.get(self, "managed_validator_client")
+
+    @property
+    @pulumi.getter(name="mevRelayUrls")
+    def mev_relay_urls(self) -> Sequence[str]:
+        """
+        URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+        """
+        return pulumi.get(self, "mev_relay_urls")
 
 

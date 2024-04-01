@@ -31,6 +31,7 @@ class InterconnectAttachmentArgs:
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
+                 multicast_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
                  partner_asn: Optional[pulumi.Input[str]] = None,
@@ -57,6 +58,7 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        :param pulumi.Input[bool] multicast_enabled: Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
         :param pulumi.Input[str] partner_asn: Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
@@ -95,6 +97,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "labels", labels)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if multicast_enabled is not None:
+            pulumi.set(__self__, "multicast_enabled", multicast_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if pairing_key is not None:
@@ -284,6 +288,18 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "mtu", value)
 
     @property
+    @pulumi.getter(name="multicastEnabled")
+    def multicast_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+        """
+        return pulumi.get(self, "multicast_enabled")
+
+    @multicast_enabled.setter
+    def multicast_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multicast_enabled", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -431,6 +447,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
+                 multicast_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
                  partner_asn: Optional[pulumi.Input[str]] = None,
@@ -462,6 +479,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        :param pulumi.Input[bool] multicast_enabled: Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of a PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
         :param pulumi.Input[str] partner_asn: Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
@@ -510,6 +528,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
+                 multicast_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
                  partner_asn: Optional[pulumi.Input[str]] = None,
@@ -544,6 +563,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
             __props__.__dict__["labels"] = labels
             __props__.__dict__["mtu"] = mtu
+            __props__.__dict__["multicast_enabled"] = multicast_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["pairing_key"] = pairing_key
             __props__.__dict__["partner_asn"] = partner_asn
@@ -622,6 +642,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["mtu"] = None
+        __props__.__dict__["multicast_enabled"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operational_status"] = None
         __props__.__dict__["pairing_key"] = None
@@ -829,6 +850,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         """
         return pulumi.get(self, "mtu")
+
+    @property
+    @pulumi.getter(name="multicastEnabled")
+    def multicast_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+        """
+        return pulumi.get(self, "multicast_enabled")
 
     @property
     @pulumi.getter

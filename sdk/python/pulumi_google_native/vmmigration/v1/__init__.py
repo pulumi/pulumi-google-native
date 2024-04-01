@@ -13,11 +13,13 @@ from .get_clone_job import *
 from .get_cutover_job import *
 from .get_datacenter_connector import *
 from .get_group import *
+from .get_image_import import *
 from .get_migrating_vm import *
 from .get_source import *
 from .get_target_project import *
 from .get_utilization_report import *
 from .group import *
+from .image_import import *
 from .migrating_vm import *
 from .source import *
 from .target_project import *

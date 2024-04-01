@@ -8,39 +8,55 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = ['FirewallEndpointArgs', 'FirewallEndpoint']
 
 @pulumi.input_type
 class FirewallEndpointArgs:
     def __init__(__self__, *,
+                 billing_project_id: pulumi.Input[str],
                  firewall_endpoint_id: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 billing_project_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FirewallEndpoint resource.
+        :param pulumi.Input[str] billing_project_id: Project to bill on endpoint uptime usage.
         :param pulumi.Input[str] firewall_endpoint_id: Required. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_id from the method_signature of Create RPC.
-        :param pulumi.Input[str] billing_project_id: Optional. Project to bill on endpoint uptime usage.
         :param pulumi.Input[str] description: Optional. Description of the firewall endpoint. Max length 2048 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[str] name: Immutable. Identifier. name of resource
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
+        pulumi.set(__self__, "billing_project_id", billing_project_id)
         pulumi.set(__self__, "firewall_endpoint_id", firewall_endpoint_id)
         pulumi.set(__self__, "organization_id", organization_id)
-        if billing_project_id is not None:
-            pulumi.set(__self__, "billing_project_id", billing_project_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+
+    @property
+    @pulumi.getter(name="billingProjectId")
+    def billing_project_id(self) -> pulumi.Input[str]:
+        """
+        Project to bill on endpoint uptime usage.
+        """
+        return pulumi.get(self, "billing_project_id")
+
+    @billing_project_id.setter
+    def billing_project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_project_id", value)
 
     @property
     @pulumi.getter(name="firewallEndpointId")
@@ -62,18 +78,6 @@ class FirewallEndpointArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="billingProjectId")
-    def billing_project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Project to bill on endpoint uptime usage.
-        """
-        return pulumi.get(self, "billing_project_id")
-
-    @billing_project_id.setter
-    def billing_project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "billing_project_id", value)
 
     @property
     @pulumi.getter
@@ -109,6 +113,18 @@ class FirewallEndpointArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Identifier. name of resource
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -131,19 +147,20 @@ class FirewallEndpoint(pulumi.CustomResource):
                  firewall_endpoint_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new FirewallEndpoint in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] billing_project_id: Optional. Project to bill on endpoint uptime usage.
+        :param pulumi.Input[str] billing_project_id: Project to bill on endpoint uptime usage.
         :param pulumi.Input[str] description: Optional. Description of the firewall endpoint. Max length 2048 characters.
         :param pulumi.Input[str] firewall_endpoint_id: Required. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_id from the method_signature of Create RPC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[str] name: Immutable. Identifier. name of resource
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
@@ -154,7 +171,6 @@ class FirewallEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new FirewallEndpoint in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param FirewallEndpointArgs args: The arguments to use to populate this resource's properties.
@@ -176,6 +192,7 @@ class FirewallEndpoint(pulumi.CustomResource):
                  firewall_endpoint_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -187,6 +204,8 @@ class FirewallEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FirewallEndpointArgs.__new__(FirewallEndpointArgs)
 
+            if billing_project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'billing_project_id'")
             __props__.__dict__["billing_project_id"] = billing_project_id
             __props__.__dict__["description"] = description
             if firewall_endpoint_id is None and not opts.urn:
@@ -194,13 +213,14 @@ class FirewallEndpoint(pulumi.CustomResource):
             __props__.__dict__["firewall_endpoint_id"] = firewall_endpoint_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["associated_networks"] = None
+            __props__.__dict__["associations"] = None
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["name"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
@@ -229,6 +249,7 @@ class FirewallEndpoint(pulumi.CustomResource):
         __props__ = FirewallEndpointArgs.__new__(FirewallEndpointArgs)
 
         __props__.__dict__["associated_networks"] = None
+        __props__.__dict__["associations"] = None
         __props__.__dict__["billing_project_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
@@ -252,10 +273,18 @@ class FirewallEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "associated_networks")
 
     @property
+    @pulumi.getter
+    def associations(self) -> pulumi.Output[Sequence['outputs.FirewallEndpointAssociationReferenceResponse']]:
+        """
+        List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+        """
+        return pulumi.get(self, "associations")
+
+    @property
     @pulumi.getter(name="billingProjectId")
     def billing_project_id(self) -> pulumi.Output[str]:
         """
-        Optional. Project to bill on endpoint uptime usage.
+        Project to bill on endpoint uptime usage.
         """
         return pulumi.get(self, "billing_project_id")
 
@@ -300,7 +329,7 @@ class FirewallEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        name of resource
+        Immutable. Identifier. name of resource
         """
         return pulumi.get(self, "name")
 

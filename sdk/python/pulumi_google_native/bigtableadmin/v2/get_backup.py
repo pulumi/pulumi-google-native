@@ -92,7 +92,7 @@ class GetBackupResult:
     @pulumi.getter(name="sourceBackup")
     def source_backup(self) -> str:
         """
-        Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
         """
         return pulumi.get(self, "source_backup")
 

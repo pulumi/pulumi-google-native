@@ -128,7 +128,7 @@ class GetNetworkPeeringResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+        The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
         """
         return pulumi.get(self, "name")
 
@@ -221,13 +221,15 @@ class AwaitableGetNetworkPeeringResult(GetNetworkPeeringResult):
             vmware_engine_network=self.vmware_engine_network)
 
 
-def get_network_peering(network_peering_id: Optional[str] = None,
+def get_network_peering(location: Optional[str] = None,
+                        network_peering_id: Optional[str] = None,
                         project: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkPeeringResult:
     """
-    Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
+    Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global.
     """
     __args__ = dict()
+    __args__['location'] = location
     __args__['networkPeeringId'] = network_peering_id
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -253,10 +255,11 @@ def get_network_peering(network_peering_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_network_peering)
-def get_network_peering_output(network_peering_id: Optional[pulumi.Input[str]] = None,
+def get_network_peering_output(location: Optional[pulumi.Input[str]] = None,
+                               network_peering_id: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPeeringResult]:
     """
-    Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
+    Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global.
     """
     ...

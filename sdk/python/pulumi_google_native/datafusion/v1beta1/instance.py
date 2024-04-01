@@ -40,10 +40,10 @@ class InstanceArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_id: Required. The name of the instance to create.
+        :param pulumi.Input[str] instance_id: Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
         :param pulumi.Input['InstanceType'] type: Instance type.
         :param pulumi.Input['CryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
-        :param pulumi.Input[bool] dataplex_data_lineage_integration_enabled: Optional. Reserved for future use.
+        :param pulumi.Input[bool] dataplex_data_lineage_integration_enabled: Optional. Option to enable the Dataplex Lineage Integration feature.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         :param pulumi.Input[str] description: A description of this instance.
         :param pulumi.Input[str] display_name: Display name for an instance.
@@ -105,7 +105,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        Required. The name of the instance to create.
+        Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
         """
         return pulumi.get(self, "instance_id")
 
@@ -141,7 +141,7 @@ class InstanceArgs:
     @pulumi.getter(name="dataplexDataLineageIntegrationEnabled")
     def dataplex_data_lineage_integration_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Reserved for future use.
+        Optional. Option to enable the Dataplex Lineage Integration feature.
         """
         return pulumi.get(self, "dataplex_data_lineage_integration_enabled")
 
@@ -382,7 +382,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
-        :param pulumi.Input[bool] dataplex_data_lineage_integration_enabled: Optional. Reserved for future use.
+        :param pulumi.Input[bool] dataplex_data_lineage_integration_enabled: Optional. Option to enable the Dataplex Lineage Integration feature.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         :param pulumi.Input[str] description: A description of this instance.
         :param pulumi.Input[str] display_name: Display name for an instance.
@@ -391,7 +391,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
         :param pulumi.Input[bool] enable_zone_separation: Option to enable zone separation.
         :param pulumi.Input[pulumi.InputType['EventPublishConfigArgs']] event_publish_config: Option to enable and pass metadata for event publishing.
-        :param pulumi.Input[str] instance_id: Required. The name of the instance to create.
+        :param pulumi.Input[str] instance_id: Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
@@ -604,7 +604,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dataplexDataLineageIntegrationEnabled")
     def dataplex_data_lineage_integration_enabled(self) -> pulumi.Output[bool]:
         """
-        Optional. Reserved for future use.
+        Optional. Option to enable the Dataplex Lineage Integration feature.
         """
         return pulumi.get(self, "dataplex_data_lineage_integration_enabled")
 
@@ -692,7 +692,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        Required. The name of the instance to create.
+        Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
         """
         return pulumi.get(self, "instance_id")
 

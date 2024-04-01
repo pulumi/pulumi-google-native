@@ -6,7 +6,17 @@ from enum import Enum
 
 __all__ = [
     'ConversationState',
+    'DataStoreContentConfig',
+    'DataStoreConversationState',
+    'DataStoreIndustryVertical',
+    'DataStoreSolutionTypesItem',
+    'EngineConversationState',
+    'EngineIndustryVertical',
+    'EngineSolutionType',
+    'GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem',
+    'GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier',
     'GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem',
+    'TargetSiteType',
 ]
 
 
@@ -25,6 +35,186 @@ class ConversationState(str, Enum):
     COMPLETED = "COMPLETED"
     """
     Conversation has been completed.
+    """
+
+
+class DataStoreContentConfig(str, Enum):
+    """
+    Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
+    """
+    CONTENT_CONFIG_UNSPECIFIED = "CONTENT_CONFIG_UNSPECIFIED"
+    """
+    Default value.
+    """
+    NO_CONTENT = "NO_CONTENT"
+    """
+    Only contains documents without any Document.content.
+    """
+    CONTENT_REQUIRED = "CONTENT_REQUIRED"
+    """
+    Only contains documents with Document.content.
+    """
+    PUBLIC_WEBSITE = "PUBLIC_WEBSITE"
+    """
+    The data store is used for public website search.
+    """
+
+
+class DataStoreConversationState(str, Enum):
+    """
+    The state of the Conversation.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Unknown.
+    """
+    IN_PROGRESS = "IN_PROGRESS"
+    """
+    Conversation is currently open.
+    """
+    COMPLETED = "COMPLETED"
+    """
+    Conversation has been completed.
+    """
+
+
+class DataStoreIndustryVertical(str, Enum):
+    """
+    Immutable. The industry vertical that the data store registers.
+    """
+    INDUSTRY_VERTICAL_UNSPECIFIED = "INDUSTRY_VERTICAL_UNSPECIFIED"
+    """
+    Value used when unset.
+    """
+    GENERIC = "GENERIC"
+    """
+    The generic vertical for documents that are not specific to any industry vertical.
+    """
+    MEDIA = "MEDIA"
+    """
+    The media industry vertical.
+    """
+    HEALTHCARE_FHIR = "HEALTHCARE_FHIR"
+    """
+    The healthcare FHIR vertical.
+    """
+
+
+class DataStoreSolutionTypesItem(str, Enum):
+    SOLUTION_TYPE_UNSPECIFIED = "SOLUTION_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    SOLUTION_TYPE_RECOMMENDATION = "SOLUTION_TYPE_RECOMMENDATION"
+    """
+    Used for Recommendations AI.
+    """
+    SOLUTION_TYPE_SEARCH = "SOLUTION_TYPE_SEARCH"
+    """
+    Used for Discovery Search.
+    """
+    SOLUTION_TYPE_CHAT = "SOLUTION_TYPE_CHAT"
+    """
+    Used for use cases related to the Generative AI agent.
+    """
+    SOLUTION_TYPE_GENERATIVE_CHAT = "SOLUTION_TYPE_GENERATIVE_CHAT"
+    """
+    Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+    """
+
+
+class EngineConversationState(str, Enum):
+    """
+    The state of the Conversation.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Unknown.
+    """
+    IN_PROGRESS = "IN_PROGRESS"
+    """
+    Conversation is currently open.
+    """
+    COMPLETED = "COMPLETED"
+    """
+    Conversation has been completed.
+    """
+
+
+class EngineIndustryVertical(str, Enum):
+    """
+    The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+    """
+    INDUSTRY_VERTICAL_UNSPECIFIED = "INDUSTRY_VERTICAL_UNSPECIFIED"
+    """
+    Value used when unset.
+    """
+    GENERIC = "GENERIC"
+    """
+    The generic vertical for documents that are not specific to any industry vertical.
+    """
+    MEDIA = "MEDIA"
+    """
+    The media industry vertical.
+    """
+    HEALTHCARE_FHIR = "HEALTHCARE_FHIR"
+    """
+    The healthcare FHIR vertical.
+    """
+
+
+class EngineSolutionType(str, Enum):
+    """
+    Required. The solutions of the engine.
+    """
+    SOLUTION_TYPE_UNSPECIFIED = "SOLUTION_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    SOLUTION_TYPE_RECOMMENDATION = "SOLUTION_TYPE_RECOMMENDATION"
+    """
+    Used for Recommendations AI.
+    """
+    SOLUTION_TYPE_SEARCH = "SOLUTION_TYPE_SEARCH"
+    """
+    Used for Discovery Search.
+    """
+    SOLUTION_TYPE_CHAT = "SOLUTION_TYPE_CHAT"
+    """
+    Used for use cases related to the Generative AI agent.
+    """
+    SOLUTION_TYPE_GENERATIVE_CHAT = "SOLUTION_TYPE_GENERATIVE_CHAT"
+    """
+    Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+    """
+
+
+class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem(str, Enum):
+    SEARCH_ADD_ON_UNSPECIFIED = "SEARCH_ADD_ON_UNSPECIFIED"
+    """
+    Default value when the enum is unspecified. This is invalid to use.
+    """
+    SEARCH_ADD_ON_LLM = "SEARCH_ADD_ON_LLM"
+    """
+    Large language model add-on.
+    """
+
+
+class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier(str, Enum):
+    """
+    The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+    """
+    SEARCH_TIER_UNSPECIFIED = "SEARCH_TIER_UNSPECIFIED"
+    """
+    Default value when the enum is unspecified. This is invalid to use.
+    """
+    SEARCH_TIER_STANDARD = "SEARCH_TIER_STANDARD"
+    """
+    Standard tier.
+    """
+    SEARCH_TIER_ENTERPRISE = "SEARCH_TIER_ENTERPRISE"
+    """
+    Enterprise tier.
     """
 
 
@@ -52,4 +242,22 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasons
     LLM_ADDON_NOT_ENABLED = "LLM_ADDON_NOT_ENABLED"
     """
     The LLM addon not enabled case. Google skips the summary if the LLM addon is not enabled.
+    """
+
+
+class TargetSiteType(str, Enum):
+    """
+    The type of the target site, e.g., whether the site is to be included or excluded.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    This value is unused. In this case, server behavior defaults to Type.INCLUDE.
+    """
+    INCLUDE = "INCLUDE"
+    """
+    Include the target site.
+    """
+    EXCLUDE = "EXCLUDE"
+    """
+    Exclude the target site.
     """

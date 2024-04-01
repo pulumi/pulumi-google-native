@@ -232,6 +232,8 @@ class InstanceConfigResponse(dict):
             suggest = "client_network"
         elif key == "instanceType":
             suggest = "instance_type"
+        elif key == "kmsKeyVersion":
+            suggest = "kms_key_version"
         elif key == "logicalInterfaces":
             suggest = "logical_interfaces"
         elif key == "networkConfig":
@@ -263,6 +265,7 @@ class InstanceConfigResponse(dict):
                  client_network: 'outputs.NetworkAddressResponse',
                  hyperthreading: bool,
                  instance_type: str,
+                 kms_key_version: str,
                  logical_interfaces: Sequence['outputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse'],
                  name: str,
                  network_config: str,
@@ -277,6 +280,7 @@ class InstanceConfigResponse(dict):
         :param 'NetworkAddressResponse' client_network: Client network address. Filled if InstanceConfig.multivlan_config is false.
         :param bool hyperthreading: Whether the instance should be provisioned with Hyperthreading enabled.
         :param str instance_type: Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+        :param str kms_key_version: Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
         :param Sequence['GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse'] logical_interfaces: List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
         :param str name: The name of the instance config.
         :param str network_config: The type of network configuration on the instance.
@@ -290,6 +294,7 @@ class InstanceConfigResponse(dict):
         pulumi.set(__self__, "client_network", client_network)
         pulumi.set(__self__, "hyperthreading", hyperthreading)
         pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "kms_key_version", kms_key_version)
         pulumi.set(__self__, "logical_interfaces", logical_interfaces)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_config", network_config)
@@ -330,6 +335,14 @@ class InstanceConfigResponse(dict):
         Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
         """
         return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> str:
+        """
+        Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+        """
+        return pulumi.get(self, "kms_key_version")
 
     @property
     @pulumi.getter(name="logicalInterfaces")

@@ -59,6 +59,11 @@ __all__ = [
     'SourceTextFilterResponse',
     'SqlAclEntryResponse',
     'SqlIpConfigResponse',
+    'SqlServerBackupsResponse',
+    'SqlServerConnectionProfileResponse',
+    'SqlServerDatabaseBackupResponse',
+    'SqlServerEncryptionOptionsResponse',
+    'SqlServerHomogeneousMigrationJobConfigResponse',
     'SslConfigResponse',
     'StaticIpConnectivityResponse',
     'StaticServiceIpConnectivityResponse',
@@ -393,8 +398,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -412,7 +417,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -420,7 +425,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -3229,6 +3234,395 @@ class SqlIpConfigResponse(dict):
         Whether SSL connections over IP should be enforced or not.
         """
         return pulumi.get(self, "require_ssl")
+
+
+@pulumi.output_type
+class SqlServerBackupsResponse(dict):
+    """
+    Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsBucket":
+            suggest = "gcs_bucket"
+        elif key == "gcsPrefix":
+            suggest = "gcs_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerBackupsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerBackupsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerBackupsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcs_bucket: str,
+                 gcs_prefix: str):
+        """
+        Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+        :param str gcs_bucket: The Cloud Storage bucket that stores backups for all replicated databases.
+        :param str gcs_prefix: Optional. Cloud Storage path inside the bucket that stores backups.
+        """
+        pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+        pulumi.set(__self__, "gcs_prefix", gcs_prefix)
+
+    @property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> str:
+        """
+        The Cloud Storage bucket that stores backups for all replicated databases.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @property
+    @pulumi.getter(name="gcsPrefix")
+    def gcs_prefix(self) -> str:
+        """
+        Optional. Cloud Storage path inside the bucket that stores backups.
+        """
+        return pulumi.get(self, "gcs_prefix")
+
+
+@pulumi.output_type
+class SqlServerConnectionProfileResponse(dict):
+    """
+    Specifies connection parameters required specifically for SQL Server databases.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudSqlId":
+            suggest = "cloud_sql_id"
+        elif key == "forwardSshConnectivity":
+            suggest = "forward_ssh_connectivity"
+        elif key == "passwordSet":
+            suggest = "password_set"
+        elif key == "privateConnectivity":
+            suggest = "private_connectivity"
+        elif key == "privateServiceConnectConnectivity":
+            suggest = "private_service_connect_connectivity"
+        elif key == "staticIpConnectivity":
+            suggest = "static_ip_connectivity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerConnectionProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerConnectionProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerConnectionProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backups: 'outputs.SqlServerBackupsResponse',
+                 cloud_sql_id: str,
+                 forward_ssh_connectivity: 'outputs.ForwardSshTunnelConnectivityResponse',
+                 host: str,
+                 password: str,
+                 password_set: bool,
+                 port: int,
+                 private_connectivity: 'outputs.PrivateConnectivityResponse',
+                 private_service_connect_connectivity: 'outputs.PrivateServiceConnectConnectivityResponse',
+                 ssl: 'outputs.SslConfigResponse',
+                 static_ip_connectivity: 'outputs.StaticIpConnectivityResponse',
+                 username: str):
+        """
+        Specifies connection parameters required specifically for SQL Server databases.
+        :param 'SqlServerBackupsResponse' backups: The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+        :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        :param 'ForwardSshTunnelConnectivityResponse' forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param str host: The IP or hostname of the source SQL Server database.
+        :param str password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        :param bool password_set: Indicates whether a new password is included in the request.
+        :param int port: The network port of the source SQL Server database.
+        :param 'PrivateConnectivityResponse' private_connectivity: Private connectivity.
+        :param 'PrivateServiceConnectConnectivityResponse' private_service_connect_connectivity: Private Service Connect connectivity.
+        :param 'SslConfigResponse' ssl: SSL configuration for the destination to connect to the source database.
+        :param 'StaticIpConnectivityResponse' static_ip_connectivity: Static IP connectivity data (default, no additional details needed).
+        :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        pulumi.set(__self__, "backups", backups)
+        pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
+        pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "password_set", password_set)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "private_connectivity", private_connectivity)
+        pulumi.set(__self__, "private_service_connect_connectivity", private_service_connect_connectivity)
+        pulumi.set(__self__, "ssl", ssl)
+        pulumi.set(__self__, "static_ip_connectivity", static_ip_connectivity)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def backups(self) -> 'outputs.SqlServerBackupsResponse':
+        """
+        The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+        """
+        return pulumi.get(self, "backups")
+
+    @property
+    @pulumi.getter(name="cloudSqlId")
+    def cloud_sql_id(self) -> str:
+        """
+        If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        """
+        return pulumi.get(self, "cloud_sql_id")
+
+    @property
+    @pulumi.getter(name="forwardSshConnectivity")
+    def forward_ssh_connectivity(self) -> 'outputs.ForwardSshTunnelConnectivityResponse':
+        """
+        Forward SSH tunnel connectivity.
+        """
+        return pulumi.get(self, "forward_ssh_connectivity")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The IP or hostname of the source SQL Server database.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="passwordSet")
+    def password_set(self) -> bool:
+        """
+        Indicates whether a new password is included in the request.
+        """
+        return pulumi.get(self, "password_set")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The network port of the source SQL Server database.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateConnectivity")
+    def private_connectivity(self) -> 'outputs.PrivateConnectivityResponse':
+        """
+        Private connectivity.
+        """
+        return pulumi.get(self, "private_connectivity")
+
+    @property
+    @pulumi.getter(name="privateServiceConnectConnectivity")
+    def private_service_connect_connectivity(self) -> 'outputs.PrivateServiceConnectConnectivityResponse':
+        """
+        Private Service Connect connectivity.
+        """
+        return pulumi.get(self, "private_service_connect_connectivity")
+
+    @property
+    @pulumi.getter
+    def ssl(self) -> 'outputs.SslConfigResponse':
+        """
+        SSL configuration for the destination to connect to the source database.
+        """
+        return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter(name="staticIpConnectivity")
+    def static_ip_connectivity(self) -> 'outputs.StaticIpConnectivityResponse':
+        """
+        Static IP connectivity data (default, no additional details needed).
+        """
+        return pulumi.get(self, "static_ip_connectivity")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class SqlServerDatabaseBackupResponse(dict):
+    """
+    Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionOptions":
+            suggest = "encryption_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerDatabaseBackupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerDatabaseBackupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerDatabaseBackupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 encryption_options: 'outputs.SqlServerEncryptionOptionsResponse'):
+        """
+        Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+        :param str database: Name of a SQL Server database for which to define backup configuration.
+        :param 'SqlServerEncryptionOptionsResponse' encryption_options: Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "encryption_options", encryption_options)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Name of a SQL Server database for which to define backup configuration.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="encryptionOptions")
+    def encryption_options(self) -> 'outputs.SqlServerEncryptionOptionsResponse':
+        """
+        Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password.
+        """
+        return pulumi.get(self, "encryption_options")
+
+
+@pulumi.output_type
+class SqlServerEncryptionOptionsResponse(dict):
+    """
+    Encryption settings for the SQL Server database.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certPath":
+            suggest = "cert_path"
+        elif key == "pvkPassword":
+            suggest = "pvk_password"
+        elif key == "pvkPath":
+            suggest = "pvk_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerEncryptionOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerEncryptionOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerEncryptionOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_path: str,
+                 pvk_password: str,
+                 pvk_path: str):
+        """
+        Encryption settings for the SQL Server database.
+        :param str cert_path: Path to certificate.
+        :param str pvk_password: Input only. Private key password.
+        :param str pvk_path: Path to certificate private key.
+        """
+        pulumi.set(__self__, "cert_path", cert_path)
+        pulumi.set(__self__, "pvk_password", pvk_password)
+        pulumi.set(__self__, "pvk_path", pvk_path)
+
+    @property
+    @pulumi.getter(name="certPath")
+    def cert_path(self) -> str:
+        """
+        Path to certificate.
+        """
+        return pulumi.get(self, "cert_path")
+
+    @property
+    @pulumi.getter(name="pvkPassword")
+    def pvk_password(self) -> str:
+        """
+        Input only. Private key password.
+        """
+        return pulumi.get(self, "pvk_password")
+
+    @property
+    @pulumi.getter(name="pvkPath")
+    def pvk_path(self) -> str:
+        """
+        Path to certificate private key.
+        """
+        return pulumi.get(self, "pvk_path")
+
+
+@pulumi.output_type
+class SqlServerHomogeneousMigrationJobConfigResponse(dict):
+    """
+    Configuration for homogeneous migration to Cloud SQL for SQL Server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupFilePattern":
+            suggest = "backup_file_pattern"
+        elif key == "databaseBackups":
+            suggest = "database_backups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerHomogeneousMigrationJobConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerHomogeneousMigrationJobConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerHomogeneousMigrationJobConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_file_pattern: str,
+                 database_backups: Sequence['outputs.SqlServerDatabaseBackupResponse']):
+        """
+        Configuration for homogeneous migration to Cloud SQL for SQL Server.
+        :param str backup_file_pattern: Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\\d{4})(?\\d{2})(?\\d{2})_(?\\d{2})(?\\d{2})(?\\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\\.(?\\d*).trn or (?.*)\\.(?\\d*).trn
+        :param Sequence['SqlServerDatabaseBackupResponse'] database_backups: Backup details per database in Cloud Storage.
+        """
+        pulumi.set(__self__, "backup_file_pattern", backup_file_pattern)
+        pulumi.set(__self__, "database_backups", database_backups)
+
+    @property
+    @pulumi.getter(name="backupFilePattern")
+    def backup_file_pattern(self) -> str:
+        """
+        Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\\d{4})(?\\d{2})(?\\d{2})_(?\\d{2})(?\\d{2})(?\\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\\.(?\\d*).trn or (?.*)\\.(?\\d*).trn
+        """
+        return pulumi.get(self, "backup_file_pattern")
+
+    @property
+    @pulumi.getter(name="databaseBackups")
+    def database_backups(self) -> Sequence['outputs.SqlServerDatabaseBackupResponse']:
+        """
+        Backup details per database in Cloud Storage.
+        """
+        return pulumi.get(self, "database_backups")
 
 
 @pulumi.output_type

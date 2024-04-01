@@ -21,6 +21,9 @@ class StoragePoolArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  performance_provisioning_type: Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']] = None,
+                 pool_provisioned_capacity_gb: Optional[pulumi.Input[str]] = None,
+                 pool_provisioned_iops: Optional[pulumi.Input[str]] = None,
+                 pool_provisioned_throughput: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput: Optional[pulumi.Input[str]] = None,
@@ -35,10 +38,13 @@ class StoragePoolArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['StoragePoolPerformanceProvisioningType'] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
-        :param pulumi.Input[str] provisioned_iops: Provsioned IOPS of the storage pool.
-        :param pulumi.Input[str] provisioned_throughput: Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        :param pulumi.Input[str] pool_provisioned_capacity_gb: Size, in GiB, of the storage pool.
+        :param pulumi.Input[str] pool_provisioned_iops: Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        :param pulumi.Input[str] pool_provisioned_throughput: Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        :param pulumi.Input[str] provisioned_iops: DEPRECATED -- use "pool provisioned IOPS".
+        :param pulumi.Input[str] provisioned_throughput: DEPRECATED -- use "pool provisioned throughput".
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[str] size_gb: Size, in GiB, of the storage pool.
+        :param pulumi.Input[str] size_gb: DEPRECATED -- use "pool provisioned capacity gb".
         :param pulumi.Input[str] storage_pool_type: Type of the storage pool.
         """
         if capacity_provisioning_type is not None:
@@ -51,14 +57,29 @@ class StoragePoolArgs:
             pulumi.set(__self__, "name", name)
         if performance_provisioning_type is not None:
             pulumi.set(__self__, "performance_provisioning_type", performance_provisioning_type)
+        if pool_provisioned_capacity_gb is not None:
+            pulumi.set(__self__, "pool_provisioned_capacity_gb", pool_provisioned_capacity_gb)
+        if pool_provisioned_iops is not None:
+            pulumi.set(__self__, "pool_provisioned_iops", pool_provisioned_iops)
+        if pool_provisioned_throughput is not None:
+            pulumi.set(__self__, "pool_provisioned_throughput", pool_provisioned_throughput)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if provisioned_iops is not None:
+            warnings.warn("""DEPRECATED -- use \"pool provisioned IOPS\".""", DeprecationWarning)
+            pulumi.log.warn("""provisioned_iops is deprecated: DEPRECATED -- use \"pool provisioned IOPS\".""")
+        if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            warnings.warn("""DEPRECATED -- use \"pool provisioned throughput\".""", DeprecationWarning)
+            pulumi.log.warn("""provisioned_throughput is deprecated: DEPRECATED -- use \"pool provisioned throughput\".""")
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if size_gb is not None:
+            warnings.warn("""DEPRECATED -- use \"pool provisioned capacity gb\".""", DeprecationWarning)
+            pulumi.log.warn("""size_gb is deprecated: DEPRECATED -- use \"pool provisioned capacity gb\".""")
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
         if storage_pool_type is not None:
@@ -127,6 +148,42 @@ class StoragePoolArgs:
         pulumi.set(self, "performance_provisioning_type", value)
 
     @property
+    @pulumi.getter(name="poolProvisionedCapacityGb")
+    def pool_provisioned_capacity_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size, in GiB, of the storage pool.
+        """
+        return pulumi.get(self, "pool_provisioned_capacity_gb")
+
+    @pool_provisioned_capacity_gb.setter
+    def pool_provisioned_capacity_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pool_provisioned_capacity_gb", value)
+
+    @property
+    @pulumi.getter(name="poolProvisionedIops")
+    def pool_provisioned_iops(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        """
+        return pulumi.get(self, "pool_provisioned_iops")
+
+    @pool_provisioned_iops.setter
+    def pool_provisioned_iops(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pool_provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="poolProvisionedThroughput")
+    def pool_provisioned_throughput(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        """
+        return pulumi.get(self, "pool_provisioned_throughput")
+
+    @pool_provisioned_throughput.setter
+    def pool_provisioned_throughput(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pool_provisioned_throughput", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -139,8 +196,11 @@ class StoragePoolArgs:
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[pulumi.Input[str]]:
         """
-        Provsioned IOPS of the storage pool.
+        DEPRECATED -- use "pool provisioned IOPS".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned IOPS\".""", DeprecationWarning)
+        pulumi.log.warn("""provisioned_iops is deprecated: DEPRECATED -- use \"pool provisioned IOPS\".""")
+
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
@@ -151,8 +211,11 @@ class StoragePoolArgs:
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> Optional[pulumi.Input[str]]:
         """
-        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        DEPRECATED -- use "pool provisioned throughput".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned throughput\".""", DeprecationWarning)
+        pulumi.log.warn("""provisioned_throughput is deprecated: DEPRECATED -- use \"pool provisioned throughput\".""")
+
         return pulumi.get(self, "provisioned_throughput")
 
     @provisioned_throughput.setter
@@ -175,8 +238,11 @@ class StoragePoolArgs:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> Optional[pulumi.Input[str]]:
         """
-        Size, in GiB, of the storage pool.
+        DEPRECATED -- use "pool provisioned capacity gb".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned capacity gb\".""", DeprecationWarning)
+        pulumi.log.warn("""size_gb is deprecated: DEPRECATED -- use \"pool provisioned capacity gb\".""")
+
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
@@ -215,6 +281,9 @@ class StoragePool(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  performance_provisioning_type: Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']] = None,
+                 pool_provisioned_capacity_gb: Optional[pulumi.Input[str]] = None,
+                 pool_provisioned_iops: Optional[pulumi.Input[str]] = None,
+                 pool_provisioned_throughput: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput: Optional[pulumi.Input[str]] = None,
@@ -233,10 +302,13 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this storage pool. These can be later modified by the setLabels method.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['StoragePoolPerformanceProvisioningType'] performance_provisioning_type: Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
-        :param pulumi.Input[str] provisioned_iops: Provsioned IOPS of the storage pool.
-        :param pulumi.Input[str] provisioned_throughput: Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        :param pulumi.Input[str] pool_provisioned_capacity_gb: Size, in GiB, of the storage pool.
+        :param pulumi.Input[str] pool_provisioned_iops: Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        :param pulumi.Input[str] pool_provisioned_throughput: Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        :param pulumi.Input[str] provisioned_iops: DEPRECATED -- use "pool provisioned IOPS".
+        :param pulumi.Input[str] provisioned_throughput: DEPRECATED -- use "pool provisioned throughput".
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[str] size_gb: Size, in GiB, of the storage pool.
+        :param pulumi.Input[str] size_gb: DEPRECATED -- use "pool provisioned capacity gb".
         :param pulumi.Input[str] storage_pool_type: Type of the storage pool.
         """
         ...
@@ -268,6 +340,9 @@ class StoragePool(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  performance_provisioning_type: Optional[pulumi.Input['StoragePoolPerformanceProvisioningType']] = None,
+                 pool_provisioned_capacity_gb: Optional[pulumi.Input[str]] = None,
+                 pool_provisioned_iops: Optional[pulumi.Input[str]] = None,
+                 pool_provisioned_throughput: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput: Optional[pulumi.Input[str]] = None,
@@ -289,6 +364,9 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["performance_provisioning_type"] = performance_provisioning_type
+            __props__.__dict__["pool_provisioned_capacity_gb"] = pool_provisioned_capacity_gb
+            __props__.__dict__["pool_provisioned_iops"] = pool_provisioned_iops
+            __props__.__dict__["pool_provisioned_throughput"] = pool_provisioned_throughput
             __props__.__dict__["project"] = project
             __props__.__dict__["provisioned_iops"] = provisioned_iops
             __props__.__dict__["provisioned_throughput"] = provisioned_throughput
@@ -336,6 +414,9 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["performance_provisioning_type"] = None
+        __props__.__dict__["pool_provisioned_capacity_gb"] = None
+        __props__.__dict__["pool_provisioned_iops"] = None
+        __props__.__dict__["pool_provisioned_throughput"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["provisioned_iops"] = None
         __props__.__dict__["provisioned_throughput"] = None
@@ -415,6 +496,30 @@ class StoragePool(pulumi.CustomResource):
         return pulumi.get(self, "performance_provisioning_type")
 
     @property
+    @pulumi.getter(name="poolProvisionedCapacityGb")
+    def pool_provisioned_capacity_gb(self) -> pulumi.Output[str]:
+        """
+        Size, in GiB, of the storage pool.
+        """
+        return pulumi.get(self, "pool_provisioned_capacity_gb")
+
+    @property
+    @pulumi.getter(name="poolProvisionedIops")
+    def pool_provisioned_iops(self) -> pulumi.Output[str]:
+        """
+        Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        """
+        return pulumi.get(self, "pool_provisioned_iops")
+
+    @property
+    @pulumi.getter(name="poolProvisionedThroughput")
+    def pool_provisioned_throughput(self) -> pulumi.Output[str]:
+        """
+        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        """
+        return pulumi.get(self, "pool_provisioned_throughput")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
@@ -423,16 +528,22 @@ class StoragePool(pulumi.CustomResource):
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> pulumi.Output[str]:
         """
-        Provsioned IOPS of the storage pool.
+        DEPRECATED -- use "pool provisioned IOPS".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned IOPS\".""", DeprecationWarning)
+        pulumi.log.warn("""provisioned_iops is deprecated: DEPRECATED -- use \"pool provisioned IOPS\".""")
+
         return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> pulumi.Output[str]:
         """
-        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        DEPRECATED -- use "pool provisioned throughput".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned throughput\".""", DeprecationWarning)
+        pulumi.log.warn("""provisioned_throughput is deprecated: DEPRECATED -- use \"pool provisioned throughput\".""")
+
         return pulumi.get(self, "provisioned_throughput")
 
     @property
@@ -471,8 +582,11 @@ class StoragePool(pulumi.CustomResource):
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> pulumi.Output[str]:
         """
-        Size, in GiB, of the storage pool.
+        DEPRECATED -- use "pool provisioned capacity gb".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned capacity gb\".""", DeprecationWarning)
+        pulumi.log.warn("""size_gb is deprecated: DEPRECATED -- use \"pool provisioned capacity gb\".""")
+
         return pulumi.get(self, "size_gb")
 
     @property

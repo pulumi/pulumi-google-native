@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVmwareClusterResult:
-    def __init__(__self__, admin_cluster_membership=None, admin_cluster_name=None, annotations=None, anti_affinity_groups=None, authorization=None, auto_repair_config=None, control_plane_node=None, create_time=None, dataplane_v2=None, delete_time=None, description=None, disable_bundled_ingress=None, enable_control_plane_v2=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, name=None, network_config=None, on_prem_version=None, reconciling=None, state=None, status=None, storage=None, uid=None, update_time=None, upgrade_policy=None, validation_check=None, vcenter=None, vm_tracking_enabled=None):
+    def __init__(__self__, admin_cluster_membership=None, admin_cluster_name=None, annotations=None, anti_affinity_groups=None, authorization=None, auto_repair_config=None, binary_authorization=None, control_plane_node=None, create_time=None, dataplane_v2=None, delete_time=None, description=None, disable_bundled_ingress=None, enable_control_plane_v2=None, endpoint=None, etag=None, fleet=None, load_balancer=None, local_name=None, name=None, network_config=None, on_prem_version=None, reconciling=None, state=None, status=None, storage=None, uid=None, update_time=None, upgrade_policy=None, validation_check=None, vcenter=None, vm_tracking_enabled=None):
         if admin_cluster_membership and not isinstance(admin_cluster_membership, str):
             raise TypeError("Expected argument 'admin_cluster_membership' to be a str")
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
@@ -38,6 +38,9 @@ class GetVmwareClusterResult:
         if auto_repair_config and not isinstance(auto_repair_config, dict):
             raise TypeError("Expected argument 'auto_repair_config' to be a dict")
         pulumi.set(__self__, "auto_repair_config", auto_repair_config)
+        if binary_authorization and not isinstance(binary_authorization, dict):
+            raise TypeError("Expected argument 'binary_authorization' to be a dict")
+        pulumi.set(__self__, "binary_authorization", binary_authorization)
         if control_plane_node and not isinstance(control_plane_node, dict):
             raise TypeError("Expected argument 'control_plane_node' to be a dict")
         pulumi.set(__self__, "control_plane_node", control_plane_node)
@@ -161,6 +164,14 @@ class GetVmwareClusterResult:
         Configuration for auto repairing.
         """
         return pulumi.get(self, "auto_repair_config")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> 'outputs.BinaryAuthorizationResponse':
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="controlPlaneNode")
@@ -375,6 +386,7 @@ class AwaitableGetVmwareClusterResult(GetVmwareClusterResult):
             anti_affinity_groups=self.anti_affinity_groups,
             authorization=self.authorization,
             auto_repair_config=self.auto_repair_config,
+            binary_authorization=self.binary_authorization,
             control_plane_node=self.control_plane_node,
             create_time=self.create_time,
             dataplane_v2=self.dataplane_v2,
@@ -425,6 +437,7 @@ def get_vmware_cluster(location: Optional[str] = None,
         anti_affinity_groups=pulumi.get(__ret__, 'anti_affinity_groups'),
         authorization=pulumi.get(__ret__, 'authorization'),
         auto_repair_config=pulumi.get(__ret__, 'auto_repair_config'),
+        binary_authorization=pulumi.get(__ret__, 'binary_authorization'),
         control_plane_node=pulumi.get(__ret__, 'control_plane_node'),
         create_time=pulumi.get(__ret__, 'create_time'),
         dataplane_v2=pulumi.get(__ret__, 'dataplane_v2'),

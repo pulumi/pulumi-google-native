@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetHealthCheckResult:
-    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_check=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, kind=None, log_config=None, name=None, region=None, self_link=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, unhealthy_threshold=None):
+    def __init__(__self__, check_interval_sec=None, creation_timestamp=None, description=None, grpc_health_check=None, healthy_threshold=None, http2_health_check=None, http_health_check=None, https_health_check=None, kind=None, log_config=None, name=None, region=None, self_link=None, source_regions=None, ssl_health_check=None, tcp_health_check=None, timeout_sec=None, type=None, unhealthy_threshold=None):
         if check_interval_sec and not isinstance(check_interval_sec, int):
             raise TypeError("Expected argument 'check_interval_sec' to be a int")
         pulumi.set(__self__, "check_interval_sec", check_interval_sec)
@@ -59,6 +59,9 @@ class GetHealthCheckResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if source_regions and not isinstance(source_regions, list):
+            raise TypeError("Expected argument 'source_regions' to be a list")
+        pulumi.set(__self__, "source_regions", source_regions)
         if ssl_health_check and not isinstance(ssl_health_check, dict):
             raise TypeError("Expected argument 'ssl_health_check' to be a dict")
         pulumi.set(__self__, "ssl_health_check", ssl_health_check)
@@ -168,6 +171,14 @@ class GetHealthCheckResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="sourceRegions")
+    def source_regions(self) -> Sequence[str]:
+        """
+        The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
+        """
+        return pulumi.get(self, "source_regions")
+
+    @property
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> 'outputs.SSLHealthCheckResponse':
         return pulumi.get(self, "ssl_health_check")
@@ -221,6 +232,7 @@ class AwaitableGetHealthCheckResult(GetHealthCheckResult):
             name=self.name,
             region=self.region,
             self_link=self.self_link,
+            source_regions=self.source_regions,
             ssl_health_check=self.ssl_health_check,
             tcp_health_check=self.tcp_health_check,
             timeout_sec=self.timeout_sec,
@@ -254,6 +266,7 @@ def get_health_check(health_check: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        source_regions=pulumi.get(__ret__, 'source_regions'),
         ssl_health_check=pulumi.get(__ret__, 'ssl_health_check'),
         tcp_health_check=pulumi.get(__ret__, 'tcp_health_check'),
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'),

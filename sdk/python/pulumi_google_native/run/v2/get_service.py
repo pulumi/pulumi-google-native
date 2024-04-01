@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, delete_time=None, description=None, etag=None, expire_time=None, generation=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, satisfies_pzs=None, scaling=None, template=None, terminal_condition=None, traffic=None, traffic_statuses=None, uid=None, update_time=None, uri=None):
+    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, description=None, etag=None, expire_time=None, generation=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, satisfies_pzs=None, scaling=None, template=None, terminal_condition=None, traffic=None, traffic_statuses=None, uid=None, update_time=None, uri=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -44,6 +44,9 @@ class GetServiceResult:
         if custom_audiences and not isinstance(custom_audiences, list):
             raise TypeError("Expected argument 'custom_audiences' to be a list")
         pulumi.set(__self__, "custom_audiences", custom_audiences)
+        if default_uri_disabled and not isinstance(default_uri_disabled, bool):
+            raise TypeError("Expected argument 'default_uri_disabled' to be a bool")
+        pulumi.set(__self__, "default_uri_disabled", default_uri_disabled)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
@@ -118,7 +121,7 @@ class GetServiceResult:
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes annotations' namespacing, limits, and rules.
+        Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes annotations' namespacing, limits, and rules.
         """
         return pulumi.get(self, "annotations")
 
@@ -179,6 +182,14 @@ class GetServiceResult:
         return pulumi.get(self, "custom_audiences")
 
     @property
+    @pulumi.getter(name="defaultUriDisabled")
+    def default_uri_disabled(self) -> bool:
+        """
+        Optional. Disables public resolution of the default URI of this service.
+        """
+        return pulumi.get(self, "default_uri_disabled")
+
+    @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> str:
         """
@@ -230,7 +241,7 @@ class GetServiceResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
+        Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
         """
         return pulumi.get(self, "labels")
 
@@ -377,6 +388,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             create_time=self.create_time,
             creator=self.creator,
             custom_audiences=self.custom_audiences,
+            default_uri_disabled=self.default_uri_disabled,
             delete_time=self.delete_time,
             description=self.description,
             etag=self.etag,
@@ -425,6 +437,7 @@ def get_service(location: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         creator=pulumi.get(__ret__, 'creator'),
         custom_audiences=pulumi.get(__ret__, 'custom_audiences'),
+        default_uri_disabled=pulumi.get(__ret__, 'default_uri_disabled'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),

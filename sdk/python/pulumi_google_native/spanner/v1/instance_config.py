@@ -268,6 +268,7 @@ class InstanceConfig(pulumi.CustomResource):
             __props__.__dict__["optional_replicas"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["storage_limit_per_processing_unit"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(InstanceConfig, __self__).__init__(
@@ -305,6 +306,7 @@ class InstanceConfig(pulumi.CustomResource):
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["replicas"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["storage_limit_per_processing_unit"] = None
         return InstanceConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -407,4 +409,12 @@ class InstanceConfig(pulumi.CustomResource):
         The current instance config state. Applicable only for USER_MANAGED configs.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageLimitPerProcessingUnit")
+    def storage_limit_per_processing_unit(self) -> pulumi.Output[str]:
+        """
+        The storage limit in bytes per processing unit.
+        """
+        return pulumi.get(self, "storage_limit_per_processing_unit")
 

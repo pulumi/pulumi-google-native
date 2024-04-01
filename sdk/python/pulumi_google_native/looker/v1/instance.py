@@ -23,6 +23,7 @@ class InstanceArgs:
                  custom_domain: Optional[pulumi.Input['CustomDomainArgs']] = None,
                  deny_maintenance_period: Optional[pulumi.Input['DenyMaintenancePeriodArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
+                 linked_lsp_project_number: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_schedule: Optional[pulumi.Input['MaintenanceScheduleArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
@@ -40,6 +41,7 @@ class InstanceArgs:
         :param pulumi.Input[str] consumer_network: Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
         :param pulumi.Input['DenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
+        :param pulumi.Input[str] linked_lsp_project_number: Optional. Linked Google Cloud Project Number for Looker Studio Pro.
         :param pulumi.Input['MaintenanceScheduleArgs'] maintenance_schedule: Maintenance schedule for this instance.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: Maintenance window for this instance.
         :param pulumi.Input['OAuthConfigArgs'] oauth_config: Looker instance OAuth login settings.
@@ -60,6 +62,8 @@ class InstanceArgs:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
+        if linked_lsp_project_number is not None:
+            pulumi.set(__self__, "linked_lsp_project_number", linked_lsp_project_number)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if maintenance_schedule is not None:
@@ -149,6 +153,18 @@ class InstanceArgs:
     @encryption_config.setter
     def encryption_config(self, value: Optional[pulumi.Input['EncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
+
+    @property
+    @pulumi.getter(name="linkedLspProjectNumber")
+    def linked_lsp_project_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+        """
+        return pulumi.get(self, "linked_lsp_project_number")
+
+    @linked_lsp_project_number.setter
+    def linked_lsp_project_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linked_lsp_project_number", value)
 
     @property
     @pulumi.getter
@@ -276,6 +292,7 @@ class Instance(pulumi.CustomResource):
                  deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['DenyMaintenancePeriodArgs']]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 linked_lsp_project_number: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['MaintenanceScheduleArgs']]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
@@ -298,6 +315,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DenyMaintenancePeriodArgs']] deny_maintenance_period: Maintenance denial period for this instance.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
         :param pulumi.Input[str] instance_id: Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum.
+        :param pulumi.Input[str] linked_lsp_project_number: Optional. Linked Google Cloud Project Number for Looker Studio Pro.
         :param pulumi.Input[pulumi.InputType['MaintenanceScheduleArgs']] maintenance_schedule: Maintenance schedule for this instance.
         :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: Maintenance window for this instance.
         :param pulumi.Input[pulumi.InputType['OAuthConfigArgs']] oauth_config: Looker instance OAuth login settings.
@@ -338,6 +356,7 @@ class Instance(pulumi.CustomResource):
                  deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['DenyMaintenancePeriodArgs']]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 linked_lsp_project_number: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['MaintenanceScheduleArgs']]] = None,
                  maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
@@ -365,6 +384,7 @@ class Instance(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["linked_lsp_project_number"] = linked_lsp_project_number
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_schedule"] = maintenance_schedule
             __props__.__dict__["maintenance_window"] = maintenance_window
@@ -420,6 +440,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["ingress_public_ip"] = None
         __props__.__dict__["instance_id"] = None
         __props__.__dict__["last_deny_maintenance_period"] = None
+        __props__.__dict__["linked_lsp_project_number"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["looker_uri"] = None
         __props__.__dict__["looker_version"] = None
@@ -521,6 +542,14 @@ class Instance(pulumi.CustomResource):
         Last computed maintenance denial period for this instance.
         """
         return pulumi.get(self, "last_deny_maintenance_period")
+
+    @property
+    @pulumi.getter(name="linkedLspProjectNumber")
+    def linked_lsp_project_number(self) -> pulumi.Output[str]:
+        """
+        Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+        """
+        return pulumi.get(self, "linked_lsp_project_number")
 
     @property
     @pulumi.getter

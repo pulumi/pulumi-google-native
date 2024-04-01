@@ -83,7 +83,7 @@ def get_repo_iam_policy(options_requested_policy_version: Optional[int] = None,
                         repo_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepoIamPolicyResult:
     """
-    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    Gets the IAM policy policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
     """
     __args__ = dict()
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
@@ -105,6 +105,6 @@ def get_repo_iam_policy_output(options_requested_policy_version: Optional[pulumi
                                repo_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepoIamPolicyResult]:
     """
-    Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+    Gets the IAM policy policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
     """
     ...

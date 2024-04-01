@@ -29,6 +29,7 @@ class InstanceGroupManagerArgs:
                  list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]]] = None,
+                 params: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -56,6 +57,7 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input['InstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NamedPortArgs']]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
+        :param pulumi.Input['InstanceGroupManagerParamsArgs'] params: Input only. Additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: Standby policy for stopped and suspended instances.
@@ -92,6 +94,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "name", name)
         if named_ports is not None:
             pulumi.set(__self__, "named_ports", named_ports)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -265,6 +269,18 @@ class InstanceGroupManagerArgs:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]:
+        """
+        Input only. Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InstanceGroupManagerParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -431,6 +447,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -462,6 +479,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input['InstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']] params: Input only. Additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']] standby_policy: Standby policy for stopped and suspended instances.
@@ -510,6 +528,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -544,6 +563,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
             __props__.__dict__["named_ports"] = named_ports
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["service_account"] = service_account
@@ -607,6 +627,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["list_managed_instances_results"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["named_ports"] = None
+        __props__.__dict__["params"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
@@ -761,6 +782,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         """
         return pulumi.get(self, "named_ports")
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output['outputs.InstanceGroupManagerParamsResponse']:
+        """
+        Input only. Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter

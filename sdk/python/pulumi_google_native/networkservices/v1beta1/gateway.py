@@ -20,7 +20,9 @@ class GatewayArgs:
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input['GatewayEnvoyHeaders']] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input['GatewayIpVersion']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -37,7 +39,9 @@ class GatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input['GatewayEnvoyHeaders'] envoy_headers: Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
         :param pulumi.Input[str] gateway_security_policy: Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input['GatewayIpVersion'] ip_version: Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         :param pulumi.Input[str] network: Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -54,8 +58,12 @@ class GatewayArgs:
             pulumi.set(__self__, "certificate_urls", certificate_urls)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if envoy_headers is not None:
+            pulumi.set(__self__, "envoy_headers", envoy_headers)
         if gateway_security_policy is not None:
             pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -136,6 +144,18 @@ class GatewayArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> Optional[pulumi.Input['GatewayEnvoyHeaders']]:
+        """
+        Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        """
+        return pulumi.get(self, "envoy_headers")
+
+    @envoy_headers.setter
+    def envoy_headers(self, value: Optional[pulumi.Input['GatewayEnvoyHeaders']]):
+        pulumi.set(self, "envoy_headers", value)
+
+    @property
     @pulumi.getter(name="gatewaySecurityPolicy")
     def gateway_security_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -146,6 +166,18 @@ class GatewayArgs:
     @gateway_security_policy.setter
     def gateway_security_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway_security_policy", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input['GatewayIpVersion']]:
+        """
+        Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input['GatewayIpVersion']]):
+        pulumi.set(self, "ip_version", value)
 
     @property
     @pulumi.getter
@@ -258,8 +290,10 @@ class Gateway(pulumi.CustomResource):
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input['GatewayEnvoyHeaders']] = None,
                  gateway_id: Optional[pulumi.Input[str]] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input['GatewayIpVersion']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -279,8 +313,10 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Optional. Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input['GatewayEnvoyHeaders'] envoy_headers: Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
         :param pulumi.Input[str] gateway_id: Required. Short name of the Gateway resource to be created.
         :param pulumi.Input[str] gateway_security_policy: Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input['GatewayIpVersion'] ip_version: Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         :param pulumi.Input[str] network: Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -317,8 +353,10 @@ class Gateway(pulumi.CustomResource):
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 envoy_headers: Optional[pulumi.Input['GatewayEnvoyHeaders']] = None,
                  gateway_id: Optional[pulumi.Input[str]] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input['GatewayIpVersion']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -341,10 +379,12 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["addresses"] = addresses
             __props__.__dict__["certificate_urls"] = certificate_urls
             __props__.__dict__["description"] = description
+            __props__.__dict__["envoy_headers"] = envoy_headers
             if gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gateway_id'")
             __props__.__dict__["gateway_id"] = gateway_id
             __props__.__dict__["gateway_security_policy"] = gateway_security_policy
+            __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -388,8 +428,10 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["certificate_urls"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["envoy_headers"] = None
         __props__.__dict__["gateway_id"] = None
         __props__.__dict__["gateway_security_policy"] = None
+        __props__.__dict__["ip_version"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -437,6 +479,14 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> pulumi.Output[str]:
+        """
+        Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        """
+        return pulumi.get(self, "envoy_headers")
+
+    @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Output[str]:
         """
@@ -451,6 +501,14 @@ class Gateway(pulumi.CustomResource):
         Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         """
         return pulumi.get(self, "gateway_security_policy")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Output[str]:
+        """
+        Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        """
+        return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter

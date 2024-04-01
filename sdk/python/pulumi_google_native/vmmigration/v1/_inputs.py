@@ -19,10 +19,13 @@ __all__ = [
     'ComputeEngineDisksTargetDefaultsArgs',
     'ComputeEngineTargetDefaultsArgs',
     'ComputeSchedulingArgs',
+    'DataDiskImageImportArgs',
     'DiskImageDefaultsArgs',
+    'DiskImageTargetDetailsArgs',
     'DisksMigrationDisksTargetDefaultsArgs',
     'DisksMigrationVmTargetDefaultsArgs',
     'EncryptionArgs',
+    'ImageImportOsAdaptationParametersArgs',
     'NetworkInterfaceArgs',
     'PersistentDiskDefaultsArgs',
     'SchedulePolicyArgs',
@@ -836,6 +839,15 @@ class ComputeSchedulingArgs:
 
 
 @pulumi.input_type
+class DataDiskImageImportArgs:
+    def __init__(__self__):
+        """
+        Mentions that the image import is not using OS adaptation process.
+        """
+        pass
+
+
+@pulumi.input_type
 class DiskImageDefaultsArgs:
     def __init__(__self__, *,
                  source_image: pulumi.Input[str]):
@@ -856,6 +868,172 @@ class DiskImageDefaultsArgs:
     @source_image.setter
     def source_image(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_image", value)
+
+
+@pulumi.input_type
+class DiskImageTargetDetailsArgs:
+    def __init__(__self__, *,
+                 image_name: pulumi.Input[str],
+                 target_project: pulumi.Input[str],
+                 additional_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 data_disk_image_import: Optional[pulumi.Input['DataDiskImageImportArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 encryption: Optional[pulumi.Input['EncryptionArgs']] = None,
+                 family_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 os_adaptation_parameters: Optional[pulumi.Input['ImageImportOsAdaptationParametersArgs']] = None,
+                 single_region_storage: Optional[pulumi.Input[bool]] = None):
+        """
+        The target details of the image resource that will be created by the import job.
+        :param pulumi.Input[str] image_name: The name of the image to be created.
+        :param pulumi.Input[str] target_project: Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_licenses: Optional. Additional licenses to assign to the image.
+        :param pulumi.Input['DataDiskImageImportArgs'] data_disk_image_import: Optional. Use to skip OS adaptation process.
+        :param pulumi.Input[str] description: Optional. An optional description of the image.
+        :param pulumi.Input['EncryptionArgs'] encryption: Optional. Immutable. The encryption to apply to the image.
+        :param pulumi.Input[str] family_name: Optional. The name of the image family to which the new image belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A map of labels to associate with the image.
+        :param pulumi.Input['ImageImportOsAdaptationParametersArgs'] os_adaptation_parameters: Optional. Use to set the parameters relevant for the OS adaptation process.
+        :param pulumi.Input[bool] single_region_storage: Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+        """
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "target_project", target_project)
+        if additional_licenses is not None:
+            pulumi.set(__self__, "additional_licenses", additional_licenses)
+        if data_disk_image_import is not None:
+            pulumi.set(__self__, "data_disk_image_import", data_disk_image_import)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if family_name is not None:
+            pulumi.set(__self__, "family_name", family_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if os_adaptation_parameters is not None:
+            pulumi.set(__self__, "os_adaptation_parameters", os_adaptation_parameters)
+        if single_region_storage is not None:
+            pulumi.set(__self__, "single_region_storage", single_region_storage)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> pulumi.Input[str]:
+        """
+        The name of the image to be created.
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> pulumi.Input[str]:
+        """
+        Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+        """
+        return pulumi.get(self, "target_project")
+
+    @target_project.setter
+    def target_project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_project", value)
+
+    @property
+    @pulumi.getter(name="additionalLicenses")
+    def additional_licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Additional licenses to assign to the image.
+        """
+        return pulumi.get(self, "additional_licenses")
+
+    @additional_licenses.setter
+    def additional_licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_licenses", value)
+
+    @property
+    @pulumi.getter(name="dataDiskImageImport")
+    def data_disk_image_import(self) -> Optional[pulumi.Input['DataDiskImageImportArgs']]:
+        """
+        Optional. Use to skip OS adaptation process.
+        """
+        return pulumi.get(self, "data_disk_image_import")
+
+    @data_disk_image_import.setter
+    def data_disk_image_import(self, value: Optional[pulumi.Input['DataDiskImageImportArgs']]):
+        pulumi.set(self, "data_disk_image_import", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. An optional description of the image.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['EncryptionArgs']]:
+        """
+        Optional. Immutable. The encryption to apply to the image.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['EncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the image family to which the new image belongs.
+        """
+        return pulumi.get(self, "family_name")
+
+    @family_name.setter
+    def family_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A map of labels to associate with the image.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="osAdaptationParameters")
+    def os_adaptation_parameters(self) -> Optional[pulumi.Input['ImageImportOsAdaptationParametersArgs']]:
+        """
+        Optional. Use to set the parameters relevant for the OS adaptation process.
+        """
+        return pulumi.get(self, "os_adaptation_parameters")
+
+    @os_adaptation_parameters.setter
+    def os_adaptation_parameters(self, value: Optional[pulumi.Input['ImageImportOsAdaptationParametersArgs']]):
+        pulumi.set(self, "os_adaptation_parameters", value)
+
+    @property
+    @pulumi.getter(name="singleRegionStorage")
+    def single_region_storage(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+        """
+        return pulumi.get(self, "single_region_storage")
+
+    @single_region_storage.setter
+    def single_region_storage(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "single_region_storage", value)
 
 
 @pulumi.input_type
@@ -1118,6 +1296,46 @@ class EncryptionArgs:
     @kms_key.setter
     def kms_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key", value)
+
+
+@pulumi.input_type
+class ImageImportOsAdaptationParametersArgs:
+    def __init__(__self__, *,
+                 generalize: Optional[pulumi.Input[bool]] = None,
+                 license_type: Optional[pulumi.Input['ImageImportOsAdaptationParametersLicenseType']] = None):
+        """
+        Parameters affecting the OS adaptation process.
+        :param pulumi.Input[bool] generalize: Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+        :param pulumi.Input['ImageImportOsAdaptationParametersLicenseType'] license_type: Optional. Choose which type of license to apply to the imported image.
+        """
+        if generalize is not None:
+            pulumi.set(__self__, "generalize", generalize)
+        if license_type is not None:
+            pulumi.set(__self__, "license_type", license_type)
+
+    @property
+    @pulumi.getter
+    def generalize(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+        """
+        return pulumi.get(self, "generalize")
+
+    @generalize.setter
+    def generalize(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "generalize", value)
+
+    @property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> Optional[pulumi.Input['ImageImportOsAdaptationParametersLicenseType']]:
+        """
+        Optional. Choose which type of license to apply to the imported image.
+        """
+        return pulumi.get(self, "license_type")
+
+    @license_type.setter
+    def license_type(self, value: Optional[pulumi.Input['ImageImportOsAdaptationParametersLicenseType']]):
+        pulumi.set(self, "license_type", value)
 
 
 @pulumi.input_type

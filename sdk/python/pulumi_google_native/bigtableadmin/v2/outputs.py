@@ -14,6 +14,7 @@ from ._enums import *
 __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AutomatedBackupPolicyResponse',
     'AutoscalingLimitsResponse',
     'AutoscalingTargetsResponse',
     'BackupInfoResponse',
@@ -21,9 +22,11 @@ __all__ = [
     'ChangeStreamConfigResponse',
     'ClusterAutoscalingConfigResponse',
     'ClusterConfigResponse',
+    'DataBoostIsolationReadOnlyResponse',
     'EncryptionConfigResponse',
     'EncryptionInfoResponse',
     'ExprResponse',
+    'GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse',
     'MultiClusterRoutingUseAnyResponse',
     'RestoreInfoResponse',
     'SingleClusterRoutingResponse',
@@ -132,6 +135,56 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
+
+
+@pulumi.output_type
+class AutomatedBackupPolicyResponse(dict):
+    """
+    Defines an automated backup policy for a table
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionPeriod":
+            suggest = "retention_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomatedBackupPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomatedBackupPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomatedBackupPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 frequency: str,
+                 retention_period: str):
+        """
+        Defines an automated backup policy for a table
+        :param str frequency: How frequently automated backups should occur. The only supported value at this time is 24 hours.
+        :param str retention_period: How long the automated backups should be retained. The only supported value at this time is 3 days.
+        """
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "retention_period", retention_period)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> str:
+        """
+        How frequently automated backups should occur. The only supported value at this time is 24 hours.
+        """
+        return pulumi.get(self, "frequency")
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> str:
+        """
+        How long the automated backups should be retained. The only supported value at this time is 3 days.
+        """
+        return pulumi.get(self, "retention_period")
 
 
 @pulumi.output_type
@@ -276,7 +329,7 @@ class BackupInfoResponse(dict):
         Information about a backup.
         :param str backup: Name of the backup.
         :param str end_time: This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
-        :param str source_backup: Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        :param str source_backup: Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
         :param str source_table: Name of the table the backup was created from.
         :param str start_time: The time that the backup was started. Row data in the backup will be no older than this timestamp.
         """
@@ -306,7 +359,7 @@ class BackupInfoResponse(dict):
     @pulumi.getter(name="sourceBackup")
     def source_backup(self) -> str:
         """
-        Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
         """
         return pulumi.get(self, "source_backup")
 
@@ -339,8 +392,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -358,7 +411,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -366,7 +419,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -499,6 +552,45 @@ class ClusterConfigResponse(dict):
         Autoscaling configuration for this cluster.
         """
         return pulumi.get(self, "cluster_autoscaling_config")
+
+
+@pulumi.output_type
+class DataBoostIsolationReadOnlyResponse(dict):
+    """
+    Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to see the results of writes that were written at least 30 minutes ago. This means newly written values may not become visible for up to 30m, and also means that old values may remain visible for up to 30m after being deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use CheckConsistency.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "computeBillingOwner":
+            suggest = "compute_billing_owner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataBoostIsolationReadOnlyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataBoostIsolationReadOnlyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataBoostIsolationReadOnlyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compute_billing_owner: str):
+        """
+        Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to see the results of writes that were written at least 30 minutes ago. This means newly written values may not become visible for up to 30m, and also means that old values may remain visible for up to 30m after being deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use CheckConsistency.
+        :param str compute_billing_owner: The Compute Billing Owner for this Data Boost App Profile.
+        """
+        pulumi.set(__self__, "compute_billing_owner", compute_billing_owner)
+
+    @property
+    @pulumi.getter(name="computeBillingOwner")
+    def compute_billing_owner(self) -> str:
+        """
+        The Compute Billing Owner for this Data Boost App Profile.
+        """
+        return pulumi.get(self, "compute_billing_owner")
 
 
 @pulumi.output_type
@@ -658,6 +750,58 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse(dict):
+    """
+    Defines a simple AuthorizedView that is a subset of the underlying Table.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "familySubsets":
+            suggest = "family_subsets"
+        elif key == "rowPrefixes":
+            suggest = "row_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 family_subsets: Mapping[str, str],
+                 row_prefixes: Sequence[str]):
+        """
+        Defines a simple AuthorizedView that is a subset of the underlying Table.
+        :param Mapping[str, str] family_subsets: Map from column family name to the columns in this family to be included in the AuthorizedView.
+        :param Sequence[str] row_prefixes: Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+        """
+        pulumi.set(__self__, "family_subsets", family_subsets)
+        pulumi.set(__self__, "row_prefixes", row_prefixes)
+
+    @property
+    @pulumi.getter(name="familySubsets")
+    def family_subsets(self) -> Mapping[str, str]:
+        """
+        Map from column family name to the columns in this family to be included in the AuthorizedView.
+        """
+        return pulumi.get(self, "family_subsets")
+
+    @property
+    @pulumi.getter(name="rowPrefixes")
+    def row_prefixes(self) -> Sequence[str]:
+        """
+        Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+        """
+        return pulumi.get(self, "row_prefixes")
 
 
 @pulumi.output_type

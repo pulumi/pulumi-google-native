@@ -11,9 +11,12 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AirflowMetadataRetentionPolicyConfigArgs',
     'AllowedIpRangeArgs',
     'CidrBlockArgs',
     'CloudDataLineageIntegrationArgs',
+    'DagProcessorResourceArgs',
+    'DataRetentionConfigArgs',
     'DatabaseConfigArgs',
     'EncryptionConfigArgs',
     'EnvironmentConfigArgs',
@@ -29,6 +32,7 @@ __all__ = [
     'SchedulerResourceArgs',
     'SoftwareConfigArgs',
     'StorageConfigArgs',
+    'TaskLogsRetentionConfigArgs',
     'TriggererResourceArgs',
     'WebServerConfigArgs',
     'WebServerNetworkAccessControlArgs',
@@ -36,6 +40,46 @@ __all__ = [
     'WorkerResourceArgs',
     'WorkloadsConfigArgs',
 ]
+
+@pulumi.input_type
+class AirflowMetadataRetentionPolicyConfigArgs:
+    def __init__(__self__, *,
+                 retention_days: Optional[pulumi.Input[int]] = None,
+                 retention_mode: Optional[pulumi.Input['AirflowMetadataRetentionPolicyConfigRetentionMode']] = None):
+        """
+        The policy for airflow metadata database retention.
+        :param pulumi.Input[int] retention_days: Optional. How many days data should be retained for.
+        :param pulumi.Input['AirflowMetadataRetentionPolicyConfigRetentionMode'] retention_mode: Optional. Retention can be either enabled or disabled.
+        """
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+        if retention_mode is not None:
+            pulumi.set(__self__, "retention_mode", retention_mode)
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. How many days data should be retained for.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_days", value)
+
+    @property
+    @pulumi.getter(name="retentionMode")
+    def retention_mode(self) -> Optional[pulumi.Input['AirflowMetadataRetentionPolicyConfigRetentionMode']]:
+        """
+        Optional. Retention can be either enabled or disabled.
+        """
+        return pulumi.get(self, "retention_mode")
+
+    @retention_mode.setter
+    def retention_mode(self, value: Optional[pulumi.Input['AirflowMetadataRetentionPolicyConfigRetentionMode']]):
+        pulumi.set(self, "retention_mode", value)
+
 
 @pulumi.input_type
 class AllowedIpRangeArgs:
@@ -142,6 +186,134 @@ class CloudDataLineageIntegrationArgs:
 
 
 @pulumi.input_type
+class DagProcessorResourceArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[int]] = None,
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 memory_gb: Optional[pulumi.Input[float]] = None,
+                 storage_gb: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        :param pulumi.Input[int] count: Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+        :param pulumi.Input[float] cpu: Optional. CPU request and limit for a single Airflow DAG processor replica.
+        :param pulumi.Input[float] memory_gb: Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+        :param pulumi.Input[float] storage_gb: Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if storage_gb is not None:
+            pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be created.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. CPU request and limit for a single Airflow DAG processor replica.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.
+        """
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_gb", value)
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.
+        """
+        return pulumi.get(self, "storage_gb")
+
+    @storage_gb.setter
+    def storage_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "storage_gb", value)
+
+
+@pulumi.input_type
+class DataRetentionConfigArgs:
+    def __init__(__self__, *,
+                 airflow_database_retention_days: Optional[pulumi.Input[int]] = None,
+                 airflow_metadata_retention_config: Optional[pulumi.Input['AirflowMetadataRetentionPolicyConfigArgs']] = None,
+                 task_logs_retention_config: Optional[pulumi.Input['TaskLogsRetentionConfigArgs']] = None):
+        """
+        The configuration setting for Airflow database data retention mechanism.
+        :param pulumi.Input[int] airflow_database_retention_days: Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+        :param pulumi.Input['AirflowMetadataRetentionPolicyConfigArgs'] airflow_metadata_retention_config: Optional. The retention policy for airflow metadata database.
+        :param pulumi.Input['TaskLogsRetentionConfigArgs'] task_logs_retention_config: Optional. The configuration settings for task logs retention
+        """
+        if airflow_database_retention_days is not None:
+            pulumi.set(__self__, "airflow_database_retention_days", airflow_database_retention_days)
+        if airflow_metadata_retention_config is not None:
+            pulumi.set(__self__, "airflow_metadata_retention_config", airflow_metadata_retention_config)
+        if task_logs_retention_config is not None:
+            pulumi.set(__self__, "task_logs_retention_config", task_logs_retention_config)
+
+    @property
+    @pulumi.getter(name="airflowDatabaseRetentionDays")
+    def airflow_database_retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0.
+        """
+        return pulumi.get(self, "airflow_database_retention_days")
+
+    @airflow_database_retention_days.setter
+    def airflow_database_retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "airflow_database_retention_days", value)
+
+    @property
+    @pulumi.getter(name="airflowMetadataRetentionConfig")
+    def airflow_metadata_retention_config(self) -> Optional[pulumi.Input['AirflowMetadataRetentionPolicyConfigArgs']]:
+        """
+        Optional. The retention policy for airflow metadata database.
+        """
+        return pulumi.get(self, "airflow_metadata_retention_config")
+
+    @airflow_metadata_retention_config.setter
+    def airflow_metadata_retention_config(self, value: Optional[pulumi.Input['AirflowMetadataRetentionPolicyConfigArgs']]):
+        pulumi.set(self, "airflow_metadata_retention_config", value)
+
+    @property
+    @pulumi.getter(name="taskLogsRetentionConfig")
+    def task_logs_retention_config(self) -> Optional[pulumi.Input['TaskLogsRetentionConfigArgs']]:
+        """
+        Optional. The configuration settings for task logs retention
+        """
+        return pulumi.get(self, "task_logs_retention_config")
+
+    @task_logs_retention_config.setter
+    def task_logs_retention_config(self, value: Optional[pulumi.Input['TaskLogsRetentionConfigArgs']]):
+        pulumi.set(self, "task_logs_retention_config", value)
+
+
+@pulumi.input_type
 class DatabaseConfigArgs:
     def __init__(__self__, *,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -208,6 +380,7 @@ class EncryptionConfigArgs:
 @pulumi.input_type
 class EnvironmentConfigArgs:
     def __init__(__self__, *,
+                 data_retention_config: Optional[pulumi.Input['DataRetentionConfigArgs']] = None,
                  database_config: Optional[pulumi.Input['DatabaseConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  environment_size: Optional[pulumi.Input['EnvironmentConfigEnvironmentSize']] = None,
@@ -224,10 +397,11 @@ class EnvironmentConfigArgs:
                  workloads_config: Optional[pulumi.Input['WorkloadsConfigArgs']] = None):
         """
         Configuration information for an environment.
+        :param pulumi.Input['DataRetentionConfigArgs'] data_retention_config: Optional. The configuration setting for Airflow database data retention mechanism.
         :param pulumi.Input['DatabaseConfigArgs'] database_config: Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         :param pulumi.Input['EnvironmentConfigEnvironmentSize'] environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-        :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+        :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
         :param pulumi.Input['MasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -239,6 +413,8 @@ class EnvironmentConfigArgs:
         :param pulumi.Input['WebServerNetworkAccessControlArgs'] web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
         :param pulumi.Input['WorkloadsConfigArgs'] workloads_config: Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         """
+        if data_retention_config is not None:
+            pulumi.set(__self__, "data_retention_config", data_retention_config)
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
         if encryption_config is not None:
@@ -267,6 +443,18 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
         if workloads_config is not None:
             pulumi.set(__self__, "workloads_config", workloads_config)
+
+    @property
+    @pulumi.getter(name="dataRetentionConfig")
+    def data_retention_config(self) -> Optional[pulumi.Input['DataRetentionConfigArgs']]:
+        """
+        Optional. The configuration setting for Airflow database data retention mechanism.
+        """
+        return pulumi.get(self, "data_retention_config")
+
+    @data_retention_config.setter
+    def data_retention_config(self, value: Optional[pulumi.Input['DataRetentionConfigArgs']]):
+        pulumi.set(self, "data_retention_config", value)
 
     @property
     @pulumi.getter(name="databaseConfig")
@@ -308,7 +496,7 @@ class EnvironmentConfigArgs:
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional[pulumi.Input['MaintenanceWindowArgs']]:
         """
-        Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+        Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -645,6 +833,8 @@ class NetworkingConfigArgs:
 @pulumi.input_type
 class NodeConfigArgs:
     def __init__(__self__, *,
+                 composer_internal_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 composer_network_attachment: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  enable_ip_masq_agent: Optional[pulumi.Input[bool]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
@@ -658,6 +848,8 @@ class NodeConfigArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
+        :param pulumi.Input[str] composer_internal_ipv4_cidr_block: Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        :param pulumi.Input[str] composer_network_attachment: Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
         :param pulumi.Input[int] disk_size_gb: Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[bool] enable_ip_masq_agent: Optional. Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Optional. The IPAllocationPolicy fields for the GKE cluster.
@@ -670,6 +862,10 @@ class NodeConfigArgs:
         :param pulumi.Input[str] subnetwork: Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
         """
+        if composer_internal_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "composer_internal_ipv4_cidr_block", composer_internal_ipv4_cidr_block)
+        if composer_network_attachment is not None:
+            pulumi.set(__self__, "composer_network_attachment", composer_network_attachment)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if enable_ip_masq_agent is not None:
@@ -692,6 +888,30 @@ class NodeConfigArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="composerInternalIpv4CidrBlock")
+    def composer_internal_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved - and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "composer_internal_ipv4_cidr_block")
+
+    @composer_internal_ipv4_cidr_block.setter
+    def composer_internal_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "composer_internal_ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="composerNetworkAttachment")
+    def composer_network_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but network and subnetwork are defined during environment, it will be provisioned. If not provided and network and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "composer_network_attachment")
+
+    @composer_network_attachment.setter
+    def composer_network_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "composer_network_attachment", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -872,6 +1092,7 @@ class PrivateEnvironmentConfigArgs:
                  cloud_composer_connection_subnetwork: Optional[pulumi.Input[str]] = None,
                  cloud_composer_network_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cloud_sql_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 enable_private_builds_only: Optional[pulumi.Input[bool]] = None,
                  enable_private_environment: Optional[pulumi.Input[bool]] = None,
                  enable_privately_used_public_ips: Optional[pulumi.Input[bool]] = None,
                  networking_config: Optional[pulumi.Input['NetworkingConfigArgs']] = None,
@@ -882,6 +1103,7 @@ class PrivateEnvironmentConfigArgs:
         :param pulumi.Input[str] cloud_composer_connection_subnetwork: Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
         :param pulumi.Input[str] cloud_composer_network_ipv4_cidr_block: Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input[str] cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
+        :param pulumi.Input[bool] enable_private_builds_only: Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
         :param pulumi.Input[bool] enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[bool] enable_privately_used_public_ips: Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
         :param pulumi.Input['NetworkingConfigArgs'] networking_config: Optional. Configuration for the network connections configuration in the environment.
@@ -894,6 +1116,8 @@ class PrivateEnvironmentConfigArgs:
             pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         if cloud_sql_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
+        if enable_private_builds_only is not None:
+            pulumi.set(__self__, "enable_private_builds_only", enable_private_builds_only)
         if enable_private_environment is not None:
             pulumi.set(__self__, "enable_private_environment", enable_private_environment)
         if enable_privately_used_public_ips is not None:
@@ -940,6 +1164,18 @@ class PrivateEnvironmentConfigArgs:
     @cloud_sql_ipv4_cidr_block.setter
     def cloud_sql_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_sql_ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="enablePrivateBuildsOnly")
+    def enable_private_builds_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "enable_private_builds_only")
+
+    @enable_private_builds_only.setter
+    def enable_private_builds_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_private_builds_only", value)
 
     @property
     @pulumi.getter(name="enablePrivateEnvironment")
@@ -1179,7 +1415,8 @@ class SoftwareConfigArgs:
                  image_version: Optional[pulumi.Input[str]] = None,
                  pypi_packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_version: Optional[pulumi.Input[str]] = None,
-                 scheduler_count: Optional[pulumi.Input[int]] = None):
+                 scheduler_count: Optional[pulumi.Input[int]] = None,
+                 web_server_plugins_mode: Optional[pulumi.Input['SoftwareConfigWebServerPluginsMode']] = None):
         """
         Specifies the selection and configuration of software inside the environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] airflow_config_overrides: Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
@@ -1189,6 +1426,7 @@ class SoftwareConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pypi_packages: Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
         :param pulumi.Input[str] python_version: Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
         :param pulumi.Input[int] scheduler_count: Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+        :param pulumi.Input['SoftwareConfigWebServerPluginsMode'] web_server_plugins_mode: Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
         """
         if airflow_config_overrides is not None:
             pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
@@ -1204,6 +1442,8 @@ class SoftwareConfigArgs:
             pulumi.set(__self__, "python_version", python_version)
         if scheduler_count is not None:
             pulumi.set(__self__, "scheduler_count", scheduler_count)
+        if web_server_plugins_mode is not None:
+            pulumi.set(__self__, "web_server_plugins_mode", web_server_plugins_mode)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -1289,6 +1529,18 @@ class SoftwareConfigArgs:
     def scheduler_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "scheduler_count", value)
 
+    @property
+    @pulumi.getter(name="webServerPluginsMode")
+    def web_server_plugins_mode(self) -> Optional[pulumi.Input['SoftwareConfigWebServerPluginsMode']]:
+        """
+        Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "web_server_plugins_mode")
+
+    @web_server_plugins_mode.setter
+    def web_server_plugins_mode(self, value: Optional[pulumi.Input['SoftwareConfigWebServerPluginsMode']]):
+        pulumi.set(self, "web_server_plugins_mode", value)
+
 
 @pulumi.input_type
 class StorageConfigArgs:
@@ -1312,6 +1564,30 @@ class StorageConfigArgs:
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket", value)
+
+
+@pulumi.input_type
+class TaskLogsRetentionConfigArgs:
+    def __init__(__self__, *,
+                 storage_mode: Optional[pulumi.Input['TaskLogsRetentionConfigStorageMode']] = None):
+        """
+        The configuration setting for Task Logs.
+        :param pulumi.Input['TaskLogsRetentionConfigStorageMode'] storage_mode: Optional. The mode of storage for Airflow workers task logs.
+        """
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[pulumi.Input['TaskLogsRetentionConfigStorageMode']]:
+        """
+        Optional. The mode of storage for Airflow workers task logs.
+        """
+        return pulumi.get(self, "storage_mode")
+
+    @storage_mode.setter
+    def storage_mode(self, value: Optional[pulumi.Input['TaskLogsRetentionConfigStorageMode']]):
+        pulumi.set(self, "storage_mode", value)
 
 
 @pulumi.input_type
@@ -1565,17 +1841,21 @@ class WorkerResourceArgs:
 @pulumi.input_type
 class WorkloadsConfigArgs:
     def __init__(__self__, *,
+                 dag_processor: Optional[pulumi.Input['DagProcessorResourceArgs']] = None,
                  scheduler: Optional[pulumi.Input['SchedulerResourceArgs']] = None,
                  triggerer: Optional[pulumi.Input['TriggererResourceArgs']] = None,
                  web_server: Optional[pulumi.Input['WebServerResourceArgs']] = None,
                  worker: Optional[pulumi.Input['WorkerResourceArgs']] = None):
         """
         The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        :param pulumi.Input['DagProcessorResourceArgs'] dag_processor: Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
         :param pulumi.Input['SchedulerResourceArgs'] scheduler: Optional. Resources used by Airflow schedulers.
         :param pulumi.Input['TriggererResourceArgs'] triggerer: Optional. Resources used by Airflow triggerers.
         :param pulumi.Input['WebServerResourceArgs'] web_server: Optional. Resources used by Airflow web server.
         :param pulumi.Input['WorkerResourceArgs'] worker: Optional. Resources used by Airflow workers.
         """
+        if dag_processor is not None:
+            pulumi.set(__self__, "dag_processor", dag_processor)
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
         if triggerer is not None:
@@ -1584,6 +1864,18 @@ class WorkloadsConfigArgs:
             pulumi.set(__self__, "web_server", web_server)
         if worker is not None:
             pulumi.set(__self__, "worker", worker)
+
+    @property
+    @pulumi.getter(name="dagProcessor")
+    def dag_processor(self) -> Optional[pulumi.Input['DagProcessorResourceArgs']]:
+        """
+        Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "dag_processor")
+
+    @dag_processor.setter
+    def dag_processor(self, value: Optional[pulumi.Input['DagProcessorResourceArgs']]):
+        pulumi.set(self, "dag_processor", value)
 
     @property
     @pulumi.getter

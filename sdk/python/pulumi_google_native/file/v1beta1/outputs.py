@@ -92,7 +92,7 @@ class FileShareConfigResponse(dict):
         """
         File share configuration for the instance.
         :param str capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
-        :param str name: The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+        :param str name: The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
         :param Sequence['NfsExportOptionsResponse'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param str source_backup: The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
         """
@@ -113,7 +113,7 @@ class FileShareConfigResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+        The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
         """
         return pulumi.get(self, "name")
 
@@ -144,8 +144,8 @@ class ManagedActiveDirectoryConfigResponse(dict):
                  domain: str):
         """
         ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
-        :param str computer: The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
-        :param str domain: Fully qualified domain name.
+        :param str computer: The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: `$mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
+        :param str domain: The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
         """
         pulumi.set(__self__, "computer", computer)
         pulumi.set(__self__, "domain", domain)
@@ -154,7 +154,7 @@ class ManagedActiveDirectoryConfigResponse(dict):
     @pulumi.getter
     def computer(self) -> str:
         """
-        The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: `$mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
         """
         return pulumi.get(self, "computer")
 
@@ -162,7 +162,7 @@ class ManagedActiveDirectoryConfigResponse(dict):
     @pulumi.getter
     def domain(self) -> str:
         """
-        Fully qualified domain name.
+        The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
         """
         return pulumi.get(self, "domain")
 

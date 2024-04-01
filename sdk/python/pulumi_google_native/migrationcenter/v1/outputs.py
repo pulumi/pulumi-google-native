@@ -40,6 +40,7 @@ __all__ = [
     'ReportSummaryVmwareNodeResponse',
     'SoleTenancyPreferencesResponse',
     'SoleTenantNodeTypeResponse',
+    'StatusResponse',
     'UploadFileInfoResponse',
     'ValidationReportResponse',
     'VirtualMachinePreferencesResponse',
@@ -58,6 +59,8 @@ class ComputeEnginePreferencesResponse(dict):
             suggest = "license_type"
         elif key == "machinePreferences":
             suggest = "machine_preferences"
+        elif key == "persistentDiskType":
+            suggest = "persistent_disk_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ComputeEnginePreferencesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -72,14 +75,17 @@ class ComputeEnginePreferencesResponse(dict):
 
     def __init__(__self__, *,
                  license_type: str,
-                 machine_preferences: 'outputs.MachinePreferencesResponse'):
+                 machine_preferences: 'outputs.MachinePreferencesResponse',
+                 persistent_disk_type: str):
         """
         The user preferences relating to Compute Engine target platform.
         :param str license_type: License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         :param 'MachinePreferencesResponse' machine_preferences: Preferences concerning the machine types to consider on Compute Engine.
+        :param str persistent_disk_type: Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
         """
         pulumi.set(__self__, "license_type", license_type)
         pulumi.set(__self__, "machine_preferences", machine_preferences)
+        pulumi.set(__self__, "persistent_disk_type", persistent_disk_type)
 
     @property
     @pulumi.getter(name="licenseType")
@@ -96,6 +102,14 @@ class ComputeEnginePreferencesResponse(dict):
         Preferences concerning the machine types to consider on Compute Engine.
         """
         return pulumi.get(self, "machine_preferences")
+
+    @property
+    @pulumi.getter(name="persistentDiskType")
+    def persistent_disk_type(self) -> str:
+        """
+        Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+        """
+        return pulumi.get(self, "persistent_disk_type")
 
 
 @pulumi.output_type
@@ -635,7 +649,7 @@ class ReportSummaryAssetAggregateStatsResponse(dict):
         :param 'ReportSummaryHistogramChartDataResponse' memory_bytes_histogram: Histogram showing a distribution of memory sizes.
         :param 'ReportSummaryUtilizationChartDataResponse' memory_utilization_chart: Total memory split into Used/Free buckets.
         :param 'ReportSummaryChartDataResponse' operating_system: Count of assets grouped by Operating System families.
-        :param 'ReportSummaryHistogramChartDataResponse' storage_bytes_histogram: Histogram showing a distribution of memory sizes.
+        :param 'ReportSummaryHistogramChartDataResponse' storage_bytes_histogram: Histogram showing a distribution of storage sizes.
         :param 'ReportSummaryUtilizationChartDataResponse' storage_utilization_chart: Total memory split into Used/Free buckets.
         :param str total_assets: Count of the number of unique assets in this collection.
         :param str total_cores: Sum of the CPU core count of all the assets in this collection.
@@ -689,7 +703,7 @@ class ReportSummaryAssetAggregateStatsResponse(dict):
     @pulumi.getter(name="storageBytesHistogram")
     def storage_bytes_histogram(self) -> 'outputs.ReportSummaryHistogramChartDataResponse':
         """
-        Histogram showing a distribution of memory sizes.
+        Histogram showing a distribution of storage sizes.
         """
         return pulumi.get(self, "storage_bytes_histogram")
 
@@ -1773,6 +1787,50 @@ class SoleTenantNodeTypeResponse(dict):
         Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
         """
         return pulumi.get(self, "node_name")
+
+
+@pulumi.output_type
+class StatusResponse(dict):
+    """
+    The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 details: Sequence[Mapping[str, str]],
+                 message: str):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Sequence[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

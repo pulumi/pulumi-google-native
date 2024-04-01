@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetResult:
-    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, deploy_parameters=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, multi_target=None, name=None, require_approval=None, run=None, target_id=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, custom_target=None, deploy_parameters=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, multi_target=None, name=None, require_approval=None, run=None, target_id=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -29,6 +29,9 @@ class GetTargetResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if custom_target and not isinstance(custom_target, dict):
+            raise TypeError("Expected argument 'custom_target' to be a dict")
+        pulumi.set(__self__, "custom_target", custom_target)
         if deploy_parameters and not isinstance(deploy_parameters, dict):
             raise TypeError("Expected argument 'deploy_parameters' to be a dict")
         pulumi.set(__self__, "deploy_parameters", deploy_parameters)
@@ -92,6 +95,14 @@ class GetTargetResult:
         Time at which the `Target` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customTarget")
+    def custom_target(self) -> 'outputs.CustomTargetResponse':
+        """
+        Optional. Information specifying a Custom Target.
+        """
+        return pulumi.get(self, "custom_target")
 
     @property
     @pulumi.getter(name="deployParameters")
@@ -207,6 +218,7 @@ class AwaitableGetTargetResult(GetTargetResult):
             annotations=self.annotations,
             anthos_cluster=self.anthos_cluster,
             create_time=self.create_time,
+            custom_target=self.custom_target,
             deploy_parameters=self.deploy_parameters,
             description=self.description,
             etag=self.etag,
@@ -240,6 +252,7 @@ def get_target(location: Optional[str] = None,
         annotations=pulumi.get(__ret__, 'annotations'),
         anthos_cluster=pulumi.get(__ret__, 'anthos_cluster'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        custom_target=pulumi.get(__ret__, 'custom_target'),
         deploy_parameters=pulumi.get(__ret__, 'deploy_parameters'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),

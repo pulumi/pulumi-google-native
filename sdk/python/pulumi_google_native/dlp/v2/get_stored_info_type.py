@@ -71,7 +71,7 @@ def get_stored_info_type(location: Optional[str] = None,
                          stored_info_type_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStoredInfoTypeResult:
     """
-    Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+    Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -92,6 +92,6 @@ def get_stored_info_type_output(location: Optional[pulumi.Input[str]] = None,
                                 stored_info_type_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStoredInfoTypeResult]:
     """
-    Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+    Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
     """
     ...

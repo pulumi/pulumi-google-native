@@ -167,7 +167,7 @@ class GetInstanceResult:
     @pulumi.getter(name="dataplexDataLineageIntegrationEnabled")
     def dataplex_data_lineage_integration_enabled(self) -> bool:
         """
-        Optional. Reserved for future use.
+        Optional. Option to enable the Dataplex Lineage Integration feature.
         """
         return pulumi.get(self, "dataplex_data_lineage_integration_enabled")
 

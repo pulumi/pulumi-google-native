@@ -434,6 +434,8 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["license_codes"] = None
             __props__.__dict__["licenses"] = None
             __props__.__dict__["region"] = None
+            __props__.__dict__["resource_status"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -491,6 +493,8 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["resource_status"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -684,6 +688,22 @@ class Snapshot(pulumi.CustomResource):
         An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> pulumi.Output['outputs.SnapshotResourceStatusResponse']:
+        """
+        [Output only] ResourceStatus of the Snapshot resource
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

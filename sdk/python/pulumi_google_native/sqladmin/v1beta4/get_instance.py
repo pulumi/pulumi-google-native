@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, available_maintenance_versions=None, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, dns_name=None, etag=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, ipv6_address=None, kind=None, maintenance_version=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, primary_dns_name=None, project=None, psc_service_attachment_link=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, sql_network_architecture=None, state=None, suspension_reason=None, write_endpoint=None):
+    def __init__(__self__, available_maintenance_versions=None, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, dns_name=None, etag=None, failover_replica=None, gce_zone=None, gemini_config=None, instance_type=None, ip_addresses=None, ipv6_address=None, kind=None, maintenance_version=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, primary_dns_name=None, project=None, psc_service_attachment_link=None, region=None, replica_configuration=None, replica_names=None, replication_cluster=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, sql_network_architecture=None, state=None, suspension_reason=None, write_endpoint=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -59,6 +59,9 @@ class GetInstanceResult:
         if gce_zone and not isinstance(gce_zone, str):
             raise TypeError("Expected argument 'gce_zone' to be a str")
         pulumi.set(__self__, "gce_zone", gce_zone)
+        if gemini_config and not isinstance(gemini_config, dict):
+            raise TypeError("Expected argument 'gemini_config' to be a dict")
+        pulumi.set(__self__, "gemini_config", gemini_config)
         if instance_type and not isinstance(instance_type, str):
             raise TypeError("Expected argument 'instance_type' to be a str")
         pulumi.set(__self__, "instance_type", instance_type)
@@ -107,6 +110,9 @@ class GetInstanceResult:
         if replica_names and not isinstance(replica_names, list):
             raise TypeError("Expected argument 'replica_names' to be a list")
         pulumi.set(__self__, "replica_names", replica_names)
+        if replication_cluster and not isinstance(replication_cluster, dict):
+            raise TypeError("Expected argument 'replication_cluster' to be a dict")
+        pulumi.set(__self__, "replication_cluster", replication_cluster)
         if root_password and not isinstance(root_password, str):
             raise TypeError("Expected argument 'root_password' to be a str")
         pulumi.set(__self__, "root_password", root_password)
@@ -252,6 +258,14 @@ class GetInstanceResult:
         return pulumi.get(self, "gce_zone")
 
     @property
+    @pulumi.getter(name="geminiConfig")
+    def gemini_config(self) -> 'outputs.GeminiInstanceConfigResponse':
+        """
+        Gemini instance configuration.
+        """
+        return pulumi.get(self, "gemini_config")
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
         """
@@ -365,7 +379,7 @@ class GetInstanceResult:
     @pulumi.getter
     def region(self) -> str:
         """
-        The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+        The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
         """
         return pulumi.get(self, "region")
 
@@ -384,6 +398,14 @@ class GetInstanceResult:
         The replicas of the instance.
         """
         return pulumi.get(self, "replica_names")
+
+    @property
+    @pulumi.getter(name="replicationCluster")
+    def replication_cluster(self) -> 'outputs.ReplicationClusterResponse':
+        """
+        The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+        """
+        return pulumi.get(self, "replication_cluster")
 
     @property
     @pulumi.getter(name="rootPassword")
@@ -501,6 +523,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             etag=self.etag,
             failover_replica=self.failover_replica,
             gce_zone=self.gce_zone,
+            gemini_config=self.gemini_config,
             instance_type=self.instance_type,
             ip_addresses=self.ip_addresses,
             ipv6_address=self.ipv6_address,
@@ -517,6 +540,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             region=self.region,
             replica_configuration=self.replica_configuration,
             replica_names=self.replica_names,
+            replication_cluster=self.replication_cluster,
             root_password=self.root_password,
             satisfies_pzs=self.satisfies_pzs,
             scheduled_maintenance=self.scheduled_maintenance,
@@ -557,6 +581,7 @@ def get_instance(instance: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         failover_replica=pulumi.get(__ret__, 'failover_replica'),
         gce_zone=pulumi.get(__ret__, 'gce_zone'),
+        gemini_config=pulumi.get(__ret__, 'gemini_config'),
         instance_type=pulumi.get(__ret__, 'instance_type'),
         ip_addresses=pulumi.get(__ret__, 'ip_addresses'),
         ipv6_address=pulumi.get(__ret__, 'ipv6_address'),
@@ -573,6 +598,7 @@ def get_instance(instance: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         replica_configuration=pulumi.get(__ret__, 'replica_configuration'),
         replica_names=pulumi.get(__ret__, 'replica_names'),
+        replication_cluster=pulumi.get(__ret__, 'replication_cluster'),
         root_password=pulumi.get(__ret__, 'root_password'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         scheduled_maintenance=pulumi.get(__ret__, 'scheduled_maintenance'),

@@ -13,10 +13,12 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudApigeeV1APIProductAssociationResponse',
+    'GoogleCloudApigeeV1AccessLoggingConfigResponse',
     'GoogleCloudApigeeV1AddonsConfigResponse',
     'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
     'GoogleCloudApigeeV1AnalyticsConfigResponse',
     'GoogleCloudApigeeV1ApiCategoryResponse',
+    'GoogleCloudApigeeV1ApiDocResponse',
     'GoogleCloudApigeeV1ApiProductRefResponse',
     'GoogleCloudApigeeV1ApiSecurityConfigResponse',
     'GoogleCloudApigeeV1AsyncQueryResultResponse',
@@ -105,6 +107,39 @@ class GoogleCloudApigeeV1APIProductAssociationResponse(dict):
         The API product credential associated status. Valid values are `approved` or `revoked`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1AccessLoggingConfigResponse(dict):
+    """
+    Access logging configuration enables customers to ship the access logs from the tenant projects to their own project's cloud logging. The feature is at the instance level ad disabled by default. It can be enabled during CreateInstance or UpdateInstance.
+    """
+    def __init__(__self__, *,
+                 enabled: bool,
+                 filter: str):
+        """
+        Access logging configuration enables customers to ship the access logs from the tenant projects to their own project's cloud logging. The feature is at the instance level ad disabled by default. It can be enabled during CreateInstance or UpdateInstance.
+        :param bool enabled: Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+        :param str filter: Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
+        """
+        return pulumi.get(self, "filter")
 
 
 @pulumi.output_type
@@ -349,6 +384,211 @@ class GoogleCloudApigeeV1ApiCategoryResponse(dict):
         Time the category was last modified in milliseconds since epoch.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1ApiDocResponse(dict):
+    """
+    `ApiDoc` represents an API catalog item. Catalog items are used in two ways in a portal: - Users can browse and interact with a visual representation of the API documentation - The `api_product_name` field provides a link to a backing [API product] (/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). Through this link, portal users can create and manage developer apps linked to one or more API products.
+    """
+    def __init__(__self__, *,
+                 anon_allowed: bool,
+                 api_product_name: str,
+                 category_ids: Sequence[str],
+                 description: str,
+                 edge_api_product_name: str,
+                 graphql_endpoint_url: str,
+                 graphql_schema: str,
+                 graphql_schema_display_name: str,
+                 image_url: str,
+                 modified: str,
+                 published: bool,
+                 require_callback_url: bool,
+                 site_id: str,
+                 spec_id: str,
+                 title: str,
+                 visibility: bool):
+        """
+        `ApiDoc` represents an API catalog item. Catalog items are used in two ways in a portal: - Users can browse and interact with a visual representation of the API documentation - The `api_product_name` field provides a link to a backing [API product] (/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). Through this link, portal users can create and manage developer apps linked to one or more API products.
+        :param bool anon_allowed: Optional. Boolean flag that manages user access to the catalog item. When true, the catalog item has public visibility and can be viewed anonymously; otherwise, only registered users may view it. Note: when the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), and this flag is set to false, visibility is set to an indeterminate state and must be explicitly specified in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)). Additionally, when enrolled in the audience management feature, updates to this flag will be ignored as visibility permissions must be updated in the management UI.
+        :param str api_product_name: Immutable. The `name` field of the associated [API product](/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). A portal may have only one catalog item associated with a given API product.
+        :param Sequence[str] category_ids: Optional. The IDs of the API categories to which this catalog item belongs.
+        :param str description: Optional. Description of the catalog item. Max length is 10,000 characters.
+        :param str edge_api_product_name: Optional. Immutable. DEPRECATED: use the `apiProductName` field instead
+        :param str graphql_endpoint_url: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+        :param str graphql_schema: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+        :param str graphql_schema_display_name: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+        :param str image_url: Optional. Location of the image used for the catalog item in the catalog. For portal files, this can have the format `/files/{filename}`. Max length is 2,083 characters.
+        :param str modified: Time the catalog item was last modified in milliseconds since epoch.
+        :param bool published: Optional. Denotes whether the catalog item is published to the portal or is in a draft state. When the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), the visibility can be set to public on creation by setting the anonAllowed flag to true or further managed in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)) before it can be visible to any users. If not enrolled in the audience management feature, the visibility is managed by the `anonAllowed` flag.
+        :param bool require_callback_url: Optional. Whether a callback URL is required when this catalog item's API product is enabled in a developer app. When true, a portal user will be required to input a URL when managing the app (this is typically used for the app's OAuth flow).
+        :param str site_id: The ID of the parent portal.
+        :param str spec_id: Optional. DEPRECATED: DO NOT USE
+        :param str title: The user-facing name of the catalog item. `title` must be a non-empty string with a max length of 255 characters.
+        :param bool visibility: Optional. DEPRECATED: use the `published` field instead
+        """
+        pulumi.set(__self__, "anon_allowed", anon_allowed)
+        pulumi.set(__self__, "api_product_name", api_product_name)
+        pulumi.set(__self__, "category_ids", category_ids)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "edge_api_product_name", edge_api_product_name)
+        pulumi.set(__self__, "graphql_endpoint_url", graphql_endpoint_url)
+        pulumi.set(__self__, "graphql_schema", graphql_schema)
+        pulumi.set(__self__, "graphql_schema_display_name", graphql_schema_display_name)
+        pulumi.set(__self__, "image_url", image_url)
+        pulumi.set(__self__, "modified", modified)
+        pulumi.set(__self__, "published", published)
+        pulumi.set(__self__, "require_callback_url", require_callback_url)
+        pulumi.set(__self__, "site_id", site_id)
+        pulumi.set(__self__, "spec_id", spec_id)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="anonAllowed")
+    def anon_allowed(self) -> bool:
+        """
+        Optional. Boolean flag that manages user access to the catalog item. When true, the catalog item has public visibility and can be viewed anonymously; otherwise, only registered users may view it. Note: when the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), and this flag is set to false, visibility is set to an indeterminate state and must be explicitly specified in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)). Additionally, when enrolled in the audience management feature, updates to this flag will be ignored as visibility permissions must be updated in the management UI.
+        """
+        return pulumi.get(self, "anon_allowed")
+
+    @property
+    @pulumi.getter(name="apiProductName")
+    def api_product_name(self) -> str:
+        """
+        Immutable. The `name` field of the associated [API product](/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts). A portal may have only one catalog item associated with a given API product.
+        """
+        return pulumi.get(self, "api_product_name")
+
+    @property
+    @pulumi.getter(name="categoryIds")
+    def category_ids(self) -> Sequence[str]:
+        """
+        Optional. The IDs of the API categories to which this catalog item belongs.
+        """
+        return pulumi.get(self, "category_ids")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Description of the catalog item. Max length is 10,000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeAPIProductName")
+    def edge_api_product_name(self) -> str:
+        """
+        Optional. Immutable. DEPRECATED: use the `apiProductName` field instead
+        """
+        warnings.warn("""Optional. Immutable. DEPRECATED: use the `apiProductName` field instead""", DeprecationWarning)
+        pulumi.log.warn("""edge_api_product_name is deprecated: Optional. Immutable. DEPRECATED: use the `apiProductName` field instead""")
+
+        return pulumi.get(self, "edge_api_product_name")
+
+    @property
+    @pulumi.getter(name="graphqlEndpointUrl")
+    def graphql_endpoint_url(self) -> str:
+        """
+        Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+        """
+        warnings.warn("""Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods""", DeprecationWarning)
+        pulumi.log.warn("""graphql_endpoint_url is deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods""")
+
+        return pulumi.get(self, "graphql_endpoint_url")
+
+    @property
+    @pulumi.getter(name="graphqlSchema")
+    def graphql_schema(self) -> str:
+        """
+        Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+        """
+        warnings.warn("""Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods""", DeprecationWarning)
+        pulumi.log.warn("""graphql_schema is deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods""")
+
+        return pulumi.get(self, "graphql_schema")
+
+    @property
+    @pulumi.getter(name="graphqlSchemaDisplayName")
+    def graphql_schema_display_name(self) -> str:
+        """
+        Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods
+        """
+        warnings.warn("""Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods""", DeprecationWarning)
+        pulumi.log.warn("""graphql_schema_display_name is deprecated: Optional. DEPRECATED: manage documentation through the `getDocumentation` and `updateDocumentation` methods""")
+
+        return pulumi.get(self, "graphql_schema_display_name")
+
+    @property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> str:
+        """
+        Optional. Location of the image used for the catalog item in the catalog. For portal files, this can have the format `/files/{filename}`. Max length is 2,083 characters.
+        """
+        return pulumi.get(self, "image_url")
+
+    @property
+    @pulumi.getter
+    def modified(self) -> str:
+        """
+        Time the catalog item was last modified in milliseconds since epoch.
+        """
+        return pulumi.get(self, "modified")
+
+    @property
+    @pulumi.getter
+    def published(self) -> bool:
+        """
+        Optional. Denotes whether the catalog item is published to the portal or is in a draft state. When the parent portal is enrolled in the [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature), the visibility can be set to public on creation by setting the anonAllowed flag to true or further managed in the management UI (see [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)) before it can be visible to any users. If not enrolled in the audience management feature, the visibility is managed by the `anonAllowed` flag.
+        """
+        return pulumi.get(self, "published")
+
+    @property
+    @pulumi.getter(name="requireCallbackUrl")
+    def require_callback_url(self) -> bool:
+        """
+        Optional. Whether a callback URL is required when this catalog item's API product is enabled in a developer app. When true, a portal user will be required to input a URL when managing the app (this is typically used for the app's OAuth flow).
+        """
+        return pulumi.get(self, "require_callback_url")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> str:
+        """
+        The ID of the parent portal.
+        """
+        return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter(name="specId")
+    def spec_id(self) -> str:
+        """
+        Optional. DEPRECATED: DO NOT USE
+        """
+        warnings.warn("""Optional. DEPRECATED: DO NOT USE""", DeprecationWarning)
+        pulumi.log.warn("""spec_id is deprecated: Optional. DEPRECATED: DO NOT USE""")
+
+        return pulumi.get(self, "spec_id")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The user-facing name of the catalog item. `title` must be a non-empty string with a max length of 255 characters.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> bool:
+        """
+        Optional. DEPRECATED: use the `published` field instead
+        """
+        warnings.warn("""Optional. DEPRECATED: use the `published` field instead""", DeprecationWarning)
+        pulumi.log.warn("""visibility is deprecated: Optional. DEPRECATED: use the `published` field instead""")
+
+        return pulumi.get(self, "visibility")
 
 
 @pulumi.output_type
@@ -2200,15 +2440,25 @@ class GoogleCloudApigeeV1SecurityActionAllowResponse(dict):
 @pulumi.output_type
 class GoogleCloudApigeeV1SecurityActionConditionConfigResponse(dict):
     """
-    The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+    The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "botReasons":
+        if key == "accessTokens":
+            suggest = "access_tokens"
+        elif key == "apiKeys":
+            suggest = "api_keys"
+        elif key == "apiProducts":
+            suggest = "api_products"
+        elif key == "botReasons":
             suggest = "bot_reasons"
+        elif key == "developerApps":
+            suggest = "developer_apps"
         elif key == "ipAddressRanges":
             suggest = "ip_address_ranges"
+        elif key == "userAgents":
+            suggest = "user_agents"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1SecurityActionConditionConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2222,23 +2472,81 @@ class GoogleCloudApigeeV1SecurityActionConditionConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 access_tokens: Sequence[str],
+                 api_keys: Sequence[str],
+                 api_products: Sequence[str],
                  bot_reasons: Sequence[str],
-                 ip_address_ranges: Sequence[str]):
+                 developer_apps: Sequence[str],
+                 developers: Sequence[str],
+                 ip_address_ranges: Sequence[str],
+                 user_agents: Sequence[str]):
         """
-        The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
-        :param Sequence[str] bot_reasons: Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+        The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
+        :param Sequence[str] access_tokens: Optional. A list of access_tokens. Limit 1000 per action.
+        :param Sequence[str] api_keys: Optional. A list of API keys. Limit 1000 per action.
+        :param Sequence[str] api_products: Optional. A list of API Products. Limit 1000 per action.
+        :param Sequence[str] bot_reasons: Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
+        :param Sequence[str] developer_apps: Optional. A list of developer apps. Limit 1000 per action.
+        :param Sequence[str] developers: Optional. A list of developers. Limit 1000 per action.
         :param Sequence[str] ip_address_ranges: Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
+        :param Sequence[str] user_agents: Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
         """
+        pulumi.set(__self__, "access_tokens", access_tokens)
+        pulumi.set(__self__, "api_keys", api_keys)
+        pulumi.set(__self__, "api_products", api_products)
         pulumi.set(__self__, "bot_reasons", bot_reasons)
+        pulumi.set(__self__, "developer_apps", developer_apps)
+        pulumi.set(__self__, "developers", developers)
         pulumi.set(__self__, "ip_address_ranges", ip_address_ranges)
+        pulumi.set(__self__, "user_agents", user_agents)
+
+    @property
+    @pulumi.getter(name="accessTokens")
+    def access_tokens(self) -> Sequence[str]:
+        """
+        Optional. A list of access_tokens. Limit 1000 per action.
+        """
+        return pulumi.get(self, "access_tokens")
+
+    @property
+    @pulumi.getter(name="apiKeys")
+    def api_keys(self) -> Sequence[str]:
+        """
+        Optional. A list of API keys. Limit 1000 per action.
+        """
+        return pulumi.get(self, "api_keys")
+
+    @property
+    @pulumi.getter(name="apiProducts")
+    def api_products(self) -> Sequence[str]:
+        """
+        Optional. A list of API Products. Limit 1000 per action.
+        """
+        return pulumi.get(self, "api_products")
 
     @property
     @pulumi.getter(name="botReasons")
     def bot_reasons(self) -> Sequence[str]:
         """
-        Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+        Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
         """
         return pulumi.get(self, "bot_reasons")
+
+    @property
+    @pulumi.getter(name="developerApps")
+    def developer_apps(self) -> Sequence[str]:
+        """
+        Optional. A list of developer apps. Limit 1000 per action.
+        """
+        return pulumi.get(self, "developer_apps")
+
+    @property
+    @pulumi.getter
+    def developers(self) -> Sequence[str]:
+        """
+        Optional. A list of developers. Limit 1000 per action.
+        """
+        return pulumi.get(self, "developers")
 
     @property
     @pulumi.getter(name="ipAddressRanges")
@@ -2247,6 +2555,14 @@ class GoogleCloudApigeeV1SecurityActionConditionConfigResponse(dict):
         Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
         """
         return pulumi.get(self, "ip_address_ranges")
+
+    @property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Sequence[str]:
+        """
+        Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+        """
+        return pulumi.get(self, "user_agents")
 
 
 @pulumi.output_type
@@ -2934,8 +3250,8 @@ class GoogleIamV1BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'GoogleTypeExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -2953,7 +3269,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -2961,7 +3277,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 

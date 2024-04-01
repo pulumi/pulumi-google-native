@@ -17,8 +17,10 @@ __all__ = ['FunctionArgs', 'Function']
 @pulumi.input_type
 class FunctionArgs:
     def __init__(__self__, *,
+                 automatic_update_policy: Optional[pulumi.Input['AutomaticUpdatePolicyArgs']] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_service_account: Optional[pulumi.Input[str]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input['FunctionDockerRegistry']] = None,
@@ -35,6 +37,7 @@ class FunctionArgs:
                  min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 on_deploy_update_policy: Optional[pulumi.Input['OnDeployUpdatePolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]] = None,
@@ -51,9 +54,10 @@ class FunctionArgs:
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[int] available_memory_mb: The amount of memory in MB available for a function. Defaults to 256MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
+        :param pulumi.Input[str] build_service_account: Optional. A service account the user provides for use with Cloud Build.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
@@ -78,10 +82,14 @@ class FunctionArgs:
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
         :param pulumi.Input['FunctionVpcConnectorEgressSettings'] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
         """
+        if automatic_update_policy is not None:
+            pulumi.set(__self__, "automatic_update_policy", automatic_update_policy)
         if available_memory_mb is not None:
             pulumi.set(__self__, "available_memory_mb", available_memory_mb)
         if build_environment_variables is not None:
             pulumi.set(__self__, "build_environment_variables", build_environment_variables)
+        if build_service_account is not None:
+            pulumi.set(__self__, "build_service_account", build_service_account)
         if build_worker_pool is not None:
             pulumi.set(__self__, "build_worker_pool", build_worker_pool)
         if description is not None:
@@ -117,6 +125,8 @@ class FunctionArgs:
             pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if on_deploy_update_policy is not None:
+            pulumi.set(__self__, "on_deploy_update_policy", on_deploy_update_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if runtime is not None:
@@ -143,6 +153,15 @@ class FunctionArgs:
             pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
 
     @property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> Optional[pulumi.Input['AutomaticUpdatePolicyArgs']]:
+        return pulumi.get(self, "automatic_update_policy")
+
+    @automatic_update_policy.setter
+    def automatic_update_policy(self, value: Optional[pulumi.Input['AutomaticUpdatePolicyArgs']]):
+        pulumi.set(self, "automatic_update_policy", value)
+
+    @property
     @pulumi.getter(name="availableMemoryMb")
     def available_memory_mb(self) -> Optional[pulumi.Input[int]]:
         """
@@ -165,6 +184,18 @@ class FunctionArgs:
     @build_environment_variables.setter
     def build_environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "build_environment_variables", value)
+
+    @property
+    @pulumi.getter(name="buildServiceAccount")
+    def build_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A service account the user provides for use with Cloud Build.
+        """
+        return pulumi.get(self, "build_service_account")
+
+    @build_service_account.setter
+    def build_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "build_service_account", value)
 
     @property
     @pulumi.getter(name="buildWorkerPool")
@@ -194,7 +225,7 @@ class FunctionArgs:
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> Optional[pulumi.Input['FunctionDockerRegistry']]:
         """
-        Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -359,6 +390,15 @@ class FunctionArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> Optional[pulumi.Input['OnDeployUpdatePolicyArgs']]:
+        return pulumi.get(self, "on_deploy_update_policy")
+
+    @on_deploy_update_policy.setter
+    def on_deploy_update_policy(self, value: Optional[pulumi.Input['OnDeployUpdatePolicyArgs']]):
+        pulumi.set(self, "on_deploy_update_policy", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -505,8 +545,10 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automatic_update_policy: Optional[pulumi.Input[pulumi.InputType['AutomaticUpdatePolicyArgs']]] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_service_account: Optional[pulumi.Input[str]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input['FunctionDockerRegistry']] = None,
@@ -523,6 +565,7 @@ class Function(pulumi.CustomResource):
                  min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 on_deploy_update_policy: Optional[pulumi.Input[pulumi.InputType['OnDeployUpdatePolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]]] = None,
@@ -543,9 +586,10 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] available_memory_mb: The amount of memory in MB available for a function. Defaults to 256MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_environment_variables: Build environment variables that shall be available during build time.
+        :param pulumi.Input[str] build_service_account: Optional. A service account the user provides for use with Cloud Build.
         :param pulumi.Input[str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        :param pulumi.Input['FunctionDockerRegistry'] docker_registry: Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
@@ -594,8 +638,10 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 automatic_update_policy: Optional[pulumi.Input[pulumi.InputType['AutomaticUpdatePolicyArgs']]] = None,
                  available_memory_mb: Optional[pulumi.Input[int]] = None,
                  build_environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_service_account: Optional[pulumi.Input[str]] = None,
                  build_worker_pool: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input['FunctionDockerRegistry']] = None,
@@ -612,6 +658,7 @@ class Function(pulumi.CustomResource):
                  min_instances: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 on_deploy_update_policy: Optional[pulumi.Input[pulumi.InputType['OnDeployUpdatePolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]]] = None,
@@ -633,8 +680,10 @@ class Function(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FunctionArgs.__new__(FunctionArgs)
 
+            __props__.__dict__["automatic_update_policy"] = automatic_update_policy
             __props__.__dict__["available_memory_mb"] = available_memory_mb
             __props__.__dict__["build_environment_variables"] = build_environment_variables
+            __props__.__dict__["build_service_account"] = build_service_account
             __props__.__dict__["build_worker_pool"] = build_worker_pool
             __props__.__dict__["description"] = description
             __props__.__dict__["docker_registry"] = docker_registry
@@ -651,6 +700,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["min_instances"] = min_instances
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            __props__.__dict__["on_deploy_update_policy"] = on_deploy_update_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["secret_environment_variables"] = secret_environment_variables
@@ -692,10 +742,12 @@ class Function(pulumi.CustomResource):
 
         __props__ = FunctionArgs.__new__(FunctionArgs)
 
+        __props__.__dict__["automatic_update_policy"] = None
         __props__.__dict__["available_memory_mb"] = None
         __props__.__dict__["build_environment_variables"] = None
         __props__.__dict__["build_id"] = None
         __props__.__dict__["build_name"] = None
+        __props__.__dict__["build_service_account"] = None
         __props__.__dict__["build_worker_pool"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["docker_registry"] = None
@@ -712,6 +764,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["min_instances"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["on_deploy_update_policy"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["runtime"] = None
         __props__.__dict__["secret_environment_variables"] = None
@@ -728,6 +781,11 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["vpc_connector"] = None
         __props__.__dict__["vpc_connector_egress_settings"] = None
         return Function(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> pulumi.Output['outputs.AutomaticUpdatePolicyResponse']:
+        return pulumi.get(self, "automatic_update_policy")
 
     @property
     @pulumi.getter(name="availableMemoryMb")
@@ -762,6 +820,14 @@ class Function(pulumi.CustomResource):
         return pulumi.get(self, "build_name")
 
     @property
+    @pulumi.getter(name="buildServiceAccount")
+    def build_service_account(self) -> pulumi.Output[str]:
+        """
+        Optional. A service account the user provides for use with Cloud Build.
+        """
+        return pulumi.get(self, "build_service_account")
+
+    @property
     @pulumi.getter(name="buildWorkerPool")
     def build_worker_pool(self) -> pulumi.Output[str]:
         """
@@ -781,7 +847,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> pulumi.Output[str]:
         """
-        Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -888,6 +954,11 @@ class Function(pulumi.CustomResource):
         pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
 
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> pulumi.Output['outputs.OnDeployUpdatePolicyResponse']:
+        return pulumi.get(self, "on_deploy_update_policy")
 
     @property
     @pulumi.getter

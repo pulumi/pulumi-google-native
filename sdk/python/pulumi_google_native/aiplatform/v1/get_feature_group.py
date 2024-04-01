@@ -86,7 +86,7 @@ class GetFeatureGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+        Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
         """
         return pulumi.get(self, "name")
 

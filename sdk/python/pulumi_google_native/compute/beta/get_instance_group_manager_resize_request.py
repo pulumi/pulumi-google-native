@@ -61,8 +61,11 @@ class GetInstanceGroupManagerResizeRequestResult:
     @pulumi.getter
     def count(self) -> int:
         """
-        The count of instances to create as part of this resize request.
+        This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         """
+        warnings.warn("""This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""", DeprecationWarning)
+        pulumi.log.warn("""count is deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""")
+
         return pulumi.get(self, "count")
 
     @property

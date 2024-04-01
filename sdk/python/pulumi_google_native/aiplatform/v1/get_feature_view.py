@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFeatureViewResult:
-    def __init__(__self__, big_query_source=None, create_time=None, etag=None, feature_registry_source=None, labels=None, name=None, sync_config=None, update_time=None):
+    def __init__(__self__, big_query_source=None, create_time=None, etag=None, feature_registry_source=None, index_config=None, labels=None, name=None, sync_config=None, update_time=None):
         if big_query_source and not isinstance(big_query_source, dict):
             raise TypeError("Expected argument 'big_query_source' to be a dict")
         pulumi.set(__self__, "big_query_source", big_query_source)
@@ -32,6 +32,9 @@ class GetFeatureViewResult:
         if feature_registry_source and not isinstance(feature_registry_source, dict):
             raise TypeError("Expected argument 'feature_registry_source' to be a dict")
         pulumi.set(__self__, "feature_registry_source", feature_registry_source)
+        if index_config and not isinstance(index_config, dict):
+            raise TypeError("Expected argument 'index_config' to be a dict")
+        pulumi.set(__self__, "index_config", index_config)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -78,6 +81,14 @@ class GetFeatureViewResult:
         return pulumi.get(self, "feature_registry_source")
 
     @property
+    @pulumi.getter(name="indexConfig")
+    def index_config(self) -> 'outputs.GoogleCloudAiplatformV1FeatureViewIndexConfigResponse':
+        """
+        Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        """
+        return pulumi.get(self, "index_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -89,7 +100,7 @@ class GetFeatureViewResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         """
         return pulumi.get(self, "name")
 
@@ -120,6 +131,7 @@ class AwaitableGetFeatureViewResult(GetFeatureViewResult):
             create_time=self.create_time,
             etag=self.etag,
             feature_registry_source=self.feature_registry_source,
+            index_config=self.index_config,
             labels=self.labels,
             name=self.name,
             sync_config=self.sync_config,
@@ -147,6 +159,7 @@ def get_feature_view(feature_online_store_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         etag=pulumi.get(__ret__, 'etag'),
         feature_registry_source=pulumi.get(__ret__, 'feature_registry_source'),
+        index_config=pulumi.get(__ret__, 'index_config'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         sync_config=pulumi.get(__ret__, 'sync_config'),

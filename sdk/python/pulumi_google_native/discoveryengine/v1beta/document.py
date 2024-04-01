@@ -306,6 +306,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["struct_data"] = struct_data
             __props__.__dict__["derived_struct_data"] = None
+            __props__.__dict__["index_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branch_id", "collection_id", "data_store_id", "document_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Document, __self__).__init__(
@@ -336,6 +337,7 @@ class Document(pulumi.CustomResource):
         __props__.__dict__["data_store_id"] = None
         __props__.__dict__["derived_struct_data"] = None
         __props__.__dict__["document_id"] = None
+        __props__.__dict__["index_time"] = None
         __props__.__dict__["json_data"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -383,6 +385,14 @@ class Document(pulumi.CustomResource):
         Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         """
         return pulumi.get(self, "document_id")
+
+    @property
+    @pulumi.getter(name="indexTime")
+    def index_time(self) -> pulumi.Output[str]:
+        """
+        The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+        """
+        return pulumi.get(self, "index_time")
 
     @property
     @pulumi.getter(name="jsonData")

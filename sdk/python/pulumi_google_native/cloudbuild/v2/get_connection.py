@@ -19,10 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, annotations=None, create_time=None, disabled=None, etag=None, github_config=None, github_enterprise_config=None, gitlab_config=None, installation_state=None, name=None, reconciling=None, update_time=None):
+    def __init__(__self__, annotations=None, bitbucket_cloud_config=None, bitbucket_data_center_config=None, create_time=None, disabled=None, etag=None, github_config=None, github_enterprise_config=None, gitlab_config=None, installation_state=None, name=None, reconciling=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
+        if bitbucket_cloud_config and not isinstance(bitbucket_cloud_config, dict):
+            raise TypeError("Expected argument 'bitbucket_cloud_config' to be a dict")
+        pulumi.set(__self__, "bitbucket_cloud_config", bitbucket_cloud_config)
+        if bitbucket_data_center_config and not isinstance(bitbucket_data_center_config, dict):
+            raise TypeError("Expected argument 'bitbucket_data_center_config' to be a dict")
+        pulumi.set(__self__, "bitbucket_data_center_config", bitbucket_data_center_config)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -61,6 +67,22 @@ class GetConnectionResult:
         Allows clients to store small amounts of arbitrary data.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="bitbucketCloudConfig")
+    def bitbucket_cloud_config(self) -> 'outputs.BitbucketCloudConfigResponse':
+        """
+        Configuration for connections to Bitbucket Cloud.
+        """
+        return pulumi.get(self, "bitbucket_cloud_config")
+
+    @property
+    @pulumi.getter(name="bitbucketDataCenterConfig")
+    def bitbucket_data_center_config(self) -> 'outputs.BitbucketDataCenterConfigResponse':
+        """
+        Configuration for connections to Bitbucket Data Center.
+        """
+        return pulumi.get(self, "bitbucket_data_center_config")
 
     @property
     @pulumi.getter(name="createTime")
@@ -150,6 +172,8 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             yield self
         return GetConnectionResult(
             annotations=self.annotations,
+            bitbucket_cloud_config=self.bitbucket_cloud_config,
+            bitbucket_data_center_config=self.bitbucket_data_center_config,
             create_time=self.create_time,
             disabled=self.disabled,
             etag=self.etag,
@@ -178,6 +202,8 @@ def get_connection(connection_id: Optional[str] = None,
 
     return AwaitableGetConnectionResult(
         annotations=pulumi.get(__ret__, 'annotations'),
+        bitbucket_cloud_config=pulumi.get(__ret__, 'bitbucket_cloud_config'),
+        bitbucket_data_center_config=pulumi.get(__ret__, 'bitbucket_data_center_config'),
         create_time=pulumi.get(__ret__, 'create_time'),
         disabled=pulumi.get(__ret__, 'disabled'),
         etag=pulumi.get(__ret__, 'etag'),

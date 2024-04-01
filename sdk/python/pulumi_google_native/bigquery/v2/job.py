@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['JobArgs', 'Job']
@@ -16,17 +17,16 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 configuration: Optional[pulumi.Input['JobConfigurationArgs']] = None,
+                 configuration: pulumi.Input['JobConfigurationArgs'],
                  job_reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None):
         """
         The set of arguments for constructing a Job resource.
-        :param pulumi.Input['JobConfigurationArgs'] configuration: [Required] Describes the job configuration.
-        :param pulumi.Input['JobReferenceArgs'] job_reference: [Optional] Reference describing the unique-per-user name of the job.
+        :param pulumi.Input['JobConfigurationArgs'] configuration: Describes the job configuration.
+        :param pulumi.Input['JobReferenceArgs'] job_reference: Optional. Reference describing the unique-per-user name of the job.
         """
-        if configuration is not None:
-            pulumi.set(__self__, "configuration", configuration)
+        pulumi.set(__self__, "configuration", configuration)
         if job_reference is not None:
             pulumi.set(__self__, "job_reference", job_reference)
         if project is not None:
@@ -36,21 +36,21 @@ class JobArgs:
 
     @property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input['JobConfigurationArgs']]:
+    def configuration(self) -> pulumi.Input['JobConfigurationArgs']:
         """
-        [Required] Describes the job configuration.
+        Describes the job configuration.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input['JobConfigurationArgs']]):
+    def configuration(self, value: pulumi.Input['JobConfigurationArgs']):
         pulumi.set(self, "configuration", value)
 
     @property
     @pulumi.getter(name="jobReference")
     def job_reference(self) -> Optional[pulumi.Input['JobReferenceArgs']]:
         """
-        [Optional] Reference describing the unique-per-user name of the job.
+        Optional. Reference describing the unique-per-user name of the job.
         """
         return pulumi.get(self, "job_reference")
 
@@ -88,22 +88,22 @@ class Job(pulumi.CustomResource):
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  __props__=None):
         """
-        Starts a new asynchronous job. Requires the Can View project role.
+        Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['JobConfigurationArgs']] configuration: [Required] Describes the job configuration.
-        :param pulumi.Input[pulumi.InputType['JobReferenceArgs']] job_reference: [Optional] Reference describing the unique-per-user name of the job.
+        :param pulumi.Input[pulumi.InputType['JobConfigurationArgs']] configuration: Describes the job configuration.
+        :param pulumi.Input[pulumi.InputType['JobReferenceArgs']] job_reference: Optional. Reference describing the unique-per-user name of the job.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[JobArgs] = None,
+                 args: JobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Starts a new asynchronous job. Requires the Can View project role.
+        Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -134,6 +134,8 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
+            if configuration is None and not opts.urn:
+                raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration
             __props__.__dict__["job_reference"] = job_reference
             __props__.__dict__["project"] = project
@@ -141,6 +143,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["etag"] = None
             __props__.__dict__["job_creation_reason"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["principal_subject"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["statistics"] = None
             __props__.__dict__["status"] = None
@@ -174,6 +177,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["job_creation_reason"] = None
         __props__.__dict__["job_reference"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["principal_subject"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["statistics"] = None
@@ -185,7 +189,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.JobConfigurationResponse']:
         """
-        [Required] Describes the job configuration.
+        Describes the job configuration.
         """
         return pulumi.get(self, "configuration")
 
@@ -199,7 +203,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="jobCreationReason")
-    def job_creation_reason(self) -> pulumi.Output[Any]:
+    def job_creation_reason(self) -> pulumi.Output['outputs.JobCreationReasonResponse']:
         """
         If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
         """
@@ -209,7 +213,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="jobReference")
     def job_reference(self) -> pulumi.Output['outputs.JobReferenceResponse']:
         """
-        [Optional] Reference describing the unique-per-user name of the job.
+        Optional. Reference describing the unique-per-user name of the job.
         """
         return pulumi.get(self, "job_reference")
 
@@ -222,6 +226,14 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter(name="principalSubject")
+    def principal_subject(self) -> pulumi.Output[str]:
+        """
+        [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+        """
+        return pulumi.get(self, "principal_subject")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
@@ -230,7 +242,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        A URL that can be used to access this resource again.
+        A URL that can be used to access the resource again.
         """
         return pulumi.get(self, "self_link")
 

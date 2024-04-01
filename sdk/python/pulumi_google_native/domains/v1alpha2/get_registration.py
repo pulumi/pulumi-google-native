@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegistrationResult:
-    def __init__(__self__, contact_settings=None, create_time=None, dns_settings=None, domain_name=None, expire_time=None, issues=None, labels=None, management_settings=None, name=None, pending_contact_settings=None, register_failure_reason=None, state=None, supported_privacy=None, transfer_failure_reason=None):
+    def __init__(__self__, contact_settings=None, create_time=None, dns_settings=None, domain_name=None, expire_time=None, issues=None, labels=None, management_settings=None, name=None, pending_contact_settings=None, provider=None, register_failure_reason=None, state=None, supported_privacy=None, transfer_failure_reason=None):
         if contact_settings and not isinstance(contact_settings, dict):
             raise TypeError("Expected argument 'contact_settings' to be a dict")
         pulumi.set(__self__, "contact_settings", contact_settings)
@@ -50,6 +50,9 @@ class GetRegistrationResult:
         if pending_contact_settings and not isinstance(pending_contact_settings, dict):
             raise TypeError("Expected argument 'pending_contact_settings' to be a dict")
         pulumi.set(__self__, "pending_contact_settings", pending_contact_settings)
+        if provider and not isinstance(provider, str):
+            raise TypeError("Expected argument 'provider' to be a str")
+        pulumi.set(__self__, "provider", provider)
         if register_failure_reason and not isinstance(register_failure_reason, str):
             raise TypeError("Expected argument 'register_failure_reason' to be a str")
         pulumi.set(__self__, "register_failure_reason", register_failure_reason)
@@ -144,6 +147,14 @@ class GetRegistrationResult:
         return pulumi.get(self, "pending_contact_settings")
 
     @property
+    @pulumi.getter
+    def provider(self) -> str:
+        """
+        Current domain management provider.
+        """
+        return pulumi.get(self, "provider")
+
+    @property
     @pulumi.getter(name="registerFailureReason")
     def register_failure_reason(self) -> str:
         """
@@ -171,10 +182,10 @@ class GetRegistrationResult:
     @pulumi.getter(name="transferFailureReason")
     def transfer_failure_reason(self) -> str:
         """
-        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
         """
-        warnings.warn("""Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""", DeprecationWarning)
-        pulumi.log.warn("""transfer_failure_reason is deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""")
+        warnings.warn("""Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""", DeprecationWarning)
+        pulumi.log.warn("""transfer_failure_reason is deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""")
 
         return pulumi.get(self, "transfer_failure_reason")
 
@@ -195,6 +206,7 @@ class AwaitableGetRegistrationResult(GetRegistrationResult):
             management_settings=self.management_settings,
             name=self.name,
             pending_contact_settings=self.pending_contact_settings,
+            provider=self.provider,
             register_failure_reason=self.register_failure_reason,
             state=self.state,
             supported_privacy=self.supported_privacy,
@@ -226,6 +238,7 @@ def get_registration(location: Optional[str] = None,
         management_settings=pulumi.get(__ret__, 'management_settings'),
         name=pulumi.get(__ret__, 'name'),
         pending_contact_settings=pulumi.get(__ret__, 'pending_contact_settings'),
+        provider=pulumi.get(__ret__, 'provider'),
         register_failure_reason=pulumi.get(__ret__, 'register_failure_reason'),
         state=pulumi.get(__ret__, 'state'),
         supported_privacy=pulumi.get(__ret__, 'supported_privacy'),

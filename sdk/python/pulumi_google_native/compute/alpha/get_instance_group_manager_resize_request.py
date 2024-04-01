@@ -64,8 +64,11 @@ class GetInstanceGroupManagerResizeRequestResult:
     @pulumi.getter
     def count(self) -> int:
         """
-        The count of instances to create as part of this resize request.
+        This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         """
+        warnings.warn("""This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""", DeprecationWarning)
+        pulumi.log.warn("""count is deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""")
+
         return pulumi.get(self, "count")
 
     @property
@@ -104,8 +107,11 @@ class GetInstanceGroupManagerResizeRequestResult:
     @pulumi.getter(name="queuingPolicy")
     def queuing_policy(self) -> 'outputs.QueuingPolicyResponse':
         """
-        When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+        This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
         """
+        warnings.warn("""This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.""", DeprecationWarning)
+        pulumi.log.warn("""queuing_policy is deprecated: This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.""")
+
         return pulumi.get(self, "queuing_policy")
 
     @property

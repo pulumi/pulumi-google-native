@@ -14,6 +14,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
     'GoogleCloudDatacatalogV1VertexDatasetSpecDataType',
     'GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType',
+    'TagTemplateDataplexTransferStatus',
     'TaxonomyActivatedPolicyTypesItem',
 ]
 
@@ -85,6 +86,18 @@ class EntryType(str, Enum):
     LOOK = "LOOK"
     """
     A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
+    """
+    FEATURE_ONLINE_STORE = "FEATURE_ONLINE_STORE"
+    """
+    Feature Online Store resource in Vertex AI Feature Store.
+    """
+    FEATURE_VIEW = "FEATURE_VIEW"
+    """
+    Feature View resource in Vertex AI Feature Store.
+    """
+    FEATURE_GROUP = "FEATURE_GROUP"
+    """
+    Feature Group resource in Vertex AI Feature Store.
     """
 
 
@@ -301,6 +314,20 @@ class GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType(str, Enum):
     MODEL_GARDEN = "MODEL_GARDEN"
     """
     The Model is saved or tuned from Model Garden.
+    """
+
+
+class TagTemplateDataplexTransferStatus(str, Enum):
+    """
+    Optional. Transfer status of the TagTemplate
+    """
+    DATAPLEX_TRANSFER_STATUS_UNSPECIFIED = "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"
+    """
+    Default value. TagTemplate and its tags are only visible and editable in DataCatalog.
+    """
+    MIGRATED = "MIGRATED"
+    """
+    TagTemplate and its tags are auto-copied to Dataplex service. Visible in both services. Editable in DataCatalog, read-only in Dataplex.
     """
 
 

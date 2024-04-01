@@ -59,7 +59,7 @@ class GetConversationResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         """
         return pulumi.get(self, "name")
 
@@ -102,8 +102,7 @@ class AwaitableGetConversationResult(GetConversationResult):
             user_pseudo_id=self.user_pseudo_id)
 
 
-def get_conversation(collection_id: Optional[str] = None,
-                     conversation_id: Optional[str] = None,
+def get_conversation(conversation_id: Optional[str] = None,
                      data_store_id: Optional[str] = None,
                      location: Optional[str] = None,
                      project: Optional[str] = None,
@@ -112,7 +111,6 @@ def get_conversation(collection_id: Optional[str] = None,
     Gets a Conversation.
     """
     __args__ = dict()
-    __args__['collectionId'] = collection_id
     __args__['conversationId'] = conversation_id
     __args__['dataStoreId'] = data_store_id
     __args__['location'] = location
@@ -130,8 +128,7 @@ def get_conversation(collection_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_conversation)
-def get_conversation_output(collection_id: Optional[pulumi.Input[str]] = None,
-                            conversation_id: Optional[pulumi.Input[str]] = None,
+def get_conversation_output(conversation_id: Optional[pulumi.Input[str]] = None,
                             data_store_id: Optional[pulumi.Input[str]] = None,
                             location: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,

@@ -73,6 +73,10 @@ class GoogleCloudRecaptchaenterpriseV1WafSettingsWafService(str, Enum):
     """
     Fastly
     """
+    CLOUDFLARE = "CLOUDFLARE"
+    """
+    Cloudflare
+    """
 
 
 class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference(str, Enum):

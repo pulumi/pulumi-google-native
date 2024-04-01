@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFhirStoreResult:
-    def __init__(__self__, complex_data_type_reference_parsing=None, consent_config=None, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_update_create=None, labels=None, name=None, notification_config=None, notification_configs=None, search_config=None, stream_configs=None, validation_config=None, version=None):
+    def __init__(__self__, complex_data_type_reference_parsing=None, consent_config=None, default_search_handling_strict=None, disable_referential_integrity=None, disable_resource_versioning=None, enable_history_modifications=None, enable_update_create=None, labels=None, name=None, notification_config=None, notification_configs=None, search_config=None, stream_configs=None, validation_config=None, version=None):
         if complex_data_type_reference_parsing and not isinstance(complex_data_type_reference_parsing, str):
             raise TypeError("Expected argument 'complex_data_type_reference_parsing' to be a str")
         pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
@@ -35,6 +35,9 @@ class GetFhirStoreResult:
         if disable_resource_versioning and not isinstance(disable_resource_versioning, bool):
             raise TypeError("Expected argument 'disable_resource_versioning' to be a bool")
         pulumi.set(__self__, "disable_resource_versioning", disable_resource_versioning)
+        if enable_history_modifications and not isinstance(enable_history_modifications, bool):
+            raise TypeError("Expected argument 'enable_history_modifications' to be a bool")
+        pulumi.set(__self__, "enable_history_modifications", enable_history_modifications)
         if enable_update_create and not isinstance(enable_update_create, bool):
             raise TypeError("Expected argument 'enable_update_create' to be a bool")
         pulumi.set(__self__, "enable_update_create", enable_update_create)
@@ -104,6 +107,14 @@ class GetFhirStoreResult:
         return pulumi.get(self, "disable_resource_versioning")
 
     @property
+    @pulumi.getter(name="enableHistoryModifications")
+    def enable_history_modifications(self) -> bool:
+        """
+        Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+        """
+        return pulumi.get(self, "enable_history_modifications")
+
+    @property
     @pulumi.getter(name="enableUpdateCreate")
     def enable_update_create(self) -> bool:
         """
@@ -123,7 +134,7 @@ class GetFhirStoreResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -190,6 +201,7 @@ class AwaitableGetFhirStoreResult(GetFhirStoreResult):
             default_search_handling_strict=self.default_search_handling_strict,
             disable_referential_integrity=self.disable_referential_integrity,
             disable_resource_versioning=self.disable_resource_versioning,
+            enable_history_modifications=self.enable_history_modifications,
             enable_update_create=self.enable_update_create,
             labels=self.labels,
             name=self.name,
@@ -223,6 +235,7 @@ def get_fhir_store(dataset_id: Optional[str] = None,
         default_search_handling_strict=pulumi.get(__ret__, 'default_search_handling_strict'),
         disable_referential_integrity=pulumi.get(__ret__, 'disable_referential_integrity'),
         disable_resource_versioning=pulumi.get(__ret__, 'disable_resource_versioning'),
+        enable_history_modifications=pulumi.get(__ret__, 'enable_history_modifications'),
         enable_update_create=pulumi.get(__ret__, 'enable_update_create'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

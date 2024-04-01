@@ -117,6 +117,14 @@ class WorkloadComplianceRegime(str, Enum):
     """
     Assured Workloads for Japan Regions
     """
+    KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS = "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS"
+    """
+    KSA R5 Controls.
+    """
+    FREE_REGIONS = "FREE_REGIONS"
+    """
+    Assured Workloads Free Regions
+    """
 
 
 class WorkloadPartner(str, Enum):

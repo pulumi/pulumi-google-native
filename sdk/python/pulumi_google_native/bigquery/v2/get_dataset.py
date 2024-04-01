@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_rounding_mode=None, default_table_expiration_ms=None, description=None, etag=None, external_dataset_reference=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, storage_billing_model=None, tags=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_rounding_mode=None, default_table_expiration_ms=None, description=None, etag=None, external_dataset_reference=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, linked_dataset_metadata=None, linked_dataset_source=None, location=None, max_time_travel_hours=None, satisfies_pzi=None, satisfies_pzs=None, self_link=None, storage_billing_model=None, tags=None, type=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -68,12 +68,21 @@ class GetDatasetResult:
         if last_modified_time and not isinstance(last_modified_time, str):
             raise TypeError("Expected argument 'last_modified_time' to be a str")
         pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if linked_dataset_metadata and not isinstance(linked_dataset_metadata, dict):
+            raise TypeError("Expected argument 'linked_dataset_metadata' to be a dict")
+        pulumi.set(__self__, "linked_dataset_metadata", linked_dataset_metadata)
+        if linked_dataset_source and not isinstance(linked_dataset_source, dict):
+            raise TypeError("Expected argument 'linked_dataset_source' to be a dict")
+        pulumi.set(__self__, "linked_dataset_source", linked_dataset_source)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
         if max_time_travel_hours and not isinstance(max_time_travel_hours, str):
             raise TypeError("Expected argument 'max_time_travel_hours' to be a str")
         pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -86,12 +95,15 @@ class GetDatasetResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def access(self) -> Sequence['outputs.DatasetAccessItemResponse']:
         """
-        [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         """
         return pulumi.get(self, "access")
 
@@ -107,7 +119,7 @@ class GetDatasetResult:
     @pulumi.getter(name="datasetReference")
     def dataset_reference(self) -> 'outputs.DatasetReferenceResponse':
         """
-        [Required] A reference that identifies the dataset.
+        A reference that identifies the dataset.
         """
         return pulumi.get(self, "dataset_reference")
 
@@ -115,20 +127,23 @@ class GetDatasetResult:
     @pulumi.getter(name="defaultCollation")
     def default_collation(self) -> str:
         """
-        The default collation of the dataset.
+        Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
         """
         return pulumi.get(self, "default_collation")
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
     def default_encryption_configuration(self) -> 'outputs.EncryptionConfigurationResponse':
+        """
+        The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+        """
         return pulumi.get(self, "default_encryption_configuration")
 
     @property
     @pulumi.getter(name="defaultPartitionExpirationMs")
     def default_partition_expiration_ms(self) -> str:
         """
-        [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+        This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
 
@@ -136,7 +151,7 @@ class GetDatasetResult:
     @pulumi.getter(name="defaultRoundingMode")
     def default_rounding_mode(self) -> str:
         """
-        The default rounding mode of the dataset.
+        Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
         """
         return pulumi.get(self, "default_rounding_mode")
 
@@ -144,7 +159,7 @@ class GetDatasetResult:
     @pulumi.getter(name="defaultTableExpirationMs")
     def default_table_expiration_ms(self) -> str:
         """
-        [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         """
         return pulumi.get(self, "default_table_expiration_ms")
 
@@ -152,7 +167,7 @@ class GetDatasetResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        [Optional] A user-friendly description of the dataset.
+        Optional. A user-friendly description of the dataset.
         """
         return pulumi.get(self, "description")
 
@@ -168,7 +183,7 @@ class GetDatasetResult:
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> 'outputs.ExternalDatasetReferenceResponse':
         """
-        [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
         """
         return pulumi.get(self, "external_dataset_reference")
 
@@ -176,7 +191,7 @@ class GetDatasetResult:
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> str:
         """
-        [Optional] A descriptive name for the dataset.
+        Optional. A descriptive name for the dataset.
         """
         return pulumi.get(self, "friendly_name")
 
@@ -184,7 +199,7 @@ class GetDatasetResult:
     @pulumi.getter(name="isCaseInsensitive")
     def is_case_insensitive(self) -> bool:
         """
-        [Optional] Indicates if table names are case insensitive in the dataset.
+        Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
         """
         return pulumi.get(self, "is_case_insensitive")
 
@@ -208,15 +223,31 @@ class GetDatasetResult:
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> str:
         """
-        The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        The date when this dataset was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter(name="linkedDatasetMetadata")
+    def linked_dataset_metadata(self) -> 'outputs.LinkedDatasetMetadataResponse':
+        """
+        Metadata about the LinkedDataset. Filled out when the dataset type is LINKED.
+        """
+        return pulumi.get(self, "linked_dataset_metadata")
+
+    @property
+    @pulumi.getter(name="linkedDatasetSource")
+    def linked_dataset_source(self) -> 'outputs.LinkedDatasetSourceResponse':
+        """
+        Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+        """
+        return pulumi.get(self, "linked_dataset_source")
 
     @property
     @pulumi.getter
     def location(self) -> str:
         """
-        The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
         """
         return pulumi.get(self, "location")
 
@@ -224,9 +255,17 @@ class GetDatasetResult:
     @pulumi.getter(name="maxTimeTravelHours")
     def max_time_travel_hours(self) -> str:
         """
-        [Optional] Number of hours for the max time travel for all tables in the dataset.
+        Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
         """
         return pulumi.get(self, "max_time_travel_hours")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -248,7 +287,7 @@ class GetDatasetResult:
     @pulumi.getter(name="storageBillingModel")
     def storage_billing_model(self) -> str:
         """
-        [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+        Optional. Updates storage_billing_model for the dataset.
         """
         return pulumi.get(self, "storage_billing_model")
 
@@ -256,9 +295,17 @@ class GetDatasetResult:
     @pulumi.getter
     def tags(self) -> Sequence['outputs.DatasetTagsItemResponse']:
         """
-        [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        Tags for the Dataset.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, * EXTERNAL - dataset with definition in external metadata catalog. -- *BIGLAKE_METASTORE - dataset that references a database created in BigLakeMetastore service. --
+        """
+        return pulumi.get(self, "type")
 
 
 class AwaitableGetDatasetResult(GetDatasetResult):
@@ -283,12 +330,16 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             kind=self.kind,
             labels=self.labels,
             last_modified_time=self.last_modified_time,
+            linked_dataset_metadata=self.linked_dataset_metadata,
+            linked_dataset_source=self.linked_dataset_source,
             location=self.location,
             max_time_travel_hours=self.max_time_travel_hours,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             storage_billing_model=self.storage_billing_model,
-            tags=self.tags)
+            tags=self.tags,
+            type=self.type)
 
 
 def get_dataset(dataset_id: Optional[str] = None,
@@ -322,12 +373,16 @@ def get_dataset(dataset_id: Optional[str] = None,
         kind=pulumi.get(__ret__, 'kind'),
         labels=pulumi.get(__ret__, 'labels'),
         last_modified_time=pulumi.get(__ret__, 'last_modified_time'),
+        linked_dataset_metadata=pulumi.get(__ret__, 'linked_dataset_metadata'),
+        linked_dataset_source=pulumi.get(__ret__, 'linked_dataset_source'),
         location=pulumi.get(__ret__, 'location'),
         max_time_travel_hours=pulumi.get(__ret__, 'max_time_travel_hours'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
         storage_billing_model=pulumi.get(__ret__, 'storage_billing_model'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_dataset)

@@ -30,6 +30,7 @@ class RegionHealthCheckArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_health_check: Optional[pulumi.Input['SSLHealthCheckArgs']] = None,
                  tcp_health_check: Optional[pulumi.Input['TCPHealthCheckArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -44,6 +45,7 @@ class RegionHealthCheckArgs:
         :param pulumi.Input['HealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
         :param pulumi.Input['RegionHealthCheckType'] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
@@ -73,6 +75,8 @@ class RegionHealthCheckArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if source_regions is not None:
+            pulumi.set(__self__, "source_regions", source_regions)
         if ssl_health_check is not None:
             pulumi.set(__self__, "ssl_health_check", ssl_health_check)
         if tcp_health_check is not None:
@@ -223,6 +227,18 @@ class RegionHealthCheckArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="sourceRegions")
+    def source_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
+        """
+        return pulumi.get(self, "source_regions")
+
+    @source_regions.setter
+    def source_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_regions", value)
+
+    @property
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> Optional[pulumi.Input['SSLHealthCheckArgs']]:
         return pulumi.get(self, "ssl_health_check")
@@ -295,6 +311,7 @@ class RegionHealthCheck(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -313,6 +330,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']] log_config: Configure logging on this health check.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
         :param pulumi.Input['RegionHealthCheckType'] type: Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
         :param pulumi.Input[int] unhealthy_threshold: A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
@@ -354,6 +372,7 @@ class RegionHealthCheck(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -383,6 +402,7 @@ class RegionHealthCheck(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["source_regions"] = source_regions
             __props__.__dict__["ssl_health_check"] = ssl_health_check
             __props__.__dict__["tcp_health_check"] = tcp_health_check
             __props__.__dict__["timeout_sec"] = timeout_sec
@@ -429,6 +449,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["source_regions"] = None
         __props__.__dict__["ssl_health_check"] = None
         __props__.__dict__["tcp_health_check"] = None
         __props__.__dict__["timeout_sec"] = None
@@ -537,6 +558,14 @@ class RegionHealthCheck(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sourceRegions")
+    def source_regions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
+        """
+        return pulumi.get(self, "source_regions")
 
     @property
     @pulumi.getter(name="sslHealthCheck")

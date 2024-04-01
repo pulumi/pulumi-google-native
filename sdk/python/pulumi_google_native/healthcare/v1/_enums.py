@@ -140,7 +140,7 @@ class FhirStoreComplexDataTypeReferenceParsing(str, Enum):
 
 class FhirStoreVersion(str, Enum):
     """
-    Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
+    Required. Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
     """
     VERSION_UNSPECIFIED = "VERSION_UNSPECIFIED"
     """

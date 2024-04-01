@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTagTemplateResult:
-    def __init__(__self__, display_name=None, fields=None, is_publicly_readable=None, name=None):
+    def __init__(__self__, dataplex_transfer_status=None, display_name=None, fields=None, is_publicly_readable=None, name=None):
+        if dataplex_transfer_status and not isinstance(dataplex_transfer_status, str):
+            raise TypeError("Expected argument 'dataplex_transfer_status' to be a str")
+        pulumi.set(__self__, "dataplex_transfer_status", dataplex_transfer_status)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -31,6 +34,14 @@ class GetTagTemplateResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="dataplexTransferStatus")
+    def dataplex_transfer_status(self) -> str:
+        """
+        Optional. Transfer status of the TagTemplate
+        """
+        return pulumi.get(self, "dataplex_transfer_status")
 
     @property
     @pulumi.getter(name="displayName")
@@ -60,7 +71,7 @@ class GetTagTemplateResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 
@@ -71,6 +82,7 @@ class AwaitableGetTagTemplateResult(GetTagTemplateResult):
         if False:
             yield self
         return GetTagTemplateResult(
+            dataplex_transfer_status=self.dataplex_transfer_status,
             display_name=self.display_name,
             fields=self.fields,
             is_publicly_readable=self.is_publicly_readable,
@@ -92,6 +104,7 @@ def get_tag_template(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datacatalog/v1:getTagTemplate', __args__, opts=opts, typ=GetTagTemplateResult).value
 
     return AwaitableGetTagTemplateResult(
+        dataplex_transfer_status=pulumi.get(__ret__, 'dataplex_transfer_status'),
         display_name=pulumi.get(__ret__, 'display_name'),
         fields=pulumi.get(__ret__, 'fields'),
         is_publicly_readable=pulumi.get(__ret__, 'is_publicly_readable'),

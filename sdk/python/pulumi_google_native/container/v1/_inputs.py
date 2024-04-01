@@ -106,12 +106,15 @@ __all__ = [
     'ResourceManagerTagsArgs',
     'ResourceUsageExportConfigArgs',
     'SandboxConfigArgs',
+    'SecondaryBootDiskUpdateStrategyArgs',
+    'SecondaryBootDiskArgs',
     'SecurityPostureConfigArgs',
     'ServiceExternalIPsConfigArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedNodesArgs',
     'SoleTenantConfigArgs',
     'StandardRolloutPolicyArgs',
+    'StatefulHAConfigArgs',
     'StatusConditionArgs',
     'TimeWindowArgs',
     'UpgradeSettingsArgs',
@@ -320,7 +323,8 @@ class AddonsConfigArgs:
                  horizontal_pod_autoscaling: Optional[pulumi.Input['HorizontalPodAutoscalingArgs']] = None,
                  http_load_balancing: Optional[pulumi.Input['HttpLoadBalancingArgs']] = None,
                  kubernetes_dashboard: Optional[pulumi.Input['KubernetesDashboardArgs']] = None,
-                 network_policy_config: Optional[pulumi.Input['NetworkPolicyConfigArgs']] = None):
+                 network_policy_config: Optional[pulumi.Input['NetworkPolicyConfigArgs']] = None,
+                 stateful_ha_config: Optional[pulumi.Input['StatefulHAConfigArgs']] = None):
         """
         Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
         :param pulumi.Input['CloudRunConfigArgs'] cloud_run_config: Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
@@ -334,6 +338,7 @@ class AddonsConfigArgs:
         :param pulumi.Input['HttpLoadBalancingArgs'] http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param pulumi.Input['KubernetesDashboardArgs'] kubernetes_dashboard: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
         :param pulumi.Input['NetworkPolicyConfigArgs'] network_policy_config: Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
+        :param pulumi.Input['StatefulHAConfigArgs'] stateful_ha_config: Optional. Configuration for the StatefulHA add-on.
         """
         if cloud_run_config is not None:
             pulumi.set(__self__, "cloud_run_config", cloud_run_config)
@@ -357,6 +362,8 @@ class AddonsConfigArgs:
             pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if stateful_ha_config is not None:
+            pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
     @property
     @pulumi.getter(name="cloudRunConfig")
@@ -490,19 +497,35 @@ class AddonsConfigArgs:
     def network_policy_config(self, value: Optional[pulumi.Input['NetworkPolicyConfigArgs']]):
         pulumi.set(self, "network_policy_config", value)
 
+    @property
+    @pulumi.getter(name="statefulHaConfig")
+    def stateful_ha_config(self) -> Optional[pulumi.Input['StatefulHAConfigArgs']]:
+        """
+        Optional. Configuration for the StatefulHA add-on.
+        """
+        return pulumi.get(self, "stateful_ha_config")
+
+    @stateful_ha_config.setter
+    def stateful_ha_config(self, value: Optional[pulumi.Input['StatefulHAConfigArgs']]):
+        pulumi.set(self, "stateful_ha_config", value)
+
 
 @pulumi.input_type
 class AdvancedDatapathObservabilityConfigArgs:
     def __init__(__self__, *,
                  enable_metrics: Optional[pulumi.Input[bool]] = None,
+                 enable_relay: Optional[pulumi.Input[bool]] = None,
                  relay_mode: Optional[pulumi.Input['AdvancedDatapathObservabilityConfigRelayMode']] = None):
         """
         AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
         :param pulumi.Input[bool] enable_metrics: Expose flow metrics on nodes
+        :param pulumi.Input[bool] enable_relay: Enable Relay component
         :param pulumi.Input['AdvancedDatapathObservabilityConfigRelayMode'] relay_mode: Method used to make Relay available
         """
         if enable_metrics is not None:
             pulumi.set(__self__, "enable_metrics", enable_metrics)
+        if enable_relay is not None:
+            pulumi.set(__self__, "enable_relay", enable_relay)
         if relay_mode is not None:
             pulumi.set(__self__, "relay_mode", relay_mode)
 
@@ -517,6 +540,18 @@ class AdvancedDatapathObservabilityConfigArgs:
     @enable_metrics.setter
     def enable_metrics(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_metrics", value)
+
+    @property
+    @pulumi.getter(name="enableRelay")
+    def enable_relay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Relay component
+        """
+        return pulumi.get(self, "enable_relay")
+
+    @enable_relay.setter
+    def enable_relay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_relay", value)
 
     @property
     @pulumi.getter(name="relayMode")
@@ -2729,11 +2764,13 @@ class NetworkConfigArgs:
                  datapath_provider: Optional[pulumi.Input['NetworkConfigDatapathProvider']] = None,
                  default_snat_status: Optional[pulumi.Input['DefaultSnatStatusArgs']] = None,
                  dns_config: Optional[pulumi.Input['DNSConfigArgs']] = None,
+                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_fqdn_network_policy: Optional[pulumi.Input[bool]] = None,
                  enable_intra_node_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_l4ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  gateway_api_config: Optional[pulumi.Input['GatewayAPIConfigArgs']] = None,
+                 in_transit_encryption_config: Optional[pulumi.Input['NetworkConfigInTransitEncryptionConfig']] = None,
                  network_performance_config: Optional[pulumi.Input['ClusterNetworkPerformanceConfigArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess']] = None,
                  service_external_ips_config: Optional[pulumi.Input['ServiceExternalIPsConfigArgs']] = None):
@@ -2742,11 +2779,13 @@ class NetworkConfigArgs:
         :param pulumi.Input['NetworkConfigDatapathProvider'] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param pulumi.Input['DefaultSnatStatusArgs'] default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param pulumi.Input['DNSConfigArgs'] dns_config: DNSConfig contains clusterDNS config for this cluster.
+        :param pulumi.Input[bool] enable_cilium_clusterwide_network_policy: Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
         :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster.
         :param pulumi.Input[bool] enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input['GatewayAPIConfigArgs'] gateway_api_config: GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        :param pulumi.Input['NetworkConfigInTransitEncryptionConfig'] in_transit_encryption_config: Specify the details of in-transit encryption.
         :param pulumi.Input['ClusterNetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
         :param pulumi.Input['NetworkConfigPrivateIpv6GoogleAccess'] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
         :param pulumi.Input['ServiceExternalIPsConfigArgs'] service_external_ips_config: ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -2757,6 +2796,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
+        if enable_cilium_clusterwide_network_policy is not None:
+            pulumi.set(__self__, "enable_cilium_clusterwide_network_policy", enable_cilium_clusterwide_network_policy)
         if enable_fqdn_network_policy is not None:
             pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
         if enable_intra_node_visibility is not None:
@@ -2767,6 +2808,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "enable_multi_networking", enable_multi_networking)
         if gateway_api_config is not None:
             pulumi.set(__self__, "gateway_api_config", gateway_api_config)
+        if in_transit_encryption_config is not None:
+            pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
         if private_ipv6_google_access is not None:
@@ -2809,6 +2852,18 @@ class NetworkConfigArgs:
     @dns_config.setter
     def dns_config(self, value: Optional[pulumi.Input['DNSConfigArgs']]):
         pulumi.set(self, "dns_config", value)
+
+    @property
+    @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
+    def enable_cilium_clusterwide_network_policy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+        """
+        return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
+
+    @enable_cilium_clusterwide_network_policy.setter
+    def enable_cilium_clusterwide_network_policy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_cilium_clusterwide_network_policy", value)
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -2869,6 +2924,18 @@ class NetworkConfigArgs:
     @gateway_api_config.setter
     def gateway_api_config(self, value: Optional[pulumi.Input['GatewayAPIConfigArgs']]):
         pulumi.set(self, "gateway_api_config", value)
+
+    @property
+    @pulumi.getter(name="inTransitEncryptionConfig")
+    def in_transit_encryption_config(self) -> Optional[pulumi.Input['NetworkConfigInTransitEncryptionConfig']]:
+        """
+        Specify the details of in-transit encryption.
+        """
+        return pulumi.get(self, "in_transit_encryption_config")
+
+    @in_transit_encryption_config.setter
+    def in_transit_encryption_config(self, value: Optional[pulumi.Input['NetworkConfigInTransitEncryptionConfig']]):
+        pulumi.set(self, "in_transit_encryption_config", value)
 
     @property
     @pulumi.getter(name="networkPerformanceConfig")
@@ -3124,6 +3191,7 @@ class NodeConfigArgs:
                  confidential_nodes: Optional[pulumi.Input['ConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_storage: Optional[pulumi.Input[bool]] = None,
                  ephemeral_storage_local_ssd_config: Optional[pulumi.Input['EphemeralStorageLocalSsdConfigArgs']] = None,
                  fast_socket: Optional[pulumi.Input['FastSocketArgs']] = None,
                  gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None,
@@ -3145,6 +3213,8 @@ class NodeConfigArgs:
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_manager_tags: Optional[pulumi.Input['ResourceManagerTagsArgs']] = None,
                  sandbox_config: Optional[pulumi.Input['SandboxConfigArgs']] = None,
+                 secondary_boot_disk_update_strategy: Optional[pulumi.Input['SecondaryBootDiskUpdateStrategyArgs']] = None,
+                 secondary_boot_disks: Optional[pulumi.Input[Sequence[pulumi.Input['SecondaryBootDiskArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  sole_tenant_config: Optional[pulumi.Input['SoleTenantConfigArgs']] = None,
@@ -3161,6 +3231,7 @@ class NodeConfigArgs:
         :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input[bool] enable_confidential_storage: Optional. Reserved for future use.
         :param pulumi.Input['EphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
         :param pulumi.Input['FastSocketArgs'] fast_socket: Enable or disable NCCL fast socket for the node pool.
         :param pulumi.Input['GcfsConfigArgs'] gcfs_config: Google Container File System (image streaming) configs.
@@ -3182,6 +3253,8 @@ class NodeConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input['ResourceManagerTagsArgs'] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes.
         :param pulumi.Input['SandboxConfigArgs'] sandbox_config: Sandbox configuration for this node.
+        :param pulumi.Input['SecondaryBootDiskUpdateStrategyArgs'] secondary_boot_disk_update_strategy: Secondary boot disk update strategy.
+        :param pulumi.Input[Sequence[pulumi.Input['SecondaryBootDiskArgs']]] secondary_boot_disks: List of secondary boot disks attached to the nodes.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
         :param pulumi.Input['SoleTenantConfigArgs'] sole_tenant_config: Parameters for node pools to be backed by shared sole tenant node groups.
@@ -3203,6 +3276,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if enable_confidential_storage is not None:
+            pulumi.set(__self__, "enable_confidential_storage", enable_confidential_storage)
         if ephemeral_storage_local_ssd_config is not None:
             pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         if fast_socket is not None:
@@ -3245,6 +3320,10 @@ class NodeConfigArgs:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if sandbox_config is not None:
             pulumi.set(__self__, "sandbox_config", sandbox_config)
+        if secondary_boot_disk_update_strategy is not None:
+            pulumi.set(__self__, "secondary_boot_disk_update_strategy", secondary_boot_disk_update_strategy)
+        if secondary_boot_disks is not None:
+            pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
@@ -3333,6 +3412,18 @@ class NodeConfigArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialStorage")
+    def enable_confidential_storage(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Reserved for future use.
+        """
+        return pulumi.get(self, "enable_confidential_storage")
+
+    @enable_confidential_storage.setter
+    def enable_confidential_storage(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_storage", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
@@ -3585,6 +3676,30 @@ class NodeConfigArgs:
     @sandbox_config.setter
     def sandbox_config(self, value: Optional[pulumi.Input['SandboxConfigArgs']]):
         pulumi.set(self, "sandbox_config", value)
+
+    @property
+    @pulumi.getter(name="secondaryBootDiskUpdateStrategy")
+    def secondary_boot_disk_update_strategy(self) -> Optional[pulumi.Input['SecondaryBootDiskUpdateStrategyArgs']]:
+        """
+        Secondary boot disk update strategy.
+        """
+        return pulumi.get(self, "secondary_boot_disk_update_strategy")
+
+    @secondary_boot_disk_update_strategy.setter
+    def secondary_boot_disk_update_strategy(self, value: Optional[pulumi.Input['SecondaryBootDiskUpdateStrategyArgs']]):
+        pulumi.set(self, "secondary_boot_disk_update_strategy", value)
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecondaryBootDiskArgs']]]]:
+        """
+        List of secondary boot disks attached to the nodes.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
+
+    @secondary_boot_disks.setter
+    def secondary_boot_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecondaryBootDiskArgs']]]]):
+        pulumi.set(self, "secondary_boot_disks", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -5092,6 +5207,55 @@ class SandboxConfigArgs:
 
 
 @pulumi.input_type
+class SecondaryBootDiskUpdateStrategyArgs:
+    def __init__(__self__):
+        """
+        SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+        """
+        pass
+
+
+@pulumi.input_type
+class SecondaryBootDiskArgs:
+    def __init__(__self__, *,
+                 disk_image: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input['SecondaryBootDiskMode']] = None):
+        """
+        SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+        :param pulumi.Input[str] disk_image: Fully-qualified resource ID for an existing disk image.
+        :param pulumi.Input['SecondaryBootDiskMode'] mode: Disk mode (container image cache, etc.)
+        """
+        if disk_image is not None:
+            pulumi.set(__self__, "disk_image", disk_image)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully-qualified resource ID for an existing disk image.
+        """
+        return pulumi.get(self, "disk_image")
+
+    @disk_image.setter
+    def disk_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_image", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['SecondaryBootDiskMode']]:
+        """
+        Disk mode (container image cache, etc.)
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['SecondaryBootDiskMode']]):
+        pulumi.set(self, "mode", value)
+
+
+@pulumi.input_type
 class SecurityPostureConfigArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input['SecurityPostureConfigMode']] = None,
@@ -5297,6 +5461,30 @@ class StandardRolloutPolicyArgs:
     @batch_soak_duration.setter
     def batch_soak_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "batch_soak_duration", value)
+
+
+@pulumi.input_type
+class StatefulHAConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Stateful HA add-on.
+        :param pulumi.Input[bool] enabled: Whether the Stateful HA add-on is enabled for this cluster.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Stateful HA add-on is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

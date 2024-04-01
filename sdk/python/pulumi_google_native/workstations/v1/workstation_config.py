@@ -21,8 +21,11 @@ class WorkstationConfigArgs:
                  workstation_config_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input['ContainerArgs']] = None,
+                 disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input['EphemeralDirectoryArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input['HostArgs']] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
@@ -39,8 +42,11 @@ class WorkstationConfigArgs:
         :param pulumi.Input[str] workstation_config_id: Required. ID to use for the workstation configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
         :param pulumi.Input['ContainerArgs'] container: Optional. Container that runs upon startup for each workstation using this workstation configuration.
+        :param pulumi.Input[bool] disable_tcp_connections: Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
         :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation configuration.
+        :param pulumi.Input[bool] enable_audit_agent: Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
         :param pulumi.Input['CustomerEncryptionKeyArgs'] encryption_key: Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
+        :param pulumi.Input[Sequence[pulumi.Input['EphemeralDirectoryArgs']]] ephemeral_directories: Optional. Ephemeral directories which won't persist across workstation sessions.
         :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input['HostArgs'] host: Optional. Runtime host for the workstation.
         :param pulumi.Input[str] idle_timeout: Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
@@ -57,10 +63,16 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "annotations", annotations)
         if container is not None:
             pulumi.set(__self__, "container", container)
+        if disable_tcp_connections is not None:
+            pulumi.set(__self__, "disable_tcp_connections", disable_tcp_connections)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if enable_audit_agent is not None:
+            pulumi.set(__self__, "enable_audit_agent", enable_audit_agent)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if ephemeral_directories is not None:
+            pulumi.set(__self__, "ephemeral_directories", ephemeral_directories)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if host is not None:
@@ -130,6 +142,18 @@ class WorkstationConfigArgs:
         pulumi.set(self, "container", value)
 
     @property
+    @pulumi.getter(name="disableTcpConnections")
+    def disable_tcp_connections(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+        """
+        return pulumi.get(self, "disable_tcp_connections")
+
+    @disable_tcp_connections.setter
+    def disable_tcp_connections(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_tcp_connections", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -142,6 +166,18 @@ class WorkstationConfigArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @enable_audit_agent.setter
+    def enable_audit_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_audit_agent", value)
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
@@ -152,6 +188,18 @@ class WorkstationConfigArgs:
     @encryption_key.setter
     def encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
         pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="ephemeralDirectories")
+    def ephemeral_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EphemeralDirectoryArgs']]]]:
+        """
+        Optional. Ephemeral directories which won't persist across workstation sessions.
+        """
+        return pulumi.get(self, "ephemeral_directories")
+
+    @ephemeral_directories.setter
+    def ephemeral_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EphemeralDirectoryArgs']]]]):
+        pulumi.set(self, "ephemeral_directories", value)
 
     @property
     @pulumi.getter
@@ -287,8 +335,11 @@ class WorkstationConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['ContainerArgs']]] = None,
+                 disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EphemeralDirectoryArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['HostArgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
@@ -310,8 +361,11 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
         :param pulumi.Input[pulumi.InputType['ContainerArgs']] container: Optional. Container that runs upon startup for each workstation using this workstation configuration.
+        :param pulumi.Input[bool] disable_tcp_connections: Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
         :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation configuration.
+        :param pulumi.Input[bool] enable_audit_agent: Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] encryption_key: Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EphemeralDirectoryArgs']]]] ephemeral_directories: Optional. Ephemeral directories which won't persist across workstation sessions.
         :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['HostArgs']] host: Optional. Runtime host for the workstation.
         :param pulumi.Input[str] idle_timeout: Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
@@ -349,8 +403,11 @@ class WorkstationConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['ContainerArgs']]] = None,
+                 disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EphemeralDirectoryArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['HostArgs']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
@@ -375,8 +432,11 @@ class WorkstationConfig(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["container"] = container
+            __props__.__dict__["disable_tcp_connections"] = disable_tcp_connections
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enable_audit_agent"] = enable_audit_agent
             __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["ephemeral_directories"] = ephemeral_directories
             __props__.__dict__["etag"] = etag
             __props__.__dict__["host"] = host
             __props__.__dict__["idle_timeout"] = idle_timeout
@@ -431,8 +491,11 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["degraded"] = None
         __props__.__dict__["delete_time"] = None
+        __props__.__dict__["disable_tcp_connections"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["enable_audit_agent"] = None
         __props__.__dict__["encryption_key"] = None
+        __props__.__dict__["ephemeral_directories"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["host"] = None
         __props__.__dict__["idle_timeout"] = None
@@ -500,6 +563,14 @@ class WorkstationConfig(pulumi.CustomResource):
         return pulumi.get(self, "delete_time")
 
     @property
+    @pulumi.getter(name="disableTcpConnections")
+    def disable_tcp_connections(self) -> pulumi.Output[bool]:
+        """
+        Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+        """
+        return pulumi.get(self, "disable_tcp_connections")
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
@@ -508,12 +579,28 @@ class WorkstationConfig(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> pulumi.Output[bool]:
+        """
+        Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
         """
         Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
         """
         return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="ephemeralDirectories")
+    def ephemeral_directories(self) -> pulumi.Output[Sequence['outputs.EphemeralDirectoryResponse']]:
+        """
+        Optional. Ephemeral directories which won't persist across workstation sessions.
+        """
+        return pulumi.get(self, "ephemeral_directories")
 
     @property
     @pulumi.getter

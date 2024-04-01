@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, biglake_configuration=None, clone_definition=None, clustering=None, creation_time=None, default_collation=None, default_rounding_mode=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, resource_tags=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_constraints=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, biglake_configuration=None, clone_definition=None, clustering=None, creation_time=None, default_collation=None, default_rounding_mode=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, materialized_view_status=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, partition_definition=None, range_partitioning=None, replicas=None, require_partition_filter=None, resource_tags=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_constraints=None, table_reference=None, table_replication_info=None, time_partitioning=None, type=None, view=None):
         if biglake_configuration and not isinstance(biglake_configuration, dict):
             raise TypeError("Expected argument 'biglake_configuration' to be a dict")
         pulumi.set(__self__, "biglake_configuration", biglake_configuration)
@@ -71,6 +71,9 @@ class GetTableResult:
         if materialized_view and not isinstance(materialized_view, dict):
             raise TypeError("Expected argument 'materialized_view' to be a dict")
         pulumi.set(__self__, "materialized_view", materialized_view)
+        if materialized_view_status and not isinstance(materialized_view_status, dict):
+            raise TypeError("Expected argument 'materialized_view_status' to be a dict")
+        pulumi.set(__self__, "materialized_view_status", materialized_view_status)
         if max_staleness and not isinstance(max_staleness, str):
             raise TypeError("Expected argument 'max_staleness' to be a str")
         pulumi.set(__self__, "max_staleness", max_staleness)
@@ -113,9 +116,15 @@ class GetTableResult:
         if num_total_physical_bytes and not isinstance(num_total_physical_bytes, str):
             raise TypeError("Expected argument 'num_total_physical_bytes' to be a str")
         pulumi.set(__self__, "num_total_physical_bytes", num_total_physical_bytes)
+        if partition_definition and not isinstance(partition_definition, dict):
+            raise TypeError("Expected argument 'partition_definition' to be a dict")
+        pulumi.set(__self__, "partition_definition", partition_definition)
         if range_partitioning and not isinstance(range_partitioning, dict):
             raise TypeError("Expected argument 'range_partitioning' to be a dict")
         pulumi.set(__self__, "range_partitioning", range_partitioning)
+        if replicas and not isinstance(replicas, list):
+            raise TypeError("Expected argument 'replicas' to be a list")
+        pulumi.set(__self__, "replicas", replicas)
         if require_partition_filter and not isinstance(require_partition_filter, bool):
             raise TypeError("Expected argument 'require_partition_filter' to be a bool")
         pulumi.set(__self__, "require_partition_filter", require_partition_filter)
@@ -140,6 +149,9 @@ class GetTableResult:
         if table_reference and not isinstance(table_reference, dict):
             raise TypeError("Expected argument 'table_reference' to be a dict")
         pulumi.set(__self__, "table_reference", table_reference)
+        if table_replication_info and not isinstance(table_replication_info, dict):
+            raise TypeError("Expected argument 'table_replication_info' to be a dict")
+        pulumi.set(__self__, "table_replication_info", table_replication_info)
         if time_partitioning and not isinstance(time_partitioning, dict):
             raise TypeError("Expected argument 'time_partitioning' to be a dict")
         pulumi.set(__self__, "time_partitioning", time_partitioning)
@@ -154,7 +166,7 @@ class GetTableResult:
     @pulumi.getter(name="biglakeConfiguration")
     def biglake_configuration(self) -> 'outputs.BigLakeConfigurationResponse':
         """
-        [Optional] Specifies the configuration of a BigLake managed table.
+        Optional. Specifies the configuration of a BigLake managed table.
         """
         return pulumi.get(self, "biglake_configuration")
 
@@ -162,7 +174,7 @@ class GetTableResult:
     @pulumi.getter(name="cloneDefinition")
     def clone_definition(self) -> 'outputs.CloneDefinitionResponse':
         """
-        Clone definition.
+        Contains information about the clone. This value is set via the clone operation.
         """
         return pulumi.get(self, "clone_definition")
 
@@ -170,7 +182,7 @@ class GetTableResult:
     @pulumi.getter
     def clustering(self) -> 'outputs.ClusteringResponse':
         """
-        [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+        Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         """
         return pulumi.get(self, "clustering")
 
@@ -186,7 +198,7 @@ class GetTableResult:
     @pulumi.getter(name="defaultCollation")
     def default_collation(self) -> str:
         """
-        The default collation of the table.
+        Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
         """
         return pulumi.get(self, "default_collation")
 
@@ -194,7 +206,7 @@ class GetTableResult:
     @pulumi.getter(name="defaultRoundingMode")
     def default_rounding_mode(self) -> str:
         """
-        The default rounding mode of the table.
+        Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
         """
         return pulumi.get(self, "default_rounding_mode")
 
@@ -202,7 +214,7 @@ class GetTableResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        [Optional] A user-friendly description of this table.
+        Optional. A user-friendly description of this table.
         """
         return pulumi.get(self, "description")
 
@@ -218,7 +230,7 @@ class GetTableResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+        A hash of this resource.
         """
         return pulumi.get(self, "etag")
 
@@ -226,7 +238,7 @@ class GetTableResult:
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> str:
         """
-        [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+        Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
         """
         return pulumi.get(self, "expiration_time")
 
@@ -234,7 +246,7 @@ class GetTableResult:
     @pulumi.getter(name="externalDataConfiguration")
     def external_data_configuration(self) -> 'outputs.ExternalDataConfigurationResponse':
         """
-        [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         """
         return pulumi.get(self, "external_data_configuration")
 
@@ -242,7 +254,7 @@ class GetTableResult:
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> str:
         """
-        [Optional] A descriptive name for this table.
+        Optional. A descriptive name for this table.
         """
         return pulumi.get(self, "friendly_name")
 
@@ -250,7 +262,7 @@ class GetTableResult:
     @pulumi.getter
     def kind(self) -> str:
         """
-        The type of the resource.
+        The type of resource ID.
         """
         return pulumi.get(self, "kind")
 
@@ -282,15 +294,23 @@ class GetTableResult:
     @pulumi.getter(name="materializedView")
     def materialized_view(self) -> 'outputs.MaterializedViewDefinitionResponse':
         """
-        [Optional] Materialized view definition.
+        Optional. The materialized view definition.
         """
         return pulumi.get(self, "materialized_view")
+
+    @property
+    @pulumi.getter(name="materializedViewStatus")
+    def materialized_view_status(self) -> 'outputs.MaterializedViewStatusResponse':
+        """
+        The materialized view status.
+        """
+        return pulumi.get(self, "materialized_view_status")
 
     @property
     @pulumi.getter(name="maxStaleness")
     def max_staleness(self) -> str:
         """
-        [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         """
         return pulumi.get(self, "max_staleness")
 
@@ -298,8 +318,11 @@ class GetTableResult:
     @pulumi.getter
     def model(self) -> 'outputs.ModelDefinitionResponse':
         """
-        [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+        Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""model is deprecated: Deprecated.""")
+
         return pulumi.get(self, "model")
 
     @property
@@ -322,7 +345,7 @@ class GetTableResult:
     @pulumi.getter(name="numBytes")
     def num_bytes(self) -> str:
         """
-        The size of this table in bytes, excluding any data in the streaming buffer.
+        The size of this table in logical bytes, excluding any data in the streaming buffer.
         """
         return pulumi.get(self, "num_bytes")
 
@@ -330,7 +353,7 @@ class GetTableResult:
     @pulumi.getter(name="numLongTermBytes")
     def num_long_term_bytes(self) -> str:
         """
-        The number of bytes in the table that are considered "long-term storage".
+        The number of logical bytes in the table that are considered "long-term storage".
         """
         return pulumi.get(self, "num_long_term_bytes")
 
@@ -362,7 +385,7 @@ class GetTableResult:
     @pulumi.getter(name="numPhysicalBytes")
     def num_physical_bytes(self) -> str:
         """
-        [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+        The physical size of this table in bytes. This includes storage used for time travel.
         """
         return pulumi.get(self, "num_physical_bytes")
 
@@ -399,18 +422,34 @@ class GetTableResult:
         return pulumi.get(self, "num_total_physical_bytes")
 
     @property
+    @pulumi.getter(name="partitionDefinition")
+    def partition_definition(self) -> 'outputs.PartitioningDefinitionResponse':
+        """
+        The partition information for all table formats, including managed partitioned tables, hive partitioned tables, and iceberg partitioned tables.
+        """
+        return pulumi.get(self, "partition_definition")
+
+    @property
     @pulumi.getter(name="rangePartitioning")
     def range_partitioning(self) -> 'outputs.RangePartitioningResponse':
         """
-        [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        If specified, configures range partitioning for this table.
         """
         return pulumi.get(self, "range_partitioning")
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Sequence['outputs.TableReferenceResponse']:
+        """
+        Optional. Output only. Table references of all replicas currently active on the table.
+        """
+        return pulumi.get(self, "replicas")
 
     @property
     @pulumi.getter(name="requirePartitionFilter")
     def require_partition_filter(self) -> bool:
         """
-        [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         """
         return pulumi.get(self, "require_partition_filter")
 
@@ -426,7 +465,7 @@ class GetTableResult:
     @pulumi.getter
     def schema(self) -> 'outputs.TableSchemaResponse':
         """
-        [Optional] Describes the schema of this table.
+        Optional. Describes the schema of this table.
         """
         return pulumi.get(self, "schema")
 
@@ -442,7 +481,7 @@ class GetTableResult:
     @pulumi.getter(name="snapshotDefinition")
     def snapshot_definition(self) -> 'outputs.SnapshotDefinitionResponse':
         """
-        Snapshot definition.
+        Contains information about the snapshot. This value is set via snapshot creation.
         """
         return pulumi.get(self, "snapshot_definition")
 
@@ -458,7 +497,7 @@ class GetTableResult:
     @pulumi.getter(name="tableConstraints")
     def table_constraints(self) -> 'outputs.TableConstraintsResponse':
         """
-        [Optional] The table constraints on the table.
+        Optional. Tables Primary Key and Foreign Key information
         """
         return pulumi.get(self, "table_constraints")
 
@@ -466,15 +505,23 @@ class GetTableResult:
     @pulumi.getter(name="tableReference")
     def table_reference(self) -> 'outputs.TableReferenceResponse':
         """
-        [Required] Reference describing the ID of this table.
+        Reference describing the ID of this table.
         """
         return pulumi.get(self, "table_reference")
+
+    @property
+    @pulumi.getter(name="tableReplicationInfo")
+    def table_replication_info(self) -> 'outputs.TableReplicationInfoResponse':
+        """
+        Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+        """
+        return pulumi.get(self, "table_replication_info")
 
     @property
     @pulumi.getter(name="timePartitioning")
     def time_partitioning(self) -> 'outputs.TimePartitioningResponse':
         """
-        Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        If specified, configures time-based partitioning for this table.
         """
         return pulumi.get(self, "time_partitioning")
 
@@ -482,7 +529,7 @@ class GetTableResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+        Describes the table type. The following values are supported: * `TABLE`: A normal BigQuery table. * `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that references data stored in an external storage system, such as Google Cloud Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query. * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a base table at a particular time. See additional information on [table snapshots](/bigquery/docs/table-snapshots-intro). The default value is `TABLE`.
         """
         return pulumi.get(self, "type")
 
@@ -490,7 +537,7 @@ class GetTableResult:
     @pulumi.getter
     def view(self) -> 'outputs.ViewDefinitionResponse':
         """
-        [Optional] The view definition.
+        Optional. The view definition.
         """
         return pulumi.get(self, "view")
 
@@ -518,6 +565,7 @@ class AwaitableGetTableResult(GetTableResult):
             last_modified_time=self.last_modified_time,
             location=self.location,
             materialized_view=self.materialized_view,
+            materialized_view_status=self.materialized_view_status,
             max_staleness=self.max_staleness,
             model=self.model,
             num_active_logical_bytes=self.num_active_logical_bytes,
@@ -532,7 +580,9 @@ class AwaitableGetTableResult(GetTableResult):
             num_time_travel_physical_bytes=self.num_time_travel_physical_bytes,
             num_total_logical_bytes=self.num_total_logical_bytes,
             num_total_physical_bytes=self.num_total_physical_bytes,
+            partition_definition=self.partition_definition,
             range_partitioning=self.range_partitioning,
+            replicas=self.replicas,
             require_partition_filter=self.require_partition_filter,
             resource_tags=self.resource_tags,
             schema=self.schema,
@@ -541,6 +591,7 @@ class AwaitableGetTableResult(GetTableResult):
             streaming_buffer=self.streaming_buffer,
             table_constraints=self.table_constraints,
             table_reference=self.table_reference,
+            table_replication_info=self.table_replication_info,
             time_partitioning=self.time_partitioning,
             type=self.type,
             view=self.view)
@@ -582,6 +633,7 @@ def get_table(dataset_id: Optional[str] = None,
         last_modified_time=pulumi.get(__ret__, 'last_modified_time'),
         location=pulumi.get(__ret__, 'location'),
         materialized_view=pulumi.get(__ret__, 'materialized_view'),
+        materialized_view_status=pulumi.get(__ret__, 'materialized_view_status'),
         max_staleness=pulumi.get(__ret__, 'max_staleness'),
         model=pulumi.get(__ret__, 'model'),
         num_active_logical_bytes=pulumi.get(__ret__, 'num_active_logical_bytes'),
@@ -596,7 +648,9 @@ def get_table(dataset_id: Optional[str] = None,
         num_time_travel_physical_bytes=pulumi.get(__ret__, 'num_time_travel_physical_bytes'),
         num_total_logical_bytes=pulumi.get(__ret__, 'num_total_logical_bytes'),
         num_total_physical_bytes=pulumi.get(__ret__, 'num_total_physical_bytes'),
+        partition_definition=pulumi.get(__ret__, 'partition_definition'),
         range_partitioning=pulumi.get(__ret__, 'range_partitioning'),
+        replicas=pulumi.get(__ret__, 'replicas'),
         require_partition_filter=pulumi.get(__ret__, 'require_partition_filter'),
         resource_tags=pulumi.get(__ret__, 'resource_tags'),
         schema=pulumi.get(__ret__, 'schema'),
@@ -605,6 +659,7 @@ def get_table(dataset_id: Optional[str] = None,
         streaming_buffer=pulumi.get(__ret__, 'streaming_buffer'),
         table_constraints=pulumi.get(__ret__, 'table_constraints'),
         table_reference=pulumi.get(__ret__, 'table_reference'),
+        table_replication_info=pulumi.get(__ret__, 'table_replication_info'),
         time_partitioning=pulumi.get(__ret__, 'time_partitioning'),
         type=pulumi.get(__ret__, 'type'),
         view=pulumi.get(__ret__, 'view'))

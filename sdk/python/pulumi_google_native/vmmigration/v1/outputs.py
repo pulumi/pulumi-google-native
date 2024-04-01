@@ -32,19 +32,27 @@ __all__ = [
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
     'ComputeSchedulingResponse',
+    'CreatingImageStepResponse',
     'CutoverForecastResponse',
     'CutoverJobResponse',
     'CutoverStepResponse',
     'CycleStepResponse',
+    'DataDiskImageImportResponse',
     'DiskImageDefaultsResponse',
+    'DiskImageTargetDetailsResponse',
     'DisksMigrationDisksTargetDefaultsResponse',
     'DisksMigrationDisksTargetDetailsResponse',
     'DisksMigrationVmTargetDefaultsResponse',
     'DisksMigrationVmTargetDetailsResponse',
     'EncryptionResponse',
+    'ImageImportJobResponse',
+    'ImageImportOsAdaptationParametersResponse',
+    'ImageImportStepResponse',
+    'InitializingImageImportStepResponse',
     'InitializingReplicationStepResponse',
     'InstantiatingMigratedVMStepResponse',
     'LinkResponse',
+    'LoadingImageSourceFilesStepResponse',
     'LocalizedMessageResponse',
     'MigrationWarningResponse',
     'NetworkInterfaceResponse',
@@ -1970,6 +1978,18 @@ class ComputeSchedulingResponse(dict):
 
 
 @pulumi.output_type
+class CreatingImageStepResponse(dict):
+    """
+    CreatingImageStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        CreatingImageStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
 class CutoverForecastResponse(dict):
     """
     CutoverForecast holds information about future CutoverJobs of a MigratingVm.
@@ -2376,6 +2396,18 @@ class CycleStepResponse(dict):
 
 
 @pulumi.output_type
+class DataDiskImageImportResponse(dict):
+    """
+    Mentions that the image import is not using OS adaptation process.
+    """
+    def __init__(__self__):
+        """
+        Mentions that the image import is not using OS adaptation process.
+        """
+        pass
+
+
+@pulumi.output_type
 class DiskImageDefaultsResponse(dict):
     """
     Contains details about the image source used to create the disk.
@@ -2412,6 +2444,156 @@ class DiskImageDefaultsResponse(dict):
         The Image resource used when creating the disk.
         """
         return pulumi.get(self, "source_image")
+
+
+@pulumi.output_type
+class DiskImageTargetDetailsResponse(dict):
+    """
+    The target details of the image resource that will be created by the import job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalLicenses":
+            suggest = "additional_licenses"
+        elif key == "dataDiskImageImport":
+            suggest = "data_disk_image_import"
+        elif key == "familyName":
+            suggest = "family_name"
+        elif key == "imageName":
+            suggest = "image_name"
+        elif key == "osAdaptationParameters":
+            suggest = "os_adaptation_parameters"
+        elif key == "singleRegionStorage":
+            suggest = "single_region_storage"
+        elif key == "targetProject":
+            suggest = "target_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskImageTargetDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskImageTargetDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskImageTargetDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_licenses: Sequence[str],
+                 data_disk_image_import: 'outputs.DataDiskImageImportResponse',
+                 description: str,
+                 encryption: 'outputs.EncryptionResponse',
+                 family_name: str,
+                 image_name: str,
+                 labels: Mapping[str, str],
+                 os_adaptation_parameters: 'outputs.ImageImportOsAdaptationParametersResponse',
+                 single_region_storage: bool,
+                 target_project: str):
+        """
+        The target details of the image resource that will be created by the import job.
+        :param Sequence[str] additional_licenses: Optional. Additional licenses to assign to the image.
+        :param 'DataDiskImageImportResponse' data_disk_image_import: Optional. Use to skip OS adaptation process.
+        :param str description: Optional. An optional description of the image.
+        :param 'EncryptionResponse' encryption: Optional. Immutable. The encryption to apply to the image.
+        :param str family_name: Optional. The name of the image family to which the new image belongs.
+        :param str image_name: The name of the image to be created.
+        :param Mapping[str, str] labels: Optional. A map of labels to associate with the image.
+        :param 'ImageImportOsAdaptationParametersResponse' os_adaptation_parameters: Optional. Use to set the parameters relevant for the OS adaptation process.
+        :param bool single_region_storage: Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+        :param str target_project: Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+        """
+        pulumi.set(__self__, "additional_licenses", additional_licenses)
+        pulumi.set(__self__, "data_disk_image_import", data_disk_image_import)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "family_name", family_name)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "os_adaptation_parameters", os_adaptation_parameters)
+        pulumi.set(__self__, "single_region_storage", single_region_storage)
+        pulumi.set(__self__, "target_project", target_project)
+
+    @property
+    @pulumi.getter(name="additionalLicenses")
+    def additional_licenses(self) -> Sequence[str]:
+        """
+        Optional. Additional licenses to assign to the image.
+        """
+        return pulumi.get(self, "additional_licenses")
+
+    @property
+    @pulumi.getter(name="dataDiskImageImport")
+    def data_disk_image_import(self) -> 'outputs.DataDiskImageImportResponse':
+        """
+        Optional. Use to skip OS adaptation process.
+        """
+        return pulumi.get(self, "data_disk_image_import")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. An optional description of the image.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.EncryptionResponse':
+        """
+        Optional. Immutable. The encryption to apply to the image.
+        """
+        return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> str:
+        """
+        Optional. The name of the image family to which the new image belongs.
+        """
+        return pulumi.get(self, "family_name")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        """
+        The name of the image to be created.
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. A map of labels to associate with the image.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="osAdaptationParameters")
+    def os_adaptation_parameters(self) -> 'outputs.ImageImportOsAdaptationParametersResponse':
+        """
+        Optional. Use to set the parameters relevant for the OS adaptation process.
+        """
+        return pulumi.get(self, "os_adaptation_parameters")
+
+    @property
+    @pulumi.getter(name="singleRegionStorage")
+    def single_region_storage(self) -> bool:
+        """
+        Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected.
+        """
+        return pulumi.get(self, "single_region_storage")
+
+    @property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> str:
+        """
+        Reference to the TargetProject resource that represents the target project in which the imported image will be created.
+        """
+        return pulumi.get(self, "target_project")
 
 
 @pulumi.output_type
@@ -2717,6 +2899,316 @@ class EncryptionResponse(dict):
 
 
 @pulumi.output_type
+class ImageImportJobResponse(dict):
+    """
+    ImageImportJob describes the progress and result of an image import.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStorageUri":
+            suggest = "cloud_storage_uri"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "createdResources":
+            suggest = "created_resources"
+        elif key == "diskImageTargetDetails":
+            suggest = "disk_image_target_details"
+        elif key == "endTime":
+            suggest = "end_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImportJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImportJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImportJobResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_storage_uri: str,
+                 create_time: str,
+                 created_resources: Sequence[str],
+                 disk_image_target_details: 'outputs.DiskImageTargetDetailsResponse',
+                 end_time: str,
+                 errors: Sequence['outputs.StatusResponse'],
+                 name: str,
+                 state: str,
+                 steps: Sequence['outputs.ImageImportStepResponse'],
+                 warnings: Sequence['outputs.MigrationWarningResponse']):
+        """
+        ImageImportJob describes the progress and result of an image import.
+        :param str cloud_storage_uri: The path to the Cloud Storage file from which the image should be imported.
+        :param str create_time: The time the image import was created (as an API call, not when it was actually created in the target).
+        :param Sequence[str] created_resources: The resource paths of the resources created by the image import job.
+        :param 'DiskImageTargetDetailsResponse' disk_image_target_details: Target details used to import a disk image.
+        :param str end_time: The time the image import was ended.
+        :param Sequence['StatusResponse'] errors: Provides details on the error that led to the image import state in case of an error.
+        :param str name: The resource path of the ImageImportJob.
+        :param str state: The state of the image import.
+        :param Sequence['ImageImportStepResponse'] steps: The image import steps list representing its progress.
+        :param Sequence['MigrationWarningResponse'] warnings: Warnings that occurred during the image import.
+        """
+        pulumi.set(__self__, "cloud_storage_uri", cloud_storage_uri)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "created_resources", created_resources)
+        pulumi.set(__self__, "disk_image_target_details", disk_image_target_details)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "steps", steps)
+        pulumi.set(__self__, "warnings", warnings)
+
+    @property
+    @pulumi.getter(name="cloudStorageUri")
+    def cloud_storage_uri(self) -> str:
+        """
+        The path to the Cloud Storage file from which the image should be imported.
+        """
+        return pulumi.get(self, "cloud_storage_uri")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time the image import was created (as an API call, not when it was actually created in the target).
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdResources")
+    def created_resources(self) -> Sequence[str]:
+        """
+        The resource paths of the resources created by the image import job.
+        """
+        return pulumi.get(self, "created_resources")
+
+    @property
+    @pulumi.getter(name="diskImageTargetDetails")
+    def disk_image_target_details(self) -> 'outputs.DiskImageTargetDetailsResponse':
+        """
+        Target details used to import a disk image.
+        """
+        return pulumi.get(self, "disk_image_target_details")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the image import was ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.StatusResponse']:
+        """
+        Provides details on the error that led to the image import state in case of an error.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource path of the ImageImportJob.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the image import.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.ImageImportStepResponse']:
+        """
+        The image import steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence['outputs.MigrationWarningResponse']:
+        """
+        Warnings that occurred during the image import.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
+class ImageImportOsAdaptationParametersResponse(dict):
+    """
+    Parameters affecting the OS adaptation process.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "licenseType":
+            suggest = "license_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImportOsAdaptationParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImportOsAdaptationParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImportOsAdaptationParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 generalize: bool,
+                 license_type: str):
+        """
+        Parameters affecting the OS adaptation process.
+        :param bool generalize: Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+        :param str license_type: Optional. Choose which type of license to apply to the imported image.
+        """
+        pulumi.set(__self__, "generalize", generalize)
+        pulumi.set(__self__, "license_type", license_type)
+
+    @property
+    @pulumi.getter
+    def generalize(self) -> bool:
+        """
+        Optional. Set to true in order to generalize the imported image. The generalization process enables co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes computer-specific information such as installed drivers and the computer security identifier (SID).
+        """
+        return pulumi.get(self, "generalize")
+
+    @property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> str:
+        """
+        Optional. Choose which type of license to apply to the imported image.
+        """
+        return pulumi.get(self, "license_type")
+
+
+@pulumi.output_type
+class ImageImportStepResponse(dict):
+    """
+    ImageImportStep holds information about the image import step progress.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adaptingOs":
+            suggest = "adapting_os"
+        elif key == "creatingImage":
+            suggest = "creating_image"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "loadingSourceFiles":
+            suggest = "loading_source_files"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImportStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImportStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImportStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 adapting_os: 'outputs.AdaptingOSStepResponse',
+                 creating_image: 'outputs.CreatingImageStepResponse',
+                 end_time: str,
+                 initializing: 'outputs.InitializingImageImportStepResponse',
+                 loading_source_files: 'outputs.LoadingImageSourceFilesStepResponse',
+                 start_time: str):
+        """
+        ImageImportStep holds information about the image import step progress.
+        :param 'AdaptingOSStepResponse' adapting_os: Adapting OS step.
+        :param 'CreatingImageStepResponse' creating_image: Creating image step.
+        :param str end_time: The time the step has ended.
+        :param 'InitializingImageImportStepResponse' initializing: Initializing step.
+        :param 'LoadingImageSourceFilesStepResponse' loading_source_files: Loading source files step.
+        :param str start_time: The time the step has started.
+        """
+        pulumi.set(__self__, "adapting_os", adapting_os)
+        pulumi.set(__self__, "creating_image", creating_image)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "initializing", initializing)
+        pulumi.set(__self__, "loading_source_files", loading_source_files)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="adaptingOs")
+    def adapting_os(self) -> 'outputs.AdaptingOSStepResponse':
+        """
+        Adapting OS step.
+        """
+        return pulumi.get(self, "adapting_os")
+
+    @property
+    @pulumi.getter(name="creatingImage")
+    def creating_image(self) -> 'outputs.CreatingImageStepResponse':
+        """
+        Creating image step.
+        """
+        return pulumi.get(self, "creating_image")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the step has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def initializing(self) -> 'outputs.InitializingImageImportStepResponse':
+        """
+        Initializing step.
+        """
+        return pulumi.get(self, "initializing")
+
+    @property
+    @pulumi.getter(name="loadingSourceFiles")
+    def loading_source_files(self) -> 'outputs.LoadingImageSourceFilesStepResponse':
+        """
+        Loading source files step.
+        """
+        return pulumi.get(self, "loading_source_files")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the step has started.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class InitializingImageImportStepResponse(dict):
+    """
+    InitializingImageImportStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        InitializingImageImportStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
 class InitializingReplicationStepResponse(dict):
     """
     InitializingReplicationStep contains specific step details.
@@ -2771,6 +3263,18 @@ class LinkResponse(dict):
         The URL of the link.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class LoadingImageSourceFilesStepResponse(dict):
+    """
+    LoadingImageSourceFilesStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        LoadingImageSourceFilesStep contains specific step details.
+        """
+        pass
 
 
 @pulumi.output_type

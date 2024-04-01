@@ -21,6 +21,7 @@ class RepositoryArgs:
                  git_remote_settings: Optional[pulumi.Input['GitRemoteSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class RepositoryArgs:
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input['GitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
+        :param pulumi.Input[str] name: Identifier. The repository's name.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
         :param pulumi.Input[bool] set_authenticated_user_admin: Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
@@ -46,6 +48,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if npmrc_environment_variables_secret_version is not None:
             pulumi.set(__self__, "npmrc_environment_variables_secret_version", npmrc_environment_variables_secret_version)
         if project is not None:
@@ -115,6 +119,18 @@ class RepositoryArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier. The repository's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="npmrcEnvironmentVariablesSecretVersion")
     def npmrc_environment_variables_secret_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -181,6 +197,7 @@ class Repository(pulumi.CustomResource):
                  git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -190,13 +207,13 @@ class Repository(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new Repository in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
+        :param pulumi.Input[str] name: Identifier. The repository's name.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
         :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
@@ -211,7 +228,6 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Repository in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.
@@ -232,6 +248,7 @@ class Repository(pulumi.CustomResource):
                  git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -251,6 +268,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["git_remote_settings"] = git_remote_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             __props__.__dict__["npmrc_environment_variables_secret_version"] = npmrc_environment_variables_secret_version
             __props__.__dict__["project"] = project
             if repository_id is None and not opts.urn:
@@ -259,7 +277,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["set_authenticated_user_admin"] = set_authenticated_user_admin
             __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
-            __props__.__dict__["name"] = None
+            __props__.__dict__["create_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Repository, __self__).__init__(
@@ -284,6 +302,7 @@ class Repository(pulumi.CustomResource):
 
         __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["git_remote_settings"] = None
         __props__.__dict__["labels"] = None
@@ -296,6 +315,14 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["set_authenticated_user_admin"] = None
         __props__.__dict__["workspace_compilation_overrides"] = None
         return Repository(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp of when the repository was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="displayName")
@@ -330,7 +357,7 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The repository's name.
+        Identifier. The repository's name.
         """
         return pulumi.get(self, "name")
 

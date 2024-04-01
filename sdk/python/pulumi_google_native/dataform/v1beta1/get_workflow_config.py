@@ -59,7 +59,7 @@ class GetWorkflowConfigResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The workflow config's name.
+        Identifier. The workflow config's name.
         """
         return pulumi.get(self, "name")
 

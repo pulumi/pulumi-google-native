@@ -35,7 +35,7 @@ class AuditLogConfigLogType(str, Enum):
 
 class ManagementServerType(str, Enum):
     """
-    Required. The type of the ManagementServer resource.
+    Optional. The type of the ManagementServer resource.
     """
     INSTANCE_TYPE_UNSPECIFIED = "INSTANCE_TYPE_UNSPECIFIED"
     """

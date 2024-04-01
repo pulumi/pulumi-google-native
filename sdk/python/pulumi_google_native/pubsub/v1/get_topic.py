@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTopicResult:
-    def __init__(__self__, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policy=None, name=None, satisfies_pzs=None, schema_settings=None):
+    def __init__(__self__, ingestion_data_source_settings=None, kms_key_name=None, labels=None, message_retention_duration=None, message_storage_policy=None, name=None, satisfies_pzs=None, schema_settings=None, state=None):
+        if ingestion_data_source_settings and not isinstance(ingestion_data_source_settings, dict):
+            raise TypeError("Expected argument 'ingestion_data_source_settings' to be a dict")
+        pulumi.set(__self__, "ingestion_data_source_settings", ingestion_data_source_settings)
         if kms_key_name and not isinstance(kms_key_name, str):
             raise TypeError("Expected argument 'kms_key_name' to be a str")
         pulumi.set(__self__, "kms_key_name", kms_key_name)
@@ -41,6 +44,17 @@ class GetTopicResult:
         if schema_settings and not isinstance(schema_settings, dict):
             raise TypeError("Expected argument 'schema_settings' to be a dict")
         pulumi.set(__self__, "schema_settings", schema_settings)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="ingestionDataSourceSettings")
+    def ingestion_data_source_settings(self) -> 'outputs.IngestionDataSourceSettingsResponse':
+        """
+        Optional. Settings for ingestion from a data source into this topic.
+        """
+        return pulumi.get(self, "ingestion_data_source_settings")
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -98,6 +112,14 @@ class GetTopicResult:
         """
         return pulumi.get(self, "schema_settings")
 
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        An output-only field indicating the state of the topic.
+        """
+        return pulumi.get(self, "state")
+
 
 class AwaitableGetTopicResult(GetTopicResult):
     # pylint: disable=using-constant-test
@@ -105,13 +127,15 @@ class AwaitableGetTopicResult(GetTopicResult):
         if False:
             yield self
         return GetTopicResult(
+            ingestion_data_source_settings=self.ingestion_data_source_settings,
             kms_key_name=self.kms_key_name,
             labels=self.labels,
             message_retention_duration=self.message_retention_duration,
             message_storage_policy=self.message_storage_policy,
             name=self.name,
             satisfies_pzs=self.satisfies_pzs,
-            schema_settings=self.schema_settings)
+            schema_settings=self.schema_settings,
+            state=self.state)
 
 
 def get_topic(project: Optional[str] = None,
@@ -127,13 +151,15 @@ def get_topic(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1:getTopic', __args__, opts=opts, typ=GetTopicResult).value
 
     return AwaitableGetTopicResult(
+        ingestion_data_source_settings=pulumi.get(__ret__, 'ingestion_data_source_settings'),
         kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         labels=pulumi.get(__ret__, 'labels'),
         message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),
         message_storage_policy=pulumi.get(__ret__, 'message_storage_policy'),
         name=pulumi.get(__ret__, 'name'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
-        schema_settings=pulumi.get(__ret__, 'schema_settings'))
+        schema_settings=pulumi.get(__ret__, 'schema_settings'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_topic)

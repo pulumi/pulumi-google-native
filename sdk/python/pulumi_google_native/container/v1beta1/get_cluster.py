@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, cost_management_config=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, enterprise_config=None, etag=None, expire_time=None, fleet=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, parent_product_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, protect_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, security_posture_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, cost_management_config=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_k8s_beta_apis=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, enterprise_config=None, etag=None, expire_time=None, fleet=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, parent_product_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, protect_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, secret_manager_config=None, security_posture_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -206,6 +206,9 @@ class GetClusterResult:
         if resource_usage_export_config and not isinstance(resource_usage_export_config, dict):
             raise TypeError("Expected argument 'resource_usage_export_config' to be a dict")
         pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if secret_manager_config and not isinstance(secret_manager_config, dict):
+            raise TypeError("Expected argument 'secret_manager_config' to be a dict")
+        pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if security_posture_config and not isinstance(security_posture_config, dict):
             raise TypeError("Expected argument 'security_posture_config' to be a dict")
         pulumi.set(__self__, "security_posture_config", security_posture_config)
@@ -770,6 +773,14 @@ class GetClusterResult:
         return pulumi.get(self, "resource_usage_export_config")
 
     @property
+    @pulumi.getter(name="secretManagerConfig")
+    def secret_manager_config(self) -> 'outputs.SecretManagerConfigResponse':
+        """
+        Secret CSI driver configuration.
+        """
+        return pulumi.get(self, "secret_manager_config")
+
+    @property
     @pulumi.getter(name="securityPostureConfig")
     def security_posture_config(self) -> 'outputs.SecurityPostureConfigResponse':
         """
@@ -956,6 +967,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             release_channel=self.release_channel,
             resource_labels=self.resource_labels,
             resource_usage_export_config=self.resource_usage_export_config,
+            secret_manager_config=self.secret_manager_config,
             security_posture_config=self.security_posture_config,
             self_link=self.self_link,
             services_ipv4_cidr=self.services_ipv4_cidr,
@@ -1053,6 +1065,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         release_channel=pulumi.get(__ret__, 'release_channel'),
         resource_labels=pulumi.get(__ret__, 'resource_labels'),
         resource_usage_export_config=pulumi.get(__ret__, 'resource_usage_export_config'),
+        secret_manager_config=pulumi.get(__ret__, 'secret_manager_config'),
         security_posture_config=pulumi.get(__ret__, 'security_posture_config'),
         self_link=pulumi.get(__ret__, 'self_link'),
         services_ipv4_cidr=pulumi.get(__ret__, 'services_ipv4_cidr'),

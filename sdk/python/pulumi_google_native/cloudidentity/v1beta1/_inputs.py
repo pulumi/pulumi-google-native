@@ -31,7 +31,7 @@ class DynamicGroupMetadataArgs:
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]] = None):
         """
         Dynamic group metadata like queries and status.
-        :param pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        :param pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         """
         if queries is not None:
             pulumi.set(__self__, "queries", queries)
@@ -40,7 +40,7 @@ class DynamicGroupMetadataArgs:
     @pulumi.getter
     def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]]:
         """
-        Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         """
         return pulumi.get(self, "queries")
 

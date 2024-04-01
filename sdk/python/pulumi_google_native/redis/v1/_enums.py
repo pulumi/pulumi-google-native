@@ -5,7 +5,10 @@
 from enum import Enum
 
 __all__ = [
+    'AOFConfigAppendFsync',
     'ClusterAuthorizationMode',
+    'ClusterNodeType',
+    'ClusterPersistenceConfigMode',
     'ClusterTransitEncryptionMode',
     'InstanceConnectMode',
     'InstanceReadReplicasMode',
@@ -14,8 +17,31 @@ __all__ = [
     'InstanceTransitEncryptionMode',
     'PersistenceConfigPersistenceMode',
     'PersistenceConfigRdbSnapshotPeriod',
+    'RDBConfigRdbSnapshotPeriod',
     'WeeklyMaintenanceWindowDay',
 ]
+
+
+class AOFConfigAppendFsync(str, Enum):
+    """
+    Optional. fsync configuration.
+    """
+    APPEND_FSYNC_UNSPECIFIED = "APPEND_FSYNC_UNSPECIFIED"
+    """
+    Not set. Default: EVERYSEC
+    """
+    NO = "NO"
+    """
+    Never fsync. Normally Linux will flush data every 30 seconds with this configuration, but it's up to the kernel's exact tuning.
+    """
+    EVERYSEC = "EVERYSEC"
+    """
+    fsync every second. Fast enough, and you may lose 1 second of data if there is a disaster
+    """
+    ALWAYS = "ALWAYS"
+    """
+    fsync every time new commands are appended to the AOF. It has the best data loss protection at the cost of performance
+    """
 
 
 class ClusterAuthorizationMode(str, Enum):
@@ -33,6 +59,51 @@ class ClusterAuthorizationMode(str, Enum):
     AUTH_MODE_DISABLED = "AUTH_MODE_DISABLED"
     """
     Authorization disabled mode
+    """
+
+
+class ClusterNodeType(str, Enum):
+    """
+    Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+    """
+    NODE_TYPE_UNSPECIFIED = "NODE_TYPE_UNSPECIFIED"
+    REDIS_SHARED_CORE_NANO = "REDIS_SHARED_CORE_NANO"
+    """
+    Redis shared core nano node_type.
+    """
+    REDIS_HIGHMEM_MEDIUM = "REDIS_HIGHMEM_MEDIUM"
+    """
+    Redis highmem medium node_type.
+    """
+    REDIS_HIGHMEM_XLARGE = "REDIS_HIGHMEM_XLARGE"
+    """
+    Redis highmem xlarge node_type.
+    """
+    REDIS_STANDARD_SMALL = "REDIS_STANDARD_SMALL"
+    """
+    Redis standard small node_type.
+    """
+
+
+class ClusterPersistenceConfigMode(str, Enum):
+    """
+    Optional. The mode of persistence.
+    """
+    PERSISTENCE_MODE_UNSPECIFIED = "PERSISTENCE_MODE_UNSPECIFIED"
+    """
+    Not set.
+    """
+    DISABLED = "DISABLED"
+    """
+    Persistence is disabled, and any snapshot data is deleted.
+    """
+    RDB = "RDB"
+    """
+    RDB based persistence is enabled.
+    """
+    AOF = "AOF"
+    """
+    AOF based persistence is enabled.
     """
 
 
@@ -178,6 +249,32 @@ class PersistenceConfigRdbSnapshotPeriod(str, Enum):
     TWENTY_FOUR_HOURS = "TWENTY_FOUR_HOURS"
     """
     Snapshot every 24 hours.
+    """
+
+
+class RDBConfigRdbSnapshotPeriod(str, Enum):
+    """
+    Optional. Period between RDB snapshots.
+    """
+    SNAPSHOT_PERIOD_UNSPECIFIED = "SNAPSHOT_PERIOD_UNSPECIFIED"
+    """
+    Not set.
+    """
+    ONE_HOUR = "ONE_HOUR"
+    """
+    One hour.
+    """
+    SIX_HOURS = "SIX_HOURS"
+    """
+    Six hours.
+    """
+    TWELVE_HOURS = "TWELVE_HOURS"
+    """
+    Twelve hours.
+    """
+    TWENTY_FOUR_HOURS = "TWENTY_FOUR_HOURS"
+    """
+    Twenty four hours.
     """
 
 

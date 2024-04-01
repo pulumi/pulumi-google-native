@@ -19,12 +19,14 @@ class FolderPolicyArgs:
                  folder_id: pulumi.Input[str],
                  alternate: Optional[pulumi.Input['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']] = None,
                  dry_run_spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None):
         """
         The set of arguments for constructing a FolderPolicy resource.
         :param pulumi.Input['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs'] alternate: Deprecated.
         :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param pulumi.Input[str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
@@ -36,6 +38,8 @@ class FolderPolicyArgs:
             pulumi.set(__self__, "alternate", alternate)
         if dry_run_spec is not None:
             pulumi.set(__self__, "dry_run_spec", dry_run_spec)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if spec is not None:
@@ -79,6 +83,18 @@ class FolderPolicyArgs:
 
     @property
     @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
@@ -109,6 +125,7 @@ class FolderPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]] = None,
                  dry_run_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
@@ -121,6 +138,7 @@ class FolderPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']] alternate: Deprecated.
         :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param pulumi.Input[str] etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']] spec: Basic information about the Organization Policy.
         """
@@ -151,6 +169,7 @@ class FolderPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]] = None,
                  dry_run_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
@@ -165,6 +184,7 @@ class FolderPolicy(pulumi.CustomResource):
 
             __props__.__dict__["alternate"] = alternate
             __props__.__dict__["dry_run_spec"] = dry_run_spec
+            __props__.__dict__["etag"] = etag
             if folder_id is None and not opts.urn:
                 raise TypeError("Missing required property 'folder_id'")
             __props__.__dict__["folder_id"] = folder_id
@@ -196,6 +216,7 @@ class FolderPolicy(pulumi.CustomResource):
 
         __props__.__dict__["alternate"] = None
         __props__.__dict__["dry_run_spec"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["folder_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["spec"] = None
@@ -219,6 +240,14 @@ class FolderPolicy(pulumi.CustomResource):
         Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         """
         return pulumi.get(self, "dry_run_spec")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="folderId")

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkResult:
-    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, ipv4_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, region=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
+    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, ipv4_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, network_placement=None, peerings=None, region=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if auto_create_subnetworks and not isinstance(auto_create_subnetworks, bool):
             raise TypeError("Expected argument 'auto_create_subnetworks' to be a bool")
         pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
@@ -56,6 +56,9 @@ class GetNetworkResult:
         if network_firewall_policy_enforcement_order and not isinstance(network_firewall_policy_enforcement_order, str):
             raise TypeError("Expected argument 'network_firewall_policy_enforcement_order' to be a str")
         pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
+        if network_placement and not isinstance(network_placement, str):
+            raise TypeError("Expected argument 'network_placement' to be a str")
+        pulumi.set(__self__, "network_placement", network_placement)
         if peerings and not isinstance(peerings, list):
             raise TypeError("Expected argument 'peerings' to be a list")
         pulumi.set(__self__, "peerings", peerings)
@@ -175,6 +178,14 @@ class GetNetworkResult:
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
     @property
+    @pulumi.getter(name="networkPlacement")
+    def network_placement(self) -> str:
+        """
+        A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+        """
+        return pulumi.get(self, "network_placement")
+
+    @property
     @pulumi.getter
     def peerings(self) -> Sequence['outputs.NetworkPeeringResponse']:
         """
@@ -241,6 +252,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             mtu=self.mtu,
             name=self.name,
             network_firewall_policy_enforcement_order=self.network_firewall_policy_enforcement_order,
+            network_placement=self.network_placement,
             peerings=self.peerings,
             region=self.region,
             routing_config=self.routing_config,
@@ -274,6 +286,7 @@ def get_network(network: Optional[str] = None,
         mtu=pulumi.get(__ret__, 'mtu'),
         name=pulumi.get(__ret__, 'name'),
         network_firewall_policy_enforcement_order=pulumi.get(__ret__, 'network_firewall_policy_enforcement_order'),
+        network_placement=pulumi.get(__ret__, 'network_placement'),
         peerings=pulumi.get(__ret__, 'peerings'),
         region=pulumi.get(__ret__, 'region'),
         routing_config=pulumi.get(__ret__, 'routing_config'),

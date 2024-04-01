@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetDatabaseResult',
@@ -18,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, app_engine_integration_mode=None, concurrency_mode=None, create_time=None, delete_protection_state=None, earliest_version_time=None, etag=None, key_prefix=None, location=None, name=None, point_in_time_recovery_enablement=None, type=None, uid=None, update_time=None, version_retention_period=None):
+    def __init__(__self__, app_engine_integration_mode=None, cmek_config=None, concurrency_mode=None, create_time=None, delete_protection_state=None, earliest_version_time=None, etag=None, key_prefix=None, location=None, name=None, point_in_time_recovery_enablement=None, type=None, uid=None, update_time=None, version_retention_period=None):
         if app_engine_integration_mode and not isinstance(app_engine_integration_mode, str):
             raise TypeError("Expected argument 'app_engine_integration_mode' to be a str")
         pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
+        if cmek_config and not isinstance(cmek_config, dict):
+            raise TypeError("Expected argument 'cmek_config' to be a dict")
+        pulumi.set(__self__, "cmek_config", cmek_config)
         if concurrency_mode and not isinstance(concurrency_mode, str):
             raise TypeError("Expected argument 'concurrency_mode' to be a str")
         pulumi.set(__self__, "concurrency_mode", concurrency_mode)
@@ -69,6 +73,14 @@ class GetDatabaseResult:
         The App Engine integration mode to use for this database.
         """
         return pulumi.get(self, "app_engine_integration_mode")
+
+    @property
+    @pulumi.getter(name="cmekConfig")
+    def cmek_config(self) -> 'outputs.GoogleFirestoreAdminV1CmekConfigResponse':
+        """
+        Optional. Presence indicates CMEK is enabled for this database.
+        """
+        return pulumi.get(self, "cmek_config")
 
     @property
     @pulumi.getter(name="concurrencyMode")
@@ -182,6 +194,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             yield self
         return GetDatabaseResult(
             app_engine_integration_mode=self.app_engine_integration_mode,
+            cmek_config=self.cmek_config,
             concurrency_mode=self.concurrency_mode,
             create_time=self.create_time,
             delete_protection_state=self.delete_protection_state,
@@ -211,6 +224,7 @@ def get_database(database_id: Optional[str] = None,
 
     return AwaitableGetDatabaseResult(
         app_engine_integration_mode=pulumi.get(__ret__, 'app_engine_integration_mode'),
+        cmek_config=pulumi.get(__ret__, 'cmek_config'),
         concurrency_mode=pulumi.get(__ret__, 'concurrency_mode'),
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_protection_state=pulumi.get(__ret__, 'delete_protection_state'),

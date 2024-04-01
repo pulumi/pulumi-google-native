@@ -103,7 +103,7 @@ class GetReservationResult:
     @pulumi.getter(name="deleteAfterDuration")
     def delete_after_duration(self) -> 'outputs.DurationResponse':
         """
-        Duration time relative to reservation creation when GCE will automatically delete this resource.
+        Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
         """
         return pulumi.get(self, "delete_after_duration")
 
@@ -111,7 +111,7 @@ class GetReservationResult:
     @pulumi.getter(name="deleteAtTime")
     def delete_at_time(self) -> str:
         """
-        Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         """
         return pulumi.get(self, "delete_at_time")
 

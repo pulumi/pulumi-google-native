@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, enable_confidential_compute=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzi=None, satisfies_pzs=None, self_link=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_pool=None, type=None, users=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -38,6 +38,9 @@ class GetRegionDiskResult:
         if disk_encryption_key and not isinstance(disk_encryption_key, dict):
             raise TypeError("Expected argument 'disk_encryption_key' to be a dict")
         pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if enable_confidential_compute and not isinstance(enable_confidential_compute, bool):
+            raise TypeError("Expected argument 'enable_confidential_compute' to be a bool")
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
@@ -95,6 +98,9 @@ class GetRegionDiskResult:
         if resource_status and not isinstance(resource_status, dict):
             raise TypeError("Expected argument 'resource_status' to be a dict")
         pulumi.set(__self__, "resource_status", resource_status)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -125,6 +131,12 @@ class GetRegionDiskResult:
         if source_image_id and not isinstance(source_image_id, str):
             raise TypeError("Expected argument 'source_image_id' to be a str")
         pulumi.set(__self__, "source_image_id", source_image_id)
+        if source_instant_snapshot and not isinstance(source_instant_snapshot, str):
+            raise TypeError("Expected argument 'source_instant_snapshot' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
+        if source_instant_snapshot_id and not isinstance(source_instant_snapshot_id, str):
+            raise TypeError("Expected argument 'source_instant_snapshot_id' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot_id", source_instant_snapshot_id)
         if source_snapshot and not isinstance(source_snapshot, str):
             raise TypeError("Expected argument 'source_snapshot' to be a str")
         pulumi.set(__self__, "source_snapshot", source_snapshot)
@@ -140,6 +152,9 @@ class GetRegionDiskResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if storage_pool and not isinstance(storage_pool, str):
+            raise TypeError("Expected argument 'storage_pool' to be a str")
+        pulumi.set(__self__, "storage_pool", storage_pool)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -197,6 +212,14 @@ class GetRegionDiskResult:
         Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Whether this disk is using confidential compute mode.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -314,7 +337,7 @@ class GetRegionDiskResult:
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> str:
         """
-        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         """
         return pulumi.get(self, "provisioned_throughput")
 
@@ -349,6 +372,14 @@ class GetRegionDiskResult:
         Status information for the disk resource.
         """
         return pulumi.get(self, "resource_status")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -431,6 +462,22 @@ class GetRegionDiskResult:
         return pulumi.get(self, "source_image_id")
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> str:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> str:
+        """
+        The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @property
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> str:
         """
@@ -471,6 +518,14 @@ class GetRegionDiskResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> str:
+        """
+        The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        """
+        return pulumi.get(self, "storage_pool")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -507,6 +562,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_key=self.disk_encryption_key,
+            enable_confidential_compute=self.enable_confidential_compute,
             guest_os_features=self.guest_os_features,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
@@ -526,6 +582,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             replica_zones=self.replica_zones,
             resource_policies=self.resource_policies,
             resource_status=self.resource_status,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             size_gb=self.size_gb,
@@ -536,11 +593,14 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             source_image=self.source_image,
             source_image_encryption_key=self.source_image_encryption_key,
             source_image_id=self.source_image_id,
+            source_instant_snapshot=self.source_instant_snapshot,
+            source_instant_snapshot_id=self.source_instant_snapshot_id,
             source_snapshot=self.source_snapshot,
             source_snapshot_encryption_key=self.source_snapshot_encryption_key,
             source_snapshot_id=self.source_snapshot_id,
             source_storage_object=self.source_storage_object,
             status=self.status,
+            storage_pool=self.storage_pool,
             type=self.type,
             users=self.users,
             zone=self.zone)
@@ -567,6 +627,7 @@ def get_region_disk(disk: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disk_encryption_key=pulumi.get(__ret__, 'disk_encryption_key'),
+        enable_confidential_compute=pulumi.get(__ret__, 'enable_confidential_compute'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         kind=pulumi.get(__ret__, 'kind'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
@@ -586,6 +647,7 @@ def get_region_disk(disk: Optional[str] = None,
         replica_zones=pulumi.get(__ret__, 'replica_zones'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
         resource_status=pulumi.get(__ret__, 'resource_status'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
         size_gb=pulumi.get(__ret__, 'size_gb'),
@@ -596,11 +658,14 @@ def get_region_disk(disk: Optional[str] = None,
         source_image=pulumi.get(__ret__, 'source_image'),
         source_image_encryption_key=pulumi.get(__ret__, 'source_image_encryption_key'),
         source_image_id=pulumi.get(__ret__, 'source_image_id'),
+        source_instant_snapshot=pulumi.get(__ret__, 'source_instant_snapshot'),
+        source_instant_snapshot_id=pulumi.get(__ret__, 'source_instant_snapshot_id'),
         source_snapshot=pulumi.get(__ret__, 'source_snapshot'),
         source_snapshot_encryption_key=pulumi.get(__ret__, 'source_snapshot_encryption_key'),
         source_snapshot_id=pulumi.get(__ret__, 'source_snapshot_id'),
         source_storage_object=pulumi.get(__ret__, 'source_storage_object'),
         status=pulumi.get(__ret__, 'status'),
+        storage_pool=pulumi.get(__ret__, 'storage_pool'),
         type=pulumi.get(__ret__, 'type'),
         users=pulumi.get(__ret__, 'users'),
         zone=pulumi.get(__ret__, 'zone'))

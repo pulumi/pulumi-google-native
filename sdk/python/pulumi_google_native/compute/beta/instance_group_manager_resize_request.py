@@ -27,7 +27,7 @@ class InstanceGroupManagerResizeRequestArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceGroupManagerResizeRequest resource.
-        :param pulumi.Input[int] count: The count of instances to create as part of this resize request.
+        :param pulumi.Input[int] count: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -35,6 +35,9 @@ class InstanceGroupManagerResizeRequestArgs:
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         """
         pulumi.set(__self__, "instance_group_manager", instance_group_manager)
+        if count is not None:
+            warnings.warn("""This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""", DeprecationWarning)
+            pulumi.log.warn("""count is deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""")
         if count is not None:
             pulumi.set(__self__, "count", count)
         if description is not None:
@@ -65,8 +68,11 @@ class InstanceGroupManagerResizeRequestArgs:
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
         """
-        The count of instances to create as part of this resize request.
+        This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         """
+        warnings.warn("""This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""", DeprecationWarning)
+        pulumi.log.warn("""count is deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""")
+
         return pulumi.get(self, "count")
 
     @count.setter
@@ -172,7 +178,7 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] count: The count of instances to create as part of this resize request.
+        :param pulumi.Input[int] count: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -283,8 +289,11 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
     @pulumi.getter
     def count(self) -> pulumi.Output[int]:
         """
-        The count of instances to create as part of this resize request.
+        This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         """
+        warnings.warn("""This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""", DeprecationWarning)
+        pulumi.log.warn("""count is deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.""")
+
         return pulumi.get(self, "count")
 
     @property

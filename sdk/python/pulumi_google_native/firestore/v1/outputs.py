@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'GoogleFirestoreAdminV1CmekConfigResponse',
     'GoogleFirestoreAdminV1DailyRecurrenceResponse',
     'GoogleFirestoreAdminV1FlatIndexResponse',
     'GoogleFirestoreAdminV1IndexFieldResponse',
@@ -20,13 +21,65 @@ __all__ = [
 ]
 
 @pulumi.output_type
+class GoogleFirestoreAdminV1CmekConfigResponse(dict):
+    """
+    The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeKeyVersion":
+            suggest = "active_key_version"
+        elif key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleFirestoreAdminV1CmekConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleFirestoreAdminV1CmekConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleFirestoreAdminV1CmekConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_key_version: Sequence[str],
+                 kms_key_name: str):
+        """
+        The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+        :param Sequence[str] active_key_version: Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+        :param str kms_key_name: Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "active_key_version", active_key_version)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="activeKeyVersion")
+    def active_key_version(self) -> Sequence[str]:
+        """
+        Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+        """
+        return pulumi.get(self, "active_key_version")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
 class GoogleFirestoreAdminV1DailyRecurrenceResponse(dict):
     """
-    Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+    Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
     """
     def __init__(__self__):
         """
-        Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+        Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
         """
         pass
 

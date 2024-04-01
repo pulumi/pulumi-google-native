@@ -40,7 +40,7 @@ class GetLinkResult:
     @pulumi.getter(name="bigqueryDataset")
     def bigquery_dataset(self) -> 'outputs.BigQueryDatasetResponse':
         """
-        The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+        Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
         """
         return pulumi.get(self, "bigquery_dataset")
 
@@ -56,7 +56,7 @@ class GetLinkResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Describes this link.The maximum length of the description is 8000 characters.
+        Optional. Describes this link.The maximum length of the description is 8000 characters.
         """
         return pulumi.get(self, "description")
 

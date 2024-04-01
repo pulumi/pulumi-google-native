@@ -19,26 +19,25 @@ class ManagementServerArgs:
     def __init__(__self__, *,
                  management_server_id: pulumi.Input[str],
                  networks: pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]],
-                 type: pulumi.Input['ManagementServerType'],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['ManagementServerType']] = None):
         """
         The set of arguments for constructing a ManagementServer resource.
         :param pulumi.Input[str] management_server_id: Required. The name of the management server to create. The name must be unique for the specified project and location.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
-        :param pulumi.Input['ManagementServerType'] type: The type of the ManagementServer resource.
         :param pulumi.Input[str] description: Optional. The description of the ManagementServer instance (2048 characters or less).
         :param pulumi.Input[str] etag: Optional. Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata. Labels currently defined: 1. migrate_from_go= If set to true, the MS is created in migration ready mode.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input['ManagementServerType'] type: Optional. The type of the ManagementServer resource.
         """
         pulumi.set(__self__, "management_server_id", management_server_id)
         pulumi.set(__self__, "networks", networks)
-        pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -51,6 +50,8 @@ class ManagementServerArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="managementServerId")
@@ -75,18 +76,6 @@ class ManagementServerArgs:
     @networks.setter
     def networks(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]):
         pulumi.set(self, "networks", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input['ManagementServerType']:
-        """
-        The type of the ManagementServer resource.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input['ManagementServerType']):
-        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -154,6 +143,18 @@ class ManagementServerArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['ManagementServerType']]:
+        """
+        Optional. The type of the ManagementServer resource.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['ManagementServerType']]):
+        pulumi.set(self, "type", value)
+
 
 class ManagementServer(pulumi.CustomResource):
     @overload
@@ -182,7 +183,7 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.Input[str] management_server_id: Required. The name of the management server to create. The name must be unique for the specified project and location.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input['ManagementServerType'] type: The type of the ManagementServer resource.
+        :param pulumi.Input['ManagementServerType'] type: Optional. The type of the ManagementServer resource.
         """
         ...
     @overload
@@ -239,8 +240,6 @@ class ManagementServer(pulumi.CustomResource):
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            if type is None and not opts.urn:
-                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["management_uri"] = None
@@ -350,7 +349,7 @@ class ManagementServer(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name.
+        Identifier. The resource name.
         """
         return pulumi.get(self, "name")
 
@@ -395,7 +394,7 @@ class ManagementServer(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of the ManagementServer resource.
+        Optional. The type of the ManagementServer resource.
         """
         return pulumi.get(self, "type")
 

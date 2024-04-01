@@ -26,9 +26,11 @@ class ClusterArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 gemini_config: Optional[pulumi.Input['GeminiClusterConfigArgs']] = None,
                  initial_user: Optional[pulumi.Input['UserPasswordArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input['MaintenanceUpdatePolicyArgs']] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input['PscConfigArgs']] = None,
@@ -38,7 +40,7 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: Required. ID of the requesting object.
-        :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
         :param pulumi.Input['AutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. If no policy is provided then the default policy will be used. If backups are supported for the cluster, the default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days. For more information on the defaults, consult the documentation for the message type.
         :param pulumi.Input['ContinuousBackupConfigArgs'] continuous_backup_config: Optional. Continuous backup configuration for this cluster.
@@ -46,8 +48,10 @@ class ClusterArgs:
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input['GeminiClusterConfigArgs'] gemini_config: Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
         :param pulumi.Input['UserPasswordArgs'] initial_user: Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
+        :param pulumi.Input['MaintenanceUpdatePolicyArgs'] maintenance_update_policy: Optional. The maintenance update policy determines when to allow or deny updates.
         :param pulumi.Input['PscConfigArgs'] psc_config: Optional. The configuration for Private Service Connect (PSC) for the cluster.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['SecondaryConfigArgs'] secondary_config: Cross Region replication config specific to SECONDARY cluster.
@@ -55,8 +59,8 @@ class ClusterArgs:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if network is not None:
-            warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
-            pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""")
+            warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
+            pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""")
         pulumi.set(__self__, "network", network)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -72,12 +76,16 @@ class ClusterArgs:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if gemini_config is not None:
+            pulumi.set(__self__, "gemini_config", gemini_config)
         if initial_user is not None:
             pulumi.set(__self__, "initial_user", initial_user)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_update_policy is not None:
+            pulumi.set(__self__, "maintenance_update_policy", maintenance_update_policy)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
@@ -107,10 +115,10 @@ class ClusterArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input[str]:
         """
-        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         """
-        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""")
+        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""")
 
         return pulumi.get(self, "network")
 
@@ -203,6 +211,18 @@ class ClusterArgs:
         pulumi.set(self, "etag", value)
 
     @property
+    @pulumi.getter(name="geminiConfig")
+    def gemini_config(self) -> Optional[pulumi.Input['GeminiClusterConfigArgs']]:
+        """
+        Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        return pulumi.get(self, "gemini_config")
+
+    @gemini_config.setter
+    def gemini_config(self, value: Optional[pulumi.Input['GeminiClusterConfigArgs']]):
+        pulumi.set(self, "gemini_config", value)
+
+    @property
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> Optional[pulumi.Input['UserPasswordArgs']]:
         """
@@ -234,6 +254,18 @@ class ClusterArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="maintenanceUpdatePolicy")
+    def maintenance_update_policy(self) -> Optional[pulumi.Input['MaintenanceUpdatePolicyArgs']]:
+        """
+        Optional. The maintenance update policy determines when to allow or deny updates.
+        """
+        return pulumi.get(self, "maintenance_update_policy")
+
+    @maintenance_update_policy.setter
+    def maintenance_update_policy(self, value: Optional[pulumi.Input['MaintenanceUpdatePolicyArgs']]):
+        pulumi.set(self, "maintenance_update_policy", value)
 
     @property
     @pulumi.getter(name="networkConfig")
@@ -315,9 +347,11 @@ class Cluster(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 gemini_config: Optional[pulumi.Input[pulumi.InputType['GeminiClusterConfigArgs']]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['UserPasswordArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['MaintenanceUpdatePolicyArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -340,9 +374,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
+        :param pulumi.Input[pulumi.InputType['GeminiClusterConfigArgs']] gemini_config: Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
         :param pulumi.Input[pulumi.InputType['UserPasswordArgs']] initial_user: Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
-        :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        :param pulumi.Input[pulumi.InputType['MaintenanceUpdatePolicyArgs']] maintenance_update_policy: Optional. The maintenance update policy determines when to allow or deny updates.
+        :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         :param pulumi.Input[pulumi.InputType['PscConfigArgs']] psc_config: Optional. The configuration for Private Service Connect (PSC) for the cluster.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['SecondaryConfigArgs']] secondary_config: Cross Region replication config specific to SECONDARY cluster.
@@ -381,9 +417,11 @@ class Cluster(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 gemini_config: Optional[pulumi.Input[pulumi.InputType['GeminiClusterConfigArgs']]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['UserPasswordArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_update_policy: Optional[pulumi.Input[pulumi.InputType['MaintenanceUpdatePolicyArgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -410,9 +448,11 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["gemini_config"] = gemini_config
             __props__.__dict__["initial_user"] = initial_user
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["maintenance_update_policy"] = maintenance_update_policy
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
@@ -428,10 +468,12 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["encryption_info"] = None
+            __props__.__dict__["maintenance_schedule"] = None
             __props__.__dict__["migration_source"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["primary_config"] = None
             __props__.__dict__["reconciling"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
@@ -474,9 +516,12 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["encryption_config"] = None
         __props__.__dict__["encryption_info"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["gemini_config"] = None
         __props__.__dict__["initial_user"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["maintenance_schedule"] = None
+        __props__.__dict__["maintenance_update_policy"] = None
         __props__.__dict__["migration_source"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
@@ -486,6 +531,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["psc_config"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["secondary_config"] = None
         __props__.__dict__["ssl_config"] = None
@@ -607,6 +653,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="geminiConfig")
+    def gemini_config(self) -> pulumi.Output['outputs.GeminiClusterConfigResponse']:
+        """
+        Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        return pulumi.get(self, "gemini_config")
+
+    @property
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> pulumi.Output['outputs.UserPasswordResponse']:
         """
@@ -628,6 +682,22 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> pulumi.Output['outputs.MaintenanceScheduleResponse']:
+        """
+        The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+        """
+        return pulumi.get(self, "maintenance_schedule")
+
+    @property
+    @pulumi.getter(name="maintenanceUpdatePolicy")
+    def maintenance_update_policy(self) -> pulumi.Output['outputs.MaintenanceUpdatePolicyResponse']:
+        """
+        Optional. The maintenance update policy determines when to allow or deny updates.
+        """
+        return pulumi.get(self, "maintenance_update_policy")
+
+    @property
     @pulumi.getter(name="migrationSource")
     def migration_source(self) -> pulumi.Output['outputs.MigrationSourceResponse']:
         """
@@ -647,10 +717,10 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         """
-        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""")
+        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""")
 
         return pulumi.get(self, "network")
 
@@ -695,6 +765,14 @@ class Cluster(pulumi.CustomResource):
         Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

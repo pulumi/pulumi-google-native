@@ -31,6 +31,10 @@ class AcceleratorConfigType(str, Enum):
     """
     TPU v4.
     """
+    V5P = "V5P"
+    """
+    TPU v5.
+    """
 
 
 class AttachedDiskMode(str, Enum):

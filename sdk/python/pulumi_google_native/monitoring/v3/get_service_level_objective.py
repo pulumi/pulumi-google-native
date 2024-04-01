@@ -70,7 +70,7 @@ class GetServiceLevelObjectiveResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         """
         return pulumi.get(self, "name")
 

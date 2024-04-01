@@ -35,15 +35,15 @@ class RegionNetworkEndpointGroupArgs:
         """
         The set of arguments for constructing a RegionNetworkEndpointGroup resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
-        :param pulumi.Input['NetworkEndpointGroupAppEngineArgs'] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input['NetworkEndpointGroupCloudFunctionArgs'] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input['NetworkEndpointGroupCloudRunArgs'] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint.
+        :param pulumi.Input['NetworkEndpointGroupAppEngineArgs'] app_engine: Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input['NetworkEndpointGroupCloudFunctionArgs'] cloud_function: Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input['NetworkEndpointGroupCloudRunArgs'] cloud_run: Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         :param pulumi.Input['RegionNetworkEndpointGroupNetworkEndpointType'] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
-        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
@@ -102,7 +102,7 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="appEngine")
     def app_engine(self) -> Optional[pulumi.Input['NetworkEndpointGroupAppEngineArgs']]:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "app_engine")
 
@@ -114,7 +114,7 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> Optional[pulumi.Input['NetworkEndpointGroupCloudFunctionArgs']]:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_function")
 
@@ -126,7 +126,7 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="cloudRun")
     def cloud_run(self) -> Optional[pulumi.Input['NetworkEndpointGroupCloudRunArgs']]:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_run")
 
@@ -138,7 +138,7 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="defaultPort")
     def default_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The default port used if the port number is not specified in the network endpoint.
+        The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         """
         return pulumi.get(self, "default_port")
 
@@ -174,7 +174,7 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         """
         return pulumi.get(self, "network")
 
@@ -216,7 +216,7 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> Optional[pulumi.Input[str]]:
         """
-        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         """
         return pulumi.get(self, "psc_target_service")
 
@@ -276,15 +276,15 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint.
+        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']] cloud_function: Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']] cloud_run: Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         :param pulumi.Input['RegionNetworkEndpointGroupNetworkEndpointType'] network_endpoint_type: Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
-        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
@@ -416,7 +416,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="appEngine")
     def app_engine(self) -> pulumi.Output['outputs.NetworkEndpointGroupAppEngineResponse']:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "app_engine")
 
@@ -424,7 +424,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> pulumi.Output['outputs.NetworkEndpointGroupCloudFunctionResponse']:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_function")
 
@@ -432,7 +432,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="cloudRun")
     def cloud_run(self) -> pulumi.Output['outputs.NetworkEndpointGroupCloudRunResponse']:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_run")
 
@@ -448,7 +448,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="defaultPort")
     def default_port(self) -> pulumi.Output[int]:
         """
-        The default port used if the port number is not specified in the network endpoint.
+        The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         """
         return pulumi.get(self, "default_port")
 
@@ -480,7 +480,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         """
         return pulumi.get(self, "network")
 
@@ -506,7 +506,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> pulumi.Output[str]:
         """
-        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         """
         return pulumi.get(self, "psc_target_service")
 

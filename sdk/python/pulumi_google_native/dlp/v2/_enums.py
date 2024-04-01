@@ -61,7 +61,13 @@ class DiscoveryConfigStatus(str, Enum):
 
 
 class GooglePrivacyDlpV2BigQueryOptionsSampleMethod(str, Enum):
+    """
+    How to sample the data.
+    """
     SAMPLE_METHOD_UNSPECIFIED = "SAMPLE_METHOD_UNSPECIFIED"
+    """
+    No sampling.
+    """
     TOP = "TOP"
     """
     Scan groups of rows in the order BigQuery provides (default). Multiple groups of rows may be scanned in parallel, so results may not appear in the same order the rows are read.
@@ -128,7 +134,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(str, Enum):
     """
     TEXT_FILE = "TEXT_FILE"
     """
-    Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+    Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
     """
     IMAGE = "IMAGE"
     """
@@ -165,7 +171,13 @@ class GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(str, Enum):
 
 
 class GooglePrivacyDlpV2CloudStorageOptionsSampleMethod(str, Enum):
+    """
+    How to sample the data.
+    """
     SAMPLE_METHOD_UNSPECIFIED = "SAMPLE_METHOD_UNSPECIFIED"
+    """
+    No sampling.
+    """
     TOP = "TOP"
     """
     Scan from the top (default).
@@ -295,7 +307,7 @@ class GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(str, Enum):
     """
     TEXT_FILE = "TEXT_FILE"
     """
-    Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+    Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
     """
     IMAGE = "IMAGE"
     """
@@ -502,7 +514,7 @@ class GooglePrivacyDlpV2InspectConfigContentOptionsItem(str, Enum):
 
 class GooglePrivacyDlpV2InspectConfigMinLikelihood(str, Enum):
     """
-    Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+    Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
     """
     LIKELIHOOD_UNSPECIFIED = "LIKELIHOOD_UNSPECIFIED"
     """

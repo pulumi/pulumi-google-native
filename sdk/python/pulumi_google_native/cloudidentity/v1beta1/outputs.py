@@ -13,6 +13,8 @@ from ._enums import *
 
 __all__ = [
     'AndroidAttributesResponse',
+    'BrowserAttributesResponse',
+    'BrowserInfoResponse',
     'CertificateAttributesResponse',
     'CertificateTemplateResponse',
     'DynamicGroupMetadataResponse',
@@ -159,6 +161,279 @@ class AndroidAttributesResponse(dict):
         Whether Google Play Protect Verify Apps is enabled.
         """
         return pulumi.get(self, "verify_apps_enabled")
+
+
+@pulumi.output_type
+class BrowserAttributesResponse(dict):
+    """
+    Contains information about browser profiles reported by the Endpoint Verification extension.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chromeBrowserInfo":
+            suggest = "chrome_browser_info"
+        elif key == "chromeProfileId":
+            suggest = "chrome_profile_id"
+        elif key == "lastProfileSyncTime":
+            suggest = "last_profile_sync_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrowserAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrowserAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrowserAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chrome_browser_info: 'outputs.BrowserInfoResponse',
+                 chrome_profile_id: str,
+                 last_profile_sync_time: str):
+        """
+        Contains information about browser profiles reported by the Endpoint Verification extension.
+        :param 'BrowserInfoResponse' chrome_browser_info: Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the Endpoint Verification extension.
+        :param str chrome_profile_id: Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+        :param str last_profile_sync_time: Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        """
+        pulumi.set(__self__, "chrome_browser_info", chrome_browser_info)
+        pulumi.set(__self__, "chrome_profile_id", chrome_profile_id)
+        pulumi.set(__self__, "last_profile_sync_time", last_profile_sync_time)
+
+    @property
+    @pulumi.getter(name="chromeBrowserInfo")
+    def chrome_browser_info(self) -> 'outputs.BrowserInfoResponse':
+        """
+        Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the Endpoint Verification extension.
+        """
+        return pulumi.get(self, "chrome_browser_info")
+
+    @property
+    @pulumi.getter(name="chromeProfileId")
+    def chrome_profile_id(self) -> str:
+        """
+        Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+        """
+        return pulumi.get(self, "chrome_profile_id")
+
+    @property
+    @pulumi.getter(name="lastProfileSyncTime")
+    def last_profile_sync_time(self) -> str:
+        """
+        Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        """
+        return pulumi.get(self, "last_profile_sync_time")
+
+
+@pulumi.output_type
+class BrowserInfoResponse(dict):
+    """
+    Browser-specific fields reported by the Endpoint Verification extension. LINT.IfChange
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "browserManagementState":
+            suggest = "browser_management_state"
+        elif key == "browserVersion":
+            suggest = "browser_version"
+        elif key == "isBuiltInDnsClientEnabled":
+            suggest = "is_built_in_dns_client_enabled"
+        elif key == "isBulkDataEntryAnalysisEnabled":
+            suggest = "is_bulk_data_entry_analysis_enabled"
+        elif key == "isChromeCleanupEnabled":
+            suggest = "is_chrome_cleanup_enabled"
+        elif key == "isChromeRemoteDesktopAppBlocked":
+            suggest = "is_chrome_remote_desktop_app_blocked"
+        elif key == "isFileDownloadAnalysisEnabled":
+            suggest = "is_file_download_analysis_enabled"
+        elif key == "isFileUploadAnalysisEnabled":
+            suggest = "is_file_upload_analysis_enabled"
+        elif key == "isRealtimeUrlCheckEnabled":
+            suggest = "is_realtime_url_check_enabled"
+        elif key == "isSecurityEventAnalysisEnabled":
+            suggest = "is_security_event_analysis_enabled"
+        elif key == "isSiteIsolationEnabled":
+            suggest = "is_site_isolation_enabled"
+        elif key == "isThirdPartyBlockingEnabled":
+            suggest = "is_third_party_blocking_enabled"
+        elif key == "passwordProtectionWarningTrigger":
+            suggest = "password_protection_warning_trigger"
+        elif key == "safeBrowsingProtectionLevel":
+            suggest = "safe_browsing_protection_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrowserInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrowserInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrowserInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 browser_management_state: str,
+                 browser_version: str,
+                 is_built_in_dns_client_enabled: bool,
+                 is_bulk_data_entry_analysis_enabled: bool,
+                 is_chrome_cleanup_enabled: bool,
+                 is_chrome_remote_desktop_app_blocked: bool,
+                 is_file_download_analysis_enabled: bool,
+                 is_file_upload_analysis_enabled: bool,
+                 is_realtime_url_check_enabled: bool,
+                 is_security_event_analysis_enabled: bool,
+                 is_site_isolation_enabled: bool,
+                 is_third_party_blocking_enabled: bool,
+                 password_protection_warning_trigger: str,
+                 safe_browsing_protection_level: str):
+        """
+        Browser-specific fields reported by the Endpoint Verification extension. LINT.IfChange
+        :param str browser_management_state: Browser's management state.
+        :param str browser_version: Version of the request initiating browser.
+        :param bool is_built_in_dns_client_enabled: Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+        :param bool is_bulk_data_entry_analysis_enabled: Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_chrome_cleanup_enabled: Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+        :param bool is_chrome_remote_desktop_app_blocked: Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+        :param bool is_file_download_analysis_enabled: Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_file_upload_analysis_enabled: Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_realtime_url_check_enabled: Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+        :param bool is_security_event_analysis_enabled: Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_site_isolation_enabled: Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+        :param bool is_third_party_blocking_enabled: Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+        :param str password_protection_warning_trigger: Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+        :param str safe_browsing_protection_level: Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+        """
+        pulumi.set(__self__, "browser_management_state", browser_management_state)
+        pulumi.set(__self__, "browser_version", browser_version)
+        pulumi.set(__self__, "is_built_in_dns_client_enabled", is_built_in_dns_client_enabled)
+        pulumi.set(__self__, "is_bulk_data_entry_analysis_enabled", is_bulk_data_entry_analysis_enabled)
+        pulumi.set(__self__, "is_chrome_cleanup_enabled", is_chrome_cleanup_enabled)
+        pulumi.set(__self__, "is_chrome_remote_desktop_app_blocked", is_chrome_remote_desktop_app_blocked)
+        pulumi.set(__self__, "is_file_download_analysis_enabled", is_file_download_analysis_enabled)
+        pulumi.set(__self__, "is_file_upload_analysis_enabled", is_file_upload_analysis_enabled)
+        pulumi.set(__self__, "is_realtime_url_check_enabled", is_realtime_url_check_enabled)
+        pulumi.set(__self__, "is_security_event_analysis_enabled", is_security_event_analysis_enabled)
+        pulumi.set(__self__, "is_site_isolation_enabled", is_site_isolation_enabled)
+        pulumi.set(__self__, "is_third_party_blocking_enabled", is_third_party_blocking_enabled)
+        pulumi.set(__self__, "password_protection_warning_trigger", password_protection_warning_trigger)
+        pulumi.set(__self__, "safe_browsing_protection_level", safe_browsing_protection_level)
+
+    @property
+    @pulumi.getter(name="browserManagementState")
+    def browser_management_state(self) -> str:
+        """
+        Browser's management state.
+        """
+        return pulumi.get(self, "browser_management_state")
+
+    @property
+    @pulumi.getter(name="browserVersion")
+    def browser_version(self) -> str:
+        """
+        Version of the request initiating browser.
+        """
+        return pulumi.get(self, "browser_version")
+
+    @property
+    @pulumi.getter(name="isBuiltInDnsClientEnabled")
+    def is_built_in_dns_client_enabled(self) -> bool:
+        """
+        Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+        """
+        return pulumi.get(self, "is_built_in_dns_client_enabled")
+
+    @property
+    @pulumi.getter(name="isBulkDataEntryAnalysisEnabled")
+    def is_bulk_data_entry_analysis_enabled(self) -> bool:
+        """
+        Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_bulk_data_entry_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isChromeCleanupEnabled")
+    def is_chrome_cleanup_enabled(self) -> bool:
+        """
+        Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+        """
+        return pulumi.get(self, "is_chrome_cleanup_enabled")
+
+    @property
+    @pulumi.getter(name="isChromeRemoteDesktopAppBlocked")
+    def is_chrome_remote_desktop_app_blocked(self) -> bool:
+        """
+        Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+        """
+        return pulumi.get(self, "is_chrome_remote_desktop_app_blocked")
+
+    @property
+    @pulumi.getter(name="isFileDownloadAnalysisEnabled")
+    def is_file_download_analysis_enabled(self) -> bool:
+        """
+        Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_file_download_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isFileUploadAnalysisEnabled")
+    def is_file_upload_analysis_enabled(self) -> bool:
+        """
+        Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_file_upload_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isRealtimeUrlCheckEnabled")
+    def is_realtime_url_check_enabled(self) -> bool:
+        """
+        Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_realtime_url_check_enabled")
+
+    @property
+    @pulumi.getter(name="isSecurityEventAnalysisEnabled")
+    def is_security_event_analysis_enabled(self) -> bool:
+        """
+        Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_security_event_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isSiteIsolationEnabled")
+    def is_site_isolation_enabled(self) -> bool:
+        """
+        Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+        """
+        return pulumi.get(self, "is_site_isolation_enabled")
+
+    @property
+    @pulumi.getter(name="isThirdPartyBlockingEnabled")
+    def is_third_party_blocking_enabled(self) -> bool:
+        """
+        Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+        """
+        return pulumi.get(self, "is_third_party_blocking_enabled")
+
+    @property
+    @pulumi.getter(name="passwordProtectionWarningTrigger")
+    def password_protection_warning_trigger(self) -> str:
+        """
+        Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+        """
+        return pulumi.get(self, "password_protection_warning_trigger")
+
+    @property
+    @pulumi.getter(name="safeBrowsingProtectionLevel")
+    def safe_browsing_protection_level(self) -> str:
+        """
+        Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+        """
+        return pulumi.get(self, "safe_browsing_protection_level")
 
 
 @pulumi.output_type
@@ -358,7 +633,7 @@ class DynamicGroupMetadataResponse(dict):
                  status: 'outputs.DynamicGroupStatusResponse'):
         """
         Dynamic group metadata like queries and status.
-        :param Sequence['DynamicGroupQueryResponse'] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        :param Sequence['DynamicGroupQueryResponse'] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         :param 'DynamicGroupStatusResponse' status: Status of the dynamic group.
         """
         pulumi.set(__self__, "queries", queries)
@@ -368,7 +643,7 @@ class DynamicGroupMetadataResponse(dict):
     @pulumi.getter
     def queries(self) -> Sequence['outputs.DynamicGroupQueryResponse']:
         """
-        Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         """
         return pulumi.get(self, "queries")
 
@@ -480,12 +755,16 @@ class DynamicGroupStatusResponse(dict):
 @pulumi.output_type
 class EndpointVerificationSpecificAttributesResponse(dict):
     """
-    Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
+    Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "certificateAttributes":
+        if key == "additionalSignals":
+            suggest = "additional_signals"
+        elif key == "browserAttributes":
+            suggest = "browser_attributes"
+        elif key == "certificateAttributes":
             suggest = "certificate_attributes"
 
         if suggest:
@@ -500,12 +779,34 @@ class EndpointVerificationSpecificAttributesResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_signals: Mapping[str, str],
+                 browser_attributes: Sequence['outputs.BrowserAttributesResponse'],
                  certificate_attributes: Sequence['outputs.CertificateAttributesResponse']):
         """
-        Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
+        Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
+        :param Mapping[str, str] additional_signals: Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. Configurable attributes: file_config, registry_config, and plist_config.
+        :param Sequence['BrowserAttributesResponse'] browser_attributes: Details of browser profiles reported by Endpoint Verification.
         :param Sequence['CertificateAttributesResponse'] certificate_attributes: Details of certificates.
         """
+        pulumi.set(__self__, "additional_signals", additional_signals)
+        pulumi.set(__self__, "browser_attributes", browser_attributes)
         pulumi.set(__self__, "certificate_attributes", certificate_attributes)
+
+    @property
+    @pulumi.getter(name="additionalSignals")
+    def additional_signals(self) -> Mapping[str, str]:
+        """
+        Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. Configurable attributes: file_config, registry_config, and plist_config.
+        """
+        return pulumi.get(self, "additional_signals")
+
+    @property
+    @pulumi.getter(name="browserAttributes")
+    def browser_attributes(self) -> Sequence['outputs.BrowserAttributesResponse']:
+        """
+        Details of browser profiles reported by Endpoint Verification.
+        """
+        return pulumi.get(self, "browser_attributes")
 
     @property
     @pulumi.getter(name="certificateAttributes")

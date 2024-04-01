@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectivityTestResult:
-    def __init__(__self__, create_time=None, description=None, destination=None, display_name=None, labels=None, name=None, probing_details=None, protocol=None, reachability_details=None, related_projects=None, source=None, update_time=None):
+    def __init__(__self__, bypass_firewall_checks=None, create_time=None, description=None, destination=None, display_name=None, labels=None, name=None, probing_details=None, protocol=None, reachability_details=None, related_projects=None, source=None, update_time=None):
+        if bypass_firewall_checks and not isinstance(bypass_firewall_checks, bool):
+            raise TypeError("Expected argument 'bypass_firewall_checks' to be a bool")
+        pulumi.set(__self__, "bypass_firewall_checks", bypass_firewall_checks)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -56,6 +59,14 @@ class GetConnectivityTestResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="bypassFirewallChecks")
+    def bypass_firewall_checks(self) -> bool:
+        """
+        Whether the test should skip firewall checking. If not provided, we assume false.
+        """
+        return pulumi.get(self, "bypass_firewall_checks")
 
     @property
     @pulumi.getter(name="createTime")
@@ -160,6 +171,7 @@ class AwaitableGetConnectivityTestResult(GetConnectivityTestResult):
         if False:
             yield self
         return GetConnectivityTestResult(
+            bypass_firewall_checks=self.bypass_firewall_checks,
             create_time=self.create_time,
             description=self.description,
             destination=self.destination,
@@ -187,6 +199,7 @@ def get_connectivity_test(connectivity_test_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkmanagement/v1:getConnectivityTest', __args__, opts=opts, typ=GetConnectivityTestResult).value
 
     return AwaitableGetConnectivityTestResult(
+        bypass_firewall_checks=pulumi.get(__ret__, 'bypass_firewall_checks'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         destination=pulumi.get(__ret__, 'destination'),

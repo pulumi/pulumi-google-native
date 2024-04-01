@@ -57,6 +57,9 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse',
     'GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse',
     'GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse',
+    'GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse',
+    'GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse',
+    'GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse',
     'GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse',
     'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponse',
     'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse',
@@ -71,6 +74,7 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1FractionSplitResponse',
     'GoogleCloudAiplatformV1beta1GcsDestinationResponse',
     'GoogleCloudAiplatformV1beta1GcsSourceResponse',
+    'GoogleCloudAiplatformV1beta1GenieSourceResponse',
     'GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse',
     'GoogleCloudAiplatformV1beta1IndexStatsResponse',
     'GoogleCloudAiplatformV1beta1InputDataConfigResponse',
@@ -80,12 +84,14 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1MeasurementMetricResponse',
     'GoogleCloudAiplatformV1beta1MeasurementResponse',
     'GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse',
+    'GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse',
     'GoogleCloudAiplatformV1beta1ModelContainerSpecResponse',
     'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse',
     'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse',
     'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigResponse',
     'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponse',
     'GoogleCloudAiplatformV1beta1ModelExportFormatResponse',
+    'GoogleCloudAiplatformV1beta1ModelGardenSourceResponse',
     'GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse',
     'GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse',
     'GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse',
@@ -112,6 +118,7 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1NfsMountResponse',
     'GoogleCloudAiplatformV1beta1NotebookEucConfigResponse',
     'GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse',
+    'GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse',
     'GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse',
     'GoogleCloudAiplatformV1beta1PipelineJobDetailResponse',
     'GoogleCloudAiplatformV1beta1PipelineJobResponse',
@@ -131,8 +138,12 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse',
     'GoogleCloudAiplatformV1beta1ProbeExecActionResponse',
     'GoogleCloudAiplatformV1beta1ProbeResponse',
+    'GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse',
     'GoogleCloudAiplatformV1beta1PythonPackageSpecResponse',
+    'GoogleCloudAiplatformV1beta1RayMetricSpecResponse',
     'GoogleCloudAiplatformV1beta1RaySpecResponse',
+    'GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse',
+    'GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse',
     'GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse',
     'GoogleCloudAiplatformV1beta1ResourcePoolResponse',
     'GoogleCloudAiplatformV1beta1ResourceRuntimeResponse',
@@ -146,6 +157,7 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1ScheduleRunResponseResponse',
     'GoogleCloudAiplatformV1beta1SchedulingResponse',
     'GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse',
+    'GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse',
     'GoogleCloudAiplatformV1beta1SmoothGradConfigResponse',
     'GoogleCloudAiplatformV1beta1StratifiedSplitResponse',
     'GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpecResponse',
@@ -527,8 +539,8 @@ class GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse(dict)
                  key_field: str):
         """
         Configuration defining how to transform batch prediction input instances to the instances that the Model accepts.
-        :param Sequence[str] excluded_fields: Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
-        :param Sequence[str] included_fields: Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        :param Sequence[str] excluded_fields: Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
+        :param Sequence[str] included_fields: Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         :param str instance_type: The format of the instance that the Model accepts. Vertex AI will convert compatible batch prediction input instance formats to the specified format. Supported values are: * `object`: Each input is converted to JSON object format. * For `bigquery`, each row is converted to an object. * For `jsonl`, each line of the JSONL input must be an object. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. * `array`: Each input is converted to JSON array format. * For `bigquery`, each row is converted to an array. The order of columns is determined by the BigQuery column order, unless included_fields is populated. included_fields must be populated for specifying field orders. * For `jsonl`, if each line of the JSONL input is an object, included_fields must be populated for specifying field orders. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. If not specified, Vertex AI converts the batch prediction input as follows: * For `bigquery` and `csv`, the behavior is the same as `array`. The order of columns is the same as defined in the file or table, unless included_fields is populated. * For `jsonl`, the prediction instance format is determined by each line of the input. * For `tf-record`/`tf-record-gzip`, each record will be converted to an object in the format of `{"b64": }`, where `` is the Base64-encoded string of the content of the record. * For `file-list`, each file in the list will be converted to an object in the format of `{"b64": }`, where `` is the Base64-encoded string of the content of the file.
         :param str key_field: The name of the field that is considered as a key. The values identified by the key field is not included in the transformed instances that is sent to the Model. This is similar to specifying this name of the field in excluded_fields. In addition, the batch prediction output will not include the instances. Instead the output will only include the value of the key field, in a field named `key` in the output: * For `jsonl` output format, the output will have a `key` field instead of the `instance` field. * For `csv`/`bigquery` output format, the output will have have a `key` column instead of the instance feature columns. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
         """
@@ -541,7 +553,7 @@ class GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse(dict)
     @pulumi.getter(name="excludedFields")
     def excluded_fields(self) -> Sequence[str]:
         """
-        Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         """
         return pulumi.get(self, "excluded_fields")
 
@@ -549,7 +561,7 @@ class GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse(dict)
     @pulumi.getter(name="includedFields")
     def included_fields(self) -> Sequence[str]:
         """
-        Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         """
         return pulumi.get(self, "included_fields")
 
@@ -1233,6 +1245,7 @@ class GoogleCloudAiplatformV1beta1CustomJobSpecResponse(dict):
                  enable_web_access: bool,
                  experiment: str,
                  experiment_run: str,
+                 models: Sequence[str],
                  network: str,
                  persistent_resource_id: str,
                  protected_artifact_location_id: str,
@@ -1248,6 +1261,7 @@ class GoogleCloudAiplatformV1beta1CustomJobSpecResponse(dict):
         :param bool enable_web_access: Optional. Whether you want Vertex AI to enable [interactive shell access](https://cloud.google.com/vertex-ai/docs/training/monitor-debug-interactive-shell) to training containers. If set to `true`, you can access interactive shells at the URIs given by CustomJob.web_access_uris or Trial.web_access_uris (within HyperparameterTuningJob.trials).
         :param str experiment: Optional. The Experiment associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}`
         :param str experiment_run: Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
+        :param Sequence[str] models: Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
         :param str network: Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
         :param str persistent_resource_id: Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
         :param str protected_artifact_location_id: The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location. List of supported locations: https://cloud.google.com/vertex-ai/docs/general/locations
@@ -1262,6 +1276,7 @@ class GoogleCloudAiplatformV1beta1CustomJobSpecResponse(dict):
         pulumi.set(__self__, "enable_web_access", enable_web_access)
         pulumi.set(__self__, "experiment", experiment)
         pulumi.set(__self__, "experiment_run", experiment_run)
+        pulumi.set(__self__, "models", models)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "persistent_resource_id", persistent_resource_id)
         pulumi.set(__self__, "protected_artifact_location_id", protected_artifact_location_id)
@@ -1310,6 +1325,14 @@ class GoogleCloudAiplatformV1beta1CustomJobSpecResponse(dict):
         Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
         """
         return pulumi.get(self, "experiment_run")
+
+    @property
+    @pulumi.getter
+    def models(self) -> Sequence[str]:
+        """
+        Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+        """
+        return pulumi.get(self, "models")
 
     @property
     @pulumi.getter
@@ -1553,6 +1576,8 @@ class GoogleCloudAiplatformV1beta1DeployedIndexRefResponse(dict):
         suggest = None
         if key == "deployedIndexId":
             suggest = "deployed_index_id"
+        elif key == "displayName":
+            suggest = "display_name"
         elif key == "indexEndpoint":
             suggest = "index_endpoint"
 
@@ -1569,13 +1594,16 @@ class GoogleCloudAiplatformV1beta1DeployedIndexRefResponse(dict):
 
     def __init__(__self__, *,
                  deployed_index_id: str,
+                 display_name: str,
                  index_endpoint: str):
         """
         Points to a DeployedIndex.
         :param str deployed_index_id: Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
+        :param str display_name: The display name of the DeployedIndex.
         :param str index_endpoint: Immutable. A resource name of the IndexEndpoint.
         """
         pulumi.set(__self__, "deployed_index_id", deployed_index_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "index_endpoint", index_endpoint)
 
     @property
@@ -1585,6 +1613,14 @@ class GoogleCloudAiplatformV1beta1DeployedIndexRefResponse(dict):
         Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
         """
         return pulumi.get(self, "deployed_index_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of the DeployedIndex.
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="indexEndpoint")
@@ -2666,7 +2702,7 @@ class GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse(dict):
         """
         Input source type for BigQuery Tables and Views.
         :param 'GoogleCloudAiplatformV1beta1BigQuerySourceResponse' big_query_source: Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
-        :param Sequence[str] entity_id_columns: Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+        :param Sequence[str] entity_id_columns: Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         """
         pulumi.set(__self__, "big_query_source", big_query_source)
         pulumi.set(__self__, "entity_id_columns", entity_id_columns)
@@ -2683,7 +2719,7 @@ class GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse(dict):
     @pulumi.getter(name="entityIdColumns")
     def entity_id_columns(self) -> Sequence[str]:
         """
-        Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+        Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         """
         return pulumi.get(self, "entity_id_columns")
 
@@ -2909,7 +2945,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse(dict):
 @pulumi.output_type
 class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse(dict):
     """
-    The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+    The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2937,8 +2973,8 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResp
                  public_endpoint_domain_name: str,
                  service_attachment: str):
         """
-        The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
-        :param 'GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse' private_service_connect_config: Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
+        :param 'GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse' private_service_connect_config: Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
         :param str public_endpoint_domain_name: This field will be populated with the domain name to use for this FeatureOnlineStore
         :param str service_attachment: The name of the service attachment resource. Populated if private service connect is enabled and after FeatureViewSync is created.
         """
@@ -2950,7 +2986,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResp
     @pulumi.getter(name="privateServiceConnectConfig")
     def private_service_connect_config(self) -> 'outputs.GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse':
         """
-        Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
         """
         return pulumi.get(self, "private_service_connect_config")
 
@@ -2974,12 +3010,12 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResp
 @pulumi.output_type
 class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse(dict):
     """
-    Contains settings for embedding management.
+    Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
     """
     def __init__(__self__, *,
                  enabled: bool):
         """
-        Contains settings for embedding management.
+        Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
         :param bool enabled: Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -3143,7 +3179,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse(dict):
                  entity_id_columns: Sequence[str],
                  uri: str):
         """
-        :param Sequence[str] entity_id_columns: Columns to construct entity_id / row keys. Start by supporting 1 only.
+        :param Sequence[str] entity_id_columns: Columns to construct entity_id / row keys.
         :param str uri: The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
         """
         pulumi.set(__self__, "entity_id_columns", entity_id_columns)
@@ -3153,7 +3189,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse(dict):
     @pulumi.getter(name="entityIdColumns")
     def entity_id_columns(self) -> Sequence[str]:
         """
-        Columns to construct entity_id / row keys. Start by supporting 1 only.
+        Columns to construct entity_id / row keys.
         """
         return pulumi.get(self, "entity_id_columns")
 
@@ -3228,6 +3264,8 @@ class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse(dict)
         suggest = None
         if key == "featureGroups":
             suggest = "feature_groups"
+        elif key == "projectNumber":
+            suggest = "project_number"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3241,12 +3279,15 @@ class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse(dict)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 feature_groups: Sequence['outputs.GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse']):
+                 feature_groups: Sequence['outputs.GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse'],
+                 project_number: str):
         """
         A Feature Registry source for features that need to be synced to Online Store.
         :param Sequence['GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse'] feature_groups: List of features that need to be synced to Online Store.
+        :param str project_number: Optional. The project number of the parent project of the Feature Groups.
         """
         pulumi.set(__self__, "feature_groups", feature_groups)
+        pulumi.set(__self__, "project_number", project_number)
 
     @property
     @pulumi.getter(name="featureGroups")
@@ -3256,12 +3297,192 @@ class GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse(dict)
         """
         return pulumi.get(self, "feature_groups")
 
+    @property
+    @pulumi.getter(name="projectNumber")
+    def project_number(self) -> str:
+        """
+        Optional. The project number of the parent project of the Feature Groups.
+        """
+        return pulumi.get(self, "project_number")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse(dict):
+    """
+    Configuration options for using brute force search.
+    """
+    def __init__(__self__):
+        """
+        Configuration options for using brute force search.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse(dict):
+    """
+    Configuration for vector indexing.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bruteForceConfig":
+            suggest = "brute_force_config"
+        elif key == "crowdingColumn":
+            suggest = "crowding_column"
+        elif key == "distanceMeasureType":
+            suggest = "distance_measure_type"
+        elif key == "embeddingColumn":
+            suggest = "embedding_column"
+        elif key == "embeddingDimension":
+            suggest = "embedding_dimension"
+        elif key == "filterColumns":
+            suggest = "filter_columns"
+        elif key == "treeAhConfig":
+            suggest = "tree_ah_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 brute_force_config: 'outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse',
+                 crowding_column: str,
+                 distance_measure_type: str,
+                 embedding_column: str,
+                 embedding_dimension: int,
+                 filter_columns: Sequence[str],
+                 tree_ah_config: 'outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse'):
+        """
+        Configuration for vector indexing.
+        :param 'GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse' brute_force_config: Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+        :param str crowding_column: Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+        :param str distance_measure_type: Optional. The distance measure used in nearest neighbor search.
+        :param str embedding_column: Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+        :param int embedding_dimension: Optional. The number of dimensions of the input embedding.
+        :param Sequence[str] filter_columns: Optional. Columns of features that're used to filter vector search results.
+        :param 'GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse' tree_ah_config: Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        """
+        pulumi.set(__self__, "brute_force_config", brute_force_config)
+        pulumi.set(__self__, "crowding_column", crowding_column)
+        pulumi.set(__self__, "distance_measure_type", distance_measure_type)
+        pulumi.set(__self__, "embedding_column", embedding_column)
+        pulumi.set(__self__, "embedding_dimension", embedding_dimension)
+        pulumi.set(__self__, "filter_columns", filter_columns)
+        pulumi.set(__self__, "tree_ah_config", tree_ah_config)
+
+    @property
+    @pulumi.getter(name="bruteForceConfig")
+    def brute_force_config(self) -> 'outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse':
+        """
+        Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+        """
+        return pulumi.get(self, "brute_force_config")
+
+    @property
+    @pulumi.getter(name="crowdingColumn")
+    def crowding_column(self) -> str:
+        """
+        Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+        """
+        return pulumi.get(self, "crowding_column")
+
+    @property
+    @pulumi.getter(name="distanceMeasureType")
+    def distance_measure_type(self) -> str:
+        """
+        Optional. The distance measure used in nearest neighbor search.
+        """
+        return pulumi.get(self, "distance_measure_type")
+
+    @property
+    @pulumi.getter(name="embeddingColumn")
+    def embedding_column(self) -> str:
+        """
+        Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+        """
+        return pulumi.get(self, "embedding_column")
+
+    @property
+    @pulumi.getter(name="embeddingDimension")
+    def embedding_dimension(self) -> int:
+        """
+        Optional. The number of dimensions of the input embedding.
+        """
+        return pulumi.get(self, "embedding_dimension")
+
+    @property
+    @pulumi.getter(name="filterColumns")
+    def filter_columns(self) -> Sequence[str]:
+        """
+        Optional. Columns of features that're used to filter vector search results.
+        """
+        return pulumi.get(self, "filter_columns")
+
+    @property
+    @pulumi.getter(name="treeAhConfig")
+    def tree_ah_config(self) -> 'outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse':
+        """
+        Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        """
+        return pulumi.get(self, "tree_ah_config")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse(dict):
+    """
+    Configuration options for the tree-AH algorithm.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leafNodeEmbeddingCount":
+            suggest = "leaf_node_embedding_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 leaf_node_embedding_count: str):
+        """
+        Configuration options for the tree-AH algorithm.
+        :param str leaf_node_embedding_count: Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
+
+    @property
+    @pulumi.getter(name="leafNodeEmbeddingCount")
+    def leaf_node_embedding_count(self) -> str:
+        """
+        Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        return pulumi.get(self, "leaf_node_embedding_count")
+
 
 @pulumi.output_type
 class GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse(dict):
+    """
+    Configuration for Sync. Only one option is set.
+    """
     def __init__(__self__, *,
                  cron: str):
         """
+        Configuration for Sync. Only one option is set.
         :param str cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         pulumi.set(__self__, "cron", cron)
@@ -3284,7 +3505,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigR
 @pulumi.output_type
 class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse(dict):
     """
-    Configuration for vector search.
+    Deprecated. Use IndexConfig instead.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3324,9 +3545,9 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse(dict):
                  filter_columns: Sequence[str],
                  tree_ah_config: 'outputs.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse'):
         """
-        Configuration for vector search.
+        Deprecated. Use IndexConfig instead.
         :param 'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponse' brute_force_config: Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
-        :param str crowding_column: Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+        :param str crowding_column: Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
         :param str distance_measure_type: Optional. The distance measure used in nearest neighbor search.
         :param str embedding_column: Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
         :param int embedding_dimension: Optional. The number of dimensions of the input embedding.
@@ -3353,7 +3574,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse(dict):
     @pulumi.getter(name="crowdingColumn")
     def crowding_column(self) -> str:
         """
-        Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+        Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
         """
         return pulumi.get(self, "crowding_column")
 
@@ -3966,6 +4187,45 @@ class GoogleCloudAiplatformV1beta1GcsSourceResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1beta1GenieSourceResponse(dict):
+    """
+    Contains information about the source of the models generated from Generative AI Studio.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseModelUri":
+            suggest = "base_model_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1GenieSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1GenieSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1GenieSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_model_uri: str):
+        """
+        Contains information about the source of the models generated from Generative AI Studio.
+        :param str base_model_uri: The public base model URI.
+        """
+        pulumi.set(__self__, "base_model_uri", base_model_uri)
+
+    @property
+    @pulumi.getter(name="baseModelUri")
+    def base_model_uri(self) -> str:
+        """
+        The public base model URI.
+        """
+        return pulumi.get(self, "base_model_uri")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse(dict):
     """
     IndexPrivateEndpoints proto is used to provide paths for users to send requests via private endpoints (e.g. private service access, private service connect). To send request via private service access, use match_grpc_address. To send request via private service connect, use service_attachment.
@@ -3975,6 +4235,8 @@ class GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse(dict):
         suggest = None
         if key == "matchGrpcAddress":
             suggest = "match_grpc_address"
+        elif key == "pscAutomatedEndpoints":
+            suggest = "psc_automated_endpoints"
         elif key == "serviceAttachment":
             suggest = "service_attachment"
 
@@ -3991,13 +4253,16 @@ class GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse(dict):
 
     def __init__(__self__, *,
                  match_grpc_address: str,
+                 psc_automated_endpoints: Sequence['outputs.GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse'],
                  service_attachment: str):
         """
         IndexPrivateEndpoints proto is used to provide paths for users to send requests via private endpoints (e.g. private service access, private service connect). To send request via private service access, use match_grpc_address. To send request via private service connect, use service_attachment.
         :param str match_grpc_address: The ip address used to send match gRPC requests.
+        :param Sequence['GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse'] psc_automated_endpoints: PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
         :param str service_attachment: The name of the service attachment resource. Populated if private service connect is enabled.
         """
         pulumi.set(__self__, "match_grpc_address", match_grpc_address)
+        pulumi.set(__self__, "psc_automated_endpoints", psc_automated_endpoints)
         pulumi.set(__self__, "service_attachment", service_attachment)
 
     @property
@@ -4007,6 +4272,14 @@ class GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse(dict):
         The ip address used to send match gRPC requests.
         """
         return pulumi.get(self, "match_grpc_address")
+
+    @property
+    @pulumi.getter(name="pscAutomatedEndpoints")
+    def psc_automated_endpoints(self) -> Sequence['outputs.GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse']:
+        """
+        PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+        """
+        return pulumi.get(self, "psc_automated_endpoints")
 
     @property
     @pulumi.getter(name="serviceAttachment")
@@ -4586,6 +4859,58 @@ class GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse(dict):
+    """
+    User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "genieSource":
+            suggest = "genie_source"
+        elif key == "modelGardenSource":
+            suggest = "model_garden_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 genie_source: 'outputs.GoogleCloudAiplatformV1beta1GenieSourceResponse',
+                 model_garden_source: 'outputs.GoogleCloudAiplatformV1beta1ModelGardenSourceResponse'):
+        """
+        User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        :param 'GoogleCloudAiplatformV1beta1GenieSourceResponse' genie_source: Information about the base model of Genie models.
+        :param 'GoogleCloudAiplatformV1beta1ModelGardenSourceResponse' model_garden_source: Source information of Model Garden models.
+        """
+        pulumi.set(__self__, "genie_source", genie_source)
+        pulumi.set(__self__, "model_garden_source", model_garden_source)
+
+    @property
+    @pulumi.getter(name="genieSource")
+    def genie_source(self) -> 'outputs.GoogleCloudAiplatformV1beta1GenieSourceResponse':
+        """
+        Information about the base model of Genie models.
+        """
+        return pulumi.get(self, "genie_source")
+
+    @property
+    @pulumi.getter(name="modelGardenSource")
+    def model_garden_source(self) -> 'outputs.GoogleCloudAiplatformV1beta1ModelGardenSourceResponse':
+        """
+        Source information of Model Garden models.
+        """
+        return pulumi.get(self, "model_garden_source")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
     """
     Specification of a container for serving predictions. Some fields in this message correspond to fields in the [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
@@ -4595,6 +4920,8 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
         suggest = None
         if key == "deploymentTimeout":
             suggest = "deployment_timeout"
+        elif key == "grpcPorts":
+            suggest = "grpc_ports"
         elif key == "healthProbe":
             suggest = "health_probe"
         elif key == "healthRoute":
@@ -4624,6 +4951,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
                  command: Sequence[str],
                  deployment_timeout: str,
                  env: Sequence['outputs.GoogleCloudAiplatformV1beta1EnvVarResponse'],
+                 grpc_ports: Sequence['outputs.GoogleCloudAiplatformV1beta1PortResponse'],
                  health_probe: 'outputs.GoogleCloudAiplatformV1beta1ProbeResponse',
                  health_route: str,
                  image_uri: str,
@@ -4635,20 +4963,22 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
         Specification of a container for serving predictions. Some fields in this message correspond to fields in the [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         :param Sequence[str] args: Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `command` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         :param Sequence[str] command: Immutable. Specifies the command that runs when the container starts. This overrides the container's [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint). Specify this field as an array of executable and arguments, similar to a Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not specify this field, then the container's `ENTRYPOINT` runs, in conjunction with the args field or the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd), if either exists. If this field is not specified and the container does not have an `ENTRYPOINT`, then refer to the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). If you specify this field, then you can also specify the `args` field to provide additional arguments for this command. However, if you specify this field, then the container's `CMD` is ignored. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `command` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-        :param str deployment_timeout: Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+        :param str deployment_timeout: Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         :param Sequence['GoogleCloudAiplatformV1beta1EnvVarResponse'] env: Immutable. List of environment variables to set in the container. After the container starts running, code running in the container can read these environment variables. Additionally, the command and args fields can reference these variables. Later entries in this list can also reference earlier entries. For example, the following example sets the variable `VAR_2` to have the value `foo bar`: ```json [ { "name": "VAR_1", "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ] ``` If you switch the order of the variables in the example, then the expansion does not occur. This field corresponds to the `env` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-        :param 'GoogleCloudAiplatformV1beta1ProbeResponse' health_probe: Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+        :param Sequence['GoogleCloudAiplatformV1beta1PortResponse'] grpc_ports: Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        :param 'GoogleCloudAiplatformV1beta1ProbeResponse' health_probe: Immutable. Specification for Kubernetes readiness probe.
         :param str health_route: Immutable. HTTP path on the container to send health checks to. Vertex AI intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health). For example, if you set this field to `/bar`, then Vertex AI intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/ DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         :param str image_uri: Immutable. URI of the Docker image to be used as the custom container for serving predictions. This URI must identify an image in Artifact Registry or Container Registry. Learn more about the [container publishing requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing), including permissions requirements for the Vertex AI Service Agent. The container image is ingested upon ModelService.UploadModel, stored internally, and this original path is afterwards not used. To learn about the requirements for the Docker image itself, see [Custom container requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#). You can use the URI to one of Vertex AI's [pre-built container images for prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers) in this field.
         :param Sequence['GoogleCloudAiplatformV1beta1PortResponse'] ports: Immutable. List of ports to expose from the container. Vertex AI sends any prediction requests that it receives to the first port on this list. Vertex AI also sends [liveness and health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness) to this port. If you do not specify this field, it defaults to following value: ```json [ { "containerPort": 8080 } ] ``` Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         :param str predict_route: Immutable. HTTP path on the container to send prediction requests to. Vertex AI forwards requests sent using projects.locations.endpoints.predict to this path on the container's IP address and port. Vertex AI then returns the container's response in the API response. For example, if you set this field to `/foo`, then when Vertex AI receives a prediction request, it forwards the request body in a POST request to the `/foo` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
-        :param str shared_memory_size_mb: Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
-        :param 'GoogleCloudAiplatformV1beta1ProbeResponse' startup_probe: Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+        :param str shared_memory_size_mb: Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
+        :param 'GoogleCloudAiplatformV1beta1ProbeResponse' startup_probe: Immutable. Specification for Kubernetes startup probe.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "command", command)
         pulumi.set(__self__, "deployment_timeout", deployment_timeout)
         pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "grpc_ports", grpc_ports)
         pulumi.set(__self__, "health_probe", health_probe)
         pulumi.set(__self__, "health_route", health_route)
         pulumi.set(__self__, "image_uri", image_uri)
@@ -4677,7 +5007,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
     @pulumi.getter(name="deploymentTimeout")
     def deployment_timeout(self) -> str:
         """
-        Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         """
         return pulumi.get(self, "deployment_timeout")
 
@@ -4690,10 +5020,18 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
         return pulumi.get(self, "env")
 
     @property
+    @pulumi.getter(name="grpcPorts")
+    def grpc_ports(self) -> Sequence['outputs.GoogleCloudAiplatformV1beta1PortResponse']:
+        """
+        Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        """
+        return pulumi.get(self, "grpc_ports")
+
+    @property
     @pulumi.getter(name="healthProbe")
     def health_probe(self) -> 'outputs.GoogleCloudAiplatformV1beta1ProbeResponse':
         """
-        Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. Specification for Kubernetes readiness probe.
         """
         return pulumi.get(self, "health_probe")
 
@@ -4733,7 +5071,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
     @pulumi.getter(name="sharedMemorySizeMb")
     def shared_memory_size_mb(self) -> str:
         """
-        Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
         """
         return pulumi.get(self, "shared_memory_size_mb")
 
@@ -4741,7 +5079,7 @@ class GoogleCloudAiplatformV1beta1ModelContainerSpecResponse(dict):
     @pulumi.getter(name="startupProbe")
     def startup_probe(self) -> 'outputs.GoogleCloudAiplatformV1beta1ProbeResponse':
         """
-        Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+        Immutable. Specification for Kubernetes startup probe.
         """
         return pulumi.get(self, "startup_probe")
 
@@ -4760,6 +5098,8 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse
             suggest = "log_source"
         elif key == "logType":
             suggest = "log_type"
+        elif key == "requestResponseLoggingSchemaVersion":
+            suggest = "request_response_logging_schema_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4775,16 +5115,19 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse
     def __init__(__self__, *,
                  bigquery_table_path: str,
                  log_source: str,
-                 log_type: str):
+                 log_type: str,
+                 request_response_logging_schema_version: str):
         """
         ModelDeploymentMonitoringBigQueryTable specifies the BigQuery table name as well as some information of the logs stored in this table.
         :param str bigquery_table_path: The created BigQuery table to store logs. Customer could do their own query & analysis. Format: `bq://.model_deployment_monitoring_._`
         :param str log_source: The source of log.
         :param str log_type: The type of log.
+        :param str request_response_logging_schema_version: The schema version of the request/response logging BigQuery table. Default to v1 if unset.
         """
         pulumi.set(__self__, "bigquery_table_path", bigquery_table_path)
         pulumi.set(__self__, "log_source", log_source)
         pulumi.set(__self__, "log_type", log_type)
+        pulumi.set(__self__, "request_response_logging_schema_version", request_response_logging_schema_version)
 
     @property
     @pulumi.getter(name="bigqueryTablePath")
@@ -4809,6 +5152,14 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse
         The type of log.
         """
         return pulumi.get(self, "log_type")
+
+    @property
+    @pulumi.getter(name="requestResponseLoggingSchemaVersion")
+    def request_response_logging_schema_version(self) -> str:
+        """
+        The schema version of the request/response logging BigQuery table. Default to v1 if unset.
+        """
+        return pulumi.get(self, "request_response_logging_schema_version")
 
 
 @pulumi.output_type
@@ -5005,6 +5356,45 @@ class GoogleCloudAiplatformV1beta1ModelExportFormatResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1beta1ModelGardenSourceResponse(dict):
+    """
+    Contains information about the source of the models generated from Model Garden.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicModelName":
+            suggest = "public_model_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1ModelGardenSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1ModelGardenSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1ModelGardenSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_model_name: str):
+        """
+        Contains information about the source of the models generated from Model Garden.
+        :param str public_model_name: The model garden source model resource name.
+        """
+        pulumi.set(__self__, "public_model_name", public_model_name)
+
+    @property
+    @pulumi.getter(name="publicModelName")
+    def public_model_name(self) -> str:
+        """
+        The model garden source model resource name.
+        """
+        return pulumi.get(self, "public_model_name")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse(dict):
     """
     The config for email alert.
@@ -5045,6 +5435,9 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResp
 
 @pulumi.output_type
 class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse(dict):
+    """
+    The alert config for model monitoring.
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5071,6 +5464,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse(dict):
                  enable_logging: bool,
                  notification_channels: Sequence[str]):
         """
+        The alert config for model monitoring.
         :param 'GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse' email_alert_config: Email alert config.
         :param bool enable_logging: Dump the anomalies to Cloud Logging. The anomalies will be put to json payload encoded from proto google.cloud.aiplatform.logging.ModelMonitoringAnomaliesLogEntry. This can be further sinked to Pub/Sub or any other services supported by Cloud Logging.
         :param Sequence[str] notification_channels: Resource names of the NotificationChannels to send alert. Must be of the format `projects//notificationChannels/`
@@ -5789,6 +6183,8 @@ class GoogleCloudAiplatformV1beta1ModelResponse(dict):
         suggest = None
         if key == "artifactUri":
             suggest = "artifact_uri"
+        elif key == "baseModelSource":
+            suggest = "base_model_source"
         elif key == "containerSpec":
             suggest = "container_spec"
         elif key == "createTime":
@@ -5847,6 +6243,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse(dict):
 
     def __init__(__self__, *,
                  artifact_uri: str,
+                 base_model_source: 'outputs.GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse',
                  container_spec: 'outputs.GoogleCloudAiplatformV1beta1ModelContainerSpecResponse',
                  create_time: str,
                  deployed_models: Sequence['outputs.GoogleCloudAiplatformV1beta1DeployedModelRefResponse'],
@@ -5876,8 +6273,9 @@ class GoogleCloudAiplatformV1beta1ModelResponse(dict):
                  version_update_time: str):
         """
         A trained machine learning Model.
-        :param str artifact_uri: Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
-        :param 'GoogleCloudAiplatformV1beta1ModelContainerSpecResponse' container_spec: Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+        :param str artifact_uri: Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
+        :param 'GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse' base_model_source: Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        :param 'GoogleCloudAiplatformV1beta1ModelContainerSpecResponse' container_spec: Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
         :param str create_time: Timestamp when this Model was uploaded into Vertex AI.
         :param Sequence['GoogleCloudAiplatformV1beta1DeployedModelRefResponse'] deployed_models: The pointers to DeployedModels created from this Model. Note that Model could have been deployed to Endpoints in different Locations.
         :param str description: The description of the Model.
@@ -5889,7 +6287,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse(dict):
         :param Any metadata: Immutable. An additional information about the Model; the schema of the metadata can be found in metadata_schema. Unset if the Model does not have any additional information.
         :param str metadata_artifact: The resource name of the Artifact that was created in MetadataStore when creating the Model. The Artifact resource name pattern is `projects/{project}/locations/{location}/metadataStores/{metadata_store}/artifacts/{artifact}`.
         :param str metadata_schema_uri: Immutable. Points to a YAML file stored on Google Cloud Storage describing additional information about the Model, that is specific to it. Unset if the Model does not have any additional information. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML Models always have this field populated by Vertex AI, if no additional metadata is needed, this field is set to an empty string. Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
-        :param 'GoogleCloudAiplatformV1beta1ModelSourceInfoResponse' model_source_info: Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or existing Vertex AI Model.
+        :param 'GoogleCloudAiplatformV1beta1ModelSourceInfoResponse' model_source_info: Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or saved and tuned from Genie or Model Garden.
         :param str name: The resource name of the Model.
         :param 'GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponse' original_model_info: If this Model is a copy of another Model, this contains info about the original.
         :param 'GoogleCloudAiplatformV1beta1PredictSchemataResponse' predict_schemata: The schemata that describe formats of the Model's predictions and explanations as given and returned via PredictionService.Predict and PredictionService.Explain.
@@ -5906,6 +6304,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse(dict):
         :param str version_update_time: Timestamp when this version was most recently updated.
         """
         pulumi.set(__self__, "artifact_uri", artifact_uri)
+        pulumi.set(__self__, "base_model_source", base_model_source)
         pulumi.set(__self__, "container_spec", container_spec)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "deployed_models", deployed_models)
@@ -5938,15 +6337,23 @@ class GoogleCloudAiplatformV1beta1ModelResponse(dict):
     @pulumi.getter(name="artifactUri")
     def artifact_uri(self) -> str:
         """
-        Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+        Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
         """
         return pulumi.get(self, "artifact_uri")
+
+    @property
+    @pulumi.getter(name="baseModelSource")
+    def base_model_source(self) -> 'outputs.GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse':
+        """
+        Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        """
+        return pulumi.get(self, "base_model_source")
 
     @property
     @pulumi.getter(name="containerSpec")
     def container_spec(self) -> 'outputs.GoogleCloudAiplatformV1beta1ModelContainerSpecResponse':
         """
-        Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+        Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
         """
         return pulumi.get(self, "container_spec")
 
@@ -6042,7 +6449,7 @@ class GoogleCloudAiplatformV1beta1ModelResponse(dict):
     @pulumi.getter(name="modelSourceInfo")
     def model_source_info(self) -> 'outputs.GoogleCloudAiplatformV1beta1ModelSourceInfoResponse':
         """
-        Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or existing Vertex AI Model.
+        Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or saved and tuned from Genie or Model Garden.
         """
         return pulumi.get(self, "model_source_info")
 
@@ -6935,6 +7342,67 @@ class GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse(dict):
+    """
+    Notebook Reservation Affinity for consuming Zonal reservation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: str,
+                 key: str,
+                 values: Sequence[str]):
+        """
+        Notebook Reservation Affinity for consuming Zonal reservation.
+        :param str consume_reservation_type: Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+        :param str key: Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+        :param Sequence[str] values: Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+        """
+        pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> str:
+        """
+        Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse(dict):
     """
     Represents the spec of persistent disk options.
@@ -7071,6 +7539,8 @@ class GoogleCloudAiplatformV1beta1PipelineJobResponse(dict):
             suggest = "job_detail"
         elif key == "pipelineSpec":
             suggest = "pipeline_spec"
+        elif key == "preflightValidations":
+            suggest = "preflight_validations"
         elif key == "reservedIpRanges":
             suggest = "reserved_ip_ranges"
         elif key == "runtimeConfig":
@@ -7110,6 +7580,7 @@ class GoogleCloudAiplatformV1beta1PipelineJobResponse(dict):
                  name: str,
                  network: str,
                  pipeline_spec: Mapping[str, str],
+                 preflight_validations: bool,
                  reserved_ip_ranges: Sequence[str],
                  runtime_config: 'outputs.GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse',
                  schedule_name: str,
@@ -7131,6 +7602,7 @@ class GoogleCloudAiplatformV1beta1PipelineJobResponse(dict):
         :param str name: The resource name of the PipelineJob.
         :param str network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
         :param Mapping[str, str] pipeline_spec: The spec of the pipeline.
+        :param bool preflight_validations: Optional. Whether to do component level validations before job creation.
         :param Sequence[str] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         :param 'GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse' runtime_config: Runtime config of the pipeline.
         :param str schedule_name: The schedule resource name. Only returned if the Pipeline is created by Schedule API.
@@ -7151,6 +7623,7 @@ class GoogleCloudAiplatformV1beta1PipelineJobResponse(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "pipeline_spec", pipeline_spec)
+        pulumi.set(__self__, "preflight_validations", preflight_validations)
         pulumi.set(__self__, "reserved_ip_ranges", reserved_ip_ranges)
         pulumi.set(__self__, "runtime_config", runtime_config)
         pulumi.set(__self__, "schedule_name", schedule_name)
@@ -7240,6 +7713,14 @@ class GoogleCloudAiplatformV1beta1PipelineJobResponse(dict):
         The spec of the pipeline.
         """
         return pulumi.get(self, "pipeline_spec")
+
+    @property
+    @pulumi.getter(name="preflightValidations")
+    def preflight_validations(self) -> bool:
+        """
+        Optional. Whether to do component level validations before job creation.
+        """
+        return pulumi.get(self, "preflight_validations")
 
     @property
     @pulumi.getter(name="reservedIpRanges")
@@ -8294,6 +8775,67 @@ class GoogleCloudAiplatformV1beta1ProbeResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse(dict):
+    """
+    PscAutomatedEndpoints defines the output of the forwarding rule automatically created by each PscAutomationConfig.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchAddress":
+            suggest = "match_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_address: str,
+                 network: str,
+                 project: str):
+        """
+        PscAutomatedEndpoints defines the output of the forwarding rule automatically created by each PscAutomationConfig.
+        :param str match_address: Ip Address created by the automated forwarding rule.
+        :param str network: Corresponding network in pscAutomationConfigs.
+        :param str project: Corresponding project_id in pscAutomationConfigs
+        """
+        pulumi.set(__self__, "match_address", match_address)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="matchAddress")
+    def match_address(self) -> str:
+        """
+        Ip Address created by the automated forwarding rule.
+        """
+        return pulumi.get(self, "match_address")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Corresponding network in pscAutomationConfigs.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Corresponding project_id in pscAutomationConfigs
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1beta1PythonPackageSpecResponse(dict):
     """
     The spec of a Python packaged code.
@@ -8381,6 +8923,28 @@ class GoogleCloudAiplatformV1beta1PythonPackageSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1beta1RayMetricSpecResponse(dict):
+    """
+    Configuration for the Ray metrics.
+    """
+    def __init__(__self__, *,
+                 disabled: bool):
+        """
+        Configuration for the Ray metrics.
+        :param bool disabled: Optional. Flag to disable the Ray metrics collection.
+        """
+        pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Optional. Flag to disable the Ray metrics collection.
+        """
+        return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1beta1RaySpecResponse(dict):
     """
     Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
@@ -8392,6 +8956,8 @@ class GoogleCloudAiplatformV1beta1RaySpecResponse(dict):
             suggest = "head_node_resource_pool_id"
         elif key == "imageUri":
             suggest = "image_uri"
+        elif key == "rayMetricSpec":
+            suggest = "ray_metric_spec"
         elif key == "resourcePoolImages":
             suggest = "resource_pool_images"
 
@@ -8409,15 +8975,18 @@ class GoogleCloudAiplatformV1beta1RaySpecResponse(dict):
     def __init__(__self__, *,
                  head_node_resource_pool_id: str,
                  image_uri: str,
+                 ray_metric_spec: 'outputs.GoogleCloudAiplatformV1beta1RayMetricSpecResponse',
                  resource_pool_images: Mapping[str, str]):
         """
         Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
         :param str head_node_resource_pool_id: Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
         :param str image_uri: Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
+        :param 'GoogleCloudAiplatformV1beta1RayMetricSpecResponse' ray_metric_spec: Optional. Ray metrics configurations.
         :param Mapping[str, str] resource_pool_images: Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
         """
         pulumi.set(__self__, "head_node_resource_pool_id", head_node_resource_pool_id)
         pulumi.set(__self__, "image_uri", image_uri)
+        pulumi.set(__self__, "ray_metric_spec", ray_metric_spec)
         pulumi.set(__self__, "resource_pool_images", resource_pool_images)
 
     @property
@@ -8437,12 +9006,150 @@ class GoogleCloudAiplatformV1beta1RaySpecResponse(dict):
         return pulumi.get(self, "image_uri")
 
     @property
+    @pulumi.getter(name="rayMetricSpec")
+    def ray_metric_spec(self) -> 'outputs.GoogleCloudAiplatformV1beta1RayMetricSpecResponse':
+        """
+        Optional. Ray metrics configurations.
+        """
+        return pulumi.get(self, "ray_metric_spec")
+
+    @property
     @pulumi.getter(name="resourcePoolImages")
     def resource_pool_images(self) -> Mapping[str, str]:
         """
         Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
         """
         return pulumi.get(self, "resource_pool_images")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse(dict):
+    """
+    User provided package spec like pickled object and package requirements.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dependencyFilesGcsUri":
+            suggest = "dependency_files_gcs_uri"
+        elif key == "pickleObjectGcsUri":
+            suggest = "pickle_object_gcs_uri"
+        elif key == "pythonVersion":
+            suggest = "python_version"
+        elif key == "requirementsGcsUri":
+            suggest = "requirements_gcs_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dependency_files_gcs_uri: str,
+                 pickle_object_gcs_uri: str,
+                 python_version: str,
+                 requirements_gcs_uri: str):
+        """
+        User provided package spec like pickled object and package requirements.
+        :param str dependency_files_gcs_uri: Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+        :param str pickle_object_gcs_uri: Optional. The Cloud Storage URI of the pickled python object.
+        :param str python_version: Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not specified, default value is 3.10.
+        :param str requirements_gcs_uri: Optional. The Cloud Storage URI of the `requirements.txt` file
+        """
+        pulumi.set(__self__, "dependency_files_gcs_uri", dependency_files_gcs_uri)
+        pulumi.set(__self__, "pickle_object_gcs_uri", pickle_object_gcs_uri)
+        pulumi.set(__self__, "python_version", python_version)
+        pulumi.set(__self__, "requirements_gcs_uri", requirements_gcs_uri)
+
+    @property
+    @pulumi.getter(name="dependencyFilesGcsUri")
+    def dependency_files_gcs_uri(self) -> str:
+        """
+        Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+        """
+        return pulumi.get(self, "dependency_files_gcs_uri")
+
+    @property
+    @pulumi.getter(name="pickleObjectGcsUri")
+    def pickle_object_gcs_uri(self) -> str:
+        """
+        Optional. The Cloud Storage URI of the pickled python object.
+        """
+        return pulumi.get(self, "pickle_object_gcs_uri")
+
+    @property
+    @pulumi.getter(name="pythonVersion")
+    def python_version(self) -> str:
+        """
+        Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not specified, default value is 3.10.
+        """
+        return pulumi.get(self, "python_version")
+
+    @property
+    @pulumi.getter(name="requirementsGcsUri")
+    def requirements_gcs_uri(self) -> str:
+        """
+        Optional. The Cloud Storage URI of the `requirements.txt` file
+        """
+        return pulumi.get(self, "requirements_gcs_uri")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse(dict):
+    """
+    ReasoningEngine configurations
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "classMethods":
+            suggest = "class_methods"
+        elif key == "packageSpec":
+            suggest = "package_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 class_methods: Sequence[Mapping[str, str]],
+                 package_spec: 'outputs.GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse'):
+        """
+        ReasoningEngine configurations
+        :param Sequence[Mapping[str, str]] class_methods: Optional. Declarations for object class methods.
+        :param 'GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse' package_spec: User provided package spec of the ReasoningEngine.
+        """
+        pulumi.set(__self__, "class_methods", class_methods)
+        pulumi.set(__self__, "package_spec", package_spec)
+
+    @property
+    @pulumi.getter(name="classMethods")
+    def class_methods(self) -> Sequence[Mapping[str, str]]:
+        """
+        Optional. Declarations for object class methods.
+        """
+        return pulumi.get(self, "class_methods")
+
+    @property
+    @pulumi.getter(name="packageSpec")
+    def package_spec(self) -> 'outputs.GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse':
+        """
+        User provided package spec of the ReasoningEngine.
+        """
+        return pulumi.get(self, "package_spec")
 
 
 @pulumi.output_type
@@ -9228,6 +9935,45 @@ class GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse(dict):
         Optional. Default service account that this PersistentResource's workloads run as. The workloads include: * Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to PersistentResource, if no other service account specified in the job specs. Only works when custom service account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account. Required if any containers are specified in `ResourceRuntimeSpec`.
         """
         return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse(dict):
+    """
+    A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_secure_boot: bool):
+        """
+        A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        :param bool enable_secure_boot: Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+        """
+        pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> bool:
+        """
+        Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+        """
+        return pulumi.get(self, "enable_secure_boot")
 
 
 @pulumi.output_type
@@ -11296,8 +12042,8 @@ class GoogleIamV1BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'GoogleTypeExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -11315,7 +12061,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -11323,7 +12069,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 

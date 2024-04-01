@@ -27,10 +27,14 @@ class InstanceArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
+                 gemini_config: Optional[pulumi.Input['GeminiInstanceConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_config: Optional[pulumi.Input['MachineConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
+                 observability_config: Optional[pulumi.Input['ObservabilityInstanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_instance_config: Optional[pulumi.Input['PscInstanceConfigArgs']] = None,
                  query_insights_config: Optional[pulumi.Input['QueryInsightsInstanceConfigArgs']] = None,
                  read_pool_config: Optional[pulumi.Input['ReadPoolConfigArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -46,8 +50,12 @@ class InstanceArgs:
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        :param pulumi.Input['GeminiInstanceConfigArgs'] gemini_config: Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input['MachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
+        :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Optional. Instance level network configuration.
+        :param pulumi.Input['ObservabilityInstanceConfigArgs'] observability_config: Configuration for observability.
+        :param pulumi.Input['PscInstanceConfigArgs'] psc_instance_config: Optional. The configuration for Private Service Connect (PSC) for the instance.
         :param pulumi.Input['QueryInsightsInstanceConfigArgs'] query_insights_config: Configuration for query insights.
         :param pulumi.Input['ReadPoolConfigArgs'] read_pool_config: Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -70,14 +78,22 @@ class InstanceArgs:
             pulumi.set(__self__, "etag", etag)
         if gce_zone is not None:
             pulumi.set(__self__, "gce_zone", gce_zone)
+        if gemini_config is not None:
+            pulumi.set(__self__, "gemini_config", gemini_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if machine_config is not None:
             pulumi.set(__self__, "machine_config", machine_config)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
+        if observability_config is not None:
+            pulumi.set(__self__, "observability_config", observability_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_instance_config is not None:
+            pulumi.set(__self__, "psc_instance_config", psc_instance_config)
         if query_insights_config is not None:
             pulumi.set(__self__, "query_insights_config", query_insights_config)
         if read_pool_config is not None:
@@ -205,6 +221,18 @@ class InstanceArgs:
         pulumi.set(self, "gce_zone", value)
 
     @property
+    @pulumi.getter(name="geminiConfig")
+    def gemini_config(self) -> Optional[pulumi.Input['GeminiInstanceConfigArgs']]:
+        """
+        Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        return pulumi.get(self, "gemini_config")
+
+    @gemini_config.setter
+    def gemini_config(self, value: Optional[pulumi.Input['GeminiInstanceConfigArgs']]):
+        pulumi.set(self, "gemini_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -238,6 +266,30 @@ class InstanceArgs:
         pulumi.set(self, "machine_config", value)
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['InstanceNetworkConfigArgs']]:
+        """
+        Optional. Instance level network configuration.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['InstanceNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
+    @pulumi.getter(name="observabilityConfig")
+    def observability_config(self) -> Optional[pulumi.Input['ObservabilityInstanceConfigArgs']]:
+        """
+        Configuration for observability.
+        """
+        return pulumi.get(self, "observability_config")
+
+    @observability_config.setter
+    def observability_config(self, value: Optional[pulumi.Input['ObservabilityInstanceConfigArgs']]):
+        pulumi.set(self, "observability_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -245,6 +297,18 @@ class InstanceArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pscInstanceConfig")
+    def psc_instance_config(self) -> Optional[pulumi.Input['PscInstanceConfigArgs']]:
+        """
+        Optional. The configuration for Private Service Connect (PSC) for the instance.
+        """
+        return pulumi.get(self, "psc_instance_config")
+
+    @psc_instance_config.setter
+    def psc_instance_config(self, value: Optional[pulumi.Input['PscInstanceConfigArgs']]):
+        pulumi.set(self, "psc_instance_config", value)
 
     @property
     @pulumi.getter(name="queryInsightsConfig")
@@ -308,12 +372,16 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
+                 gemini_config: Optional[pulumi.Input[pulumi.InputType['GeminiInstanceConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+                 observability_config: Optional[pulumi.Input[pulumi.InputType['ObservabilityInstanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_instance_config: Optional[pulumi.Input[pulumi.InputType['PscInstanceConfigArgs']]] = None,
                  query_insights_config: Optional[pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -332,10 +400,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
+        :param pulumi.Input[pulumi.InputType['GeminiInstanceConfigArgs']] gemini_config: Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
         :param pulumi.Input[str] instance_id: Required. ID of the requesting object.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The type of the instance. Specified at creation time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[pulumi.InputType['MachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']] network_config: Optional. Instance level network configuration.
+        :param pulumi.Input[pulumi.InputType['ObservabilityInstanceConfigArgs']] observability_config: Configuration for observability.
+        :param pulumi.Input[pulumi.InputType['PscInstanceConfigArgs']] psc_instance_config: Optional. The configuration for Private Service Connect (PSC) for the instance.
         :param pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']] query_insights_config: Configuration for query insights.
         :param pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']] read_pool_config: Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -374,12 +446,16 @@ class Instance(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
+                 gemini_config: Optional[pulumi.Input[pulumi.InputType['GeminiInstanceConfigArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
+                 observability_config: Optional[pulumi.Input[pulumi.InputType['ObservabilityInstanceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_instance_config: Optional[pulumi.Input[pulumi.InputType['PscInstanceConfigArgs']]] = None,
                  query_insights_config: Optional[pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -403,6 +479,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["gce_zone"] = gce_zone
+            __props__.__dict__["gemini_config"] = gemini_config
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -412,7 +489,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["machine_config"] = machine_config
+            __props__.__dict__["network_config"] = network_config
+            __props__.__dict__["observability_config"] = observability_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_instance_config"] = psc_instance_config
             __props__.__dict__["query_insights_config"] = query_insights_config
             __props__.__dict__["read_pool_config"] = read_pool_config
             __props__.__dict__["request_id"] = request_id
@@ -422,7 +502,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["nodes"] = None
+            __props__.__dict__["public_ip_address"] = None
             __props__.__dict__["reconciling"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
@@ -462,6 +544,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["gce_zone"] = None
+        __props__.__dict__["gemini_config"] = None
         __props__.__dict__["instance_id"] = None
         __props__.__dict__["instance_type"] = None
         __props__.__dict__["ip_address"] = None
@@ -469,12 +552,17 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["machine_config"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["network_config"] = None
         __props__.__dict__["nodes"] = None
+        __props__.__dict__["observability_config"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["psc_instance_config"] = None
+        __props__.__dict__["public_ip_address"] = None
         __props__.__dict__["query_insights_config"] = None
         __props__.__dict__["read_pool_config"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
@@ -561,6 +649,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "gce_zone")
 
     @property
+    @pulumi.getter(name="geminiConfig")
+    def gemini_config(self) -> pulumi.Output['outputs.GeminiInstanceConfigResponse']:
+        """
+        Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        return pulumi.get(self, "gemini_config")
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
@@ -614,6 +710,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.InstanceNetworkConfigResponse']:
+        """
+        Optional. Instance level network configuration.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.NodeResponse']]:
         """
@@ -622,9 +726,33 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "nodes")
 
     @property
+    @pulumi.getter(name="observabilityConfig")
+    def observability_config(self) -> pulumi.Output['outputs.ObservabilityInstanceConfigResponse']:
+        """
+        Configuration for observability.
+        """
+        return pulumi.get(self, "observability_config")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscInstanceConfig")
+    def psc_instance_config(self) -> pulumi.Output['outputs.PscInstanceConfigResponse']:
+        """
+        Optional. The configuration for Private Service Connect (PSC) for the instance.
+        """
+        return pulumi.get(self, "psc_instance_config")
+
+    @property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> pulumi.Output[str]:
+        """
+        The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+        """
+        return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter(name="queryInsightsConfig")
@@ -657,6 +785,14 @@ class Instance(pulumi.CustomResource):
         Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

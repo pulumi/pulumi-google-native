@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConversationResult:
-    def __init__(__self__, agent_id=None, call_metadata=None, create_time=None, data_source=None, dialogflow_intents=None, duration=None, expire_time=None, labels=None, language_code=None, latest_analysis=None, latest_summary=None, medium=None, name=None, obfuscated_user_id=None, runtime_annotations=None, start_time=None, transcript=None, ttl=None, turn_count=None, update_time=None):
+    def __init__(__self__, agent_id=None, call_metadata=None, create_time=None, data_source=None, dialogflow_intents=None, duration=None, expire_time=None, labels=None, language_code=None, latest_analysis=None, latest_summary=None, medium=None, name=None, obfuscated_user_id=None, quality_metadata=None, runtime_annotations=None, start_time=None, transcript=None, ttl=None, turn_count=None, update_time=None):
         if agent_id and not isinstance(agent_id, str):
             raise TypeError("Expected argument 'agent_id' to be a str")
         pulumi.set(__self__, "agent_id", agent_id)
@@ -62,6 +62,9 @@ class GetConversationResult:
         if obfuscated_user_id and not isinstance(obfuscated_user_id, str):
             raise TypeError("Expected argument 'obfuscated_user_id' to be a str")
         pulumi.set(__self__, "obfuscated_user_id", obfuscated_user_id)
+        if quality_metadata and not isinstance(quality_metadata, dict):
+            raise TypeError("Expected argument 'quality_metadata' to be a dict")
+        pulumi.set(__self__, "quality_metadata", quality_metadata)
         if runtime_annotations and not isinstance(runtime_annotations, list):
             raise TypeError("Expected argument 'runtime_annotations' to be a list")
         pulumi.set(__self__, "runtime_annotations", runtime_annotations)
@@ -194,6 +197,14 @@ class GetConversationResult:
         return pulumi.get(self, "obfuscated_user_id")
 
     @property
+    @pulumi.getter(name="qualityMetadata")
+    def quality_metadata(self) -> 'outputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse':
+        """
+        Conversation metadata related to quality management.
+        """
+        return pulumi.get(self, "quality_metadata")
+
+    @property
     @pulumi.getter(name="runtimeAnnotations")
     def runtime_annotations(self) -> Sequence['outputs.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse']:
         """
@@ -262,6 +273,7 @@ class AwaitableGetConversationResult(GetConversationResult):
             medium=self.medium,
             name=self.name,
             obfuscated_user_id=self.obfuscated_user_id,
+            quality_metadata=self.quality_metadata,
             runtime_annotations=self.runtime_annotations,
             start_time=self.start_time,
             transcript=self.transcript,
@@ -301,6 +313,7 @@ def get_conversation(conversation_id: Optional[str] = None,
         medium=pulumi.get(__ret__, 'medium'),
         name=pulumi.get(__ret__, 'name'),
         obfuscated_user_id=pulumi.get(__ret__, 'obfuscated_user_id'),
+        quality_metadata=pulumi.get(__ret__, 'quality_metadata'),
         runtime_annotations=pulumi.get(__ret__, 'runtime_annotations'),
         start_time=pulumi.get(__ret__, 'start_time'),
         transcript=pulumi.get(__ret__, 'transcript'),

@@ -19,16 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetCustomConnectorVersionResult:
-    def __init__(__self__, auth_config=None, create_time=None, destination_config=None, enable_backend_destination_config=None, labels=None, name=None, service_account=None, spec_location=None, update_time=None):
+    def __init__(__self__, auth_config=None, backend_variable_templates=None, create_time=None, destination_configs=None, enable_backend_destination_config=None, labels=None, name=None, service_account=None, spec_location=None, spec_server_urls=None, state=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
+        if backend_variable_templates and not isinstance(backend_variable_templates, list):
+            raise TypeError("Expected argument 'backend_variable_templates' to be a list")
+        pulumi.set(__self__, "backend_variable_templates", backend_variable_templates)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
-        if destination_config and not isinstance(destination_config, dict):
-            raise TypeError("Expected argument 'destination_config' to be a dict")
-        pulumi.set(__self__, "destination_config", destination_config)
+        if destination_configs and not isinstance(destination_configs, list):
+            raise TypeError("Expected argument 'destination_configs' to be a list")
+        pulumi.set(__self__, "destination_configs", destination_configs)
         if enable_backend_destination_config and not isinstance(enable_backend_destination_config, bool):
             raise TypeError("Expected argument 'enable_backend_destination_config' to be a bool")
         pulumi.set(__self__, "enable_backend_destination_config", enable_backend_destination_config)
@@ -44,6 +47,12 @@ class GetCustomConnectorVersionResult:
         if spec_location and not isinstance(spec_location, str):
             raise TypeError("Expected argument 'spec_location' to be a str")
         pulumi.set(__self__, "spec_location", spec_location)
+        if spec_server_urls and not isinstance(spec_server_urls, list):
+            raise TypeError("Expected argument 'spec_server_urls' to be a list")
+        pulumi.set(__self__, "spec_server_urls", spec_server_urls)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -52,9 +61,17 @@ class GetCustomConnectorVersionResult:
     @pulumi.getter(name="authConfig")
     def auth_config(self) -> 'outputs.AuthConfigResponse':
         """
-        Configuration for establishing the authentication to the connector destination.
+        Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
         """
         return pulumi.get(self, "auth_config")
+
+    @property
+    @pulumi.getter(name="backendVariableTemplates")
+    def backend_variable_templates(self) -> Sequence['outputs.ConfigVariableTemplateResponse']:
+        """
+        Optional. Backend variables config templates. This translates to additional variable templates in connection.
+        """
+        return pulumi.get(self, "backend_variable_templates")
 
     @property
     @pulumi.getter(name="createTime")
@@ -65,18 +82,18 @@ class GetCustomConnectorVersionResult:
         return pulumi.get(self, "create_time")
 
     @property
-    @pulumi.getter(name="destinationConfig")
-    def destination_config(self) -> 'outputs.DestinationConfigResponse':
+    @pulumi.getter(name="destinationConfigs")
+    def destination_configs(self) -> Sequence['outputs.DestinationConfigResponse']:
         """
-        Configuration of the customConnector's destination.
+        Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
         """
-        return pulumi.get(self, "destination_config")
+        return pulumi.get(self, "destination_configs")
 
     @property
     @pulumi.getter(name="enableBackendDestinationConfig")
     def enable_backend_destination_config(self) -> bool:
         """
-        Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+        Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
         """
         return pulumi.get(self, "enable_backend_destination_config")
 
@@ -100,7 +117,7 @@ class GetCustomConnectorVersionResult:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
-        Service account needed for runtime plane to access Custom Connector secrets.
+        Optional. Service account used by runtime plane to access auth config secrets.
         """
         return pulumi.get(self, "service_account")
 
@@ -108,9 +125,25 @@ class GetCustomConnectorVersionResult:
     @pulumi.getter(name="specLocation")
     def spec_location(self) -> str:
         """
-        Optional. Location of the custom connector spec.
+        Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
         """
         return pulumi.get(self, "spec_location")
+
+    @property
+    @pulumi.getter(name="specServerUrls")
+    def spec_server_urls(self) -> Sequence[str]:
+        """
+        Server URLs parsed from the spec.
+        """
+        return pulumi.get(self, "spec_server_urls")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the custom connector version.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -128,13 +161,16 @@ class AwaitableGetCustomConnectorVersionResult(GetCustomConnectorVersionResult):
             yield self
         return GetCustomConnectorVersionResult(
             auth_config=self.auth_config,
+            backend_variable_templates=self.backend_variable_templates,
             create_time=self.create_time,
-            destination_config=self.destination_config,
+            destination_configs=self.destination_configs,
             enable_backend_destination_config=self.enable_backend_destination_config,
             labels=self.labels,
             name=self.name,
             service_account=self.service_account,
             spec_location=self.spec_location,
+            spec_server_urls=self.spec_server_urls,
+            state=self.state,
             update_time=self.update_time)
 
 
@@ -154,13 +190,16 @@ def get_custom_connector_version(custom_connector_id: Optional[str] = None,
 
     return AwaitableGetCustomConnectorVersionResult(
         auth_config=pulumi.get(__ret__, 'auth_config'),
+        backend_variable_templates=pulumi.get(__ret__, 'backend_variable_templates'),
         create_time=pulumi.get(__ret__, 'create_time'),
-        destination_config=pulumi.get(__ret__, 'destination_config'),
+        destination_configs=pulumi.get(__ret__, 'destination_configs'),
         enable_backend_destination_config=pulumi.get(__ret__, 'enable_backend_destination_config'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         service_account=pulumi.get(__ret__, 'service_account'),
         spec_location=pulumi.get(__ret__, 'spec_location'),
+        spec_server_urls=pulumi.get(__ret__, 'spec_server_urls'),
+        state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

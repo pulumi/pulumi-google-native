@@ -7,11 +7,17 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .automation import *
+from .custom_target_type import *
+from .custom_target_type_iam_binding import *
+from .custom_target_type_iam_member import *
+from .custom_target_type_iam_policy import *
 from .delivery_pipeline import *
 from .delivery_pipeline_iam_binding import *
 from .delivery_pipeline_iam_member import *
 from .delivery_pipeline_iam_policy import *
 from .get_automation import *
+from .get_custom_target_type import *
+from .get_custom_target_type_iam_policy import *
 from .get_delivery_pipeline import *
 from .get_delivery_pipeline_iam_policy import *
 from .get_release import *

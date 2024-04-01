@@ -107,7 +107,7 @@ def get_deidentify_template(deidentify_template_id: Optional[str] = None,
                             project: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeidentifyTemplateResult:
     """
-    Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+    Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
     """
     __args__ = dict()
     __args__['deidentifyTemplateId'] = deidentify_template_id
@@ -131,6 +131,6 @@ def get_deidentify_template_output(deidentify_template_id: Optional[pulumi.Input
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeidentifyTemplateResult]:
     """
-    Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+    Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
     """
     ...

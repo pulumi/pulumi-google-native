@@ -11,12 +11,95 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AOFConfigArgs',
+    'ClusterPersistenceConfigArgs',
     'MaintenancePolicyArgs',
     'PersistenceConfigArgs',
     'PscConfigArgs',
+    'RDBConfigArgs',
     'TimeOfDayArgs',
     'WeeklyMaintenanceWindowArgs',
 ]
+
+@pulumi.input_type
+class AOFConfigArgs:
+    def __init__(__self__, *,
+                 append_fsync: Optional[pulumi.Input['AOFConfigAppendFsync']] = None):
+        """
+        Configuration of the AOF based persistence.
+        :param pulumi.Input['AOFConfigAppendFsync'] append_fsync: Optional. fsync configuration.
+        """
+        if append_fsync is not None:
+            pulumi.set(__self__, "append_fsync", append_fsync)
+
+    @property
+    @pulumi.getter(name="appendFsync")
+    def append_fsync(self) -> Optional[pulumi.Input['AOFConfigAppendFsync']]:
+        """
+        Optional. fsync configuration.
+        """
+        return pulumi.get(self, "append_fsync")
+
+    @append_fsync.setter
+    def append_fsync(self, value: Optional[pulumi.Input['AOFConfigAppendFsync']]):
+        pulumi.set(self, "append_fsync", value)
+
+
+@pulumi.input_type
+class ClusterPersistenceConfigArgs:
+    def __init__(__self__, *,
+                 aof_config: Optional[pulumi.Input['AOFConfigArgs']] = None,
+                 mode: Optional[pulumi.Input['ClusterPersistenceConfigMode']] = None,
+                 rdb_config: Optional[pulumi.Input['RDBConfigArgs']] = None):
+        """
+        Configuration of the persistence functionality.
+        :param pulumi.Input['AOFConfigArgs'] aof_config: Optional. AOF configuration. This field will be ignored if mode is not AOF.
+        :param pulumi.Input['ClusterPersistenceConfigMode'] mode: Optional. The mode of persistence.
+        :param pulumi.Input['RDBConfigArgs'] rdb_config: Optional. RDB configuration. This field will be ignored if mode is not RDB.
+        """
+        if aof_config is not None:
+            pulumi.set(__self__, "aof_config", aof_config)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if rdb_config is not None:
+            pulumi.set(__self__, "rdb_config", rdb_config)
+
+    @property
+    @pulumi.getter(name="aofConfig")
+    def aof_config(self) -> Optional[pulumi.Input['AOFConfigArgs']]:
+        """
+        Optional. AOF configuration. This field will be ignored if mode is not AOF.
+        """
+        return pulumi.get(self, "aof_config")
+
+    @aof_config.setter
+    def aof_config(self, value: Optional[pulumi.Input['AOFConfigArgs']]):
+        pulumi.set(self, "aof_config", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['ClusterPersistenceConfigMode']]:
+        """
+        Optional. The mode of persistence.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['ClusterPersistenceConfigMode']]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="rdbConfig")
+    def rdb_config(self) -> Optional[pulumi.Input['RDBConfigArgs']]:
+        """
+        Optional. RDB configuration. This field will be ignored if mode is not RDB.
+        """
+        return pulumi.get(self, "rdb_config")
+
+    @rdb_config.setter
+    def rdb_config(self, value: Optional[pulumi.Input['RDBConfigArgs']]):
+        pulumi.set(self, "rdb_config", value)
+
 
 @pulumi.input_type
 class MaintenancePolicyArgs:
@@ -134,6 +217,46 @@ class PscConfigArgs:
     @network.setter
     def network(self, value: pulumi.Input[str]):
         pulumi.set(self, "network", value)
+
+
+@pulumi.input_type
+class RDBConfigArgs:
+    def __init__(__self__, *,
+                 rdb_snapshot_period: Optional[pulumi.Input['RDBConfigRdbSnapshotPeriod']] = None,
+                 rdb_snapshot_start_time: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration of the RDB based persistence.
+        :param pulumi.Input['RDBConfigRdbSnapshotPeriod'] rdb_snapshot_period: Optional. Period between RDB snapshots.
+        :param pulumi.Input[str] rdb_snapshot_start_time: Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        if rdb_snapshot_period is not None:
+            pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+        if rdb_snapshot_start_time is not None:
+            pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> Optional[pulumi.Input['RDBConfigRdbSnapshotPeriod']]:
+        """
+        Optional. Period between RDB snapshots.
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
+
+    @rdb_snapshot_period.setter
+    def rdb_snapshot_period(self, value: Optional[pulumi.Input['RDBConfigRdbSnapshotPeriod']]):
+        pulumi.set(self, "rdb_snapshot_period", value)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotStartTime")
+    def rdb_snapshot_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.
+        """
+        return pulumi.get(self, "rdb_snapshot_start_time")
+
+    @rdb_snapshot_start_time.setter
+    def rdb_snapshot_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rdb_snapshot_start_time", value)
 
 
 @pulumi.input_type

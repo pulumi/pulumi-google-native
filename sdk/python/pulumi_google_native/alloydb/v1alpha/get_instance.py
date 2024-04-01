@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, annotations=None, availability_type=None, client_connection_config=None, create_time=None, database_flags=None, delete_time=None, display_name=None, etag=None, gce_zone=None, instance_type=None, ip_address=None, labels=None, machine_config=None, name=None, nodes=None, query_insights_config=None, read_pool_config=None, reconciling=None, satisfies_pzs=None, state=None, uid=None, update_policy=None, update_time=None, writable_node=None):
+    def __init__(__self__, annotations=None, availability_type=None, client_connection_config=None, create_time=None, database_flags=None, delete_time=None, display_name=None, etag=None, gce_zone=None, gemini_config=None, instance_type=None, ip_address=None, labels=None, machine_config=None, name=None, network_config=None, nodes=None, observability_config=None, psc_instance_config=None, public_ip_address=None, query_insights_config=None, read_pool_config=None, reconciling=None, satisfies_pzi=None, satisfies_pzs=None, state=None, uid=None, update_policy=None, update_time=None, writable_node=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -47,6 +47,9 @@ class GetInstanceResult:
         if gce_zone and not isinstance(gce_zone, str):
             raise TypeError("Expected argument 'gce_zone' to be a str")
         pulumi.set(__self__, "gce_zone", gce_zone)
+        if gemini_config and not isinstance(gemini_config, dict):
+            raise TypeError("Expected argument 'gemini_config' to be a dict")
+        pulumi.set(__self__, "gemini_config", gemini_config)
         if instance_type and not isinstance(instance_type, str):
             raise TypeError("Expected argument 'instance_type' to be a str")
         pulumi.set(__self__, "instance_type", instance_type)
@@ -62,9 +65,21 @@ class GetInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network_config and not isinstance(network_config, dict):
+            raise TypeError("Expected argument 'network_config' to be a dict")
+        pulumi.set(__self__, "network_config", network_config)
         if nodes and not isinstance(nodes, list):
             raise TypeError("Expected argument 'nodes' to be a list")
         pulumi.set(__self__, "nodes", nodes)
+        if observability_config and not isinstance(observability_config, dict):
+            raise TypeError("Expected argument 'observability_config' to be a dict")
+        pulumi.set(__self__, "observability_config", observability_config)
+        if psc_instance_config and not isinstance(psc_instance_config, dict):
+            raise TypeError("Expected argument 'psc_instance_config' to be a dict")
+        pulumi.set(__self__, "psc_instance_config", psc_instance_config)
+        if public_ip_address and not isinstance(public_ip_address, str):
+            raise TypeError("Expected argument 'public_ip_address' to be a str")
+        pulumi.set(__self__, "public_ip_address", public_ip_address)
         if query_insights_config and not isinstance(query_insights_config, dict):
             raise TypeError("Expected argument 'query_insights_config' to be a dict")
         pulumi.set(__self__, "query_insights_config", query_insights_config)
@@ -74,6 +89,9 @@ class GetInstanceResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -166,6 +184,14 @@ class GetInstanceResult:
         return pulumi.get(self, "gce_zone")
 
     @property
+    @pulumi.getter(name="geminiConfig")
+    def gemini_config(self) -> 'outputs.GeminiInstanceConfigResponse':
+        """
+        Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        return pulumi.get(self, "gemini_config")
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
         """
@@ -206,12 +232,44 @@ class GetInstanceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.InstanceNetworkConfigResponse':
+        """
+        Optional. Instance level network configuration.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.NodeResponse']:
         """
         List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         """
         return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter(name="observabilityConfig")
+    def observability_config(self) -> 'outputs.ObservabilityInstanceConfigResponse':
+        """
+        Configuration for observability.
+        """
+        return pulumi.get(self, "observability_config")
+
+    @property
+    @pulumi.getter(name="pscInstanceConfig")
+    def psc_instance_config(self) -> 'outputs.PscInstanceConfigResponse':
+        """
+        Optional. The configuration for Private Service Connect (PSC) for the instance.
+        """
+        return pulumi.get(self, "psc_instance_config")
+
+    @property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> str:
+        """
+        The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+        """
+        return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter(name="queryInsightsConfig")
@@ -236,6 +294,14 @@ class GetInstanceResult:
         Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -301,15 +367,21 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             display_name=self.display_name,
             etag=self.etag,
             gce_zone=self.gce_zone,
+            gemini_config=self.gemini_config,
             instance_type=self.instance_type,
             ip_address=self.ip_address,
             labels=self.labels,
             machine_config=self.machine_config,
             name=self.name,
+            network_config=self.network_config,
             nodes=self.nodes,
+            observability_config=self.observability_config,
+            psc_instance_config=self.psc_instance_config,
+            public_ip_address=self.public_ip_address,
             query_insights_config=self.query_insights_config,
             read_pool_config=self.read_pool_config,
             reconciling=self.reconciling,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             state=self.state,
             uid=self.uid,
@@ -346,15 +418,21 @@ def get_instance(cluster_id: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         etag=pulumi.get(__ret__, 'etag'),
         gce_zone=pulumi.get(__ret__, 'gce_zone'),
+        gemini_config=pulumi.get(__ret__, 'gemini_config'),
         instance_type=pulumi.get(__ret__, 'instance_type'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
         labels=pulumi.get(__ret__, 'labels'),
         machine_config=pulumi.get(__ret__, 'machine_config'),
         name=pulumi.get(__ret__, 'name'),
+        network_config=pulumi.get(__ret__, 'network_config'),
         nodes=pulumi.get(__ret__, 'nodes'),
+        observability_config=pulumi.get(__ret__, 'observability_config'),
+        psc_instance_config=pulumi.get(__ret__, 'psc_instance_config'),
+        public_ip_address=pulumi.get(__ret__, 'public_ip_address'),
         query_insights_config=pulumi.get(__ret__, 'query_insights_config'),
         read_pool_config=pulumi.get(__ret__, 'read_pool_config'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),

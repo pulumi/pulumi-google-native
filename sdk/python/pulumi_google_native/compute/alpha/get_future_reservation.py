@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFutureReservationResult:
-    def __init__(__self__, auto_created_reservations_delete_time=None, auto_created_reservations_duration=None, auto_delete_auto_created_reservations=None, creation_timestamp=None, description=None, kind=None, name=None, name_prefix=None, planning_status=None, self_link=None, self_link_with_id=None, share_settings=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
+    def __init__(__self__, auto_created_reservations_delete_time=None, auto_created_reservations_duration=None, auto_delete_auto_created_reservations=None, creation_timestamp=None, description=None, kind=None, name=None, name_prefix=None, planning_status=None, self_link=None, self_link_with_id=None, share_settings=None, specific_reservation_required=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
         if auto_created_reservations_delete_time and not isinstance(auto_created_reservations_delete_time, str):
             raise TypeError("Expected argument 'auto_created_reservations_delete_time' to be a str")
         pulumi.set(__self__, "auto_created_reservations_delete_time", auto_created_reservations_delete_time)
@@ -56,6 +56,9 @@ class GetFutureReservationResult:
         if share_settings and not isinstance(share_settings, dict):
             raise TypeError("Expected argument 'share_settings' to be a dict")
         pulumi.set(__self__, "share_settings", share_settings)
+        if specific_reservation_required and not isinstance(specific_reservation_required, bool):
+            raise TypeError("Expected argument 'specific_reservation_required' to be a bool")
+        pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
         if specific_sku_properties and not isinstance(specific_sku_properties, dict):
             raise TypeError("Expected argument 'specific_sku_properties' to be a dict")
         pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
@@ -73,7 +76,7 @@ class GetFutureReservationResult:
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
     def auto_created_reservations_delete_time(self) -> str:
         """
-        Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
         """
         return pulumi.get(self, "auto_created_reservations_delete_time")
 
@@ -81,7 +84,7 @@ class GetFutureReservationResult:
     @pulumi.getter(name="autoCreatedReservationsDuration")
     def auto_created_reservations_duration(self) -> 'outputs.DurationResponse':
         """
-        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         """
         return pulumi.get(self, "auto_created_reservations_duration")
 
@@ -166,6 +169,14 @@ class GetFutureReservationResult:
         return pulumi.get(self, "share_settings")
 
     @property
+    @pulumi.getter(name="specificReservationRequired")
+    def specific_reservation_required(self) -> bool:
+        """
+        Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+        """
+        return pulumi.get(self, "specific_reservation_required")
+
+    @property
     @pulumi.getter(name="specificSkuProperties")
     def specific_sku_properties(self) -> 'outputs.FutureReservationSpecificSKUPropertiesResponse':
         """
@@ -216,6 +227,7 @@ class AwaitableGetFutureReservationResult(GetFutureReservationResult):
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             share_settings=self.share_settings,
+            specific_reservation_required=self.specific_reservation_required,
             specific_sku_properties=self.specific_sku_properties,
             status=self.status,
             time_window=self.time_window,
@@ -249,6 +261,7 @@ def get_future_reservation(future_reservation: Optional[str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
         share_settings=pulumi.get(__ret__, 'share_settings'),
+        specific_reservation_required=pulumi.get(__ret__, 'specific_reservation_required'),
         specific_sku_properties=pulumi.get(__ret__, 'specific_sku_properties'),
         status=pulumi.get(__ret__, 'status'),
         time_window=pulumi.get(__ret__, 'time_window'),

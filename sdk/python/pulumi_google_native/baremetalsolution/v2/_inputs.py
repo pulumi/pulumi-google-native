@@ -197,6 +197,7 @@ class InstanceConfigArgs:
                  hyperthreading: Optional[pulumi.Input[bool]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 kms_key_version: Optional[pulumi.Input[str]] = None,
                  logical_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['InstanceConfigNetworkConfig']] = None,
@@ -212,6 +213,7 @@ class InstanceConfigArgs:
         :param pulumi.Input[bool] hyperthreading: Whether the instance should be provisioned with Hyperthreading enabled.
         :param pulumi.Input[str] id: A transient unique identifier to idenfity an instance within an ProvisioningConfig request.
         :param pulumi.Input[str] instance_type: Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+        :param pulumi.Input[str] kms_key_version: Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs']]] logical_interfaces: List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
         :param pulumi.Input[str] name: The name of the instance config.
         :param pulumi.Input['InstanceConfigNetworkConfig'] network_config: The type of network configuration on the instance.
@@ -231,6 +233,8 @@ class InstanceConfigArgs:
             pulumi.set(__self__, "id", id)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if kms_key_version is not None:
+            pulumi.set(__self__, "kms_key_version", kms_key_version)
         if logical_interfaces is not None:
             pulumi.set(__self__, "logical_interfaces", logical_interfaces)
         if name is not None:
@@ -307,6 +311,18 @@ class InstanceConfigArgs:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersion")
+    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+        """
+        return pulumi.get(self, "kms_key_version")
+
+    @kms_key_version.setter
+    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version", value)
 
     @property
     @pulumi.getter(name="logicalInterfaces")

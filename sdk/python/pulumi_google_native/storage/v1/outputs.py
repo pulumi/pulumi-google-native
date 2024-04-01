@@ -18,6 +18,7 @@ __all__ = [
     'BucketCorsItemResponse',
     'BucketCustomPlacementConfigResponse',
     'BucketEncryptionResponse',
+    'BucketHierarchicalNamespaceResponse',
     'BucketIamConfigurationBucketPolicyOnlyResponse',
     'BucketIamConfigurationResponse',
     'BucketIamConfigurationUniformBucketLevelAccessResponse',
@@ -37,6 +38,7 @@ __all__ = [
     'BucketWebsiteResponse',
     'DefaultObjectAccessControlProjectTeamResponse',
     'ExprResponse',
+    'FolderPendingRenameInfoResponse',
     'ManagedFolderIamPolicyBindingsItemResponse',
     'ObjectAccessControlProjectTeamResponse',
     'ObjectAccessControlResponse',
@@ -518,6 +520,28 @@ class BucketEncryptionResponse(dict):
         A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
         """
         return pulumi.get(self, "default_kms_key_name")
+
+
+@pulumi.output_type
+class BucketHierarchicalNamespaceResponse(dict):
+    """
+    The bucket's hierarchical namespace configuration.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        The bucket's hierarchical namespace configuration.
+        :param bool enabled: When set to true, hierarchical namespace is enabled for this bucket.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        When set to true, hierarchical namespace is enabled for this bucket.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -1592,6 +1616,45 @@ class ExprResponse(dict):
         An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FolderPendingRenameInfoResponse(dict):
+    """
+    Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operationId":
+            suggest = "operation_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderPendingRenameInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderPendingRenameInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderPendingRenameInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operation_id: str):
+        """
+        Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+        :param str operation_id: The ID of the rename folder operation.
+        """
+        pulumi.set(__self__, "operation_id", operation_id)
+
+    @property
+    @pulumi.getter(name="operationId")
+    def operation_id(self) -> str:
+        """
+        The ID of the rename folder operation.
+        """
+        return pulumi.get(self, "operation_id")
 
 
 @pulumi.output_type

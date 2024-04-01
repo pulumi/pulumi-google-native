@@ -8,7 +8,9 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['DataStoreArgs', 'DataStore']
 
@@ -18,30 +20,40 @@ class DataStoreArgs:
                  collection_id: pulumi.Input[str],
                  data_store_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 acl_enabled: Optional[pulumi.Input[bool]] = None,
                  content_config: Optional[pulumi.Input['DataStoreContentConfig']] = None,
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
+                 document_processing_config: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs']] = None,
                  industry_vertical: Optional[pulumi.Input['DataStoreIndustryVertical']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreSolutionTypesItem']]]] = None):
+                 solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreSolutionTypesItem']]]] = None,
+                 starting_schema: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaSchemaArgs']] = None):
         """
         The set of arguments for constructing a DataStore resource.
         :param pulumi.Input[str] data_store_id: Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         :param pulumi.Input[str] display_name: The data store display name. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param pulumi.Input[bool] acl_enabled: Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
         :param pulumi.Input['DataStoreContentConfig'] content_config: Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
         :param pulumi.Input[bool] create_advanced_site_search: A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs'] document_processing_config: Configuration for Document understanding and enrichment.
         :param pulumi.Input['DataStoreIndustryVertical'] industry_vertical: Immutable. The industry vertical that the data store registers.
         :param pulumi.Input[str] name: Immutable. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['DataStoreSolutionTypesItem']]] solution_types: The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1alphaSchemaArgs'] starting_schema: The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
         """
         pulumi.set(__self__, "collection_id", collection_id)
         pulumi.set(__self__, "data_store_id", data_store_id)
         pulumi.set(__self__, "display_name", display_name)
+        if acl_enabled is not None:
+            pulumi.set(__self__, "acl_enabled", acl_enabled)
         if content_config is not None:
             pulumi.set(__self__, "content_config", content_config)
         if create_advanced_site_search is not None:
             pulumi.set(__self__, "create_advanced_site_search", create_advanced_site_search)
+        if document_processing_config is not None:
+            pulumi.set(__self__, "document_processing_config", document_processing_config)
         if industry_vertical is not None:
             pulumi.set(__self__, "industry_vertical", industry_vertical)
         if location is not None:
@@ -52,6 +64,8 @@ class DataStoreArgs:
             pulumi.set(__self__, "project", project)
         if solution_types is not None:
             pulumi.set(__self__, "solution_types", solution_types)
+        if starting_schema is not None:
+            pulumi.set(__self__, "starting_schema", starting_schema)
 
     @property
     @pulumi.getter(name="collectionId")
@@ -87,6 +101,18 @@ class DataStoreArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="aclEnabled")
+    def acl_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
+        """
+        return pulumi.get(self, "acl_enabled")
+
+    @acl_enabled.setter
+    def acl_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "acl_enabled", value)
+
+    @property
     @pulumi.getter(name="contentConfig")
     def content_config(self) -> Optional[pulumi.Input['DataStoreContentConfig']]:
         """
@@ -109,6 +135,18 @@ class DataStoreArgs:
     @create_advanced_site_search.setter
     def create_advanced_site_search(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "create_advanced_site_search", value)
+
+    @property
+    @pulumi.getter(name="documentProcessingConfig")
+    def document_processing_config(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs']]:
+        """
+        Configuration for Document understanding and enrichment.
+        """
+        return pulumi.get(self, "document_processing_config")
+
+    @document_processing_config.setter
+    def document_processing_config(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs']]):
+        pulumi.set(self, "document_processing_config", value)
 
     @property
     @pulumi.getter(name="industryVertical")
@@ -164,35 +202,53 @@ class DataStoreArgs:
     def solution_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreSolutionTypesItem']]]]):
         pulumi.set(self, "solution_types", value)
 
+    @property
+    @pulumi.getter(name="startingSchema")
+    def starting_schema(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaSchemaArgs']]:
+        """
+        The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        """
+        return pulumi.get(self, "starting_schema")
+
+    @starting_schema.setter
+    def starting_schema(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaSchemaArgs']]):
+        pulumi.set(self, "starting_schema", value)
+
 
 class DataStore(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_enabled: Optional[pulumi.Input[bool]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
                  content_config: Optional[pulumi.Input['DataStoreContentConfig']] = None,
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 document_processing_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs']]] = None,
                  industry_vertical: Optional[pulumi.Input['DataStoreIndustryVertical']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreSolutionTypesItem']]]] = None,
+                 starting_schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaSchemaArgs']]] = None,
                  __props__=None):
         """
         Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] acl_enabled: Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
         :param pulumi.Input['DataStoreContentConfig'] content_config: Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
         :param pulumi.Input[bool] create_advanced_site_search: A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored.
         :param pulumi.Input[str] data_store_id: Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         :param pulumi.Input[str] display_name: The data store display name. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs']] document_processing_config: Configuration for Document understanding and enrichment.
         :param pulumi.Input['DataStoreIndustryVertical'] industry_vertical: Immutable. The industry vertical that the data store registers.
         :param pulumi.Input[str] name: Immutable. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['DataStoreSolutionTypesItem']]] solution_types: The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaSchemaArgs']] starting_schema: The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
         """
         ...
     @overload
@@ -218,16 +274,19 @@ class DataStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_enabled: Optional[pulumi.Input[bool]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
                  content_config: Optional[pulumi.Input['DataStoreContentConfig']] = None,
                  create_advanced_site_search: Optional[pulumi.Input[bool]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 document_processing_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigArgs']]] = None,
                  industry_vertical: Optional[pulumi.Input['DataStoreIndustryVertical']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['DataStoreSolutionTypesItem']]]] = None,
+                 starting_schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaSchemaArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -237,6 +296,7 @@ class DataStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataStoreArgs.__new__(DataStoreArgs)
 
+            __props__.__dict__["acl_enabled"] = acl_enabled
             if collection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'collection_id'")
             __props__.__dict__["collection_id"] = collection_id
@@ -248,13 +308,16 @@ class DataStore(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["document_processing_config"] = document_processing_config
             __props__.__dict__["industry_vertical"] = industry_vertical
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["solution_types"] = solution_types
+            __props__.__dict__["starting_schema"] = starting_schema
             __props__.__dict__["create_time"] = None
             __props__.__dict__["default_schema_id"] = None
+            __props__.__dict__["idp_config"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collection_id", "data_store_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DataStore, __self__).__init__(
@@ -279,6 +342,7 @@ class DataStore(pulumi.CustomResource):
 
         __props__ = DataStoreArgs.__new__(DataStoreArgs)
 
+        __props__.__dict__["acl_enabled"] = None
         __props__.__dict__["collection_id"] = None
         __props__.__dict__["content_config"] = None
         __props__.__dict__["create_advanced_site_search"] = None
@@ -286,12 +350,23 @@ class DataStore(pulumi.CustomResource):
         __props__.__dict__["data_store_id"] = None
         __props__.__dict__["default_schema_id"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["document_processing_config"] = None
+        __props__.__dict__["idp_config"] = None
         __props__.__dict__["industry_vertical"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["solution_types"] = None
+        __props__.__dict__["starting_schema"] = None
         return DataStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aclEnabled")
+    def acl_enabled(self) -> pulumi.Output[bool]:
+        """
+        Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
+        """
+        return pulumi.get(self, "acl_enabled")
 
     @property
     @pulumi.getter(name="collectionId")
@@ -347,6 +422,22 @@ class DataStore(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="documentProcessingConfig")
+    def document_processing_config(self) -> pulumi.Output['outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse']:
+        """
+        Configuration for Document understanding and enrichment.
+        """
+        return pulumi.get(self, "document_processing_config")
+
+    @property
+    @pulumi.getter(name="idpConfig")
+    def idp_config(self) -> pulumi.Output['outputs.GoogleCloudDiscoveryengineV1alphaIdpConfigResponse']:
+        """
+        Data store level identity provider config.
+        """
+        return pulumi.get(self, "idp_config")
+
+    @property
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> pulumi.Output[str]:
         """
@@ -379,4 +470,12 @@ class DataStore(pulumi.CustomResource):
         The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
         """
         return pulumi.get(self, "solution_types")
+
+    @property
+    @pulumi.getter(name="startingSchema")
+    def starting_schema(self) -> pulumi.Output['outputs.GoogleCloudDiscoveryengineV1alphaSchemaResponse']:
+        """
+        The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        """
+        return pulumi.get(self, "starting_schema")
 

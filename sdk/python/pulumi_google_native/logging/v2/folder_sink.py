@@ -26,7 +26,7 @@ class FolderSinkArgs:
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['LogExclusionArgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 intercept_children: Optional[pulumi.Input[bool]] = None,
                  output_version_format: Optional[pulumi.Input['FolderSinkOutputVersionFormat']] = None,
                  unique_writer_identity: Optional[pulumi.Input[bool]] = None):
         """
@@ -39,7 +39,7 @@ class FolderSinkArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LogExclusionArgs']]] exclusions: Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
-        :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input[bool] intercept_children: Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
         :param pulumi.Input['FolderSinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
         :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
         """
@@ -59,8 +59,8 @@ class FolderSinkArgs:
             pulumi.set(__self__, "filter", filter)
         if include_children is not None:
             pulumi.set(__self__, "include_children", include_children)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if intercept_children is not None:
+            pulumi.set(__self__, "intercept_children", intercept_children)
         if output_version_format is not None:
             warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
             pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
@@ -175,16 +175,16 @@ class FolderSinkArgs:
         pulumi.set(self, "include_children", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="interceptChildren")
+    def intercept_children(self) -> Optional[pulumi.Input[bool]]:
         """
-        The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "intercept_children")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @intercept_children.setter
+    def intercept_children(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "intercept_children", value)
 
     @property
     @pulumi.getter(name="outputVersionFormat")
@@ -228,12 +228,13 @@ class FolderSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 intercept_children: Optional[pulumi.Input[bool]] = None,
                  output_version_format: Optional[pulumi.Input['FolderSinkOutputVersionFormat']] = None,
                  unique_writer_identity: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -245,7 +246,7 @@ class FolderSink(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogExclusionArgs']]]] exclusions: Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
-        :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input[bool] intercept_children: Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
         :param pulumi.Input['FolderSinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
         :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
         """
@@ -257,6 +258,7 @@ class FolderSink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param FolderSinkArgs args: The arguments to use to populate this resource's properties.
@@ -282,7 +284,7 @@ class FolderSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 intercept_children: Optional[pulumi.Input[bool]] = None,
                  output_version_format: Optional[pulumi.Input['FolderSinkOutputVersionFormat']] = None,
                  unique_writer_identity: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -307,10 +309,12 @@ class FolderSink(pulumi.CustomResource):
                 raise TypeError("Missing required property 'folder_id'")
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["include_children"] = include_children
-            __props__.__dict__["name"] = name
+            __props__.__dict__["intercept_children"] = intercept_children
             __props__.__dict__["output_version_format"] = output_version_format
             __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["resource_name"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["writer_identity"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folder_id"])
@@ -347,8 +351,10 @@ class FolderSink(pulumi.CustomResource):
         __props__.__dict__["filter"] = None
         __props__.__dict__["folder_id"] = None
         __props__.__dict__["include_children"] = None
+        __props__.__dict__["intercept_children"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["output_version_format"] = None
+        __props__.__dict__["resource_name"] = None
         __props__.__dict__["unique_writer_identity"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["writer_identity"] = None
@@ -432,10 +438,18 @@ class FolderSink(pulumi.CustomResource):
         return pulumi.get(self, "include_children")
 
     @property
+    @pulumi.getter(name="interceptChildren")
+    def intercept_children(self) -> pulumi.Output[bool]:
+        """
+        Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+        """
+        return pulumi.get(self, "intercept_children")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
         """
         return pulumi.get(self, "name")
 
@@ -449,6 +463,14 @@ class FolderSink(pulumi.CustomResource):
         pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
 
         return pulumi.get(self, "output_version_format")
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+        """
+        return pulumi.get(self, "resource_name")
 
     @property
     @pulumi.getter(name="uniqueWriterIdentity")

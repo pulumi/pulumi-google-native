@@ -19,6 +19,7 @@ class ExecutionArgs:
                  workflow_id: pulumi.Input[str],
                  argument: Optional[pulumi.Input[str]] = None,
                  call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
+                 disable_concurrency_quota_overflow_buffering: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -26,6 +27,7 @@ class ExecutionArgs:
         The set of arguments for constructing a Execution resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\\"firstName\\":\\"FIRST\\",\\"lastName\\":\\"LAST\\"}"}'`
         :param pulumi.Input['ExecutionCallLogLevel'] call_log_level: The call logging level associated to this execution.
+        :param pulumi.Input[bool] disable_concurrency_quota_overflow_buffering: Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
         """
         pulumi.set(__self__, "workflow_id", workflow_id)
@@ -33,6 +35,8 @@ class ExecutionArgs:
             pulumi.set(__self__, "argument", argument)
         if call_log_level is not None:
             pulumi.set(__self__, "call_log_level", call_log_level)
+        if disable_concurrency_quota_overflow_buffering is not None:
+            pulumi.set(__self__, "disable_concurrency_quota_overflow_buffering", disable_concurrency_quota_overflow_buffering)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -74,6 +78,18 @@ class ExecutionArgs:
         pulumi.set(self, "call_log_level", value)
 
     @property
+    @pulumi.getter(name="disableConcurrencyQuotaOverflowBuffering")
+    def disable_concurrency_quota_overflow_buffering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+        """
+        return pulumi.get(self, "disable_concurrency_quota_overflow_buffering")
+
+    @disable_concurrency_quota_overflow_buffering.setter
+    def disable_concurrency_quota_overflow_buffering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_concurrency_quota_overflow_buffering", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -111,13 +127,14 @@ class Execution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
                  call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
+                 disable_concurrency_quota_overflow_buffering: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new execution using the latest revision of the given workflow.
+        Creates a new execution using the latest revision of the given workflow. For more information, see Execute a workflow.
         Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
@@ -126,6 +143,7 @@ class Execution(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\\"firstName\\":\\"FIRST\\",\\"lastName\\":\\"LAST\\"}"}'`
         :param pulumi.Input['ExecutionCallLogLevel'] call_log_level: The call logging level associated to this execution.
+        :param pulumi.Input[bool] disable_concurrency_quota_overflow_buffering: Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
         """
         ...
@@ -135,7 +153,7 @@ class Execution(pulumi.CustomResource):
                  args: ExecutionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new execution using the latest revision of the given workflow.
+        Creates a new execution using the latest revision of the given workflow. For more information, see Execute a workflow.
         Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
@@ -157,6 +175,7 @@ class Execution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
                  call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
+                 disable_concurrency_quota_overflow_buffering: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -172,12 +191,14 @@ class Execution(pulumi.CustomResource):
 
             __props__.__dict__["argument"] = argument
             __props__.__dict__["call_log_level"] = call_log_level
+            __props__.__dict__["disable_concurrency_quota_overflow_buffering"] = disable_concurrency_quota_overflow_buffering
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             if workflow_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workflow_id'")
             __props__.__dict__["workflow_id"] = workflow_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["duration"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["error"] = None
@@ -214,6 +235,8 @@ class Execution(pulumi.CustomResource):
 
         __props__.__dict__["argument"] = None
         __props__.__dict__["call_log_level"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["disable_concurrency_quota_overflow_buffering"] = None
         __props__.__dict__["duration"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
@@ -245,6 +268,22 @@ class Execution(pulumi.CustomResource):
         The call logging level associated to this execution.
         """
         return pulumi.get(self, "call_log_level")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Marks the creation of the execution.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="disableConcurrencyQuotaOverflowBuffering")
+    def disable_concurrency_quota_overflow_buffering(self) -> pulumi.Output[bool]:
+        """
+        Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+        """
+        return pulumi.get(self, "disable_concurrency_quota_overflow_buffering")
 
     @property
     @pulumi.getter

@@ -141,6 +141,7 @@ class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
 def get_region_instance_template(instance_template: Optional[str] = None,
                                  project: Optional[str] = None,
                                  region: Optional[str] = None,
+                                 view: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionInstanceTemplateResult:
     """
     Returns the specified instance template.
@@ -149,6 +150,7 @@ def get_region_instance_template(instance_template: Optional[str] = None,
     __args__['instanceTemplate'] = instance_template
     __args__['project'] = project
     __args__['region'] = region
+    __args__['view'] = view
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getRegionInstanceTemplate', __args__, opts=opts, typ=GetRegionInstanceTemplateResult).value
 
@@ -168,6 +170,7 @@ def get_region_instance_template(instance_template: Optional[str] = None,
 def get_region_instance_template_output(instance_template: Optional[pulumi.Input[str]] = None,
                                         project: Optional[pulumi.Input[Optional[str]]] = None,
                                         region: Optional[pulumi.Input[str]] = None,
+                                        view: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstanceTemplateResult]:
     """
     Returns the specified instance template.

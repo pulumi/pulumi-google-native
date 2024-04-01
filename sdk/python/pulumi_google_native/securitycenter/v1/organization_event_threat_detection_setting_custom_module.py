@@ -141,7 +141,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an Event Threat Detection custom module.
+        Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -160,7 +160,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
                  args: OrganizationEventThreatDetectionSettingCustomModuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an Event Threat Detection custom module.
+        Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -203,6 +203,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["type"] = type
+            __props__.__dict__["ancestor_module"] = None
             __props__.__dict__["last_editor"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
@@ -229,6 +230,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
 
         __props__ = OrganizationEventThreatDetectionSettingCustomModuleArgs.__new__(OrganizationEventThreatDetectionSettingCustomModuleArgs)
 
+        __props__.__dict__["ancestor_module"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
@@ -239,6 +241,14 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
         __props__.__dict__["type"] = None
         __props__.__dict__["update_time"] = None
         return OrganizationEventThreatDetectionSettingCustomModule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="ancestorModule")
+    def ancestor_module(self) -> pulumi.Output[str]:
+        """
+        The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+        """
+        return pulumi.get(self, "ancestor_module")
 
     @property
     @pulumi.getter

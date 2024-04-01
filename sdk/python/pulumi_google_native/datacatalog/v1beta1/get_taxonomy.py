@@ -70,7 +70,7 @@ class GetTaxonomyResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+        Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
         """
         return pulumi.get(self, "name")
 

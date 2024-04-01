@@ -108,7 +108,7 @@ class GetDashboardResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. The resource name of the dashboard.
+        Identifier. The resource name of the dashboard.
         """
         return pulumi.get(self, "name")
 

@@ -47,6 +47,12 @@ __all__ = [
     'SingleTargetDatasetArgs',
     'SourceConfigArgs',
     'SourceHierarchyDatasetsArgs',
+    'SqlServerColumnArgs',
+    'SqlServerProfileArgs',
+    'SqlServerRdbmsArgs',
+    'SqlServerSchemaArgs',
+    'SqlServerSourceConfigArgs',
+    'SqlServerTableArgs',
     'StaticServiceIpConnectivityArgs',
     'StreamLargeObjectsArgs',
     'VpcPeeringConfigArgs',
@@ -66,12 +72,14 @@ class BackfillAllStrategyArgs:
     def __init__(__self__, *,
                  mysql_excluded_objects: Optional[pulumi.Input['MysqlRdbmsArgs']] = None,
                  oracle_excluded_objects: Optional[pulumi.Input['OracleRdbmsArgs']] = None,
-                 postgresql_excluded_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None):
+                 postgresql_excluded_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None,
+                 sql_server_excluded_objects: Optional[pulumi.Input['SqlServerRdbmsArgs']] = None):
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param pulumi.Input['MysqlRdbmsArgs'] mysql_excluded_objects: MySQL data source objects to avoid backfilling.
         :param pulumi.Input['OracleRdbmsArgs'] oracle_excluded_objects: Oracle data source objects to avoid backfilling.
         :param pulumi.Input['PostgresqlRdbmsArgs'] postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+        :param pulumi.Input['SqlServerRdbmsArgs'] sql_server_excluded_objects: SQLServer data source objects to avoid backfilling
         """
         if mysql_excluded_objects is not None:
             pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
@@ -79,6 +87,8 @@ class BackfillAllStrategyArgs:
             pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
         if postgresql_excluded_objects is not None:
             pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
+        if sql_server_excluded_objects is not None:
+            pulumi.set(__self__, "sql_server_excluded_objects", sql_server_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -115,6 +125,18 @@ class BackfillAllStrategyArgs:
     @postgresql_excluded_objects.setter
     def postgresql_excluded_objects(self, value: Optional[pulumi.Input['PostgresqlRdbmsArgs']]):
         pulumi.set(self, "postgresql_excluded_objects", value)
+
+    @property
+    @pulumi.getter(name="sqlServerExcludedObjects")
+    def sql_server_excluded_objects(self) -> Optional[pulumi.Input['SqlServerRdbmsArgs']]:
+        """
+        SQLServer data source objects to avoid backfilling
+        """
+        return pulumi.get(self, "sql_server_excluded_objects")
+
+    @sql_server_excluded_objects.setter
+    def sql_server_excluded_objects(self, value: Optional[pulumi.Input['SqlServerRdbmsArgs']]):
+        pulumi.set(self, "sql_server_excluded_objects", value)
 
 
 @pulumi.input_type
@@ -1380,7 +1402,7 @@ class OracleSourceConfigArgs:
         :param pulumi.Input['OracleRdbmsArgs'] include_objects: Oracle objects to include in the stream.
         :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
         :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
-        :param pulumi.Input['StreamLargeObjectsArgs'] stream_large_objects: Stream large object values. NOTE: This feature is currently experimental.
+        :param pulumi.Input['StreamLargeObjectsArgs'] stream_large_objects: Stream large object values.
         """
         if drop_large_objects is not None:
             pulumi.set(__self__, "drop_large_objects", drop_large_objects)
@@ -1459,7 +1481,7 @@ class OracleSourceConfigArgs:
     @pulumi.getter(name="streamLargeObjects")
     def stream_large_objects(self) -> Optional[pulumi.Input['StreamLargeObjectsArgs']]:
         """
-        Stream large object values. NOTE: This feature is currently experimental.
+        Stream large object values.
         """
         return pulumi.get(self, "stream_large_objects")
 
@@ -1995,13 +2017,15 @@ class SourceConfigArgs:
                  source_connection_profile: pulumi.Input[str],
                  mysql_source_config: Optional[pulumi.Input['MysqlSourceConfigArgs']] = None,
                  oracle_source_config: Optional[pulumi.Input['OracleSourceConfigArgs']] = None,
-                 postgresql_source_config: Optional[pulumi.Input['PostgresqlSourceConfigArgs']] = None):
+                 postgresql_source_config: Optional[pulumi.Input['PostgresqlSourceConfigArgs']] = None,
+                 sql_server_source_config: Optional[pulumi.Input['SqlServerSourceConfigArgs']] = None):
         """
         The configuration of the stream source.
         :param pulumi.Input[str] source_connection_profile: Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         :param pulumi.Input['MysqlSourceConfigArgs'] mysql_source_config: MySQL data source configuration.
         :param pulumi.Input['OracleSourceConfigArgs'] oracle_source_config: Oracle data source configuration.
         :param pulumi.Input['PostgresqlSourceConfigArgs'] postgresql_source_config: PostgreSQL data source configuration.
+        :param pulumi.Input['SqlServerSourceConfigArgs'] sql_server_source_config: SQLServer data source configuration.
         """
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
         if mysql_source_config is not None:
@@ -2010,6 +2034,8 @@ class SourceConfigArgs:
             pulumi.set(__self__, "oracle_source_config", oracle_source_config)
         if postgresql_source_config is not None:
             pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
+        if sql_server_source_config is not None:
+            pulumi.set(__self__, "sql_server_source_config", sql_server_source_config)
 
     @property
     @pulumi.getter(name="sourceConnectionProfile")
@@ -2059,6 +2085,18 @@ class SourceConfigArgs:
     def postgresql_source_config(self, value: Optional[pulumi.Input['PostgresqlSourceConfigArgs']]):
         pulumi.set(self, "postgresql_source_config", value)
 
+    @property
+    @pulumi.getter(name="sqlServerSourceConfig")
+    def sql_server_source_config(self) -> Optional[pulumi.Input['SqlServerSourceConfigArgs']]:
+        """
+        SQLServer data source configuration.
+        """
+        return pulumi.get(self, "sql_server_source_config")
+
+    @sql_server_source_config.setter
+    def sql_server_source_config(self, value: Optional[pulumi.Input['SqlServerSourceConfigArgs']]):
+        pulumi.set(self, "sql_server_source_config", value)
+
 
 @pulumi.input_type
 class SourceHierarchyDatasetsArgs:
@@ -2082,6 +2120,402 @@ class SourceHierarchyDatasetsArgs:
     @dataset_template.setter
     def dataset_template(self, value: Optional[pulumi.Input['DatasetTemplateArgs']]):
         pulumi.set(self, "dataset_template", value)
+
+
+@pulumi.input_type
+class SqlServerColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        SQLServer Column.
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The SQLServer data type.
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SQLServer data type.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class SqlServerProfileArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 hostname: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 username: pulumi.Input[str],
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        SQLServer database profile
+        :param pulumi.Input[str] database: Database for the SQLServer connection.
+        :param pulumi.Input[str] hostname: Hostname for the SQLServer connection.
+        :param pulumi.Input[str] password: Password for the SQLServer connection.
+        :param pulumi.Input[str] username: Username for the SQLServer connection.
+        :param pulumi.Input[int] port: Port for the SQLServer connection, default value is 1433.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        Database for the SQLServer connection.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        """
+        Hostname for the SQLServer connection.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        Password for the SQLServer connection.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        Username for the SQLServer connection.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port for the SQLServer connection, default value is 1433.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class SqlServerRdbmsArgs:
+    def __init__(__self__, *,
+                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerSchemaArgs']]]] = None):
+        """
+        SQLServer database structure.
+        :param pulumi.Input[Sequence[pulumi.Input['SqlServerSchemaArgs']]] schemas: SQLServer schemas in the database server.
+        """
+        if schemas is not None:
+            pulumi.set(__self__, "schemas", schemas)
+
+    @property
+    @pulumi.getter
+    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerSchemaArgs']]]]:
+        """
+        SQLServer schemas in the database server.
+        """
+        return pulumi.get(self, "schemas")
+
+    @schemas.setter
+    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerSchemaArgs']]]]):
+        pulumi.set(self, "schemas", value)
+
+
+@pulumi.input_type
+class SqlServerSchemaArgs:
+    def __init__(__self__, *,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerTableArgs']]]] = None):
+        """
+        SQLServer schema.
+        :param pulumi.Input[str] schema: Schema name.
+        :param pulumi.Input[Sequence[pulumi.Input['SqlServerTableArgs']]] tables: Tables in the schema.
+        """
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerTableArgs']]]]:
+        """
+        Tables in the schema.
+        """
+        return pulumi.get(self, "tables")
+
+    @tables.setter
+    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerTableArgs']]]]):
+        pulumi.set(self, "tables", value)
+
+
+@pulumi.input_type
+class SqlServerSourceConfigArgs:
+    def __init__(__self__, *,
+                 exclude_objects: Optional[pulumi.Input['SqlServerRdbmsArgs']] = None,
+                 include_objects: Optional[pulumi.Input['SqlServerRdbmsArgs']] = None,
+                 max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
+                 max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None):
+        """
+        SQLServer data source configuration
+        :param pulumi.Input['SqlServerRdbmsArgs'] exclude_objects: SQLServer objects to exclude from the stream.
+        :param pulumi.Input['SqlServerRdbmsArgs'] include_objects: SQLServer objects to include in the stream.
+        :param pulumi.Input[int] max_concurrent_backfill_tasks: Max concurrent backfill tasks.
+        :param pulumi.Input[int] max_concurrent_cdc_tasks: Max concurrent CDC tasks.
+        """
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+        if max_concurrent_cdc_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional[pulumi.Input['SqlServerRdbmsArgs']]:
+        """
+        SQLServer objects to exclude from the stream.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @exclude_objects.setter
+    def exclude_objects(self, value: Optional[pulumi.Input['SqlServerRdbmsArgs']]):
+        pulumi.set(self, "exclude_objects", value)
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional[pulumi.Input['SqlServerRdbmsArgs']]:
+        """
+        SQLServer objects to include in the stream.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @include_objects.setter
+    def include_objects(self, value: Optional[pulumi.Input['SqlServerRdbmsArgs']]):
+        pulumi.set(self, "include_objects", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max concurrent backfill tasks.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @max_concurrent_backfill_tasks.setter
+    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_backfill_tasks", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max concurrent CDC tasks.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+    @max_concurrent_cdc_tasks.setter
+    def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_cdc_tasks", value)
+
+
+@pulumi.input_type
+class SqlServerTableArgs:
+    def __init__(__self__, *,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerColumnArgs']]]] = None,
+                 table: Optional[pulumi.Input[str]] = None):
+        """
+        SQLServer table.
+        :param pulumi.Input[Sequence[pulumi.Input['SqlServerColumnArgs']]] columns: SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[str] table: Table name.
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerColumnArgs']]]]:
+        """
+        SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlServerColumnArgs']]]]):
+        pulumi.set(self, "columns", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table", value)
 
 
 @pulumi.input_type

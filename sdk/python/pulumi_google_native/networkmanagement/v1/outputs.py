@@ -37,14 +37,18 @@ __all__ = [
     'InstanceInfoResponse',
     'LatencyDistributionResponse',
     'LatencyPercentileResponse',
+    'LoadBalancerBackendInfoResponse',
     'LoadBalancerBackendResponse',
     'LoadBalancerInfoResponse',
+    'NatInfoResponse',
     'NetworkInfoResponse',
     'ProbingDetailsResponse',
+    'ProxyConnectionInfoResponse',
     'ReachabilityDetailsResponse',
     'RouteInfoResponse',
     'StatusResponse',
     'StepResponse',
+    'StorageBucketInfoResponse',
     'TraceResponse',
     'VpcConnectorInfoResponse',
     'VpnGatewayInfoResponse',
@@ -59,7 +63,9 @@ class AbortInfoResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "projectsMissingPermission":
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "projectsMissingPermission":
             suggest = "projects_missing_permission"
         elif key == "resourceUri":
             suggest = "resource_uri"
@@ -77,15 +83,18 @@ class AbortInfoResponse(dict):
 
     def __init__(__self__, *,
                  cause: str,
+                 ip_address: str,
                  projects_missing_permission: Sequence[str],
                  resource_uri: str):
         """
         Details of the final state "abort" and associated resource.
         :param str cause: Causes that the analysis is aborted.
-        :param Sequence[str] projects_missing_permission: List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+        :param str ip_address: IP address that caused the abort.
+        :param Sequence[str] projects_missing_permission: List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause.
         :param str resource_uri: URI of the resource that caused the abort.
         """
         pulumi.set(__self__, "cause", cause)
+        pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "projects_missing_permission", projects_missing_permission)
         pulumi.set(__self__, "resource_uri", resource_uri)
 
@@ -98,10 +107,18 @@ class AbortInfoResponse(dict):
         return pulumi.get(self, "cause")
 
     @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        IP address that caused the abort.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
     @pulumi.getter(name="projectsMissingPermission")
     def projects_missing_permission(self) -> Sequence[str]:
         """
-        List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+        List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause.
         """
         return pulumi.get(self, "projects_missing_permission")
 
@@ -322,8 +339,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -341,7 +358,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -349,7 +366,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -654,7 +671,9 @@ class DeliverInfoResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceUri":
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "resourceUri":
             suggest = "resource_uri"
 
         if suggest:
@@ -669,15 +688,26 @@ class DeliverInfoResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ip_address: str,
                  resource_uri: str,
                  target: str):
         """
         Details of the final state "deliver" and associated resource.
+        :param str ip_address: IP address of the target (if applicable).
         :param str resource_uri: URI of the resource that the packet is delivered to.
         :param str target: Target type where the packet is delivered to.
         """
+        pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "resource_uri", resource_uri)
         pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        IP address of the target (if applicable).
+        """
+        return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="resourceUri")
@@ -704,8 +734,12 @@ class DropInfoResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceUri":
+        if key == "destinationIp":
+            suggest = "destination_ip"
+        elif key == "resourceUri":
             suggest = "resource_uri"
+        elif key == "sourceIp":
+            suggest = "source_ip"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DropInfoResponse. Access the value via the '{suggest}' property getter instead.")
@@ -720,14 +754,23 @@ class DropInfoResponse(dict):
 
     def __init__(__self__, *,
                  cause: str,
-                 resource_uri: str):
+                 destination_ip: str,
+                 region: str,
+                 resource_uri: str,
+                 source_ip: str):
         """
         Details of the final state "drop" and associated resource.
         :param str cause: Cause that the packet is dropped.
+        :param str destination_ip: Destination IP address of the dropped packet (if relevant).
+        :param str region: Region of the dropped packet (if relevant).
         :param str resource_uri: URI of the resource that caused the drop.
+        :param str source_ip: Source IP address of the dropped packet (if relevant).
         """
         pulumi.set(__self__, "cause", cause)
+        pulumi.set(__self__, "destination_ip", destination_ip)
+        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "resource_uri", resource_uri)
+        pulumi.set(__self__, "source_ip", source_ip)
 
     @property
     @pulumi.getter
@@ -738,12 +781,36 @@ class DropInfoResponse(dict):
         return pulumi.get(self, "cause")
 
     @property
+    @pulumi.getter(name="destinationIp")
+    def destination_ip(self) -> str:
+        """
+        Destination IP address of the dropped packet (if relevant).
+        """
+        return pulumi.get(self, "destination_ip")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region of the dropped packet (if relevant).
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="resourceUri")
     def resource_uri(self) -> str:
         """
         URI of the resource that caused the drop.
         """
         return pulumi.get(self, "resource_uri")
+
+    @property
+    @pulumi.getter(name="sourceIp")
+    def source_ip(self) -> str:
+        """
+        Source IP address of the dropped packet (if relevant).
+        """
+        return pulumi.get(self, "source_ip")
 
 
 @pulumi.output_type
@@ -981,7 +1048,7 @@ class EndpointResponse(dict):
         :param str forwarding_rule_target: Specifies the type of the target of the forwarding rule.
         :param str gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param str instance: A Compute Engine instance URI.
-        :param str ip_address: The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+        :param str ip_address: The IP address of the endpoint, which can be an external or internal IP.
         :param str load_balancer_id: ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
         :param str load_balancer_type: Type of the load balancer the forwarding rule points to.
         :param str network: A Compute Engine network URI.
@@ -1073,7 +1140,7 @@ class EndpointResponse(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
         """
-        The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+        The IP address of the endpoint, which can be an external or internal IP.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1224,7 +1291,7 @@ class FirewallInfoResponse(dict):
                  uri: str):
         """
         For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
-        :param str action: Possible values: ALLOW, DENY
+        :param str action: Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
         :param str direction: Possible values: INGRESS, EGRESS
         :param str display_name: The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
         :param str firewall_rule_type: The firewall rule's type.
@@ -1250,7 +1317,7 @@ class FirewallInfoResponse(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        Possible values: ALLOW, DENY
+        Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
         """
         return pulumi.get(self, "action")
 
@@ -1335,7 +1402,9 @@ class ForwardInfoResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceUri":
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "resourceUri":
             suggest = "resource_uri"
 
         if suggest:
@@ -1350,15 +1419,26 @@ class ForwardInfoResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ip_address: str,
                  resource_uri: str,
                  target: str):
         """
         Details of the final state "forward" and associated resource.
+        :param str ip_address: IP address of the target (if applicable).
         :param str resource_uri: URI of the resource that the packet is forwarded to.
         :param str target: Target type where this packet is forwarded to.
         """
+        pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "resource_uri", resource_uri)
         pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        IP address of the target (if applicable).
+        """
+        return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="resourceUri")
@@ -1834,6 +1914,160 @@ class LatencyPercentileResponse(dict):
 
 
 @pulumi.output_type
+class LoadBalancerBackendInfoResponse(dict):
+    """
+    For display only. Metadata associated with the load balancer backend.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendBucketUri":
+            suggest = "backend_bucket_uri"
+        elif key == "backendServiceUri":
+            suggest = "backend_service_uri"
+        elif key == "healthCheckFirewallsConfigState":
+            suggest = "health_check_firewalls_config_state"
+        elif key == "healthCheckUri":
+            suggest = "health_check_uri"
+        elif key == "instanceGroupUri":
+            suggest = "instance_group_uri"
+        elif key == "instanceUri":
+            suggest = "instance_uri"
+        elif key == "networkEndpointGroupUri":
+            suggest = "network_endpoint_group_uri"
+        elif key == "pscGoogleApiTarget":
+            suggest = "psc_google_api_target"
+        elif key == "pscServiceAttachmentUri":
+            suggest = "psc_service_attachment_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerBackendInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerBackendInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerBackendInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backend_bucket_uri: str,
+                 backend_service_uri: str,
+                 health_check_firewalls_config_state: str,
+                 health_check_uri: str,
+                 instance_group_uri: str,
+                 instance_uri: str,
+                 name: str,
+                 network_endpoint_group_uri: str,
+                 psc_google_api_target: str,
+                 psc_service_attachment_uri: str):
+        """
+        For display only. Metadata associated with the load balancer backend.
+        :param str backend_bucket_uri: URI of the backend bucket this backend targets (if applicable).
+        :param str backend_service_uri: URI of the backend service this backend belongs to (if applicable).
+        :param str health_check_firewalls_config_state: Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+        :param str health_check_uri: URI of the health check attached to this backend (if applicable).
+        :param str instance_group_uri: URI of the instance group this backend belongs to (if applicable).
+        :param str instance_uri: URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+        :param str name: Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends.
+        :param str network_endpoint_group_uri: URI of the network endpoint group this backend belongs to (if applicable).
+        :param str psc_google_api_target: PSC Google API target this PSC NEG backend targets (if applicable).
+        :param str psc_service_attachment_uri: URI of the PSC service attachment this PSC NEG backend targets (if applicable).
+        """
+        pulumi.set(__self__, "backend_bucket_uri", backend_bucket_uri)
+        pulumi.set(__self__, "backend_service_uri", backend_service_uri)
+        pulumi.set(__self__, "health_check_firewalls_config_state", health_check_firewalls_config_state)
+        pulumi.set(__self__, "health_check_uri", health_check_uri)
+        pulumi.set(__self__, "instance_group_uri", instance_group_uri)
+        pulumi.set(__self__, "instance_uri", instance_uri)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_endpoint_group_uri", network_endpoint_group_uri)
+        pulumi.set(__self__, "psc_google_api_target", psc_google_api_target)
+        pulumi.set(__self__, "psc_service_attachment_uri", psc_service_attachment_uri)
+
+    @property
+    @pulumi.getter(name="backendBucketUri")
+    def backend_bucket_uri(self) -> str:
+        """
+        URI of the backend bucket this backend targets (if applicable).
+        """
+        return pulumi.get(self, "backend_bucket_uri")
+
+    @property
+    @pulumi.getter(name="backendServiceUri")
+    def backend_service_uri(self) -> str:
+        """
+        URI of the backend service this backend belongs to (if applicable).
+        """
+        return pulumi.get(self, "backend_service_uri")
+
+    @property
+    @pulumi.getter(name="healthCheckFirewallsConfigState")
+    def health_check_firewalls_config_state(self) -> str:
+        """
+        Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+        """
+        return pulumi.get(self, "health_check_firewalls_config_state")
+
+    @property
+    @pulumi.getter(name="healthCheckUri")
+    def health_check_uri(self) -> str:
+        """
+        URI of the health check attached to this backend (if applicable).
+        """
+        return pulumi.get(self, "health_check_uri")
+
+    @property
+    @pulumi.getter(name="instanceGroupUri")
+    def instance_group_uri(self) -> str:
+        """
+        URI of the instance group this backend belongs to (if applicable).
+        """
+        return pulumi.get(self, "instance_group_uri")
+
+    @property
+    @pulumi.getter(name="instanceUri")
+    def instance_uri(self) -> str:
+        """
+        URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+        """
+        return pulumi.get(self, "instance_uri")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkEndpointGroupUri")
+    def network_endpoint_group_uri(self) -> str:
+        """
+        URI of the network endpoint group this backend belongs to (if applicable).
+        """
+        return pulumi.get(self, "network_endpoint_group_uri")
+
+    @property
+    @pulumi.getter(name="pscGoogleApiTarget")
+    def psc_google_api_target(self) -> str:
+        """
+        PSC Google API target this PSC NEG backend targets (if applicable).
+        """
+        return pulumi.get(self, "psc_google_api_target")
+
+    @property
+    @pulumi.getter(name="pscServiceAttachmentUri")
+    def psc_service_attachment_uri(self) -> str:
+        """
+        URI of the PSC service attachment this PSC NEG backend targets (if applicable).
+        """
+        return pulumi.get(self, "psc_service_attachment_uri")
+
+
+@pulumi.output_type
 class LoadBalancerBackendResponse(dict):
     """
     For display only. Metadata associated with a specific load balancer backend.
@@ -2012,6 +2246,197 @@ class LoadBalancerInfoResponse(dict):
         Type of the load balancer.
         """
         return pulumi.get(self, "load_balancer_type")
+
+
+@pulumi.output_type
+class NatInfoResponse(dict):
+    """
+    For display only. Metadata associated with NAT.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "natGatewayName":
+            suggest = "nat_gateway_name"
+        elif key == "networkUri":
+            suggest = "network_uri"
+        elif key == "newDestinationIp":
+            suggest = "new_destination_ip"
+        elif key == "newDestinationPort":
+            suggest = "new_destination_port"
+        elif key == "newSourceIp":
+            suggest = "new_source_ip"
+        elif key == "newSourcePort":
+            suggest = "new_source_port"
+        elif key == "oldDestinationIp":
+            suggest = "old_destination_ip"
+        elif key == "oldDestinationPort":
+            suggest = "old_destination_port"
+        elif key == "oldSourceIp":
+            suggest = "old_source_ip"
+        elif key == "oldSourcePort":
+            suggest = "old_source_port"
+        elif key == "routerUri":
+            suggest = "router_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NatInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NatInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NatInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 nat_gateway_name: str,
+                 network_uri: str,
+                 new_destination_ip: str,
+                 new_destination_port: int,
+                 new_source_ip: str,
+                 new_source_port: int,
+                 old_destination_ip: str,
+                 old_destination_port: int,
+                 old_source_ip: str,
+                 old_source_port: int,
+                 protocol: str,
+                 router_uri: str,
+                 type: str):
+        """
+        For display only. Metadata associated with NAT.
+        :param str nat_gateway_name: The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
+        :param str network_uri: URI of the network where NAT translation takes place.
+        :param str new_destination_ip: Destination IP address after NAT translation.
+        :param int new_destination_port: Destination port after NAT translation. Only valid when protocol is TCP or UDP.
+        :param str new_source_ip: Source IP address after NAT translation.
+        :param int new_source_port: Source port after NAT translation. Only valid when protocol is TCP or UDP.
+        :param str old_destination_ip: Destination IP address before NAT translation.
+        :param int old_destination_port: Destination port before NAT translation. Only valid when protocol is TCP or UDP.
+        :param str old_source_ip: Source IP address before NAT translation.
+        :param int old_source_port: Source port before NAT translation. Only valid when protocol is TCP or UDP.
+        :param str protocol: IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        :param str router_uri: Uri of the Cloud Router. Only valid when type is CLOUD_NAT.
+        :param str type: Type of NAT.
+        """
+        pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
+        pulumi.set(__self__, "network_uri", network_uri)
+        pulumi.set(__self__, "new_destination_ip", new_destination_ip)
+        pulumi.set(__self__, "new_destination_port", new_destination_port)
+        pulumi.set(__self__, "new_source_ip", new_source_ip)
+        pulumi.set(__self__, "new_source_port", new_source_port)
+        pulumi.set(__self__, "old_destination_ip", old_destination_ip)
+        pulumi.set(__self__, "old_destination_port", old_destination_port)
+        pulumi.set(__self__, "old_source_ip", old_source_ip)
+        pulumi.set(__self__, "old_source_port", old_source_port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "router_uri", router_uri)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="natGatewayName")
+    def nat_gateway_name(self) -> str:
+        """
+        The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
+        """
+        return pulumi.get(self, "nat_gateway_name")
+
+    @property
+    @pulumi.getter(name="networkUri")
+    def network_uri(self) -> str:
+        """
+        URI of the network where NAT translation takes place.
+        """
+        return pulumi.get(self, "network_uri")
+
+    @property
+    @pulumi.getter(name="newDestinationIp")
+    def new_destination_ip(self) -> str:
+        """
+        Destination IP address after NAT translation.
+        """
+        return pulumi.get(self, "new_destination_ip")
+
+    @property
+    @pulumi.getter(name="newDestinationPort")
+    def new_destination_port(self) -> int:
+        """
+        Destination port after NAT translation. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "new_destination_port")
+
+    @property
+    @pulumi.getter(name="newSourceIp")
+    def new_source_ip(self) -> str:
+        """
+        Source IP address after NAT translation.
+        """
+        return pulumi.get(self, "new_source_ip")
+
+    @property
+    @pulumi.getter(name="newSourcePort")
+    def new_source_port(self) -> int:
+        """
+        Source port after NAT translation. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "new_source_port")
+
+    @property
+    @pulumi.getter(name="oldDestinationIp")
+    def old_destination_ip(self) -> str:
+        """
+        Destination IP address before NAT translation.
+        """
+        return pulumi.get(self, "old_destination_ip")
+
+    @property
+    @pulumi.getter(name="oldDestinationPort")
+    def old_destination_port(self) -> int:
+        """
+        Destination port before NAT translation. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "old_destination_port")
+
+    @property
+    @pulumi.getter(name="oldSourceIp")
+    def old_source_ip(self) -> str:
+        """
+        Source IP address before NAT translation.
+        """
+        return pulumi.get(self, "old_source_ip")
+
+    @property
+    @pulumi.getter(name="oldSourcePort")
+    def old_source_port(self) -> int:
+        """
+        Source port before NAT translation. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "old_source_port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="routerUri")
+    def router_uri(self) -> str:
+        """
+        Uri of the Cloud Router. Only valid when type is CLOUD_NAT.
+        """
+        return pulumi.get(self, "router_uri")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of NAT.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -2214,6 +2639,173 @@ class ProbingDetailsResponse(dict):
         The time that reachability was assessed through active probing.
         """
         return pulumi.get(self, "verify_time")
+
+
+@pulumi.output_type
+class ProxyConnectionInfoResponse(dict):
+    """
+    For display only. Metadata associated with ProxyConnection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkUri":
+            suggest = "network_uri"
+        elif key == "newDestinationIp":
+            suggest = "new_destination_ip"
+        elif key == "newDestinationPort":
+            suggest = "new_destination_port"
+        elif key == "newSourceIp":
+            suggest = "new_source_ip"
+        elif key == "newSourcePort":
+            suggest = "new_source_port"
+        elif key == "oldDestinationIp":
+            suggest = "old_destination_ip"
+        elif key == "oldDestinationPort":
+            suggest = "old_destination_port"
+        elif key == "oldSourceIp":
+            suggest = "old_source_ip"
+        elif key == "oldSourcePort":
+            suggest = "old_source_port"
+        elif key == "subnetUri":
+            suggest = "subnet_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProxyConnectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProxyConnectionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProxyConnectionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_uri: str,
+                 new_destination_ip: str,
+                 new_destination_port: int,
+                 new_source_ip: str,
+                 new_source_port: int,
+                 old_destination_ip: str,
+                 old_destination_port: int,
+                 old_source_ip: str,
+                 old_source_port: int,
+                 protocol: str,
+                 subnet_uri: str):
+        """
+        For display only. Metadata associated with ProxyConnection.
+        :param str network_uri: URI of the network where connection is proxied.
+        :param str new_destination_ip: Destination IP address of a new connection.
+        :param int new_destination_port: Destination port of a new connection. Only valid when protocol is TCP or UDP.
+        :param str new_source_ip: Source IP address of a new connection.
+        :param int new_source_port: Source port of a new connection. Only valid when protocol is TCP or UDP.
+        :param str old_destination_ip: Destination IP address of an original connection
+        :param int old_destination_port: Destination port of an original connection. Only valid when protocol is TCP or UDP.
+        :param str old_source_ip: Source IP address of an original connection.
+        :param int old_source_port: Source port of an original connection. Only valid when protocol is TCP or UDP.
+        :param str protocol: IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        :param str subnet_uri: Uri of proxy subnet.
+        """
+        pulumi.set(__self__, "network_uri", network_uri)
+        pulumi.set(__self__, "new_destination_ip", new_destination_ip)
+        pulumi.set(__self__, "new_destination_port", new_destination_port)
+        pulumi.set(__self__, "new_source_ip", new_source_ip)
+        pulumi.set(__self__, "new_source_port", new_source_port)
+        pulumi.set(__self__, "old_destination_ip", old_destination_ip)
+        pulumi.set(__self__, "old_destination_port", old_destination_port)
+        pulumi.set(__self__, "old_source_ip", old_source_ip)
+        pulumi.set(__self__, "old_source_port", old_source_port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "subnet_uri", subnet_uri)
+
+    @property
+    @pulumi.getter(name="networkUri")
+    def network_uri(self) -> str:
+        """
+        URI of the network where connection is proxied.
+        """
+        return pulumi.get(self, "network_uri")
+
+    @property
+    @pulumi.getter(name="newDestinationIp")
+    def new_destination_ip(self) -> str:
+        """
+        Destination IP address of a new connection.
+        """
+        return pulumi.get(self, "new_destination_ip")
+
+    @property
+    @pulumi.getter(name="newDestinationPort")
+    def new_destination_port(self) -> int:
+        """
+        Destination port of a new connection. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "new_destination_port")
+
+    @property
+    @pulumi.getter(name="newSourceIp")
+    def new_source_ip(self) -> str:
+        """
+        Source IP address of a new connection.
+        """
+        return pulumi.get(self, "new_source_ip")
+
+    @property
+    @pulumi.getter(name="newSourcePort")
+    def new_source_port(self) -> int:
+        """
+        Source port of a new connection. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "new_source_port")
+
+    @property
+    @pulumi.getter(name="oldDestinationIp")
+    def old_destination_ip(self) -> str:
+        """
+        Destination IP address of an original connection
+        """
+        return pulumi.get(self, "old_destination_ip")
+
+    @property
+    @pulumi.getter(name="oldDestinationPort")
+    def old_destination_port(self) -> int:
+        """
+        Destination port of an original connection. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "old_destination_port")
+
+    @property
+    @pulumi.getter(name="oldSourceIp")
+    def old_source_ip(self) -> str:
+        """
+        Source IP address of an original connection.
+        """
+        return pulumi.get(self, "old_source_ip")
+
+    @property
+    @pulumi.getter(name="oldSourcePort")
+    def old_source_port(self) -> int:
+        """
+        Source port of an original connection. Only valid when protocol is TCP or UDP.
+        """
+        return pulumi.get(self, "old_source_port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="subnetUri")
+    def subnet_uri(self) -> str:
+        """
+        Uri of proxy subnet.
+        """
+        return pulumi.get(self, "subnet_uri")
 
 
 @pulumi.output_type
@@ -2586,6 +3178,12 @@ class StepResponse(dict):
             suggest = "google_service"
         elif key == "loadBalancer":
             suggest = "load_balancer"
+        elif key == "loadBalancerBackendInfo":
+            suggest = "load_balancer_backend_info"
+        elif key == "proxyConnection":
+            suggest = "proxy_connection"
+        elif key == "storageBucket":
+            suggest = "storage_bucket"
         elif key == "vpcConnector":
             suggest = "vpc_connector"
         elif key == "vpnGateway":
@@ -2622,10 +3220,14 @@ class StepResponse(dict):
                  google_service: 'outputs.GoogleServiceInfoResponse',
                  instance: 'outputs.InstanceInfoResponse',
                  load_balancer: 'outputs.LoadBalancerInfoResponse',
+                 load_balancer_backend_info: 'outputs.LoadBalancerBackendInfoResponse',
+                 nat: 'outputs.NatInfoResponse',
                  network: 'outputs.NetworkInfoResponse',
                  project: str,
+                 proxy_connection: 'outputs.ProxyConnectionInfoResponse',
                  route: 'outputs.RouteInfoResponse',
                  state: str,
+                 storage_bucket: 'outputs.StorageBucketInfoResponse',
                  vpc_connector: 'outputs.VpcConnectorInfoResponse',
                  vpn_gateway: 'outputs.VpnGatewayInfoResponse',
                  vpn_tunnel: 'outputs.VpnTunnelInfoResponse'):
@@ -2647,11 +3249,15 @@ class StepResponse(dict):
         :param 'GKEMasterInfoResponse' gke_master: Display information of a Google Kubernetes Engine cluster master.
         :param 'GoogleServiceInfoResponse' google_service: Display information of a Google service
         :param 'InstanceInfoResponse' instance: Display information of a Compute Engine instance.
-        :param 'LoadBalancerInfoResponse' load_balancer: Display information of the load balancers.
+        :param 'LoadBalancerInfoResponse' load_balancer: Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
+        :param 'LoadBalancerBackendInfoResponse' load_balancer_backend_info: Display information of a specific load balancer backend.
+        :param 'NatInfoResponse' nat: Display information of a NAT.
         :param 'NetworkInfoResponse' network: Display information of a Google Cloud network.
         :param str project: Project ID that contains the configuration this step is validating.
+        :param 'ProxyConnectionInfoResponse' proxy_connection: Display information of a ProxyConnection.
         :param 'RouteInfoResponse' route: Display information of a Compute Engine route.
         :param str state: Each step is in one of the pre-defined states.
+        :param 'StorageBucketInfoResponse' storage_bucket: Display information of a Storage Bucket. Used only for return traces.
         :param 'VpcConnectorInfoResponse' vpc_connector: Display information of a VPC connector.
         :param 'VpnGatewayInfoResponse' vpn_gateway: Display information of a Compute Engine VPN gateway.
         :param 'VpnTunnelInfoResponse' vpn_tunnel: Display information of a Compute Engine VPN tunnel.
@@ -2673,10 +3279,14 @@ class StepResponse(dict):
         pulumi.set(__self__, "google_service", google_service)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "load_balancer", load_balancer)
+        pulumi.set(__self__, "load_balancer_backend_info", load_balancer_backend_info)
+        pulumi.set(__self__, "nat", nat)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "proxy_connection", proxy_connection)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "storage_bucket", storage_bucket)
         pulumi.set(__self__, "vpc_connector", vpc_connector)
         pulumi.set(__self__, "vpn_gateway", vpn_gateway)
         pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
@@ -2813,9 +3423,28 @@ class StepResponse(dict):
     @pulumi.getter(name="loadBalancer")
     def load_balancer(self) -> 'outputs.LoadBalancerInfoResponse':
         """
-        Display information of the load balancers.
+        Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
         """
+        warnings.warn("""Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.""", DeprecationWarning)
+        pulumi.log.warn("""load_balancer is deprecated: Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.""")
+
         return pulumi.get(self, "load_balancer")
+
+    @property
+    @pulumi.getter(name="loadBalancerBackendInfo")
+    def load_balancer_backend_info(self) -> 'outputs.LoadBalancerBackendInfoResponse':
+        """
+        Display information of a specific load balancer backend.
+        """
+        return pulumi.get(self, "load_balancer_backend_info")
+
+    @property
+    @pulumi.getter
+    def nat(self) -> 'outputs.NatInfoResponse':
+        """
+        Display information of a NAT.
+        """
+        return pulumi.get(self, "nat")
 
     @property
     @pulumi.getter
@@ -2834,6 +3463,14 @@ class StepResponse(dict):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="proxyConnection")
+    def proxy_connection(self) -> 'outputs.ProxyConnectionInfoResponse':
+        """
+        Display information of a ProxyConnection.
+        """
+        return pulumi.get(self, "proxy_connection")
+
+    @property
     @pulumi.getter
     def route(self) -> 'outputs.RouteInfoResponse':
         """
@@ -2848,6 +3485,14 @@ class StepResponse(dict):
         Each step is in one of the pre-defined states.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageBucket")
+    def storage_bucket(self) -> 'outputs.StorageBucketInfoResponse':
+        """
+        Display information of a Storage Bucket. Used only for return traces.
+        """
+        return pulumi.get(self, "storage_bucket")
 
     @property
     @pulumi.getter(name="vpcConnector")
@@ -2875,6 +3520,28 @@ class StepResponse(dict):
 
 
 @pulumi.output_type
+class StorageBucketInfoResponse(dict):
+    """
+    For display only. Metadata associated with Storage Bucket.
+    """
+    def __init__(__self__, *,
+                 bucket: str):
+        """
+        For display only. Metadata associated with Storage Bucket.
+        :param str bucket: Cloud Storage Bucket name.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Cloud Storage Bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+
+@pulumi.output_type
 class TraceResponse(dict):
     """
     Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
@@ -2884,6 +3551,8 @@ class TraceResponse(dict):
         suggest = None
         if key == "endpointInfo":
             suggest = "endpoint_info"
+        elif key == "forwardTraceId":
+            suggest = "forward_trace_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TraceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2898,13 +3567,16 @@ class TraceResponse(dict):
 
     def __init__(__self__, *,
                  endpoint_info: 'outputs.EndpointInfoResponse',
+                 forward_trace_id: int,
                  steps: Sequence['outputs.StepResponse']):
         """
         Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
         :param 'EndpointInfoResponse' endpoint_info: Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
+        :param int forward_trace_id: ID of trace. For forward traces, this ID is unique for each trace. For return traces, it matches ID of associated forward trace. A single forward trace can be associated with none, one or more than one return trace.
         :param Sequence['StepResponse'] steps: A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
         """
         pulumi.set(__self__, "endpoint_info", endpoint_info)
+        pulumi.set(__self__, "forward_trace_id", forward_trace_id)
         pulumi.set(__self__, "steps", steps)
 
     @property
@@ -2914,6 +3586,14 @@ class TraceResponse(dict):
         Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
         """
         return pulumi.get(self, "endpoint_info")
+
+    @property
+    @pulumi.getter(name="forwardTraceId")
+    def forward_trace_id(self) -> int:
+        """
+        ID of trace. For forward traces, this ID is unique for each trace. For return traces, it matches ID of associated forward trace. A single forward trace can be associated with none, one or more than one return trace.
+        """
+        return pulumi.get(self, "forward_trace_id")
 
     @property
     @pulumi.getter

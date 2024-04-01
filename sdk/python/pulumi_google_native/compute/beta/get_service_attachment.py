@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceAttachmentResult:
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, reconcile_connections=None, region=None, self_link=None, target_service=None, tunneling_config=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, propagated_connection_limit=None, psc_service_attachment_id=None, reconcile_connections=None, region=None, self_link=None, target_service=None, tunneling_config=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -59,6 +59,9 @@ class GetServiceAttachmentResult:
         if producer_forwarding_rule and not isinstance(producer_forwarding_rule, str):
             raise TypeError("Expected argument 'producer_forwarding_rule' to be a str")
         pulumi.set(__self__, "producer_forwarding_rule", producer_forwarding_rule)
+        if propagated_connection_limit and not isinstance(propagated_connection_limit, int):
+            raise TypeError("Expected argument 'propagated_connection_limit' to be a int")
+        pulumi.set(__self__, "propagated_connection_limit", propagated_connection_limit)
         if psc_service_attachment_id and not isinstance(psc_service_attachment_id, dict):
             raise TypeError("Expected argument 'psc_service_attachment_id' to be a dict")
         pulumi.set(__self__, "psc_service_attachment_id", psc_service_attachment_id)
@@ -183,6 +186,14 @@ class GetServiceAttachmentResult:
         return pulumi.get(self, "producer_forwarding_rule")
 
     @property
+    @pulumi.getter(name="propagatedConnectionLimit")
+    def propagated_connection_limit(self) -> int:
+        """
+        The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center. This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250.
+        """
+        return pulumi.get(self, "propagated_connection_limit")
+
+    @property
     @pulumi.getter(name="pscServiceAttachmentId")
     def psc_service_attachment_id(self) -> 'outputs.Uint128Response':
         """
@@ -250,6 +261,7 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
             name=self.name,
             nat_subnets=self.nat_subnets,
             producer_forwarding_rule=self.producer_forwarding_rule,
+            propagated_connection_limit=self.propagated_connection_limit,
             psc_service_attachment_id=self.psc_service_attachment_id,
             reconcile_connections=self.reconcile_connections,
             region=self.region,
@@ -286,6 +298,7 @@ def get_service_attachment(project: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         nat_subnets=pulumi.get(__ret__, 'nat_subnets'),
         producer_forwarding_rule=pulumi.get(__ret__, 'producer_forwarding_rule'),
+        propagated_connection_limit=pulumi.get(__ret__, 'propagated_connection_limit'),
         psc_service_attachment_id=pulumi.get(__ret__, 'psc_service_attachment_id'),
         reconcile_connections=pulumi.get(__ret__, 'reconcile_connections'),
         region=pulumi.get(__ret__, 'region'),

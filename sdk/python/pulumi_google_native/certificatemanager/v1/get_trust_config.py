@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTrustConfigResult:
-    def __init__(__self__, create_time=None, description=None, etag=None, labels=None, name=None, trust_stores=None, update_time=None):
+    def __init__(__self__, allowlisted_certificates=None, create_time=None, description=None, etag=None, labels=None, name=None, trust_stores=None, update_time=None):
+        if allowlisted_certificates and not isinstance(allowlisted_certificates, list):
+            raise TypeError("Expected argument 'allowlisted_certificates' to be a list")
+        pulumi.set(__self__, "allowlisted_certificates", allowlisted_certificates)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -41,6 +44,14 @@ class GetTrustConfigResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="allowlistedCertificates")
+    def allowlisted_certificates(self) -> Sequence['outputs.AllowlistedCertificateResponse']:
+        """
+        Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+        """
+        return pulumi.get(self, "allowlisted_certificates")
 
     @property
     @pulumi.getter(name="createTime")
@@ -105,6 +116,7 @@ class AwaitableGetTrustConfigResult(GetTrustConfigResult):
         if False:
             yield self
         return GetTrustConfigResult(
+            allowlisted_certificates=self.allowlisted_certificates,
             create_time=self.create_time,
             description=self.description,
             etag=self.etag,
@@ -129,6 +141,7 @@ def get_trust_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:certificatemanager/v1:getTrustConfig', __args__, opts=opts, typ=GetTrustConfigResult).value
 
     return AwaitableGetTrustConfigResult(
+        allowlisted_certificates=pulumi.get(__ret__, 'allowlisted_certificates'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, change_stream_config=None, cluster_states=None, column_families=None, deletion_protection=None, granularity=None, name=None, restore_info=None, stats=None):
+    def __init__(__self__, automated_backup_policy=None, change_stream_config=None, cluster_states=None, column_families=None, deletion_protection=None, granularity=None, name=None, restore_info=None, stats=None):
+        if automated_backup_policy and not isinstance(automated_backup_policy, dict):
+            raise TypeError("Expected argument 'automated_backup_policy' to be a dict")
+        pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
         if change_stream_config and not isinstance(change_stream_config, dict):
             raise TypeError("Expected argument 'change_stream_config' to be a dict")
         pulumi.set(__self__, "change_stream_config", change_stream_config)
@@ -44,6 +47,14 @@ class GetTableResult:
         if stats and not isinstance(stats, dict):
             raise TypeError("Expected argument 'stats' to be a dict")
         pulumi.set(__self__, "stats", stats)
+
+    @property
+    @pulumi.getter(name="automatedBackupPolicy")
+    def automated_backup_policy(self) -> 'outputs.AutomatedBackupPolicyResponse':
+        """
+        If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+        """
+        return pulumi.get(self, "automated_backup_policy")
 
     @property
     @pulumi.getter(name="changeStreamConfig")
@@ -116,6 +127,7 @@ class AwaitableGetTableResult(GetTableResult):
         if False:
             yield self
         return GetTableResult(
+            automated_backup_policy=self.automated_backup_policy,
             change_stream_config=self.change_stream_config,
             cluster_states=self.cluster_states,
             column_families=self.column_families,
@@ -143,6 +155,7 @@ def get_table(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getTable', __args__, opts=opts, typ=GetTableResult).value
 
     return AwaitableGetTableResult(
+        automated_backup_policy=pulumi.get(__ret__, 'automated_backup_policy'),
         change_stream_config=pulumi.get(__ret__, 'change_stream_config'),
         cluster_states=pulumi.get(__ret__, 'cluster_states'),
         column_families=pulumi.get(__ret__, 'column_families'),

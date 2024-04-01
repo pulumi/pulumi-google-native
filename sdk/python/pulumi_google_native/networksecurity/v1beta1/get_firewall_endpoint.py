@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetFirewallEndpointResult',
@@ -18,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallEndpointResult:
-    def __init__(__self__, associated_networks=None, billing_project_id=None, create_time=None, description=None, labels=None, name=None, reconciling=None, state=None, update_time=None):
+    def __init__(__self__, associated_networks=None, associations=None, billing_project_id=None, create_time=None, description=None, labels=None, name=None, reconciling=None, state=None, update_time=None):
         if associated_networks and not isinstance(associated_networks, list):
             raise TypeError("Expected argument 'associated_networks' to be a list")
         pulumi.set(__self__, "associated_networks", associated_networks)
+        if associations and not isinstance(associations, list):
+            raise TypeError("Expected argument 'associations' to be a list")
+        pulumi.set(__self__, "associations", associations)
         if billing_project_id and not isinstance(billing_project_id, str):
             raise TypeError("Expected argument 'billing_project_id' to be a str")
         pulumi.set(__self__, "billing_project_id", billing_project_id)
@@ -56,10 +60,18 @@ class GetFirewallEndpointResult:
         return pulumi.get(self, "associated_networks")
 
     @property
+    @pulumi.getter
+    def associations(self) -> Sequence['outputs.FirewallEndpointAssociationReferenceResponse']:
+        """
+        List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+        """
+        return pulumi.get(self, "associations")
+
+    @property
     @pulumi.getter(name="billingProjectId")
     def billing_project_id(self) -> str:
         """
-        Optional. Project to bill on endpoint uptime usage.
+        Project to bill on endpoint uptime usage.
         """
         return pulumi.get(self, "billing_project_id")
 
@@ -91,7 +103,7 @@ class GetFirewallEndpointResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        name of resource
+        Immutable. Identifier. name of resource
         """
         return pulumi.get(self, "name")
 
@@ -127,6 +139,7 @@ class AwaitableGetFirewallEndpointResult(GetFirewallEndpointResult):
             yield self
         return GetFirewallEndpointResult(
             associated_networks=self.associated_networks,
+            associations=self.associations,
             billing_project_id=self.billing_project_id,
             create_time=self.create_time,
             description=self.description,
@@ -153,6 +166,7 @@ def get_firewall_endpoint(firewall_endpoint_id: Optional[str] = None,
 
     return AwaitableGetFirewallEndpointResult(
         associated_networks=pulumi.get(__ret__, 'associated_networks'),
+        associations=pulumi.get(__ret__, 'associations'),
         billing_project_id=pulumi.get(__ret__, 'billing_project_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
