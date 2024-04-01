@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta.Outputs
         /// </summary>
         public readonly string AllocatedIpRange;
         /// <summary>
-        /// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        /// Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         /// </summary>
         public readonly string Network;
 

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AcceleratorResponse> Accelerators;
         /// <summary>
+        /// Optional. A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BoostConfigResponse> BoostConfigs;
+        /// <summary>
         /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
         /// </summary>
         public readonly int BootDiskSizeGb;
@@ -33,7 +37,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// </summary>
         public readonly bool DisablePublicIpAddresses;
         /// <summary>
-        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        /// Optional. Whether to disable SSH access to the VM.
+        /// </summary>
+        public readonly bool DisableSsh;
+        /// <summary>
+        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
         /// </summary>
         public readonly bool EnableNestedVirtualization;
         /// <summary>
@@ -64,16 +72,24 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
         /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Optional. Resource manager tags to be bound to this instance. Tag keys and values have the same definition as https://cloud.google.com/resource-manager/docs/tags/tags-overview Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> VmTags;
 
         [OutputConstructor]
         private GceInstanceResponse(
             ImmutableArray<Outputs.AcceleratorResponse> accelerators,
+
+            ImmutableArray<Outputs.BoostConfigResponse> boostConfigs,
 
             int bootDiskSizeGb,
 
             Outputs.GceConfidentialInstanceConfigResponse confidentialInstanceConfig,
 
             bool disablePublicIpAddresses,
+
+            bool disableSsh,
 
             bool enableNestedVirtualization,
 
@@ -89,12 +105,16 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
 
             Outputs.GceShieldedInstanceConfigResponse shieldedInstanceConfig,
 
-            ImmutableArray<string> tags)
+            ImmutableArray<string> tags,
+
+            ImmutableDictionary<string, string> vmTags)
         {
             Accelerators = accelerators;
+            BoostConfigs = boostConfigs;
             BootDiskSizeGb = bootDiskSizeGb;
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             DisablePublicIpAddresses = disablePublicIpAddresses;
+            DisableSsh = disableSsh;
             EnableNestedVirtualization = enableNestedVirtualization;
             MachineType = machineType;
             PoolSize = poolSize;
@@ -103,6 +123,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
             ServiceAccountScopes = serviceAccountScopes;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Tags = tags;
+            VmTags = vmTags;
         }
     }
 }

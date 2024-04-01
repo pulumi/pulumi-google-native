@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.ReportSummaryAssetAggregateStatsResponse AssetAggregateStats;
         /// <summary>
-        /// Description for the Group.
+        /// Description for this group finding.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display Name for the Group.
+        /// Display Name for this group finding.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Summary of the state of query execution at a given time.
+    /// </summary>
     [OutputType]
     public sealed class QueryTimelineSampleResponse
     {
         /// <summary>
-        /// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
+        /// Total number of active workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
         /// </summary>
         public readonly string ActiveUnits;
         /// <summary>
@@ -26,7 +29,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string ElapsedMs;
         /// <summary>
-        /// Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
+        /// Units of work that can be scheduled immediately. Providing additional slots for these units of work will accelerate the query, if no other query in the reservation needs additional slots.
         /// </summary>
         public readonly string EstimatedRunnableUnits;
         /// <summary>

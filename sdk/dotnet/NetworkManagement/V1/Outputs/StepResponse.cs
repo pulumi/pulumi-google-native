@@ -81,9 +81,17 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly Outputs.InstanceInfoResponse Instance;
         /// <summary>
-        /// Display information of the load balancers.
+        /// Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
         /// </summary>
         public readonly Outputs.LoadBalancerInfoResponse LoadBalancer;
+        /// <summary>
+        /// Display information of a specific load balancer backend.
+        /// </summary>
+        public readonly Outputs.LoadBalancerBackendInfoResponse LoadBalancerBackendInfo;
+        /// <summary>
+        /// Display information of a NAT.
+        /// </summary>
+        public readonly Outputs.NatInfoResponse Nat;
         /// <summary>
         /// Display information of a Google Cloud network.
         /// </summary>
@@ -93,6 +101,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly string Project;
         /// <summary>
+        /// Display information of a ProxyConnection.
+        /// </summary>
+        public readonly Outputs.ProxyConnectionInfoResponse ProxyConnection;
+        /// <summary>
         /// Display information of a Compute Engine route.
         /// </summary>
         public readonly Outputs.RouteInfoResponse Route;
@@ -100,6 +112,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// Each step is in one of the pre-defined states.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Display information of a Storage Bucket. Used only for return traces.
+        /// </summary>
+        public readonly Outputs.StorageBucketInfoResponse StorageBucket;
         /// <summary>
         /// Display information of a VPC connector.
         /// </summary>
@@ -149,13 +165,21 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             Outputs.LoadBalancerInfoResponse loadBalancer,
 
+            Outputs.LoadBalancerBackendInfoResponse loadBalancerBackendInfo,
+
+            Outputs.NatInfoResponse nat,
+
             Outputs.NetworkInfoResponse network,
 
             string project,
 
+            Outputs.ProxyConnectionInfoResponse proxyConnection,
+
             Outputs.RouteInfoResponse route,
 
             string state,
+
+            Outputs.StorageBucketInfoResponse storageBucket,
 
             Outputs.VpcConnectorInfoResponse vpcConnector,
 
@@ -180,10 +204,14 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             GoogleService = googleService;
             Instance = instance;
             LoadBalancer = loadBalancer;
+            LoadBalancerBackendInfo = loadBalancerBackendInfo;
+            Nat = nat;
             Network = network;
             Project = project;
+            ProxyConnection = proxyConnection;
             Route = route;
             State = state;
+            StorageBucket = storageBucket;
             VpcConnector = vpcConnector;
             VpnGateway = vpnGateway;
             VpnTunnel = vpnTunnel;

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Workstations.V1.Outputs
     public sealed class GceInstanceResponse
     {
         /// <summary>
+        /// Optional. A list of the type and count of accelerator cards attached to the instance.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AcceleratorResponse> Accelerators;
+        /// <summary>
         /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
         /// </summary>
         public readonly int BootDiskSizeGb;
@@ -29,7 +33,11 @@ namespace Pulumi.GoogleNative.Workstations.V1.Outputs
         /// </summary>
         public readonly bool DisablePublicIpAddresses;
         /// <summary>
-        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        /// Optional. Whether to disable SSH access to the VM.
+        /// </summary>
+        public readonly bool DisableSsh;
+        /// <summary>
+        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
         /// </summary>
         public readonly bool EnableNestedVirtualization;
         /// <summary>
@@ -63,11 +71,15 @@ namespace Pulumi.GoogleNative.Workstations.V1.Outputs
 
         [OutputConstructor]
         private GceInstanceResponse(
+            ImmutableArray<Outputs.AcceleratorResponse> accelerators,
+
             int bootDiskSizeGb,
 
             Outputs.GceConfidentialInstanceConfigResponse confidentialInstanceConfig,
 
             bool disablePublicIpAddresses,
+
+            bool disableSsh,
 
             bool enableNestedVirtualization,
 
@@ -85,9 +97,11 @@ namespace Pulumi.GoogleNative.Workstations.V1.Outputs
 
             ImmutableArray<string> tags)
         {
+            Accelerators = accelerators;
             BootDiskSizeGb = bootDiskSizeGb;
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             DisablePublicIpAddresses = disablePublicIpAddresses;
+            DisableSsh = disableSsh;
             EnableNestedVirtualization = enableNestedVirtualization;
             MachineType = machineType;
             PoolSize = poolSize;

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Id path of a model.
+    /// </summary>
     public sealed class ModelReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>

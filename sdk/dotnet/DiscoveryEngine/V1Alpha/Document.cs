@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     [GoogleNativeResourceType("google-native:discoveryengine/v1alpha:Document")]
     public partial class Document : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Access control information for the document.
+        /// </summary>
+        [Output("aclInfo")]
+        public Output<Outputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse> AclInfo { get; private set; } = null!;
+
         [Output("branchId")]
         public Output<string> BranchId { get; private set; } = null!;
 
@@ -41,6 +47,12 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// </summary>
         [Output("documentId")]
         public Output<string> DocumentId { get; private set; } = null!;
+
+        /// <summary>
+        /// The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+        /// </summary>
+        [Output("indexTime")]
+        public Output<string> IndexTime { get; private set; } = null!;
 
         /// <summary>
         /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
@@ -132,6 +144,12 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
     public sealed class DocumentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access control information for the document.
+        /// </summary>
+        [Input("aclInfo")]
+        public Input<Inputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs>? AclInfo { get; set; }
+
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
 

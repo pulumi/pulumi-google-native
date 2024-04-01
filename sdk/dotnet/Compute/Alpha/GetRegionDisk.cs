@@ -168,7 +168,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
@@ -187,6 +187,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Status information for the disk resource.
         /// </summary>
         public readonly Outputs.DiskResourceStatusResponse ResourceStatus;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzi;
         /// <summary>
         /// Reserved for future use.
         /// </summary>
@@ -348,6 +352,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.DiskResourceStatusResponse resourceStatus,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -427,6 +433,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             ReplicaZones = replicaZones;
             ResourcePolicies = resourcePolicies;
             ResourceStatus = resourceStatus;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;

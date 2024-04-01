@@ -72,6 +72,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+        /// </summary>
+        [Output("pointOfContact")]
+        public Output<string> PointOfContact { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -88,7 +94,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Output<string> ValueType { get; private set; } = null!;
 
         /// <summary>
-        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         /// </summary>
         [Output("versionColumnName")]
         public Output<string> VersionColumnName { get; private set; } = null!;
@@ -197,6 +203,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+        /// </summary>
+        [Input("pointOfContact")]
+        public Input<string>? PointOfContact { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -207,7 +219,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Input<Pulumi.GoogleNative.Aiplatform.V1.FeatureStoreFeatureValueType>? ValueType { get; set; }
 
         /// <summary>
-        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         /// </summary>
         [Input("versionColumnName")]
         public Input<string>? VersionColumnName { get; set; }

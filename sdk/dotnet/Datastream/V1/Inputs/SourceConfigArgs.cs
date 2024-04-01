@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         [Input("sourceConnectionProfile", required: true)]
         public Input<string> SourceConnectionProfile { get; set; } = null!;
 
+        /// <summary>
+        /// SQLServer data source configuration.
+        /// </summary>
+        [Input("sqlServerSourceConfig")]
+        public Input<Inputs.SqlServerSourceConfigArgs>? SqlServerSourceConfig { get; set; }
+
         public SourceConfigArgs()
         {
         }

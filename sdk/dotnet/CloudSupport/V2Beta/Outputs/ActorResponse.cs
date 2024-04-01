@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
 {
 
     /// <summary>
-    /// An object containing information about the effective user and authenticated principal responsible for an action.
+    /// An Actor represents an entity that performed an action. For example, an actor could be a user who posted a comment on a support case, a user who uploaded an attachment, or a service account that created a support case.
     /// </summary>
     [OutputType]
     public sealed class ActorResponse
@@ -21,13 +21,17 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The email address of the actor. If not provided, it is inferred from credentials supplied during case creation. If the authenticated principal does not have an email address, one must be provided. When a name is provided, an email must also be provided. This will be obfuscated if the user is a Google Support agent.
+        /// The email address of the actor. If not provided, it is inferred from the credentials supplied during case creation. When a name is provided, an email must also be provided. If the user is a Google Support agent, this is obfuscated. This field is deprecated. Use **username** field instead.
         /// </summary>
         public readonly string Email;
         /// <summary>
         /// Whether the actor is a Google support actor.
         /// </summary>
         public readonly bool GoogleSupport;
+        /// <summary>
+        /// The username of the actor. It may look like an email or other format provided by the identity provider. If not provided, it is inferred from the credentials supplied. When a name is provided, a username must also be provided. If the user is a Google Support agent, this will not be set.
+        /// </summary>
+        public readonly string Username;
 
         [OutputConstructor]
         private ActorResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
 
             string email,
 
-            bool googleSupport)
+            bool googleSupport,
+
+            string username)
         {
             DisplayName = displayName;
             Email = email;
             GoogleSupport = googleSupport;
+            Username = username;
         }
     }
 }

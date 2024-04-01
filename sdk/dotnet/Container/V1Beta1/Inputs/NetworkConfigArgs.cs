@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.DNSConfigArgs>? DnsConfig { get; set; }
 
         /// <summary>
+        /// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster.
+        /// </summary>
+        [Input("enableCiliumClusterwideNetworkPolicy")]
+        public Input<bool>? EnableCiliumClusterwideNetworkPolicy { get; set; }
+
+        /// <summary>
         /// Whether FQDN Network Policy is enabled on this cluster.
         /// </summary>
         [Input("enableFqdnNetworkPolicy")]

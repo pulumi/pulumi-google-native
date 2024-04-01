@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
 {
 
     /// <summary>
-    /// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+    /// Contains criteria for selecting Targets.
     /// </summary>
     public sealed class TargetAttributeArgs : global::Pulumi.ResourceArgs
     {

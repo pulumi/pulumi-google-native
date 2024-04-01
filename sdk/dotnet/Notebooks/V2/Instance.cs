@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.Notebooks.V2
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+        /// </summary>
+        [Output("thirdPartyProxyUrl")]
+        public Output<string> ThirdPartyProxyUrl { get; private set; } = null!;
+
+        /// <summary>
         /// Instance update time.
         /// </summary>
         [Output("updateTime")]

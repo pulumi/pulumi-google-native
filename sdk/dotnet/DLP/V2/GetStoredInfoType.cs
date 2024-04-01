@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.DLP.V2
     public static class GetStoredInfoType
     {
         /// <summary>
-        /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+        /// Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
         /// </summary>
         public static Task<GetStoredInfoTypeResult> InvokeAsync(GetStoredInfoTypeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStoredInfoTypeResult>("google-native:dlp/v2:getStoredInfoType", args ?? new GetStoredInfoTypeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+        /// Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
         /// </summary>
         public static Output<GetStoredInfoTypeResult> Invoke(GetStoredInfoTypeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStoredInfoTypeResult>("google-native:dlp/v2:getStoredInfoType", args ?? new GetStoredInfoTypeInvokeArgs(), options.WithDefaults());

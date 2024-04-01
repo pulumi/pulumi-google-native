@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class RetryResponse
     {
         /// <summary>
-        /// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        /// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
         /// </summary>
         public readonly string Attempts;
         /// <summary>

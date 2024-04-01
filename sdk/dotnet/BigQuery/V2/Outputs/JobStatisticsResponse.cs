@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for a single job execution.
+    /// </summary>
     [OutputType]
     public sealed class JobStatisticsResponse
     {
         /// <summary>
-        /// [TrustedTester] [Output-only] Job progress (0.0 -&gt; 1.0) for LOAD and EXTRACT jobs.
+        /// [TrustedTester] Job progress (0.0 -&gt; 1.0) for LOAD and EXTRACT jobs.
         /// </summary>
         public readonly double CompletionRatio;
         /// <summary>
@@ -26,7 +29,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// Statistics for data masking. Present only for query and extract jobs.
+        /// Statistics for data-masking. Present only for query and extract jobs.
         /// </summary>
         public readonly Outputs.DataMaskingStatisticsResponse DataMaskingStatistics;
         /// <summary>
@@ -38,6 +41,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.JobStatistics4Response Extract;
         /// <summary>
+        /// The duration in milliseconds of the execution of the final attempt of this job, as BigQuery may internally re-attempt to execute the job.
+        /// </summary>
+        public readonly string FinalExecutionDurationMs;
+        /// <summary>
         /// Statistics for a load job.
         /// </summary>
         public readonly Outputs.JobStatistics3Response Load;
@@ -46,7 +53,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string NumChildJobs;
         /// <summary>
-        /// If this is a child job, the id of the parent.
+        /// If this is a child job, specifies the job ID of the parent.
         /// </summary>
         public readonly string ParentJobId;
         /// <summary>
@@ -62,19 +69,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string ReservationId;
         /// <summary>
-        /// Job resource usage breakdown by reservation.
+        /// Job resource usage breakdown by reservation. This field reported misleading information and will no longer be populated.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobStatisticsReservationUsageItemResponse> ReservationUsage;
         /// <summary>
-        /// [Preview] Statistics for row-level security. Present only for query and extract jobs.
+        /// Statistics for row-level security. Present only for query and extract jobs.
         /// </summary>
         public readonly Outputs.RowLevelSecurityStatisticsResponse RowLevelSecurityStatistics;
         /// <summary>
-        /// Statistics for a child job of a script.
+        /// If this a child job of a script, specifies information about the context of this job within the script.
         /// </summary>
         public readonly Outputs.ScriptStatisticsResponse ScriptStatistics;
         /// <summary>
-        /// [Preview] Information of the session if this job is part of one.
+        /// Information of the session if this job is part of one.
         /// </summary>
         public readonly Outputs.SessionInfoResponse SessionInfo;
         /// <summary>
@@ -82,7 +89,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// [Deprecated] Use the bytes processed in the query statistics instead.
+        /// Total bytes processed for the job.
         /// </summary>
         public readonly string TotalBytesProcessed;
         /// <summary>
@@ -90,7 +97,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string TotalSlotMs;
         /// <summary>
-        /// [Alpha] Information of the multi-statement transaction if this job is part of one.
+        /// [Alpha] Information of the multi-statement transaction if this job is part of one. This property is only expected on a child job or a job that is in a session. A script parent job is not part of the transaction started in the script.
         /// </summary>
         public readonly Outputs.TransactionInfoResponse TransactionInfo;
 
@@ -107,6 +114,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             string endTime,
 
             Outputs.JobStatistics4Response extract,
+
+            string finalExecutionDurationMs,
 
             Outputs.JobStatistics3Response load,
 
@@ -142,6 +151,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             DataMaskingStatistics = dataMaskingStatistics;
             EndTime = endTime;
             Extract = extract;
+            FinalExecutionDurationMs = finalExecutionDurationMs;
             Load = load;
             NumChildJobs = numChildJobs;
             ParentJobId = parentJobId;

@@ -11,12 +11,28 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
     /// <summary>
-    /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+    /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response. Only one of internal_load_balancer and external_endpoints should be set.
     /// </summary>
     public sealed class RRSetRoutingPolicyHealthCheckTargetsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("externalEndpoints")]
+        private InputList<string>? _externalEndpoints;
+
+        /// <summary>
+        /// The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+        /// </summary>
+        public InputList<string> ExternalEndpoints
+        {
+            get => _externalEndpoints ?? (_externalEndpoints = new InputList<string>());
+            set => _externalEndpoints = value;
+        }
+
         [Input("internalLoadBalancers")]
         private InputList<Inputs.RRSetRoutingPolicyLoadBalancerTargetArgs>? _internalLoadBalancers;
+
+        /// <summary>
+        /// Configuration for internal load balancers to be health checked.
+        /// </summary>
         public InputList<Inputs.RRSetRoutingPolicyLoadBalancerTargetArgs> InternalLoadBalancers
         {
             get => _internalLoadBalancers ?? (_internalLoadBalancers = new InputList<Inputs.RRSetRoutingPolicyLoadBalancerTargetArgs>());

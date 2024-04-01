@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> ForwardingRules;
         /// <summary>
-        /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+        /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly string LoadBalancingScheme;
         /// <summary>
-        /// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+        /// Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
         /// </summary>
         public readonly string Name;
         /// <summary>

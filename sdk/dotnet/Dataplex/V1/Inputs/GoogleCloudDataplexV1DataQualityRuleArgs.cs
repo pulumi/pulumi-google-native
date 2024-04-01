@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<string> Dimension { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
         /// </summary>
         [Input("ignoreNull")]
         public Input<bool>? IgnoreNull { get; set; }
@@ -74,6 +74,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         /// </summary>
         [Input("setExpectation")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs>? SetExpectation { get; set; }
+
+        /// <summary>
+        /// Aggregate rule which evaluates the number of rows returned for the provided statement.
+        /// </summary>
+        [Input("sqlAssertion")]
+        public Input<Inputs.GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs>? SqlAssertion { get; set; }
 
         /// <summary>
         /// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.

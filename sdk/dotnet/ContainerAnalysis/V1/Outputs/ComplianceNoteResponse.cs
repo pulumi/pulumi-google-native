@@ -18,6 +18,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// A description about this compliance check.
         /// </summary>
         public readonly string Description;
+        public readonly string Impact;
         /// <summary>
         /// A rationale for the existence of this compliance check.
         /// </summary>
@@ -45,6 +46,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
             string description,
 
+            string impact,
+
             string rationale,
 
             string remediation,
@@ -57,6 +60,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         {
             CisBenchmark = cisBenchmark;
             Description = description;
+            Impact = impact;
             Rationale = rationale;
             Remediation = remediation;
             ScanInstructions = scanInstructions;

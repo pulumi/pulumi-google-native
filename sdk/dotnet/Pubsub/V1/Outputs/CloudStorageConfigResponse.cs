@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string Bucket;
         /// <summary>
+        /// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+        /// </summary>
+        public readonly string FilenameDatetimeFormat;
+        /// <summary>
         /// Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
         /// </summary>
         public readonly string FilenamePrefix;
@@ -41,6 +45,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string MaxDuration;
         /// <summary>
+        /// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        public readonly string ServiceAccountEmail;
+        /// <summary>
         /// An output-only field that indicates whether or not the subscription can receive messages.
         /// </summary>
         public readonly string State;
@@ -55,6 +63,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
 
             string bucket,
 
+            string filenameDatetimeFormat,
+
             string filenamePrefix,
 
             string filenameSuffix,
@@ -63,16 +73,20 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
 
             string maxDuration,
 
+            string serviceAccountEmail,
+
             string state,
 
             Outputs.TextConfigResponse textConfig)
         {
             AvroConfig = avroConfig;
             Bucket = bucket;
+            FilenameDatetimeFormat = filenameDatetimeFormat;
             FilenamePrefix = filenamePrefix;
             FilenameSuffix = filenameSuffix;
             MaxBytes = maxBytes;
             MaxDuration = maxDuration;
+            ServiceAccountEmail = serviceAccountEmail;
             State = state;
             TextConfig = textConfig;
         }

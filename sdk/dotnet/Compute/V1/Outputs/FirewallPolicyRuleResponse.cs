@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly int RuleTupleCount;
         /// <summary>
+        /// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        /// </summary>
+        public readonly string SecurityProfileGroup;
+        /// <summary>
         /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         /// </summary>
         public readonly ImmutableArray<string> TargetResources;
@@ -68,6 +72,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// A list of service accounts indicating the sets of instances that are applied with this rule.
         /// </summary>
         public readonly ImmutableArray<string> TargetServiceAccounts;
+        /// <summary>
+        /// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        /// </summary>
+        public readonly bool TlsInspect;
 
         [OutputConstructor]
         private FirewallPolicyRuleResponse(
@@ -91,11 +99,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             int ruleTupleCount,
 
+            string securityProfileGroup,
+
             ImmutableArray<string> targetResources,
 
             ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> targetSecureTags,
 
-            ImmutableArray<string> targetServiceAccounts)
+            ImmutableArray<string> targetServiceAccounts,
+
+            bool tlsInspect)
         {
             Action = action;
             Description = description;
@@ -107,9 +119,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Priority = priority;
             RuleName = ruleName;
             RuleTupleCount = ruleTupleCount;
+            SecurityProfileGroup = securityProfileGroup;
             TargetResources = targetResources;
             TargetSecureTags = targetSecureTags;
             TargetServiceAccounts = targetServiceAccounts;
+            TlsInspect = tlsInspect;
         }
     }
 }

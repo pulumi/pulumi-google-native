@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        /// </summary>
+        public readonly bool Disabled;
+        /// <summary>
         /// The URL of the FirewallEndpoint that is being associated.
         /// </summary>
         public readonly string FirewallEndpoint;
@@ -76,7 +80,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// name of resource
+        /// Immutable. Identifier. name of resource
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         private GetFirewallEndpointAssociationResult(
             string createTime,
 
+            bool disabled,
+
             string firewallEndpoint,
 
             ImmutableDictionary<string, string> labels,
@@ -121,6 +127,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
             string updateTime)
         {
             CreateTime = createTime;
+            Disabled = disabled;
             FirewallEndpoint = firewallEndpoint;
             Labels = labels;
             Name = name;

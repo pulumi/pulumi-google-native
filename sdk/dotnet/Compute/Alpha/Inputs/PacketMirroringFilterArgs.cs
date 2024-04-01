@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _cidrRanges;
 
         /// <summary>
-        /// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        /// One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
         /// </summary>
         public InputList<string> CidrRanges
         {
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _ipProtocols;
 
         /// <summary>
-        /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
         /// </summary>
         public InputList<string> IpProtocols
         {

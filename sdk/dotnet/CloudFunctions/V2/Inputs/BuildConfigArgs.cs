@@ -15,14 +15,17 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
     /// </summary>
     public sealed class BuildConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("automaticUpdatePolicy")]
+        public Input<Inputs.AutomaticUpdatePolicyArgs>? AutomaticUpdatePolicy { get; set; }
+
         /// <summary>
-        /// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         /// </summary>
         [Input("dockerRegistry")]
         public Input<Pulumi.GoogleNative.CloudFunctions.V2.BuildConfigDockerRegistry>? DockerRegistry { get; set; }
 
         /// <summary>
-        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        /// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         /// </summary>
         [Input("dockerRepository")]
         public Input<string>? DockerRepository { get; set; }
@@ -45,11 +48,20 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
             set => _environmentVariables = value;
         }
 
+        [Input("onDeployUpdatePolicy")]
+        public Input<Inputs.OnDeployUpdatePolicyArgs>? OnDeployUpdatePolicy { get; set; }
+
         /// <summary>
         /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
+
+        /// <summary>
+        /// [Preview] Service account to be used for building the container
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// The location of the function source code.

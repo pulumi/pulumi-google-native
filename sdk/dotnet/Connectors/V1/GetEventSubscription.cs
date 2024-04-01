@@ -102,6 +102,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string SubscriberLink;
         /// <summary>
+        /// Optional. Configuration for configuring the trigger
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ConfigVariableResponse> TriggerConfigVariables;
+        /// <summary>
         /// Updated time.
         /// </summary>
         public readonly string UpdateTime;
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string subscriberLink,
 
+            ImmutableArray<Outputs.ConfigVariableResponse> triggerConfigVariables,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -134,6 +140,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
             Status = status;
             Subscriber = subscriber;
             SubscriberLink = subscriberLink;
+            TriggerConfigVariables = triggerConfigVariables;
             UpdateTime = updateTime;
         }
     }

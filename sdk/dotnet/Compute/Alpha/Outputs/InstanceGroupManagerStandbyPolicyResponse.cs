@@ -13,9 +13,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     [OutputType]
     public sealed class InstanceGroupManagerStandbyPolicyResponse
     {
+        /// <summary>
+        /// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        /// </summary>
         public readonly int InitialDelaySec;
         /// <summary>
-        /// Defines behaviour of using instances from standby pool to resize MIG.
+        /// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
         /// </summary>
         public readonly string Mode;
 

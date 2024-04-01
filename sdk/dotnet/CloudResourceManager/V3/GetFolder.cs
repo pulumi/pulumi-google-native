@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
         /// Timestamp when the folder was last modified.
         /// </summary>
         public readonly string UpdateTime;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
 
             string state,
 
+            ImmutableDictionary<string, string> tags,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
             Name = name;
             Parent = parent;
             State = state;
+            Tags = tags;
             UpdateTime = updateTime;
         }
     }

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
     /// <summary>
-    /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
+    /// [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
     /// </summary>
     [OutputType]
     public sealed class InstanceGroupManagerResizeRequestStatusErrorResponse

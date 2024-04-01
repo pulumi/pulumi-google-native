@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _allowOriginRegexes;
 
         /// <summary>
-        /// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        /// Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         /// </summary>
         public InputList<string> AllowOriginRegexes
         {
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         }
 
         /// <summary>
-        /// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        /// If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

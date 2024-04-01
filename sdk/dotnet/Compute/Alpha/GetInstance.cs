@@ -206,6 +206,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
         /// Sets the scheduling options for this instance.
@@ -346,6 +350,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.ResourceStatusResponse resourceStatus,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             Outputs.SchedulingResponse scheduling,
@@ -419,6 +425,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;
             ResourceStatus = resourceStatus;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             Scheduling = scheduling;
             SecureTags = secureTags;

@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly int MaxConcurrentCdcTasks;
         /// <summary>
-        /// Stream large object values. NOTE: This feature is currently experimental.
+        /// Stream large object values.
         /// </summary>
         public readonly Outputs.StreamLargeObjectsResponse StreamLargeObjects;
 

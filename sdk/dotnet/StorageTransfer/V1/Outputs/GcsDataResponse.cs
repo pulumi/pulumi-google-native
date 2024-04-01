@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string BucketName;
         /// <summary>
+        /// Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+        /// </summary>
+        public readonly bool ManagedFolderTransferEnabled;
+        /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
         /// </summary>
         public readonly string Path;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         private GcsDataResponse(
             string bucketName,
 
+            bool managedFolderTransferEnabled,
+
             string path)
         {
             BucketName = bucketName;
+            ManagedFolderTransferEnabled = managedFolderTransferEnabled;
             Path = path;
         }
     }

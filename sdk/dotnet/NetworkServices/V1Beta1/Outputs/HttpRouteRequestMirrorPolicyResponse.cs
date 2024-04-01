@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
         /// The destination the requests will be mirrored to. The weight of the destination will be ignored.
         /// </summary>
         public readonly Outputs.HttpRouteDestinationResponse Destination;
+        /// <summary>
+        /// Optional. The percentage of requests to get mirrored to the desired destination.
+        /// </summary>
+        public readonly double MirrorPercent;
 
         [OutputConstructor]
-        private HttpRouteRequestMirrorPolicyResponse(Outputs.HttpRouteDestinationResponse destination)
+        private HttpRouteRequestMirrorPolicyResponse(
+            Outputs.HttpRouteDestinationResponse destination,
+
+            double mirrorPercent)
         {
             Destination = destination;
+            MirrorPercent = mirrorPercent;
         }
     }
 }

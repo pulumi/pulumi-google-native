@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
         public Input<bool>? DataplaneV2Enabled { get; set; }
 
         /// <summary>
+        /// Configure ForwardMode for Dataplane v2.
+        /// </summary>
+        [Input("forwardMode")]
+        public Input<string>? ForwardMode { get; set; }
+
+        /// <summary>
         /// Enable Dataplane V2 for clusters with Windows nodes.
         /// </summary>
         [Input("windowsDataplaneV2Enabled")]

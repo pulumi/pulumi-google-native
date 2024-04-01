@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+    /// Configuration for a risk analysis job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2RiskAnalysisJobConfigResponse

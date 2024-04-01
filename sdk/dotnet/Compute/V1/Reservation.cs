@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.V1
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        [Output("aggregateReservation")]
+        public Output<Outputs.AllocationAggregateReservationResponse> AggregateReservation { get; private set; } = null!;
+
+        /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         [Output("commitment")]
@@ -155,6 +161,12 @@ namespace Pulumi.GoogleNative.Compute.V1
 
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        [Input("aggregateReservation")]
+        public Input<Inputs.AllocationAggregateReservationArgs>? AggregateReservation { get; set; }
+
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>

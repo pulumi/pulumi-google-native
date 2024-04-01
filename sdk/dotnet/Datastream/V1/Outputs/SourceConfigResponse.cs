@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         /// </summary>
         public readonly string SourceConnectionProfile;
+        /// <summary>
+        /// SQLServer data source configuration.
+        /// </summary>
+        public readonly Outputs.SqlServerSourceConfigResponse SqlServerSourceConfig;
 
         [OutputConstructor]
         private SourceConfigResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             Outputs.PostgresqlSourceConfigResponse postgresqlSourceConfig,
 
-            string sourceConnectionProfile)
+            string sourceConnectionProfile,
+
+            Outputs.SqlServerSourceConfigResponse sqlServerSourceConfig)
         {
             MysqlSourceConfig = mysqlSourceConfig;
             OracleSourceConfig = oracleSourceConfig;
             PostgresqlSourceConfig = postgresqlSourceConfig;
             SourceConnectionProfile = sourceConnectionProfile;
+            SqlServerSourceConfig = sqlServerSourceConfig;
         }
     }
 }

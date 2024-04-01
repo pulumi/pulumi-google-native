@@ -76,11 +76,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
-        /// Duration time relative to reservation creation when GCE will automatically delete this resource.
+        /// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
         /// </summary>
         public readonly Outputs.DurationResponse DeleteAfterDuration;
         /// <summary>
-        /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         /// </summary>
         public readonly string DeleteAtTime;
         /// <summary>

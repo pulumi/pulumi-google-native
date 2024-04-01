@@ -122,6 +122,10 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        public readonly Outputs.GeminiClusterConfigResponse GeminiConfig;
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         /// </summary>
         public readonly Outputs.UserPasswordResponse InitialUser;
@@ -129,6 +133,14 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// Labels as key value pairs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+        /// </summary>
+        public readonly Outputs.MaintenanceScheduleResponse MaintenanceSchedule;
+        /// <summary>
+        /// Optional. The maintenance update policy determines when to allow or deny updates.
+        /// </summary>
+        public readonly Outputs.MaintenanceUpdatePolicyResponse MaintenanceUpdatePolicy;
         /// <summary>
         /// Cluster created via DMS migration.
         /// </summary>
@@ -138,7 +150,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         public readonly string Network;
         public readonly Outputs.NetworkConfigResponse NetworkConfig;
@@ -147,9 +159,17 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         public readonly Outputs.PrimaryConfigResponse PrimaryConfig;
         /// <summary>
+        /// Optional. The configuration for Private Service Connect (PSC) for the cluster.
+        /// </summary>
+        public readonly Outputs.PscConfigResponse PscConfig;
+        /// <summary>
         /// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         public readonly bool Reconciling;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
         /// <summary>
         /// Cross Region replication config specific to SECONDARY cluster.
         /// </summary>
@@ -199,9 +219,15 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
 
             string etag,
 
+            Outputs.GeminiClusterConfigResponse geminiConfig,
+
             Outputs.UserPasswordResponse initialUser,
 
             ImmutableDictionary<string, string> labels,
+
+            Outputs.MaintenanceScheduleResponse maintenanceSchedule,
+
+            Outputs.MaintenanceUpdatePolicyResponse maintenanceUpdatePolicy,
 
             Outputs.MigrationSourceResponse migrationSource,
 
@@ -213,7 +239,11 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
 
             Outputs.PrimaryConfigResponse primaryConfig,
 
+            Outputs.PscConfigResponse pscConfig,
+
             bool reconciling,
+
+            bool satisfiesPzs,
 
             Outputs.SecondaryConfigResponse secondaryConfig,
 
@@ -238,14 +268,19 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
             EncryptionConfig = encryptionConfig;
             EncryptionInfo = encryptionInfo;
             Etag = etag;
+            GeminiConfig = geminiConfig;
             InitialUser = initialUser;
             Labels = labels;
+            MaintenanceSchedule = maintenanceSchedule;
+            MaintenanceUpdatePolicy = maintenanceUpdatePolicy;
             MigrationSource = migrationSource;
             Name = name;
             Network = network;
             NetworkConfig = networkConfig;
             PrimaryConfig = primaryConfig;
+            PscConfig = pscConfig;
             Reconciling = reconciling;
+            SatisfiesPzs = satisfiesPzs;
             SecondaryConfig = secondaryConfig;
             SslConfig = sslConfig;
             State = state;

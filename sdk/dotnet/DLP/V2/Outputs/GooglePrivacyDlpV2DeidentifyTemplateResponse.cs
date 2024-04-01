@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+    /// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2DeidentifyTemplateResponse

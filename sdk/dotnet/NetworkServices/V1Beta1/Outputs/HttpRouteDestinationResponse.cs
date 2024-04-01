@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
     public sealed class HttpRouteDestinationResponse
     {
         /// <summary>
+        /// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+        /// </summary>
+        public readonly Outputs.HttpRouteHeaderModifierResponse RequestHeaderModifier;
+        /// <summary>
+        /// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+        /// </summary>
+        public readonly Outputs.HttpRouteHeaderModifierResponse ResponseHeaderModifier;
+        /// <summary>
         /// The URL of a BackendService to route traffic to.
         /// </summary>
         public readonly string ServiceName;
@@ -27,10 +35,16 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
 
         [OutputConstructor]
         private HttpRouteDestinationResponse(
+            Outputs.HttpRouteHeaderModifierResponse requestHeaderModifier,
+
+            Outputs.HttpRouteHeaderModifierResponse responseHeaderModifier,
+
             string serviceName,
 
             int weight)
         {
+            RequestHeaderModifier = requestHeaderModifier;
+            ResponseHeaderModifier = responseHeaderModifier;
             ServiceName = serviceName;
             Weight = weight;
         }

@@ -64,19 +64,23 @@ namespace Pulumi.GoogleNative.Connectors.V1
     public sealed class GetCustomConnectorVersionResult
     {
         /// <summary>
-        /// Configuration for establishing the authentication to the connector destination.
+        /// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
         /// </summary>
         public readonly Outputs.AuthConfigResponse AuthConfig;
+        /// <summary>
+        /// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ConfigVariableTemplateResponse> BackendVariableTemplates;
         /// <summary>
         /// Created time.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Configuration of the customConnector's destination.
+        /// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
         /// </summary>
-        public readonly Outputs.DestinationConfigResponse DestinationConfig;
+        public readonly ImmutableArray<Outputs.DestinationConfigResponse> DestinationConfigs;
         /// <summary>
-        /// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+        /// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
         /// </summary>
         public readonly bool EnableBackendDestinationConfig;
         /// <summary>
@@ -88,13 +92,21 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Service account needed for runtime plane to access Custom Connector secrets.
+        /// Optional. Service account used by runtime plane to access auth config secrets.
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
-        /// Optional. Location of the custom connector spec.
+        /// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
         /// </summary>
         public readonly string SpecLocation;
+        /// <summary>
+        /// Server URLs parsed from the spec.
+        /// </summary>
+        public readonly ImmutableArray<string> SpecServerUrls;
+        /// <summary>
+        /// State of the custom connector version.
+        /// </summary>
+        public readonly string State;
         /// <summary>
         /// Updated time.
         /// </summary>
@@ -104,9 +116,11 @@ namespace Pulumi.GoogleNative.Connectors.V1
         private GetCustomConnectorVersionResult(
             Outputs.AuthConfigResponse authConfig,
 
+            ImmutableArray<Outputs.ConfigVariableTemplateResponse> backendVariableTemplates,
+
             string createTime,
 
-            Outputs.DestinationConfigResponse destinationConfig,
+            ImmutableArray<Outputs.DestinationConfigResponse> destinationConfigs,
 
             bool enableBackendDestinationConfig,
 
@@ -118,16 +132,23 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string specLocation,
 
+            ImmutableArray<string> specServerUrls,
+
+            string state,
+
             string updateTime)
         {
             AuthConfig = authConfig;
+            BackendVariableTemplates = backendVariableTemplates;
             CreateTime = createTime;
-            DestinationConfig = destinationConfig;
+            DestinationConfigs = destinationConfigs;
             EnableBackendDestinationConfig = enableBackendDestinationConfig;
             Labels = labels;
             Name = name;
             ServiceAccount = serviceAccount;
             SpecLocation = specLocation;
+            SpecServerUrls = specServerUrls;
+            State = state;
             UpdateTime = updateTime;
         }
     }

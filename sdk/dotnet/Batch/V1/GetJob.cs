@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Batch.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.TaskGroupResponse> TaskGroups;
         /// <summary>
-        /// A system generated unique ID (in UUID4 format) for the Job.
+        /// A system generated unique ID for the Job.
         /// </summary>
         public readonly string Uid;
         /// <summary>

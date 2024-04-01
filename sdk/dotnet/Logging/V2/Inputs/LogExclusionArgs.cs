@@ -33,12 +33,6 @@ namespace Pulumi.GoogleNative.Logging.V2.Inputs
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
 
-        /// <summary>
-        /// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
         public LogExclusionArgs()
         {
         }

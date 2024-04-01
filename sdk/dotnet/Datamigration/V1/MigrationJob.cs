@@ -148,6 +148,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<Outputs.DatabaseTypeResponse> SourceDatabase { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration for SQL Server homogeneous migration.
+        /// </summary>
+        [Output("sqlserverHomogeneousMigrationJobConfig")]
+        public Output<Outputs.SqlServerHomogeneousMigrationJobConfigResponse> SqlserverHomogeneousMigrationJobConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The current migration job state.
         /// </summary>
         [Output("state")]
@@ -335,6 +341,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         [Input("sourceDatabase")]
         public Input<Inputs.DatabaseTypeArgs>? SourceDatabase { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for SQL Server homogeneous migration.
+        /// </summary>
+        [Input("sqlserverHomogeneousMigrationJobConfig")]
+        public Input<Inputs.SqlServerHomogeneousMigrationJobConfigArgs>? SqlserverHomogeneousMigrationJobConfig { get; set; }
 
         /// <summary>
         /// The current migration job state.

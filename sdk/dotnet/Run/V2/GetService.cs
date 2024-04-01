@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Run.V2
     public sealed class GetServiceResult
     {
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources. All system annotations in v1 now have a corresponding field in v2 Service. This field follows Kubernetes annotations' namespacing, limits, and rules.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public readonly ImmutableArray<string> CustomAudiences;
         /// <summary>
+        /// Optional. Disables public resolution of the default URI of this service.
+        /// </summary>
+        public readonly bool DefaultUriDisabled;
+        /// <summary>
         /// The deletion time.
         /// </summary>
         public readonly string DeleteTime;
@@ -120,7 +124,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public readonly string Ingress;
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
+        /// Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Service.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -206,6 +210,8 @@ namespace Pulumi.GoogleNative.Run.V2
 
             ImmutableArray<string> customAudiences,
 
+            bool defaultUriDisabled,
+
             string deleteTime,
 
             string description,
@@ -260,6 +266,7 @@ namespace Pulumi.GoogleNative.Run.V2
             CreateTime = createTime;
             Creator = creator;
             CustomAudiences = customAudiences;
+            DefaultUriDisabled = defaultUriDisabled;
             DeleteTime = deleteTime;
             Description = description;
             Etag = etag;

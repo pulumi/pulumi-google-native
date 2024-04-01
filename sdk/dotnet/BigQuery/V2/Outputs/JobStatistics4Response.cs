@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for an extract job.
+    /// </summary>
     [OutputType]
     public sealed class JobStatistics4Response
     {
@@ -18,18 +21,25 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestinationUriFileCounts;
         /// <summary>
-        /// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
+        /// Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes and doesn't have any relationship with the number of actual result bytes extracted in the desired format.
         /// </summary>
         public readonly string InputBytes;
+        /// <summary>
+        /// Describes a timeline of job execution.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.QueryTimelineSampleResponse> Timeline;
 
         [OutputConstructor]
         private JobStatistics4Response(
             ImmutableArray<string> destinationUriFileCounts,
 
-            string inputBytes)
+            string inputBytes,
+
+            ImmutableArray<Outputs.QueryTimelineSampleResponse> timeline)
         {
             DestinationUriFileCounts = destinationUriFileCounts;
             InputBytes = inputBytes;
+            Timeline = timeline;
         }
     }
 }

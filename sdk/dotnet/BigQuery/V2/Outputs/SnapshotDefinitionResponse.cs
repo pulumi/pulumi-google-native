@@ -10,15 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Information about base table and snapshot time of the snapshot.
+    /// </summary>
     [OutputType]
     public sealed class SnapshotDefinitionResponse
     {
         /// <summary>
-        /// [Required] Reference describing the ID of the table that was snapshot.
+        /// Reference describing the ID of the table that was snapshot.
         /// </summary>
         public readonly Outputs.TableReferenceResponse BaseTableReference;
         /// <summary>
-        /// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
+        /// The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
         /// </summary>
         public readonly string SnapshotTime;
 

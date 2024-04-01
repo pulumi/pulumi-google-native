@@ -25,9 +25,13 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly int CrfLevel;
         /// <summary>
-        /// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        /// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         /// </summary>
         public readonly double FrameRate;
+        /// <summary>
+        /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        /// </summary>
+        public readonly string FrameRateConversionStrategy;
         /// <summary>
         /// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         /// </summary>
@@ -41,6 +45,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly int HeightPixels;
         /// <summary>
+        /// Optional. HLG color format setting for VP9.
+        /// </summary>
+        public readonly Outputs.Vp9ColorFormatHLGResponse Hlg;
+        /// <summary>
         /// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         /// </summary>
         public readonly string PixelFormat;
@@ -52,6 +60,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
         /// </summary>
         public readonly string RateControlMode;
+        /// <summary>
+        /// Optional. SDR color format setting for VP9.
+        /// </summary>
+        public readonly Outputs.Vp9ColorFormatSDRResponse Sdr;
         /// <summary>
         /// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         /// </summary>
@@ -65,11 +77,15 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
             double frameRate,
 
+            string frameRateConversionStrategy,
+
             string gopDuration,
 
             int gopFrameCount,
 
             int heightPixels,
+
+            Outputs.Vp9ColorFormatHLGResponse hlg,
 
             string pixelFormat,
 
@@ -77,17 +93,22 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
             string rateControlMode,
 
+            Outputs.Vp9ColorFormatSDRResponse sdr,
+
             int widthPixels)
         {
             BitrateBps = bitrateBps;
             CrfLevel = crfLevel;
             FrameRate = frameRate;
+            FrameRateConversionStrategy = frameRateConversionStrategy;
             GopDuration = gopDuration;
             GopFrameCount = gopFrameCount;
             HeightPixels = heightPixels;
+            Hlg = hlg;
             PixelFormat = pixelFormat;
             Profile = profile;
             RateControlMode = rateControlMode;
+            Sdr = sdr;
             WidthPixels = widthPixels;
         }
     }

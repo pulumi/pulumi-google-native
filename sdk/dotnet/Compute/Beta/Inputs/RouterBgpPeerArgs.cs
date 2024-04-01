@@ -90,6 +90,30 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
+        [Input("exportPolicies")]
+        private InputList<string>? _exportPolicies;
+
+        /// <summary>
+        /// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        /// </summary>
+        public InputList<string> ExportPolicies
+        {
+            get => _exportPolicies ?? (_exportPolicies = new InputList<string>());
+            set => _exportPolicies = value;
+        }
+
+        [Input("importPolicies")]
+        private InputList<string>? _importPolicies;
+
+        /// <summary>
+        /// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        /// </summary>
+        public InputList<string> ImportPolicies
+        {
+            get => _importPolicies ?? (_importPolicies = new InputList<string>());
+            set => _importPolicies = value;
+        }
+
         /// <summary>
         /// Name of the interface the BGP peer is associated with.
         /// </summary>

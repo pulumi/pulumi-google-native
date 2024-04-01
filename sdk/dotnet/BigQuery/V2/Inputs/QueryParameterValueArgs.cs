@@ -10,13 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// The value of a query parameter.
+    /// </summary>
     public sealed class QueryParameterValueArgs : global::Pulumi.ResourceArgs
     {
         [Input("arrayValues")]
         private InputList<Inputs.QueryParameterValueArgs>? _arrayValues;
 
         /// <summary>
-        /// [Optional] The array values, if this is an array type.
+        /// Optional. The array values, if this is an array type.
         /// </summary>
         public InputList<Inputs.QueryParameterValueArgs> ArrayValues
         {
@@ -24,11 +27,17 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
             set => _arrayValues = value;
         }
 
+        /// <summary>
+        /// Optional. The range value, if this is a range type.
+        /// </summary>
+        [Input("rangeValue")]
+        public Input<Inputs.RangeValueArgs>? RangeValue { get; set; }
+
         [Input("structValues")]
         private InputMap<string>? _structValues;
 
         /// <summary>
-        /// [Optional] The struct field values, in order of the struct type's declaration.
+        /// The struct field values.
         /// </summary>
         public InputMap<string> StructValues
         {
@@ -37,7 +46,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Optional] The value of this value, if a simple scalar type.
+        /// Optional. The value of this value, if a simple scalar type.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

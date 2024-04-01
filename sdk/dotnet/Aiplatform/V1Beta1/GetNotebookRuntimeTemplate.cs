@@ -112,13 +112,25 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1NetworkSpecResponse NetworkSpec;
         /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        /// </summary>
+        public readonly ImmutableArray<string> NetworkTags;
+        /// <summary>
         /// Optional. Immutable. The type of the notebook runtime template.
         /// </summary>
         public readonly string NotebookRuntimeType;
         /// <summary>
+        /// Optional. Reservation Affinity of the notebook runtime template.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse ReservationAffinity;
+        /// <summary>
         /// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         /// </summary>
         public readonly string ServiceAccount;
+        /// <summary>
+        /// Optional. Immutable. Runtime Shielded VM spec.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse ShieldedVmConfig;
         /// <summary>
         /// Timestamp when this NotebookRuntimeTemplate was most recently updated.
         /// </summary>
@@ -150,9 +162,15 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 
             Outputs.GoogleCloudAiplatformV1beta1NetworkSpecResponse networkSpec,
 
+            ImmutableArray<string> networkTags,
+
             string notebookRuntimeType,
 
+            Outputs.GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse reservationAffinity,
+
             string serviceAccount,
+
+            Outputs.GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse shieldedVmConfig,
 
             string updateTime)
         {
@@ -168,8 +186,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
             MachineSpec = machineSpec;
             Name = name;
             NetworkSpec = networkSpec;
+            NetworkTags = networkTags;
             NotebookRuntimeType = notebookRuntimeType;
+            ReservationAffinity = reservationAffinity;
             ServiceAccount = serviceAccount;
+            ShieldedVmConfig = shieldedVmConfig;
             UpdateTime = updateTime;
         }
     }

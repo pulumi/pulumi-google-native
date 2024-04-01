@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     public sealed class EnvironmentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The configuration setting for Airflow database data retention mechanism.
+        /// </summary>
+        [Input("dataRetentionConfig")]
+        public Input<Inputs.DataRetentionConfigArgs>? DataRetentionConfig { get; set; }
+
+        /// <summary>
         /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         [Input("databaseConfig")]
@@ -34,7 +40,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Pulumi.GoogleNative.Composer.V1.EnvironmentConfigEnvironmentSize>? EnvironmentSize { get; set; }
 
         /// <summary>
-        /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+        /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
         /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.MaintenanceWindowArgs>? MaintenanceWindow { get; set; }

@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1.Outputs
         /// </summary>
         public readonly Outputs.ReportSummaryChartDataResponse OperatingSystem;
         /// <summary>
-        /// Histogram showing a distribution of memory sizes.
+        /// Histogram showing a distribution of storage sizes.
         /// </summary>
         public readonly Outputs.ReportSummaryHistogramChartDataResponse StorageBytesHistogram;
         /// <summary>

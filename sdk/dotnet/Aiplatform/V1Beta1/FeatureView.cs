@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 {
     /// <summary>
     /// Creates a new FeatureView in a given FeatureOnlineStore.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:aiplatform/v1beta1:FeatureView")]
     public partial class FeatureView : global::Pulumi.CustomResource
@@ -50,6 +49,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<string> FeatureViewId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// </summary>
+        [Output("indexConfig")]
+        public Output<Outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse> IndexConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
         /// </summary>
         [Output("labels")]
@@ -59,7 +64,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        /// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -74,6 +79,18 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<bool?> RunSyncImmediately { get; private set; } = null!;
 
         /// <summary>
+        /// A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to this service account to allow Vertex AI Feature Store to sync data to the online store.
+        /// </summary>
+        [Output("serviceAccountEmail")]
+        public Output<string> ServiceAccountEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+        /// </summary>
+        [Output("serviceAgentType")]
+        public Output<string> ServiceAgentType { get; private set; } = null!;
+
+        /// <summary>
         /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
         /// </summary>
         [Output("syncConfig")]
@@ -86,7 +103,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// Optional. Deprecated: please use FeatureView.index_config instead.
         /// </summary>
         [Output("vectorSearchConfig")]
         public Output<Outputs.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse> VectorSearchConfig { get; private set; } = null!;
@@ -170,6 +187,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         [Input("featureViewId", required: true)]
         public Input<string> FeatureViewId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// </summary>
+        [Input("indexConfig")]
+        public Input<Inputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs>? IndexConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -185,6 +208,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -195,13 +224,19 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Input<bool>? RunSyncImmediately { get; set; }
 
         /// <summary>
+        /// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+        /// </summary>
+        [Input("serviceAgentType")]
+        public Input<Pulumi.GoogleNative.Aiplatform.V1Beta1.FeatureViewServiceAgentType>? ServiceAgentType { get; set; }
+
+        /// <summary>
         /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
         /// </summary>
         [Input("syncConfig")]
         public Input<Inputs.GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs>? SyncConfig { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// Optional. Deprecated: please use FeatureView.index_config instead.
         /// </summary>
         [Input("vectorSearchConfig")]
         public Input<Inputs.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs>? VectorSearchConfig { get; set; }

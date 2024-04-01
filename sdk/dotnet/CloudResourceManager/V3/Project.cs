@@ -71,6 +71,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The most recent time this resource was modified.
         /// </summary>
         [Output("updateTime")]
@@ -150,6 +156,18 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ProjectArgs()
         {

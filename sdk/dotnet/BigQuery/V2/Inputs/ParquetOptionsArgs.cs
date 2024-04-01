@@ -10,16 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Parquet Options for load and make external tables.
+    /// </summary>
     public sealed class ParquetOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        /// Optional. Indicates whether to use schema inference specifically for Parquet LIST logical type.
         /// </summary>
         [Input("enableListInference")]
         public Input<bool>? EnableListInference { get; set; }
 
         /// <summary>
-        /// [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        /// Optional. Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
         /// </summary>
         [Input("enumAsString")]
         public Input<bool>? EnumAsString { get; set; }

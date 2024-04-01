@@ -28,6 +28,18 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// The parameters for the template.
         /// </summary>
         public readonly ImmutableArray<Outputs.ParameterMetadataResponse> Parameters;
+        /// <summary>
+        /// Optional. Indicates if the template is streaming or not.
+        /// </summary>
+        public readonly bool Streaming;
+        /// <summary>
+        /// Optional. Indicates if the streaming template supports at least once mode.
+        /// </summary>
+        public readonly bool SupportsAtLeastOnce;
+        /// <summary>
+        /// Optional. Indicates if the streaming template supports exactly once mode.
+        /// </summary>
+        public readonly bool SupportsExactlyOnce;
 
         [OutputConstructor]
         private TemplateMetadataResponse(
@@ -35,11 +47,20 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string name,
 
-            ImmutableArray<Outputs.ParameterMetadataResponse> parameters)
+            ImmutableArray<Outputs.ParameterMetadataResponse> parameters,
+
+            bool streaming,
+
+            bool supportsAtLeastOnce,
+
+            bool supportsExactlyOnce)
         {
             Description = description;
             Name = name;
             Parameters = parameters;
+            Streaming = streaming;
+            SupportsAtLeastOnce = supportsAtLeastOnce;
+            SupportsExactlyOnce = supportsExactlyOnce;
         }
     }
 }

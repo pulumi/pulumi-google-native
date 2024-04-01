@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 {
     /// <summary>
     /// Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1:Taxonomy")]
     public partial class Taxonomy : global::Pulumi.CustomResource
@@ -38,7 +37,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
+        /// Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -140,6 +139,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

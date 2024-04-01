@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Configures table clustering.
+    /// </summary>
     [OutputType]
     public sealed class ClusteringResponse
     {
         /// <summary>
-        /// [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
+        /// One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The ordering of the clustering fields should be prioritized from most to least important for filtering purposes. Additional information on limitations can be found here: https://cloud.google.com/bigquery/docs/creating-clustered-tables#limitations
         /// </summary>
         public readonly ImmutableArray<string> Fields;
 

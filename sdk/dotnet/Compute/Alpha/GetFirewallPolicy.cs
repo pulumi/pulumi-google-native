@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// A list of packet mirroring rules that belong to this policy.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FirewallPolicyRuleResponse> PacketMirroringRules;
+        /// <summary>
         /// The parent of the firewall policy. This field is not applicable to network firewall policies.
         /// </summary>
         public readonly string Parent;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string name,
 
+            ImmutableArray<Outputs.FirewallPolicyRuleResponse> packetMirroringRules,
+
             string parent,
 
             string region,
@@ -151,6 +157,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Fingerprint = fingerprint;
             Kind = kind;
             Name = name;
+            PacketMirroringRules = packetMirroringRules;
             Parent = parent;
             Region = region;
             RuleTupleCount = ruleTupleCount;

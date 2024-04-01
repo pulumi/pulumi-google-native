@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
     public sealed class DynamicGroupMetadataResponse
     {
         /// <summary>
-        /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         /// </summary>
         public readonly ImmutableArray<Outputs.DynamicGroupQueryResponse> Queries;
         /// <summary>

@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         public readonly Outputs.CryptoKeyConfigResponse CryptoKeyConfig;
         /// <summary>
-        /// Optional. Reserved for future use.
+        /// Optional. Option to enable the Dataplex Lineage Integration feature.
         /// </summary>
         public readonly bool DataplexDataLineageIntegrationEnabled;
         /// <summary>

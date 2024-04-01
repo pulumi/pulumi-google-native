@@ -90,6 +90,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Settings for end user personalization.
+        /// </summary>
+        [Output("personalizationSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse> PersonalizationSettings { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -253,6 +259,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional. Settings for end user personalization.
+        /// </summary>
+        [Input("personalizationSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs>? PersonalizationSettings { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

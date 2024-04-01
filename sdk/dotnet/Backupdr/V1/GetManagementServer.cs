@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Backupdr.V1
         /// </summary>
         public readonly Outputs.ManagementURIResponse ManagementUri;
         /// <summary>
-        /// The resource name.
+        /// Identifier. The resource name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Backupdr.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The type of the ManagementServer resource.
+        /// Optional. The type of the ManagementServer resource.
         /// </summary>
         public readonly string Type;
         /// <summary>

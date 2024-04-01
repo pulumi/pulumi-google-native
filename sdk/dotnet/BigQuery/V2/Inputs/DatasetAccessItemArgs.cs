@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// An object that defines dataset access for an entity.
+    /// </summary>
     public sealed class DatasetAccessItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
@@ -37,7 +40,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? IamMember { get; set; }
 
         /// <summary>
-        /// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+        /// An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER &lt;=&gt; roles/bigquery.dataOwner WRITER &lt;=&gt; roles/bigquery.dataEditor READER &lt;=&gt; roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -61,7 +64,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? UserByEmail { get; set; }
 
         /// <summary>
-        /// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+        /// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to views/tables/routines in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
         /// </summary>
         [Input("view")]
         public Input<Inputs.TableReferenceArgs>? View { get; set; }

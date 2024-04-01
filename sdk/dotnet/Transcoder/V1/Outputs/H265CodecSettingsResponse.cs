@@ -45,9 +45,13 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly bool EnableTwoPass;
         /// <summary>
-        /// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        /// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         /// </summary>
         public readonly double FrameRate;
+        /// <summary>
+        /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        /// </summary>
+        public readonly string FrameRateConversionStrategy;
         /// <summary>
         /// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         /// </summary>
@@ -57,9 +61,17 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly int GopFrameCount;
         /// <summary>
+        /// Optional. HDR10 color format setting for H265.
+        /// </summary>
+        public readonly Outputs.H265ColorFormatHDR10Response Hdr10;
+        /// <summary>
         /// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
         /// </summary>
         public readonly int HeightPixels;
+        /// <summary>
+        /// Optional. HLG color format setting for H265.
+        /// </summary>
+        public readonly Outputs.H265ColorFormatHLGResponse Hlg;
         /// <summary>
         /// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
         /// </summary>
@@ -76,6 +88,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
         /// </summary>
         public readonly string RateControlMode;
+        /// <summary>
+        /// Optional. SDR color format setting for H265.
+        /// </summary>
+        public readonly Outputs.H265ColorFormatSDRResponse Sdr;
         /// <summary>
         /// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
         /// </summary>
@@ -111,11 +127,17 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
             double frameRate,
 
+            string frameRateConversionStrategy,
+
             string gopDuration,
 
             int gopFrameCount,
 
+            Outputs.H265ColorFormatHDR10Response hdr10,
+
             int heightPixels,
+
+            Outputs.H265ColorFormatHLGResponse hlg,
 
             string pixelFormat,
 
@@ -124,6 +146,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
             string profile,
 
             string rateControlMode,
+
+            Outputs.H265ColorFormatSDRResponse sdr,
 
             string tune,
 
@@ -141,13 +165,17 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
             CrfLevel = crfLevel;
             EnableTwoPass = enableTwoPass;
             FrameRate = frameRate;
+            FrameRateConversionStrategy = frameRateConversionStrategy;
             GopDuration = gopDuration;
             GopFrameCount = gopFrameCount;
+            Hdr10 = hdr10;
             HeightPixels = heightPixels;
+            Hlg = hlg;
             PixelFormat = pixelFormat;
             Preset = preset;
             Profile = profile;
             RateControlMode = rateControlMode;
+            Sdr = sdr;
             Tune = tune;
             VbvFullnessBits = vbvFullnessBits;
             VbvSizeBits = vbvSizeBits;

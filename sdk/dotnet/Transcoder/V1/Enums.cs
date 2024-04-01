@@ -90,6 +90,88 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     }
 
     /// <summary>
+    /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+    /// </summary>
+    [EnumType]
+    public readonly struct H264CodecSettingsFrameRateConversionStrategy : IEquatable<H264CodecSettingsFrameRateConversionStrategy>
+    {
+        private readonly string _value;
+
+        private H264CodecSettingsFrameRateConversionStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified frame rate conversion strategy.
+        /// </summary>
+        public static H264CodecSettingsFrameRateConversionStrategy FrameRateConversionStrategyUnspecified { get; } = new H264CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ &gt; 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+        /// </summary>
+        public static H264CodecSettingsFrameRateConversionStrategy Downsample { get; } = new H264CodecSettingsFrameRateConversionStrategy("DOWNSAMPLE");
+        /// <summary>
+        /// Drop or duplicate frames to match the specified frame rate.
+        /// </summary>
+        public static H264CodecSettingsFrameRateConversionStrategy DropDuplicate { get; } = new H264CodecSettingsFrameRateConversionStrategy("DROP_DUPLICATE");
+
+        public static bool operator ==(H264CodecSettingsFrameRateConversionStrategy left, H264CodecSettingsFrameRateConversionStrategy right) => left.Equals(right);
+        public static bool operator !=(H264CodecSettingsFrameRateConversionStrategy left, H264CodecSettingsFrameRateConversionStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(H264CodecSettingsFrameRateConversionStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is H264CodecSettingsFrameRateConversionStrategy other && Equals(other);
+        public bool Equals(H264CodecSettingsFrameRateConversionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+    /// </summary>
+    [EnumType]
+    public readonly struct H265CodecSettingsFrameRateConversionStrategy : IEquatable<H265CodecSettingsFrameRateConversionStrategy>
+    {
+        private readonly string _value;
+
+        private H265CodecSettingsFrameRateConversionStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified frame rate conversion strategy.
+        /// </summary>
+        public static H265CodecSettingsFrameRateConversionStrategy FrameRateConversionStrategyUnspecified { get; } = new H265CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ &gt; 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+        /// </summary>
+        public static H265CodecSettingsFrameRateConversionStrategy Downsample { get; } = new H265CodecSettingsFrameRateConversionStrategy("DOWNSAMPLE");
+        /// <summary>
+        /// Drop or duplicate frames to match the specified frame rate.
+        /// </summary>
+        public static H265CodecSettingsFrameRateConversionStrategy DropDuplicate { get; } = new H265CodecSettingsFrameRateConversionStrategy("DROP_DUPLICATE");
+
+        public static bool operator ==(H265CodecSettingsFrameRateConversionStrategy left, H265CodecSettingsFrameRateConversionStrategy right) => left.Equals(right);
+        public static bool operator !=(H265CodecSettingsFrameRateConversionStrategy left, H265CodecSettingsFrameRateConversionStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(H265CodecSettingsFrameRateConversionStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is H265CodecSettingsFrameRateConversionStrategy other && Equals(other);
+        public bool Equals(H265CodecSettingsFrameRateConversionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
     /// </summary>
     [EnumType]
@@ -205,6 +287,47 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ManifestType other && Equals(other);
         public bool Equals(ManifestType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+    /// </summary>
+    [EnumType]
+    public readonly struct Vp9CodecSettingsFrameRateConversionStrategy : IEquatable<Vp9CodecSettingsFrameRateConversionStrategy>
+    {
+        private readonly string _value;
+
+        private Vp9CodecSettingsFrameRateConversionStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified frame rate conversion strategy.
+        /// </summary>
+        public static Vp9CodecSettingsFrameRateConversionStrategy FrameRateConversionStrategyUnspecified { get; } = new Vp9CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED");
+        /// <summary>
+        /// Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ &gt; 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+        /// </summary>
+        public static Vp9CodecSettingsFrameRateConversionStrategy Downsample { get; } = new Vp9CodecSettingsFrameRateConversionStrategy("DOWNSAMPLE");
+        /// <summary>
+        /// Drop or duplicate frames to match the specified frame rate.
+        /// </summary>
+        public static Vp9CodecSettingsFrameRateConversionStrategy DropDuplicate { get; } = new Vp9CodecSettingsFrameRateConversionStrategy("DROP_DUPLICATE");
+
+        public static bool operator ==(Vp9CodecSettingsFrameRateConversionStrategy left, Vp9CodecSettingsFrameRateConversionStrategy right) => left.Equals(right);
+        public static bool operator !=(Vp9CodecSettingsFrameRateConversionStrategy left, Vp9CodecSettingsFrameRateConversionStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(Vp9CodecSettingsFrameRateConversionStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is Vp9CodecSettingsFrameRateConversionStrategy other && Equals(other);
+        public bool Equals(Vp9CodecSettingsFrameRateConversionStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

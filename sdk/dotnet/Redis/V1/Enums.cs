@@ -8,6 +8,51 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Redis.V1
 {
     /// <summary>
+    /// Optional. fsync configuration.
+    /// </summary>
+    [EnumType]
+    public readonly struct AOFConfigAppendFsync : IEquatable<AOFConfigAppendFsync>
+    {
+        private readonly string _value;
+
+        private AOFConfigAppendFsync(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set. Default: EVERYSEC
+        /// </summary>
+        public static AOFConfigAppendFsync AppendFsyncUnspecified { get; } = new AOFConfigAppendFsync("APPEND_FSYNC_UNSPECIFIED");
+        /// <summary>
+        /// Never fsync. Normally Linux will flush data every 30 seconds with this configuration, but it's up to the kernel's exact tuning.
+        /// </summary>
+        public static AOFConfigAppendFsync No { get; } = new AOFConfigAppendFsync("NO");
+        /// <summary>
+        /// fsync every second. Fast enough, and you may lose 1 second of data if there is a disaster
+        /// </summary>
+        public static AOFConfigAppendFsync Everysec { get; } = new AOFConfigAppendFsync("EVERYSEC");
+        /// <summary>
+        /// fsync every time new commands are appended to the AOF. It has the best data loss protection at the cost of performance
+        /// </summary>
+        public static AOFConfigAppendFsync Always { get; } = new AOFConfigAppendFsync("ALWAYS");
+
+        public static bool operator ==(AOFConfigAppendFsync left, AOFConfigAppendFsync right) => left.Equals(right);
+        public static bool operator !=(AOFConfigAppendFsync left, AOFConfigAppendFsync right) => !left.Equals(right);
+
+        public static explicit operator string(AOFConfigAppendFsync value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AOFConfigAppendFsync other && Equals(other);
+        public bool Equals(AOFConfigAppendFsync other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
     /// </summary>
     [EnumType]
@@ -41,6 +86,97 @@ namespace Pulumi.GoogleNative.Redis.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ClusterAuthorizationMode other && Equals(other);
         public bool Equals(ClusterAuthorizationMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterNodeType : IEquatable<ClusterNodeType>
+    {
+        private readonly string _value;
+
+        private ClusterNodeType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static ClusterNodeType NodeTypeUnspecified { get; } = new ClusterNodeType("NODE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Redis shared core nano node_type.
+        /// </summary>
+        public static ClusterNodeType RedisSharedCoreNano { get; } = new ClusterNodeType("REDIS_SHARED_CORE_NANO");
+        /// <summary>
+        /// Redis highmem medium node_type.
+        /// </summary>
+        public static ClusterNodeType RedisHighmemMedium { get; } = new ClusterNodeType("REDIS_HIGHMEM_MEDIUM");
+        /// <summary>
+        /// Redis highmem xlarge node_type.
+        /// </summary>
+        public static ClusterNodeType RedisHighmemXlarge { get; } = new ClusterNodeType("REDIS_HIGHMEM_XLARGE");
+        /// <summary>
+        /// Redis standard small node_type.
+        /// </summary>
+        public static ClusterNodeType RedisStandardSmall { get; } = new ClusterNodeType("REDIS_STANDARD_SMALL");
+
+        public static bool operator ==(ClusterNodeType left, ClusterNodeType right) => left.Equals(right);
+        public static bool operator !=(ClusterNodeType left, ClusterNodeType right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterNodeType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterNodeType other && Equals(other);
+        public bool Equals(ClusterNodeType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The mode of persistence.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterPersistenceConfigMode : IEquatable<ClusterPersistenceConfigMode>
+    {
+        private readonly string _value;
+
+        private ClusterPersistenceConfigMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set.
+        /// </summary>
+        public static ClusterPersistenceConfigMode PersistenceModeUnspecified { get; } = new ClusterPersistenceConfigMode("PERSISTENCE_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Persistence is disabled, and any snapshot data is deleted.
+        /// </summary>
+        public static ClusterPersistenceConfigMode Disabled { get; } = new ClusterPersistenceConfigMode("DISABLED");
+        /// <summary>
+        /// RDB based persistence is enabled.
+        /// </summary>
+        public static ClusterPersistenceConfigMode Rdb { get; } = new ClusterPersistenceConfigMode("RDB");
+        /// <summary>
+        /// AOF based persistence is enabled.
+        /// </summary>
+        public static ClusterPersistenceConfigMode Aof { get; } = new ClusterPersistenceConfigMode("AOF");
+
+        public static bool operator ==(ClusterPersistenceConfigMode left, ClusterPersistenceConfigMode right) => left.Equals(right);
+        public static bool operator !=(ClusterPersistenceConfigMode left, ClusterPersistenceConfigMode right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterPersistenceConfigMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterPersistenceConfigMode other && Equals(other);
+        public bool Equals(ClusterPersistenceConfigMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -370,6 +506,55 @@ namespace Pulumi.GoogleNative.Redis.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PersistenceConfigRdbSnapshotPeriod other && Equals(other);
         public bool Equals(PersistenceConfigRdbSnapshotPeriod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Period between RDB snapshots.
+    /// </summary>
+    [EnumType]
+    public readonly struct RDBConfigRdbSnapshotPeriod : IEquatable<RDBConfigRdbSnapshotPeriod>
+    {
+        private readonly string _value;
+
+        private RDBConfigRdbSnapshotPeriod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not set.
+        /// </summary>
+        public static RDBConfigRdbSnapshotPeriod SnapshotPeriodUnspecified { get; } = new RDBConfigRdbSnapshotPeriod("SNAPSHOT_PERIOD_UNSPECIFIED");
+        /// <summary>
+        /// One hour.
+        /// </summary>
+        public static RDBConfigRdbSnapshotPeriod OneHour { get; } = new RDBConfigRdbSnapshotPeriod("ONE_HOUR");
+        /// <summary>
+        /// Six hours.
+        /// </summary>
+        public static RDBConfigRdbSnapshotPeriod SixHours { get; } = new RDBConfigRdbSnapshotPeriod("SIX_HOURS");
+        /// <summary>
+        /// Twelve hours.
+        /// </summary>
+        public static RDBConfigRdbSnapshotPeriod TwelveHours { get; } = new RDBConfigRdbSnapshotPeriod("TWELVE_HOURS");
+        /// <summary>
+        /// Twenty four hours.
+        /// </summary>
+        public static RDBConfigRdbSnapshotPeriod TwentyFourHours { get; } = new RDBConfigRdbSnapshotPeriod("TWENTY_FOUR_HOURS");
+
+        public static bool operator ==(RDBConfigRdbSnapshotPeriod left, RDBConfigRdbSnapshotPeriod right) => left.Equals(right);
+        public static bool operator !=(RDBConfigRdbSnapshotPeriod left, RDBConfigRdbSnapshotPeriod right) => !left.Equals(right);
+
+        public static explicit operator string(RDBConfigRdbSnapshotPeriod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RDBConfigRdbSnapshotPeriod other && Equals(other);
+        public bool Equals(RDBConfigRdbSnapshotPeriod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

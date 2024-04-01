@@ -396,6 +396,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// A remote repository to serve artifacts from a remote source.
         /// </summary>
         public static RepositoryMode RemoteRepository { get; } = new RepositoryMode("REMOTE_REPOSITORY");
+        /// <summary>
+        /// An AOSS repository provides artifacts from AOSS upstreams.
+        /// </summary>
+        public static RepositoryMode AossRepository { get; } = new RepositoryMode("AOSS_REPOSITORY");
 
         public static bool operator ==(RepositoryMode left, RepositoryMode right) => left.Equals(right);
         public static bool operator !=(RepositoryMode left, RepositoryMode right) => !left.Equals(right);

@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string> KmsKey { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         [Output("labels")]

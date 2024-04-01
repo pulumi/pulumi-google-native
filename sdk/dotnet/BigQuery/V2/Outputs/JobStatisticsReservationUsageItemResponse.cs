@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Job resource usage breakdown by reservation.
+    /// </summary>
     [OutputType]
     public sealed class JobStatisticsReservationUsageItemResponse
     {
@@ -18,7 +21,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Slot-milliseconds the job spent in the given reservation.
+        /// Total slot milliseconds used by the reservation for a particular job.
         /// </summary>
         public readonly string SlotMs;
 

@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public readonly string GceZone;
         /// <summary>
+        /// Gemini configuration.
+        /// </summary>
+        public readonly Outputs.GeminiInstanceConfigResponse GeminiConfig;
+        /// <summary>
         /// The instance type.
         /// </summary>
         public readonly string InstanceType;
@@ -162,7 +166,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public readonly string PscServiceAttachmentLink;
         /// <summary>
-        /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+        /// The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -173,6 +177,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// The replicas of the instance.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaNames;
+        /// <summary>
+        /// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+        /// </summary>
+        public readonly Outputs.ReplicationClusterResponse ReplicationCluster;
         /// <summary>
         /// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         /// </summary>
@@ -247,6 +255,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
 
             string gceZone,
 
+            Outputs.GeminiInstanceConfigResponse geminiConfig,
+
             string instanceType,
 
             ImmutableArray<Outputs.IpMappingResponse> ipAddresses,
@@ -278,6 +288,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             Outputs.ReplicaConfigurationResponse replicaConfiguration,
 
             ImmutableArray<string> replicaNames,
+
+            Outputs.ReplicationClusterResponse replicationCluster,
 
             string rootPassword,
 
@@ -316,6 +328,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             Etag = etag;
             FailoverReplica = failoverReplica;
             GceZone = gceZone;
+            GeminiConfig = geminiConfig;
             InstanceType = instanceType;
             IpAddresses = ipAddresses;
             Ipv6Address = ipv6Address;
@@ -332,6 +345,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             Region = region;
             ReplicaConfiguration = replicaConfiguration;
             ReplicaNames = replicaNames;
+            ReplicationCluster = replicationCluster;
             RootPassword = rootPassword;
             SatisfiesPzs = satisfiesPzs;
             ScheduledMaintenance = scheduledMaintenance;

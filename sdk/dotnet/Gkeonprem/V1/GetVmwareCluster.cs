@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         /// </summary>
         public readonly Outputs.VmwareAutoRepairConfigResponse AutoRepairConfig;
         /// <summary>
+        /// Binary Authorization related configurations.
+        /// </summary>
+        public readonly Outputs.BinaryAuthorizationResponse BinaryAuthorization;
+        /// <summary>
         /// VMware user cluster control plane nodes must have either 1 or 3 replicas.
         /// </summary>
         public readonly Outputs.VmwareControlPlaneNodeConfigResponse ControlPlaneNode;
@@ -208,6 +212,8 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
 
             Outputs.VmwareAutoRepairConfigResponse autoRepairConfig,
 
+            Outputs.BinaryAuthorizationResponse binaryAuthorization,
+
             Outputs.VmwareControlPlaneNodeConfigResponse controlPlaneNode,
 
             string createTime,
@@ -264,6 +270,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
             AntiAffinityGroups = antiAffinityGroups;
             Authorization = authorization;
             AutoRepairConfig = autoRepairConfig;
+            BinaryAuthorization = binaryAuthorization;
             ControlPlaneNode = controlPlaneNode;
             CreateTime = createTime;
             DataplaneV2 = dataplaneV2;

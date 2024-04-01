@@ -80,9 +80,17 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        /// </summary>
+        public readonly string EnvoyHeaders;
+        /// <summary>
         /// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
         public readonly string GatewaySecurityPolicy;
+        /// <summary>
+        /// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        /// </summary>
+        public readonly string IpVersion;
         /// <summary>
         /// Optional. Set of label tags associated with the Gateway resource.
         /// </summary>
@@ -134,7 +142,11 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 
             string description,
 
+            string envoyHeaders,
+
             string gatewaySecurityPolicy,
+
+            string ipVersion,
 
             ImmutableDictionary<string, string> labels,
 
@@ -160,7 +172,9 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
             CertificateUrls = certificateUrls;
             CreateTime = createTime;
             Description = description;
+            EnvoyHeaders = envoyHeaders;
             GatewaySecurityPolicy = gatewaySecurityPolicy;
+            IpVersion = ipVersion;
             Labels = labels;
             Name = name;
             Network = network;

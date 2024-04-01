@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
 {
 
     /// <summary>
-    /// Configuration of a restore. Next id: 13
+    /// Configuration of a restore.
     /// </summary>
     public sealed class RestoreConfigArgs : global::Pulumi.ResourceArgs
     {

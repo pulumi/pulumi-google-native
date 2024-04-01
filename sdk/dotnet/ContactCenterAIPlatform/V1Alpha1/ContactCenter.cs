@@ -78,6 +78,12 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+        /// </summary>
+        [Output("privateComponents")]
+        public Output<ImmutableArray<string>> PrivateComponents { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 

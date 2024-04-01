@@ -43,6 +43,12 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         public Output<string> DocumentId { get; private set; } = null!;
 
         /// <summary>
+        /// The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+        /// </summary>
+        [Output("indexTime")]
+        public Output<string> IndexTime { get; private set; } = null!;
+
+        /// <summary>
         /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         [Output("jsonData")]

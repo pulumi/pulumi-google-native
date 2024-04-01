@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1BigQuerySourceResponse BigQuerySource;
         /// <summary>
-        /// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+        /// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         /// </summary>
         public readonly ImmutableArray<string> EntityIdColumns;
 

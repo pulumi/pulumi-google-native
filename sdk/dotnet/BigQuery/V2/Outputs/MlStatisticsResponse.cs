@@ -10,26 +10,50 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Job statistics specific to a BigQuery ML training job.
+    /// </summary>
     [OutputType]
     public sealed class MlStatisticsResponse
     {
         /// <summary>
-        /// Results for all completed iterations.
+        /// Trials of a [hyperparameter tuning job](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) sorted by trial_id.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.HparamTuningTrialResponse> HparamTrials;
+        /// <summary>
+        /// Results for all completed iterations. Empty for [hyperparameter tuning jobs](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview).
         /// </summary>
         public readonly ImmutableArray<Outputs.IterationResultResponse> IterationResults;
         /// <summary>
         /// Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop.
         /// </summary>
         public readonly string MaxIterations;
+        /// <summary>
+        /// The type of the model that is being trained.
+        /// </summary>
+        public readonly string ModelType;
+        /// <summary>
+        /// Training type of the job.
+        /// </summary>
+        public readonly string TrainingType;
 
         [OutputConstructor]
         private MlStatisticsResponse(
+            ImmutableArray<Outputs.HparamTuningTrialResponse> hparamTrials,
+
             ImmutableArray<Outputs.IterationResultResponse> iterationResults,
 
-            string maxIterations)
+            string maxIterations,
+
+            string modelType,
+
+            string trainingType)
         {
+            HparamTrials = hparamTrials;
             IterationResults = iterationResults;
             MaxIterations = maxIterations;
+            ModelType = modelType;
+            TrainingType = trainingType;
         }
     }
 }

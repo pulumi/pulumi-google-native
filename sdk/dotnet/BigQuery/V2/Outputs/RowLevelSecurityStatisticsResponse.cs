@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for row-level security.
+    /// </summary>
     [OutputType]
     public sealed class RowLevelSecurityStatisticsResponse
     {
         /// <summary>
-        /// [Preview] Whether any accessed data was protected by row access policies.
+        /// Whether any accessed data was protected by row access policies.
         /// </summary>
         public readonly bool RowLevelSecurityApplied;
 

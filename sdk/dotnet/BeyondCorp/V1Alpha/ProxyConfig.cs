@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Output<Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse> RoutingInfo { get; private set; } = null!;
 
         /// <summary>
-        /// Transport layer information to verify for the proxy server.
+        /// Optional. Transport layer information to verify for the proxy server.
         /// </summary>
         [Output("transportInfo")]
         public Output<Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse> TransportInfo { get; private set; } = null!;
@@ -163,10 +163,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public Input<Inputs.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs> RoutingInfo { get; set; } = null!;
 
         /// <summary>
-        /// Transport layer information to verify for the proxy server.
+        /// Optional. Transport layer information to verify for the proxy server.
         /// </summary>
-        [Input("transportInfo", required: true)]
-        public Input<Inputs.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs> TransportInfo { get; set; } = null!;
+        [Input("transportInfo")]
+        public Input<Inputs.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs>? TransportInfo { get; set; }
 
         public ProxyConfigArgs()
         {

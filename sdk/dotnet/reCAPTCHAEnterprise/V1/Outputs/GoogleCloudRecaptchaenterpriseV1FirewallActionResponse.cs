@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse Block;
         /// <summary>
+        /// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+        /// </summary>
+        public readonly Outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse IncludeRecaptchaScript;
+        /// <summary>
         /// This action will redirect the request to a ReCaptcha interstitial to attach a token.
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse Redirect;
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
 
             Outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse block,
 
+            Outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse includeRecaptchaScript,
+
             Outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse redirect,
 
             Outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse setHeader,
@@ -51,6 +57,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
         {
             Allow = allow;
             Block = block;
+            IncludeRecaptchaScript = includeRecaptchaScript;
             Redirect = redirect;
             SetHeader = setHeader;
             Substitute = substitute;

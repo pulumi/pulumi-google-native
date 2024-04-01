@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     public sealed class GooglePrivacyDlpV2CloudStoragePathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+        /// A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

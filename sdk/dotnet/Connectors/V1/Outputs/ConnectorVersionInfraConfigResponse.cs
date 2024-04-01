@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly string ConnectionRatelimitWindowSeconds;
         /// <summary>
+        /// Optional. Indicates whether connector is deployed on GKE/CloudRun
+        /// </summary>
+        public readonly string DeploymentModel;
+        /// <summary>
         /// HPA autoscaling config.
         /// </summary>
         public readonly Outputs.HPAConfigResponse HpaConfig;
@@ -49,6 +53,8 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         private ConnectorVersionInfraConfigResponse(
             string connectionRatelimitWindowSeconds,
 
+            string deploymentModel,
+
             Outputs.HPAConfigResponse hpaConfig,
 
             string internalclientRatelimitThreshold,
@@ -62,6 +68,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
             string sharedDeployment)
         {
             ConnectionRatelimitWindowSeconds = connectionRatelimitWindowSeconds;
+            DeploymentModel = deploymentModel;
             HpaConfig = hpaConfig;
             InternalclientRatelimitThreshold = internalclientRatelimitThreshold;
             RatelimitThreshold = ratelimitThreshold;

@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.DLP.V2
     public static class GetDlpJob
     {
         /// <summary>
-        /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
         /// </summary>
         public static Task<GetDlpJobResult> InvokeAsync(GetDlpJobArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDlpJobResult>("google-native:dlp/v2:getDlpJob", args ?? new GetDlpJobArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+        /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
         /// </summary>
         public static Output<GetDlpJobResult> Invoke(GetDlpJobInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDlpJobResult>("google-native:dlp/v2:getDlpJob", args ?? new GetDlpJobInvokeArgs(), options.WithDefaults());

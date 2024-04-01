@@ -254,6 +254,47 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// Specify the details of in-transit encryption.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterUpdateDesiredInTransitEncryptionConfig : IEquatable<ClusterUpdateDesiredInTransitEncryptionConfig>
+    {
+        private readonly string _value;
+
+        private ClusterUpdateDesiredInTransitEncryptionConfig(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+        /// </summary>
+        public static ClusterUpdateDesiredInTransitEncryptionConfig InTransitEncryptionConfigUnspecified { get; } = new ClusterUpdateDesiredInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED");
+        /// <summary>
+        /// In-transit encryption is disabled.
+        /// </summary>
+        public static ClusterUpdateDesiredInTransitEncryptionConfig InTransitEncryptionDisabled { get; } = new ClusterUpdateDesiredInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_DISABLED");
+        /// <summary>
+        /// Data in-transit is encrypted using inter-node transparent encryption.
+        /// </summary>
+        public static ClusterUpdateDesiredInTransitEncryptionConfig InTransitEncryptionInterNodeTransparent { get; } = new ClusterUpdateDesiredInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT");
+
+        public static bool operator ==(ClusterUpdateDesiredInTransitEncryptionConfig left, ClusterUpdateDesiredInTransitEncryptionConfig right) => left.Equals(right);
+        public static bool operator !=(ClusterUpdateDesiredInTransitEncryptionConfig left, ClusterUpdateDesiredInTransitEncryptionConfig right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterUpdateDesiredInTransitEncryptionConfig value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterUpdateDesiredInTransitEncryptionConfig other && Equals(other);
+        public bool Equals(ClusterUpdateDesiredInTransitEncryptionConfig other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The desired state of IPv6 connectivity to Google Services.
     /// </summary>
     [EnumType]
@@ -1002,6 +1043,47 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// Specify the details of in-transit encryption.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkConfigInTransitEncryptionConfig : IEquatable<NetworkConfigInTransitEncryptionConfig>
+    {
+        private readonly string _value;
+
+        private NetworkConfigInTransitEncryptionConfig(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+        /// </summary>
+        public static NetworkConfigInTransitEncryptionConfig InTransitEncryptionConfigUnspecified { get; } = new NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED");
+        /// <summary>
+        /// In-transit encryption is disabled.
+        /// </summary>
+        public static NetworkConfigInTransitEncryptionConfig InTransitEncryptionDisabled { get; } = new NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_DISABLED");
+        /// <summary>
+        /// Data in-transit is encrypted using inter-node transparent encryption.
+        /// </summary>
+        public static NetworkConfigInTransitEncryptionConfig InTransitEncryptionInterNodeTransparent { get; } = new NetworkConfigInTransitEncryptionConfig("IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT");
+
+        public static bool operator ==(NetworkConfigInTransitEncryptionConfig left, NetworkConfigInTransitEncryptionConfig right) => left.Equals(right);
+        public static bool operator !=(NetworkConfigInTransitEncryptionConfig left, NetworkConfigInTransitEncryptionConfig right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkConfigInTransitEncryptionConfig value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkConfigInTransitEncryptionConfig other && Equals(other);
+        public bool Equals(NetworkConfigInTransitEncryptionConfig other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
     /// </summary>
     [EnumType]
@@ -1412,6 +1494,43 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// Disk mode (container image cache, etc.)
+    /// </summary>
+    [EnumType]
+    public readonly struct SecondaryBootDiskMode : IEquatable<SecondaryBootDiskMode>
+    {
+        private readonly string _value;
+
+        private SecondaryBootDiskMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// MODE_UNSPECIFIED is when mode is not set.
+        /// </summary>
+        public static SecondaryBootDiskMode ModeUnspecified { get; } = new SecondaryBootDiskMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
+        /// </summary>
+        public static SecondaryBootDiskMode ContainerImageCache { get; } = new SecondaryBootDiskMode("CONTAINER_IMAGE_CACHE");
+
+        public static bool operator ==(SecondaryBootDiskMode left, SecondaryBootDiskMode right) => left.Equals(right);
+        public static bool operator !=(SecondaryBootDiskMode left, SecondaryBootDiskMode right) => !left.Equals(right);
+
+        public static explicit operator string(SecondaryBootDiskMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecondaryBootDiskMode other && Equals(other);
+        public bool Equals(SecondaryBootDiskMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Sets which mode to use for Security Posture features.
     /// </summary>
     [EnumType]
@@ -1477,6 +1596,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// Applies basic vulnerability scanning on the cluster.
         /// </summary>
         public static SecurityPostureConfigVulnerabilityMode VulnerabilityBasic { get; } = new SecurityPostureConfigVulnerabilityMode("VULNERABILITY_BASIC");
+        /// <summary>
+        /// Applies the Security Posture's vulnerability on cluster Enterprise level features.
+        /// </summary>
+        public static SecurityPostureConfigVulnerabilityMode VulnerabilityEnterprise { get; } = new SecurityPostureConfigVulnerabilityMode("VULNERABILITY_ENTERPRISE");
 
         public static bool operator ==(SecurityPostureConfigVulnerabilityMode left, SecurityPostureConfigVulnerabilityMode right) => left.Equals(right);
         public static bool operator !=(SecurityPostureConfigVulnerabilityMode left, SecurityPostureConfigVulnerabilityMode right) => !left.Equals(right);

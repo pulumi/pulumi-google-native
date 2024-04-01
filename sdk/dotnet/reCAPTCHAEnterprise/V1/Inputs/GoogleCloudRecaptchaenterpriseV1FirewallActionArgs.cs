@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         public Input<Inputs.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs>? Block { get; set; }
 
         /// <summary>
+        /// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+        /// </summary>
+        [Input("includeRecaptchaScript")]
+        public Input<Inputs.GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs>? IncludeRecaptchaScript { get; set; }
+
+        /// <summary>
         /// This action will redirect the request to a ReCaptcha interstitial to attach a token.
         /// </summary>
         [Input("redirect")]

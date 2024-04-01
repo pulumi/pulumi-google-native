@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         public readonly string DestinationDatasetId;
         /// <summary>
-        /// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+        /// Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         public readonly Outputs.EncryptionConfigurationResponse EncryptionConfiguration;
         /// <summary>
-        /// The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        /// Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         public readonly string NextRunTime;
         /// <summary>
-        /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+        /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
         /// </summary>
         public readonly string NotificationPubsubTopic;
         /// <summary>

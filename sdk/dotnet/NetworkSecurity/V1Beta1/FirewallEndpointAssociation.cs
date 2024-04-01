@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
 {
     /// <summary>
     /// Creates a new FirewallEndpointAssociation in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:networksecurity/v1beta1:FirewallEndpointAssociation")]
     public partial class FirewallEndpointAssociation : global::Pulumi.CustomResource
@@ -21,6 +20,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
         /// The URL of the FirewallEndpoint that is being associated.
@@ -44,7 +49,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// name of resource
+        /// Immutable. Identifier. name of resource
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -139,6 +144,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
     public sealed class FirewallEndpointAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// The URL of the FirewallEndpoint that is being associated.
         /// </summary>
         [Input("firewallEndpoint", required: true)]
@@ -164,6 +175,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. name of resource
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The URL of the network that is being associated.

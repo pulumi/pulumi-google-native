@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool AllPorts;
         /// <summary>
-        /// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If set to true, clients can access the Internal TCP/UDP Load Balancer, Internal HTTP(S) and TCP Proxy Load Balancer from all regions. If false, only allows access from the local region the load balancer is located at. Note that for INTERNAL_MANAGED forwarding rules, this field cannot be changed after the forwarding rule is created.
+        /// If set to true, clients can access the internal passthrough Network Load Balancers, the regional internal Application Load Balancer, and the regional internal proxy Network Load Balancer from all regions. If false, only allows access from the local region the load balancer is located at. Note that for INTERNAL_MANAGED forwarding rules, this field cannot be changed after the forwarding rule is created.
         /// </summary>
         public readonly bool AllowGlobalAccess;
         /// <summary>
@@ -74,11 +74,11 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool AllowPscPacketInjection;
         /// <summary>
-        /// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
+        /// Identifies the backend service to which the forwarding rule sends traffic. Required for internal and external passthrough Network Load Balancers; must be omitted for all other load balancer types.
         /// </summary>
         public readonly string BackendService;
         /// <summary>
-        /// The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+        /// The URL for the corresponding base forwarding rule. By base forwarding rule, we mean the forwarding rule that has the same IP address, protocol, and port settings with the current forwarding rule, but without sourceIPRanges specified. Always empty if the current forwarding rule does not have sourceIPRanges specified.
         /// </summary>
         public readonly string BaseForwardingRule;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool IsMirroringCollector;
         /// <summary>
-        /// Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
+        /// Type of the resource. Always compute#forwardingRule for forwarding rule resources.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// This field is not used for global external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+        /// This field is not used for global external load balancing. For internal passthrough Network Load Balancers, this field identifies the network that the load balanced IP should belong to for this forwarding rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
         /// </summary>
         public readonly string Network;
         /// <summary>
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<string> Ports;
         /// <summary>
-        /// The PSC connection id of the PSC Forwarding Rule.
+        /// The PSC connection id of the PSC forwarding rule.
         /// </summary>
         public readonly string PscConnectionId;
         public readonly string PscConnectionStatus;
@@ -171,19 +171,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.ForwardingRuleServiceDirectoryRegistrationResponse> ServiceDirectoryRegistrations;
         /// <summary>
-        /// An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
+        /// An optional prefix to the service name for this forwarding rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
         /// </summary>
         public readonly string ServiceLabel;
         /// <summary>
-        /// The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
+        /// The internal fully qualified service name for this forwarding rule. This field is only used for internal load balancing.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        /// If not empty, this forwarding rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a forwarding rule can only have up to 64 source IP ranges, and this field can only be used with a regional forwarding rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         /// </summary>
         public readonly ImmutableArray<string> SourceIpRanges;
         /// <summary>
-        /// This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
+        /// This field identifies the subnetwork that the load balanced IP should belong to for this forwarding rule, used with internal load balancers and external passthrough Network Load Balancers with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
         /// </summary>
         public readonly string Subnetwork;
         /// <summary>

@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        /// <summary>
+        /// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+        /// </summary>
+        [Input("kmsKeyVersion")]
+        public Input<string>? KmsKeyVersion { get; set; }
+
         [Input("logicalInterfaces")]
         private InputList<Inputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs>? _logicalInterfaces;
 

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for a load job.
+    /// </summary>
     [OutputType]
     public sealed class JobStatistics3Response
     {
@@ -33,6 +36,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
         /// </summary>
         public readonly string OutputRows;
+        /// <summary>
+        /// Describes a timeline of job execution.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.QueryTimelineSampleResponse> Timeline;
 
         [OutputConstructor]
         private JobStatistics3Response(
@@ -44,13 +51,16 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string outputBytes,
 
-            string outputRows)
+            string outputRows,
+
+            ImmutableArray<Outputs.QueryTimelineSampleResponse> timeline)
         {
             BadRecords = badRecords;
             InputFileBytes = inputFileBytes;
             InputFiles = inputFiles;
             OutputBytes = outputBytes;
             OutputRows = outputRows;
+            Timeline = timeline;
         }
     }
 }

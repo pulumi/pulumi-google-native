@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class BlueGreenSettingsResponse
     {
         /// <summary>
+        /// Autoscaled policy for cluster autoscaler enabled blue-green upgrade.
+        /// </summary>
+        public readonly Outputs.AutoscaledRolloutPolicyResponse AutoscaledRolloutPolicy;
+        /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         /// </summary>
         public readonly string NodePoolSoakDuration;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
         [OutputConstructor]
         private BlueGreenSettingsResponse(
+            Outputs.AutoscaledRolloutPolicyResponse autoscaledRolloutPolicy,
+
             string nodePoolSoakDuration,
 
             Outputs.StandardRolloutPolicyResponse standardRolloutPolicy)
         {
+            AutoscaledRolloutPolicy = autoscaledRolloutPolicy;
             NodePoolSoakDuration = nodePoolSoakDuration;
             StandardRolloutPolicy = standardRolloutPolicy;
         }

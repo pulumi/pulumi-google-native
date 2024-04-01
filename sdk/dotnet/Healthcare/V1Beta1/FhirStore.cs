@@ -50,16 +50,22 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<bool> DisableResourceVersioning { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// </summary>
+        [Output("enableHistoryModifications")]
+        public Output<bool> EnableHistoryModifications { get; private set; } = null!;
+
+        /// <summary>
         /// Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
         /// </summary>
         [Output("enableUpdateCreate")]
         public Output<bool> EnableUpdateCreate { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
         [Output("fhirStoreId")]
-        public Output<string?> FhirStoreId { get; private set; } = null!;
+        public Output<string> FhirStoreId { get; private set; } = null!;
 
         /// <summary>
         /// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -71,7 +77,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
                 ReplaceOnChanges =
                 {
                     "datasetId",
+                    "fhirStoreId",
                     "location",
                     "project",
                 },
@@ -200,16 +207,22 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<bool>? DisableResourceVersioning { get; set; }
 
         /// <summary>
+        /// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// </summary>
+        [Input("enableHistoryModifications")]
+        public Input<bool>? EnableHistoryModifications { get; set; }
+
+        /// <summary>
         /// Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
         /// </summary>
         [Input("enableUpdateCreate")]
         public Input<bool>? EnableUpdateCreate { get; set; }
 
         /// <summary>
-        /// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
-        [Input("fhirStoreId")]
-        public Input<string>? FhirStoreId { get; set; }
+        [Input("fhirStoreId", required: true)]
+        public Input<string> FhirStoreId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -274,8 +287,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// <summary>
         /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         /// </summary>
-        [Input("version")]
-        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.FhirStoreVersion>? Version { get; set; }
+        [Input("version", required: true)]
+        public Input<Pulumi.GoogleNative.Healthcare.V1Beta1.FhirStoreVersion> Version { get; set; } = null!;
 
         public FhirStoreArgs()
         {

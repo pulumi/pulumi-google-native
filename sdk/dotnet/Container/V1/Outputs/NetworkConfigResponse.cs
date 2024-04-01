@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.DNSConfigResponse DnsConfig;
         /// <summary>
+        /// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+        /// </summary>
+        public readonly bool EnableCiliumClusterwideNetworkPolicy;
+        /// <summary>
         /// Whether FQDN Network Policy is enabled on this cluster.
         /// </summary>
         public readonly bool EnableFqdnNetworkPolicy;
@@ -48,6 +52,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         /// </summary>
         public readonly Outputs.GatewayAPIConfigResponse GatewayApiConfig;
+        /// <summary>
+        /// Specify the details of in-transit encryption.
+        /// </summary>
+        public readonly string InTransitEncryptionConfig;
         /// <summary>
         /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         /// </summary>
@@ -77,6 +85,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.DNSConfigResponse dnsConfig,
 
+            bool enableCiliumClusterwideNetworkPolicy,
+
             bool enableFqdnNetworkPolicy,
 
             bool enableIntraNodeVisibility,
@@ -86,6 +96,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             bool enableMultiNetworking,
 
             Outputs.GatewayAPIConfigResponse gatewayApiConfig,
+
+            string inTransitEncryptionConfig,
 
             string network,
 
@@ -100,11 +112,13 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             DatapathProvider = datapathProvider;
             DefaultSnatStatus = defaultSnatStatus;
             DnsConfig = dnsConfig;
+            EnableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             EnableIntraNodeVisibility = enableIntraNodeVisibility;
             EnableL4ilbSubsetting = enableL4ilbSubsetting;
             EnableMultiNetworking = enableMultiNetworking;
             GatewayApiConfig = gatewayApiConfig;
+            InTransitEncryptionConfig = inTransitEncryptionConfig;
             Network = network;
             NetworkPerformanceConfig = networkPerformanceConfig;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;

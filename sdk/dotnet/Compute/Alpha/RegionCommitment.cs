@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// List of create-on-create reseravtions for this commitment.
+        /// List of create-on-create reservations for this commitment.
         /// </summary>
         [Output("reservations")]
         public Output<ImmutableArray<Outputs.ReservationResponse>> Reservations { get; private set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         private InputList<Inputs.ReservationArgs>? _reservations;
 
         /// <summary>
-        /// List of create-on-create reseravtions for this commitment.
+        /// List of create-on-create reservations for this commitment.
         /// </summary>
         public InputList<Inputs.ReservationArgs> Reservations
         {

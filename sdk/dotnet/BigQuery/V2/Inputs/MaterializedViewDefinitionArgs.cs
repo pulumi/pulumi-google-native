@@ -10,16 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Definition and configuration of a materialized view.
+    /// </summary>
     public sealed class MaterializedViewDefinitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] Allow non incremental materialized view definition. The default value is "false".
+        /// Optional. This option declares authors intention to construct a materialized view that will not be refreshed incrementally.
         /// </summary>
         [Input("allowNonIncrementalDefinition")]
         public Input<bool>? AllowNonIncrementalDefinition { get; set; }
 
         /// <summary>
-        /// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
+        /// Optional. Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         /// </summary>
         [Input("enableRefresh")]
         public Input<bool>? EnableRefresh { get; set; }
@@ -31,13 +34,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? MaxStaleness { get; set; }
 
         /// <summary>
-        /// [Required] A query whose result is persisted.
+        /// A query whose results are persisted.
         /// </summary>
-        [Input("query")]
-        public Input<string>? Query { get; set; }
+        [Input("query", required: true)]
+        public Input<string> Query { get; set; } = null!;
 
         /// <summary>
-        /// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
+        /// Optional. The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         /// </summary>
         [Input("refreshIntervalMs")]
         public Input<string>? RefreshIntervalMs { get; set; }

@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<string> RetentionStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
+        /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL. When data retention configuration is changed, it only applies to the data created after the change; the TTL of existing data created before the change stays intact.
         /// </summary>
         [Output("retentionWindowDays")]
         public Output<int> RetentionWindowDays { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<Pulumi.GoogleNative.Dialogflow.V3.SecuritySettingRetentionStrategy>? RetentionStrategy { get; set; }
 
         /// <summary>
-        /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
+        /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL. When data retention configuration is changed, it only applies to the data created after the change; the TTL of existing data created before the change stays intact.
         /// </summary>
         [Input("retentionWindowDays")]
         public Input<int>? RetentionWindowDays { get; set; }

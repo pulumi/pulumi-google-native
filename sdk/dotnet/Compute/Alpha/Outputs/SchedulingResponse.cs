@@ -77,6 +77,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
         /// </summary>
         public readonly string OnHostMaintenance;
+        public readonly Outputs.SchedulingOnInstanceStopActionResponse OnInstanceStopAction;
         /// <summary>
         /// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         /// </summary>
@@ -124,6 +125,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string onHostMaintenance,
 
+            Outputs.SchedulingOnInstanceStopActionResponse onInstanceStopAction,
+
             bool preemptible,
 
             string provisioningModel,
@@ -146,6 +149,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             MinNodeCpus = minNodeCpus;
             NodeAffinities = nodeAffinities;
             OnHostMaintenance = onHostMaintenance;
+            OnInstanceStopAction = onInstanceStopAction;
             Preemptible = preemptible;
             ProvisioningModel = provisioningModel;
             TerminationTime = terminationTime;

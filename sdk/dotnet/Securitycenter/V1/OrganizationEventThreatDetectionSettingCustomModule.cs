@@ -10,12 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Securitycenter.V1
 {
     /// <summary>
-    /// Creates an Event Threat Detection custom module.
+    /// Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:OrganizationEventThreatDetectionSettingCustomModule")]
     public partial class OrganizationEventThreatDetectionSettingCustomModule : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+        /// </summary>
+        [Output("ancestorModule")]
+        public Output<string> AncestorModule { get; private set; } = null!;
+
         /// <summary>
         /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         /// </summary>

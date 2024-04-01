@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
     public sealed class GetCustomConnectorResult
     {
         /// <summary>
+        /// Optional. Active connector versions.
+        /// </summary>
+        public readonly ImmutableArray<string> ActiveConnectorVersions;
+        /// <summary>
         /// Created time.
         /// </summary>
         public readonly string CreateTime;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
         [OutputConstructor]
         private GetCustomConnectorResult(
+            ImmutableArray<string> activeConnectorVersions,
+
             string createTime,
 
             string customConnectorType,
@@ -108,6 +114,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string updateTime)
         {
+            ActiveConnectorVersions = activeConnectorVersions;
             CreateTime = createTime;
             CustomConnectorType = customConnectorType;
             Description = description;

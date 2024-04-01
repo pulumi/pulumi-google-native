@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// </summary>
         public readonly Outputs.ConfigManagementGitConfigResponse Git;
         /// <summary>
-        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         /// </summary>
         public readonly string MetricsGcpServiceAccountEmail;
         /// <summary>

@@ -10,13 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// The pair of the foreign key column and primary key column.
+    /// </summary>
     public sealed class TableConstraintsForeignKeysItemColumnReferencesItemArgs : global::Pulumi.ResourceArgs
     {
-        [Input("referencedColumn")]
-        public Input<string>? ReferencedColumn { get; set; }
+        /// <summary>
+        /// The column in the primary key that are referenced by the referencing_column.
+        /// </summary>
+        [Input("referencedColumn", required: true)]
+        public Input<string> ReferencedColumn { get; set; } = null!;
 
-        [Input("referencingColumn")]
-        public Input<string>? ReferencingColumn { get; set; }
+        /// <summary>
+        /// The column that composes the foreign key.
+        /// </summary>
+        [Input("referencingColumn", required: true)]
+        public Input<string> ReferencingColumn { get; set; } = null!;
 
         public TableConstraintsForeignKeysItemColumnReferencesItemArgs()
         {

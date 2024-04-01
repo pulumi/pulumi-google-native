@@ -10,15 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// The TableConstraints defines the primary key and foreign key.
+    /// </summary>
     [OutputType]
     public sealed class TableConstraintsResponse
     {
         /// <summary>
-        /// [Optional] The foreign keys of the tables.
+        /// Optional. Present only if the table has a foreign key. The foreign key is not enforced.
         /// </summary>
         public readonly ImmutableArray<Outputs.TableConstraintsForeignKeysItemResponse> ForeignKeys;
         /// <summary>
-        /// [Optional] The primary key of the table.
+        /// Represents the primary key constraint on a table's columns.
         /// </summary>
         public readonly Outputs.TableConstraintsPrimaryKeyResponse PrimaryKey;
 

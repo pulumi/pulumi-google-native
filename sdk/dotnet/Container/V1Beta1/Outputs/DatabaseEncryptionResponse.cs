@@ -17,9 +17,21 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class DatabaseEncryptionResponse
     {
         /// <summary>
+        /// The current state of etcd encryption.
+        /// </summary>
+        public readonly string CurrentState;
+        /// <summary>
+        /// Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource.
+        /// </summary>
+        public readonly ImmutableArray<string> DecryptionKeys;
+        /// <summary>
         /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
         /// </summary>
         public readonly string KeyName;
+        /// <summary>
+        /// Records errors seen during DatabaseEncryption update operations.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.OperationErrorResponse> LastOperationErrors;
         /// <summary>
         /// The desired state of etcd encryption.
         /// </summary>
@@ -27,11 +39,20 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
         [OutputConstructor]
         private DatabaseEncryptionResponse(
+            string currentState,
+
+            ImmutableArray<string> decryptionKeys,
+
             string keyName,
+
+            ImmutableArray<Outputs.OperationErrorResponse> lastOperationErrors,
 
             string state)
         {
+            CurrentState = currentState;
+            DecryptionKeys = decryptionKeys;
             KeyName = keyName;
+            LastOperationErrors = lastOperationErrors;
             State = state;
         }
     }

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat>? AudioFormat { get; set; }
 
         /// <summary>
-        /// Enable audio redaction if it is true.
+        /// Enable audio redaction if it is true. Note that this only redacts end-user audio data; Synthesised audio from the virtual agent is not redacted.
         /// </summary>
         [Input("enableAudioRedaction")]
         public Input<bool>? EnableAudioRedaction { get; set; }

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
     public sealed class NpmRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        [Input("customRepository")]
+        public Input<Inputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs>? CustomRepository { get; set; }
+
+        /// <summary>
         /// One of the publicly available Npm repositories supported by Artifact Registry.
         /// </summary>
         [Input("publicRepository")]

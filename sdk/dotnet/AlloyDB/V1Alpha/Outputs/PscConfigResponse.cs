@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// PscConfig contains PSC related configuration at a cluster level. NEXT ID: 2
+    /// PscConfig contains PSC related configuration at a cluster level.
     /// </summary>
     [OutputType]
     public sealed class PscConfigResponse

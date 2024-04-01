@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Output("geminiConfig")]
+        public Output<Outputs.GeminiClusterConfigResponse> GeminiConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         /// </summary>
         [Output("initialUser")]
@@ -116,6 +122,18 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+        /// </summary>
+        [Output("maintenanceSchedule")]
+        public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The maintenance update policy determines when to allow or deny updates.
+        /// </summary>
+        [Output("maintenanceUpdatePolicy")]
+        public Output<Outputs.MaintenanceUpdatePolicyResponse> MaintenanceUpdatePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster created via DMS migration.
         /// </summary>
         [Output("migrationSource")]
@@ -128,7 +146,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -162,6 +180,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.
@@ -305,6 +329,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha
         public Input<string>? Etag { get; set; }
 
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Input("geminiConfig")]
+        public Input<Inputs.GeminiClusterConfigArgs>? GeminiConfig { get; set; }
+
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         /// </summary>
         [Input("initialUser")]
@@ -326,7 +356,13 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// Optional. The maintenance update policy determines when to allow or deny updates.
+        /// </summary>
+        [Input("maintenanceUpdatePolicy")]
+        public Input<Inputs.MaintenanceUpdatePolicyArgs>? MaintenanceUpdatePolicy { get; set; }
+
+        /// <summary>
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

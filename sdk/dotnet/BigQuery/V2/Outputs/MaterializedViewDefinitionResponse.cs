@@ -10,19 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Definition and configuration of a materialized view.
+    /// </summary>
     [OutputType]
     public sealed class MaterializedViewDefinitionResponse
     {
         /// <summary>
-        /// [Optional] Allow non incremental materialized view definition. The default value is "false".
+        /// Optional. This option declares authors intention to construct a materialized view that will not be refreshed incrementally.
         /// </summary>
         public readonly bool AllowNonIncrementalDefinition;
         /// <summary>
-        /// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
+        /// Optional. Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         /// </summary>
         public readonly bool EnableRefresh;
         /// <summary>
-        /// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+        /// The time when this materialized view was last refreshed, in milliseconds since the epoch.
         /// </summary>
         public readonly string LastRefreshTime;
         /// <summary>
@@ -30,11 +33,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string MaxStaleness;
         /// <summary>
-        /// [Required] A query whose result is persisted.
+        /// A query whose results are persisted.
         /// </summary>
         public readonly string Query;
         /// <summary>
-        /// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
+        /// Optional. The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         /// </summary>
         public readonly string RefreshIntervalMs;
 

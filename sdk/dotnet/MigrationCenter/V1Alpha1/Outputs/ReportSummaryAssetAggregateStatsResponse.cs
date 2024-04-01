@@ -37,11 +37,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.ReportSummaryUtilizationChartDataResponse MemoryUtilizationChart;
         /// <summary>
-        /// Count of assets grouped by Operating System families.
+        /// Count of assets grouped by Operating System families. Only present for virtual machines.
         /// </summary>
         public readonly Outputs.ReportSummaryChartDataResponse OperatingSystem;
         /// <summary>
-        /// Histogram showing a distribution of memory sizes.
+        /// Histogram showing a distribution of storage sizes.
         /// </summary>
         public readonly Outputs.ReportSummaryHistogramChartDataResponse StorageBytesHistogram;
         /// <summary>

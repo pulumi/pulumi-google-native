@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public Input<string>? Branch { get; set; }
 
         /// <summary>
-        /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+        /// If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
         /// </summary>
         [Input("commentControl")]
         public Input<Pulumi.GoogleNative.CloudBuild.V1.PullRequestFilterCommentControl>? CommentControl { get; set; }

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
     public sealed class ReportSummaryResponse
     {
         /// <summary>
-        /// Aggregate statistics for all the assets across all the groups.
+        /// Aggregate statistics for unique assets across all the groups.
         /// </summary>
         public readonly Outputs.ReportSummaryAssetAggregateStatsResponse AllAssetsStats;
         /// <summary>

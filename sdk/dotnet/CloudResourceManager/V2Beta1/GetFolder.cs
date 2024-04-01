@@ -71,6 +71,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         /// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         /// </summary>
         public readonly string Parent;
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetFolderResult(
@@ -82,13 +86,16 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
 
             string name,
 
-            string parent)
+            string parent,
+
+            ImmutableDictionary<string, string> tags)
         {
             CreateTime = createTime;
             DisplayName = displayName;
             LifecycleState = lifecycleState;
             Name = name;
             Parent = parent;
+            Tags = tags;
         }
     }
 }

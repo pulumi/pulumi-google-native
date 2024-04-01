@@ -16,8 +16,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<Inputs.BqmlIterationResultArgs>? _iterationResults;
 
         /// <summary>
-        /// [Output-only, Beta] List of each iteration results.
+        /// Deprecated.
         /// </summary>
+        [Obsolete(@"Deprecated.")]
         public InputList<Inputs.BqmlIterationResultArgs> IterationResults
         {
             get => _iterationResults ?? (_iterationResults = new InputList<Inputs.BqmlIterationResultArgs>());
@@ -25,19 +26,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Output-only, Beta] Training run start time in milliseconds since the epoch.
+        /// Deprecated.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
+        /// Deprecated.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        /// Deprecated.
         /// </summary>
         [Input("trainingOptions")]
         public Input<Inputs.BqmlTrainingRunTrainingOptionsArgs>? TrainingOptions { get; set; }

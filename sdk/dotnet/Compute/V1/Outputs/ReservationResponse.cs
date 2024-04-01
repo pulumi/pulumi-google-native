@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class ReservationResponse
     {
         /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        public readonly Outputs.AllocationAggregateReservationResponse AggregateReservation;
+        /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         public readonly string Commitment;
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
         [OutputConstructor]
         private ReservationResponse(
+            Outputs.AllocationAggregateReservationResponse aggregateReservation,
+
             string commitment,
 
             string creationTimestamp,
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string zone)
         {
+            AggregateReservation = aggregateReservation;
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
             Description = description;

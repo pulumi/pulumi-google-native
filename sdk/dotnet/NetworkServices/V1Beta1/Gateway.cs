@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        /// </summary>
+        [Output("envoyHeaders")]
+        public Output<string> EnvoyHeaders { get; private set; } = null!;
+
+        /// <summary>
         /// Required. Short name of the Gateway resource to be created.
         /// </summary>
         [Output("gatewayId")]
@@ -50,6 +56,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         [Output("gatewaySecurityPolicy")]
         public Output<string> GatewaySecurityPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        /// </summary>
+        [Output("ipVersion")]
+        public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Set of label tags associated with the Gateway resource.
@@ -199,6 +211,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        /// </summary>
+        [Input("envoyHeaders")]
+        public Input<Pulumi.GoogleNative.NetworkServices.V1Beta1.GatewayEnvoyHeaders>? EnvoyHeaders { get; set; }
+
+        /// <summary>
         /// Required. Short name of the Gateway resource to be created.
         /// </summary>
         [Input("gatewayId", required: true)]
@@ -209,6 +227,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         [Input("gatewaySecurityPolicy")]
         public Input<string>? GatewaySecurityPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<Pulumi.GoogleNative.NetworkServices.V1Beta1.GatewayIpVersion>? IpVersion { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

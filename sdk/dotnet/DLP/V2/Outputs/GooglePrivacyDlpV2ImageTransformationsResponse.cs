@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     [OutputType]
     public sealed class GooglePrivacyDlpV2ImageTransformationsResponse
     {
+        /// <summary>
+        /// List of transforms to make.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2ImageTransformationResponse> Transforms;
 
         [OutputConstructor]

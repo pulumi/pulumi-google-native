@@ -68,6 +68,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
+        /// Configuration for connections to Bitbucket Cloud.
+        /// </summary>
+        public readonly Outputs.BitbucketCloudConfigResponse BitbucketCloudConfig;
+        /// <summary>
+        /// Configuration for connections to Bitbucket Data Center.
+        /// </summary>
+        public readonly Outputs.BitbucketDataCenterConfigResponse BitbucketDataCenterConfig;
+        /// <summary>
         /// Server assigned timestamp for when the connection was created.
         /// </summary>
         public readonly string CreateTime;
@@ -112,6 +120,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V2
         private GetConnectionResult(
             ImmutableDictionary<string, string> annotations,
 
+            Outputs.BitbucketCloudConfigResponse bitbucketCloudConfig,
+
+            Outputs.BitbucketDataCenterConfigResponse bitbucketDataCenterConfig,
+
             string createTime,
 
             bool disabled,
@@ -133,6 +145,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V2
             string updateTime)
         {
             Annotations = annotations;
+            BitbucketCloudConfig = bitbucketCloudConfig;
+            BitbucketDataCenterConfig = bitbucketDataCenterConfig;
             CreateTime = createTime;
             Disabled = disabled;
             Etag = etag;

@@ -68,9 +68,17 @@ namespace Pulumi.GoogleNative.VPCAccess.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> ConnectedProjects;
         /// <summary>
+        /// The creation time of the connector.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         public readonly string IpCidrRange;
+        /// <summary>
+        /// The last restart time of the connector.
+        /// </summary>
+        public readonly string LastRestartTime;
         /// <summary>
         /// Machine type of VM Instance underlying connector. Default is e2-micro
         /// </summary>
@@ -112,7 +120,11 @@ namespace Pulumi.GoogleNative.VPCAccess.V1Beta1
         private GetConnectorResult(
             ImmutableArray<string> connectedProjects,
 
+            string createTime,
+
             string ipCidrRange,
+
+            string lastRestartTime,
 
             string machineType,
 
@@ -133,7 +145,9 @@ namespace Pulumi.GoogleNative.VPCAccess.V1Beta1
             Outputs.SubnetResponse subnet)
         {
             ConnectedProjects = connectedProjects;
+            CreateTime = createTime;
             IpCidrRange = ipCidrRange;
+            LastRestartTime = lastRestartTime;
             MachineType = machineType;
             MaxInstances = maxInstances;
             MaxThroughput = maxThroughput;

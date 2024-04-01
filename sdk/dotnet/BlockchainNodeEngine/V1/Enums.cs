@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.BlockchainNodeEngine.V1
         /// </summary>
         public static EthereumDetailsNetwork Mainnet { get; } = new EthereumDetailsNetwork("MAINNET");
         /// <summary>
-        /// The Ethereum Testnet based on Goerli protocol.
+        /// Deprecated: The Ethereum Testnet based on Goerli protocol. Holesky (TESTNET_HOLESKY) is the recommended testnet to replace Goerli.
         /// </summary>
         public static EthereumDetailsNetwork TestnetGoerliPrater { get; } = new EthereumDetailsNetwork("TESTNET_GOERLI_PRATER");
         /// <summary>

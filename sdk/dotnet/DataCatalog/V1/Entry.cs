@@ -86,6 +86,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> EntryId { get; private set; } = null!;
 
         /// <summary>
+        /// FeatureonlineStore spec for Vertex AI Feature Store.
+        /// </summary>
+        [Output("featureOnlineStoreSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponse> FeatureOnlineStoreSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         /// </summary>
         [Output("filesetSpec")]
@@ -137,7 +143,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1ModelSpecResponse> ModelSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+        /// Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -307,6 +313,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
+
+        /// <summary>
+        /// FeatureonlineStore spec for Vertex AI Feature Store.
+        /// </summary>
+        [Input("featureOnlineStoreSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecArgs>? FeatureOnlineStoreSpec { get; set; }
 
         /// <summary>
         /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.

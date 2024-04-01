@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 {
 
     /// <summary>
-    /// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+    /// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
     /// </summary>
     [OutputType]
     public sealed class MeasureResponse

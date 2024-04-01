@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 {
     /// <summary>
     /// Creates a new ReleaseConfig in a given Repository.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataform/v1beta1:ReleaseConfig")]
     public partial class ReleaseConfig : global::Pulumi.CustomResource
@@ -29,6 +28,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<string> CronSchedule { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Disables automatic creation of compilation results.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
+
+        /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
         /// </summary>
         [Output("gitCommitish")]
@@ -38,7 +43,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The release config's name.
+        /// Identifier. The release config's name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -53,7 +58,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<ImmutableArray<Outputs.ScheduledReleaseRecordResponse>> RecentScheduledReleaseRecords { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         [Output("releaseCompilationResult")]
         public Output<string> ReleaseCompilationResult { get; private set; } = null!;
@@ -138,6 +143,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Input<string>? CronSchedule { get; set; }
 
         /// <summary>
+        /// Optional. Disables automatic creation of compilation results.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
         /// </summary>
         [Input("gitCommitish", required: true)]
@@ -146,11 +157,17 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Identifier. The release config's name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         [Input("releaseCompilationResult")]
         public Input<string>? ReleaseCompilationResult { get; set; }

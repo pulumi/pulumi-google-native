@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
+        /// The description of the page. The maximum length is 500 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The human-readable name of the page, unique within the flow.
         /// </summary>
         [Output("displayName")]
@@ -147,6 +153,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
+
+        /// <summary>
+        /// The description of the page. The maximum length is 500 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The human-readable name of the page, unique within the flow.

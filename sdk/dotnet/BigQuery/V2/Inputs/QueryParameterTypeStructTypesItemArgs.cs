@@ -10,25 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// The type of a struct parameter.
+    /// </summary>
     public sealed class QueryParameterTypeStructTypesItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] Human-oriented description of the field.
+        /// Optional. Human-oriented description of the field.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Optional] The name of this field.
+        /// Optional. The name of this field.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [Required] The type of this field.
+        /// The type of this field.
         /// </summary>
-        [Input("type")]
-        public Input<Inputs.QueryParameterTypeArgs>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Inputs.QueryParameterTypeArgs> Type { get; set; } = null!;
 
         public QueryParameterTypeStructTypesItemArgs()
         {

@@ -117,6 +117,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("namedPorts")]
         public Output<ImmutableArray<Outputs.NamedPortResponse>> NamedPorts { get; private set; } = null!;
 
+        /// <summary>
+        /// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InstanceGroupManagerParamsResponse> Params { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -346,6 +352,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _namedPorts ?? (_namedPorts = new InputList<Inputs.NamedPortArgs>());
             set => _namedPorts = value;
         }
+
+        /// <summary>
+        /// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceGroupManagerParamsArgs>? Params { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

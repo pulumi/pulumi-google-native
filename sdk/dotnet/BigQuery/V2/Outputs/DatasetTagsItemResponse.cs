@@ -10,15 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// A global tag managed by Resource Manager. https://cloud.google.com/iam/docs/tags-access-control#definitions
+    /// </summary>
     [OutputType]
     public sealed class DatasetTagsItemResponse
     {
         /// <summary>
-        /// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
+        /// The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
         /// </summary>
         public readonly string TagKey;
         /// <summary>
-        /// [Required] Friendly short name of the tag value, e.g. "production".
+        /// The friendly short name of the tag value, e.g. "production".
         /// </summary>
         public readonly string TagValue;
 

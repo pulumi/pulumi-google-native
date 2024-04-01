@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Outputs
     public sealed class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse
     {
         /// <summary>
-        /// The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` =&gt; `ctr` `others-you-may-like` =&gt; `ctr`
+        /// The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` =&gt; `ctr` `others-you-may-like` =&gt; `ctr`
         /// </summary>
         public readonly string OptimizationObjective;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Outputs
         /// </summary>
         public readonly string TrainingState;
         /// <summary>
-        /// The type of engine e.g. `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        /// The type of engine. e.g., `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
         /// </summary>
         public readonly string Type;
 

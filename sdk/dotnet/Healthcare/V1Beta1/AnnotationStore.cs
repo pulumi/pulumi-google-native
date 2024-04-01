@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     public partial class AnnotationStore : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
         [Output("annotationStoreId")]
-        public Output<string?> AnnotationStoreId { get; private set; } = null!;
+        public Output<string> AnnotationStoreId { get; private set; } = null!;
 
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+        /// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -67,6 +67,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
                 Version = Utilities.Version,
                 ReplaceOnChanges =
                 {
+                    "annotationStoreId",
                     "datasetId",
                     "location",
                     "project",
@@ -94,10 +95,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     public sealed class AnnotationStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
-        [Input("annotationStoreId")]
-        public Input<string>? AnnotationStoreId { get; set; }
+        [Input("annotationStoreId", required: true)]
+        public Input<string> AnnotationStoreId { get; set; } = null!;
 
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -118,7 +119,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+        /// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

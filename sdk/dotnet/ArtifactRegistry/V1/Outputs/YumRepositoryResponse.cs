@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
     public sealed class YumRepositoryResponse
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        public readonly Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse CustomRepository;
+        /// <summary>
         /// One of the publicly available Yum repositories supported by Artifact Registry.
         /// </summary>
         public readonly Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse PublicRepository;
 
         [OutputConstructor]
-        private YumRepositoryResponse(Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse publicRepository)
+        private YumRepositoryResponse(
+            Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse customRepository,
+
+            Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

@@ -36,6 +36,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _instanceSelections = value;
         }
 
+        /// <summary>
+        /// Provisioning model configuration used by this managed instance group to create instances.
+        /// </summary>
+        [Input("provisioningModelMix")]
+        public Input<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixArgs>? ProvisioningModelMix { get; set; }
+
         public InstanceGroupManagerInstanceFlexibilityPolicyArgs()
         {
         }

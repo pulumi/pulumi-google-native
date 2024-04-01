@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+        /// </summary>
+        [Output("disallowUnspecifiedMode")]
+        public Output<bool> DisallowUnspecifiedMode { get; private set; } = null!;
+
+        /// <summary>
         /// Docker repository config contains repository level configuration for the repositories of docker type.
         /// </summary>
         [Output("dockerConfig")]
@@ -197,6 +203,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+        /// </summary>
+        [Input("disallowUnspecifiedMode")]
+        public Input<bool>? DisallowUnspecifiedMode { get; set; }
 
         /// <summary>
         /// Docker repository config contains repository level configuration for the repositories of docker type.

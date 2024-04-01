@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
     public sealed class ManagedActiveDirectoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        /// The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: `$mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
         /// </summary>
-        [Input("computer")]
-        public Input<string>? Computer { get; set; }
+        [Input("computer", required: true)]
+        public Input<string> Computer { get; set; } = null!;
 
         /// <summary>
-        /// Fully qualified domain name.
+        /// The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
         /// </summary>
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
+        [Input("domain", required: true)]
+        public Input<string> Domain { get; set; } = null!;
 
         public ManagedActiveDirectoryConfigArgs()
         {

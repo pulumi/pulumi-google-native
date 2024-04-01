@@ -76,6 +76,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Description;
         public readonly Outputs.GRPCHealthCheckResponse GrpcHealthCheck;
+        public readonly Outputs.GRPCTLSHealthCheckResponse GrpcTlsHealthCheck;
         /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         /// </summary>
@@ -137,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.GRPCHealthCheckResponse grpcHealthCheck,
 
+            Outputs.GRPCTLSHealthCheckResponse grpcTlsHealthCheck,
+
             int healthyThreshold,
 
             Outputs.HTTP2HealthCheckResponse http2HealthCheck,
@@ -175,6 +178,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             Description = description;
             GrpcHealthCheck = grpcHealthCheck;
+            GrpcTlsHealthCheck = grpcTlsHealthCheck;
             HealthyThreshold = healthyThreshold;
             Http2HealthCheck = http2HealthCheck;
             HttpHealthCheck = httpHealthCheck;

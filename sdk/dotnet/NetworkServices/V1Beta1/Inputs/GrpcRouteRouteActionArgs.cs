@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public Input<Inputs.GrpcRouteFaultInjectionPolicyArgs>? FaultInjectionPolicy { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<string>? IdleTimeout { get; set; }
+
+        /// <summary>
         /// Optional. Specifies the retry policy associated with this route.
         /// </summary>
         [Input("retryPolicy")]

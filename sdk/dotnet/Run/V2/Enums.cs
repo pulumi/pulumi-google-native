@@ -343,6 +343,10 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Both internal and Google Cloud Load Balancer traffic is allowed.
         /// </summary>
         public static ServiceIngress IngressTrafficInternalLoadBalancer { get; } = new ServiceIngress("INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER");
+        /// <summary>
+        /// No ingress traffic is allowed.
+        /// </summary>
+        public static ServiceIngress IngressTrafficNone { get; } = new ServiceIngress("INGRESS_TRAFFIC_NONE");
 
         public static bool operator ==(ServiceIngress left, ServiceIngress right) => left.Equals(right);
         public static bool operator !=(ServiceIngress left, ServiceIngress right) => !left.Equals(right);

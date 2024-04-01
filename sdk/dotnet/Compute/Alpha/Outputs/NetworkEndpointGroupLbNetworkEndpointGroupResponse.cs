@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class NetworkEndpointGroupLbNetworkEndpointGroupResponse
     {
         /// <summary>
-        /// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+        /// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
         /// </summary>
         public readonly int DefaultPort;
         /// <summary>
-        /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
         /// </summary>
         public readonly string Network;
         /// <summary>

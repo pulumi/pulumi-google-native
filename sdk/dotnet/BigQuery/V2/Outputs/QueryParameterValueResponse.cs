@@ -10,19 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// The value of a query parameter.
+    /// </summary>
     [OutputType]
     public sealed class QueryParameterValueResponse
     {
         /// <summary>
-        /// [Optional] The array values, if this is an array type.
+        /// Optional. The array values, if this is an array type.
         /// </summary>
         public readonly ImmutableArray<Outputs.QueryParameterValueResponse> ArrayValues;
         /// <summary>
-        /// [Optional] The struct field values, in order of the struct type's declaration.
+        /// Optional. The range value, if this is a range type.
+        /// </summary>
+        public readonly Outputs.RangeValueResponse RangeValue;
+        /// <summary>
+        /// The struct field values.
         /// </summary>
         public readonly ImmutableDictionary<string, string> StructValues;
         /// <summary>
-        /// [Optional] The value of this value, if a simple scalar type.
+        /// Optional. The value of this value, if a simple scalar type.
         /// </summary>
         public readonly string Value;
 
@@ -30,11 +37,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private QueryParameterValueResponse(
             ImmutableArray<Outputs.QueryParameterValueResponse> arrayValues,
 
+            Outputs.RangeValueResponse rangeValue,
+
             ImmutableDictionary<string, string> structValues,
 
             string value)
         {
             ArrayValues = arrayValues;
+            RangeValue = rangeValue;
             StructValues = structValues;
             Value = value;
         }

@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        /// </summary>
+        public readonly string IgmpQuery;
+        /// <summary>
         /// The prefix length of the primary internal IPv6 range.
         /// </summary>
         public readonly int InternalIpv6PrefixLength;
@@ -101,6 +105,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string fingerprint,
 
+            string igmpQuery,
+
             int internalIpv6PrefixLength,
 
             ImmutableArray<Outputs.AccessConfigResponse> ipv6AccessConfigs,
@@ -136,6 +142,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
             Fingerprint = fingerprint;
+            IgmpQuery = igmpQuery;
             InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;
             Ipv6AccessType = ipv6AccessType;

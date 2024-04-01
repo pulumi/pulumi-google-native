@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// Duration time relative to reservation creation when GCE will automatically delete this resource.
+        /// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
         /// </summary>
         [Output("deleteAfterDuration")]
         public Output<Outputs.DurationResponse> DeleteAfterDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         /// </summary>
         [Output("deleteAtTime")]
         public Output<string> DeleteAtTime { get; private set; } = null!;
@@ -186,13 +186,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.AllocationAggregateReservationArgs>? AggregateReservation { get; set; }
 
         /// <summary>
-        /// Duration time relative to reservation creation when GCE will automatically delete this resource.
+        /// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
         /// </summary>
         [Input("deleteAfterDuration")]
         public Input<Inputs.DurationArgs>? DeleteAfterDuration { get; set; }
 
         /// <summary>
-        /// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         /// </summary>
         [Input("deleteAtTime")]
         public Input<string>? DeleteAtTime { get; set; }

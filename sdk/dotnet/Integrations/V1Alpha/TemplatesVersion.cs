@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. True if variable masking feature should be turned on for generated workflows
+        /// </summary>
+        [Output("enableVariableMasking")]
+        public Output<bool> EnableVariableMasking { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
         /// </summary>
         [Output("errorCatcherConfigs")]
@@ -183,6 +189,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. True if variable masking feature should be turned on for generated workflows
+        /// </summary>
+        [Input("enableVariableMasking")]
+        public Input<bool>? EnableVariableMasking { get; set; }
 
         [Input("errorCatcherConfigs")]
         private InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>? _errorCatcherConfigs;

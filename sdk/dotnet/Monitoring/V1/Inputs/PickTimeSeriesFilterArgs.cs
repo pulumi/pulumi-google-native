@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Pulumi.GoogleNative.Monitoring.V1.PickTimeSeriesFilterDirection>? Direction { get; set; }
 
         /// <summary>
+        /// Select the top N streams/time series within this time interval
+        /// </summary>
+        [Input("interval")]
+        public Input<Inputs.IntervalArgs>? Interval { get; set; }
+
+        /// <summary>
         /// How many time series to allow to pass through the filter.
         /// </summary>
         [Input("numTimeSeries")]

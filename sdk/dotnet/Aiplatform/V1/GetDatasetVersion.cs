@@ -84,9 +84,17 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
         public readonly string Etag;
+        /// <summary>
+        /// Additional information about the DatasetVersion.
+        /// </summary>
+        public readonly object Metadata;
         /// <summary>
         /// The resource name of the DatasetVersion.
         /// </summary>
@@ -102,7 +110,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 
             string createTime,
 
+            string displayName,
+
             string etag,
+
+            object metadata,
 
             string name,
 
@@ -110,7 +122,9 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         {
             BigQueryDatasetName = bigQueryDatasetName;
             CreateTime = createTime;
+            DisplayName = displayName;
             Etag = etag;
+            Metadata = metadata;
             Name = name;
             UpdateTime = updateTime;
         }

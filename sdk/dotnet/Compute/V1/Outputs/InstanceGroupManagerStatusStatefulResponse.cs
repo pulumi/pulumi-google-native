@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly bool HasStatefulConfig;
         /// <summary>
-        /// Status of per-instance configurations on the instance.
+        /// Status of per-instance configurations on the instances.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse PerInstanceConfigs;
 

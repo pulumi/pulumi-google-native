@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
         /// </summary>
         public readonly Outputs.ImageFreshnessCheckResponse ImageFreshnessCheck;
         /// <summary>
+        /// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+        /// </summary>
+        public readonly Outputs.SigstoreSignatureCheckResponse SigstoreSignatureCheck;
+        /// <summary>
         /// Optional. Require a SimpleSigning-type attestation for every image in the deployment.
         /// </summary>
         public readonly Outputs.SimpleSigningAttestationCheckResponse SimpleSigningAttestationCheck;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
 
             Outputs.ImageFreshnessCheckResponse imageFreshnessCheck,
 
+            Outputs.SigstoreSignatureCheckResponse sigstoreSignatureCheck,
+
             Outputs.SimpleSigningAttestationCheckResponse simpleSigningAttestationCheck,
 
             Outputs.SlsaCheckResponse slsaCheck,
@@ -71,6 +77,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
             DisplayName = displayName;
             ImageAllowlist = imageAllowlist;
             ImageFreshnessCheck = imageFreshnessCheck;
+            SigstoreSignatureCheck = sigstoreSignatureCheck;
             SimpleSigningAttestationCheck = simpleSigningAttestationCheck;
             SlsaCheck = slsaCheck;
             TrustedDirectoryCheck = trustedDirectoryCheck;

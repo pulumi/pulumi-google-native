@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Backupdr.V1
         public Output<Outputs.ManagementURIResponse> ManagementUri { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name.
+        /// Identifier. The resource name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Backupdr.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the ManagementServer resource.
+        /// Optional. The type of the ManagementServer resource.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -218,10 +218,10 @@ namespace Pulumi.GoogleNative.Backupdr.V1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The type of the ManagementServer resource.
+        /// Optional. The type of the ManagementServer resource.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<Pulumi.GoogleNative.Backupdr.V1.ManagementServerType> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.Backupdr.V1.ManagementServerType>? Type { get; set; }
 
         public ManagementServerArgs()
         {

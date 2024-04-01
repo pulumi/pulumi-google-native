@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Integrations.V1Alpha
 {
     /// <summary>
-    /// Create a integration with a draft version in the specified project.
+    /// Uploads an integration. The content can be a previously downloaded integration. Performs the same function as CreateDraftIntegrationVersion, but accepts input in a string format, which holds the complete representation of the IntegrationVersion content.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:integrations/v1alpha:Version")]
@@ -21,12 +21,6 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         [Output("cloudLoggingDetails")]
         public Output<Outputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse> CloudLoggingDetails { get; private set; } = null!;
-
-        /// <summary>
-        /// Optional. Optional. Indicates if sample workflow should be created.
-        /// </summary>
-        [Output("createSampleIntegrations")]
-        public Output<bool?> CreateSampleIntegrations { get; private set; } = null!;
 
         /// <summary>
         /// Auto-generated.
@@ -47,10 +41,22 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. True if variable masking feature should be turned on for this version
+        /// </summary>
+        [Output("enableVariableMasking")]
+        public Output<bool> EnableVariableMasking { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Error Catch Task configuration for the integration. It's optional.
         /// </summary>
         [Output("errorCatcherConfigs")]
         public Output<ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>> ErrorCatcherConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+        /// </summary>
+        [Output("integrationConfigParameters")]
+        public Output<ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse>> IntegrationConfigParameters { get; private set; } = null!;
 
         [Output("integrationId")]
         public Output<string> IntegrationId { get; private set; } = null!;
@@ -87,12 +93,6 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-        /// </summary>
-        [Output("newIntegration")]
-        public Output<bool?> NewIntegration { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The origin that indicates where this integration is coming from.
@@ -231,172 +231,28 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
     public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Cloud Logging details for the integration version
+        /// The textproto of the integration_version.
         /// </summary>
-        [Input("cloudLoggingDetails")]
-        public Input<Inputs.GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs>? CloudLoggingDetails { get; set; }
+        [Input("content")]
+        public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Optional. Optional. Indicates if sample workflow should be created.
+        /// File format for upload request.
         /// </summary>
-        [Input("createSampleIntegrations")]
-        public Input<bool>? CreateSampleIntegrations { get; set; }
-
-        /// <summary>
-        /// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-        /// </summary>
-        [Input("databasePersistencePolicy")]
-        public Input<Pulumi.GoogleNative.Integrations.V1Alpha.VersionDatabasePersistencePolicy>? DatabasePersistencePolicy { get; set; }
-
-        /// <summary>
-        /// Optional. The integration description.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("errorCatcherConfigs")]
-        private InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>? _errorCatcherConfigs;
-
-        /// <summary>
-        /// Optional. Error Catch Task configuration for the integration. It's optional.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs> ErrorCatcherConfigs
-        {
-            get => _errorCatcherConfigs ?? (_errorCatcherConfigs = new InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>());
-            set => _errorCatcherConfigs = value;
-        }
+        [Input("fileFormat")]
+        public Input<Pulumi.GoogleNative.Integrations.V1Alpha.VersionFileFormat>? FileFormat { get; set; }
 
         [Input("integrationId", required: true)]
         public Input<string> IntegrationId { get; set; } = null!;
 
-        [Input("integrationParameters")]
-        private InputList<Inputs.GoogleCloudIntegrationsV1alphaIntegrationParameterArgs>? _integrationParameters;
-
-        /// <summary>
-        /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudIntegrationsV1alphaIntegrationParameterArgs> IntegrationParameters
-        {
-            get => _integrationParameters ?? (_integrationParameters = new InputList<Inputs.GoogleCloudIntegrationsV1alphaIntegrationParameterArgs>());
-            set => _integrationParameters = value;
-        }
-
-        /// <summary>
-        /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        /// </summary>
-        [Input("integrationParametersInternal")]
-        public Input<Inputs.EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs>? IntegrationParametersInternal { get; set; }
-
-        /// <summary>
-        /// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        /// </summary>
-        [Input("lastModifierEmail")]
-        public Input<string>? LastModifierEmail { get; set; }
-
         [Input("location")]
         public Input<string>? Location { get; set; }
-
-        /// <summary>
-        /// Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        /// </summary>
-        [Input("lockHolder")]
-        public Input<string>? LockHolder { get; set; }
-
-        /// <summary>
-        /// Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-        /// </summary>
-        [Input("newIntegration")]
-        public Input<bool>? NewIntegration { get; set; }
-
-        /// <summary>
-        /// Optional. The origin that indicates where this integration is coming from.
-        /// </summary>
-        [Input("origin")]
-        public Input<Pulumi.GoogleNative.Integrations.V1Alpha.VersionOrigin>? Origin { get; set; }
-
-        /// <summary>
-        /// Optional. The id of the template which was used to create this integration_version.
-        /// </summary>
-        [Input("parentTemplateId")]
-        public Input<string>? ParentTemplateId { get; set; }
 
         [Input("productId", required: true)]
         public Input<string> ProductId { get; set; } = null!;
 
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
-        /// </summary>
-        [Input("runAsServiceAccount")]
-        public Input<string>? RunAsServiceAccount { get; set; }
-
-        /// <summary>
-        /// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-        /// </summary>
-        [Input("snapshotNumber")]
-        public Input<string>? SnapshotNumber { get; set; }
-
-        [Input("taskConfigs")]
-        private InputList<Inputs.GoogleCloudIntegrationsV1alphaTaskConfigArgs>? _taskConfigs;
-
-        /// <summary>
-        /// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudIntegrationsV1alphaTaskConfigArgs> TaskConfigs
-        {
-            get => _taskConfigs ?? (_taskConfigs = new InputList<Inputs.GoogleCloudIntegrationsV1alphaTaskConfigArgs>());
-            set => _taskConfigs = value;
-        }
-
-        [Input("taskConfigsInternal")]
-        private InputList<Inputs.EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs>? _taskConfigsInternal;
-
-        /// <summary>
-        /// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        /// </summary>
-        public InputList<Inputs.EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs> TaskConfigsInternal
-        {
-            get => _taskConfigsInternal ?? (_taskConfigsInternal = new InputList<Inputs.EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs>());
-            set => _taskConfigsInternal = value;
-        }
-
-        /// <summary>
-        /// Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-        /// </summary>
-        [Input("teardown")]
-        public Input<Inputs.EnterpriseCrmEventbusProtoTeardownArgs>? Teardown { get; set; }
-
-        [Input("triggerConfigs")]
-        private InputList<Inputs.GoogleCloudIntegrationsV1alphaTriggerConfigArgs>? _triggerConfigs;
-
-        /// <summary>
-        /// Optional. Trigger configurations.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudIntegrationsV1alphaTriggerConfigArgs> TriggerConfigs
-        {
-            get => _triggerConfigs ?? (_triggerConfigs = new InputList<Inputs.GoogleCloudIntegrationsV1alphaTriggerConfigArgs>());
-            set => _triggerConfigs = value;
-        }
-
-        [Input("triggerConfigsInternal")]
-        private InputList<Inputs.EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs>? _triggerConfigsInternal;
-
-        /// <summary>
-        /// Optional. Trigger configurations.
-        /// </summary>
-        public InputList<Inputs.EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs> TriggerConfigsInternal
-        {
-            get => _triggerConfigsInternal ?? (_triggerConfigsInternal = new InputList<Inputs.EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs>());
-            set => _triggerConfigsInternal = value;
-        }
-
-        /// <summary>
-        /// Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-        /// </summary>
-        [Input("userLabel")]
-        public Input<string>? UserLabel { get; set; }
 
         public VersionArgs()
         {

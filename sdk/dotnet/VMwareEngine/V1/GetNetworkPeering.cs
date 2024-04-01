@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
     public static class GetNetworkPeering
     {
         /// <summary>
-        /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
+        /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global.
         /// </summary>
         public static Task<GetNetworkPeeringResult> InvokeAsync(GetNetworkPeeringArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkPeeringResult>("google-native:vmwareengine/v1:getNetworkPeering", args ?? new GetNetworkPeeringArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
+        /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global.
         /// </summary>
         public static Output<GetNetworkPeeringResult> Invoke(GetNetworkPeeringInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPeeringResult>("google-native:vmwareengine/v1:getNetworkPeering", args ?? new GetNetworkPeeringInvokeArgs(), options.WithDefaults());
@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
 
     public sealed class GetNetworkPeeringArgs : global::Pulumi.InvokeArgs
     {
+        [Input("location", required: true)]
+        public string Location { get; set; } = null!;
+
         [Input("networkPeeringId", required: true)]
         public string NetworkPeeringId { get; set; } = null!;
 
@@ -41,6 +44,9 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
 
     public sealed class GetNetworkPeeringInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
         [Input("networkPeeringId", required: true)]
         public Input<string> NetworkPeeringId { get; set; } = null!;
 
@@ -86,7 +92,7 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
         /// </summary>
         public readonly bool ImportCustomRoutesWithPublicIp;
         /// <summary>
-        /// The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+        /// The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
         /// </summary>
         public readonly string Name;
         /// <summary>

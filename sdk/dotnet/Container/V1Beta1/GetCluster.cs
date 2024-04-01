@@ -324,6 +324,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly Outputs.ResourceUsageExportConfigResponse ResourceUsageExportConfig;
         /// <summary>
+        /// Secret CSI driver configuration.
+        /// </summary>
+        public readonly Outputs.SecretManagerConfigResponse SecretManagerConfig;
+        /// <summary>
         /// Enable/Disable Security Posture API features for the cluster.
         /// </summary>
         public readonly Outputs.SecurityPostureConfigResponse SecurityPostureConfig;
@@ -506,6 +510,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             Outputs.ResourceUsageExportConfigResponse resourceUsageExportConfig,
 
+            Outputs.SecretManagerConfigResponse secretManagerConfig,
+
             Outputs.SecurityPostureConfigResponse securityPostureConfig,
 
             string selfLink,
@@ -596,6 +602,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             ReleaseChannel = releaseChannel;
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfig = resourceUsageExportConfig;
+            SecretManagerConfig = secretManagerConfig;
             SecurityPostureConfig = securityPostureConfig;
             SelfLink = selfLink;
             ServicesIpv4Cidr = servicesIpv4Cidr;

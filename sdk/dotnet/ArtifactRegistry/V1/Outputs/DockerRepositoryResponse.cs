@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
     public sealed class DockerRepositoryResponse
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        public readonly Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse CustomRepository;
+        /// <summary>
         /// One of the publicly available Docker repositories supported by Artifact Registry.
         /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]
-        private DockerRepositoryResponse(string publicRepository)
+        private DockerRepositoryResponse(
+            Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse customRepository,
+
+            string publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

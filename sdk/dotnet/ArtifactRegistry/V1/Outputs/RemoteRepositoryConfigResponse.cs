@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+        /// </summary>
+        public readonly bool DisableUpstreamValidation;
+        /// <summary>
         /// Specific settings for a Docker remote repository.
         /// </summary>
         public readonly Outputs.DockerRepositoryResponse DockerRepository;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
 
             string description,
 
+            bool disableUpstreamValidation,
+
             Outputs.DockerRepositoryResponse dockerRepository,
 
             Outputs.MavenRepositoryResponse mavenRepository,
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
         {
             AptRepository = aptRepository;
             Description = description;
+            DisableUpstreamValidation = disableUpstreamValidation;
             DockerRepository = dockerRepository;
             MavenRepository = mavenRepository;
             NpmRepository = npmRepository;

@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse DiskEncryptionKey;
         /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
@@ -144,7 +148,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
@@ -163,6 +167,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Status information for the disk resource.
         /// </summary>
         public readonly Outputs.DiskResourceStatusResponse ResourceStatus;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzi;
         /// <summary>
         /// Reserved for future use.
         /// </summary>
@@ -204,6 +212,14 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string SourceImageId;
         /// <summary>
+        /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        public readonly string SourceInstantSnapshot;
+        /// <summary>
+        /// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        /// </summary>
+        public readonly string SourceInstantSnapshotId;
+        /// <summary>
         /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         /// </summary>
         public readonly string SourceSnapshot;
@@ -223,6 +239,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        public readonly string StoragePool;
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         /// </summary>
@@ -249,6 +269,8 @@ namespace Pulumi.GoogleNative.Compute.V1
             string description,
 
             Outputs.CustomerEncryptionKeyResponse diskEncryptionKey,
+
+            bool enableConfidentialCompute,
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
@@ -288,6 +310,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.DiskResourceStatusResponse resourceStatus,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -308,6 +332,10 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string sourceImageId,
 
+            string sourceInstantSnapshot,
+
+            string sourceInstantSnapshotId,
+
             string sourceSnapshot,
 
             Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey,
@@ -317,6 +345,8 @@ namespace Pulumi.GoogleNative.Compute.V1
             string sourceStorageObject,
 
             string status,
+
+            string storagePool,
 
             string type,
 
@@ -330,6 +360,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKey = diskEncryptionKey;
+            EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
@@ -349,6 +380,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             ReplicaZones = replicaZones;
             ResourcePolicies = resourcePolicies;
             ResourceStatus = resourceStatus;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SizeGb = sizeGb;
@@ -359,11 +391,14 @@ namespace Pulumi.GoogleNative.Compute.V1
             SourceImage = sourceImage;
             SourceImageEncryptionKey = sourceImageEncryptionKey;
             SourceImageId = sourceImageId;
+            SourceInstantSnapshot = sourceInstantSnapshot;
+            SourceInstantSnapshotId = sourceInstantSnapshotId;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
             SourceSnapshotId = sourceSnapshotId;
             SourceStorageObject = sourceStorageObject;
             Status = status;
+            StoragePool = storagePool;
             Type = type;
             Users = users;
             Zone = zone;

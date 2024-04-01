@@ -22,19 +22,19 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         [Output("appEngine")]
         public Output<Outputs.NetworkEndpointGroupAppEngineResponse> AppEngine { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         [Output("cloudFunction")]
         public Output<Outputs.NetworkEndpointGroupCloudFunctionResponse> CloudFunction { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         [Output("cloudRun")]
         public Output<Outputs.NetworkEndpointGroupCloudRunResponse> CloudRun { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// The default port used if the port number is not specified in the network endpoint.
+        /// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         /// </summary>
         [Output("defaultPort")]
         public Output<int> DefaultPort { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.NetworkEndpointGroupPscDataResponse> PscData { get; private set; } = null!;
 
         /// <summary>
-        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         /// </summary>
         [Output("pscTargetService")]
         public Output<string> PscTargetService { get; private set; } = null!;
@@ -191,25 +191,25 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         [Input("appEngine")]
         public Input<Inputs.NetworkEndpointGroupAppEngineArgs>? AppEngine { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         [Input("cloudFunction")]
         public Input<Inputs.NetworkEndpointGroupCloudFunctionArgs>? CloudFunction { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         [Input("cloudRun")]
         public Input<Inputs.NetworkEndpointGroupCloudRunArgs>? CloudRun { get; set; }
 
         /// <summary>
-        /// The default port used if the port number is not specified in the network endpoint.
+        /// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         /// </summary>
         [Input("defaultPort")]
         public Input<int>? DefaultPort { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -245,7 +245,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<Inputs.NetworkEndpointGroupPscDataArgs>? PscData { get; set; }
 
         /// <summary>
-        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         /// </summary>
         [Input("pscTargetService")]
         public Input<string>? PscTargetService { get; set; }

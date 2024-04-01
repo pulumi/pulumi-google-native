@@ -57,6 +57,12 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         [Output("projectNumber")]
         public Output<string> ProjectNumber { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Project resource with the given unique name, arguments, and options.
@@ -149,6 +155,18 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// </summary>
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public ProjectArgs()
         {

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
     public sealed class ComputeEnginePreferencesResponse
     {
         /// <summary>
-        /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+        /// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         /// </summary>
         public readonly string LicenseType;
         /// <summary>

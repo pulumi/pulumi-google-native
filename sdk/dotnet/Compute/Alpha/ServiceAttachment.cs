@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+        /// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center. This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250.
         /// </summary>
         [Output("propagatedConnectionLimit")]
         public Output<int> PropagatedConnectionLimit { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The number of VPCs to which this endpoint is allowed to be propagated per accept list resource (project or network). For ACCEPT_AUTOMATIC service attachment, this limit is default to per project.
+        /// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center. This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250.
         /// </summary>
         [Input("propagatedConnectionLimit")]
         public Input<int>? PropagatedConnectionLimit { get; set; }

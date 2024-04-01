@@ -86,13 +86,25 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse FeatureRegistrySource;
         /// <summary>
+        /// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse IndexConfig;
+        /// <summary>
         /// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        /// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to this service account to allow Vertex AI Feature Store to sync data to the online store.
+        /// </summary>
+        public readonly string ServiceAccountEmail;
+        /// <summary>
+        /// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+        /// </summary>
+        public readonly string ServiceAgentType;
         /// <summary>
         /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
         /// </summary>
@@ -102,7 +114,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// Optional. Deprecated: please use FeatureView.index_config instead.
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse VectorSearchConfig;
 
@@ -116,9 +128,15 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 
             Outputs.GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse featureRegistrySource,
 
+            Outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse indexConfig,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
+
+            string serviceAccountEmail,
+
+            string serviceAgentType,
 
             Outputs.GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse syncConfig,
 
@@ -130,8 +148,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
             CreateTime = createTime;
             Etag = etag;
             FeatureRegistrySource = featureRegistrySource;
+            IndexConfig = indexConfig;
             Labels = labels;
             Name = name;
+            ServiceAccountEmail = serviceAccountEmail;
+            ServiceAgentType = serviceAgentType;
             SyncConfig = syncConfig;
             UpdateTime = updateTime;
             VectorSearchConfig = vectorSearchConfig;

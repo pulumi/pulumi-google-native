@@ -28,12 +28,6 @@ namespace Pulumi.GoogleNative.BlockchainNodeEngine.V1.Inputs
         public Input<bool>? ApiEnableDebug { get; set; }
 
         /// <summary>
-        /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-        /// </summary>
-        [Input("beaconFeeRecipient")]
-        public Input<string>? BeaconFeeRecipient { get; set; }
-
-        /// <summary>
         /// Immutable. The consensus client.
         /// </summary>
         [Input("consensusClient")]
@@ -62,6 +56,12 @@ namespace Pulumi.GoogleNative.BlockchainNodeEngine.V1.Inputs
         /// </summary>
         [Input("nodeType")]
         public Input<Pulumi.GoogleNative.BlockchainNodeEngine.V1.EthereumDetailsNodeType>? NodeType { get; set; }
+
+        /// <summary>
+        /// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+        /// </summary>
+        [Input("validatorConfig")]
+        public Input<Inputs.ValidatorConfigArgs>? ValidatorConfig { get; set; }
 
         public EthereumDetailsArgs()
         {

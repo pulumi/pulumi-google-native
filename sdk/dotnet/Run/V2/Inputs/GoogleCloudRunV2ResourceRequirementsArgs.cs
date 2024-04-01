@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     public sealed class GoogleCloudRunV2ResourceRequirementsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether CPU should be throttled or not outside of requests.
+        /// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
         /// </summary>
         [Input("cpuIdle")]
         public Input<bool>? CpuIdle { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         private InputMap<string>? _limits;
 
         /// <summary>
-        /// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        /// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         /// </summary>
         public InputMap<string> Limits
         {

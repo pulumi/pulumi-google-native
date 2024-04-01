@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The initiator of the QueuedResources's current state.
+        /// The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.
         /// </summary>
         public readonly string StateInitiator;
         /// <summary>

@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         [Input("protoReferenceDocumentationUri")]
         public Input<string>? ProtoReferenceDocumentationUri { get; set; }
 
+        /// <summary>
+        /// Optional link to REST reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rest
+        /// </summary>
+        [Input("restReferenceDocumentationUri")]
+        public Input<string>? RestReferenceDocumentationUri { get; set; }
+
         public PublishingArgs()
         {
         }

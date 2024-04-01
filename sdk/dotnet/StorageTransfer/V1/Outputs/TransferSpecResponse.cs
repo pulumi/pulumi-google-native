@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly Outputs.GcsDataResponse GcsIntermediateDataLocation;
         /// <summary>
+        /// An HDFS cluster data source.
+        /// </summary>
+        public readonly Outputs.HdfsDataResponse HdfsDataSource;
+        /// <summary>
         /// An HTTP URL data source.
         /// </summary>
         public readonly Outputs.HttpDataResponse HttpDataSource;
@@ -87,6 +91,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             Outputs.GcsDataResponse gcsIntermediateDataLocation,
 
+            Outputs.HdfsDataResponse hdfsDataSource,
+
             Outputs.HttpDataResponse httpDataSource,
 
             Outputs.ObjectConditionsResponse objectConditions,
@@ -109,6 +115,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
             GcsDataSink = gcsDataSink;
             GcsDataSource = gcsDataSource;
             GcsIntermediateDataLocation = gcsIntermediateDataLocation;
+            HdfsDataSource = hdfsDataSource;
             HttpDataSource = httpDataSource;
             ObjectConditions = objectConditions;
             PosixDataSink = posixDataSink;

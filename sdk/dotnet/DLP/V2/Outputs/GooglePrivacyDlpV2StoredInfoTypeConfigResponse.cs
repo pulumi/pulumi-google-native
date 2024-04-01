@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+    /// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2StoredInfoTypeConfigResponse

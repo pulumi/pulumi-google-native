@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+        /// </summary>
+        public readonly ImmutableArray<string> PrivateComponents;
+        /// <summary>
         /// Optional. Params that sets up Google as IdP.
         /// </summary>
         public readonly Outputs.SAMLParamsResponse SamlParams;
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
 
             string name,
 
+            ImmutableArray<string> privateComponents,
+
             Outputs.SAMLParamsResponse samlParams,
 
             string state,
@@ -159,6 +165,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
             KmsKey = kmsKey;
             Labels = labels;
             Name = name;
+            PrivateComponents = privateComponents;
             SamlParams = samlParams;
             State = state;
             UpdateTime = updateTime;

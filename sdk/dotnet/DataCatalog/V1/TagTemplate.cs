@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     public partial class TagTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Transfer status of the TagTemplate
+        /// </summary>
+        [Output("dataplexTransferStatus")]
+        public Output<string> DataplexTransferStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
         /// </summary>
         [Output("displayName")]
@@ -37,7 +43,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        /// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -103,6 +109,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     public sealed class TagTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Transfer status of the TagTemplate
+        /// </summary>
+        [Input("dataplexTransferStatus")]
+        public Input<Pulumi.GoogleNative.DataCatalog.V1.TagTemplateDataplexTransferStatus>? DataplexTransferStatus { get; set; }
+
+        /// <summary>
         /// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
         /// </summary>
         [Input("displayName")]
@@ -130,7 +142,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        /// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.TPU.V2.Inputs
         [Input("reserved")]
         public Input<bool>? Reserved { get; set; }
 
+        /// <summary>
+        /// Optional. Defines whether the node is Spot VM.
+        /// </summary>
+        [Input("spot")]
+        public Input<bool>? Spot { get; set; }
+
         public SchedulingConfigArgs()
         {
         }

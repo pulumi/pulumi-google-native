@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly string DagGcsPrefix;
         /// <summary>
+        /// Optional. The configuration setting for Airflow database data retention mechanism.
+        /// </summary>
+        public readonly Outputs.DataRetentionConfigResponse DataRetentionConfig;
+        /// <summary>
         /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         public readonly Outputs.DatabaseConfigResponse DatabaseConfig;
@@ -45,7 +49,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly string GkeCluster;
         /// <summary>
-        /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
+        /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
         /// </summary>
         public readonly Outputs.MaintenanceWindowResponse MaintenanceWindow;
         /// <summary>
@@ -97,6 +101,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             string dagGcsPrefix,
 
+            Outputs.DataRetentionConfigResponse dataRetentionConfig,
+
             Outputs.DatabaseConfigResponse databaseConfig,
 
             Outputs.EncryptionConfigResponse encryptionConfig,
@@ -130,6 +136,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             AirflowByoidUri = airflowByoidUri;
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
+            DataRetentionConfig = dataRetentionConfig;
             DatabaseConfig = databaseConfig;
             EncryptionConfig = encryptionConfig;
             EnvironmentSize = environmentSize;

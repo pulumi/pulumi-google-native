@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+        /// </summary>
+        [Output("multiplexed")]
+        public Output<bool> Multiplexed { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the session. This is always system-assigned.
         /// </summary>
         [Output("name")]
@@ -129,6 +135,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+        /// </summary>
+        [Input("multiplexed")]
+        public Input<bool>? Multiplexed { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

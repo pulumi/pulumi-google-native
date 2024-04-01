@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public sealed class GetAppProfileResult
     {
         /// <summary>
+        /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        /// </summary>
+        public readonly Outputs.DataBoostIsolationReadOnlyResponse DataBoostIsolationReadOnly;
+        /// <summary>
         /// Long form description of the use case for this AppProfile.
         /// </summary>
         public readonly string Description;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
         [OutputConstructor]
         private GetAppProfileResult(
+            Outputs.DataBoostIsolationReadOnlyResponse dataBoostIsolationReadOnly,
+
             string description,
 
             string etag,
@@ -108,6 +114,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             Outputs.StandardIsolationResponse standardIsolation)
         {
+            DataBoostIsolationReadOnly = dataBoostIsolationReadOnly;
             Description = description;
             Etag = etag;
             MultiClusterRoutingUseAny = multiClusterRoutingUseAny;

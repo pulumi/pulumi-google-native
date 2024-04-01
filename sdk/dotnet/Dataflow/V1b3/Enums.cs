@@ -132,6 +132,47 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     }
 
     /// <summary>
+    /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+    /// </summary>
+    [EnumType]
+    public readonly struct EnvironmentStreamingMode : IEquatable<EnvironmentStreamingMode>
+    {
+        private readonly string _value;
+
+        private EnvironmentStreamingMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Run in the default mode.
+        /// </summary>
+        public static EnvironmentStreamingMode StreamingModeUnspecified { get; } = new EnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED");
+        /// <summary>
+        /// In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.
+        /// </summary>
+        public static EnvironmentStreamingMode StreamingModeExactlyOnce { get; } = new EnvironmentStreamingMode("STREAMING_MODE_EXACTLY_ONCE");
+        /// <summary>
+        /// Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing.
+        /// </summary>
+        public static EnvironmentStreamingMode StreamingModeAtLeastOnce { get; } = new EnvironmentStreamingMode("STREAMING_MODE_AT_LEAST_ONCE");
+
+        public static bool operator ==(EnvironmentStreamingMode left, EnvironmentStreamingMode right) => left.Equals(right);
+        public static bool operator !=(EnvironmentStreamingMode left, EnvironmentStreamingMode right) => !left.Equals(right);
+
+        public static explicit operator string(EnvironmentStreamingMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EnvironmentStreamingMode other && Equals(other);
+        public bool Equals(EnvironmentStreamingMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Executions stage states allow the same set of values as JobState.
     /// </summary>
     [EnumType]
@@ -514,6 +555,47 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RuntimeEnvironmentIpConfiguration other && Equals(other);
         public bool Equals(RuntimeEnvironmentIpConfiguration other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+    /// </summary>
+    [EnumType]
+    public readonly struct RuntimeEnvironmentStreamingMode : IEquatable<RuntimeEnvironmentStreamingMode>
+    {
+        private readonly string _value;
+
+        private RuntimeEnvironmentStreamingMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Run in the default mode.
+        /// </summary>
+        public static RuntimeEnvironmentStreamingMode StreamingModeUnspecified { get; } = new RuntimeEnvironmentStreamingMode("STREAMING_MODE_UNSPECIFIED");
+        /// <summary>
+        /// In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.
+        /// </summary>
+        public static RuntimeEnvironmentStreamingMode StreamingModeExactlyOnce { get; } = new RuntimeEnvironmentStreamingMode("STREAMING_MODE_EXACTLY_ONCE");
+        /// <summary>
+        /// Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing.
+        /// </summary>
+        public static RuntimeEnvironmentStreamingMode StreamingModeAtLeastOnce { get; } = new RuntimeEnvironmentStreamingMode("STREAMING_MODE_AT_LEAST_ONCE");
+
+        public static bool operator ==(RuntimeEnvironmentStreamingMode left, RuntimeEnvironmentStreamingMode right) => left.Equals(right);
+        public static bool operator !=(RuntimeEnvironmentStreamingMode left, RuntimeEnvironmentStreamingMode right) => !left.Equals(right);
+
+        public static explicit operator string(RuntimeEnvironmentStreamingMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RuntimeEnvironmentStreamingMode other && Equals(other);
+        public bool Equals(RuntimeEnvironmentStreamingMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

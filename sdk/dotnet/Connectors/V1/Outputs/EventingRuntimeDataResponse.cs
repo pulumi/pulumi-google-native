@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// Current status of eventing.
         /// </summary>
         public readonly Outputs.EventingStatusResponse Status;
+        /// <summary>
+        /// Webhook data.
+        /// </summary>
+        public readonly Outputs.WebhookDataResponse WebhookData;
 
         [OutputConstructor]
         private EventingRuntimeDataResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 
             string eventsListenerPscSa,
 
-            Outputs.EventingStatusResponse status)
+            Outputs.EventingStatusResponse status,
+
+            Outputs.WebhookDataResponse webhookData)
         {
             EventsListenerEndpoint = eventsListenerEndpoint;
             EventsListenerPscSa = eventsListenerPscSa;
             Status = status;
+            WebhookData = webhookData;
         }
     }
 }

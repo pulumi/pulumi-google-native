@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public Input<Inputs.ClusterUpgradeFleetSpecArgs>? Clusterupgrade { get; set; }
 
         /// <summary>
+        /// DataplaneV2 feature spec.
+        /// </summary>
+        [Input("dataplanev2")]
+        public Input<Inputs.DataplaneV2FeatureSpecArgs>? Dataplanev2 { get; set; }
+
+        /// <summary>
         /// FleetObservability feature spec.
         /// </summary>
         [Input("fleetobservability")]

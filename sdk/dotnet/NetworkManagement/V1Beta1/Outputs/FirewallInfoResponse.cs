@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
     public sealed class FirewallInfoResponse
     {
         /// <summary>
-        /// Possible values: ALLOW, DENY
+        /// Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
         /// </summary>
         public readonly string Action;
         /// <summary>

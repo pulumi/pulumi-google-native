@@ -370,6 +370,22 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public static InstanceDatabaseVersion Mysql8036 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_36");
         /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 37.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8037 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_37");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 38.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8038 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_38");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 39.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8039 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_39");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 40.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8040 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_40");
+        /// <summary>
         /// The database version is SQL Server 2019 Standard.
         /// </summary>
         public static InstanceDatabaseVersion Sqlserver2019Standard { get; } = new InstanceDatabaseVersion("SQLSERVER_2019_STANDARD");
@@ -474,11 +490,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
 
         public static InstanceSqlNetworkArchitecture SqlNetworkArchitectureUnspecified { get; } = new InstanceSqlNetworkArchitecture("SQL_NETWORK_ARCHITECTURE_UNSPECIFIED");
         /// <summary>
-        /// Instance is a Tenancy Unit (TU) instance.
+        /// The instance uses the new network architecture.
         /// </summary>
         public static InstanceSqlNetworkArchitecture NewNetworkArchitecture { get; } = new InstanceSqlNetworkArchitecture("NEW_NETWORK_ARCHITECTURE");
         /// <summary>
-        /// Instance is an Umbrella instance.
+        /// The instance uses the old network architecture.
         /// </summary>
         public static InstanceSqlNetworkArchitecture OldNetworkArchitecture { get; } = new InstanceSqlNetworkArchitecture("OLD_NETWORK_ARCHITECTURE");
 
@@ -605,7 +621,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
     }
 
     /// <summary>
-    /// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+    /// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
     /// </summary>
     [EnumType]
     public readonly struct IpConfigurationSslMode : IEquatable<IpConfigurationSslMode>
@@ -630,7 +646,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public static IpConfigurationSslMode EncryptedOnly { get; } = new IpConfigurationSslMode("ENCRYPTED_ONLY");
         /// <summary>
-        /// Only allow connections encrypted with SSL/TLS and with valid client certificates. When this value is used, the legacy `require_ssl` flag must be true or cleared to avoid the conflict between values of two flags.
+        /// Only allow connections encrypted with SSL/TLS and with valid client certificates. When this value is used, the legacy `require_ssl` flag must be true or cleared to avoid the conflict between values of two flags. PostgreSQL clients or users that connect using IAM database authentication must use either the [Cloud SQL Auth Proxy](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy) or [Cloud SQL Connectors](https://cloud.google.com/sql/docs/postgres/connect-connectors) to enforce client identity verification.
         /// </summary>
         public static IpConfigurationSslMode TrustedClientCertificateRequired { get; } = new IpConfigurationSslMode("TRUSTED_CLIENT_CERTIFICATE_REQUIRED");
 
@@ -1187,15 +1203,15 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public static UserType CloudIamServiceAccount { get; } = new UserType("CLOUD_IAM_SERVICE_ACCOUNT");
         /// <summary>
-        /// Cloud IAM Group non-login user.
+        /// Cloud IAM group non-login user.
         /// </summary>
         public static UserType CloudIamGroup { get; } = new UserType("CLOUD_IAM_GROUP");
         /// <summary>
-        /// Cloud IAM Group login user.
+        /// Cloud IAM group login user.
         /// </summary>
         public static UserType CloudIamGroupUser { get; } = new UserType("CLOUD_IAM_GROUP_USER");
         /// <summary>
-        /// Cloud IAM Group login service account.
+        /// Cloud IAM group login service account.
         /// </summary>
         public static UserType CloudIamGroupServiceAccount { get; } = new UserType("CLOUD_IAM_GROUP_SERVICE_ACCOUNT");
 

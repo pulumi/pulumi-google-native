@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// The customer-supplied encryption key of the source snapshot.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceSnapshotEncryptionKey;
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        public readonly string StoragePool;
 
         [OutputConstructor]
         private AttachedDiskInitializeParamsResponse(
@@ -143,7 +147,9 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string sourceSnapshot,
 
-            Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey)
+            Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey,
+
+            string storagePool)
         {
             Architecture = architecture;
             Description = description;
@@ -166,6 +172,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             SourceInstantSnapshot = sourceInstantSnapshot;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            StoragePool = storagePool;
         }
     }
 }

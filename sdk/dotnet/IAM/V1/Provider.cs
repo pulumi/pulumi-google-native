@@ -97,6 +97,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Output("workloadIdentityPoolProviderId")]
         public Output<string> WorkloadIdentityPoolProviderId { get; private set; } = null!;
 
+        /// <summary>
+        /// An X.509-type identity provider.
+        /// </summary>
+        [Output("x509")]
+        public Output<Outputs.X509Response> X509 { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
@@ -217,6 +223,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         [Input("workloadIdentityPoolProviderId", required: true)]
         public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
+
+        /// <summary>
+        /// An X.509-type identity provider.
+        /// </summary>
+        [Input("x509")]
+        public Input<Inputs.X509Args>? X509 { get; set; }
 
         public ProviderArgs()
         {

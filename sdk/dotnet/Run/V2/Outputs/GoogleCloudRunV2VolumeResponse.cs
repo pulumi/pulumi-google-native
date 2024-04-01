@@ -25,9 +25,17 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2EmptyDirVolumeSourceResponse EmptyDir;
         /// <summary>
+        /// Persistent storage backed by a Google Cloud Storage bucket.
+        /// </summary>
+        public readonly Outputs.GoogleCloudRunV2GCSVolumeSourceResponse Gcs;
+        /// <summary>
         /// Volume's name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// For NFS Voumes, contains the path to the nfs Volume
+        /// </summary>
+        public readonly Outputs.GoogleCloudRunV2NFSVolumeSourceResponse Nfs;
         /// <summary>
         /// Secret represents a secret that should populate this volume.
         /// </summary>
@@ -39,13 +47,19 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 
             Outputs.GoogleCloudRunV2EmptyDirVolumeSourceResponse emptyDir,
 
+            Outputs.GoogleCloudRunV2GCSVolumeSourceResponse gcs,
+
             string name,
+
+            Outputs.GoogleCloudRunV2NFSVolumeSourceResponse nfs,
 
             Outputs.GoogleCloudRunV2SecretVolumeSourceResponse secret)
         {
             CloudSqlInstance = cloudSqlInstance;
             EmptyDir = emptyDir;
+            Gcs = gcs;
             Name = name;
+            Nfs = nfs;
             Secret = secret;
         }
     }

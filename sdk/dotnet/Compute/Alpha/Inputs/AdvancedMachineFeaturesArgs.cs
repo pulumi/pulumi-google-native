@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<bool>? EnableUefiNetworking { get; set; }
 
         /// <summary>
+        /// Whether to enable the watchdog timer.
+        /// </summary>
+        [Input("enableWatchdogTimer")]
+        public Input<bool>? EnableWatchdogTimer { get; set; }
+
+        /// <summary>
         /// The number of vNUMA nodes.
         /// </summary>
         [Input("numaNodeCount")]

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly string Direction;
         /// <summary>
+        /// Select the top N streams/time series within this time interval
+        /// </summary>
+        public readonly Outputs.IntervalResponse Interval;
+        /// <summary>
         /// How many time series to allow to pass through the filter.
         /// </summary>
         public readonly int NumTimeSeries;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         private PickTimeSeriesFilterResponse(
             string direction,
 
+            Outputs.IntervalResponse interval,
+
             int numTimeSeries,
 
             string rankingMethod)
         {
             Direction = direction;
+            Interval = interval;
             NumTimeSeries = numTimeSeries;
             RankingMethod = rankingMethod;
         }

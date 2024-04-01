@@ -86,11 +86,15 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse FeatureRegistrySource;
         /// <summary>
+        /// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1FeatureViewIndexConfigResponse IndexConfig;
+        /// <summary>
         /// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        /// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 
             Outputs.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse featureRegistrySource,
 
+            Outputs.GoogleCloudAiplatformV1FeatureViewIndexConfigResponse indexConfig,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -124,6 +130,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
             CreateTime = createTime;
             Etag = etag;
             FeatureRegistrySource = featureRegistrySource;
+            IndexConfig = indexConfig;
             Labels = labels;
             Name = name;
             SyncConfig = syncConfig;

@@ -92,9 +92,17 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. True if variable masking feature should be turned on for this version
+        /// </summary>
+        public readonly bool EnableVariableMasking;
+        /// <summary>
         /// Optional. Error Catch Task configuration for the integration. It's optional.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> ErrorCatcherConfigs;
+        /// <summary>
+        /// Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse> IntegrationConfigParameters;
         /// <summary>
         /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
         /// </summary>
@@ -178,7 +186,11 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
             string description,
 
+            bool enableVariableMasking,
+
             ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> errorCatcherConfigs,
+
+            ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse> integrationConfigParameters,
 
             ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse> integrationParameters,
 
@@ -220,7 +232,9 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
             CreateTime = createTime;
             DatabasePersistencePolicy = databasePersistencePolicy;
             Description = description;
+            EnableVariableMasking = enableVariableMasking;
             ErrorCatcherConfigs = errorCatcherConfigs;
+            IntegrationConfigParameters = integrationConfigParameters;
             IntegrationParameters = integrationParameters;
             IntegrationParametersInternal = integrationParametersInternal;
             LastModifierEmail = lastModifierEmail;

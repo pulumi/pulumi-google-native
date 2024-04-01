@@ -36,6 +36,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// TPU v4.
         /// </summary>
         public static AcceleratorConfigType V4 { get; } = new AcceleratorConfigType("V4");
+        /// <summary>
+        /// TPU v5.
+        /// </summary>
+        public static AcceleratorConfigType V5p { get; } = new AcceleratorConfigType("V5P");
 
         public static bool operator ==(AcceleratorConfigType left, AcceleratorConfigType right) => left.Equals(right);
         public static bool operator !=(AcceleratorConfigType left, AcceleratorConfigType right) => !left.Equals(right);

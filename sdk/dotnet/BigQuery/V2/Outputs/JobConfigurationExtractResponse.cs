@@ -10,15 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// JobConfigurationExtract configures a job that exports data from a BigQuery table into Google Cloud Storage.
+    /// </summary>
     [OutputType]
     public sealed class JobConfigurationExtractResponse
     {
         /// <summary>
-        /// [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
+        /// Optional. The compression type to use for exported files. Possible values include DEFLATE, GZIP, NONE, SNAPPY, and ZSTD. The default value is NONE. Not all compression formats are support for all file formats. DEFLATE is only supported for Avro. ZSTD is only supported for Parquet. Not applicable when extracting models.
         /// </summary>
         public readonly string Compression;
         /// <summary>
-        /// [Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
+        /// Optional. The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET, or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
         /// </summary>
         public readonly string DestinationFormat;
         /// <summary>
@@ -30,11 +33,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestinationUris;
         /// <summary>
-        /// [Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
+        /// Optional. When extracting data in CSV format, this defines the delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
         /// </summary>
         public readonly string FieldDelimiter;
         /// <summary>
-        /// [Optional] Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
+        /// Optional. Model extract options only applicable when extracting models.
+        /// </summary>
+        public readonly Outputs.ModelExtractOptionsResponse ModelExtractOptions;
+        /// <summary>
+        /// Optional. Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
         /// </summary>
         public readonly bool PrintHeader;
         /// <summary>
@@ -46,7 +53,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.TableReferenceResponse SourceTable;
         /// <summary>
-        /// [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
+        /// Whether to use logical types when extracting to AVRO format. Not applicable when extracting models.
         /// </summary>
         public readonly bool UseAvroLogicalTypes;
 
@@ -62,6 +69,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string fieldDelimiter,
 
+            Outputs.ModelExtractOptionsResponse modelExtractOptions,
+
             bool printHeader,
 
             Outputs.ModelReferenceResponse sourceModel,
@@ -75,6 +84,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             DestinationUri = destinationUri;
             DestinationUris = destinationUris;
             FieldDelimiter = fieldDelimiter;
+            ModelExtractOptions = modelExtractOptions;
             PrintHeader = printHeader;
             SourceModel = sourceModel;
             SourceTable = sourceTable;

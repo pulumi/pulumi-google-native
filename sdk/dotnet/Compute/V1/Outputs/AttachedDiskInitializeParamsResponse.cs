@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -53,7 +57,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
@@ -84,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// The customer-supplied encryption key of the source snapshot.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceSnapshotEncryptionKey;
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        public readonly string StoragePool;
 
         [OutputConstructor]
         private AttachedDiskInitializeParamsResponse(
@@ -96,6 +104,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             string diskSizeGb,
 
             string diskType,
+
+            bool enableConfidentialCompute,
 
             ImmutableDictionary<string, string> labels,
 
@@ -119,13 +129,16 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string sourceSnapshot,
 
-            Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey)
+            Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey,
+
+            string storagePool)
         {
             Architecture = architecture;
             Description = description;
             DiskName = diskName;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EnableConfidentialCompute = enableConfidentialCompute;
             Labels = labels;
             Licenses = licenses;
             OnUpdateAction = onUpdateAction;
@@ -138,6 +151,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             SourceImageEncryptionKey = sourceImageEncryptionKey;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            StoragePool = storagePool;
         }
     }
 }

@@ -140,6 +140,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly Outputs.DatabaseTypeResponse SourceDatabase;
         /// <summary>
+        /// Optional. Configuration for SQL Server homogeneous migration.
+        /// </summary>
+        public readonly Outputs.SqlServerHomogeneousMigrationJobConfigResponse SqlserverHomogeneousMigrationJobConfig;
+        /// <summary>
         /// The current migration job state.
         /// </summary>
         public readonly string State;
@@ -200,6 +204,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
             Outputs.DatabaseTypeResponse sourceDatabase,
 
+            Outputs.SqlServerHomogeneousMigrationJobConfigResponse sqlserverHomogeneousMigrationJobConfig,
+
             string state,
 
             Outputs.StaticIpConnectivityResponse staticIpConnectivity,
@@ -229,6 +235,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             ReverseSshConnectivity = reverseSshConnectivity;
             Source = source;
             SourceDatabase = sourceDatabase;
+            SqlserverHomogeneousMigrationJobConfig = sqlserverHomogeneousMigrationJobConfig;
             State = state;
             StaticIpConnectivity = staticIpConnectivity;
             Type = type;

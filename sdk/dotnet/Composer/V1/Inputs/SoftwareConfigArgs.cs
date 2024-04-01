@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
             set => _airflowConfigOverrides = value;
         }
 
+        /// <summary>
+        /// Optional. The configuration for Cloud Data Lineage integration.
+        /// </summary>
+        [Input("cloudDataLineageIntegration")]
+        public Input<Inputs.CloudDataLineageIntegrationArgs>? CloudDataLineageIntegration { get; set; }
+
         [Input("envVariables")]
         private InputMap<string>? _envVariables;
 
@@ -68,6 +74,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         /// </summary>
         [Input("schedulerCount")]
         public Input<int>? SchedulerCount { get; set; }
+
+        /// <summary>
+        /// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("webServerPluginsMode")]
+        public Input<Pulumi.GoogleNative.Composer.V1.SoftwareConfigWebServerPluginsMode>? WebServerPluginsMode { get; set; }
 
         public SoftwareConfigArgs()
         {

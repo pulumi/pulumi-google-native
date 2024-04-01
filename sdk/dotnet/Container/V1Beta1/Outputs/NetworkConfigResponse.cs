@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.DNSConfigResponse DnsConfig;
         /// <summary>
+        /// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster.
+        /// </summary>
+        public readonly bool EnableCiliumClusterwideNetworkPolicy;
+        /// <summary>
         /// Whether FQDN Network Policy is enabled on this cluster.
         /// </summary>
         public readonly bool EnableFqdnNetworkPolicy;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             Outputs.DNSConfigResponse dnsConfig,
 
+            bool enableCiliumClusterwideNetworkPolicy,
+
             bool enableFqdnNetworkPolicy,
 
             bool enableIntraNodeVisibility,
@@ -106,6 +112,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             DatapathProvider = datapathProvider;
             DefaultSnatStatus = defaultSnatStatus;
             DnsConfig = dnsConfig;
+            EnableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             EnableIntraNodeVisibility = enableIntraNodeVisibility;
             EnableL4ilbSubsetting = enableL4ilbSubsetting;

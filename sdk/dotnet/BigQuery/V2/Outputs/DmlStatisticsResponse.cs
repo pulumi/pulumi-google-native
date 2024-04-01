@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Detailed statistics for DML statements
+    /// </summary>
     [OutputType]
     public sealed class DmlStatisticsResponse
     {
@@ -18,7 +21,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string DeletedRowCount;
         /// <summary>
-        /// Number of inserted Rows. Populated by DML INSERT and MERGE statements.
+        /// Number of inserted Rows. Populated by DML INSERT and MERGE statements
         /// </summary>
         public readonly string InsertedRowCount;
         /// <summary>

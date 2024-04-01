@@ -35,6 +35,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -72,6 +75,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1
                 Version = Utilities.Version,
                 ReplaceOnChanges =
                 {
+                    "location",
                     "project",
                     "secretId",
                 },
@@ -126,6 +130,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

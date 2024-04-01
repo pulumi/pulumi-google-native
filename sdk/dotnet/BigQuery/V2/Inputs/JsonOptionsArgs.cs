@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Json Options for load and make external tables.
+    /// </summary>
     public sealed class JsonOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        /// Optional. The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }

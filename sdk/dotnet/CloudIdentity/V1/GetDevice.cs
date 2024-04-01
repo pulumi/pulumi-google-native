@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         public readonly string EncryptionState;
         /// <summary>
+        /// Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
+        /// </summary>
+        public readonly Outputs.GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse EndpointVerificationSpecificAttributes;
+        /// <summary>
         /// Host name of the device.
         /// </summary>
         public readonly string Hostname;
@@ -206,6 +210,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
 
             string encryptionState,
 
+            Outputs.GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse endpointVerificationSpecificAttributes,
+
             string hostname,
 
             string imei,
@@ -253,6 +259,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
             EnabledDeveloperOptions = enabledDeveloperOptions;
             EnabledUsbDebugging = enabledUsbDebugging;
             EncryptionState = encryptionState;
+            EndpointVerificationSpecificAttributes = endpointVerificationSpecificAttributes;
             Hostname = hostname;
             Imei = imei;
             KernelVersion = kernelVersion;

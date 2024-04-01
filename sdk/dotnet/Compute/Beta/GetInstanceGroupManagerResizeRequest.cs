@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetInstanceGroupManagerResizeRequestResult
     {
         /// <summary>
-        /// The count of instances to create as part of this resize request.
+        /// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         /// </summary>
         public readonly int Count;
         /// <summary>

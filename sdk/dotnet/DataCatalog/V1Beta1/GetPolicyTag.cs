@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+        /// Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
         /// </summary>
         public readonly string Name;
         /// <summary>

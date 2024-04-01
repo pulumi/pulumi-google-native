@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// FeatureonlineStore spec for Vertex AI Feature Store.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponse FeatureOnlineStoreSpec;
+        /// <summary>
         /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1FilesetSpecResponse FilesetSpec;
@@ -142,7 +146,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1ModelSpecResponse ModelSpec;
         /// <summary>
-        /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+        /// Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -208,6 +212,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             string displayName,
 
+            Outputs.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponse featureOnlineStoreSpec,
+
             Outputs.GoogleCloudDatacatalogV1FilesetSpecResponse filesetSpec,
 
             string fullyQualifiedName,
@@ -256,6 +262,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             DatasetSpec = datasetSpec;
             Description = description;
             DisplayName = displayName;
+            FeatureOnlineStoreSpec = featureOnlineStoreSpec;
             FilesetSpec = filesetSpec;
             FullyQualifiedName = fullyQualifiedName;
             GcsFilesetSpec = gcsFilesetSpec;

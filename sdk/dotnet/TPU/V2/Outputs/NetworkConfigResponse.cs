@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.TPU.V2.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// Optional. Specifies networking queue count for TPU VM instance's network interface.
+        /// </summary>
+        public readonly int QueueCount;
+        /// <summary>
         /// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
         /// </summary>
         public readonly string Subnetwork;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.TPU.V2.Outputs
 
             string network,
 
+            int queueCount,
+
             string subnetwork)
         {
             CanIpForward = canIpForward;
             EnableExternalIps = enableExternalIps;
             Network = network;
+            QueueCount = queueCount;
             Subnetwork = subnetwork;
         }
     }

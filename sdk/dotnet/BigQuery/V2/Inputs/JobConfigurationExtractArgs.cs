@@ -10,16 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// JobConfigurationExtract configures a job that exports data from a BigQuery table into Google Cloud Storage.
+    /// </summary>
     public sealed class JobConfigurationExtractArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
+        /// Optional. The compression type to use for exported files. Possible values include DEFLATE, GZIP, NONE, SNAPPY, and ZSTD. The default value is NONE. Not all compression formats are support for all file formats. DEFLATE is only supported for Avro. ZSTD is only supported for Parquet. Not applicable when extracting models.
         /// </summary>
         [Input("compression")]
         public Input<string>? Compression { get; set; }
 
         /// <summary>
-        /// [Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
+        /// Optional. The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET, or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
         /// </summary>
         [Input("destinationFormat")]
         public Input<string>? DestinationFormat { get; set; }
@@ -43,13 +46,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
+        /// Optional. When extracting data in CSV format, this defines the delimiter to use between fields in the exported data. Default is ','. Not applicable when extracting models.
         /// </summary>
         [Input("fieldDelimiter")]
         public Input<string>? FieldDelimiter { get; set; }
 
         /// <summary>
-        /// [Optional] Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
+        /// Optional. Model extract options only applicable when extracting models.
+        /// </summary>
+        [Input("modelExtractOptions")]
+        public Input<Inputs.ModelExtractOptionsArgs>? ModelExtractOptions { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to print out a header row in the results. Default is true. Not applicable when extracting models.
         /// </summary>
         [Input("printHeader")]
         public Input<bool>? PrintHeader { get; set; }
@@ -67,7 +76,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.TableReferenceArgs>? SourceTable { get; set; }
 
         /// <summary>
-        /// [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
+        /// Whether to use logical types when extracting to AVRO format. Not applicable when extracting models.
         /// </summary>
         [Input("useAvroLogicalTypes")]
         public Input<bool>? UseAvroLogicalTypes { get; set; }

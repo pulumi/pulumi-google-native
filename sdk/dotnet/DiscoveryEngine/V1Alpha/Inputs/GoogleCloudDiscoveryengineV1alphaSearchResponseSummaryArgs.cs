@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Inputs
         [Input("summaryText")]
         public Input<string>? SummaryText { get; set; }
 
+        /// <summary>
+        /// Summary with metadata information.
+        /// </summary>
+        [Input("summaryWithMetadata")]
+        public Input<Inputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataArgs>? SummaryWithMetadata { get; set; }
+
         public GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryArgs()
         {
         }

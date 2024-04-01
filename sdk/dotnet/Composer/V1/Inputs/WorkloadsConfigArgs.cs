@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     public sealed class WorkloadsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("dagProcessor")]
+        public Input<Inputs.DagProcessorResourceArgs>? DagProcessor { get; set; }
+
+        /// <summary>
         /// Optional. Resources used by Airflow schedulers.
         /// </summary>
         [Input("scheduler")]

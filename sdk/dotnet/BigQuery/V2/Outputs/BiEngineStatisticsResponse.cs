@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for a BI Engine specific query. Populated as part of JobStatistics2
+    /// </summary>
     [OutputType]
     public sealed class BiEngineStatisticsResponse
     {

@@ -10,10 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Represents a foreign key constraint on a table's columns.
+    /// </summary>
     [OutputType]
     public sealed class TableConstraintsForeignKeysItemResponse
     {
+        /// <summary>
+        /// The columns that compose the foreign key.
+        /// </summary>
         public readonly ImmutableArray<Outputs.TableConstraintsForeignKeysItemColumnReferencesItemResponse> ColumnReferences;
+        /// <summary>
+        /// Optional. Set only if the foreign key constraint is named.
+        /// </summary>
         public readonly string Name;
         public readonly Outputs.TableConstraintsForeignKeysItemReferencedTableResponse ReferencedTable;
 

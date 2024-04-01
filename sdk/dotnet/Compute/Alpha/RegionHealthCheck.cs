@@ -36,6 +36,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("grpcHealthCheck")]
         public Output<Outputs.GRPCHealthCheckResponse> GrpcHealthCheck { get; private set; } = null!;
 
+        [Output("grpcTlsHealthCheck")]
+        public Output<Outputs.GRPCTLSHealthCheckResponse> GrpcTlsHealthCheck { get; private set; } = null!;
+
         /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         /// </summary>
@@ -190,6 +193,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("grpcHealthCheck")]
         public Input<Inputs.GRPCHealthCheckArgs>? GrpcHealthCheck { get; set; }
+
+        [Input("grpcTlsHealthCheck")]
+        public Input<Inputs.GRPCTLSHealthCheckArgs>? GrpcTlsHealthCheck { get; set; }
 
         /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.

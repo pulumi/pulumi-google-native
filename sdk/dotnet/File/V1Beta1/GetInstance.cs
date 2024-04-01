@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        /// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
         /// </summary>
         public readonly Outputs.DirectoryServicesConfigResponse DirectoryServices;
         /// <summary>

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Output<Outputs.AutoscaleResponse> Autoscale { get; private set; } = null!;
 
         /// <summary>
-        /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         /// </summary>
         [Output("concurrency")]
         public Output<string> Concurrency { get; private set; } = null!;
@@ -60,6 +60,18 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// </summary>
+        [Output("originalPrimaryLocation")]
+        public Output<string> OriginalPrimaryLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// </summary>
+        [Output("primaryLocation")]
+        public Output<string> PrimaryLocation { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -68,6 +80,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         [Output("reservationId")]
         public Output<string?> ReservationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
+        /// </summary>
+        [Output("secondaryLocation")]
+        public Output<string> SecondaryLocation { get; private set; } = null!;
 
         /// <summary>
         /// Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes.
@@ -138,7 +156,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Input<Inputs.AutoscaleArgs>? Autoscale { get; set; }
 
         /// <summary>
-        /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         /// </summary>
         [Input("concurrency")]
         public Input<string>? Concurrency { get; set; }
@@ -170,6 +188,18 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// </summary>
+        [Input("originalPrimaryLocation")]
+        public Input<string>? OriginalPrimaryLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// </summary>
+        [Input("primaryLocation")]
+        public Input<string>? PrimaryLocation { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -178,6 +208,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         [Input("reservationId")]
         public Input<string>? ReservationId { get; set; }
+
+        /// <summary>
+        /// Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
+        /// </summary>
+        [Input("secondaryLocation")]
+        public Input<string>? SecondaryLocation { get; set; }
 
         /// <summary>
         /// Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes.

@@ -10,16 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Grants all resources of particular types in a particular dataset read access to the current dataset. Similar to how individually authorized views work, updates to any resource granted through its dataset (including creation of new resources) requires read permission to referenced resources, plus write permission to the authorizing dataset.
+    /// </summary>
     public sealed class DatasetAccessEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Required] The dataset this entry applies to.
+        /// The dataset this entry applies to
         /// </summary>
         [Input("dataset")]
         public Input<Inputs.DatasetReferenceArgs>? Dataset { get; set; }
 
         [Input("targetTypes")]
         private InputList<Pulumi.GoogleNative.BigQuery.V2.DatasetAccessEntryTargetTypesItem>? _targetTypes;
+
+        /// <summary>
+        /// Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future.
+        /// </summary>
         public InputList<Pulumi.GoogleNative.BigQuery.V2.DatasetAccessEntryTargetTypesItem> TargetTypes
         {
             get => _targetTypes ?? (_targetTypes = new InputList<Pulumi.GoogleNative.BigQuery.V2.DatasetAccessEntryTargetTypesItem>());

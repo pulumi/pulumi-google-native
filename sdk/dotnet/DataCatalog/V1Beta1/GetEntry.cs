@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public readonly string LinkedResource;
         /// <summary>
-        /// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+        /// Identifier. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
         /// </summary>
         public readonly string Name;
         /// <summary>

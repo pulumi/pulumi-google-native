@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public sealed class GetOrganizationEventThreatDetectionSettingCustomModuleResult
     {
         /// <summary>
+        /// The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+        /// </summary>
+        public readonly string AncestorModule;
+        /// <summary>
         /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Config;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 
         [OutputConstructor]
         private GetOrganizationEventThreatDetectionSettingCustomModuleResult(
+            string ancestorModule,
+
             ImmutableDictionary<string, string> config,
 
             string description,
@@ -108,6 +114,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 
             string updateTime)
         {
+            AncestorModule = ancestorModule;
             Config = config;
             Description = description;
             DisplayName = displayName;

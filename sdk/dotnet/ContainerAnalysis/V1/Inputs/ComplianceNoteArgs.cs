@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("impact")]
+        public Input<string>? Impact { get; set; }
+
         /// <summary>
         /// A rationale for the existence of this compliance check.
         /// </summary>

@@ -48,6 +48,9 @@ namespace Pulumi.GoogleNative.DLP.V2
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// How to sample the data.
+    /// </summary>
     [EnumType]
     public readonly struct GooglePrivacyDlpV2BigQueryOptionsSampleMethod : IEquatable<GooglePrivacyDlpV2BigQueryOptionsSampleMethod>
     {
@@ -58,6 +61,9 @@ namespace Pulumi.GoogleNative.DLP.V2
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// No sampling.
+        /// </summary>
         public static GooglePrivacyDlpV2BigQueryOptionsSampleMethod SampleMethodUnspecified { get; } = new GooglePrivacyDlpV2BigQueryOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED");
         /// <summary>
         /// Scan groups of rows in the order BigQuery provides (default). Multiple groups of rows may be scanned in parallel, so results may not appear in the same order the rows are read.
@@ -193,7 +199,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem BinaryFile { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("BINARY_FILE");
         /// <summary>
-        /// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+        /// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem TextFile { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TEXT_FILE");
         /// <summary>
@@ -244,6 +250,9 @@ namespace Pulumi.GoogleNative.DLP.V2
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// How to sample the data.
+    /// </summary>
     [EnumType]
     public readonly struct GooglePrivacyDlpV2CloudStorageOptionsSampleMethod : IEquatable<GooglePrivacyDlpV2CloudStorageOptionsSampleMethod>
     {
@@ -254,6 +263,9 @@ namespace Pulumi.GoogleNative.DLP.V2
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// No sampling.
+        /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsSampleMethod SampleMethodUnspecified { get; } = new GooglePrivacyDlpV2CloudStorageOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED");
         /// <summary>
         /// Scan from the top (default).
@@ -498,7 +510,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem BinaryFile { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("BINARY_FILE");
         /// <summary>
-        /// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+        /// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
         /// </summary>
         public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem TextFile { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TEXT_FILE");
         /// <summary>
@@ -926,7 +938,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
     /// <summary>
-    /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+    /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
     /// </summary>
     [EnumType]
     public readonly struct GooglePrivacyDlpV2InspectConfigMinLikelihood : IEquatable<GooglePrivacyDlpV2InspectConfigMinLikelihood>

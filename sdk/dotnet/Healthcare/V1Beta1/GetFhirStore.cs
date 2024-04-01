@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly bool DisableResourceVersioning;
         /// <summary>
+        /// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// </summary>
+        public readonly bool EnableHistoryModifications;
+        /// <summary>
         /// Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
         /// </summary>
         public readonly bool EnableUpdateCreate;
@@ -98,7 +102,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -138,6 +142,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
             bool disableResourceVersioning,
 
+            bool enableHistoryModifications,
+
             bool enableUpdateCreate,
 
             ImmutableDictionary<string, string> labels,
@@ -161,6 +167,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             DefaultSearchHandlingStrict = defaultSearchHandlingStrict;
             DisableReferentialIntegrity = disableReferentialIntegrity;
             DisableResourceVersioning = disableResourceVersioning;
+            EnableHistoryModifications = enableHistoryModifications;
             EnableUpdateCreate = enableUpdateCreate;
             Labels = labels;
             Name = name;

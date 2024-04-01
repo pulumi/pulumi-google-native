@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string> DagTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Encryption settings for the encrypting customer core content.
+        /// Optional. Encryption settings for encrypting workflow template job arguments.
         /// </summary>
         [Output("encryptionConfig")]
         public Output<Outputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse> EncryptionConfig { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Input<string>? DagTimeout { get; set; }
 
         /// <summary>
-        /// Optional. Encryption settings for the encrypting customer core content.
+        /// Optional. Encryption settings for encrypting workflow template job arguments.
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs>? EncryptionConfig { get; set; }

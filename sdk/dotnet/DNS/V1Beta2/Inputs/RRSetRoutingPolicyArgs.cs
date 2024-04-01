@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         [Input("geoPolicy")]
         public Input<Inputs.RRSetRoutingPolicyGeoPolicyArgs>? GeoPolicy { get; set; }
 
+        /// <summary>
+        /// The selfLink attribute of the HealthCheck resource to use for this RRSetRoutingPolicy. https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+        /// </summary>
+        [Input("healthCheck")]
+        public Input<string>? HealthCheck { get; set; }
+
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

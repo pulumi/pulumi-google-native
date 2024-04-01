@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
 {
 
     /// <summary>
-    /// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+    /// A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
     /// </summary>
     public sealed class DimensionArgs : global::Pulumi.ResourceArgs
     {

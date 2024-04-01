@@ -112,6 +112,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// The bucket's hierarchical namespace configuration.
+        /// </summary>
+        public readonly Outputs.BucketHierarchicalNamespaceResponse HierarchicalNamespace;
+        /// <summary>
         /// The bucket's IAM configuration.
         /// </summary>
         public readonly Outputs.BucketIamConfigurationResponse IamConfiguration;
@@ -220,6 +224,8 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string etag,
 
+            Outputs.BucketHierarchicalNamespaceResponse hierarchicalNamespace,
+
             Outputs.BucketIamConfigurationResponse iamConfiguration,
 
             string kind,
@@ -273,6 +279,7 @@ namespace Pulumi.GoogleNative.Storage.V1
             DefaultObjectAcl = defaultObjectAcl;
             Encryption = encryption;
             Etag = etag;
+            HierarchicalNamespace = hierarchicalNamespace;
             IamConfiguration = iamConfiguration;
             Kind = kind;
             Labels = labels;

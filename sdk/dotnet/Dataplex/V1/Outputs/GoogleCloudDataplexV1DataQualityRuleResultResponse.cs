@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualityRuleResultResponse
     {
         /// <summary>
+        /// The number of rows returned by the sql statement in the SqlAssertion rule.This field is only valid for SqlAssertion rules.
+        /// </summary>
+        public readonly string AssertionRowCount;
+        /// <summary>
         /// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         /// </summary>
         public readonly string EvaluatedCount;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDataplexV1DataQualityRuleResultResponse(
+            string assertionRowCount,
+
             string evaluatedCount,
 
             string failingRowsQuery,
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
             Outputs.GoogleCloudDataplexV1DataQualityRuleResponse rule)
         {
+            AssertionRowCount = assertionRowCount;
             EvaluatedCount = evaluatedCount;
             FailingRowsQuery = failingRowsQuery;
             NullCount = nullCount;

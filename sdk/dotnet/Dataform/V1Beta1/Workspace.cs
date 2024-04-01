@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 {
     /// <summary>
     /// Creates a new Workspace in a given Repository.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataform/v1beta1:Workspace")]
     public partial class Workspace : global::Pulumi.CustomResource
@@ -20,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The workspace's name.
+        /// Identifier. The workspace's name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -91,6 +90,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     {
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. The workspace's name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

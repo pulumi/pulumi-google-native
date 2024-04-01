@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }
 
+        /// <summary>
+        /// Optional. Ray metrics configurations.
+        /// </summary>
+        [Input("rayMetricSpec")]
+        public Input<Inputs.GoogleCloudAiplatformV1beta1RayMetricSpecArgs>? RayMetricSpec { get; set; }
+
         [Input("resourcePoolImages")]
         private InputMap<string>? _resourcePoolImages;
 

@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Output<string> AppEngineIntegrationMode { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Presence indicates CMEK is enabled for this database.
+        /// </summary>
+        [Output("cmekConfig")]
+        public Output<Outputs.GoogleFirestoreAdminV1CmekConfigResponse> CmekConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The concurrency control mode to use for this database.
         /// </summary>
         [Output("concurrencyMode")]
@@ -163,6 +169,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Input("appEngineIntegrationMode")]
         public Input<Pulumi.GoogleNative.Firestore.V1.DatabaseAppEngineIntegrationMode>? AppEngineIntegrationMode { get; set; }
+
+        /// <summary>
+        /// Optional. Presence indicates CMEK is enabled for this database.
+        /// </summary>
+        [Input("cmekConfig")]
+        public Input<Inputs.GoogleFirestoreAdminV1CmekConfigArgs>? CmekConfig { get; set; }
 
         /// <summary>
         /// The concurrency control mode to use for this database.

@@ -37,13 +37,13 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+        /// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it are unable to use paid services.
         /// </summary>
         [Output("open")]
         public Output<bool> Open { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        /// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public Input<string>? MasterBillingAccount { get; set; }
 
         /// <summary>
-        /// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+        /// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

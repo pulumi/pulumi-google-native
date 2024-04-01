@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Firestore.V1.Inputs
 {
 
     /// <summary>
-    /// Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+    /// Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
     /// </summary>
     public sealed class GoogleFirestoreAdminV1DailyRecurrenceArgs : global::Pulumi.ResourceArgs
     {

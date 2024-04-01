@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class BigQueryModelTrainingResponse
     {
         /// <summary>
-        /// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show job progress.
+        /// Deprecated.
         /// </summary>
         public readonly int CurrentIteration;
         /// <summary>
-        /// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations in the input query. The actual total number of iterations may be less than this number due to early stop.
+        /// Deprecated.
         /// </summary>
         public readonly string ExpectedTotalIterations;
 

@@ -106,6 +106,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string NetworkFirewallPolicyEnforcementOrder;
         /// <summary>
+        /// A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+        /// </summary>
+        public readonly string NetworkPlacement;
+        /// <summary>
         /// A list of network peerings for the resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkPeeringResponse> Peerings;
@@ -156,6 +160,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string networkFirewallPolicyEnforcementOrder,
 
+            string networkPlacement,
+
             ImmutableArray<Outputs.NetworkPeeringResponse> peerings,
 
             string region,
@@ -180,6 +186,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Mtu = mtu;
             Name = name;
             NetworkFirewallPolicyEnforcementOrder = networkFirewallPolicyEnforcementOrder;
+            NetworkPlacement = networkPlacement;
             Peerings = peerings;
             Region = region;
             RoutingConfig = routingConfig;

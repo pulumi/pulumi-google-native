@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
     /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:Exclusion")]
     public partial class Exclusion : global::Pulumi.CustomResource
@@ -120,12 +121,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
-
-        /// <summary>
-        /// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

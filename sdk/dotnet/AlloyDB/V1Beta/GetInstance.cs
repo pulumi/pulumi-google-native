@@ -112,6 +112,10 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         public readonly string GceZone;
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        public readonly Outputs.GeminiInstanceConfigResponse GeminiConfig;
+        /// <summary>
         /// The type of the instance. Specified at creation time.
         /// </summary>
         public readonly string InstanceType;
@@ -132,9 +136,25 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional. Instance level network configuration.
+        /// </summary>
+        public readonly Outputs.InstanceNetworkConfigResponse NetworkConfig;
+        /// <summary>
         /// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodeResponse> Nodes;
+        /// <summary>
+        /// Configuration for observability.
+        /// </summary>
+        public readonly Outputs.ObservabilityInstanceConfigResponse ObservabilityConfig;
+        /// <summary>
+        /// Optional. The configuration for Private Service Connect (PSC) for the instance.
+        /// </summary>
+        public readonly Outputs.PscInstanceConfigResponse PscInstanceConfig;
+        /// <summary>
+        /// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+        /// </summary>
+        public readonly string PublicIpAddress;
         /// <summary>
         /// Configuration for query insights.
         /// </summary>
@@ -147,6 +167,10 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         public readonly bool Reconciling;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
         /// <summary>
         /// The current serving state of the instance.
         /// </summary>
@@ -188,6 +212,8 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
 
             string gceZone,
 
+            Outputs.GeminiInstanceConfigResponse geminiConfig,
+
             string instanceType,
 
             string ipAddress,
@@ -198,13 +224,23 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
 
             string name,
 
+            Outputs.InstanceNetworkConfigResponse networkConfig,
+
             ImmutableArray<Outputs.NodeResponse> nodes,
+
+            Outputs.ObservabilityInstanceConfigResponse observabilityConfig,
+
+            Outputs.PscInstanceConfigResponse pscInstanceConfig,
+
+            string publicIpAddress,
 
             Outputs.QueryInsightsInstanceConfigResponse queryInsightsConfig,
 
             Outputs.ReadPoolConfigResponse readPoolConfig,
 
             bool reconciling,
+
+            bool satisfiesPzs,
 
             string state,
 
@@ -225,15 +261,21 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
             DisplayName = displayName;
             Etag = etag;
             GceZone = gceZone;
+            GeminiConfig = geminiConfig;
             InstanceType = instanceType;
             IpAddress = ipAddress;
             Labels = labels;
             MachineConfig = machineConfig;
             Name = name;
+            NetworkConfig = networkConfig;
             Nodes = nodes;
+            ObservabilityConfig = observabilityConfig;
+            PscInstanceConfig = pscInstanceConfig;
+            PublicIpAddress = publicIpAddress;
             QueryInsightsConfig = queryInsightsConfig;
             ReadPoolConfig = readPoolConfig;
             Reconciling = reconciling;
+            SatisfiesPzs = satisfiesPzs;
             State = state;
             Uid = uid;
             UpdatePolicy = updatePolicy;

@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        /// A condition control that determines how metric-threshold conditions are evaluated when data stops arriving. To use this control, the value of the duration field must be greater than or equal to 60 seconds.
         /// </summary>
         [Input("evaluationMissingData")]
         public Input<Pulumi.GoogleNative.Monitoring.V3.MetricThresholdEvaluationMissingData>? EvaluationMissingData { get; set; }

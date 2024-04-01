@@ -74,6 +74,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Output<string> GceZone { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Output("geminiConfig")]
+        public Output<Outputs.GeminiInstanceConfigResponse> GeminiConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Required. ID of the requesting object.
         /// </summary>
         [Output("instanceId")]
@@ -113,13 +119,37 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Instance level network configuration.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.InstanceNetworkConfigResponse> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
         /// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<Outputs.NodeResponse>> Nodes { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for observability.
+        /// </summary>
+        [Output("observabilityConfig")]
+        public Output<Outputs.ObservabilityInstanceConfigResponse> ObservabilityConfig { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The configuration for Private Service Connect (PSC) for the instance.
+        /// </summary>
+        [Output("pscInstanceConfig")]
+        public Output<Outputs.PscInstanceConfigResponse> PscInstanceConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+        /// </summary>
+        [Output("publicIpAddress")]
+        public Output<string> PublicIpAddress { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for query insights.
@@ -144,6 +174,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
         /// The current serving state of the instance.
@@ -285,6 +321,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Input<string>? GceZone { get; set; }
 
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Input("geminiConfig")]
+        public Input<Inputs.GeminiInstanceConfigArgs>? GeminiConfig { get; set; }
+
+        /// <summary>
         /// Required. ID of the requesting object.
         /// </summary>
         [Input("instanceId", required: true)]
@@ -317,8 +359,26 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         [Input("machineConfig")]
         public Input<Inputs.MachineConfigArgs>? MachineConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Instance level network configuration.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.InstanceNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for observability.
+        /// </summary>
+        [Input("observabilityConfig")]
+        public Input<Inputs.ObservabilityInstanceConfigArgs>? ObservabilityConfig { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration for Private Service Connect (PSC) for the instance.
+        /// </summary>
+        [Input("pscInstanceConfig")]
+        public Input<Inputs.PscInstanceConfigArgs>? PscInstanceConfig { get; set; }
 
         /// <summary>
         /// Configuration for query insights.

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     public partial class TrustConfig : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+        /// </summary>
+        [Output("allowlistedCertificates")]
+        public Output<ImmutableArray<Outputs.AllowlistedCertificateResponse>> AllowlistedCertificates { get; private set; } = null!;
+
+        /// <summary>
         /// The creation timestamp of a TrustConfig.
         /// </summary>
         [Output("createTime")]
@@ -120,6 +126,18 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
     public sealed class TrustConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowlistedCertificates")]
+        private InputList<Inputs.AllowlistedCertificateArgs>? _allowlistedCertificates;
+
+        /// <summary>
+        /// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+        /// </summary>
+        public InputList<Inputs.AllowlistedCertificateArgs> AllowlistedCertificates
+        {
+            get => _allowlistedCertificates ?? (_allowlistedCertificates = new InputList<Inputs.AllowlistedCertificateArgs>());
+            set => _allowlistedCertificates = value;
+        }
+
         /// <summary>
         /// One or more paragraphs of text description of a TrustConfig.
         /// </summary>

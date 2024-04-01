@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+        /// Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+        /// Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

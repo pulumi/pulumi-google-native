@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Potential impact of the suggested remediation
+        /// </summary>
+        [Input("impact")]
+        public Input<string>? Impact { get; set; }
+
+        /// <summary>
         /// A rationale for the existence of this compliance check.
         /// </summary>
         [Input("rationale")]

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     public sealed class RetryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        /// Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
         /// </summary>
         [Input("attempts", required: true)]
         public Input<string> Attempts { get; set; } = null!;

@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
             set => _featureGroups = value;
         }
 
+        /// <summary>
+        /// Optional. The project number of the parent project of the Feature Groups.
+        /// </summary>
+        [Input("projectNumber")]
+        public Input<string>? ProjectNumber { get; set; }
+
         public GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs()
         {
         }

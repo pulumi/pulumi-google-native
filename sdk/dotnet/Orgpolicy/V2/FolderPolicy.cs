@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         [Output("dryRunSpec")]
         public Output<Outputs.GoogleCloudOrgpolicyV2PolicySpecResponse> DryRunSpec { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
 
@@ -103,6 +109,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         [Input("dryRunSpec")]
         public Input<Inputs.GoogleCloudOrgpolicyV2PolicySpecArgs>? DryRunSpec { get; set; }
+
+        /// <summary>
+        /// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
         [Input("folderId", required: true)]
         public Input<string> FolderId { get; set; } = null!;

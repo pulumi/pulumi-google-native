@@ -126,6 +126,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly string ObfuscatedUserId;
         /// <summary>
+        /// Conversation metadata related to quality management.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse QualityMetadata;
+        /// <summary>
         /// The annotations that were generated during the customer and agent interaction.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse> RuntimeAnnotations;
@@ -180,6 +184,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
             string obfuscatedUserId,
 
+            Outputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse qualityMetadata,
+
             ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse> runtimeAnnotations,
 
             string startTime,
@@ -206,6 +212,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
             Medium = medium;
             Name = name;
             ObfuscatedUserId = obfuscatedUserId;
+            QualityMetadata = qualityMetadata;
             RuntimeAnnotations = runtimeAnnotations;
             StartTime = startTime;
             Transcript = transcript;

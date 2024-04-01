@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string ConsumerPscAddress;
         /// <summary>
+        /// The psc producer port is used to connect PSC NEG with specific port on the PSC Producer side; should only be used for the PRIVATE_SERVICE_CONNECT NEG type
+        /// </summary>
+        public readonly int ProducerPort;
+        /// <summary>
         /// The PSC connection id of the PSC Network Endpoint Group Consumer.
         /// </summary>
         public readonly string PscConnectionId;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private NetworkEndpointGroupPscDataResponse(
             string consumerPscAddress,
 
+            int producerPort,
+
             string pscConnectionId,
 
             string pscConnectionStatus)
         {
             ConsumerPscAddress = consumerPscAddress;
+            ProducerPort = producerPort;
             PscConnectionId = pscConnectionId;
             PscConnectionStatus = pscConnectionStatus;
         }

@@ -1309,7 +1309,70 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    /// Specifies the canary migration state. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendServiceExternalManagedMigrationState : IEquatable<BackendServiceExternalManagedMigrationState>
+    {
+        private readonly string _value;
+
+        private BackendServiceExternalManagedMigrationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static BackendServiceExternalManagedMigrationState Finalize { get; } = new BackendServiceExternalManagedMigrationState("FINALIZE");
+        public static BackendServiceExternalManagedMigrationState Prepare { get; } = new BackendServiceExternalManagedMigrationState("PREPARE");
+        public static BackendServiceExternalManagedMigrationState Test { get; } = new BackendServiceExternalManagedMigrationState("TEST");
+
+        public static bool operator ==(BackendServiceExternalManagedMigrationState left, BackendServiceExternalManagedMigrationState right) => left.Equals(right);
+        public static bool operator !=(BackendServiceExternalManagedMigrationState left, BackendServiceExternalManagedMigrationState right) => !left.Equals(right);
+
+        public static explicit operator string(BackendServiceExternalManagedMigrationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendServiceExternalManagedMigrationState other && Equals(other);
+        public bool Equals(BackendServiceExternalManagedMigrationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Enabling fastIPMove is not supported.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendServiceHAPolicyFastIPMove : IEquatable<BackendServiceHAPolicyFastIPMove>
+    {
+        private readonly string _value;
+
+        private BackendServiceHAPolicyFastIPMove(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static BackendServiceHAPolicyFastIPMove Disabled { get; } = new BackendServiceHAPolicyFastIPMove("DISABLED");
+        public static BackendServiceHAPolicyFastIPMove GarpRa { get; } = new BackendServiceHAPolicyFastIPMove("GARP_RA");
+
+        public static bool operator ==(BackendServiceHAPolicyFastIPMove left, BackendServiceHAPolicyFastIPMove right) => left.Equals(right);
+        public static bool operator !=(BackendServiceHAPolicyFastIPMove left, BackendServiceHAPolicyFastIPMove right) => !left.Equals(right);
+
+        public static explicit operator string(BackendServiceHAPolicyFastIPMove value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendServiceHAPolicyFastIPMove other && Equals(other);
+        public bool Equals(BackendServiceHAPolicyFastIPMove other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceIpAddressSelectionPolicy : IEquatable<BackendServiceIpAddressSelectionPolicy>
@@ -1367,19 +1430,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+        /// Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
         /// </summary>
         public static BackendServiceLoadBalancingScheme External { get; } = new BackendServiceLoadBalancingScheme("EXTERNAL");
         /// <summary>
-        /// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+        /// Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
         /// </summary>
         public static BackendServiceLoadBalancingScheme ExternalManaged { get; } = new BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED");
         /// <summary>
-        /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+        /// Signifies that this will be used for internal passthrough Network Load Balancers.
         /// </summary>
         public static BackendServiceLoadBalancingScheme Internal { get; } = new BackendServiceLoadBalancingScheme("INTERNAL");
         /// <summary>
-        /// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+        /// Signifies that this will be used for internal Application Load Balancers.
         /// </summary>
         public static BackendServiceLoadBalancingScheme InternalManaged { get; } = new BackendServiceLoadBalancingScheme("INTERNAL_MANAGED");
         /// <summary>
@@ -2576,6 +2639,38 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Specifies the canary migration state for the backend buckets attached to this forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic to backend buckets attached to this forwarding rule by percentage using externalManagedBackendBucketMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+    /// </summary>
+    [EnumType]
+    public readonly struct ForwardingRuleExternalManagedBackendBucketMigrationState : IEquatable<ForwardingRuleExternalManagedBackendBucketMigrationState>
+    {
+        private readonly string _value;
+
+        private ForwardingRuleExternalManagedBackendBucketMigrationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static ForwardingRuleExternalManagedBackendBucketMigrationState Finalize { get; } = new ForwardingRuleExternalManagedBackendBucketMigrationState("FINALIZE");
+        public static ForwardingRuleExternalManagedBackendBucketMigrationState Prepare { get; } = new ForwardingRuleExternalManagedBackendBucketMigrationState("PREPARE");
+        public static ForwardingRuleExternalManagedBackendBucketMigrationState Test { get; } = new ForwardingRuleExternalManagedBackendBucketMigrationState("TEST");
+
+        public static bool operator ==(ForwardingRuleExternalManagedBackendBucketMigrationState left, ForwardingRuleExternalManagedBackendBucketMigrationState right) => left.Equals(right);
+        public static bool operator !=(ForwardingRuleExternalManagedBackendBucketMigrationState left, ForwardingRuleExternalManagedBackendBucketMigrationState right) => !left.Equals(right);
+
+        public static explicit operator string(ForwardingRuleExternalManagedBackendBucketMigrationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ForwardingRuleExternalManagedBackendBucketMigrationState other && Equals(other);
+        public bool Equals(ForwardingRuleExternalManagedBackendBucketMigrationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
     /// </summary>
     [EnumType]
@@ -2814,7 +2909,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct GRPCHealthCheckPortSpecification : IEquatable<GRPCHealthCheckPortSpecification>
@@ -2847,6 +2942,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GRPCHealthCheckPortSpecification other && Equals(other);
         public bool Equals(GRPCHealthCheckPortSpecification other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    /// </summary>
+    [EnumType]
+    public readonly struct GRPCTLSHealthCheckPortSpecification : IEquatable<GRPCTLSHealthCheckPortSpecification>
+    {
+        private readonly string _value;
+
+        private GRPCTLSHealthCheckPortSpecification(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The port number in the health check's port is used for health checking. Applies to network endpoint group and instance group backends.
+        /// </summary>
+        public static GRPCTLSHealthCheckPortSpecification UseFixedPort { get; } = new GRPCTLSHealthCheckPortSpecification("USE_FIXED_PORT");
+        /// <summary>
+        /// Not supported.
+        /// </summary>
+        public static GRPCTLSHealthCheckPortSpecification UseNamedPort { get; } = new GRPCTLSHealthCheckPortSpecification("USE_NAMED_PORT");
+        /// <summary>
+        /// For network endpoint group backends, the health check uses the port number specified on each endpoint in the network endpoint group. For instance group backends, the health check uses the port number specified for the backend service's named port defined in the instance group's named ports.
+        /// </summary>
+        public static GRPCTLSHealthCheckPortSpecification UseServingPort { get; } = new GRPCTLSHealthCheckPortSpecification("USE_SERVING_PORT");
+
+        public static bool operator ==(GRPCTLSHealthCheckPortSpecification left, GRPCTLSHealthCheckPortSpecification right) => left.Equals(right);
+        public static bool operator !=(GRPCTLSHealthCheckPortSpecification left, GRPCTLSHealthCheckPortSpecification right) => !left.Equals(right);
+
+        public static explicit operator string(GRPCTLSHealthCheckPortSpecification value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GRPCTLSHealthCheckPortSpecification other && Equals(other);
+        public bool Equals(GRPCTLSHealthCheckPortSpecification other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -3076,6 +3212,38 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Specifies the canary migration state for the backend buckets attached to this forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic to backend buckets attached to this forwarding rule by percentage using externalManagedBackendBucketMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+    /// </summary>
+    [EnumType]
+    public readonly struct GlobalForwardingRuleExternalManagedBackendBucketMigrationState : IEquatable<GlobalForwardingRuleExternalManagedBackendBucketMigrationState>
+    {
+        private readonly string _value;
+
+        private GlobalForwardingRuleExternalManagedBackendBucketMigrationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static GlobalForwardingRuleExternalManagedBackendBucketMigrationState Finalize { get; } = new GlobalForwardingRuleExternalManagedBackendBucketMigrationState("FINALIZE");
+        public static GlobalForwardingRuleExternalManagedBackendBucketMigrationState Prepare { get; } = new GlobalForwardingRuleExternalManagedBackendBucketMigrationState("PREPARE");
+        public static GlobalForwardingRuleExternalManagedBackendBucketMigrationState Test { get; } = new GlobalForwardingRuleExternalManagedBackendBucketMigrationState("TEST");
+
+        public static bool operator ==(GlobalForwardingRuleExternalManagedBackendBucketMigrationState left, GlobalForwardingRuleExternalManagedBackendBucketMigrationState right) => left.Equals(right);
+        public static bool operator !=(GlobalForwardingRuleExternalManagedBackendBucketMigrationState left, GlobalForwardingRuleExternalManagedBackendBucketMigrationState right) => !left.Equals(right);
+
+        public static explicit operator string(GlobalForwardingRuleExternalManagedBackendBucketMigrationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GlobalForwardingRuleExternalManagedBackendBucketMigrationState other && Equals(other);
+        public bool Equals(GlobalForwardingRuleExternalManagedBackendBucketMigrationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The IP protocol to which this rule applies. For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP, ICMP and L3_DEFAULT. The valid IP protocols are different for different load balancing products as described in [Load balancing features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
     /// </summary>
     [EnumType]
@@ -3276,7 +3444,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+    /// Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
     /// </summary>
     [EnumType]
     public readonly struct GlobalNetworkEndpointGroupClientPortMappingMode : IEquatable<GlobalNetworkEndpointGroupClientPortMappingMode>
@@ -3440,7 +3608,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -3483,7 +3651,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct HTTP2HealthCheckPortSpecification : IEquatable<HTTP2HealthCheckPortSpecification>
@@ -3596,7 +3764,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct HTTPHealthCheckPortSpecification : IEquatable<HTTPHealthCheckPortSpecification>
@@ -3709,7 +3877,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct HTTPSHealthCheckPortSpecification : IEquatable<HTTPSHealthCheckPortSpecification>
@@ -4186,7 +4354,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Defines behaviour of using instances from standby pool to resize MIG.
+    /// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerStandbyPolicyMode : IEquatable<InstanceGroupManagerStandbyPolicyMode>
@@ -4199,11 +4367,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// MIG does not automatically stop/start or suspend/resume VMs.
+        /// MIG does not automatically resume or start VMs in the standby pool when the group scales out.
         /// </summary>
         public static InstanceGroupManagerStandbyPolicyMode Manual { get; } = new InstanceGroupManagerStandbyPolicyMode("MANUAL");
         /// <summary>
-        /// MIG automatically resumes and starts VMs when it scales out, and replenishes the standby pool afterwards.
+        /// MIG automatically resumes or starts VMs in the standby pool when the group scales out, and replenishes the standby pool afterwards.
         /// </summary>
         public static InstanceGroupManagerStandbyPolicyMode ScaleOutPool { get; } = new InstanceGroupManagerStandbyPolicyMode("SCALE_OUT_POOL");
 
@@ -5266,7 +5434,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+    /// Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
     /// </summary>
     [EnumType]
     public readonly struct NetworkEndpointGroupClientPortMappingMode : IEquatable<NetworkEndpointGroupClientPortMappingMode>
@@ -5430,6 +5598,43 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkInterfaceIgmpQuery : IEquatable<NetworkInterfaceIgmpQuery>
+    {
+        private readonly string _value;
+
+        private NetworkInterfaceIgmpQuery(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The network interface has disabled IGMP query.
+        /// </summary>
+        public static NetworkInterfaceIgmpQuery IgmpQueryDisabled { get; } = new NetworkInterfaceIgmpQuery("IGMP_QUERY_DISABLED");
+        /// <summary>
+        /// The network interface has enabled IGMP query - v2.
+        /// </summary>
+        public static NetworkInterfaceIgmpQuery IgmpQueryV2 { get; } = new NetworkInterfaceIgmpQuery("IGMP_QUERY_V2");
+
+        public static bool operator ==(NetworkInterfaceIgmpQuery left, NetworkInterfaceIgmpQuery right) => left.Equals(right);
+        public static bool operator !=(NetworkInterfaceIgmpQuery left, NetworkInterfaceIgmpQuery right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkInterfaceIgmpQuery value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkInterfaceIgmpQuery other && Equals(other);
+        public bool Equals(NetworkInterfaceIgmpQuery other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
     /// </summary>
     [EnumType]
@@ -5446,6 +5651,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// GVNIC
         /// </summary>
         public static NetworkInterfaceNicType Gvnic { get; } = new NetworkInterfaceNicType("GVNIC");
+        /// <summary>
+        /// IDPF
+        /// </summary>
+        public static NetworkInterfaceNicType Idpf { get; } = new NetworkInterfaceNicType("IDPF");
         /// <summary>
         /// No type specified.
         /// </summary>
@@ -6237,7 +6446,39 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    /// Specifies the canary migration state. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionBackendServiceExternalManagedMigrationState : IEquatable<RegionBackendServiceExternalManagedMigrationState>
+    {
+        private readonly string _value;
+
+        private RegionBackendServiceExternalManagedMigrationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionBackendServiceExternalManagedMigrationState Finalize { get; } = new RegionBackendServiceExternalManagedMigrationState("FINALIZE");
+        public static RegionBackendServiceExternalManagedMigrationState Prepare { get; } = new RegionBackendServiceExternalManagedMigrationState("PREPARE");
+        public static RegionBackendServiceExternalManagedMigrationState Test { get; } = new RegionBackendServiceExternalManagedMigrationState("TEST");
+
+        public static bool operator ==(RegionBackendServiceExternalManagedMigrationState left, RegionBackendServiceExternalManagedMigrationState right) => left.Equals(right);
+        public static bool operator !=(RegionBackendServiceExternalManagedMigrationState left, RegionBackendServiceExternalManagedMigrationState right) => !left.Equals(right);
+
+        public static explicit operator string(RegionBackendServiceExternalManagedMigrationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionBackendServiceExternalManagedMigrationState other && Equals(other);
+        public bool Equals(RegionBackendServiceExternalManagedMigrationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
     /// </summary>
     [EnumType]
     public readonly struct RegionBackendServiceIpAddressSelectionPolicy : IEquatable<RegionBackendServiceIpAddressSelectionPolicy>
@@ -6295,19 +6536,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+        /// Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
         /// </summary>
         public static RegionBackendServiceLoadBalancingScheme External { get; } = new RegionBackendServiceLoadBalancingScheme("EXTERNAL");
         /// <summary>
-        /// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+        /// Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
         /// </summary>
         public static RegionBackendServiceLoadBalancingScheme ExternalManaged { get; } = new RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED");
         /// <summary>
-        /// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+        /// Signifies that this will be used for internal passthrough Network Load Balancers.
         /// </summary>
         public static RegionBackendServiceLoadBalancingScheme Internal { get; } = new RegionBackendServiceLoadBalancingScheme("INTERNAL");
         /// <summary>
-        /// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+        /// Signifies that this will be used for internal Application Load Balancers.
         /// </summary>
         public static RegionBackendServiceLoadBalancingScheme InternalManaged { get; } = new RegionBackendServiceLoadBalancingScheme("INTERNAL_MANAGED");
         /// <summary>
@@ -6625,19 +6866,23 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         public static RegionCommitmentType AcceleratorOptimized { get; } = new RegionCommitmentType("ACCELERATOR_OPTIMIZED");
         public static RegionCommitmentType AcceleratorOptimizedA3 { get; } = new RegionCommitmentType("ACCELERATOR_OPTIMIZED_A3");
+        public static RegionCommitmentType AcceleratorOptimizedA3Mega { get; } = new RegionCommitmentType("ACCELERATOR_OPTIMIZED_A3_MEGA");
         public static RegionCommitmentType ComputeOptimized { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED");
         public static RegionCommitmentType ComputeOptimizedC2d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C2D");
         public static RegionCommitmentType ComputeOptimizedC3 { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3");
         public static RegionCommitmentType ComputeOptimizedC3d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3D");
         public static RegionCommitmentType ComputeOptimizedH3 { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_H3");
         public static RegionCommitmentType GeneralPurpose { get; } = new RegionCommitmentType("GENERAL_PURPOSE");
+        public static RegionCommitmentType GeneralPurposeC4 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_C4");
         public static RegionCommitmentType GeneralPurposeE2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_E2");
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
+        public static RegionCommitmentType GeneralPurposeN4 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N4");
         public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
         public static RegionCommitmentType GraphicsOptimized { get; } = new RegionCommitmentType("GRAPHICS_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimizedM3 { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED_M3");
+        public static RegionCommitmentType StorageOptimizedZ3 { get; } = new RegionCommitmentType("STORAGE_OPTIMIZED_Z3");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
 
         public static bool operator ==(RegionCommitmentType left, RegionCommitmentType right) => left.Equals(right);
@@ -7017,7 +7262,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
+    /// Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
     /// </summary>
     [EnumType]
     public readonly struct RegionNetworkEndpointGroupClientPortMappingMode : IEquatable<RegionNetworkEndpointGroupClientPortMappingMode>
@@ -7403,6 +7648,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionTargetHttpsProxyQuicOverride other && Equals(other);
         public bool Equals(RegionTargetHttpsProxyQuicOverride other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    ///  Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionTargetHttpsProxyTlsEarlyData : IEquatable<RegionTargetHttpsProxyTlsEarlyData>
+    {
+        private readonly string _value;
+
+        private RegionTargetHttpsProxyTlsEarlyData(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+        /// </summary>
+        public static RegionTargetHttpsProxyTlsEarlyData Disabled { get; } = new RegionTargetHttpsProxyTlsEarlyData("DISABLED");
+        /// <summary>
+        /// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+        /// </summary>
+        public static RegionTargetHttpsProxyTlsEarlyData Permissive { get; } = new RegionTargetHttpsProxyTlsEarlyData("PERMISSIVE");
+        /// <summary>
+        /// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
+        /// </summary>
+        public static RegionTargetHttpsProxyTlsEarlyData Strict { get; } = new RegionTargetHttpsProxyTlsEarlyData("STRICT");
+
+        public static bool operator ==(RegionTargetHttpsProxyTlsEarlyData left, RegionTargetHttpsProxyTlsEarlyData right) => left.Equals(right);
+        public static bool operator !=(RegionTargetHttpsProxyTlsEarlyData left, RegionTargetHttpsProxyTlsEarlyData right) => !left.Equals(right);
+
+        public static explicit operator string(RegionTargetHttpsProxyTlsEarlyData value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionTargetHttpsProxyTlsEarlyData other && Equals(other);
+        public bool Equals(RegionTargetHttpsProxyTlsEarlyData other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -8432,7 +8718,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct SSLHealthCheckPortSpecification : IEquatable<SSLHealthCheckPortSpecification>
@@ -8728,6 +9014,38 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Type of this configuration.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType : IEquatable<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType HttpHeaderHost { get; } = new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("HTTP_HEADER_HOST");
+        public static SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType HttpPath { get; } = new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("HTTP_PATH");
+        public static SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType UnspecifiedType { get; } = new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("UNSPECIFIED_TYPE");
+
+        public static bool operator ==(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType left, SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType left, SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType other && Equals(other);
+        public bool Equals(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct SecurityPolicyAdvancedOptionsConfigJsonParsing : IEquatable<SecurityPolicyAdvancedOptionsConfigJsonParsing>
     {
@@ -8929,7 +9247,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -8949,6 +9267,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey TlsJa3Fingerprint { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("TLS_JA3_FINGERPRINT");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey UserIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("USER_IP");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKey XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP");
 
         public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKey left, SecurityPolicyRuleRateLimitOptionsEnforceOnKey right) => left.Equals(right);
@@ -8967,7 +9287,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType>
@@ -8987,6 +9307,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType TlsJa3Fingerprint { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("TLS_JA3_FINGERPRINT");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType UserIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("USER_IP");
         public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP");
 
         public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType left, SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType right) => left.Equals(right);
@@ -9771,7 +10093,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+    /// The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
     /// </summary>
     [EnumType]
     public readonly struct SubnetworkPurpose : IEquatable<SubnetworkPurpose>
@@ -9796,7 +10118,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static SubnetworkPurpose GlobalManagedProxy { get; } = new SubnetworkPurpose("GLOBAL_MANAGED_PROXY");
         /// <summary>
-        /// Subnet reserved for Internal HTTP(S) Load Balancing.
+        /// Subnet reserved for Internal HTTP(S) Load Balancing. This is a legacy purpose, please use REGIONAL_MANAGED_PROXY instead.
         /// </summary>
         public static SubnetworkPurpose InternalHttpsLoadBalancer { get; } = new SubnetworkPurpose("INTERNAL_HTTPS_LOAD_BALANCER");
         /// <summary>
@@ -9836,7 +10158,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+    /// The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
     /// </summary>
     [EnumType]
     public readonly struct SubnetworkRole : IEquatable<SubnetworkRole>
@@ -9948,7 +10270,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    /// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     /// </summary>
     [EnumType]
     public readonly struct TCPHealthCheckPortSpecification : IEquatable<TCPHealthCheckPortSpecification>
@@ -10053,6 +10375,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TargetHttpsProxyQuicOverride other && Equals(other);
         public bool Equals(TargetHttpsProxyQuicOverride other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    ///  Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+    /// </summary>
+    [EnumType]
+    public readonly struct TargetHttpsProxyTlsEarlyData : IEquatable<TargetHttpsProxyTlsEarlyData>
+    {
+        private readonly string _value;
+
+        private TargetHttpsProxyTlsEarlyData(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+        /// </summary>
+        public static TargetHttpsProxyTlsEarlyData Disabled { get; } = new TargetHttpsProxyTlsEarlyData("DISABLED");
+        /// <summary>
+        /// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+        /// </summary>
+        public static TargetHttpsProxyTlsEarlyData Permissive { get; } = new TargetHttpsProxyTlsEarlyData("PERMISSIVE");
+        /// <summary>
+        /// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
+        /// </summary>
+        public static TargetHttpsProxyTlsEarlyData Strict { get; } = new TargetHttpsProxyTlsEarlyData("STRICT");
+
+        public static bool operator ==(TargetHttpsProxyTlsEarlyData left, TargetHttpsProxyTlsEarlyData right) => left.Equals(right);
+        public static bool operator !=(TargetHttpsProxyTlsEarlyData left, TargetHttpsProxyTlsEarlyData right) => !left.Equals(right);
+
+        public static explicit operator string(TargetHttpsProxyTlsEarlyData value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TargetHttpsProxyTlsEarlyData other && Equals(other);
+        public bool Equals(TargetHttpsProxyTlsEarlyData other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// [Alpha] Information of a multi-statement transaction.
+    /// </summary>
     [OutputType]
     public sealed class TransactionInfoResponse
     {
         /// <summary>
-        /// // [Alpha] Id of the transaction.
+        /// [Alpha] Id of the transaction.
         /// </summary>
         public readonly string TransactionId;
 

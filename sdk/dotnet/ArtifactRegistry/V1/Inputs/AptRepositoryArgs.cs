@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
     public sealed class AptRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        [Input("customRepository")]
+        public Input<Inputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs>? CustomRepository { get; set; }
+
+        /// <summary>
         /// One of the publicly available Apt repositories supported by Artifact Registry.
         /// </summary>
         [Input("publicRepository")]

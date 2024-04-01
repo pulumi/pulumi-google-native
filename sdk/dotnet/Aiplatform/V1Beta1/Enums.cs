@@ -244,6 +244,47 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
     }
 
     /// <summary>
+    /// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+    /// </summary>
+    [EnumType]
+    public readonly struct FeatureViewServiceAgentType : IEquatable<FeatureViewServiceAgentType>
+    {
+        private readonly string _value;
+
+        private FeatureViewServiceAgentType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// By default, the project-level Vertex AI Service Agent is enabled.
+        /// </summary>
+        public static FeatureViewServiceAgentType ServiceAgentTypeUnspecified { get; } = new FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Indicates the project-level Vertex AI Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used during sync jobs.
+        /// </summary>
+        public static FeatureViewServiceAgentType ServiceAgentTypeProject { get; } = new FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_PROJECT");
+        /// <summary>
+        /// Enable a FeatureView service account to be created by Vertex AI and output in the field `service_account_email`. This service account will be used to read from the source BigQuery table during sync.
+        /// </summary>
+        public static FeatureViewServiceAgentType ServiceAgentTypeFeatureView { get; } = new FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_FEATURE_VIEW");
+
+        public static bool operator ==(FeatureViewServiceAgentType left, FeatureViewServiceAgentType right) => left.Equals(right);
+        public static bool operator !=(FeatureViewServiceAgentType left, FeatureViewServiceAgentType right) => !left.Equals(right);
+
+        public static explicit operator string(FeatureViewServiceAgentType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FeatureViewServiceAgentType other && Equals(other);
+        public bool Equals(FeatureViewServiceAgentType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
     /// </summary>
     [EnumType]
@@ -273,6 +314,51 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat other && Equals(other);
         public bool Equals(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The distance measure used in nearest neighbor search.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType : IEquatable<GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Should not be set.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType DistanceMeasureTypeUnspecified { get; } = new GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("DISTANCE_MEASURE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Euclidean (L_2) Distance.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType SquaredL2Distance { get; } = new GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("SQUARED_L2_DISTANCE");
+        /// <summary>
+        /// Cosine Distance. Defined as 1 - cosine similarity. We strongly suggest using DOT_PRODUCT_DISTANCE + UNIT_L2_NORM instead of COSINE distance. Our algorithms have been more optimized for DOT_PRODUCT distance which, when combined with UNIT_L2_NORM, is mathematically equivalent to COSINE distance and results in the same ranking.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType CosineDistance { get; } = new GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("COSINE_DISTANCE");
+        /// <summary>
+        /// Dot Product Distance. Defined as a negative of the dot product.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType DotProductDistance { get; } = new GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("DOT_PRODUCT_DISTANCE");
+
+        public static bool operator ==(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType left, GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType left, GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType other && Equals(other);
+        public bool Equals(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -665,6 +751,51 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm other && Equals(other);
         public bool Equals(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType : IEquatable<GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default type.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType ReservationAffinityTypeUnspecified { get; } = new GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_AFFINITY_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Do not consume from any allocated capacity.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType ReservationNone { get; } = new GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_NONE");
+        /// <summary>
+        /// Consume any reservation available.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType ReservationAny { get; } = new GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_ANY");
+        /// <summary>
+        /// Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType ReservationSpecific { get; } = new GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_SPECIFIC");
+
+        public static bool operator ==(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType left, GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType left, GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType other && Equals(other);
+        public bool Equals(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

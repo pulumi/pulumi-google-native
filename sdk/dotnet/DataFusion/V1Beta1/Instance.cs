@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<Outputs.CryptoKeyConfigResponse> CryptoKeyConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Reserved for future use.
+        /// Optional. Option to enable the Dataplex Lineage Integration feature.
         /// </summary>
         [Output("dataplexDataLineageIntegrationEnabled")]
         public Output<bool> DataplexDataLineageIntegrationEnabled { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<string> GcsBucket { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of the instance to create.
+        /// Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Input<Inputs.CryptoKeyConfigArgs>? CryptoKeyConfig { get; set; }
 
         /// <summary>
-        /// Optional. Reserved for future use.
+        /// Optional. Option to enable the Dataplex Lineage Integration feature.
         /// </summary>
         [Input("dataplexDataLineageIntegrationEnabled")]
         public Input<bool>? DataplexDataLineageIntegrationEnabled { get; set; }
@@ -344,7 +344,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Input<Inputs.EventPublishConfigArgs>? EventPublishConfig { get; set; }
 
         /// <summary>
-        /// Required. The name of the instance to create.
+        /// Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;

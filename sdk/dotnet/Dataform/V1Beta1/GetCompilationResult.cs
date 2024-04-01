@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        /// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         /// </summary>
         public readonly string ReleaseConfig;
         /// <summary>

@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// The name of the Cloud Run Service that is associated with a `Rollout`.
         /// </summary>
         public readonly Outputs.CloudRunMetadataResponse CloudRun;
+        /// <summary>
+        /// Custom metadata provided by user-defined `Rollout` operations.
+        /// </summary>
+        public readonly Outputs.CustomMetadataResponse Custom;
 
         [OutputConstructor]
         private MetadataResponse(
             Outputs.AutomationRolloutMetadataResponse automation,
 
-            Outputs.CloudRunMetadataResponse cloudRun)
+            Outputs.CloudRunMetadataResponse cloudRun,
+
+            Outputs.CustomMetadataResponse custom)
         {
             Automation = automation;
             CloudRun = cloudRun;
+            Custom = custom;
         }
     }
 }

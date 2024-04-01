@@ -22,6 +22,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse> Children;
         /// <summary>
+        /// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+        /// </summary>
+        public readonly bool ContainsLargeData;
+        /// <summary>
         /// The data type of the parameter.
         /// </summary>
         public readonly string DataType;
@@ -73,6 +77,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             ImmutableArray<Outputs.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse> children,
 
+            bool containsLargeData,
+
             string dataType,
 
             Outputs.EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse defaultValue,
@@ -99,6 +105,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         {
             Attributes = attributes;
             Children = children;
+            ContainsLargeData = containsLargeData;
             DataType = dataType;
             DefaultValue = defaultValue;
             Description = description;

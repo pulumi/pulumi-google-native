@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         public readonly string EncryptionState;
         /// <summary>
-        /// Attributes specific to Endpoint Verification devices.
+        /// Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
         /// </summary>
         public readonly Outputs.EndpointVerificationSpecificAttributesResponse EndpointVerificationSpecificAttributes;
         /// <summary>

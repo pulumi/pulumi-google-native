@@ -21,18 +21,39 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly string Cause;
         /// <summary>
+        /// Destination IP address of the dropped packet (if relevant).
+        /// </summary>
+        public readonly string DestinationIp;
+        /// <summary>
+        /// Region of the dropped packet (if relevant).
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// URI of the resource that caused the drop.
         /// </summary>
         public readonly string ResourceUri;
+        /// <summary>
+        /// Source IP address of the dropped packet (if relevant).
+        /// </summary>
+        public readonly string SourceIp;
 
         [OutputConstructor]
         private DropInfoResponse(
             string cause,
 
-            string resourceUri)
+            string destinationIp,
+
+            string region,
+
+            string resourceUri,
+
+            string sourceIp)
         {
             Cause = cause;
+            DestinationIp = destinationIp;
+            Region = region;
             ResourceUri = resourceUri;
+            SourceIp = sourceIp;
         }
     }
 }

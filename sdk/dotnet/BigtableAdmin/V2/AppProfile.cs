@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> AppProfileId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        /// </summary>
+        [Output("dataBoostIsolationReadOnly")]
+        public Output<Outputs.DataBoostIsolationReadOnlyResponse> DataBoostIsolationReadOnly { get; private set; } = null!;
+
+        /// <summary>
         /// Long form description of the use case for this AppProfile.
         /// </summary>
         [Output("description")]
@@ -131,6 +137,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Input("appProfileId", required: true)]
         public Input<string> AppProfileId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        /// </summary>
+        [Input("dataBoostIsolationReadOnly")]
+        public Input<Inputs.DataBoostIsolationReadOnlyArgs>? DataBoostIsolationReadOnly { get; set; }
 
         /// <summary>
         /// Long form description of the use case for this AppProfile.

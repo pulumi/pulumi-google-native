@@ -21,15 +21,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
         public readonly ImmutableDictionary<string, string> InstanceSelections;
+        /// <summary>
+        /// Provisioning model configuration used by this managed instance group to create instances.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixResponse ProvisioningModelMix;
 
         [OutputConstructor]
         private InstanceGroupManagerInstanceFlexibilityPolicyResponse(
             ImmutableDictionary<string, string> instanceSelectionLists,
 
-            ImmutableDictionary<string, string> instanceSelections)
+            ImmutableDictionary<string, string> instanceSelections,
+
+            Outputs.InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixResponse provisioningModelMix)
         {
             InstanceSelectionLists = instanceSelectionLists;
             InstanceSelections = instanceSelections;
+            ProvisioningModelMix = provisioningModelMix;
         }
     }
 }

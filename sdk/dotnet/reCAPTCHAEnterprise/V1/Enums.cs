@@ -122,6 +122,10 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// Fastly
         /// </summary>
         public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService Fastly { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("FASTLY");
+        /// <summary>
+        /// Cloudflare
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService Cloudflare { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("CLOUDFLARE");
 
         public static bool operator ==(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafService right) => left.Equals(right);
         public static bool operator !=(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafService right) => !left.Equals(right);

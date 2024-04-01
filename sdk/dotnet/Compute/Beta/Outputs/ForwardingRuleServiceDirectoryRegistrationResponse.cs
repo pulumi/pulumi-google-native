@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
     /// <summary>
-    /// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+    /// Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
     /// </summary>
     [OutputType]
     public sealed class ForwardingRuleServiceDirectoryRegistrationResponse
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Service;
         /// <summary>
-        /// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        /// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
         /// </summary>
         public readonly string ServiceDirectoryRegion;
 

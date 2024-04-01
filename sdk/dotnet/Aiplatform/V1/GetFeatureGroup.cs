@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+        /// Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
         /// </summary>
         public readonly string Name;
         /// <summary>

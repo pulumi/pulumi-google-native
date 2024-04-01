@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class TaskSpecResponse
     {
         /// <summary>
-        /// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+        /// Optional. List of containers belonging to the task. We disallow a number of fields on this Container.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerResponse> Containers;
         /// <summary>

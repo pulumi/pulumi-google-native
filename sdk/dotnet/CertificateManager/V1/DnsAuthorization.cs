@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
         /// The last update timestamp of a DnsAuthorization.
         /// </summary>
         [Output("updateTime")]
@@ -161,6 +167,12 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+        /// </summary>
+        [Input("type")]
+        public Input<Pulumi.GoogleNative.CertificateManager.V1.DnsAuthorizationType>? Type { get; set; }
 
         public DnsAuthorizationArgs()
         {

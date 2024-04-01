@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs>? AdvancedSettings { get; set; }
 
         /// <summary>
+        /// The description of the page. The maximum length is 500 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The human-readable name of the page, unique within the flow.
         /// </summary>
         [Input("displayName", required: true)]

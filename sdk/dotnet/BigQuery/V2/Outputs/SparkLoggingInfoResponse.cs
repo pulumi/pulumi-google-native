@@ -10,15 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Spark job logs can be filtered by these fields in Cloud Logging.
+    /// </summary>
     [OutputType]
     public sealed class SparkLoggingInfoResponse
     {
         /// <summary>
-        /// Project ID used for logging
+        /// Project ID where the Spark logs were written.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Resource type used for logging
+        /// Resource type used for logging.
         /// </summary>
         public readonly string ResourceType;
 

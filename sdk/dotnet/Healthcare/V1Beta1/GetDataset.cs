@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     public sealed class GetDatasetResult
     {
         /// <summary>
-        /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+        /// Identifier. Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         /// </summary>
         public readonly string Name;
         /// <summary>

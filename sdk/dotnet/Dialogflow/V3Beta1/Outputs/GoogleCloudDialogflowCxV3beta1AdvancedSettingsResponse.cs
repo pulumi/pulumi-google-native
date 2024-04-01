@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsResponse LoggingSettings;
+        /// <summary>
+        /// Settings for speech to text detection. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettingsResponse SpeechSettings;
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettingsResponse dtmfSettings,
 
-            Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsResponse loggingSettings)
+            Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsResponse loggingSettings,
+
+            Outputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettingsResponse speechSettings)
         {
             AudioExportGcsDestination = audioExportGcsDestination;
             DtmfSettings = dtmfSettings;
             LoggingSettings = loggingSettings;
+            SpeechSettings = speechSettings;
         }
     }
 }

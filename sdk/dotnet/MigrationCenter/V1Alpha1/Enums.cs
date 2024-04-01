@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
 {
     /// <summary>
-    /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+    /// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
     /// </summary>
     [EnumType]
     public readonly struct ComputeEnginePreferencesLicenseType : IEquatable<ComputeEnginePreferencesLicenseType>
@@ -123,15 +123,15 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public static GCSPayloadInfoFormat ImportJobFormatRvtoolsCsv { get; } = new GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_RVTOOLS_CSV");
         /// <summary>
-        /// CSV format exported from AWS using the AWS collection script.
+        /// CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
         /// </summary>
         public static GCSPayloadInfoFormat ImportJobFormatExportedAwsCsv { get; } = new GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV");
         /// <summary>
-        /// CSV format exported from Azure using the Azure collection script.
+        /// CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
         /// </summary>
         public static GCSPayloadInfoFormat ImportJobFormatExportedAzureCsv { get; } = new GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV");
         /// <summary>
-        /// CSV format created manually. For more information, see Manually create and upload data tables.
+        /// CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
         /// </summary>
         public static GCSPayloadInfoFormat ImportJobFormatManualCsv { get; } = new GCSPayloadInfoFormat("IMPORT_JOB_FORMAT_MANUAL_CSV");
 
@@ -180,15 +180,15 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public static ImportDataFileFormat ImportJobFormatRvtoolsCsv { get; } = new ImportDataFileFormat("IMPORT_JOB_FORMAT_RVTOOLS_CSV");
         /// <summary>
-        /// CSV format exported from AWS using the AWS collection script.
+        /// CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
         /// </summary>
         public static ImportDataFileFormat ImportJobFormatExportedAwsCsv { get; } = new ImportDataFileFormat("IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV");
         /// <summary>
-        /// CSV format exported from Azure using the Azure collection script.
+        /// CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
         /// </summary>
         public static ImportDataFileFormat ImportJobFormatExportedAzureCsv { get; } = new ImportDataFileFormat("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV");
         /// <summary>
-        /// CSV format created manually. For more information, see Manually create and upload data tables.
+        /// CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
         /// </summary>
         public static ImportDataFileFormat ImportJobFormatManualCsv { get; } = new ImportDataFileFormat("IMPORT_JOB_FORMAT_MANUAL_CSV");
 
@@ -237,15 +237,15 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public static InlinePayloadInfoFormat ImportJobFormatRvtoolsCsv { get; } = new InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_RVTOOLS_CSV");
         /// <summary>
-        /// CSV format exported from AWS using the AWS collection script.
+        /// CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
         /// </summary>
         public static InlinePayloadInfoFormat ImportJobFormatExportedAwsCsv { get; } = new InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV");
         /// <summary>
-        /// CSV format exported from Azure using the Azure collection script.
+        /// CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
         /// </summary>
         public static InlinePayloadInfoFormat ImportJobFormatExportedAzureCsv { get; } = new InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV");
         /// <summary>
-        /// CSV format created manually. For more information, see Manually create and upload data tables.
+        /// CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
         /// </summary>
         public static InlinePayloadInfoFormat ImportJobFormatManualCsv { get; } = new InlinePayloadInfoFormat("IMPORT_JOB_FORMAT_MANUAL_CSV");
 
@@ -323,11 +323,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         }
 
         /// <summary>
-        /// Default Report type.
+        /// Default report type.
         /// </summary>
         public static ReportType TypeUnspecified { get; } = new ReportType("TYPE_UNSPECIFIED");
         /// <summary>
-        /// Total cost of ownership Report type.
+        /// Total cost of ownership report type.
         /// </summary>
         public static ReportType TotalCostOfOwnership { get; } = new ReportType("TOTAL_COST_OF_OWNERSHIP");
 
@@ -368,11 +368,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public static SoleTenancyPreferencesCommitmentPlan OnDemand { get; } = new SoleTenancyPreferencesCommitmentPlan("ON_DEMAND");
         /// <summary>
-        /// 1 year commitment.
+        /// 1-year regular committed use discount.
         /// </summary>
         public static SoleTenancyPreferencesCommitmentPlan Commitment1Year { get; } = new SoleTenancyPreferencesCommitmentPlan("COMMITMENT_1_YEAR");
         /// <summary>
-        /// 3 years commitment.
+        /// 3-year regular committed use discount.
         /// </summary>
         public static SoleTenancyPreferencesCommitmentPlan Commitment3Year { get; } = new SoleTenancyPreferencesCommitmentPlan("COMMITMENT_3_YEAR");
 
@@ -469,6 +469,10 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// Third-party owned sources.
         /// </summary>
         public static SourceType SourceTypeCustom { get; } = new SourceType("SOURCE_TYPE_CUSTOM");
+        /// <summary>
+        /// Discovery clients
+        /// </summary>
+        public static SourceType SourceTypeDiscoveryClient { get; } = new SourceType("SOURCE_TYPE_DISCOVERY_CLIENT");
 
         public static bool operator ==(SourceType left, SourceType right) => left.Equals(right);
         public static bool operator !=(SourceType left, SourceType right) => !left.Equals(right);
@@ -507,11 +511,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public static VirtualMachinePreferencesCommitmentPlan CommitmentPlanNone { get; } = new VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_NONE");
         /// <summary>
-        /// 1 year commitment.
+        /// 1-year regular committed use discount.
         /// </summary>
         public static VirtualMachinePreferencesCommitmentPlan CommitmentPlanOneYear { get; } = new VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_ONE_YEAR");
         /// <summary>
-        /// 3 years commitment.
+        /// 3-year regular committed use discount.
         /// </summary>
         public static VirtualMachinePreferencesCommitmentPlan CommitmentPlanThreeYears { get; } = new VirtualMachinePreferencesCommitmentPlan("COMMITMENT_PLAN_THREE_YEARS");
 

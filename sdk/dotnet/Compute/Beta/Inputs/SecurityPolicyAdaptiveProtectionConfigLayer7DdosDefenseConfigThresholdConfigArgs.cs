@@ -24,11 +24,32 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("autoDeployLoadThreshold")]
         public Input<double>? AutoDeployLoadThreshold { get; set; }
 
+        [Input("detectionAbsoluteQps")]
+        public Input<double>? DetectionAbsoluteQps { get; set; }
+
+        [Input("detectionLoadThreshold")]
+        public Input<double>? DetectionLoadThreshold { get; set; }
+
+        [Input("detectionRelativeToBaselineQps")]
+        public Input<double>? DetectionRelativeToBaselineQps { get; set; }
+
         /// <summary>
         /// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("trafficGranularityConfigs")]
+        private InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs>? _trafficGranularityConfigs;
+
+        /// <summary>
+        /// Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+        /// </summary>
+        public InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs> TrafficGranularityConfigs
+        {
+            get => _trafficGranularityConfigs ?? (_trafficGranularityConfigs = new InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs>());
+            set => _trafficGranularityConfigs = value;
+        }
 
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs()
         {

@@ -231,6 +231,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 

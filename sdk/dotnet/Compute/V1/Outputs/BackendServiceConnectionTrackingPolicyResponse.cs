@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string ConnectionPersistenceOnUnhealthyBackends;
         /// <summary>
-        /// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        /// Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
         /// </summary>
         public readonly bool EnableStrongAffinity;
         /// <summary>
-        /// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+        /// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
         /// </summary>
         public readonly int IdleTimeoutSec;
         /// <summary>

@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Reason why BI Engine didn't accelerate the query (or sub-query).
+    /// </summary>
     [OutputType]
     public sealed class BiEngineReasonResponse
     {
         /// <summary>
-        /// High-level BI Engine reason for partial or disabled acceleration.
+        /// High-level BI Engine reason for partial or disabled acceleration
         /// </summary>
         public readonly string Code;
         /// <summary>

@@ -63,6 +63,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         [Input("ordinalPosition")]
         public Input<int>? OrdinalPosition { get; set; }
 
+        /// <summary>
+        /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: * DATE * DATETIME * TIMESTAMP
+        /// </summary>
+        [Input("rangeElementType")]
+        public Input<Inputs.GoogleCloudDatacatalogV1ColumnSchemaFieldElementTypeArgs>? RangeElementType { get; set; }
+
         [Input("subcolumns")]
         private InputList<Inputs.GoogleCloudDatacatalogV1ColumnSchemaArgs>? _subcolumns;
 

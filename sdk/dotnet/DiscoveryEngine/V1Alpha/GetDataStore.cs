@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     public sealed class GetDataStoreResult
     {
         /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        public readonly bool AclEnabled;
+        /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
         /// </summary>
         public readonly string ContentConfig;
@@ -86,6 +90,14 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Configuration for Document understanding and enrichment.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse DocumentProcessingConfig;
+        /// <summary>
+        /// Data store level identity provider config.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDiscoveryengineV1alphaIdpConfigResponse IdpConfig;
+        /// <summary>
         /// Immutable. The industry vertical that the data store registers.
         /// </summary>
         public readonly string IndustryVertical;
@@ -97,9 +109,15 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
         /// </summary>
         public readonly ImmutableArray<string> SolutionTypes;
+        /// <summary>
+        /// The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        /// </summary>
+        public readonly Outputs.GoogleCloudDiscoveryengineV1alphaSchemaResponse StartingSchema;
 
         [OutputConstructor]
         private GetDataStoreResult(
+            bool aclEnabled,
+
             string contentConfig,
 
             string createTime,
@@ -108,19 +126,29 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
             string displayName,
 
+            Outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse documentProcessingConfig,
+
+            Outputs.GoogleCloudDiscoveryengineV1alphaIdpConfigResponse idpConfig,
+
             string industryVertical,
 
             string name,
 
-            ImmutableArray<string> solutionTypes)
+            ImmutableArray<string> solutionTypes,
+
+            Outputs.GoogleCloudDiscoveryengineV1alphaSchemaResponse startingSchema)
         {
+            AclEnabled = aclEnabled;
             ContentConfig = contentConfig;
             CreateTime = createTime;
             DefaultSchemaId = defaultSchemaId;
             DisplayName = displayName;
+            DocumentProcessingConfig = documentProcessingConfig;
+            IdpConfig = idpConfig;
             IndustryVertical = industryVertical;
             Name = name;
             SolutionTypes = solutionTypes;
+            StartingSchema = startingSchema;
         }
     }
 }

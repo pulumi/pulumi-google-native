@@ -28,10 +28,22 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<Inputs.GoogleCloudRunV2EmptyDirVolumeSourceArgs>? EmptyDir { get; set; }
 
         /// <summary>
+        /// Persistent storage backed by a Google Cloud Storage bucket.
+        /// </summary>
+        [Input("gcs")]
+        public Input<Inputs.GoogleCloudRunV2GCSVolumeSourceArgs>? Gcs { get; set; }
+
+        /// <summary>
         /// Volume's name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// For NFS Voumes, contains the path to the nfs Volume
+        /// </summary>
+        [Input("nfs")]
+        public Input<Inputs.GoogleCloudRunV2NFSVolumeSourceArgs>? Nfs { get; set; }
 
         /// <summary>
         /// Secret represents a secret that should populate this volume.

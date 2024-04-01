@@ -10,10 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// The pair of the foreign key column and primary key column.
+    /// </summary>
     [OutputType]
     public sealed class TableConstraintsForeignKeysItemColumnReferencesItemResponse
     {
+        /// <summary>
+        /// The column in the primary key that are referenced by the referencing_column.
+        /// </summary>
         public readonly string ReferencedColumn;
+        /// <summary>
+        /// The column that composes the foreign key.
+        /// </summary>
         public readonly string ReferencingColumn;
 
         [OutputConstructor]

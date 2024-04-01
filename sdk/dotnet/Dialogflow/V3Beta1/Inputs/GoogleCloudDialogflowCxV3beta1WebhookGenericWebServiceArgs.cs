@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         [Input("httpMethod")]
         public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod>? HttpMethod { get; set; }
 
+        /// <summary>
+        /// Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
+        /// </summary>
+        [Input("oauthConfig")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfigArgs>? OauthConfig { get; set; }
+
         [Input("parameterMapping")]
         private InputMap<string>? _parameterMapping;
 
@@ -68,6 +74,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
             get => _requestHeaders ?? (_requestHeaders = new InputMap<string>());
             set => _requestHeaders = value;
         }
+
+        /// <summary>
+        /// Optional. Indicate the auth token type generated from the [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is sent in the Authorization header.
+        /// </summary>
+        [Input("serviceAgentAuth")]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth>? ServiceAgentAuth { get; set; }
 
         /// <summary>
         /// The webhook URI for receiving POST requests. It must use https protocol.

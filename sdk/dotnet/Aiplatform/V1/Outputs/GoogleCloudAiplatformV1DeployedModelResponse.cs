@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// </summary>
         public readonly bool DisableContainerLogging;
         /// <summary>
+        /// If true, deploy the model without explainable feature, regardless the existence of Model.explanation_spec or explanation_spec.
+        /// </summary>
+        public readonly bool DisableExplanations;
+        /// <summary>
         /// The display name of the DeployedModel. If not provided upon creation, the Model's display_name is used.
         /// </summary>
         public readonly string DisplayName;
@@ -60,6 +64,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
         /// </summary>
         public readonly string ServiceAccount;
+        /// <summary>
+        /// The resource name of the shared DeploymentResourcePool to deploy on. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+        /// </summary>
+        public readonly string SharedResources;
 
         [OutputConstructor]
         private GoogleCloudAiplatformV1DeployedModelResponse(
@@ -70,6 +78,8 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
             Outputs.GoogleCloudAiplatformV1DedicatedResourcesResponse dedicatedResources,
 
             bool disableContainerLogging,
+
+            bool disableExplanations,
 
             string displayName,
 
@@ -83,12 +93,15 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
 
             Outputs.GoogleCloudAiplatformV1PrivateEndpointsResponse privateEndpoints,
 
-            string serviceAccount)
+            string serviceAccount,
+
+            string sharedResources)
         {
             AutomaticResources = automaticResources;
             CreateTime = createTime;
             DedicatedResources = dedicatedResources;
             DisableContainerLogging = disableContainerLogging;
+            DisableExplanations = disableExplanations;
             DisplayName = displayName;
             EnableAccessLogging = enableAccessLogging;
             ExplanationSpec = explanationSpec;
@@ -96,6 +109,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
             ModelVersionId = modelVersionId;
             PrivateEndpoints = privateEndpoints;
             ServiceAccount = serviceAccount;
+            SharedResources = sharedResources;
         }
     }
 }

@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
     {
         public readonly Outputs.RRSetRoutingPolicyGeoPolicyResponse Geo;
         public readonly Outputs.RRSetRoutingPolicyGeoPolicyResponse GeoPolicy;
+        /// <summary>
+        /// The selfLink attribute of the HealthCheck resource to use for this RRSetRoutingPolicy. https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+        /// </summary>
+        public readonly string HealthCheck;
         public readonly string Kind;
         public readonly Outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse PrimaryBackup;
         public readonly Outputs.RRSetRoutingPolicyWrrPolicyResponse Wrr;
@@ -29,6 +33,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 
             Outputs.RRSetRoutingPolicyGeoPolicyResponse geoPolicy,
 
+            string healthCheck,
+
             string kind,
 
             Outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse primaryBackup,
@@ -39,6 +45,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
         {
             Geo = geo;
             GeoPolicy = geoPolicy;
+            HealthCheck = healthCheck;
             Kind = kind;
             PrimaryBackup = primaryBackup;
             Wrr = wrr;

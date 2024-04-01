@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<string>? Key { get; set; }
 
         /// <summary>
+        /// True if this parameter should be masked in the logs
+        /// </summary>
+        [Input("masked")]
+        public Input<bool>? Masked { get; set; }
+
+        /// <summary>
         /// Values for the defined keys. Each value can either be string, int, double or any proto message.
         /// </summary>
         [Input("value")]

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.JobConfigurationTableCopyResponse Copy;
         /// <summary>
-        /// [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
+        /// Optional. If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
         /// </summary>
         public readonly bool DryRun;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.JobConfigurationExtractResponse Extract;
         /// <summary>
-        /// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        /// Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery might attempt to stop the job.
         /// </summary>
         public readonly string JobTimeoutMs;
         /// <summary>

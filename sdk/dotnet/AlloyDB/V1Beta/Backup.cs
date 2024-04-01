@@ -131,6 +131,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// The size of the backup in bytes.
         /// </summary>
         [Output("sizeBytes")]

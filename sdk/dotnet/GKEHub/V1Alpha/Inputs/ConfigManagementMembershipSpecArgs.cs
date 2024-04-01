@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public Input<Inputs.ConfigManagementHierarchyControllerConfigArgs>? HierarchyController { get; set; }
 
         /// <summary>
+        /// Enables automatic Feature management.
+        /// </summary>
+        [Input("management")]
+        public Input<Pulumi.GoogleNative.GKEHub.V1Alpha.ConfigManagementMembershipSpecManagement>? Management { get; set; }
+
+        /// <summary>
         /// Policy Controller configuration for the cluster.
         /// </summary>
         [Input("policyController")]

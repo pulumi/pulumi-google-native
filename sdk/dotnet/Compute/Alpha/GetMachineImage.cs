@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
         /// An array of Machine Image specific properties for disks attached to the source instance
@@ -142,6 +146,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string name,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             ImmutableArray<Outputs.SavedDiskResponse> savedDisks,
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Kind = kind;
             MachineImageEncryptionKey = machineImageEncryptionKey;
             Name = name;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SavedDisks = savedDisks;
             SelfLink = selfLink;

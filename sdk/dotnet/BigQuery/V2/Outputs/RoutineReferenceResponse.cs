@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Id path of a routine.
+    /// </summary>
     [OutputType]
     public sealed class RoutineReferenceResponse
     {

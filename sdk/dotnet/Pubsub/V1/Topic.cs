@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Settings for ingestion from a data source into this topic.
+        /// </summary>
+        [Output("ingestionDataSourceSettings")]
+        public Output<Outputs.IngestionDataSourceSettingsResponse> IngestionDataSourceSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Output("kmsKeyName")]
@@ -59,6 +65,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         [Output("schemaSettings")]
         public Output<Outputs.SchemaSettingsResponse> SchemaSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// An output-only field indicating the state of the topic.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         [Output("topicId")]
         public Output<string> TopicId { get; private set; } = null!;
@@ -113,6 +125,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
     public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Settings for ingestion from a data source into this topic.
+        /// </summary>
+        [Input("ingestionDataSourceSettings")]
+        public Input<Inputs.IngestionDataSourceSettingsArgs>? IngestionDataSourceSettings { get; set; }
+
         /// <summary>
         /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>

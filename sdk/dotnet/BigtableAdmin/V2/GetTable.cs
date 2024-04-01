@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public sealed class GetTableResult
     {
         /// <summary>
+        /// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+        /// </summary>
+        public readonly Outputs.AutomatedBackupPolicyResponse AutomatedBackupPolicy;
+        /// <summary>
         /// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
         /// </summary>
         public readonly Outputs.ChangeStreamConfigResponse ChangeStreamConfig;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
         [OutputConstructor]
         private GetTableResult(
+            Outputs.AutomatedBackupPolicyResponse automatedBackupPolicy,
+
             Outputs.ChangeStreamConfigResponse changeStreamConfig,
 
             ImmutableDictionary<string, string> clusterStates,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             Outputs.TableStatsResponse stats)
         {
+            AutomatedBackupPolicy = automatedBackupPolicy;
             ChangeStreamConfig = changeStreamConfig;
             ClusterStates = clusterStates;
             ColumnFamilies = columnFamilies;

@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? KeystoreUri { get; set; }
 
         /// <summary>
-        /// Optional. The uri of the KMS key used to encrypt various sensitive files.
+        /// Optional. The URI of the KMS key used to encrypt sensitive files.
         /// </summary>
         [Input("kmsKeyUri")]
         public Input<string>? KmsKeyUri { get; set; }

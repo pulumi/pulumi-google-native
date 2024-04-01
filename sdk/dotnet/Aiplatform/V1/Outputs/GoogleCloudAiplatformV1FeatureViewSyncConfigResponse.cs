@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
 {
 
+    /// <summary>
+    /// Configuration for Sync. Only one option is set.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudAiplatformV1FeatureViewSyncConfigResponse
     {

@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. True if variable masking feature should be turned on for generated workflows
+        /// </summary>
+        public readonly bool EnableVariableMasking;
+        /// <summary>
         /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> ErrorCatcherConfigs;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
             string description,
 
+            bool enableVariableMasking,
+
             ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> errorCatcherConfigs,
 
             string lastModifierEmail,
@@ -171,6 +177,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
             CreateTime = createTime;
             DatabasePersistencePolicy = databasePersistencePolicy;
             Description = description;
+            EnableVariableMasking = enableVariableMasking;
             ErrorCatcherConfigs = errorCatcherConfigs;
             LastModifierEmail = lastModifierEmail;
             Name = name;

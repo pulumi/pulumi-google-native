@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     public sealed class GetTagTemplateResult
     {
         /// <summary>
+        /// Optional. Transfer status of the TagTemplate
+        /// </summary>
+        public readonly string DataplexTransferStatus;
+        /// <summary>
         /// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
         /// </summary>
         public readonly string DisplayName;
@@ -76,12 +80,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly bool IsPubliclyReadable;
         /// <summary>
-        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        /// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
         private GetTagTemplateResult(
+            string dataplexTransferStatus,
+
             string displayName,
 
             ImmutableDictionary<string, string> fields,
@@ -90,6 +96,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             string name)
         {
+            DataplexTransferStatus = dataplexTransferStatus;
             DisplayName = displayName;
             Fields = fields;
             IsPubliclyReadable = isPubliclyReadable;

@@ -50,10 +50,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<bool> EnableUpdateCreate { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
         [Output("fhirStoreId")]
-        public Output<string?> FhirStoreId { get; private set; } = null!;
+        public Output<string> FhirStoreId { get; private set; } = null!;
 
         /// <summary>
         /// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -129,6 +129,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
                 ReplaceOnChanges =
                 {
                     "datasetId",
+                    "fhirStoreId",
                     "location",
                     "project",
                 },
@@ -188,10 +189,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Input<bool>? EnableUpdateCreate { get; set; }
 
         /// <summary>
-        /// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
-        [Input("fhirStoreId")]
-        public Input<string>? FhirStoreId { get; set; }
+        [Input("fhirStoreId", required: true)]
+        public Input<string> FhirStoreId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -250,8 +251,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// <summary>
         /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         /// </summary>
-        [Input("version")]
-        public Input<Pulumi.GoogleNative.Healthcare.V1.FhirStoreVersion>? Version { get; set; }
+        [Input("version", required: true)]
+        public Input<Pulumi.GoogleNative.Healthcare.V1.FhirStoreVersion> Version { get; set; } = null!;
 
         public FhirStoreArgs()
         {

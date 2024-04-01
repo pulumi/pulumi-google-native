@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
     public sealed class GoogleCloudAiplatformV1FeatureViewBigQuerySourceResponse
     {
         /// <summary>
-        /// Columns to construct entity_id / row keys. Start by supporting 1 only.
+        /// Columns to construct entity_id / row keys.
         /// </summary>
         public readonly ImmutableArray<string> EntityIdColumns;
         /// <summary>

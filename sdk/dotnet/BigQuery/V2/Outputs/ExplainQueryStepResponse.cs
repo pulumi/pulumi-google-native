@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// An operation within a stage.
+    /// </summary>
     [OutputType]
     public sealed class ExplainQueryStepResponse
     {
@@ -18,7 +21,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Human-readable stage descriptions.
+        /// Human-readable description of the step(s).
         /// </summary>
         public readonly ImmutableArray<string> Substeps;
 

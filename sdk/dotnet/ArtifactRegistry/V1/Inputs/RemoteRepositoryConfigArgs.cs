@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+        /// </summary>
+        [Input("disableUpstreamValidation")]
+        public Input<bool>? DisableUpstreamValidation { get; set; }
+
+        /// <summary>
         /// Specific settings for a Docker remote repository.
         /// </summary>
         [Input("dockerRepository")]

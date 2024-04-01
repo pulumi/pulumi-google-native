@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2.Inputs
     public sealed class HeaderOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// header embodying a key and a value.
+        /// Header embodying a key and a value. Do not put business sensitive or personally identifying data in the HTTP Header Override Configuration or other similar fields in accordance with Section 12 (Resource Fields) of the [Service Specific Terms](https://cloud.google.com/terms/service-terms).
         /// </summary>
         [Input("header")]
         public Input<Inputs.HeaderArgs>? Header { get; set; }

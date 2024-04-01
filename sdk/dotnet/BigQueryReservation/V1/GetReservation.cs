@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public readonly Outputs.AutoscaleResponse Autoscale;
         /// <summary>
-        /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         /// </summary>
         public readonly string Concurrency;
         /// <summary>
@@ -91,6 +91,18 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// </summary>
+        public readonly string OriginalPrimaryLocation;
+        /// <summary>
+        /// Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// </summary>
+        public readonly string PrimaryLocation;
+        /// <summary>
+        /// Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
+        /// </summary>
+        public readonly string SecondaryLocation;
         /// <summary>
         /// Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes.
         /// </summary>
@@ -116,6 +128,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
 
             string name,
 
+            string originalPrimaryLocation,
+
+            string primaryLocation,
+
+            string secondaryLocation,
+
             string slotCapacity,
 
             string updateTime)
@@ -127,6 +145,9 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
             IgnoreIdleSlots = ignoreIdleSlots;
             MultiRegionAuxiliary = multiRegionAuxiliary;
             Name = name;
+            OriginalPrimaryLocation = originalPrimaryLocation;
+            PrimaryLocation = primaryLocation;
+            SecondaryLocation = secondaryLocation;
             SlotCapacity = slotCapacity;
             UpdateTime = updateTime;
         }

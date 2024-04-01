@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
     /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:Sink")]
     public partial class Sink : global::Pulumi.CustomResource
@@ -70,7 +71,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<bool> IncludeChildren { get; private set; } = null!;
 
         /// <summary>
-        /// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        /// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+        /// </summary>
+        [Output("interceptChildren")]
+        public Output<bool> InterceptChildren { get; private set; } = null!;
+
+        /// <summary>
+        /// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -83,6 +90,12 @@ namespace Pulumi.GoogleNative.Logging.V2
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+        /// </summary>
+        [Output("resourceName")]
+        public Output<string> ResourceName { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same parent. For more information, see writer_identity in LogSink.
@@ -206,10 +219,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Input<bool>? IncludeChildren { get; set; }
 
         /// <summary>
-        /// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        /// Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("interceptChildren")]
+        public Input<bool>? InterceptChildren { get; set; }
 
         /// <summary>
         /// Deprecated. This field is unused.

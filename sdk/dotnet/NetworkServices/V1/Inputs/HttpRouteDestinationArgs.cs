@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     public sealed class HttpRouteDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+        /// </summary>
+        [Input("requestHeaderModifier")]
+        public Input<Inputs.HttpRouteHeaderModifierArgs>? RequestHeaderModifier { get; set; }
+
+        /// <summary>
+        /// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+        /// </summary>
+        [Input("responseHeaderModifier")]
+        public Input<Inputs.HttpRouteHeaderModifierArgs>? ResponseHeaderModifier { get; set; }
+
+        /// <summary>
         /// The URL of a BackendService to route traffic to.
         /// </summary>
         [Input("serviceName")]

@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     public partial class Ruleset : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+        /// </summary>
+        [Output("attachmentPoint")]
+        public Output<string> AttachmentPoint { get; private set; } = null!;
+
+        /// <summary>
         /// Time the `Ruleset` was created.
         /// </summary>
         [Output("createTime")]
@@ -92,6 +98,12 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
 
     public sealed class RulesetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+        /// </summary>
+        [Input("attachmentPoint")]
+        public Input<string>? AttachmentPoint { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 

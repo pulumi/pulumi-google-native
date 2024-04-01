@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
+        /// Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+        /// </summary>
+        public readonly bool EnableImageStreaming;
+        /// <summary>
         /// Overrides the `ENTRYPOINT` specified in the container.
         /// </summary>
         public readonly string Entrypoint;
@@ -37,11 +41,11 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string Options;
         /// <summary>
-        /// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+        /// Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+        /// Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         /// </summary>
         public readonly string Username;
         /// <summary>
@@ -54,6 +58,8 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
             bool blockExternalNetwork,
 
             ImmutableArray<string> commands,
+
+            bool enableImageStreaming,
 
             string entrypoint,
 
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         {
             BlockExternalNetwork = blockExternalNetwork;
             Commands = commands;
+            EnableImageStreaming = enableImageStreaming;
             Entrypoint = entrypoint;
             ImageUri = imageUri;
             Options = options;

@@ -49,6 +49,51 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1
     }
 
     /// <summary>
+    /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+    /// </summary>
+    [EnumType]
+    public readonly struct ComputeEnginePreferencesPersistentDiskType : IEquatable<ComputeEnginePreferencesPersistentDiskType>
+    {
+        private readonly string _value;
+
+        private ComputeEnginePreferencesPersistentDiskType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified (default value). Selecting this value allows the system to use any disk type according to reported usage. This a good value to start with.
+        /// </summary>
+        public static ComputeEnginePreferencesPersistentDiskType PersistentDiskTypeUnspecified { get; } = new ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Standard HDD Persistent Disk.
+        /// </summary>
+        public static ComputeEnginePreferencesPersistentDiskType PersistentDiskTypeStandard { get; } = new ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_STANDARD");
+        /// <summary>
+        /// Balanced Persistent Disk.
+        /// </summary>
+        public static ComputeEnginePreferencesPersistentDiskType PersistentDiskTypeBalanced { get; } = new ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_BALANCED");
+        /// <summary>
+        /// SSD Persistent Disk.
+        /// </summary>
+        public static ComputeEnginePreferencesPersistentDiskType PersistentDiskTypeSsd { get; } = new ComputeEnginePreferencesPersistentDiskType("PERSISTENT_DISK_TYPE_SSD");
+
+        public static bool operator ==(ComputeEnginePreferencesPersistentDiskType left, ComputeEnginePreferencesPersistentDiskType right) => left.Equals(right);
+        public static bool operator !=(ComputeEnginePreferencesPersistentDiskType left, ComputeEnginePreferencesPersistentDiskType right) => !left.Equals(right);
+
+        public static explicit operator string(ComputeEnginePreferencesPersistentDiskType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ComputeEnginePreferencesPersistentDiskType other && Equals(other);
+        public bool Equals(ComputeEnginePreferencesPersistentDiskType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The payload format.
     /// </summary>
     [EnumType]
@@ -306,6 +351,10 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1
         /// Third-party owned sources.
         /// </summary>
         public static SourceType SourceTypeCustom { get; } = new SourceType("SOURCE_TYPE_CUSTOM");
+        /// <summary>
+        /// Discovery clients
+        /// </summary>
+        public static SourceType SourceTypeDiscoveryClient { get; } = new SourceType("SOURCE_TYPE_DISCOVERY_CLIENT");
 
         public static bool operator ==(SourceType left, SourceType right) => left.Equals(right);
         public static bool operator !=(SourceType left, SourceType right) => !left.Equals(right);

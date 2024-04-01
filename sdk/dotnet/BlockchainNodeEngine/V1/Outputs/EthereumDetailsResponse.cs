@@ -29,10 +29,6 @@ namespace Pulumi.GoogleNative.BlockchainNodeEngine.V1.Outputs
         /// </summary>
         public readonly bool ApiEnableDebug;
         /// <summary>
-        /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-        /// </summary>
-        public readonly string BeaconFeeRecipient;
-        /// <summary>
         /// Immutable. The consensus client.
         /// </summary>
         public readonly string ConsensusClient;
@@ -52,6 +48,10 @@ namespace Pulumi.GoogleNative.BlockchainNodeEngine.V1.Outputs
         /// Immutable. The type of Ethereum node.
         /// </summary>
         public readonly string NodeType;
+        /// <summary>
+        /// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+        /// </summary>
+        public readonly Outputs.ValidatorConfigResponse ValidatorConfig;
 
         [OutputConstructor]
         private EthereumDetailsResponse(
@@ -61,8 +61,6 @@ namespace Pulumi.GoogleNative.BlockchainNodeEngine.V1.Outputs
 
             bool apiEnableDebug,
 
-            string beaconFeeRecipient,
-
             string consensusClient,
 
             string executionClient,
@@ -71,17 +69,19 @@ namespace Pulumi.GoogleNative.BlockchainNodeEngine.V1.Outputs
 
             string network,
 
-            string nodeType)
+            string nodeType,
+
+            Outputs.ValidatorConfigResponse validatorConfig)
         {
             AdditionalEndpoints = additionalEndpoints;
             ApiEnableAdmin = apiEnableAdmin;
             ApiEnableDebug = apiEnableDebug;
-            BeaconFeeRecipient = beaconFeeRecipient;
             ConsensusClient = consensusClient;
             ExecutionClient = executionClient;
             GethDetails = gethDetails;
             Network = network;
             NodeType = nodeType;
+            ValidatorConfig = validatorConfig;
         }
     }
 }

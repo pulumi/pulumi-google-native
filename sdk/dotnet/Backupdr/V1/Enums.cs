@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Backupdr.V1
     }
 
     /// <summary>
-    /// Required. The type of the ManagementServer resource.
+    /// Optional. The type of the ManagementServer resource.
     /// </summary>
     [EnumType]
     public readonly struct ManagementServerType : IEquatable<ManagementServerType>

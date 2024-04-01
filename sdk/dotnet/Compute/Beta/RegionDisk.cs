@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ProvisionedIops { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         [Output("provisionedThroughput")]
         public Output<string> ProvisionedThroughput { get; private set; } = null!;
@@ -200,6 +200,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("resourceStatus")]
         public Output<Outputs.DiskResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.
@@ -302,6 +308,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Output("storagePool")]
+        public Output<string> StoragePool { get; private set; } = null!;
 
         /// <summary>
         /// [Deprecated] Storage type of the persistent disk.
@@ -519,7 +531,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<string>? ProvisionedThroughput { get; set; }
@@ -604,6 +616,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("sourceStorageObject")]
         public Input<string>? SourceStorageObject { get; set; }
+
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
 
         /// <summary>
         /// [Deprecated] Storage type of the persistent disk.

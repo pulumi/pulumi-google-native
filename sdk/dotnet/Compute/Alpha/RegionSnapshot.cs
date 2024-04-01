@@ -142,6 +142,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// [Output only] ResourceStatus of the Snapshot resource
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.SnapshotResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]

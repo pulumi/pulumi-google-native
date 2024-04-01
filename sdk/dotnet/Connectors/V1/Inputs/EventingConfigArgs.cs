@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<Inputs.AuthConfigArgs>? AuthConfig { get; set; }
 
         /// <summary>
+        /// Optional. Dead letter configuration for eventing of a connection.
+        /// </summary>
+        [Input("deadLetterConfig")]
+        public Input<Inputs.DeadLetterConfigArgs>? DeadLetterConfig { get; set; }
+
+        /// <summary>
         /// Enrichment Enabled.
         /// </summary>
         [Input("enrichmentEnabled")]
@@ -56,6 +62,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         /// </summary>
         [Input("privateConnectivityEnabled")]
         public Input<bool>? PrivateConnectivityEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Proxy for Eventing auto-registration.
+        /// </summary>
+        [Input("proxyDestinationConfig")]
+        public Input<Inputs.DestinationConfigArgs>? ProxyDestinationConfig { get; set; }
 
         /// <summary>
         /// Registration endpoint for auto registration.

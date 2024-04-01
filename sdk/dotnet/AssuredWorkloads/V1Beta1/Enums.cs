@@ -145,6 +145,14 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// Assured Workloads for Japan Regions
         /// </summary>
         public static WorkloadComplianceRegime JpRegionsAndSupport { get; } = new WorkloadComplianceRegime("JP_REGIONS_AND_SUPPORT");
+        /// <summary>
+        /// KSA R5 Controls.
+        /// </summary>
+        public static WorkloadComplianceRegime KsaRegionsAndSupportWithSovereigntyControls { get; } = new WorkloadComplianceRegime("KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS");
+        /// <summary>
+        /// Assured Workloads Free Regions
+        /// </summary>
+        public static WorkloadComplianceRegime FreeRegions { get; } = new WorkloadComplianceRegime("FREE_REGIONS");
 
         public static bool operator ==(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => left.Equals(right);
         public static bool operator !=(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => !left.Equals(right);

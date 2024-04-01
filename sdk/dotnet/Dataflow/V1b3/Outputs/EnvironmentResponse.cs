@@ -61,11 +61,15 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly string ShuffleMode;
         /// <summary>
+        /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+        /// </summary>
+        public readonly string StreamingMode;
+        /// <summary>
         /// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         /// </summary>
         public readonly string TempStoragePrefix;
         /// <summary>
-        /// Whether the job uses the new streaming engine billing model based on resource usage.
+        /// Whether the job uses the Streaming Engine resource-based billing model.
         /// </summary>
         public readonly bool UseStreamingEngineResourceBasedBilling;
         /// <summary>
@@ -113,6 +117,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string shuffleMode,
 
+            string streamingMode,
+
             string tempStoragePrefix,
 
             bool useStreamingEngineResourceBasedBilling,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
             ServiceKmsKeyName = serviceKmsKeyName;
             ServiceOptions = serviceOptions;
             ShuffleMode = shuffleMode;
+            StreamingMode = streamingMode;
             TempStoragePrefix = tempStoragePrefix;
             UseStreamingEngineResourceBasedBilling = useStreamingEngineResourceBasedBilling;
             UserAgent = userAgent;

@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
     public sealed class ExtensionChainExtensionResponse
     {
         /// <summary>
-        /// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        /// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
         /// </summary>
         public readonly string Authority;
         /// <summary>
-        /// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+        /// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
         /// </summary>
         public readonly bool FailOpen;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        /// The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
         /// </summary>
         public readonly string Service;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SupportedEvents;
         /// <summary>
-        /// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        /// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
         /// </summary>
         public readonly string Timeout;
 

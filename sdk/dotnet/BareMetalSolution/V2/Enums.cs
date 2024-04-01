@@ -380,6 +380,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// High throughput aggregates.
         /// </summary>
         public static VolumeConfigPerformanceTier VolumePerformanceTierHt { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_HT");
+        /// <summary>
+        /// QoS 2.0 high performance storage.
+        /// </summary>
+        public static VolumeConfigPerformanceTier VolumePerformanceTierQos2Performance { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE");
 
         public static bool operator ==(VolumeConfigPerformanceTier left, VolumeConfigPerformanceTier right) => left.Equals(right);
         public static bool operator !=(VolumeConfigPerformanceTier left, VolumeConfigPerformanceTier right) => !left.Equals(right);

@@ -29,13 +29,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Describes this view.
+        /// Optional. Describes this view.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        /// Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
         /// </summary>
         [Output("filter")]
         public Output<string> Filter { get; private set; } = null!;
@@ -120,25 +120,19 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Input<string> BucketId { get; set; } = null!;
 
         /// <summary>
-        /// Describes this view.
+        /// Optional. Describes this view.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        /// Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
-
-        /// <summary>
-        /// The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.

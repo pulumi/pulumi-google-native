@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. Information specifying a Custom Target.
+        /// </summary>
+        public readonly Outputs.CustomTargetResponse CustomTarget;
+        /// <summary>
         /// Optional. The deploy parameters to use for this target.
         /// </summary>
         public readonly ImmutableDictionary<string, string> DeployParameters;
@@ -136,6 +140,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             string createTime,
 
+            Outputs.CustomTargetResponse customTarget,
+
             ImmutableDictionary<string, string> deployParameters,
 
             string description,
@@ -165,6 +171,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Annotations = annotations;
             AnthosCluster = anthosCluster;
             CreateTime = createTime;
+            CustomTarget = customTarget;
             DeployParameters = deployParameters;
             Description = description;
             Etag = etag;

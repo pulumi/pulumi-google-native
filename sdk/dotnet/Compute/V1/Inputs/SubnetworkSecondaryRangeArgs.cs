@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("rangeName")]
         public Input<string>? RangeName { get; set; }
 
+        /// <summary>
+        /// The URL of the reserved internal range.
+        /// </summary>
+        [Input("reservedInternalRange")]
+        public Input<string>? ReservedInternalRange { get; set; }
+
         public SubnetworkSecondaryRangeArgs()
         {
         }

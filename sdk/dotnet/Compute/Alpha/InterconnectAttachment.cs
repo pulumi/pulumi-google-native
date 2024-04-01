@@ -154,6 +154,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<int> Mtu { get; private set; } = null!;
 
         /// <summary>
+        /// Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+        /// </summary>
+        [Output("multicastEnabled")]
+        public Output<bool> MulticastEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
@@ -412,6 +418,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
+
+        /// <summary>
+        /// Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+        /// </summary>
+        [Input("multicastEnabled")]
+        public Input<bool>? MulticastEnabled { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<string>? ProvisionedThroughput { get; set; }

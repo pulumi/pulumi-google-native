@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Inputs
         public Input<Inputs.ImageFreshnessCheckArgs>? ImageFreshnessCheck { get; set; }
 
         /// <summary>
+        /// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+        /// </summary>
+        [Input("sigstoreSignatureCheck")]
+        public Input<Inputs.SigstoreSignatureCheckArgs>? SigstoreSignatureCheck { get; set; }
+
+        /// <summary>
         /// Optional. Require a SimpleSigning-type attestation for every image in the deployment.
         /// </summary>
         [Input("simpleSigningAttestationCheck")]

@@ -10,19 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// The type of a struct parameter.
+    /// </summary>
     [OutputType]
     public sealed class QueryParameterTypeStructTypesItemResponse
     {
         /// <summary>
-        /// [Optional] Human-oriented description of the field.
+        /// Optional. Human-oriented description of the field.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// [Optional] The name of this field.
+        /// Optional. The name of this field.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Required] The type of this field.
+        /// The type of this field.
         /// </summary>
         public readonly Outputs.QueryParameterTypeResponse Type;
 

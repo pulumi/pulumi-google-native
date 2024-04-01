@@ -48,6 +48,393 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
+    /// </summary>
+    [EnumType]
+    public readonly struct DataStoreContentConfig : IEquatable<DataStoreContentConfig>
+    {
+        private readonly string _value;
+
+        private DataStoreContentConfig(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static DataStoreContentConfig ContentConfigUnspecified { get; } = new DataStoreContentConfig("CONTENT_CONFIG_UNSPECIFIED");
+        /// <summary>
+        /// Only contains documents without any Document.content.
+        /// </summary>
+        public static DataStoreContentConfig NoContent { get; } = new DataStoreContentConfig("NO_CONTENT");
+        /// <summary>
+        /// Only contains documents with Document.content.
+        /// </summary>
+        public static DataStoreContentConfig ContentRequired { get; } = new DataStoreContentConfig("CONTENT_REQUIRED");
+        /// <summary>
+        /// The data store is used for public website search.
+        /// </summary>
+        public static DataStoreContentConfig PublicWebsite { get; } = new DataStoreContentConfig("PUBLIC_WEBSITE");
+
+        public static bool operator ==(DataStoreContentConfig left, DataStoreContentConfig right) => left.Equals(right);
+        public static bool operator !=(DataStoreContentConfig left, DataStoreContentConfig right) => !left.Equals(right);
+
+        public static explicit operator string(DataStoreContentConfig value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataStoreContentConfig other && Equals(other);
+        public bool Equals(DataStoreContentConfig other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The state of the Conversation.
+    /// </summary>
+    [EnumType]
+    public readonly struct DataStoreConversationState : IEquatable<DataStoreConversationState>
+    {
+        private readonly string _value;
+
+        private DataStoreConversationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown.
+        /// </summary>
+        public static DataStoreConversationState StateUnspecified { get; } = new DataStoreConversationState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// Conversation is currently open.
+        /// </summary>
+        public static DataStoreConversationState InProgress { get; } = new DataStoreConversationState("IN_PROGRESS");
+        /// <summary>
+        /// Conversation has been completed.
+        /// </summary>
+        public static DataStoreConversationState Completed { get; } = new DataStoreConversationState("COMPLETED");
+
+        public static bool operator ==(DataStoreConversationState left, DataStoreConversationState right) => left.Equals(right);
+        public static bool operator !=(DataStoreConversationState left, DataStoreConversationState right) => !left.Equals(right);
+
+        public static explicit operator string(DataStoreConversationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataStoreConversationState other && Equals(other);
+        public bool Equals(DataStoreConversationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Immutable. The industry vertical that the data store registers.
+    /// </summary>
+    [EnumType]
+    public readonly struct DataStoreIndustryVertical : IEquatable<DataStoreIndustryVertical>
+    {
+        private readonly string _value;
+
+        private DataStoreIndustryVertical(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value used when unset.
+        /// </summary>
+        public static DataStoreIndustryVertical IndustryVerticalUnspecified { get; } = new DataStoreIndustryVertical("INDUSTRY_VERTICAL_UNSPECIFIED");
+        /// <summary>
+        /// The generic vertical for documents that are not specific to any industry vertical.
+        /// </summary>
+        public static DataStoreIndustryVertical Generic { get; } = new DataStoreIndustryVertical("GENERIC");
+        /// <summary>
+        /// The media industry vertical.
+        /// </summary>
+        public static DataStoreIndustryVertical Media { get; } = new DataStoreIndustryVertical("MEDIA");
+        /// <summary>
+        /// The healthcare FHIR vertical.
+        /// </summary>
+        public static DataStoreIndustryVertical HealthcareFhir { get; } = new DataStoreIndustryVertical("HEALTHCARE_FHIR");
+
+        public static bool operator ==(DataStoreIndustryVertical left, DataStoreIndustryVertical right) => left.Equals(right);
+        public static bool operator !=(DataStoreIndustryVertical left, DataStoreIndustryVertical right) => !left.Equals(right);
+
+        public static explicit operator string(DataStoreIndustryVertical value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataStoreIndustryVertical other && Equals(other);
+        public bool Equals(DataStoreIndustryVertical other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct DataStoreSolutionTypesItem : IEquatable<DataStoreSolutionTypesItem>
+    {
+        private readonly string _value;
+
+        private DataStoreSolutionTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static DataStoreSolutionTypesItem SolutionTypeUnspecified { get; } = new DataStoreSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Used for Recommendations AI.
+        /// </summary>
+        public static DataStoreSolutionTypesItem SolutionTypeRecommendation { get; } = new DataStoreSolutionTypesItem("SOLUTION_TYPE_RECOMMENDATION");
+        /// <summary>
+        /// Used for Discovery Search.
+        /// </summary>
+        public static DataStoreSolutionTypesItem SolutionTypeSearch { get; } = new DataStoreSolutionTypesItem("SOLUTION_TYPE_SEARCH");
+        /// <summary>
+        /// Used for use cases related to the Generative AI agent.
+        /// </summary>
+        public static DataStoreSolutionTypesItem SolutionTypeChat { get; } = new DataStoreSolutionTypesItem("SOLUTION_TYPE_CHAT");
+        /// <summary>
+        /// Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+        /// </summary>
+        public static DataStoreSolutionTypesItem SolutionTypeGenerativeChat { get; } = new DataStoreSolutionTypesItem("SOLUTION_TYPE_GENERATIVE_CHAT");
+
+        public static bool operator ==(DataStoreSolutionTypesItem left, DataStoreSolutionTypesItem right) => left.Equals(right);
+        public static bool operator !=(DataStoreSolutionTypesItem left, DataStoreSolutionTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(DataStoreSolutionTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataStoreSolutionTypesItem other && Equals(other);
+        public bool Equals(DataStoreSolutionTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The state of the Conversation.
+    /// </summary>
+    [EnumType]
+    public readonly struct EngineConversationState : IEquatable<EngineConversationState>
+    {
+        private readonly string _value;
+
+        private EngineConversationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown.
+        /// </summary>
+        public static EngineConversationState StateUnspecified { get; } = new EngineConversationState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// Conversation is currently open.
+        /// </summary>
+        public static EngineConversationState InProgress { get; } = new EngineConversationState("IN_PROGRESS");
+        /// <summary>
+        /// Conversation has been completed.
+        /// </summary>
+        public static EngineConversationState Completed { get; } = new EngineConversationState("COMPLETED");
+
+        public static bool operator ==(EngineConversationState left, EngineConversationState right) => left.Equals(right);
+        public static bool operator !=(EngineConversationState left, EngineConversationState right) => !left.Equals(right);
+
+        public static explicit operator string(EngineConversationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EngineConversationState other && Equals(other);
+        public bool Equals(EngineConversationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+    /// </summary>
+    [EnumType]
+    public readonly struct EngineIndustryVertical : IEquatable<EngineIndustryVertical>
+    {
+        private readonly string _value;
+
+        private EngineIndustryVertical(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value used when unset.
+        /// </summary>
+        public static EngineIndustryVertical IndustryVerticalUnspecified { get; } = new EngineIndustryVertical("INDUSTRY_VERTICAL_UNSPECIFIED");
+        /// <summary>
+        /// The generic vertical for documents that are not specific to any industry vertical.
+        /// </summary>
+        public static EngineIndustryVertical Generic { get; } = new EngineIndustryVertical("GENERIC");
+        /// <summary>
+        /// The media industry vertical.
+        /// </summary>
+        public static EngineIndustryVertical Media { get; } = new EngineIndustryVertical("MEDIA");
+        /// <summary>
+        /// The healthcare FHIR vertical.
+        /// </summary>
+        public static EngineIndustryVertical HealthcareFhir { get; } = new EngineIndustryVertical("HEALTHCARE_FHIR");
+
+        public static bool operator ==(EngineIndustryVertical left, EngineIndustryVertical right) => left.Equals(right);
+        public static bool operator !=(EngineIndustryVertical left, EngineIndustryVertical right) => !left.Equals(right);
+
+        public static explicit operator string(EngineIndustryVertical value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EngineIndustryVertical other && Equals(other);
+        public bool Equals(EngineIndustryVertical other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. The solutions of the engine.
+    /// </summary>
+    [EnumType]
+    public readonly struct EngineSolutionType : IEquatable<EngineSolutionType>
+    {
+        private readonly string _value;
+
+        private EngineSolutionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static EngineSolutionType SolutionTypeUnspecified { get; } = new EngineSolutionType("SOLUTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Used for Recommendations AI.
+        /// </summary>
+        public static EngineSolutionType SolutionTypeRecommendation { get; } = new EngineSolutionType("SOLUTION_TYPE_RECOMMENDATION");
+        /// <summary>
+        /// Used for Discovery Search.
+        /// </summary>
+        public static EngineSolutionType SolutionTypeSearch { get; } = new EngineSolutionType("SOLUTION_TYPE_SEARCH");
+        /// <summary>
+        /// Used for use cases related to the Generative AI agent.
+        /// </summary>
+        public static EngineSolutionType SolutionTypeChat { get; } = new EngineSolutionType("SOLUTION_TYPE_CHAT");
+        /// <summary>
+        /// Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+        /// </summary>
+        public static EngineSolutionType SolutionTypeGenerativeChat { get; } = new EngineSolutionType("SOLUTION_TYPE_GENERATIVE_CHAT");
+
+        public static bool operator ==(EngineSolutionType left, EngineSolutionType right) => left.Equals(right);
+        public static bool operator !=(EngineSolutionType left, EngineSolutionType right) => !left.Equals(right);
+
+        public static explicit operator string(EngineSolutionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EngineSolutionType other && Equals(other);
+        public bool Equals(EngineSolutionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem : IEquatable<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value when the enum is unspecified. This is invalid to use.
+        /// </summary>
+        public static GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem SearchAddOnUnspecified { get; } = new GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem("SEARCH_ADD_ON_UNSPECIFIED");
+        /// <summary>
+        /// Large language model add-on.
+        /// </summary>
+        public static GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem SearchAddOnLlm { get; } = new GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem("SEARCH_ADD_ON_LLM");
+
+        public static bool operator ==(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem left, GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem left, GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem other && Equals(other);
+        public bool Equals(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier : IEquatable<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value when the enum is unspecified. This is invalid to use.
+        /// </summary>
+        public static GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier SearchTierUnspecified { get; } = new GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier("SEARCH_TIER_UNSPECIFIED");
+        /// <summary>
+        /// Standard tier.
+        /// </summary>
+        public static GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier SearchTierStandard { get; } = new GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier("SEARCH_TIER_STANDARD");
+        /// <summary>
+        /// Enterprise tier.
+        /// </summary>
+        public static GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier SearchTierEnterprise { get; } = new GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier("SEARCH_TIER_ENTERPRISE");
+
+        public static bool operator ==(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier left, GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier left, GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier other && Equals(other);
+        public bool Equals(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem : IEquatable<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem>
     {
@@ -91,6 +478,47 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem other && Equals(other);
         public bool Equals(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of the target site, e.g., whether the site is to be included or excluded.
+    /// </summary>
+    [EnumType]
+    public readonly struct TargetSiteType : IEquatable<TargetSiteType>
+    {
+        private readonly string _value;
+
+        private TargetSiteType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This value is unused. In this case, server behavior defaults to Type.INCLUDE.
+        /// </summary>
+        public static TargetSiteType TypeUnspecified { get; } = new TargetSiteType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Include the target site.
+        /// </summary>
+        public static TargetSiteType Include { get; } = new TargetSiteType("INCLUDE");
+        /// <summary>
+        /// Exclude the target site.
+        /// </summary>
+        public static TargetSiteType Exclude { get; } = new TargetSiteType("EXCLUDE");
+
+        public static bool operator ==(TargetSiteType left, TargetSiteType right) => left.Equals(right);
+        public static bool operator !=(TargetSiteType left, TargetSiteType right) => !left.Equals(right);
+
+        public static explicit operator string(TargetSiteType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TargetSiteType other && Equals(other);
+        public bool Equals(TargetSiteType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

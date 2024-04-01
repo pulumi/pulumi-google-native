@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Metastore.V1.Inputs
     public sealed class EncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+        /// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }

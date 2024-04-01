@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     public sealed class GetTagTemplateResult
     {
         /// <summary>
+        /// Transfer status of the TagTemplate
+        /// </summary>
+        public readonly string DataplexTransferStatus;
+        /// <summary>
         /// The display name for this template. Defaults to an empty string.
         /// </summary>
         public readonly string DisplayName;
@@ -72,18 +76,21 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Fields;
         /// <summary>
-        /// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+        /// Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
         private GetTagTemplateResult(
+            string dataplexTransferStatus,
+
             string displayName,
 
             ImmutableDictionary<string, string> fields,
 
             string name)
         {
+            DataplexTransferStatus = dataplexTransferStatus;
             DisplayName = displayName;
             Fields = fields;
             Name = name;

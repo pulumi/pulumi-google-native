@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string EndTimestamp;
         /// <summary>
+        /// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
+        /// </summary>
+        public readonly ImmutableArray<string> ExistingReservations;
+        /// <summary>
         /// Type of the resource. Always compute#commitment for commitments.
         /// </summary>
         public readonly string Kind;
@@ -108,7 +112,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// List of create-on-create reseravtions for this commitment.
+        /// List of create-on-create reservations for this commitment.
         /// </summary>
         public readonly ImmutableArray<Outputs.ReservationResponse> Reservations;
         /// <summary>
@@ -152,6 +156,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string endTimestamp,
 
+            ImmutableArray<string> existingReservations,
+
             string kind,
 
             Outputs.LicenseResourceCommitmentResponse licenseResource,
@@ -185,6 +191,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             CreationTimestamp = creationTimestamp;
             Description = description;
             EndTimestamp = endTimestamp;
+            ExistingReservations = existingReservations;
             Kind = kind;
             LicenseResource = licenseResource;
             MergeSourceCommitments = mergeSourceCommitments;

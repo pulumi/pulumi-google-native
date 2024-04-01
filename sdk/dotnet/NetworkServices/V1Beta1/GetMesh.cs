@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        /// </summary>
+        public readonly string EnvoyHeaders;
+        /// <summary>
         /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
         /// </summary>
         public readonly int InterceptionPort;
@@ -98,6 +102,8 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 
             string description,
 
+            string envoyHeaders,
+
             int interceptionPort,
 
             ImmutableDictionary<string, string> labels,
@@ -110,6 +116,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         {
             CreateTime = createTime;
             Description = description;
+            EnvoyHeaders = envoyHeaders;
             InterceptionPort = interceptionPort;
             Labels = labels;
             Name = name;

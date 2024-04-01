@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
+        /// Optional. Format of the AzureAD groups that the client wants for auth.
+        /// </summary>
+        [Input("groupFormat")]
+        public Input<string>? GroupFormat { get; set; }
+
+        /// <summary>
         /// The redirect URL that kubectl uses for authorization.
         /// </summary>
         [Input("kubectlRedirectUri")]
@@ -38,6 +44,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         /// </summary>
         [Input("tenant")]
         public Input<string>? Tenant { get; set; }
+
+        /// <summary>
+        /// Optional. Claim in the AzureAD ID Token that holds the user details.
+        /// </summary>
+        [Input("userClaim")]
+        public Input<string>? UserClaim { get; set; }
 
         public IdentityServiceAzureADConfigArgs()
         {

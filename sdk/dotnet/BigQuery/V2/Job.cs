@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
-    /// Starts a new asynchronous job. Requires the Can View project role.
+    /// Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Job")]
     public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// [Required] Describes the job configuration.
+        /// Describes the job configuration.
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.JobConfigurationResponse> Configuration { get; private set; } = null!;
@@ -32,10 +32,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
         /// </summary>
         [Output("jobCreationReason")]
-        public Output<object> JobCreationReason { get; private set; } = null!;
+        public Output<Outputs.JobCreationReasonResponse> JobCreationReason { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] Reference describing the unique-per-user name of the job.
+        /// Optional. Reference describing the unique-per-user name of the job.
         /// </summary>
         [Output("jobReference")]
         public Output<Outputs.JobReferenceResponse> JobReference { get; private set; } = null!;
@@ -46,11 +46,17 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
+        /// <summary>
+        /// [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+        /// </summary>
+        [Output("principalSubject")]
+        public Output<string> PrincipalSubject { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A URL that can be used to access this resource again.
+        /// A URL that can be used to access the resource again.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
@@ -81,7 +87,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Job(string name, JobArgs? args = null, CustomResourceOptions? options = null)
+        public Job(string name, JobArgs args, CustomResourceOptions? options = null)
             : base("google-native:bigquery/v2:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -123,13 +129,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Required] Describes the job configuration.
+        /// Describes the job configuration.
         /// </summary>
-        [Input("configuration")]
-        public Input<Inputs.JobConfigurationArgs>? Configuration { get; set; }
+        [Input("configuration", required: true)]
+        public Input<Inputs.JobConfigurationArgs> Configuration { get; set; } = null!;
 
         /// <summary>
-        /// [Optional] Reference describing the unique-per-user name of the job.
+        /// Optional. Reference describing the unique-per-user name of the job.
         /// </summary>
         [Input("jobReference")]
         public Input<Inputs.JobReferenceArgs>? JobReference { get; set; }

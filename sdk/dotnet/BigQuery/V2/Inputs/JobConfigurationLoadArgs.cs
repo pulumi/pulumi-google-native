@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// JobConfigurationLoad contains the configuration properties for loading data into a destination table.
+    /// </summary>
     public sealed class JobConfigurationLoadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
+        /// Optional. Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
         /// </summary>
         [Input("allowJaggedRows")]
         public Input<bool>? AllowJaggedRows { get; set; }
@@ -25,13 +28,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<bool>? AllowQuotedNewlines { get; set; }
 
         /// <summary>
-        /// [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+        /// Optional. Indicates if we should automatically infer the options and schema for CSV and JSON sources.
         /// </summary>
         [Input("autodetect")]
         public Input<bool>? Autodetect { get; set; }
 
         /// <summary>
-        /// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
+        /// Clustering specification for the destination table.
         /// </summary>
         [Input("clustering")]
         public Input<Inputs.ClusteringArgs>? Clustering { get; set; }
@@ -40,7 +43,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<Inputs.ConnectionPropertyArgs>? _connectionProperties;
 
         /// <summary>
-        /// Connection properties.
+        /// Optional. Connection properties which can modify the load job behavior. Currently, only the 'session_id' connection property is supported, and is used to resolve _SESSION appearing as the dataset id.
         /// </summary>
         public InputList<Inputs.ConnectionPropertyArgs> ConnectionProperties
         {
@@ -49,31 +52,37 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Optional. [Experimental] Configures the load job to only copy files to the destination BigLake managed table with an external storage_uri, without reading file content and writing them to new files. Copying files only is supported when: * source_uris are in the same external storage system as the destination table but they do not overlap with storage_uri of the destination table. * source_format is the same file format as the destination table. * destination_table is an existing BigLake managed table. Its schema does not have default value expression. It schema does not have type parameters other than precision and scale. * No options other than the above are specified.
+        /// </summary>
+        [Input("copyFilesOnly")]
+        public Input<bool>? CopyFilesOnly { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         [Input("createDisposition")]
         public Input<string>? CreateDisposition { get; set; }
 
         /// <summary>
-        /// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs the load job in non-session mode.
+        /// Optional. If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic.
         /// </summary>
         [Input("createSession")]
         public Input<bool>? CreateSession { get; set; }
 
         [Input("decimalTargetTypes")]
-        private InputList<string>? _decimalTargetTypes;
+        private InputList<Pulumi.GoogleNative.BigQuery.V2.JobConfigurationLoadDecimalTargetTypesItem>? _decimalTargetTypes;
 
         /// <summary>
-        /// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -&gt; NUMERIC; (39,9) -&gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -&gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -&gt; BIGNUMERIC; (77,38) -&gt; BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -&gt; NUMERIC; * (39,9) -&gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -&gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -&gt; BIGNUMERIC; * (77,38) -&gt; BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         /// </summary>
-        public InputList<string> DecimalTargetTypes
+        public InputList<Pulumi.GoogleNative.BigQuery.V2.JobConfigurationLoadDecimalTargetTypesItem> DecimalTargetTypes
         {
-            get => _decimalTargetTypes ?? (_decimalTargetTypes = new InputList<string>());
+            get => _decimalTargetTypes ?? (_decimalTargetTypes = new InputList<Pulumi.GoogleNative.BigQuery.V2.JobConfigurationLoadDecimalTargetTypesItem>());
             set => _decimalTargetTypes = value;
         }
 
         /// <summary>
-        /// Custom encryption configuration (e.g., Cloud KMS keys).
+        /// Custom encryption configuration (e.g., Cloud KMS keys)
         /// </summary>
         [Input("destinationEncryptionConfiguration")]
         public Input<Inputs.EncryptionConfigurationArgs>? DestinationEncryptionConfiguration { get; set; }
@@ -85,67 +94,67 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.TableReferenceArgs>? DestinationTable { get; set; }
 
         /// <summary>
-        /// [Beta] [Optional] Properties with which to create the destination table if it is new.
+        /// Optional. [Experimental] Properties with which to create the destination table if it is new.
         /// </summary>
         [Input("destinationTableProperties")]
         public Input<Inputs.DestinationTablePropertiesArgs>? DestinationTableProperties { get; set; }
 
         /// <summary>
-        /// [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
+        /// Optional. The character encoding of the data. The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the `quote` and `fieldDelimiter` properties. If you don't specify an encoding, or if you specify a UTF-8 encoding when the CSV file is not UTF-8 encoded, BigQuery attempts to convert the data to UTF-8. Generally, your data loads successfully, but it may not match byte-for-byte what you expect. To avoid this, specify the correct encoding by using the `--encoding` flag. If BigQuery can't convert a character other than the ASCII `0` character, BigQuery converts the character to the standard Unicode replacement character: �.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
+        /// Optional. The separator character for fields in a CSV file. The separator is interpreted as a single byte. For files encoded in ISO-8859-1, any single character can be used as a separator. For files encoded in UTF-8, characters represented in decimal range 1-127 (U+0001-U+007F) can be used without any modification. UTF-8 characters encoded with multiple bytes (i.e. U+0080 and above) will have only the first byte used for separating fields. The remaining bytes will be treated as a part of the field. BigQuery also supports the escape sequence "\t" (U+0009) to specify a tab separator. The default value is comma (",", U+002C).
         /// </summary>
         [Input("fieldDelimiter")]
         public Input<string>? FieldDelimiter { get; set; }
 
         /// <summary>
-        /// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        /// Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems.
         /// </summary>
         [Input("fileSetSpecType")]
-        public Input<string>? FileSetSpecType { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.JobConfigurationLoadFileSetSpecType>? FileSetSpecType { get; set; }
 
         /// <summary>
-        /// [Optional] Options to configure hive partitioning support.
+        /// Optional. When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
         /// </summary>
         [Input("hivePartitioningOptions")]
         public Input<Inputs.HivePartitioningOptionsArgs>? HivePartitioningOptions { get; set; }
 
         /// <summary>
-        /// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
+        /// Optional. Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names in the table schema Avro, Parquet, ORC: Fields in the file schema that don't exist in the table schema.
         /// </summary>
         [Input("ignoreUnknownValues")]
         public Input<bool>? IgnoreUnknownValues { get; set; }
 
         /// <summary>
-        /// [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
+        /// Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
         /// </summary>
         [Input("jsonExtension")]
-        public Input<string>? JsonExtension { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.JobConfigurationLoadJsonExtension>? JsonExtension { get; set; }
 
         /// <summary>
-        /// [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.
+        /// Optional. The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid. This is only supported for CSV and NEWLINE_DELIMITED_JSON file formats.
         /// </summary>
         [Input("maxBadRecords")]
         public Input<int>? MaxBadRecords { get; set; }
 
         /// <summary>
-        /// [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
+        /// Optional. Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
         /// </summary>
         [Input("nullMarker")]
         public Input<string>? NullMarker { get; set; }
 
         /// <summary>
-        /// [Optional] Options to configure parquet support.
+        /// Optional. Additional properties to set if sourceFormat is set to PARQUET.
         /// </summary>
         [Input("parquetOptions")]
         public Input<Inputs.ParquetOptionsArgs>? ParquetOptions { get; set; }
 
         /// <summary>
-        /// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        /// Optional. When sourceFormat is set to "CSV", this indicates whether the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') are preserved.
         /// </summary>
         [Input("preserveAsciiControlCharacters")]
         public Input<bool>? PreserveAsciiControlCharacters { get; set; }
@@ -163,25 +172,25 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
+        /// Optional. The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character ' " ', use ' "" '. @default "
         /// </summary>
         [Input("quote")]
         public Input<string>? Quote { get; set; }
 
         /// <summary>
-        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         /// </summary>
         [Input("rangePartitioning")]
         public Input<Inputs.RangePartitioningArgs>? RangePartitioning { get; set; }
 
         /// <summary>
-        /// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+        /// Optional. The user can provide a reference file with the reader schema. This file is only loaded if it is part of source URIs, but is not loaded otherwise. It is enabled for the following formats: AVRO, PARQUET, ORC.
         /// </summary>
         [Input("referenceFileSchemaUri")]
         public Input<string>? ReferenceFileSchemaUri { get; set; }
 
         /// <summary>
-        /// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
+        /// Optional. The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
         /// </summary>
         [Input("schema")]
         public Input<Inputs.TableSchemaArgs>? Schema { get; set; }
@@ -202,7 +211,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<string>? _schemaUpdateOptions;
 
         /// <summary>
-        /// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+        /// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         /// </summary>
         public InputList<string> SchemaUpdateOptions
         {
@@ -211,13 +220,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
+        /// Optional. The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N &gt; 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         /// </summary>
         [Input("skipLeadingRows")]
         public Input<int>? SkipLeadingRows { get; set; }
 
         /// <summary>
-        /// [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
+        /// Optional. The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
         /// </summary>
         [Input("sourceFormat")]
         public Input<string>? SourceFormat { get; set; }
@@ -241,13 +250,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.TimePartitioningArgs>? TimePartitioning { get; set; }
 
         /// <summary>
-        /// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
+        /// Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         /// </summary>
         [Input("useAvroLogicalTypes")]
         public Input<bool>? UseAvroLogicalTypes { get; set; }
 
         /// <summary>
-        /// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints and uses the schema from the load job. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         [Input("writeDisposition")]
         public Input<string>? WriteDisposition { get; set; }

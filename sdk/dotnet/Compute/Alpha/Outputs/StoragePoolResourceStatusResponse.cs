@@ -17,35 +17,71 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class StoragePoolResourceStatusResponse
     {
         /// <summary>
-        /// Sum of all the disks' provisioned IOPS.
+        /// DEPRECATED -- use "total_provisioned_disk_iops".
         /// </summary>
         public readonly string AggregateDiskProvisionedIops;
         /// <summary>
-        /// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+        /// DEPRECATED -- use "total provisioned disk size gb".
         /// </summary>
         public readonly string AggregateDiskSizeGb;
+        /// <summary>
+        /// Number of disks used.
+        /// </summary>
+        public readonly string DiskCount;
         /// <summary>
         /// Timestamp of the last successful resize in RFC3339 text format.
         /// </summary>
         public readonly string LastResizeTimestamp;
         /// <summary>
-        /// Maximum allowed aggregate disk size in gigabytes.
+        /// DEPRECATED -- use "max provisioned disk size gb"
         /// </summary>
         public readonly string MaxAggregateDiskSizeGb;
         /// <summary>
-        /// Number of disks used.
+        /// Maximum allowed aggregate disk size in gigabytes.
+        /// </summary>
+        public readonly string MaxTotalProvisionedDiskCapacityGb;
+        /// <summary>
+        /// DEPRECATED -- use "disk count".
         /// </summary>
         public readonly string NumberOfDisks;
         /// <summary>
-        /// Space used by data stored in disks within the storage pool (in bytes).
+        /// Space used by data stored in disks within the storage pool (in bytes). This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        /// </summary>
+        public readonly string PoolUsedCapacityBytes;
+        /// <summary>
+        /// Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity.
+        /// </summary>
+        public readonly string PoolUsedIops;
+        /// <summary>
+        /// Sum of all the disks' provisioned throughput in MB/s.
+        /// </summary>
+        public readonly string PoolUsedThroughput;
+        /// <summary>
+        /// Amount of data written into the pool, before it is compacted.
+        /// </summary>
+        public readonly string PoolUserWrittenBytes;
+        /// <summary>
+        /// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+        /// </summary>
+        public readonly string TotalProvisionedDiskCapacityGb;
+        /// <summary>
+        /// Sum of all the disks' provisioned IOPS.
+        /// </summary>
+        public readonly string TotalProvisionedDiskIops;
+        /// <summary>
+        /// Sum of all the disks' provisioned throughput in MB/s, minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        /// </summary>
+        public readonly string TotalProvisionedDiskThroughput;
+        /// <summary>
+        /// DEPRECATED -- use "pool used capacity".
         /// </summary>
         public readonly string UsedBytes;
         /// <summary>
-        /// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
+        /// DEPRECATED -- do not use, will be removed.
         /// </summary>
         public readonly string UsedReducedBytes;
         /// <summary>
-        /// Sum of all the disks' provisioned throughput in MB/s.
+        /// DEPRECATED -- use "pool used throughput".
         /// </summary>
         public readonly string UsedThroughput;
 
@@ -55,11 +91,29 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string aggregateDiskSizeGb,
 
+            string diskCount,
+
             string lastResizeTimestamp,
 
             string maxAggregateDiskSizeGb,
 
+            string maxTotalProvisionedDiskCapacityGb,
+
             string numberOfDisks,
+
+            string poolUsedCapacityBytes,
+
+            string poolUsedIops,
+
+            string poolUsedThroughput,
+
+            string poolUserWrittenBytes,
+
+            string totalProvisionedDiskCapacityGb,
+
+            string totalProvisionedDiskIops,
+
+            string totalProvisionedDiskThroughput,
 
             string usedBytes,
 
@@ -69,9 +123,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         {
             AggregateDiskProvisionedIops = aggregateDiskProvisionedIops;
             AggregateDiskSizeGb = aggregateDiskSizeGb;
+            DiskCount = diskCount;
             LastResizeTimestamp = lastResizeTimestamp;
             MaxAggregateDiskSizeGb = maxAggregateDiskSizeGb;
+            MaxTotalProvisionedDiskCapacityGb = maxTotalProvisionedDiskCapacityGb;
             NumberOfDisks = numberOfDisks;
+            PoolUsedCapacityBytes = poolUsedCapacityBytes;
+            PoolUsedIops = poolUsedIops;
+            PoolUsedThroughput = poolUsedThroughput;
+            PoolUserWrittenBytes = poolUserWrittenBytes;
+            TotalProvisionedDiskCapacityGb = totalProvisionedDiskCapacityGb;
+            TotalProvisionedDiskIops = totalProvisionedDiskIops;
+            TotalProvisionedDiskThroughput = totalProvisionedDiskThroughput;
             UsedBytes = usedBytes;
             UsedReducedBytes = usedReducedBytes;
             UsedThroughput = usedThroughput;

@@ -37,9 +37,17 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// </summary>
         public readonly string ExperimentRun;
         /// <summary>
+        /// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+        /// </summary>
+        public readonly ImmutableArray<string> Models;
+        /// <summary>
         /// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
         /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
+        /// </summary>
+        public readonly string PersistentResourceId;
         /// <summary>
         /// The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location. List of supported locations: https://cloud.google.com/vertex-ai/docs/general/locations
         /// </summary>
@@ -77,7 +85,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
 
             string experimentRun,
 
+            ImmutableArray<string> models,
+
             string network,
+
+            string persistentResourceId,
 
             string protectedArtifactLocationId,
 
@@ -96,7 +108,9 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
             EnableWebAccess = enableWebAccess;
             Experiment = experiment;
             ExperimentRun = experimentRun;
+            Models = models;
             Network = network;
+            PersistentResourceId = persistentResourceId;
             ProtectedArtifactLocationId = protectedArtifactLocationId;
             ReservedIpRanges = reservedIpRanges;
             Scheduling = scheduling;

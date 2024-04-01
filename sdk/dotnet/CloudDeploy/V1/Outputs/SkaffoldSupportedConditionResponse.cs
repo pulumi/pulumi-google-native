@@ -11,25 +11,25 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 {
 
     /// <summary>
-    /// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+    /// SkaffoldSupportedCondition contains information about when support for the release's version of Skaffold ends.
     /// </summary>
     [OutputType]
     public sealed class SkaffoldSupportedConditionResponse
     {
         /// <summary>
-        /// The time at which this release's version of skaffold will enter maintenance mode.
+        /// The time at which this release's version of Skaffold will enter maintenance mode.
         /// </summary>
         public readonly string MaintenanceModeTime;
         /// <summary>
-        /// The skaffold support state for this release's version of skaffold.
+        /// The Skaffold support state for this release's version of Skaffold.
         /// </summary>
         public readonly string SkaffoldSupportState;
         /// <summary>
-        /// True if the version of skaffold used by this release is supported.
+        /// True if the version of Skaffold used by this release is supported.
         /// </summary>
         public readonly bool Status;
         /// <summary>
-        /// The time at which this release's version of skaffold will no longer be supported.
+        /// The time at which this release's version of Skaffold will no longer be supported.
         /// </summary>
         public readonly string SupportExpirationTime;
 

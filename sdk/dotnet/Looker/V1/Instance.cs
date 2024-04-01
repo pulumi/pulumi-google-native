@@ -79,6 +79,12 @@ namespace Pulumi.GoogleNative.Looker.V1
         [Output("lastDenyMaintenancePeriod")]
         public Output<Outputs.DenyMaintenancePeriodResponse> LastDenyMaintenancePeriod { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+        /// </summary>
+        [Output("linkedLspProjectNumber")]
+        public Output<string> LinkedLspProjectNumber { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -246,6 +252,12 @@ namespace Pulumi.GoogleNative.Looker.V1
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+        /// </summary>
+        [Input("linkedLspProjectNumber")]
+        public Input<string>? LinkedLspProjectNumber { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

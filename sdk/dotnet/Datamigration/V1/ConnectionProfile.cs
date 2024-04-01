@@ -106,6 +106,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<bool?> SkipValidation { get; private set; } = null!;
 
         /// <summary>
+        /// Connection profile for a SQL Server data source.
+        /// </summary>
+        [Output("sqlserver")]
+        public Output<Outputs.SqlServerConnectionProfileResponse> Sqlserver { get; private set; } = null!;
+
+        /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
         /// </summary>
         [Output("state")]
@@ -251,6 +257,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         [Input("skipValidation")]
         public Input<bool>? SkipValidation { get; set; }
+
+        /// <summary>
+        /// Connection profile for a SQL Server data source.
+        /// </summary>
+        [Input("sqlserver")]
+        public Input<Inputs.SqlServerConnectionProfileArgs>? Sqlserver { get; set; }
 
         /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).

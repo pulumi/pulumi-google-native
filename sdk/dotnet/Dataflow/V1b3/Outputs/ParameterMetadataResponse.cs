@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly string HelpText;
         /// <summary>
+        /// Optional. Whether the parameter should be hidden in the UI.
+        /// </summary>
+        public readonly bool HiddenUi;
+        /// <summary>
         /// Optional. Whether the parameter is optional. Defaults to false.
         /// </summary>
         public readonly bool IsOptional;
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string helpText,
 
+            bool hiddenUi,
+
             bool isOptional,
 
             string label,
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
             EnumOptions = enumOptions;
             GroupName = groupName;
             HelpText = helpText;
+            HiddenUi = hiddenUi;
             IsOptional = isOptional;
             Label = label;
             Name = name;

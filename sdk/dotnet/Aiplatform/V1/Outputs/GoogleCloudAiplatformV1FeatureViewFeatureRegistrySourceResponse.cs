@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// List of features that need to be synced to Online Store.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse> FeatureGroups;
+        /// <summary>
+        /// Optional. The project number of the parent project of the Feature Groups.
+        /// </summary>
+        public readonly string ProjectNumber;
 
         [OutputConstructor]
-        private GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse(ImmutableArray<Outputs.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse> featureGroups)
+        private GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse(
+            ImmutableArray<Outputs.GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse> featureGroups,
+
+            string projectNumber)
         {
             FeatureGroups = featureGroups;
+            ProjectNumber = projectNumber;
         }
     }
 }

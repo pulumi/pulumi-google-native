@@ -130,6 +130,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SslPolicy;
         /// <summary>
+        ///  Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+        /// </summary>
+        public readonly string TlsEarlyData;
+        /// <summary>
         /// A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map 
         /// </summary>
         public readonly string UrlMap;
@@ -172,6 +176,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string sslPolicy,
 
+            string tlsEarlyData,
+
             string urlMap)
         {
             Authentication = authentication;
@@ -192,6 +198,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ServerTlsPolicy = serverTlsPolicy;
             SslCertificates = sslCertificates;
             SslPolicy = sslPolicy;
+            TlsEarlyData = tlsEarlyData;
             UrlMap = urlMap;
         }
     }

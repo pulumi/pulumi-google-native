@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<string> GceZone { get; private set; } = null!;
 
         /// <summary>
+        /// Gemini configuration.
+        /// </summary>
+        [Output("geminiConfig")]
+        public Output<Outputs.GeminiInstanceConfigResponse> GeminiConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The instance type.
         /// </summary>
         [Output("instanceType")]
@@ -169,7 +175,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<string> PscServiceAttachmentLink { get; private set; } = null!;
 
         /// <summary>
-        /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+        /// The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -185,6 +191,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         [Output("replicaNames")]
         public Output<ImmutableArray<string>> ReplicaNames { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+        /// </summary>
+        [Output("replicationCluster")]
+        public Output<Outputs.ReplicationClusterResponse> ReplicationCluster { get; private set; } = null!;
 
         /// <summary>
         /// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
@@ -359,6 +371,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Input<string>? GceZone { get; set; }
 
         /// <summary>
+        /// Gemini configuration.
+        /// </summary>
+        [Input("geminiConfig")]
+        public Input<Inputs.GeminiInstanceConfigArgs>? GeminiConfig { get; set; }
+
+        /// <summary>
         /// The instance type.
         /// </summary>
         [Input("instanceType")]
@@ -431,7 +449,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+        /// The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -453,6 +471,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             get => _replicaNames ?? (_replicaNames = new InputList<string>());
             set => _replicaNames = value;
         }
+
+        /// <summary>
+        /// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+        /// </summary>
+        [Input("replicationCluster")]
+        public Input<Inputs.ReplicationClusterArgs>? ReplicationCluster { get; set; }
 
         /// <summary>
         /// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.

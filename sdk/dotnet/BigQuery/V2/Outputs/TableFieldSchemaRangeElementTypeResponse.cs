@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
     /// <summary>
-    /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+    /// Represents the type of a field element.
     /// </summary>
     [OutputType]
     public sealed class TableFieldSchemaRangeElementTypeResponse
     {
         /// <summary>
-        /// The field element type of a RANGE
+        /// The type of a field element. For more information, see TableFieldSchema.type.
         /// </summary>
         public readonly string Type;
 

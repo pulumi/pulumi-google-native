@@ -90,6 +90,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The storage limit in bytes per processing unit.
+        /// </summary>
+        [Output("storageLimitPerProcessingUnit")]
+        public Output<string> StorageLimitPerProcessingUnit { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a InstanceConfig resource with the given unique name, arguments, and options.

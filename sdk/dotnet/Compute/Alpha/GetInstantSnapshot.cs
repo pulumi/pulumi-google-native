@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
         /// Server-defined URL for the resource.
@@ -160,6 +164,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.InstantSnapshotResourceStatusResponse resourceStatus,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -185,6 +191,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Name = name;
             Region = region;
             ResourceStatus = resourceStatus;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;

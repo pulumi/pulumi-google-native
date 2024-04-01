@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Schema of a table
+    /// </summary>
     [OutputType]
     public sealed class TableSchemaResponse
     {

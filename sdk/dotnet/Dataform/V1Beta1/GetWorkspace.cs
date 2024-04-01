@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public sealed class GetWorkspaceResult
     {
         /// <summary>
-        /// The workspace's name.
+        /// Identifier. The workspace's name.
         /// </summary>
         public readonly string Name;
 

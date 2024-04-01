@@ -22,13 +22,25 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         public Input<bool>? DropUnknownFields { get; set; }
 
         /// <summary>
+        /// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
+        /// <summary>
         /// Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 
         /// <summary>
-        /// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        /// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+        /// </summary>
+        [Input("useTableSchema")]
+        public Input<bool>? UseTableSchema { get; set; }
+
+        /// <summary>
+        /// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
         /// </summary>
         [Input("useTopicSchema")]
         public Input<bool>? UseTopicSchema { get; set; }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta.Outputs
         /// </summary>
         public readonly string RawBytes;
         /// <summary>
-        /// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+        /// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
         /// </summary>
         public readonly string Uri;
 

@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
     public partial class CustomConnector : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Active connector versions.
+        /// </summary>
+        [Output("activeConnectorVersions")]
+        public Output<ImmutableArray<string>> ActiveConnectorVersions { get; private set; } = null!;
+
+        /// <summary>
         /// Created time.
         /// </summary>
         [Output("createTime")]
@@ -123,6 +129,18 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
     public sealed class CustomConnectorArgs : global::Pulumi.ResourceArgs
     {
+        [Input("activeConnectorVersions")]
+        private InputList<string>? _activeConnectorVersions;
+
+        /// <summary>
+        /// Optional. Active connector versions.
+        /// </summary>
+        public InputList<string> ActiveConnectorVersions
+        {
+            get => _activeConnectorVersions ?? (_activeConnectorVersions = new InputList<string>());
+            set => _activeConnectorVersions = value;
+        }
+
         /// <summary>
         /// Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
         /// </summary>

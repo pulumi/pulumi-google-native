@@ -124,6 +124,12 @@ namespace Pulumi.GoogleNative.Metastore.V1
         public Output<Outputs.ScalingConfigResponse> ScalingConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The configuration of scheduled backup for the metastore service.
+        /// </summary>
+        [Output("scheduledBackup")]
+        public Output<Outputs.ScheduledBackupResponse> ScheduledBackup { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         /// </summary>
         [Output("serviceId")]
@@ -305,6 +311,12 @@ namespace Pulumi.GoogleNative.Metastore.V1
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.ScalingConfigArgs>? ScalingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration of scheduled backup for the metastore service.
+        /// </summary>
+        [Input("scheduledBackup")]
+        public Input<Inputs.ScheduledBackupArgs>? ScheduledBackup { get; set; }
 
         /// <summary>
         /// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.

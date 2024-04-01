@@ -108,6 +108,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly string Provider;
         /// <summary>
+        /// Connection profile for a SQL Server data source.
+        /// </summary>
+        public readonly Outputs.SqlServerConnectionProfileResponse Sqlserver;
+        /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
         /// </summary>
         public readonly string State;
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
             string provider,
 
+            Outputs.SqlServerConnectionProfileResponse sqlserver,
+
             string state,
 
             string updateTime)
@@ -155,6 +161,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             Oracle = oracle;
             Postgresql = postgresql;
             Provider = provider;
+            Sqlserver = sqlserver;
             State = state;
             UpdateTime = updateTime;
         }

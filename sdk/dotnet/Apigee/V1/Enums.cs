@@ -201,11 +201,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static EnvironmentType EnvironmentTypeUnspecified { get; } = new EnvironmentType("ENVIRONMENT_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
+        /// This is the default type. Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
         /// </summary>
         public static EnvironmentType Base { get; } = new EnvironmentType("BASE");
         /// <summary>
-        /// This is the default type and it supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
+        /// Intermediate environment supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
         /// </summary>
         public static EnvironmentType Intermediate { get; } = new EnvironmentType("INTERMEDIATE");
         /// <summary>

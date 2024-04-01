@@ -10,19 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// The type of a query parameter.
+    /// </summary>
     public sealed class QueryParameterTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] The type of the array's elements, if this is an array.
+        /// Optional. The type of the array's elements, if this is an array.
         /// </summary>
         [Input("arrayType")]
         public Input<Inputs.QueryParameterTypeArgs>? ArrayType { get; set; }
+
+        /// <summary>
+        /// Optional. The element type of the range, if this is a range.
+        /// </summary>
+        [Input("rangeElementType")]
+        public Input<Inputs.QueryParameterTypeArgs>? RangeElementType { get; set; }
 
         [Input("structTypes")]
         private InputList<Inputs.QueryParameterTypeStructTypesItemArgs>? _structTypes;
 
         /// <summary>
-        /// [Optional] The types of the fields of this struct, in order, if this is a struct.
+        /// Optional. The types of the fields of this struct, in order, if this is a struct.
         /// </summary>
         public InputList<Inputs.QueryParameterTypeStructTypesItemArgs> StructTypes
         {
@@ -31,10 +40,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Required] The top level type of this field.
+        /// The top level type of this field.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public QueryParameterTypeArgs()
         {

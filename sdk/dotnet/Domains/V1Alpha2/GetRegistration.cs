@@ -104,6 +104,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         /// </summary>
         public readonly Outputs.ContactSettingsResponse PendingContactSettings;
         /// <summary>
+        /// Current domain management provider.
+        /// </summary>
+        public readonly string Provider;
+        /// <summary>
         /// The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         /// </summary>
         public readonly string RegisterFailureReason;
@@ -116,7 +120,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         /// </summary>
         public readonly ImmutableArray<string> SupportedPrivacy;
         /// <summary>
-        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
         /// </summary>
         public readonly string TransferFailureReason;
 
@@ -142,6 +146,8 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
 
             Outputs.ContactSettingsResponse pendingContactSettings,
 
+            string provider,
+
             string registerFailureReason,
 
             string state,
@@ -160,6 +166,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
             ManagementSettings = managementSettings;
             Name = name;
             PendingContactSettings = pendingContactSettings;
+            Provider = provider;
             RegisterFailureReason = registerFailureReason;
             State = state;
             SupportedPrivacy = supportedPrivacy;

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly bool IsStateful;
         /// <summary>
-        /// Status of per-instance configurations on the instance.
+        /// Status of per-instance configurations on the instances.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse PerInstanceConfigs;
 

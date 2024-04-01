@@ -120,6 +120,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("networkPerformanceConfig")]
         public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
+        [Input("partnerMetadata")]
+        private InputMap<string>? _partnerMetadata;
+
+        /// <summary>
+        /// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        public InputMap<string> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            set => _partnerMetadata = value;
+        }
+
         /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>

@@ -11,24 +11,24 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
     /// <summary>
-    /// [TrustedTester] [Required] Defines the ranges for range partitioning.
+    /// [Experimental] Defines the ranges for range partitioning.
     /// </summary>
     public sealed class RangePartitioningRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [TrustedTester] [Required] The end of range partitioning, exclusive.
+        /// [Experimental] The end of range partitioning, exclusive.
         /// </summary>
         [Input("end")]
         public Input<string>? End { get; set; }
 
         /// <summary>
-        /// [TrustedTester] [Required] The width of each interval.
+        /// [Experimental] The width of each interval.
         /// </summary>
         [Input("interval")]
         public Input<string>? Interval { get; set; }
 
         /// <summary>
-        /// [TrustedTester] [Required] The start of range partitioning, inclusive.
+        /// [Experimental] The start of range partitioning, inclusive.
         /// </summary>
         [Input("start")]
         public Input<string>? Start { get; set; }

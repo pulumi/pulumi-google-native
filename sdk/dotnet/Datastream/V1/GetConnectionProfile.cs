@@ -108,6 +108,10 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         public readonly Outputs.PrivateConnectivityResponse PrivateConnectivity;
         /// <summary>
+        /// SQLServer Connection Profile configuration.
+        /// </summary>
+        public readonly Outputs.SqlServerProfileResponse SqlServerProfile;
+        /// <summary>
         /// Static Service IP connectivity.
         /// </summary>
         public readonly Outputs.StaticServiceIpConnectivityResponse StaticServiceIpConnectivity;
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.Datastream.V1
 
             Outputs.PrivateConnectivityResponse privateConnectivity,
 
+            Outputs.SqlServerProfileResponse sqlServerProfile,
+
             Outputs.StaticServiceIpConnectivityResponse staticServiceIpConnectivity,
 
             string updateTime)
@@ -155,6 +161,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
             OracleProfile = oracleProfile;
             PostgresqlProfile = postgresqlProfile;
             PrivateConnectivity = privateConnectivity;
+            SqlServerProfile = sqlServerProfile;
             StaticServiceIpConnectivity = staticServiceIpConnectivity;
             UpdateTime = updateTime;
         }

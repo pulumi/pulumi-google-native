@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// </summary>
         public readonly Outputs.ConfigManagementHierarchyControllerConfigResponse HierarchyController;
         /// <summary>
+        /// Enables automatic Feature management.
+        /// </summary>
+        public readonly string Management;
+        /// <summary>
         /// Policy Controller configuration for the cluster.
         /// </summary>
         public readonly Outputs.ConfigManagementPolicyControllerResponse PolicyController;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 
             Outputs.ConfigManagementHierarchyControllerConfigResponse hierarchyController,
 
+            string management,
+
             Outputs.ConfigManagementPolicyControllerResponse policyController,
 
             string version)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
             Cluster = cluster;
             ConfigSync = configSync;
             HierarchyController = hierarchyController;
+            Management = management;
             PolicyController = policyController;
             Version = version;
         }

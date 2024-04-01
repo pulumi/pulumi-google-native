@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Inputs.GcsDataArgs>? GcsIntermediateDataLocation { get; set; }
 
         /// <summary>
+        /// An HDFS cluster data source.
+        /// </summary>
+        [Input("hdfsDataSource")]
+        public Input<Inputs.HdfsDataArgs>? HdfsDataSource { get; set; }
+
+        /// <summary>
         /// An HTTP URL data source.
         /// </summary>
         [Input("httpDataSource")]

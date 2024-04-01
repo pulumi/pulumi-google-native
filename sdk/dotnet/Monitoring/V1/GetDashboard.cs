@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         public readonly Outputs.MosaicLayoutResponse MosaicLayout;
         /// <summary>
-        /// Immutable. The resource name of the dashboard.
+        /// Identifier. The resource name of the dashboard.
         /// </summary>
         public readonly string Name;
         /// <summary>

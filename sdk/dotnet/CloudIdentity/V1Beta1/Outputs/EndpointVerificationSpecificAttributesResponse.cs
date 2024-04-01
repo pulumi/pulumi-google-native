@@ -11,19 +11,34 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// Resource representing the Endpoint Verification-specific attributes of a Device. https://cloud.google.com/endpoint-verification/docs/overview
+    /// Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
     /// </summary>
     [OutputType]
     public sealed class EndpointVerificationSpecificAttributesResponse
     {
+        /// <summary>
+        /// Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. Configurable attributes: file_config, registry_config, and plist_config.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> AdditionalSignals;
+        /// <summary>
+        /// Details of browser profiles reported by Endpoint Verification.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BrowserAttributesResponse> BrowserAttributes;
         /// <summary>
         /// Details of certificates.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateAttributesResponse> CertificateAttributes;
 
         [OutputConstructor]
-        private EndpointVerificationSpecificAttributesResponse(ImmutableArray<Outputs.CertificateAttributesResponse> certificateAttributes)
+        private EndpointVerificationSpecificAttributesResponse(
+            ImmutableDictionary<string, string> additionalSignals,
+
+            ImmutableArray<Outputs.BrowserAttributesResponse> browserAttributes,
+
+            ImmutableArray<Outputs.CertificateAttributesResponse> certificateAttributes)
         {
+            AdditionalSignals = additionalSignals;
+            BrowserAttributes = browserAttributes;
             CertificateAttributes = certificateAttributes;
         }
     }

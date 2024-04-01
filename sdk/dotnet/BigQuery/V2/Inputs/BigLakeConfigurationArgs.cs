@@ -10,31 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Configuration for BigLake managed tables.
+    /// </summary>
     public sealed class BigLakeConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as project_id.location_id.connection_id.
+        /// The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or "projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
         /// </summary>
-        [Input("connectionId")]
-        public Input<string>? ConnectionId { get; set; }
+        [Input("connectionId", required: true)]
+        public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        /// The file format the table data is stored in.
         /// </summary>
-        [Input("fileFormat")]
-        public Input<string>? FileFormat { get; set; }
+        [Input("fileFormat", required: true)]
+        public Input<Pulumi.GoogleNative.BigQuery.V2.BigLakeConfigurationFileFormat> FileFormat { get; set; } = null!;
 
         /// <summary>
-        /// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+        /// The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
         /// </summary>
-        [Input("storageUri")]
-        public Input<string>? StorageUri { get; set; }
+        [Input("storageUri", required: true)]
+        public Input<string> StorageUri { get; set; } = null!;
 
         /// <summary>
-        /// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
+        /// The table format the metadata only snapshots are stored in.
         /// </summary>
-        [Input("tableFormat")]
-        public Input<string>? TableFormat { get; set; }
+        [Input("tableFormat", required: true)]
+        public Input<Pulumi.GoogleNative.BigQuery.V2.BigLakeConfigurationTableFormat> TableFormat { get; set; } = null!;
 
         public BigLakeConfigurationArgs()
         {

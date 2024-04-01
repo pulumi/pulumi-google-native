@@ -75,7 +75,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Output<ImmutableArray<Outputs.SessionStateEventResponse>> StateHistories { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+        /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
         /// </summary>
         [Output("ttl")]
         public Output<string> Ttl { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+        /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }

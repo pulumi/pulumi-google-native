@@ -17,17 +17,25 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
     public sealed class GoogleCloudAiplatformV1ModelResponse
     {
         /// <summary>
-        /// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+        /// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
         /// </summary>
         public readonly string ArtifactUri;
         /// <summary>
-        /// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+        /// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1ModelBaseModelSourceResponse BaseModelSource;
+        /// <summary>
+        /// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1ModelContainerSpecResponse ContainerSpec;
         /// <summary>
         /// Timestamp when this Model was uploaded into Vertex AI.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Stats of data used for training or evaluating the Model. Only populated when the Model is trained by a TrainingPipeline with data_input_config.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1ModelDataStatsResponse DataStats;
         /// <summary>
         /// The pointers to DeployedModels created from this Model. Note that Model could have been deployed to Endpoints in different Locations.
         /// </summary>
@@ -69,7 +77,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// </summary>
         public readonly string MetadataSchemaUri;
         /// <summary>
-        /// Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or existing Vertex AI Model.
+        /// Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or saved and tuned from Genie or Model Garden.
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1ModelSourceInfoResponse ModelSourceInfo;
         /// <summary>
@@ -137,9 +145,13 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         private GoogleCloudAiplatformV1ModelResponse(
             string artifactUri,
 
+            Outputs.GoogleCloudAiplatformV1ModelBaseModelSourceResponse baseModelSource,
+
             Outputs.GoogleCloudAiplatformV1ModelContainerSpecResponse containerSpec,
 
             string createTime,
+
+            Outputs.GoogleCloudAiplatformV1ModelDataStatsResponse dataStats,
 
             ImmutableArray<Outputs.GoogleCloudAiplatformV1DeployedModelRefResponse> deployedModels,
 
@@ -194,8 +206,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
             string versionUpdateTime)
         {
             ArtifactUri = artifactUri;
+            BaseModelSource = baseModelSource;
             ContainerSpec = containerSpec;
             CreateTime = createTime;
+            DataStats = dataStats;
             DeployedModels = deployedModels;
             Description = description;
             DisplayName = displayName;

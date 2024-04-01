@@ -178,6 +178,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.InstanceParamsResponse> Params { get; private set; } = null!;
 
         /// <summary>
+        /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        [Output("partnerMetadata")]
+        public Output<ImmutableDictionary<string, string>> PartnerMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         [Output("postKeyRevocationActionType")]
@@ -215,6 +221,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("resourceStatus")]
         public Output<Outputs.ResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.
@@ -490,6 +502,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("params")]
         public Input<Inputs.InstanceParamsArgs>? Params { get; set; }
+
+        [Input("partnerMetadata")]
+        private InputMap<string>? _partnerMetadata;
+
+        /// <summary>
+        /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        public InputMap<string> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            set => _partnerMetadata = value;
+        }
 
         /// <summary>
         /// PostKeyRevocationActionType of the instance.

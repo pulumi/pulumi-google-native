@@ -76,15 +76,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class GetTableResult
     {
         /// <summary>
-        /// [Optional] Specifies the configuration of a BigLake managed table.
+        /// Optional. Specifies the configuration of a BigLake managed table.
         /// </summary>
         public readonly Outputs.BigLakeConfigurationResponse BiglakeConfiguration;
         /// <summary>
-        /// Clone definition.
+        /// Contains information about the clone. This value is set via the clone operation.
         /// </summary>
         public readonly Outputs.CloneDefinitionResponse CloneDefinition;
         /// <summary>
-        /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+        /// Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         /// </summary>
         public readonly Outputs.ClusteringResponse Clustering;
         /// <summary>
@@ -92,15 +92,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// The default collation of the table.
+        /// Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
         /// </summary>
         public readonly string DefaultCollation;
         /// <summary>
-        /// The default rounding mode of the table.
+        /// Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
         /// </summary>
         public readonly string DefaultRoundingMode;
         /// <summary>
-        /// [Optional] A user-friendly description of this table.
+        /// Optional. A user-friendly description of this table.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -108,23 +108,23 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.EncryptionConfigurationResponse EncryptionConfiguration;
         /// <summary>
-        /// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+        /// A hash of this resource.
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+        /// Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
         /// </summary>
         public readonly string ExpirationTime;
         /// <summary>
-        /// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        /// Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         /// </summary>
         public readonly Outputs.ExternalDataConfigurationResponse ExternalDataConfiguration;
         /// <summary>
-        /// [Optional] A descriptive name for this table.
+        /// Optional. A descriptive name for this table.
         /// </summary>
         public readonly string FriendlyName;
         /// <summary>
-        /// The type of the resource.
+        /// The type of resource ID.
         /// </summary>
         public readonly string Kind;
         /// <summary>
@@ -140,15 +140,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// [Optional] Materialized view definition.
+        /// Optional. The materialized view definition.
         /// </summary>
         public readonly Outputs.MaterializedViewDefinitionResponse MaterializedView;
         /// <summary>
-        /// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        /// The materialized view status.
+        /// </summary>
+        public readonly Outputs.MaterializedViewStatusResponse MaterializedViewStatus;
+        /// <summary>
+        /// Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         /// </summary>
         public readonly string MaxStaleness;
         /// <summary>
-        /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+        /// Deprecated.
         /// </summary>
         public readonly Outputs.ModelDefinitionResponse Model;
         /// <summary>
@@ -160,11 +164,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string NumActivePhysicalBytes;
         /// <summary>
-        /// The size of this table in bytes, excluding any data in the streaming buffer.
+        /// The size of this table in logical bytes, excluding any data in the streaming buffer.
         /// </summary>
         public readonly string NumBytes;
         /// <summary>
-        /// The number of bytes in the table that are considered "long-term storage".
+        /// The number of logical bytes in the table that are considered "long-term storage".
         /// </summary>
         public readonly string NumLongTermBytes;
         /// <summary>
@@ -180,7 +184,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string NumPartitions;
         /// <summary>
-        /// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+        /// The physical size of this table in bytes. This includes storage used for time travel.
         /// </summary>
         public readonly string NumPhysicalBytes;
         /// <summary>
@@ -200,11 +204,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string NumTotalPhysicalBytes;
         /// <summary>
-        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// The partition information for all table formats, including managed partitioned tables, hive partitioned tables, and iceberg partitioned tables.
+        /// </summary>
+        public readonly Outputs.PartitioningDefinitionResponse PartitionDefinition;
+        /// <summary>
+        /// If specified, configures range partitioning for this table.
         /// </summary>
         public readonly Outputs.RangePartitioningResponse RangePartitioning;
         /// <summary>
-        /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        /// Optional. Output only. Table references of all replicas currently active on the table.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.TableReferenceResponse> Replicas;
+        /// <summary>
+        /// Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         /// </summary>
         public readonly bool RequirePartitionFilter;
         /// <summary>
@@ -212,7 +224,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceTags;
         /// <summary>
-        /// [Optional] Describes the schema of this table.
+        /// Optional. Describes the schema of this table.
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
         /// <summary>
@@ -220,7 +232,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Snapshot definition.
+        /// Contains information about the snapshot. This value is set via snapshot creation.
         /// </summary>
         public readonly Outputs.SnapshotDefinitionResponse SnapshotDefinition;
         /// <summary>
@@ -228,23 +240,27 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.StreamingbufferResponse StreamingBuffer;
         /// <summary>
-        /// [Optional] The table constraints on the table.
+        /// Optional. Tables Primary Key and Foreign Key information
         /// </summary>
         public readonly Outputs.TableConstraintsResponse TableConstraints;
         /// <summary>
-        /// [Required] Reference describing the ID of this table.
+        /// Reference describing the ID of this table.
         /// </summary>
         public readonly Outputs.TableReferenceResponse TableReference;
         /// <summary>
-        /// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+        /// </summary>
+        public readonly Outputs.TableReplicationInfoResponse TableReplicationInfo;
+        /// <summary>
+        /// If specified, configures time-based partitioning for this table.
         /// </summary>
         public readonly Outputs.TimePartitioningResponse TimePartitioning;
         /// <summary>
-        /// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+        /// Describes the table type. The following values are supported: * `TABLE`: A normal BigQuery table. * `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that references data stored in an external storage system, such as Google Cloud Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query. * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a base table at a particular time. See additional information on [table snapshots](/bigquery/docs/table-snapshots-intro). The default value is `TABLE`.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// [Optional] The view definition.
+        /// Optional. The view definition.
         /// </summary>
         public readonly Outputs.ViewDefinitionResponse View;
 
@@ -284,6 +300,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.MaterializedViewDefinitionResponse materializedView,
 
+            Outputs.MaterializedViewStatusResponse materializedViewStatus,
+
             string maxStaleness,
 
             Outputs.ModelDefinitionResponse model,
@@ -312,7 +330,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string numTotalPhysicalBytes,
 
+            Outputs.PartitioningDefinitionResponse partitionDefinition,
+
             Outputs.RangePartitioningResponse rangePartitioning,
+
+            ImmutableArray<Outputs.TableReferenceResponse> replicas,
 
             bool requirePartitionFilter,
 
@@ -329,6 +351,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Outputs.TableConstraintsResponse tableConstraints,
 
             Outputs.TableReferenceResponse tableReference,
+
+            Outputs.TableReplicationInfoResponse tableReplicationInfo,
 
             Outputs.TimePartitioningResponse timePartitioning,
 
@@ -353,6 +377,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             LastModifiedTime = lastModifiedTime;
             Location = location;
             MaterializedView = materializedView;
+            MaterializedViewStatus = materializedViewStatus;
             MaxStaleness = maxStaleness;
             Model = model;
             NumActiveLogicalBytes = numActiveLogicalBytes;
@@ -367,7 +392,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             NumTimeTravelPhysicalBytes = numTimeTravelPhysicalBytes;
             NumTotalLogicalBytes = numTotalLogicalBytes;
             NumTotalPhysicalBytes = numTotalPhysicalBytes;
+            PartitionDefinition = partitionDefinition;
             RangePartitioning = rangePartitioning;
+            Replicas = replicas;
             RequirePartitionFilter = requirePartitionFilter;
             ResourceTags = resourceTags;
             Schema = schema;
@@ -376,6 +403,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             StreamingBuffer = streamingBuffer;
             TableConstraints = tableConstraints;
             TableReference = tableReference;
+            TableReplicationInfo = tableReplicationInfo;
             TimePartitioning = timePartitioning;
             Type = type;
             View = view;

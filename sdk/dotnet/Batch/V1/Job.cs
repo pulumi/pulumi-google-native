@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Batch.V1
         public Output<ImmutableArray<Outputs.TaskGroupResponse>> TaskGroups { get; private set; } = null!;
 
         /// <summary>
-        /// A system generated unique ID (in UUID4 format) for the Job.
+        /// A system generated unique ID for the Job.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;

@@ -138,6 +138,80 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Required. The file format the table data is stored in.
+    /// </summary>
+    [EnumType]
+    public readonly struct BigLakeConfigurationFileFormat : IEquatable<BigLakeConfigurationFileFormat>
+    {
+        private readonly string _value;
+
+        private BigLakeConfigurationFileFormat(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default Value.
+        /// </summary>
+        public static BigLakeConfigurationFileFormat FileFormatUnspecified { get; } = new BigLakeConfigurationFileFormat("FILE_FORMAT_UNSPECIFIED");
+        /// <summary>
+        /// Apache Parquet format.
+        /// </summary>
+        public static BigLakeConfigurationFileFormat Parquet { get; } = new BigLakeConfigurationFileFormat("PARQUET");
+
+        public static bool operator ==(BigLakeConfigurationFileFormat left, BigLakeConfigurationFileFormat right) => left.Equals(right);
+        public static bool operator !=(BigLakeConfigurationFileFormat left, BigLakeConfigurationFileFormat right) => !left.Equals(right);
+
+        public static explicit operator string(BigLakeConfigurationFileFormat value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BigLakeConfigurationFileFormat other && Equals(other);
+        public bool Equals(BigLakeConfigurationFileFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. The table format the metadata only snapshots are stored in.
+    /// </summary>
+    [EnumType]
+    public readonly struct BigLakeConfigurationTableFormat : IEquatable<BigLakeConfigurationTableFormat>
+    {
+        private readonly string _value;
+
+        private BigLakeConfigurationTableFormat(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default Value.
+        /// </summary>
+        public static BigLakeConfigurationTableFormat TableFormatUnspecified { get; } = new BigLakeConfigurationTableFormat("TABLE_FORMAT_UNSPECIFIED");
+        /// <summary>
+        /// Apache Iceberg format.
+        /// </summary>
+        public static BigLakeConfigurationTableFormat Iceberg { get; } = new BigLakeConfigurationTableFormat("ICEBERG");
+
+        public static bool operator ==(BigLakeConfigurationTableFormat left, BigLakeConfigurationTableFormat right) => left.Equals(right);
+        public static bool operator !=(BigLakeConfigurationTableFormat left, BigLakeConfigurationTableFormat right) => !left.Equals(right);
+
+        public static explicit operator string(BigLakeConfigurationTableFormat value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BigLakeConfigurationTableFormat other && Equals(other);
+        public bool Equals(BigLakeConfigurationTableFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct DatasetAccessEntryTargetTypesItem : IEquatable<DatasetAccessEntryTargetTypesItem>
     {
@@ -169,6 +243,451 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DatasetAccessEntryTargetTypesItem other && Equals(other);
         public bool Equals(DatasetAccessEntryTargetTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatasetDefaultRoundingMode : IEquatable<DatasetDefaultRoundingMode>
+    {
+        private readonly string _value;
+
+        private DatasetDefaultRoundingMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+        /// </summary>
+        public static DatasetDefaultRoundingMode RoundingModeUnspecified { get; } = new DatasetDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED");
+        /// <summary>
+        /// ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =&gt; 1 1.5, 1.6, 1.7, 1.8, 1.9 =&gt; 2
+        /// </summary>
+        public static DatasetDefaultRoundingMode RoundHalfAwayFromZero { get; } = new DatasetDefaultRoundingMode("ROUND_HALF_AWAY_FROM_ZERO");
+        /// <summary>
+        /// ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =&gt; 1 1.5 =&gt; 2 1.6, 1.7, 1.8, 1.9 =&gt; 2 2.5 =&gt; 2
+        /// </summary>
+        public static DatasetDefaultRoundingMode RoundHalfEven { get; } = new DatasetDefaultRoundingMode("ROUND_HALF_EVEN");
+
+        public static bool operator ==(DatasetDefaultRoundingMode left, DatasetDefaultRoundingMode right) => left.Equals(right);
+        public static bool operator !=(DatasetDefaultRoundingMode left, DatasetDefaultRoundingMode right) => !left.Equals(right);
+
+        public static explicit operator string(DatasetDefaultRoundingMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatasetDefaultRoundingMode other && Equals(other);
+        public bool Equals(DatasetDefaultRoundingMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Updates storage_billing_model for the dataset.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatasetStorageBillingModel : IEquatable<DatasetStorageBillingModel>
+    {
+        private readonly string _value;
+
+        private DatasetStorageBillingModel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value not set.
+        /// </summary>
+        public static DatasetStorageBillingModel StorageBillingModelUnspecified { get; } = new DatasetStorageBillingModel("STORAGE_BILLING_MODEL_UNSPECIFIED");
+        /// <summary>
+        /// Billing for logical bytes.
+        /// </summary>
+        public static DatasetStorageBillingModel Logical { get; } = new DatasetStorageBillingModel("LOGICAL");
+        /// <summary>
+        /// Billing for physical bytes.
+        /// </summary>
+        public static DatasetStorageBillingModel Physical { get; } = new DatasetStorageBillingModel("PHYSICAL");
+
+        public static bool operator ==(DatasetStorageBillingModel left, DatasetStorageBillingModel right) => left.Equals(right);
+        public static bool operator !=(DatasetStorageBillingModel left, DatasetStorageBillingModel right) => !left.Equals(right);
+
+        public static explicit operator string(DatasetStorageBillingModel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatasetStorageBillingModel other && Equals(other);
+        public bool Equals(DatasetStorageBillingModel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct ExternalDataConfigurationDecimalTargetTypesItem : IEquatable<ExternalDataConfigurationDecimalTargetTypesItem>
+    {
+        private readonly string _value;
+
+        private ExternalDataConfigurationDecimalTargetTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Invalid type.
+        /// </summary>
+        public static ExternalDataConfigurationDecimalTargetTypesItem DecimalTargetTypeUnspecified { get; } = new ExternalDataConfigurationDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Decimal values could be converted to NUMERIC type.
+        /// </summary>
+        public static ExternalDataConfigurationDecimalTargetTypesItem Numeric { get; } = new ExternalDataConfigurationDecimalTargetTypesItem("NUMERIC");
+        /// <summary>
+        /// Decimal values could be converted to BIGNUMERIC type.
+        /// </summary>
+        public static ExternalDataConfigurationDecimalTargetTypesItem Bignumeric { get; } = new ExternalDataConfigurationDecimalTargetTypesItem("BIGNUMERIC");
+        /// <summary>
+        /// Decimal values could be converted to STRING type.
+        /// </summary>
+        public static ExternalDataConfigurationDecimalTargetTypesItem String { get; } = new ExternalDataConfigurationDecimalTargetTypesItem("STRING");
+
+        public static bool operator ==(ExternalDataConfigurationDecimalTargetTypesItem left, ExternalDataConfigurationDecimalTargetTypesItem right) => left.Equals(right);
+        public static bool operator !=(ExternalDataConfigurationDecimalTargetTypesItem left, ExternalDataConfigurationDecimalTargetTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(ExternalDataConfigurationDecimalTargetTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExternalDataConfigurationDecimalTargetTypesItem other && Equals(other);
+        public bool Equals(ExternalDataConfigurationDecimalTargetTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+    /// </summary>
+    [EnumType]
+    public readonly struct ExternalDataConfigurationFileSetSpecType : IEquatable<ExternalDataConfigurationFileSetSpecType>
+    {
+        private readonly string _value;
+
+        private ExternalDataConfigurationFileSetSpecType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+        /// </summary>
+        public static ExternalDataConfigurationFileSetSpecType FileSetSpecTypeFileSystemMatch { get; } = new ExternalDataConfigurationFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH");
+        /// <summary>
+        /// This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+        /// </summary>
+        public static ExternalDataConfigurationFileSetSpecType FileSetSpecTypeNewLineDelimitedManifest { get; } = new ExternalDataConfigurationFileSetSpecType("FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST");
+
+        public static bool operator ==(ExternalDataConfigurationFileSetSpecType left, ExternalDataConfigurationFileSetSpecType right) => left.Equals(right);
+        public static bool operator !=(ExternalDataConfigurationFileSetSpecType left, ExternalDataConfigurationFileSetSpecType right) => !left.Equals(right);
+
+        public static explicit operator string(ExternalDataConfigurationFileSetSpecType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExternalDataConfigurationFileSetSpecType other && Equals(other);
+        public bool Equals(ExternalDataConfigurationFileSetSpecType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+    /// </summary>
+    [EnumType]
+    public readonly struct ExternalDataConfigurationJsonExtension : IEquatable<ExternalDataConfigurationJsonExtension>
+    {
+        private readonly string _value;
+
+        private ExternalDataConfigurationJsonExtension(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+        /// </summary>
+        public static ExternalDataConfigurationJsonExtension JsonExtensionUnspecified { get; } = new ExternalDataConfigurationJsonExtension("JSON_EXTENSION_UNSPECIFIED");
+        /// <summary>
+        /// Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+        /// </summary>
+        public static ExternalDataConfigurationJsonExtension Geojson { get; } = new ExternalDataConfigurationJsonExtension("GEOJSON");
+
+        public static bool operator ==(ExternalDataConfigurationJsonExtension left, ExternalDataConfigurationJsonExtension right) => left.Equals(right);
+        public static bool operator !=(ExternalDataConfigurationJsonExtension left, ExternalDataConfigurationJsonExtension right) => !left.Equals(right);
+
+        public static explicit operator string(ExternalDataConfigurationJsonExtension value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExternalDataConfigurationJsonExtension other && Equals(other);
+        public bool Equals(ExternalDataConfigurationJsonExtension other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+    /// </summary>
+    [EnumType]
+    public readonly struct ExternalDataConfigurationMetadataCacheMode : IEquatable<ExternalDataConfigurationMetadataCacheMode>
+    {
+        private readonly string _value;
+
+        private ExternalDataConfigurationMetadataCacheMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified metadata cache mode.
+        /// </summary>
+        public static ExternalDataConfigurationMetadataCacheMode MetadataCacheModeUnspecified { get; } = new ExternalDataConfigurationMetadataCacheMode("METADATA_CACHE_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Set this mode to trigger automatic background refresh of metadata cache from the external source. Queries will use the latest available cache version within the table's maxStaleness interval.
+        /// </summary>
+        public static ExternalDataConfigurationMetadataCacheMode Automatic { get; } = new ExternalDataConfigurationMetadataCacheMode("AUTOMATIC");
+        /// <summary>
+        /// Set this mode to enable triggering manual refresh of the metadata cache from external source. Queries will use the latest manually triggered cache version within the table's maxStaleness interval.
+        /// </summary>
+        public static ExternalDataConfigurationMetadataCacheMode Manual { get; } = new ExternalDataConfigurationMetadataCacheMode("MANUAL");
+
+        public static bool operator ==(ExternalDataConfigurationMetadataCacheMode left, ExternalDataConfigurationMetadataCacheMode right) => left.Equals(right);
+        public static bool operator !=(ExternalDataConfigurationMetadataCacheMode left, ExternalDataConfigurationMetadataCacheMode right) => !left.Equals(right);
+
+        public static explicit operator string(ExternalDataConfigurationMetadataCacheMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExternalDataConfigurationMetadataCacheMode other && Equals(other);
+        public bool Equals(ExternalDataConfigurationMetadataCacheMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+    /// </summary>
+    [EnumType]
+    public readonly struct ExternalDataConfigurationObjectMetadata : IEquatable<ExternalDataConfigurationObjectMetadata>
+    {
+        private readonly string _value;
+
+        private ExternalDataConfigurationObjectMetadata(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified by default.
+        /// </summary>
+        public static ExternalDataConfigurationObjectMetadata ObjectMetadataUnspecified { get; } = new ExternalDataConfigurationObjectMetadata("OBJECT_METADATA_UNSPECIFIED");
+        /// <summary>
+        /// A synonym for `SIMPLE`.
+        /// </summary>
+        public static ExternalDataConfigurationObjectMetadata Directory { get; } = new ExternalDataConfigurationObjectMetadata("DIRECTORY");
+        /// <summary>
+        /// Directory listing of objects.
+        /// </summary>
+        public static ExternalDataConfigurationObjectMetadata Simple { get; } = new ExternalDataConfigurationObjectMetadata("SIMPLE");
+
+        public static bool operator ==(ExternalDataConfigurationObjectMetadata left, ExternalDataConfigurationObjectMetadata right) => left.Equals(right);
+        public static bool operator !=(ExternalDataConfigurationObjectMetadata left, ExternalDataConfigurationObjectMetadata right) => !left.Equals(right);
+
+        public static explicit operator string(ExternalDataConfigurationObjectMetadata value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExternalDataConfigurationObjectMetadata other && Equals(other);
+        public bool Equals(ExternalDataConfigurationObjectMetadata other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct JobConfigurationLoadDecimalTargetTypesItem : IEquatable<JobConfigurationLoadDecimalTargetTypesItem>
+    {
+        private readonly string _value;
+
+        private JobConfigurationLoadDecimalTargetTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Invalid type.
+        /// </summary>
+        public static JobConfigurationLoadDecimalTargetTypesItem DecimalTargetTypeUnspecified { get; } = new JobConfigurationLoadDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Decimal values could be converted to NUMERIC type.
+        /// </summary>
+        public static JobConfigurationLoadDecimalTargetTypesItem Numeric { get; } = new JobConfigurationLoadDecimalTargetTypesItem("NUMERIC");
+        /// <summary>
+        /// Decimal values could be converted to BIGNUMERIC type.
+        /// </summary>
+        public static JobConfigurationLoadDecimalTargetTypesItem Bignumeric { get; } = new JobConfigurationLoadDecimalTargetTypesItem("BIGNUMERIC");
+        /// <summary>
+        /// Decimal values could be converted to STRING type.
+        /// </summary>
+        public static JobConfigurationLoadDecimalTargetTypesItem String { get; } = new JobConfigurationLoadDecimalTargetTypesItem("STRING");
+
+        public static bool operator ==(JobConfigurationLoadDecimalTargetTypesItem left, JobConfigurationLoadDecimalTargetTypesItem right) => left.Equals(right);
+        public static bool operator !=(JobConfigurationLoadDecimalTargetTypesItem left, JobConfigurationLoadDecimalTargetTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(JobConfigurationLoadDecimalTargetTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JobConfigurationLoadDecimalTargetTypesItem other && Equals(other);
+        public bool Equals(JobConfigurationLoadDecimalTargetTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems.
+    /// </summary>
+    [EnumType]
+    public readonly struct JobConfigurationLoadFileSetSpecType : IEquatable<JobConfigurationLoadFileSetSpecType>
+    {
+        private readonly string _value;
+
+        private JobConfigurationLoadFileSetSpecType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+        /// </summary>
+        public static JobConfigurationLoadFileSetSpecType FileSetSpecTypeFileSystemMatch { get; } = new JobConfigurationLoadFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH");
+        /// <summary>
+        /// This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+        /// </summary>
+        public static JobConfigurationLoadFileSetSpecType FileSetSpecTypeNewLineDelimitedManifest { get; } = new JobConfigurationLoadFileSetSpecType("FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST");
+
+        public static bool operator ==(JobConfigurationLoadFileSetSpecType left, JobConfigurationLoadFileSetSpecType right) => left.Equals(right);
+        public static bool operator !=(JobConfigurationLoadFileSetSpecType left, JobConfigurationLoadFileSetSpecType right) => !left.Equals(right);
+
+        public static explicit operator string(JobConfigurationLoadFileSetSpecType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JobConfigurationLoadFileSetSpecType other && Equals(other);
+        public bool Equals(JobConfigurationLoadFileSetSpecType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+    /// </summary>
+    [EnumType]
+    public readonly struct JobConfigurationLoadJsonExtension : IEquatable<JobConfigurationLoadJsonExtension>
+    {
+        private readonly string _value;
+
+        private JobConfigurationLoadJsonExtension(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+        /// </summary>
+        public static JobConfigurationLoadJsonExtension JsonExtensionUnspecified { get; } = new JobConfigurationLoadJsonExtension("JSON_EXTENSION_UNSPECIFIED");
+        /// <summary>
+        /// Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+        /// </summary>
+        public static JobConfigurationLoadJsonExtension Geojson { get; } = new JobConfigurationLoadJsonExtension("GEOJSON");
+
+        public static bool operator ==(JobConfigurationLoadJsonExtension left, JobConfigurationLoadJsonExtension right) => left.Equals(right);
+        public static bool operator !=(JobConfigurationLoadJsonExtension left, JobConfigurationLoadJsonExtension right) => !left.Equals(right);
+
+        public static explicit operator string(JobConfigurationLoadJsonExtension value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JobConfigurationLoadJsonExtension other && Equals(other);
+        public bool Equals(JobConfigurationLoadJsonExtension other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Supported operation types in table copy job.
+    /// </summary>
+    [EnumType]
+    public readonly struct JobConfigurationTableCopyOperationType : IEquatable<JobConfigurationTableCopyOperationType>
+    {
+        private readonly string _value;
+
+        private JobConfigurationTableCopyOperationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified operation type.
+        /// </summary>
+        public static JobConfigurationTableCopyOperationType OperationTypeUnspecified { get; } = new JobConfigurationTableCopyOperationType("OPERATION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The source and destination table have the same table type.
+        /// </summary>
+        public static JobConfigurationTableCopyOperationType Copy { get; } = new JobConfigurationTableCopyOperationType("COPY");
+        /// <summary>
+        /// The source table type is TABLE and the destination table type is SNAPSHOT.
+        /// </summary>
+        public static JobConfigurationTableCopyOperationType Snapshot { get; } = new JobConfigurationTableCopyOperationType("SNAPSHOT");
+        /// <summary>
+        /// The source table type is SNAPSHOT and the destination table type is TABLE.
+        /// </summary>
+        public static JobConfigurationTableCopyOperationType Restore { get; } = new JobConfigurationTableCopyOperationType("RESTORE");
+        /// <summary>
+        /// The source and destination table have the same table type, but only bill for unique data.
+        /// </summary>
+        public static JobConfigurationTableCopyOperationType Clone { get; } = new JobConfigurationTableCopyOperationType("CLONE");
+
+        public static bool operator ==(JobConfigurationTableCopyOperationType left, JobConfigurationTableCopyOperationType right) => left.Equals(right);
+        public static bool operator !=(JobConfigurationTableCopyOperationType left, JobConfigurationTableCopyOperationType right) => !left.Equals(right);
+
+        public static explicit operator string(JobConfigurationTableCopyOperationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JobConfigurationTableCopyOperationType other && Equals(other);
+        public bool Equals(JobConfigurationTableCopyOperationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -398,6 +917,47 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
     /// <summary>
+    /// Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST.
+    /// </summary>
+    [EnumType]
+    public readonly struct ScriptOptionsKeyResultStatement : IEquatable<ScriptOptionsKeyResultStatement>
+    {
+        private readonly string _value;
+
+        private ScriptOptionsKeyResultStatement(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static ScriptOptionsKeyResultStatement KeyResultStatementKindUnspecified { get; } = new ScriptOptionsKeyResultStatement("KEY_RESULT_STATEMENT_KIND_UNSPECIFIED");
+        /// <summary>
+        /// The last result determines the key result.
+        /// </summary>
+        public static ScriptOptionsKeyResultStatement Last { get; } = new ScriptOptionsKeyResultStatement("LAST");
+        /// <summary>
+        /// The first SELECT statement determines the key result.
+        /// </summary>
+        public static ScriptOptionsKeyResultStatement FirstSelect { get; } = new ScriptOptionsKeyResultStatement("FIRST_SELECT");
+
+        public static bool operator ==(ScriptOptionsKeyResultStatement left, ScriptOptionsKeyResultStatement right) => left.Equals(right);
+        public static bool operator !=(ScriptOptionsKeyResultStatement left, ScriptOptionsKeyResultStatement right) => !left.Equals(right);
+
+        public static explicit operator string(ScriptOptionsKeyResultStatement value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ScriptOptionsKeyResultStatement other && Equals(other);
+        public bool Equals(ScriptOptionsKeyResultStatement other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
     /// </summary>
     [EnumType]
@@ -491,6 +1051,88 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is StandardSqlDataTypeTypeKind other && Equals(other);
         public bool Equals(StandardSqlDataTypeTypeKind other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
+    /// </summary>
+    [EnumType]
+    public readonly struct TableDefaultRoundingMode : IEquatable<TableDefaultRoundingMode>
+    {
+        private readonly string _value;
+
+        private TableDefaultRoundingMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+        /// </summary>
+        public static TableDefaultRoundingMode RoundingModeUnspecified { get; } = new TableDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED");
+        /// <summary>
+        /// ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =&gt; 1 1.5, 1.6, 1.7, 1.8, 1.9 =&gt; 2
+        /// </summary>
+        public static TableDefaultRoundingMode RoundHalfAwayFromZero { get; } = new TableDefaultRoundingMode("ROUND_HALF_AWAY_FROM_ZERO");
+        /// <summary>
+        /// ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =&gt; 1 1.5 =&gt; 2 1.6, 1.7, 1.8, 1.9 =&gt; 2 2.5 =&gt; 2
+        /// </summary>
+        public static TableDefaultRoundingMode RoundHalfEven { get; } = new TableDefaultRoundingMode("ROUND_HALF_EVEN");
+
+        public static bool operator ==(TableDefaultRoundingMode left, TableDefaultRoundingMode right) => left.Equals(right);
+        public static bool operator !=(TableDefaultRoundingMode left, TableDefaultRoundingMode right) => !left.Equals(right);
+
+        public static explicit operator string(TableDefaultRoundingMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TableDefaultRoundingMode other && Equals(other);
+        public bool Equals(TableDefaultRoundingMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Specifies the rounding mode to be used when storing values of NUMERIC and BIGNUMERIC type.
+    /// </summary>
+    [EnumType]
+    public readonly struct TableFieldSchemaRoundingMode : IEquatable<TableFieldSchemaRoundingMode>
+    {
+        private readonly string _value;
+
+        private TableFieldSchemaRoundingMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+        /// </summary>
+        public static TableFieldSchemaRoundingMode RoundingModeUnspecified { get; } = new TableFieldSchemaRoundingMode("ROUNDING_MODE_UNSPECIFIED");
+        /// <summary>
+        /// ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =&gt; 1 1.5, 1.6, 1.7, 1.8, 1.9 =&gt; 2
+        /// </summary>
+        public static TableFieldSchemaRoundingMode RoundHalfAwayFromZero { get; } = new TableFieldSchemaRoundingMode("ROUND_HALF_AWAY_FROM_ZERO");
+        /// <summary>
+        /// ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =&gt; 1 1.5 =&gt; 2 1.6, 1.7, 1.8, 1.9 =&gt; 2 2.5 =&gt; 2
+        /// </summary>
+        public static TableFieldSchemaRoundingMode RoundHalfEven { get; } = new TableFieldSchemaRoundingMode("ROUND_HALF_EVEN");
+
+        public static bool operator ==(TableFieldSchemaRoundingMode left, TableFieldSchemaRoundingMode right) => left.Equals(right);
+        public static bool operator !=(TableFieldSchemaRoundingMode left, TableFieldSchemaRoundingMode right) => !left.Equals(right);
+
+        public static explicit operator string(TableFieldSchemaRoundingMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TableFieldSchemaRoundingMode other && Equals(other);
+        public bool Equals(TableFieldSchemaRoundingMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
