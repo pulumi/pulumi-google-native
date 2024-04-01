@@ -85,6 +85,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetadataSchema{}
 	case "google-native:aiplatform/v1beta1:MetadataStore":
 		r = &MetadataStore{}
+	case "google-native:aiplatform/v1beta1:Model":
+		r = &Model{}
 	case "google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob":
 		r = &ModelDeploymentMonitoringJob{}
 	case "google-native:aiplatform/v1beta1:ModelIamBinding":

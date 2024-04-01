@@ -270,6 +270,11 @@ export const getMetadataStore: typeof import("./getMetadataStore").getMetadataSt
 export const getMetadataStoreOutput: typeof import("./getMetadataStore").getMetadataStoreOutput = null as any;
 utilities.lazyLoad(exports, ["getMetadataStore","getMetadataStoreOutput"], () => require("./getMetadataStore"));
 
+export { GetModelArgs, GetModelResult, GetModelOutputArgs } from "./getModel";
+export const getModel: typeof import("./getModel").getModel = null as any;
+export const getModelOutput: typeof import("./getModel").getModelOutput = null as any;
+utilities.lazyLoad(exports, ["getModel","getModelOutput"], () => require("./getModel"));
+
 export { GetModelDeploymentMonitoringJobArgs, GetModelDeploymentMonitoringJobResult, GetModelDeploymentMonitoringJobOutputArgs } from "./getModelDeploymentMonitoringJob";
 export const getModelDeploymentMonitoringJob: typeof import("./getModelDeploymentMonitoringJob").getModelDeploymentMonitoringJob = null as any;
 export const getModelDeploymentMonitoringJobOutput: typeof import("./getModelDeploymentMonitoringJob").getModelDeploymentMonitoringJobOutput = null as any;
@@ -369,6 +374,11 @@ export { MetadataStoreArgs } from "./metadataStore";
 export type MetadataStore = import("./metadataStore").MetadataStore;
 export const MetadataStore: typeof import("./metadataStore").MetadataStore = null as any;
 utilities.lazyLoad(exports, ["MetadataStore"], () => require("./metadataStore"));
+
+export { ModelArgs } from "./model";
+export type Model = import("./model").Model;
+export const Model: typeof import("./model").Model = null as any;
+utilities.lazyLoad(exports, ["Model"], () => require("./model"));
 
 export { ModelDeploymentMonitoringJobArgs } from "./modelDeploymentMonitoringJob";
 export type ModelDeploymentMonitoringJob = import("./modelDeploymentMonitoringJob").ModelDeploymentMonitoringJob;
@@ -537,6 +547,8 @@ const _module = {
                 return new MetadataSchema(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:MetadataStore":
                 return new MetadataStore(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:Model":
+                return new Model(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob":
                 return new ModelDeploymentMonitoringJob(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:ModelIamBinding":
