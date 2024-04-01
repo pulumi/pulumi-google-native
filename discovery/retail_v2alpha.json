@@ -12,7 +12,7 @@
   "baseUrl": "https://retail.googleapis.com/",
   "batchPath": "batch",
   "canonicalName": "Cloud Retail",
-  "description": "Cloud Retail service enables customers to build end-to-end personalized recommendation systems without requiring a high level of expertise in machine learning, recommendation system, or Google Cloud.",
+  "description": "Vertex AI Search for Retail API is made up of Retail Search, Browse and Recommendations. These discovery AI solutions help you implement personalized search, browse and recommendations, based on machine learning models, across your websites and mobile applications.",
   "discoveryVersion": "v1",
   "documentationLink": "https://cloud.google.com/recommendations",
   "fullyEncodeReservedExpansion": true,
@@ -135,6 +135,31 @@
             "https://www.googleapis.com/auth/cloud-platform"
           ]
         },
+        "getAlertConfig": {
+          "description": "Get the AlertConfig of the requested project.",
+          "flatPath": "v2alpha/projects/{projectsId}/alertConfig",
+          "httpMethod": "GET",
+          "id": "retail.projects.getAlertConfig",
+          "parameterOrder": [
+            "name"
+          ],
+          "parameters": {
+            "name": {
+              "description": "Required. Full AlertConfig resource name. Format: projects/{project_number}/alertConfig",
+              "location": "path",
+              "pattern": "^projects/[^/]+/alertConfig$",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "path": "v2alpha/{+name}",
+          "response": {
+            "$ref": "GoogleCloudRetailV2alphaAlertConfig"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        },
         "getLoggingConfig": {
           "description": "Gets the LoggingConfig of the requested project.",
           "flatPath": "v2alpha/projects/{projectsId}/loggingConfig",
@@ -210,6 +235,40 @@
             "https://www.googleapis.com/auth/cloud-platform"
           ]
         },
+        "updateAlertConfig": {
+          "description": "Update the alert config of the requested project.",
+          "flatPath": "v2alpha/projects/{projectsId}/alertConfig",
+          "httpMethod": "PATCH",
+          "id": "retail.projects.updateAlertConfig",
+          "parameterOrder": [
+            "name"
+          ],
+          "parameters": {
+            "name": {
+              "description": "Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*/alertConfig",
+              "location": "path",
+              "pattern": "^projects/[^/]+/alertConfig$",
+              "required": true,
+              "type": "string"
+            },
+            "updateMask": {
+              "description": "Indicates which fields in the provided AlertConfig to update. If not set, all supported fields are updated.",
+              "format": "google-fieldmask",
+              "location": "query",
+              "type": "string"
+            }
+          },
+          "path": "v2alpha/{+name}",
+          "request": {
+            "$ref": "GoogleCloudRetailV2alphaAlertConfig"
+          },
+          "response": {
+            "$ref": "GoogleCloudRetailV2alphaAlertConfig"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        },
         "updateLoggingConfig": {
           "description": "Updates the LoggingConfig of the requested project.",
           "flatPath": "v2alpha/projects/{projectsId}/loggingConfig",
@@ -227,7 +286,7 @@
               "type": "string"
             },
             "updateMask": {
-              "description": "Indicates which fields in the provided LoggingConfig to update. The following are the only supported fields: * default_log_generation_rule * per_service_log_generation_rules If not set, all supported fields are updated.",
+              "description": "Indicates which fields in the provided LoggingConfig to update. The following are the only supported fields: * LoggingConfig.default_log_generation_rule * LoggingConfig.per_service_log_generation_rules If not set, all supported fields are updated.",
               "format": "google-fieldmask",
               "location": "query",
               "type": "string"
@@ -2416,7 +2475,7 @@
       }
     }
   },
-  "revision": "20231130",
+  "revision": "20240319",
   "rootUrl": "https://retail.googleapis.com/",
   "schemas": {
     "GoogleApiHttpBody": {
@@ -2593,12 +2652,88 @@
       "properties": {},
       "type": "object"
     },
+    "GoogleCloudRetailV2BigQueryOutputResult": {
+      "description": "A BigQuery output result.",
+      "id": "GoogleCloudRetailV2BigQueryOutputResult",
+      "properties": {
+        "datasetId": {
+          "description": "The ID of a BigQuery Dataset.",
+          "type": "string"
+        },
+        "tableId": {
+          "description": "The ID of a BigQuery Table.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2CreateModelMetadata": {
       "description": "Metadata associated with a create operation.",
       "id": "GoogleCloudRetailV2CreateModelMetadata",
       "properties": {
         "model": {
           "description": "The resource name of the model that this create applies to. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2ExportAnalyticsMetricsResponse": {
+      "description": "Response of the ExportAnalyticsMetricsRequest. If the long running operation was successful, then this message is returned by the google.longrunning.Operations.response field if the operation was successful.",
+      "id": "GoogleCloudRetailV2ExportAnalyticsMetricsResponse",
+      "properties": {
+        "errorSamples": {
+          "description": "A sample of errors encountered while processing the request.",
+          "items": {
+            "$ref": "GoogleRpcStatus"
+          },
+          "type": "array"
+        },
+        "errorsConfig": {
+          "$ref": "GoogleCloudRetailV2ExportErrorsConfig",
+          "description": "This field is never set."
+        },
+        "outputResult": {
+          "$ref": "GoogleCloudRetailV2OutputResult",
+          "description": "Output result indicating where the data were exported to."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2ExportErrorsConfig": {
+      "description": "Configuration of destination for Export related errors.",
+      "id": "GoogleCloudRetailV2ExportErrorsConfig",
+      "properties": {
+        "gcsPrefix": {
+          "description": "Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Export errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status` message.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2ExportMetadata": {
+      "description": "Metadata related to the progress of the Export operation. This is returned by the google.longrunning.Operation.metadata field.",
+      "id": "GoogleCloudRetailV2ExportMetadata",
+      "properties": {
+        "createTime": {
+          "description": "Operation create time.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "updateTime": {
+          "description": "Operation last update time. If the operation is done, this is also the finish time.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2GcsOutputResult": {
+      "description": "A Gcs output result.",
+      "id": "GoogleCloudRetailV2GcsOutputResult",
+      "properties": {
+        "outputUri": {
+          "description": "The uri of Gcs output",
           "type": "string"
         }
       },
@@ -2885,6 +3020,27 @@
       },
       "type": "object"
     },
+    "GoogleCloudRetailV2OutputResult": {
+      "description": "Output result that stores the information about where the exported data is stored.",
+      "id": "GoogleCloudRetailV2OutputResult",
+      "properties": {
+        "bigqueryResult": {
+          "description": "The BigQuery location where the result is stored.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2BigQueryOutputResult"
+          },
+          "type": "array"
+        },
+        "gcsResult": {
+          "description": "The Google Cloud Storage location where the result is stored.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2GcsOutputResult"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2PurgeMetadata": {
       "description": "Metadata related to the progress of the Purge operation. This will be returned by the google.longrunning.Operation.metadata field.",
       "id": "GoogleCloudRetailV2PurgeMetadata",
@@ -3142,6 +3298,67 @@
       "description": "Response of the ProductService.AddLocalInventories API. Currently empty because there is no meaningful response populated from the ProductService.AddLocalInventories method.",
       "id": "GoogleCloudRetailV2alphaAddLocalInventoriesResponse",
       "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaAlertConfig": {
+      "description": "Project level alert config.",
+      "id": "GoogleCloudRetailV2alphaAlertConfig",
+      "properties": {
+        "alertPolicies": {
+          "description": "Alert policies for a customer. They must be unique by [AlertPolicy.alert_group]",
+          "items": {
+            "$ref": "GoogleCloudRetailV2alphaAlertConfigAlertPolicy"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*/alertConfig",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaAlertConfigAlertPolicy": {
+      "description": "Alert policy for a customer.",
+      "id": "GoogleCloudRetailV2alphaAlertConfigAlertPolicy",
+      "properties": {
+        "alertGroup": {
+          "description": "The feature that provides alerting capability. Supported value is only `search-data-quality` for now.",
+          "type": "string"
+        },
+        "enrollStatus": {
+          "description": "The enrollment status of a customer.",
+          "enum": [
+            "ENROLL_STATUS_UNSPECIFIED",
+            "ENROLLED",
+            "DECLINED"
+          ],
+          "enumDescriptions": [
+            "Default value. Used for customers who have not responded to the alert policy.",
+            "Customer is enrolled in this policy.",
+            "Customer declined this policy."
+          ],
+          "type": "string"
+        },
+        "recipients": {
+          "description": "Recipients for the alert policy. One alert policy should not exceed 20 recipients.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient": {
+      "description": "Recipient contact information.",
+      "id": "GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient",
+      "properties": {
+        "emailAddress": {
+          "description": "Email address of the recipient.",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "GoogleCloudRetailV2alphaAttributesConfig": {
@@ -3439,12 +3656,20 @@
           },
           "type": "array"
         },
+        "mergedFacet": {
+          "$ref": "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacet",
+          "description": "Use this field only if you want to merge a facet key into another facet key."
+        },
         "mergedFacetValues": {
           "description": "Each instance replaces a list of facet values by a merged facet value. If a facet value is not in any list, then it will stay the same. To avoid conflicts, only paths of length 1 are accepted. In other words, if \"dark_blue\" merged into \"BLUE\", then the latter can't merge into \"blues\" because this would create a path of length 2. The maximum number of instances of MergedFacetValue per CatalogAttribute is 100. This feature is available only for textual custom attributes.",
           "items": {
             "$ref": "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue"
           },
           "type": "array"
+        },
+        "rerankConfig": {
+          "$ref": "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigRerankConfig",
+          "description": "Set this field only if you want to rerank based on facet values engaged by the user for the current key. This option is only possible for custom facetable textual keys."
         }
       },
       "type": "object"
@@ -3473,6 +3698,25 @@
       },
       "type": "object"
     },
+    "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacet": {
+      "description": "The current facet key (i.e. attribute config) maps into the merged_facet_key. A facet key can have at most one child. The current facet key and the merged facet key need both to be textual custom attributes or both numerical custom attributes (same type).",
+      "id": "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacet",
+      "properties": {
+        "mergedFacetKey": {
+          "description": "The merged facet key should be a valid facet key that is different than the facet key of the current catalog attribute. We refer this is merged facet key as the child of the current catalog attribute. This merged facet key can't be a parent of another facet key (i.e. no directed path of length 2). This merged facet key needs to be either a textual custom attribute or a numerical custom attribute.",
+          "type": "string"
+        },
+        "mergedFacetValues": {
+          "deprecated": true,
+          "description": "Each instance is a list of facet values that map into the same (possibly different) merged facet value. For the current attribute config, each facet value should map to at most one merged facet value.",
+          "items": {
+            "$ref": "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue": {
       "description": "Replaces a set of textual facet values by the same (possibly different) merged facet value. Each facet value should appear at most once as a value per CatalogAttribute. This feature is available only for textual custom attributes.",
       "id": "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue",
@@ -3487,6 +3731,24 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigRerankConfig": {
+      "description": "Options to rerank based on facet values engaged by the user for the current key. That key needs to be a custom textual key and facetable. To use this control, you also need to pass all the facet keys engaged by the user in the request using the field [SearchRequest.FacetSpec]. In particular, if you don't pass the facet keys engaged that you want to rerank on, this control won't be effective. Moreover, to obtain better results, the facet values that you want to rerank on should be close to English (ideally made of words, underscores, and spaces).",
+      "id": "GoogleCloudRetailV2alphaCatalogAttributeFacetConfigRerankConfig",
+      "properties": {
+        "facetValues": {
+          "description": "If empty, rerank on all facet values for the current key. Otherwise, will rerank on the facet values from this list only.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rerankFacet": {
+          "description": "If set to true, then we also rerank the dynamic facets based on the facet values engaged by the user for the current attribute key during serving.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -3945,7 +4207,7 @@
       "id": "GoogleCloudRetailV2alphaExperimentInfoServingConfigExperiment",
       "properties": {
         "experimentServingConfig": {
-          "description": "The fully qualified resource name of the serving config VariantArm.serving_config_id responsible for generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.",
+          "description": "The fully qualified resource name of the serving config Experiment.VariantArm.serving_config_id responsible for generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.",
           "type": "string"
         },
         "originalServingConfig": {
@@ -4272,7 +4534,7 @@
           "type": "boolean"
         },
         "updateMask": {
-          "description": "Indicates which fields in the provided imported `products` to update. If not set, all fields are updated.",
+          "description": "Indicates which fields in the provided imported `products` to update. If not set, all fields are updated. If provided, only the existing product fields are updated. Missing products will not be created.",
           "format": "google-fieldmask",
           "type": "string"
         }
@@ -5015,6 +5277,14 @@
       "properties": {
         "datasetId": {
           "description": "Required. The ID of a BigQuery Dataset.",
+          "type": "string"
+        },
+        "tableIdPrefix": {
+          "description": "Required. The prefix of exported BigQuery tables.",
+          "type": "string"
+        },
+        "tableType": {
+          "description": "Required. Describes the table type. The following values are supported: * `table`: A BigQuery native table. * `view`: A virtual table defined by a SQL query.",
           "type": "string"
         }
       },
@@ -7063,6 +7333,28 @@
       },
       "type": "object"
     },
+    "GoogleCloudRetailV2betaExportAnalyticsMetricsResponse": {
+      "description": "Response of the ExportAnalyticsMetricsRequest. If the long running operation was successful, then this message is returned by the google.longrunning.Operations.response field if the operation was successful.",
+      "id": "GoogleCloudRetailV2betaExportAnalyticsMetricsResponse",
+      "properties": {
+        "errorSamples": {
+          "description": "A sample of errors encountered while processing the request.",
+          "items": {
+            "$ref": "GoogleRpcStatus"
+          },
+          "type": "array"
+        },
+        "errorsConfig": {
+          "$ref": "GoogleCloudRetailV2betaExportErrorsConfig",
+          "description": "This field is never set."
+        },
+        "outputResult": {
+          "$ref": "GoogleCloudRetailV2betaOutputResult",
+          "description": "Output result indicating where the data were exported to."
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudRetailV2betaExportErrorsConfig": {
       "description": "Configuration of destination for Export related errors.",
       "id": "GoogleCloudRetailV2betaExportErrorsConfig",
@@ -7793,7 +8085,7 @@
     }
   },
   "servicePath": "",
-  "title": "Retail API",
+  "title": "Vertex AI Search for Retail API",
   "version": "v2alpha",
   "version_module": true
 }

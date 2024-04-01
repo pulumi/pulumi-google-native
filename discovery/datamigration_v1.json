@@ -1312,7 +1312,7 @@
                   ]
                 },
                 "demoteDestination": {
-                  "description": "Demotes the destination database to become a read replica of the source. This is applicable for the following migrations: 1. MySQL to Cloud SQL (for MySQL) 2. PostgreSQL to Cloud SQL (for PostgreSQL) 3. PostgreSQL to AlloyDB.",
+                  "description": "Demotes the destination database to become a read replica of the source. This is applicable for the following migrations: 1. MySQL to Cloud SQL for MySQL 2. PostgreSQL to Cloud SQL for PostgreSQL 3. PostgreSQL to AlloyDB for PostgreSQL.",
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/migrationJobs/{migrationJobsId}:demoteDestination",
                   "httpMethod": "POST",
                   "id": "datamigration.projects.locations.migrationJobs.demoteDestination",
@@ -2125,7 +2125,7 @@
       }
     }
   },
-  "revision": "20231111",
+  "revision": "20240315",
   "rootUrl": "https://datamigration.googleapis.com/",
   "schemas": {
     "AlloyDbConnectionProfile": {
@@ -2389,14 +2389,14 @@
           "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
         },
         "members": {
-          "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.",
+          "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "role": {
-          "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
           "type": "string"
         }
       },
@@ -2529,6 +2529,7 @@
             "MYSQL_8_0_32",
             "MYSQL_8_0_33",
             "MYSQL_8_0_34",
+            "MYSQL_8_0_35",
             "POSTGRES_9_6",
             "POSTGRES_11",
             "POSTGRES_10",
@@ -2551,6 +2552,7 @@
             "The database major version is MySQL 8.0 and the minor version is 32.",
             "The database major version is MySQL 8.0 and the minor version is 33.",
             "The database major version is MySQL 8.0 and the minor version is 34.",
+            "The database major version is MySQL 8.0 and the minor version is 35.",
             "PostgreSQL 9.6.",
             "PostgreSQL 11.",
             "PostgreSQL 10.",
@@ -2809,13 +2811,17 @@
             "ALLOYDB"
           ],
           "enumDescriptions": [
-            "The database provider is unknown.",
-            "CloudSQL runs the database.",
-            "RDS runs the database.",
-            "Amazon Aurora.",
-            "AlloyDB."
+            "Use this value for on-premise source database instances.",
+            "Cloud SQL is the source instance provider.",
+            "Amazon RDS is the source instance provider.",
+            "Amazon Aurora is the source instance provider.",
+            "AlloyDB for PostgreSQL is the source instance provider."
           ],
           "type": "string"
+        },
+        "sqlserver": {
+          "$ref": "SqlServerConnectionProfile",
+          "description": "Connection profile for a SQL Server data source."
         },
         "state": {
           "description": "The current connection profile state (e.g. DRAFT, READY, or FAILED).",
@@ -3031,12 +3037,14 @@
             "DATABASE_ENGINE_UNSPECIFIED",
             "MYSQL",
             "POSTGRESQL",
+            "SQLSERVER",
             "ORACLE"
           ],
           "enumDescriptions": [
             "The source database engine of the migration job is unknown.",
             "The source engine is MySQL.",
             "The source engine is PostgreSQL.",
+            "The source engine is SQL Server.",
             "The source engine is Oracle."
           ],
           "type": "string"
@@ -3209,12 +3217,14 @@
             "DATABASE_ENGINE_UNSPECIFIED",
             "MYSQL",
             "POSTGRESQL",
+            "SQLSERVER",
             "ORACLE"
           ],
           "enumDescriptions": [
             "The source database engine of the migration job is unknown.",
             "The source engine is MySQL.",
             "The source engine is PostgreSQL.",
+            "The source engine is SQL Server.",
             "The source engine is Oracle."
           ],
           "type": "string"
@@ -3229,11 +3239,11 @@
             "ALLOYDB"
           ],
           "enumDescriptions": [
-            "The database provider is unknown.",
-            "CloudSQL runs the database.",
-            "RDS runs the database.",
-            "Amazon Aurora.",
-            "AlloyDB."
+            "Use this value for on-premise source database instances.",
+            "Cloud SQL is the source instance provider.",
+            "Amazon RDS is the source instance provider.",
+            "Amazon Aurora is the source instance provider.",
+            "AlloyDB for PostgreSQL is the source instance provider."
           ],
           "type": "string"
         }
@@ -4443,7 +4453,8 @@
             "CDC",
             "PROMOTE_IN_PROGRESS",
             "WAITING_FOR_SOURCE_WRITES_TO_STOP",
-            "PREPARING_THE_DUMP"
+            "PREPARING_THE_DUMP",
+            "READY_FOR_PROMOTE"
           ],
           "enumDescriptions": [
             "The phase of the migration job is unknown.",
@@ -4451,7 +4462,8 @@
             "The migration job is CDC phase.",
             "The migration job is running the promote phase.",
             "Only RDS flow - waiting for source writes to stop",
-            "Only RDS flow - the sources writes stopped, waiting for dump to begin"
+            "Only RDS flow - the sources writes stopped, waiting for dump to begin",
+            "The migration job is ready to be promoted."
           ],
           "readOnly": true,
           "type": "string"
@@ -4467,6 +4479,10 @@
         "sourceDatabase": {
           "$ref": "DatabaseType",
           "description": "The database engine type and provider of the source."
+        },
+        "sqlserverHomogeneousMigrationJobConfig": {
+          "$ref": "SqlServerHomogeneousMigrationJobConfig",
+          "description": "Optional. Configuration for SQL Server homogeneous migration."
         },
         "state": {
           "description": "The current migration job state.",
@@ -4574,7 +4590,8 @@
             "SOURCE_SIZE_EXCEEDS_THRESHOLD",
             "EXISTING_CONFLICTING_DATABASES",
             "PARALLEL_IMPORT_INSUFFICIENT_PRIVILEGE",
-            "EXISTING_DATA"
+            "EXISTING_DATA",
+            "SOURCE_MAX_SUBSCRIPTIONS"
           ],
           "enumDescriptions": [
             "An unknown error occurred",
@@ -4605,7 +4622,8 @@
             "The source DB size in Bytes exceeds a certain threshold. The migration might require an increase of quota, or might not be supported.",
             "The destination DB contains existing databases that are conflicting with those in the source DB.",
             "Insufficient privilege to enable the parallelism configuration.",
-            "The destination instance contains existing data or user defined entities (for example databases, tables, or functions). You can only migrate to empty instances. Clear your destination instance and retry the migration job."
+            "The destination instance contains existing data or user defined entities (for example databases, tables, or functions). You can only migrate to empty instances. Clear your destination instance and retry the migration job.",
+            "The migration job is configured to use max number of subscriptions to migrate data from the source to the destination."
           ],
           "readOnly": true,
           "type": "string"
@@ -5559,6 +5577,130 @@
         "requireSsl": {
           "description": "Whether SSL connections over IP should be enforced or not.",
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "SqlServerBackups": {
+      "description": "Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.",
+      "id": "SqlServerBackups",
+      "properties": {
+        "gcsBucket": {
+          "description": "Required. The Cloud Storage bucket that stores backups for all replicated databases.",
+          "type": "string"
+        },
+        "gcsPrefix": {
+          "description": "Optional. Cloud Storage path inside the bucket that stores backups.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SqlServerConnectionProfile": {
+      "description": "Specifies connection parameters required specifically for SQL Server databases.",
+      "id": "SqlServerConnectionProfile",
+      "properties": {
+        "backups": {
+          "$ref": "SqlServerBackups",
+          "description": "The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server."
+        },
+        "cloudSqlId": {
+          "description": "If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.",
+          "type": "string"
+        },
+        "forwardSshConnectivity": {
+          "$ref": "ForwardSshTunnelConnectivity",
+          "description": "Forward SSH tunnel connectivity."
+        },
+        "host": {
+          "description": "Required. The IP or hostname of the source SQL Server database.",
+          "type": "string"
+        },
+        "password": {
+          "description": "Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.",
+          "type": "string"
+        },
+        "passwordSet": {
+          "description": "Output only. Indicates whether a new password is included in the request.",
+          "readOnly": true,
+          "type": "boolean"
+        },
+        "port": {
+          "description": "Required. The network port of the source SQL Server database.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "privateConnectivity": {
+          "$ref": "PrivateConnectivity",
+          "description": "Private connectivity."
+        },
+        "privateServiceConnectConnectivity": {
+          "$ref": "PrivateServiceConnectConnectivity",
+          "description": "Private Service Connect connectivity."
+        },
+        "ssl": {
+          "$ref": "SslConfig",
+          "description": "SSL configuration for the destination to connect to the source database."
+        },
+        "staticIpConnectivity": {
+          "$ref": "StaticIpConnectivity",
+          "description": "Static IP connectivity data (default, no additional details needed)."
+        },
+        "username": {
+          "description": "Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SqlServerDatabaseBackup": {
+      "description": "Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.",
+      "id": "SqlServerDatabaseBackup",
+      "properties": {
+        "database": {
+          "description": "Required. Name of a SQL Server database for which to define backup configuration.",
+          "type": "string"
+        },
+        "encryptionOptions": {
+          "$ref": "SqlServerEncryptionOptions",
+          "description": "Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password."
+        }
+      },
+      "type": "object"
+    },
+    "SqlServerEncryptionOptions": {
+      "description": "Encryption settings for the SQL Server database.",
+      "id": "SqlServerEncryptionOptions",
+      "properties": {
+        "certPath": {
+          "description": "Required. Path to certificate.",
+          "type": "string"
+        },
+        "pvkPassword": {
+          "description": "Required. Input only. Private key password.",
+          "type": "string"
+        },
+        "pvkPath": {
+          "description": "Required. Path to certificate private key.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "SqlServerHomogeneousMigrationJobConfig": {
+      "description": "Configuration for homogeneous migration to Cloud SQL for SQL Server.",
+      "id": "SqlServerHomogeneousMigrationJobConfig",
+      "properties": {
+        "backupFilePattern": {
+          "description": "Required. Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\\d{4})(?\\d{2})(?\\d{2})_(?\\d{2})(?\\d{2})(?\\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\\.(?\\d*).trn or (?.*)\\.(?\\d*).trn",
+          "type": "string"
+        },
+        "databaseBackups": {
+          "description": "Required. Backup details per database in Cloud Storage.",
+          "items": {
+            "$ref": "SqlServerDatabaseBackup"
+          },
+          "type": "array"
         }
       },
       "type": "object"

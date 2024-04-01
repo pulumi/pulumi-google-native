@@ -10,9 +10,6 @@
         },
         "https://www.googleapis.com/auth/compute.readonly": {
           "description": "View your Google Compute Engine resources"
-        },
-        "https://www.googleapis.com/auth/userinfo.email": {
-          "description": "See your primary Google Account email address"
         }
       }
     }
@@ -29,6 +26,16 @@
       "description": "Regional Endpoint",
       "endpointUrl": "https://dataflow.me-central2.rep.googleapis.com/",
       "location": "me-central2"
+    },
+    {
+      "description": "Regional Endpoint",
+      "endpointUrl": "https://dataflow.europe-west3.rep.googleapis.com/",
+      "location": "europe-west3"
+    },
+    {
+      "description": "Regional Endpoint",
+      "endpointUrl": "https://dataflow.europe-west9.rep.googleapis.com/",
+      "location": "europe-west9"
     }
   ],
   "fullyEncodeReservedExpansion": true,
@@ -156,8 +163,7 @@
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/compute",
-            "https://www.googleapis.com/auth/compute.readonly",
-            "https://www.googleapis.com/auth/userinfo.email"
+            "https://www.googleapis.com/auth/compute.readonly"
           ]
         },
         "workerMessages": {
@@ -186,8 +192,7 @@
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/compute",
-            "https://www.googleapis.com/auth/compute.readonly",
-            "https://www.googleapis.com/auth/userinfo.email"
+            "https://www.googleapis.com/auth/compute.readonly"
           ]
         }
       },
@@ -273,8 +278,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "create": {
@@ -330,8 +334,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "get": {
@@ -386,8 +389,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "getMetrics": {
@@ -431,8 +433,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "list": {
@@ -514,8 +515,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "snapshot": {
@@ -551,8 +551,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "update": {
@@ -599,8 +598,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             }
           },
@@ -640,8 +638,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "sendCapture": {
@@ -677,8 +674,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 }
               }
@@ -764,8 +760,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 }
               }
@@ -805,8 +800,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "reportStatus": {
@@ -842,8 +836,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 }
               }
@@ -885,8 +878,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             }
           },
@@ -926,8 +918,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 }
               }
@@ -989,8 +980,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "get": {
@@ -1047,8 +1037,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "getExecutionDetails": {
@@ -1099,8 +1088,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "getMetrics": {
@@ -1146,8 +1134,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "list": {
@@ -1231,8 +1218,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "snapshot": {
@@ -1275,8 +1261,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "update": {
@@ -1325,8 +1310,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 }
               },
@@ -1373,8 +1357,7 @@
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/compute.readonly"
                       ]
                     },
                     "sendCapture": {
@@ -1417,8 +1400,7 @@
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/compute.readonly"
                       ]
                     }
                   }
@@ -1506,8 +1488,7 @@
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/compute.readonly"
                       ]
                     }
                   }
@@ -1551,8 +1532,7 @@
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/compute.readonly"
                       ]
                     }
                   }
@@ -1626,8 +1606,7 @@
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/compute.readonly"
                       ]
                     }
                   }
@@ -1674,8 +1653,7 @@
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/compute.readonly"
                       ]
                     },
                     "reportStatus": {
@@ -1718,8 +1696,7 @@
                       "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
-                        "https://www.googleapis.com/auth/compute.readonly",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/compute.readonly"
                       ]
                     }
                   }
@@ -1765,8 +1742,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "get": {
@@ -1806,8 +1782,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "list": {
@@ -1845,8 +1820,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 }
               }
@@ -1886,8 +1860,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "get": {
@@ -1936,8 +1909,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 },
                 "launch": {
@@ -1951,7 +1923,7 @@
                   ],
                   "parameters": {
                     "dynamicTemplate.gcsPath": {
-                      "description": "Path to dynamic template spec file on Cloud Storage. The file must be a Json serialized DynamicTemplateFieSpec object.",
+                      "description": "Path to the dynamic template specification file on Cloud Storage. The file must be a JSON serialized `DynamicTemplateFileSpec` object.",
                       "location": "query",
                       "type": "string"
                     },
@@ -1961,7 +1933,7 @@
                       "type": "string"
                     },
                     "gcsPath": {
-                      "description": "A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'.",
+                      "description": "A Cloud Storage path to the template to use to create the job. Must be valid Cloud Storage URL, beginning with `gs://`.",
                       "location": "query",
                       "type": "string"
                     },
@@ -1993,8 +1965,7 @@
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform",
                     "https://www.googleapis.com/auth/compute",
-                    "https://www.googleapis.com/auth/compute.readonly",
-                    "https://www.googleapis.com/auth/userinfo.email"
+                    "https://www.googleapis.com/auth/compute.readonly"
                   ]
                 }
               }
@@ -2038,8 +2009,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "list": {
@@ -2075,8 +2045,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             }
           }
@@ -2109,8 +2078,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "get": {
@@ -2157,8 +2125,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             },
             "launch": {
@@ -2171,7 +2138,7 @@
               ],
               "parameters": {
                 "dynamicTemplate.gcsPath": {
-                  "description": "Path to dynamic template spec file on Cloud Storage. The file must be a Json serialized DynamicTemplateFieSpec object.",
+                  "description": "Path to the dynamic template specification file on Cloud Storage. The file must be a JSON serialized `DynamicTemplateFileSpec` object.",
                   "location": "query",
                   "type": "string"
                 },
@@ -2181,7 +2148,7 @@
                   "type": "string"
                 },
                 "gcsPath": {
-                  "description": "A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'.",
+                  "description": "A Cloud Storage path to the template to use to create the job. Must be valid Cloud Storage URL, beginning with `gs://`.",
                   "location": "query",
                   "type": "string"
                 },
@@ -2212,8 +2179,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/compute",
-                "https://www.googleapis.com/auth/compute.readonly",
-                "https://www.googleapis.com/auth/userinfo.email"
+                "https://www.googleapis.com/auth/compute.readonly"
               ]
             }
           }
@@ -2221,7 +2187,7 @@
       }
     }
   },
-  "revision": "20231130",
+  "revision": "20240324",
   "rootUrl": "https://dataflow.googleapis.com/",
   "schemas": {
     "ApproximateProgress": {
@@ -2367,6 +2333,23 @@
       },
       "type": "object"
     },
+    "Base2Exponent": {
+      "description": "Exponential buckets where the growth factor between buckets is `2**(2**-scale)`. e.g. for `scale=1` growth factor is `2**(2**(-1))=sqrt(2)`. `n` buckets will have the following boundaries. - 0th: [0, gf) - i in [1, n-1]: [gf^(i), gf^(i+1))",
+      "id": "Base2Exponent",
+      "properties": {
+        "numberOfBuckets": {
+          "description": "Must be greater than 0.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "scale": {
+          "description": "Must be between -3 and 3. This forces the growth factor of the bucket boundaries to be between `2^(1/8)` and `256`.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "BigQueryIODetails": {
       "description": "Metadata for a BigQuery connector used by the job.",
       "id": "BigQueryIODetails",
@@ -2405,6 +2388,21 @@
         "tableId": {
           "description": "TableId accessed in the connection.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "BucketOptions": {
+      "description": "`BucketOptions` describes the bucket boundaries used in the histogram.",
+      "id": "BucketOptions",
+      "properties": {
+        "exponential": {
+          "$ref": "Base2Exponent",
+          "description": "Bucket boundaries grow exponentially."
+        },
+        "linear": {
+          "$ref": "Linear",
+          "description": "Bucket boundaries grow linearly."
         }
       },
       "type": "object"
@@ -2907,6 +2905,34 @@
       },
       "type": "object"
     },
+    "DataflowHistogramValue": {
+      "description": "Summary statistics for a population of values. HistogramValue contains a sequence of buckets and gives a count of values that fall into each bucket. Bucket boundares are defined by a formula and bucket widths are either fixed or exponentially increasing.",
+      "id": "DataflowHistogramValue",
+      "properties": {
+        "bucketCounts": {
+          "description": "Optional. The number of values in each bucket of the histogram, as described in `bucket_options`. `bucket_counts` should contain N values, where N is the number of buckets specified in `bucket_options`. If `bucket_counts` has fewer than N values, the remaining values are assumed to be 0.",
+          "items": {
+            "format": "int64",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bucketOptions": {
+          "$ref": "BucketOptions",
+          "description": "Describes the bucket boundaries used in the histogram."
+        },
+        "count": {
+          "description": "Number of values recorded in this histogram.",
+          "format": "int64",
+          "type": "string"
+        },
+        "outlierStats": {
+          "$ref": "OutlierStats",
+          "description": "Statistics on the values recorded in the histogram that fall out of the bucket boundaries."
+        }
+      },
+      "type": "object"
+    },
     "DatastoreIODetails": {
       "description": "Metadata for a Datastore connector used by the job.",
       "id": "DatastoreIODetails",
@@ -3179,12 +3205,26 @@
           "readOnly": true,
           "type": "string"
         },
+        "streamingMode": {
+          "description": "Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).",
+          "enum": [
+            "STREAMING_MODE_UNSPECIFIED",
+            "STREAMING_MODE_EXACTLY_ONCE",
+            "STREAMING_MODE_AT_LEAST_ONCE"
+          ],
+          "enumDescriptions": [
+            "Run in the default mode.",
+            "In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.",
+            "Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing."
+          ],
+          "type": "string"
+        },
         "tempStoragePrefix": {
           "description": "The prefix of the resources the system should use for temporary storage. The system will append the suffix \"/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}",
           "type": "string"
         },
         "useStreamingEngineResourceBasedBilling": {
-          "description": "Output only. Whether the job uses the new streaming engine billing model based on resource usage.",
+          "description": "Output only. Whether the job uses the Streaming Engine resource-based billing model.",
           "readOnly": true,
           "type": "boolean"
         },
@@ -3385,7 +3425,7 @@
       "type": "object"
     },
     "FlexTemplateRuntimeEnvironment": {
-      "description": "The environment values to be set at runtime for flex template.",
+      "description": "The environment values to be set at runtime for flex template. LINT.IfChange",
       "id": "FlexTemplateRuntimeEnvironment",
       "properties": {
         "additionalExperiments": {
@@ -3501,6 +3541,20 @@
         },
         "stagingLocation": {
           "description": "The Cloud Storage path for staging local files. Must be a valid Cloud Storage URL, beginning with `gs://`.",
+          "type": "string"
+        },
+        "streamingMode": {
+          "description": "Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).",
+          "enum": [
+            "STREAMING_MODE_UNSPECIFIED",
+            "STREAMING_MODE_EXACTLY_ONCE",
+            "STREAMING_MODE_AT_LEAST_ONCE"
+          ],
+          "enumDescriptions": [
+            "Run in the default mode.",
+            "In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.",
+            "Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing."
+          ],
           "type": "string"
         },
         "subnetwork": {
@@ -4394,6 +4448,28 @@
       },
       "type": "object"
     },
+    "Linear": {
+      "description": "Linear buckets with the following boundaries for indices in 0 to n-1. - i in [0, n-1]: [start + (i)*width, start + (i+1)*width)",
+      "id": "Linear",
+      "properties": {
+        "numberOfBuckets": {
+          "description": "Must be greater than 0.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "start": {
+          "description": "Lower bound of the first bucket.",
+          "format": "double",
+          "type": "number"
+        },
+        "width": {
+          "description": "Distance between bucket boundaries. Must be greater than 0.",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "ListJobMessagesResponse": {
       "description": "Response to a request to list job messages.",
       "id": "ListJobMessagesResponse",
@@ -4607,6 +4683,33 @@
       },
       "type": "object"
     },
+    "MetricValue": {
+      "description": "The value of a metric along with its name and labels.",
+      "id": "MetricValue",
+      "properties": {
+        "metric": {
+          "description": "Base name for this metric.",
+          "type": "string"
+        },
+        "metricLabels": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Optional. Set of metric labels for this metric.",
+          "type": "object"
+        },
+        "valueHistogram": {
+          "$ref": "DataflowHistogramValue",
+          "description": "Histogram value of this metric."
+        },
+        "valueInt64": {
+          "description": "Integer value of this metric.",
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "MountedDataDisk": {
       "description": "Describes mounted data disk.",
       "id": "MountedDataDisk",
@@ -4664,6 +4767,33 @@
         "name": {
           "description": "Name of the counter.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "OutlierStats": {
+      "description": "Statistics for the underflow and overflow bucket.",
+      "id": "OutlierStats",
+      "properties": {
+        "overflowCount": {
+          "description": "Number of values that are larger than the upper bound of the largest bucket.",
+          "format": "int64",
+          "type": "string"
+        },
+        "overflowMean": {
+          "description": "Mean of values in the overflow bucket.",
+          "format": "double",
+          "type": "number"
+        },
+        "underflowCount": {
+          "description": "Number of values that are smaller than the lower bound of the smallest bucket.",
+          "format": "int64",
+          "type": "string"
+        },
+        "underflowMean": {
+          "description": "Mean of values in the undeflow bucket.",
+          "format": "double",
+          "type": "number"
         }
       },
       "type": "object"
@@ -4812,6 +4942,10 @@
           "description": "Required. The help text to display for the parameter.",
           "type": "string"
         },
+        "hiddenUi": {
+          "description": "Optional. Whether the parameter should be hidden in the UI.",
+          "type": "boolean"
+        },
         "isOptional": {
           "description": "Optional. Whether the parameter is optional. Defaults to false.",
           "type": "boolean"
@@ -4950,6 +5084,42 @@
           },
           "description": "The value combining function to invoke.",
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "PerStepNamespaceMetrics": {
+      "description": "Metrics for a particular unfused step and namespace. A metric is uniquely identified by the `metrics_namespace`, `original_step`, `metric name` and `metric_labels`.",
+      "id": "PerStepNamespaceMetrics",
+      "properties": {
+        "metricValues": {
+          "description": "Optional. Metrics that are recorded for this namespace and unfused step.",
+          "items": {
+            "$ref": "MetricValue"
+          },
+          "type": "array"
+        },
+        "metricsNamespace": {
+          "description": "The namespace of these metrics on the worker.",
+          "type": "string"
+        },
+        "originalStep": {
+          "description": "The original system name of the unfused step that these metrics are reported from.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PerWorkerMetrics": {
+      "description": "Per worker metrics.",
+      "id": "PerWorkerMetrics",
+      "properties": {
+        "perStepNamespaceMetrics": {
+          "description": "Optional. Metrics for a particular unfused step and namespace.",
+          "items": {
+            "$ref": "PerStepNamespaceMetrics"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -5248,7 +5418,7 @@
       "type": "object"
     },
     "RuntimeEnvironment": {
-      "description": "The environment values to set at runtime.",
+      "description": "The environment values to set at runtime. LINT.IfChange",
       "id": "RuntimeEnvironment",
       "properties": {
         "additionalExperiments": {
@@ -5318,6 +5488,20 @@
           "description": "Optional. The email address of the service account to run the job as.",
           "type": "string"
         },
+        "streamingMode": {
+          "description": "Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).",
+          "enum": [
+            "STREAMING_MODE_UNSPECIFIED",
+            "STREAMING_MODE_EXACTLY_ONCE",
+            "STREAMING_MODE_AT_LEAST_ONCE"
+          ],
+          "enumDescriptions": [
+            "Run in the default mode.",
+            "In this mode, message deduplication is performed against persistent state to make sure each message is processed and committed to storage exactly once.",
+            "Message deduplication is not performed. Messages might be processed multiple times, and the results are applied multiple times. Note: Setting this value also enables Streaming Engine and Streaming Engine resource-based billing."
+          ],
+          "type": "string"
+        },
         "subnetwork": {
           "description": "Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form \"https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK\" or \"regions/REGION/subnetworks/SUBNETWORK\". If the subnetwork is located in a Shared VPC network, you must use the complete URL.",
           "type": "string"
@@ -5374,7 +5558,7 @@
           "type": "integer"
         },
         "workerUtilizationHint": {
-          "description": "Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.",
+          "description": "Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).",
           "format": "double",
           "type": "number"
         }
@@ -6503,6 +6687,70 @@
       },
       "type": "object"
     },
+    "StreamingScalingReport": {
+      "description": "Contains per-user worker telemetry used in streaming autoscaling.",
+      "id": "StreamingScalingReport",
+      "properties": {
+        "activeBundleCount": {
+          "deprecated": true,
+          "format": "int32",
+          "type": "integer"
+        },
+        "activeThreadCount": {
+          "description": "Current acive thread count.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "maximumBundleCount": {
+          "description": "Maximum bundle count.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "maximumBytes": {
+          "description": "Maximum bytes.",
+          "format": "int64",
+          "type": "string"
+        },
+        "maximumBytesCount": {
+          "deprecated": true,
+          "format": "int32",
+          "type": "integer"
+        },
+        "maximumThreadCount": {
+          "description": "Maximum thread count limit.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "outstandingBundleCount": {
+          "description": "Current outstanding bundle count.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "outstandingBytes": {
+          "description": "Current outstanding bytes.",
+          "format": "int64",
+          "type": "string"
+        },
+        "outstandingBytesCount": {
+          "deprecated": true,
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "StreamingScalingReportResponse": {
+      "description": "Contains per-user-worker streaming scaling recommendation from the backend.",
+      "id": "StreamingScalingReportResponse",
+      "properties": {
+        "maximumThreadCount": {
+          "description": "Maximum thread count limit;",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "StreamingSetupTask": {
       "description": "A task which initializes part of a streaming Dataflow job.",
       "id": "StreamingSetupTask",
@@ -6729,6 +6977,18 @@
             "$ref": "ParameterMetadata"
           },
           "type": "array"
+        },
+        "streaming": {
+          "description": "Optional. Indicates if the template is streaming or not.",
+          "type": "boolean"
+        },
+        "supportsAtLeastOnce": {
+          "description": "Optional. Indicates if the streaming template supports at least once mode.",
+          "type": "boolean"
+        },
+        "supportsExactlyOnce": {
+          "description": "Optional. Indicates if the streaming template supports exactly once mode.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -7236,6 +7496,14 @@
           "description": "Labels are used to group WorkerMessages. For example, a worker_message about a particular container might have the labels: { \"JOB_ID\": \"2015-04-22\", \"WORKER_ID\": \"wordcount-vm-2015…\" \"CONTAINER_TYPE\": \"worker\", \"CONTAINER_ID\": \"ac1234def\"} Label tags typically correspond to Label enum values. However, for ease of development other strings can be used as tags. LABEL_UNSPECIFIED should not be used here.",
           "type": "object"
         },
+        "perWorkerMetrics": {
+          "$ref": "PerWorkerMetrics",
+          "description": "System defined metrics for this worker."
+        },
+        "streamingScalingReport": {
+          "$ref": "StreamingScalingReport",
+          "description": "Contains per-user worker telemetry used in streaming autoscaling."
+        },
         "time": {
           "description": "The timestamp of the worker_message.",
           "format": "google-datetime",
@@ -7291,6 +7559,10 @@
       "description": "A worker_message response allows the server to pass information to the sender.",
       "id": "WorkerMessageResponse",
       "properties": {
+        "streamingScalingReportResponse": {
+          "$ref": "StreamingScalingReportResponse",
+          "description": "Service's streaming scaling response for workers."
+        },
         "workerHealthReportResponse": {
           "$ref": "WorkerHealthReportResponse",
           "description": "The service's response to a worker's health report."

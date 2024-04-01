@@ -111,7 +111,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				postMethods = append(postMethods, restMethod)
 			}
 			switch methodName {
-			case "create", "insert":
+			case "create", "insert", "upload":
 				createMethod = &restMethod
 			case "submit", "register":
 				if createMethod == nil {

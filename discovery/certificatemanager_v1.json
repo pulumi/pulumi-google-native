@@ -1280,9 +1280,20 @@
       }
     }
   },
-  "revision": "20231103",
+  "revision": "20240317",
   "rootUrl": "https://certificatemanager.googleapis.com/",
   "schemas": {
+    "AllowlistedCertificate": {
+      "description": "Defines an allowlisted certificate.",
+      "id": "AllowlistedCertificate",
+      "properties": {
+        "pemCertificate": {
+          "description": "Required. PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "AuthorizationAttemptInfo": {
       "description": "State of the latest attempt to authorize a domain for certificate issuance.",
       "id": "AuthorizationAttemptInfo",
@@ -1644,6 +1655,20 @@
         },
         "name": {
           "description": "A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.",
+          "type": "string"
+        },
+        "type": {
+          "description": "Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.",
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "FIXED_RECORD",
+            "PER_PROJECT_RECORD"
+          ],
+          "enumDescriptions": [
+            "Type is unspecified.",
+            "FIXED_RECORD DNS authorization uses DNS-01 validation method.",
+            "PER_PROJECT_RECORD DNS authorization allows for independent management of Google-managed certificates with DNS authorization across multiple projects."
+          ],
           "type": "string"
         },
         "updateTime": {
@@ -2171,6 +2196,13 @@
       "description": "Defines a trust config.",
       "id": "TrustConfig",
       "properties": {
+        "allowlistedCertificates": {
+          "description": "Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.",
+          "items": {
+            "$ref": "AllowlistedCertificate"
+          },
+          "type": "array"
+        },
         "createTime": {
           "description": "Output only. The creation timestamp of a TrustConfig.",
           "format": "google-datetime",

@@ -1463,7 +1463,7 @@
       }
     }
   },
-  "revision": "20231204",
+  "revision": "20240328",
   "rootUrl": "https://toolresults.googleapis.com/",
   "schemas": {
     "ANR": {
@@ -2643,9 +2643,11 @@
             "GREY_MAX_O",
             "GREY_MAX_P",
             "GREY_MAX_Q",
-            "GREY_MAX_R"
+            "GREY_MAX_R",
+            "GREY_MAX_S"
           ],
           "enumDescriptions": [
+            "",
             "",
             "",
             "",
@@ -2834,6 +2836,7 @@
         },
         "graphicsStats": {
           "$ref": "GraphicsStats",
+          "deprecated": true,
           "description": "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."
         },
         "historyId": {
