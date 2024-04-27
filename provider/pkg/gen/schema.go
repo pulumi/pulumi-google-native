@@ -1390,16 +1390,37 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 		// The prop is a map with a string key and a simple value
 		// if it doesn't have a ref.
 		if prop.AdditionalProperties.Ref == "" {
-			return &schema.TypeSpec{
-				Type: "object",
-				AdditionalProperties: &schema.TypeSpec{
-					Type: "string",
-				},
-			}, nil
+			switch prop.AdditionalProperties.Type {
+			case "any":
+				return &schema.TypeSpec{
+					Type:                 "object",
+					AdditionalProperties: &schema.TypeSpec{Ref: "pulumi.json#/Any"},
+				}, nil
+			case "array":
+				// An array for AdditionalProperties doesn't make sense
+				// since it's already a map and multiple entries are
+				// allowed.
+				typeSpec, err := g.genTypeSpec(propName, propName, prop.AdditionalProperties.Items, isOutput)
+				if err != nil {
+					return nil, err
+				}
+
+				return &schema.TypeSpec{
+					Type:                 "object",
+					AdditionalProperties: typeSpec,
+				}, nil
+			default:
+				return &schema.TypeSpec{
+					Type: "object",
+					AdditionalProperties: &schema.TypeSpec{
+						Type: prop.AdditionalProperties.Type,
+					},
+				}, nil
+			}
 		}
 
 		// Otherwise, the value in-turn is a complex type.
-		typePropName := fmt.Sprintf(`%s%s`, typeName, strings.Title(propName))
+		typePropName := fmt.Sprintf(`%s%s`, typeName, ToUpperCamel(propName))
 		return g.genTypeSpec(typePropName, propName, prop.AdditionalProperties, isOutput)
 	case len(prop.Enum) > 0 && !isOutput:
 		return g.genEnumType(typeName, propName, prop)
