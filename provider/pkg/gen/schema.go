@@ -1560,7 +1560,7 @@ func isDeprecated(description string) bool {
 
 // isRequired returns true if the property or a parameter indicates that it is required.
 func isRequired(parameter discovery.JsonSchema) bool {
-	if parameter.Required == true {
+	if parameter.Required {
 		return true
 	}
 	return strings.HasPrefix(parameter.Description, "Required.")
