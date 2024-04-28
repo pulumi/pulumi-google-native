@@ -2124,6 +2124,26 @@ func (o StateConditionResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StateConditionResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
+type StateConditionResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StateConditionResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StateConditionResponse)(nil)).Elem()
+}
+
+func (o StateConditionResponseMapOutput) ToStateConditionResponseMapOutput() StateConditionResponseMapOutput {
+	return o
+}
+
+func (o StateConditionResponseMapOutput) ToStateConditionResponseMapOutputWithContext(ctx context.Context) StateConditionResponseMapOutput {
+	return o
+}
+
+func (o StateConditionResponseMapOutput) MapIndex(k pulumi.StringInput) StateConditionResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StateConditionResponse {
+		return vs[0].(map[string]StateConditionResponse)[vs[1].(string)]
+	}).(StateConditionResponseOutput)
+}
+
 // Represents the transport intermediaries created for the trigger to deliver events.
 type Transport struct {
 	// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
@@ -2351,6 +2371,7 @@ func init() {
 	pulumi.RegisterOutputType(PubsubPtrOutput{})
 	pulumi.RegisterOutputType(PubsubResponseOutput{})
 	pulumi.RegisterOutputType(StateConditionResponseOutput{})
+	pulumi.RegisterOutputType(StateConditionResponseMapOutput{})
 	pulumi.RegisterOutputType(TransportOutput{})
 	pulumi.RegisterOutputType(TransportPtrOutput{})
 	pulumi.RegisterOutputType(TransportResponseOutput{})

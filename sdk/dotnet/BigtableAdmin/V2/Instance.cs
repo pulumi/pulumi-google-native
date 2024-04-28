@@ -109,11 +109,17 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("clusters", required: true)]
+        private InputMap<Inputs.ClusterArgs>? _clusters;
+
         /// <summary>
         /// The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
         /// </summary>
-        [Input("clusters", required: true)]
-        public Input<Inputs.ClusterArgs> Clusters { get; set; } = null!;
+        public InputMap<Inputs.ClusterArgs> Clusters
+        {
+            get => _clusters ?? (_clusters = new InputMap<Inputs.ClusterArgs>());
+            set => _clusters = value;
+        }
 
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.

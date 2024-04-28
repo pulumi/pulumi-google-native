@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         /// </summary>
-        public readonly Outputs.AutoscalingPolicyScalingScheduleResponse ScalingSchedules;
+        public readonly ImmutableDictionary<string, Outputs.AutoscalingPolicyScalingScheduleResponse> ScalingSchedules;
 
         [OutputConstructor]
         private AutoscalingPolicyResponse(
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.AutoscalingPolicyScaleInControlResponse scaleInControl,
 
-            Outputs.AutoscalingPolicyScalingScheduleResponse scalingSchedules)
+            ImmutableDictionary<string, Outputs.AutoscalingPolicyScalingScheduleResponse> scalingSchedules)
         {
             CoolDownPeriodSec = coolDownPeriodSec;
             CpuUtilization = cpuUtilization;

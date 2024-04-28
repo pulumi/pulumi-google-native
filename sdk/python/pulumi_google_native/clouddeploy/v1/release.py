@@ -589,7 +589,7 @@ class Release(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetArtifacts")
-    def target_artifacts(self) -> pulumi.Output['outputs.TargetArtifactResponse']:
+    def target_artifacts(self) -> pulumi.Output[Mapping[str, 'outputs.TargetArtifactResponse']]:
         """
         Map from target ID to the target artifacts created during the render operation.
         """
@@ -597,7 +597,7 @@ class Release(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetRenders")
-    def target_renders(self) -> pulumi.Output['outputs.TargetRenderResponse']:
+    def target_renders(self) -> pulumi.Output[Mapping[str, 'outputs.TargetRenderResponse']]:
         """
         Map from target ID to details of the render operation for that target.
         """

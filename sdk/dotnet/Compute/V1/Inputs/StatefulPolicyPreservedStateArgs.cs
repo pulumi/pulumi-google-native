@@ -15,23 +15,41 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// </summary>
     public sealed class StatefulPolicyPreservedStateArgs : global::Pulumi.ResourceArgs
     {
+        [Input("disks")]
+        private InputMap<Inputs.StatefulPolicyPreservedStateDiskDeviceArgs>? _disks;
+
         /// <summary>
         /// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
         /// </summary>
-        [Input("disks")]
-        public Input<Inputs.StatefulPolicyPreservedStateDiskDeviceArgs>? Disks { get; set; }
+        public InputMap<Inputs.StatefulPolicyPreservedStateDiskDeviceArgs> Disks
+        {
+            get => _disks ?? (_disks = new InputMap<Inputs.StatefulPolicyPreservedStateDiskDeviceArgs>());
+            set => _disks = value;
+        }
+
+        [Input("externalIPs")]
+        private InputMap<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>? _externalIPs;
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         /// </summary>
-        [Input("externalIPs")]
-        public Input<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>? ExternalIPs { get; set; }
+        public InputMap<Inputs.StatefulPolicyPreservedStateNetworkIpArgs> ExternalIPs
+        {
+            get => _externalIPs ?? (_externalIPs = new InputMap<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>());
+            set => _externalIPs = value;
+        }
+
+        [Input("internalIPs")]
+        private InputMap<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>? _internalIPs;
 
         /// <summary>
         /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         /// </summary>
-        [Input("internalIPs")]
-        public Input<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>? InternalIPs { get; set; }
+        public InputMap<Inputs.StatefulPolicyPreservedStateNetworkIpArgs> InternalIPs
+        {
+            get => _internalIPs ?? (_internalIPs = new InputMap<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>());
+            set => _internalIPs = value;
+        }
 
         public StatefulPolicyPreservedStateArgs()
         {

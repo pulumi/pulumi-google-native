@@ -4463,6 +4463,26 @@ func (o PhaseArtifactResponseOutput) SkaffoldConfigPath() pulumi.StringOutput {
 	return o.ApplyT(func(v PhaseArtifactResponse) string { return v.SkaffoldConfigPath }).(pulumi.StringOutput)
 }
 
+type PhaseArtifactResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PhaseArtifactResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PhaseArtifactResponse)(nil)).Elem()
+}
+
+func (o PhaseArtifactResponseMapOutput) ToPhaseArtifactResponseMapOutput() PhaseArtifactResponseMapOutput {
+	return o
+}
+
+func (o PhaseArtifactResponseMapOutput) ToPhaseArtifactResponseMapOutputWithContext(ctx context.Context) PhaseArtifactResponseMapOutput {
+	return o
+}
+
+func (o PhaseArtifactResponseMapOutput) MapIndex(k pulumi.StringInput) PhaseArtifactResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PhaseArtifactResponse {
+		return vs[0].(map[string]PhaseArtifactResponse)[vs[1].(string)]
+	}).(PhaseArtifactResponseOutput)
+}
+
 // PhaseConfig represents the configuration for a phase in the custom canary deployment.
 type PhaseConfig struct {
 	// Percentage deployment for the phase.
@@ -7786,7 +7806,7 @@ type TargetArtifactResponse struct {
 	// File path of the rendered manifest relative to the URI.
 	ManifestPath string `pulumi:"manifestPath"`
 	// Map from the phase ID to the phase artifacts for the `Target`.
-	PhaseArtifacts PhaseArtifactResponse `pulumi:"phaseArtifacts"`
+	PhaseArtifacts map[string]PhaseArtifactResponse `pulumi:"phaseArtifacts"`
 	// File path of the resolved Skaffold configuration relative to the URI.
 	SkaffoldConfigPath string `pulumi:"skaffoldConfigPath"`
 }
@@ -7817,13 +7837,33 @@ func (o TargetArtifactResponseOutput) ManifestPath() pulumi.StringOutput {
 }
 
 // Map from the phase ID to the phase artifacts for the `Target`.
-func (o TargetArtifactResponseOutput) PhaseArtifacts() PhaseArtifactResponseOutput {
-	return o.ApplyT(func(v TargetArtifactResponse) PhaseArtifactResponse { return v.PhaseArtifacts }).(PhaseArtifactResponseOutput)
+func (o TargetArtifactResponseOutput) PhaseArtifacts() PhaseArtifactResponseMapOutput {
+	return o.ApplyT(func(v TargetArtifactResponse) map[string]PhaseArtifactResponse { return v.PhaseArtifacts }).(PhaseArtifactResponseMapOutput)
 }
 
 // File path of the resolved Skaffold configuration relative to the URI.
 func (o TargetArtifactResponseOutput) SkaffoldConfigPath() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetArtifactResponse) string { return v.SkaffoldConfigPath }).(pulumi.StringOutput)
+}
+
+type TargetArtifactResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TargetArtifactResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetArtifactResponse)(nil)).Elem()
+}
+
+func (o TargetArtifactResponseMapOutput) ToTargetArtifactResponseMapOutput() TargetArtifactResponseMapOutput {
+	return o
+}
+
+func (o TargetArtifactResponseMapOutput) ToTargetArtifactResponseMapOutputWithContext(ctx context.Context) TargetArtifactResponseMapOutput {
+	return o
+}
+
+func (o TargetArtifactResponseMapOutput) MapIndex(k pulumi.StringInput) TargetArtifactResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetArtifactResponse {
+		return vs[0].(map[string]TargetArtifactResponse)[vs[1].(string)]
+	}).(TargetArtifactResponseOutput)
 }
 
 // Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
@@ -8033,6 +8073,26 @@ func (o TargetRenderResponseOutput) RenderingBuild() pulumi.StringOutput {
 // Current state of the render operation for this Target.
 func (o TargetRenderResponseOutput) RenderingState() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetRenderResponse) string { return v.RenderingState }).(pulumi.StringOutput)
+}
+
+type TargetRenderResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TargetRenderResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetRenderResponse)(nil)).Elem()
+}
+
+func (o TargetRenderResponseMapOutput) ToTargetRenderResponseMapOutput() TargetRenderResponseMapOutput {
+	return o
+}
+
+func (o TargetRenderResponseMapOutput) ToTargetRenderResponseMapOutputWithContext(ctx context.Context) TargetRenderResponseMapOutput {
+	return o
+}
+
+func (o TargetRenderResponseMapOutput) MapIndex(k pulumi.StringInput) TargetRenderResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetRenderResponse {
+		return vs[0].(map[string]TargetRenderResponse)[vs[1].(string)]
+	}).(TargetRenderResponseOutput)
 }
 
 // A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
@@ -8435,6 +8495,7 @@ func init() {
 	pulumi.RegisterOutputType(MultiTargetPtrOutput{})
 	pulumi.RegisterOutputType(MultiTargetResponseOutput{})
 	pulumi.RegisterOutputType(PhaseArtifactResponseOutput{})
+	pulumi.RegisterOutputType(PhaseArtifactResponseMapOutput{})
 	pulumi.RegisterOutputType(PhaseConfigOutput{})
 	pulumi.RegisterOutputType(PhaseConfigArrayOutput{})
 	pulumi.RegisterOutputType(PhaseConfigResponseOutput{})
@@ -8494,11 +8555,13 @@ func init() {
 	pulumi.RegisterOutputType(StrategyPtrOutput{})
 	pulumi.RegisterOutputType(StrategyResponseOutput{})
 	pulumi.RegisterOutputType(TargetArtifactResponseOutput{})
+	pulumi.RegisterOutputType(TargetArtifactResponseMapOutput{})
 	pulumi.RegisterOutputType(TargetAttributeOutput{})
 	pulumi.RegisterOutputType(TargetAttributeArrayOutput{})
 	pulumi.RegisterOutputType(TargetAttributeResponseOutput{})
 	pulumi.RegisterOutputType(TargetAttributeResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetRenderResponseOutput{})
+	pulumi.RegisterOutputType(TargetRenderResponseMapOutput{})
 	pulumi.RegisterOutputType(TargetResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetsPresentConditionResponseOutput{})

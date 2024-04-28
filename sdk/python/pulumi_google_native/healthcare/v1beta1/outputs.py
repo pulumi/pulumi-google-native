@@ -2287,11 +2287,11 @@ class Hl7SchemaConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 message_schema_configs: 'outputs.SchemaGroupResponse',
+                 message_schema_configs: Mapping[str, 'outputs.SchemaGroupResponse'],
                  version: Sequence['outputs.VersionSourceResponse']):
         """
         Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
-        :param 'SchemaGroupResponse' message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+        :param Mapping[str, 'SchemaGroupResponse'] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         :param Sequence['VersionSourceResponse'] version: Each VersionSource is tested and only if they all match is the schema used for the message.
         """
         pulumi.set(__self__, "message_schema_configs", message_schema_configs)
@@ -2299,7 +2299,7 @@ class Hl7SchemaConfigResponse(dict):
 
     @property
     @pulumi.getter(name="messageSchemaConfigs")
-    def message_schema_configs(self) -> 'outputs.SchemaGroupResponse':
+    def message_schema_configs(self) -> Mapping[str, 'outputs.SchemaGroupResponse']:
         """
         Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         """
@@ -3597,16 +3597,16 @@ class SensitiveTextAnnotationResponse(dict):
     A TextAnnotation specifies a text range that includes sensitive information.
     """
     def __init__(__self__, *,
-                 details: 'outputs.DetailResponse'):
+                 details: Mapping[str, 'outputs.DetailResponse']):
         """
         A TextAnnotation specifies a text range that includes sensitive information.
-        :param 'DetailResponse' details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
+        :param Mapping[str, 'DetailResponse'] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         pulumi.set(__self__, "details", details)
 
     @property
     @pulumi.getter
-    def details(self) -> 'outputs.DetailResponse':
+    def details(self) -> Mapping[str, 'outputs.DetailResponse']:
         """
         Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """

@@ -15,11 +15,17 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// </summary>
     public sealed class JobExecutionInfoArgs : global::Pulumi.ResourceArgs
     {
+        [Input("stages")]
+        private InputMap<Inputs.JobExecutionStageInfoArgs>? _stages;
+
         /// <summary>
         /// A mapping from each stage to the information about that stage.
         /// </summary>
-        [Input("stages")]
-        public Input<Inputs.JobExecutionStageInfoArgs>? Stages { get; set; }
+        public InputMap<Inputs.JobExecutionStageInfoArgs> Stages
+        {
+            get => _stages ?? (_stages = new InputMap<Inputs.JobExecutionStageInfoArgs>());
+            set => _stages = value;
+        }
 
         public JobExecutionInfoArgs()
         {

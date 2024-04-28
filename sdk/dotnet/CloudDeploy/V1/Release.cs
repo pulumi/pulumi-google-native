@@ -144,13 +144,13 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// Map from target ID to the target artifacts created during the render operation.
         /// </summary>
         [Output("targetArtifacts")]
-        public Output<Outputs.TargetArtifactResponse> TargetArtifacts { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.TargetArtifactResponse>> TargetArtifacts { get; private set; } = null!;
 
         /// <summary>
         /// Map from target ID to details of the render operation for that target.
         /// </summary>
         [Output("targetRenders")]
-        public Output<Outputs.TargetRenderResponse> TargetRenders { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.TargetRenderResponse>> TargetRenders { get; private set; } = null!;
 
         /// <summary>
         /// Snapshot of the targets taken at release creation time.

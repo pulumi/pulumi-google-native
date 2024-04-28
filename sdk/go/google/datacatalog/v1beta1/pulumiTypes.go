@@ -2060,6 +2060,31 @@ func (i GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs) ToGoogleCloudDatacata
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput)
 }
 
+// GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput is an input type that accepts GoogleCloudDatacatalogV1beta1TagTemplateFieldMap and GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput` via:
+//
+//	GoogleCloudDatacatalogV1beta1TagTemplateFieldMap{ "key": GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs{...} }
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput
+	ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput
+}
+
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldMap map[string]GoogleCloudDatacatalogV1beta1TagTemplateFieldInput
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1TagTemplateField)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1TagTemplateFieldMap) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1TagTemplateFieldMap) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput)
+}
+
 // The template for an individual field within a tag template.
 type GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput struct{ *pulumi.OutputState }
 
@@ -2100,6 +2125,26 @@ func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) Type() GoogleCloudD
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateField) GoogleCloudDatacatalogV1beta1FieldType {
 		return v.Type
 	}).(GoogleCloudDatacatalogV1beta1FieldTypeOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1TagTemplateField)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1TagTemplateField {
+		return vs[0].(map[string]GoogleCloudDatacatalogV1beta1TagTemplateField)[vs[1].(string)]
+	}).(GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput)
 }
 
 // The template for an individual field within a tag template.
@@ -2165,6 +2210,26 @@ func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) Type() Goog
 	}).(GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput)
 }
 
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse {
+		return vs[0].(map[string]GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse)[vs[1].(string)]
+	}).(GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput)
+}
+
 // The source system of the Taxonomy.
 type GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse struct {
 	// The service agent for the service.
@@ -2203,7 +2268,7 @@ type GoogleCloudDatacatalogV1beta1UsageSignalResponse struct {
 	// The timestamp of the end of the usage statistics duration.
 	UpdateTime string `pulumi:"updateTime"`
 	// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
-	UsageWithinTimeRange GoogleCloudDatacatalogV1beta1UsageStatsResponse `pulumi:"usageWithinTimeRange"`
+	UsageWithinTimeRange map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse `pulumi:"usageWithinTimeRange"`
 }
 
 // The set of all usage signals that we store in Data Catalog.
@@ -2227,10 +2292,10 @@ func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UpdateTime() pul
 }
 
 // Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
-func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UsageWithinTimeRange() GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) GoogleCloudDatacatalogV1beta1UsageStatsResponse {
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UsageWithinTimeRange() GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse {
 		return v.UsageWithinTimeRange
-	}).(GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput)
+	}).(GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput)
 }
 
 // Detailed counts on the entry's usage. Caveats: - Only BigQuery tables have usage stats - The usage stats only include BigQuery query jobs - The usage stats might be underestimated, e.g. wildcard table references are not yet counted in usage computation https://cloud.google.com/bigquery/docs/querying-wildcard-tables
@@ -2280,6 +2345,26 @@ func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) TotalExecutionTim
 // The number of times that the underlying entry was attempted to be used but failed.
 func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) TotalFailures() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageStatsResponse) float64 { return v.TotalFailures }).(pulumi.Float64Output)
+}
+
+type GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) ToGoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput() GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) ToGoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1UsageStatsResponse {
+		return vs[0].(map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse)[vs[1].(string)]
+	}).(GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput)
 }
 
 // Table view specification.
@@ -2452,6 +2537,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TagTemplateFieldInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TagTemplateFieldMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1ViewSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1ViewSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1ViewSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1ViewSpecArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
@@ -2493,10 +2579,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecResponseOutput{})

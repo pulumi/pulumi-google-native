@@ -23,11 +23,11 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// <summary>
         /// All the entities in the call.
         /// </summary>
-        public readonly Outputs.GoogleCloudContactcenterinsightsV1EntityResponse Entities;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1EntityResponse> Entities;
         /// <summary>
         /// All the matched intents in the call.
         /// </summary>
-        public readonly Outputs.GoogleCloudContactcenterinsightsV1IntentResponse Intents;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1IntentResponse> Intents;
         /// <summary>
         /// Overall conversation-level issue modeling result.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// <summary>
         /// All the matched phrase matchers in the call.
         /// </summary>
-        public readonly Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse PhraseMatchers;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse> PhraseMatchers;
         /// <summary>
         /// Overall conversation-level sentiment for each channel of the call.
         /// </summary>
@@ -45,13 +45,13 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         private GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse(
             ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1CallAnnotationResponse> annotations,
 
-            Outputs.GoogleCloudContactcenterinsightsV1EntityResponse entities,
+            ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1EntityResponse> entities,
 
-            Outputs.GoogleCloudContactcenterinsightsV1IntentResponse intents,
+            ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1IntentResponse> intents,
 
             Outputs.GoogleCloudContactcenterinsightsV1IssueModelResultResponse issueModelResult,
 
-            Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse phraseMatchers,
+            ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse> phraseMatchers,
 
             ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse> sentiments)
         {

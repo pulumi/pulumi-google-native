@@ -33,11 +33,17 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         [Input("sampleRateHertz")]
         public Input<int>? SampleRateHertz { get; set; }
 
+        [Input("synthesizeSpeechConfigs")]
+        private InputMap<Inputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs>? _synthesizeSpeechConfigs;
+
         /// <summary>
         /// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         /// </summary>
-        [Input("synthesizeSpeechConfigs")]
-        public Input<Inputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs>? SynthesizeSpeechConfigs { get; set; }
+        public InputMap<Inputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs> SynthesizeSpeechConfigs
+        {
+            get => _synthesizeSpeechConfigs ?? (_synthesizeSpeechConfigs = new InputMap<Inputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs>());
+            set => _synthesizeSpeechConfigs = value;
+        }
 
         public GoogleCloudDialogflowV2TextToSpeechSettingsArgs()
         {

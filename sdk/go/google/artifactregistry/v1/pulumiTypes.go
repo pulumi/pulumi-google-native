@@ -408,45 +408,29 @@ func (i CleanupPolicyArgs) ToCleanupPolicyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyOutput)
 }
 
-func (i CleanupPolicyArgs) ToCleanupPolicyPtrOutput() CleanupPolicyPtrOutput {
-	return i.ToCleanupPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i CleanupPolicyArgs) ToCleanupPolicyPtrOutputWithContext(ctx context.Context) CleanupPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyOutput).ToCleanupPolicyPtrOutputWithContext(ctx)
-}
-
-// CleanupPolicyPtrInput is an input type that accepts CleanupPolicyArgs, CleanupPolicyPtr and CleanupPolicyPtrOutput values.
-// You can construct a concrete instance of `CleanupPolicyPtrInput` via:
+// CleanupPolicyMapInput is an input type that accepts CleanupPolicyMap and CleanupPolicyMapOutput values.
+// You can construct a concrete instance of `CleanupPolicyMapInput` via:
 //
-//	        CleanupPolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type CleanupPolicyPtrInput interface {
+//	CleanupPolicyMap{ "key": CleanupPolicyArgs{...} }
+type CleanupPolicyMapInput interface {
 	pulumi.Input
 
-	ToCleanupPolicyPtrOutput() CleanupPolicyPtrOutput
-	ToCleanupPolicyPtrOutputWithContext(context.Context) CleanupPolicyPtrOutput
+	ToCleanupPolicyMapOutput() CleanupPolicyMapOutput
+	ToCleanupPolicyMapOutputWithContext(context.Context) CleanupPolicyMapOutput
 }
 
-type cleanupPolicyPtrType CleanupPolicyArgs
+type CleanupPolicyMap map[string]CleanupPolicyInput
 
-func CleanupPolicyPtr(v *CleanupPolicyArgs) CleanupPolicyPtrInput {
-	return (*cleanupPolicyPtrType)(v)
+func (CleanupPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CleanupPolicy)(nil)).Elem()
 }
 
-func (*cleanupPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CleanupPolicy)(nil)).Elem()
+func (i CleanupPolicyMap) ToCleanupPolicyMapOutput() CleanupPolicyMapOutput {
+	return i.ToCleanupPolicyMapOutputWithContext(context.Background())
 }
 
-func (i *cleanupPolicyPtrType) ToCleanupPolicyPtrOutput() CleanupPolicyPtrOutput {
-	return i.ToCleanupPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *cleanupPolicyPtrType) ToCleanupPolicyPtrOutputWithContext(ctx context.Context) CleanupPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyPtrOutput)
+func (i CleanupPolicyMap) ToCleanupPolicyMapOutputWithContext(ctx context.Context) CleanupPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyMapOutput)
 }
 
 // Artifact policy configuration for repository cleanup policies.
@@ -462,16 +446,6 @@ func (o CleanupPolicyOutput) ToCleanupPolicyOutput() CleanupPolicyOutput {
 
 func (o CleanupPolicyOutput) ToCleanupPolicyOutputWithContext(ctx context.Context) CleanupPolicyOutput {
 	return o
-}
-
-func (o CleanupPolicyOutput) ToCleanupPolicyPtrOutput() CleanupPolicyPtrOutput {
-	return o.ToCleanupPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o CleanupPolicyOutput) ToCleanupPolicyPtrOutputWithContext(ctx context.Context) CleanupPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanupPolicy) *CleanupPolicy {
-		return &v
-	}).(CleanupPolicyPtrOutput)
 }
 
 // Policy action.
@@ -494,68 +468,24 @@ func (o CleanupPolicyOutput) MostRecentVersions() CleanupPolicyMostRecentVersion
 	return o.ApplyT(func(v CleanupPolicy) *CleanupPolicyMostRecentVersions { return v.MostRecentVersions }).(CleanupPolicyMostRecentVersionsPtrOutput)
 }
 
-type CleanupPolicyPtrOutput struct{ *pulumi.OutputState }
+type CleanupPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (CleanupPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CleanupPolicy)(nil)).Elem()
+func (CleanupPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CleanupPolicy)(nil)).Elem()
 }
 
-func (o CleanupPolicyPtrOutput) ToCleanupPolicyPtrOutput() CleanupPolicyPtrOutput {
+func (o CleanupPolicyMapOutput) ToCleanupPolicyMapOutput() CleanupPolicyMapOutput {
 	return o
 }
 
-func (o CleanupPolicyPtrOutput) ToCleanupPolicyPtrOutputWithContext(ctx context.Context) CleanupPolicyPtrOutput {
+func (o CleanupPolicyMapOutput) ToCleanupPolicyMapOutputWithContext(ctx context.Context) CleanupPolicyMapOutput {
 	return o
 }
 
-func (o CleanupPolicyPtrOutput) Elem() CleanupPolicyOutput {
-	return o.ApplyT(func(v *CleanupPolicy) CleanupPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret CleanupPolicy
-		return ret
+func (o CleanupPolicyMapOutput) MapIndex(k pulumi.StringInput) CleanupPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CleanupPolicy {
+		return vs[0].(map[string]CleanupPolicy)[vs[1].(string)]
 	}).(CleanupPolicyOutput)
-}
-
-// Policy action.
-func (o CleanupPolicyPtrOutput) Action() CleanupPolicyActionPtrOutput {
-	return o.ApplyT(func(v *CleanupPolicy) *CleanupPolicyAction {
-		if v == nil {
-			return nil
-		}
-		return v.Action
-	}).(CleanupPolicyActionPtrOutput)
-}
-
-// Policy condition for matching versions.
-func (o CleanupPolicyPtrOutput) Condition() CleanupPolicyConditionPtrOutput {
-	return o.ApplyT(func(v *CleanupPolicy) *CleanupPolicyCondition {
-		if v == nil {
-			return nil
-		}
-		return v.Condition
-	}).(CleanupPolicyConditionPtrOutput)
-}
-
-// The user-provided ID of the cleanup policy.
-func (o CleanupPolicyPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CleanupPolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
-func (o CleanupPolicyPtrOutput) MostRecentVersions() CleanupPolicyMostRecentVersionsPtrOutput {
-	return o.ApplyT(func(v *CleanupPolicy) *CleanupPolicyMostRecentVersions {
-		if v == nil {
-			return nil
-		}
-		return v.MostRecentVersions
-	}).(CleanupPolicyMostRecentVersionsPtrOutput)
 }
 
 // CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
@@ -1122,6 +1052,26 @@ func (o CleanupPolicyResponseOutput) Condition() CleanupPolicyConditionResponseO
 // Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
 func (o CleanupPolicyResponseOutput) MostRecentVersions() CleanupPolicyMostRecentVersionsResponseOutput {
 	return o.ApplyT(func(v CleanupPolicyResponse) CleanupPolicyMostRecentVersionsResponse { return v.MostRecentVersions }).(CleanupPolicyMostRecentVersionsResponseOutput)
+}
+
+type CleanupPolicyResponseMapOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CleanupPolicyResponse)(nil)).Elem()
+}
+
+func (o CleanupPolicyResponseMapOutput) ToCleanupPolicyResponseMapOutput() CleanupPolicyResponseMapOutput {
+	return o
+}
+
+func (o CleanupPolicyResponseMapOutput) ToCleanupPolicyResponseMapOutputWithContext(ctx context.Context) CleanupPolicyResponseMapOutput {
+	return o
+}
+
+func (o CleanupPolicyResponseMapOutput) MapIndex(k pulumi.StringInput) CleanupPolicyResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CleanupPolicyResponse {
+		return vs[0].(map[string]CleanupPolicyResponse)[vs[1].(string)]
+	}).(CleanupPolicyResponseOutput)
 }
 
 // Configuration for a Docker remote repository.
@@ -4011,7 +3961,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyInput)(nil)).Elem(), CleanupPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyPtrInput)(nil)).Elem(), CleanupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyMapInput)(nil)).Elem(), CleanupPolicyMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyConditionInput)(nil)).Elem(), CleanupPolicyConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyConditionPtrInput)(nil)).Elem(), CleanupPolicyConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyMostRecentVersionsInput)(nil)).Elem(), CleanupPolicyMostRecentVersionsArgs{})
@@ -4054,7 +4004,7 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(CleanupPolicyOutput{})
-	pulumi.RegisterOutputType(CleanupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyMapOutput{})
 	pulumi.RegisterOutputType(CleanupPolicyConditionOutput{})
 	pulumi.RegisterOutputType(CleanupPolicyConditionPtrOutput{})
 	pulumi.RegisterOutputType(CleanupPolicyConditionResponseOutput{})
@@ -4062,6 +4012,7 @@ func init() {
 	pulumi.RegisterOutputType(CleanupPolicyMostRecentVersionsPtrOutput{})
 	pulumi.RegisterOutputType(CleanupPolicyMostRecentVersionsResponseOutput{})
 	pulumi.RegisterOutputType(CleanupPolicyResponseOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyResponseMapOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryConfigOutput{})

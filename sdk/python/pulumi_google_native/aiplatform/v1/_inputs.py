@@ -1589,14 +1589,14 @@ class GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs:
 @pulumi.input_type
 class GoogleCloudAiplatformV1ExplanationMetadataArgs:
     def __init__(__self__, *,
-                 inputs: pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs'],
-                 outputs: pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs'],
+                 inputs: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs']]],
+                 outputs: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs']]],
                  feature_attributions_schema_uri: Optional[pulumi.Input[str]] = None,
                  latent_space_source: Optional[pulumi.Input[str]] = None):
         """
         Metadata describing the Model's input and output for explanation.
-        :param pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs'] inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-        :param pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs'] outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs']]] inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs']]] outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         :param pulumi.Input[str] feature_attributions_schema_uri: Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
         :param pulumi.Input[str] latent_space_source: Name of the source to generate embeddings for example based explanations.
         """
@@ -1609,26 +1609,26 @@ class GoogleCloudAiplatformV1ExplanationMetadataArgs:
 
     @property
     @pulumi.getter
-    def inputs(self) -> pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs']:
+    def inputs(self) -> pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs']]]:
         """
         Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs']):
+    def inputs(self, value: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs']]]):
         pulumi.set(self, "inputs", value)
 
     @property
     @pulumi.getter
-    def outputs(self) -> pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs']:
+    def outputs(self) -> pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs']]]:
         """
         Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         """
         return pulumi.get(self, "outputs")
 
     @outputs.setter
-    def outputs(self, value: pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs']):
+    def outputs(self, value: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs']]]):
         pulumi.set(self, "outputs", value)
 
     @property
@@ -3330,14 +3330,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigArgs
 @pulumi.input_type
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs:
     def __init__(__self__, *,
-                 attribution_score_drift_thresholds: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']] = None,
+                 attribution_score_drift_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]] = None,
                  default_drift_threshold: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']] = None,
-                 drift_thresholds: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']] = None):
+                 drift_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]] = None):
         """
         The config for Prediction data drift detection.
-        :param pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs'] attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]] attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         :param pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs'] default_drift_threshold: Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs'] drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]] drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
         if attribution_score_drift_thresholds is not None:
             pulumi.set(__self__, "attribution_score_drift_thresholds", attribution_score_drift_thresholds)
@@ -3348,14 +3348,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
 
     @property
     @pulumi.getter(name="attributionScoreDriftThresholds")
-    def attribution_score_drift_thresholds(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]:
+    def attribution_score_drift_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         """
         return pulumi.get(self, "attribution_score_drift_thresholds")
 
     @attribution_score_drift_thresholds.setter
-    def attribution_score_drift_thresholds(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]):
+    def attribution_score_drift_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]):
         pulumi.set(self, "attribution_score_drift_thresholds", value)
 
     @property
@@ -3372,14 +3372,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
 
     @property
     @pulumi.getter(name="driftThresholds")
-    def drift_thresholds(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]:
+    def drift_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
         return pulumi.get(self, "drift_thresholds")
 
     @drift_thresholds.setter
-    def drift_thresholds(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]):
+    def drift_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]):
         pulumi.set(self, "drift_thresholds", value)
 
 
@@ -3490,14 +3490,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDatasetArgs:
 @pulumi.input_type
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs:
     def __init__(__self__, *,
-                 attribution_score_skew_thresholds: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']] = None,
+                 attribution_score_skew_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]] = None,
                  default_skew_threshold: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']] = None,
-                 skew_thresholds: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']] = None):
+                 skew_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]] = None):
         """
         The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
-        :param pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs'] attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]] attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         :param pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs'] default_skew_threshold: Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs'] skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]] skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
         if attribution_score_skew_thresholds is not None:
             pulumi.set(__self__, "attribution_score_skew_thresholds", attribution_score_skew_thresholds)
@@ -3508,14 +3508,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
 
     @property
     @pulumi.getter(name="attributionScoreSkewThresholds")
-    def attribution_score_skew_thresholds(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]:
+    def attribution_score_skew_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         """
         return pulumi.get(self, "attribution_score_skew_thresholds")
 
     @attribution_score_skew_thresholds.setter
-    def attribution_score_skew_thresholds(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]):
+    def attribution_score_skew_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]):
         pulumi.set(self, "attribution_score_skew_thresholds", value)
 
     @property
@@ -3532,14 +3532,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
 
     @property
     @pulumi.getter(name="skewThresholds")
-    def skew_thresholds(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]:
+    def skew_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
         return pulumi.get(self, "skew_thresholds")
 
     @skew_thresholds.setter
-    def skew_thresholds(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]):
+    def skew_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ThresholdConfigArgs']]]]):
         pulumi.set(self, "skew_thresholds", value)
 
 
@@ -4390,16 +4390,16 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs:
     def __init__(__self__, *,
                  gcs_output_directory: pulumi.Input[str],
                  failure_policy: Optional[pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy']] = None,
-                 input_artifacts: Optional[pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs']] = None,
+                 input_artifacts: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs']]]] = None,
                  parameter_values: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 parameters: Optional[pulumi.Input['GoogleCloudAiplatformV1ValueArgs']] = None):
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ValueArgs']]]] = None):
         """
         The runtime config of a PipelineJob.
         :param pulumi.Input[str] gcs_output_directory: A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
         :param pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy'] failure_policy: Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
-        :param pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs'] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs']]] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         :param pulumi.Input[Mapping[str, Any]] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-        :param pulumi.Input['GoogleCloudAiplatformV1ValueArgs'] parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ValueArgs']]] parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
         pulumi.set(__self__, "gcs_output_directory", gcs_output_directory)
         if failure_policy is not None:
@@ -4440,14 +4440,14 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs:
 
     @property
     @pulumi.getter(name="inputArtifacts")
-    def input_artifacts(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs']]:
+    def input_artifacts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs']]]]:
         """
         The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         """
         return pulumi.get(self, "input_artifacts")
 
     @input_artifacts.setter
-    def input_artifacts(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs']]):
+    def input_artifacts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs']]]]):
         pulumi.set(self, "input_artifacts", value)
 
     @property
@@ -4464,7 +4464,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1ValueArgs']]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ValueArgs']]]]:
         """
         Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
@@ -4474,7 +4474,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1ValueArgs']]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1ValueArgs']]]]):
         pulumi.set(self, "parameters", value)
 
 

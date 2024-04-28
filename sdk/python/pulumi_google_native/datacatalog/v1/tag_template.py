@@ -17,7 +17,7 @@ __all__ = ['TagTemplateArgs', 'TagTemplate']
 @pulumi.input_type
 class TagTemplateArgs:
     def __init__(__self__, *,
-                 fields: pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs'],
+                 fields: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]],
                  tag_template_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  is_publicly_readable: Optional[pulumi.Input[bool]] = None,
@@ -26,7 +26,7 @@ class TagTemplateArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagTemplate resource.
-        :param pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs'] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         :param pulumi.Input[str] tag_template_id: Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
         :param pulumi.Input[str] display_name: Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
         :param pulumi.Input[bool] is_publicly_readable: Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
@@ -47,14 +47,14 @@ class TagTemplateArgs:
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs']:
+    def fields(self) -> pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]]:
         """
         Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         """
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs']):
+    def fields(self, value: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -130,7 +130,7 @@ class TagTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]] = None,
+                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]]]] = None,
                  is_publicly_readable: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class TagTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1TagTemplateFieldArgs']] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         :param pulumi.Input[bool] is_publicly_readable: Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         :param pulumi.Input[str] tag_template_id: Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
@@ -173,7 +173,7 @@ class TagTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]] = None,
+                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1TagTemplateFieldArgs']]]]] = None,
                  is_publicly_readable: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1TagTemplateFieldResponse']:
+    def fields(self) -> pulumi.Output[Mapping[str, 'outputs.GoogleCloudDatacatalogV1TagTemplateFieldResponse']]:
         """
         Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         """

@@ -76,13 +76,13 @@ type GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespons
 	// A list of call annotations that apply to this call.
 	Annotations []GoogleCloudContactcenterinsightsV1CallAnnotationResponse `pulumi:"annotations"`
 	// All the entities in the call.
-	Entities GoogleCloudContactcenterinsightsV1EntityResponse `pulumi:"entities"`
+	Entities map[string]GoogleCloudContactcenterinsightsV1EntityResponse `pulumi:"entities"`
 	// All the matched intents in the call.
-	Intents GoogleCloudContactcenterinsightsV1IntentResponse `pulumi:"intents"`
+	Intents map[string]GoogleCloudContactcenterinsightsV1IntentResponse `pulumi:"intents"`
 	// Overall conversation-level issue modeling result.
 	IssueModelResult GoogleCloudContactcenterinsightsV1IssueModelResultResponse `pulumi:"issueModelResult"`
 	// All the matched phrase matchers in the call.
-	PhraseMatchers GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse `pulumi:"phraseMatchers"`
+	PhraseMatchers map[string]GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse `pulumi:"phraseMatchers"`
 	// Overall conversation-level sentiment for each channel of the call.
 	Sentiments []GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse `pulumi:"sentiments"`
 }
@@ -110,17 +110,17 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResp
 }
 
 // All the entities in the call.
-func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Entities() GoogleCloudContactcenterinsightsV1EntityResponseOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) GoogleCloudContactcenterinsightsV1EntityResponse {
+func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Entities() GoogleCloudContactcenterinsightsV1EntityResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) map[string]GoogleCloudContactcenterinsightsV1EntityResponse {
 		return v.Entities
-	}).(GoogleCloudContactcenterinsightsV1EntityResponseOutput)
+	}).(GoogleCloudContactcenterinsightsV1EntityResponseMapOutput)
 }
 
 // All the matched intents in the call.
-func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Intents() GoogleCloudContactcenterinsightsV1IntentResponseOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) GoogleCloudContactcenterinsightsV1IntentResponse {
+func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Intents() GoogleCloudContactcenterinsightsV1IntentResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) map[string]GoogleCloudContactcenterinsightsV1IntentResponse {
 		return v.Intents
-	}).(GoogleCloudContactcenterinsightsV1IntentResponseOutput)
+	}).(GoogleCloudContactcenterinsightsV1IntentResponseMapOutput)
 }
 
 // Overall conversation-level issue modeling result.
@@ -131,10 +131,10 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResp
 }
 
 // All the matched phrase matchers in the call.
-func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) PhraseMatchers() GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
+func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) PhraseMatchers() GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) map[string]GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
 		return v.PhraseMatchers
-	}).(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput)
+	}).(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput)
 }
 
 // Overall conversation-level sentiment for each channel of the call.
@@ -1956,6 +1956,26 @@ func (o GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput) Displa
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1DialogflowIntentResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+type GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContactcenterinsightsV1DialogflowIntentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput) ToGoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput() GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput) ToGoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudContactcenterinsightsV1DialogflowIntentResponse {
+		return vs[0].(map[string]GoogleCloudContactcenterinsightsV1DialogflowIntentResponse)[vs[1].(string)]
+	}).(GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput)
+}
+
 // Dialogflow interaction data.
 type GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse struct {
 	// The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
@@ -2264,6 +2284,26 @@ func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) Sentiment() Goog
 // The entity type.
 func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1EntityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1EntityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1EntityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContactcenterinsightsV1EntityResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1EntityResponseMapOutput) ToGoogleCloudContactcenterinsightsV1EntityResponseMapOutput() GoogleCloudContactcenterinsightsV1EntityResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1EntityResponseMapOutput) ToGoogleCloudContactcenterinsightsV1EntityResponseMapOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1EntityResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1EntityResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudContactcenterinsightsV1EntityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudContactcenterinsightsV1EntityResponse {
+		return vs[0].(map[string]GoogleCloudContactcenterinsightsV1EntityResponse)[vs[1].(string)]
+	}).(GoogleCloudContactcenterinsightsV1EntityResponseOutput)
 }
 
 // Exact match configuration.
@@ -2756,6 +2796,26 @@ func (o GoogleCloudContactcenterinsightsV1IntentResponseOutput) DisplayName() pu
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IntentResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+type GoogleCloudContactcenterinsightsV1IntentResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1IntentResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContactcenterinsightsV1IntentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1IntentResponseMapOutput) ToGoogleCloudContactcenterinsightsV1IntentResponseMapOutput() GoogleCloudContactcenterinsightsV1IntentResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IntentResponseMapOutput) ToGoogleCloudContactcenterinsightsV1IntentResponseMapOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IntentResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IntentResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudContactcenterinsightsV1IntentResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudContactcenterinsightsV1IntentResponse {
+		return vs[0].(map[string]GoogleCloudContactcenterinsightsV1IntentResponse)[vs[1].(string)]
+	}).(GoogleCloudContactcenterinsightsV1IntentResponseOutput)
+}
+
 // The data for an interruption annotation.
 type GoogleCloudContactcenterinsightsV1InterruptionDataResponse struct {
 }
@@ -3112,12 +3172,32 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse
 	}).(pulumi.StringOutput)
 }
 
+type GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput) ToGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput() GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput) ToGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse {
+		return vs[0].(map[string]GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse)[vs[1].(string)]
+	}).(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput)
+}
+
 // Aggregated statistics about an issue model.
 type GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse struct {
 	// Number of conversations the issue model has analyzed at this point in time.
 	AnalyzedConversationsCount string `pulumi:"analyzedConversationsCount"`
 	// Statistics on each issue. Key is the issue's resource name.
-	IssueStats GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse `pulumi:"issueStats"`
+	IssueStats map[string]GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse `pulumi:"issueStats"`
 	// Number of analyzed conversations for which no issue was applicable at this point in time.
 	UnclassifiedConversationsCount string `pulumi:"unclassifiedConversationsCount"`
 }
@@ -3145,10 +3225,10 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) An
 }
 
 // Statistics on each issue. Key is the issue's resource name.
-func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) IssueStats() GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse {
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) IssueStats() GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse) map[string]GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse {
 		return v.IssueStats
-	}).(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput)
+	}).(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput)
 }
 
 // Number of analyzed conversations for which no issue was applicable at this point in time.
@@ -3224,6 +3304,26 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput) Display
 // The unique identifier (the resource name) of the phrase matcher.
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput) PhraseMatcher() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse) string { return v.PhraseMatcher }).(pulumi.StringOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput) ToGoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput() GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput) ToGoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
+		return vs[0].(map[string]GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse)[vs[1].(string)]
+	}).(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput)
 }
 
 // The data for a phrase match rule.
@@ -4088,12 +4188,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowSourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1EntityMentionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1EntityResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1EntityResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ExactMatchConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ExactMatchConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ExactMatchConfigResponseOutput{})
@@ -4104,6 +4206,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1HoldDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IntentMatchDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IntentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IntentResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1InterruptionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArrayOutput{})
@@ -4112,9 +4215,11 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigOutput{})

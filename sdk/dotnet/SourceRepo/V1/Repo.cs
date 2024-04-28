@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         /// </summary>
         [Output("pubsubConfigs")]
-        public Output<Outputs.PubsubConfigResponse> PubsubConfigs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.PubsubConfigResponse>> PubsubConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
@@ -112,11 +112,17 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("pubsubConfigs")]
+        private InputMap<Inputs.PubsubConfigArgs>? _pubsubConfigs;
+
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         /// </summary>
-        [Input("pubsubConfigs")]
-        public Input<Inputs.PubsubConfigArgs>? PubsubConfigs { get; set; }
+        public InputMap<Inputs.PubsubConfigArgs> PubsubConfigs
+        {
+            get => _pubsubConfigs ?? (_pubsubConfigs = new InputMap<Inputs.PubsubConfigArgs>());
+            set => _pubsubConfigs = value;
+        }
 
         /// <summary>
         /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.

@@ -4071,13 +4071,13 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsResponse(dict):
                  enable_text_to_speech: bool,
                  output_audio_encoding: str,
                  sample_rate_hertz: int,
-                 synthesize_speech_configs: 'outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse'):
+                 synthesize_speech_configs: Mapping[str, 'outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse']):
         """
         Instructs the speech synthesizer on how to generate the output audio content.
         :param bool enable_text_to_speech: Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
         :param str output_audio_encoding: Audio encoding of the synthesized audio content.
         :param int sample_rate_hertz: Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
-        :param 'GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse' synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+        :param Mapping[str, 'GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse'] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """
         pulumi.set(__self__, "enable_text_to_speech", enable_text_to_speech)
         pulumi.set(__self__, "output_audio_encoding", output_audio_encoding)
@@ -4110,7 +4110,7 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="synthesizeSpeechConfigs")
-    def synthesize_speech_configs(self) -> 'outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse':
+    def synthesize_speech_configs(self) -> Mapping[str, 'outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse']:
         """
         Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """

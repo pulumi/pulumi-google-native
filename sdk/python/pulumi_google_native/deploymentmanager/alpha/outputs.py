@@ -891,15 +891,15 @@ class InstancesBulkInsertOperationMetadataResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 per_location_status: 'outputs.BulkInsertOperationStatusResponse'):
+                 per_location_status: Mapping[str, 'outputs.BulkInsertOperationStatusResponse']):
         """
-        :param 'BulkInsertOperationStatusResponse' per_location_status: Status information per location (location name is key). Example key: zones/us-central1-a
+        :param Mapping[str, 'BulkInsertOperationStatusResponse'] per_location_status: Status information per location (location name is key). Example key: zones/us-central1-a
         """
         pulumi.set(__self__, "per_location_status", per_location_status)
 
     @property
     @pulumi.getter(name="perLocationStatus")
-    def per_location_status(self) -> 'outputs.BulkInsertOperationStatusResponse':
+    def per_location_status(self) -> Mapping[str, 'outputs.BulkInsertOperationStatusResponse']:
         """
         Status information per location (location name is key). Example key: zones/us-central1-a
         """
@@ -1687,10 +1687,10 @@ class SetCommonInstanceMetadataOperationMetadataResponse(dict):
 
     def __init__(__self__, *,
                  client_operation_id: str,
-                 per_location_operations: 'outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse'):
+                 per_location_operations: Mapping[str, 'outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse']):
         """
         :param str client_operation_id: The client operation id.
-        :param 'SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse' per_location_operations: Status information per location (location name is key). Example key: zones/us-central1-a
+        :param Mapping[str, 'SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse'] per_location_operations: Status information per location (location name is key). Example key: zones/us-central1-a
         """
         pulumi.set(__self__, "client_operation_id", client_operation_id)
         pulumi.set(__self__, "per_location_operations", per_location_operations)
@@ -1705,7 +1705,7 @@ class SetCommonInstanceMetadataOperationMetadataResponse(dict):
 
     @property
     @pulumi.getter(name="perLocationOperations")
-    def per_location_operations(self) -> 'outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse':
+    def per_location_operations(self) -> Mapping[str, 'outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse']:
         """
         Status information per location (location name is key). Example key: zones/us-central1-a
         """

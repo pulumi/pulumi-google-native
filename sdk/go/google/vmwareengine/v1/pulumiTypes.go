@@ -989,7 +989,7 @@ type ManagementCluster struct {
 	// The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
 	ClusterId string `pulumi:"clusterId"`
 	// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-	NodeTypeConfigs NodeTypeConfig `pulumi:"nodeTypeConfigs"`
+	NodeTypeConfigs map[string]NodeTypeConfig `pulumi:"nodeTypeConfigs"`
 	// Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
 	StretchedClusterConfig *StretchedClusterConfig `pulumi:"stretchedClusterConfig"`
 }
@@ -1010,7 +1010,7 @@ type ManagementClusterArgs struct {
 	// The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-	NodeTypeConfigs NodeTypeConfigInput `pulumi:"nodeTypeConfigs"`
+	NodeTypeConfigs NodeTypeConfigMapInput `pulumi:"nodeTypeConfigs"`
 	// Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
 	StretchedClusterConfig StretchedClusterConfigPtrInput `pulumi:"stretchedClusterConfig"`
 }
@@ -1048,8 +1048,8 @@ func (o ManagementClusterOutput) ClusterId() pulumi.StringOutput {
 }
 
 // The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-func (o ManagementClusterOutput) NodeTypeConfigs() NodeTypeConfigOutput {
-	return o.ApplyT(func(v ManagementCluster) NodeTypeConfig { return v.NodeTypeConfigs }).(NodeTypeConfigOutput)
+func (o ManagementClusterOutput) NodeTypeConfigs() NodeTypeConfigMapOutput {
+	return o.ApplyT(func(v ManagementCluster) map[string]NodeTypeConfig { return v.NodeTypeConfigs }).(NodeTypeConfigMapOutput)
 }
 
 // Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
@@ -1062,7 +1062,7 @@ type ManagementClusterResponse struct {
 	// The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
 	ClusterId string `pulumi:"clusterId"`
 	// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-	NodeTypeConfigs NodeTypeConfigResponse `pulumi:"nodeTypeConfigs"`
+	NodeTypeConfigs map[string]NodeTypeConfigResponse `pulumi:"nodeTypeConfigs"`
 	// Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
 	StretchedClusterConfig StretchedClusterConfigResponse `pulumi:"stretchedClusterConfig"`
 }
@@ -1088,8 +1088,8 @@ func (o ManagementClusterResponseOutput) ClusterId() pulumi.StringOutput {
 }
 
 // The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-func (o ManagementClusterResponseOutput) NodeTypeConfigs() NodeTypeConfigResponseOutput {
-	return o.ApplyT(func(v ManagementClusterResponse) NodeTypeConfigResponse { return v.NodeTypeConfigs }).(NodeTypeConfigResponseOutput)
+func (o ManagementClusterResponseOutput) NodeTypeConfigs() NodeTypeConfigResponseMapOutput {
+	return o.ApplyT(func(v ManagementClusterResponse) map[string]NodeTypeConfigResponse { return v.NodeTypeConfigs }).(NodeTypeConfigResponseMapOutput)
 }
 
 // Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
@@ -1427,6 +1427,31 @@ func (i NodeTypeConfigArgs) ToNodeTypeConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTypeConfigOutput)
 }
 
+// NodeTypeConfigMapInput is an input type that accepts NodeTypeConfigMap and NodeTypeConfigMapOutput values.
+// You can construct a concrete instance of `NodeTypeConfigMapInput` via:
+//
+//	NodeTypeConfigMap{ "key": NodeTypeConfigArgs{...} }
+type NodeTypeConfigMapInput interface {
+	pulumi.Input
+
+	ToNodeTypeConfigMapOutput() NodeTypeConfigMapOutput
+	ToNodeTypeConfigMapOutputWithContext(context.Context) NodeTypeConfigMapOutput
+}
+
+type NodeTypeConfigMap map[string]NodeTypeConfigInput
+
+func (NodeTypeConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NodeTypeConfig)(nil)).Elem()
+}
+
+func (i NodeTypeConfigMap) ToNodeTypeConfigMapOutput() NodeTypeConfigMapOutput {
+	return i.ToNodeTypeConfigMapOutputWithContext(context.Background())
+}
+
+func (i NodeTypeConfigMap) ToNodeTypeConfigMapOutputWithContext(ctx context.Context) NodeTypeConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTypeConfigMapOutput)
+}
+
 // Information about the type and number of nodes associated with the cluster.
 type NodeTypeConfigOutput struct{ *pulumi.OutputState }
 
@@ -1450,6 +1475,26 @@ func (o NodeTypeConfigOutput) CustomCoreCount() pulumi.IntPtrOutput {
 // The number of nodes of this type in the cluster
 func (o NodeTypeConfigOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeTypeConfig) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+type NodeTypeConfigMapOutput struct{ *pulumi.OutputState }
+
+func (NodeTypeConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NodeTypeConfig)(nil)).Elem()
+}
+
+func (o NodeTypeConfigMapOutput) ToNodeTypeConfigMapOutput() NodeTypeConfigMapOutput {
+	return o
+}
+
+func (o NodeTypeConfigMapOutput) ToNodeTypeConfigMapOutputWithContext(ctx context.Context) NodeTypeConfigMapOutput {
+	return o
+}
+
+func (o NodeTypeConfigMapOutput) MapIndex(k pulumi.StringInput) NodeTypeConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodeTypeConfig {
+		return vs[0].(map[string]NodeTypeConfig)[vs[1].(string)]
+	}).(NodeTypeConfigOutput)
 }
 
 // Information about the type and number of nodes associated with the cluster.
@@ -1483,6 +1528,26 @@ func (o NodeTypeConfigResponseOutput) CustomCoreCount() pulumi.IntOutput {
 // The number of nodes of this type in the cluster
 func (o NodeTypeConfigResponseOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeTypeConfigResponse) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+type NodeTypeConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (NodeTypeConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NodeTypeConfigResponse)(nil)).Elem()
+}
+
+func (o NodeTypeConfigResponseMapOutput) ToNodeTypeConfigResponseMapOutput() NodeTypeConfigResponseMapOutput {
+	return o
+}
+
+func (o NodeTypeConfigResponseMapOutput) ToNodeTypeConfigResponseMapOutputWithContext(ctx context.Context) NodeTypeConfigResponseMapOutput {
+	return o
+}
+
+func (o NodeTypeConfigResponseMapOutput) MapIndex(k pulumi.StringInput) NodeTypeConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodeTypeConfigResponse {
+		return vs[0].(map[string]NodeTypeConfigResponse)[vs[1].(string)]
+	}).(NodeTypeConfigResponseOutput)
 }
 
 // Details about a NSX Manager appliance.
@@ -1840,6 +1905,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkServiceInput)(nil)).Elem(), NetworkServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkServicePtrInput)(nil)).Elem(), NetworkServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTypeConfigInput)(nil)).Elem(), NodeTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTypeConfigMapInput)(nil)).Elem(), NodeTypeConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StretchedClusterConfigInput)(nil)).Elem(), StretchedClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StretchedClusterConfigPtrInput)(nil)).Elem(), StretchedClusterConfigArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
@@ -1870,7 +1936,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkServicePtrOutput{})
 	pulumi.RegisterOutputType(NetworkServiceResponseOutput{})
 	pulumi.RegisterOutputType(NodeTypeConfigOutput{})
+	pulumi.RegisterOutputType(NodeTypeConfigMapOutput{})
 	pulumi.RegisterOutputType(NodeTypeConfigResponseOutput{})
+	pulumi.RegisterOutputType(NodeTypeConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(NsxResponseOutput{})
 	pulumi.RegisterOutputType(StretchedClusterConfigOutput{})
 	pulumi.RegisterOutputType(StretchedClusterConfigPtrOutput{})

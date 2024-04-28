@@ -4717,7 +4717,7 @@ type AutoscalingPolicy struct {
 	ScaleDownControl *AutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 	ScaleInControl   *AutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules *AutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
+	ScalingSchedules map[string]AutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
 // AutoscalingPolicyInput is an input type that accepts AutoscalingPolicyArgs and AutoscalingPolicyOutput values.
@@ -4750,7 +4750,7 @@ type AutoscalingPolicyArgs struct {
 	ScaleDownControl AutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 	ScaleInControl   AutoscalingPolicyScaleInControlPtrInput   `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules AutoscalingPolicyScalingSchedulePtrInput `pulumi:"scalingSchedules"`
+	ScalingSchedules AutoscalingPolicyScalingScheduleMapInput `pulumi:"scalingSchedules"`
 }
 
 func (AutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -4879,8 +4879,8 @@ func (o AutoscalingPolicyOutput) ScaleInControl() AutoscalingPolicyScaleInContro
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyOutput) ScalingSchedules() AutoscalingPolicyScalingSchedulePtrOutput {
-	return o.ApplyT(func(v AutoscalingPolicy) *AutoscalingPolicyScalingSchedule { return v.ScalingSchedules }).(AutoscalingPolicyScalingSchedulePtrOutput)
+func (o AutoscalingPolicyOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleMapOutput {
+	return o.ApplyT(func(v AutoscalingPolicy) map[string]AutoscalingPolicyScalingSchedule { return v.ScalingSchedules }).(AutoscalingPolicyScalingScheduleMapOutput)
 }
 
 type AutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -4996,13 +4996,13 @@ func (o AutoscalingPolicyPtrOutput) ScaleInControl() AutoscalingPolicyScaleInCon
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalingPolicyScalingSchedulePtrOutput {
-	return o.ApplyT(func(v *AutoscalingPolicy) *AutoscalingPolicyScalingSchedule {
+func (o AutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleMapOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) map[string]AutoscalingPolicyScalingSchedule {
 		if v == nil {
 			return nil
 		}
 		return v.ScalingSchedules
-	}).(AutoscalingPolicyScalingSchedulePtrOutput)
+	}).(AutoscalingPolicyScalingScheduleMapOutput)
 }
 
 // CPU utilization policy.
@@ -5596,7 +5596,7 @@ type AutoscalingPolicyResponse struct {
 	ScaleDownControl AutoscalingPolicyScaleDownControlResponse `pulumi:"scaleDownControl"`
 	ScaleInControl   AutoscalingPolicyScaleInControlResponse   `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules AutoscalingPolicyScalingScheduleResponse `pulumi:"scalingSchedules"`
+	ScalingSchedules map[string]AutoscalingPolicyScalingScheduleResponse `pulumi:"scalingSchedules"`
 }
 
 // Cloud Autoscaler policy.
@@ -5662,8 +5662,10 @@ func (o AutoscalingPolicyResponseOutput) ScaleInControl() AutoscalingPolicyScale
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyResponseOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleResponseOutput {
-	return o.ApplyT(func(v AutoscalingPolicyResponse) AutoscalingPolicyScalingScheduleResponse { return v.ScalingSchedules }).(AutoscalingPolicyScalingScheduleResponseOutput)
+func (o AutoscalingPolicyResponseOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o.ApplyT(func(v AutoscalingPolicyResponse) map[string]AutoscalingPolicyScalingScheduleResponse {
+		return v.ScalingSchedules
+	}).(AutoscalingPolicyScalingScheduleResponseMapOutput)
 }
 
 // Configuration that allows for slower scale in so that even if Autoscaler recommends an abrupt scale in of a MIG, it will be throttled as specified by the parameters below.
@@ -6107,45 +6109,29 @@ func (i AutoscalingPolicyScalingScheduleArgs) ToAutoscalingPolicyScalingSchedule
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingScheduleOutput)
 }
 
-func (i AutoscalingPolicyScalingScheduleArgs) ToAutoscalingPolicyScalingSchedulePtrOutput() AutoscalingPolicyScalingSchedulePtrOutput {
-	return i.ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i AutoscalingPolicyScalingScheduleArgs) ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(ctx context.Context) AutoscalingPolicyScalingSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingScheduleOutput).ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(ctx)
-}
-
-// AutoscalingPolicyScalingSchedulePtrInput is an input type that accepts AutoscalingPolicyScalingScheduleArgs, AutoscalingPolicyScalingSchedulePtr and AutoscalingPolicyScalingSchedulePtrOutput values.
-// You can construct a concrete instance of `AutoscalingPolicyScalingSchedulePtrInput` via:
+// AutoscalingPolicyScalingScheduleMapInput is an input type that accepts AutoscalingPolicyScalingScheduleMap and AutoscalingPolicyScalingScheduleMapOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyScalingScheduleMapInput` via:
 //
-//	        AutoscalingPolicyScalingScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type AutoscalingPolicyScalingSchedulePtrInput interface {
+//	AutoscalingPolicyScalingScheduleMap{ "key": AutoscalingPolicyScalingScheduleArgs{...} }
+type AutoscalingPolicyScalingScheduleMapInput interface {
 	pulumi.Input
 
-	ToAutoscalingPolicyScalingSchedulePtrOutput() AutoscalingPolicyScalingSchedulePtrOutput
-	ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(context.Context) AutoscalingPolicyScalingSchedulePtrOutput
+	ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput
+	ToAutoscalingPolicyScalingScheduleMapOutputWithContext(context.Context) AutoscalingPolicyScalingScheduleMapOutput
 }
 
-type autoscalingPolicyScalingSchedulePtrType AutoscalingPolicyScalingScheduleArgs
+type AutoscalingPolicyScalingScheduleMap map[string]AutoscalingPolicyScalingScheduleInput
 
-func AutoscalingPolicyScalingSchedulePtr(v *AutoscalingPolicyScalingScheduleArgs) AutoscalingPolicyScalingSchedulePtrInput {
-	return (*autoscalingPolicyScalingSchedulePtrType)(v)
+func (AutoscalingPolicyScalingScheduleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingSchedule)(nil)).Elem()
 }
 
-func (*autoscalingPolicyScalingSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutoscalingPolicyScalingSchedule)(nil)).Elem()
+func (i AutoscalingPolicyScalingScheduleMap) ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput {
+	return i.ToAutoscalingPolicyScalingScheduleMapOutputWithContext(context.Background())
 }
 
-func (i *autoscalingPolicyScalingSchedulePtrType) ToAutoscalingPolicyScalingSchedulePtrOutput() AutoscalingPolicyScalingSchedulePtrOutput {
-	return i.ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i *autoscalingPolicyScalingSchedulePtrType) ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(ctx context.Context) AutoscalingPolicyScalingSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingSchedulePtrOutput)
+func (i AutoscalingPolicyScalingScheduleMap) ToAutoscalingPolicyScalingScheduleMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingScheduleMapOutput)
 }
 
 // Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
@@ -6161,16 +6147,6 @@ func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingSchedu
 
 func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleOutput {
 	return o
-}
-
-func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingSchedulePtrOutput() AutoscalingPolicyScalingSchedulePtrOutput {
-	return o.ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(ctx context.Context) AutoscalingPolicyScalingSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoscalingPolicyScalingSchedule) *AutoscalingPolicyScalingSchedule {
-		return &v
-	}).(AutoscalingPolicyScalingSchedulePtrOutput)
 }
 
 // A description of a scaling schedule.
@@ -6203,88 +6179,24 @@ func (o AutoscalingPolicyScalingScheduleOutput) TimeZone() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-type AutoscalingPolicyScalingSchedulePtrOutput struct{ *pulumi.OutputState }
+type AutoscalingPolicyScalingScheduleMapOutput struct{ *pulumi.OutputState }
 
-func (AutoscalingPolicyScalingSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AutoscalingPolicyScalingSchedule)(nil)).Elem()
+func (AutoscalingPolicyScalingScheduleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingSchedule)(nil)).Elem()
 }
 
-func (o AutoscalingPolicyScalingSchedulePtrOutput) ToAutoscalingPolicyScalingSchedulePtrOutput() AutoscalingPolicyScalingSchedulePtrOutput {
+func (o AutoscalingPolicyScalingScheduleMapOutput) ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput {
 	return o
 }
 
-func (o AutoscalingPolicyScalingSchedulePtrOutput) ToAutoscalingPolicyScalingSchedulePtrOutputWithContext(ctx context.Context) AutoscalingPolicyScalingSchedulePtrOutput {
+func (o AutoscalingPolicyScalingScheduleMapOutput) ToAutoscalingPolicyScalingScheduleMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleMapOutput {
 	return o
 }
 
-func (o AutoscalingPolicyScalingSchedulePtrOutput) Elem() AutoscalingPolicyScalingScheduleOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyScalingSchedule) AutoscalingPolicyScalingSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret AutoscalingPolicyScalingSchedule
-		return ret
+func (o AutoscalingPolicyScalingScheduleMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyScalingScheduleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoscalingPolicyScalingSchedule {
+		return vs[0].(map[string]AutoscalingPolicyScalingSchedule)[vs[1].(string)]
 	}).(AutoscalingPolicyScalingScheduleOutput)
-}
-
-// A description of a scaling schedule.
-func (o AutoscalingPolicyScalingSchedulePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyScalingSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
-func (o AutoscalingPolicyScalingSchedulePtrOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyScalingSchedule) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Disabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
-func (o AutoscalingPolicyScalingSchedulePtrOutput) DurationSec() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyScalingSchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DurationSec
-	}).(pulumi.IntPtrOutput)
-}
-
-// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
-func (o AutoscalingPolicyScalingSchedulePtrOutput) MinRequiredReplicas() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyScalingSchedule) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinRequiredReplicas
-	}).(pulumi.IntPtrOutput)
-}
-
-// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
-func (o AutoscalingPolicyScalingSchedulePtrOutput) Schedule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyScalingSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Schedule
-	}).(pulumi.StringPtrOutput)
-}
-
-// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
-func (o AutoscalingPolicyScalingSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoscalingPolicyScalingSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TimeZone
-	}).(pulumi.StringPtrOutput)
 }
 
 // Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
@@ -6346,6 +6258,26 @@ func (o AutoscalingPolicyScalingScheduleResponseOutput) Schedule() pulumi.String
 // The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
 func (o AutoscalingPolicyScalingScheduleResponseOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type AutoscalingPolicyScalingScheduleResponseMapOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingScheduleResponse)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) ToAutoscalingPolicyScalingScheduleResponseMapOutput() AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) ToAutoscalingPolicyScalingScheduleResponseMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyScalingScheduleResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoscalingPolicyScalingScheduleResponse {
+		return vs[0].(map[string]AutoscalingPolicyScalingScheduleResponse)[vs[1].(string)]
+	}).(AutoscalingPolicyScalingScheduleResponseOutput)
 }
 
 // Message containing information of one individual backend.
@@ -10455,7 +10387,7 @@ type BulkInsertInstanceResource struct {
 	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
 	NamePattern *string `pulumi:"namePattern"`
 	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-	PerInstanceProperties *BulkInsertInstanceResourcePerInstanceProperties `pulumi:"perInstanceProperties"`
+	PerInstanceProperties map[string]BulkInsertInstanceResourcePerInstanceProperties `pulumi:"perInstanceProperties"`
 	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
 	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 }
@@ -10484,7 +10416,7 @@ type BulkInsertInstanceResourceArgs struct {
 	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
 	NamePattern pulumi.StringPtrInput `pulumi:"namePattern"`
 	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-	PerInstanceProperties BulkInsertInstanceResourcePerInstancePropertiesPtrInput `pulumi:"perInstanceProperties"`
+	PerInstanceProperties BulkInsertInstanceResourcePerInstancePropertiesMapInput `pulumi:"perInstanceProperties"`
 	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
 	SourceInstanceTemplate pulumi.StringPtrInput `pulumi:"sourceInstanceTemplate"`
 }
@@ -10593,10 +10525,10 @@ func (o BulkInsertInstanceResourceOutput) NamePattern() pulumi.StringPtrOutput {
 }
 
 // Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-func (o BulkInsertInstanceResourceOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return o.ApplyT(func(v BulkInsertInstanceResource) *BulkInsertInstanceResourcePerInstanceProperties {
+func (o BulkInsertInstanceResourceOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) map[string]BulkInsertInstanceResourcePerInstanceProperties {
 		return v.PerInstanceProperties
-	}).(BulkInsertInstanceResourcePerInstancePropertiesPtrOutput)
+	}).(BulkInsertInstanceResourcePerInstancePropertiesMapOutput)
 }
 
 // Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
@@ -10679,13 +10611,13 @@ func (o BulkInsertInstanceResourcePtrOutput) NamePattern() pulumi.StringPtrOutpu
 }
 
 // Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-func (o BulkInsertInstanceResourcePtrOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return o.ApplyT(func(v *BulkInsertInstanceResource) *BulkInsertInstanceResourcePerInstanceProperties {
+func (o BulkInsertInstanceResourcePtrOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) map[string]BulkInsertInstanceResourcePerInstanceProperties {
 		if v == nil {
 			return nil
 		}
 		return v.PerInstanceProperties
-	}).(BulkInsertInstanceResourcePerInstancePropertiesPtrOutput)
+	}).(BulkInsertInstanceResourcePerInstancePropertiesMapOutput)
 }
 
 // Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
@@ -10737,45 +10669,29 @@ func (i BulkInsertInstanceResourcePerInstancePropertiesArgs) ToBulkInsertInstanc
 	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourcePerInstancePropertiesOutput)
 }
 
-func (i BulkInsertInstanceResourcePerInstancePropertiesArgs) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutput() BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return i.ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i BulkInsertInstanceResourcePerInstancePropertiesArgs) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourcePerInstancePropertiesOutput).ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(ctx)
-}
-
-// BulkInsertInstanceResourcePerInstancePropertiesPtrInput is an input type that accepts BulkInsertInstanceResourcePerInstancePropertiesArgs, BulkInsertInstanceResourcePerInstancePropertiesPtr and BulkInsertInstanceResourcePerInstancePropertiesPtrOutput values.
-// You can construct a concrete instance of `BulkInsertInstanceResourcePerInstancePropertiesPtrInput` via:
+// BulkInsertInstanceResourcePerInstancePropertiesMapInput is an input type that accepts BulkInsertInstanceResourcePerInstancePropertiesMap and BulkInsertInstanceResourcePerInstancePropertiesMapOutput values.
+// You can construct a concrete instance of `BulkInsertInstanceResourcePerInstancePropertiesMapInput` via:
 //
-//	        BulkInsertInstanceResourcePerInstancePropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type BulkInsertInstanceResourcePerInstancePropertiesPtrInput interface {
+//	BulkInsertInstanceResourcePerInstancePropertiesMap{ "key": BulkInsertInstanceResourcePerInstancePropertiesArgs{...} }
+type BulkInsertInstanceResourcePerInstancePropertiesMapInput interface {
 	pulumi.Input
 
-	ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutput() BulkInsertInstanceResourcePerInstancePropertiesPtrOutput
-	ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(context.Context) BulkInsertInstanceResourcePerInstancePropertiesPtrOutput
+	ToBulkInsertInstanceResourcePerInstancePropertiesMapOutput() BulkInsertInstanceResourcePerInstancePropertiesMapOutput
+	ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(context.Context) BulkInsertInstanceResourcePerInstancePropertiesMapOutput
 }
 
-type bulkInsertInstanceResourcePerInstancePropertiesPtrType BulkInsertInstanceResourcePerInstancePropertiesArgs
+type BulkInsertInstanceResourcePerInstancePropertiesMap map[string]BulkInsertInstanceResourcePerInstancePropertiesInput
 
-func BulkInsertInstanceResourcePerInstancePropertiesPtr(v *BulkInsertInstanceResourcePerInstancePropertiesArgs) BulkInsertInstanceResourcePerInstancePropertiesPtrInput {
-	return (*bulkInsertInstanceResourcePerInstancePropertiesPtrType)(v)
+func (BulkInsertInstanceResourcePerInstancePropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
 }
 
-func (*bulkInsertInstanceResourcePerInstancePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
+func (i BulkInsertInstanceResourcePerInstancePropertiesMap) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutput() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return i.ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(context.Background())
 }
 
-func (i *bulkInsertInstanceResourcePerInstancePropertiesPtrType) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutput() BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return i.ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *bulkInsertInstanceResourcePerInstancePropertiesPtrType) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourcePerInstancePropertiesPtrOutput)
+func (i BulkInsertInstanceResourcePerInstancePropertiesMap) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourcePerInstancePropertiesMapOutput)
 }
 
 // Per-instance properties to be set on individual instances. To be extended in the future.
@@ -10793,16 +10709,6 @@ func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) ToBulkInsertInsta
 	return o
 }
 
-func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutput() BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return o.ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BulkInsertInstanceResourcePerInstanceProperties) *BulkInsertInstanceResourcePerInstanceProperties {
-		return &v
-	}).(BulkInsertInstanceResourcePerInstancePropertiesPtrOutput)
-}
-
 // Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention
 func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BulkInsertInstanceResourcePerInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
@@ -10813,48 +10719,24 @@ func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) Name() pulumi.Str
 	return o.ApplyT(func(v BulkInsertInstanceResourcePerInstanceProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type BulkInsertInstanceResourcePerInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+type BulkInsertInstanceResourcePerInstancePropertiesMapOutput struct{ *pulumi.OutputState }
 
-func (BulkInsertInstanceResourcePerInstancePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
+func (BulkInsertInstanceResourcePerInstancePropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
 }
 
-func (o BulkInsertInstanceResourcePerInstancePropertiesPtrOutput) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutput() BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
+func (o BulkInsertInstanceResourcePerInstancePropertiesMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutput() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
 	return o
 }
 
-func (o BulkInsertInstanceResourcePerInstancePropertiesPtrOutput) ToBulkInsertInstanceResourcePerInstancePropertiesPtrOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesPtrOutput {
+func (o BulkInsertInstanceResourcePerInstancePropertiesMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
 	return o
 }
 
-func (o BulkInsertInstanceResourcePerInstancePropertiesPtrOutput) Elem() BulkInsertInstanceResourcePerInstancePropertiesOutput {
-	return o.ApplyT(func(v *BulkInsertInstanceResourcePerInstanceProperties) BulkInsertInstanceResourcePerInstanceProperties {
-		if v != nil {
-			return *v
-		}
-		var ret BulkInsertInstanceResourcePerInstanceProperties
-		return ret
+func (o BulkInsertInstanceResourcePerInstancePropertiesMapOutput) MapIndex(k pulumi.StringInput) BulkInsertInstanceResourcePerInstancePropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BulkInsertInstanceResourcePerInstanceProperties {
+		return vs[0].(map[string]BulkInsertInstanceResourcePerInstanceProperties)[vs[1].(string)]
 	}).(BulkInsertInstanceResourcePerInstancePropertiesOutput)
-}
-
-// Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention
-func (o BulkInsertInstanceResourcePerInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BulkInsertInstanceResourcePerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is only temporary. It will be removed. Do not use it.
-func (o BulkInsertInstanceResourcePerInstancePropertiesPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BulkInsertInstanceResourcePerInstanceProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Per-instance properties to be set on individual instances. To be extended in the future.
@@ -10890,6 +10772,26 @@ func (o BulkInsertInstanceResourcePerInstancePropertiesResponseOutput) Name() pu
 	return o.ApplyT(func(v BulkInsertInstanceResourcePerInstancePropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+type BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput() BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesResponseMapOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) MapIndex(k pulumi.StringInput) BulkInsertInstanceResourcePerInstancePropertiesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BulkInsertInstanceResourcePerInstancePropertiesResponse {
+		return vs[0].(map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse)[vs[1].(string)]
+	}).(BulkInsertInstanceResourcePerInstancePropertiesResponseOutput)
+}
+
 // A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
 type BulkInsertInstanceResourceResponse struct {
 	// The maximum number of instances to create.
@@ -10903,7 +10805,7 @@ type BulkInsertInstanceResourceResponse struct {
 	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
 	NamePattern string `pulumi:"namePattern"`
 	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-	PerInstanceProperties BulkInsertInstanceResourcePerInstancePropertiesResponse `pulumi:"perInstanceProperties"`
+	PerInstanceProperties map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse `pulumi:"perInstanceProperties"`
 	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
 	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 }
@@ -10949,10 +10851,10 @@ func (o BulkInsertInstanceResourceResponseOutput) NamePattern() pulumi.StringOut
 }
 
 // Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-func (o BulkInsertInstanceResourceResponseOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesResponseOutput {
-	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) BulkInsertInstanceResourcePerInstancePropertiesResponse {
+func (o BulkInsertInstanceResourceResponseOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse {
 		return v.PerInstanceProperties
-	}).(BulkInsertInstanceResourcePerInstancePropertiesResponseOutput)
+	}).(BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput)
 }
 
 // Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
@@ -14729,6 +14631,26 @@ func (o DiskAsyncReplicationListResponseOutput) AsyncReplicationDisk() DiskAsync
 	return o.ApplyT(func(v DiskAsyncReplicationListResponse) DiskAsyncReplicationResponse { return v.AsyncReplicationDisk }).(DiskAsyncReplicationResponseOutput)
 }
 
+type DiskAsyncReplicationListResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationListResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskAsyncReplicationListResponse)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) ToDiskAsyncReplicationListResponseMapOutput() DiskAsyncReplicationListResponseMapOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) ToDiskAsyncReplicationListResponseMapOutputWithContext(ctx context.Context) DiskAsyncReplicationListResponseMapOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) MapIndex(k pulumi.StringInput) DiskAsyncReplicationListResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskAsyncReplicationListResponse {
+		return vs[0].(map[string]DiskAsyncReplicationListResponse)[vs[1].(string)]
+	}).(DiskAsyncReplicationListResponseOutput)
+}
+
 type DiskAsyncReplicationResponse struct {
 	// URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
 	ConsistencyGroupPolicy string `pulumi:"consistencyGroupPolicy"`
@@ -15156,10 +15078,30 @@ func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) State() pulumi.S
 	return o.ApplyT(func(v DiskResourceStatusAsyncReplicationStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+type DiskResourceStatusAsyncReplicationStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskResourceStatusAsyncReplicationStatusResponse)(nil)).Elem()
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ToDiskResourceStatusAsyncReplicationStatusResponseMapOutput() DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ToDiskResourceStatusAsyncReplicationStatusResponseMapOutputWithContext(ctx context.Context) DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskResourceStatusAsyncReplicationStatusResponse {
+		return vs[0].(map[string]DiskResourceStatusAsyncReplicationStatusResponse)[vs[1].(string)]
+	}).(DiskResourceStatusAsyncReplicationStatusResponseOutput)
+}
+
 type DiskResourceStatusResponse struct {
 	AsyncPrimaryDisk DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncPrimaryDisk"`
 	// Key: disk, value: AsyncReplicationStatus message
-	AsyncSecondaryDisks DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncSecondaryDisks"`
+	AsyncSecondaryDisks map[string]DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncSecondaryDisks"`
 	// Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
 	UsedBytes string `pulumi:"usedBytes"`
 }
@@ -15185,10 +15127,10 @@ func (o DiskResourceStatusResponseOutput) AsyncPrimaryDisk() DiskResourceStatusA
 }
 
 // Key: disk, value: AsyncReplicationStatus message
-func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() DiskResourceStatusAsyncReplicationStatusResponseOutput {
-	return o.ApplyT(func(v DiskResourceStatusResponse) DiskResourceStatusAsyncReplicationStatusResponse {
+func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]DiskResourceStatusAsyncReplicationStatusResponse {
 		return v.AsyncSecondaryDisks
-	}).(DiskResourceStatusAsyncReplicationStatusResponseOutput)
+	}).(DiskResourceStatusAsyncReplicationStatusResponseMapOutput)
 }
 
 // Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
@@ -25600,9 +25542,9 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseArrayOutput) Index(i pulumi
 
 type InstanceGroupManagerInstanceFlexibilityPolicy struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelectionLists *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection `pulumi:"instanceSelectionLists"`
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelections *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection `pulumi:"instanceSelections"`
+	InstanceSelections map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection `pulumi:"instanceSelections"`
 }
 
 // InstanceGroupManagerInstanceFlexibilityPolicyInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyArgs and InstanceGroupManagerInstanceFlexibilityPolicyOutput values.
@@ -25618,9 +25560,9 @@ type InstanceGroupManagerInstanceFlexibilityPolicyInput interface {
 
 type InstanceGroupManagerInstanceFlexibilityPolicyArgs struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelectionLists InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrInput `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput `pulumi:"instanceSelectionLists"`
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelections InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrInput `pulumi:"instanceSelections"`
+	InstanceSelections InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput `pulumi:"instanceSelections"`
 }
 
 func (InstanceGroupManagerInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
@@ -25701,17 +25643,17 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) ToInstanceGroupMana
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		return v.InstanceSelectionLists
-	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		return v.InstanceSelections
-	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -25739,23 +25681,23 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) Elem() InstanceG
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		if v == nil {
 			return nil
 		}
 		return v.InstanceSelectionLists
-	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		if v == nil {
 			return nil
 		}
 		return v.InstanceSelections
-	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection struct {
@@ -25795,45 +25737,29 @@ func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ToIn
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput)
 }
 
-func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput).ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(ctx)
-}
-
-// InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs, InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtr and InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrInput` via:
+// InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap and InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput` via:
 //
-//	        InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrInput interface {
+//	InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap{ "key": InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{...} }
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput interface {
 	pulumi.Input
 
-	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput
-	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput
+	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput
+	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput
 }
 
-type instanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrType InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput
 
-func InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtr(v *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrInput {
-	return (*instanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrType)(v)
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
 }
 
-func (*instanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(context.Background())
 }
 
-func (i *instanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrType) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrType) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput)
+func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput struct{ *pulumi.OutputState }
@@ -25850,16 +25776,6 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) To
 	return o
 }
 
-func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return o.ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
-		return &v
-	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput)
-}
-
 // Full machine-type names, e.g. "n1-standard-16".
 func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) MachineTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) []string { return v.MachineTypes }).(pulumi.StringArrayOutput)
@@ -25870,48 +25786,24 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) Ra
 	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) *int { return v.Rank }).(pulumi.IntPtrOutput)
 }
 
-type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput struct{ *pulumi.OutputState }
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput struct{ *pulumi.OutputState }
 
-func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
 }
 
-func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
 	return o
 }
 
-func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
 	return o
 }
 
-func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput) Elem() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
-		return ret
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+		return vs[0].(map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)[vs[1].(string)]
 	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput)
-}
-
-// Full machine-type names, e.g. "n1-standard-16".
-func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput) MachineTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MachineTypes
-	}).(pulumi.StringArrayOutput)
-}
-
-// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput) Rank() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Rank
-	}).(pulumi.IntPtrOutput)
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse struct {
@@ -25947,11 +25839,31 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOu
 	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse) int { return v.Rank }).(pulumi.IntOutput)
 }
 
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
+		return vs[0].(map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse)[vs[1].(string)]
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput)
+}
+
 type InstanceGroupManagerInstanceFlexibilityPolicyResponse struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelectionLists InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse `pulumi:"instanceSelectionLists"`
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelections InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse `pulumi:"instanceSelections"`
+	InstanceSelections map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse `pulumi:"instanceSelections"`
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput struct{ *pulumi.OutputState }
@@ -25969,17 +25881,17 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) ToInstanceG
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
 		return v.InstanceSelectionLists
-	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput)
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
 		return v.InstanceSelections
-	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput)
 }
 
 type InstanceGroupManagerInstanceLifecyclePolicy struct {
@@ -27669,7 +27581,7 @@ type InstanceProperties struct {
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata *StructuredEntries `pulumi:"partnerMetadata"`
+	PartnerMetadata map[string]StructuredEntries `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePropertiesPostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -27687,7 +27599,7 @@ type InstanceProperties struct {
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
 	ServiceAccounts []ServiceAccount `pulumi:"serviceAccounts"`
 	// Mapping of user defined keys to ServiceIntegrationSpec.
-	ServiceIntegrationSpecs *ServiceIntegrationSpec `pulumi:"serviceIntegrationSpecs"`
+	ServiceIntegrationSpecs map[string]ServiceIntegrationSpec `pulumi:"serviceIntegrationSpecs"`
 	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
@@ -27737,7 +27649,7 @@ type InstancePropertiesArgs struct {
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata StructuredEntriesPtrInput `pulumi:"partnerMetadata"`
+	PartnerMetadata StructuredEntriesMapInput `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePropertiesPostKeyRevocationActionTypePtrInput `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -27755,7 +27667,7 @@ type InstancePropertiesArgs struct {
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
 	ServiceAccounts ServiceAccountArrayInput `pulumi:"serviceAccounts"`
 	// Mapping of user defined keys to ServiceIntegrationSpec.
-	ServiceIntegrationSpecs ServiceIntegrationSpecPtrInput `pulumi:"serviceIntegrationSpecs"`
+	ServiceIntegrationSpecs ServiceIntegrationSpecMapInput `pulumi:"serviceIntegrationSpecs"`
 	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
@@ -27914,8 +27826,8 @@ func (o InstancePropertiesOutput) NetworkPerformanceConfig() NetworkPerformanceC
 }
 
 // Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-func (o InstancePropertiesOutput) PartnerMetadata() StructuredEntriesPtrOutput {
-	return o.ApplyT(func(v InstanceProperties) *StructuredEntries { return v.PartnerMetadata }).(StructuredEntriesPtrOutput)
+func (o InstancePropertiesOutput) PartnerMetadata() StructuredEntriesMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]StructuredEntries { return v.PartnerMetadata }).(StructuredEntriesMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -27963,8 +27875,8 @@ func (o InstancePropertiesOutput) ServiceAccounts() ServiceAccountArrayOutput {
 }
 
 // Mapping of user defined keys to ServiceIntegrationSpec.
-func (o InstancePropertiesOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecPtrOutput {
-	return o.ApplyT(func(v InstanceProperties) *ServiceIntegrationSpec { return v.ServiceIntegrationSpecs }).(ServiceIntegrationSpecPtrOutput)
+func (o InstancePropertiesOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]ServiceIntegrationSpec { return v.ServiceIntegrationSpecs }).(ServiceIntegrationSpecMapOutput)
 }
 
 // Note that for MachineImage, this is not supported yet.
@@ -28147,13 +28059,13 @@ func (o InstancePropertiesPtrOutput) NetworkPerformanceConfig() NetworkPerforman
 }
 
 // Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-func (o InstancePropertiesPtrOutput) PartnerMetadata() StructuredEntriesPtrOutput {
-	return o.ApplyT(func(v *InstanceProperties) *StructuredEntries {
+func (o InstancePropertiesPtrOutput) PartnerMetadata() StructuredEntriesMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]StructuredEntries {
 		if v == nil {
 			return nil
 		}
 		return v.PartnerMetadata
-	}).(StructuredEntriesPtrOutput)
+	}).(StructuredEntriesMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -28237,13 +28149,13 @@ func (o InstancePropertiesPtrOutput) ServiceAccounts() ServiceAccountArrayOutput
 }
 
 // Mapping of user defined keys to ServiceIntegrationSpec.
-func (o InstancePropertiesPtrOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecPtrOutput {
-	return o.ApplyT(func(v *InstanceProperties) *ServiceIntegrationSpec {
+func (o InstancePropertiesPtrOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]ServiceIntegrationSpec {
 		if v == nil {
 			return nil
 		}
 		return v.ServiceIntegrationSpecs
-	}).(ServiceIntegrationSpecPtrOutput)
+	}).(ServiceIntegrationSpecMapOutput)
 }
 
 // Note that for MachineImage, this is not supported yet.
@@ -28498,7 +28410,7 @@ type InstancePropertiesResponse struct {
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata StructuredEntriesResponse `pulumi:"partnerMetadata"`
+	PartnerMetadata map[string]StructuredEntriesResponse `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -28516,7 +28428,7 @@ type InstancePropertiesResponse struct {
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
 	ServiceAccounts []ServiceAccountResponse `pulumi:"serviceAccounts"`
 	// Mapping of user defined keys to ServiceIntegrationSpec.
-	ServiceIntegrationSpecs ServiceIntegrationSpecResponse `pulumi:"serviceIntegrationSpecs"`
+	ServiceIntegrationSpecs map[string]ServiceIntegrationSpecResponse `pulumi:"serviceIntegrationSpecs"`
 	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
@@ -28612,8 +28524,8 @@ func (o InstancePropertiesResponseOutput) NetworkPerformanceConfig() NetworkPerf
 }
 
 // Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-func (o InstancePropertiesResponseOutput) PartnerMetadata() StructuredEntriesResponseOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) StructuredEntriesResponse { return v.PartnerMetadata }).(StructuredEntriesResponseOutput)
+func (o InstancePropertiesResponseOutput) PartnerMetadata() StructuredEntriesResponseMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]StructuredEntriesResponse { return v.PartnerMetadata }).(StructuredEntriesResponseMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -28657,8 +28569,10 @@ func (o InstancePropertiesResponseOutput) ServiceAccounts() ServiceAccountRespon
 }
 
 // Mapping of user defined keys to ServiceIntegrationSpec.
-func (o InstancePropertiesResponseOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecResponseOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) ServiceIntegrationSpecResponse { return v.ServiceIntegrationSpecs }).(ServiceIntegrationSpecResponseOutput)
+func (o InstancePropertiesResponseOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecResponseMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]ServiceIntegrationSpecResponse {
+		return v.ServiceIntegrationSpecs
+	}).(ServiceIntegrationSpecResponseMapOutput)
 }
 
 // Note that for MachineImage, this is not supported yet.
@@ -30771,7 +30685,7 @@ func (o LocalizedMessageResponseOutput) Message() pulumi.StringOutput {
 // Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
 type LocationPolicy struct {
 	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-	Locations *LocationPolicyLocation `pulumi:"locations"`
+	Locations map[string]LocationPolicyLocation `pulumi:"locations"`
 	// Strategy for distributing VMs across zones in a region.
 	TargetShape *LocationPolicyTargetShape `pulumi:"targetShape"`
 }
@@ -30790,7 +30704,7 @@ type LocationPolicyInput interface {
 // Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
 type LocationPolicyArgs struct {
 	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-	Locations LocationPolicyLocationPtrInput `pulumi:"locations"`
+	Locations LocationPolicyLocationMapInput `pulumi:"locations"`
 	// Strategy for distributing VMs across zones in a region.
 	TargetShape LocationPolicyTargetShapePtrInput `pulumi:"targetShape"`
 }
@@ -30874,8 +30788,8 @@ func (o LocationPolicyOutput) ToLocationPolicyPtrOutputWithContext(ctx context.C
 }
 
 // Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-func (o LocationPolicyOutput) Locations() LocationPolicyLocationPtrOutput {
-	return o.ApplyT(func(v LocationPolicy) *LocationPolicyLocation { return v.Locations }).(LocationPolicyLocationPtrOutput)
+func (o LocationPolicyOutput) Locations() LocationPolicyLocationMapOutput {
+	return o.ApplyT(func(v LocationPolicy) map[string]LocationPolicyLocation { return v.Locations }).(LocationPolicyLocationMapOutput)
 }
 
 // Strategy for distributing VMs across zones in a region.
@@ -30908,13 +30822,13 @@ func (o LocationPolicyPtrOutput) Elem() LocationPolicyOutput {
 }
 
 // Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-func (o LocationPolicyPtrOutput) Locations() LocationPolicyLocationPtrOutput {
-	return o.ApplyT(func(v *LocationPolicy) *LocationPolicyLocation {
+func (o LocationPolicyPtrOutput) Locations() LocationPolicyLocationMapOutput {
+	return o.ApplyT(func(v *LocationPolicy) map[string]LocationPolicyLocation {
 		if v == nil {
 			return nil
 		}
 		return v.Locations
-	}).(LocationPolicyLocationPtrOutput)
+	}).(LocationPolicyLocationMapOutput)
 }
 
 // Strategy for distributing VMs across zones in a region.
@@ -30968,45 +30882,29 @@ func (i LocationPolicyLocationArgs) ToLocationPolicyLocationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationOutput)
 }
 
-func (i LocationPolicyLocationArgs) ToLocationPolicyLocationPtrOutput() LocationPolicyLocationPtrOutput {
-	return i.ToLocationPolicyLocationPtrOutputWithContext(context.Background())
-}
-
-func (i LocationPolicyLocationArgs) ToLocationPolicyLocationPtrOutputWithContext(ctx context.Context) LocationPolicyLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationOutput).ToLocationPolicyLocationPtrOutputWithContext(ctx)
-}
-
-// LocationPolicyLocationPtrInput is an input type that accepts LocationPolicyLocationArgs, LocationPolicyLocationPtr and LocationPolicyLocationPtrOutput values.
-// You can construct a concrete instance of `LocationPolicyLocationPtrInput` via:
+// LocationPolicyLocationMapInput is an input type that accepts LocationPolicyLocationMap and LocationPolicyLocationMapOutput values.
+// You can construct a concrete instance of `LocationPolicyLocationMapInput` via:
 //
-//	        LocationPolicyLocationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LocationPolicyLocationPtrInput interface {
+//	LocationPolicyLocationMap{ "key": LocationPolicyLocationArgs{...} }
+type LocationPolicyLocationMapInput interface {
 	pulumi.Input
 
-	ToLocationPolicyLocationPtrOutput() LocationPolicyLocationPtrOutput
-	ToLocationPolicyLocationPtrOutputWithContext(context.Context) LocationPolicyLocationPtrOutput
+	ToLocationPolicyLocationMapOutput() LocationPolicyLocationMapOutput
+	ToLocationPolicyLocationMapOutputWithContext(context.Context) LocationPolicyLocationMapOutput
 }
 
-type locationPolicyLocationPtrType LocationPolicyLocationArgs
+type LocationPolicyLocationMap map[string]LocationPolicyLocationInput
 
-func LocationPolicyLocationPtr(v *LocationPolicyLocationArgs) LocationPolicyLocationPtrInput {
-	return (*locationPolicyLocationPtrType)(v)
+func (LocationPolicyLocationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationPolicyLocation)(nil)).Elem()
 }
 
-func (*locationPolicyLocationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocationPolicyLocation)(nil)).Elem()
+func (i LocationPolicyLocationMap) ToLocationPolicyLocationMapOutput() LocationPolicyLocationMapOutput {
+	return i.ToLocationPolicyLocationMapOutputWithContext(context.Background())
 }
 
-func (i *locationPolicyLocationPtrType) ToLocationPolicyLocationPtrOutput() LocationPolicyLocationPtrOutput {
-	return i.ToLocationPolicyLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *locationPolicyLocationPtrType) ToLocationPolicyLocationPtrOutputWithContext(ctx context.Context) LocationPolicyLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationPtrOutput)
+func (i LocationPolicyLocationMap) ToLocationPolicyLocationMapOutputWithContext(ctx context.Context) LocationPolicyLocationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationMapOutput)
 }
 
 type LocationPolicyLocationOutput struct{ *pulumi.OutputState }
@@ -31021,16 +30919,6 @@ func (o LocationPolicyLocationOutput) ToLocationPolicyLocationOutput() LocationP
 
 func (o LocationPolicyLocationOutput) ToLocationPolicyLocationOutputWithContext(ctx context.Context) LocationPolicyLocationOutput {
 	return o
-}
-
-func (o LocationPolicyLocationOutput) ToLocationPolicyLocationPtrOutput() LocationPolicyLocationPtrOutput {
-	return o.ToLocationPolicyLocationPtrOutputWithContext(context.Background())
-}
-
-func (o LocationPolicyLocationOutput) ToLocationPolicyLocationPtrOutputWithContext(ctx context.Context) LocationPolicyLocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationPolicyLocation) *LocationPolicyLocation {
-		return &v
-	}).(LocationPolicyLocationPtrOutput)
 }
 
 // Constraints that the caller requires on the result distribution in this zone.
@@ -31048,58 +30936,24 @@ func (o LocationPolicyLocationOutput) Preference() LocationPolicyLocationPrefere
 	return o.ApplyT(func(v LocationPolicyLocation) *LocationPolicyLocationPreference { return v.Preference }).(LocationPolicyLocationPreferencePtrOutput)
 }
 
-type LocationPolicyLocationPtrOutput struct{ *pulumi.OutputState }
+type LocationPolicyLocationMapOutput struct{ *pulumi.OutputState }
 
-func (LocationPolicyLocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocationPolicyLocation)(nil)).Elem()
+func (LocationPolicyLocationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationPolicyLocation)(nil)).Elem()
 }
 
-func (o LocationPolicyLocationPtrOutput) ToLocationPolicyLocationPtrOutput() LocationPolicyLocationPtrOutput {
+func (o LocationPolicyLocationMapOutput) ToLocationPolicyLocationMapOutput() LocationPolicyLocationMapOutput {
 	return o
 }
 
-func (o LocationPolicyLocationPtrOutput) ToLocationPolicyLocationPtrOutputWithContext(ctx context.Context) LocationPolicyLocationPtrOutput {
+func (o LocationPolicyLocationMapOutput) ToLocationPolicyLocationMapOutputWithContext(ctx context.Context) LocationPolicyLocationMapOutput {
 	return o
 }
 
-func (o LocationPolicyLocationPtrOutput) Elem() LocationPolicyLocationOutput {
-	return o.ApplyT(func(v *LocationPolicyLocation) LocationPolicyLocation {
-		if v != nil {
-			return *v
-		}
-		var ret LocationPolicyLocation
-		return ret
+func (o LocationPolicyLocationMapOutput) MapIndex(k pulumi.StringInput) LocationPolicyLocationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LocationPolicyLocation {
+		return vs[0].(map[string]LocationPolicyLocation)[vs[1].(string)]
 	}).(LocationPolicyLocationOutput)
-}
-
-// Constraints that the caller requires on the result distribution in this zone.
-func (o LocationPolicyLocationPtrOutput) Constraints() LocationPolicyLocationConstraintsPtrOutput {
-	return o.ApplyT(func(v *LocationPolicyLocation) *LocationPolicyLocationConstraints {
-		if v == nil {
-			return nil
-		}
-		return v.Constraints
-	}).(LocationPolicyLocationConstraintsPtrOutput)
-}
-
-// Names of resources to be put in the location. Must contain unique, correct resource names. If used, targetShape must be left unset.
-func (o LocationPolicyLocationPtrOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LocationPolicyLocation) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Names
-	}).(pulumi.StringArrayOutput)
-}
-
-// Preference for a given location. Set to either ALLOW or DENY.
-func (o LocationPolicyLocationPtrOutput) Preference() LocationPolicyLocationPreferencePtrOutput {
-	return o.ApplyT(func(v *LocationPolicyLocation) *LocationPolicyLocationPreference {
-		if v == nil {
-			return nil
-		}
-		return v.Preference
-	}).(LocationPolicyLocationPreferencePtrOutput)
 }
 
 // Per-zone constraints on location policy for this zone.
@@ -31306,10 +31160,30 @@ func (o LocationPolicyLocationResponseOutput) Preference() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationPolicyLocationResponse) string { return v.Preference }).(pulumi.StringOutput)
 }
 
+type LocationPolicyLocationResponseMapOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationPolicyLocationResponse)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationResponseMapOutput) ToLocationPolicyLocationResponseMapOutput() LocationPolicyLocationResponseMapOutput {
+	return o
+}
+
+func (o LocationPolicyLocationResponseMapOutput) ToLocationPolicyLocationResponseMapOutputWithContext(ctx context.Context) LocationPolicyLocationResponseMapOutput {
+	return o
+}
+
+func (o LocationPolicyLocationResponseMapOutput) MapIndex(k pulumi.StringInput) LocationPolicyLocationResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LocationPolicyLocationResponse {
+		return vs[0].(map[string]LocationPolicyLocationResponse)[vs[1].(string)]
+	}).(LocationPolicyLocationResponseOutput)
+}
+
 // Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
 type LocationPolicyResponse struct {
 	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-	Locations LocationPolicyLocationResponse `pulumi:"locations"`
+	Locations map[string]LocationPolicyLocationResponse `pulumi:"locations"`
 	// Strategy for distributing VMs across zones in a region.
 	TargetShape string `pulumi:"targetShape"`
 }
@@ -31330,8 +31204,8 @@ func (o LocationPolicyResponseOutput) ToLocationPolicyResponseOutputWithContext(
 }
 
 // Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-func (o LocationPolicyResponseOutput) Locations() LocationPolicyLocationResponseOutput {
-	return o.ApplyT(func(v LocationPolicyResponse) LocationPolicyLocationResponse { return v.Locations }).(LocationPolicyLocationResponseOutput)
+func (o LocationPolicyResponseOutput) Locations() LocationPolicyLocationResponseMapOutput {
+	return o.ApplyT(func(v LocationPolicyResponse) map[string]LocationPolicyLocationResponse { return v.Locations }).(LocationPolicyLocationResponseMapOutput)
 }
 
 // Strategy for distributing VMs across zones in a region.
@@ -45072,7 +44946,7 @@ type ResourceStatusResponse struct {
 	PhysicalHost string                           `pulumi:"physicalHost"`
 	Scheduling   ResourceStatusSchedulingResponse `pulumi:"scheduling"`
 	// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
-	ServiceIntegrationStatuses ResourceStatusServiceIntegrationStatusResponse `pulumi:"serviceIntegrationStatuses"`
+	ServiceIntegrationStatuses map[string]ResourceStatusServiceIntegrationStatusResponse `pulumi:"serviceIntegrationStatuses"`
 	// Details about stopping state of instance
 	ShutdownDetails     ResourceStatusShutdownDetailsResponse `pulumi:"shutdownDetails"`
 	UpcomingMaintenance UpcomingMaintenanceResponse           `pulumi:"upcomingMaintenance"`
@@ -45110,10 +44984,10 @@ func (o ResourceStatusResponseOutput) Scheduling() ResourceStatusSchedulingRespo
 }
 
 // Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
-func (o ResourceStatusResponseOutput) ServiceIntegrationStatuses() ResourceStatusServiceIntegrationStatusResponseOutput {
-	return o.ApplyT(func(v ResourceStatusResponse) ResourceStatusServiceIntegrationStatusResponse {
+func (o ResourceStatusResponseOutput) ServiceIntegrationStatuses() ResourceStatusServiceIntegrationStatusResponseMapOutput {
+	return o.ApplyT(func(v ResourceStatusResponse) map[string]ResourceStatusServiceIntegrationStatusResponse {
 		return v.ServiceIntegrationStatuses
-	}).(ResourceStatusServiceIntegrationStatusResponseOutput)
+	}).(ResourceStatusServiceIntegrationStatusResponseMapOutput)
 }
 
 // Details about stopping state of instance
@@ -45215,6 +45089,26 @@ func (o ResourceStatusServiceIntegrationStatusResponseOutput) BackupDr() Resourc
 	return o.ApplyT(func(v ResourceStatusServiceIntegrationStatusResponse) ResourceStatusServiceIntegrationStatusBackupDRStatusResponse {
 		return v.BackupDr
 	}).(ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput)
+}
+
+type ResourceStatusServiceIntegrationStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ResourceStatusServiceIntegrationStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ResourceStatusServiceIntegrationStatusResponse)(nil)).Elem()
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseMapOutput) ToResourceStatusServiceIntegrationStatusResponseMapOutput() ResourceStatusServiceIntegrationStatusResponseMapOutput {
+	return o
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseMapOutput) ToResourceStatusServiceIntegrationStatusResponseMapOutputWithContext(ctx context.Context) ResourceStatusServiceIntegrationStatusResponseMapOutput {
+	return o
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) ResourceStatusServiceIntegrationStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourceStatusServiceIntegrationStatusResponse {
+		return vs[0].(map[string]ResourceStatusServiceIntegrationStatusResponse)[vs[1].(string)]
+	}).(ResourceStatusServiceIntegrationStatusResponseOutput)
 }
 
 // Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance stopping scheduled.
@@ -49589,6 +49483,26 @@ func (o ScalingScheduleStatusResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingScheduleStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+type ScalingScheduleStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ScalingScheduleStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScalingScheduleStatusResponse)(nil)).Elem()
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) ToScalingScheduleStatusResponseMapOutput() ScalingScheduleStatusResponseMapOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) ToScalingScheduleStatusResponseMapOutputWithContext(ctx context.Context) ScalingScheduleStatusResponseMapOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) MapIndex(k pulumi.StringInput) ScalingScheduleStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingScheduleStatusResponse {
+		return vs[0].(map[string]ScalingScheduleStatusResponse)[vs[1].(string)]
+	}).(ScalingScheduleStatusResponseOutput)
+}
+
 // Sets the scheduling options for an Instance.
 type Scheduling struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -52681,7 +52595,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlPtrInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScalingScheduleInput)(nil)).Elem(), AutoscalingPolicyScalingScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScalingSchedulePtrInput)(nil)).Elem(), AutoscalingPolicyScalingScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScalingScheduleMapInput)(nil)).Elem(), AutoscalingPolicyScalingScheduleMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendInput)(nil)).Elem(), BackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendArrayInput)(nil)).Elem(), BackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyInput)(nil)).Elem(), BackendBucketCdnPolicyArgs{})
@@ -52721,7 +52635,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourceInput)(nil)).Elem(), BulkInsertInstanceResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePtrInput)(nil)).Elem(), BulkInsertInstanceResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePerInstancePropertiesInput)(nil)).Elem(), BulkInsertInstanceResourcePerInstancePropertiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePerInstancePropertiesPtrInput)(nil)).Elem(), BulkInsertInstanceResourcePerInstancePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePerInstancePropertiesMapInput)(nil)).Elem(), BulkInsertInstanceResourcePerInstancePropertiesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyInput)(nil)).Elem(), CacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyPtrInput)(nil)).Elem(), CacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CallCredentialsInput)(nil)).Elem(), CallCredentialsArgs{})
@@ -52852,7 +52766,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs{})
@@ -52890,7 +52804,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyInput)(nil)).Elem(), LocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyPtrInput)(nil)).Elem(), LocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationInput)(nil)).Elem(), LocationPolicyLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationPtrInput)(nil)).Elem(), LocationPolicyLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationMapInput)(nil)).Elem(), LocationPolicyLocationMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationConstraintsInput)(nil)).Elem(), LocationPolicyLocationConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationConstraintsPtrInput)(nil)).Elem(), LocationPolicyLocationConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigInput)(nil)).Elem(), LogConfigArgs{})
@@ -53163,8 +53077,9 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlResponseOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleOutput{})
-	pulumi.RegisterOutputType(AutoscalingPolicyScalingSchedulePtrOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleMapOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleResponseMapOutput{})
 	pulumi.RegisterOutputType(BackendOutput{})
 	pulumi.RegisterOutputType(BackendArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyOutput{})
@@ -53230,8 +53145,9 @@ func init() {
 	pulumi.RegisterOutputType(BulkInsertInstanceResourceOutput{})
 	pulumi.RegisterOutputType(BulkInsertInstanceResourcePtrOutput{})
 	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesOutput{})
-	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesMapOutput{})
 	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput{})
 	pulumi.RegisterOutputType(BulkInsertInstanceResourceResponseOutput{})
 	pulumi.RegisterOutputType(CacheKeyPolicyOutput{})
 	pulumi.RegisterOutputType(CacheKeyPolicyPtrOutput{})
@@ -53285,6 +53201,7 @@ func init() {
 	pulumi.RegisterOutputType(DiskAsyncReplicationOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationPtrOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationListResponseOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationListResponseMapOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
@@ -53294,6 +53211,7 @@ func init() {
 	pulumi.RegisterOutputType(DiskParamsPtrOutput{})
 	pulumi.RegisterOutputType(DiskParamsResponseOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
 	pulumi.RegisterOutputType(DisplayDevicePtrOutput{})
@@ -53462,8 +53380,9 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyPtrOutput{})
@@ -53544,11 +53463,12 @@ func init() {
 	pulumi.RegisterOutputType(LocationPolicyOutput{})
 	pulumi.RegisterOutputType(LocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(LocationPolicyLocationOutput{})
-	pulumi.RegisterOutputType(LocationPolicyLocationPtrOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationMapOutput{})
 	pulumi.RegisterOutputType(LocationPolicyLocationConstraintsOutput{})
 	pulumi.RegisterOutputType(LocationPolicyLocationConstraintsPtrOutput{})
 	pulumi.RegisterOutputType(LocationPolicyLocationConstraintsResponseOutput{})
 	pulumi.RegisterOutputType(LocationPolicyLocationResponseOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationResponseMapOutput{})
 	pulumi.RegisterOutputType(LocationPolicyResponseOutput{})
 	pulumi.RegisterOutputType(LogConfigOutput{})
 	pulumi.RegisterOutputType(LogConfigArrayOutput{})
@@ -53784,6 +53704,7 @@ func init() {
 	pulumi.RegisterOutputType(ResourceStatusSchedulingResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusServiceIntegrationStatusResponseOutput{})
+	pulumi.RegisterOutputType(ResourceStatusServiceIntegrationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(ResourceStatusShutdownDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyPtrOutput{})
@@ -53852,6 +53773,7 @@ func init() {
 	pulumi.RegisterOutputType(SavedDiskResponseOutput{})
 	pulumi.RegisterOutputType(SavedDiskResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScalingScheduleStatusResponseOutput{})
+	pulumi.RegisterOutputType(ScalingScheduleStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingGracefulShutdownOutput{})

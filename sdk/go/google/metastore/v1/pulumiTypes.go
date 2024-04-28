@@ -376,45 +376,29 @@ func (i AuxiliaryVersionConfigArgs) ToAuxiliaryVersionConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryVersionConfigOutput)
 }
 
-func (i AuxiliaryVersionConfigArgs) ToAuxiliaryVersionConfigPtrOutput() AuxiliaryVersionConfigPtrOutput {
-	return i.ToAuxiliaryVersionConfigPtrOutputWithContext(context.Background())
-}
-
-func (i AuxiliaryVersionConfigArgs) ToAuxiliaryVersionConfigPtrOutputWithContext(ctx context.Context) AuxiliaryVersionConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryVersionConfigOutput).ToAuxiliaryVersionConfigPtrOutputWithContext(ctx)
-}
-
-// AuxiliaryVersionConfigPtrInput is an input type that accepts AuxiliaryVersionConfigArgs, AuxiliaryVersionConfigPtr and AuxiliaryVersionConfigPtrOutput values.
-// You can construct a concrete instance of `AuxiliaryVersionConfigPtrInput` via:
+// AuxiliaryVersionConfigMapInput is an input type that accepts AuxiliaryVersionConfigMap and AuxiliaryVersionConfigMapOutput values.
+// You can construct a concrete instance of `AuxiliaryVersionConfigMapInput` via:
 //
-//	        AuxiliaryVersionConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type AuxiliaryVersionConfigPtrInput interface {
+//	AuxiliaryVersionConfigMap{ "key": AuxiliaryVersionConfigArgs{...} }
+type AuxiliaryVersionConfigMapInput interface {
 	pulumi.Input
 
-	ToAuxiliaryVersionConfigPtrOutput() AuxiliaryVersionConfigPtrOutput
-	ToAuxiliaryVersionConfigPtrOutputWithContext(context.Context) AuxiliaryVersionConfigPtrOutput
+	ToAuxiliaryVersionConfigMapOutput() AuxiliaryVersionConfigMapOutput
+	ToAuxiliaryVersionConfigMapOutputWithContext(context.Context) AuxiliaryVersionConfigMapOutput
 }
 
-type auxiliaryVersionConfigPtrType AuxiliaryVersionConfigArgs
+type AuxiliaryVersionConfigMap map[string]AuxiliaryVersionConfigInput
 
-func AuxiliaryVersionConfigPtr(v *AuxiliaryVersionConfigArgs) AuxiliaryVersionConfigPtrInput {
-	return (*auxiliaryVersionConfigPtrType)(v)
+func (AuxiliaryVersionConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuxiliaryVersionConfig)(nil)).Elem()
 }
 
-func (*auxiliaryVersionConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuxiliaryVersionConfig)(nil)).Elem()
+func (i AuxiliaryVersionConfigMap) ToAuxiliaryVersionConfigMapOutput() AuxiliaryVersionConfigMapOutput {
+	return i.ToAuxiliaryVersionConfigMapOutputWithContext(context.Background())
 }
 
-func (i *auxiliaryVersionConfigPtrType) ToAuxiliaryVersionConfigPtrOutput() AuxiliaryVersionConfigPtrOutput {
-	return i.ToAuxiliaryVersionConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *auxiliaryVersionConfigPtrType) ToAuxiliaryVersionConfigPtrOutputWithContext(ctx context.Context) AuxiliaryVersionConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryVersionConfigPtrOutput)
+func (i AuxiliaryVersionConfigMap) ToAuxiliaryVersionConfigMapOutputWithContext(ctx context.Context) AuxiliaryVersionConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryVersionConfigMapOutput)
 }
 
 // Configuration information for the auxiliary service versions.
@@ -432,16 +416,6 @@ func (o AuxiliaryVersionConfigOutput) ToAuxiliaryVersionConfigOutputWithContext(
 	return o
 }
 
-func (o AuxiliaryVersionConfigOutput) ToAuxiliaryVersionConfigPtrOutput() AuxiliaryVersionConfigPtrOutput {
-	return o.ToAuxiliaryVersionConfigPtrOutputWithContext(context.Background())
-}
-
-func (o AuxiliaryVersionConfigOutput) ToAuxiliaryVersionConfigPtrOutputWithContext(ctx context.Context) AuxiliaryVersionConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuxiliaryVersionConfig) *AuxiliaryVersionConfig {
-		return &v
-	}).(AuxiliaryVersionConfigPtrOutput)
-}
-
 // A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
 func (o AuxiliaryVersionConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AuxiliaryVersionConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
@@ -452,48 +426,24 @@ func (o AuxiliaryVersionConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuxiliaryVersionConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-type AuxiliaryVersionConfigPtrOutput struct{ *pulumi.OutputState }
+type AuxiliaryVersionConfigMapOutput struct{ *pulumi.OutputState }
 
-func (AuxiliaryVersionConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuxiliaryVersionConfig)(nil)).Elem()
+func (AuxiliaryVersionConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuxiliaryVersionConfig)(nil)).Elem()
 }
 
-func (o AuxiliaryVersionConfigPtrOutput) ToAuxiliaryVersionConfigPtrOutput() AuxiliaryVersionConfigPtrOutput {
+func (o AuxiliaryVersionConfigMapOutput) ToAuxiliaryVersionConfigMapOutput() AuxiliaryVersionConfigMapOutput {
 	return o
 }
 
-func (o AuxiliaryVersionConfigPtrOutput) ToAuxiliaryVersionConfigPtrOutputWithContext(ctx context.Context) AuxiliaryVersionConfigPtrOutput {
+func (o AuxiliaryVersionConfigMapOutput) ToAuxiliaryVersionConfigMapOutputWithContext(ctx context.Context) AuxiliaryVersionConfigMapOutput {
 	return o
 }
 
-func (o AuxiliaryVersionConfigPtrOutput) Elem() AuxiliaryVersionConfigOutput {
-	return o.ApplyT(func(v *AuxiliaryVersionConfig) AuxiliaryVersionConfig {
-		if v != nil {
-			return *v
-		}
-		var ret AuxiliaryVersionConfig
-		return ret
+func (o AuxiliaryVersionConfigMapOutput) MapIndex(k pulumi.StringInput) AuxiliaryVersionConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuxiliaryVersionConfig {
+		return vs[0].(map[string]AuxiliaryVersionConfig)[vs[1].(string)]
 	}).(AuxiliaryVersionConfigOutput)
-}
-
-// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
-func (o AuxiliaryVersionConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AuxiliaryVersionConfig) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ConfigOverrides
-	}).(pulumi.StringMapOutput)
-}
-
-// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
-func (o AuxiliaryVersionConfigPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuxiliaryVersionConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration information for the auxiliary service versions.
@@ -536,6 +486,26 @@ func (o AuxiliaryVersionConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v AuxiliaryVersionConfigResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
+type AuxiliaryVersionConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryVersionConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuxiliaryVersionConfigResponse)(nil)).Elem()
+}
+
+func (o AuxiliaryVersionConfigResponseMapOutput) ToAuxiliaryVersionConfigResponseMapOutput() AuxiliaryVersionConfigResponseMapOutput {
+	return o
+}
+
+func (o AuxiliaryVersionConfigResponseMapOutput) ToAuxiliaryVersionConfigResponseMapOutputWithContext(ctx context.Context) AuxiliaryVersionConfigResponseMapOutput {
+	return o
+}
+
+func (o AuxiliaryVersionConfigResponseMapOutput) MapIndex(k pulumi.StringInput) AuxiliaryVersionConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuxiliaryVersionConfigResponse {
+		return vs[0].(map[string]AuxiliaryVersionConfigResponse)[vs[1].(string)]
+	}).(AuxiliaryVersionConfigResponseOutput)
+}
+
 // Represents a backend metastore for the federation.
 type BackendMetastore struct {
 	// The type of the backend metastore.
@@ -575,45 +545,29 @@ func (i BackendMetastoreArgs) ToBackendMetastoreOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BackendMetastoreOutput)
 }
 
-func (i BackendMetastoreArgs) ToBackendMetastorePtrOutput() BackendMetastorePtrOutput {
-	return i.ToBackendMetastorePtrOutputWithContext(context.Background())
-}
-
-func (i BackendMetastoreArgs) ToBackendMetastorePtrOutputWithContext(ctx context.Context) BackendMetastorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendMetastoreOutput).ToBackendMetastorePtrOutputWithContext(ctx)
-}
-
-// BackendMetastorePtrInput is an input type that accepts BackendMetastoreArgs, BackendMetastorePtr and BackendMetastorePtrOutput values.
-// You can construct a concrete instance of `BackendMetastorePtrInput` via:
+// BackendMetastoreMapInput is an input type that accepts BackendMetastoreMap and BackendMetastoreMapOutput values.
+// You can construct a concrete instance of `BackendMetastoreMapInput` via:
 //
-//	        BackendMetastoreArgs{...}
-//
-//	or:
-//
-//	        nil
-type BackendMetastorePtrInput interface {
+//	BackendMetastoreMap{ "key": BackendMetastoreArgs{...} }
+type BackendMetastoreMapInput interface {
 	pulumi.Input
 
-	ToBackendMetastorePtrOutput() BackendMetastorePtrOutput
-	ToBackendMetastorePtrOutputWithContext(context.Context) BackendMetastorePtrOutput
+	ToBackendMetastoreMapOutput() BackendMetastoreMapOutput
+	ToBackendMetastoreMapOutputWithContext(context.Context) BackendMetastoreMapOutput
 }
 
-type backendMetastorePtrType BackendMetastoreArgs
+type BackendMetastoreMap map[string]BackendMetastoreInput
 
-func BackendMetastorePtr(v *BackendMetastoreArgs) BackendMetastorePtrInput {
-	return (*backendMetastorePtrType)(v)
+func (BackendMetastoreMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BackendMetastore)(nil)).Elem()
 }
 
-func (*backendMetastorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendMetastore)(nil)).Elem()
+func (i BackendMetastoreMap) ToBackendMetastoreMapOutput() BackendMetastoreMapOutput {
+	return i.ToBackendMetastoreMapOutputWithContext(context.Background())
 }
 
-func (i *backendMetastorePtrType) ToBackendMetastorePtrOutput() BackendMetastorePtrOutput {
-	return i.ToBackendMetastorePtrOutputWithContext(context.Background())
-}
-
-func (i *backendMetastorePtrType) ToBackendMetastorePtrOutputWithContext(ctx context.Context) BackendMetastorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackendMetastorePtrOutput)
+func (i BackendMetastoreMap) ToBackendMetastoreMapOutputWithContext(ctx context.Context) BackendMetastoreMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendMetastoreMapOutput)
 }
 
 // Represents a backend metastore for the federation.
@@ -631,16 +585,6 @@ func (o BackendMetastoreOutput) ToBackendMetastoreOutputWithContext(ctx context.
 	return o
 }
 
-func (o BackendMetastoreOutput) ToBackendMetastorePtrOutput() BackendMetastorePtrOutput {
-	return o.ToBackendMetastorePtrOutputWithContext(context.Background())
-}
-
-func (o BackendMetastoreOutput) ToBackendMetastorePtrOutputWithContext(ctx context.Context) BackendMetastorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendMetastore) *BackendMetastore {
-		return &v
-	}).(BackendMetastorePtrOutput)
-}
-
 // The type of the backend metastore.
 func (o BackendMetastoreOutput) MetastoreType() BackendMetastoreMetastoreTypePtrOutput {
 	return o.ApplyT(func(v BackendMetastore) *BackendMetastoreMetastoreType { return v.MetastoreType }).(BackendMetastoreMetastoreTypePtrOutput)
@@ -651,48 +595,24 @@ func (o BackendMetastoreOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendMetastore) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type BackendMetastorePtrOutput struct{ *pulumi.OutputState }
+type BackendMetastoreMapOutput struct{ *pulumi.OutputState }
 
-func (BackendMetastorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackendMetastore)(nil)).Elem()
+func (BackendMetastoreMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BackendMetastore)(nil)).Elem()
 }
 
-func (o BackendMetastorePtrOutput) ToBackendMetastorePtrOutput() BackendMetastorePtrOutput {
+func (o BackendMetastoreMapOutput) ToBackendMetastoreMapOutput() BackendMetastoreMapOutput {
 	return o
 }
 
-func (o BackendMetastorePtrOutput) ToBackendMetastorePtrOutputWithContext(ctx context.Context) BackendMetastorePtrOutput {
+func (o BackendMetastoreMapOutput) ToBackendMetastoreMapOutputWithContext(ctx context.Context) BackendMetastoreMapOutput {
 	return o
 }
 
-func (o BackendMetastorePtrOutput) Elem() BackendMetastoreOutput {
-	return o.ApplyT(func(v *BackendMetastore) BackendMetastore {
-		if v != nil {
-			return *v
-		}
-		var ret BackendMetastore
-		return ret
+func (o BackendMetastoreMapOutput) MapIndex(k pulumi.StringInput) BackendMetastoreOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackendMetastore {
+		return vs[0].(map[string]BackendMetastore)[vs[1].(string)]
 	}).(BackendMetastoreOutput)
-}
-
-// The type of the backend metastore.
-func (o BackendMetastorePtrOutput) MetastoreType() BackendMetastoreMetastoreTypePtrOutput {
-	return o.ApplyT(func(v *BackendMetastore) *BackendMetastoreMetastoreType {
-		if v == nil {
-			return nil
-		}
-		return v.MetastoreType
-	}).(BackendMetastoreMetastoreTypePtrOutput)
-}
-
-// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id}
-func (o BackendMetastorePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackendMetastore) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a backend metastore for the federation.
@@ -726,6 +646,26 @@ func (o BackendMetastoreResponseOutput) MetastoreType() pulumi.StringOutput {
 // The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id}
 func (o BackendMetastoreResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendMetastoreResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type BackendMetastoreResponseMapOutput struct{ *pulumi.OutputState }
+
+func (BackendMetastoreResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BackendMetastoreResponse)(nil)).Elem()
+}
+
+func (o BackendMetastoreResponseMapOutput) ToBackendMetastoreResponseMapOutput() BackendMetastoreResponseMapOutput {
+	return o
+}
+
+func (o BackendMetastoreResponseMapOutput) ToBackendMetastoreResponseMapOutputWithContext(ctx context.Context) BackendMetastoreResponseMapOutput {
+	return o
+}
+
+func (o BackendMetastoreResponseMapOutput) MapIndex(k pulumi.StringInput) BackendMetastoreResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackendMetastoreResponse {
+		return vs[0].(map[string]BackendMetastoreResponse)[vs[1].(string)]
+	}).(BackendMetastoreResponseOutput)
 }
 
 // Associates members, or principals, with a role.
@@ -1889,7 +1829,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfig struct {
 	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-	AuxiliaryVersions *AuxiliaryVersionConfig `pulumi:"auxiliaryVersions"`
+	AuxiliaryVersions map[string]AuxiliaryVersionConfig `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
@@ -1914,7 +1854,7 @@ type HiveMetastoreConfigInput interface {
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigArgs struct {
 	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-	AuxiliaryVersions AuxiliaryVersionConfigPtrInput `pulumi:"auxiliaryVersions"`
+	AuxiliaryVersions AuxiliaryVersionConfigMapInput `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
@@ -2004,8 +1944,8 @@ func (o HiveMetastoreConfigOutput) ToHiveMetastoreConfigPtrOutputWithContext(ctx
 }
 
 // A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-func (o HiveMetastoreConfigOutput) AuxiliaryVersions() AuxiliaryVersionConfigPtrOutput {
-	return o.ApplyT(func(v HiveMetastoreConfig) *AuxiliaryVersionConfig { return v.AuxiliaryVersions }).(AuxiliaryVersionConfigPtrOutput)
+func (o HiveMetastoreConfigOutput) AuxiliaryVersions() AuxiliaryVersionConfigMapOutput {
+	return o.ApplyT(func(v HiveMetastoreConfig) map[string]AuxiliaryVersionConfig { return v.AuxiliaryVersions }).(AuxiliaryVersionConfigMapOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
@@ -2053,13 +1993,13 @@ func (o HiveMetastoreConfigPtrOutput) Elem() HiveMetastoreConfigOutput {
 }
 
 // A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-func (o HiveMetastoreConfigPtrOutput) AuxiliaryVersions() AuxiliaryVersionConfigPtrOutput {
-	return o.ApplyT(func(v *HiveMetastoreConfig) *AuxiliaryVersionConfig {
+func (o HiveMetastoreConfigPtrOutput) AuxiliaryVersions() AuxiliaryVersionConfigMapOutput {
+	return o.ApplyT(func(v *HiveMetastoreConfig) map[string]AuxiliaryVersionConfig {
 		if v == nil {
 			return nil
 		}
 		return v.AuxiliaryVersions
-	}).(AuxiliaryVersionConfigPtrOutput)
+	}).(AuxiliaryVersionConfigMapOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
@@ -2105,7 +2045,7 @@ func (o HiveMetastoreConfigPtrOutput) Version() pulumi.StringPtrOutput {
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigResponse struct {
 	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-	AuxiliaryVersions AuxiliaryVersionConfigResponse `pulumi:"auxiliaryVersions"`
+	AuxiliaryVersions map[string]AuxiliaryVersionConfigResponse `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
@@ -2132,8 +2072,10 @@ func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutputWi
 }
 
 // A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
-func (o HiveMetastoreConfigResponseOutput) AuxiliaryVersions() AuxiliaryVersionConfigResponseOutput {
-	return o.ApplyT(func(v HiveMetastoreConfigResponse) AuxiliaryVersionConfigResponse { return v.AuxiliaryVersions }).(AuxiliaryVersionConfigResponseOutput)
+func (o HiveMetastoreConfigResponseOutput) AuxiliaryVersions() AuxiliaryVersionConfigResponseMapOutput {
+	return o.ApplyT(func(v HiveMetastoreConfigResponse) map[string]AuxiliaryVersionConfigResponse {
+		return v.AuxiliaryVersions
+	}).(AuxiliaryVersionConfigResponseMapOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
@@ -3796,9 +3738,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryVersionConfigInput)(nil)).Elem(), AuxiliaryVersionConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryVersionConfigPtrInput)(nil)).Elem(), AuxiliaryVersionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryVersionConfigMapInput)(nil)).Elem(), AuxiliaryVersionConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendMetastoreInput)(nil)).Elem(), BackendMetastoreArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BackendMetastorePtrInput)(nil)).Elem(), BackendMetastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendMetastoreMapInput)(nil)).Elem(), BackendMetastoreMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerInput)(nil)).Elem(), ConsumerArgs{})
@@ -3836,11 +3778,13 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuxiliaryVersionConfigOutput{})
-	pulumi.RegisterOutputType(AuxiliaryVersionConfigPtrOutput{})
+	pulumi.RegisterOutputType(AuxiliaryVersionConfigMapOutput{})
 	pulumi.RegisterOutputType(AuxiliaryVersionConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuxiliaryVersionConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(BackendMetastoreOutput{})
-	pulumi.RegisterOutputType(BackendMetastorePtrOutput{})
+	pulumi.RegisterOutputType(BackendMetastoreMapOutput{})
 	pulumi.RegisterOutputType(BackendMetastoreResponseOutput{})
+	pulumi.RegisterOutputType(BackendMetastoreResponseMapOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})

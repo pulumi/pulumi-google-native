@@ -15,11 +15,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// </summary>
     public sealed class SensitiveTextAnnotationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("details")]
+        private InputMap<Inputs.DetailArgs>? _details;
+
         /// <summary>
         /// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --&gt; {findings_1, findings_2, findings_3}
         /// </summary>
-        [Input("details")]
-        public Input<Inputs.DetailArgs>? Details { get; set; }
+        public InputMap<Inputs.DetailArgs> Details
+        {
+            get => _details ?? (_details = new InputMap<Inputs.DetailArgs>());
+            set => _details = value;
+        }
 
         public SensitiveTextAnnotationArgs()
         {

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
         /// <summary>
         /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         /// </summary>
-        public readonly Outputs.PolicyControllerBundleInstallSpecResponse Bundles;
+        public readonly ImmutableDictionary<string, Outputs.PolicyControllerBundleInstallSpecResponse> Bundles;
         /// <summary>
         /// Configures the installation of the Template Library.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
 
         [OutputConstructor]
         private PolicyControllerPolicyContentSpecResponse(
-            Outputs.PolicyControllerBundleInstallSpecResponse bundles,
+            ImmutableDictionary<string, Outputs.PolicyControllerBundleInstallSpecResponse> bundles,
 
             Outputs.PolicyControllerTemplateLibraryConfigResponse templateLibrary)
         {

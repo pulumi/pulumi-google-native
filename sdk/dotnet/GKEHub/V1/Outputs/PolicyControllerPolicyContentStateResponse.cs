@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// <summary>
         /// The state of the any bundles included in the chosen version of the manifest
         /// </summary>
-        public readonly Outputs.PolicyControllerOnClusterStateResponse BundleStates;
+        public readonly ImmutableDictionary<string, Outputs.PolicyControllerOnClusterStateResponse> BundleStates;
         /// <summary>
         /// The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 
         [OutputConstructor]
         private PolicyControllerPolicyContentStateResponse(
-            Outputs.PolicyControllerOnClusterStateResponse bundleStates,
+            ImmutableDictionary<string, Outputs.PolicyControllerOnClusterStateResponse> bundleStates,
 
             Outputs.PolicyControllerOnClusterStateResponse referentialSyncConfigState,
 

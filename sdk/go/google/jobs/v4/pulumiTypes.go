@@ -902,45 +902,29 @@ func (i CustomAttributeArgs) ToCustomAttributeOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeOutput)
 }
 
-func (i CustomAttributeArgs) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
-	return i.ToCustomAttributePtrOutputWithContext(context.Background())
-}
-
-func (i CustomAttributeArgs) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeOutput).ToCustomAttributePtrOutputWithContext(ctx)
-}
-
-// CustomAttributePtrInput is an input type that accepts CustomAttributeArgs, CustomAttributePtr and CustomAttributePtrOutput values.
-// You can construct a concrete instance of `CustomAttributePtrInput` via:
+// CustomAttributeMapInput is an input type that accepts CustomAttributeMap and CustomAttributeMapOutput values.
+// You can construct a concrete instance of `CustomAttributeMapInput` via:
 //
-//	        CustomAttributeArgs{...}
-//
-//	or:
-//
-//	        nil
-type CustomAttributePtrInput interface {
+//	CustomAttributeMap{ "key": CustomAttributeArgs{...} }
+type CustomAttributeMapInput interface {
 	pulumi.Input
 
-	ToCustomAttributePtrOutput() CustomAttributePtrOutput
-	ToCustomAttributePtrOutputWithContext(context.Context) CustomAttributePtrOutput
+	ToCustomAttributeMapOutput() CustomAttributeMapOutput
+	ToCustomAttributeMapOutputWithContext(context.Context) CustomAttributeMapOutput
 }
 
-type customAttributePtrType CustomAttributeArgs
+type CustomAttributeMap map[string]CustomAttributeInput
 
-func CustomAttributePtr(v *CustomAttributeArgs) CustomAttributePtrInput {
-	return (*customAttributePtrType)(v)
+func (CustomAttributeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomAttribute)(nil)).Elem()
 }
 
-func (*customAttributePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomAttribute)(nil)).Elem()
+func (i CustomAttributeMap) ToCustomAttributeMapOutput() CustomAttributeMapOutput {
+	return i.ToCustomAttributeMapOutputWithContext(context.Background())
 }
 
-func (i *customAttributePtrType) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
-	return i.ToCustomAttributePtrOutputWithContext(context.Background())
-}
-
-func (i *customAttributePtrType) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributePtrOutput)
+func (i CustomAttributeMap) ToCustomAttributeMapOutputWithContext(ctx context.Context) CustomAttributeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeMapOutput)
 }
 
 // Custom attribute values that are either filterable or non-filterable.
@@ -956,16 +940,6 @@ func (o CustomAttributeOutput) ToCustomAttributeOutput() CustomAttributeOutput {
 
 func (o CustomAttributeOutput) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
 	return o
-}
-
-func (o CustomAttributeOutput) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
-	return o.ToCustomAttributePtrOutputWithContext(context.Background())
-}
-
-func (o CustomAttributeOutput) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomAttribute) *CustomAttribute {
-		return &v
-	}).(CustomAttributePtrOutput)
 }
 
 // If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
@@ -988,68 +962,24 @@ func (o CustomAttributeOutput) StringValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomAttribute) []string { return v.StringValues }).(pulumi.StringArrayOutput)
 }
 
-type CustomAttributePtrOutput struct{ *pulumi.OutputState }
+type CustomAttributeMapOutput struct{ *pulumi.OutputState }
 
-func (CustomAttributePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomAttribute)(nil)).Elem()
+func (CustomAttributeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomAttribute)(nil)).Elem()
 }
 
-func (o CustomAttributePtrOutput) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
+func (o CustomAttributeMapOutput) ToCustomAttributeMapOutput() CustomAttributeMapOutput {
 	return o
 }
 
-func (o CustomAttributePtrOutput) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
+func (o CustomAttributeMapOutput) ToCustomAttributeMapOutputWithContext(ctx context.Context) CustomAttributeMapOutput {
 	return o
 }
 
-func (o CustomAttributePtrOutput) Elem() CustomAttributeOutput {
-	return o.ApplyT(func(v *CustomAttribute) CustomAttribute {
-		if v != nil {
-			return *v
-		}
-		var ret CustomAttribute
-		return ret
+func (o CustomAttributeMapOutput) MapIndex(k pulumi.StringInput) CustomAttributeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomAttribute {
+		return vs[0].(map[string]CustomAttribute)[vs[1].(string)]
 	}).(CustomAttributeOutput)
-}
-
-// If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
-func (o CustomAttributePtrOutput) Filterable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CustomAttribute) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Filterable
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false.
-func (o CustomAttributePtrOutput) KeywordSearchable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CustomAttribute) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.KeywordSearchable
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
-func (o CustomAttributePtrOutput) LongValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CustomAttribute) []string {
-		if v == nil {
-			return nil
-		}
-		return v.LongValues
-	}).(pulumi.StringArrayOutput)
-}
-
-// Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed.
-func (o CustomAttributePtrOutput) StringValues() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CustomAttribute) []string {
-		if v == nil {
-			return nil
-		}
-		return v.StringValues
-	}).(pulumi.StringArrayOutput)
 }
 
 // Custom attribute values that are either filterable or non-filterable.
@@ -1097,6 +1027,26 @@ func (o CustomAttributeResponseOutput) LongValues() pulumi.StringArrayOutput {
 // Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed.
 func (o CustomAttributeResponseOutput) StringValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomAttributeResponse) []string { return v.StringValues }).(pulumi.StringArrayOutput)
+}
+
+type CustomAttributeResponseMapOutput struct{ *pulumi.OutputState }
+
+func (CustomAttributeResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomAttributeResponse)(nil)).Elem()
+}
+
+func (o CustomAttributeResponseMapOutput) ToCustomAttributeResponseMapOutput() CustomAttributeResponseMapOutput {
+	return o
+}
+
+func (o CustomAttributeResponseMapOutput) ToCustomAttributeResponseMapOutputWithContext(ctx context.Context) CustomAttributeResponseMapOutput {
+	return o
+}
+
+func (o CustomAttributeResponseMapOutput) MapIndex(k pulumi.StringInput) CustomAttributeResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomAttributeResponse {
+		return vs[0].(map[string]CustomAttributeResponse)[vs[1].(string)]
+	}).(CustomAttributeResponseOutput)
 }
 
 // Derived details about the job posting.
@@ -1748,7 +1698,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CompensationRangeInput)(nil)).Elem(), CompensationRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompensationRangePtrInput)(nil)).Elem(), CompensationRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributeInput)(nil)).Elem(), CustomAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributePtrInput)(nil)).Elem(), CustomAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributeMapInput)(nil)).Elem(), CustomAttributeMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoneyInput)(nil)).Elem(), MoneyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoneyPtrInput)(nil)).Elem(), MoneyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProcessingOptionsInput)(nil)).Elem(), ProcessingOptionsArgs{})
@@ -1768,8 +1718,9 @@ func init() {
 	pulumi.RegisterOutputType(CompensationRangePtrOutput{})
 	pulumi.RegisterOutputType(CompensationRangeResponseOutput{})
 	pulumi.RegisterOutputType(CustomAttributeOutput{})
-	pulumi.RegisterOutputType(CustomAttributePtrOutput{})
+	pulumi.RegisterOutputType(CustomAttributeMapOutput{})
 	pulumi.RegisterOutputType(CustomAttributeResponseOutput{})
+	pulumi.RegisterOutputType(CustomAttributeResponseMapOutput{})
 	pulumi.RegisterOutputType(JobDerivedInfoResponseOutput{})
 	pulumi.RegisterOutputType(LatLngResponseOutput{})
 	pulumi.RegisterOutputType(LocationResponseOutput{})

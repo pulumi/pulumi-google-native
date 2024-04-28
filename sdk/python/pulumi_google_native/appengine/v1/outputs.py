@@ -625,13 +625,13 @@ class DeploymentResponse(dict):
     def __init__(__self__, *,
                  cloud_build_options: 'outputs.CloudBuildOptionsResponse',
                  container: 'outputs.ContainerInfoResponse',
-                 files: 'outputs.FileInfoResponse',
+                 files: Mapping[str, 'outputs.FileInfoResponse'],
                  zip: 'outputs.ZipInfoResponse'):
         """
         Code and application artifacts used to deploy a version to App Engine.
         :param 'CloudBuildOptionsResponse' cloud_build_options: Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
         :param 'ContainerInfoResponse' container: The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
-        :param 'FileInfoResponse' files: Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
+        :param Mapping[str, 'FileInfoResponse'] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         :param 'ZipInfoResponse' zip: The zip file for this deployment, if this is a zip deployment.
         """
         pulumi.set(__self__, "cloud_build_options", cloud_build_options)
@@ -657,7 +657,7 @@ class DeploymentResponse(dict):
 
     @property
     @pulumi.getter
-    def files(self) -> 'outputs.FileInfoResponse':
+    def files(self) -> Mapping[str, 'outputs.FileInfoResponse']:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         """

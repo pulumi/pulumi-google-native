@@ -174,18 +174,18 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     def __init__(__self__, *,
                  annotations: Sequence['outputs.GoogleCloudContactcenterinsightsV1CallAnnotationResponse'],
-                 entities: 'outputs.GoogleCloudContactcenterinsightsV1EntityResponse',
-                 intents: 'outputs.GoogleCloudContactcenterinsightsV1IntentResponse',
+                 entities: Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1EntityResponse'],
+                 intents: Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1IntentResponse'],
                  issue_model_result: 'outputs.GoogleCloudContactcenterinsightsV1IssueModelResultResponse',
-                 phrase_matchers: 'outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse',
+                 phrase_matchers: Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse'],
                  sentiments: Sequence['outputs.GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse']):
         """
         Call-specific metadata created during analysis.
         :param Sequence['GoogleCloudContactcenterinsightsV1CallAnnotationResponse'] annotations: A list of call annotations that apply to this call.
-        :param 'GoogleCloudContactcenterinsightsV1EntityResponse' entities: All the entities in the call.
-        :param 'GoogleCloudContactcenterinsightsV1IntentResponse' intents: All the matched intents in the call.
+        :param Mapping[str, 'GoogleCloudContactcenterinsightsV1EntityResponse'] entities: All the entities in the call.
+        :param Mapping[str, 'GoogleCloudContactcenterinsightsV1IntentResponse'] intents: All the matched intents in the call.
         :param 'GoogleCloudContactcenterinsightsV1IssueModelResultResponse' issue_model_result: Overall conversation-level issue modeling result.
-        :param 'GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse' phrase_matchers: All the matched phrase matchers in the call.
+        :param Mapping[str, 'GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse'] phrase_matchers: All the matched phrase matchers in the call.
         :param Sequence['GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse'] sentiments: Overall conversation-level sentiment for each channel of the call.
         """
         pulumi.set(__self__, "annotations", annotations)
@@ -205,7 +205,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     @property
     @pulumi.getter
-    def entities(self) -> 'outputs.GoogleCloudContactcenterinsightsV1EntityResponse':
+    def entities(self) -> Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1EntityResponse']:
         """
         All the entities in the call.
         """
@@ -213,7 +213,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     @property
     @pulumi.getter
-    def intents(self) -> 'outputs.GoogleCloudContactcenterinsightsV1IntentResponse':
+    def intents(self) -> Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1IntentResponse']:
         """
         All the matched intents in the call.
         """
@@ -229,7 +229,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     @property
     @pulumi.getter(name="phraseMatchers")
-    def phrase_matchers(self) -> 'outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse':
+    def phrase_matchers(self) -> Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse']:
         """
         All the matched phrase matchers in the call.
         """
@@ -2354,12 +2354,12 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(dict):
 
     def __init__(__self__, *,
                  analyzed_conversations_count: str,
-                 issue_stats: 'outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse',
+                 issue_stats: Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse'],
                  unclassified_conversations_count: str):
         """
         Aggregated statistics about an issue model.
         :param str analyzed_conversations_count: Number of conversations the issue model has analyzed at this point in time.
-        :param 'GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse' issue_stats: Statistics on each issue. Key is the issue's resource name.
+        :param Mapping[str, 'GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse'] issue_stats: Statistics on each issue. Key is the issue's resource name.
         :param str unclassified_conversations_count: Number of analyzed conversations for which no issue was applicable at this point in time.
         """
         pulumi.set(__self__, "analyzed_conversations_count", analyzed_conversations_count)
@@ -2376,7 +2376,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(dict):
 
     @property
     @pulumi.getter(name="issueStats")
-    def issue_stats(self) -> 'outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse':
+    def issue_stats(self) -> Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse']:
         """
         Statistics on each issue. Key is the issue's resource name.
         """

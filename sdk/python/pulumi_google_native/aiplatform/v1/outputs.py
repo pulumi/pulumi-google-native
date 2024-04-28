@@ -2979,15 +2979,15 @@ class GoogleCloudAiplatformV1ExplanationMetadataResponse(dict):
 
     def __init__(__self__, *,
                  feature_attributions_schema_uri: str,
-                 inputs: 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse',
+                 inputs: Mapping[str, 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse'],
                  latent_space_source: str,
-                 outputs: 'outputs.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse'):
+                 outputs: Mapping[str, 'outputs.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse']):
         """
         Metadata describing the Model's input and output for explanation.
         :param str feature_attributions_schema_uri: Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
-        :param 'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse' inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
+        :param Mapping[str, 'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse'] inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         :param str latent_space_source: Name of the source to generate embeddings for example based explanations.
-        :param 'GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse' outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
+        :param Mapping[str, 'GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse'] outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         """
         pulumi.set(__self__, "feature_attributions_schema_uri", feature_attributions_schema_uri)
         pulumi.set(__self__, "inputs", inputs)
@@ -3004,7 +3004,7 @@ class GoogleCloudAiplatformV1ExplanationMetadataResponse(dict):
 
     @property
     @pulumi.getter
-    def inputs(self) -> 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse':
+    def inputs(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse']:
         """
         Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         """
@@ -3020,7 +3020,7 @@ class GoogleCloudAiplatformV1ExplanationMetadataResponse(dict):
 
     @property
     @pulumi.getter
-    def outputs(self) -> 'outputs.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse':
+    def outputs(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse']:
         """
         Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         """
@@ -5500,14 +5500,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attribution_score_drift_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
+                 attribution_score_drift_thresholds: Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse'],
                  default_drift_threshold: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
-                 drift_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse'):
+                 drift_thresholds: Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse']):
         """
         The config for Prediction data drift detection.
-        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
+        :param Mapping[str, 'GoogleCloudAiplatformV1ThresholdConfigResponse'] attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' default_drift_threshold: Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
+        :param Mapping[str, 'GoogleCloudAiplatformV1ThresholdConfigResponse'] drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
         pulumi.set(__self__, "attribution_score_drift_thresholds", attribution_score_drift_thresholds)
         pulumi.set(__self__, "default_drift_threshold", default_drift_threshold)
@@ -5515,7 +5515,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
 
     @property
     @pulumi.getter(name="attributionScoreDriftThresholds")
-    def attribution_score_drift_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
+    def attribution_score_drift_thresholds(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse']:
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         """
@@ -5531,7 +5531,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
 
     @property
     @pulumi.getter(name="driftThresholds")
-    def drift_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
+    def drift_thresholds(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse']:
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
@@ -5745,14 +5745,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attribution_score_skew_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
+                 attribution_score_skew_thresholds: Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse'],
                  default_skew_threshold: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
-                 skew_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse'):
+                 skew_thresholds: Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse']):
         """
         The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
-        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
+        :param Mapping[str, 'GoogleCloudAiplatformV1ThresholdConfigResponse'] attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' default_skew_threshold: Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
+        :param Mapping[str, 'GoogleCloudAiplatformV1ThresholdConfigResponse'] skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
         pulumi.set(__self__, "attribution_score_skew_thresholds", attribution_score_skew_thresholds)
         pulumi.set(__self__, "default_skew_threshold", default_skew_threshold)
@@ -5760,7 +5760,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
 
     @property
     @pulumi.getter(name="attributionScoreSkewThresholds")
-    def attribution_score_skew_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
+    def attribution_score_skew_thresholds(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse']:
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         """
@@ -5776,7 +5776,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
 
     @property
     @pulumi.getter(name="skewThresholds")
-    def skew_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
+    def skew_thresholds(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse']:
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
@@ -7423,16 +7423,16 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
     def __init__(__self__, *,
                  failure_policy: str,
                  gcs_output_directory: str,
-                 input_artifacts: 'outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse',
+                 input_artifacts: Mapping[str, 'outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse'],
                  parameter_values: Mapping[str, Any],
-                 parameters: 'outputs.GoogleCloudAiplatformV1ValueResponse'):
+                 parameters: Mapping[str, 'outputs.GoogleCloudAiplatformV1ValueResponse']):
         """
         The runtime config of a PipelineJob.
         :param str failure_policy: Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
         :param str gcs_output_directory: A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
-        :param 'GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse' input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+        :param Mapping[str, 'GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse'] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         :param Mapping[str, Any] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-        :param 'GoogleCloudAiplatformV1ValueResponse' parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
+        :param Mapping[str, 'GoogleCloudAiplatformV1ValueResponse'] parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
         pulumi.set(__self__, "failure_policy", failure_policy)
         pulumi.set(__self__, "gcs_output_directory", gcs_output_directory)
@@ -7458,7 +7458,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
 
     @property
     @pulumi.getter(name="inputArtifacts")
-    def input_artifacts(self) -> 'outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse':
+    def input_artifacts(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse']:
         """
         The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         """
@@ -7474,7 +7474,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> 'outputs.GoogleCloudAiplatformV1ValueResponse':
+    def parameters(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1ValueResponse']:
         """
         Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
@@ -7609,8 +7609,8 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
                  error: 'outputs.GoogleRpcStatusResponse',
                  execution: 'outputs.GoogleCloudAiplatformV1ExecutionResponse',
                  executor_detail: 'outputs.GoogleCloudAiplatformV1PipelineTaskExecutorDetailResponse',
-                 inputs: 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse',
-                 outputs: 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse',
+                 inputs: Mapping[str, 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse'],
+                 outputs: Mapping[str, 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse'],
                  parent_task_id: str,
                  pipeline_task_status: Sequence['outputs.GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse'],
                  start_time: str,
@@ -7624,8 +7624,8 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
         :param 'GoogleRpcStatusResponse' error: The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
         :param 'GoogleCloudAiplatformV1ExecutionResponse' execution: The execution metadata of the task.
         :param 'GoogleCloudAiplatformV1PipelineTaskExecutorDetailResponse' executor_detail: The detailed execution info.
-        :param 'GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse' inputs: The runtime input artifacts of the task.
-        :param 'GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse' outputs: The runtime output artifacts of the task.
+        :param Mapping[str, 'GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse'] inputs: The runtime input artifacts of the task.
+        :param Mapping[str, 'GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse'] outputs: The runtime output artifacts of the task.
         :param str parent_task_id: The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
         :param Sequence['GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse'] pipeline_task_status: A list of task status. This field keeps a record of task status evolving over time.
         :param str start_time: Task start time.
@@ -7689,7 +7689,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
 
     @property
     @pulumi.getter
-    def inputs(self) -> 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse':
+    def inputs(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse']:
         """
         The runtime input artifacts of the task.
         """
@@ -7697,7 +7697,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
 
     @property
     @pulumi.getter
-    def outputs(self) -> 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse':
+    def outputs(self) -> Mapping[str, 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse']:
         """
         The runtime output artifacts of the task.
         """

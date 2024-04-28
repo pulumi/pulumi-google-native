@@ -565,13 +565,13 @@ class GoogleCloudRetailV2betaLocalInventoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attributes: 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse',
+                 attributes: Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse'],
                  fulfillment_types: Sequence[str],
                  place_id: str,
                  price_info: 'outputs.GoogleCloudRetailV2betaPriceInfoResponse'):
         """
         The inventory information at a place (e.g. a store) identified by a place ID.
-        :param 'GoogleCloudRetailV2betaCustomAttributeResponse' attributes: Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+        :param Mapping[str, 'GoogleCloudRetailV2betaCustomAttributeResponse'] attributes: Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
         :param Sequence[str] fulfillment_types: Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
         :param str place_id: The place ID for the current set of inventory information.
         :param 'GoogleCloudRetailV2betaPriceInfoResponse' price_info: Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
@@ -583,7 +583,7 @@ class GoogleCloudRetailV2betaLocalInventoryResponse(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse':
+    def attributes(self) -> Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse']:
         """
         Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
         """
@@ -939,7 +939,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attributes: 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse',
+                 attributes: Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse'],
                  audience: 'outputs.GoogleCloudRetailV2betaAudienceResponse',
                  availability: str,
                  available_quantity: int,
@@ -974,7 +974,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
                  variants: Sequence['outputs.GoogleCloudRetailV2betaProductResponse']):
         """
         Product captures all metadata information of items to be recommended or searched.
-        :param 'GoogleCloudRetailV2betaCustomAttributeResponse' attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
+        :param Mapping[str, 'GoogleCloudRetailV2betaCustomAttributeResponse'] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         :param 'GoogleCloudRetailV2betaAudienceResponse' audience: The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
         :param str availability: The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
         :param int available_quantity: The available quantity of the item.
@@ -1044,7 +1044,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse':
+    def attributes(self) -> Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse']:
         """
         Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         """

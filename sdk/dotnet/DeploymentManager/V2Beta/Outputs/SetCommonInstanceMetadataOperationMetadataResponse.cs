@@ -20,13 +20,13 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
         /// <summary>
         /// Status information per location (location name is key). Example key: zones/us-central1-a
         /// </summary>
-        public readonly Outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse PerLocationOperations;
+        public readonly ImmutableDictionary<string, Outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse> PerLocationOperations;
 
         [OutputConstructor]
         private SetCommonInstanceMetadataOperationMetadataResponse(
             string clientOperationId,
 
-            Outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse perLocationOperations)
+            ImmutableDictionary<string, Outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse> perLocationOperations)
         {
             ClientOperationId = clientOperationId;
             PerLocationOperations = perLocationOperations;

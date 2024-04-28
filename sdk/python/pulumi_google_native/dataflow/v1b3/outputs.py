@@ -1168,16 +1168,16 @@ class JobExecutionInfoResponse(dict):
     Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
     """
     def __init__(__self__, *,
-                 stages: 'outputs.JobExecutionStageInfoResponse'):
+                 stages: Mapping[str, 'outputs.JobExecutionStageInfoResponse']):
         """
         Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
-        :param 'JobExecutionStageInfoResponse' stages: A mapping from each stage to the information about that stage.
+        :param Mapping[str, 'JobExecutionStageInfoResponse'] stages: A mapping from each stage to the information about that stage.
         """
         pulumi.set(__self__, "stages", stages)
 
     @property
     @pulumi.getter
-    def stages(self) -> 'outputs.JobExecutionStageInfoResponse':
+    def stages(self) -> Mapping[str, 'outputs.JobExecutionStageInfoResponse']:
         """
         A mapping from each stage to the information about that stage.
         """

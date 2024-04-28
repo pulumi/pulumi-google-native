@@ -6715,7 +6715,7 @@ class SourceResponse(dict):
                  additional_contexts: Sequence['outputs.GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse'],
                  artifact_storage_source: 'outputs.StorageSourceResponse',
                  context: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse',
-                 file_hashes: 'outputs.FileHashesResponse',
+                 file_hashes: Mapping[str, 'outputs.FileHashesResponse'],
                  repo_source: 'outputs.RepoSourceResponse',
                  storage_source: 'outputs.StorageSourceResponse'):
         """
@@ -6723,7 +6723,7 @@ class SourceResponse(dict):
         :param Sequence['GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse'] additional_contexts: If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
         :param 'StorageSourceResponse' artifact_storage_source: If provided, the input binary artifacts for the build came from this location.
         :param 'GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse' context: If provided, the source code used for the build came from this location.
-        :param 'FileHashesResponse' file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+        :param Mapping[str, 'FileHashesResponse'] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         :param 'RepoSourceResponse' repo_source: If provided, get source from this location in a Cloud Repo.
         :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Google Cloud Storage.
         """
@@ -6760,7 +6760,7 @@ class SourceResponse(dict):
 
     @property
     @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> 'outputs.FileHashesResponse':
+    def file_hashes(self) -> Mapping[str, 'outputs.FileHashesResponse']:
         """
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """

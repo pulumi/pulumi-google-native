@@ -2973,7 +2973,7 @@ class PolicyControllerHubConfigArgs:
     def __init__(__self__, *,
                  audit_interval_seconds: Optional[pulumi.Input[str]] = None,
                  constraint_violation_limit: Optional[pulumi.Input[str]] = None,
-                 deployment_configs: Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']] = None,
+                 deployment_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]]] = None,
                  exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  install_spec: Optional[pulumi.Input['PolicyControllerHubConfigInstallSpec']] = None,
                  log_denies_enabled: Optional[pulumi.Input[bool]] = None,
@@ -2985,7 +2985,7 @@ class PolicyControllerHubConfigArgs:
         Configuration for Policy Controller
         :param pulumi.Input[str] audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
         :param pulumi.Input[str] constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
-        :param pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
+        :param pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param pulumi.Input['PolicyControllerHubConfigInstallSpec'] install_spec: The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
         :param pulumi.Input[bool] log_denies_enabled: Logs all denies and dry run failures.
@@ -3041,14 +3041,14 @@ class PolicyControllerHubConfigArgs:
 
     @property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]:
+    def deployment_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]]]:
         """
         Map of deployment configs to deployments ("admission", "audit", "mutation').
         """
         return pulumi.get(self, "deployment_configs")
 
     @deployment_configs.setter
-    def deployment_configs(self, value: Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]):
+    def deployment_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]]]):
         pulumi.set(self, "deployment_configs", value)
 
     @property
@@ -3203,11 +3203,11 @@ class PolicyControllerMonitoringConfigArgs:
 @pulumi.input_type
 class PolicyControllerPolicyContentSpecArgs:
     def __init__(__self__, *,
-                 bundles: Optional[pulumi.Input['PolicyControllerBundleInstallSpecArgs']] = None,
+                 bundles: Optional[pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerBundleInstallSpecArgs']]]] = None,
                  template_library: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigArgs']] = None):
         """
         PolicyContentSpec defines the user's desired content configuration on the cluster.
-        :param pulumi.Input['PolicyControllerBundleInstallSpecArgs'] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        :param pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerBundleInstallSpecArgs']]] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         :param pulumi.Input['PolicyControllerTemplateLibraryConfigArgs'] template_library: Configures the installation of the Template Library.
         """
         if bundles is not None:
@@ -3217,14 +3217,14 @@ class PolicyControllerPolicyContentSpecArgs:
 
     @property
     @pulumi.getter
-    def bundles(self) -> Optional[pulumi.Input['PolicyControllerBundleInstallSpecArgs']]:
+    def bundles(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerBundleInstallSpecArgs']]]]:
         """
         map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         """
         return pulumi.get(self, "bundles")
 
     @bundles.setter
-    def bundles(self, value: Optional[pulumi.Input['PolicyControllerBundleInstallSpecArgs']]):
+    def bundles(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['PolicyControllerBundleInstallSpecArgs']]]]):
         pulumi.set(self, "bundles", value)
 
     @property

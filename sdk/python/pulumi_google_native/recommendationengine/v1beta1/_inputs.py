@@ -95,12 +95,12 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs:
 @pulumi.input_type
 class GoogleCloudRecommendationengineV1beta1FeatureMapArgs:
     def __init__(__self__, *,
-                 categorical_features: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs']] = None,
-                 numerical_features: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs']] = None):
+                 categorical_features: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs']]]] = None,
+                 numerical_features: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs']]]] = None):
         """
         FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
-        :param pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs'] categorical_features: Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-        :param pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs'] numerical_features: Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs']]] categorical_features: Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs']]] numerical_features: Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
         """
         if categorical_features is not None:
             pulumi.set(__self__, "categorical_features", categorical_features)
@@ -109,26 +109,26 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapArgs:
 
     @property
     @pulumi.getter(name="categoricalFeatures")
-    def categorical_features(self) -> Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs']]:
+    def categorical_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs']]]]:
         """
         Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
         """
         return pulumi.get(self, "categorical_features")
 
     @categorical_features.setter
-    def categorical_features(self, value: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs']]):
+    def categorical_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs']]]]):
         pulumi.set(self, "categorical_features", value)
 
     @property
     @pulumi.getter(name="numericalFeatures")
-    def numerical_features(self) -> Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs']]:
+    def numerical_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs']]]]:
         """
         Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
         """
         return pulumi.get(self, "numerical_features")
 
     @numerical_features.setter
-    def numerical_features(self, value: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs']]):
+    def numerical_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs']]]]):
         pulumi.set(self, "numerical_features", value)
 
 

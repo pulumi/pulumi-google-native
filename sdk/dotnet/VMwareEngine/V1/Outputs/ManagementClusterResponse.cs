@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1.Outputs
         /// <summary>
         /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         /// </summary>
-        public readonly Outputs.NodeTypeConfigResponse NodeTypeConfigs;
+        public readonly ImmutableDictionary<string, Outputs.NodeTypeConfigResponse> NodeTypeConfigs;
         /// <summary>
         /// Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
         /// </summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1.Outputs
         private ManagementClusterResponse(
             string clusterId,
 
-            Outputs.NodeTypeConfigResponse nodeTypeConfigs,
+            ImmutableDictionary<string, Outputs.NodeTypeConfigResponse> nodeTypeConfigs,
 
             Outputs.StretchedClusterConfigResponse stretchedClusterConfig)
         {

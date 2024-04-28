@@ -195,7 +195,7 @@ class GetDiskResult:
 
     @property
     @pulumi.getter(name="asyncSecondaryDisks")
-    def async_secondary_disks(self) -> 'outputs.DiskAsyncReplicationListResponse':
+    def async_secondary_disks(self) -> Mapping[str, 'outputs.DiskAsyncReplicationListResponse']:
         """
         A list of disks this disk is asynchronously replicated to.
         """

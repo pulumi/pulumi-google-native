@@ -37,14 +37,34 @@ func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) AutoDelete() pulumi
 	return o.ApplyT(func(v StatefulPolicyPreservedStateNetworkIpResponse) string { return v.AutoDelete }).(pulumi.StringOutput)
 }
 
+type StatefulPolicyPreservedStateNetworkIpResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIpResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutput() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateNetworkIpResponse {
+		return vs[0].(map[string]StatefulPolicyPreservedStateNetworkIpResponse)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
+}
+
 // Configuration of preserved resources.
 type StatefulPolicyPreservedStateResponse struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-	Disks StatefulPolicyPreservedStateDiskDeviceResponse `pulumi:"disks"`
+	Disks map[string]StatefulPolicyPreservedStateDiskDeviceResponse `pulumi:"disks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	ExternalIPs StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"externalIPs"`
+	ExternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"externalIPs"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	InternalIPs StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"internalIPs"`
+	InternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"internalIPs"`
 }
 
 // Configuration of preserved resources.
@@ -63,24 +83,24 @@ func (o StatefulPolicyPreservedStateResponseOutput) ToStatefulPolicyPreservedSta
 }
 
 // Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-func (o StatefulPolicyPreservedStateResponseOutput) Disks() StatefulPolicyPreservedStateDiskDeviceResponseOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) StatefulPolicyPreservedStateDiskDeviceResponse {
+func (o StatefulPolicyPreservedStateResponseOutput) Disks() StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateDiskDeviceResponse {
 		return v.Disks
-	}).(StatefulPolicyPreservedStateDiskDeviceResponseOutput)
+	}).(StatefulPolicyPreservedStateDiskDeviceResponseMapOutput)
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpResponseOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) StatefulPolicyPreservedStateNetworkIpResponse {
+func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
 		return v.ExternalIPs
-	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
 }
 
 // Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpResponseOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) StatefulPolicyPreservedStateNetworkIpResponse {
+func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
 		return v.InternalIPs
-	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
 }
 
 type StatefulPolicyResponse struct {
@@ -2297,6 +2317,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseMapOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateResponseOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyResponseOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigOutput{})

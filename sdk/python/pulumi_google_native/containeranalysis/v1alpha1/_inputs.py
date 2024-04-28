@@ -6625,7 +6625,7 @@ class SourceArgs:
                  additional_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']]]] = None,
                  artifact_storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
                  context: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']] = None,
-                 file_hashes: Optional[pulumi.Input['FileHashesArgs']] = None,
+                 file_hashes: Optional[pulumi.Input[Mapping[str, pulumi.Input['FileHashesArgs']]]] = None,
                  repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
                  storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None):
         """
@@ -6633,7 +6633,7 @@ class SourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']]] additional_contexts: If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
         :param pulumi.Input['StorageSourceArgs'] artifact_storage_source: If provided, the input binary artifacts for the build came from this location.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs'] context: If provided, the source code used for the build came from this location.
-        :param pulumi.Input['FileHashesArgs'] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+        :param pulumi.Input[Mapping[str, pulumi.Input['FileHashesArgs']]] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get source from this location in a Cloud Repo.
         :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
         """
@@ -6688,14 +6688,14 @@ class SourceArgs:
 
     @property
     @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> Optional[pulumi.Input['FileHashesArgs']]:
+    def file_hashes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['FileHashesArgs']]]]:
         """
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """
         return pulumi.get(self, "file_hashes")
 
     @file_hashes.setter
-    def file_hashes(self, value: Optional[pulumi.Input['FileHashesArgs']]):
+    def file_hashes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['FileHashesArgs']]]]):
         pulumi.set(self, "file_hashes", value)
 
     @property

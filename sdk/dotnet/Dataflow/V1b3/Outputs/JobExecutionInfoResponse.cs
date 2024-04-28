@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// A mapping from each stage to the information about that stage.
         /// </summary>
-        public readonly Outputs.JobExecutionStageInfoResponse Stages;
+        public readonly ImmutableDictionary<string, Outputs.JobExecutionStageInfoResponse> Stages;
 
         [OutputConstructor]
-        private JobExecutionInfoResponse(Outputs.JobExecutionStageInfoResponse stages)
+        private JobExecutionInfoResponse(ImmutableDictionary<string, Outputs.JobExecutionStageInfoResponse> stages)
         {
             Stages = stages;
         }

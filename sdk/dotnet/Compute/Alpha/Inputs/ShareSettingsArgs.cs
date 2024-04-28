@@ -15,17 +15,29 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// </summary>
     public sealed class ShareSettingsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("folderMap")]
+        private InputMap<Inputs.ShareSettingsFolderConfigArgs>? _folderMap;
+
         /// <summary>
         /// A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
         /// </summary>
-        [Input("folderMap")]
-        public Input<Inputs.ShareSettingsFolderConfigArgs>? FolderMap { get; set; }
+        public InputMap<Inputs.ShareSettingsFolderConfigArgs> FolderMap
+        {
+            get => _folderMap ?? (_folderMap = new InputMap<Inputs.ShareSettingsFolderConfigArgs>());
+            set => _folderMap = value;
+        }
+
+        [Input("projectMap")]
+        private InputMap<Inputs.ShareSettingsProjectConfigArgs>? _projectMap;
 
         /// <summary>
         /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
-        [Input("projectMap")]
-        public Input<Inputs.ShareSettingsProjectConfigArgs>? ProjectMap { get; set; }
+        public InputMap<Inputs.ShareSettingsProjectConfigArgs> ProjectMap
+        {
+            get => _projectMap ?? (_projectMap = new InputMap<Inputs.ShareSettingsProjectConfigArgs>());
+            set => _projectMap = value;
+        }
 
         [Input("projects")]
         private InputList<string>? _projects;

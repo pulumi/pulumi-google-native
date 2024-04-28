@@ -8966,45 +8966,29 @@ func (i FileHashesArgs) ToFileHashesOutputWithContext(ctx context.Context) FileH
 	return pulumi.ToOutputWithContext(ctx, i).(FileHashesOutput)
 }
 
-func (i FileHashesArgs) ToFileHashesPtrOutput() FileHashesPtrOutput {
-	return i.ToFileHashesPtrOutputWithContext(context.Background())
-}
-
-func (i FileHashesArgs) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileHashesOutput).ToFileHashesPtrOutputWithContext(ctx)
-}
-
-// FileHashesPtrInput is an input type that accepts FileHashesArgs, FileHashesPtr and FileHashesPtrOutput values.
-// You can construct a concrete instance of `FileHashesPtrInput` via:
+// FileHashesMapInput is an input type that accepts FileHashesMap and FileHashesMapOutput values.
+// You can construct a concrete instance of `FileHashesMapInput` via:
 //
-//	        FileHashesArgs{...}
-//
-//	or:
-//
-//	        nil
-type FileHashesPtrInput interface {
+//	FileHashesMap{ "key": FileHashesArgs{...} }
+type FileHashesMapInput interface {
 	pulumi.Input
 
-	ToFileHashesPtrOutput() FileHashesPtrOutput
-	ToFileHashesPtrOutputWithContext(context.Context) FileHashesPtrOutput
+	ToFileHashesMapOutput() FileHashesMapOutput
+	ToFileHashesMapOutputWithContext(context.Context) FileHashesMapOutput
 }
 
-type fileHashesPtrType FileHashesArgs
+type FileHashesMap map[string]FileHashesInput
 
-func FileHashesPtr(v *FileHashesArgs) FileHashesPtrInput {
-	return (*fileHashesPtrType)(v)
+func (FileHashesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileHashes)(nil)).Elem()
 }
 
-func (*fileHashesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileHashes)(nil)).Elem()
+func (i FileHashesMap) ToFileHashesMapOutput() FileHashesMapOutput {
+	return i.ToFileHashesMapOutputWithContext(context.Background())
 }
 
-func (i *fileHashesPtrType) ToFileHashesPtrOutput() FileHashesPtrOutput {
-	return i.ToFileHashesPtrOutputWithContext(context.Background())
-}
-
-func (i *fileHashesPtrType) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileHashesPtrOutput)
+func (i FileHashesMap) ToFileHashesMapOutputWithContext(ctx context.Context) FileHashesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileHashesMapOutput)
 }
 
 // Container message for hashes of byte content of files, used in Source messages to verify integrity of source input to the build.
@@ -9022,53 +9006,29 @@ func (o FileHashesOutput) ToFileHashesOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
-func (o FileHashesOutput) ToFileHashesPtrOutput() FileHashesPtrOutput {
-	return o.ToFileHashesPtrOutputWithContext(context.Background())
-}
-
-func (o FileHashesOutput) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileHashes) *FileHashes {
-		return &v
-	}).(FileHashesPtrOutput)
-}
-
 // Collection of file hashes.
 func (o FileHashesOutput) FileHash() HashArrayOutput {
 	return o.ApplyT(func(v FileHashes) []Hash { return v.FileHash }).(HashArrayOutput)
 }
 
-type FileHashesPtrOutput struct{ *pulumi.OutputState }
+type FileHashesMapOutput struct{ *pulumi.OutputState }
 
-func (FileHashesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileHashes)(nil)).Elem()
+func (FileHashesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileHashes)(nil)).Elem()
 }
 
-func (o FileHashesPtrOutput) ToFileHashesPtrOutput() FileHashesPtrOutput {
+func (o FileHashesMapOutput) ToFileHashesMapOutput() FileHashesMapOutput {
 	return o
 }
 
-func (o FileHashesPtrOutput) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
+func (o FileHashesMapOutput) ToFileHashesMapOutputWithContext(ctx context.Context) FileHashesMapOutput {
 	return o
 }
 
-func (o FileHashesPtrOutput) Elem() FileHashesOutput {
-	return o.ApplyT(func(v *FileHashes) FileHashes {
-		if v != nil {
-			return *v
-		}
-		var ret FileHashes
-		return ret
+func (o FileHashesMapOutput) MapIndex(k pulumi.StringInput) FileHashesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FileHashes {
+		return vs[0].(map[string]FileHashes)[vs[1].(string)]
 	}).(FileHashesOutput)
-}
-
-// Collection of file hashes.
-func (o FileHashesPtrOutput) FileHash() HashArrayOutput {
-	return o.ApplyT(func(v *FileHashes) []Hash {
-		if v == nil {
-			return nil
-		}
-		return v.FileHash
-	}).(HashArrayOutput)
 }
 
 // Container message for hashes of byte content of files, used in Source messages to verify integrity of source input to the build.
@@ -9095,6 +9055,26 @@ func (o FileHashesResponseOutput) ToFileHashesResponseOutputWithContext(ctx cont
 // Collection of file hashes.
 func (o FileHashesResponseOutput) FileHash() HashResponseArrayOutput {
 	return o.ApplyT(func(v FileHashesResponse) []HashResponse { return v.FileHash }).(HashResponseArrayOutput)
+}
+
+type FileHashesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (FileHashesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileHashesResponse)(nil)).Elem()
+}
+
+func (o FileHashesResponseMapOutput) ToFileHashesResponseMapOutput() FileHashesResponseMapOutput {
+	return o
+}
+
+func (o FileHashesResponseMapOutput) ToFileHashesResponseMapOutputWithContext(ctx context.Context) FileHashesResponseMapOutput {
+	return o
+}
+
+func (o FileHashesResponseMapOutput) MapIndex(k pulumi.StringInput) FileHashesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FileHashesResponse {
+		return vs[0].(map[string]FileHashesResponse)[vs[1].(string)]
+	}).(FileHashesResponseOutput)
 }
 
 // Indicates the location at which a package was found.
@@ -22535,7 +22515,7 @@ type Source struct {
 	// If provided, the source code used for the build came from this location.
 	Context *GoogleDevtoolsContaineranalysisV1alpha1SourceContext `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes *FileHashes `pulumi:"fileHashes"`
+	FileHashes map[string]FileHashes `pulumi:"fileHashes"`
 	// If provided, get source from this location in a Cloud Repo.
 	RepoSource *RepoSource `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -22562,7 +22542,7 @@ type SourceArgs struct {
 	// If provided, the source code used for the build came from this location.
 	Context GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrInput `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes FileHashesPtrInput `pulumi:"fileHashes"`
+	FileHashes FileHashesMapInput `pulumi:"fileHashes"`
 	// If provided, get source from this location in a Cloud Repo.
 	RepoSource RepoSourcePtrInput `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -22663,8 +22643,8 @@ func (o SourceOutput) Context() GoogleDevtoolsContaineranalysisV1alpha1SourceCon
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourceOutput) FileHashes() FileHashesPtrOutput {
-	return o.ApplyT(func(v Source) *FileHashes { return v.FileHashes }).(FileHashesPtrOutput)
+func (o SourceOutput) FileHashes() FileHashesMapOutput {
+	return o.ApplyT(func(v Source) map[string]FileHashes { return v.FileHashes }).(FileHashesMapOutput)
 }
 
 // If provided, get source from this location in a Cloud Repo.
@@ -22732,13 +22712,13 @@ func (o SourcePtrOutput) Context() GoogleDevtoolsContaineranalysisV1alpha1Source
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourcePtrOutput) FileHashes() FileHashesPtrOutput {
-	return o.ApplyT(func(v *Source) *FileHashes {
+func (o SourcePtrOutput) FileHashes() FileHashesMapOutput {
+	return o.ApplyT(func(v *Source) map[string]FileHashes {
 		if v == nil {
 			return nil
 		}
 		return v.FileHashes
-	}).(FileHashesPtrOutput)
+	}).(FileHashesMapOutput)
 }
 
 // If provided, get source from this location in a Cloud Repo.
@@ -22770,7 +22750,7 @@ type SourceResponse struct {
 	// If provided, the source code used for the build came from this location.
 	Context GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes FileHashesResponse `pulumi:"fileHashes"`
+	FileHashes map[string]FileHashesResponse `pulumi:"fileHashes"`
 	// If provided, get source from this location in a Cloud Repo.
 	RepoSource RepoSourceResponse `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -22810,8 +22790,8 @@ func (o SourceResponseOutput) Context() GoogleDevtoolsContaineranalysisV1alpha1S
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourceResponseOutput) FileHashes() FileHashesResponseOutput {
-	return o.ApplyT(func(v SourceResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
+func (o SourceResponseOutput) FileHashes() FileHashesResponseMapOutput {
+	return o.ApplyT(func(v SourceResponse) map[string]FileHashesResponse { return v.FileHashes }).(FileHashesResponseMapOutput)
 }
 
 // If provided, get source from this location in a Cloud Repo.
@@ -26392,7 +26372,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefInput)(nil)).Elem(), ExternalRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefArrayInput)(nil)).Elem(), ExternalRefArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileHashesInput)(nil)).Elem(), FileHashesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileHashesPtrInput)(nil)).Elem(), FileHashesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileHashesMapInput)(nil)).Elem(), FileHashesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileLocationInput)(nil)).Elem(), FileLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileLocationArrayInput)(nil)).Elem(), FileLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileNoteInput)(nil)).Elem(), FileNoteArgs{})
@@ -26669,8 +26649,9 @@ func init() {
 	pulumi.RegisterOutputType(ExternalRefResponseOutput{})
 	pulumi.RegisterOutputType(ExternalRefResponseArrayOutput{})
 	pulumi.RegisterOutputType(FileHashesOutput{})
-	pulumi.RegisterOutputType(FileHashesPtrOutput{})
+	pulumi.RegisterOutputType(FileHashesMapOutput{})
 	pulumi.RegisterOutputType(FileHashesResponseOutput{})
+	pulumi.RegisterOutputType(FileHashesResponseMapOutput{})
 	pulumi.RegisterOutputType(FileLocationOutput{})
 	pulumi.RegisterOutputType(FileLocationArrayOutput{})
 	pulumi.RegisterOutputType(FileLocationResponseOutput{})

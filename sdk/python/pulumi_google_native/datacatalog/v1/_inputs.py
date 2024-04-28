@@ -1752,12 +1752,12 @@ class GoogleCloudDatacatalogV1TagTemplateFieldArgs:
 @pulumi.input_type
 class GoogleCloudDatacatalogV1UsageSignalArgs:
     def __init__(__self__, *,
-                 common_usage_within_time_range: Optional[pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']] = None,
+                 common_usage_within_time_range: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]]] = None,
                  favorite_count: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
-        :param pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs'] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         :param pulumi.Input[str] favorite_count: Favorite count in the source system.
         :param pulumi.Input[str] update_time: The end timestamp of the duration of usage statistics.
         """
@@ -1770,14 +1770,14 @@ class GoogleCloudDatacatalogV1UsageSignalArgs:
 
     @property
     @pulumi.getter(name="commonUsageWithinTimeRange")
-    def common_usage_within_time_range(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]:
+    def common_usage_within_time_range(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]]]:
         """
         Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         """
         return pulumi.get(self, "common_usage_within_time_range")
 
     @common_usage_within_time_range.setter
-    def common_usage_within_time_range(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]):
+    def common_usage_within_time_range(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]]]):
         pulumi.set(self, "common_usage_within_time_range", value)
 
     @property

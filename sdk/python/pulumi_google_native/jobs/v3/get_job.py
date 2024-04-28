@@ -153,7 +153,7 @@ class GetJobResult:
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> 'outputs.CustomAttributeResponse':
+    def custom_attributes(self) -> Mapping[str, 'outputs.CustomAttributeResponse']:
         """
         Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         """

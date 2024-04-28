@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// <summary>
         /// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
         /// </summary>
-        public readonly Outputs.PolicyControllerOnClusterStateResponse ComponentStates;
+        public readonly ImmutableDictionary<string, Outputs.PolicyControllerOnClusterStateResponse> ComponentStates;
         /// <summary>
         /// The overall content state observed by the Hub Feature controller.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 
         [OutputConstructor]
         private PolicyControllerMembershipStateResponse(
-            Outputs.PolicyControllerOnClusterStateResponse componentStates,
+            ImmutableDictionary<string, Outputs.PolicyControllerOnClusterStateResponse> componentStates,
 
             Outputs.PolicyControllerPolicyContentStateResponse policyContentState,
 

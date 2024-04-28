@@ -91,19 +91,19 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 categorical_features: 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse',
-                 numerical_features: 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse'):
+                 categorical_features: Mapping[str, 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse'],
+                 numerical_features: Mapping[str, 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse']):
         """
         FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
-        :param 'GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse' categorical_features: Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-        :param 'GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse' numerical_features: Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
+        :param Mapping[str, 'GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse'] categorical_features: Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
+        :param Mapping[str, 'GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse'] numerical_features: Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
         """
         pulumi.set(__self__, "categorical_features", categorical_features)
         pulumi.set(__self__, "numerical_features", numerical_features)
 
     @property
     @pulumi.getter(name="categoricalFeatures")
-    def categorical_features(self) -> 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse':
+    def categorical_features(self) -> Mapping[str, 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse']:
         """
         Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
         """
@@ -111,7 +111,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapResponse(dict):
 
     @property
     @pulumi.getter(name="numericalFeatures")
-    def numerical_features(self) -> 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse':
+    def numerical_features(self) -> Mapping[str, 'outputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse']:
         """
         Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
         """

@@ -23,11 +23,11 @@ __all__ = [
 class GoogleCloudPolicysimulatorV1alphaReplayConfigArgs:
     def __init__(__self__, *,
                  log_source: Optional[pulumi.Input['GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource']] = None,
-                 policy_overlay: Optional[pulumi.Input['GoogleIamV1PolicyArgs']] = None):
+                 policy_overlay: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleIamV1PolicyArgs']]]] = None):
         """
         The configuration used for a Replay.
         :param pulumi.Input['GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource'] log_source: The logs to use as input for the Replay.
-        :param pulumi.Input['GoogleIamV1PolicyArgs'] policy_overlay: A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleIamV1PolicyArgs']]] policy_overlay: A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
         """
         if log_source is not None:
             pulumi.set(__self__, "log_source", log_source)
@@ -48,14 +48,14 @@ class GoogleCloudPolicysimulatorV1alphaReplayConfigArgs:
 
     @property
     @pulumi.getter(name="policyOverlay")
-    def policy_overlay(self) -> Optional[pulumi.Input['GoogleIamV1PolicyArgs']]:
+    def policy_overlay(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleIamV1PolicyArgs']]]]:
         """
         A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
         """
         return pulumi.get(self, "policy_overlay")
 
     @policy_overlay.setter
-    def policy_overlay(self, value: Optional[pulumi.Input['GoogleIamV1PolicyArgs']]):
+    def policy_overlay(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleIamV1PolicyArgs']]]]):
         pulumi.set(self, "policy_overlay", value)
 
 

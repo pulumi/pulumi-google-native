@@ -70,7 +70,7 @@ class GetTriggerResult:
 
     @property
     @pulumi.getter
-    def conditions(self) -> 'outputs.StateConditionResponse':
+    def conditions(self) -> Mapping[str, 'outputs.StateConditionResponse']:
         """
         The reason(s) why a trigger is in FAILED state.
         """

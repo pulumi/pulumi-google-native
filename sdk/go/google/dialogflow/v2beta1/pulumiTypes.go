@@ -14800,6 +14800,31 @@ func (i *googleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrType) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput)
 }
 
+// GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapInput is an input type that accepts GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMap and GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapInput` via:
+//
+//	GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMap{ "key": GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs{...} }
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput
+	ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput
+}
+
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMap map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigInput
+
+func (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMap) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMap) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput)
+}
+
 // Configuration of how speech should be synthesized.
 type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput struct{ *pulumi.OutputState }
 
@@ -14926,6 +14951,26 @@ func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) VolumeGainD
 	}).(pulumi.Float64PtrOutput)
 }
 
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
+		return vs[0].(map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig)[vs[1].(string)]
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput)
+}
+
 // Configuration of how speech should be synthesized.
 type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse struct {
 	// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
@@ -14982,6 +15027,26 @@ func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) Volume
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse) float64 { return v.VolumeGainDb }).(pulumi.Float64Output)
 }
 
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse {
+		return vs[0].(map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse)[vs[1].(string)]
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput)
+}
+
 // Instructs the speech synthesizer on how to generate the output audio content.
 type GoogleCloudDialogflowV2beta1TextToSpeechSettings struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
@@ -14991,7 +15056,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettings struct {
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz *int `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-	SynthesizeSpeechConfigs *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs and GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput values.
@@ -15014,7 +15079,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs struct {
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-	SynthesizeSpeechConfigs GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapInput `pulumi:"synthesizeSpeechConfigs"`
 }
 
 func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ElementType() reflect.Type {
@@ -15113,10 +15178,10 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SampleRateHertz(
 }
 
 // Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
 		return v.SynthesizeSpeechConfigs
-	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput)
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput)
 }
 
 type GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -15174,13 +15239,13 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SampleRateHer
 }
 
 // Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
 		if v == nil {
 			return nil
 		}
 		return v.SynthesizeSpeechConfigs
-	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput)
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput)
 }
 
 // Instructs the speech synthesizer on how to generate the output audio content.
@@ -15192,7 +15257,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse struct {
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz int `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-	SynthesizeSpeechConfigs GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // Instructs the speech synthesizer on how to generate the output audio content.
@@ -15226,10 +15291,10 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SampleRa
 }
 
 // Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse {
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) map[string]GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse {
 		return v.SynthesizeSpeechConfigs
-	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput)
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput)
 }
 
 // Description of which voice to use for speech synthesis.
@@ -15611,6 +15676,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1VoiceSelectionParamsInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs{})
@@ -15856,7 +15922,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeatureResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput{})

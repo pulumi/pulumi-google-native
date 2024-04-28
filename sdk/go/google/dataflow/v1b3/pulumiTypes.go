@@ -3101,7 +3101,7 @@ func (o FileIODetailsResponseArrayOutput) Index(i pulumi.IntInput) FileIODetails
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfo struct {
 	// A mapping from each stage to the information about that stage.
-	Stages *JobExecutionStageInfo `pulumi:"stages"`
+	Stages map[string]JobExecutionStageInfo `pulumi:"stages"`
 }
 
 // JobExecutionInfoInput is an input type that accepts JobExecutionInfoArgs and JobExecutionInfoOutput values.
@@ -3118,7 +3118,7 @@ type JobExecutionInfoInput interface {
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfoArgs struct {
 	// A mapping from each stage to the information about that stage.
-	Stages JobExecutionStageInfoPtrInput `pulumi:"stages"`
+	Stages JobExecutionStageInfoMapInput `pulumi:"stages"`
 }
 
 func (JobExecutionInfoArgs) ElementType() reflect.Type {
@@ -3200,8 +3200,8 @@ func (o JobExecutionInfoOutput) ToJobExecutionInfoPtrOutputWithContext(ctx conte
 }
 
 // A mapping from each stage to the information about that stage.
-func (o JobExecutionInfoOutput) Stages() JobExecutionStageInfoPtrOutput {
-	return o.ApplyT(func(v JobExecutionInfo) *JobExecutionStageInfo { return v.Stages }).(JobExecutionStageInfoPtrOutput)
+func (o JobExecutionInfoOutput) Stages() JobExecutionStageInfoMapOutput {
+	return o.ApplyT(func(v JobExecutionInfo) map[string]JobExecutionStageInfo { return v.Stages }).(JobExecutionStageInfoMapOutput)
 }
 
 type JobExecutionInfoPtrOutput struct{ *pulumi.OutputState }
@@ -3229,19 +3229,19 @@ func (o JobExecutionInfoPtrOutput) Elem() JobExecutionInfoOutput {
 }
 
 // A mapping from each stage to the information about that stage.
-func (o JobExecutionInfoPtrOutput) Stages() JobExecutionStageInfoPtrOutput {
-	return o.ApplyT(func(v *JobExecutionInfo) *JobExecutionStageInfo {
+func (o JobExecutionInfoPtrOutput) Stages() JobExecutionStageInfoMapOutput {
+	return o.ApplyT(func(v *JobExecutionInfo) map[string]JobExecutionStageInfo {
 		if v == nil {
 			return nil
 		}
 		return v.Stages
-	}).(JobExecutionStageInfoPtrOutput)
+	}).(JobExecutionStageInfoMapOutput)
 }
 
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfoResponse struct {
 	// A mapping from each stage to the information about that stage.
-	Stages JobExecutionStageInfoResponse `pulumi:"stages"`
+	Stages map[string]JobExecutionStageInfoResponse `pulumi:"stages"`
 }
 
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
@@ -3260,8 +3260,8 @@ func (o JobExecutionInfoResponseOutput) ToJobExecutionInfoResponseOutputWithCont
 }
 
 // A mapping from each stage to the information about that stage.
-func (o JobExecutionInfoResponseOutput) Stages() JobExecutionStageInfoResponseOutput {
-	return o.ApplyT(func(v JobExecutionInfoResponse) JobExecutionStageInfoResponse { return v.Stages }).(JobExecutionStageInfoResponseOutput)
+func (o JobExecutionInfoResponseOutput) Stages() JobExecutionStageInfoResponseMapOutput {
+	return o.ApplyT(func(v JobExecutionInfoResponse) map[string]JobExecutionStageInfoResponse { return v.Stages }).(JobExecutionStageInfoResponseMapOutput)
 }
 
 // Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
@@ -3299,45 +3299,29 @@ func (i JobExecutionStageInfoArgs) ToJobExecutionStageInfoOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionStageInfoOutput)
 }
 
-func (i JobExecutionStageInfoArgs) ToJobExecutionStageInfoPtrOutput() JobExecutionStageInfoPtrOutput {
-	return i.ToJobExecutionStageInfoPtrOutputWithContext(context.Background())
-}
-
-func (i JobExecutionStageInfoArgs) ToJobExecutionStageInfoPtrOutputWithContext(ctx context.Context) JobExecutionStageInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionStageInfoOutput).ToJobExecutionStageInfoPtrOutputWithContext(ctx)
-}
-
-// JobExecutionStageInfoPtrInput is an input type that accepts JobExecutionStageInfoArgs, JobExecutionStageInfoPtr and JobExecutionStageInfoPtrOutput values.
-// You can construct a concrete instance of `JobExecutionStageInfoPtrInput` via:
+// JobExecutionStageInfoMapInput is an input type that accepts JobExecutionStageInfoMap and JobExecutionStageInfoMapOutput values.
+// You can construct a concrete instance of `JobExecutionStageInfoMapInput` via:
 //
-//	        JobExecutionStageInfoArgs{...}
-//
-//	or:
-//
-//	        nil
-type JobExecutionStageInfoPtrInput interface {
+//	JobExecutionStageInfoMap{ "key": JobExecutionStageInfoArgs{...} }
+type JobExecutionStageInfoMapInput interface {
 	pulumi.Input
 
-	ToJobExecutionStageInfoPtrOutput() JobExecutionStageInfoPtrOutput
-	ToJobExecutionStageInfoPtrOutputWithContext(context.Context) JobExecutionStageInfoPtrOutput
+	ToJobExecutionStageInfoMapOutput() JobExecutionStageInfoMapOutput
+	ToJobExecutionStageInfoMapOutputWithContext(context.Context) JobExecutionStageInfoMapOutput
 }
 
-type jobExecutionStageInfoPtrType JobExecutionStageInfoArgs
+type JobExecutionStageInfoMap map[string]JobExecutionStageInfoInput
 
-func JobExecutionStageInfoPtr(v *JobExecutionStageInfoArgs) JobExecutionStageInfoPtrInput {
-	return (*jobExecutionStageInfoPtrType)(v)
+func (JobExecutionStageInfoMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobExecutionStageInfo)(nil)).Elem()
 }
 
-func (*jobExecutionStageInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobExecutionStageInfo)(nil)).Elem()
+func (i JobExecutionStageInfoMap) ToJobExecutionStageInfoMapOutput() JobExecutionStageInfoMapOutput {
+	return i.ToJobExecutionStageInfoMapOutputWithContext(context.Background())
 }
 
-func (i *jobExecutionStageInfoPtrType) ToJobExecutionStageInfoPtrOutput() JobExecutionStageInfoPtrOutput {
-	return i.ToJobExecutionStageInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *jobExecutionStageInfoPtrType) ToJobExecutionStageInfoPtrOutputWithContext(ctx context.Context) JobExecutionStageInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionStageInfoPtrOutput)
+func (i JobExecutionStageInfoMap) ToJobExecutionStageInfoMapOutputWithContext(ctx context.Context) JobExecutionStageInfoMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionStageInfoMapOutput)
 }
 
 // Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
@@ -3355,53 +3339,29 @@ func (o JobExecutionStageInfoOutput) ToJobExecutionStageInfoOutputWithContext(ct
 	return o
 }
 
-func (o JobExecutionStageInfoOutput) ToJobExecutionStageInfoPtrOutput() JobExecutionStageInfoPtrOutput {
-	return o.ToJobExecutionStageInfoPtrOutputWithContext(context.Background())
-}
-
-func (o JobExecutionStageInfoOutput) ToJobExecutionStageInfoPtrOutputWithContext(ctx context.Context) JobExecutionStageInfoPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobExecutionStageInfo) *JobExecutionStageInfo {
-		return &v
-	}).(JobExecutionStageInfoPtrOutput)
-}
-
 // The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
 func (o JobExecutionStageInfoOutput) StepName() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobExecutionStageInfo) []string { return v.StepName }).(pulumi.StringArrayOutput)
 }
 
-type JobExecutionStageInfoPtrOutput struct{ *pulumi.OutputState }
+type JobExecutionStageInfoMapOutput struct{ *pulumi.OutputState }
 
-func (JobExecutionStageInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobExecutionStageInfo)(nil)).Elem()
+func (JobExecutionStageInfoMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobExecutionStageInfo)(nil)).Elem()
 }
 
-func (o JobExecutionStageInfoPtrOutput) ToJobExecutionStageInfoPtrOutput() JobExecutionStageInfoPtrOutput {
+func (o JobExecutionStageInfoMapOutput) ToJobExecutionStageInfoMapOutput() JobExecutionStageInfoMapOutput {
 	return o
 }
 
-func (o JobExecutionStageInfoPtrOutput) ToJobExecutionStageInfoPtrOutputWithContext(ctx context.Context) JobExecutionStageInfoPtrOutput {
+func (o JobExecutionStageInfoMapOutput) ToJobExecutionStageInfoMapOutputWithContext(ctx context.Context) JobExecutionStageInfoMapOutput {
 	return o
 }
 
-func (o JobExecutionStageInfoPtrOutput) Elem() JobExecutionStageInfoOutput {
-	return o.ApplyT(func(v *JobExecutionStageInfo) JobExecutionStageInfo {
-		if v != nil {
-			return *v
-		}
-		var ret JobExecutionStageInfo
-		return ret
+func (o JobExecutionStageInfoMapOutput) MapIndex(k pulumi.StringInput) JobExecutionStageInfoOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobExecutionStageInfo {
+		return vs[0].(map[string]JobExecutionStageInfo)[vs[1].(string)]
 	}).(JobExecutionStageInfoOutput)
-}
-
-// The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
-func (o JobExecutionStageInfoPtrOutput) StepName() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *JobExecutionStageInfo) []string {
-		if v == nil {
-			return nil
-		}
-		return v.StepName
-	}).(pulumi.StringArrayOutput)
 }
 
 // Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
@@ -3428,6 +3388,26 @@ func (o JobExecutionStageInfoResponseOutput) ToJobExecutionStageInfoResponseOutp
 // The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
 func (o JobExecutionStageInfoResponseOutput) StepName() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobExecutionStageInfoResponse) []string { return v.StepName }).(pulumi.StringArrayOutput)
+}
+
+type JobExecutionStageInfoResponseMapOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionStageInfoResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobExecutionStageInfoResponse)(nil)).Elem()
+}
+
+func (o JobExecutionStageInfoResponseMapOutput) ToJobExecutionStageInfoResponseMapOutput() JobExecutionStageInfoResponseMapOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoResponseMapOutput) ToJobExecutionStageInfoResponseMapOutputWithContext(ctx context.Context) JobExecutionStageInfoResponseMapOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoResponseMapOutput) MapIndex(k pulumi.StringInput) JobExecutionStageInfoResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobExecutionStageInfoResponse {
+		return vs[0].(map[string]JobExecutionStageInfoResponse)[vs[1].(string)]
+	}).(JobExecutionStageInfoResponseOutput)
 }
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
@@ -8039,7 +8019,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionInfoInput)(nil)).Elem(), JobExecutionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionInfoPtrInput)(nil)).Elem(), JobExecutionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionStageInfoInput)(nil)).Elem(), JobExecutionStageInfoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionStageInfoPtrInput)(nil)).Elem(), JobExecutionStageInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionStageInfoMapInput)(nil)).Elem(), JobExecutionStageInfoMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataInput)(nil)).Elem(), JobMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataPtrInput)(nil)).Elem(), JobMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
@@ -8126,8 +8106,9 @@ func init() {
 	pulumi.RegisterOutputType(JobExecutionInfoPtrOutput{})
 	pulumi.RegisterOutputType(JobExecutionInfoResponseOutput{})
 	pulumi.RegisterOutputType(JobExecutionStageInfoOutput{})
-	pulumi.RegisterOutputType(JobExecutionStageInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobExecutionStageInfoMapOutput{})
 	pulumi.RegisterOutputType(JobExecutionStageInfoResponseOutput{})
+	pulumi.RegisterOutputType(JobExecutionStageInfoResponseMapOutput{})
 	pulumi.RegisterOutputType(JobMetadataOutput{})
 	pulumi.RegisterOutputType(JobMetadataPtrOutput{})
 	pulumi.RegisterOutputType(JobMetadataResponseOutput{})

@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// <summary>
         /// Maps of Kubernetes version and supported Windows server versions.
         /// </summary>
-        public readonly Outputs.WindowsVersionsResponse WindowsVersionMaps;
+        public readonly ImmutableDictionary<string, Outputs.WindowsVersionsResponse> WindowsVersionMaps;
 
         [OutputConstructor]
         private GetServerConfigResult(
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             ImmutableArray<string> validNodeVersions,
 
-            Outputs.WindowsVersionsResponse windowsVersionMaps)
+            ImmutableDictionary<string, Outputs.WindowsVersionsResponse> windowsVersionMaps)
         {
             Channels = channels;
             DefaultClusterVersion = defaultClusterVersion;

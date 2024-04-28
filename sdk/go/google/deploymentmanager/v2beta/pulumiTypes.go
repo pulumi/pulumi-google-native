@@ -909,6 +909,26 @@ func (o BulkInsertOperationStatusResponseOutput) TargetVmCount() pulumi.IntOutpu
 	return o.ApplyT(func(v BulkInsertOperationStatusResponse) int { return v.TargetVmCount }).(pulumi.IntOutput)
 }
 
+type BulkInsertOperationStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertOperationStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertOperationStatusResponse)(nil)).Elem()
+}
+
+func (o BulkInsertOperationStatusResponseMapOutput) ToBulkInsertOperationStatusResponseMapOutput() BulkInsertOperationStatusResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertOperationStatusResponseMapOutput) ToBulkInsertOperationStatusResponseMapOutputWithContext(ctx context.Context) BulkInsertOperationStatusResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertOperationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) BulkInsertOperationStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BulkInsertOperationStatusResponse {
+		return vs[0].(map[string]BulkInsertOperationStatusResponse)[vs[1].(string)]
+	}).(BulkInsertOperationStatusResponseOutput)
+}
+
 // CollectionOverride allows resource handling overrides for specific resources within a BaseType
 type CollectionOverride struct {
 	// The collection that identifies this resource within its service.
@@ -2619,7 +2639,7 @@ func (o InputMappingResponseArrayOutput) Index(i pulumi.IntInput) InputMappingRe
 
 type InstancesBulkInsertOperationMetadataResponse struct {
 	// Status information per location (location name is key). Example key: zones/us-central1-a
-	PerLocationStatus BulkInsertOperationStatusResponse `pulumi:"perLocationStatus"`
+	PerLocationStatus map[string]BulkInsertOperationStatusResponse `pulumi:"perLocationStatus"`
 }
 
 type InstancesBulkInsertOperationMetadataResponseOutput struct{ *pulumi.OutputState }
@@ -2637,10 +2657,10 @@ func (o InstancesBulkInsertOperationMetadataResponseOutput) ToInstancesBulkInser
 }
 
 // Status information per location (location name is key). Example key: zones/us-central1-a
-func (o InstancesBulkInsertOperationMetadataResponseOutput) PerLocationStatus() BulkInsertOperationStatusResponseOutput {
-	return o.ApplyT(func(v InstancesBulkInsertOperationMetadataResponse) BulkInsertOperationStatusResponse {
+func (o InstancesBulkInsertOperationMetadataResponseOutput) PerLocationStatus() BulkInsertOperationStatusResponseMapOutput {
+	return o.ApplyT(func(v InstancesBulkInsertOperationMetadataResponse) map[string]BulkInsertOperationStatusResponse {
 		return v.PerLocationStatus
-	}).(BulkInsertOperationStatusResponseOutput)
+	}).(BulkInsertOperationStatusResponseMapOutput)
 }
 
 type OperationErrorErrorsItemResponse struct {
@@ -3746,11 +3766,31 @@ func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoRespon
 	}).(pulumi.StringOutput)
 }
 
+type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput struct{ *pulumi.OutputState }
+
+func (SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse)(nil)).Elem()
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) ToSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput() SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput {
+	return o
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) ToSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutputWithContext(ctx context.Context) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput {
+	return o
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) MapIndex(k pulumi.StringInput) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse {
+		return vs[0].(map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse)[vs[1].(string)]
+	}).(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput)
+}
+
 type SetCommonInstanceMetadataOperationMetadataResponse struct {
 	// The client operation id.
 	ClientOperationId string `pulumi:"clientOperationId"`
 	// Status information per location (location name is key). Example key: zones/us-central1-a
-	PerLocationOperations SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse `pulumi:"perLocationOperations"`
+	PerLocationOperations map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse `pulumi:"perLocationOperations"`
 }
 
 type SetCommonInstanceMetadataOperationMetadataResponseOutput struct{ *pulumi.OutputState }
@@ -3773,10 +3813,10 @@ func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) ClientOperatio
 }
 
 // Status information per location (location name is key). Example key: zones/us-central1-a
-func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) PerLocationOperations() SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput {
-	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataResponse) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse {
+func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) PerLocationOperations() SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput {
+	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataResponse) map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse {
 		return v.PerLocationOperations
-	}).(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput)
+	}).(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -4693,6 +4733,7 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(BulkInsertOperationStatusResponseOutput{})
+	pulumi.RegisterOutputType(BulkInsertOperationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideArrayOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideResponseOutput{})
@@ -4748,6 +4789,7 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountResponseOutput{})
 	pulumi.RegisterOutputType(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput{})
+	pulumi.RegisterOutputType(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput{})
 	pulumi.RegisterOutputType(SetCommonInstanceMetadataOperationMetadataResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationOutput{})
