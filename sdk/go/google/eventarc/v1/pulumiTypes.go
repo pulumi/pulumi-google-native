@@ -2091,6 +2091,39 @@ func (o PubsubResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubResponse) string { return v.Topic }).(pulumi.StringOutput)
 }
 
+// A condition that is part of the trigger state computation.
+type StateConditionResponse struct {
+	// The canonical code of the condition.
+	Code string `pulumi:"code"`
+	// Human-readable message.
+	Message string `pulumi:"message"`
+}
+
+// A condition that is part of the trigger state computation.
+type StateConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (StateConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateConditionResponse)(nil)).Elem()
+}
+
+func (o StateConditionResponseOutput) ToStateConditionResponseOutput() StateConditionResponseOutput {
+	return o
+}
+
+func (o StateConditionResponseOutput) ToStateConditionResponseOutputWithContext(ctx context.Context) StateConditionResponseOutput {
+	return o
+}
+
+// The canonical code of the condition.
+func (o StateConditionResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v StateConditionResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Human-readable message.
+func (o StateConditionResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StateConditionResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
 // Represents the transport intermediaries created for the trigger to deliver events.
 type Transport struct {
 	// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
@@ -2317,6 +2350,7 @@ func init() {
 	pulumi.RegisterOutputType(PubsubOutput{})
 	pulumi.RegisterOutputType(PubsubPtrOutput{})
 	pulumi.RegisterOutputType(PubsubResponseOutput{})
+	pulumi.RegisterOutputType(StateConditionResponseOutput{})
 	pulumi.RegisterOutputType(TransportOutput{})
 	pulumi.RegisterOutputType(TransportPtrOutput{})
 	pulumi.RegisterOutputType(TransportResponseOutput{})

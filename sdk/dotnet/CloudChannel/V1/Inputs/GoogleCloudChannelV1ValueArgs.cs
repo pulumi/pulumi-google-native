@@ -34,14 +34,14 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public Input<string>? Int64Value { get; set; }
 
         [Input("protoValue")]
-        private InputMap<string>? _protoValue;
+        private InputMap<object>? _protoValue;
 
         /// <summary>
         /// Represents an 'Any' proto value.
         /// </summary>
-        public InputMap<string> ProtoValue
+        public InputMap<object> ProtoValue
         {
-            get => _protoValue ?? (_protoValue = new InputMap<string>());
+            get => _protoValue ?? (_protoValue = new InputMap<object>());
             set => _protoValue = value;
         }
 

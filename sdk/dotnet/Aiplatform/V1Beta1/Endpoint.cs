@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
         /// </summary>
         [Output("trafficSplit")]
-        public Output<ImmutableDictionary<string, string>> TrafficSplit { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, int>> TrafficSplit { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when this Endpoint was last updated.
@@ -229,14 +229,14 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Input<string>? Project { get; set; }
 
         [Input("trafficSplit")]
-        private InputMap<string>? _trafficSplit;
+        private InputMap<int>? _trafficSplit;
 
         /// <summary>
         /// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
         /// </summary>
-        public InputMap<string> TrafficSplit
+        public InputMap<int> TrafficSplit
         {
-            get => _trafficSplit ?? (_trafficSplit = new InputMap<string>());
+            get => _trafficSplit ?? (_trafficSplit = new InputMap<int>());
             set => _trafficSplit = value;
         }
 

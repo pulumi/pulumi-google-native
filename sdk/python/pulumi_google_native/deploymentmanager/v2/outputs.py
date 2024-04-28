@@ -15,6 +15,7 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'BulkInsertOperationStatusResponse',
     'ConfigFileResponse',
     'DeploymentLabelEntryResponse',
     'DeploymentUpdateLabelEntryResponse',
@@ -27,7 +28,9 @@ __all__ = [
     'OperationResponse',
     'OperationWarningsItemDataItemResponse',
     'OperationWarningsItemResponse',
+    'SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse',
     'SetCommonInstanceMetadataOperationMetadataResponse',
+    'StatusResponse',
     'TargetConfigurationResponse',
 ]
 
@@ -175,6 +178,91 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class BulkInsertOperationStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdVmCount":
+            suggest = "created_vm_count"
+        elif key == "deletedVmCount":
+            suggest = "deleted_vm_count"
+        elif key == "failedToCreateVmCount":
+            suggest = "failed_to_create_vm_count"
+        elif key == "targetVmCount":
+            suggest = "target_vm_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BulkInsertOperationStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BulkInsertOperationStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BulkInsertOperationStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_vm_count: int,
+                 deleted_vm_count: int,
+                 failed_to_create_vm_count: int,
+                 status: str,
+                 target_vm_count: int):
+        """
+        :param int created_vm_count: Count of VMs successfully created so far.
+        :param int deleted_vm_count: Count of VMs that got deleted during rollback.
+        :param int failed_to_create_vm_count: Count of VMs that started creating but encountered an error.
+        :param str status: Creation status of BulkInsert operation - information if the flow is rolling forward or rolling back.
+        :param int target_vm_count: Count of VMs originally planned to be created.
+        """
+        pulumi.set(__self__, "created_vm_count", created_vm_count)
+        pulumi.set(__self__, "deleted_vm_count", deleted_vm_count)
+        pulumi.set(__self__, "failed_to_create_vm_count", failed_to_create_vm_count)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "target_vm_count", target_vm_count)
+
+    @property
+    @pulumi.getter(name="createdVmCount")
+    def created_vm_count(self) -> int:
+        """
+        Count of VMs successfully created so far.
+        """
+        return pulumi.get(self, "created_vm_count")
+
+    @property
+    @pulumi.getter(name="deletedVmCount")
+    def deleted_vm_count(self) -> int:
+        """
+        Count of VMs that got deleted during rollback.
+        """
+        return pulumi.get(self, "deleted_vm_count")
+
+    @property
+    @pulumi.getter(name="failedToCreateVmCount")
+    def failed_to_create_vm_count(self) -> int:
+        """
+        Count of VMs that started creating but encountered an error.
+        """
+        return pulumi.get(self, "failed_to_create_vm_count")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Creation status of BulkInsert operation - information if the flow is rolling forward or rolling back.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="targetVmCount")
+    def target_vm_count(self) -> int:
+        """
+        Count of VMs originally planned to be created.
+        """
+        return pulumi.get(self, "target_vm_count")
 
 
 @pulumi.output_type
@@ -405,15 +493,15 @@ class InstancesBulkInsertOperationMetadataResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 per_location_status: Mapping[str, str]):
+                 per_location_status: 'outputs.BulkInsertOperationStatusResponse'):
         """
-        :param Mapping[str, str] per_location_status: Status information per location (location name is key). Example key: zones/us-central1-a
+        :param 'BulkInsertOperationStatusResponse' per_location_status: Status information per location (location name is key). Example key: zones/us-central1-a
         """
         pulumi.set(__self__, "per_location_status", per_location_status)
 
     @property
     @pulumi.getter(name="perLocationStatus")
-    def per_location_status(self) -> Mapping[str, str]:
+    def per_location_status(self) -> 'outputs.BulkInsertOperationStatusResponse':
         """
         Status information per location (location name is key). Example key: zones/us-central1-a
         """
@@ -882,6 +970,35 @@ class OperationWarningsItemResponse(dict):
 
 
 @pulumi.output_type
+class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse(dict):
+    def __init__(__self__, *,
+                 error: 'outputs.StatusResponse',
+                 state: str):
+        """
+        :param 'StatusResponse' error: If state is `ABANDONED` or `FAILED`, this field is populated.
+        :param str state: Status of the action, which can be one of the following: `PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+        """
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        If state is `ABANDONED` or `FAILED`, this field is populated.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Status of the action, which can be one of the following: `PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class SetCommonInstanceMetadataOperationMetadataResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -904,10 +1021,10 @@ class SetCommonInstanceMetadataOperationMetadataResponse(dict):
 
     def __init__(__self__, *,
                  client_operation_id: str,
-                 per_location_operations: Mapping[str, str]):
+                 per_location_operations: 'outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse'):
         """
         :param str client_operation_id: The client operation id.
-        :param Mapping[str, str] per_location_operations: Status information per location (location name is key). Example key: zones/us-central1-a
+        :param 'SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse' per_location_operations: Status information per location (location name is key). Example key: zones/us-central1-a
         """
         pulumi.set(__self__, "client_operation_id", client_operation_id)
         pulumi.set(__self__, "per_location_operations", per_location_operations)
@@ -922,11 +1039,55 @@ class SetCommonInstanceMetadataOperationMetadataResponse(dict):
 
     @property
     @pulumi.getter(name="perLocationOperations")
-    def per_location_operations(self) -> Mapping[str, str]:
+    def per_location_operations(self) -> 'outputs.SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse':
         """
         Status information per location (location name is key). Example key: zones/us-central1-a
         """
         return pulumi.get(self, "per_location_operations")
+
+
+@pulumi.output_type
+class StatusResponse(dict):
+    """
+    The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 details: Sequence[Mapping[str, Any]],
+                 message: str):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Sequence[Mapping[str, Any]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

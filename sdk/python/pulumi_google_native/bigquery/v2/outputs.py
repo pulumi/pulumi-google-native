@@ -3599,7 +3599,7 @@ class JobConfigurationQueryResponse(dict):
                  query_parameters: Sequence['outputs.QueryParameterResponse'],
                  range_partitioning: 'outputs.RangePartitioningResponse',
                  schema_update_options: Sequence[str],
-                 table_definitions: Mapping[str, str],
+                 table_definitions: 'outputs.ExternalDataConfigurationResponse',
                  time_partitioning: 'outputs.TimePartitioningResponse',
                  use_legacy_sql: bool,
                  use_query_cache: bool,
@@ -3625,7 +3625,7 @@ class JobConfigurationQueryResponse(dict):
         :param Sequence['QueryParameterResponse'] query_parameters: Query parameters for standard SQL queries.
         :param 'RangePartitioningResponse' range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param Sequence[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        :param Mapping[str, str] table_definitions: [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        :param 'ExternalDataConfigurationResponse' table_definitions: [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         :param 'TimePartitioningResponse' time_partitioning: Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         :param bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
         :param bool use_query_cache: [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
@@ -3815,7 +3815,7 @@ class JobConfigurationQueryResponse(dict):
 
     @property
     @pulumi.getter(name="tableDefinitions")
-    def table_definitions(self) -> Mapping[str, str]:
+    def table_definitions(self) -> 'outputs.ExternalDataConfigurationResponse':
         """
         [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         """
@@ -5774,11 +5774,11 @@ class QueryParameterValueResponse(dict):
 
     def __init__(__self__, *,
                  array_values: Sequence['outputs.QueryParameterValueResponse'],
-                 struct_values: Mapping[str, str],
+                 struct_values: 'outputs.QueryParameterValueResponse',
                  value: str):
         """
         :param Sequence['QueryParameterValueResponse'] array_values: [Optional] The array values, if this is an array type.
-        :param Mapping[str, str] struct_values: [Optional] The struct field values, in order of the struct type's declaration.
+        :param 'QueryParameterValueResponse' struct_values: [Optional] The struct field values, in order of the struct type's declaration.
         :param str value: [Optional] The value of this value, if a simple scalar type.
         """
         pulumi.set(__self__, "array_values", array_values)
@@ -5795,7 +5795,7 @@ class QueryParameterValueResponse(dict):
 
     @property
     @pulumi.getter(name="structValues")
-    def struct_values(self) -> Mapping[str, str]:
+    def struct_values(self) -> 'outputs.QueryParameterValueResponse':
         """
         [Optional] The struct field values, in order of the struct type's declaration.
         """

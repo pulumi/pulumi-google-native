@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// <summary>
         /// Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Metadata;
+        public readonly ImmutableDictionary<string, object> Metadata;
         /// <summary>
         /// The resource name of the Artifact.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 
             ImmutableDictionary<string, string> labels,
 
-            ImmutableDictionary<string, string> metadata,
+            ImmutableDictionary<string, object> metadata,
 
             string name,
 

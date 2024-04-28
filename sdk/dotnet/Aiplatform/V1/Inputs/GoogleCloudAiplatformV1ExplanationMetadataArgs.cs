@@ -21,17 +21,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         [Input("featureAttributionsSchemaUri")]
         public Input<string>? FeatureAttributionsSchemaUri { get; set; }
 
-        [Input("inputs", required: true)]
-        private InputMap<string>? _inputs;
-
         /// <summary>
         /// Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         /// </summary>
-        public InputMap<string> Inputs
-        {
-            get => _inputs ?? (_inputs = new InputMap<string>());
-            set => _inputs = value;
-        }
+        [Input("inputs", required: true)]
+        public Input<Inputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs> Inputs { get; set; } = null!;
 
         /// <summary>
         /// Name of the source to generate embeddings for example based explanations.
@@ -39,17 +33,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         [Input("latentSpaceSource")]
         public Input<string>? LatentSpaceSource { get; set; }
 
-        [Input("outputs", required: true)]
-        private InputMap<string>? _outputs;
-
         /// <summary>
         /// Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         /// </summary>
-        public InputMap<string> Outputs
-        {
-            get => _outputs ?? (_outputs = new InputMap<string>());
-            set => _outputs = value;
-        }
+        [Input("outputs", required: true)]
+        public Input<Inputs.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs> Outputs { get; set; } = null!;
 
         public GoogleCloudAiplatformV1ExplanationMetadataArgs()
         {

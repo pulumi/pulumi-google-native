@@ -82,7 +82,7 @@ export class PipelineJob extends pulumi.CustomResource {
     /**
      * The spec of the pipeline.
      */
-    public readonly pipelineSpec!: pulumi.Output<{[key: string]: string}>;
+    public readonly pipelineSpec!: pulumi.Output<{[key: string]: any}>;
     public readonly project!: pulumi.Output<string>;
     /**
      * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
@@ -213,7 +213,7 @@ export interface PipelineJobArgs {
     /**
      * The spec of the pipeline.
      */
-    pipelineSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pipelineSpec?: pulumi.Input<{[key: string]: any}>;
     project?: pulumi.Input<string>;
     /**
      * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].

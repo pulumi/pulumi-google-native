@@ -15,17 +15,11 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     /// </summary>
     public sealed class DataplexConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("lakeResources")]
-        private InputMap<string>? _lakeResources;
-
         /// <summary>
         /// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
         /// </summary>
-        public InputMap<string> LakeResources
-        {
-            get => _lakeResources ?? (_lakeResources = new InputMap<string>());
-            set => _lakeResources = value;
-        }
+        [Input("lakeResources")]
+        public Input<Inputs.LakeArgs>? LakeResources { get; set; }
 
         public DataplexConfigArgs()
         {

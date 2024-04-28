@@ -2245,7 +2245,7 @@ type BuildResponse struct {
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 	Timeout string `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-	Timing map[string]string `pulumi:"timing"`
+	Timing TimeSpanResponse `pulumi:"timing"`
 	// Non-fatal problems encountered during the execution of the build.
 	Warnings []WarningResponse `pulumi:"warnings"`
 }
@@ -2396,8 +2396,8 @@ func (o BuildResponseOutput) Timeout() pulumi.StringOutput {
 }
 
 // Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-func (o BuildResponseOutput) Timing() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildResponse) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
+func (o BuildResponseOutput) Timing() TimeSpanResponseOutput {
+	return o.ApplyT(func(v BuildResponse) TimeSpanResponse { return v.Timing }).(TimeSpanResponseOutput)
 }
 
 // Non-fatal problems encountered during the execution of the build.
@@ -8951,7 +8951,7 @@ func (o SourcePtrOutput) StorageSourceManifest() StorageSourceManifestPtrOutput 
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
 type SourceProvenanceResponse struct {
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-	FileHashes map[string]string `pulumi:"fileHashes"`
+	FileHashes FileHashesResponse `pulumi:"fileHashes"`
 	// A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
 	ResolvedConnectedRepository ConnectedRepositoryResponse `pulumi:"resolvedConnectedRepository"`
 	// A copy of the build's `source.git_source`, if exists, with any revisions resolved.
@@ -8980,8 +8980,8 @@ func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponseOutputWithCont
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-func (o SourceProvenanceResponseOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SourceProvenanceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+func (o SourceProvenanceResponseOutput) FileHashes() FileHashesResponseOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
 }
 
 // A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.

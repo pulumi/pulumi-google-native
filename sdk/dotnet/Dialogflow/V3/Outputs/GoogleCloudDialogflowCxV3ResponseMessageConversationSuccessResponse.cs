@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// Custom metadata. Dialogflow doesn't impose any structure on this.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Metadata;
+        public readonly ImmutableDictionary<string, object> Metadata;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessResponse(ImmutableDictionary<string, string> metadata)
+        private GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessResponse(ImmutableDictionary<string, object> metadata)
         {
             Metadata = metadata;
         }

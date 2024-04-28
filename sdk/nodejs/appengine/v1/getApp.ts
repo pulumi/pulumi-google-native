@@ -64,7 +64,7 @@ export interface GetAppResult {
     /**
      * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
      */
-    readonly generatedCustomerMetadata: {[key: string]: string};
+    readonly generatedCustomerMetadata: {[key: string]: any};
     readonly iap: outputs.appengine.v1.IdentityAwareProxyResponse;
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).

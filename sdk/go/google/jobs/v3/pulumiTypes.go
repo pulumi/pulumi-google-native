@@ -750,6 +750,224 @@ func (o CompensationRangeResponseOutput) MinCompensation() MoneyResponseOutput {
 	return o.ApplyT(func(v CompensationRangeResponse) MoneyResponse { return v.MinCompensation }).(MoneyResponseOutput)
 }
 
+// Custom attribute values that are either filterable or non-filterable.
+type CustomAttribute struct {
+	// Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+	Filterable *bool `pulumi:"filterable"`
+	// Optional but exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+	LongValues []string `pulumi:"longValues"`
+	// Optional but exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string is not allowed.
+	StringValues []string `pulumi:"stringValues"`
+}
+
+// CustomAttributeInput is an input type that accepts CustomAttributeArgs and CustomAttributeOutput values.
+// You can construct a concrete instance of `CustomAttributeInput` via:
+//
+//	CustomAttributeArgs{...}
+type CustomAttributeInput interface {
+	pulumi.Input
+
+	ToCustomAttributeOutput() CustomAttributeOutput
+	ToCustomAttributeOutputWithContext(context.Context) CustomAttributeOutput
+}
+
+// Custom attribute values that are either filterable or non-filterable.
+type CustomAttributeArgs struct {
+	// Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+	Filterable pulumi.BoolPtrInput `pulumi:"filterable"`
+	// Optional but exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+	LongValues pulumi.StringArrayInput `pulumi:"longValues"`
+	// Optional but exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string is not allowed.
+	StringValues pulumi.StringArrayInput `pulumi:"stringValues"`
+}
+
+func (CustomAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAttribute)(nil)).Elem()
+}
+
+func (i CustomAttributeArgs) ToCustomAttributeOutput() CustomAttributeOutput {
+	return i.ToCustomAttributeOutputWithContext(context.Background())
+}
+
+func (i CustomAttributeArgs) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeOutput)
+}
+
+func (i CustomAttributeArgs) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
+	return i.ToCustomAttributePtrOutputWithContext(context.Background())
+}
+
+func (i CustomAttributeArgs) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributeOutput).ToCustomAttributePtrOutputWithContext(ctx)
+}
+
+// CustomAttributePtrInput is an input type that accepts CustomAttributeArgs, CustomAttributePtr and CustomAttributePtrOutput values.
+// You can construct a concrete instance of `CustomAttributePtrInput` via:
+//
+//	        CustomAttributeArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomAttributePtrInput interface {
+	pulumi.Input
+
+	ToCustomAttributePtrOutput() CustomAttributePtrOutput
+	ToCustomAttributePtrOutputWithContext(context.Context) CustomAttributePtrOutput
+}
+
+type customAttributePtrType CustomAttributeArgs
+
+func CustomAttributePtr(v *CustomAttributeArgs) CustomAttributePtrInput {
+	return (*customAttributePtrType)(v)
+}
+
+func (*customAttributePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomAttribute)(nil)).Elem()
+}
+
+func (i *customAttributePtrType) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
+	return i.ToCustomAttributePtrOutputWithContext(context.Background())
+}
+
+func (i *customAttributePtrType) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAttributePtrOutput)
+}
+
+// Custom attribute values that are either filterable or non-filterable.
+type CustomAttributeOutput struct{ *pulumi.OutputState }
+
+func (CustomAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAttribute)(nil)).Elem()
+}
+
+func (o CustomAttributeOutput) ToCustomAttributeOutput() CustomAttributeOutput {
+	return o
+}
+
+func (o CustomAttributeOutput) ToCustomAttributeOutputWithContext(ctx context.Context) CustomAttributeOutput {
+	return o
+}
+
+func (o CustomAttributeOutput) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
+	return o.ToCustomAttributePtrOutputWithContext(context.Background())
+}
+
+func (o CustomAttributeOutput) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomAttribute) *CustomAttribute {
+		return &v
+	}).(CustomAttributePtrOutput)
+}
+
+// Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+func (o CustomAttributeOutput) Filterable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomAttribute) *bool { return v.Filterable }).(pulumi.BoolPtrOutput)
+}
+
+// Optional but exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+func (o CustomAttributeOutput) LongValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomAttribute) []string { return v.LongValues }).(pulumi.StringArrayOutput)
+}
+
+// Optional but exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string is not allowed.
+func (o CustomAttributeOutput) StringValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomAttribute) []string { return v.StringValues }).(pulumi.StringArrayOutput)
+}
+
+type CustomAttributePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomAttributePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomAttribute)(nil)).Elem()
+}
+
+func (o CustomAttributePtrOutput) ToCustomAttributePtrOutput() CustomAttributePtrOutput {
+	return o
+}
+
+func (o CustomAttributePtrOutput) ToCustomAttributePtrOutputWithContext(ctx context.Context) CustomAttributePtrOutput {
+	return o
+}
+
+func (o CustomAttributePtrOutput) Elem() CustomAttributeOutput {
+	return o.ApplyT(func(v *CustomAttribute) CustomAttribute {
+		if v != nil {
+			return *v
+		}
+		var ret CustomAttribute
+		return ret
+	}).(CustomAttributeOutput)
+}
+
+// Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+func (o CustomAttributePtrOutput) Filterable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CustomAttribute) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Filterable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional but exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+func (o CustomAttributePtrOutput) LongValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomAttribute) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LongValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional but exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string is not allowed.
+func (o CustomAttributePtrOutput) StringValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomAttribute) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// Custom attribute values that are either filterable or non-filterable.
+type CustomAttributeResponse struct {
+	// Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+	Filterable bool `pulumi:"filterable"`
+	// Optional but exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+	LongValues []string `pulumi:"longValues"`
+	// Optional but exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string is not allowed.
+	StringValues []string `pulumi:"stringValues"`
+}
+
+// Custom attribute values that are either filterable or non-filterable.
+type CustomAttributeResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomAttributeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAttributeResponse)(nil)).Elem()
+}
+
+func (o CustomAttributeResponseOutput) ToCustomAttributeResponseOutput() CustomAttributeResponseOutput {
+	return o
+}
+
+func (o CustomAttributeResponseOutput) ToCustomAttributeResponseOutputWithContext(ctx context.Context) CustomAttributeResponseOutput {
+	return o
+}
+
+// Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+func (o CustomAttributeResponseOutput) Filterable() pulumi.BoolOutput {
+	return o.ApplyT(func(v CustomAttributeResponse) bool { return v.Filterable }).(pulumi.BoolOutput)
+}
+
+// Optional but exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+func (o CustomAttributeResponseOutput) LongValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomAttributeResponse) []string { return v.LongValues }).(pulumi.StringArrayOutput)
+}
+
+// Optional but exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string is not allowed.
+func (o CustomAttributeResponseOutput) StringValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomAttributeResponse) []string { return v.StringValues }).(pulumi.StringArrayOutput)
+}
+
 // Output only. Derived details about the job posting.
 type JobDerivedInfoResponse struct {
 	// Job categories derived from Job.title and Job.description.
@@ -1397,6 +1615,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CompensationInfoPtrInput)(nil)).Elem(), CompensationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompensationRangeInput)(nil)).Elem(), CompensationRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompensationRangePtrInput)(nil)).Elem(), CompensationRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributeInput)(nil)).Elem(), CustomAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomAttributePtrInput)(nil)).Elem(), CustomAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoneyInput)(nil)).Elem(), MoneyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MoneyPtrInput)(nil)).Elem(), MoneyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProcessingOptionsInput)(nil)).Elem(), ProcessingOptionsArgs{})
@@ -1414,6 +1634,9 @@ func init() {
 	pulumi.RegisterOutputType(CompensationRangeOutput{})
 	pulumi.RegisterOutputType(CompensationRangePtrOutput{})
 	pulumi.RegisterOutputType(CompensationRangeResponseOutput{})
+	pulumi.RegisterOutputType(CustomAttributeOutput{})
+	pulumi.RegisterOutputType(CustomAttributePtrOutput{})
+	pulumi.RegisterOutputType(CustomAttributeResponseOutput{})
 	pulumi.RegisterOutputType(JobDerivedInfoResponseOutput{})
 	pulumi.RegisterOutputType(LatLngResponseOutput{})
 	pulumi.RegisterOutputType(LocationResponseOutput{})

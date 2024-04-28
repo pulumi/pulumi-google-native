@@ -18,6 +18,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3ResponseMessageResponseType',
     'GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat',
     'GoogleCloudDialogflowCxV3TestCaseResultTestResult',
+    'GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender',
     'GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod',
     'GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType',
     'SecuritySettingPurgeDataTypesItem',
@@ -319,6 +320,28 @@ class GoogleCloudDialogflowCxV3TestCaseResultTestResult(str, Enum):
     FAILED = "FAILED"
     """
     The test did not pass.
+    """
+
+
+class GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender(str, Enum):
+    """
+    Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer substitutes a voice with a different gender rather than failing the request.
+    """
+    SSML_VOICE_GENDER_UNSPECIFIED = "SSML_VOICE_GENDER_UNSPECIFIED"
+    """
+    An unspecified gender, which means that the client doesn't care which gender the selected voice will have.
+    """
+    SSML_VOICE_GENDER_MALE = "SSML_VOICE_GENDER_MALE"
+    """
+    A male voice.
+    """
+    SSML_VOICE_GENDER_FEMALE = "SSML_VOICE_GENDER_FEMALE"
+    """
+    A female voice.
+    """
+    SSML_VOICE_GENDER_NEUTRAL = "SSML_VOICE_GENDER_NEUTRAL"
+    """
+    A gender-neutral voice.
     """
 
 

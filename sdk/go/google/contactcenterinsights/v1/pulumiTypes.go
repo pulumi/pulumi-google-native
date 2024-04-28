@@ -76,13 +76,13 @@ type GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespons
 	// A list of call annotations that apply to this call.
 	Annotations []GoogleCloudContactcenterinsightsV1CallAnnotationResponse `pulumi:"annotations"`
 	// All the entities in the call.
-	Entities map[string]string `pulumi:"entities"`
+	Entities GoogleCloudContactcenterinsightsV1EntityResponse `pulumi:"entities"`
 	// All the matched intents in the call.
-	Intents map[string]string `pulumi:"intents"`
+	Intents GoogleCloudContactcenterinsightsV1IntentResponse `pulumi:"intents"`
 	// Overall conversation-level issue modeling result.
 	IssueModelResult GoogleCloudContactcenterinsightsV1IssueModelResultResponse `pulumi:"issueModelResult"`
 	// All the matched phrase matchers in the call.
-	PhraseMatchers map[string]string `pulumi:"phraseMatchers"`
+	PhraseMatchers GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse `pulumi:"phraseMatchers"`
 	// Overall conversation-level sentiment for each channel of the call.
 	Sentiments []GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse `pulumi:"sentiments"`
 }
@@ -110,17 +110,17 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResp
 }
 
 // All the entities in the call.
-func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Entities() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) map[string]string {
+func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Entities() GoogleCloudContactcenterinsightsV1EntityResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) GoogleCloudContactcenterinsightsV1EntityResponse {
 		return v.Entities
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudContactcenterinsightsV1EntityResponseOutput)
 }
 
 // All the matched intents in the call.
-func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Intents() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) map[string]string {
+func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) Intents() GoogleCloudContactcenterinsightsV1IntentResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) GoogleCloudContactcenterinsightsV1IntentResponse {
 		return v.Intents
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudContactcenterinsightsV1IntentResponseOutput)
 }
 
 // Overall conversation-level issue modeling result.
@@ -131,10 +131,10 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResp
 }
 
 // All the matched phrase matchers in the call.
-func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) PhraseMatchers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) map[string]string {
+func (o GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput) PhraseMatchers() GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse) GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
 		return v.PhraseMatchers
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput)
 }
 
 // Overall conversation-level sentiment for each channel of the call.
@@ -1930,6 +1930,32 @@ func (o GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmen
 	}).(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseOutput)
 }
 
+// The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
+type GoogleCloudContactcenterinsightsV1DialogflowIntentResponse struct {
+	// The human-readable name of the intent.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
+type GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1DialogflowIntentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput) ToGoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput() GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput) ToGoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput {
+	return o
+}
+
+// The human-readable name of the intent.
+func (o GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1DialogflowIntentResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // Dialogflow interaction data.
 type GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse struct {
 	// The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain).
@@ -2182,6 +2208,62 @@ func (o GoogleCloudContactcenterinsightsV1EntityMentionDataResponseOutput) Senti
 // The type of the entity mention.
 func (o GoogleCloudContactcenterinsightsV1EntityMentionDataResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1EntityMentionDataResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location.
+type GoogleCloudContactcenterinsightsV1EntityResponse struct {
+	// The representative name for the entity.
+	DisplayName string `pulumi:"displayName"`
+	// Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity provides information about the importance or centrality of that entity to the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient.
+	Salience float64 `pulumi:"salience"`
+	// The aggregate sentiment expressed for this entity in the conversation.
+	Sentiment GoogleCloudContactcenterinsightsV1SentimentDataResponse `pulumi:"sentiment"`
+	// The entity type.
+	Type string `pulumi:"type"`
+}
+
+// The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location.
+type GoogleCloudContactcenterinsightsV1EntityResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1EntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1EntityResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) ToGoogleCloudContactcenterinsightsV1EntityResponseOutput() GoogleCloudContactcenterinsightsV1EntityResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) ToGoogleCloudContactcenterinsightsV1EntityResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1EntityResponseOutput {
+	return o
+}
+
+// The representative name for the entity.
+func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1EntityResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below.
+func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1EntityResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity provides information about the importance or centrality of that entity to the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient.
+func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) Salience() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1EntityResponse) float64 { return v.Salience }).(pulumi.Float64Output)
+}
+
+// The aggregate sentiment expressed for this entity in the conversation.
+func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) Sentiment() GoogleCloudContactcenterinsightsV1SentimentDataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1EntityResponse) GoogleCloudContactcenterinsightsV1SentimentDataResponse {
+		return v.Sentiment
+	}).(GoogleCloudContactcenterinsightsV1SentimentDataResponseOutput)
+}
+
+// The entity type.
+func (o GoogleCloudContactcenterinsightsV1EntityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1EntityResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Exact match configuration.
@@ -2648,6 +2730,32 @@ func (o GoogleCloudContactcenterinsightsV1IntentMatchDataResponseOutput) IntentU
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IntentMatchDataResponse) string { return v.IntentUniqueId }).(pulumi.StringOutput)
 }
 
+// The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE.
+type GoogleCloudContactcenterinsightsV1IntentResponse struct {
+	// The human-readable name of the intent.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE.
+type GoogleCloudContactcenterinsightsV1IntentResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1IntentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IntentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1IntentResponseOutput) ToGoogleCloudContactcenterinsightsV1IntentResponseOutput() GoogleCloudContactcenterinsightsV1IntentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IntentResponseOutput) ToGoogleCloudContactcenterinsightsV1IntentResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IntentResponseOutput {
+	return o
+}
+
+// The human-readable name of the intent.
+func (o GoogleCloudContactcenterinsightsV1IntentResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IntentResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 // The data for an interruption annotation.
 type GoogleCloudContactcenterinsightsV1InterruptionDataResponse struct {
 }
@@ -2958,12 +3066,58 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutpu
 	}).(pulumi.StringOutput)
 }
 
+// Aggregated statistics about an issue.
+type GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse struct {
+	// Display name of the issue.
+	DisplayName string `pulumi:"displayName"`
+	// Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+	Issue string `pulumi:"issue"`
+	// Number of conversations attached to the issue at this point in time.
+	LabeledConversationsCount string `pulumi:"labeledConversationsCount"`
+}
+
+// Aggregated statistics about an issue.
+type GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput) ToGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput() GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput) ToGoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput {
+	return o
+}
+
+// Display name of the issue.
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse) string {
+		return v.DisplayName
+	}).(pulumi.StringOutput)
+}
+
+// Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput) Issue() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse) string {
+		return v.Issue
+	}).(pulumi.StringOutput)
+}
+
+// Number of conversations attached to the issue at this point in time.
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput) LabeledConversationsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse) string {
+		return v.LabeledConversationsCount
+	}).(pulumi.StringOutput)
+}
+
 // Aggregated statistics about an issue model.
 type GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse struct {
 	// Number of conversations the issue model has analyzed at this point in time.
 	AnalyzedConversationsCount string `pulumi:"analyzedConversationsCount"`
 	// Statistics on each issue. Key is the issue's resource name.
-	IssueStats map[string]string `pulumi:"issueStats"`
+	IssueStats GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse `pulumi:"issueStats"`
 	// Number of analyzed conversations for which no issue was applicable at this point in time.
 	UnclassifiedConversationsCount string `pulumi:"unclassifiedConversationsCount"`
 }
@@ -2991,10 +3145,10 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) An
 }
 
 // Statistics on each issue. Key is the issue's resource name.
-func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) IssueStats() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse) map[string]string {
+func (o GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput) IssueStats() GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse {
 		return v.IssueStats
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput)
 }
 
 // Number of analyzed conversations for which no issue was applicable at this point in time.
@@ -3933,11 +4087,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowIntentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowSourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1DialogflowSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1EntityMentionDataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1EntityResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ExactMatchConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ExactMatchConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ExactMatchConfigResponseOutput{})
@@ -3947,6 +4103,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1GcsSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1HoldDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IntentMatchDataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IntentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1InterruptionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArrayOutput{})
@@ -3954,6 +4111,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1PhraseMatchDataResponseOutput{})

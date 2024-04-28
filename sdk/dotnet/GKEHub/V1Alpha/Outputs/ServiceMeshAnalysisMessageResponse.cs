@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         /// <summary>
         /// A UI can combine these args with a template (based on message_base.type) to produce an internationalized message.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Args;
+        public readonly ImmutableDictionary<string, object> Args;
         /// <summary>
         /// A human readable description of what the error means. It is suitable for non-internationalize display purposes.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
         [OutputConstructor]
         private ServiceMeshAnalysisMessageResponse(
-            ImmutableDictionary<string, string> args,
+            ImmutableDictionary<string, object> args,
 
             string description,
 

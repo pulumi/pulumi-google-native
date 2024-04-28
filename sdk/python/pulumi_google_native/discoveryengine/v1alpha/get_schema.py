@@ -59,7 +59,7 @@ class GetSchemaResult:
 
     @property
     @pulumi.getter(name="structSchema")
-    def struct_schema(self) -> Mapping[str, str]:
+    def struct_schema(self) -> Mapping[str, Any]:
         """
         The structured representation of the schema.
         """

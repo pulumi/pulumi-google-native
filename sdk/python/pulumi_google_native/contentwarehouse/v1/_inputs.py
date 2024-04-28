@@ -22,6 +22,7 @@ __all__ = [
     'GoogleCloudContentwarehouseV1DeleteDocumentActionArgs',
     'GoogleCloudContentwarehouseV1EnumArrayArgs',
     'GoogleCloudContentwarehouseV1EnumTypeOptionsArgs',
+    'GoogleCloudContentwarehouseV1EnumValueArgs',
     'GoogleCloudContentwarehouseV1FloatArrayArgs',
     'GoogleCloudContentwarehouseV1FloatTypeOptionsArgs',
     'GoogleCloudContentwarehouseV1IntegerArrayArgs',
@@ -44,6 +45,7 @@ __all__ = [
     'GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs',
     'GoogleCloudContentwarehouseV1TimestampValueArgs',
     'GoogleCloudContentwarehouseV1UserInfoArgs',
+    'GoogleCloudContentwarehouseV1ValueArgs',
     'GoogleCloudDocumentaiV1BarcodeArgs',
     'GoogleCloudDocumentaiV1BoundingPolyArgs',
     'GoogleCloudDocumentaiV1DocumentEntityNormalizedValueArgs',
@@ -508,6 +510,30 @@ class GoogleCloudContentwarehouseV1EnumTypeOptionsArgs:
 
 
 @pulumi.input_type
+class GoogleCloudContentwarehouseV1EnumValueArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Represents the string value of the enum field.
+        :param pulumi.Input[str] value: String value of the enum field. This must match defined set of enums in document schema using EnumTypeOptions.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        String value of the enum field. This must match defined set of enums in document schema using EnumTypeOptions.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class GoogleCloudContentwarehouseV1FloatArrayArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None):
@@ -576,24 +602,24 @@ class GoogleCloudContentwarehouseV1IntegerTypeOptionsArgs:
 @pulumi.input_type
 class GoogleCloudContentwarehouseV1MapPropertyArgs:
     def __init__(__self__, *,
-                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 fields: Optional[pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']] = None):
         """
         Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Unordered map of dynamically typed values.
+        :param pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs'] fields: Unordered map of dynamically typed values.
         """
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
 
     @property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def fields(self) -> Optional[pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]:
         """
         Unordered map of dynamically typed values.
         """
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def fields(self, value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]):
         pulumi.set(self, "fields", value)
 
 
@@ -1483,6 +1509,126 @@ class GoogleCloudContentwarehouseV1UserInfoArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GoogleCloudContentwarehouseV1ValueArgs:
+    def __init__(__self__, *,
+                 boolean_value: Optional[pulumi.Input[bool]] = None,
+                 datetime_value: Optional[pulumi.Input['GoogleTypeDateTimeArgs']] = None,
+                 enum_value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1EnumValueArgs']] = None,
+                 float_value: Optional[pulumi.Input[float]] = None,
+                 int_value: Optional[pulumi.Input[int]] = None,
+                 string_value: Optional[pulumi.Input[str]] = None,
+                 timestamp_value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1TimestampValueArgs']] = None):
+        """
+        `Value` represents a dynamically typed value which can be either be a float, a integer, a string, or a datetime value. A producer of value is expected to set one of these variants. Absence of any variant indicates an error.
+        :param pulumi.Input[bool] boolean_value: Represents a boolean value.
+        :param pulumi.Input['GoogleTypeDateTimeArgs'] datetime_value: Represents a datetime value.
+        :param pulumi.Input['GoogleCloudContentwarehouseV1EnumValueArgs'] enum_value: Represents an enum value.
+        :param pulumi.Input[float] float_value: Represents a float value.
+        :param pulumi.Input[int] int_value: Represents a integer value.
+        :param pulumi.Input[str] string_value: Represents a string value.
+        :param pulumi.Input['GoogleCloudContentwarehouseV1TimestampValueArgs'] timestamp_value: Represents a timestamp value.
+        """
+        if boolean_value is not None:
+            pulumi.set(__self__, "boolean_value", boolean_value)
+        if datetime_value is not None:
+            pulumi.set(__self__, "datetime_value", datetime_value)
+        if enum_value is not None:
+            pulumi.set(__self__, "enum_value", enum_value)
+        if float_value is not None:
+            pulumi.set(__self__, "float_value", float_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+        if timestamp_value is not None:
+            pulumi.set(__self__, "timestamp_value", timestamp_value)
+
+    @property
+    @pulumi.getter(name="booleanValue")
+    def boolean_value(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Represents a boolean value.
+        """
+        return pulumi.get(self, "boolean_value")
+
+    @boolean_value.setter
+    def boolean_value(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "boolean_value", value)
+
+    @property
+    @pulumi.getter(name="datetimeValue")
+    def datetime_value(self) -> Optional[pulumi.Input['GoogleTypeDateTimeArgs']]:
+        """
+        Represents a datetime value.
+        """
+        return pulumi.get(self, "datetime_value")
+
+    @datetime_value.setter
+    def datetime_value(self, value: Optional[pulumi.Input['GoogleTypeDateTimeArgs']]):
+        pulumi.set(self, "datetime_value", value)
+
+    @property
+    @pulumi.getter(name="enumValue")
+    def enum_value(self) -> Optional[pulumi.Input['GoogleCloudContentwarehouseV1EnumValueArgs']]:
+        """
+        Represents an enum value.
+        """
+        return pulumi.get(self, "enum_value")
+
+    @enum_value.setter
+    def enum_value(self, value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1EnumValueArgs']]):
+        pulumi.set(self, "enum_value", value)
+
+    @property
+    @pulumi.getter(name="floatValue")
+    def float_value(self) -> Optional[pulumi.Input[float]]:
+        """
+        Represents a float value.
+        """
+        return pulumi.get(self, "float_value")
+
+    @float_value.setter
+    def float_value(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "float_value", value)
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[pulumi.Input[int]]:
+        """
+        Represents a integer value.
+        """
+        return pulumi.get(self, "int_value")
+
+    @int_value.setter
+    def int_value(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "int_value", value)
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Represents a string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "string_value", value)
+
+    @property
+    @pulumi.getter(name="timestampValue")
+    def timestamp_value(self) -> Optional[pulumi.Input['GoogleCloudContentwarehouseV1TimestampValueArgs']]:
+        """
+        Represents a timestamp value.
+        """
+        return pulumi.get(self, "timestamp_value")
+
+    @timestamp_value.setter
+    def timestamp_value(self, value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1TimestampValueArgs']]):
+        pulumi.set(self, "timestamp_value", value)
 
 
 @pulumi.input_type
@@ -4883,12 +5029,12 @@ class GoogleIamV1PolicyArgs:
 class GoogleRpcStatusArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         if code is not None:
@@ -4912,14 +5058,14 @@ class GoogleRpcStatusArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "details", value)
 
     @property

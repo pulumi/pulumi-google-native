@@ -25,3 +25,23 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const PubsubConfigMessageFormat = {
+    /**
+     * Unspecified.
+     */
+    MessageFormatUnspecified: "MESSAGE_FORMAT_UNSPECIFIED",
+    /**
+     * The message payload is a serialized protocol buffer of SourceRepoEvent.
+     */
+    Protobuf: "PROTOBUF",
+    /**
+     * The message payload is a JSON string of SourceRepoEvent.
+     */
+    Json: "JSON",
+} as const;
+
+/**
+ * The format of the Cloud Pub/Sub messages.
+ */
+export type PubsubConfigMessageFormat = (typeof PubsubConfigMessageFormat)[keyof typeof PubsubConfigMessageFormat];

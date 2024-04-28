@@ -46,14 +46,14 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         public Input<string>? Network { get; set; }
 
         [Input("pipelineSpec")]
-        private InputMap<string>? _pipelineSpec;
+        private InputMap<object>? _pipelineSpec;
 
         /// <summary>
         /// The spec of the pipeline.
         /// </summary>
-        public InputMap<string> PipelineSpec
+        public InputMap<object> PipelineSpec
         {
-            get => _pipelineSpec ?? (_pipelineSpec = new InputMap<string>());
+            get => _pipelineSpec ?? (_pipelineSpec = new InputMap<object>());
             set => _pipelineSpec = value;
         }
 

@@ -16,12 +16,12 @@ class EntityArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[str],
                  entity_type_id: pulumi.Input[str],
-                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 fields: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Entity resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
+        :param pulumi.Input[Mapping[str, Any]] fields: Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         """
         pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "entity_type_id", entity_type_id)
@@ -52,14 +52,14 @@ class EntityArgs:
 
     @property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def fields(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         """
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def fields(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -88,7 +88,7 @@ class Entity(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  entity_type_id: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 fields: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -98,7 +98,7 @@ class Entity(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
+        :param pulumi.Input[Mapping[str, Any]] fields: Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         """
         ...
     @overload
@@ -127,7 +127,7 @@ class Entity(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  entity_type_id: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 fields: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -193,7 +193,7 @@ class Entity(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Output[Mapping[str, str]]:
+    def fields(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         """

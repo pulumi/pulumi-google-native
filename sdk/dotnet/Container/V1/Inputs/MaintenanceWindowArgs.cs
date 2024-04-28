@@ -21,17 +21,11 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("dailyMaintenanceWindow")]
         public Input<Inputs.DailyMaintenanceWindowArgs>? DailyMaintenanceWindow { get; set; }
 
-        [Input("maintenanceExclusions")]
-        private InputMap<string>? _maintenanceExclusions;
-
         /// <summary>
         /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         /// </summary>
-        public InputMap<string> MaintenanceExclusions
-        {
-            get => _maintenanceExclusions ?? (_maintenanceExclusions = new InputMap<string>());
-            set => _maintenanceExclusions = value;
-        }
+        [Input("maintenanceExclusions")]
+        public Input<Inputs.TimeWindowArgs>? MaintenanceExclusions { get; set; }
 
         /// <summary>
         /// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.

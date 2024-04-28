@@ -185,9 +185,193 @@ func (in *googleCloudPolicysimulatorV1alphaReplayConfigLogSourcePtr) ToOutput(ct
 	}
 }
 
+// The log type that this config enables.
+type GoogleIamV1AuditLogConfigLogType string
+
+const (
+	// Default case. Should never be this.
+	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified = GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED")
+	// Admin reads. Example: CloudIAM getIamPolicy
+	GoogleIamV1AuditLogConfigLogTypeAdminRead = GoogleIamV1AuditLogConfigLogType("ADMIN_READ")
+	// Data writes. Example: CloudSQL Users create
+	GoogleIamV1AuditLogConfigLogTypeDataWrite = GoogleIamV1AuditLogConfigLogType("DATA_WRITE")
+	// Data reads. Example: CloudSQL Users list
+	GoogleIamV1AuditLogConfigLogTypeDataRead = GoogleIamV1AuditLogConfigLogType("DATA_READ")
+)
+
+func (GoogleIamV1AuditLogConfigLogType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypeOutput() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(GoogleIamV1AuditLogConfigLogTypeOutput)
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleIamV1AuditLogConfigLogTypeOutput)
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return e.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return GoogleIamV1AuditLogConfigLogType(e).ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(ctx).ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleIamV1AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypeOutput() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamV1AuditLogConfigLogType) *GoogleIamV1AuditLogConfigLogType {
+		return &v
+	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamV1AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamV1AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleIamV1AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *GoogleIamV1AuditLogConfigLogType) GoogleIamV1AuditLogConfigLogType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamV1AuditLogConfigLogType
+		return ret
+	}).(GoogleIamV1AuditLogConfigLogTypeOutput)
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleIamV1AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts values of the GoogleIamV1AuditLogConfigLogType enum
+// A concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` can be one of the following:
+//
+//	GoogleIamV1AuditLogConfigLogTypeLogTypeUnspecified
+//	GoogleIamV1AuditLogConfigLogTypeAdminRead
+//	GoogleIamV1AuditLogConfigLogTypeDataWrite
+//	GoogleIamV1AuditLogConfigLogTypeDataRead
+type GoogleIamV1AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigLogTypeOutput() GoogleIamV1AuditLogConfigLogTypeOutput
+	ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(context.Context) GoogleIamV1AuditLogConfigLogTypeOutput
+}
+
+var googleIamV1AuditLogConfigLogTypePtrType = reflect.TypeOf((**GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
+
+type GoogleIamV1AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput
+	ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput
+}
+
+type googleIamV1AuditLogConfigLogTypePtr string
+
+func GoogleIamV1AuditLogConfigLogTypePtr(v string) GoogleIamV1AuditLogConfigLogTypePtrInput {
+	return (*googleIamV1AuditLogConfigLogTypePtr)(&v)
+}
+
+func (*googleIamV1AuditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return googleIamV1AuditLogConfigLogTypePtrType
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleIamV1AuditLogConfigLogType] {
+	return pulumix.Output[*GoogleIamV1AuditLogConfigLogType]{
+		OutputState: in.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1alphaReplayConfigLogSourceInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource("LOG_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1alphaReplayConfigLogSourcePtrInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource("LOG_SOURCE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1alphaReplayConfigLogSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1alphaReplayConfigLogSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
 }

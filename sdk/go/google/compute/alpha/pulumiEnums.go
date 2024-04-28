@@ -22138,6 +22138,183 @@ func (o InterconnectRequestedFeaturesItemArrayOutput) Index(i pulumi.IntInput) I
 	}).(InterconnectRequestedFeaturesItemOutput)
 }
 
+// Preference for a given location. Set to either ALLOW or DENY.
+type LocationPolicyLocationPreference string
+
+const (
+	// Location is allowed for use.
+	LocationPolicyLocationPreferenceAllow = LocationPolicyLocationPreference("ALLOW")
+	// Location is prohibited.
+	LocationPolicyLocationPreferenceDeny = LocationPolicyLocationPreference("DENY")
+	// Default value, unused.
+	LocationPolicyLocationPreferencePreferenceUnspecified = LocationPolicyLocationPreference("PREFERENCE_UNSPECIFIED")
+)
+
+func (LocationPolicyLocationPreference) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocationPreference)(nil)).Elem()
+}
+
+func (e LocationPolicyLocationPreference) ToLocationPolicyLocationPreferenceOutput() LocationPolicyLocationPreferenceOutput {
+	return pulumi.ToOutput(e).(LocationPolicyLocationPreferenceOutput)
+}
+
+func (e LocationPolicyLocationPreference) ToLocationPolicyLocationPreferenceOutputWithContext(ctx context.Context) LocationPolicyLocationPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LocationPolicyLocationPreferenceOutput)
+}
+
+func (e LocationPolicyLocationPreference) ToLocationPolicyLocationPreferencePtrOutput() LocationPolicyLocationPreferencePtrOutput {
+	return e.ToLocationPolicyLocationPreferencePtrOutputWithContext(context.Background())
+}
+
+func (e LocationPolicyLocationPreference) ToLocationPolicyLocationPreferencePtrOutputWithContext(ctx context.Context) LocationPolicyLocationPreferencePtrOutput {
+	return LocationPolicyLocationPreference(e).ToLocationPolicyLocationPreferenceOutputWithContext(ctx).ToLocationPolicyLocationPreferencePtrOutputWithContext(ctx)
+}
+
+func (e LocationPolicyLocationPreference) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LocationPolicyLocationPreference) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LocationPolicyLocationPreference) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LocationPolicyLocationPreference) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LocationPolicyLocationPreferenceOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocationPreference)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToLocationPolicyLocationPreferenceOutput() LocationPolicyLocationPreferenceOutput {
+	return o
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToLocationPolicyLocationPreferenceOutputWithContext(ctx context.Context) LocationPolicyLocationPreferenceOutput {
+	return o
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToLocationPolicyLocationPreferencePtrOutput() LocationPolicyLocationPreferencePtrOutput {
+	return o.ToLocationPolicyLocationPreferencePtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToLocationPolicyLocationPreferencePtrOutputWithContext(ctx context.Context) LocationPolicyLocationPreferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationPolicyLocationPreference) *LocationPolicyLocationPreference {
+		return &v
+	}).(LocationPolicyLocationPreferencePtrOutput)
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LocationPolicyLocationPreference) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyLocationPreferenceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LocationPolicyLocationPreference) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LocationPolicyLocationPreferencePtrOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationPreferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPolicyLocationPreference)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationPreferencePtrOutput) ToLocationPolicyLocationPreferencePtrOutput() LocationPolicyLocationPreferencePtrOutput {
+	return o
+}
+
+func (o LocationPolicyLocationPreferencePtrOutput) ToLocationPolicyLocationPreferencePtrOutputWithContext(ctx context.Context) LocationPolicyLocationPreferencePtrOutput {
+	return o
+}
+
+func (o LocationPolicyLocationPreferencePtrOutput) Elem() LocationPolicyLocationPreferenceOutput {
+	return o.ApplyT(func(v *LocationPolicyLocationPreference) LocationPolicyLocationPreference {
+		if v != nil {
+			return *v
+		}
+		var ret LocationPolicyLocationPreference
+		return ret
+	}).(LocationPolicyLocationPreferenceOutput)
+}
+
+func (o LocationPolicyLocationPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyLocationPreferencePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LocationPolicyLocationPreference) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LocationPolicyLocationPreferenceInput is an input type that accepts values of the LocationPolicyLocationPreference enum
+// A concrete instance of `LocationPolicyLocationPreferenceInput` can be one of the following:
+//
+//	LocationPolicyLocationPreferenceAllow
+//	LocationPolicyLocationPreferenceDeny
+//	LocationPolicyLocationPreferencePreferenceUnspecified
+type LocationPolicyLocationPreferenceInput interface {
+	pulumi.Input
+
+	ToLocationPolicyLocationPreferenceOutput() LocationPolicyLocationPreferenceOutput
+	ToLocationPolicyLocationPreferenceOutputWithContext(context.Context) LocationPolicyLocationPreferenceOutput
+}
+
+var locationPolicyLocationPreferencePtrType = reflect.TypeOf((**LocationPolicyLocationPreference)(nil)).Elem()
+
+type LocationPolicyLocationPreferencePtrInput interface {
+	pulumi.Input
+
+	ToLocationPolicyLocationPreferencePtrOutput() LocationPolicyLocationPreferencePtrOutput
+	ToLocationPolicyLocationPreferencePtrOutputWithContext(context.Context) LocationPolicyLocationPreferencePtrOutput
+}
+
+type locationPolicyLocationPreferencePtr string
+
+func LocationPolicyLocationPreferencePtr(v string) LocationPolicyLocationPreferencePtrInput {
+	return (*locationPolicyLocationPreferencePtr)(&v)
+}
+
+func (*locationPolicyLocationPreferencePtr) ElementType() reflect.Type {
+	return locationPolicyLocationPreferencePtrType
+}
+
+func (in *locationPolicyLocationPreferencePtr) ToLocationPolicyLocationPreferencePtrOutput() LocationPolicyLocationPreferencePtrOutput {
+	return pulumi.ToOutput(in).(LocationPolicyLocationPreferencePtrOutput)
+}
+
+func (in *locationPolicyLocationPreferencePtr) ToLocationPolicyLocationPreferencePtrOutputWithContext(ctx context.Context) LocationPolicyLocationPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LocationPolicyLocationPreferencePtrOutput)
+}
+
+func (in *locationPolicyLocationPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*LocationPolicyLocationPreference] {
+	return pulumix.Output[*LocationPolicyLocationPreference]{
+		OutputState: in.ToLocationPolicyLocationPreferencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Strategy for distributing VMs across zones in a region.
 type LocationPolicyTargetShape string
 
@@ -42987,6 +43164,350 @@ func (in *sslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*Ssl
 	}
 }
 
+// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+type StatefulPolicyPreservedStateDiskDeviceAutoDelete string
+
+const (
+	StatefulPolicyPreservedStateDiskDeviceAutoDeleteNever                       = StatefulPolicyPreservedStateDiskDeviceAutoDelete("NEVER")
+	StatefulPolicyPreservedStateDiskDeviceAutoDeleteOnPermanentInstanceDeletion = StatefulPolicyPreservedStateDiskDeviceAutoDelete("ON_PERMANENT_INSTANCE_DELETION")
+)
+
+func (StatefulPolicyPreservedStateDiskDeviceAutoDelete) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceAutoDelete)(nil)).Elem()
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput {
+	return pulumi.ToOutput(e).(StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput)
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStatefulPolicyPreservedStateDiskDeviceAutoDeleteOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput)
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return e.ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(context.Background())
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return StatefulPolicyPreservedStateDiskDeviceAutoDelete(e).ToStatefulPolicyPreservedStateDiskDeviceAutoDeleteOutputWithContext(ctx).ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(ctx)
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StatefulPolicyPreservedStateDiskDeviceAutoDelete) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceAutoDelete)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStatefulPolicyPreservedStateDiskDeviceAutoDeleteOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return o.ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulPolicyPreservedStateDiskDeviceAutoDelete) *StatefulPolicyPreservedStateDiskDeviceAutoDelete {
+		return &v
+	}).(StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput)
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatefulPolicyPreservedStateDiskDeviceAutoDelete) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatefulPolicyPreservedStateDiskDeviceAutoDelete) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulPolicyPreservedStateDiskDeviceAutoDelete)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput) Elem() StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedStateDiskDeviceAutoDelete) StatefulPolicyPreservedStateDiskDeviceAutoDelete {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulPolicyPreservedStateDiskDeviceAutoDelete
+		return ret
+	}).(StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput)
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StatefulPolicyPreservedStateDiskDeviceAutoDelete) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StatefulPolicyPreservedStateDiskDeviceAutoDeleteInput is an input type that accepts values of the StatefulPolicyPreservedStateDiskDeviceAutoDelete enum
+// A concrete instance of `StatefulPolicyPreservedStateDiskDeviceAutoDeleteInput` can be one of the following:
+//
+//	StatefulPolicyPreservedStateDiskDeviceAutoDeleteNever
+//	StatefulPolicyPreservedStateDiskDeviceAutoDeleteOnPermanentInstanceDeletion
+type StatefulPolicyPreservedStateDiskDeviceAutoDeleteInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput
+	ToStatefulPolicyPreservedStateDiskDeviceAutoDeleteOutputWithContext(context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput
+}
+
+var statefulPolicyPreservedStateDiskDeviceAutoDeletePtrType = reflect.TypeOf((**StatefulPolicyPreservedStateDiskDeviceAutoDelete)(nil)).Elem()
+
+type StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput
+	ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput
+}
+
+type statefulPolicyPreservedStateDiskDeviceAutoDeletePtr string
+
+func StatefulPolicyPreservedStateDiskDeviceAutoDeletePtr(v string) StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrInput {
+	return (*statefulPolicyPreservedStateDiskDeviceAutoDeletePtr)(&v)
+}
+
+func (*statefulPolicyPreservedStateDiskDeviceAutoDeletePtr) ElementType() reflect.Type {
+	return statefulPolicyPreservedStateDiskDeviceAutoDeletePtrType
+}
+
+func (in *statefulPolicyPreservedStateDiskDeviceAutoDeletePtr) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return pulumi.ToOutput(in).(StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput)
+}
+
+func (in *statefulPolicyPreservedStateDiskDeviceAutoDeletePtr) ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput)
+}
+
+func (in *statefulPolicyPreservedStateDiskDeviceAutoDeletePtr) ToOutput(ctx context.Context) pulumix.Output[*StatefulPolicyPreservedStateDiskDeviceAutoDelete] {
+	return pulumix.Output[*StatefulPolicyPreservedStateDiskDeviceAutoDelete]{
+		OutputState: in.ToStatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+type StatefulPolicyPreservedStateNetworkIpAutoDelete string
+
+const (
+	StatefulPolicyPreservedStateNetworkIpAutoDeleteNever                       = StatefulPolicyPreservedStateNetworkIpAutoDelete("NEVER")
+	StatefulPolicyPreservedStateNetworkIpAutoDeleteOnPermanentInstanceDeletion = StatefulPolicyPreservedStateNetworkIpAutoDelete("ON_PERMANENT_INSTANCE_DELETION")
+)
+
+func (StatefulPolicyPreservedStateNetworkIpAutoDelete) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpAutoDelete)(nil)).Elem()
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStatefulPolicyPreservedStateNetworkIpAutoDeleteOutput() StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput {
+	return pulumi.ToOutput(e).(StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput)
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStatefulPolicyPreservedStateNetworkIpAutoDeleteOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput)
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return e.ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(context.Background())
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return StatefulPolicyPreservedStateNetworkIpAutoDelete(e).ToStatefulPolicyPreservedStateNetworkIpAutoDeleteOutputWithContext(ctx).ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(ctx)
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StatefulPolicyPreservedStateNetworkIpAutoDelete) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpAutoDelete)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStatefulPolicyPreservedStateNetworkIpAutoDeleteOutput() StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStatefulPolicyPreservedStateNetworkIpAutoDeleteOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return o.ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulPolicyPreservedStateNetworkIpAutoDelete) *StatefulPolicyPreservedStateNetworkIpAutoDelete {
+		return &v
+	}).(StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput)
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatefulPolicyPreservedStateNetworkIpAutoDelete) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatefulPolicyPreservedStateNetworkIpAutoDelete) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulPolicyPreservedStateNetworkIpAutoDelete)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput) Elem() StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedStateNetworkIpAutoDelete) StatefulPolicyPreservedStateNetworkIpAutoDelete {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulPolicyPreservedStateNetworkIpAutoDelete
+		return ret
+	}).(StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput)
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StatefulPolicyPreservedStateNetworkIpAutoDelete) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StatefulPolicyPreservedStateNetworkIpAutoDeleteInput is an input type that accepts values of the StatefulPolicyPreservedStateNetworkIpAutoDelete enum
+// A concrete instance of `StatefulPolicyPreservedStateNetworkIpAutoDeleteInput` can be one of the following:
+//
+//	StatefulPolicyPreservedStateNetworkIpAutoDeleteNever
+//	StatefulPolicyPreservedStateNetworkIpAutoDeleteOnPermanentInstanceDeletion
+type StatefulPolicyPreservedStateNetworkIpAutoDeleteInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateNetworkIpAutoDeleteOutput() StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput
+	ToStatefulPolicyPreservedStateNetworkIpAutoDeleteOutputWithContext(context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput
+}
+
+var statefulPolicyPreservedStateNetworkIpAutoDeletePtrType = reflect.TypeOf((**StatefulPolicyPreservedStateNetworkIpAutoDelete)(nil)).Elem()
+
+type StatefulPolicyPreservedStateNetworkIpAutoDeletePtrInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput
+	ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput
+}
+
+type statefulPolicyPreservedStateNetworkIpAutoDeletePtr string
+
+func StatefulPolicyPreservedStateNetworkIpAutoDeletePtr(v string) StatefulPolicyPreservedStateNetworkIpAutoDeletePtrInput {
+	return (*statefulPolicyPreservedStateNetworkIpAutoDeletePtr)(&v)
+}
+
+func (*statefulPolicyPreservedStateNetworkIpAutoDeletePtr) ElementType() reflect.Type {
+	return statefulPolicyPreservedStateNetworkIpAutoDeletePtrType
+}
+
+func (in *statefulPolicyPreservedStateNetworkIpAutoDeletePtr) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return pulumi.ToOutput(in).(StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput)
+}
+
+func (in *statefulPolicyPreservedStateNetworkIpAutoDeletePtr) ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput)
+}
+
+func (in *statefulPolicyPreservedStateNetworkIpAutoDeletePtr) ToOutput(ctx context.Context) pulumix.Output[*StatefulPolicyPreservedStateNetworkIpAutoDelete] {
+	return pulumix.Output[*StatefulPolicyPreservedStateNetworkIpAutoDelete]{
+		OutputState: in.ToStatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provisioning type of the byte capacity of the pool.
 type StoragePoolCapacityProvisioningType string
 
@@ -47301,6 +47822,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectRequestedFeaturesItemInput)(nil)).Elem(), InterconnectRequestedFeaturesItem("IF_MACSEC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectRequestedFeaturesItemPtrInput)(nil)).Elem(), InterconnectRequestedFeaturesItem("IF_MACSEC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectRequestedFeaturesItemArrayInput)(nil)).Elem(), InterconnectRequestedFeaturesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationPreferenceInput)(nil)).Elem(), LocationPolicyLocationPreference("ALLOW"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationPreferencePtrInput)(nil)).Elem(), LocationPolicyLocationPreference("ALLOW"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyTargetShapeInput)(nil)).Elem(), LocationPolicyTargetShape("ANY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyTargetShapePtrInput)(nil)).Elem(), LocationPolicyTargetShape("ANY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsLogNameInput)(nil)).Elem(), LogConfigCloudAuditOptionsLogName("ADMIN_ACTIVITY"))
@@ -47539,6 +48062,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyMinTlsVersionPtrInput)(nil)).Elem(), SslPolicyMinTlsVersion("TLS_1_0"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfileInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfilePtrInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceAutoDeleteInput)(nil)).Elem(), StatefulPolicyPreservedStateDiskDeviceAutoDelete("NEVER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateDiskDeviceAutoDelete("NEVER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpAutoDeleteInput)(nil)).Elem(), StatefulPolicyPreservedStateNetworkIpAutoDelete("NEVER"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpAutoDeletePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateNetworkIpAutoDelete("NEVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypeInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypePtrInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolPerformanceProvisioningTypeInput)(nil)).Elem(), StoragePoolPerformanceProvisioningType("ADVANCED"))
@@ -47834,6 +48361,8 @@ func init() {
 	pulumi.RegisterOutputType(InterconnectRequestedFeaturesItemOutput{})
 	pulumi.RegisterOutputType(InterconnectRequestedFeaturesItemPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectRequestedFeaturesItemArrayOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationPreferenceOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationPreferencePtrOutput{})
 	pulumi.RegisterOutputType(LocationPolicyTargetShapeOutput{})
 	pulumi.RegisterOutputType(LocationPolicyTargetShapePtrOutput{})
 	pulumi.RegisterOutputType(LogConfigCloudAuditOptionsLogNameOutput{})
@@ -48072,6 +48601,10 @@ func init() {
 	pulumi.RegisterOutputType(SslPolicyMinTlsVersionPtrOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfileOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfilePtrOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceAutoDeleteOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpAutoDeleteOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput{})
 	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypeOutput{})
 	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypePtrOutput{})
 	pulumi.RegisterOutputType(StoragePoolPerformanceProvisioningTypeOutput{})

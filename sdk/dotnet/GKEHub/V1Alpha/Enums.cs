@@ -93,6 +93,47 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Whether it is allowed to run the privileged builds on the cluster or not.
+    /// </summary>
+    [EnumType]
+    public readonly struct CloudBuildMembershipSpecSecurityPolicy : IEquatable<CloudBuildMembershipSpecSecurityPolicy>
+    {
+        private readonly string _value;
+
+        private CloudBuildMembershipSpecSecurityPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified policy
+        /// </summary>
+        public static CloudBuildMembershipSpecSecurityPolicy SecurityPolicyUnspecified { get; } = new CloudBuildMembershipSpecSecurityPolicy("SECURITY_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// Privileged build pods are disallowed
+        /// </summary>
+        public static CloudBuildMembershipSpecSecurityPolicy NonPrivileged { get; } = new CloudBuildMembershipSpecSecurityPolicy("NON_PRIVILEGED");
+        /// <summary>
+        /// Privileged build pods are allowed
+        /// </summary>
+        public static CloudBuildMembershipSpecSecurityPolicy Privileged { get; } = new CloudBuildMembershipSpecSecurityPolicy("PRIVILEGED");
+
+        public static bool operator ==(CloudBuildMembershipSpecSecurityPolicy left, CloudBuildMembershipSpecSecurityPolicy right) => left.Equals(right);
+        public static bool operator !=(CloudBuildMembershipSpecSecurityPolicy left, CloudBuildMembershipSpecSecurityPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(CloudBuildMembershipSpecSecurityPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CloudBuildMembershipSpecSecurityPolicy other && Equals(other);
+        public bool Equals(CloudBuildMembershipSpecSecurityPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct ConfigManagementPolicyControllerMonitoringBackendsItem : IEquatable<ConfigManagementPolicyControllerMonitoringBackendsItem>
     {
@@ -394,6 +435,51 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     }
 
     /// <summary>
+    /// Type specifies which type of origin is set.
+    /// </summary>
+    [EnumType]
+    public readonly struct OriginType : IEquatable<OriginType>
+    {
+        private readonly string _value;
+
+        private OriginType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Type is unknown or not set.
+        /// </summary>
+        public static OriginType TypeUnspecified { get; } = new OriginType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Per-Membership spec was inherited from the fleet-level default.
+        /// </summary>
+        public static OriginType Fleet { get; } = new OriginType("FLEET");
+        /// <summary>
+        /// Per-Membership spec was inherited from the fleet-level default but is now out of sync with the current default.
+        /// </summary>
+        public static OriginType FleetOutOfSync { get; } = new OriginType("FLEET_OUT_OF_SYNC");
+        /// <summary>
+        /// Per-Membership spec was inherited from a user specification.
+        /// </summary>
+        public static OriginType User { get; } = new OriginType("USER");
+
+        public static bool operator ==(OriginType left, OriginType right) => left.Equals(right);
+        public static bool operator !=(OriginType left, OriginType right) => !left.Equals(right);
+
+        public static explicit operator string(OriginType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OriginType other && Equals(other);
+        public bool Equals(OriginType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
     /// </summary>
     [EnumType]
@@ -473,6 +559,47 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is PolicyControllerMonitoringConfigBackendsItem other && Equals(other);
         public bool Equals(PolicyControllerMonitoringConfigBackendsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Pod affinity configuration.
+    /// </summary>
+    [EnumType]
+    public readonly struct PolicyControllerPolicyControllerDeploymentConfigPodAffinity : IEquatable<PolicyControllerPolicyControllerDeploymentConfigPodAffinity>
+    {
+        private readonly string _value;
+
+        private PolicyControllerPolicyControllerDeploymentConfigPodAffinity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No affinity configuration has been specified.
+        /// </summary>
+        public static PolicyControllerPolicyControllerDeploymentConfigPodAffinity AffinityUnspecified { get; } = new PolicyControllerPolicyControllerDeploymentConfigPodAffinity("AFFINITY_UNSPECIFIED");
+        /// <summary>
+        /// Affinity configurations will be removed from the deployment.
+        /// </summary>
+        public static PolicyControllerPolicyControllerDeploymentConfigPodAffinity NoAffinity { get; } = new PolicyControllerPolicyControllerDeploymentConfigPodAffinity("NO_AFFINITY");
+        /// <summary>
+        /// Anti-affinity configuration will be applied to this deployment. Default for admissions deployment.
+        /// </summary>
+        public static PolicyControllerPolicyControllerDeploymentConfigPodAffinity AntiAffinity { get; } = new PolicyControllerPolicyControllerDeploymentConfigPodAffinity("ANTI_AFFINITY");
+
+        public static bool operator ==(PolicyControllerPolicyControllerDeploymentConfigPodAffinity left, PolicyControllerPolicyControllerDeploymentConfigPodAffinity right) => left.Equals(right);
+        public static bool operator !=(PolicyControllerPolicyControllerDeploymentConfigPodAffinity left, PolicyControllerPolicyControllerDeploymentConfigPodAffinity right) => !left.Equals(right);
+
+        public static explicit operator string(PolicyControllerPolicyControllerDeploymentConfigPodAffinity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PolicyControllerPolicyControllerDeploymentConfigPodAffinity other && Equals(other);
+        public bool Equals(PolicyControllerPolicyControllerDeploymentConfigPodAffinity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

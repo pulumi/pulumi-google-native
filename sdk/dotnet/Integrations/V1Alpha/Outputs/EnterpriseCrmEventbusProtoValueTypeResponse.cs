@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         public readonly double DoubleValue;
         public readonly Outputs.EnterpriseCrmEventbusProtoIntArrayResponse IntArray;
         public readonly string IntValue;
-        public readonly ImmutableDictionary<string, string> ProtoValue;
+        public readonly ImmutableDictionary<string, object> ProtoValue;
         public readonly Outputs.EnterpriseCrmEventbusProtoStringArrayResponse StringArray;
         public readonly string StringValue;
 
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             string intValue,
 
-            ImmutableDictionary<string, string> protoValue,
+            ImmutableDictionary<string, object> protoValue,
 
             Outputs.EnterpriseCrmEventbusProtoStringArrayResponse stringArray,
 

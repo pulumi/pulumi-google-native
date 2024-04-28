@@ -17,13 +17,13 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// <summary>
         /// Key: disk, value: AsyncReplicationStatus message
         /// </summary>
-        public readonly ImmutableDictionary<string, string> AsyncSecondaryDisks;
+        public readonly Outputs.DiskResourceStatusAsyncReplicationStatusResponse AsyncSecondaryDisks;
 
         [OutputConstructor]
         private DiskResourceStatusResponse(
             Outputs.DiskResourceStatusAsyncReplicationStatusResponse asyncPrimaryDisk,
 
-            ImmutableDictionary<string, string> asyncSecondaryDisks)
+            Outputs.DiskResourceStatusAsyncReplicationStatusResponse asyncSecondaryDisks)
         {
             AsyncPrimaryDisk = asyncPrimaryDisk;
             AsyncSecondaryDisks = asyncSecondaryDisks;

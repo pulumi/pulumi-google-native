@@ -3627,11 +3627,11 @@ class OAuthRequirementsArgs:
 class OptionArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 value: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         A protocol buffer option, which can be attached to a message, field, enumeration, etc.
         :param pulumi.Input[str] name: The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+        :param pulumi.Input[Mapping[str, Any]] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -3652,14 +3652,14 @@ class OptionArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def value(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def value(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "value", value)
 
 
@@ -4314,24 +4314,24 @@ class SystemParameterArgs:
 @pulumi.input_type
 class TrafficPercentStrategyArgs:
     def __init__(__self__, *,
-                 percentages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 percentages: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None):
         """
         Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+        :param pulumi.Input[Mapping[str, pulumi.Input[float]]] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         if percentages is not None:
             pulumi.set(__self__, "percentages", percentages)
 
     @property
     @pulumi.getter
-    def percentages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def percentages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]:
         """
         Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         return pulumi.get(self, "percentages")
 
     @percentages.setter
-    def percentages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def percentages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]):
         pulumi.set(self, "percentages", value)
 
 

@@ -30,7 +30,7 @@ type LookupProcessArgs struct {
 
 type LookupProcessResult struct {
 	// Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
-	Attributes map[string]string `pulumi:"attributes"`
+	Attributes map[string]interface{} `pulumi:"attributes"`
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName string `pulumi:"displayName"`
 	// Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
@@ -77,8 +77,8 @@ func (o LookupProcessResultOutput) ToLookupProcessResultOutputWithContext(ctx co
 }
 
 // Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
-func (o LookupProcessResultOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupProcessResult) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+func (o LookupProcessResultOutput) Attributes() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupProcessResult) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
 }
 
 // Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`

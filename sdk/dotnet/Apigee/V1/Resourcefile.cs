@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Application specific response metadata. Must be set in the first response for streaming APIs.
         /// </summary>
         [Output("extensions")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Extensions { get; private set; } = null!;
+        public Output<ImmutableArray<ImmutableDictionary<string, object>>> Extensions { get; private set; } = null!;
 
         /// <summary>
         /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&amp;{}\[\]()+\-=,.~'` ]{1,255}
@@ -120,14 +120,14 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> EnvironmentId { get; set; } = null!;
 
         [Input("extensions")]
-        private InputList<ImmutableDictionary<string, string>>? _extensions;
+        private InputList<ImmutableDictionary<string, object>>? _extensions;
 
         /// <summary>
         /// Application specific response metadata. Must be set in the first response for streaming APIs.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Extensions
+        public InputList<ImmutableDictionary<string, object>> Extensions
         {
-            get => _extensions ?? (_extensions = new InputList<ImmutableDictionary<string, string>>());
+            get => _extensions ?? (_extensions = new InputList<ImmutableDictionary<string, object>>());
             set => _extensions = value;
         }
 

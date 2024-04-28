@@ -40,7 +40,7 @@ export class Entity extends pulumi.CustomResource {
     /**
      * Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
      */
-    public readonly fields!: pulumi.Output<{[key: string]: string}>;
+    public readonly fields!: pulumi.Output<{[key: string]: any}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
@@ -95,7 +95,7 @@ export interface EntityArgs {
     /**
      * Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
      */
-    fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    fields?: pulumi.Input<{[key: string]: any}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         /// </summary>
         [Output("backendMetastores")]
-        public Output<ImmutableDictionary<string, string>> BackendMetastores { get; private set; } = null!;
+        public Output<Outputs.BackendMetastoreResponse> BackendMetastores { get; private set; } = null!;
 
         /// <summary>
         /// The time when the metastore federation was created.
@@ -144,17 +144,11 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
 
     public sealed class FederationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("backendMetastores")]
-        private InputMap<string>? _backendMetastores;
-
         /// <summary>
         /// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         /// </summary>
-        public InputMap<string> BackendMetastores
-        {
-            get => _backendMetastores ?? (_backendMetastores = new InputMap<string>());
-            set => _backendMetastores = value;
-        }
+        [Input("backendMetastores")]
+        public Input<Inputs.BackendMetastoreArgs>? BackendMetastores { get; set; }
 
         /// <summary>
         /// Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.

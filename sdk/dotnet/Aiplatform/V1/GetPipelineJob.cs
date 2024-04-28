@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// <summary>
         /// The spec of the pipeline.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> PipelineSpec;
+        public readonly ImmutableDictionary<string, object> PipelineSpec;
         /// <summary>
         /// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         /// </summary>
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 
             string network,
 
-            ImmutableDictionary<string, string> pipelineSpec,
+            ImmutableDictionary<string, object> pipelineSpec,
 
             ImmutableArray<string> reservedIpRanges,
 

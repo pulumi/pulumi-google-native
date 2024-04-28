@@ -17,16 +17,16 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse
     {
         public readonly Outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse ConfigSource;
-        public readonly ImmutableDictionary<string, string> Environment;
-        public readonly ImmutableDictionary<string, string> Parameters;
+        public readonly ImmutableDictionary<string, object> Environment;
+        public readonly ImmutableDictionary<string, object> Parameters;
 
         [OutputConstructor]
         private GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse(
             Outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse configSource,
 
-            ImmutableDictionary<string, string> environment,
+            ImmutableDictionary<string, object> environment,
 
-            ImmutableDictionary<string, string> parameters)
+            ImmutableDictionary<string, object> parameters)
         {
             ConfigSource = configSource;
             Environment = environment;

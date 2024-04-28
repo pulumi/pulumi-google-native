@@ -150,14 +150,14 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoArgs:
 class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
-                 resource: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  status: Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus']] = None,
                  sub: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]]] = None,
                  time: Optional[pulumi.Input[str]] = None):
         """
         ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
         :param pulumi.Input[str] id: Unique Id for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource: Specific details for the resource. This is for internal use only.
+        :param pulumi.Input[Mapping[str, Any]] resource: Specific details for the resource. This is for internal use only.
         :param pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus'] status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs']]] sub: List of Info for the sub level resources.
         :param pulumi.Input[str] time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
@@ -186,14 +186,14 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs:
 
     @property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def resource(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Specific details for the resource. This is for internal use only.
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def resource(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource", value)
 
     @property

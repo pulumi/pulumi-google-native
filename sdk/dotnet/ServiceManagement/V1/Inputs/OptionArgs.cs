@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? Name { get; set; }
 
         [Input("value")]
-        private InputMap<string>? _value;
+        private InputMap<object>? _value;
 
         /// <summary>
         /// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         /// </summary>
-        public InputMap<string> Value
+        public InputMap<object> Value
         {
-            get => _value ?? (_value = new InputMap<string>());
+            get => _value ?? (_value = new InputMap<object>());
             set => _value = value;
         }
 

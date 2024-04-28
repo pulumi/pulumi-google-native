@@ -2637,7 +2637,7 @@ type GoogleCloudChannelV1Value struct {
 	// Represents an int64 value.
 	Int64Value *string `pulumi:"int64Value"`
 	// Represents an 'Any' proto value.
-	ProtoValue map[string]string `pulumi:"protoValue"`
+	ProtoValue map[string]interface{} `pulumi:"protoValue"`
 	// Represents a string value.
 	StringValue *string `pulumi:"stringValue"`
 }
@@ -2662,7 +2662,7 @@ type GoogleCloudChannelV1ValueArgs struct {
 	// Represents an int64 value.
 	Int64Value pulumi.StringPtrInput `pulumi:"int64Value"`
 	// Represents an 'Any' proto value.
-	ProtoValue pulumi.StringMapInput `pulumi:"protoValue"`
+	ProtoValue pulumi.MapInput `pulumi:"protoValue"`
 	// Represents a string value.
 	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
 }
@@ -2761,8 +2761,8 @@ func (o GoogleCloudChannelV1ValueOutput) Int64Value() pulumi.StringPtrOutput {
 }
 
 // Represents an 'Any' proto value.
-func (o GoogleCloudChannelV1ValueOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1Value) map[string]string { return v.ProtoValue }).(pulumi.StringMapOutput)
+func (o GoogleCloudChannelV1ValueOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1Value) map[string]interface{} { return v.ProtoValue }).(pulumi.MapOutput)
 }
 
 // Represents a string value.
@@ -2825,13 +2825,13 @@ func (o GoogleCloudChannelV1ValuePtrOutput) Int64Value() pulumi.StringPtrOutput 
 }
 
 // Represents an 'Any' proto value.
-func (o GoogleCloudChannelV1ValuePtrOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1Value) map[string]string {
+func (o GoogleCloudChannelV1ValuePtrOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1Value) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ProtoValue
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Represents a string value.
@@ -2853,7 +2853,7 @@ type GoogleCloudChannelV1ValueResponse struct {
 	// Represents an int64 value.
 	Int64Value string `pulumi:"int64Value"`
 	// Represents an 'Any' proto value.
-	ProtoValue map[string]string `pulumi:"protoValue"`
+	ProtoValue map[string]interface{} `pulumi:"protoValue"`
 	// Represents a string value.
 	StringValue string `pulumi:"stringValue"`
 }
@@ -2889,8 +2889,8 @@ func (o GoogleCloudChannelV1ValueResponseOutput) Int64Value() pulumi.StringOutpu
 }
 
 // Represents an 'Any' proto value.
-func (o GoogleCloudChannelV1ValueResponseOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1ValueResponse) map[string]string { return v.ProtoValue }).(pulumi.StringMapOutput)
+func (o GoogleCloudChannelV1ValueResponseOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1ValueResponse) map[string]interface{} { return v.ProtoValue }).(pulumi.MapOutput)
 }
 
 // Represents a string value.

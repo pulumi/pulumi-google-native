@@ -2407,12 +2407,12 @@ class MaintenancePolicyArgs:
 class MaintenanceWindowArgs:
     def __init__(__self__, *,
                  daily_maintenance_window: Optional[pulumi.Input['DailyMaintenanceWindowArgs']] = None,
-                 maintenance_exclusions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 maintenance_exclusions: Optional[pulumi.Input['TimeWindowArgs']] = None,
                  recurring_window: Optional[pulumi.Input['RecurringTimeWindowArgs']] = None):
         """
         MaintenanceWindow defines the maintenance window to be used for the cluster.
         :param pulumi.Input['DailyMaintenanceWindowArgs'] daily_maintenance_window: DailyMaintenanceWindow specifies a daily maintenance operation window.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
+        :param pulumi.Input['TimeWindowArgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         :param pulumi.Input['RecurringTimeWindowArgs'] recurring_window: RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
         """
         if daily_maintenance_window is not None:
@@ -2436,14 +2436,14 @@ class MaintenanceWindowArgs:
 
     @property
     @pulumi.getter(name="maintenanceExclusions")
-    def maintenance_exclusions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def maintenance_exclusions(self) -> Optional[pulumi.Input['TimeWindowArgs']]:
         """
         Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         """
         return pulumi.get(self, "maintenance_exclusions")
 
     @maintenance_exclusions.setter
-    def maintenance_exclusions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def maintenance_exclusions(self, value: Optional[pulumi.Input['TimeWindowArgs']]):
         pulumi.set(self, "maintenance_exclusions", value)
 
     @property

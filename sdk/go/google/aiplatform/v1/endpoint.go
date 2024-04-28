@@ -48,7 +48,7 @@ type Endpoint struct {
 	PredictRequestResponseLoggingConfig GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigResponseOutput `pulumi:"predictRequestResponseLoggingConfig"`
 	Project                             pulumi.StringOutput                                                      `pulumi:"project"`
 	// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-	TrafficSplit pulumi.StringMapOutput `pulumi:"trafficSplit"`
+	TrafficSplit pulumi.IntMapOutput `pulumi:"trafficSplit"`
 	// Timestamp when this Endpoint was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -124,7 +124,7 @@ type endpointArgs struct {
 	PredictRequestResponseLoggingConfig *GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig `pulumi:"predictRequestResponseLoggingConfig"`
 	Project                             *string                                                     `pulumi:"project"`
 	// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-	TrafficSplit map[string]string `pulumi:"trafficSplit"`
+	TrafficSplit map[string]int `pulumi:"trafficSplit"`
 }
 
 // The set of arguments for constructing a Endpoint resource.
@@ -152,7 +152,7 @@ type EndpointArgs struct {
 	PredictRequestResponseLoggingConfig GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigPtrInput
 	Project                             pulumi.StringPtrInput
 	// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-	TrafficSplit pulumi.StringMapInput
+	TrafficSplit pulumi.IntMapInput
 }
 
 func (EndpointArgs) ElementType() reflect.Type {
@@ -270,8 +270,8 @@ func (o EndpointOutput) Project() pulumi.StringOutput {
 }
 
 // A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-func (o EndpointOutput) TrafficSplit() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Endpoint) pulumi.StringMapOutput { return v.TrafficSplit }).(pulumi.StringMapOutput)
+func (o EndpointOutput) TrafficSplit() pulumi.IntMapOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.IntMapOutput { return v.TrafficSplit }).(pulumi.IntMapOutput)
 }
 
 // Timestamp when this Endpoint was last updated.

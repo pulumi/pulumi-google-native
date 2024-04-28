@@ -41,7 +41,7 @@ type LookupContextResult struct {
 	// The labels with user-defined metadata to organize your Contexts. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Context (System labels are excluded).
 	Labels map[string]string `pulumi:"labels"`
 	// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 	// Immutable. The resource name of the Context.
 	Name string `pulumi:"name"`
 	// A list of resource names of Contexts that are parents of this Context. A Context may have at most 10 parent_contexts.
@@ -118,8 +118,8 @@ func (o LookupContextResultOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-func (o LookupContextResultOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupContextResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+func (o LookupContextResultOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupContextResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
 }
 
 // Immutable. The resource name of the Context.

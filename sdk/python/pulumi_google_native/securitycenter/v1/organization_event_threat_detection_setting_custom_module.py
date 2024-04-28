@@ -16,7 +16,7 @@ __all__ = ['OrganizationEventThreatDetectionSettingCustomModuleArgs', 'Organizat
 class OrganizationEventThreatDetectionSettingCustomModuleArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input['OrganizationEventThreatDetectionSettingCustomModuleEnablementState']] = None,
@@ -24,7 +24,7 @@ class OrganizationEventThreatDetectionSettingCustomModuleArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationEventThreatDetectionSettingCustomModule resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
+        :param pulumi.Input[Mapping[str, Any]] config: Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         :param pulumi.Input[str] description: The description for the module.
         :param pulumi.Input[str] display_name: The human readable name to be displayed for the module.
         :param pulumi.Input['OrganizationEventThreatDetectionSettingCustomModuleEnablementState'] enablement_state: The state of enablement for the module at the given level of the hierarchy.
@@ -56,14 +56,14 @@ class OrganizationEventThreatDetectionSettingCustomModuleArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "config", value)
 
     @property
@@ -132,7 +132,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input['OrganizationEventThreatDetectionSettingCustomModuleEnablementState']] = None,
@@ -146,7 +146,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
+        :param pulumi.Input[Mapping[str, Any]] config: Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         :param pulumi.Input[str] description: The description for the module.
         :param pulumi.Input[str] display_name: The human readable name to be displayed for the module.
         :param pulumi.Input['OrganizationEventThreatDetectionSettingCustomModuleEnablementState'] enablement_state: The state of enablement for the module at the given level of the hierarchy.
@@ -178,7 +178,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input['OrganizationEventThreatDetectionSettingCustomModuleEnablementState']] = None,
@@ -242,7 +242,7 @@ class OrganizationEventThreatDetectionSettingCustomModule(pulumi.CustomResource)
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output[Mapping[str, str]]:
+    def config(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         """

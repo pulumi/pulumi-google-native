@@ -39,6 +39,7 @@ __all__ = [
     'ExprArgs',
     'FleetObservabilityFeatureSpecArgs',
     'FleetObservabilityLoggingConfigArgs',
+    'FleetObservabilityMembershipSpecArgs',
     'FleetObservabilityRoutingConfigArgs',
     'GkeClusterArgs',
     'IdentityServiceAuthMethodArgs',
@@ -48,18 +49,27 @@ __all__ = [
     'IdentityServiceOidcConfigArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
+    'MembershipFeatureSpecArgs',
+    'MembershipSpecArgs',
     'MonitoringConfigArgs',
     'MultiCloudClusterArgs',
     'MultiClusterIngressFeatureSpecArgs',
     'OnPremClusterArgs',
+    'OriginArgs',
     'PolicyBindingArgs',
+    'PolicyControllerBundleInstallSpecArgs',
     'PolicyControllerHubConfigArgs',
     'PolicyControllerMembershipSpecArgs',
     'PolicyControllerMonitoringConfigArgs',
     'PolicyControllerPolicyContentSpecArgs',
+    'PolicyControllerPolicyControllerDeploymentConfigArgs',
+    'PolicyControllerResourceListArgs',
+    'PolicyControllerResourceRequirementsArgs',
     'PolicyControllerTemplateLibraryConfigArgs',
+    'PolicyControllerTolerationArgs',
     'ResourceOptionsArgs',
     'RoleArgs',
+    'ScopeFeatureSpecArgs',
     'SecurityPostureConfigArgs',
     'ServiceMeshMembershipSpecArgs',
 ]
@@ -1610,6 +1620,15 @@ class FleetObservabilityLoggingConfigArgs:
 
 
 @pulumi.input_type
+class FleetObservabilityMembershipSpecArgs:
+    def __init__(__self__):
+        """
+        **FleetObservability**: The membership-specific input for FleetObservability feature.
+        """
+        pass
+
+
+@pulumi.input_type
 class FleetObservabilityRoutingConfigArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input['FleetObservabilityRoutingConfigMode']] = None):
@@ -2226,6 +2245,182 @@ class MembershipEndpointArgs:
 
 
 @pulumi.input_type
+class MembershipFeatureSpecArgs:
+    def __init__(__self__, *,
+                 anthosobservability: Optional[pulumi.Input['AnthosObservabilityMembershipSpecArgs']] = None,
+                 cloudbuild: Optional[pulumi.Input['MembershipSpecArgs']] = None,
+                 configmanagement: Optional[pulumi.Input['ConfigManagementMembershipSpecArgs']] = None,
+                 fleetobservability: Optional[pulumi.Input['FleetObservabilityMembershipSpecArgs']] = None,
+                 identityservice: Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']] = None,
+                 mesh: Optional[pulumi.Input['ServiceMeshMembershipSpecArgs']] = None,
+                 origin: Optional[pulumi.Input['OriginArgs']] = None,
+                 policycontroller: Optional[pulumi.Input['PolicyControllerMembershipSpecArgs']] = None):
+        """
+        MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
+        :param pulumi.Input['AnthosObservabilityMembershipSpecArgs'] anthosobservability: Anthos Observability-specific spec
+        :param pulumi.Input['MembershipSpecArgs'] cloudbuild: Cloud Build-specific spec
+        :param pulumi.Input['ConfigManagementMembershipSpecArgs'] configmanagement: Config Management-specific spec.
+        :param pulumi.Input['FleetObservabilityMembershipSpecArgs'] fleetobservability: Fleet observability membership spec
+        :param pulumi.Input['IdentityServiceMembershipSpecArgs'] identityservice: Identity Service-specific spec.
+        :param pulumi.Input['ServiceMeshMembershipSpecArgs'] mesh: Anthos Service Mesh-specific spec
+        :param pulumi.Input['OriginArgs'] origin: Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+        :param pulumi.Input['PolicyControllerMembershipSpecArgs'] policycontroller: Policy Controller spec.
+        """
+        if anthosobservability is not None:
+            pulumi.set(__self__, "anthosobservability", anthosobservability)
+        if cloudbuild is not None:
+            pulumi.set(__self__, "cloudbuild", cloudbuild)
+        if configmanagement is not None:
+            pulumi.set(__self__, "configmanagement", configmanagement)
+        if fleetobservability is not None:
+            pulumi.set(__self__, "fleetobservability", fleetobservability)
+        if identityservice is not None:
+            pulumi.set(__self__, "identityservice", identityservice)
+        if mesh is not None:
+            pulumi.set(__self__, "mesh", mesh)
+        if origin is not None:
+            pulumi.set(__self__, "origin", origin)
+        if policycontroller is not None:
+            pulumi.set(__self__, "policycontroller", policycontroller)
+
+    @property
+    @pulumi.getter
+    def anthosobservability(self) -> Optional[pulumi.Input['AnthosObservabilityMembershipSpecArgs']]:
+        """
+        Anthos Observability-specific spec
+        """
+        return pulumi.get(self, "anthosobservability")
+
+    @anthosobservability.setter
+    def anthosobservability(self, value: Optional[pulumi.Input['AnthosObservabilityMembershipSpecArgs']]):
+        pulumi.set(self, "anthosobservability", value)
+
+    @property
+    @pulumi.getter
+    def cloudbuild(self) -> Optional[pulumi.Input['MembershipSpecArgs']]:
+        """
+        Cloud Build-specific spec
+        """
+        return pulumi.get(self, "cloudbuild")
+
+    @cloudbuild.setter
+    def cloudbuild(self, value: Optional[pulumi.Input['MembershipSpecArgs']]):
+        pulumi.set(self, "cloudbuild", value)
+
+    @property
+    @pulumi.getter
+    def configmanagement(self) -> Optional[pulumi.Input['ConfigManagementMembershipSpecArgs']]:
+        """
+        Config Management-specific spec.
+        """
+        return pulumi.get(self, "configmanagement")
+
+    @configmanagement.setter
+    def configmanagement(self, value: Optional[pulumi.Input['ConfigManagementMembershipSpecArgs']]):
+        pulumi.set(self, "configmanagement", value)
+
+    @property
+    @pulumi.getter
+    def fleetobservability(self) -> Optional[pulumi.Input['FleetObservabilityMembershipSpecArgs']]:
+        """
+        Fleet observability membership spec
+        """
+        return pulumi.get(self, "fleetobservability")
+
+    @fleetobservability.setter
+    def fleetobservability(self, value: Optional[pulumi.Input['FleetObservabilityMembershipSpecArgs']]):
+        pulumi.set(self, "fleetobservability", value)
+
+    @property
+    @pulumi.getter
+    def identityservice(self) -> Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']]:
+        """
+        Identity Service-specific spec.
+        """
+        return pulumi.get(self, "identityservice")
+
+    @identityservice.setter
+    def identityservice(self, value: Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']]):
+        pulumi.set(self, "identityservice", value)
+
+    @property
+    @pulumi.getter
+    def mesh(self) -> Optional[pulumi.Input['ServiceMeshMembershipSpecArgs']]:
+        """
+        Anthos Service Mesh-specific spec
+        """
+        return pulumi.get(self, "mesh")
+
+    @mesh.setter
+    def mesh(self, value: Optional[pulumi.Input['ServiceMeshMembershipSpecArgs']]):
+        pulumi.set(self, "mesh", value)
+
+    @property
+    @pulumi.getter
+    def origin(self) -> Optional[pulumi.Input['OriginArgs']]:
+        """
+        Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+        """
+        return pulumi.get(self, "origin")
+
+    @origin.setter
+    def origin(self, value: Optional[pulumi.Input['OriginArgs']]):
+        pulumi.set(self, "origin", value)
+
+    @property
+    @pulumi.getter
+    def policycontroller(self) -> Optional[pulumi.Input['PolicyControllerMembershipSpecArgs']]:
+        """
+        Policy Controller spec.
+        """
+        return pulumi.get(self, "policycontroller")
+
+    @policycontroller.setter
+    def policycontroller(self, value: Optional[pulumi.Input['PolicyControllerMembershipSpecArgs']]):
+        pulumi.set(self, "policycontroller", value)
+
+
+@pulumi.input_type
+class MembershipSpecArgs:
+    def __init__(__self__, *,
+                 security_policy: Optional[pulumi.Input['MembershipSpecSecurityPolicy']] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        **Cloud Build**: Configurations for each Cloud Build enabled cluster.
+        :param pulumi.Input['MembershipSpecSecurityPolicy'] security_policy: Whether it is allowed to run the privileged builds on the cluster or not.
+        :param pulumi.Input[str] version: Version of the cloud build software on the cluster.
+        """
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input['MembershipSpecSecurityPolicy']]:
+        """
+        Whether it is allowed to run the privileged builds on the cluster or not.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input['MembershipSpecSecurityPolicy']]):
+        pulumi.set(self, "security_policy", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the cloud build software on the cluster.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class MonitoringConfigArgs:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
@@ -2440,6 +2635,30 @@ class OnPremClusterArgs:
 
 
 @pulumi.input_type
+class OriginArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input['OriginType']] = None):
+        """
+        Origin defines where this MembershipFeatureSpec originated from.
+        :param pulumi.Input['OriginType'] type: Type specifies which type of origin is set.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['OriginType']]:
+        """
+        Type specifies which type of origin is set.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['OriginType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class PolicyBindingArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
@@ -2464,11 +2683,35 @@ class PolicyBindingArgs:
 
 
 @pulumi.input_type
+class PolicyControllerBundleInstallSpecArgs:
+    def __init__(__self__, *,
+                 exempted_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        BundleInstallSpec is the specification configuration for a single managed bundle.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_namespaces: The set of namespaces to be exempted from the bundle.
+        """
+        if exempted_namespaces is not None:
+            pulumi.set(__self__, "exempted_namespaces", exempted_namespaces)
+
+    @property
+    @pulumi.getter(name="exemptedNamespaces")
+    def exempted_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of namespaces to be exempted from the bundle.
+        """
+        return pulumi.get(self, "exempted_namespaces")
+
+    @exempted_namespaces.setter
+    def exempted_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exempted_namespaces", value)
+
+
+@pulumi.input_type
 class PolicyControllerHubConfigArgs:
     def __init__(__self__, *,
                  audit_interval_seconds: Optional[pulumi.Input[str]] = None,
                  constraint_violation_limit: Optional[pulumi.Input[str]] = None,
-                 deployment_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 deployment_configs: Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']] = None,
                  exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  install_spec: Optional[pulumi.Input['PolicyControllerHubConfigInstallSpec']] = None,
                  log_denies_enabled: Optional[pulumi.Input[bool]] = None,
@@ -2480,7 +2723,7 @@ class PolicyControllerHubConfigArgs:
         Configuration for Policy Controller
         :param pulumi.Input[str] audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
         :param pulumi.Input[str] constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
+        :param pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param pulumi.Input['PolicyControllerHubConfigInstallSpec'] install_spec: The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
         :param pulumi.Input[bool] log_denies_enabled: Logs all denies and dry run failures.
@@ -2536,14 +2779,14 @@ class PolicyControllerHubConfigArgs:
 
     @property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def deployment_configs(self) -> Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]:
         """
         Map of deployment configs to deployments ("admission", "audit", "mutation').
         """
         return pulumi.get(self, "deployment_configs")
 
     @deployment_configs.setter
-    def deployment_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def deployment_configs(self, value: Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigArgs']]):
         pulumi.set(self, "deployment_configs", value)
 
     @property
@@ -2698,11 +2941,11 @@ class PolicyControllerMonitoringConfigArgs:
 @pulumi.input_type
 class PolicyControllerPolicyContentSpecArgs:
     def __init__(__self__, *,
-                 bundles: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bundles: Optional[pulumi.Input['PolicyControllerBundleInstallSpecArgs']] = None,
                  template_library: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigArgs']] = None):
         """
         PolicyContentSpec defines the user's desired content configuration on the cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        :param pulumi.Input['PolicyControllerBundleInstallSpecArgs'] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         :param pulumi.Input['PolicyControllerTemplateLibraryConfigArgs'] template_library: Configures the installation of the Template Library.
         """
         if bundles is not None:
@@ -2712,14 +2955,14 @@ class PolicyControllerPolicyContentSpecArgs:
 
     @property
     @pulumi.getter
-    def bundles(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def bundles(self) -> Optional[pulumi.Input['PolicyControllerBundleInstallSpecArgs']]:
         """
         map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         """
         return pulumi.get(self, "bundles")
 
     @bundles.setter
-    def bundles(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def bundles(self, value: Optional[pulumi.Input['PolicyControllerBundleInstallSpecArgs']]):
         pulumi.set(self, "bundles", value)
 
     @property
@@ -2733,6 +2976,174 @@ class PolicyControllerPolicyContentSpecArgs:
     @template_library.setter
     def template_library(self, value: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigArgs']]):
         pulumi.set(self, "template_library", value)
+
+
+@pulumi.input_type
+class PolicyControllerPolicyControllerDeploymentConfigArgs:
+    def __init__(__self__, *,
+                 container_resources: Optional[pulumi.Input['PolicyControllerResourceRequirementsArgs']] = None,
+                 pod_affinity: Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigPodAffinity']] = None,
+                 pod_anti_affinity: Optional[pulumi.Input[bool]] = None,
+                 pod_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyControllerTolerationArgs']]]] = None,
+                 replica_count: Optional[pulumi.Input[str]] = None):
+        """
+        Deployment-specific configuration.
+        :param pulumi.Input['PolicyControllerResourceRequirementsArgs'] container_resources: Container resource requirements.
+        :param pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigPodAffinity'] pod_affinity: Pod affinity configuration.
+        :param pulumi.Input[bool] pod_anti_affinity: Pod anti-affinity enablement.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyControllerTolerationArgs']]] pod_tolerations: Pod tolerations of node taints.
+        :param pulumi.Input[str] replica_count: Pod replica count.
+        """
+        if container_resources is not None:
+            pulumi.set(__self__, "container_resources", container_resources)
+        if pod_affinity is not None:
+            pulumi.set(__self__, "pod_affinity", pod_affinity)
+        if pod_anti_affinity is not None:
+            pulumi.set(__self__, "pod_anti_affinity", pod_anti_affinity)
+        if pod_tolerations is not None:
+            pulumi.set(__self__, "pod_tolerations", pod_tolerations)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
+
+    @property
+    @pulumi.getter(name="containerResources")
+    def container_resources(self) -> Optional[pulumi.Input['PolicyControllerResourceRequirementsArgs']]:
+        """
+        Container resource requirements.
+        """
+        return pulumi.get(self, "container_resources")
+
+    @container_resources.setter
+    def container_resources(self, value: Optional[pulumi.Input['PolicyControllerResourceRequirementsArgs']]):
+        pulumi.set(self, "container_resources", value)
+
+    @property
+    @pulumi.getter(name="podAffinity")
+    def pod_affinity(self) -> Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigPodAffinity']]:
+        """
+        Pod affinity configuration.
+        """
+        return pulumi.get(self, "pod_affinity")
+
+    @pod_affinity.setter
+    def pod_affinity(self, value: Optional[pulumi.Input['PolicyControllerPolicyControllerDeploymentConfigPodAffinity']]):
+        pulumi.set(self, "pod_affinity", value)
+
+    @property
+    @pulumi.getter(name="podAntiAffinity")
+    def pod_anti_affinity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Pod anti-affinity enablement.
+        """
+        return pulumi.get(self, "pod_anti_affinity")
+
+    @pod_anti_affinity.setter
+    def pod_anti_affinity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "pod_anti_affinity", value)
+
+    @property
+    @pulumi.getter(name="podTolerations")
+    def pod_tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyControllerTolerationArgs']]]]:
+        """
+        Pod tolerations of node taints.
+        """
+        return pulumi.get(self, "pod_tolerations")
+
+    @pod_tolerations.setter
+    def pod_tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyControllerTolerationArgs']]]]):
+        pulumi.set(self, "pod_tolerations", value)
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pod replica count.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @replica_count.setter
+    def replica_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replica_count", value)
+
+
+@pulumi.input_type
+class PolicyControllerResourceListArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[str]] = None,
+                 memory: Optional[pulumi.Input[str]] = None):
+        """
+        ResourceList contains container resource requirements.
+        :param pulumi.Input[str] cpu: CPU requirement expressed in Kubernetes resource units.
+        :param pulumi.Input[str] memory: Memory requirement expressed in Kubernetes resource units.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[str]]:
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memory", value)
+
+
+@pulumi.input_type
+class PolicyControllerResourceRequirementsArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input['PolicyControllerResourceListArgs']] = None,
+                 requests: Optional[pulumi.Input['PolicyControllerResourceListArgs']] = None):
+        """
+        ResourceRequirements describes the compute resource requirements.
+        :param pulumi.Input['PolicyControllerResourceListArgs'] limits: Limits describes the maximum amount of compute resources allowed for use by the running container.
+        :param pulumi.Input['PolicyControllerResourceListArgs'] requests: Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input['PolicyControllerResourceListArgs']]:
+        """
+        Limits describes the maximum amount of compute resources allowed for use by the running container.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input['PolicyControllerResourceListArgs']]):
+        pulumi.set(self, "limits", value)
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input['PolicyControllerResourceListArgs']]:
+        """
+        Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input['PolicyControllerResourceListArgs']]):
+        pulumi.set(self, "requests", value)
 
 
 @pulumi.input_type
@@ -2757,6 +3168,78 @@ class PolicyControllerTemplateLibraryConfigArgs:
     @installation.setter
     def installation(self, value: Optional[pulumi.Input['PolicyControllerTemplateLibraryConfigInstallation']]):
         pulumi.set(self, "installation", value)
+
+
+@pulumi.input_type
+class PolicyControllerTolerationArgs:
+    def __init__(__self__, *,
+                 effect: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 operator: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Toleration of a node taint.
+        :param pulumi.Input[str] effect: Matches a taint effect.
+        :param pulumi.Input[str] key: Matches a taint key (not necessarily unique).
+        :param pulumi.Input[str] operator: Matches a taint operator.
+        :param pulumi.Input[str] value: Matches a taint value.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a taint key (not necessarily unique).
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a taint operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches a taint value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -2837,6 +3320,15 @@ class RoleArgs:
     @predefined_role.setter
     def predefined_role(self, value: Optional[pulumi.Input['RolePredefinedRole']]):
         pulumi.set(self, "predefined_role", value)
+
+
+@pulumi.input_type
+class ScopeFeatureSpecArgs:
+    def __init__(__self__):
+        """
+        ScopeFeatureSpec contains feature specs for a fleet scope.
+        """
+        pass
 
 
 @pulumi.input_type

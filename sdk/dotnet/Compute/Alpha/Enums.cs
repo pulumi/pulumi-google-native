@@ -5039,6 +5039,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Preference for a given location. Set to either ALLOW or DENY.
+    /// </summary>
+    [EnumType]
+    public readonly struct LocationPolicyLocationPreference : IEquatable<LocationPolicyLocationPreference>
+    {
+        private readonly string _value;
+
+        private LocationPolicyLocationPreference(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Location is allowed for use.
+        /// </summary>
+        public static LocationPolicyLocationPreference Allow { get; } = new LocationPolicyLocationPreference("ALLOW");
+        /// <summary>
+        /// Location is prohibited.
+        /// </summary>
+        public static LocationPolicyLocationPreference Deny { get; } = new LocationPolicyLocationPreference("DENY");
+        /// <summary>
+        /// Default value, unused.
+        /// </summary>
+        public static LocationPolicyLocationPreference PreferenceUnspecified { get; } = new LocationPolicyLocationPreference("PREFERENCE_UNSPECIFIED");
+
+        public static bool operator ==(LocationPolicyLocationPreference left, LocationPolicyLocationPreference right) => left.Equals(right);
+        public static bool operator !=(LocationPolicyLocationPreference left, LocationPolicyLocationPreference right) => !left.Equals(right);
+
+        public static explicit operator string(LocationPolicyLocationPreference value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LocationPolicyLocationPreference other && Equals(other);
+        public bool Equals(LocationPolicyLocationPreference other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Strategy for distributing VMs across zones in a region.
     /// </summary>
     [EnumType]
@@ -9476,6 +9517,68 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SslPolicyProfile other && Equals(other);
         public bool Equals(SslPolicyProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+    /// </summary>
+    [EnumType]
+    public readonly struct StatefulPolicyPreservedStateDiskDeviceAutoDelete : IEquatable<StatefulPolicyPreservedStateDiskDeviceAutoDelete>
+    {
+        private readonly string _value;
+
+        private StatefulPolicyPreservedStateDiskDeviceAutoDelete(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static StatefulPolicyPreservedStateDiskDeviceAutoDelete Never { get; } = new StatefulPolicyPreservedStateDiskDeviceAutoDelete("NEVER");
+        public static StatefulPolicyPreservedStateDiskDeviceAutoDelete OnPermanentInstanceDeletion { get; } = new StatefulPolicyPreservedStateDiskDeviceAutoDelete("ON_PERMANENT_INSTANCE_DELETION");
+
+        public static bool operator ==(StatefulPolicyPreservedStateDiskDeviceAutoDelete left, StatefulPolicyPreservedStateDiskDeviceAutoDelete right) => left.Equals(right);
+        public static bool operator !=(StatefulPolicyPreservedStateDiskDeviceAutoDelete left, StatefulPolicyPreservedStateDiskDeviceAutoDelete right) => !left.Equals(right);
+
+        public static explicit operator string(StatefulPolicyPreservedStateDiskDeviceAutoDelete value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StatefulPolicyPreservedStateDiskDeviceAutoDelete other && Equals(other);
+        public bool Equals(StatefulPolicyPreservedStateDiskDeviceAutoDelete other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+    /// </summary>
+    [EnumType]
+    public readonly struct StatefulPolicyPreservedStateNetworkIpAutoDelete : IEquatable<StatefulPolicyPreservedStateNetworkIpAutoDelete>
+    {
+        private readonly string _value;
+
+        private StatefulPolicyPreservedStateNetworkIpAutoDelete(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static StatefulPolicyPreservedStateNetworkIpAutoDelete Never { get; } = new StatefulPolicyPreservedStateNetworkIpAutoDelete("NEVER");
+        public static StatefulPolicyPreservedStateNetworkIpAutoDelete OnPermanentInstanceDeletion { get; } = new StatefulPolicyPreservedStateNetworkIpAutoDelete("ON_PERMANENT_INSTANCE_DELETION");
+
+        public static bool operator ==(StatefulPolicyPreservedStateNetworkIpAutoDelete left, StatefulPolicyPreservedStateNetworkIpAutoDelete right) => left.Equals(right);
+        public static bool operator !=(StatefulPolicyPreservedStateNetworkIpAutoDelete left, StatefulPolicyPreservedStateNetworkIpAutoDelete right) => !left.Equals(right);
+
+        public static explicit operator string(StatefulPolicyPreservedStateNetworkIpAutoDelete value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StatefulPolicyPreservedStateNetworkIpAutoDelete other && Equals(other);
+        public bool Equals(StatefulPolicyPreservedStateNetworkIpAutoDelete other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

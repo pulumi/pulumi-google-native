@@ -17,7 +17,7 @@ type Run struct {
 	pulumi.CustomResourceState
 
 	// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
-	Attributes pulumi.StringMapOutput `pulumi:"attributes"`
+	Attributes pulumi.MapOutput `pulumi:"attributes"`
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. The timestamp of the end of the run.
@@ -91,7 +91,7 @@ func (RunState) ElementType() reflect.Type {
 
 type runArgs struct {
 	// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
-	Attributes map[string]string `pulumi:"attributes"`
+	Attributes map[string]interface{} `pulumi:"attributes"`
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. The timestamp of the end of the run.
@@ -112,7 +112,7 @@ type runArgs struct {
 // The set of arguments for constructing a Run resource.
 type RunArgs struct {
 	// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
-	Attributes pulumi.StringMapInput
+	Attributes pulumi.MapInput
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName pulumi.StringPtrInput
 	// Optional. The timestamp of the end of the run.
@@ -168,8 +168,8 @@ func (o RunOutput) ToRunOutputWithContext(ctx context.Context) RunOutput {
 }
 
 // Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
-func (o RunOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Run) pulumi.StringMapOutput { return v.Attributes }).(pulumi.StringMapOutput)
+func (o RunOutput) Attributes() pulumi.MapOutput {
+	return o.ApplyT(func(v *Run) pulumi.MapOutput { return v.Attributes }).(pulumi.MapOutput)
 }
 
 // Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`

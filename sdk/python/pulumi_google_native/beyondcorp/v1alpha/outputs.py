@@ -366,13 +366,13 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse(dict):
     ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
     """
     def __init__(__self__, *,
-                 resource: Mapping[str, str],
+                 resource: Mapping[str, Any],
                  status: str,
                  sub: Sequence['outputs.GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse'],
                  time: str):
         """
         ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
-        :param Mapping[str, str] resource: Specific details for the resource. This is for internal use only.
+        :param Mapping[str, Any] resource: Specific details for the resource. This is for internal use only.
         :param str status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param Sequence['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse'] sub: List of Info for the sub level resources.
         :param str time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
@@ -384,7 +384,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse(dict):
 
     @property
     @pulumi.getter
-    def resource(self) -> Mapping[str, str]:
+    def resource(self) -> Mapping[str, Any]:
         """
         Specific details for the resource. This is for internal use only.
         """
@@ -585,11 +585,11 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse(dict):
     """
     def __init__(__self__, *,
                  type: str,
-                 value: Mapping[str, str]):
+                 value: Mapping[str, Any]):
         """
         Message to capture settings for a BrowserDlpRule
         :param str type: Immutable. The type of the Setting. .
-        :param Mapping[str, str] value: The value of the Setting.
+        :param Mapping[str, Any] value: The value of the Setting.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
@@ -604,7 +604,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> Mapping[str, str]:
+    def value(self) -> Mapping[str, Any]:
         """
         The value of the Setting.
         """
@@ -909,13 +909,13 @@ class ResourceInfoResponse(dict):
     ResourceInfo represents the information/status of the associated resource.
     """
     def __init__(__self__, *,
-                 resource: Mapping[str, str],
+                 resource: Mapping[str, Any],
                  status: str,
                  sub: Sequence['outputs.ResourceInfoResponse'],
                  time: str):
         """
         ResourceInfo represents the information/status of the associated resource.
-        :param Mapping[str, str] resource: Specific details for the resource.
+        :param Mapping[str, Any] resource: Specific details for the resource.
         :param str status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param Sequence['ResourceInfoResponse'] sub: List of Info for the sub level resources.
         :param str time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
@@ -927,7 +927,7 @@ class ResourceInfoResponse(dict):
 
     @property
     @pulumi.getter
-    def resource(self) -> Mapping[str, str]:
+    def resource(self) -> Mapping[str, Any]:
         """
         Specific details for the resource.
         """

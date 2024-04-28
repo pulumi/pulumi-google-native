@@ -556,6 +556,51 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     }
 
     /// <summary>
+    /// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender : IEquatable<GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified gender, which means that the client doesn't care which gender the selected voice will have.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderUnspecified { get; } = new GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_UNSPECIFIED");
+        /// <summary>
+        /// A male voice.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderMale { get; } = new GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_MALE");
+        /// <summary>
+        /// A female voice.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderFemale { get; } = new GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_FEMALE");
+        /// <summary>
+        /// A gender-neutral voice.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderNeutral { get; } = new GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_NEUTRAL");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender left, GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender left, GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
     /// </summary>
     [EnumType]

@@ -15,17 +15,11 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
     /// </summary>
     public sealed class PolicyControllerPolicyContentSpecArgs : global::Pulumi.ResourceArgs
     {
-        [Input("bundles")]
-        private InputMap<string>? _bundles;
-
         /// <summary>
         /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         /// </summary>
-        public InputMap<string> Bundles
-        {
-            get => _bundles ?? (_bundles = new InputMap<string>());
-            set => _bundles = value;
-        }
+        [Input("bundles")]
+        public Input<Inputs.PolicyControllerBundleInstallSpecArgs>? Bundles { get; set; }
 
         /// <summary>
         /// Configures the installation of the Template Library.

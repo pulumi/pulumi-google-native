@@ -2955,12 +2955,12 @@ class MaintenanceWindowResponse(dict):
 
     def __init__(__self__, *,
                  daily_maintenance_window: 'outputs.DailyMaintenanceWindowResponse',
-                 maintenance_exclusions: Mapping[str, str],
+                 maintenance_exclusions: 'outputs.TimeWindowResponse',
                  recurring_window: 'outputs.RecurringTimeWindowResponse'):
         """
         MaintenanceWindow defines the maintenance window to be used for the cluster.
         :param 'DailyMaintenanceWindowResponse' daily_maintenance_window: DailyMaintenanceWindow specifies a daily maintenance operation window.
-        :param Mapping[str, str] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
+        :param 'TimeWindowResponse' maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         :param 'RecurringTimeWindowResponse' recurring_window: RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
         """
         pulumi.set(__self__, "daily_maintenance_window", daily_maintenance_window)
@@ -2977,7 +2977,7 @@ class MaintenanceWindowResponse(dict):
 
     @property
     @pulumi.getter(name="maintenanceExclusions")
-    def maintenance_exclusions(self) -> Mapping[str, str]:
+    def maintenance_exclusions(self) -> 'outputs.TimeWindowResponse':
         """
         Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         """

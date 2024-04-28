@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         /// </summary>
         [Output("cleanupPolicies")]
-        public Output<ImmutableDictionary<string, string>> CleanupPolicies { get; private set; } = null!;
+        public Output<Outputs.CleanupPolicyResponse> CleanupPolicies { get; private set; } = null!;
 
         /// <summary>
         /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
@@ -174,17 +174,11 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
-        [Input("cleanupPolicies")]
-        private InputMap<string>? _cleanupPolicies;
-
         /// <summary>
         /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         /// </summary>
-        public InputMap<string> CleanupPolicies
-        {
-            get => _cleanupPolicies ?? (_cleanupPolicies = new InputMap<string>());
-            set => _cleanupPolicies = value;
-        }
+        [Input("cleanupPolicies")]
+        public Input<Inputs.CleanupPolicyArgs>? CleanupPolicies { get; set; }
 
         /// <summary>
         /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.

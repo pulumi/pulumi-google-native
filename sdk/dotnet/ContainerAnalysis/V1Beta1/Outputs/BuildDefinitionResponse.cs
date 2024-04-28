@@ -14,17 +14,17 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class BuildDefinitionResponse
     {
         public readonly string BuildType;
-        public readonly ImmutableDictionary<string, string> ExternalParameters;
-        public readonly ImmutableDictionary<string, string> InternalParameters;
+        public readonly ImmutableDictionary<string, object> ExternalParameters;
+        public readonly ImmutableDictionary<string, object> InternalParameters;
         public readonly ImmutableArray<Outputs.ResourceDescriptorResponse> ResolvedDependencies;
 
         [OutputConstructor]
         private BuildDefinitionResponse(
             string buildType,
 
-            ImmutableDictionary<string, string> externalParameters,
+            ImmutableDictionary<string, object> externalParameters,
 
-            ImmutableDictionary<string, string> internalParameters,
+            ImmutableDictionary<string, object> internalParameters,
 
             ImmutableArray<Outputs.ResourceDescriptorResponse> resolvedDependencies)
         {

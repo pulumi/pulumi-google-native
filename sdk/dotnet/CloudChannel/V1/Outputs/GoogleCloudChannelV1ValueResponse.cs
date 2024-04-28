@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
         /// <summary>
         /// Represents an 'Any' proto value.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ProtoValue;
+        public readonly ImmutableDictionary<string, object> ProtoValue;
         /// <summary>
         /// Represents a string value.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 
             string int64Value,
 
-            ImmutableDictionary<string, string> protoValue,
+            ImmutableDictionary<string, object> protoValue,
 
             string stringValue)
         {

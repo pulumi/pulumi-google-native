@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> PartnerMetadata;
+        public readonly Outputs.StructuredEntriesResponse PartnerMetadata;
         /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// Mapping of user defined keys to ServiceIntegrationSpec.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ServiceIntegrationSpecs;
+        public readonly Outputs.ServiceIntegrationSpecResponse ServiceIntegrationSpecs;
         /// <summary>
         /// Note that for MachineImage, this is not supported yet.
         /// </summary>
@@ -152,7 +152,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.NetworkPerformanceConfigResponse networkPerformanceConfig,
 
-            ImmutableDictionary<string, string> partnerMetadata,
+            Outputs.StructuredEntriesResponse partnerMetadata,
 
             string postKeyRevocationActionType,
 
@@ -170,7 +170,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<Outputs.ServiceAccountResponse> serviceAccounts,
 
-            ImmutableDictionary<string, string> serviceIntegrationSpecs,
+            Outputs.ServiceIntegrationSpecResponse serviceIntegrationSpecs,
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
 

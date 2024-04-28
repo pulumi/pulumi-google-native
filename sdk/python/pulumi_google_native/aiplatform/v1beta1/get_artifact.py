@@ -98,7 +98,7 @@ class GetArtifactResult:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> Mapping[str, Any]:
         """
         Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         """

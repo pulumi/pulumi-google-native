@@ -10,8 +10,10 @@ __all__ = [
     'ConfigManagementPolicyControllerMonitoringBackendsItem',
     'FleetObservabilityRoutingConfigMode',
     'OnPremClusterClusterType',
+    'OriginType',
     'PolicyControllerHubConfigInstallSpec',
     'PolicyControllerMonitoringConfigBackendsItem',
+    'PolicyControllerPolicyControllerDeploymentConfigPodAffinity',
     'PolicyControllerTemplateLibraryConfigInstallation',
     'RolePredefinedRole',
     'SecurityPostureConfigMode',
@@ -120,6 +122,28 @@ class OnPremClusterClusterType(str, Enum):
     """
 
 
+class OriginType(str, Enum):
+    """
+    Type specifies which type of origin is set.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Type is unknown or not set.
+    """
+    FLEET = "FLEET"
+    """
+    Per-Membership spec was inherited from the fleet-level default.
+    """
+    FLEET_OUT_OF_SYNC = "FLEET_OUT_OF_SYNC"
+    """
+    Per-Membership spec was inherited from the fleet-level default but is now out of sync with the current default.
+    """
+    USER = "USER"
+    """
+    Per-Membership spec was inherited from a user specification.
+    """
+
+
 class PolicyControllerHubConfigInstallSpec(str, Enum):
     """
     The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
@@ -158,6 +182,24 @@ class PolicyControllerMonitoringConfigBackendsItem(str, Enum):
     CLOUD_MONITORING = "CLOUD_MONITORING"
     """
     Stackdriver/Cloud Monitoring backend for monitoring
+    """
+
+
+class PolicyControllerPolicyControllerDeploymentConfigPodAffinity(str, Enum):
+    """
+    Pod affinity configuration.
+    """
+    AFFINITY_UNSPECIFIED = "AFFINITY_UNSPECIFIED"
+    """
+    No affinity configuration has been specified.
+    """
+    NO_AFFINITY = "NO_AFFINITY"
+    """
+    Affinity configurations will be removed from the deployment.
+    """
+    ANTI_AFFINITY = "ANTI_AFFINITY"
+    """
+    Anti-affinity configuration will be applied to this deployment. Default for admissions deployment.
     """
 
 

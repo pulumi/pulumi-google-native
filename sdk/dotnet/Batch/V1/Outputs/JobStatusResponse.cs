@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// <summary>
         /// Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> TaskGroups;
+        public readonly Outputs.TaskGroupStatusResponse TaskGroups;
 
         [OutputConstructor]
         private JobStatusResponse(
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             ImmutableArray<Outputs.StatusEventResponse> statusEvents,
 
-            ImmutableDictionary<string, string> taskGroups)
+            Outputs.TaskGroupStatusResponse taskGroups)
         {
             RunDuration = runDuration;
             State = state;

@@ -48,7 +48,7 @@ type LookupPipelineJobResult struct {
 	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
 	Network string `pulumi:"network"`
 	// The spec of the pipeline.
-	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
+	PipelineSpec map[string]interface{} `pulumi:"pipelineSpec"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -152,8 +152,8 @@ func (o LookupPipelineJobResultOutput) Network() pulumi.StringOutput {
 }
 
 // The spec of the pipeline.
-func (o LookupPipelineJobResultOutput) PipelineSpec() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupPipelineJobResult) map[string]string { return v.PipelineSpec }).(pulumi.StringMapOutput)
+func (o LookupPipelineJobResultOutput) PipelineSpec() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupPipelineJobResult) map[string]interface{} { return v.PipelineSpec }).(pulumi.MapOutput)
 }
 
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].

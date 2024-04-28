@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'GoogleCloudPolicysimulatorV1betaReplayConfigLogSource',
+    'GoogleIamV1AuditLogConfigLogType',
 ]
 
 
@@ -20,4 +21,26 @@ class GoogleCloudPolicysimulatorV1betaReplayConfigLogSource(str, Enum):
     RECENT_ACCESSES = "RECENT_ACCESSES"
     """
     All access logs from the last 90 days. These logs may not include logs from the most recent 7 days.
+    """
+
+
+class GoogleIamV1AuditLogConfigLogType(str, Enum):
+    """
+    The log type that this config enables.
+    """
+    LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
+    """
+    Default case. Should never be this.
+    """
+    ADMIN_READ = "ADMIN_READ"
+    """
+    Admin reads. Example: CloudIAM getIamPolicy
+    """
+    DATA_WRITE = "DATA_WRITE"
+    """
+    Data writes. Example: CloudSQL Users create
+    """
+    DATA_READ = "DATA_READ"
+    """
+    Data reads. Example: CloudSQL Users list
     """

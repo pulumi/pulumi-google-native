@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// <summary>
         /// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Percentages;
+        public readonly ImmutableDictionary<string, double> Percentages;
 
         [OutputConstructor]
-        private TrafficPercentStrategyResponse(ImmutableDictionary<string, string> percentages)
+        private TrafficPercentStrategyResponse(ImmutableDictionary<string, double> percentages)
         {
             Percentages = percentages;
         }

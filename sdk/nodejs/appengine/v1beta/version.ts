@@ -110,7 +110,7 @@ export class Version extends pulumi.CustomResource {
     /**
      * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
      */
-    public readonly generatedCustomerMetadata!: pulumi.Output<{[key: string]: string}>;
+    public readonly generatedCustomerMetadata!: pulumi.Output<{[key: string]: any}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
@@ -384,7 +384,7 @@ export interface VersionArgs {
     /**
      * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
      */
-    generatedCustomerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    generatedCustomerMetadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */

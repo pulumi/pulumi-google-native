@@ -22,7 +22,7 @@ type Document struct {
 	Content     GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput `pulumi:"content"`
 	DataStoreId pulumi.StringOutput                                           `pulumi:"dataStoreId"`
 	// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
-	DerivedStructData pulumi.StringMapOutput `pulumi:"derivedStructData"`
+	DerivedStructData pulumi.MapOutput `pulumi:"derivedStructData"`
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
 	DocumentId pulumi.StringOutput `pulumi:"documentId"`
 	// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
@@ -36,7 +36,7 @@ type Document struct {
 	// The identifier of the schema located in the same data store.
 	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
 	// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-	StructData pulumi.StringMapOutput `pulumi:"structData"`
+	StructData pulumi.MapOutput `pulumi:"structData"`
 }
 
 // NewDocument registers a new resource with the given unique name, arguments, and options.
@@ -120,7 +120,7 @@ type documentArgs struct {
 	// The identifier of the schema located in the same data store.
 	SchemaId *string `pulumi:"schemaId"`
 	// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-	StructData map[string]string `pulumi:"structData"`
+	StructData map[string]interface{} `pulumi:"structData"`
 }
 
 // The set of arguments for constructing a Document resource.
@@ -145,7 +145,7 @@ type DocumentArgs struct {
 	// The identifier of the schema located in the same data store.
 	SchemaId pulumi.StringPtrInput
 	// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-	StructData pulumi.StringMapInput
+	StructData pulumi.MapInput
 }
 
 func (DocumentArgs) ElementType() reflect.Type {
@@ -203,8 +203,8 @@ func (o DocumentOutput) DataStoreId() pulumi.StringOutput {
 }
 
 // This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
-func (o DocumentOutput) DerivedStructData() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Document) pulumi.StringMapOutput { return v.DerivedStructData }).(pulumi.StringMapOutput)
+func (o DocumentOutput) DerivedStructData() pulumi.MapOutput {
+	return o.ApplyT(func(v *Document) pulumi.MapOutput { return v.DerivedStructData }).(pulumi.MapOutput)
 }
 
 // Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -241,8 +241,8 @@ func (o DocumentOutput) SchemaId() pulumi.StringOutput {
 }
 
 // The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-func (o DocumentOutput) StructData() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Document) pulumi.StringMapOutput { return v.StructData }).(pulumi.StringMapOutput)
+func (o DocumentOutput) StructData() pulumi.MapOutput {
+	return o.ApplyT(func(v *Document) pulumi.MapOutput { return v.StructData }).(pulumi.MapOutput)
 }
 
 func init() {

@@ -46,6 +46,26 @@ export const BinaryAuthorizationConfigEvaluationMode = {
  */
 export type BinaryAuthorizationConfigEvaluationMode = (typeof BinaryAuthorizationConfigEvaluationMode)[keyof typeof BinaryAuthorizationConfigEvaluationMode];
 
+export const CloudBuildMembershipSpecSecurityPolicy = {
+    /**
+     * Unspecified policy
+     */
+    SecurityPolicyUnspecified: "SECURITY_POLICY_UNSPECIFIED",
+    /**
+     * Privileged build pods are disallowed
+     */
+    NonPrivileged: "NON_PRIVILEGED",
+    /**
+     * Privileged build pods are allowed
+     */
+    Privileged: "PRIVILEGED",
+} as const;
+
+/**
+ * Whether it is allowed to run the privileged builds on the cluster or not.
+ */
+export type CloudBuildMembershipSpecSecurityPolicy = (typeof CloudBuildMembershipSpecSecurityPolicy)[keyof typeof CloudBuildMembershipSpecSecurityPolicy];
+
 export const ConfigManagementPolicyControllerMonitoringBackendsItem = {
     /**
      * Backend cannot be determined
@@ -199,6 +219,30 @@ export const OnPremClusterClusterType = {
  */
 export type OnPremClusterClusterType = (typeof OnPremClusterClusterType)[keyof typeof OnPremClusterClusterType];
 
+export const OriginType = {
+    /**
+     * Type is unknown or not set.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Per-Membership spec was inherited from the fleet-level default.
+     */
+    Fleet: "FLEET",
+    /**
+     * Per-Membership spec was inherited from the fleet-level default but is now out of sync with the current default.
+     */
+    FleetOutOfSync: "FLEET_OUT_OF_SYNC",
+    /**
+     * Per-Membership spec was inherited from a user specification.
+     */
+    User: "USER",
+} as const;
+
+/**
+ * Type specifies which type of origin is set.
+ */
+export type OriginType = (typeof OriginType)[keyof typeof OriginType];
+
 export const PolicyControllerHubConfigInstallSpec = {
     /**
      * Spec is unknown.
@@ -243,6 +287,26 @@ export const PolicyControllerMonitoringConfigBackendsItem = {
 } as const;
 
 export type PolicyControllerMonitoringConfigBackendsItem = (typeof PolicyControllerMonitoringConfigBackendsItem)[keyof typeof PolicyControllerMonitoringConfigBackendsItem];
+
+export const PolicyControllerPolicyControllerDeploymentConfigPodAffinity = {
+    /**
+     * No affinity configuration has been specified.
+     */
+    AffinityUnspecified: "AFFINITY_UNSPECIFIED",
+    /**
+     * Affinity configurations will be removed from the deployment.
+     */
+    NoAffinity: "NO_AFFINITY",
+    /**
+     * Anti-affinity configuration will be applied to this deployment. Default for admissions deployment.
+     */
+    AntiAffinity: "ANTI_AFFINITY",
+} as const;
+
+/**
+ * Pod affinity configuration.
+ */
+export type PolicyControllerPolicyControllerDeploymentConfigPodAffinity = (typeof PolicyControllerPolicyControllerDeploymentConfigPodAffinity)[keyof typeof PolicyControllerPolicyControllerDeploymentConfigPodAffinity];
 
 export const PolicyControllerTemplateLibraryConfigInstallation = {
     /**

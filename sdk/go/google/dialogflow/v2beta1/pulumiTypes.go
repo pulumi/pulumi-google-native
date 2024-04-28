@@ -212,7 +212,7 @@ type GoogleCloudDialogflowV2beta1Context struct {
 	// The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name string `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters map[string]interface{} `pulumi:"parameters"`
 }
 
 // GoogleCloudDialogflowV2beta1ContextInput is an input type that accepts GoogleCloudDialogflowV2beta1ContextArgs and GoogleCloudDialogflowV2beta1ContextOutput values.
@@ -233,7 +233,7 @@ type GoogleCloudDialogflowV2beta1ContextArgs struct {
 	// The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	Parameters pulumi.MapInput `pulumi:"parameters"`
 }
 
 func (GoogleCloudDialogflowV2beta1ContextArgs) ElementType() reflect.Type {
@@ -299,8 +299,8 @@ func (o GoogleCloudDialogflowV2beta1ContextOutput) Name() pulumi.StringOutput {
 }
 
 // Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
-func (o GoogleCloudDialogflowV2beta1ContextOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Context) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GoogleCloudDialogflowV2beta1ContextOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Context) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
 }
 
 type GoogleCloudDialogflowV2beta1ContextArrayOutput struct{ *pulumi.OutputState }
@@ -330,7 +330,7 @@ type GoogleCloudDialogflowV2beta1ContextResponse struct {
 	// The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name string `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters map[string]interface{} `pulumi:"parameters"`
 }
 
 // Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
@@ -359,8 +359,8 @@ func (o GoogleCloudDialogflowV2beta1ContextResponseOutput) Name() pulumi.StringO
 }
 
 // Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
-func (o GoogleCloudDialogflowV2beta1ContextResponseOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ContextResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GoogleCloudDialogflowV2beta1ContextResponseOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1ContextResponse) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
 }
 
 type GoogleCloudDialogflowV2beta1ContextResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4974,7 +4974,7 @@ type GoogleCloudDialogflowV2beta1IntentMessage struct {
 	// The media content card for Actions on Google.
 	MediaContent *GoogleCloudDialogflowV2beta1IntentMessageMediaContent `pulumi:"mediaContent"`
 	// A custom platform-specific response.
-	Payload map[string]string `pulumi:"payload"`
+	Payload map[string]interface{} `pulumi:"payload"`
 	// Optional. The platform that this message is intended for.
 	Platform *GoogleCloudDialogflowV2beta1IntentMessagePlatform `pulumi:"platform"`
 	// Displays quick replies.
@@ -5031,7 +5031,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageArgs struct {
 	// The media content card for Actions on Google.
 	MediaContent GoogleCloudDialogflowV2beta1IntentMessageMediaContentPtrInput `pulumi:"mediaContent"`
 	// A custom platform-specific response.
-	Payload pulumi.StringMapInput `pulumi:"payload"`
+	Payload pulumi.MapInput `pulumi:"payload"`
 	// Optional. The platform that this message is intended for.
 	Platform GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrInput `pulumi:"platform"`
 	// Displays quick replies.
@@ -5167,8 +5167,8 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageOutput) MediaContent() GoogleCl
 }
 
 // A custom platform-specific response.
-func (o GoogleCloudDialogflowV2beta1IntentMessageOutput) Payload() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1IntentMessage) map[string]string { return v.Payload }).(pulumi.StringMapOutput)
+func (o GoogleCloudDialogflowV2beta1IntentMessageOutput) Payload() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1IntentMessage) map[string]interface{} { return v.Payload }).(pulumi.MapOutput)
 }
 
 // Optional. The platform that this message is intended for.
@@ -11029,7 +11029,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageResponse struct {
 	// The media content card for Actions on Google.
 	MediaContent GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse `pulumi:"mediaContent"`
 	// A custom platform-specific response.
-	Payload map[string]string `pulumi:"payload"`
+	Payload map[string]interface{} `pulumi:"payload"`
 	// Optional. The platform that this message is intended for.
 	Platform string `pulumi:"platform"`
 	// Displays quick replies.
@@ -11128,8 +11128,8 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageResponseOutput) MediaContent() 
 }
 
 // A custom platform-specific response.
-func (o GoogleCloudDialogflowV2beta1IntentMessageResponseOutput) Payload() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1IntentMessageResponse) map[string]string { return v.Payload }).(pulumi.StringMapOutput)
+func (o GoogleCloudDialogflowV2beta1IntentMessageResponseOutput) Payload() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1IntentMessageResponse) map[string]interface{} { return v.Payload }).(pulumi.MapOutput)
 }
 
 // Optional. The platform that this message is intended for.
@@ -14991,7 +14991,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettings struct {
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz *int `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs and GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput values.
@@ -15014,7 +15014,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs struct {
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-	SynthesizeSpeechConfigs pulumi.StringMapInput `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput `pulumi:"synthesizeSpeechConfigs"`
 }
 
 func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ElementType() reflect.Type {
@@ -15113,10 +15113,10 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SampleRateHertz(
 }
 
 // Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) map[string]string {
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
 		return v.SynthesizeSpeechConfigs
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput)
 }
 
 type GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -15174,13 +15174,13 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SampleRateHer
 }
 
 // Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) map[string]string {
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
 		if v == nil {
 			return nil
 		}
 		return v.SynthesizeSpeechConfigs
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput)
 }
 
 // Instructs the speech synthesizer on how to generate the output audio content.
@@ -15192,7 +15192,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse struct {
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz int `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // Instructs the speech synthesizer on how to generate the output audio content.
@@ -15226,10 +15226,10 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SampleRa
 }
 
 // Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) map[string]string {
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse {
 		return v.SynthesizeSpeechConfigs
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput)
 }
 
 // Description of which voice to use for speech synthesis.
@@ -15431,7 +15431,7 @@ type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -15457,8 +15457,8 @@ func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o GoogleRpcStatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o GoogleRpcStatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.

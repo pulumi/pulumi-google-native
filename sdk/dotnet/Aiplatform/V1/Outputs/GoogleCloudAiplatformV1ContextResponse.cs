@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// <summary>
         /// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Metadata;
+        public readonly ImmutableDictionary<string, object> Metadata;
         /// <summary>
         /// Immutable. The resource name of the Context.
         /// </summary>
@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
 
             ImmutableDictionary<string, string> labels,
 
-            ImmutableDictionary<string, string> metadata,
+            ImmutableDictionary<string, object> metadata,
 
             string name,
 

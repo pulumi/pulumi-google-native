@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     public sealed class SlsaProvenanceZeroTwoArgs : global::Pulumi.ResourceArgs
     {
         [Input("buildConfig")]
-        private InputMap<string>? _buildConfig;
-        public InputMap<string> BuildConfig
+        private InputMap<object>? _buildConfig;
+        public InputMap<object> BuildConfig
         {
-            get => _buildConfig ?? (_buildConfig = new InputMap<string>());
+            get => _buildConfig ?? (_buildConfig = new InputMap<object>());
             set => _buildConfig = value;
         }
 

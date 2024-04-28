@@ -47,7 +47,7 @@ class GetFhirResult:
 
     @property
     @pulumi.getter
-    def extensions(self) -> Sequence[Mapping[str, str]]:
+    def extensions(self) -> Sequence[Mapping[str, Any]]:
         """
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """

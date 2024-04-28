@@ -2,6 +2,50 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const CleanupPolicyAction = {
+    /**
+     * Action not specified.
+     */
+    ActionUnspecified: "ACTION_UNSPECIFIED",
+    /**
+     * Delete action.
+     */
+    Delete: "DELETE",
+    /**
+     * Keep action.
+     */
+    Keep: "KEEP",
+} as const;
+
+/**
+ * Policy action.
+ */
+export type CleanupPolicyAction = (typeof CleanupPolicyAction)[keyof typeof CleanupPolicyAction];
+
+export const CleanupPolicyConditionTagState = {
+    /**
+     * Tag status not specified.
+     */
+    TagStateUnspecified: "TAG_STATE_UNSPECIFIED",
+    /**
+     * Applies to tagged versions only.
+     */
+    Tagged: "TAGGED",
+    /**
+     * Applies to untagged versions only.
+     */
+    Untagged: "UNTAGGED",
+    /**
+     * Applies to all versions.
+     */
+    Any: "ANY",
+} as const;
+
+/**
+ * Match versions by tag status.
+ */
+export type CleanupPolicyConditionTagState = (typeof CleanupPolicyConditionTagState)[keyof typeof CleanupPolicyConditionTagState];
+
 export const DockerRepositoryPublicRepository = {
     /**
      * Unspecified repository.

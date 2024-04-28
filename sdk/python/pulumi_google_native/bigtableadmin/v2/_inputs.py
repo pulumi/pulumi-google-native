@@ -19,12 +19,17 @@ __all__ = [
     'ChangeStreamConfigArgs',
     'ClusterAutoscalingConfigArgs',
     'ClusterConfigArgs',
+    'ClusterArgs',
+    'ColumnFamilyArgs',
     'EncryptionConfigArgs',
     'ExprArgs',
+    'GcRuleArgs',
+    'IntersectionArgs',
     'MultiClusterRoutingUseAnyArgs',
     'SingleClusterRoutingArgs',
     'SplitArgs',
     'StandardIsolationArgs',
+    'UnionArgs',
 ]
 
 @pulumi.input_type
@@ -328,6 +333,134 @@ class ClusterConfigArgs:
 
 
 @pulumi.input_type
+class ClusterArgs:
+    def __init__(__self__, *,
+                 cluster_config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
+                 default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
+                 encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 serve_nodes: Optional[pulumi.Input[int]] = None):
+        """
+        A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance.
+        :param pulumi.Input['ClusterConfigArgs'] cluster_config: Configuration for this cluster.
+        :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+        :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
+        :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+        :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+        :param pulumi.Input[int] serve_nodes: The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+        """
+        if cluster_config is not None:
+            pulumi.set(__self__, "cluster_config", cluster_config)
+        if default_storage_type is not None:
+            pulumi.set(__self__, "default_storage_type", default_storage_type)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if serve_nodes is not None:
+            pulumi.set(__self__, "serve_nodes", serve_nodes)
+
+    @property
+    @pulumi.getter(name="clusterConfig")
+    def cluster_config(self) -> Optional[pulumi.Input['ClusterConfigArgs']]:
+        """
+        Configuration for this cluster.
+        """
+        return pulumi.get(self, "cluster_config")
+
+    @cluster_config.setter
+    def cluster_config(self, value: Optional[pulumi.Input['ClusterConfigArgs']]):
+        pulumi.set(self, "cluster_config", value)
+
+    @property
+    @pulumi.getter(name="defaultStorageType")
+    def default_storage_type(self) -> Optional[pulumi.Input['ClusterDefaultStorageType']]:
+        """
+        Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+        """
+        return pulumi.get(self, "default_storage_type")
+
+    @default_storage_type.setter
+    def default_storage_type(self, value: Optional[pulumi.Input['ClusterDefaultStorageType']]):
+        pulumi.set(self, "default_storage_type", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['EncryptionConfigArgs']]:
+        """
+        Immutable. The encryption configuration for CMEK-protected clusters.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['EncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serveNodes")
+    def serve_nodes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+        """
+        return pulumi.get(self, "serve_nodes")
+
+    @serve_nodes.setter
+    def serve_nodes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "serve_nodes", value)
+
+
+@pulumi.input_type
+class ColumnFamilyArgs:
+    def __init__(__self__, *,
+                 gc_rule: Optional[pulumi.Input['GcRuleArgs']] = None):
+        """
+        A set of columns within a table which share a common configuration.
+        :param pulumi.Input['GcRuleArgs'] gc_rule: Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+        """
+        if gc_rule is not None:
+            pulumi.set(__self__, "gc_rule", gc_rule)
+
+    @property
+    @pulumi.getter(name="gcRule")
+    def gc_rule(self) -> Optional[pulumi.Input['GcRuleArgs']]:
+        """
+        Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+        """
+        return pulumi.get(self, "gc_rule")
+
+    @gc_rule.setter
+    def gc_rule(self, value: Optional[pulumi.Input['GcRuleArgs']]):
+        pulumi.set(self, "gc_rule", value)
+
+
+@pulumi.input_type
 class EncryptionConfigArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
@@ -421,6 +554,102 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GcRuleArgs:
+    def __init__(__self__, *,
+                 intersection: Optional[pulumi.Input['IntersectionArgs']] = None,
+                 max_age: Optional[pulumi.Input[str]] = None,
+                 max_num_versions: Optional[pulumi.Input[int]] = None,
+                 union: Optional[pulumi.Input['UnionArgs']] = None):
+        """
+        Rule for determining which cells to delete during garbage collection.
+        :param pulumi.Input['IntersectionArgs'] intersection: Delete cells that would be deleted by every nested rule.
+        :param pulumi.Input[str] max_age: Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+        :param pulumi.Input[int] max_num_versions: Delete all cells in a column except the most recent N.
+        :param pulumi.Input['UnionArgs'] union: Delete cells that would be deleted by any nested rule.
+        """
+        if intersection is not None:
+            pulumi.set(__self__, "intersection", intersection)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+        if max_num_versions is not None:
+            pulumi.set(__self__, "max_num_versions", max_num_versions)
+        if union is not None:
+            pulumi.set(__self__, "union", union)
+
+    @property
+    @pulumi.getter
+    def intersection(self) -> Optional[pulumi.Input['IntersectionArgs']]:
+        """
+        Delete cells that would be deleted by every nested rule.
+        """
+        return pulumi.get(self, "intersection")
+
+    @intersection.setter
+    def intersection(self, value: Optional[pulumi.Input['IntersectionArgs']]):
+        pulumi.set(self, "intersection", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_age", value)
+
+    @property
+    @pulumi.getter(name="maxNumVersions")
+    def max_num_versions(self) -> Optional[pulumi.Input[int]]:
+        """
+        Delete all cells in a column except the most recent N.
+        """
+        return pulumi.get(self, "max_num_versions")
+
+    @max_num_versions.setter
+    def max_num_versions(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_num_versions", value)
+
+    @property
+    @pulumi.getter
+    def union(self) -> Optional[pulumi.Input['UnionArgs']]:
+        """
+        Delete cells that would be deleted by any nested rule.
+        """
+        return pulumi.get(self, "union")
+
+    @union.setter
+    def union(self, value: Optional[pulumi.Input['UnionArgs']]):
+        pulumi.set(self, "union", value)
+
+
+@pulumi.input_type
+class IntersectionArgs:
+    def __init__(__self__, *,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]]] = None):
+        """
+        A GcRule which deletes cells matching all of the given rules.
+        :param pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]] rules: Only delete cells which would be deleted by every element of `rules`.
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]]]:
+        """
+        Only delete cells which would be deleted by every element of `rules`.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
@@ -533,5 +762,29 @@ class StandardIsolationArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input['StandardIsolationPriority']]):
         pulumi.set(self, "priority", value)
+
+
+@pulumi.input_type
+class UnionArgs:
+    def __init__(__self__, *,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]]] = None):
+        """
+        A GcRule which deletes cells matching any of the given rules.
+        :param pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]] rules: Delete cells which would be deleted by any element of `rules`.
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]]]:
+        """
+        Delete cells which would be deleted by any element of `rules`.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 

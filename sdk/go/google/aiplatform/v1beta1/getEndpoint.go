@@ -56,7 +56,7 @@ type LookupEndpointResult struct {
 	// Configures the request-response logging for online prediction.
 	PredictRequestResponseLoggingConfig GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigResponse `pulumi:"predictRequestResponseLoggingConfig"`
 	// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-	TrafficSplit map[string]string `pulumi:"trafficSplit"`
+	TrafficSplit map[string]int `pulumi:"trafficSplit"`
 	// Timestamp when this Endpoint was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -167,8 +167,8 @@ func (o LookupEndpointResultOutput) PredictRequestResponseLoggingConfig() Google
 }
 
 // A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-func (o LookupEndpointResultOutput) TrafficSplit() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupEndpointResult) map[string]string { return v.TrafficSplit }).(pulumi.StringMapOutput)
+func (o LookupEndpointResultOutput) TrafficSplit() pulumi.IntMapOutput {
+	return o.ApplyT(func(v LookupEndpointResult) map[string]int { return v.TrafficSplit }).(pulumi.IntMapOutput)
 }
 
 // Timestamp when this Endpoint was last updated.

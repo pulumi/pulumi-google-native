@@ -140,7 +140,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// <summary>
         /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
         /// </summary>
-        public readonly ImmutableDictionary<string, string> GeneratedCustomerMetadata;
+        public readonly ImmutableDictionary<string, object> GeneratedCustomerMetadata;
         /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         /// </summary>
@@ -270,7 +270,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
             Outputs.FlexibleRuntimeSettingsResponse flexibleRuntimeSettings,
 
-            ImmutableDictionary<string, string> generatedCustomerMetadata,
+            ImmutableDictionary<string, object> generatedCustomerMetadata,
 
             ImmutableArray<Outputs.UrlMapResponse> handlers,
 

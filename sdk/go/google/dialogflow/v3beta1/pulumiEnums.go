@@ -2177,6 +2177,186 @@ func (in *googleCloudDialogflowCxV3beta1TestCaseResultTestResultPtr) ToOutput(ct
 	}
 }
 
+// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender string
+
+const (
+	// An unspecified gender, which means that the client doesn't care which gender the selected voice will have.
+	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderUnspecified = GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_UNSPECIFIED")
+	// A male voice.
+	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderMale = GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_MALE")
+	// A female voice.
+	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderFemale = GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_FEMALE")
+	// A gender-neutral voice.
+	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderNeutral = GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_NEUTRAL")
+)
+
+func (GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender(e).ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) *GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender
+		return ret
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderInput is an input type that accepts values of the GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender enum
+// A concrete instance of `GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderInput` can be one of the following:
+//
+//	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderUnspecified
+//	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderMale
+//	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderFemale
+//	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderSsmlVoiceGenderNeutral
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput
+}
+
+var googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtr string
+
+func GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtr(v string) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrInput {
+	return (*googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrType
+}
+
+func (in *googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtr) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtr) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender] {
+	return pulumix.Output[*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender]{
+		OutputState: in.ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod string
 
@@ -3488,6 +3668,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("AUDIO_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult("TEST_RESULT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult("TEST_RESULT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("WEBHOOK_TYPE_UNSPECIFIED"))
@@ -3527,6 +3709,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput{})

@@ -34,7 +34,7 @@ export interface GetTriggerResult {
     /**
      * The reason(s) why a trigger is in FAILED state.
      */
-    readonly conditions: {[key: string]: string};
+    readonly conditions: outputs.eventarc.v1.StateConditionResponse;
     /**
      * The creation time.
      */

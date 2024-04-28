@@ -21,15 +21,21 @@ __all__ = [
     'ChangeStreamConfigResponse',
     'ClusterAutoscalingConfigResponse',
     'ClusterConfigResponse',
+    'ClusterStateResponse',
+    'ColumnFamilyResponse',
+    'ColumnFamilyStatsResponse',
     'EncryptionConfigResponse',
     'EncryptionInfoResponse',
     'ExprResponse',
+    'GcRuleResponse',
+    'IntersectionResponse',
     'MultiClusterRoutingUseAnyResponse',
     'RestoreInfoResponse',
     'SingleClusterRoutingResponse',
     'StandardIsolationResponse',
     'StatusResponse',
     'TableStatsResponse',
+    'UnionResponse',
 ]
 
 @pulumi.output_type
@@ -502,6 +508,173 @@ class ClusterConfigResponse(dict):
 
 
 @pulumi.output_type
+class ClusterStateResponse(dict):
+    """
+    The state of a table's data in a particular cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionInfo":
+            suggest = "encryption_info"
+        elif key == "replicationState":
+            suggest = "replication_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_info: Sequence['outputs.EncryptionInfoResponse'],
+                 replication_state: str):
+        """
+        The state of a table's data in a particular cluster.
+        :param Sequence['EncryptionInfoResponse'] encryption_info: The encryption information for the table in this cluster. If the encryption key protecting this resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS). The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS.
+        :param str replication_state: The state of replication for the table in this cluster.
+        """
+        pulumi.set(__self__, "encryption_info", encryption_info)
+        pulumi.set(__self__, "replication_state", replication_state)
+
+    @property
+    @pulumi.getter(name="encryptionInfo")
+    def encryption_info(self) -> Sequence['outputs.EncryptionInfoResponse']:
+        """
+        The encryption information for the table in this cluster. If the encryption key protecting this resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS). The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS.
+        """
+        return pulumi.get(self, "encryption_info")
+
+    @property
+    @pulumi.getter(name="replicationState")
+    def replication_state(self) -> str:
+        """
+        The state of replication for the table in this cluster.
+        """
+        return pulumi.get(self, "replication_state")
+
+
+@pulumi.output_type
+class ColumnFamilyResponse(dict):
+    """
+    A set of columns within a table which share a common configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcRule":
+            suggest = "gc_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ColumnFamilyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ColumnFamilyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ColumnFamilyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gc_rule: 'outputs.GcRuleResponse',
+                 stats: 'outputs.ColumnFamilyStatsResponse'):
+        """
+        A set of columns within a table which share a common configuration.
+        :param 'GcRuleResponse' gc_rule: Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+        :param 'ColumnFamilyStatsResponse' stats: Only available with STATS_VIEW, this includes summary statistics about column family contents. For statistics over an entire table, see TableStats above.
+        """
+        pulumi.set(__self__, "gc_rule", gc_rule)
+        pulumi.set(__self__, "stats", stats)
+
+    @property
+    @pulumi.getter(name="gcRule")
+    def gc_rule(self) -> 'outputs.GcRuleResponse':
+        """
+        Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+        """
+        return pulumi.get(self, "gc_rule")
+
+    @property
+    @pulumi.getter
+    def stats(self) -> 'outputs.ColumnFamilyStatsResponse':
+        """
+        Only available with STATS_VIEW, this includes summary statistics about column family contents. For statistics over an entire table, see TableStats above.
+        """
+        return pulumi.get(self, "stats")
+
+
+@pulumi.output_type
+class ColumnFamilyStatsResponse(dict):
+    """
+    Approximate statistics related to a single column family within a table. This information may change rapidly, interpreting these values at a point in time may already preset out-of-date information. Everything below is approximate, unless otherwise specified.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "averageCellsPerColumn":
+            suggest = "average_cells_per_column"
+        elif key == "averageColumnsPerRow":
+            suggest = "average_columns_per_row"
+        elif key == "logicalDataBytes":
+            suggest = "logical_data_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ColumnFamilyStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ColumnFamilyStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ColumnFamilyStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 average_cells_per_column: float,
+                 average_columns_per_row: float,
+                 logical_data_bytes: str):
+        """
+        Approximate statistics related to a single column family within a table. This information may change rapidly, interpreting these values at a point in time may already preset out-of-date information. Everything below is approximate, unless otherwise specified.
+        :param float average_cells_per_column: How many cells are present per column qualifier in this column family, averaged over all rows containing any column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this field.
+        :param float average_columns_per_row: How many column qualifiers are present in this column family, averaged over all rows in the table. e.g. For column family "family" in a table with 3 rows: * A row with cells in "family:col" and "other:col" (1 column in "family") * A row with cells in "family:col", "family:other_col", and "other:data" (2 columns in "family") * A row with cells in "other:col" (0 columns in "family", "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field.
+        :param str logical_data_bytes: How much space the data in the column family occupies. This is roughly how many bytes would be needed to read the contents of the entire column family (e.g. by streaming all contents out).
+        """
+        pulumi.set(__self__, "average_cells_per_column", average_cells_per_column)
+        pulumi.set(__self__, "average_columns_per_row", average_columns_per_row)
+        pulumi.set(__self__, "logical_data_bytes", logical_data_bytes)
+
+    @property
+    @pulumi.getter(name="averageCellsPerColumn")
+    def average_cells_per_column(self) -> float:
+        """
+        How many cells are present per column qualifier in this column family, averaged over all rows containing any column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this field.
+        """
+        return pulumi.get(self, "average_cells_per_column")
+
+    @property
+    @pulumi.getter(name="averageColumnsPerRow")
+    def average_columns_per_row(self) -> float:
+        """
+        How many column qualifiers are present in this column family, averaged over all rows in the table. e.g. For column family "family" in a table with 3 rows: * A row with cells in "family:col" and "other:col" (1 column in "family") * A row with cells in "family:col", "family:other_col", and "other:data" (2 columns in "family") * A row with cells in "other:col" (0 columns in "family", "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field.
+        """
+        return pulumi.get(self, "average_columns_per_row")
+
+    @property
+    @pulumi.getter(name="logicalDataBytes")
+    def logical_data_bytes(self) -> str:
+        """
+        How much space the data in the column family occupies. This is roughly how many bytes would be needed to read the contents of the entire column family (e.g. by streaming all contents out).
+        """
+        return pulumi.get(self, "logical_data_bytes")
+
+
+@pulumi.output_type
 class EncryptionConfigResponse(dict):
     """
     Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
@@ -658,6 +831,102 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GcRuleResponse(dict):
+    """
+    Rule for determining which cells to delete during garbage collection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAge":
+            suggest = "max_age"
+        elif key == "maxNumVersions":
+            suggest = "max_num_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 intersection: 'outputs.IntersectionResponse',
+                 max_age: str,
+                 max_num_versions: int,
+                 union: 'outputs.UnionResponse'):
+        """
+        Rule for determining which cells to delete during garbage collection.
+        :param 'IntersectionResponse' intersection: Delete cells that would be deleted by every nested rule.
+        :param str max_age: Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+        :param int max_num_versions: Delete all cells in a column except the most recent N.
+        :param 'UnionResponse' union: Delete cells that would be deleted by any nested rule.
+        """
+        pulumi.set(__self__, "intersection", intersection)
+        pulumi.set(__self__, "max_age", max_age)
+        pulumi.set(__self__, "max_num_versions", max_num_versions)
+        pulumi.set(__self__, "union", union)
+
+    @property
+    @pulumi.getter
+    def intersection(self) -> 'outputs.IntersectionResponse':
+        """
+        Delete cells that would be deleted by every nested rule.
+        """
+        return pulumi.get(self, "intersection")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> str:
+        """
+        Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+        """
+        return pulumi.get(self, "max_age")
+
+    @property
+    @pulumi.getter(name="maxNumVersions")
+    def max_num_versions(self) -> int:
+        """
+        Delete all cells in a column except the most recent N.
+        """
+        return pulumi.get(self, "max_num_versions")
+
+    @property
+    @pulumi.getter
+    def union(self) -> 'outputs.UnionResponse':
+        """
+        Delete cells that would be deleted by any nested rule.
+        """
+        return pulumi.get(self, "union")
+
+
+@pulumi.output_type
+class IntersectionResponse(dict):
+    """
+    A GcRule which deletes cells matching all of the given rules.
+    """
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GcRuleResponse']):
+        """
+        A GcRule which deletes cells matching all of the given rules.
+        :param Sequence['GcRuleResponse'] rules: Only delete cells which would be deleted by every element of `rules`.
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GcRuleResponse']:
+        """
+        Only delete cells which would be deleted by every element of `rules`.
+        """
+        return pulumi.get(self, "rules")
 
 
 @pulumi.output_type
@@ -832,12 +1101,12 @@ class StatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -854,7 +1123,7 @@ class StatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """
@@ -945,5 +1214,27 @@ class TableStatsResponse(dict):
         How many rows are in the table.
         """
         return pulumi.get(self, "row_count")
+
+
+@pulumi.output_type
+class UnionResponse(dict):
+    """
+    A GcRule which deletes cells matching any of the given rules.
+    """
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GcRuleResponse']):
+        """
+        A GcRule which deletes cells matching any of the given rules.
+        :param Sequence['GcRuleResponse'] rules: Delete cells which would be deleted by any element of `rules`.
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GcRuleResponse']:
+        """
+        Delete cells which would be deleted by any element of `rules`.
+        """
+        return pulumi.get(self, "rules")
 
 

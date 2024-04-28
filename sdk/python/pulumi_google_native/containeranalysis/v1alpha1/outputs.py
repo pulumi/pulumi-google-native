@@ -51,6 +51,7 @@ __all__ = [
     'EnvelopeSignatureResponse',
     'ExprResponse',
     'ExternalRefResponse',
+    'FileHashesResponse',
     'FileLocationResponse',
     'FileNoteResponse',
     'FileOccurrenceResponse',
@@ -559,8 +560,8 @@ class BuildDefinitionResponse(dict):
 
     def __init__(__self__, *,
                  build_type: str,
-                 external_parameters: Mapping[str, str],
-                 internal_parameters: Mapping[str, str],
+                 external_parameters: Mapping[str, Any],
+                 internal_parameters: Mapping[str, Any],
                  resolved_dependencies: Sequence['outputs.ResourceDescriptorResponse']):
         pulumi.set(__self__, "build_type", build_type)
         pulumi.set(__self__, "external_parameters", external_parameters)
@@ -574,12 +575,12 @@ class BuildDefinitionResponse(dict):
 
     @property
     @pulumi.getter(name="externalParameters")
-    def external_parameters(self) -> Mapping[str, str]:
+    def external_parameters(self) -> Mapping[str, Any]:
         return pulumi.get(self, "external_parameters")
 
     @property
     @pulumi.getter(name="internalParameters")
-    def internal_parameters(self) -> Mapping[str, str]:
+    def internal_parameters(self) -> Mapping[str, Any]:
         return pulumi.get(self, "internal_parameters")
 
     @property
@@ -2800,6 +2801,45 @@ class ExternalRefResponse(dict):
 
 
 @pulumi.output_type
+class FileHashesResponse(dict):
+    """
+    Container message for hashes of byte content of files, used in Source messages to verify integrity of source input to the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileHash":
+            suggest = "file_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileHashesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileHashesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileHashesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_hash: Sequence['outputs.HashResponse']):
+        """
+        Container message for hashes of byte content of files, used in Source messages to verify integrity of source input to the build.
+        :param Sequence['HashResponse'] file_hash: Collection of file hashes.
+        """
+        pulumi.set(__self__, "file_hash", file_hash)
+
+    @property
+    @pulumi.getter(name="fileHash")
+    def file_hash(self) -> Sequence['outputs.HashResponse']:
+        """
+        Collection of file hashes.
+        """
+        return pulumi.get(self, "file_hash")
+
+
+@pulumi.output_type
 class FileLocationResponse(dict):
     """
     Indicates the location at which a package was found.
@@ -3538,13 +3578,13 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
 
     def __init__(__self__, *,
                  config_source: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse',
-                 environment: Mapping[str, str],
-                 parameters: Mapping[str, str]):
+                 environment: Mapping[str, Any],
+                 parameters: Mapping[str, Any]):
         """
         Identifies the event that kicked off the build.
         :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse' config_source: Describes where the config file that kicked off the build came from.
-        :param Mapping[str, str] environment: Any other builder-controlled inputs necessary for correctly evaluating the build.
-        :param Mapping[str, str] parameters: Collection of all external inputs that influenced the build on top of invocation.configSource.
+        :param Mapping[str, Any] environment: Any other builder-controlled inputs necessary for correctly evaluating the build.
+        :param Mapping[str, Any] parameters: Collection of all external inputs that influenced the build on top of invocation.configSource.
         """
         pulumi.set(__self__, "config_source", config_source)
         pulumi.set(__self__, "environment", environment)
@@ -3560,7 +3600,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
 
     @property
     @pulumi.getter
-    def environment(self) -> Mapping[str, str]:
+    def environment(self) -> Mapping[str, Any]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the build.
         """
@@ -3568,7 +3608,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
 
     @property
     @pulumi.getter
-    def parameters(self) -> Mapping[str, str]:
+    def parameters(self) -> Mapping[str, Any]:
         """
         Collection of all external inputs that influenced the build on top of invocation.configSource.
         """
@@ -4547,16 +4587,16 @@ class OperationResponse(dict):
     def __init__(__self__, *,
                  done: bool,
                  error: 'outputs.StatusResponse',
-                 metadata: Mapping[str, str],
+                 metadata: Mapping[str, Any],
                  name: str,
-                 response: Mapping[str, str]):
+                 response: Mapping[str, Any]):
         """
         This resource represents a long-running operation that is the result of a network API call.
         :param bool done: If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
         :param 'StatusResponse' error: The error result of the operation in case of failure or cancellation.
-        :param Mapping[str, str] metadata: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+        :param Mapping[str, Any] metadata: Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         :param str name: The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-        :param Mapping[str, str] response: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        :param Mapping[str, Any] response: The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
         """
         pulumi.set(__self__, "done", done)
         pulumi.set(__self__, "error", error)
@@ -4582,7 +4622,7 @@ class OperationResponse(dict):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> Mapping[str, Any]:
         """
         Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
         """
@@ -4598,7 +4638,7 @@ class OperationResponse(dict):
 
     @property
     @pulumi.getter
-    def response(self) -> Mapping[str, str]:
+    def response(self) -> Mapping[str, Any]:
         """
         The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
         """
@@ -5446,17 +5486,17 @@ class RecipeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 arguments: Sequence[Mapping[str, str]],
+                 arguments: Sequence[Mapping[str, Any]],
                  defined_in_material: str,
                  entry_point: str,
-                 environment: Sequence[Mapping[str, str]],
+                 environment: Sequence[Mapping[str, Any]],
                  type: str):
         """
         Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-        :param Sequence[Mapping[str, str]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
+        :param Sequence[Mapping[str, Any]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         :param str defined_in_material: Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
         :param str entry_point: String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-        :param Sequence[Mapping[str, str]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
+        :param Sequence[Mapping[str, Any]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         :param str type: URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
         """
         pulumi.set(__self__, "arguments", arguments)
@@ -5467,7 +5507,7 @@ class RecipeResponse(dict):
 
     @property
     @pulumi.getter
-    def arguments(self) -> Sequence[Mapping[str, str]]:
+    def arguments(self) -> Sequence[Mapping[str, Any]]:
         """
         Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         """
@@ -5491,7 +5531,7 @@ class RecipeResponse(dict):
 
     @property
     @pulumi.getter
-    def environment(self) -> Sequence[Mapping[str, str]]:
+    def environment(self) -> Sequence[Mapping[str, Any]]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         """
@@ -5790,7 +5830,7 @@ class ResourceDescriptorResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 annotations: Mapping[str, str],
+                 annotations: Mapping[str, Any],
                  content: str,
                  digest: Mapping[str, str],
                  download_location: str,
@@ -5807,7 +5847,7 @@ class ResourceDescriptorResponse(dict):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, str]:
+    def annotations(self) -> Mapping[str, Any]:
         return pulumi.get(self, "annotations")
 
     @property
@@ -6485,7 +6525,7 @@ class SlsaProvenanceZeroTwoResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 build_config: Mapping[str, str],
+                 build_config: Mapping[str, Any],
                  build_type: str,
                  builder: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse',
                  invocation: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse',
@@ -6493,7 +6533,7 @@ class SlsaProvenanceZeroTwoResponse(dict):
                  metadata: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataResponse'):
         """
         SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
-        :param Mapping[str, str] build_config: Lists the steps in the build.
+        :param Mapping[str, Any] build_config: Lists the steps in the build.
         :param str build_type: URI indicating what type of build was performed.
         :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderResponse' builder: Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
         :param 'GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse' invocation: Identifies the event that kicked off the build.
@@ -6509,7 +6549,7 @@ class SlsaProvenanceZeroTwoResponse(dict):
 
     @property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Mapping[str, str]:
+    def build_config(self) -> Mapping[str, Any]:
         """
         Lists the steps in the build.
         """
@@ -6581,17 +6621,17 @@ class SlsaRecipeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 arguments: Mapping[str, str],
+                 arguments: Mapping[str, Any],
                  defined_in_material: str,
                  entry_point: str,
-                 environment: Mapping[str, str],
+                 environment: Mapping[str, Any],
                  type: str):
         """
         Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-        :param Mapping[str, str] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+        :param Mapping[str, Any] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
         :param str defined_in_material: Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
         :param str entry_point: String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-        :param Mapping[str, str] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+        :param Mapping[str, Any] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
         :param str type: URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
         """
         pulumi.set(__self__, "arguments", arguments)
@@ -6602,7 +6642,7 @@ class SlsaRecipeResponse(dict):
 
     @property
     @pulumi.getter
-    def arguments(self) -> Mapping[str, str]:
+    def arguments(self) -> Mapping[str, Any]:
         """
         Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
         """
@@ -6626,7 +6666,7 @@ class SlsaRecipeResponse(dict):
 
     @property
     @pulumi.getter
-    def environment(self) -> Mapping[str, str]:
+    def environment(self) -> Mapping[str, Any]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
         """
@@ -6675,7 +6715,7 @@ class SourceResponse(dict):
                  additional_contexts: Sequence['outputs.GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse'],
                  artifact_storage_source: 'outputs.StorageSourceResponse',
                  context: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse',
-                 file_hashes: Mapping[str, str],
+                 file_hashes: 'outputs.FileHashesResponse',
                  repo_source: 'outputs.RepoSourceResponse',
                  storage_source: 'outputs.StorageSourceResponse'):
         """
@@ -6683,7 +6723,7 @@ class SourceResponse(dict):
         :param Sequence['GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse'] additional_contexts: If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
         :param 'StorageSourceResponse' artifact_storage_source: If provided, the input binary artifacts for the build came from this location.
         :param 'GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse' context: If provided, the source code used for the build came from this location.
-        :param Mapping[str, str] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+        :param 'FileHashesResponse' file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         :param 'RepoSourceResponse' repo_source: If provided, get source from this location in a Cloud Repo.
         :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Google Cloud Storage.
         """
@@ -6720,7 +6760,7 @@ class SourceResponse(dict):
 
     @property
     @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> Mapping[str, str]:
+    def file_hashes(self) -> 'outputs.FileHashesResponse':
         """
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """
@@ -6750,12 +6790,12 @@ class StatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -6772,7 +6812,7 @@ class StatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """

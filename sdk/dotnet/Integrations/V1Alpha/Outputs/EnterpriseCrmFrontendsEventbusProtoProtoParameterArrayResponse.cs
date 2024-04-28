@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
     [OutputType]
     public sealed class EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse
     {
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> ProtoValues;
+        public readonly ImmutableArray<ImmutableDictionary<string, object>> ProtoValues;
 
         [OutputConstructor]
-        private EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse(ImmutableArray<ImmutableDictionary<string, string>> protoValues)
+        private EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse(ImmutableArray<ImmutableDictionary<string, object>> protoValues)
         {
             ProtoValues = protoValues;
         }

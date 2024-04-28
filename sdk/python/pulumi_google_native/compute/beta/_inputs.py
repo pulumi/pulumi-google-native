@@ -32,6 +32,7 @@ __all__ = [
     'AutoscalingPolicyLoadBalancingUtilizationArgs',
     'AutoscalingPolicyScaleDownControlArgs',
     'AutoscalingPolicyScaleInControlArgs',
+    'AutoscalingPolicyScalingScheduleArgs',
     'AutoscalingPolicyArgs',
     'BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs',
     'BackendBucketCdnPolicyCacheKeyPolicyArgs',
@@ -108,6 +109,7 @@ __all__ = [
     'InitialStateConfigArgs',
     'InstanceGroupManagerAllInstancesConfigArgs',
     'InstanceGroupManagerAutoHealingPolicyArgs',
+    'InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs',
     'InstanceGroupManagerInstanceFlexibilityPolicyArgs',
     'InstanceGroupManagerInstanceLifecyclePolicyArgs',
     'InstanceGroupManagerStandbyPolicyArgs',
@@ -222,6 +224,7 @@ __all__ = [
     'ServiceAccountArgs',
     'ServiceAttachmentConsumerProjectLimitArgs',
     'ServiceAttachmentTunnelingConfigArgs',
+    'ShareSettingsProjectConfigArgs',
     'ShareSettingsArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedInstanceIntegrityPolicyArgs',
@@ -231,6 +234,8 @@ __all__ = [
     'SourceInstanceParamsArgs',
     'SslCertificateManagedSslCertificateArgs',
     'SslCertificateSelfManagedSslCertificateArgs',
+    'StatefulPolicyPreservedStateDiskDeviceArgs',
+    'StatefulPolicyPreservedStateNetworkIpArgs',
     'StatefulPolicyPreservedStateArgs',
     'StatefulPolicyArgs',
     'SubnetworkLogConfigArgs',
@@ -1867,6 +1872,110 @@ class AutoscalingPolicyScaleInControlArgs:
 
 
 @pulumi.input_type
+class AutoscalingPolicyScalingScheduleArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 duration_sec: Optional[pulumi.Input[int]] = None,
+                 min_required_replicas: Optional[pulumi.Input[int]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+        :param pulumi.Input[str] description: A description of a scaling schedule.
+        :param pulumi.Input[bool] disabled: A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+        :param pulumi.Input[int] duration_sec: The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+        :param pulumi.Input[int] min_required_replicas: The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+        :param pulumi.Input[str] schedule: The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+        :param pulumi.Input[str] time_zone: The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if duration_sec is not None:
+            pulumi.set(__self__, "duration_sec", duration_sec)
+        if min_required_replicas is not None:
+            pulumi.set(__self__, "min_required_replicas", min_required_replicas)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of a scaling schedule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="durationSec")
+    def duration_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+        """
+        return pulumi.get(self, "duration_sec")
+
+    @duration_sec.setter
+    def duration_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "duration_sec", value)
+
+    @property
+    @pulumi.getter(name="minRequiredReplicas")
+    def min_required_replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+        """
+        return pulumi.get(self, "min_required_replicas")
+
+    @min_required_replicas.setter
+    def min_required_replicas(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_required_replicas", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+
+@pulumi.input_type
 class AutoscalingPolicyArgs:
     def __init__(__self__, *,
                  cool_down_period_sec: Optional[pulumi.Input[int]] = None,
@@ -1878,7 +1987,7 @@ class AutoscalingPolicyArgs:
                  mode: Optional[pulumi.Input['AutoscalingPolicyMode']] = None,
                  scale_down_control: Optional[pulumi.Input['AutoscalingPolicyScaleDownControlArgs']] = None,
                  scale_in_control: Optional[pulumi.Input['AutoscalingPolicyScaleInControlArgs']] = None,
-                 scaling_schedules: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 scaling_schedules: Optional[pulumi.Input['AutoscalingPolicyScalingScheduleArgs']] = None):
         """
         Cloud Autoscaler policy.
         :param pulumi.Input[int] cool_down_period_sec: The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
@@ -1888,7 +1997,7 @@ class AutoscalingPolicyArgs:
         :param pulumi.Input[int] max_num_replicas: The maximum number of instances that the autoscaler can scale out to. This is required when creating or updating an autoscaler. The maximum number of replicas must not be lower than minimal number of replicas.
         :param pulumi.Input[int] min_num_replicas: The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
         :param pulumi.Input['AutoscalingPolicyMode'] mode: Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+        :param pulumi.Input['AutoscalingPolicyScalingScheduleArgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
         if cool_down_period_sec is not None:
             pulumi.set(__self__, "cool_down_period_sec", cool_down_period_sec)
@@ -2015,14 +2124,14 @@ class AutoscalingPolicyArgs:
 
     @property
     @pulumi.getter(name="scalingSchedules")
-    def scaling_schedules(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def scaling_schedules(self) -> Optional[pulumi.Input['AutoscalingPolicyScalingScheduleArgs']]:
         """
         Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
         return pulumi.get(self, "scaling_schedules")
 
     @scaling_schedules.setter
-    def scaling_schedules(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def scaling_schedules(self, value: Optional[pulumi.Input['AutoscalingPolicyScalingScheduleArgs']]):
         pulumi.set(self, "scaling_schedules", value)
 
 
@@ -7199,25 +7308,64 @@ class InstanceGroupManagerAutoHealingPolicyArgs:
 
 
 @pulumi.input_type
+class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs:
+    def __init__(__self__, *,
+                 machine_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 rank: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] machine_types: Full machine-type names, e.g. "n1-standard-16".
+        :param pulumi.Input[int] rank: Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+        """
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Full machine-type names, e.g. "n1-standard-16".
+        """
+        return pulumi.get(self, "machine_types")
+
+    @machine_types.setter
+    def machine_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "machine_types", value)
+
+    @property
+    @pulumi.getter
+    def rank(self) -> Optional[pulumi.Input[int]]:
+        """
+        Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rank", value)
+
+
+@pulumi.input_type
 class InstanceGroupManagerInstanceFlexibilityPolicyArgs:
     def __init__(__self__, *,
-                 instance_selection_lists: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 instance_selection_lists: Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs']] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] instance_selection_lists: Named instance selections configuring properties that the group will use when creating new VMs.
+        :param pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs'] instance_selection_lists: Named instance selections configuring properties that the group will use when creating new VMs.
         """
         if instance_selection_lists is not None:
             pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
 
     @property
     @pulumi.getter(name="instanceSelectionLists")
-    def instance_selection_lists(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def instance_selection_lists(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs']]:
         """
         Named instance selections configuring properties that the group will use when creating new VMs.
         """
         return pulumi.get(self, "instance_selection_lists")
 
     @instance_selection_lists.setter
-    def instance_selection_lists(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def instance_selection_lists(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs']]):
         pulumi.set(self, "instance_selection_lists", value)
 
 
@@ -14757,14 +14905,38 @@ class ServiceAttachmentTunnelingConfigArgs:
 
 
 @pulumi.input_type
+class ShareSettingsProjectConfigArgs:
+    def __init__(__self__, *,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Config for each project in the share settings.
+        :param pulumi.Input[str] project: The project ID, should be same as the key of this project config in the parent map.
+        """
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID, should be same as the key of this project config in the parent map.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
 class ShareSettingsArgs:
     def __init__(__self__, *,
-                 project_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project_map: Optional[pulumi.Input['ShareSettingsProjectConfigArgs']] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  share_type: Optional[pulumi.Input['ShareSettingsShareType']] = None):
         """
         The share setting for reservations and sole tenancy node groups.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        :param pulumi.Input['ShareSettingsProjectConfigArgs'] project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param pulumi.Input['ShareSettingsShareType'] share_type: Type of sharing for this shared-reservation
         """
@@ -14777,14 +14949,14 @@ class ShareSettingsArgs:
 
     @property
     @pulumi.getter(name="projectMap")
-    def project_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def project_map(self) -> Optional[pulumi.Input['ShareSettingsProjectConfigArgs']]:
         """
         A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         """
         return pulumi.get(self, "project_map")
 
     @project_map.setter
-    def project_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def project_map(self, value: Optional[pulumi.Input['ShareSettingsProjectConfigArgs']]):
         pulumi.set(self, "project_map", value)
 
     @property
@@ -15100,16 +15272,62 @@ class SslCertificateSelfManagedSslCertificateArgs:
 
 
 @pulumi.input_type
+class StatefulPolicyPreservedStateDiskDeviceArgs:
+    def __init__(__self__, *,
+                 auto_delete: Optional[pulumi.Input['StatefulPolicyPreservedStateDiskDeviceAutoDelete']] = None):
+        """
+        :param pulumi.Input['StatefulPolicyPreservedStateDiskDeviceAutoDelete'] auto_delete: These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+        """
+        if auto_delete is not None:
+            pulumi.set(__self__, "auto_delete", auto_delete)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> Optional[pulumi.Input['StatefulPolicyPreservedStateDiskDeviceAutoDelete']]:
+        """
+        These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @auto_delete.setter
+    def auto_delete(self, value: Optional[pulumi.Input['StatefulPolicyPreservedStateDiskDeviceAutoDelete']]):
+        pulumi.set(self, "auto_delete", value)
+
+
+@pulumi.input_type
+class StatefulPolicyPreservedStateNetworkIpArgs:
+    def __init__(__self__, *,
+                 auto_delete: Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpAutoDelete']] = None):
+        """
+        :param pulumi.Input['StatefulPolicyPreservedStateNetworkIpAutoDelete'] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        """
+        if auto_delete is not None:
+            pulumi.set(__self__, "auto_delete", auto_delete)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpAutoDelete']]:
+        """
+        These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @auto_delete.setter
+    def auto_delete(self, value: Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpAutoDelete']]):
+        pulumi.set(self, "auto_delete", value)
+
+
+@pulumi.input_type
 class StatefulPolicyPreservedStateArgs:
     def __init__(__self__, *,
-                 disks: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 external_ips: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 internal_ips: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 disks: Optional[pulumi.Input['StatefulPolicyPreservedStateDiskDeviceArgs']] = None,
+                 external_ips: Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs']] = None,
+                 internal_ips: Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs']] = None):
         """
         Configuration of preserved resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param pulumi.Input['StatefulPolicyPreservedStateDiskDeviceArgs'] disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
+        :param pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs'] external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs'] internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
@@ -15120,38 +15338,38 @@ class StatefulPolicyPreservedStateArgs:
 
     @property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def disks(self) -> Optional[pulumi.Input['StatefulPolicyPreservedStateDiskDeviceArgs']]:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
         """
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def disks(self, value: Optional[pulumi.Input['StatefulPolicyPreservedStateDiskDeviceArgs']]):
         pulumi.set(self, "disks", value)
 
     @property
     @pulumi.getter(name="externalIPs")
-    def external_ips(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def external_ips(self) -> Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs']]:
         """
         External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
         return pulumi.get(self, "external_ips")
 
     @external_ips.setter
-    def external_ips(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def external_ips(self, value: Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs']]):
         pulumi.set(self, "external_ips", value)
 
     @property
     @pulumi.getter(name="internalIPs")
-    def internal_ips(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def internal_ips(self) -> Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs']]:
         """
         Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
         return pulumi.get(self, "internal_ips")
 
     @internal_ips.setter
-    def internal_ips(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def internal_ips(self, value: Optional[pulumi.Input['StatefulPolicyPreservedStateNetworkIpArgs']]):
         pulumi.set(self, "internal_ips", value)
 
 

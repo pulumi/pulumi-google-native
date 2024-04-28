@@ -51,4 +51,45 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// The format of the Cloud Pub/Sub messages.
+    /// </summary>
+    [EnumType]
+    public readonly struct PubsubConfigMessageFormat : IEquatable<PubsubConfigMessageFormat>
+    {
+        private readonly string _value;
+
+        private PubsubConfigMessageFormat(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static PubsubConfigMessageFormat MessageFormatUnspecified { get; } = new PubsubConfigMessageFormat("MESSAGE_FORMAT_UNSPECIFIED");
+        /// <summary>
+        /// The message payload is a serialized protocol buffer of SourceRepoEvent.
+        /// </summary>
+        public static PubsubConfigMessageFormat Protobuf { get; } = new PubsubConfigMessageFormat("PROTOBUF");
+        /// <summary>
+        /// The message payload is a JSON string of SourceRepoEvent.
+        /// </summary>
+        public static PubsubConfigMessageFormat Json { get; } = new PubsubConfigMessageFormat("JSON");
+
+        public static bool operator ==(PubsubConfigMessageFormat left, PubsubConfigMessageFormat right) => left.Equals(right);
+        public static bool operator !=(PubsubConfigMessageFormat left, PubsubConfigMessageFormat right) => !left.Equals(right);
+
+        public static explicit operator string(PubsubConfigMessageFormat value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PubsubConfigMessageFormat other && Equals(other);
+        public bool Equals(PubsubConfigMessageFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

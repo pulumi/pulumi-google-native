@@ -129,6 +129,7 @@ __all__ = [
     'InterconnectInterconnectType',
     'InterconnectLinkType',
     'InterconnectRequestedFeaturesItem',
+    'LocationPolicyLocationPreference',
     'LocationPolicyTargetShape',
     'LogConfigCloudAuditOptionsLogName',
     'LogConfigDataAccessOptionsLogMode',
@@ -247,6 +248,8 @@ __all__ = [
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
+    'StatefulPolicyPreservedStateDiskDeviceAutoDelete',
+    'StatefulPolicyPreservedStateNetworkIpAutoDelete',
     'StoragePoolCapacityProvisioningType',
     'StoragePoolPerformanceProvisioningType',
     'SubnetworkAggregationInterval',
@@ -2452,6 +2455,24 @@ class InterconnectRequestedFeaturesItem(str, Enum):
     """
 
 
+class LocationPolicyLocationPreference(str, Enum):
+    """
+    Preference for a given location. Set to either ALLOW or DENY.
+    """
+    ALLOW = "ALLOW"
+    """
+    Location is allowed for use.
+    """
+    DENY = "DENY"
+    """
+    Location is prohibited.
+    """
+    PREFERENCE_UNSPECIFIED = "PREFERENCE_UNSPECIFIED"
+    """
+    Default value, unused.
+    """
+
+
 class LocationPolicyTargetShape(str, Enum):
     """
     Strategy for distributing VMs across zones in a region.
@@ -4181,6 +4202,22 @@ class SslPolicyProfile(str, Enum):
     """
     Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
     """
+
+
+class StatefulPolicyPreservedStateDiskDeviceAutoDelete(str, Enum):
+    """
+    These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+    """
+    NEVER = "NEVER"
+    ON_PERMANENT_INSTANCE_DELETION = "ON_PERMANENT_INSTANCE_DELETION"
+
+
+class StatefulPolicyPreservedStateNetworkIpAutoDelete(str, Enum):
+    """
+    These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+    """
+    NEVER = "NEVER"
+    ON_PERMANENT_INSTANCE_DELETION = "ON_PERMANENT_INSTANCE_DELETION"
 
 
 class StoragePoolCapacityProvisioningType(str, Enum):

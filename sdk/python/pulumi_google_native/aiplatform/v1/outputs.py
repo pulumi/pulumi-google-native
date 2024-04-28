@@ -13,6 +13,7 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudAiplatformV1ActiveLearningConfigResponse',
+    'GoogleCloudAiplatformV1ArtifactResponse',
     'GoogleCloudAiplatformV1AutomaticResourcesResponse',
     'GoogleCloudAiplatformV1AutoscalingMetricSpecResponse',
     'GoogleCloudAiplatformV1BatchDedicatedResourcesResponse',
@@ -41,6 +42,10 @@ __all__ = [
     'GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse',
     'GoogleCloudAiplatformV1ExamplesResponse',
     'GoogleCloudAiplatformV1ExecutionResponse',
+    'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse',
+    'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse',
+    'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse',
+    'GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse',
     'GoogleCloudAiplatformV1ExplanationMetadataResponse',
     'GoogleCloudAiplatformV1ExplanationParametersResponse',
     'GoogleCloudAiplatformV1ExplanationSpecResponse',
@@ -106,7 +111,9 @@ __all__ = [
     'GoogleCloudAiplatformV1PersistentDiskSpecResponse',
     'GoogleCloudAiplatformV1PipelineJobDetailResponse',
     'GoogleCloudAiplatformV1PipelineJobResponse',
+    'GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse',
     'GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse',
+    'GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse',
     'GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse',
     'GoogleCloudAiplatformV1PipelineTaskDetailResponse',
     'GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetailResponse',
@@ -157,6 +164,7 @@ __all__ = [
     'GoogleCloudAiplatformV1TrialParameterResponse',
     'GoogleCloudAiplatformV1TrialResponse',
     'GoogleCloudAiplatformV1UnmanagedContainerModelResponse',
+    'GoogleCloudAiplatformV1ValueResponse',
     'GoogleCloudAiplatformV1WorkerPoolSpecResponse',
     'GoogleCloudAiplatformV1XraiAttributionResponse',
     'GoogleIamV1BindingResponse',
@@ -241,6 +249,174 @@ class GoogleCloudAiplatformV1ActiveLearningConfigResponse(dict):
         CMLE training config. For every active learning labeling iteration, system will train a machine learning model on CMLE. The trained model will be used by data sampling algorithm to select DataItems.
         """
         return pulumi.get(self, "training_config")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1ArtifactResponse(dict):
+    """
+    Instance of a general artifact.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "schemaTitle":
+            suggest = "schema_title"
+        elif key == "schemaVersion":
+            suggest = "schema_version"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1ArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1ArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1ArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 display_name: str,
+                 etag: str,
+                 labels: Mapping[str, str],
+                 metadata: Mapping[str, Any],
+                 name: str,
+                 schema_title: str,
+                 schema_version: str,
+                 state: str,
+                 update_time: str,
+                 uri: str):
+        """
+        Instance of a general artifact.
+        :param str create_time: Timestamp when this Artifact was created.
+        :param str description: Description of the Artifact
+        :param str display_name: User provided display name of the Artifact. May be up to 128 Unicode characters.
+        :param str etag: An eTag used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        :param Mapping[str, str] labels: The labels with user-defined metadata to organize your Artifacts. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Artifact (System labels are excluded).
+        :param Mapping[str, Any] metadata: Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
+        :param str name: The resource name of the Artifact.
+        :param str schema_title: The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+        :param str schema_version: The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+        :param str state: The state of this Artifact. This is a property of the Artifact, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines), and the system does not prescribe or check the validity of state transitions.
+        :param str update_time: Timestamp when this Artifact was last updated.
+        :param str uri: The uniform resource identifier of the artifact file. May be empty if there is no actual artifact file.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "schema_title", schema_title)
+        pulumi.set(__self__, "schema_version", schema_version)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Timestamp when this Artifact was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the Artifact
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        User provided display name of the Artifact. May be up to 128 Unicode characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        An eTag used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The labels with user-defined metadata to organize your Artifacts. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Artifact (System labels are excluded).
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, Any]:
+        """
+        Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Artifact.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="schemaTitle")
+    def schema_title(self) -> str:
+        """
+        The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+        """
+        return pulumi.get(self, "schema_title")
+
+    @property
+    @pulumi.getter(name="schemaVersion")
+    def schema_version(self) -> str:
+        """
+        The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+        """
+        return pulumi.get(self, "schema_version")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of this Artifact. This is a property of the Artifact, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines), and the system does not prescribe or check the validity of state transitions.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Timestamp when this Artifact was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The uniform resource identifier of the artifact file. May be empty if there is no actual artifact file.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -988,7 +1164,7 @@ class GoogleCloudAiplatformV1ContextResponse(dict):
                  display_name: str,
                  etag: str,
                  labels: Mapping[str, str],
-                 metadata: Mapping[str, str],
+                 metadata: Mapping[str, Any],
                  name: str,
                  parent_contexts: Sequence[str],
                  schema_title: str,
@@ -1001,7 +1177,7 @@ class GoogleCloudAiplatformV1ContextResponse(dict):
         :param str display_name: User provided display name of the Context. May be up to 128 Unicode characters.
         :param str etag: An eTag used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param Mapping[str, str] labels: The labels with user-defined metadata to organize your Contexts. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Context (System labels are excluded).
-        :param Mapping[str, str] metadata: Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
+        :param Mapping[str, Any] metadata: Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         :param str name: Immutable. The resource name of the Context.
         :param Sequence[str] parent_contexts: A list of resource names of Contexts that are parents of this Context. A Context may have at most 10 parent_contexts.
         :param str schema_title: The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -1062,7 +1238,7 @@ class GoogleCloudAiplatformV1ContextResponse(dict):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> Mapping[str, Any]:
         """
         Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         """
@@ -2237,7 +2413,7 @@ class GoogleCloudAiplatformV1ExecutionResponse(dict):
                  display_name: str,
                  etag: str,
                  labels: Mapping[str, str],
-                 metadata: Mapping[str, str],
+                 metadata: Mapping[str, Any],
                  name: str,
                  schema_title: str,
                  schema_version: str,
@@ -2250,7 +2426,7 @@ class GoogleCloudAiplatformV1ExecutionResponse(dict):
         :param str display_name: User provided display name of the Execution. May be up to 128 Unicode characters.
         :param str etag: An eTag used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param Mapping[str, str] labels: The labels with user-defined metadata to organize your Executions. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Execution (System labels are excluded).
-        :param Mapping[str, str] metadata: Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
+        :param Mapping[str, Any] metadata: Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         :param str name: The resource name of the Execution.
         :param str schema_title: The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
         :param str schema_version: The version of the schema in `schema_title` to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -2311,7 +2487,7 @@ class GoogleCloudAiplatformV1ExecutionResponse(dict):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> Mapping[str, Any]:
         """
         Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         """
@@ -2359,6 +2535,425 @@ class GoogleCloudAiplatformV1ExecutionResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse(dict):
+    """
+    Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+        elif key == "originalMean":
+            suggest = "original_mean"
+        elif key == "originalStddev":
+            suggest = "original_stddev"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_value: float,
+                 min_value: float,
+                 original_mean: float,
+                 original_stddev: float):
+        """
+        Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+        :param float max_value: The maximum permissible value for this feature.
+        :param float min_value: The minimum permissible value for this feature.
+        :param float original_mean: If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+        :param float original_stddev: If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+        """
+        pulumi.set(__self__, "max_value", max_value)
+        pulumi.set(__self__, "min_value", min_value)
+        pulumi.set(__self__, "original_mean", original_mean)
+        pulumi.set(__self__, "original_stddev", original_stddev)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> float:
+        """
+        The maximum permissible value for this feature.
+        """
+        return pulumi.get(self, "max_value")
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> float:
+        """
+        The minimum permissible value for this feature.
+        """
+        return pulumi.get(self, "min_value")
+
+    @property
+    @pulumi.getter(name="originalMean")
+    def original_mean(self) -> float:
+        """
+        If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+        """
+        return pulumi.get(self, "original_mean")
+
+    @property
+    @pulumi.getter(name="originalStddev")
+    def original_stddev(self) -> float:
+        """
+        If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+        """
+        return pulumi.get(self, "original_stddev")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse(dict):
+    """
+    Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denseShapeTensorName":
+            suggest = "dense_shape_tensor_name"
+        elif key == "encodedBaselines":
+            suggest = "encoded_baselines"
+        elif key == "encodedTensorName":
+            suggest = "encoded_tensor_name"
+        elif key == "featureValueDomain":
+            suggest = "feature_value_domain"
+        elif key == "groupName":
+            suggest = "group_name"
+        elif key == "indexFeatureMapping":
+            suggest = "index_feature_mapping"
+        elif key == "indicesTensorName":
+            suggest = "indices_tensor_name"
+        elif key == "inputBaselines":
+            suggest = "input_baselines"
+        elif key == "inputTensorName":
+            suggest = "input_tensor_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dense_shape_tensor_name: str,
+                 encoded_baselines: Sequence[Any],
+                 encoded_tensor_name: str,
+                 encoding: str,
+                 feature_value_domain: 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse',
+                 group_name: str,
+                 index_feature_mapping: Sequence[str],
+                 indices_tensor_name: str,
+                 input_baselines: Sequence[Any],
+                 input_tensor_name: str,
+                 modality: str,
+                 visualization: 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse'):
+        """
+        Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+        :param str dense_shape_tensor_name: Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        :param Sequence[Any] encoded_baselines: A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+        :param str encoded_tensor_name: Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+        :param str encoding: Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+        :param 'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse' feature_value_domain: The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+        :param str group_name: Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+        :param Sequence[str] index_feature_mapping: A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+        :param str indices_tensor_name: Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        :param Sequence[Any] input_baselines: Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+        :param str input_tensor_name: Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+        :param str modality: Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+        :param 'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse' visualization: Visualization configurations for image explanation.
+        """
+        pulumi.set(__self__, "dense_shape_tensor_name", dense_shape_tensor_name)
+        pulumi.set(__self__, "encoded_baselines", encoded_baselines)
+        pulumi.set(__self__, "encoded_tensor_name", encoded_tensor_name)
+        pulumi.set(__self__, "encoding", encoding)
+        pulumi.set(__self__, "feature_value_domain", feature_value_domain)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "index_feature_mapping", index_feature_mapping)
+        pulumi.set(__self__, "indices_tensor_name", indices_tensor_name)
+        pulumi.set(__self__, "input_baselines", input_baselines)
+        pulumi.set(__self__, "input_tensor_name", input_tensor_name)
+        pulumi.set(__self__, "modality", modality)
+        pulumi.set(__self__, "visualization", visualization)
+
+    @property
+    @pulumi.getter(name="denseShapeTensorName")
+    def dense_shape_tensor_name(self) -> str:
+        """
+        Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        """
+        return pulumi.get(self, "dense_shape_tensor_name")
+
+    @property
+    @pulumi.getter(name="encodedBaselines")
+    def encoded_baselines(self) -> Sequence[Any]:
+        """
+        A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+        """
+        return pulumi.get(self, "encoded_baselines")
+
+    @property
+    @pulumi.getter(name="encodedTensorName")
+    def encoded_tensor_name(self) -> str:
+        """
+        Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+        """
+        return pulumi.get(self, "encoded_tensor_name")
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> str:
+        """
+        Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+        """
+        return pulumi.get(self, "encoding")
+
+    @property
+    @pulumi.getter(name="featureValueDomain")
+    def feature_value_domain(self) -> 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse':
+        """
+        The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+        """
+        return pulumi.get(self, "feature_value_domain")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter(name="indexFeatureMapping")
+    def index_feature_mapping(self) -> Sequence[str]:
+        """
+        A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+        """
+        return pulumi.get(self, "index_feature_mapping")
+
+    @property
+    @pulumi.getter(name="indicesTensorName")
+    def indices_tensor_name(self) -> str:
+        """
+        Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        """
+        return pulumi.get(self, "indices_tensor_name")
+
+    @property
+    @pulumi.getter(name="inputBaselines")
+    def input_baselines(self) -> Sequence[Any]:
+        """
+        Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+        """
+        return pulumi.get(self, "input_baselines")
+
+    @property
+    @pulumi.getter(name="inputTensorName")
+    def input_tensor_name(self) -> str:
+        """
+        Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+        """
+        return pulumi.get(self, "input_tensor_name")
+
+    @property
+    @pulumi.getter
+    def modality(self) -> str:
+        """
+        Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+        """
+        return pulumi.get(self, "modality")
+
+    @property
+    @pulumi.getter
+    def visualization(self) -> 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse':
+        """
+        Visualization configurations for image explanation.
+        """
+        return pulumi.get(self, "visualization")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse(dict):
+    """
+    Visualization configurations for image explanation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clipPercentLowerbound":
+            suggest = "clip_percent_lowerbound"
+        elif key == "clipPercentUpperbound":
+            suggest = "clip_percent_upperbound"
+        elif key == "colorMap":
+            suggest = "color_map"
+        elif key == "overlayType":
+            suggest = "overlay_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 clip_percent_lowerbound: float,
+                 clip_percent_upperbound: float,
+                 color_map: str,
+                 overlay_type: str,
+                 polarity: str,
+                 type: str):
+        """
+        Visualization configurations for image explanation.
+        :param float clip_percent_lowerbound: Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+        :param float clip_percent_upperbound: Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+        :param str color_map: The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+        :param str overlay_type: How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+        :param str polarity: Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+        :param str type: Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+        """
+        pulumi.set(__self__, "clip_percent_lowerbound", clip_percent_lowerbound)
+        pulumi.set(__self__, "clip_percent_upperbound", clip_percent_upperbound)
+        pulumi.set(__self__, "color_map", color_map)
+        pulumi.set(__self__, "overlay_type", overlay_type)
+        pulumi.set(__self__, "polarity", polarity)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="clipPercentLowerbound")
+    def clip_percent_lowerbound(self) -> float:
+        """
+        Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+        """
+        return pulumi.get(self, "clip_percent_lowerbound")
+
+    @property
+    @pulumi.getter(name="clipPercentUpperbound")
+    def clip_percent_upperbound(self) -> float:
+        """
+        Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+        """
+        return pulumi.get(self, "clip_percent_upperbound")
+
+    @property
+    @pulumi.getter(name="colorMap")
+    def color_map(self) -> str:
+        """
+        The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+        """
+        return pulumi.get(self, "color_map")
+
+    @property
+    @pulumi.getter(name="overlayType")
+    def overlay_type(self) -> str:
+        """
+        How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+        """
+        return pulumi.get(self, "overlay_type")
+
+    @property
+    @pulumi.getter
+    def polarity(self) -> str:
+        """
+        Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+        """
+        return pulumi.get(self, "polarity")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse(dict):
+    """
+    Metadata of the prediction output to be explained.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayNameMappingKey":
+            suggest = "display_name_mapping_key"
+        elif key == "indexDisplayNameMapping":
+            suggest = "index_display_name_mapping"
+        elif key == "outputTensorName":
+            suggest = "output_tensor_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name_mapping_key: str,
+                 index_display_name_mapping: Any,
+                 output_tensor_name: str):
+        """
+        Metadata of the prediction output to be explained.
+        :param str display_name_mapping_key: Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+        :param Any index_display_name_mapping: Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+        :param str output_tensor_name: Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+        """
+        pulumi.set(__self__, "display_name_mapping_key", display_name_mapping_key)
+        pulumi.set(__self__, "index_display_name_mapping", index_display_name_mapping)
+        pulumi.set(__self__, "output_tensor_name", output_tensor_name)
+
+    @property
+    @pulumi.getter(name="displayNameMappingKey")
+    def display_name_mapping_key(self) -> str:
+        """
+        Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+        """
+        return pulumi.get(self, "display_name_mapping_key")
+
+    @property
+    @pulumi.getter(name="indexDisplayNameMapping")
+    def index_display_name_mapping(self) -> Any:
+        """
+        Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+        """
+        return pulumi.get(self, "index_display_name_mapping")
+
+    @property
+    @pulumi.getter(name="outputTensorName")
+    def output_tensor_name(self) -> str:
+        """
+        Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+        """
+        return pulumi.get(self, "output_tensor_name")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1ExplanationMetadataResponse(dict):
     """
     Metadata describing the Model's input and output for explanation.
@@ -2384,15 +2979,15 @@ class GoogleCloudAiplatformV1ExplanationMetadataResponse(dict):
 
     def __init__(__self__, *,
                  feature_attributions_schema_uri: str,
-                 inputs: Mapping[str, str],
+                 inputs: 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse',
                  latent_space_source: str,
-                 outputs: Mapping[str, str]):
+                 outputs: 'outputs.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse'):
         """
         Metadata describing the Model's input and output for explanation.
         :param str feature_attributions_schema_uri: Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
-        :param Mapping[str, str] inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
+        :param 'GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse' inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         :param str latent_space_source: Name of the source to generate embeddings for example based explanations.
-        :param Mapping[str, str] outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
+        :param 'GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse' outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         """
         pulumi.set(__self__, "feature_attributions_schema_uri", feature_attributions_schema_uri)
         pulumi.set(__self__, "inputs", inputs)
@@ -2409,7 +3004,7 @@ class GoogleCloudAiplatformV1ExplanationMetadataResponse(dict):
 
     @property
     @pulumi.getter
-    def inputs(self) -> Mapping[str, str]:
+    def inputs(self) -> 'outputs.GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse':
         """
         Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         """
@@ -2425,7 +3020,7 @@ class GoogleCloudAiplatformV1ExplanationMetadataResponse(dict):
 
     @property
     @pulumi.getter
-    def outputs(self) -> Mapping[str, str]:
+    def outputs(self) -> 'outputs.GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse':
         """
         Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         """
@@ -4905,14 +5500,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attribution_score_drift_thresholds: Mapping[str, str],
+                 attribution_score_drift_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
                  default_drift_threshold: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
-                 drift_thresholds: Mapping[str, str]):
+                 drift_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse'):
         """
         The config for Prediction data drift detection.
-        :param Mapping[str, str] attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
+        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' default_drift_threshold: Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param Mapping[str, str] drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
+        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
         pulumi.set(__self__, "attribution_score_drift_thresholds", attribution_score_drift_thresholds)
         pulumi.set(__self__, "default_drift_threshold", default_drift_threshold)
@@ -4920,7 +5515,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
 
     @property
     @pulumi.getter(name="attributionScoreDriftThresholds")
-    def attribution_score_drift_thresholds(self) -> Mapping[str, str]:
+    def attribution_score_drift_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         """
@@ -4936,7 +5531,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetect
 
     @property
     @pulumi.getter(name="driftThresholds")
-    def drift_thresholds(self) -> Mapping[str, str]:
+    def drift_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
@@ -5150,14 +5745,14 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attribution_score_skew_thresholds: Mapping[str, str],
+                 attribution_score_skew_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
                  default_skew_threshold: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse',
-                 skew_thresholds: Mapping[str, str]):
+                 skew_thresholds: 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse'):
         """
         The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
-        :param Mapping[str, str] attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
+        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' default_skew_threshold: Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param Mapping[str, str] skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
+        :param 'GoogleCloudAiplatformV1ThresholdConfigResponse' skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
         pulumi.set(__self__, "attribution_score_skew_thresholds", attribution_score_skew_thresholds)
         pulumi.set(__self__, "default_skew_threshold", default_skew_threshold)
@@ -5165,7 +5760,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
 
     @property
     @pulumi.getter(name="attributionScoreSkewThresholds")
-    def attribution_score_skew_thresholds(self) -> Mapping[str, str]:
+    def attribution_score_skew_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         """
@@ -5181,7 +5776,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSke
 
     @property
     @pulumi.getter(name="skewThresholds")
-    def skew_thresholds(self) -> Mapping[str, str]:
+    def skew_thresholds(self) -> 'outputs.GoogleCloudAiplatformV1ThresholdConfigResponse':
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
@@ -6553,7 +7148,7 @@ class GoogleCloudAiplatformV1PipelineJobResponse(dict):
                  labels: Mapping[str, str],
                  name: str,
                  network: str,
-                 pipeline_spec: Mapping[str, str],
+                 pipeline_spec: Mapping[str, Any],
                  reserved_ip_ranges: Sequence[str],
                  runtime_config: 'outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse',
                  schedule_name: str,
@@ -6574,7 +7169,7 @@ class GoogleCloudAiplatformV1PipelineJobResponse(dict):
         :param Mapping[str, str] labels: The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
         :param str name: The resource name of the PipelineJob.
         :param str network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
-        :param Mapping[str, str] pipeline_spec: The spec of the pipeline.
+        :param Mapping[str, Any] pipeline_spec: The spec of the pipeline.
         :param Sequence[str] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         :param 'GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse' runtime_config: Runtime config of the pipeline.
         :param str schedule_name: The schedule resource name. Only returned if the Pipeline is created by Schedule API.
@@ -6679,7 +7274,7 @@ class GoogleCloudAiplatformV1PipelineJobResponse(dict):
 
     @property
     @pulumi.getter(name="pipelineSpec")
-    def pipeline_spec(self) -> Mapping[str, str]:
+    def pipeline_spec(self) -> Mapping[str, Any]:
         """
         The spec of the pipeline.
         """
@@ -6759,6 +7354,45 @@ class GoogleCloudAiplatformV1PipelineJobResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse(dict):
+    """
+    The type of an input artifact.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 artifact_id: str):
+        """
+        The type of an input artifact.
+        :param str artifact_id: Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+        """
+        pulumi.set(__self__, "artifact_id", artifact_id)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> str:
+        """
+        Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+        """
+        return pulumi.get(self, "artifact_id")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
     """
     The runtime config of a PipelineJob.
@@ -6789,16 +7423,16 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
     def __init__(__self__, *,
                  failure_policy: str,
                  gcs_output_directory: str,
-                 input_artifacts: Mapping[str, str],
-                 parameter_values: Mapping[str, str],
-                 parameters: Mapping[str, str]):
+                 input_artifacts: 'outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse',
+                 parameter_values: Mapping[str, Any],
+                 parameters: 'outputs.GoogleCloudAiplatformV1ValueResponse'):
         """
         The runtime config of a PipelineJob.
         :param str failure_policy: Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
         :param str gcs_output_directory: A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
-        :param Mapping[str, str] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-        :param Mapping[str, str] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-        :param Mapping[str, str] parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
+        :param 'GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse' input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+        :param Mapping[str, Any] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+        :param 'GoogleCloudAiplatformV1ValueResponse' parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
         pulumi.set(__self__, "failure_policy", failure_policy)
         pulumi.set(__self__, "gcs_output_directory", gcs_output_directory)
@@ -6824,7 +7458,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
 
     @property
     @pulumi.getter(name="inputArtifacts")
-    def input_artifacts(self) -> Mapping[str, str]:
+    def input_artifacts(self) -> 'outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse':
         """
         The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         """
@@ -6832,7 +7466,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
 
     @property
     @pulumi.getter(name="parameterValues")
-    def parameter_values(self) -> Mapping[str, str]:
+    def parameter_values(self) -> Mapping[str, Any]:
         """
         The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
         """
@@ -6840,7 +7474,7 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Mapping[str, str]:
+    def parameters(self) -> 'outputs.GoogleCloudAiplatformV1ValueResponse':
         """
         Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
@@ -6848,6 +7482,28 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(dict):
         pulumi.log.warn("""parameters is deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.""")
 
         return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse(dict):
+    """
+    A list of artifact metadata.
+    """
+    def __init__(__self__, *,
+                 artifacts: Sequence['outputs.GoogleCloudAiplatformV1ArtifactResponse']):
+        """
+        A list of artifact metadata.
+        :param Sequence['GoogleCloudAiplatformV1ArtifactResponse'] artifacts: A list of artifact metadata.
+        """
+        pulumi.set(__self__, "artifacts", artifacts)
+
+    @property
+    @pulumi.getter
+    def artifacts(self) -> Sequence['outputs.GoogleCloudAiplatformV1ArtifactResponse']:
+        """
+        A list of artifact metadata.
+        """
+        return pulumi.get(self, "artifacts")
 
 
 @pulumi.output_type
@@ -6953,8 +7609,8 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
                  error: 'outputs.GoogleRpcStatusResponse',
                  execution: 'outputs.GoogleCloudAiplatformV1ExecutionResponse',
                  executor_detail: 'outputs.GoogleCloudAiplatformV1PipelineTaskExecutorDetailResponse',
-                 inputs: Mapping[str, str],
-                 outputs: Mapping[str, str],
+                 inputs: 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse',
+                 outputs: 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse',
                  parent_task_id: str,
                  pipeline_task_status: Sequence['outputs.GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse'],
                  start_time: str,
@@ -6968,8 +7624,8 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
         :param 'GoogleRpcStatusResponse' error: The error that occurred during task execution. Only populated when the task's state is FAILED or CANCELLED.
         :param 'GoogleCloudAiplatformV1ExecutionResponse' execution: The execution metadata of the task.
         :param 'GoogleCloudAiplatformV1PipelineTaskExecutorDetailResponse' executor_detail: The detailed execution info.
-        :param Mapping[str, str] inputs: The runtime input artifacts of the task.
-        :param Mapping[str, str] outputs: The runtime output artifacts of the task.
+        :param 'GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse' inputs: The runtime input artifacts of the task.
+        :param 'GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse' outputs: The runtime output artifacts of the task.
         :param str parent_task_id: The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
         :param Sequence['GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse'] pipeline_task_status: A list of task status. This field keeps a record of task status evolving over time.
         :param str start_time: Task start time.
@@ -7033,7 +7689,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
 
     @property
     @pulumi.getter
-    def inputs(self) -> Mapping[str, str]:
+    def inputs(self) -> 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse':
         """
         The runtime input artifacts of the task.
         """
@@ -7041,7 +7697,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetailResponse(dict):
 
     @property
     @pulumi.getter
-    def outputs(self) -> Mapping[str, str]:
+    def outputs(self) -> 'outputs.GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse':
         """
         The runtime output artifacts of the task.
         """
@@ -10024,6 +10680,71 @@ class GoogleCloudAiplatformV1UnmanagedContainerModelResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudAiplatformV1ValueResponse(dict):
+    """
+    Value is the value of the field.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "doubleValue":
+            suggest = "double_value"
+        elif key == "intValue":
+            suggest = "int_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAiplatformV1ValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAiplatformV1ValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAiplatformV1ValueResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 double_value: float,
+                 int_value: str,
+                 string_value: str):
+        """
+        Value is the value of the field.
+        :param float double_value: A double value.
+        :param str int_value: An integer value.
+        :param str string_value: A string value.
+        """
+        pulumi.set(__self__, "double_value", double_value)
+        pulumi.set(__self__, "int_value", int_value)
+        pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="doubleValue")
+    def double_value(self) -> float:
+        """
+        A double value.
+        """
+        return pulumi.get(self, "double_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> str:
+        """
+        An integer value.
+        """
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> str:
+        """
+        A string value.
+        """
+        return pulumi.get(self, "string_value")
+
+
+@pulumi.output_type
 class GoogleCloudAiplatformV1WorkerPoolSpecResponse(dict):
     """
     Represents the spec of a worker pool in a job.
@@ -10243,12 +10964,12 @@ class GoogleRpcStatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -10265,7 +10986,7 @@ class GoogleRpcStatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """

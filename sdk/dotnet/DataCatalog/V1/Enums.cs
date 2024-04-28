@@ -285,6 +285,59 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     }
 
     /// <summary>
+    /// Primitive types, such as string, boolean, etc.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1FieldTypePrimitiveType : IEquatable<GoogleCloudDatacatalogV1FieldTypePrimitiveType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1FieldTypePrimitiveType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default invalid value for a type.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1FieldTypePrimitiveType PrimitiveTypeUnspecified { get; } = new GoogleCloudDatacatalogV1FieldTypePrimitiveType("PRIMITIVE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A double precision number.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1FieldTypePrimitiveType Double { get; } = new GoogleCloudDatacatalogV1FieldTypePrimitiveType("DOUBLE");
+        /// <summary>
+        /// An UTF-8 string.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1FieldTypePrimitiveType String { get; } = new GoogleCloudDatacatalogV1FieldTypePrimitiveType("STRING");
+        /// <summary>
+        /// A boolean value.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1FieldTypePrimitiveType Bool { get; } = new GoogleCloudDatacatalogV1FieldTypePrimitiveType("BOOL");
+        /// <summary>
+        /// A timestamp.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1FieldTypePrimitiveType Timestamp { get; } = new GoogleCloudDatacatalogV1FieldTypePrimitiveType("TIMESTAMP");
+        /// <summary>
+        /// A Richtext description.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1FieldTypePrimitiveType Richtext { get; } = new GoogleCloudDatacatalogV1FieldTypePrimitiveType("RICHTEXT");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1FieldTypePrimitiveType left, GoogleCloudDatacatalogV1FieldTypePrimitiveType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1FieldTypePrimitiveType left, GoogleCloudDatacatalogV1FieldTypePrimitiveType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1FieldTypePrimitiveType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1FieldTypePrimitiveType other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1FieldTypePrimitiveType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies whether the argument is input or output.
     /// </summary>
     [EnumType]

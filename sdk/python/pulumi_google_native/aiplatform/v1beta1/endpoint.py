@@ -27,7 +27,7 @@ class EndpointArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  predict_request_response_logging_config: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[str] display_name: The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -39,7 +39,7 @@ class EndpointArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs'] predict_request_response_logging_config: Configures the request-response logging for online prediction.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] traffic_split: A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] traffic_split: A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
         """
         pulumi.set(__self__, "display_name", display_name)
         if description is not None:
@@ -199,14 +199,14 @@ class EndpointArgs:
 
     @property
     @pulumi.getter(name="trafficSplit")
-    def traffic_split(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def traffic_split(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]:
         """
         A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
         """
         return pulumi.get(self, "traffic_split")
 
     @traffic_split.setter
-    def traffic_split(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def traffic_split(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]):
         pulumi.set(self, "traffic_split", value)
 
 
@@ -226,7 +226,7 @@ class Endpoint(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  predict_request_response_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  __props__=None):
         """
         Creates an Endpoint.
@@ -243,7 +243,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] traffic_split: A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] traffic_split: A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
         """
         ...
     @overload
@@ -281,7 +281,7 @@ class Endpoint(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  predict_request_response_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,7 +472,7 @@ class Endpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trafficSplit")
-    def traffic_split(self) -> pulumi.Output[Mapping[str, str]]:
+    def traffic_split(self) -> pulumi.Output[Mapping[str, int]]:
         """
         A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
         """

@@ -53,7 +53,7 @@ type Version struct {
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings FlexibleRuntimeSettingsResponseOutput `pulumi:"flexibleRuntimeSettings"`
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-	GeneratedCustomerMetadata pulumi.StringMapOutput `pulumi:"generatedCustomerMetadata"`
+	GeneratedCustomerMetadata pulumi.MapOutput `pulumi:"generatedCustomerMetadata"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers UrlMapResponseArrayOutput `pulumi:"handlers"`
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
@@ -186,7 +186,7 @@ type versionArgs struct {
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings *FlexibleRuntimeSettings `pulumi:"flexibleRuntimeSettings"`
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-	GeneratedCustomerMetadata map[string]string `pulumi:"generatedCustomerMetadata"`
+	GeneratedCustomerMetadata map[string]interface{} `pulumi:"generatedCustomerMetadata"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers []UrlMap `pulumi:"handlers"`
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
@@ -268,7 +268,7 @@ type VersionArgs struct {
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings FlexibleRuntimeSettingsPtrInput
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-	GeneratedCustomerMetadata pulumi.StringMapInput
+	GeneratedCustomerMetadata pulumi.MapInput
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers UrlMapArrayInput
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
@@ -445,8 +445,8 @@ func (o VersionOutput) FlexibleRuntimeSettings() FlexibleRuntimeSettingsResponse
 }
 
 // Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-func (o VersionOutput) GeneratedCustomerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Version) pulumi.StringMapOutput { return v.GeneratedCustomerMetadata }).(pulumi.StringMapOutput)
+func (o VersionOutput) GeneratedCustomerMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Version) pulumi.MapOutput { return v.GeneratedCustomerMetadata }).(pulumi.MapOutput)
 }
 
 // An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.

@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// Returns a response containing a custom, platform-specific payload.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Payload;
+        public readonly ImmutableDictionary<string, object> Payload;
         /// <summary>
         /// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
         /// </summary>
@@ -81,7 +81,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse outputAudioText,
 
-            ImmutableDictionary<string, string> payload,
+            ImmutableDictionary<string, object> payload,
 
             Outputs.GoogleCloudDialogflowCxV3ResponseMessagePlayAudioResponse playAudio,
 

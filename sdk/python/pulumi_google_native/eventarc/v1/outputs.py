@@ -23,6 +23,7 @@ __all__ = [
     'HttpEndpointResponse',
     'NetworkConfigResponse',
     'PubsubResponse',
+    'StateConditionResponse',
     'TransportResponse',
 ]
 
@@ -573,6 +574,39 @@ class PubsubResponse(dict):
         Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
         """
         return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class StateConditionResponse(dict):
+    """
+    A condition that is part of the trigger state computation.
+    """
+    def __init__(__self__, *,
+                 code: str,
+                 message: str):
+        """
+        A condition that is part of the trigger state computation.
+        :param str code: The canonical code of the condition.
+        :param str message: Human-readable message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The canonical code of the condition.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        Human-readable message.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

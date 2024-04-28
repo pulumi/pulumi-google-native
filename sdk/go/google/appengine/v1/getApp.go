@@ -47,7 +47,7 @@ type LookupAppResult struct {
 	// The Google Container Registry domain used for storing managed build docker images for this application.
 	GcrDomain string `pulumi:"gcrDomain"`
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
-	GeneratedCustomerMetadata map[string]string          `pulumi:"generatedCustomerMetadata"`
+	GeneratedCustomerMetadata map[string]interface{}     `pulumi:"generatedCustomerMetadata"`
 	Iap                       IdentityAwareProxyResponse `pulumi:"iap"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location string `pulumi:"location"`
@@ -141,8 +141,8 @@ func (o LookupAppResultOutput) GcrDomain() pulumi.StringOutput {
 }
 
 // Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
-func (o LookupAppResultOutput) GeneratedCustomerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupAppResult) map[string]string { return v.GeneratedCustomerMetadata }).(pulumi.StringMapOutput)
+func (o LookupAppResultOutput) GeneratedCustomerMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupAppResult) map[string]interface{} { return v.GeneratedCustomerMetadata }).(pulumi.MapOutput)
 }
 
 func (o LookupAppResultOutput) Iap() IdentityAwareProxyResponseOutput {

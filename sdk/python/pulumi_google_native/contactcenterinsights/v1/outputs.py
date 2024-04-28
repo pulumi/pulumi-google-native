@@ -30,18 +30,22 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse',
+    'GoogleCloudContactcenterinsightsV1DialogflowIntentResponse',
     'GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse',
     'GoogleCloudContactcenterinsightsV1DialogflowSourceResponse',
     'GoogleCloudContactcenterinsightsV1EntityMentionDataResponse',
+    'GoogleCloudContactcenterinsightsV1EntityResponse',
     'GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse',
     'GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse',
     'GoogleCloudContactcenterinsightsV1GcsSourceResponse',
     'GoogleCloudContactcenterinsightsV1HoldDataResponse',
     'GoogleCloudContactcenterinsightsV1IntentMatchDataResponse',
+    'GoogleCloudContactcenterinsightsV1IntentResponse',
     'GoogleCloudContactcenterinsightsV1InterruptionDataResponse',
     'GoogleCloudContactcenterinsightsV1IssueAssignmentResponse',
     'GoogleCloudContactcenterinsightsV1IssueMatchDataResponse',
     'GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse',
+    'GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse',
     'GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse',
     'GoogleCloudContactcenterinsightsV1IssueModelResultResponse',
     'GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse',
@@ -170,18 +174,18 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     def __init__(__self__, *,
                  annotations: Sequence['outputs.GoogleCloudContactcenterinsightsV1CallAnnotationResponse'],
-                 entities: Mapping[str, str],
-                 intents: Mapping[str, str],
+                 entities: 'outputs.GoogleCloudContactcenterinsightsV1EntityResponse',
+                 intents: 'outputs.GoogleCloudContactcenterinsightsV1IntentResponse',
                  issue_model_result: 'outputs.GoogleCloudContactcenterinsightsV1IssueModelResultResponse',
-                 phrase_matchers: Mapping[str, str],
+                 phrase_matchers: 'outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse',
                  sentiments: Sequence['outputs.GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse']):
         """
         Call-specific metadata created during analysis.
         :param Sequence['GoogleCloudContactcenterinsightsV1CallAnnotationResponse'] annotations: A list of call annotations that apply to this call.
-        :param Mapping[str, str] entities: All the entities in the call.
-        :param Mapping[str, str] intents: All the matched intents in the call.
+        :param 'GoogleCloudContactcenterinsightsV1EntityResponse' entities: All the entities in the call.
+        :param 'GoogleCloudContactcenterinsightsV1IntentResponse' intents: All the matched intents in the call.
         :param 'GoogleCloudContactcenterinsightsV1IssueModelResultResponse' issue_model_result: Overall conversation-level issue modeling result.
-        :param Mapping[str, str] phrase_matchers: All the matched phrase matchers in the call.
+        :param 'GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse' phrase_matchers: All the matched phrase matchers in the call.
         :param Sequence['GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse'] sentiments: Overall conversation-level sentiment for each channel of the call.
         """
         pulumi.set(__self__, "annotations", annotations)
@@ -201,7 +205,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     @property
     @pulumi.getter
-    def entities(self) -> Mapping[str, str]:
+    def entities(self) -> 'outputs.GoogleCloudContactcenterinsightsV1EntityResponse':
         """
         All the entities in the call.
         """
@@ -209,7 +213,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     @property
     @pulumi.getter
-    def intents(self) -> Mapping[str, str]:
+    def intents(self) -> 'outputs.GoogleCloudContactcenterinsightsV1IntentResponse':
         """
         All the matched intents in the call.
         """
@@ -225,7 +229,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
     @property
     @pulumi.getter(name="phraseMatchers")
-    def phrase_matchers(self) -> Mapping[str, str]:
+    def phrase_matchers(self) -> 'outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse':
         """
         All the matched phrase matchers in the call.
         """
@@ -1525,6 +1529,45 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
 
 
 @pulumi.output_type
+class GoogleCloudContactcenterinsightsV1DialogflowIntentResponse(dict):
+    """
+    The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1DialogflowIntentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1DialogflowIntentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1DialogflowIntentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str):
+        """
+        The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE.
+        :param str display_name: The human-readable name of the intent.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The human-readable name of the intent.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
 class GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse(dict):
     """
     Dialogflow interaction data.
@@ -1683,6 +1726,89 @@ class GoogleCloudContactcenterinsightsV1EntityMentionDataResponse(dict):
     def type(self) -> str:
         """
         The type of the entity mention.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudContactcenterinsightsV1EntityResponse(dict):
+    """
+    The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1EntityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1EntityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1EntityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 metadata: Mapping[str, str],
+                 salience: float,
+                 sentiment: 'outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse',
+                 type: str):
+        """
+        The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location.
+        :param str display_name: The representative name for the entity.
+        :param Mapping[str, str] metadata: Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below.
+        :param float salience: The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity provides information about the importance or centrality of that entity to the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient.
+        :param 'GoogleCloudContactcenterinsightsV1SentimentDataResponse' sentiment: The aggregate sentiment expressed for this entity in the conversation.
+        :param str type: The entity type.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "salience", salience)
+        pulumi.set(__self__, "sentiment", sentiment)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The representative name for the entity.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def salience(self) -> float:
+        """
+        The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity provides information about the importance or centrality of that entity to the entire document text. Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient.
+        """
+        return pulumi.get(self, "salience")
+
+    @property
+    @pulumi.getter
+    def sentiment(self) -> 'outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse':
+        """
+        The aggregate sentiment expressed for this entity in the conversation.
+        """
+        return pulumi.get(self, "sentiment")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The entity type.
         """
         return pulumi.get(self, "type")
 
@@ -1926,6 +2052,45 @@ class GoogleCloudContactcenterinsightsV1IntentMatchDataResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudContactcenterinsightsV1IntentResponse(dict):
+    """
+    The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1IntentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1IntentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1IntentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str):
+        """
+        The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE.
+        :param str display_name: The human-readable name of the intent.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The human-readable name of the intent.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
 class GoogleCloudContactcenterinsightsV1InterruptionDataResponse(dict):
     """
     The data for an interruption annotation.
@@ -2099,6 +2264,69 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse(dict):
+    """
+    Aggregated statistics about an issue.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "labeledConversationsCount":
+            suggest = "labeled_conversations_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 issue: str,
+                 labeled_conversations_count: str):
+        """
+        Aggregated statistics about an issue.
+        :param str display_name: Display name of the issue.
+        :param str issue: Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+        :param str labeled_conversations_count: Number of conversations attached to the issue at this point in time.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "issue", issue)
+        pulumi.set(__self__, "labeled_conversations_count", labeled_conversations_count)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Display name of the issue.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def issue(self) -> str:
+        """
+        Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue}
+        """
+        return pulumi.get(self, "issue")
+
+    @property
+    @pulumi.getter(name="labeledConversationsCount")
+    def labeled_conversations_count(self) -> str:
+        """
+        Number of conversations attached to the issue at this point in time.
+        """
+        return pulumi.get(self, "labeled_conversations_count")
+
+
+@pulumi.output_type
 class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(dict):
     """
     Aggregated statistics about an issue model.
@@ -2126,12 +2354,12 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(dict):
 
     def __init__(__self__, *,
                  analyzed_conversations_count: str,
-                 issue_stats: Mapping[str, str],
+                 issue_stats: 'outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse',
                  unclassified_conversations_count: str):
         """
         Aggregated statistics about an issue model.
         :param str analyzed_conversations_count: Number of conversations the issue model has analyzed at this point in time.
-        :param Mapping[str, str] issue_stats: Statistics on each issue. Key is the issue's resource name.
+        :param 'GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse' issue_stats: Statistics on each issue. Key is the issue's resource name.
         :param str unclassified_conversations_count: Number of analyzed conversations for which no issue was applicable at this point in time.
         """
         pulumi.set(__self__, "analyzed_conversations_count", analyzed_conversations_count)
@@ -2148,7 +2376,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(dict):
 
     @property
     @pulumi.getter(name="issueStats")
-    def issue_stats(self) -> Mapping[str, str]:
+    def issue_stats(self) -> 'outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse':
         """
         Statistics on each issue. Key is the issue's resource name.
         """

@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> Details;
+        public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
         /// <summary>
         /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         /// </summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         private StatusResponse(
             int code,
 
-            ImmutableArray<ImmutableDictionary<string, string>> details,
+            ImmutableArray<ImmutableDictionary<string, object>> details,
 
             string message)
         {

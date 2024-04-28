@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// The structured representation of the schema.
         /// </summary>
         [Output("structSchema")]
-        public Output<ImmutableDictionary<string, string>> StructSchema { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> StructSchema { get; private set; } = null!;
 
 
         /// <summary>
@@ -141,14 +141,14 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         public Input<string> SchemaId { get; set; } = null!;
 
         [Input("structSchema")]
-        private InputMap<string>? _structSchema;
+        private InputMap<object>? _structSchema;
 
         /// <summary>
         /// The structured representation of the schema.
         /// </summary>
-        public InputMap<string> StructSchema
+        public InputMap<object> StructSchema
         {
-            get => _structSchema ?? (_structSchema = new InputMap<string>());
+            get => _structSchema ?? (_structSchema = new InputMap<object>());
             set => _structSchema = value;
         }
 

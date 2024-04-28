@@ -22,26 +22,26 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3PageArgs>? CurrentPage { get; set; }
 
         [Input("diagnosticInfo", required: true)]
-        private InputMap<string>? _diagnosticInfo;
+        private InputMap<object>? _diagnosticInfo;
 
         /// <summary>
         /// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         /// </summary>
-        public InputMap<string> DiagnosticInfo
+        public InputMap<object> DiagnosticInfo
         {
-            get => _diagnosticInfo ?? (_diagnosticInfo = new InputMap<string>());
+            get => _diagnosticInfo ?? (_diagnosticInfo = new InputMap<object>());
             set => _diagnosticInfo = value;
         }
 
         [Input("sessionParameters")]
-        private InputMap<string>? _sessionParameters;
+        private InputMap<object>? _sessionParameters;
 
         /// <summary>
         /// The session parameters available to the bot at this point.
         /// </summary>
-        public InputMap<string> SessionParameters
+        public InputMap<object> SessionParameters
         {
-            get => _sessionParameters ?? (_sessionParameters = new InputMap<string>());
+            get => _sessionParameters ?? (_sessionParameters = new InputMap<object>());
             set => _sessionParameters = value;
         }
 

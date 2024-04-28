@@ -2105,10 +2105,10 @@ func (o BuildPtrOutput) Signature() BuildSignaturePtrOutput {
 }
 
 type BuildDefinition struct {
-	BuildType            *string              `pulumi:"buildType"`
-	ExternalParameters   map[string]string    `pulumi:"externalParameters"`
-	InternalParameters   map[string]string    `pulumi:"internalParameters"`
-	ResolvedDependencies []ResourceDescriptor `pulumi:"resolvedDependencies"`
+	BuildType            *string                `pulumi:"buildType"`
+	ExternalParameters   map[string]interface{} `pulumi:"externalParameters"`
+	InternalParameters   map[string]interface{} `pulumi:"internalParameters"`
+	ResolvedDependencies []ResourceDescriptor   `pulumi:"resolvedDependencies"`
 }
 
 // BuildDefinitionInput is an input type that accepts BuildDefinitionArgs and BuildDefinitionOutput values.
@@ -2124,8 +2124,8 @@ type BuildDefinitionInput interface {
 
 type BuildDefinitionArgs struct {
 	BuildType            pulumi.StringPtrInput        `pulumi:"buildType"`
-	ExternalParameters   pulumi.StringMapInput        `pulumi:"externalParameters"`
-	InternalParameters   pulumi.StringMapInput        `pulumi:"internalParameters"`
+	ExternalParameters   pulumi.MapInput              `pulumi:"externalParameters"`
+	InternalParameters   pulumi.MapInput              `pulumi:"internalParameters"`
 	ResolvedDependencies ResourceDescriptorArrayInput `pulumi:"resolvedDependencies"`
 }
 
@@ -2210,12 +2210,12 @@ func (o BuildDefinitionOutput) BuildType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildDefinition) *string { return v.BuildType }).(pulumi.StringPtrOutput)
 }
 
-func (o BuildDefinitionOutput) ExternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinition) map[string]string { return v.ExternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionOutput) ExternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinition) map[string]interface{} { return v.ExternalParameters }).(pulumi.MapOutput)
 }
 
-func (o BuildDefinitionOutput) InternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinition) map[string]string { return v.InternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionOutput) InternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinition) map[string]interface{} { return v.InternalParameters }).(pulumi.MapOutput)
 }
 
 func (o BuildDefinitionOutput) ResolvedDependencies() ResourceDescriptorArrayOutput {
@@ -2255,22 +2255,22 @@ func (o BuildDefinitionPtrOutput) BuildType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o BuildDefinitionPtrOutput) ExternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildDefinition) map[string]string {
+func (o BuildDefinitionPtrOutput) ExternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *BuildDefinition) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ExternalParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
-func (o BuildDefinitionPtrOutput) InternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildDefinition) map[string]string {
+func (o BuildDefinitionPtrOutput) InternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *BuildDefinition) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.InternalParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o BuildDefinitionPtrOutput) ResolvedDependencies() ResourceDescriptorArrayOutput {
@@ -2284,8 +2284,8 @@ func (o BuildDefinitionPtrOutput) ResolvedDependencies() ResourceDescriptorArray
 
 type BuildDefinitionResponse struct {
 	BuildType            string                       `pulumi:"buildType"`
-	ExternalParameters   map[string]string            `pulumi:"externalParameters"`
-	InternalParameters   map[string]string            `pulumi:"internalParameters"`
+	ExternalParameters   map[string]interface{}       `pulumi:"externalParameters"`
+	InternalParameters   map[string]interface{}       `pulumi:"internalParameters"`
 	ResolvedDependencies []ResourceDescriptorResponse `pulumi:"resolvedDependencies"`
 }
 
@@ -2307,12 +2307,12 @@ func (o BuildDefinitionResponseOutput) BuildType() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildDefinitionResponse) string { return v.BuildType }).(pulumi.StringOutput)
 }
 
-func (o BuildDefinitionResponseOutput) ExternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinitionResponse) map[string]string { return v.ExternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionResponseOutput) ExternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) map[string]interface{} { return v.ExternalParameters }).(pulumi.MapOutput)
 }
 
-func (o BuildDefinitionResponseOutput) InternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinitionResponse) map[string]string { return v.InternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionResponseOutput) InternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) map[string]interface{} { return v.InternalParameters }).(pulumi.MapOutput)
 }
 
 func (o BuildDefinitionResponseOutput) ResolvedDependencies() ResourceDescriptorResponseArrayOutput {
@@ -8246,6 +8246,172 @@ func (o ExternalRefResponseArrayOutput) Index(i pulumi.IntInput) ExternalRefResp
 	}).(ExternalRefResponseOutput)
 }
 
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashes struct {
+	// Collection of file hashes.
+	FileHash []Hash `pulumi:"fileHash"`
+}
+
+// FileHashesInput is an input type that accepts FileHashesArgs and FileHashesOutput values.
+// You can construct a concrete instance of `FileHashesInput` via:
+//
+//	FileHashesArgs{...}
+type FileHashesInput interface {
+	pulumi.Input
+
+	ToFileHashesOutput() FileHashesOutput
+	ToFileHashesOutputWithContext(context.Context) FileHashesOutput
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesArgs struct {
+	// Collection of file hashes.
+	FileHash HashArrayInput `pulumi:"fileHash"`
+}
+
+func (FileHashesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileHashes)(nil)).Elem()
+}
+
+func (i FileHashesArgs) ToFileHashesOutput() FileHashesOutput {
+	return i.ToFileHashesOutputWithContext(context.Background())
+}
+
+func (i FileHashesArgs) ToFileHashesOutputWithContext(ctx context.Context) FileHashesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileHashesOutput)
+}
+
+func (i FileHashesArgs) ToFileHashesPtrOutput() FileHashesPtrOutput {
+	return i.ToFileHashesPtrOutputWithContext(context.Background())
+}
+
+func (i FileHashesArgs) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileHashesOutput).ToFileHashesPtrOutputWithContext(ctx)
+}
+
+// FileHashesPtrInput is an input type that accepts FileHashesArgs, FileHashesPtr and FileHashesPtrOutput values.
+// You can construct a concrete instance of `FileHashesPtrInput` via:
+//
+//	        FileHashesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileHashesPtrInput interface {
+	pulumi.Input
+
+	ToFileHashesPtrOutput() FileHashesPtrOutput
+	ToFileHashesPtrOutputWithContext(context.Context) FileHashesPtrOutput
+}
+
+type fileHashesPtrType FileHashesArgs
+
+func FileHashesPtr(v *FileHashesArgs) FileHashesPtrInput {
+	return (*fileHashesPtrType)(v)
+}
+
+func (*fileHashesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileHashes)(nil)).Elem()
+}
+
+func (i *fileHashesPtrType) ToFileHashesPtrOutput() FileHashesPtrOutput {
+	return i.ToFileHashesPtrOutputWithContext(context.Background())
+}
+
+func (i *fileHashesPtrType) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileHashesPtrOutput)
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesOutput struct{ *pulumi.OutputState }
+
+func (FileHashesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileHashes)(nil)).Elem()
+}
+
+func (o FileHashesOutput) ToFileHashesOutput() FileHashesOutput {
+	return o
+}
+
+func (o FileHashesOutput) ToFileHashesOutputWithContext(ctx context.Context) FileHashesOutput {
+	return o
+}
+
+func (o FileHashesOutput) ToFileHashesPtrOutput() FileHashesPtrOutput {
+	return o.ToFileHashesPtrOutputWithContext(context.Background())
+}
+
+func (o FileHashesOutput) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileHashes) *FileHashes {
+		return &v
+	}).(FileHashesPtrOutput)
+}
+
+// Collection of file hashes.
+func (o FileHashesOutput) FileHash() HashArrayOutput {
+	return o.ApplyT(func(v FileHashes) []Hash { return v.FileHash }).(HashArrayOutput)
+}
+
+type FileHashesPtrOutput struct{ *pulumi.OutputState }
+
+func (FileHashesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileHashes)(nil)).Elem()
+}
+
+func (o FileHashesPtrOutput) ToFileHashesPtrOutput() FileHashesPtrOutput {
+	return o
+}
+
+func (o FileHashesPtrOutput) ToFileHashesPtrOutputWithContext(ctx context.Context) FileHashesPtrOutput {
+	return o
+}
+
+func (o FileHashesPtrOutput) Elem() FileHashesOutput {
+	return o.ApplyT(func(v *FileHashes) FileHashes {
+		if v != nil {
+			return *v
+		}
+		var ret FileHashes
+		return ret
+	}).(FileHashesOutput)
+}
+
+// Collection of file hashes.
+func (o FileHashesPtrOutput) FileHash() HashArrayOutput {
+	return o.ApplyT(func(v *FileHashes) []Hash {
+		if v == nil {
+			return nil
+		}
+		return v.FileHash
+	}).(HashArrayOutput)
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesResponse struct {
+	// Collection of file hashes.
+	FileHash []HashResponse `pulumi:"fileHash"`
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesResponseOutput struct{ *pulumi.OutputState }
+
+func (FileHashesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileHashesResponse)(nil)).Elem()
+}
+
+func (o FileHashesResponseOutput) ToFileHashesResponseOutput() FileHashesResponseOutput {
+	return o
+}
+
+func (o FileHashesResponseOutput) ToFileHashesResponseOutputWithContext(ctx context.Context) FileHashesResponseOutput {
+	return o
+}
+
+// Collection of file hashes.
+func (o FileHashesResponseOutput) FileHash() HashResponseArrayOutput {
+	return o.ApplyT(func(v FileHashesResponse) []HashResponse { return v.FileHash }).(HashResponseArrayOutput)
+}
+
 // FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
 type FileNote struct {
 	// Provide a unique identifier to match analysis information on each specific file in a package
@@ -11457,6 +11623,31 @@ func (i *hashPtrType) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(HashPtrOutput)
 }
 
+// HashArrayInput is an input type that accepts HashArray and HashArrayOutput values.
+// You can construct a concrete instance of `HashArrayInput` via:
+//
+//	HashArray{ HashArgs{...} }
+type HashArrayInput interface {
+	pulumi.Input
+
+	ToHashArrayOutput() HashArrayOutput
+	ToHashArrayOutputWithContext(context.Context) HashArrayOutput
+}
+
+type HashArray []HashInput
+
+func (HashArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hash)(nil)).Elem()
+}
+
+func (i HashArray) ToHashArrayOutput() HashArrayOutput {
+	return i.ToHashArrayOutputWithContext(context.Background())
+}
+
+func (i HashArray) ToHashArrayOutputWithContext(ctx context.Context) HashArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashArrayOutput)
+}
+
 // Container message for hash values.
 type HashOutput struct{ *pulumi.OutputState }
 
@@ -11536,6 +11727,26 @@ func (o HashPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type HashArrayOutput struct{ *pulumi.OutputState }
+
+func (HashArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hash)(nil)).Elem()
+}
+
+func (o HashArrayOutput) ToHashArrayOutput() HashArrayOutput {
+	return o
+}
+
+func (o HashArrayOutput) ToHashArrayOutputWithContext(ctx context.Context) HashArrayOutput {
+	return o
+}
+
+func (o HashArrayOutput) Index(i pulumi.IntInput) HashOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hash {
+		return vs[0].([]Hash)[vs[1].(int)]
+	}).(HashOutput)
+}
+
 // Container message for hash values.
 type HashResponse struct {
 	// The type of hash that was performed.
@@ -11567,6 +11778,26 @@ func (o HashResponseOutput) Type() pulumi.StringOutput {
 // The hash value.
 func (o HashResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v HashResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HashResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HashResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HashResponse)(nil)).Elem()
+}
+
+func (o HashResponseArrayOutput) ToHashResponseArrayOutput() HashResponseArrayOutput {
+	return o
+}
+
+func (o HashResponseArrayOutput) ToHashResponseArrayOutputWithContext(ctx context.Context) HashResponseArrayOutput {
+	return o
+}
+
+func (o HashResponseArrayOutput) Index(i pulumi.IntInput) HashResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HashResponse {
+		return vs[0].([]HashResponse)[vs[1].(int)]
+	}).(HashResponseOutput)
 }
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
@@ -17294,13 +17525,13 @@ func (o ResourceOutput) Uri() pulumi.StringOutput {
 }
 
 type ResourceDescriptor struct {
-	Annotations      map[string]string `pulumi:"annotations"`
-	Content          *string           `pulumi:"content"`
-	Digest           map[string]string `pulumi:"digest"`
-	DownloadLocation *string           `pulumi:"downloadLocation"`
-	MediaType        *string           `pulumi:"mediaType"`
-	Name             *string           `pulumi:"name"`
-	Uri              *string           `pulumi:"uri"`
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	Content          *string                `pulumi:"content"`
+	Digest           map[string]string      `pulumi:"digest"`
+	DownloadLocation *string                `pulumi:"downloadLocation"`
+	MediaType        *string                `pulumi:"mediaType"`
+	Name             *string                `pulumi:"name"`
+	Uri              *string                `pulumi:"uri"`
 }
 
 // ResourceDescriptorInput is an input type that accepts ResourceDescriptorArgs and ResourceDescriptorOutput values.
@@ -17315,7 +17546,7 @@ type ResourceDescriptorInput interface {
 }
 
 type ResourceDescriptorArgs struct {
-	Annotations      pulumi.StringMapInput `pulumi:"annotations"`
+	Annotations      pulumi.MapInput       `pulumi:"annotations"`
 	Content          pulumi.StringPtrInput `pulumi:"content"`
 	Digest           pulumi.StringMapInput `pulumi:"digest"`
 	DownloadLocation pulumi.StringPtrInput `pulumi:"downloadLocation"`
@@ -17375,8 +17606,8 @@ func (o ResourceDescriptorOutput) ToResourceDescriptorOutputWithContext(ctx cont
 	return o
 }
 
-func (o ResourceDescriptorOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceDescriptor) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+func (o ResourceDescriptorOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v ResourceDescriptor) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
 }
 
 func (o ResourceDescriptorOutput) Content() pulumi.StringPtrOutput {
@@ -17424,13 +17655,13 @@ func (o ResourceDescriptorArrayOutput) Index(i pulumi.IntInput) ResourceDescript
 }
 
 type ResourceDescriptorResponse struct {
-	Annotations      map[string]string `pulumi:"annotations"`
-	Content          string            `pulumi:"content"`
-	Digest           map[string]string `pulumi:"digest"`
-	DownloadLocation string            `pulumi:"downloadLocation"`
-	MediaType        string            `pulumi:"mediaType"`
-	Name             string            `pulumi:"name"`
-	Uri              string            `pulumi:"uri"`
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	Content          string                 `pulumi:"content"`
+	Digest           map[string]string      `pulumi:"digest"`
+	DownloadLocation string                 `pulumi:"downloadLocation"`
+	MediaType        string                 `pulumi:"mediaType"`
+	Name             string                 `pulumi:"name"`
+	Uri              string                 `pulumi:"uri"`
 }
 
 type ResourceDescriptorResponseOutput struct{ *pulumi.OutputState }
@@ -17447,8 +17678,8 @@ func (o ResourceDescriptorResponseOutput) ToResourceDescriptorResponseOutputWith
 	return o
 }
 
-func (o ResourceDescriptorResponseOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceDescriptorResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+func (o ResourceDescriptorResponseOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
 }
 
 func (o ResourceDescriptorResponseOutput) Content() pulumi.StringOutput {
@@ -19373,7 +19604,7 @@ type Source struct {
 	// If provided, the source code used for the build came from this location.
 	Context *SourceContext `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes map[string]string `pulumi:"fileHashes"`
+	FileHashes *FileHashes `pulumi:"fileHashes"`
 }
 
 // SourceInput is an input type that accepts SourceArgs and SourceOutput values.
@@ -19396,7 +19627,7 @@ type SourceArgs struct {
 	// If provided, the source code used for the build came from this location.
 	Context SourceContextPtrInput `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes pulumi.StringMapInput `pulumi:"fileHashes"`
+	FileHashes FileHashesPtrInput `pulumi:"fileHashes"`
 }
 
 func (SourceArgs) ElementType() reflect.Type {
@@ -19493,8 +19724,8 @@ func (o SourceOutput) Context() SourceContextPtrOutput {
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourceOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Source) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+func (o SourceOutput) FileHashes() FileHashesPtrOutput {
+	return o.ApplyT(func(v Source) *FileHashes { return v.FileHashes }).(FileHashesPtrOutput)
 }
 
 type SourcePtrOutput struct{ *pulumi.OutputState }
@@ -19552,13 +19783,13 @@ func (o SourcePtrOutput) Context() SourceContextPtrOutput {
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourcePtrOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Source) map[string]string {
+func (o SourcePtrOutput) FileHashes() FileHashesPtrOutput {
+	return o.ApplyT(func(v *Source) *FileHashes {
 		if v == nil {
 			return nil
 		}
 		return v.FileHashes
-	}).(pulumi.StringMapOutput)
+	}).(FileHashesPtrOutput)
 }
 
 // A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
@@ -19879,7 +20110,7 @@ type SourceResponse struct {
 	// If provided, the source code used for the build came from this location.
 	Context SourceContextResponse `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes map[string]string `pulumi:"fileHashes"`
+	FileHashes FileHashesResponse `pulumi:"fileHashes"`
 }
 
 // Source describes the location of the source used for the build.
@@ -19913,8 +20144,8 @@ func (o SourceResponseOutput) Context() SourceContextResponseOutput {
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourceResponseOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SourceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+func (o SourceResponseOutput) FileHashes() FileHashesResponseOutput {
+	return o.ApplyT(func(v SourceResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -19922,7 +20153,7 @@ type Status struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message *string `pulumi:"message"`
 }
@@ -19943,7 +20174,7 @@ type StatusArgs struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	Details pulumi.MapArrayInput `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -20057,8 +20288,8 @@ func (o StatusOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v Status) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -20101,13 +20332,13 @@ func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Status) []map[string]string {
+func (o StatusPtrOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *Status) []map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Details
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -20145,7 +20376,7 @@ type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -20171,8 +20402,8 @@ func (o StatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -22168,6 +22399,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefInput)(nil)).Elem(), ExternalRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalRefArrayInput)(nil)).Elem(), ExternalRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileHashesInput)(nil)).Elem(), FileHashesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileHashesPtrInput)(nil)).Elem(), FileHashesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileNoteInput)(nil)).Elem(), FileNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileNotePtrInput)(nil)).Elem(), FileNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileOccurrenceInput)(nil)).Elem(), FileOccurrenceArgs{})
@@ -22200,6 +22433,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1beta1VulnerabilityDetailsPtrInput)(nil)).Elem(), GrafeasV1beta1VulnerabilityDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HashInput)(nil)).Elem(), HashArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HashPtrInput)(nil)).Elem(), HashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashArrayInput)(nil)).Elem(), HashArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintPtrInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoInput)(nil)).Elem(), InTotoArgs{})
@@ -22409,6 +22643,9 @@ func init() {
 	pulumi.RegisterOutputType(ExternalRefArrayOutput{})
 	pulumi.RegisterOutputType(ExternalRefResponseOutput{})
 	pulumi.RegisterOutputType(ExternalRefResponseArrayOutput{})
+	pulumi.RegisterOutputType(FileHashesOutput{})
+	pulumi.RegisterOutputType(FileHashesPtrOutput{})
+	pulumi.RegisterOutputType(FileHashesResponseOutput{})
 	pulumi.RegisterOutputType(FileNoteOutput{})
 	pulumi.RegisterOutputType(FileNotePtrOutput{})
 	pulumi.RegisterOutputType(FileNoteResponseOutput{})
@@ -22458,7 +22695,9 @@ func init() {
 	pulumi.RegisterOutputType(GrafeasV1beta1VulnerabilityDetailsResponseOutput{})
 	pulumi.RegisterOutputType(HashOutput{})
 	pulumi.RegisterOutputType(HashPtrOutput{})
+	pulumi.RegisterOutputType(HashArrayOutput{})
 	pulumi.RegisterOutputType(HashResponseOutput{})
+	pulumi.RegisterOutputType(HashResponseArrayOutput{})
 	pulumi.RegisterOutputType(HintOutput{})
 	pulumi.RegisterOutputType(HintPtrOutput{})
 	pulumi.RegisterOutputType(HintResponseOutput{})

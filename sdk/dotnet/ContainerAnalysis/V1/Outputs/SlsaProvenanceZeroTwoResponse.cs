@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     [OutputType]
     public sealed class SlsaProvenanceZeroTwoResponse
     {
-        public readonly ImmutableDictionary<string, string> BuildConfig;
+        public readonly ImmutableDictionary<string, object> BuildConfig;
         public readonly string BuildType;
         public readonly Outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse Builder;
         public readonly Outputs.GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse Invocation;
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
         [OutputConstructor]
         private SlsaProvenanceZeroTwoResponse(
-            ImmutableDictionary<string, string> buildConfig,
+            ImmutableDictionary<string, object> buildConfig,
 
             string buildType,
 

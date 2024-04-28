@@ -52,26 +52,26 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public Input<Pulumi.GoogleNative.Dataflow.V1b3.EnvironmentFlexResourceSchedulingGoal>? FlexResourceSchedulingGoal { get; set; }
 
         [Input("internalExperiments")]
-        private InputMap<string>? _internalExperiments;
+        private InputMap<object>? _internalExperiments;
 
         /// <summary>
         /// Experimental settings.
         /// </summary>
-        public InputMap<string> InternalExperiments
+        public InputMap<object> InternalExperiments
         {
-            get => _internalExperiments ?? (_internalExperiments = new InputMap<string>());
+            get => _internalExperiments ?? (_internalExperiments = new InputMap<object>());
             set => _internalExperiments = value;
         }
 
         [Input("sdkPipelineOptions")]
-        private InputMap<string>? _sdkPipelineOptions;
+        private InputMap<object>? _sdkPipelineOptions;
 
         /// <summary>
         /// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         /// </summary>
-        public InputMap<string> SdkPipelineOptions
+        public InputMap<object> SdkPipelineOptions
         {
-            get => _sdkPipelineOptions ?? (_sdkPipelineOptions = new InputMap<string>());
+            get => _sdkPipelineOptions ?? (_sdkPipelineOptions = new InputMap<object>());
             set => _sdkPipelineOptions = value;
         }
 
@@ -106,26 +106,26 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public Input<string>? TempStoragePrefix { get; set; }
 
         [Input("userAgent")]
-        private InputMap<string>? _userAgent;
+        private InputMap<object>? _userAgent;
 
         /// <summary>
         /// A description of the process that generated the request.
         /// </summary>
-        public InputMap<string> UserAgent
+        public InputMap<object> UserAgent
         {
-            get => _userAgent ?? (_userAgent = new InputMap<string>());
+            get => _userAgent ?? (_userAgent = new InputMap<object>());
             set => _userAgent = value;
         }
 
         [Input("version")]
-        private InputMap<string>? _version;
+        private InputMap<object>? _version;
 
         /// <summary>
         /// A structure describing which components and their versions of the service are required in order to run the job.
         /// </summary>
-        public InputMap<string> Version
+        public InputMap<object> Version
         {
-            get => _version ?? (_version = new InputMap<string>());
+            get => _version ?? (_version = new InputMap<object>());
             set => _version = value;
         }
 

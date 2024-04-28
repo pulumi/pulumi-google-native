@@ -925,7 +925,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo struct {
 	// Unique Id for the resource.
 	Id string `pulumi:"id"`
 	// Specific details for the resource. This is for internal use only.
-	Resource map[string]string `pulumi:"resource"`
+	Resource map[string]interface{} `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status *GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -950,7 +950,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs struct {
 	// Unique Id for the resource.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Specific details for the resource. This is for internal use only.
-	Resource pulumi.StringMapInput `pulumi:"resource"`
+	Resource pulumi.MapInput `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrInput `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -1068,8 +1068,10 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoOutput) Id() pulumi
 }
 
 // Specific details for the resource. This is for internal use only.
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo) map[string]string { return v.Resource }).(pulumi.StringMapOutput)
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo) map[string]interface{} {
+		return v.Resource
+	}).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1126,13 +1128,13 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrOutput) Id() pul
 }
 
 // Specific details for the resource. This is for internal use only.
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo) map[string]string {
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Resource
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1188,7 +1190,7 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayOutput) Index(
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse struct {
 	// Specific details for the resource. This is for internal use only.
-	Resource map[string]string `pulumi:"resource"`
+	Resource map[string]interface{} `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status string `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -1213,10 +1215,10 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) ToG
 }
 
 // Specific details for the resource. This is for internal use only.
-func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse) map[string]string {
+func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse) map[string]interface{} {
 		return v.Resource
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -1917,7 +1919,7 @@ type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting struct {
 	// Immutable. The type of the Setting. .
 	Type string `pulumi:"type"`
 	// The value of the Setting.
-	Value map[string]string `pulumi:"value"`
+	Value map[string]interface{} `pulumi:"value"`
 }
 
 // GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput values.
@@ -1936,7 +1938,7 @@ type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs struct {
 	// Immutable. The type of the Setting. .
 	Type pulumi.StringInput `pulumi:"type"`
 	// The value of the Setting.
-	Value pulumi.StringMapInput `pulumi:"value"`
+	Value pulumi.MapInput `pulumi:"value"`
 }
 
 func (GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs) ElementType() reflect.Type {
@@ -1972,8 +1974,8 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) Type() pul
 }
 
 // The value of the Setting.
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) Value() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting) map[string]string { return v.Value }).(pulumi.StringMapOutput)
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingOutput) Value() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting) map[string]interface{} { return v.Value }).(pulumi.MapOutput)
 }
 
 // Message to capture settings for a BrowserDlpRule
@@ -1981,7 +1983,7 @@ type GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse struct {
 	// Immutable. The type of the Setting. .
 	Type string `pulumi:"type"`
 	// The value of the Setting.
-	Value map[string]string `pulumi:"value"`
+	Value map[string]interface{} `pulumi:"value"`
 }
 
 // Message to capture settings for a BrowserDlpRule
@@ -2005,10 +2007,10 @@ func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) Ty
 }
 
 // The value of the Setting.
-func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) Value() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse) map[string]string {
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponseOutput) Value() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse) map[string]interface{} {
 		return v.Value
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Message contains the transport layer information to verify the proxy server.
@@ -2944,7 +2946,7 @@ type ResourceInfo struct {
 	// Unique Id for the resource.
 	Id string `pulumi:"id"`
 	// Specific details for the resource.
-	Resource map[string]string `pulumi:"resource"`
+	Resource map[string]interface{} `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status *ResourceInfoStatus `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -2969,7 +2971,7 @@ type ResourceInfoArgs struct {
 	// Unique Id for the resource.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Specific details for the resource.
-	Resource pulumi.StringMapInput `pulumi:"resource"`
+	Resource pulumi.MapInput `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status ResourceInfoStatusPtrInput `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -3087,8 +3089,8 @@ func (o ResourceInfoOutput) Id() pulumi.StringOutput {
 }
 
 // Specific details for the resource.
-func (o ResourceInfoOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceInfo) map[string]string { return v.Resource }).(pulumi.StringMapOutput)
+func (o ResourceInfoOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v ResourceInfo) map[string]interface{} { return v.Resource }).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -3141,13 +3143,13 @@ func (o ResourceInfoPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 // Specific details for the resource.
-func (o ResourceInfoPtrOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ResourceInfo) map[string]string {
+func (o ResourceInfoPtrOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v *ResourceInfo) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Resource
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -3203,7 +3205,7 @@ func (o ResourceInfoArrayOutput) Index(i pulumi.IntInput) ResourceInfoOutput {
 // ResourceInfo represents the information/status of the associated resource.
 type ResourceInfoResponse struct {
 	// Specific details for the resource.
-	Resource map[string]string `pulumi:"resource"`
+	Resource map[string]interface{} `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status string `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -3228,8 +3230,8 @@ func (o ResourceInfoResponseOutput) ToResourceInfoResponseOutputWithContext(ctx 
 }
 
 // Specific details for the resource.
-func (o ResourceInfoResponseOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceInfoResponse) map[string]string { return v.Resource }).(pulumi.StringMapOutput)
+func (o ResourceInfoResponseOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v ResourceInfoResponse) map[string]interface{} { return v.Resource }).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
