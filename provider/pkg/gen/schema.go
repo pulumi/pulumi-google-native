@@ -1437,7 +1437,15 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 
 		// Otherwise, the value in-turn is a complex type.
 		typePropName := fmt.Sprintf(`%s%s`, typeName, ToUpperCamel(propName))
-		return g.genTypeSpec(typePropName, propName, prop.AdditionalProperties, isOutput)
+		refTypeSpec, err := g.genTypeSpec(typePropName, propName, prop.AdditionalProperties, isOutput)
+		if err != nil {
+			return nil, errors.New(fmt.Sprintf("error generating type spec for $ref in additional properties %v", err))
+		}
+
+		return &schema.TypeSpec{
+			Type:                 "object",
+			AdditionalProperties: refTypeSpec,
+		}, nil
 	case len(prop.Enum) > 0 && !isOutput:
 		return g.genEnumType(typeName, propName, prop)
 	case prop.Type != "":
