@@ -191,7 +191,20 @@ var resourceNamePropertyOverrides = map[string]string{
 
 // schemaPropertyTypeOverrides is a map of overrides for properties of a schema type.
 var schemaPropertyTypeOverrides = map[string]map[string]*schema.TypeSpec{
+	// API ref: https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backendrule
 	"BackendRule": {
+		// The `overridesByRequestProtocol` property in `BackendRule`,
+		// while absent, in the API reference docs, is present in the
+		// discover doc that we fetch.
+		//
+		// The property is incorrectly referring to its parent type
+		// causing a recursion. This recursion is accidental as the
+		// description of the property suggests that it's a map
+		// of the protocol and the address. So we override the
+		// type spec for this property with the correct
+		// AdditionalProperties type spec.
+		//
+		// Discovery doc: https://servicemanagement.googleapis.com/$discovery/rest?version=v1
 		"overridesByRequestProtocol": {
 			Type: "object",
 			AdditionalProperties: &schema.TypeSpec{
@@ -200,6 +213,7 @@ var schemaPropertyTypeOverrides = map[string]map[string]*schema.TypeSpec{
 		},
 	},
 	"BackendRuleResponse": {
+		// Similar to the property in `BackendRule`. See notes above.
 		"overridesByRequestProtocol": {
 			Type: "object",
 			AdditionalProperties: &schema.TypeSpec{
