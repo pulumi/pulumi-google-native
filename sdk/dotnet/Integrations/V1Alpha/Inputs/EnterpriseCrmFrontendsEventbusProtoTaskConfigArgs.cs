@@ -108,11 +108,17 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         [Input("nextTasksExecutionPolicy")]
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy>? NextTasksExecutionPolicy { get; set; }
 
+        [Input("parameters")]
+        private InputMap<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs>? _parameters;
+
         /// <summary>
         /// The customized parameters the user can pass to this task.
         /// </summary>
-        [Input("parameters")]
-        public Input<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs>? Parameters { get; set; }
+        public InputMap<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputMap<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs>());
+            set => _parameters = value;
+        }
 
         /// <summary>
         /// Optional. Informs the front-end application where to draw this task config on the UI.

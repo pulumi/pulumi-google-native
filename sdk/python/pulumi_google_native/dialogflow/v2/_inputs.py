@@ -3455,13 +3455,13 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsArgs:
                  output_audio_encoding: pulumi.Input['GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding'],
                  enable_text_to_speech: Optional[pulumi.Input[bool]] = None,
                  sample_rate_hertz: Optional[pulumi.Input[int]] = None,
-                 synthesize_speech_configs: Optional[pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']] = None):
+                 synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]]] = None):
         """
         Instructs the speech synthesizer on how to generate the output audio content.
         :param pulumi.Input['GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding'] output_audio_encoding: Audio encoding of the synthesized audio content.
         :param pulumi.Input[bool] enable_text_to_speech: Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
         :param pulumi.Input[int] sample_rate_hertz: Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
-        :param pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs'] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """
         pulumi.set(__self__, "output_audio_encoding", output_audio_encoding)
         if enable_text_to_speech is not None:
@@ -3509,14 +3509,14 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsArgs:
 
     @property
     @pulumi.getter(name="synthesizeSpeechConfigs")
-    def synthesize_speech_configs(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]:
+    def synthesize_speech_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]]]:
         """
         Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """
         return pulumi.get(self, "synthesize_speech_configs")
 
     @synthesize_speech_configs.setter
-    def synthesize_speech_configs(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]):
+    def synthesize_speech_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]]]):
         pulumi.set(self, "synthesize_speech_configs", value)
 
 

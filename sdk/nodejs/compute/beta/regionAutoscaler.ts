@@ -70,7 +70,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
     /**
      * Status information of existing scaling schedules.
      */
-    public /*out*/ readonly scalingScheduleStatus!: pulumi.Output<outputs.compute.beta.ScalingScheduleStatusResponse>;
+    public /*out*/ readonly scalingScheduleStatus!: pulumi.Output<{[key: string]: outputs.compute.beta.ScalingScheduleStatusResponse}>;
     /**
      * Server-defined URL for the resource.
      */

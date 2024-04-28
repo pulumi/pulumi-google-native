@@ -3131,13 +3131,13 @@ class TargetArtifactResponse(dict):
     def __init__(__self__, *,
                  artifact_uri: str,
                  manifest_path: str,
-                 phase_artifacts: 'outputs.PhaseArtifactResponse',
+                 phase_artifacts: Mapping[str, 'outputs.PhaseArtifactResponse'],
                  skaffold_config_path: str):
         """
         The artifacts produced by a target render operation.
         :param str artifact_uri: URI of a directory containing the artifacts. This contains deployment configuration used by Skaffold during a rollout, and all paths are relative to this location.
         :param str manifest_path: File path of the rendered manifest relative to the URI.
-        :param 'PhaseArtifactResponse' phase_artifacts: Map from the phase ID to the phase artifacts for the `Target`.
+        :param Mapping[str, 'PhaseArtifactResponse'] phase_artifacts: Map from the phase ID to the phase artifacts for the `Target`.
         :param str skaffold_config_path: File path of the resolved Skaffold configuration relative to the URI.
         """
         pulumi.set(__self__, "artifact_uri", artifact_uri)
@@ -3163,7 +3163,7 @@ class TargetArtifactResponse(dict):
 
     @property
     @pulumi.getter(name="phaseArtifacts")
-    def phase_artifacts(self) -> 'outputs.PhaseArtifactResponse':
+    def phase_artifacts(self) -> Mapping[str, 'outputs.PhaseArtifactResponse']:
         """
         Map from the phase ID to the phase artifacts for the `Target`.
         """

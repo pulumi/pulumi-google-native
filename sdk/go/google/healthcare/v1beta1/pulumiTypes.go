@@ -4712,45 +4712,29 @@ func (i DetailArgs) ToDetailOutputWithContext(ctx context.Context) DetailOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(DetailOutput)
 }
 
-func (i DetailArgs) ToDetailPtrOutput() DetailPtrOutput {
-	return i.ToDetailPtrOutputWithContext(context.Background())
-}
-
-func (i DetailArgs) ToDetailPtrOutputWithContext(ctx context.Context) DetailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DetailOutput).ToDetailPtrOutputWithContext(ctx)
-}
-
-// DetailPtrInput is an input type that accepts DetailArgs, DetailPtr and DetailPtrOutput values.
-// You can construct a concrete instance of `DetailPtrInput` via:
+// DetailMapInput is an input type that accepts DetailMap and DetailMapOutput values.
+// You can construct a concrete instance of `DetailMapInput` via:
 //
-//	        DetailArgs{...}
-//
-//	or:
-//
-//	        nil
-type DetailPtrInput interface {
+//	DetailMap{ "key": DetailArgs{...} }
+type DetailMapInput interface {
 	pulumi.Input
 
-	ToDetailPtrOutput() DetailPtrOutput
-	ToDetailPtrOutputWithContext(context.Context) DetailPtrOutput
+	ToDetailMapOutput() DetailMapOutput
+	ToDetailMapOutputWithContext(context.Context) DetailMapOutput
 }
 
-type detailPtrType DetailArgs
+type DetailMap map[string]DetailInput
 
-func DetailPtr(v *DetailArgs) DetailPtrInput {
-	return (*detailPtrType)(v)
+func (DetailMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Detail)(nil)).Elem()
 }
 
-func (*detailPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Detail)(nil)).Elem()
+func (i DetailMap) ToDetailMapOutput() DetailMapOutput {
+	return i.ToDetailMapOutputWithContext(context.Background())
 }
 
-func (i *detailPtrType) ToDetailPtrOutput() DetailPtrOutput {
-	return i.ToDetailPtrOutputWithContext(context.Background())
-}
-
-func (i *detailPtrType) ToDetailPtrOutputWithContext(ctx context.Context) DetailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DetailPtrOutput)
+func (i DetailMap) ToDetailMapOutputWithContext(ctx context.Context) DetailMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetailMapOutput)
 }
 
 // Contains multiple sensitive information findings for each resource slice.
@@ -4768,51 +4752,28 @@ func (o DetailOutput) ToDetailOutputWithContext(ctx context.Context) DetailOutpu
 	return o
 }
 
-func (o DetailOutput) ToDetailPtrOutput() DetailPtrOutput {
-	return o.ToDetailPtrOutputWithContext(context.Background())
-}
-
-func (o DetailOutput) ToDetailPtrOutputWithContext(ctx context.Context) DetailPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Detail) *Detail {
-		return &v
-	}).(DetailPtrOutput)
-}
-
 func (o DetailOutput) Findings() FindingArrayOutput {
 	return o.ApplyT(func(v Detail) []Finding { return v.Findings }).(FindingArrayOutput)
 }
 
-type DetailPtrOutput struct{ *pulumi.OutputState }
+type DetailMapOutput struct{ *pulumi.OutputState }
 
-func (DetailPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Detail)(nil)).Elem()
+func (DetailMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Detail)(nil)).Elem()
 }
 
-func (o DetailPtrOutput) ToDetailPtrOutput() DetailPtrOutput {
+func (o DetailMapOutput) ToDetailMapOutput() DetailMapOutput {
 	return o
 }
 
-func (o DetailPtrOutput) ToDetailPtrOutputWithContext(ctx context.Context) DetailPtrOutput {
+func (o DetailMapOutput) ToDetailMapOutputWithContext(ctx context.Context) DetailMapOutput {
 	return o
 }
 
-func (o DetailPtrOutput) Elem() DetailOutput {
-	return o.ApplyT(func(v *Detail) Detail {
-		if v != nil {
-			return *v
-		}
-		var ret Detail
-		return ret
+func (o DetailMapOutput) MapIndex(k pulumi.StringInput) DetailOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Detail {
+		return vs[0].(map[string]Detail)[vs[1].(string)]
 	}).(DetailOutput)
-}
-
-func (o DetailPtrOutput) Findings() FindingArrayOutput {
-	return o.ApplyT(func(v *Detail) []Finding {
-		if v == nil {
-			return nil
-		}
-		return v.Findings
-	}).(FindingArrayOutput)
 }
 
 // Contains multiple sensitive information findings for each resource slice.
@@ -4837,6 +4798,26 @@ func (o DetailResponseOutput) ToDetailResponseOutputWithContext(ctx context.Cont
 
 func (o DetailResponseOutput) Findings() FindingResponseArrayOutput {
 	return o.ApplyT(func(v DetailResponse) []FindingResponse { return v.Findings }).(FindingResponseArrayOutput)
+}
+
+type DetailResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DetailResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DetailResponse)(nil)).Elem()
+}
+
+func (o DetailResponseMapOutput) ToDetailResponseMapOutput() DetailResponseMapOutput {
+	return o
+}
+
+func (o DetailResponseMapOutput) ToDetailResponseMapOutputWithContext(ctx context.Context) DetailResponseMapOutput {
+	return o
+}
+
+func (o DetailResponseMapOutput) MapIndex(k pulumi.StringInput) DetailResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DetailResponse {
+		return vs[0].(map[string]DetailResponse)[vs[1].(string)]
+	}).(DetailResponseOutput)
 }
 
 // Specifies the parameters needed for de-identification of DICOM stores.
@@ -8341,7 +8322,7 @@ func (o GroupOrSegmentResponseArrayOutput) Index(i pulumi.IntInput) GroupOrSegme
 // Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 type Hl7SchemaConfig struct {
 	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-	MessageSchemaConfigs *SchemaGroup `pulumi:"messageSchemaConfigs"`
+	MessageSchemaConfigs map[string]SchemaGroup `pulumi:"messageSchemaConfigs"`
 	// Each VersionSource is tested and only if they all match is the schema used for the message.
 	Version []VersionSource `pulumi:"version"`
 }
@@ -8360,7 +8341,7 @@ type Hl7SchemaConfigInput interface {
 // Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 type Hl7SchemaConfigArgs struct {
 	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-	MessageSchemaConfigs SchemaGroupPtrInput `pulumi:"messageSchemaConfigs"`
+	MessageSchemaConfigs SchemaGroupMapInput `pulumi:"messageSchemaConfigs"`
 	// Each VersionSource is tested and only if they all match is the schema used for the message.
 	Version VersionSourceArrayInput `pulumi:"version"`
 }
@@ -8418,8 +8399,8 @@ func (o Hl7SchemaConfigOutput) ToHl7SchemaConfigOutputWithContext(ctx context.Co
 }
 
 // Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-func (o Hl7SchemaConfigOutput) MessageSchemaConfigs() SchemaGroupPtrOutput {
-	return o.ApplyT(func(v Hl7SchemaConfig) *SchemaGroup { return v.MessageSchemaConfigs }).(SchemaGroupPtrOutput)
+func (o Hl7SchemaConfigOutput) MessageSchemaConfigs() SchemaGroupMapOutput {
+	return o.ApplyT(func(v Hl7SchemaConfig) map[string]SchemaGroup { return v.MessageSchemaConfigs }).(SchemaGroupMapOutput)
 }
 
 // Each VersionSource is tested and only if they all match is the schema used for the message.
@@ -8450,7 +8431,7 @@ func (o Hl7SchemaConfigArrayOutput) Index(i pulumi.IntInput) Hl7SchemaConfigOutp
 // Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 type Hl7SchemaConfigResponse struct {
 	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-	MessageSchemaConfigs SchemaGroupResponse `pulumi:"messageSchemaConfigs"`
+	MessageSchemaConfigs map[string]SchemaGroupResponse `pulumi:"messageSchemaConfigs"`
 	// Each VersionSource is tested and only if they all match is the schema used for the message.
 	Version []VersionSourceResponse `pulumi:"version"`
 }
@@ -8471,8 +8452,8 @@ func (o Hl7SchemaConfigResponseOutput) ToHl7SchemaConfigResponseOutputWithContex
 }
 
 // Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-func (o Hl7SchemaConfigResponseOutput) MessageSchemaConfigs() SchemaGroupResponseOutput {
-	return o.ApplyT(func(v Hl7SchemaConfigResponse) SchemaGroupResponse { return v.MessageSchemaConfigs }).(SchemaGroupResponseOutput)
+func (o Hl7SchemaConfigResponseOutput) MessageSchemaConfigs() SchemaGroupResponseMapOutput {
+	return o.ApplyT(func(v Hl7SchemaConfigResponse) map[string]SchemaGroupResponse { return v.MessageSchemaConfigs }).(SchemaGroupResponseMapOutput)
 }
 
 // Each VersionSource is tested and only if they all match is the schema used for the message.
@@ -12627,6 +12608,31 @@ func (i *schemaGroupPtrType) ToSchemaGroupPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaGroupPtrOutput)
 }
 
+// SchemaGroupMapInput is an input type that accepts SchemaGroupMap and SchemaGroupMapOutput values.
+// You can construct a concrete instance of `SchemaGroupMapInput` via:
+//
+//	SchemaGroupMap{ "key": SchemaGroupArgs{...} }
+type SchemaGroupMapInput interface {
+	pulumi.Input
+
+	ToSchemaGroupMapOutput() SchemaGroupMapOutput
+	ToSchemaGroupMapOutputWithContext(context.Context) SchemaGroupMapOutput
+}
+
+type SchemaGroupMap map[string]SchemaGroupInput
+
+func (SchemaGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SchemaGroup)(nil)).Elem()
+}
+
+func (i SchemaGroupMap) ToSchemaGroupMapOutput() SchemaGroupMapOutput {
+	return i.ToSchemaGroupMapOutputWithContext(context.Background())
+}
+
+func (i SchemaGroupMap) ToSchemaGroupMapOutputWithContext(ctx context.Context) SchemaGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaGroupMapOutput)
+}
+
 // An HL7v2 logical group construct.
 type SchemaGroupOutput struct{ *pulumi.OutputState }
 
@@ -12751,6 +12757,26 @@ func (o SchemaGroupPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SchemaGroupMapOutput struct{ *pulumi.OutputState }
+
+func (SchemaGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SchemaGroup)(nil)).Elem()
+}
+
+func (o SchemaGroupMapOutput) ToSchemaGroupMapOutput() SchemaGroupMapOutput {
+	return o
+}
+
+func (o SchemaGroupMapOutput) ToSchemaGroupMapOutputWithContext(ctx context.Context) SchemaGroupMapOutput {
+	return o
+}
+
+func (o SchemaGroupMapOutput) MapIndex(k pulumi.StringInput) SchemaGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SchemaGroup {
+		return vs[0].(map[string]SchemaGroup)[vs[1].(string)]
+	}).(SchemaGroupOutput)
+}
+
 // An HL7v2 logical group construct.
 type SchemaGroupResponse struct {
 	// True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
@@ -12803,6 +12829,26 @@ func (o SchemaGroupResponseOutput) MinOccurs() pulumi.IntOutput {
 // The name of this group. For example, "ORDER_DETAIL".
 func (o SchemaGroupResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SchemaGroupResponseMapOutput struct{ *pulumi.OutputState }
+
+func (SchemaGroupResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SchemaGroupResponse)(nil)).Elem()
+}
+
+func (o SchemaGroupResponseMapOutput) ToSchemaGroupResponseMapOutput() SchemaGroupResponseMapOutput {
+	return o
+}
+
+func (o SchemaGroupResponseMapOutput) ToSchemaGroupResponseMapOutputWithContext(ctx context.Context) SchemaGroupResponseMapOutput {
+	return o
+}
+
+func (o SchemaGroupResponseMapOutput) MapIndex(k pulumi.StringInput) SchemaGroupResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SchemaGroupResponse {
+		return vs[0].(map[string]SchemaGroupResponse)[vs[1].(string)]
+	}).(SchemaGroupResponseOutput)
 }
 
 // A schema package contains a set of schemas and type definitions.
@@ -13876,7 +13922,7 @@ func (o SegmentResponseArrayOutput) Index(i pulumi.IntInput) SegmentResponseOutp
 // A TextAnnotation specifies a text range that includes sensitive information.
 type SensitiveTextAnnotation struct {
 	// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-	Details *Detail `pulumi:"details"`
+	Details map[string]Detail `pulumi:"details"`
 }
 
 // SensitiveTextAnnotationInput is an input type that accepts SensitiveTextAnnotationArgs and SensitiveTextAnnotationOutput values.
@@ -13893,7 +13939,7 @@ type SensitiveTextAnnotationInput interface {
 // A TextAnnotation specifies a text range that includes sensitive information.
 type SensitiveTextAnnotationArgs struct {
 	// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-	Details DetailPtrInput `pulumi:"details"`
+	Details DetailMapInput `pulumi:"details"`
 }
 
 func (SensitiveTextAnnotationArgs) ElementType() reflect.Type {
@@ -13975,8 +14021,8 @@ func (o SensitiveTextAnnotationOutput) ToSensitiveTextAnnotationPtrOutputWithCon
 }
 
 // Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-func (o SensitiveTextAnnotationOutput) Details() DetailPtrOutput {
-	return o.ApplyT(func(v SensitiveTextAnnotation) *Detail { return v.Details }).(DetailPtrOutput)
+func (o SensitiveTextAnnotationOutput) Details() DetailMapOutput {
+	return o.ApplyT(func(v SensitiveTextAnnotation) map[string]Detail { return v.Details }).(DetailMapOutput)
 }
 
 type SensitiveTextAnnotationPtrOutput struct{ *pulumi.OutputState }
@@ -14004,19 +14050,19 @@ func (o SensitiveTextAnnotationPtrOutput) Elem() SensitiveTextAnnotationOutput {
 }
 
 // Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-func (o SensitiveTextAnnotationPtrOutput) Details() DetailPtrOutput {
-	return o.ApplyT(func(v *SensitiveTextAnnotation) *Detail {
+func (o SensitiveTextAnnotationPtrOutput) Details() DetailMapOutput {
+	return o.ApplyT(func(v *SensitiveTextAnnotation) map[string]Detail {
 		if v == nil {
 			return nil
 		}
 		return v.Details
-	}).(DetailPtrOutput)
+	}).(DetailMapOutput)
 }
 
 // A TextAnnotation specifies a text range that includes sensitive information.
 type SensitiveTextAnnotationResponse struct {
 	// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-	Details DetailResponse `pulumi:"details"`
+	Details map[string]DetailResponse `pulumi:"details"`
 }
 
 // A TextAnnotation specifies a text range that includes sensitive information.
@@ -14035,8 +14081,8 @@ func (o SensitiveTextAnnotationResponseOutput) ToSensitiveTextAnnotationResponse
 }
 
 // Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
-func (o SensitiveTextAnnotationResponseOutput) Details() DetailResponseOutput {
-	return o.ApplyT(func(v SensitiveTextAnnotationResponse) DetailResponse { return v.Details }).(DetailResponseOutput)
+func (o SensitiveTextAnnotationResponseOutput) Details() DetailResponseMapOutput {
+	return o.ApplyT(func(v SensitiveTextAnnotationResponse) map[string]DetailResponse { return v.Details }).(DetailResponseMapOutput)
 }
 
 // User signature.
@@ -15907,7 +15953,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeleteTagInput)(nil)).Elem(), DeleteTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeleteTagPtrInput)(nil)).Elem(), DeleteTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailInput)(nil)).Elem(), DetailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DetailPtrInput)(nil)).Elem(), DetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetailMapInput)(nil)).Elem(), DetailMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigInput)(nil)).Elem(), DicomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomConfigPtrInput)(nil)).Elem(), DicomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DicomTagConfigInput)(nil)).Elem(), DicomTagConfigArgs{})
@@ -15993,6 +16039,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigPtrInput)(nil)).Elem(), SchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaGroupInput)(nil)).Elem(), SchemaGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaGroupPtrInput)(nil)).Elem(), SchemaGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaGroupMapInput)(nil)).Elem(), SchemaGroupMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageInput)(nil)).Elem(), SchemaPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackagePtrInput)(nil)).Elem(), SchemaPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSegmentInput)(nil)).Elem(), SchemaSegmentArgs{})
@@ -16108,8 +16155,9 @@ func init() {
 	pulumi.RegisterOutputType(DeleteTagPtrOutput{})
 	pulumi.RegisterOutputType(DeleteTagResponseOutput{})
 	pulumi.RegisterOutputType(DetailOutput{})
-	pulumi.RegisterOutputType(DetailPtrOutput{})
+	pulumi.RegisterOutputType(DetailMapOutput{})
 	pulumi.RegisterOutputType(DetailResponseOutput{})
+	pulumi.RegisterOutputType(DetailResponseMapOutput{})
 	pulumi.RegisterOutputType(DicomConfigOutput{})
 	pulumi.RegisterOutputType(DicomConfigPtrOutput{})
 	pulumi.RegisterOutputType(DicomConfigResponseOutput{})
@@ -16251,7 +16299,9 @@ func init() {
 	pulumi.RegisterOutputType(SchemaConfigResponseOutput{})
 	pulumi.RegisterOutputType(SchemaGroupOutput{})
 	pulumi.RegisterOutputType(SchemaGroupPtrOutput{})
+	pulumi.RegisterOutputType(SchemaGroupMapOutput{})
 	pulumi.RegisterOutputType(SchemaGroupResponseOutput{})
+	pulumi.RegisterOutputType(SchemaGroupResponseMapOutput{})
 	pulumi.RegisterOutputType(SchemaPackageOutput{})
 	pulumi.RegisterOutputType(SchemaPackagePtrOutput{})
 	pulumi.RegisterOutputType(SchemaPackageResponseOutput{})

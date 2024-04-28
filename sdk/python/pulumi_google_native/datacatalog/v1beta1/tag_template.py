@@ -17,7 +17,7 @@ __all__ = ['TagTemplateArgs', 'TagTemplate']
 @pulumi.input_type
 class TagTemplateArgs:
     def __init__(__self__, *,
-                 fields: pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs'],
+                 fields: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]],
                  tag_template_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -25,7 +25,7 @@ class TagTemplateArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagTemplate resource.
-        :param pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs'] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         :param pulumi.Input[str] tag_template_id: Required. The id of the tag template to create.
         :param pulumi.Input[str] display_name: The display name for this template. Defaults to an empty string.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
@@ -43,14 +43,14 @@ class TagTemplateArgs:
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']:
+    def fields(self) -> pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]]:
         """
         Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         """
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']):
+    def fields(self, value: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]]):
         pulumi.set(self, "fields", value)
 
     @property
@@ -114,7 +114,7 @@ class TagTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]] = None,
+                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class TagTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template. Defaults to an empty string.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         :param pulumi.Input[str] tag_template_id: Required. The id of the tag template to create.
         """
@@ -155,7 +155,7 @@ class TagTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]] = None,
+                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -221,7 +221,7 @@ class TagTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def fields(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse']:
+    def fields(self) -> pulumi.Output[Mapping[str, 'outputs.GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse']]:
         """
         Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         """

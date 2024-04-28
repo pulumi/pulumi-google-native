@@ -33,11 +33,17 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         [Input("container")]
         public Input<Inputs.ContainerInfoArgs>? Container { get; set; }
 
+        [Input("files")]
+        private InputMap<Inputs.FileInfoArgs>? _files;
+
         /// <summary>
         /// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         /// </summary>
-        [Input("files")]
-        public Input<Inputs.FileInfoArgs>? Files { get; set; }
+        public InputMap<Inputs.FileInfoArgs> Files
+        {
+            get => _files ?? (_files = new InputMap<Inputs.FileInfoArgs>());
+            set => _files = value;
+        }
 
         /// <summary>
         /// The zip file for this deployment, if this is a zip deployment.

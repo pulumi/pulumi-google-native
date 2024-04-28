@@ -1167,24 +1167,24 @@ class FileIODetailsArgs:
 @pulumi.input_type
 class JobExecutionInfoArgs:
     def __init__(__self__, *,
-                 stages: Optional[pulumi.Input['JobExecutionStageInfoArgs']] = None):
+                 stages: Optional[pulumi.Input[Mapping[str, pulumi.Input['JobExecutionStageInfoArgs']]]] = None):
         """
         Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
-        :param pulumi.Input['JobExecutionStageInfoArgs'] stages: A mapping from each stage to the information about that stage.
+        :param pulumi.Input[Mapping[str, pulumi.Input['JobExecutionStageInfoArgs']]] stages: A mapping from each stage to the information about that stage.
         """
         if stages is not None:
             pulumi.set(__self__, "stages", stages)
 
     @property
     @pulumi.getter
-    def stages(self) -> Optional[pulumi.Input['JobExecutionStageInfoArgs']]:
+    def stages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['JobExecutionStageInfoArgs']]]]:
         """
         A mapping from each stage to the information about that stage.
         """
         return pulumi.get(self, "stages")
 
     @stages.setter
-    def stages(self, value: Optional[pulumi.Input['JobExecutionStageInfoArgs']]):
+    def stages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['JobExecutionStageInfoArgs']]]]):
         pulumi.set(self, "stages", value)
 
 

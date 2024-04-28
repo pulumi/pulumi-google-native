@@ -602,24 +602,24 @@ class GoogleCloudContentwarehouseV1IntegerTypeOptionsArgs:
 @pulumi.input_type
 class GoogleCloudContentwarehouseV1MapPropertyArgs:
     def __init__(__self__, *,
-                 fields: Optional[pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']] = None):
+                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]]] = None):
         """
         Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
-        :param pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs'] fields: Unordered map of dynamically typed values.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]] fields: Unordered map of dynamically typed values.
         """
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
 
     @property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]:
+    def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]]]:
         """
         Unordered map of dynamically typed values.
         """
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]):
+    def fields(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudContentwarehouseV1ValueArgs']]]]):
         pulumi.set(self, "fields", value)
 
 

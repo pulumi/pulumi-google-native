@@ -39,11 +39,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// <summary>
         /// The runtime input artifacts of the task.
         /// </summary>
-        public readonly Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse Inputs;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse> Inputs;
         /// <summary>
         /// The runtime output artifacts of the task.
         /// </summary>
-        public readonly Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse Outputs;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse> Outputs;
         /// <summary>
         /// The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
         /// </summary>
@@ -81,9 +81,9 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
 
             Outputs.GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse executorDetail,
 
-            Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse inputs,
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse> inputs,
 
-            Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse outputs,
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1PipelineTaskDetailArtifactListResponse> outputs,
 
             string parentTaskId,
 

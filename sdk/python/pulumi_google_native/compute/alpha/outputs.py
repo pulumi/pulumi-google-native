@@ -2409,7 +2409,7 @@ class AutoscalingPolicyResponse(dict):
                  mode: str,
                  scale_down_control: 'outputs.AutoscalingPolicyScaleDownControlResponse',
                  scale_in_control: 'outputs.AutoscalingPolicyScaleInControlResponse',
-                 scaling_schedules: 'outputs.AutoscalingPolicyScalingScheduleResponse'):
+                 scaling_schedules: Mapping[str, 'outputs.AutoscalingPolicyScalingScheduleResponse']):
         """
         Cloud Autoscaler policy.
         :param int cool_down_period_sec: The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
@@ -2419,7 +2419,7 @@ class AutoscalingPolicyResponse(dict):
         :param int max_num_replicas: The maximum number of instances that the autoscaler can scale out to. This is required when creating or updating an autoscaler. The maximum number of replicas must not be lower than minimal number of replicas.
         :param int min_num_replicas: The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
         :param str mode: Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
-        :param 'AutoscalingPolicyScalingScheduleResponse' scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+        :param Mapping[str, 'AutoscalingPolicyScalingScheduleResponse'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
         pulumi.set(__self__, "cool_down_period_sec", cool_down_period_sec)
         pulumi.set(__self__, "cpu_utilization", cpu_utilization)
@@ -2500,7 +2500,7 @@ class AutoscalingPolicyResponse(dict):
 
     @property
     @pulumi.getter(name="scalingSchedules")
-    def scaling_schedules(self) -> 'outputs.AutoscalingPolicyScalingScheduleResponse':
+    def scaling_schedules(self) -> Mapping[str, 'outputs.AutoscalingPolicyScalingScheduleResponse']:
         """
         Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
@@ -4089,7 +4089,7 @@ class BulkInsertInstanceResourceResponse(dict):
                  location_policy: 'outputs.LocationPolicyResponse',
                  min_count: str,
                  name_pattern: str,
-                 per_instance_properties: 'outputs.BulkInsertInstanceResourcePerInstancePropertiesResponse',
+                 per_instance_properties: Mapping[str, 'outputs.BulkInsertInstanceResourcePerInstancePropertiesResponse'],
                  source_instance_template: str):
         """
         A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
@@ -4098,7 +4098,7 @@ class BulkInsertInstanceResourceResponse(dict):
         :param 'LocationPolicyResponse' location_policy: Policy for chosing target zone. For more information, see Create VMs in bulk .
         :param str min_count: The minimum number of instances to create. If no min_count is specified then count is used as the default value. If min_count instances cannot be created, then no instances will be created and instances already created will be deleted.
         :param str name_pattern: The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
-        :param 'BulkInsertInstanceResourcePerInstancePropertiesResponse' per_instance_properties: Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
+        :param Mapping[str, 'BulkInsertInstanceResourcePerInstancePropertiesResponse'] per_instance_properties: Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
         :param str source_instance_template: Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
         """
         pulumi.set(__self__, "count", count)
@@ -4151,7 +4151,7 @@ class BulkInsertInstanceResourceResponse(dict):
 
     @property
     @pulumi.getter(name="perInstanceProperties")
-    def per_instance_properties(self) -> 'outputs.BulkInsertInstanceResourcePerInstancePropertiesResponse':
+    def per_instance_properties(self) -> Mapping[str, 'outputs.BulkInsertInstanceResourcePerInstancePropertiesResponse']:
         """
         Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
         """
@@ -5632,10 +5632,10 @@ class DiskResourceStatusResponse(dict):
 
     def __init__(__self__, *,
                  async_primary_disk: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse',
-                 async_secondary_disks: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse',
+                 async_secondary_disks: Mapping[str, 'outputs.DiskResourceStatusAsyncReplicationStatusResponse'],
                  used_bytes: str):
         """
-        :param 'DiskResourceStatusAsyncReplicationStatusResponse' async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
+        :param Mapping[str, 'DiskResourceStatusAsyncReplicationStatusResponse'] async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
         :param str used_bytes: Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
         """
         pulumi.set(__self__, "async_primary_disk", async_primary_disk)
@@ -5649,7 +5649,7 @@ class DiskResourceStatusResponse(dict):
 
     @property
     @pulumi.getter(name="asyncSecondaryDisks")
-    def async_secondary_disks(self) -> 'outputs.DiskResourceStatusAsyncReplicationStatusResponse':
+    def async_secondary_disks(self) -> Mapping[str, 'outputs.DiskResourceStatusAsyncReplicationStatusResponse']:
         """
         Key: disk, value: AsyncReplicationStatus message
         """
@@ -9479,18 +9479,18 @@ class InstanceGroupManagerInstanceFlexibilityPolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 instance_selection_lists: 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse',
-                 instance_selections: 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse'):
+                 instance_selection_lists: Mapping[str, 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse'],
+                 instance_selections: Mapping[str, 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse']):
         """
-        :param 'InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse' instance_selection_lists: Named instance selections configuring properties that the group will use when creating new VMs.
-        :param 'InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse' instance_selections: Named instance selections configuring properties that the group will use when creating new VMs.
+        :param Mapping[str, 'InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse'] instance_selection_lists: Named instance selections configuring properties that the group will use when creating new VMs.
+        :param Mapping[str, 'InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse'] instance_selections: Named instance selections configuring properties that the group will use when creating new VMs.
         """
         pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
         pulumi.set(__self__, "instance_selections", instance_selections)
 
     @property
     @pulumi.getter(name="instanceSelectionLists")
-    def instance_selection_lists(self) -> 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse':
+    def instance_selection_lists(self) -> Mapping[str, 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse']:
         """
         Named instance selections configuring properties that the group will use when creating new VMs.
         """
@@ -9498,7 +9498,7 @@ class InstanceGroupManagerInstanceFlexibilityPolicyResponse(dict):
 
     @property
     @pulumi.getter(name="instanceSelections")
-    def instance_selections(self) -> 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse':
+    def instance_selections(self) -> Mapping[str, 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse']:
         """
         Named instance selections configuring properties that the group will use when creating new VMs.
         """
@@ -10435,7 +10435,7 @@ class InstancePropertiesResponse(dict):
                  min_cpu_platform: str,
                  network_interfaces: Sequence['outputs.NetworkInterfaceResponse'],
                  network_performance_config: 'outputs.NetworkPerformanceConfigResponse',
-                 partner_metadata: 'outputs.StructuredEntriesResponse',
+                 partner_metadata: Mapping[str, 'outputs.StructuredEntriesResponse'],
                  post_key_revocation_action_type: str,
                  private_ipv6_google_access: str,
                  reservation_affinity: 'outputs.ReservationAffinityResponse',
@@ -10444,7 +10444,7 @@ class InstancePropertiesResponse(dict):
                  scheduling: 'outputs.SchedulingResponse',
                  secure_tags: Sequence[str],
                  service_accounts: Sequence['outputs.ServiceAccountResponse'],
-                 service_integration_specs: 'outputs.ServiceIntegrationSpecResponse',
+                 service_integration_specs: Mapping[str, 'outputs.ServiceIntegrationSpecResponse'],
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
                  shielded_vm_config: 'outputs.ShieldedVmConfigResponse',
                  tags: 'outputs.TagsResponse'):
@@ -10463,7 +10463,7 @@ class InstancePropertiesResponse(dict):
         :param str min_cpu_platform: Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: An array of network access configurations for this interface.
         :param 'NetworkPerformanceConfigResponse' network_performance_config: Note that for MachineImage, this is not supported yet.
-        :param 'StructuredEntriesResponse' partner_metadata: Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+        :param Mapping[str, 'StructuredEntriesResponse'] partner_metadata: Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
         :param str post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param str private_ipv6_google_access: The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
         :param 'ReservationAffinityResponse' reservation_affinity: Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
@@ -10472,7 +10472,7 @@ class InstancePropertiesResponse(dict):
         :param 'SchedulingResponse' scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param Sequence[str] secure_tags: [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
         :param Sequence['ServiceAccountResponse'] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-        :param 'ServiceIntegrationSpecResponse' service_integration_specs: Mapping of user defined keys to ServiceIntegrationSpec.
+        :param Mapping[str, 'ServiceIntegrationSpecResponse'] service_integration_specs: Mapping of user defined keys to ServiceIntegrationSpec.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Note that for MachineImage, this is not supported yet.
         :param 'ShieldedVmConfigResponse' shielded_vm_config: Specifies the Shielded VM options for the instances that are created from these properties.
         :param 'TagsResponse' tags: A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
@@ -10619,7 +10619,7 @@ class InstancePropertiesResponse(dict):
 
     @property
     @pulumi.getter(name="partnerMetadata")
-    def partner_metadata(self) -> 'outputs.StructuredEntriesResponse':
+    def partner_metadata(self) -> Mapping[str, 'outputs.StructuredEntriesResponse']:
         """
         Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
         """
@@ -10691,7 +10691,7 @@ class InstancePropertiesResponse(dict):
 
     @property
     @pulumi.getter(name="serviceIntegrationSpecs")
-    def service_integration_specs(self) -> 'outputs.ServiceIntegrationSpecResponse':
+    def service_integration_specs(self) -> Mapping[str, 'outputs.ServiceIntegrationSpecResponse']:
         """
         Mapping of user defined keys to ServiceIntegrationSpec.
         """
@@ -11694,11 +11694,11 @@ class LocationPolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 locations: 'outputs.LocationPolicyLocationResponse',
+                 locations: Mapping[str, 'outputs.LocationPolicyLocationResponse'],
                  target_shape: str):
         """
         Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
-        :param 'LocationPolicyLocationResponse' locations: Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
+        :param Mapping[str, 'LocationPolicyLocationResponse'] locations: Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
         :param str target_shape: Strategy for distributing VMs across zones in a region.
         """
         pulumi.set(__self__, "locations", locations)
@@ -11706,7 +11706,7 @@ class LocationPolicyResponse(dict):
 
     @property
     @pulumi.getter
-    def locations(self) -> 'outputs.LocationPolicyLocationResponse':
+    def locations(self) -> Mapping[str, 'outputs.LocationPolicyLocationResponse']:
         """
         Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
         """
@@ -16825,14 +16825,14 @@ class ResourceStatusResponse(dict):
                  last_instance_termination_details: 'outputs.ResourceStatusLastInstanceTerminationDetailsResponse',
                  physical_host: str,
                  scheduling: 'outputs.ResourceStatusSchedulingResponse',
-                 service_integration_statuses: 'outputs.ResourceStatusServiceIntegrationStatusResponse',
+                 service_integration_statuses: Mapping[str, 'outputs.ResourceStatusServiceIntegrationStatusResponse'],
                  shutdown_details: 'outputs.ResourceStatusShutdownDetailsResponse',
                  upcoming_maintenance: 'outputs.UpcomingMaintenanceResponse'):
         """
         Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
         :param 'ResourceStatusLastInstanceTerminationDetailsResponse' last_instance_termination_details: Contains last termination details why the instance was terminated.
         :param str physical_host: An opaque ID of the host on which the VM is running.
-        :param 'ResourceStatusServiceIntegrationStatusResponse' service_integration_statuses: Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
+        :param Mapping[str, 'ResourceStatusServiceIntegrationStatusResponse'] service_integration_statuses: Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
         :param 'ResourceStatusShutdownDetailsResponse' shutdown_details: Details about stopping state of instance
         """
         pulumi.set(__self__, "last_instance_termination_details", last_instance_termination_details)
@@ -16865,7 +16865,7 @@ class ResourceStatusResponse(dict):
 
     @property
     @pulumi.getter(name="serviceIntegrationStatuses")
-    def service_integration_statuses(self) -> 'outputs.ResourceStatusServiceIntegrationStatusResponse':
+    def service_integration_statuses(self) -> Mapping[str, 'outputs.ResourceStatusServiceIntegrationStatusResponse']:
         """
         Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
         """
@@ -21913,14 +21913,14 @@ class ShareSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 folder_map: 'outputs.ShareSettingsFolderConfigResponse',
-                 project_map: 'outputs.ShareSettingsProjectConfigResponse',
+                 folder_map: Mapping[str, 'outputs.ShareSettingsFolderConfigResponse'],
+                 project_map: Mapping[str, 'outputs.ShareSettingsProjectConfigResponse'],
                  projects: Sequence[str],
                  share_type: str):
         """
         The share setting for reservations and sole tenancy node groups.
-        :param 'ShareSettingsFolderConfigResponse' folder_map: A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
-        :param 'ShareSettingsProjectConfigResponse' project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        :param Mapping[str, 'ShareSettingsFolderConfigResponse'] folder_map: A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
+        :param Mapping[str, 'ShareSettingsProjectConfigResponse'] project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param Sequence[str] projects: A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param str share_type: Type of sharing for this shared-reservation
         """
@@ -21931,7 +21931,7 @@ class ShareSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="folderMap")
-    def folder_map(self) -> 'outputs.ShareSettingsFolderConfigResponse':
+    def folder_map(self) -> Mapping[str, 'outputs.ShareSettingsFolderConfigResponse']:
         """
         A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
         """
@@ -21939,7 +21939,7 @@ class ShareSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="projectMap")
-    def project_map(self) -> 'outputs.ShareSettingsProjectConfigResponse':
+    def project_map(self) -> Mapping[str, 'outputs.ShareSettingsProjectConfigResponse']:
         """
         A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         """
@@ -22741,14 +22741,14 @@ class StatefulPolicyPreservedStateResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 disks: 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse',
-                 external_ips: 'outputs.StatefulPolicyPreservedStateNetworkIpResponse',
-                 internal_ips: 'outputs.StatefulPolicyPreservedStateNetworkIpResponse'):
+                 disks: Mapping[str, 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse'],
+                 external_ips: Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse'],
+                 internal_ips: Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse']):
         """
         Configuration of preserved resources.
-        :param 'StatefulPolicyPreservedStateDiskDeviceResponse' disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-        :param 'StatefulPolicyPreservedStateNetworkIpResponse' external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-        :param 'StatefulPolicyPreservedStateNetworkIpResponse' internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param Mapping[str, 'StatefulPolicyPreservedStateDiskDeviceResponse'] disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
+        :param Mapping[str, 'StatefulPolicyPreservedStateNetworkIpResponse'] external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param Mapping[str, 'StatefulPolicyPreservedStateNetworkIpResponse'] internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "external_ips", external_ips)
@@ -22756,7 +22756,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter
-    def disks(self) -> 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse':
+    def disks(self) -> Mapping[str, 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse']:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
         """
@@ -22764,7 +22764,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter(name="externalIPs")
-    def external_ips(self) -> 'outputs.StatefulPolicyPreservedStateNetworkIpResponse':
+    def external_ips(self) -> Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse']:
         """
         External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
@@ -22772,7 +22772,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter(name="internalIPs")
-    def internal_ips(self) -> 'outputs.StatefulPolicyPreservedStateNetworkIpResponse':
+    def internal_ips(self) -> Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse']:
         """
         Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """

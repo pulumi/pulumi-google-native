@@ -1053,13 +1053,13 @@ class JobStatusResponse(dict):
                  run_duration: str,
                  state: str,
                  status_events: Sequence['outputs.StatusEventResponse'],
-                 task_groups: 'outputs.TaskGroupStatusResponse'):
+                 task_groups: Mapping[str, 'outputs.TaskGroupStatusResponse']):
         """
         Job status.
         :param str run_duration: The duration of time that the Job spent in status RUNNING.
         :param str state: Job state
         :param Sequence['StatusEventResponse'] status_events: Job status events
-        :param 'TaskGroupStatusResponse' task_groups: Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
+        :param Mapping[str, 'TaskGroupStatusResponse'] task_groups: Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
         """
         pulumi.set(__self__, "run_duration", run_duration)
         pulumi.set(__self__, "state", state)
@@ -1092,7 +1092,7 @@ class JobStatusResponse(dict):
 
     @property
     @pulumi.getter(name="taskGroups")
-    def task_groups(self) -> 'outputs.TaskGroupStatusResponse':
+    def task_groups(self) -> Mapping[str, 'outputs.TaskGroupStatusResponse']:
         """
         Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
         """

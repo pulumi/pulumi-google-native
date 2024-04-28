@@ -5728,45 +5728,29 @@ func (i ServiceIntegrationSpecArgs) ToServiceIntegrationSpecOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSpecOutput)
 }
 
-func (i ServiceIntegrationSpecArgs) ToServiceIntegrationSpecPtrOutput() ServiceIntegrationSpecPtrOutput {
-	return i.ToServiceIntegrationSpecPtrOutputWithContext(context.Background())
-}
-
-func (i ServiceIntegrationSpecArgs) ToServiceIntegrationSpecPtrOutputWithContext(ctx context.Context) ServiceIntegrationSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSpecOutput).ToServiceIntegrationSpecPtrOutputWithContext(ctx)
-}
-
-// ServiceIntegrationSpecPtrInput is an input type that accepts ServiceIntegrationSpecArgs, ServiceIntegrationSpecPtr and ServiceIntegrationSpecPtrOutput values.
-// You can construct a concrete instance of `ServiceIntegrationSpecPtrInput` via:
+// ServiceIntegrationSpecMapInput is an input type that accepts ServiceIntegrationSpecMap and ServiceIntegrationSpecMapOutput values.
+// You can construct a concrete instance of `ServiceIntegrationSpecMapInput` via:
 //
-//	        ServiceIntegrationSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type ServiceIntegrationSpecPtrInput interface {
+//	ServiceIntegrationSpecMap{ "key": ServiceIntegrationSpecArgs{...} }
+type ServiceIntegrationSpecMapInput interface {
 	pulumi.Input
 
-	ToServiceIntegrationSpecPtrOutput() ServiceIntegrationSpecPtrOutput
-	ToServiceIntegrationSpecPtrOutputWithContext(context.Context) ServiceIntegrationSpecPtrOutput
+	ToServiceIntegrationSpecMapOutput() ServiceIntegrationSpecMapOutput
+	ToServiceIntegrationSpecMapOutputWithContext(context.Context) ServiceIntegrationSpecMapOutput
 }
 
-type serviceIntegrationSpecPtrType ServiceIntegrationSpecArgs
+type ServiceIntegrationSpecMap map[string]ServiceIntegrationSpecInput
 
-func ServiceIntegrationSpecPtr(v *ServiceIntegrationSpecArgs) ServiceIntegrationSpecPtrInput {
-	return (*serviceIntegrationSpecPtrType)(v)
+func (ServiceIntegrationSpecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceIntegrationSpec)(nil)).Elem()
 }
 
-func (*serviceIntegrationSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceIntegrationSpec)(nil)).Elem()
+func (i ServiceIntegrationSpecMap) ToServiceIntegrationSpecMapOutput() ServiceIntegrationSpecMapOutput {
+	return i.ToServiceIntegrationSpecMapOutputWithContext(context.Background())
 }
 
-func (i *serviceIntegrationSpecPtrType) ToServiceIntegrationSpecPtrOutput() ServiceIntegrationSpecPtrOutput {
-	return i.ToServiceIntegrationSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceIntegrationSpecPtrType) ToServiceIntegrationSpecPtrOutputWithContext(ctx context.Context) ServiceIntegrationSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSpecPtrOutput)
+func (i ServiceIntegrationSpecMap) ToServiceIntegrationSpecMapOutputWithContext(ctx context.Context) ServiceIntegrationSpecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIntegrationSpecMapOutput)
 }
 
 // Specifies the parameters to configure an integration with instances.
@@ -5784,51 +5768,28 @@ func (o ServiceIntegrationSpecOutput) ToServiceIntegrationSpecOutputWithContext(
 	return o
 }
 
-func (o ServiceIntegrationSpecOutput) ToServiceIntegrationSpecPtrOutput() ServiceIntegrationSpecPtrOutput {
-	return o.ToServiceIntegrationSpecPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceIntegrationSpecOutput) ToServiceIntegrationSpecPtrOutputWithContext(ctx context.Context) ServiceIntegrationSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIntegrationSpec) *ServiceIntegrationSpec {
-		return &v
-	}).(ServiceIntegrationSpecPtrOutput)
-}
-
 func (o ServiceIntegrationSpecOutput) BackupDr() ServiceIntegrationSpecBackupDRSpecPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationSpec) *ServiceIntegrationSpecBackupDRSpec { return v.BackupDr }).(ServiceIntegrationSpecBackupDRSpecPtrOutput)
 }
 
-type ServiceIntegrationSpecPtrOutput struct{ *pulumi.OutputState }
+type ServiceIntegrationSpecMapOutput struct{ *pulumi.OutputState }
 
-func (ServiceIntegrationSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceIntegrationSpec)(nil)).Elem()
+func (ServiceIntegrationSpecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceIntegrationSpec)(nil)).Elem()
 }
 
-func (o ServiceIntegrationSpecPtrOutput) ToServiceIntegrationSpecPtrOutput() ServiceIntegrationSpecPtrOutput {
+func (o ServiceIntegrationSpecMapOutput) ToServiceIntegrationSpecMapOutput() ServiceIntegrationSpecMapOutput {
 	return o
 }
 
-func (o ServiceIntegrationSpecPtrOutput) ToServiceIntegrationSpecPtrOutputWithContext(ctx context.Context) ServiceIntegrationSpecPtrOutput {
+func (o ServiceIntegrationSpecMapOutput) ToServiceIntegrationSpecMapOutputWithContext(ctx context.Context) ServiceIntegrationSpecMapOutput {
 	return o
 }
 
-func (o ServiceIntegrationSpecPtrOutput) Elem() ServiceIntegrationSpecOutput {
-	return o.ApplyT(func(v *ServiceIntegrationSpec) ServiceIntegrationSpec {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceIntegrationSpec
-		return ret
+func (o ServiceIntegrationSpecMapOutput) MapIndex(k pulumi.StringInput) ServiceIntegrationSpecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceIntegrationSpec {
+		return vs[0].(map[string]ServiceIntegrationSpec)[vs[1].(string)]
 	}).(ServiceIntegrationSpecOutput)
-}
-
-func (o ServiceIntegrationSpecPtrOutput) BackupDr() ServiceIntegrationSpecBackupDRSpecPtrOutput {
-	return o.ApplyT(func(v *ServiceIntegrationSpec) *ServiceIntegrationSpecBackupDRSpec {
-		if v == nil {
-			return nil
-		}
-		return v.BackupDr
-	}).(ServiceIntegrationSpecBackupDRSpecPtrOutput)
 }
 
 // Specifies parameters to Backup and DR to attach a BackupPlan to a compute instance for managed VM backup.
@@ -6021,12 +5982,32 @@ func (o ServiceIntegrationSpecResponseOutput) BackupDr() ServiceIntegrationSpecB
 	return o.ApplyT(func(v ServiceIntegrationSpecResponse) ServiceIntegrationSpecBackupDRSpecResponse { return v.BackupDr }).(ServiceIntegrationSpecBackupDRSpecResponseOutput)
 }
 
+type ServiceIntegrationSpecResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceIntegrationSpecResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceIntegrationSpecResponse)(nil)).Elem()
+}
+
+func (o ServiceIntegrationSpecResponseMapOutput) ToServiceIntegrationSpecResponseMapOutput() ServiceIntegrationSpecResponseMapOutput {
+	return o
+}
+
+func (o ServiceIntegrationSpecResponseMapOutput) ToServiceIntegrationSpecResponseMapOutputWithContext(ctx context.Context) ServiceIntegrationSpecResponseMapOutput {
+	return o
+}
+
+func (o ServiceIntegrationSpecResponseMapOutput) MapIndex(k pulumi.StringInput) ServiceIntegrationSpecResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceIntegrationSpecResponse {
+		return vs[0].(map[string]ServiceIntegrationSpecResponse)[vs[1].(string)]
+	}).(ServiceIntegrationSpecResponseOutput)
+}
+
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettings struct {
 	// A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
-	FolderMap *ShareSettingsFolderConfig `pulumi:"folderMap"`
+	FolderMap map[string]ShareSettingsFolderConfig `pulumi:"folderMap"`
 	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-	ProjectMap *ShareSettingsProjectConfig `pulumi:"projectMap"`
+	ProjectMap map[string]ShareSettingsProjectConfig `pulumi:"projectMap"`
 	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	Projects []string `pulumi:"projects"`
 	// Type of sharing for this shared-reservation
@@ -6047,9 +6028,9 @@ type ShareSettingsInput interface {
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettingsArgs struct {
 	// A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
-	FolderMap ShareSettingsFolderConfigPtrInput `pulumi:"folderMap"`
+	FolderMap ShareSettingsFolderConfigMapInput `pulumi:"folderMap"`
 	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-	ProjectMap ShareSettingsProjectConfigPtrInput `pulumi:"projectMap"`
+	ProjectMap ShareSettingsProjectConfigMapInput `pulumi:"projectMap"`
 	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
 	// Type of sharing for this shared-reservation
@@ -6135,13 +6116,13 @@ func (o ShareSettingsOutput) ToShareSettingsPtrOutputWithContext(ctx context.Con
 }
 
 // A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
-func (o ShareSettingsOutput) FolderMap() ShareSettingsFolderConfigPtrOutput {
-	return o.ApplyT(func(v ShareSettings) *ShareSettingsFolderConfig { return v.FolderMap }).(ShareSettingsFolderConfigPtrOutput)
+func (o ShareSettingsOutput) FolderMap() ShareSettingsFolderConfigMapOutput {
+	return o.ApplyT(func(v ShareSettings) map[string]ShareSettingsFolderConfig { return v.FolderMap }).(ShareSettingsFolderConfigMapOutput)
 }
 
 // A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-func (o ShareSettingsOutput) ProjectMap() ShareSettingsProjectConfigPtrOutput {
-	return o.ApplyT(func(v ShareSettings) *ShareSettingsProjectConfig { return v.ProjectMap }).(ShareSettingsProjectConfigPtrOutput)
+func (o ShareSettingsOutput) ProjectMap() ShareSettingsProjectConfigMapOutput {
+	return o.ApplyT(func(v ShareSettings) map[string]ShareSettingsProjectConfig { return v.ProjectMap }).(ShareSettingsProjectConfigMapOutput)
 }
 
 // A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
@@ -6179,23 +6160,23 @@ func (o ShareSettingsPtrOutput) Elem() ShareSettingsOutput {
 }
 
 // A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
-func (o ShareSettingsPtrOutput) FolderMap() ShareSettingsFolderConfigPtrOutput {
-	return o.ApplyT(func(v *ShareSettings) *ShareSettingsFolderConfig {
+func (o ShareSettingsPtrOutput) FolderMap() ShareSettingsFolderConfigMapOutput {
+	return o.ApplyT(func(v *ShareSettings) map[string]ShareSettingsFolderConfig {
 		if v == nil {
 			return nil
 		}
 		return v.FolderMap
-	}).(ShareSettingsFolderConfigPtrOutput)
+	}).(ShareSettingsFolderConfigMapOutput)
 }
 
 // A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-func (o ShareSettingsPtrOutput) ProjectMap() ShareSettingsProjectConfigPtrOutput {
-	return o.ApplyT(func(v *ShareSettings) *ShareSettingsProjectConfig {
+func (o ShareSettingsPtrOutput) ProjectMap() ShareSettingsProjectConfigMapOutput {
+	return o.ApplyT(func(v *ShareSettings) map[string]ShareSettingsProjectConfig {
 		if v == nil {
 			return nil
 		}
 		return v.ProjectMap
-	}).(ShareSettingsProjectConfigPtrOutput)
+	}).(ShareSettingsProjectConfigMapOutput)
 }
 
 // A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
@@ -6253,45 +6234,29 @@ func (i ShareSettingsFolderConfigArgs) ToShareSettingsFolderConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsFolderConfigOutput)
 }
 
-func (i ShareSettingsFolderConfigArgs) ToShareSettingsFolderConfigPtrOutput() ShareSettingsFolderConfigPtrOutput {
-	return i.ToShareSettingsFolderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ShareSettingsFolderConfigArgs) ToShareSettingsFolderConfigPtrOutputWithContext(ctx context.Context) ShareSettingsFolderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsFolderConfigOutput).ToShareSettingsFolderConfigPtrOutputWithContext(ctx)
-}
-
-// ShareSettingsFolderConfigPtrInput is an input type that accepts ShareSettingsFolderConfigArgs, ShareSettingsFolderConfigPtr and ShareSettingsFolderConfigPtrOutput values.
-// You can construct a concrete instance of `ShareSettingsFolderConfigPtrInput` via:
+// ShareSettingsFolderConfigMapInput is an input type that accepts ShareSettingsFolderConfigMap and ShareSettingsFolderConfigMapOutput values.
+// You can construct a concrete instance of `ShareSettingsFolderConfigMapInput` via:
 //
-//	        ShareSettingsFolderConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ShareSettingsFolderConfigPtrInput interface {
+//	ShareSettingsFolderConfigMap{ "key": ShareSettingsFolderConfigArgs{...} }
+type ShareSettingsFolderConfigMapInput interface {
 	pulumi.Input
 
-	ToShareSettingsFolderConfigPtrOutput() ShareSettingsFolderConfigPtrOutput
-	ToShareSettingsFolderConfigPtrOutputWithContext(context.Context) ShareSettingsFolderConfigPtrOutput
+	ToShareSettingsFolderConfigMapOutput() ShareSettingsFolderConfigMapOutput
+	ToShareSettingsFolderConfigMapOutputWithContext(context.Context) ShareSettingsFolderConfigMapOutput
 }
 
-type shareSettingsFolderConfigPtrType ShareSettingsFolderConfigArgs
+type ShareSettingsFolderConfigMap map[string]ShareSettingsFolderConfigInput
 
-func ShareSettingsFolderConfigPtr(v *ShareSettingsFolderConfigArgs) ShareSettingsFolderConfigPtrInput {
-	return (*shareSettingsFolderConfigPtrType)(v)
+func (ShareSettingsFolderConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsFolderConfig)(nil)).Elem()
 }
 
-func (*shareSettingsFolderConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareSettingsFolderConfig)(nil)).Elem()
+func (i ShareSettingsFolderConfigMap) ToShareSettingsFolderConfigMapOutput() ShareSettingsFolderConfigMapOutput {
+	return i.ToShareSettingsFolderConfigMapOutputWithContext(context.Background())
 }
 
-func (i *shareSettingsFolderConfigPtrType) ToShareSettingsFolderConfigPtrOutput() ShareSettingsFolderConfigPtrOutput {
-	return i.ToShareSettingsFolderConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *shareSettingsFolderConfigPtrType) ToShareSettingsFolderConfigPtrOutputWithContext(ctx context.Context) ShareSettingsFolderConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsFolderConfigPtrOutput)
+func (i ShareSettingsFolderConfigMap) ToShareSettingsFolderConfigMapOutputWithContext(ctx context.Context) ShareSettingsFolderConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsFolderConfigMapOutput)
 }
 
 // Config for each folder in the share settings.
@@ -6309,53 +6274,29 @@ func (o ShareSettingsFolderConfigOutput) ToShareSettingsFolderConfigOutputWithCo
 	return o
 }
 
-func (o ShareSettingsFolderConfigOutput) ToShareSettingsFolderConfigPtrOutput() ShareSettingsFolderConfigPtrOutput {
-	return o.ToShareSettingsFolderConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ShareSettingsFolderConfigOutput) ToShareSettingsFolderConfigPtrOutputWithContext(ctx context.Context) ShareSettingsFolderConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShareSettingsFolderConfig) *ShareSettingsFolderConfig {
-		return &v
-	}).(ShareSettingsFolderConfigPtrOutput)
-}
-
 // The folder ID, should be same as the key of this folder config in the parent map. Folder id should be a string of number, and without "folders/" prefix.
 func (o ShareSettingsFolderConfigOutput) FolderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareSettingsFolderConfig) *string { return v.FolderId }).(pulumi.StringPtrOutput)
 }
 
-type ShareSettingsFolderConfigPtrOutput struct{ *pulumi.OutputState }
+type ShareSettingsFolderConfigMapOutput struct{ *pulumi.OutputState }
 
-func (ShareSettingsFolderConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareSettingsFolderConfig)(nil)).Elem()
+func (ShareSettingsFolderConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsFolderConfig)(nil)).Elem()
 }
 
-func (o ShareSettingsFolderConfigPtrOutput) ToShareSettingsFolderConfigPtrOutput() ShareSettingsFolderConfigPtrOutput {
+func (o ShareSettingsFolderConfigMapOutput) ToShareSettingsFolderConfigMapOutput() ShareSettingsFolderConfigMapOutput {
 	return o
 }
 
-func (o ShareSettingsFolderConfigPtrOutput) ToShareSettingsFolderConfigPtrOutputWithContext(ctx context.Context) ShareSettingsFolderConfigPtrOutput {
+func (o ShareSettingsFolderConfigMapOutput) ToShareSettingsFolderConfigMapOutputWithContext(ctx context.Context) ShareSettingsFolderConfigMapOutput {
 	return o
 }
 
-func (o ShareSettingsFolderConfigPtrOutput) Elem() ShareSettingsFolderConfigOutput {
-	return o.ApplyT(func(v *ShareSettingsFolderConfig) ShareSettingsFolderConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ShareSettingsFolderConfig
-		return ret
+func (o ShareSettingsFolderConfigMapOutput) MapIndex(k pulumi.StringInput) ShareSettingsFolderConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareSettingsFolderConfig {
+		return vs[0].(map[string]ShareSettingsFolderConfig)[vs[1].(string)]
 	}).(ShareSettingsFolderConfigOutput)
-}
-
-// The folder ID, should be same as the key of this folder config in the parent map. Folder id should be a string of number, and without "folders/" prefix.
-func (o ShareSettingsFolderConfigPtrOutput) FolderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ShareSettingsFolderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FolderId
-	}).(pulumi.StringPtrOutput)
 }
 
 // Config for each folder in the share settings.
@@ -6382,6 +6323,26 @@ func (o ShareSettingsFolderConfigResponseOutput) ToShareSettingsFolderConfigResp
 // The folder ID, should be same as the key of this folder config in the parent map. Folder id should be a string of number, and without "folders/" prefix.
 func (o ShareSettingsFolderConfigResponseOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareSettingsFolderConfigResponse) string { return v.FolderId }).(pulumi.StringOutput)
+}
+
+type ShareSettingsFolderConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsFolderConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsFolderConfigResponse)(nil)).Elem()
+}
+
+func (o ShareSettingsFolderConfigResponseMapOutput) ToShareSettingsFolderConfigResponseMapOutput() ShareSettingsFolderConfigResponseMapOutput {
+	return o
+}
+
+func (o ShareSettingsFolderConfigResponseMapOutput) ToShareSettingsFolderConfigResponseMapOutputWithContext(ctx context.Context) ShareSettingsFolderConfigResponseMapOutput {
+	return o
+}
+
+func (o ShareSettingsFolderConfigResponseMapOutput) MapIndex(k pulumi.StringInput) ShareSettingsFolderConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareSettingsFolderConfigResponse {
+		return vs[0].(map[string]ShareSettingsFolderConfigResponse)[vs[1].(string)]
+	}).(ShareSettingsFolderConfigResponseOutput)
 }
 
 // Config for each project in the share settings.
@@ -6419,45 +6380,29 @@ func (i ShareSettingsProjectConfigArgs) ToShareSettingsProjectConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsProjectConfigOutput)
 }
 
-func (i ShareSettingsProjectConfigArgs) ToShareSettingsProjectConfigPtrOutput() ShareSettingsProjectConfigPtrOutput {
-	return i.ToShareSettingsProjectConfigPtrOutputWithContext(context.Background())
-}
-
-func (i ShareSettingsProjectConfigArgs) ToShareSettingsProjectConfigPtrOutputWithContext(ctx context.Context) ShareSettingsProjectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsProjectConfigOutput).ToShareSettingsProjectConfigPtrOutputWithContext(ctx)
-}
-
-// ShareSettingsProjectConfigPtrInput is an input type that accepts ShareSettingsProjectConfigArgs, ShareSettingsProjectConfigPtr and ShareSettingsProjectConfigPtrOutput values.
-// You can construct a concrete instance of `ShareSettingsProjectConfigPtrInput` via:
+// ShareSettingsProjectConfigMapInput is an input type that accepts ShareSettingsProjectConfigMap and ShareSettingsProjectConfigMapOutput values.
+// You can construct a concrete instance of `ShareSettingsProjectConfigMapInput` via:
 //
-//	        ShareSettingsProjectConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type ShareSettingsProjectConfigPtrInput interface {
+//	ShareSettingsProjectConfigMap{ "key": ShareSettingsProjectConfigArgs{...} }
+type ShareSettingsProjectConfigMapInput interface {
 	pulumi.Input
 
-	ToShareSettingsProjectConfigPtrOutput() ShareSettingsProjectConfigPtrOutput
-	ToShareSettingsProjectConfigPtrOutputWithContext(context.Context) ShareSettingsProjectConfigPtrOutput
+	ToShareSettingsProjectConfigMapOutput() ShareSettingsProjectConfigMapOutput
+	ToShareSettingsProjectConfigMapOutputWithContext(context.Context) ShareSettingsProjectConfigMapOutput
 }
 
-type shareSettingsProjectConfigPtrType ShareSettingsProjectConfigArgs
+type ShareSettingsProjectConfigMap map[string]ShareSettingsProjectConfigInput
 
-func ShareSettingsProjectConfigPtr(v *ShareSettingsProjectConfigArgs) ShareSettingsProjectConfigPtrInput {
-	return (*shareSettingsProjectConfigPtrType)(v)
+func (ShareSettingsProjectConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsProjectConfig)(nil)).Elem()
 }
 
-func (*shareSettingsProjectConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareSettingsProjectConfig)(nil)).Elem()
+func (i ShareSettingsProjectConfigMap) ToShareSettingsProjectConfigMapOutput() ShareSettingsProjectConfigMapOutput {
+	return i.ToShareSettingsProjectConfigMapOutputWithContext(context.Background())
 }
 
-func (i *shareSettingsProjectConfigPtrType) ToShareSettingsProjectConfigPtrOutput() ShareSettingsProjectConfigPtrOutput {
-	return i.ToShareSettingsProjectConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *shareSettingsProjectConfigPtrType) ToShareSettingsProjectConfigPtrOutputWithContext(ctx context.Context) ShareSettingsProjectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsProjectConfigPtrOutput)
+func (i ShareSettingsProjectConfigMap) ToShareSettingsProjectConfigMapOutputWithContext(ctx context.Context) ShareSettingsProjectConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsProjectConfigMapOutput)
 }
 
 // Config for each project in the share settings.
@@ -6475,53 +6420,29 @@ func (o ShareSettingsProjectConfigOutput) ToShareSettingsProjectConfigOutputWith
 	return o
 }
 
-func (o ShareSettingsProjectConfigOutput) ToShareSettingsProjectConfigPtrOutput() ShareSettingsProjectConfigPtrOutput {
-	return o.ToShareSettingsProjectConfigPtrOutputWithContext(context.Background())
-}
-
-func (o ShareSettingsProjectConfigOutput) ToShareSettingsProjectConfigPtrOutputWithContext(ctx context.Context) ShareSettingsProjectConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShareSettingsProjectConfig) *ShareSettingsProjectConfig {
-		return &v
-	}).(ShareSettingsProjectConfigPtrOutput)
-}
-
 // The project ID, should be same as the key of this project config in the parent map.
 func (o ShareSettingsProjectConfigOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShareSettingsProjectConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-type ShareSettingsProjectConfigPtrOutput struct{ *pulumi.OutputState }
+type ShareSettingsProjectConfigMapOutput struct{ *pulumi.OutputState }
 
-func (ShareSettingsProjectConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareSettingsProjectConfig)(nil)).Elem()
+func (ShareSettingsProjectConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsProjectConfig)(nil)).Elem()
 }
 
-func (o ShareSettingsProjectConfigPtrOutput) ToShareSettingsProjectConfigPtrOutput() ShareSettingsProjectConfigPtrOutput {
+func (o ShareSettingsProjectConfigMapOutput) ToShareSettingsProjectConfigMapOutput() ShareSettingsProjectConfigMapOutput {
 	return o
 }
 
-func (o ShareSettingsProjectConfigPtrOutput) ToShareSettingsProjectConfigPtrOutputWithContext(ctx context.Context) ShareSettingsProjectConfigPtrOutput {
+func (o ShareSettingsProjectConfigMapOutput) ToShareSettingsProjectConfigMapOutputWithContext(ctx context.Context) ShareSettingsProjectConfigMapOutput {
 	return o
 }
 
-func (o ShareSettingsProjectConfigPtrOutput) Elem() ShareSettingsProjectConfigOutput {
-	return o.ApplyT(func(v *ShareSettingsProjectConfig) ShareSettingsProjectConfig {
-		if v != nil {
-			return *v
-		}
-		var ret ShareSettingsProjectConfig
-		return ret
+func (o ShareSettingsProjectConfigMapOutput) MapIndex(k pulumi.StringInput) ShareSettingsProjectConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareSettingsProjectConfig {
+		return vs[0].(map[string]ShareSettingsProjectConfig)[vs[1].(string)]
 	}).(ShareSettingsProjectConfigOutput)
-}
-
-// The project ID, should be same as the key of this project config in the parent map.
-func (o ShareSettingsProjectConfigPtrOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ShareSettingsProjectConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Project
-	}).(pulumi.StringPtrOutput)
 }
 
 // Config for each project in the share settings.
@@ -6550,12 +6471,32 @@ func (o ShareSettingsProjectConfigResponseOutput) Project() pulumi.StringOutput 
 	return o.ApplyT(func(v ShareSettingsProjectConfigResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
+type ShareSettingsProjectConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsProjectConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsProjectConfigResponse)(nil)).Elem()
+}
+
+func (o ShareSettingsProjectConfigResponseMapOutput) ToShareSettingsProjectConfigResponseMapOutput() ShareSettingsProjectConfigResponseMapOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigResponseMapOutput) ToShareSettingsProjectConfigResponseMapOutputWithContext(ctx context.Context) ShareSettingsProjectConfigResponseMapOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigResponseMapOutput) MapIndex(k pulumi.StringInput) ShareSettingsProjectConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareSettingsProjectConfigResponse {
+		return vs[0].(map[string]ShareSettingsProjectConfigResponse)[vs[1].(string)]
+	}).(ShareSettingsProjectConfigResponseOutput)
+}
+
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettingsResponse struct {
 	// A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
-	FolderMap ShareSettingsFolderConfigResponse `pulumi:"folderMap"`
+	FolderMap map[string]ShareSettingsFolderConfigResponse `pulumi:"folderMap"`
 	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-	ProjectMap ShareSettingsProjectConfigResponse `pulumi:"projectMap"`
+	ProjectMap map[string]ShareSettingsProjectConfigResponse `pulumi:"projectMap"`
 	// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
 	Projects []string `pulumi:"projects"`
 	// Type of sharing for this shared-reservation
@@ -6578,13 +6519,13 @@ func (o ShareSettingsResponseOutput) ToShareSettingsResponseOutputWithContext(ct
 }
 
 // A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
-func (o ShareSettingsResponseOutput) FolderMap() ShareSettingsFolderConfigResponseOutput {
-	return o.ApplyT(func(v ShareSettingsResponse) ShareSettingsFolderConfigResponse { return v.FolderMap }).(ShareSettingsFolderConfigResponseOutput)
+func (o ShareSettingsResponseOutput) FolderMap() ShareSettingsFolderConfigResponseMapOutput {
+	return o.ApplyT(func(v ShareSettingsResponse) map[string]ShareSettingsFolderConfigResponse { return v.FolderMap }).(ShareSettingsFolderConfigResponseMapOutput)
 }
 
 // A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-func (o ShareSettingsResponseOutput) ProjectMap() ShareSettingsProjectConfigResponseOutput {
-	return o.ApplyT(func(v ShareSettingsResponse) ShareSettingsProjectConfigResponse { return v.ProjectMap }).(ShareSettingsProjectConfigResponseOutput)
+func (o ShareSettingsResponseOutput) ProjectMap() ShareSettingsProjectConfigResponseMapOutput {
+	return o.ApplyT(func(v ShareSettingsResponse) map[string]ShareSettingsProjectConfigResponse { return v.ProjectMap }).(ShareSettingsProjectConfigResponseMapOutput)
 }
 
 // A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
@@ -8429,11 +8370,11 @@ func (o StatefulPolicyPtrOutput) PreservedState() StatefulPolicyPreservedStatePt
 // Configuration of preserved resources.
 type StatefulPolicyPreservedState struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-	Disks *StatefulPolicyPreservedStateDiskDevice `pulumi:"disks"`
+	Disks map[string]StatefulPolicyPreservedStateDiskDevice `pulumi:"disks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	ExternalIPs *StatefulPolicyPreservedStateNetworkIp `pulumi:"externalIPs"`
+	ExternalIPs map[string]StatefulPolicyPreservedStateNetworkIp `pulumi:"externalIPs"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	InternalIPs *StatefulPolicyPreservedStateNetworkIp `pulumi:"internalIPs"`
+	InternalIPs map[string]StatefulPolicyPreservedStateNetworkIp `pulumi:"internalIPs"`
 }
 
 // StatefulPolicyPreservedStateInput is an input type that accepts StatefulPolicyPreservedStateArgs and StatefulPolicyPreservedStateOutput values.
@@ -8450,11 +8391,11 @@ type StatefulPolicyPreservedStateInput interface {
 // Configuration of preserved resources.
 type StatefulPolicyPreservedStateArgs struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-	Disks StatefulPolicyPreservedStateDiskDevicePtrInput `pulumi:"disks"`
+	Disks StatefulPolicyPreservedStateDiskDeviceMapInput `pulumi:"disks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	ExternalIPs StatefulPolicyPreservedStateNetworkIpPtrInput `pulumi:"externalIPs"`
+	ExternalIPs StatefulPolicyPreservedStateNetworkIpMapInput `pulumi:"externalIPs"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	InternalIPs StatefulPolicyPreservedStateNetworkIpPtrInput `pulumi:"internalIPs"`
+	InternalIPs StatefulPolicyPreservedStateNetworkIpMapInput `pulumi:"internalIPs"`
 }
 
 func (StatefulPolicyPreservedStateArgs) ElementType() reflect.Type {
@@ -8536,18 +8477,22 @@ func (o StatefulPolicyPreservedStateOutput) ToStatefulPolicyPreservedStatePtrOut
 }
 
 // Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-func (o StatefulPolicyPreservedStateOutput) Disks() StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedState) *StatefulPolicyPreservedStateDiskDevice { return v.Disks }).(StatefulPolicyPreservedStateDiskDevicePtrOutput)
+func (o StatefulPolicyPreservedStateOutput) Disks() StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateDiskDevice { return v.Disks }).(StatefulPolicyPreservedStateDiskDeviceMapOutput)
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedState) *StatefulPolicyPreservedStateNetworkIp { return v.ExternalIPs }).(StatefulPolicyPreservedStateNetworkIpPtrOutput)
+func (o StatefulPolicyPreservedStateOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
+		return v.ExternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 // Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedState) *StatefulPolicyPreservedStateNetworkIp { return v.InternalIPs }).(StatefulPolicyPreservedStateNetworkIpPtrOutput)
+func (o StatefulPolicyPreservedStateOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
+		return v.InternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 type StatefulPolicyPreservedStatePtrOutput struct{ *pulumi.OutputState }
@@ -8575,33 +8520,33 @@ func (o StatefulPolicyPreservedStatePtrOutput) Elem() StatefulPolicyPreservedSta
 }
 
 // Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-func (o StatefulPolicyPreservedStatePtrOutput) Disks() StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedState) *StatefulPolicyPreservedStateDiskDevice {
+func (o StatefulPolicyPreservedStatePtrOutput) Disks() StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateDiskDevice {
 		if v == nil {
 			return nil
 		}
 		return v.Disks
-	}).(StatefulPolicyPreservedStateDiskDevicePtrOutput)
+	}).(StatefulPolicyPreservedStateDiskDeviceMapOutput)
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStatePtrOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedState) *StatefulPolicyPreservedStateNetworkIp {
+func (o StatefulPolicyPreservedStatePtrOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
 		if v == nil {
 			return nil
 		}
 		return v.ExternalIPs
-	}).(StatefulPolicyPreservedStateNetworkIpPtrOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 // Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStatePtrOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedState) *StatefulPolicyPreservedStateNetworkIp {
+func (o StatefulPolicyPreservedStatePtrOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
 		if v == nil {
 			return nil
 		}
 		return v.InternalIPs
-	}).(StatefulPolicyPreservedStateNetworkIpPtrOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 type StatefulPolicyPreservedStateDiskDevice struct {
@@ -8637,45 +8582,29 @@ func (i StatefulPolicyPreservedStateDiskDeviceArgs) ToStatefulPolicyPreservedSta
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateDiskDeviceOutput)
 }
 
-func (i StatefulPolicyPreservedStateDiskDeviceArgs) ToStatefulPolicyPreservedStateDiskDevicePtrOutput() StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return i.ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(context.Background())
-}
-
-func (i StatefulPolicyPreservedStateDiskDeviceArgs) ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateDiskDeviceOutput).ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(ctx)
-}
-
-// StatefulPolicyPreservedStateDiskDevicePtrInput is an input type that accepts StatefulPolicyPreservedStateDiskDeviceArgs, StatefulPolicyPreservedStateDiskDevicePtr and StatefulPolicyPreservedStateDiskDevicePtrOutput values.
-// You can construct a concrete instance of `StatefulPolicyPreservedStateDiskDevicePtrInput` via:
+// StatefulPolicyPreservedStateDiskDeviceMapInput is an input type that accepts StatefulPolicyPreservedStateDiskDeviceMap and StatefulPolicyPreservedStateDiskDeviceMapOutput values.
+// You can construct a concrete instance of `StatefulPolicyPreservedStateDiskDeviceMapInput` via:
 //
-//	        StatefulPolicyPreservedStateDiskDeviceArgs{...}
-//
-//	or:
-//
-//	        nil
-type StatefulPolicyPreservedStateDiskDevicePtrInput interface {
+//	StatefulPolicyPreservedStateDiskDeviceMap{ "key": StatefulPolicyPreservedStateDiskDeviceArgs{...} }
+type StatefulPolicyPreservedStateDiskDeviceMapInput interface {
 	pulumi.Input
 
-	ToStatefulPolicyPreservedStateDiskDevicePtrOutput() StatefulPolicyPreservedStateDiskDevicePtrOutput
-	ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(context.Context) StatefulPolicyPreservedStateDiskDevicePtrOutput
+	ToStatefulPolicyPreservedStateDiskDeviceMapOutput() StatefulPolicyPreservedStateDiskDeviceMapOutput
+	ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(context.Context) StatefulPolicyPreservedStateDiskDeviceMapOutput
 }
 
-type statefulPolicyPreservedStateDiskDevicePtrType StatefulPolicyPreservedStateDiskDeviceArgs
+type StatefulPolicyPreservedStateDiskDeviceMap map[string]StatefulPolicyPreservedStateDiskDeviceInput
 
-func StatefulPolicyPreservedStateDiskDevicePtr(v *StatefulPolicyPreservedStateDiskDeviceArgs) StatefulPolicyPreservedStateDiskDevicePtrInput {
-	return (*statefulPolicyPreservedStateDiskDevicePtrType)(v)
+func (StatefulPolicyPreservedStateDiskDeviceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
 }
 
-func (*statefulPolicyPreservedStateDiskDevicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
+func (i StatefulPolicyPreservedStateDiskDeviceMap) ToStatefulPolicyPreservedStateDiskDeviceMapOutput() StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return i.ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(context.Background())
 }
 
-func (i *statefulPolicyPreservedStateDiskDevicePtrType) ToStatefulPolicyPreservedStateDiskDevicePtrOutput() StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return i.ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(context.Background())
-}
-
-func (i *statefulPolicyPreservedStateDiskDevicePtrType) ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateDiskDevicePtrOutput)
+func (i StatefulPolicyPreservedStateDiskDeviceMap) ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateDiskDeviceMapOutput)
 }
 
 type StatefulPolicyPreservedStateDiskDeviceOutput struct{ *pulumi.OutputState }
@@ -8692,16 +8621,6 @@ func (o StatefulPolicyPreservedStateDiskDeviceOutput) ToStatefulPolicyPreservedS
 	return o
 }
 
-func (o StatefulPolicyPreservedStateDiskDeviceOutput) ToStatefulPolicyPreservedStateDiskDevicePtrOutput() StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return o.ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(context.Background())
-}
-
-func (o StatefulPolicyPreservedStateDiskDeviceOutput) ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDevicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulPolicyPreservedStateDiskDevice) *StatefulPolicyPreservedStateDiskDevice {
-		return &v
-	}).(StatefulPolicyPreservedStateDiskDevicePtrOutput)
-}
-
 // These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
 func (o StatefulPolicyPreservedStateDiskDeviceOutput) AutoDelete() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
 	return o.ApplyT(func(v StatefulPolicyPreservedStateDiskDevice) *StatefulPolicyPreservedStateDiskDeviceAutoDelete {
@@ -8709,38 +8628,24 @@ func (o StatefulPolicyPreservedStateDiskDeviceOutput) AutoDelete() StatefulPolic
 	}).(StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput)
 }
 
-type StatefulPolicyPreservedStateDiskDevicePtrOutput struct{ *pulumi.OutputState }
+type StatefulPolicyPreservedStateDiskDeviceMapOutput struct{ *pulumi.OutputState }
 
-func (StatefulPolicyPreservedStateDiskDevicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
+func (StatefulPolicyPreservedStateDiskDeviceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
 }
 
-func (o StatefulPolicyPreservedStateDiskDevicePtrOutput) ToStatefulPolicyPreservedStateDiskDevicePtrOutput() StatefulPolicyPreservedStateDiskDevicePtrOutput {
+func (o StatefulPolicyPreservedStateDiskDeviceMapOutput) ToStatefulPolicyPreservedStateDiskDeviceMapOutput() StatefulPolicyPreservedStateDiskDeviceMapOutput {
 	return o
 }
 
-func (o StatefulPolicyPreservedStateDiskDevicePtrOutput) ToStatefulPolicyPreservedStateDiskDevicePtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDevicePtrOutput {
+func (o StatefulPolicyPreservedStateDiskDeviceMapOutput) ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceMapOutput {
 	return o
 }
 
-func (o StatefulPolicyPreservedStateDiskDevicePtrOutput) Elem() StatefulPolicyPreservedStateDiskDeviceOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedStateDiskDevice) StatefulPolicyPreservedStateDiskDevice {
-		if v != nil {
-			return *v
-		}
-		var ret StatefulPolicyPreservedStateDiskDevice
-		return ret
+func (o StatefulPolicyPreservedStateDiskDeviceMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateDiskDeviceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateDiskDevice {
+		return vs[0].(map[string]StatefulPolicyPreservedStateDiskDevice)[vs[1].(string)]
 	}).(StatefulPolicyPreservedStateDiskDeviceOutput)
-}
-
-// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
-func (o StatefulPolicyPreservedStateDiskDevicePtrOutput) AutoDelete() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedStateDiskDevice) *StatefulPolicyPreservedStateDiskDeviceAutoDelete {
-		if v == nil {
-			return nil
-		}
-		return v.AutoDelete
-	}).(StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput)
 }
 
 type StatefulPolicyPreservedStateDiskDeviceResponse struct {
@@ -8765,6 +8670,26 @@ func (o StatefulPolicyPreservedStateDiskDeviceResponseOutput) ToStatefulPolicyPr
 // These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
 func (o StatefulPolicyPreservedStateDiskDeviceResponseOutput) AutoDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v StatefulPolicyPreservedStateDiskDeviceResponse) string { return v.AutoDelete }).(pulumi.StringOutput)
+}
+
+type StatefulPolicyPreservedStateDiskDeviceResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateDiskDeviceResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) ToStatefulPolicyPreservedStateDiskDeviceResponseMapOutput() StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) ToStatefulPolicyPreservedStateDiskDeviceResponseMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateDiskDeviceResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateDiskDeviceResponse {
+		return vs[0].(map[string]StatefulPolicyPreservedStateDiskDeviceResponse)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateDiskDeviceResponseOutput)
 }
 
 type StatefulPolicyPreservedStateNetworkIp struct {
@@ -8800,45 +8725,29 @@ func (i StatefulPolicyPreservedStateNetworkIpArgs) ToStatefulPolicyPreservedStat
 	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateNetworkIpOutput)
 }
 
-func (i StatefulPolicyPreservedStateNetworkIpArgs) ToStatefulPolicyPreservedStateNetworkIpPtrOutput() StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return i.ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(context.Background())
-}
-
-func (i StatefulPolicyPreservedStateNetworkIpArgs) ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateNetworkIpOutput).ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(ctx)
-}
-
-// StatefulPolicyPreservedStateNetworkIpPtrInput is an input type that accepts StatefulPolicyPreservedStateNetworkIpArgs, StatefulPolicyPreservedStateNetworkIpPtr and StatefulPolicyPreservedStateNetworkIpPtrOutput values.
-// You can construct a concrete instance of `StatefulPolicyPreservedStateNetworkIpPtrInput` via:
+// StatefulPolicyPreservedStateNetworkIpMapInput is an input type that accepts StatefulPolicyPreservedStateNetworkIpMap and StatefulPolicyPreservedStateNetworkIpMapOutput values.
+// You can construct a concrete instance of `StatefulPolicyPreservedStateNetworkIpMapInput` via:
 //
-//	        StatefulPolicyPreservedStateNetworkIpArgs{...}
-//
-//	or:
-//
-//	        nil
-type StatefulPolicyPreservedStateNetworkIpPtrInput interface {
+//	StatefulPolicyPreservedStateNetworkIpMap{ "key": StatefulPolicyPreservedStateNetworkIpArgs{...} }
+type StatefulPolicyPreservedStateNetworkIpMapInput interface {
 	pulumi.Input
 
-	ToStatefulPolicyPreservedStateNetworkIpPtrOutput() StatefulPolicyPreservedStateNetworkIpPtrOutput
-	ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(context.Context) StatefulPolicyPreservedStateNetworkIpPtrOutput
+	ToStatefulPolicyPreservedStateNetworkIpMapOutput() StatefulPolicyPreservedStateNetworkIpMapOutput
+	ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(context.Context) StatefulPolicyPreservedStateNetworkIpMapOutput
 }
 
-type statefulPolicyPreservedStateNetworkIpPtrType StatefulPolicyPreservedStateNetworkIpArgs
+type StatefulPolicyPreservedStateNetworkIpMap map[string]StatefulPolicyPreservedStateNetworkIpInput
 
-func StatefulPolicyPreservedStateNetworkIpPtr(v *StatefulPolicyPreservedStateNetworkIpArgs) StatefulPolicyPreservedStateNetworkIpPtrInput {
-	return (*statefulPolicyPreservedStateNetworkIpPtrType)(v)
+func (StatefulPolicyPreservedStateNetworkIpMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
 }
 
-func (*statefulPolicyPreservedStateNetworkIpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
+func (i StatefulPolicyPreservedStateNetworkIpMap) ToStatefulPolicyPreservedStateNetworkIpMapOutput() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return i.ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(context.Background())
 }
 
-func (i *statefulPolicyPreservedStateNetworkIpPtrType) ToStatefulPolicyPreservedStateNetworkIpPtrOutput() StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return i.ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(context.Background())
-}
-
-func (i *statefulPolicyPreservedStateNetworkIpPtrType) ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateNetworkIpPtrOutput)
+func (i StatefulPolicyPreservedStateNetworkIpMap) ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 type StatefulPolicyPreservedStateNetworkIpOutput struct{ *pulumi.OutputState }
@@ -8855,16 +8764,6 @@ func (o StatefulPolicyPreservedStateNetworkIpOutput) ToStatefulPolicyPreservedSt
 	return o
 }
 
-func (o StatefulPolicyPreservedStateNetworkIpOutput) ToStatefulPolicyPreservedStateNetworkIpPtrOutput() StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return o.ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(context.Background())
-}
-
-func (o StatefulPolicyPreservedStateNetworkIpOutput) ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulPolicyPreservedStateNetworkIp) *StatefulPolicyPreservedStateNetworkIp {
-		return &v
-	}).(StatefulPolicyPreservedStateNetworkIpPtrOutput)
-}
-
 // These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
 func (o StatefulPolicyPreservedStateNetworkIpOutput) AutoDelete() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
 	return o.ApplyT(func(v StatefulPolicyPreservedStateNetworkIp) *StatefulPolicyPreservedStateNetworkIpAutoDelete {
@@ -8872,38 +8771,24 @@ func (o StatefulPolicyPreservedStateNetworkIpOutput) AutoDelete() StatefulPolicy
 	}).(StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput)
 }
 
-type StatefulPolicyPreservedStateNetworkIpPtrOutput struct{ *pulumi.OutputState }
+type StatefulPolicyPreservedStateNetworkIpMapOutput struct{ *pulumi.OutputState }
 
-func (StatefulPolicyPreservedStateNetworkIpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
+func (StatefulPolicyPreservedStateNetworkIpMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
 }
 
-func (o StatefulPolicyPreservedStateNetworkIpPtrOutput) ToStatefulPolicyPreservedStateNetworkIpPtrOutput() StatefulPolicyPreservedStateNetworkIpPtrOutput {
+func (o StatefulPolicyPreservedStateNetworkIpMapOutput) ToStatefulPolicyPreservedStateNetworkIpMapOutput() StatefulPolicyPreservedStateNetworkIpMapOutput {
 	return o
 }
 
-func (o StatefulPolicyPreservedStateNetworkIpPtrOutput) ToStatefulPolicyPreservedStateNetworkIpPtrOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpPtrOutput {
+func (o StatefulPolicyPreservedStateNetworkIpMapOutput) ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpMapOutput {
 	return o
 }
 
-func (o StatefulPolicyPreservedStateNetworkIpPtrOutput) Elem() StatefulPolicyPreservedStateNetworkIpOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedStateNetworkIp) StatefulPolicyPreservedStateNetworkIp {
-		if v != nil {
-			return *v
-		}
-		var ret StatefulPolicyPreservedStateNetworkIp
-		return ret
+func (o StatefulPolicyPreservedStateNetworkIpMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateNetworkIpOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateNetworkIp {
+		return vs[0].(map[string]StatefulPolicyPreservedStateNetworkIp)[vs[1].(string)]
 	}).(StatefulPolicyPreservedStateNetworkIpOutput)
-}
-
-// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
-func (o StatefulPolicyPreservedStateNetworkIpPtrOutput) AutoDelete() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedStateNetworkIp) *StatefulPolicyPreservedStateNetworkIpAutoDelete {
-		if v == nil {
-			return nil
-		}
-		return v.AutoDelete
-	}).(StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput)
 }
 
 type StatefulPolicyPreservedStateNetworkIpResponse struct {
@@ -8930,14 +8815,34 @@ func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) AutoDelete() pulumi
 	return o.ApplyT(func(v StatefulPolicyPreservedStateNetworkIpResponse) string { return v.AutoDelete }).(pulumi.StringOutput)
 }
 
+type StatefulPolicyPreservedStateNetworkIpResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIpResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutput() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateNetworkIpResponse {
+		return vs[0].(map[string]StatefulPolicyPreservedStateNetworkIpResponse)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
+}
+
 // Configuration of preserved resources.
 type StatefulPolicyPreservedStateResponse struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-	Disks StatefulPolicyPreservedStateDiskDeviceResponse `pulumi:"disks"`
+	Disks map[string]StatefulPolicyPreservedStateDiskDeviceResponse `pulumi:"disks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	ExternalIPs StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"externalIPs"`
+	ExternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"externalIPs"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	InternalIPs StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"internalIPs"`
+	InternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"internalIPs"`
 }
 
 // Configuration of preserved resources.
@@ -8956,24 +8861,24 @@ func (o StatefulPolicyPreservedStateResponseOutput) ToStatefulPolicyPreservedSta
 }
 
 // Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-func (o StatefulPolicyPreservedStateResponseOutput) Disks() StatefulPolicyPreservedStateDiskDeviceResponseOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) StatefulPolicyPreservedStateDiskDeviceResponse {
+func (o StatefulPolicyPreservedStateResponseOutput) Disks() StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateDiskDeviceResponse {
 		return v.Disks
-	}).(StatefulPolicyPreservedStateDiskDeviceResponseOutput)
+	}).(StatefulPolicyPreservedStateDiskDeviceResponseMapOutput)
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpResponseOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) StatefulPolicyPreservedStateNetworkIpResponse {
+func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
 		return v.ExternalIPs
-	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
 }
 
 // Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpResponseOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) StatefulPolicyPreservedStateNetworkIpResponse {
+func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
 		return v.InternalIPs
-	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
 }
 
 type StatefulPolicyResponse struct {
@@ -9106,45 +9011,29 @@ func (i StructuredEntriesArgs) ToStructuredEntriesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StructuredEntriesOutput)
 }
 
-func (i StructuredEntriesArgs) ToStructuredEntriesPtrOutput() StructuredEntriesPtrOutput {
-	return i.ToStructuredEntriesPtrOutputWithContext(context.Background())
-}
-
-func (i StructuredEntriesArgs) ToStructuredEntriesPtrOutputWithContext(ctx context.Context) StructuredEntriesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StructuredEntriesOutput).ToStructuredEntriesPtrOutputWithContext(ctx)
-}
-
-// StructuredEntriesPtrInput is an input type that accepts StructuredEntriesArgs, StructuredEntriesPtr and StructuredEntriesPtrOutput values.
-// You can construct a concrete instance of `StructuredEntriesPtrInput` via:
+// StructuredEntriesMapInput is an input type that accepts StructuredEntriesMap and StructuredEntriesMapOutput values.
+// You can construct a concrete instance of `StructuredEntriesMapInput` via:
 //
-//	        StructuredEntriesArgs{...}
-//
-//	or:
-//
-//	        nil
-type StructuredEntriesPtrInput interface {
+//	StructuredEntriesMap{ "key": StructuredEntriesArgs{...} }
+type StructuredEntriesMapInput interface {
 	pulumi.Input
 
-	ToStructuredEntriesPtrOutput() StructuredEntriesPtrOutput
-	ToStructuredEntriesPtrOutputWithContext(context.Context) StructuredEntriesPtrOutput
+	ToStructuredEntriesMapOutput() StructuredEntriesMapOutput
+	ToStructuredEntriesMapOutputWithContext(context.Context) StructuredEntriesMapOutput
 }
 
-type structuredEntriesPtrType StructuredEntriesArgs
+type StructuredEntriesMap map[string]StructuredEntriesInput
 
-func StructuredEntriesPtr(v *StructuredEntriesArgs) StructuredEntriesPtrInput {
-	return (*structuredEntriesPtrType)(v)
+func (StructuredEntriesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StructuredEntries)(nil)).Elem()
 }
 
-func (*structuredEntriesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StructuredEntries)(nil)).Elem()
+func (i StructuredEntriesMap) ToStructuredEntriesMapOutput() StructuredEntriesMapOutput {
+	return i.ToStructuredEntriesMapOutputWithContext(context.Background())
 }
 
-func (i *structuredEntriesPtrType) ToStructuredEntriesPtrOutput() StructuredEntriesPtrOutput {
-	return i.ToStructuredEntriesPtrOutputWithContext(context.Background())
-}
-
-func (i *structuredEntriesPtrType) ToStructuredEntriesPtrOutputWithContext(ctx context.Context) StructuredEntriesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StructuredEntriesPtrOutput)
+func (i StructuredEntriesMap) ToStructuredEntriesMapOutputWithContext(ctx context.Context) StructuredEntriesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StructuredEntriesMapOutput)
 }
 
 type StructuredEntriesOutput struct{ *pulumi.OutputState }
@@ -9161,53 +9050,29 @@ func (o StructuredEntriesOutput) ToStructuredEntriesOutputWithContext(ctx contex
 	return o
 }
 
-func (o StructuredEntriesOutput) ToStructuredEntriesPtrOutput() StructuredEntriesPtrOutput {
-	return o.ToStructuredEntriesPtrOutputWithContext(context.Background())
-}
-
-func (o StructuredEntriesOutput) ToStructuredEntriesPtrOutputWithContext(ctx context.Context) StructuredEntriesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StructuredEntries) *StructuredEntries {
-		return &v
-	}).(StructuredEntriesPtrOutput)
-}
-
 // Map of a partner metadata that belong to the same subdomain. It accepts any value including google.protobuf.Struct.
 func (o StructuredEntriesOutput) Entries() pulumi.MapOutput {
 	return o.ApplyT(func(v StructuredEntries) map[string]interface{} { return v.Entries }).(pulumi.MapOutput)
 }
 
-type StructuredEntriesPtrOutput struct{ *pulumi.OutputState }
+type StructuredEntriesMapOutput struct{ *pulumi.OutputState }
 
-func (StructuredEntriesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StructuredEntries)(nil)).Elem()
+func (StructuredEntriesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StructuredEntries)(nil)).Elem()
 }
 
-func (o StructuredEntriesPtrOutput) ToStructuredEntriesPtrOutput() StructuredEntriesPtrOutput {
+func (o StructuredEntriesMapOutput) ToStructuredEntriesMapOutput() StructuredEntriesMapOutput {
 	return o
 }
 
-func (o StructuredEntriesPtrOutput) ToStructuredEntriesPtrOutputWithContext(ctx context.Context) StructuredEntriesPtrOutput {
+func (o StructuredEntriesMapOutput) ToStructuredEntriesMapOutputWithContext(ctx context.Context) StructuredEntriesMapOutput {
 	return o
 }
 
-func (o StructuredEntriesPtrOutput) Elem() StructuredEntriesOutput {
-	return o.ApplyT(func(v *StructuredEntries) StructuredEntries {
-		if v != nil {
-			return *v
-		}
-		var ret StructuredEntries
-		return ret
+func (o StructuredEntriesMapOutput) MapIndex(k pulumi.StringInput) StructuredEntriesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StructuredEntries {
+		return vs[0].(map[string]StructuredEntries)[vs[1].(string)]
 	}).(StructuredEntriesOutput)
-}
-
-// Map of a partner metadata that belong to the same subdomain. It accepts any value including google.protobuf.Struct.
-func (o StructuredEntriesPtrOutput) Entries() pulumi.MapOutput {
-	return o.ApplyT(func(v *StructuredEntries) map[string]interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Entries
-	}).(pulumi.MapOutput)
 }
 
 type StructuredEntriesResponse struct {
@@ -9232,6 +9097,26 @@ func (o StructuredEntriesResponseOutput) ToStructuredEntriesResponseOutputWithCo
 // Map of a partner metadata that belong to the same subdomain. It accepts any value including google.protobuf.Struct.
 func (o StructuredEntriesResponseOutput) Entries() pulumi.MapOutput {
 	return o.ApplyT(func(v StructuredEntriesResponse) map[string]interface{} { return v.Entries }).(pulumi.MapOutput)
+}
+
+type StructuredEntriesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StructuredEntriesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StructuredEntriesResponse)(nil)).Elem()
+}
+
+func (o StructuredEntriesResponseMapOutput) ToStructuredEntriesResponseMapOutput() StructuredEntriesResponseMapOutput {
+	return o
+}
+
+func (o StructuredEntriesResponseMapOutput) ToStructuredEntriesResponseMapOutputWithContext(ctx context.Context) StructuredEntriesResponseMapOutput {
+	return o
+}
+
+func (o StructuredEntriesResponseMapOutput) MapIndex(k pulumi.StringInput) StructuredEntriesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StructuredEntriesResponse {
+		return vs[0].(map[string]StructuredEntriesResponse)[vs[1].(string)]
+	}).(StructuredEntriesResponseOutput)
 }
 
 // The available logging options for this subnetwork.
@@ -12621,15 +12506,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentTunnelingConfigPtrInput)(nil)).Elem(), ServiceAttachmentTunnelingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationSpecInput)(nil)).Elem(), ServiceIntegrationSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationSpecPtrInput)(nil)).Elem(), ServiceIntegrationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationSpecMapInput)(nil)).Elem(), ServiceIntegrationSpecMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationSpecBackupDRSpecInput)(nil)).Elem(), ServiceIntegrationSpecBackupDRSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIntegrationSpecBackupDRSpecPtrInput)(nil)).Elem(), ServiceIntegrationSpecBackupDRSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsInput)(nil)).Elem(), ShareSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsPtrInput)(nil)).Elem(), ShareSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsFolderConfigInput)(nil)).Elem(), ShareSettingsFolderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsFolderConfigPtrInput)(nil)).Elem(), ShareSettingsFolderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsFolderConfigMapInput)(nil)).Elem(), ShareSettingsFolderConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsProjectConfigInput)(nil)).Elem(), ShareSettingsProjectConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsProjectConfigPtrInput)(nil)).Elem(), ShareSettingsProjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsProjectConfigMapInput)(nil)).Elem(), ShareSettingsProjectConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceIntegrityPolicyInput)(nil)).Elem(), ShieldedInstanceIntegrityPolicyArgs{})
@@ -12651,11 +12536,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStatePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceInput)(nil)).Elem(), StatefulPolicyPreservedStateDiskDeviceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateDiskDevicePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateDiskDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceMapInput)(nil)).Elem(), StatefulPolicyPreservedStateDiskDeviceMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpInput)(nil)).Elem(), StatefulPolicyPreservedStateNetworkIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpPtrInput)(nil)).Elem(), StatefulPolicyPreservedStateNetworkIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpMapInput)(nil)).Elem(), StatefulPolicyPreservedStateNetworkIpMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StructuredEntriesInput)(nil)).Elem(), StructuredEntriesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StructuredEntriesPtrInput)(nil)).Elem(), StructuredEntriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StructuredEntriesMapInput)(nil)).Elem(), StructuredEntriesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigPtrInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeInput)(nil)).Elem(), SubnetworkSecondaryRangeArgs{})
@@ -12779,19 +12664,22 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentTunnelingConfigResponseOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationSpecOutput{})
-	pulumi.RegisterOutputType(ServiceIntegrationSpecPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationSpecMapOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationSpecBackupDRSpecOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationSpecBackupDRSpecPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationSpecBackupDRSpecResponseOutput{})
 	pulumi.RegisterOutputType(ServiceIntegrationSpecResponseOutput{})
+	pulumi.RegisterOutputType(ServiceIntegrationSpecResponseMapOutput{})
 	pulumi.RegisterOutputType(ShareSettingsOutput{})
 	pulumi.RegisterOutputType(ShareSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ShareSettingsFolderConfigOutput{})
-	pulumi.RegisterOutputType(ShareSettingsFolderConfigPtrOutput{})
+	pulumi.RegisterOutputType(ShareSettingsFolderConfigMapOutput{})
 	pulumi.RegisterOutputType(ShareSettingsFolderConfigResponseOutput{})
+	pulumi.RegisterOutputType(ShareSettingsFolderConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(ShareSettingsProjectConfigOutput{})
-	pulumi.RegisterOutputType(ShareSettingsProjectConfigPtrOutput{})
+	pulumi.RegisterOutputType(ShareSettingsProjectConfigMapOutput{})
 	pulumi.RegisterOutputType(ShareSettingsProjectConfigResponseOutput{})
+	pulumi.RegisterOutputType(ShareSettingsProjectConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(ShareSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
@@ -12828,17 +12716,20 @@ func init() {
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStatePtrOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceOutput{})
-	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDevicePtrOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceMapOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceResponseOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceResponseMapOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpOutput{})
-	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpPtrOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpMapOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseMapOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateResponseOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyResponseOutput{})
 	pulumi.RegisterOutputType(StoragePoolResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(StructuredEntriesOutput{})
-	pulumi.RegisterOutputType(StructuredEntriesPtrOutput{})
+	pulumi.RegisterOutputType(StructuredEntriesMapOutput{})
 	pulumi.RegisterOutputType(StructuredEntriesResponseOutput{})
+	pulumi.RegisterOutputType(StructuredEntriesResponseMapOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigResponseOutput{})

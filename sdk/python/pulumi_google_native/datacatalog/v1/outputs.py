@@ -2729,16 +2729,16 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 common_usage_within_time_range: 'outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse',
+                 common_usage_within_time_range: Mapping[str, 'outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse'],
                  favorite_count: str,
                  update_time: str,
-                 usage_within_time_range: 'outputs.GoogleCloudDatacatalogV1UsageStatsResponse'):
+                 usage_within_time_range: Mapping[str, 'outputs.GoogleCloudDatacatalogV1UsageStatsResponse']):
         """
         The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
-        :param 'GoogleCloudDatacatalogV1CommonUsageStatsResponse' common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        :param Mapping[str, 'GoogleCloudDatacatalogV1CommonUsageStatsResponse'] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         :param str favorite_count: Favorite count in the source system.
         :param str update_time: The end timestamp of the duration of usage statistics.
-        :param 'GoogleCloudDatacatalogV1UsageStatsResponse' usage_within_time_range: BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
+        :param Mapping[str, 'GoogleCloudDatacatalogV1UsageStatsResponse'] usage_within_time_range: BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
         """
         pulumi.set(__self__, "common_usage_within_time_range", common_usage_within_time_range)
         pulumi.set(__self__, "favorite_count", favorite_count)
@@ -2747,7 +2747,7 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
 
     @property
     @pulumi.getter(name="commonUsageWithinTimeRange")
-    def common_usage_within_time_range(self) -> 'outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse':
+    def common_usage_within_time_range(self) -> Mapping[str, 'outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse']:
         """
         Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         """
@@ -2771,7 +2771,7 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
 
     @property
     @pulumi.getter(name="usageWithinTimeRange")
-    def usage_within_time_range(self) -> 'outputs.GoogleCloudDatacatalogV1UsageStatsResponse':
+    def usage_within_time_range(self) -> Mapping[str, 'outputs.GoogleCloudDatacatalogV1UsageStatsResponse']:
         """
         BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
         """

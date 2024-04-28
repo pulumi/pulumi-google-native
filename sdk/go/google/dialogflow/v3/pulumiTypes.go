@@ -12741,45 +12741,29 @@ func (i GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs) ToGoogleCloudDialog
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput)
 }
 
-func (i GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return i.ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput).ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs, GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtr and GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrInput` via:
+// GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapInput is an input type that accepts GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMap and GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapInput` via:
 //
-//	        GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrInput interface {
+//	GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMap{ "key": GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs{...} }
+type GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapInput interface {
 	pulumi.Input
 
-	ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput
-	ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput
+	ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput
+	ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput
 }
 
-type googleCloudDialogflowCxV3SynthesizeSpeechConfigPtrType GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs
+type GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMap map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfigInput
 
-func GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtr(v *GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrInput {
-	return (*googleCloudDialogflowCxV3SynthesizeSpeechConfigPtrType)(v)
+func (GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfig)(nil)).Elem()
 }
 
-func (*googleCloudDialogflowCxV3SynthesizeSpeechConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SynthesizeSpeechConfig)(nil)).Elem()
+func (i GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMap) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput {
+	return i.ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutputWithContext(context.Background())
 }
 
-func (i *googleCloudDialogflowCxV3SynthesizeSpeechConfigPtrType) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return i.ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowCxV3SynthesizeSpeechConfigPtrType) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput)
+func (i GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMap) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput)
 }
 
 // Configuration of how speech should be synthesized.
@@ -12795,16 +12779,6 @@ func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput) ToGoogleCloudDial
 
 func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput {
 	return o
-}
-
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return o.ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
-		return &v
-	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput)
 }
 
 // Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
@@ -12834,78 +12808,24 @@ func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput) VolumeGainDb() pu
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) *float64 { return v.VolumeGainDb }).(pulumi.Float64PtrOutput)
 }
 
-type GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput struct{ *pulumi.OutputState }
+type GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SynthesizeSpeechConfig)(nil)).Elem()
+func (GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfig)(nil)).Elem()
 }
 
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
+func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
+func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput {
 	return o
 }
 
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) Elem() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDialogflowCxV3SynthesizeSpeechConfig
-		return ret
+func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
+		return vs[0].(map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfig)[vs[1].(string)]
 	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput)
-}
-
-// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) EffectsProfileId() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.EffectsProfileId
-	}).(pulumi.StringArrayOutput)
-}
-
-// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) Pitch() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.Pitch
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) SpeakingRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SpeakingRate
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Optional. The desired voice of the synthesized audio.
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) Voice() GoogleCloudDialogflowCxV3VoiceSelectionParamsPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) *GoogleCloudDialogflowCxV3VoiceSelectionParams {
-		if v == nil {
-			return nil
-		}
-		return v.Voice
-	}).(GoogleCloudDialogflowCxV3VoiceSelectionParamsPtrOutput)
-}
-
-// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
-func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput) VolumeGainDb() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.VolumeGainDb
-	}).(pulumi.Float64PtrOutput)
 }
 
 // Configuration of how speech should be synthesized.
@@ -12962,6 +12882,26 @@ func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseOutput) Voice() G
 // Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
 func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseOutput) VolumeGainDb() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse) float64 { return v.VolumeGainDb }).(pulumi.Float64Output)
+}
+
+type GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput) ToGoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse {
+		return vs[0].(map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse)[vs[1].(string)]
+	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseOutput)
 }
 
 // Represents a result from running a test case in an agent environment.
@@ -13680,7 +13620,7 @@ func (o GoogleCloudDialogflowCxV3TextInputResponseOutput) Text() pulumi.StringOu
 // Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettings struct {
 	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-	SynthesizeSpeechConfigs *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfig `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // GoogleCloudDialogflowCxV3TextToSpeechSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs and GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput values.
@@ -13697,7 +13637,7 @@ type GoogleCloudDialogflowCxV3TextToSpeechSettingsInput interface {
 // Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs struct {
 	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-	SynthesizeSpeechConfigs GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrInput `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapInput `pulumi:"synthesizeSpeechConfigs"`
 }
 
 func (GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs) ElementType() reflect.Type {
@@ -13779,10 +13719,10 @@ func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ToGoogleCloudDialog
 }
 
 // Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettings) *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettings) map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
 		return v.SynthesizeSpeechConfigs
-	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput)
+	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput)
 }
 
 type GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -13810,19 +13750,19 @@ func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) Elem() GoogleClo
 }
 
 // Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TextToSpeechSettings) *GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TextToSpeechSettings) map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {
 		if v == nil {
 			return nil
 		}
 		return v.SynthesizeSpeechConfigs
-	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput)
+	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput)
 }
 
 // Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse struct {
 	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-	SynthesizeSpeechConfigs GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // Settings related to speech synthesizing.
@@ -13841,10 +13781,10 @@ func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) ToGoogleClo
 }
 
 // Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse) GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse {
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse) map[string]GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse {
 		return v.SynthesizeSpeechConfigs
-	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseOutput)
+	}).(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput)
 }
 
 // A transition route specifies a intent that can be matched and/or a data condition that can be evaluated during a session. When a specified transition is matched, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page` associated with the transition, the session will transition into the specified page. * If there is a `target_flow` associated with the transition, the session will transition into the specified flow.
@@ -15944,7 +15884,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SpeechToTextSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SynthesizeSpeechConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestCaseResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestCaseResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestConfigArgs{})
@@ -16174,8 +16114,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TestCaseResultOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TestCaseResultPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TestCaseResultResponseOutput{})

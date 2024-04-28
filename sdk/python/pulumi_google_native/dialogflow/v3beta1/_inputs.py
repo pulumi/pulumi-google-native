@@ -3529,24 +3529,24 @@ class GoogleCloudDialogflowCxV3beta1TextInputArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs:
     def __init__(__self__, *,
-                 synthesize_speech_configs: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs']] = None):
+                 synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs']]]] = None):
         """
         Settings related to speech synthesizing.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs'] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs']]] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         if synthesize_speech_configs is not None:
             pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
 
     @property
     @pulumi.getter(name="synthesizeSpeechConfigs")
-    def synthesize_speech_configs(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs']]:
+    def synthesize_speech_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs']]]]:
         """
         Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         return pulumi.get(self, "synthesize_speech_configs")
 
     @synthesize_speech_configs.setter
-    def synthesize_speech_configs(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs']]):
+    def synthesize_speech_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs']]]]):
         pulumi.set(self, "synthesize_speech_configs", value)
 
 

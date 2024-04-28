@@ -793,12 +793,12 @@ class ClusterUpgradeFleetStateResponse(dict):
     def __init__(__self__, *,
                  downstream_fleets: Sequence[str],
                  gke_state: 'outputs.ClusterUpgradeGKEUpgradeFeatureStateResponse',
-                 ignored: 'outputs.ClusterUpgradeIgnoredMembershipResponse'):
+                 ignored: Mapping[str, 'outputs.ClusterUpgradeIgnoredMembershipResponse']):
         """
         **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
         :param Sequence[str] downstream_fleets: This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project number or id.
         :param 'ClusterUpgradeGKEUpgradeFeatureStateResponse' gke_state: Feature state for GKE clusters.
-        :param 'ClusterUpgradeIgnoredMembershipResponse' ignored: A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
+        :param Mapping[str, 'ClusterUpgradeIgnoredMembershipResponse'] ignored: A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
         """
         pulumi.set(__self__, "downstream_fleets", downstream_fleets)
         pulumi.set(__self__, "gke_state", gke_state)
@@ -822,7 +822,7 @@ class ClusterUpgradeFleetStateResponse(dict):
 
     @property
     @pulumi.getter
-    def ignored(self) -> 'outputs.ClusterUpgradeIgnoredMembershipResponse':
+    def ignored(self) -> Mapping[str, 'outputs.ClusterUpgradeIgnoredMembershipResponse']:
         """
         A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
         """
@@ -1330,12 +1330,12 @@ class ClusterUpgradeScopeStateResponse(dict):
     def __init__(__self__, *,
                  downstream_scopes: Sequence[str],
                  gke_state: 'outputs.ClusterUpgradeGKEUpgradeFeatureStateResponse',
-                 ignored: 'outputs.ClusterUpgradeIgnoredMembershipResponse'):
+                 ignored: Mapping[str, 'outputs.ClusterUpgradeIgnoredMembershipResponse']):
         """
         **ClusterUpgrade**: The state for the scope-level ClusterUpgrade feature.
         :param Sequence[str] downstream_scopes: This scopes whose upstream_scopes contain the current scope. The scope name should be in the form: `projects/{p}/locations/gloobal/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
         :param 'ClusterUpgradeGKEUpgradeFeatureStateResponse' gke_state: Feature state for GKE clusters.
-        :param 'ClusterUpgradeIgnoredMembershipResponse' ignored: A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
+        :param Mapping[str, 'ClusterUpgradeIgnoredMembershipResponse'] ignored: A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
         """
         pulumi.set(__self__, "downstream_scopes", downstream_scopes)
         pulumi.set(__self__, "gke_state", gke_state)
@@ -1359,7 +1359,7 @@ class ClusterUpgradeScopeStateResponse(dict):
 
     @property
     @pulumi.getter
-    def ignored(self) -> 'outputs.ClusterUpgradeIgnoredMembershipResponse':
+    def ignored(self) -> Mapping[str, 'outputs.ClusterUpgradeIgnoredMembershipResponse']:
         """
         A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
         """
@@ -5916,7 +5916,7 @@ class PolicyControllerHubConfigResponse(dict):
     def __init__(__self__, *,
                  audit_interval_seconds: str,
                  constraint_violation_limit: str,
-                 deployment_configs: 'outputs.PolicyControllerPolicyControllerDeploymentConfigResponse',
+                 deployment_configs: Mapping[str, 'outputs.PolicyControllerPolicyControllerDeploymentConfigResponse'],
                  exemptable_namespaces: Sequence[str],
                  install_spec: str,
                  log_denies_enabled: bool,
@@ -5928,7 +5928,7 @@ class PolicyControllerHubConfigResponse(dict):
         Configuration for Policy Controller
         :param str audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
         :param str constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
-        :param 'PolicyControllerPolicyControllerDeploymentConfigResponse' deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
+        :param Mapping[str, 'PolicyControllerPolicyControllerDeploymentConfigResponse'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation').
         :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param str install_spec: The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
         :param bool log_denies_enabled: Logs all denies and dry run failures.
@@ -5966,7 +5966,7 @@ class PolicyControllerHubConfigResponse(dict):
 
     @property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> 'outputs.PolicyControllerPolicyControllerDeploymentConfigResponse':
+    def deployment_configs(self) -> Mapping[str, 'outputs.PolicyControllerPolicyControllerDeploymentConfigResponse']:
         """
         Map of deployment configs to deployments ("admission", "audit", "mutation').
         """
@@ -6104,12 +6104,12 @@ class PolicyControllerMembershipStateResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 component_states: 'outputs.PolicyControllerOnClusterStateResponse',
+                 component_states: Mapping[str, 'outputs.PolicyControllerOnClusterStateResponse'],
                  policy_content_state: 'outputs.PolicyControllerPolicyContentStateResponse',
                  state: str):
         """
         **Policy Controller**: State for a single cluster.
-        :param 'PolicyControllerOnClusterStateResponse' component_states: Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
+        :param Mapping[str, 'PolicyControllerOnClusterStateResponse'] component_states: Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
         :param 'PolicyControllerPolicyContentStateResponse' policy_content_state: The overall content state observed by the Hub Feature controller.
         :param str state: The overall Policy Controller lifecycle state observed by the Hub Feature controller.
         """
@@ -6119,7 +6119,7 @@ class PolicyControllerMembershipStateResponse(dict):
 
     @property
     @pulumi.getter(name="componentStates")
-    def component_states(self) -> 'outputs.PolicyControllerOnClusterStateResponse':
+    def component_states(self) -> Mapping[str, 'outputs.PolicyControllerOnClusterStateResponse']:
         """
         Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
         """
@@ -6220,11 +6220,11 @@ class PolicyControllerPolicyContentSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 bundles: 'outputs.PolicyControllerBundleInstallSpecResponse',
+                 bundles: Mapping[str, 'outputs.PolicyControllerBundleInstallSpecResponse'],
                  template_library: 'outputs.PolicyControllerTemplateLibraryConfigResponse'):
         """
         PolicyContentSpec defines the user's desired content configuration on the cluster.
-        :param 'PolicyControllerBundleInstallSpecResponse' bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
+        :param Mapping[str, 'PolicyControllerBundleInstallSpecResponse'] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         :param 'PolicyControllerTemplateLibraryConfigResponse' template_library: Configures the installation of the Template Library.
         """
         pulumi.set(__self__, "bundles", bundles)
@@ -6232,7 +6232,7 @@ class PolicyControllerPolicyContentSpecResponse(dict):
 
     @property
     @pulumi.getter
-    def bundles(self) -> 'outputs.PolicyControllerBundleInstallSpecResponse':
+    def bundles(self) -> Mapping[str, 'outputs.PolicyControllerBundleInstallSpecResponse']:
         """
         map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         """
@@ -6274,12 +6274,12 @@ class PolicyControllerPolicyContentStateResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 bundle_states: 'outputs.PolicyControllerOnClusterStateResponse',
+                 bundle_states: Mapping[str, 'outputs.PolicyControllerOnClusterStateResponse'],
                  referential_sync_config_state: 'outputs.PolicyControllerOnClusterStateResponse',
                  template_library_state: 'outputs.PolicyControllerOnClusterStateResponse'):
         """
         The state of the policy controller policy content
-        :param 'PolicyControllerOnClusterStateResponse' bundle_states: The state of the any bundles included in the chosen version of the manifest
+        :param Mapping[str, 'PolicyControllerOnClusterStateResponse'] bundle_states: The state of the any bundles included in the chosen version of the manifest
         :param 'PolicyControllerOnClusterStateResponse' referential_sync_config_state: The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user.
         :param 'PolicyControllerOnClusterStateResponse' template_library_state: The state of the template library
         """
@@ -6289,7 +6289,7 @@ class PolicyControllerPolicyContentStateResponse(dict):
 
     @property
     @pulumi.getter(name="bundleStates")
-    def bundle_states(self) -> 'outputs.PolicyControllerOnClusterStateResponse':
+    def bundle_states(self) -> Mapping[str, 'outputs.PolicyControllerOnClusterStateResponse']:
         """
         The state of the any bundles included in the chosen version of the manifest
         """

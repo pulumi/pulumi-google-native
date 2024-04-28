@@ -15,11 +15,17 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("attributionScoreDriftThresholds")]
+        private InputMap<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs>? _attributionScoreDriftThresholds;
+
         /// <summary>
         /// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         /// </summary>
-        [Input("attributionScoreDriftThresholds")]
-        public Input<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs>? AttributionScoreDriftThresholds { get; set; }
+        public InputMap<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs> AttributionScoreDriftThresholds
+        {
+            get => _attributionScoreDriftThresholds ?? (_attributionScoreDriftThresholds = new InputMap<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs>());
+            set => _attributionScoreDriftThresholds = value;
+        }
 
         /// <summary>
         /// Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
@@ -27,11 +33,17 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         [Input("defaultDriftThreshold")]
         public Input<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs>? DefaultDriftThreshold { get; set; }
 
+        [Input("driftThresholds")]
+        private InputMap<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs>? _driftThresholds;
+
         /// <summary>
         /// Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         /// </summary>
-        [Input("driftThresholds")]
-        public Input<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs>? DriftThresholds { get; set; }
+        public InputMap<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs> DriftThresholds
+        {
+            get => _driftThresholds ?? (_driftThresholds = new InputMap<Inputs.GoogleCloudAiplatformV1ThresholdConfigArgs>());
+            set => _driftThresholds = value;
+        }
 
         public GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs()
         {

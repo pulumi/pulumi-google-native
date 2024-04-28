@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// <summary>
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
-        public readonly Outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse InstanceSelectionLists;
+        public readonly ImmutableDictionary<string, Outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse> InstanceSelectionLists;
 
         [OutputConstructor]
-        private InstanceGroupManagerInstanceFlexibilityPolicyResponse(Outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse instanceSelectionLists)
+        private InstanceGroupManagerInstanceFlexibilityPolicyResponse(ImmutableDictionary<string, Outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse> instanceSelectionLists)
         {
             InstanceSelectionLists = instanceSelectionLists;
         }

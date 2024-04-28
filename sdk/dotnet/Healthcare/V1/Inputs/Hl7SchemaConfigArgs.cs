@@ -15,11 +15,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// </summary>
     public sealed class Hl7SchemaConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("messageSchemaConfigs")]
+        private InputMap<Inputs.SchemaGroupArgs>? _messageSchemaConfigs;
+
         /// <summary>
         /// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         /// </summary>
-        [Input("messageSchemaConfigs")]
-        public Input<Inputs.SchemaGroupArgs>? MessageSchemaConfigs { get; set; }
+        public InputMap<Inputs.SchemaGroupArgs> MessageSchemaConfigs
+        {
+            get => _messageSchemaConfigs ?? (_messageSchemaConfigs = new InputMap<Inputs.SchemaGroupArgs>());
+            set => _messageSchemaConfigs = value;
+        }
 
         [Input("version")]
         private InputList<Inputs.VersionSourceArgs>? _version;

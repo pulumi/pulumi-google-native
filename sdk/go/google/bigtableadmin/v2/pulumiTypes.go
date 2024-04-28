@@ -1174,6 +1174,31 @@ func (i ClusterTypeArgs) ToClusterTypeOutputWithContext(ctx context.Context) Clu
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterTypeOutput)
 }
 
+// ClusterTypeMapInput is an input type that accepts ClusterTypeMap and ClusterTypeMapOutput values.
+// You can construct a concrete instance of `ClusterTypeMapInput` via:
+//
+//	ClusterTypeMap{ "key": ClusterTypeArgs{...} }
+type ClusterTypeMapInput interface {
+	pulumi.Input
+
+	ToClusterTypeMapOutput() ClusterTypeMapOutput
+	ToClusterTypeMapOutputWithContext(context.Context) ClusterTypeMapOutput
+}
+
+type ClusterTypeMap map[string]ClusterTypeInput
+
+func (ClusterTypeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterType)(nil)).Elem()
+}
+
+func (i ClusterTypeMap) ToClusterTypeMapOutput() ClusterTypeMapOutput {
+	return i.ToClusterTypeMapOutputWithContext(context.Background())
+}
+
+func (i ClusterTypeMap) ToClusterTypeMapOutputWithContext(ctx context.Context) ClusterTypeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTypeMapOutput)
+}
+
 // A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance.
 type ClusterTypeOutput struct{ *pulumi.OutputState }
 
@@ -1217,6 +1242,26 @@ func (o ClusterTypeOutput) Name() pulumi.StringPtrOutput {
 // The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 func (o ClusterTypeOutput) ServeNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterType) *int { return v.ServeNodes }).(pulumi.IntPtrOutput)
+}
+
+type ClusterTypeMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterTypeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterType)(nil)).Elem()
+}
+
+func (o ClusterTypeMapOutput) ToClusterTypeMapOutput() ClusterTypeMapOutput {
+	return o
+}
+
+func (o ClusterTypeMapOutput) ToClusterTypeMapOutputWithContext(ctx context.Context) ClusterTypeMapOutput {
+	return o
+}
+
+func (o ClusterTypeMapOutput) MapIndex(k pulumi.StringInput) ClusterTypeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterType {
+		return vs[0].(map[string]ClusterType)[vs[1].(string)]
+	}).(ClusterTypeOutput)
 }
 
 // Autoscaling config for a cluster.
@@ -1610,6 +1655,26 @@ func (o ClusterStateResponseOutput) ReplicationState() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterStateResponse) string { return v.ReplicationState }).(pulumi.StringOutput)
 }
 
+type ClusterStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterStateResponse)(nil)).Elem()
+}
+
+func (o ClusterStateResponseMapOutput) ToClusterStateResponseMapOutput() ClusterStateResponseMapOutput {
+	return o
+}
+
+func (o ClusterStateResponseMapOutput) ToClusterStateResponseMapOutputWithContext(ctx context.Context) ClusterStateResponseMapOutput {
+	return o
+}
+
+func (o ClusterStateResponseMapOutput) MapIndex(k pulumi.StringInput) ClusterStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterStateResponse {
+		return vs[0].(map[string]ClusterStateResponse)[vs[1].(string)]
+	}).(ClusterStateResponseOutput)
+}
+
 // A set of columns within a table which share a common configuration.
 type ColumnFamily struct {
 	// Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
@@ -1645,45 +1710,29 @@ func (i ColumnFamilyArgs) ToColumnFamilyOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ColumnFamilyOutput)
 }
 
-func (i ColumnFamilyArgs) ToColumnFamilyPtrOutput() ColumnFamilyPtrOutput {
-	return i.ToColumnFamilyPtrOutputWithContext(context.Background())
-}
-
-func (i ColumnFamilyArgs) ToColumnFamilyPtrOutputWithContext(ctx context.Context) ColumnFamilyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ColumnFamilyOutput).ToColumnFamilyPtrOutputWithContext(ctx)
-}
-
-// ColumnFamilyPtrInput is an input type that accepts ColumnFamilyArgs, ColumnFamilyPtr and ColumnFamilyPtrOutput values.
-// You can construct a concrete instance of `ColumnFamilyPtrInput` via:
+// ColumnFamilyMapInput is an input type that accepts ColumnFamilyMap and ColumnFamilyMapOutput values.
+// You can construct a concrete instance of `ColumnFamilyMapInput` via:
 //
-//	        ColumnFamilyArgs{...}
-//
-//	or:
-//
-//	        nil
-type ColumnFamilyPtrInput interface {
+//	ColumnFamilyMap{ "key": ColumnFamilyArgs{...} }
+type ColumnFamilyMapInput interface {
 	pulumi.Input
 
-	ToColumnFamilyPtrOutput() ColumnFamilyPtrOutput
-	ToColumnFamilyPtrOutputWithContext(context.Context) ColumnFamilyPtrOutput
+	ToColumnFamilyMapOutput() ColumnFamilyMapOutput
+	ToColumnFamilyMapOutputWithContext(context.Context) ColumnFamilyMapOutput
 }
 
-type columnFamilyPtrType ColumnFamilyArgs
+type ColumnFamilyMap map[string]ColumnFamilyInput
 
-func ColumnFamilyPtr(v *ColumnFamilyArgs) ColumnFamilyPtrInput {
-	return (*columnFamilyPtrType)(v)
+func (ColumnFamilyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ColumnFamily)(nil)).Elem()
 }
 
-func (*columnFamilyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ColumnFamily)(nil)).Elem()
+func (i ColumnFamilyMap) ToColumnFamilyMapOutput() ColumnFamilyMapOutput {
+	return i.ToColumnFamilyMapOutputWithContext(context.Background())
 }
 
-func (i *columnFamilyPtrType) ToColumnFamilyPtrOutput() ColumnFamilyPtrOutput {
-	return i.ToColumnFamilyPtrOutputWithContext(context.Background())
-}
-
-func (i *columnFamilyPtrType) ToColumnFamilyPtrOutputWithContext(ctx context.Context) ColumnFamilyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ColumnFamilyPtrOutput)
+func (i ColumnFamilyMap) ToColumnFamilyMapOutputWithContext(ctx context.Context) ColumnFamilyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnFamilyMapOutput)
 }
 
 // A set of columns within a table which share a common configuration.
@@ -1701,53 +1750,29 @@ func (o ColumnFamilyOutput) ToColumnFamilyOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ColumnFamilyOutput) ToColumnFamilyPtrOutput() ColumnFamilyPtrOutput {
-	return o.ToColumnFamilyPtrOutputWithContext(context.Background())
-}
-
-func (o ColumnFamilyOutput) ToColumnFamilyPtrOutputWithContext(ctx context.Context) ColumnFamilyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ColumnFamily) *ColumnFamily {
-		return &v
-	}).(ColumnFamilyPtrOutput)
-}
-
 // Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
 func (o ColumnFamilyOutput) GcRule() GcRulePtrOutput {
 	return o.ApplyT(func(v ColumnFamily) *GcRule { return v.GcRule }).(GcRulePtrOutput)
 }
 
-type ColumnFamilyPtrOutput struct{ *pulumi.OutputState }
+type ColumnFamilyMapOutput struct{ *pulumi.OutputState }
 
-func (ColumnFamilyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ColumnFamily)(nil)).Elem()
+func (ColumnFamilyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ColumnFamily)(nil)).Elem()
 }
 
-func (o ColumnFamilyPtrOutput) ToColumnFamilyPtrOutput() ColumnFamilyPtrOutput {
+func (o ColumnFamilyMapOutput) ToColumnFamilyMapOutput() ColumnFamilyMapOutput {
 	return o
 }
 
-func (o ColumnFamilyPtrOutput) ToColumnFamilyPtrOutputWithContext(ctx context.Context) ColumnFamilyPtrOutput {
+func (o ColumnFamilyMapOutput) ToColumnFamilyMapOutputWithContext(ctx context.Context) ColumnFamilyMapOutput {
 	return o
 }
 
-func (o ColumnFamilyPtrOutput) Elem() ColumnFamilyOutput {
-	return o.ApplyT(func(v *ColumnFamily) ColumnFamily {
-		if v != nil {
-			return *v
-		}
-		var ret ColumnFamily
-		return ret
+func (o ColumnFamilyMapOutput) MapIndex(k pulumi.StringInput) ColumnFamilyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ColumnFamily {
+		return vs[0].(map[string]ColumnFamily)[vs[1].(string)]
 	}).(ColumnFamilyOutput)
-}
-
-// Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
-func (o ColumnFamilyPtrOutput) GcRule() GcRulePtrOutput {
-	return o.ApplyT(func(v *ColumnFamily) *GcRule {
-		if v == nil {
-			return nil
-		}
-		return v.GcRule
-	}).(GcRulePtrOutput)
 }
 
 // A set of columns within a table which share a common configuration.
@@ -1781,6 +1806,26 @@ func (o ColumnFamilyResponseOutput) GcRule() GcRuleResponseOutput {
 // Only available with STATS_VIEW, this includes summary statistics about column family contents. For statistics over an entire table, see TableStats above.
 func (o ColumnFamilyResponseOutput) Stats() ColumnFamilyStatsResponseOutput {
 	return o.ApplyT(func(v ColumnFamilyResponse) ColumnFamilyStatsResponse { return v.Stats }).(ColumnFamilyStatsResponseOutput)
+}
+
+type ColumnFamilyResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ColumnFamilyResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ColumnFamilyResponse)(nil)).Elem()
+}
+
+func (o ColumnFamilyResponseMapOutput) ToColumnFamilyResponseMapOutput() ColumnFamilyResponseMapOutput {
+	return o
+}
+
+func (o ColumnFamilyResponseMapOutput) ToColumnFamilyResponseMapOutputWithContext(ctx context.Context) ColumnFamilyResponseMapOutput {
+	return o
+}
+
+func (o ColumnFamilyResponseMapOutput) MapIndex(k pulumi.StringInput) ColumnFamilyResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ColumnFamilyResponse {
+		return vs[0].(map[string]ColumnFamilyResponse)[vs[1].(string)]
+	}).(ColumnFamilyResponseOutput)
 }
 
 // Approximate statistics related to a single column family within a table. This information may change rapidly, interpreting these values at a point in time may already preset out-of-date information. Everything below is approximate, unless otherwise specified.
@@ -3692,12 +3737,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamConfigInput)(nil)).Elem(), ChangeStreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamConfigPtrInput)(nil)).Elem(), ChangeStreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTypeInput)(nil)).Elem(), ClusterTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTypeMapInput)(nil)).Elem(), ClusterTypeMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigPtrInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigInput)(nil)).Elem(), ClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigPtrInput)(nil)).Elem(), ClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnFamilyInput)(nil)).Elem(), ColumnFamilyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ColumnFamilyPtrInput)(nil)).Elem(), ColumnFamilyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnFamilyMapInput)(nil)).Elem(), ColumnFamilyMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
@@ -3740,6 +3786,7 @@ func init() {
 	pulumi.RegisterOutputType(ChangeStreamConfigPtrOutput{})
 	pulumi.RegisterOutputType(ChangeStreamConfigResponseOutput{})
 	pulumi.RegisterOutputType(ClusterTypeOutput{})
+	pulumi.RegisterOutputType(ClusterTypeMapOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigResponseOutput{})
@@ -3747,9 +3794,11 @@ func init() {
 	pulumi.RegisterOutputType(ClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterConfigResponseOutput{})
 	pulumi.RegisterOutputType(ClusterStateResponseOutput{})
+	pulumi.RegisterOutputType(ClusterStateResponseMapOutput{})
 	pulumi.RegisterOutputType(ColumnFamilyOutput{})
-	pulumi.RegisterOutputType(ColumnFamilyPtrOutput{})
+	pulumi.RegisterOutputType(ColumnFamilyMapOutput{})
 	pulumi.RegisterOutputType(ColumnFamilyResponseOutput{})
+	pulumi.RegisterOutputType(ColumnFamilyResponseMapOutput{})
 	pulumi.RegisterOutputType(ColumnFamilyStatsResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})

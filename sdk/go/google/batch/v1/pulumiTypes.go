@@ -3181,7 +3181,7 @@ type JobStatusResponse struct {
 	// Job status events
 	StatusEvents []StatusEventResponse `pulumi:"statusEvents"`
 	// Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
-	TaskGroups TaskGroupStatusResponse `pulumi:"taskGroups"`
+	TaskGroups map[string]TaskGroupStatusResponse `pulumi:"taskGroups"`
 }
 
 // Job status.
@@ -3215,8 +3215,8 @@ func (o JobStatusResponseOutput) StatusEvents() StatusEventResponseArrayOutput {
 }
 
 // Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
-func (o JobStatusResponseOutput) TaskGroups() TaskGroupStatusResponseOutput {
-	return o.ApplyT(func(v JobStatusResponse) TaskGroupStatusResponse { return v.TaskGroups }).(TaskGroupStatusResponseOutput)
+func (o JobStatusResponseOutput) TaskGroups() TaskGroupStatusResponseMapOutput {
+	return o.ApplyT(func(v JobStatusResponse) map[string]TaskGroupStatusResponse { return v.TaskGroups }).(TaskGroupStatusResponseMapOutput)
 }
 
 type KMSEnvMap struct {
@@ -5965,6 +5965,26 @@ func (o TaskGroupStatusResponseOutput) Instances() InstanceStatusResponseArrayOu
 	return o.ApplyT(func(v TaskGroupStatusResponse) []InstanceStatusResponse { return v.Instances }).(InstanceStatusResponseArrayOutput)
 }
 
+type TaskGroupStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TaskGroupStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TaskGroupStatusResponse)(nil)).Elem()
+}
+
+func (o TaskGroupStatusResponseMapOutput) ToTaskGroupStatusResponseMapOutput() TaskGroupStatusResponseMapOutput {
+	return o
+}
+
+func (o TaskGroupStatusResponseMapOutput) ToTaskGroupStatusResponseMapOutputWithContext(ctx context.Context) TaskGroupStatusResponseMapOutput {
+	return o
+}
+
+func (o TaskGroupStatusResponseMapOutput) MapIndex(k pulumi.StringInput) TaskGroupStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TaskGroupStatusResponse {
+		return vs[0].(map[string]TaskGroupStatusResponse)[vs[1].(string)]
+	}).(TaskGroupStatusResponseOutput)
+}
+
 // Spec of a task
 type TaskSpec struct {
 	// ComputeResource requirements.
@@ -6535,6 +6555,7 @@ func init() {
 	pulumi.RegisterOutputType(TaskGroupResponseOutput{})
 	pulumi.RegisterOutputType(TaskGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(TaskGroupStatusResponseOutput{})
+	pulumi.RegisterOutputType(TaskGroupStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(TaskSpecOutput{})
 	pulumi.RegisterOutputType(TaskSpecResponseOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})

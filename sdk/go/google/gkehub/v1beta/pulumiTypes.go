@@ -1860,7 +1860,7 @@ type ClusterUpgradeFleetStateResponse struct {
 	// Feature state for GKE clusters.
 	GkeState ClusterUpgradeGKEUpgradeFeatureStateResponse `pulumi:"gkeState"`
 	// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
-	Ignored ClusterUpgradeIgnoredMembershipResponse `pulumi:"ignored"`
+	Ignored map[string]ClusterUpgradeIgnoredMembershipResponse `pulumi:"ignored"`
 }
 
 // **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
@@ -1891,8 +1891,10 @@ func (o ClusterUpgradeFleetStateResponseOutput) GkeState() ClusterUpgradeGKEUpgr
 }
 
 // A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
-func (o ClusterUpgradeFleetStateResponseOutput) Ignored() ClusterUpgradeIgnoredMembershipResponseOutput {
-	return o.ApplyT(func(v ClusterUpgradeFleetStateResponse) ClusterUpgradeIgnoredMembershipResponse { return v.Ignored }).(ClusterUpgradeIgnoredMembershipResponseOutput)
+func (o ClusterUpgradeFleetStateResponseOutput) Ignored() ClusterUpgradeIgnoredMembershipResponseMapOutput {
+	return o.ApplyT(func(v ClusterUpgradeFleetStateResponse) map[string]ClusterUpgradeIgnoredMembershipResponse {
+		return v.Ignored
+	}).(ClusterUpgradeIgnoredMembershipResponseMapOutput)
 }
 
 // GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
@@ -2351,6 +2353,26 @@ func (o ClusterUpgradeIgnoredMembershipResponseOutput) IgnoredTime() pulumi.Stri
 // Reason why the membership is ignored.
 func (o ClusterUpgradeIgnoredMembershipResponseOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterUpgradeIgnoredMembershipResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+type ClusterUpgradeIgnoredMembershipResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpgradeIgnoredMembershipResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterUpgradeIgnoredMembershipResponse)(nil)).Elem()
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseMapOutput) ToClusterUpgradeIgnoredMembershipResponseMapOutput() ClusterUpgradeIgnoredMembershipResponseMapOutput {
+	return o
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseMapOutput) ToClusterUpgradeIgnoredMembershipResponseMapOutputWithContext(ctx context.Context) ClusterUpgradeIgnoredMembershipResponseMapOutput {
+	return o
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseMapOutput) MapIndex(k pulumi.StringInput) ClusterUpgradeIgnoredMembershipResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterUpgradeIgnoredMembershipResponse {
+		return vs[0].(map[string]ClusterUpgradeIgnoredMembershipResponse)[vs[1].(string)]
+	}).(ClusterUpgradeIgnoredMembershipResponseOutput)
 }
 
 // ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.
@@ -10115,45 +10137,29 @@ func (i MembershipFeatureSpecArgs) ToMembershipFeatureSpecOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipFeatureSpecOutput)
 }
 
-func (i MembershipFeatureSpecArgs) ToMembershipFeatureSpecPtrOutput() MembershipFeatureSpecPtrOutput {
-	return i.ToMembershipFeatureSpecPtrOutputWithContext(context.Background())
-}
-
-func (i MembershipFeatureSpecArgs) ToMembershipFeatureSpecPtrOutputWithContext(ctx context.Context) MembershipFeatureSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MembershipFeatureSpecOutput).ToMembershipFeatureSpecPtrOutputWithContext(ctx)
-}
-
-// MembershipFeatureSpecPtrInput is an input type that accepts MembershipFeatureSpecArgs, MembershipFeatureSpecPtr and MembershipFeatureSpecPtrOutput values.
-// You can construct a concrete instance of `MembershipFeatureSpecPtrInput` via:
+// MembershipFeatureSpecMapInput is an input type that accepts MembershipFeatureSpecMap and MembershipFeatureSpecMapOutput values.
+// You can construct a concrete instance of `MembershipFeatureSpecMapInput` via:
 //
-//	        MembershipFeatureSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type MembershipFeatureSpecPtrInput interface {
+//	MembershipFeatureSpecMap{ "key": MembershipFeatureSpecArgs{...} }
+type MembershipFeatureSpecMapInput interface {
 	pulumi.Input
 
-	ToMembershipFeatureSpecPtrOutput() MembershipFeatureSpecPtrOutput
-	ToMembershipFeatureSpecPtrOutputWithContext(context.Context) MembershipFeatureSpecPtrOutput
+	ToMembershipFeatureSpecMapOutput() MembershipFeatureSpecMapOutput
+	ToMembershipFeatureSpecMapOutputWithContext(context.Context) MembershipFeatureSpecMapOutput
 }
 
-type membershipFeatureSpecPtrType MembershipFeatureSpecArgs
+type MembershipFeatureSpecMap map[string]MembershipFeatureSpecInput
 
-func MembershipFeatureSpecPtr(v *MembershipFeatureSpecArgs) MembershipFeatureSpecPtrInput {
-	return (*membershipFeatureSpecPtrType)(v)
+func (MembershipFeatureSpecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureSpec)(nil)).Elem()
 }
 
-func (*membershipFeatureSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MembershipFeatureSpec)(nil)).Elem()
+func (i MembershipFeatureSpecMap) ToMembershipFeatureSpecMapOutput() MembershipFeatureSpecMapOutput {
+	return i.ToMembershipFeatureSpecMapOutputWithContext(context.Background())
 }
 
-func (i *membershipFeatureSpecPtrType) ToMembershipFeatureSpecPtrOutput() MembershipFeatureSpecPtrOutput {
-	return i.ToMembershipFeatureSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *membershipFeatureSpecPtrType) ToMembershipFeatureSpecPtrOutputWithContext(ctx context.Context) MembershipFeatureSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MembershipFeatureSpecPtrOutput)
+func (i MembershipFeatureSpecMap) ToMembershipFeatureSpecMapOutputWithContext(ctx context.Context) MembershipFeatureSpecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipFeatureSpecMapOutput)
 }
 
 // MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
@@ -10169,16 +10175,6 @@ func (o MembershipFeatureSpecOutput) ToMembershipFeatureSpecOutput() MembershipF
 
 func (o MembershipFeatureSpecOutput) ToMembershipFeatureSpecOutputWithContext(ctx context.Context) MembershipFeatureSpecOutput {
 	return o
-}
-
-func (o MembershipFeatureSpecOutput) ToMembershipFeatureSpecPtrOutput() MembershipFeatureSpecPtrOutput {
-	return o.ToMembershipFeatureSpecPtrOutputWithContext(context.Background())
-}
-
-func (o MembershipFeatureSpecOutput) ToMembershipFeatureSpecPtrOutputWithContext(ctx context.Context) MembershipFeatureSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipFeatureSpec) *MembershipFeatureSpec {
-		return &v
-	}).(MembershipFeatureSpecPtrOutput)
 }
 
 // Anthos Observability-specific spec
@@ -10221,108 +10217,24 @@ func (o MembershipFeatureSpecOutput) Policycontroller() PolicyControllerMembersh
 	return o.ApplyT(func(v MembershipFeatureSpec) *PolicyControllerMembershipSpec { return v.Policycontroller }).(PolicyControllerMembershipSpecPtrOutput)
 }
 
-type MembershipFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+type MembershipFeatureSpecMapOutput struct{ *pulumi.OutputState }
 
-func (MembershipFeatureSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MembershipFeatureSpec)(nil)).Elem()
+func (MembershipFeatureSpecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureSpec)(nil)).Elem()
 }
 
-func (o MembershipFeatureSpecPtrOutput) ToMembershipFeatureSpecPtrOutput() MembershipFeatureSpecPtrOutput {
+func (o MembershipFeatureSpecMapOutput) ToMembershipFeatureSpecMapOutput() MembershipFeatureSpecMapOutput {
 	return o
 }
 
-func (o MembershipFeatureSpecPtrOutput) ToMembershipFeatureSpecPtrOutputWithContext(ctx context.Context) MembershipFeatureSpecPtrOutput {
+func (o MembershipFeatureSpecMapOutput) ToMembershipFeatureSpecMapOutputWithContext(ctx context.Context) MembershipFeatureSpecMapOutput {
 	return o
 }
 
-func (o MembershipFeatureSpecPtrOutput) Elem() MembershipFeatureSpecOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) MembershipFeatureSpec {
-		if v != nil {
-			return *v
-		}
-		var ret MembershipFeatureSpec
-		return ret
+func (o MembershipFeatureSpecMapOutput) MapIndex(k pulumi.StringInput) MembershipFeatureSpecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MembershipFeatureSpec {
+		return vs[0].(map[string]MembershipFeatureSpec)[vs[1].(string)]
 	}).(MembershipFeatureSpecOutput)
-}
-
-// Anthos Observability-specific spec
-func (o MembershipFeatureSpecPtrOutput) Anthosobservability() AnthosObservabilityMembershipSpecPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *AnthosObservabilityMembershipSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Anthosobservability
-	}).(AnthosObservabilityMembershipSpecPtrOutput)
-}
-
-// Cloud Build-specific spec
-func (o MembershipFeatureSpecPtrOutput) Cloudbuild() MembershipSpecPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *MembershipSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Cloudbuild
-	}).(MembershipSpecPtrOutput)
-}
-
-// Config Management-specific spec.
-func (o MembershipFeatureSpecPtrOutput) Configmanagement() ConfigManagementMembershipSpecPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *ConfigManagementMembershipSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Configmanagement
-	}).(ConfigManagementMembershipSpecPtrOutput)
-}
-
-// Fleet observability membership spec
-func (o MembershipFeatureSpecPtrOutput) Fleetobservability() FleetObservabilityMembershipSpecPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *FleetObservabilityMembershipSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Fleetobservability
-	}).(FleetObservabilityMembershipSpecPtrOutput)
-}
-
-// Identity Service-specific spec.
-func (o MembershipFeatureSpecPtrOutput) Identityservice() IdentityServiceMembershipSpecPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *IdentityServiceMembershipSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Identityservice
-	}).(IdentityServiceMembershipSpecPtrOutput)
-}
-
-// Anthos Service Mesh-specific spec
-func (o MembershipFeatureSpecPtrOutput) Mesh() ServiceMeshMembershipSpecPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *ServiceMeshMembershipSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Mesh
-	}).(ServiceMeshMembershipSpecPtrOutput)
-}
-
-// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
-func (o MembershipFeatureSpecPtrOutput) Origin() OriginPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *Origin {
-		if v == nil {
-			return nil
-		}
-		return v.Origin
-	}).(OriginPtrOutput)
-}
-
-// Policy Controller spec.
-func (o MembershipFeatureSpecPtrOutput) Policycontroller() PolicyControllerMembershipSpecPtrOutput {
-	return o.ApplyT(func(v *MembershipFeatureSpec) *PolicyControllerMembershipSpec {
-		if v == nil {
-			return nil
-		}
-		return v.Policycontroller
-	}).(PolicyControllerMembershipSpecPtrOutput)
 }
 
 // MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
@@ -10406,6 +10318,26 @@ func (o MembershipFeatureSpecResponseOutput) Policycontroller() PolicyController
 	return o.ApplyT(func(v MembershipFeatureSpecResponse) PolicyControllerMembershipSpecResponse {
 		return v.Policycontroller
 	}).(PolicyControllerMembershipSpecResponseOutput)
+}
+
+type MembershipFeatureSpecResponseMapOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureSpecResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o MembershipFeatureSpecResponseMapOutput) ToMembershipFeatureSpecResponseMapOutput() MembershipFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecResponseMapOutput) ToMembershipFeatureSpecResponseMapOutputWithContext(ctx context.Context) MembershipFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecResponseMapOutput) MapIndex(k pulumi.StringInput) MembershipFeatureSpecResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MembershipFeatureSpecResponse {
+		return vs[0].(map[string]MembershipFeatureSpecResponse)[vs[1].(string)]
+	}).(MembershipFeatureSpecResponseOutput)
 }
 
 // MembershipFeatureState contains Feature status information for a single Membership.
@@ -10496,6 +10428,26 @@ func (o MembershipFeatureStateResponseOutput) Servicemesh() ServiceMeshMembershi
 // The high-level state of this Feature for a single membership.
 func (o MembershipFeatureStateResponseOutput) State() FeatureStateResponseOutput {
 	return o.ApplyT(func(v MembershipFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
+}
+
+type MembershipFeatureStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureStateResponse)(nil)).Elem()
+}
+
+func (o MembershipFeatureStateResponseMapOutput) ToMembershipFeatureStateResponseMapOutput() MembershipFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureStateResponseMapOutput) ToMembershipFeatureStateResponseMapOutputWithContext(ctx context.Context) MembershipFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureStateResponseMapOutput) MapIndex(k pulumi.StringInput) MembershipFeatureStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MembershipFeatureStateResponse {
+		return vs[0].(map[string]MembershipFeatureStateResponse)[vs[1].(string)]
+	}).(MembershipFeatureStateResponseOutput)
 }
 
 // **Cloud Build**: Configurations for each Cloud Build enabled cluster.
@@ -11994,45 +11946,29 @@ func (i PolicyControllerBundleInstallSpecArgs) ToPolicyControllerBundleInstallSp
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerBundleInstallSpecOutput)
 }
 
-func (i PolicyControllerBundleInstallSpecArgs) ToPolicyControllerBundleInstallSpecPtrOutput() PolicyControllerBundleInstallSpecPtrOutput {
-	return i.ToPolicyControllerBundleInstallSpecPtrOutputWithContext(context.Background())
-}
-
-func (i PolicyControllerBundleInstallSpecArgs) ToPolicyControllerBundleInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerBundleInstallSpecOutput).ToPolicyControllerBundleInstallSpecPtrOutputWithContext(ctx)
-}
-
-// PolicyControllerBundleInstallSpecPtrInput is an input type that accepts PolicyControllerBundleInstallSpecArgs, PolicyControllerBundleInstallSpecPtr and PolicyControllerBundleInstallSpecPtrOutput values.
-// You can construct a concrete instance of `PolicyControllerBundleInstallSpecPtrInput` via:
+// PolicyControllerBundleInstallSpecMapInput is an input type that accepts PolicyControllerBundleInstallSpecMap and PolicyControllerBundleInstallSpecMapOutput values.
+// You can construct a concrete instance of `PolicyControllerBundleInstallSpecMapInput` via:
 //
-//	        PolicyControllerBundleInstallSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type PolicyControllerBundleInstallSpecPtrInput interface {
+//	PolicyControllerBundleInstallSpecMap{ "key": PolicyControllerBundleInstallSpecArgs{...} }
+type PolicyControllerBundleInstallSpecMapInput interface {
 	pulumi.Input
 
-	ToPolicyControllerBundleInstallSpecPtrOutput() PolicyControllerBundleInstallSpecPtrOutput
-	ToPolicyControllerBundleInstallSpecPtrOutputWithContext(context.Context) PolicyControllerBundleInstallSpecPtrOutput
+	ToPolicyControllerBundleInstallSpecMapOutput() PolicyControllerBundleInstallSpecMapOutput
+	ToPolicyControllerBundleInstallSpecMapOutputWithContext(context.Context) PolicyControllerBundleInstallSpecMapOutput
 }
 
-type policyControllerBundleInstallSpecPtrType PolicyControllerBundleInstallSpecArgs
+type PolicyControllerBundleInstallSpecMap map[string]PolicyControllerBundleInstallSpecInput
 
-func PolicyControllerBundleInstallSpecPtr(v *PolicyControllerBundleInstallSpecArgs) PolicyControllerBundleInstallSpecPtrInput {
-	return (*policyControllerBundleInstallSpecPtrType)(v)
+func (PolicyControllerBundleInstallSpecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerBundleInstallSpec)(nil)).Elem()
 }
 
-func (*policyControllerBundleInstallSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyControllerBundleInstallSpec)(nil)).Elem()
+func (i PolicyControllerBundleInstallSpecMap) ToPolicyControllerBundleInstallSpecMapOutput() PolicyControllerBundleInstallSpecMapOutput {
+	return i.ToPolicyControllerBundleInstallSpecMapOutputWithContext(context.Background())
 }
 
-func (i *policyControllerBundleInstallSpecPtrType) ToPolicyControllerBundleInstallSpecPtrOutput() PolicyControllerBundleInstallSpecPtrOutput {
-	return i.ToPolicyControllerBundleInstallSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *policyControllerBundleInstallSpecPtrType) ToPolicyControllerBundleInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerBundleInstallSpecPtrOutput)
+func (i PolicyControllerBundleInstallSpecMap) ToPolicyControllerBundleInstallSpecMapOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerBundleInstallSpecMapOutput)
 }
 
 // BundleInstallSpec is the specification configuration for a single managed bundle.
@@ -12050,53 +11986,29 @@ func (o PolicyControllerBundleInstallSpecOutput) ToPolicyControllerBundleInstall
 	return o
 }
 
-func (o PolicyControllerBundleInstallSpecOutput) ToPolicyControllerBundleInstallSpecPtrOutput() PolicyControllerBundleInstallSpecPtrOutput {
-	return o.ToPolicyControllerBundleInstallSpecPtrOutputWithContext(context.Background())
-}
-
-func (o PolicyControllerBundleInstallSpecOutput) ToPolicyControllerBundleInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyControllerBundleInstallSpec) *PolicyControllerBundleInstallSpec {
-		return &v
-	}).(PolicyControllerBundleInstallSpecPtrOutput)
-}
-
 // The set of namespaces to be exempted from the bundle.
 func (o PolicyControllerBundleInstallSpecOutput) ExemptedNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyControllerBundleInstallSpec) []string { return v.ExemptedNamespaces }).(pulumi.StringArrayOutput)
 }
 
-type PolicyControllerBundleInstallSpecPtrOutput struct{ *pulumi.OutputState }
+type PolicyControllerBundleInstallSpecMapOutput struct{ *pulumi.OutputState }
 
-func (PolicyControllerBundleInstallSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyControllerBundleInstallSpec)(nil)).Elem()
+func (PolicyControllerBundleInstallSpecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerBundleInstallSpec)(nil)).Elem()
 }
 
-func (o PolicyControllerBundleInstallSpecPtrOutput) ToPolicyControllerBundleInstallSpecPtrOutput() PolicyControllerBundleInstallSpecPtrOutput {
+func (o PolicyControllerBundleInstallSpecMapOutput) ToPolicyControllerBundleInstallSpecMapOutput() PolicyControllerBundleInstallSpecMapOutput {
 	return o
 }
 
-func (o PolicyControllerBundleInstallSpecPtrOutput) ToPolicyControllerBundleInstallSpecPtrOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecPtrOutput {
+func (o PolicyControllerBundleInstallSpecMapOutput) ToPolicyControllerBundleInstallSpecMapOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecMapOutput {
 	return o
 }
 
-func (o PolicyControllerBundleInstallSpecPtrOutput) Elem() PolicyControllerBundleInstallSpecOutput {
-	return o.ApplyT(func(v *PolicyControllerBundleInstallSpec) PolicyControllerBundleInstallSpec {
-		if v != nil {
-			return *v
-		}
-		var ret PolicyControllerBundleInstallSpec
-		return ret
+func (o PolicyControllerBundleInstallSpecMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerBundleInstallSpecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerBundleInstallSpec {
+		return vs[0].(map[string]PolicyControllerBundleInstallSpec)[vs[1].(string)]
 	}).(PolicyControllerBundleInstallSpecOutput)
-}
-
-// The set of namespaces to be exempted from the bundle.
-func (o PolicyControllerBundleInstallSpecPtrOutput) ExemptedNamespaces() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PolicyControllerBundleInstallSpec) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExemptedNamespaces
-	}).(pulumi.StringArrayOutput)
 }
 
 // BundleInstallSpec is the specification configuration for a single managed bundle.
@@ -12125,6 +12037,26 @@ func (o PolicyControllerBundleInstallSpecResponseOutput) ExemptedNamespaces() pu
 	return o.ApplyT(func(v PolicyControllerBundleInstallSpecResponse) []string { return v.ExemptedNamespaces }).(pulumi.StringArrayOutput)
 }
 
+type PolicyControllerBundleInstallSpecResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerBundleInstallSpecResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerBundleInstallSpecResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerBundleInstallSpecResponseMapOutput) ToPolicyControllerBundleInstallSpecResponseMapOutput() PolicyControllerBundleInstallSpecResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecResponseMapOutput) ToPolicyControllerBundleInstallSpecResponseMapOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecResponseMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerBundleInstallSpecResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerBundleInstallSpecResponse {
+		return vs[0].(map[string]PolicyControllerBundleInstallSpecResponse)[vs[1].(string)]
+	}).(PolicyControllerBundleInstallSpecResponseOutput)
+}
+
 // Configuration for Policy Controller
 type PolicyControllerHubConfig struct {
 	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
@@ -12132,7 +12064,7 @@ type PolicyControllerHubConfig struct {
 	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
 	ConstraintViolationLimit *string `pulumi:"constraintViolationLimit"`
 	// Map of deployment configs to deployments ("admission", "audit", "mutation').
-	DeploymentConfigs *PolicyControllerPolicyControllerDeploymentConfig `pulumi:"deploymentConfigs"`
+	DeploymentConfigs map[string]PolicyControllerPolicyControllerDeploymentConfig `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
 	// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
@@ -12167,7 +12099,7 @@ type PolicyControllerHubConfigArgs struct {
 	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
 	ConstraintViolationLimit pulumi.StringPtrInput `pulumi:"constraintViolationLimit"`
 	// Map of deployment configs to deployments ("admission", "audit", "mutation').
-	DeploymentConfigs PolicyControllerPolicyControllerDeploymentConfigPtrInput `pulumi:"deploymentConfigs"`
+	DeploymentConfigs PolicyControllerPolicyControllerDeploymentConfigMapInput `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
 	// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
@@ -12273,10 +12205,10 @@ func (o PolicyControllerHubConfigOutput) ConstraintViolationLimit() pulumi.Strin
 }
 
 // Map of deployment configs to deployments ("admission", "audit", "mutation').
-func (o PolicyControllerHubConfigOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return o.ApplyT(func(v PolicyControllerHubConfig) *PolicyControllerPolicyControllerDeploymentConfig {
+func (o PolicyControllerHubConfigOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return o.ApplyT(func(v PolicyControllerHubConfig) map[string]PolicyControllerPolicyControllerDeploymentConfig {
 		return v.DeploymentConfigs
-	}).(PolicyControllerPolicyControllerDeploymentConfigPtrOutput)
+	}).(PolicyControllerPolicyControllerDeploymentConfigMapOutput)
 }
 
 // The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
@@ -12359,13 +12291,13 @@ func (o PolicyControllerHubConfigPtrOutput) ConstraintViolationLimit() pulumi.St
 }
 
 // Map of deployment configs to deployments ("admission", "audit", "mutation').
-func (o PolicyControllerHubConfigPtrOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return o.ApplyT(func(v *PolicyControllerHubConfig) *PolicyControllerPolicyControllerDeploymentConfig {
+func (o PolicyControllerHubConfigPtrOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return o.ApplyT(func(v *PolicyControllerHubConfig) map[string]PolicyControllerPolicyControllerDeploymentConfig {
 		if v == nil {
 			return nil
 		}
 		return v.DeploymentConfigs
-	}).(PolicyControllerPolicyControllerDeploymentConfigPtrOutput)
+	}).(PolicyControllerPolicyControllerDeploymentConfigMapOutput)
 }
 
 // The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
@@ -12445,7 +12377,7 @@ type PolicyControllerHubConfigResponse struct {
 	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
 	ConstraintViolationLimit string `pulumi:"constraintViolationLimit"`
 	// Map of deployment configs to deployments ("admission", "audit", "mutation').
-	DeploymentConfigs PolicyControllerPolicyControllerDeploymentConfigResponse `pulumi:"deploymentConfigs"`
+	DeploymentConfigs map[string]PolicyControllerPolicyControllerDeploymentConfigResponse `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
 	// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
@@ -12488,10 +12420,10 @@ func (o PolicyControllerHubConfigResponseOutput) ConstraintViolationLimit() pulu
 }
 
 // Map of deployment configs to deployments ("admission", "audit", "mutation').
-func (o PolicyControllerHubConfigResponseOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigResponseOutput {
-	return o.ApplyT(func(v PolicyControllerHubConfigResponse) PolicyControllerPolicyControllerDeploymentConfigResponse {
+func (o PolicyControllerHubConfigResponseOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerHubConfigResponse) map[string]PolicyControllerPolicyControllerDeploymentConfigResponse {
 		return v.DeploymentConfigs
-	}).(PolicyControllerPolicyControllerDeploymentConfigResponseOutput)
+	}).(PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput)
 }
 
 // The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
@@ -12730,7 +12662,7 @@ func (o PolicyControllerMembershipSpecResponseOutput) Version() pulumi.StringOut
 // **Policy Controller**: State for a single cluster.
 type PolicyControllerMembershipStateResponse struct {
 	// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
-	ComponentStates PolicyControllerOnClusterStateResponse `pulumi:"componentStates"`
+	ComponentStates map[string]PolicyControllerOnClusterStateResponse `pulumi:"componentStates"`
 	// The overall content state observed by the Hub Feature controller.
 	PolicyContentState PolicyControllerPolicyContentStateResponse `pulumi:"policyContentState"`
 	// The overall Policy Controller lifecycle state observed by the Hub Feature controller.
@@ -12753,10 +12685,10 @@ func (o PolicyControllerMembershipStateResponseOutput) ToPolicyControllerMembers
 }
 
 // Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
-func (o PolicyControllerMembershipStateResponseOutput) ComponentStates() PolicyControllerOnClusterStateResponseOutput {
-	return o.ApplyT(func(v PolicyControllerMembershipStateResponse) PolicyControllerOnClusterStateResponse {
+func (o PolicyControllerMembershipStateResponseOutput) ComponentStates() PolicyControllerOnClusterStateResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerMembershipStateResponse) map[string]PolicyControllerOnClusterStateResponse {
 		return v.ComponentStates
-	}).(PolicyControllerOnClusterStateResponseOutput)
+	}).(PolicyControllerOnClusterStateResponseMapOutput)
 }
 
 // The overall content state observed by the Hub Feature controller.
@@ -12972,10 +12904,30 @@ func (o PolicyControllerOnClusterStateResponseOutput) State() pulumi.StringOutpu
 	return o.ApplyT(func(v PolicyControllerOnClusterStateResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+type PolicyControllerOnClusterStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerOnClusterStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerOnClusterStateResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerOnClusterStateResponseMapOutput) ToPolicyControllerOnClusterStateResponseMapOutput() PolicyControllerOnClusterStateResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerOnClusterStateResponseMapOutput) ToPolicyControllerOnClusterStateResponseMapOutputWithContext(ctx context.Context) PolicyControllerOnClusterStateResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerOnClusterStateResponseMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerOnClusterStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerOnClusterStateResponse {
+		return vs[0].(map[string]PolicyControllerOnClusterStateResponse)[vs[1].(string)]
+	}).(PolicyControllerOnClusterStateResponseOutput)
+}
+
 // PolicyContentSpec defines the user's desired content configuration on the cluster.
 type PolicyControllerPolicyContentSpec struct {
 	// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-	Bundles *PolicyControllerBundleInstallSpec `pulumi:"bundles"`
+	Bundles map[string]PolicyControllerBundleInstallSpec `pulumi:"bundles"`
 	// Configures the installation of the Template Library.
 	TemplateLibrary *PolicyControllerTemplateLibraryConfig `pulumi:"templateLibrary"`
 }
@@ -12994,7 +12946,7 @@ type PolicyControllerPolicyContentSpecInput interface {
 // PolicyContentSpec defines the user's desired content configuration on the cluster.
 type PolicyControllerPolicyContentSpecArgs struct {
 	// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-	Bundles PolicyControllerBundleInstallSpecPtrInput `pulumi:"bundles"`
+	Bundles PolicyControllerBundleInstallSpecMapInput `pulumi:"bundles"`
 	// Configures the installation of the Template Library.
 	TemplateLibrary PolicyControllerTemplateLibraryConfigPtrInput `pulumi:"templateLibrary"`
 }
@@ -13078,8 +13030,10 @@ func (o PolicyControllerPolicyContentSpecOutput) ToPolicyControllerPolicyContent
 }
 
 // map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-func (o PolicyControllerPolicyContentSpecOutput) Bundles() PolicyControllerBundleInstallSpecPtrOutput {
-	return o.ApplyT(func(v PolicyControllerPolicyContentSpec) *PolicyControllerBundleInstallSpec { return v.Bundles }).(PolicyControllerBundleInstallSpecPtrOutput)
+func (o PolicyControllerPolicyContentSpecOutput) Bundles() PolicyControllerBundleInstallSpecMapOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentSpec) map[string]PolicyControllerBundleInstallSpec {
+		return v.Bundles
+	}).(PolicyControllerBundleInstallSpecMapOutput)
 }
 
 // Configures the installation of the Template Library.
@@ -13114,13 +13068,13 @@ func (o PolicyControllerPolicyContentSpecPtrOutput) Elem() PolicyControllerPolic
 }
 
 // map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-func (o PolicyControllerPolicyContentSpecPtrOutput) Bundles() PolicyControllerBundleInstallSpecPtrOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyContentSpec) *PolicyControllerBundleInstallSpec {
+func (o PolicyControllerPolicyContentSpecPtrOutput) Bundles() PolicyControllerBundleInstallSpecMapOutput {
+	return o.ApplyT(func(v *PolicyControllerPolicyContentSpec) map[string]PolicyControllerBundleInstallSpec {
 		if v == nil {
 			return nil
 		}
 		return v.Bundles
-	}).(PolicyControllerBundleInstallSpecPtrOutput)
+	}).(PolicyControllerBundleInstallSpecMapOutput)
 }
 
 // Configures the installation of the Template Library.
@@ -13136,7 +13090,7 @@ func (o PolicyControllerPolicyContentSpecPtrOutput) TemplateLibrary() PolicyCont
 // PolicyContentSpec defines the user's desired content configuration on the cluster.
 type PolicyControllerPolicyContentSpecResponse struct {
 	// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-	Bundles PolicyControllerBundleInstallSpecResponse `pulumi:"bundles"`
+	Bundles map[string]PolicyControllerBundleInstallSpecResponse `pulumi:"bundles"`
 	// Configures the installation of the Template Library.
 	TemplateLibrary PolicyControllerTemplateLibraryConfigResponse `pulumi:"templateLibrary"`
 }
@@ -13157,10 +13111,10 @@ func (o PolicyControllerPolicyContentSpecResponseOutput) ToPolicyControllerPolic
 }
 
 // map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-func (o PolicyControllerPolicyContentSpecResponseOutput) Bundles() PolicyControllerBundleInstallSpecResponseOutput {
-	return o.ApplyT(func(v PolicyControllerPolicyContentSpecResponse) PolicyControllerBundleInstallSpecResponse {
+func (o PolicyControllerPolicyContentSpecResponseOutput) Bundles() PolicyControllerBundleInstallSpecResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentSpecResponse) map[string]PolicyControllerBundleInstallSpecResponse {
 		return v.Bundles
-	}).(PolicyControllerBundleInstallSpecResponseOutput)
+	}).(PolicyControllerBundleInstallSpecResponseMapOutput)
 }
 
 // Configures the installation of the Template Library.
@@ -13173,7 +13127,7 @@ func (o PolicyControllerPolicyContentSpecResponseOutput) TemplateLibrary() Polic
 // The state of the policy controller policy content
 type PolicyControllerPolicyContentStateResponse struct {
 	// The state of the any bundles included in the chosen version of the manifest
-	BundleStates PolicyControllerOnClusterStateResponse `pulumi:"bundleStates"`
+	BundleStates map[string]PolicyControllerOnClusterStateResponse `pulumi:"bundleStates"`
 	// The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user.
 	ReferentialSyncConfigState PolicyControllerOnClusterStateResponse `pulumi:"referentialSyncConfigState"`
 	// The state of the template library
@@ -13196,10 +13150,10 @@ func (o PolicyControllerPolicyContentStateResponseOutput) ToPolicyControllerPoli
 }
 
 // The state of the any bundles included in the chosen version of the manifest
-func (o PolicyControllerPolicyContentStateResponseOutput) BundleStates() PolicyControllerOnClusterStateResponseOutput {
-	return o.ApplyT(func(v PolicyControllerPolicyContentStateResponse) PolicyControllerOnClusterStateResponse {
+func (o PolicyControllerPolicyContentStateResponseOutput) BundleStates() PolicyControllerOnClusterStateResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentStateResponse) map[string]PolicyControllerOnClusterStateResponse {
 		return v.BundleStates
-	}).(PolicyControllerOnClusterStateResponseOutput)
+	}).(PolicyControllerOnClusterStateResponseMapOutput)
 }
 
 // The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user.
@@ -13267,45 +13221,29 @@ func (i PolicyControllerPolicyControllerDeploymentConfigArgs) ToPolicyController
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerPolicyControllerDeploymentConfigOutput)
 }
 
-func (i PolicyControllerPolicyControllerDeploymentConfigArgs) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutput() PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return i.ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(context.Background())
-}
-
-func (i PolicyControllerPolicyControllerDeploymentConfigArgs) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerPolicyControllerDeploymentConfigOutput).ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(ctx)
-}
-
-// PolicyControllerPolicyControllerDeploymentConfigPtrInput is an input type that accepts PolicyControllerPolicyControllerDeploymentConfigArgs, PolicyControllerPolicyControllerDeploymentConfigPtr and PolicyControllerPolicyControllerDeploymentConfigPtrOutput values.
-// You can construct a concrete instance of `PolicyControllerPolicyControllerDeploymentConfigPtrInput` via:
+// PolicyControllerPolicyControllerDeploymentConfigMapInput is an input type that accepts PolicyControllerPolicyControllerDeploymentConfigMap and PolicyControllerPolicyControllerDeploymentConfigMapOutput values.
+// You can construct a concrete instance of `PolicyControllerPolicyControllerDeploymentConfigMapInput` via:
 //
-//	        PolicyControllerPolicyControllerDeploymentConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type PolicyControllerPolicyControllerDeploymentConfigPtrInput interface {
+//	PolicyControllerPolicyControllerDeploymentConfigMap{ "key": PolicyControllerPolicyControllerDeploymentConfigArgs{...} }
+type PolicyControllerPolicyControllerDeploymentConfigMapInput interface {
 	pulumi.Input
 
-	ToPolicyControllerPolicyControllerDeploymentConfigPtrOutput() PolicyControllerPolicyControllerDeploymentConfigPtrOutput
-	ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(context.Context) PolicyControllerPolicyControllerDeploymentConfigPtrOutput
+	ToPolicyControllerPolicyControllerDeploymentConfigMapOutput() PolicyControllerPolicyControllerDeploymentConfigMapOutput
+	ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(context.Context) PolicyControllerPolicyControllerDeploymentConfigMapOutput
 }
 
-type policyControllerPolicyControllerDeploymentConfigPtrType PolicyControllerPolicyControllerDeploymentConfigArgs
+type PolicyControllerPolicyControllerDeploymentConfigMap map[string]PolicyControllerPolicyControllerDeploymentConfigInput
 
-func PolicyControllerPolicyControllerDeploymentConfigPtr(v *PolicyControllerPolicyControllerDeploymentConfigArgs) PolicyControllerPolicyControllerDeploymentConfigPtrInput {
-	return (*policyControllerPolicyControllerDeploymentConfigPtrType)(v)
+func (PolicyControllerPolicyControllerDeploymentConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
 }
 
-func (*policyControllerPolicyControllerDeploymentConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
+func (i PolicyControllerPolicyControllerDeploymentConfigMap) ToPolicyControllerPolicyControllerDeploymentConfigMapOutput() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return i.ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(context.Background())
 }
 
-func (i *policyControllerPolicyControllerDeploymentConfigPtrType) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutput() PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return i.ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *policyControllerPolicyControllerDeploymentConfigPtrType) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerPolicyControllerDeploymentConfigPtrOutput)
+func (i PolicyControllerPolicyControllerDeploymentConfigMap) ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerPolicyControllerDeploymentConfigMapOutput)
 }
 
 // Deployment-specific configuration.
@@ -13321,16 +13259,6 @@ func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ToPolicyControll
 
 func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ToPolicyControllerPolicyControllerDeploymentConfigOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigOutput {
 	return o
-}
-
-func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutput() PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return o.ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(context.Background())
-}
-
-func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyControllerPolicyControllerDeploymentConfig) *PolicyControllerPolicyControllerDeploymentConfig {
-		return &v
-	}).(PolicyControllerPolicyControllerDeploymentConfigPtrOutput)
 }
 
 // Container resource requirements.
@@ -13364,78 +13292,24 @@ func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ReplicaCount() p
 	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfig) *string { return v.ReplicaCount }).(pulumi.StringPtrOutput)
 }
 
-type PolicyControllerPolicyControllerDeploymentConfigPtrOutput struct{ *pulumi.OutputState }
+type PolicyControllerPolicyControllerDeploymentConfigMapOutput struct{ *pulumi.OutputState }
 
-func (PolicyControllerPolicyControllerDeploymentConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
+func (PolicyControllerPolicyControllerDeploymentConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
 }
 
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutput() PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
+func (o PolicyControllerPolicyControllerDeploymentConfigMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigMapOutput() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
 	return o
 }
 
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) ToPolicyControllerPolicyControllerDeploymentConfigPtrOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigPtrOutput {
+func (o PolicyControllerPolicyControllerDeploymentConfigMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigMapOutput {
 	return o
 }
 
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) Elem() PolicyControllerPolicyControllerDeploymentConfigOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyControllerDeploymentConfig) PolicyControllerPolicyControllerDeploymentConfig {
-		if v != nil {
-			return *v
-		}
-		var ret PolicyControllerPolicyControllerDeploymentConfig
-		return ret
+func (o PolicyControllerPolicyControllerDeploymentConfigMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerPolicyControllerDeploymentConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerPolicyControllerDeploymentConfig {
+		return vs[0].(map[string]PolicyControllerPolicyControllerDeploymentConfig)[vs[1].(string)]
 	}).(PolicyControllerPolicyControllerDeploymentConfigOutput)
-}
-
-// Container resource requirements.
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) ContainerResources() PolicyControllerResourceRequirementsPtrOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyControllerDeploymentConfig) *PolicyControllerResourceRequirements {
-		if v == nil {
-			return nil
-		}
-		return v.ContainerResources
-	}).(PolicyControllerResourceRequirementsPtrOutput)
-}
-
-// Pod affinity configuration.
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) PodAffinity() PolicyControllerPolicyControllerDeploymentConfigPodAffinityPtrOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyControllerDeploymentConfig) *PolicyControllerPolicyControllerDeploymentConfigPodAffinity {
-		if v == nil {
-			return nil
-		}
-		return v.PodAffinity
-	}).(PolicyControllerPolicyControllerDeploymentConfigPodAffinityPtrOutput)
-}
-
-// Pod anti-affinity enablement.
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) PodAntiAffinity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyControllerDeploymentConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.PodAntiAffinity
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Pod tolerations of node taints.
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) PodTolerations() PolicyControllerTolerationArrayOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyControllerDeploymentConfig) []PolicyControllerToleration {
-		if v == nil {
-			return nil
-		}
-		return v.PodTolerations
-	}).(PolicyControllerTolerationArrayOutput)
-}
-
-// Pod replica count.
-func (o PolicyControllerPolicyControllerDeploymentConfigPtrOutput) ReplicaCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyControllerDeploymentConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ReplicaCount
-	}).(pulumi.StringPtrOutput)
 }
 
 // Deployment-specific configuration.
@@ -13494,6 +13368,26 @@ func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) PodToler
 // Pod replica count.
 func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) ReplicaCount() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfigResponse) string { return v.ReplicaCount }).(pulumi.StringOutput)
+}
+
+type PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerPolicyControllerDeploymentConfigResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigResponseMapOutput() PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigResponseMapOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerPolicyControllerDeploymentConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerPolicyControllerDeploymentConfigResponse {
+		return vs[0].(map[string]PolicyControllerPolicyControllerDeploymentConfigResponse)[vs[1].(string)]
+	}).(PolicyControllerPolicyControllerDeploymentConfigResponseOutput)
 }
 
 // ResourceList contains container resource requirements.
@@ -14655,45 +14549,29 @@ func (i ScopeFeatureSpecArgs) ToScopeFeatureSpecOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeFeatureSpecOutput)
 }
 
-func (i ScopeFeatureSpecArgs) ToScopeFeatureSpecPtrOutput() ScopeFeatureSpecPtrOutput {
-	return i.ToScopeFeatureSpecPtrOutputWithContext(context.Background())
-}
-
-func (i ScopeFeatureSpecArgs) ToScopeFeatureSpecPtrOutputWithContext(ctx context.Context) ScopeFeatureSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScopeFeatureSpecOutput).ToScopeFeatureSpecPtrOutputWithContext(ctx)
-}
-
-// ScopeFeatureSpecPtrInput is an input type that accepts ScopeFeatureSpecArgs, ScopeFeatureSpecPtr and ScopeFeatureSpecPtrOutput values.
-// You can construct a concrete instance of `ScopeFeatureSpecPtrInput` via:
+// ScopeFeatureSpecMapInput is an input type that accepts ScopeFeatureSpecMap and ScopeFeatureSpecMapOutput values.
+// You can construct a concrete instance of `ScopeFeatureSpecMapInput` via:
 //
-//	        ScopeFeatureSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScopeFeatureSpecPtrInput interface {
+//	ScopeFeatureSpecMap{ "key": ScopeFeatureSpecArgs{...} }
+type ScopeFeatureSpecMapInput interface {
 	pulumi.Input
 
-	ToScopeFeatureSpecPtrOutput() ScopeFeatureSpecPtrOutput
-	ToScopeFeatureSpecPtrOutputWithContext(context.Context) ScopeFeatureSpecPtrOutput
+	ToScopeFeatureSpecMapOutput() ScopeFeatureSpecMapOutput
+	ToScopeFeatureSpecMapOutputWithContext(context.Context) ScopeFeatureSpecMapOutput
 }
 
-type scopeFeatureSpecPtrType ScopeFeatureSpecArgs
+type ScopeFeatureSpecMap map[string]ScopeFeatureSpecInput
 
-func ScopeFeatureSpecPtr(v *ScopeFeatureSpecArgs) ScopeFeatureSpecPtrInput {
-	return (*scopeFeatureSpecPtrType)(v)
+func (ScopeFeatureSpecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureSpec)(nil)).Elem()
 }
 
-func (*scopeFeatureSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScopeFeatureSpec)(nil)).Elem()
+func (i ScopeFeatureSpecMap) ToScopeFeatureSpecMapOutput() ScopeFeatureSpecMapOutput {
+	return i.ToScopeFeatureSpecMapOutputWithContext(context.Background())
 }
 
-func (i *scopeFeatureSpecPtrType) ToScopeFeatureSpecPtrOutput() ScopeFeatureSpecPtrOutput {
-	return i.ToScopeFeatureSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *scopeFeatureSpecPtrType) ToScopeFeatureSpecPtrOutputWithContext(ctx context.Context) ScopeFeatureSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScopeFeatureSpecPtrOutput)
+func (i ScopeFeatureSpecMap) ToScopeFeatureSpecMapOutputWithContext(ctx context.Context) ScopeFeatureSpecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeFeatureSpecMapOutput)
 }
 
 // ScopeFeatureSpec contains feature specs for a fleet scope.
@@ -14711,37 +14589,23 @@ func (o ScopeFeatureSpecOutput) ToScopeFeatureSpecOutputWithContext(ctx context.
 	return o
 }
 
-func (o ScopeFeatureSpecOutput) ToScopeFeatureSpecPtrOutput() ScopeFeatureSpecPtrOutput {
-	return o.ToScopeFeatureSpecPtrOutputWithContext(context.Background())
+type ScopeFeatureSpecMapOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureSpecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureSpec)(nil)).Elem()
 }
 
-func (o ScopeFeatureSpecOutput) ToScopeFeatureSpecPtrOutputWithContext(ctx context.Context) ScopeFeatureSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeFeatureSpec) *ScopeFeatureSpec {
-		return &v
-	}).(ScopeFeatureSpecPtrOutput)
-}
-
-type ScopeFeatureSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (ScopeFeatureSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScopeFeatureSpec)(nil)).Elem()
-}
-
-func (o ScopeFeatureSpecPtrOutput) ToScopeFeatureSpecPtrOutput() ScopeFeatureSpecPtrOutput {
+func (o ScopeFeatureSpecMapOutput) ToScopeFeatureSpecMapOutput() ScopeFeatureSpecMapOutput {
 	return o
 }
 
-func (o ScopeFeatureSpecPtrOutput) ToScopeFeatureSpecPtrOutputWithContext(ctx context.Context) ScopeFeatureSpecPtrOutput {
+func (o ScopeFeatureSpecMapOutput) ToScopeFeatureSpecMapOutputWithContext(ctx context.Context) ScopeFeatureSpecMapOutput {
 	return o
 }
 
-func (o ScopeFeatureSpecPtrOutput) Elem() ScopeFeatureSpecOutput {
-	return o.ApplyT(func(v *ScopeFeatureSpec) ScopeFeatureSpec {
-		if v != nil {
-			return *v
-		}
-		var ret ScopeFeatureSpec
-		return ret
+func (o ScopeFeatureSpecMapOutput) MapIndex(k pulumi.StringInput) ScopeFeatureSpecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScopeFeatureSpec {
+		return vs[0].(map[string]ScopeFeatureSpec)[vs[1].(string)]
 	}).(ScopeFeatureSpecOutput)
 }
 
@@ -14762,6 +14626,26 @@ func (o ScopeFeatureSpecResponseOutput) ToScopeFeatureSpecResponseOutput() Scope
 
 func (o ScopeFeatureSpecResponseOutput) ToScopeFeatureSpecResponseOutputWithContext(ctx context.Context) ScopeFeatureSpecResponseOutput {
 	return o
+}
+
+type ScopeFeatureSpecResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureSpecResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o ScopeFeatureSpecResponseMapOutput) ToScopeFeatureSpecResponseMapOutput() ScopeFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecResponseMapOutput) ToScopeFeatureSpecResponseMapOutputWithContext(ctx context.Context) ScopeFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecResponseMapOutput) MapIndex(k pulumi.StringInput) ScopeFeatureSpecResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScopeFeatureSpecResponse {
+		return vs[0].(map[string]ScopeFeatureSpecResponse)[vs[1].(string)]
+	}).(ScopeFeatureSpecResponseOutput)
 }
 
 // ScopeFeatureState contains Scope-wide Feature status information.
@@ -14788,6 +14672,26 @@ func (o ScopeFeatureStateResponseOutput) ToScopeFeatureStateResponseOutputWithCo
 // The "running state" of the Feature in this Scope.
 func (o ScopeFeatureStateResponseOutput) State() FeatureStateResponseOutput {
 	return o.ApplyT(func(v ScopeFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
+}
+
+type ScopeFeatureStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureStateResponse)(nil)).Elem()
+}
+
+func (o ScopeFeatureStateResponseMapOutput) ToScopeFeatureStateResponseMapOutput() ScopeFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureStateResponseMapOutput) ToScopeFeatureStateResponseMapOutputWithContext(ctx context.Context) ScopeFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureStateResponseMapOutput) MapIndex(k pulumi.StringInput) ScopeFeatureStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScopeFeatureStateResponse {
+		return vs[0].(map[string]ScopeFeatureStateResponse)[vs[1].(string)]
+	}).(ScopeFeatureStateResponseOutput)
 }
 
 // ScopeLifecycleState describes the state of a Scope resource.
@@ -15478,7 +15382,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipFeatureSpecInput)(nil)).Elem(), MembershipFeatureSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MembershipFeatureSpecPtrInput)(nil)).Elem(), MembershipFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipFeatureSpecMapInput)(nil)).Elem(), MembershipFeatureSpecMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecInput)(nil)).Elem(), MembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecPtrInput)(nil)).Elem(), MembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigInput)(nil)).Elem(), MonitoringConfigArgs{})
@@ -15494,7 +15398,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingInput)(nil)).Elem(), PolicyBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingArrayInput)(nil)).Elem(), PolicyBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerBundleInstallSpecInput)(nil)).Elem(), PolicyControllerBundleInstallSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerBundleInstallSpecPtrInput)(nil)).Elem(), PolicyControllerBundleInstallSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerBundleInstallSpecMapInput)(nil)).Elem(), PolicyControllerBundleInstallSpecMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerHubConfigInput)(nil)).Elem(), PolicyControllerHubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerHubConfigPtrInput)(nil)).Elem(), PolicyControllerHubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerMembershipSpecInput)(nil)).Elem(), PolicyControllerMembershipSpecArgs{})
@@ -15504,7 +15408,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyContentSpecInput)(nil)).Elem(), PolicyControllerPolicyContentSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyContentSpecPtrInput)(nil)).Elem(), PolicyControllerPolicyContentSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfigInput)(nil)).Elem(), PolicyControllerPolicyControllerDeploymentConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfigPtrInput)(nil)).Elem(), PolicyControllerPolicyControllerDeploymentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfigMapInput)(nil)).Elem(), PolicyControllerPolicyControllerDeploymentConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerResourceListInput)(nil)).Elem(), PolicyControllerResourceListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerResourceListPtrInput)(nil)).Elem(), PolicyControllerResourceListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerResourceRequirementsInput)(nil)).Elem(), PolicyControllerResourceRequirementsArgs{})
@@ -15517,7 +15421,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsPtrInput)(nil)).Elem(), ResourceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleInput)(nil)).Elem(), RoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeFeatureSpecInput)(nil)).Elem(), ScopeFeatureSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScopeFeatureSpecPtrInput)(nil)).Elem(), ScopeFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeFeatureSpecMapInput)(nil)).Elem(), ScopeFeatureSpecMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigInput)(nil)).Elem(), SecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigPtrInput)(nil)).Elem(), SecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecInput)(nil)).Elem(), ServiceMeshMembershipSpecArgs{})
@@ -15569,6 +15473,7 @@ func init() {
 	pulumi.RegisterOutputType(ClusterUpgradeGKEUpgradeStateResponseOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradeGKEUpgradeStateResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradeIgnoredMembershipResponseOutput{})
+	pulumi.RegisterOutputType(ClusterUpgradeIgnoredMembershipResponseMapOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradeMembershipGKEUpgradeStateResponseOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradeMembershipStateResponseOutput{})
@@ -15691,9 +15596,11 @@ func init() {
 	pulumi.RegisterOutputType(MembershipEndpointPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointResponseOutput{})
 	pulumi.RegisterOutputType(MembershipFeatureSpecOutput{})
-	pulumi.RegisterOutputType(MembershipFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureSpecMapOutput{})
 	pulumi.RegisterOutputType(MembershipFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureSpecResponseMapOutput{})
 	pulumi.RegisterOutputType(MembershipFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureStateResponseMapOutput{})
 	pulumi.RegisterOutputType(MembershipSpecOutput{})
 	pulumi.RegisterOutputType(MembershipSpecPtrOutput{})
 	pulumi.RegisterOutputType(MembershipSpecResponseOutput{})
@@ -15720,8 +15627,9 @@ func init() {
 	pulumi.RegisterOutputType(PolicyBindingResponseOutput{})
 	pulumi.RegisterOutputType(PolicyBindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecOutput{})
-	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecPtrOutput{})
+	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecMapOutput{})
 	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecResponseMapOutput{})
 	pulumi.RegisterOutputType(PolicyControllerHubConfigOutput{})
 	pulumi.RegisterOutputType(PolicyControllerHubConfigPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerHubConfigResponseOutput{})
@@ -15733,13 +15641,15 @@ func init() {
 	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigResponseOutput{})
 	pulumi.RegisterOutputType(PolicyControllerOnClusterStateResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerOnClusterStateResponseMapOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyContentSpecOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyContentSpecPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyContentSpecResponseOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyContentStateResponseOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigOutput{})
-	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigPtrOutput{})
+	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigMapOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(PolicyControllerResourceListOutput{})
 	pulumi.RegisterOutputType(PolicyControllerResourceListPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerResourceListResponseOutput{})
@@ -15762,9 +15672,11 @@ func init() {
 	pulumi.RegisterOutputType(RoleOutput{})
 	pulumi.RegisterOutputType(RoleResponseOutput{})
 	pulumi.RegisterOutputType(ScopeFeatureSpecOutput{})
-	pulumi.RegisterOutputType(ScopeFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureSpecMapOutput{})
 	pulumi.RegisterOutputType(ScopeFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureSpecResponseMapOutput{})
 	pulumi.RegisterOutputType(ScopeFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureStateResponseMapOutput{})
 	pulumi.RegisterOutputType(ScopeLifecycleStateResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigPtrOutput{})

@@ -38,7 +38,7 @@ export interface GetRegionDiskResult {
     /**
      * A list of disks this disk is asynchronously replicated to.
      */
-    readonly asyncSecondaryDisks: outputs.compute.v1.DiskAsyncReplicationListResponse;
+    readonly asyncSecondaryDisks: {[key: string]: outputs.compute.v1.DiskAsyncReplicationListResponse};
     /**
      * Creation timestamp in RFC3339 text format.
      */

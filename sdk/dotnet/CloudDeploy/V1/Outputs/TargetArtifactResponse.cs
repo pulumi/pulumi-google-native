@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// <summary>
         /// Map from the phase ID to the phase artifacts for the `Target`.
         /// </summary>
-        public readonly Outputs.PhaseArtifactResponse PhaseArtifacts;
+        public readonly ImmutableDictionary<string, Outputs.PhaseArtifactResponse> PhaseArtifacts;
         /// <summary>
         /// File path of the resolved Skaffold configuration relative to the URI.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
             string manifestPath,
 
-            Outputs.PhaseArtifactResponse phaseArtifacts,
+            ImmutableDictionary<string, Outputs.PhaseArtifactResponse> phaseArtifacts,
 
             string skaffoldConfigPath)
         {

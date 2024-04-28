@@ -2769,7 +2769,7 @@ func (o GoogleCloudContentwarehouseV1IntegerTypeOptionsResponseOutput) ToGoogleC
 // Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
 type GoogleCloudContentwarehouseV1MapProperty struct {
 	// Unordered map of dynamically typed values.
-	Fields *GoogleCloudContentwarehouseV1Value `pulumi:"fields"`
+	Fields map[string]GoogleCloudContentwarehouseV1Value `pulumi:"fields"`
 }
 
 // GoogleCloudContentwarehouseV1MapPropertyInput is an input type that accepts GoogleCloudContentwarehouseV1MapPropertyArgs and GoogleCloudContentwarehouseV1MapPropertyOutput values.
@@ -2786,7 +2786,7 @@ type GoogleCloudContentwarehouseV1MapPropertyInput interface {
 // Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
 type GoogleCloudContentwarehouseV1MapPropertyArgs struct {
 	// Unordered map of dynamically typed values.
-	Fields GoogleCloudContentwarehouseV1ValuePtrInput `pulumi:"fields"`
+	Fields GoogleCloudContentwarehouseV1ValueMapInput `pulumi:"fields"`
 }
 
 func (GoogleCloudContentwarehouseV1MapPropertyArgs) ElementType() reflect.Type {
@@ -2868,8 +2868,10 @@ func (o GoogleCloudContentwarehouseV1MapPropertyOutput) ToGoogleCloudContentware
 }
 
 // Unordered map of dynamically typed values.
-func (o GoogleCloudContentwarehouseV1MapPropertyOutput) Fields() GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return o.ApplyT(func(v GoogleCloudContentwarehouseV1MapProperty) *GoogleCloudContentwarehouseV1Value { return v.Fields }).(GoogleCloudContentwarehouseV1ValuePtrOutput)
+func (o GoogleCloudContentwarehouseV1MapPropertyOutput) Fields() GoogleCloudContentwarehouseV1ValueMapOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1MapProperty) map[string]GoogleCloudContentwarehouseV1Value {
+		return v.Fields
+	}).(GoogleCloudContentwarehouseV1ValueMapOutput)
 }
 
 type GoogleCloudContentwarehouseV1MapPropertyPtrOutput struct{ *pulumi.OutputState }
@@ -2897,19 +2899,19 @@ func (o GoogleCloudContentwarehouseV1MapPropertyPtrOutput) Elem() GoogleCloudCon
 }
 
 // Unordered map of dynamically typed values.
-func (o GoogleCloudContentwarehouseV1MapPropertyPtrOutput) Fields() GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1MapProperty) *GoogleCloudContentwarehouseV1Value {
+func (o GoogleCloudContentwarehouseV1MapPropertyPtrOutput) Fields() GoogleCloudContentwarehouseV1ValueMapOutput {
+	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1MapProperty) map[string]GoogleCloudContentwarehouseV1Value {
 		if v == nil {
 			return nil
 		}
 		return v.Fields
-	}).(GoogleCloudContentwarehouseV1ValuePtrOutput)
+	}).(GoogleCloudContentwarehouseV1ValueMapOutput)
 }
 
 // Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
 type GoogleCloudContentwarehouseV1MapPropertyResponse struct {
 	// Unordered map of dynamically typed values.
-	Fields GoogleCloudContentwarehouseV1ValueResponse `pulumi:"fields"`
+	Fields map[string]GoogleCloudContentwarehouseV1ValueResponse `pulumi:"fields"`
 }
 
 // Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
@@ -2928,10 +2930,10 @@ func (o GoogleCloudContentwarehouseV1MapPropertyResponseOutput) ToGoogleCloudCon
 }
 
 // Unordered map of dynamically typed values.
-func (o GoogleCloudContentwarehouseV1MapPropertyResponseOutput) Fields() GoogleCloudContentwarehouseV1ValueResponseOutput {
-	return o.ApplyT(func(v GoogleCloudContentwarehouseV1MapPropertyResponse) GoogleCloudContentwarehouseV1ValueResponse {
+func (o GoogleCloudContentwarehouseV1MapPropertyResponseOutput) Fields() GoogleCloudContentwarehouseV1ValueResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1MapPropertyResponse) map[string]GoogleCloudContentwarehouseV1ValueResponse {
 		return v.Fields
-	}).(GoogleCloudContentwarehouseV1ValueResponseOutput)
+	}).(GoogleCloudContentwarehouseV1ValueResponseMapOutput)
 }
 
 // Configurations for a Map property.
@@ -6274,45 +6276,29 @@ func (i GoogleCloudContentwarehouseV1ValueArgs) ToGoogleCloudContentwarehouseV1V
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1ValueOutput)
 }
 
-func (i GoogleCloudContentwarehouseV1ValueArgs) ToGoogleCloudContentwarehouseV1ValuePtrOutput() GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return i.ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudContentwarehouseV1ValueArgs) ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1ValueOutput).ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudContentwarehouseV1ValuePtrInput is an input type that accepts GoogleCloudContentwarehouseV1ValueArgs, GoogleCloudContentwarehouseV1ValuePtr and GoogleCloudContentwarehouseV1ValuePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudContentwarehouseV1ValuePtrInput` via:
+// GoogleCloudContentwarehouseV1ValueMapInput is an input type that accepts GoogleCloudContentwarehouseV1ValueMap and GoogleCloudContentwarehouseV1ValueMapOutput values.
+// You can construct a concrete instance of `GoogleCloudContentwarehouseV1ValueMapInput` via:
 //
-//	        GoogleCloudContentwarehouseV1ValueArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudContentwarehouseV1ValuePtrInput interface {
+//	GoogleCloudContentwarehouseV1ValueMap{ "key": GoogleCloudContentwarehouseV1ValueArgs{...} }
+type GoogleCloudContentwarehouseV1ValueMapInput interface {
 	pulumi.Input
 
-	ToGoogleCloudContentwarehouseV1ValuePtrOutput() GoogleCloudContentwarehouseV1ValuePtrOutput
-	ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(context.Context) GoogleCloudContentwarehouseV1ValuePtrOutput
+	ToGoogleCloudContentwarehouseV1ValueMapOutput() GoogleCloudContentwarehouseV1ValueMapOutput
+	ToGoogleCloudContentwarehouseV1ValueMapOutputWithContext(context.Context) GoogleCloudContentwarehouseV1ValueMapOutput
 }
 
-type googleCloudContentwarehouseV1ValuePtrType GoogleCloudContentwarehouseV1ValueArgs
+type GoogleCloudContentwarehouseV1ValueMap map[string]GoogleCloudContentwarehouseV1ValueInput
 
-func GoogleCloudContentwarehouseV1ValuePtr(v *GoogleCloudContentwarehouseV1ValueArgs) GoogleCloudContentwarehouseV1ValuePtrInput {
-	return (*googleCloudContentwarehouseV1ValuePtrType)(v)
+func (GoogleCloudContentwarehouseV1ValueMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContentwarehouseV1Value)(nil)).Elem()
 }
 
-func (*googleCloudContentwarehouseV1ValuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudContentwarehouseV1Value)(nil)).Elem()
+func (i GoogleCloudContentwarehouseV1ValueMap) ToGoogleCloudContentwarehouseV1ValueMapOutput() GoogleCloudContentwarehouseV1ValueMapOutput {
+	return i.ToGoogleCloudContentwarehouseV1ValueMapOutputWithContext(context.Background())
 }
 
-func (i *googleCloudContentwarehouseV1ValuePtrType) ToGoogleCloudContentwarehouseV1ValuePtrOutput() GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return i.ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudContentwarehouseV1ValuePtrType) ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1ValuePtrOutput)
+func (i GoogleCloudContentwarehouseV1ValueMap) ToGoogleCloudContentwarehouseV1ValueMapOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValueMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1ValueMapOutput)
 }
 
 // `Value` represents a dynamically typed value which can be either be a float, a integer, a string, or a datetime value. A producer of value is expected to set one of these variants. Absence of any variant indicates an error.
@@ -6328,16 +6314,6 @@ func (o GoogleCloudContentwarehouseV1ValueOutput) ToGoogleCloudContentwarehouseV
 
 func (o GoogleCloudContentwarehouseV1ValueOutput) ToGoogleCloudContentwarehouseV1ValueOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValueOutput {
 	return o
-}
-
-func (o GoogleCloudContentwarehouseV1ValueOutput) ToGoogleCloudContentwarehouseV1ValuePtrOutput() GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return o.ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudContentwarehouseV1ValueOutput) ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContentwarehouseV1Value) *GoogleCloudContentwarehouseV1Value {
-		return &v
-	}).(GoogleCloudContentwarehouseV1ValuePtrOutput)
 }
 
 // Represents a boolean value.
@@ -6377,98 +6353,24 @@ func (o GoogleCloudContentwarehouseV1ValueOutput) TimestampValue() GoogleCloudCo
 	}).(GoogleCloudContentwarehouseV1TimestampValuePtrOutput)
 }
 
-type GoogleCloudContentwarehouseV1ValuePtrOutput struct{ *pulumi.OutputState }
+type GoogleCloudContentwarehouseV1ValueMapOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudContentwarehouseV1ValuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudContentwarehouseV1Value)(nil)).Elem()
+func (GoogleCloudContentwarehouseV1ValueMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContentwarehouseV1Value)(nil)).Elem()
 }
 
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) ToGoogleCloudContentwarehouseV1ValuePtrOutput() GoogleCloudContentwarehouseV1ValuePtrOutput {
+func (o GoogleCloudContentwarehouseV1ValueMapOutput) ToGoogleCloudContentwarehouseV1ValueMapOutput() GoogleCloudContentwarehouseV1ValueMapOutput {
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) ToGoogleCloudContentwarehouseV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValuePtrOutput {
+func (o GoogleCloudContentwarehouseV1ValueMapOutput) ToGoogleCloudContentwarehouseV1ValueMapOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValueMapOutput {
 	return o
 }
 
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) Elem() GoogleCloudContentwarehouseV1ValueOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) GoogleCloudContentwarehouseV1Value {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudContentwarehouseV1Value
-		return ret
+func (o GoogleCloudContentwarehouseV1ValueMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudContentwarehouseV1ValueOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1Value {
+		return vs[0].(map[string]GoogleCloudContentwarehouseV1Value)[vs[1].(string)]
 	}).(GoogleCloudContentwarehouseV1ValueOutput)
-}
-
-// Represents a boolean value.
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) BooleanValue() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.BooleanValue
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Represents a datetime value.
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) DatetimeValue() GoogleTypeDateTimePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) *GoogleTypeDateTime {
-		if v == nil {
-			return nil
-		}
-		return v.DatetimeValue
-	}).(GoogleTypeDateTimePtrOutput)
-}
-
-// Represents an enum value.
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) EnumValue() GoogleCloudContentwarehouseV1EnumValuePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) *GoogleCloudContentwarehouseV1EnumValue {
-		if v == nil {
-			return nil
-		}
-		return v.EnumValue
-	}).(GoogleCloudContentwarehouseV1EnumValuePtrOutput)
-}
-
-// Represents a float value.
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) FloatValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.FloatValue
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Represents a integer value.
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) IntValue() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IntValue
-	}).(pulumi.IntPtrOutput)
-}
-
-// Represents a string value.
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) StringValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StringValue
-	}).(pulumi.StringPtrOutput)
-}
-
-// Represents a timestamp value.
-func (o GoogleCloudContentwarehouseV1ValuePtrOutput) TimestampValue() GoogleCloudContentwarehouseV1TimestampValuePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1Value) *GoogleCloudContentwarehouseV1TimestampValue {
-		if v == nil {
-			return nil
-		}
-		return v.TimestampValue
-	}).(GoogleCloudContentwarehouseV1TimestampValuePtrOutput)
 }
 
 // `Value` represents a dynamically typed value which can be either be a float, a integer, a string, or a datetime value. A producer of value is expected to set one of these variants. Absence of any variant indicates an error.
@@ -6541,6 +6443,26 @@ func (o GoogleCloudContentwarehouseV1ValueResponseOutput) TimestampValue() Googl
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1ValueResponse) GoogleCloudContentwarehouseV1TimestampValueResponse {
 		return v.TimestampValue
 	}).(GoogleCloudContentwarehouseV1TimestampValueResponseOutput)
+}
+
+type GoogleCloudContentwarehouseV1ValueResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContentwarehouseV1ValueResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudContentwarehouseV1ValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContentwarehouseV1ValueResponseMapOutput) ToGoogleCloudContentwarehouseV1ValueResponseMapOutput() GoogleCloudContentwarehouseV1ValueResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1ValueResponseMapOutput) ToGoogleCloudContentwarehouseV1ValueResponseMapOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1ValueResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1ValueResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudContentwarehouseV1ValueResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1ValueResponse {
+		return vs[0].(map[string]GoogleCloudContentwarehouseV1ValueResponse)[vs[1].(string)]
+	}).(GoogleCloudContentwarehouseV1ValueResponseOutput)
 }
 
 // Encodes the detailed information of a barcode.
@@ -18940,7 +18862,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1UserInfoInput)(nil)).Elem(), GoogleCloudContentwarehouseV1UserInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1UserInfoPtrInput)(nil)).Elem(), GoogleCloudContentwarehouseV1UserInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1ValueInput)(nil)).Elem(), GoogleCloudContentwarehouseV1ValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1ValuePtrInput)(nil)).Elem(), GoogleCloudContentwarehouseV1ValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1ValueMapInput)(nil)).Elem(), GoogleCloudContentwarehouseV1ValueMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1BarcodeInput)(nil)).Elem(), GoogleCloudDocumentaiV1BarcodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1BarcodePtrInput)(nil)).Elem(), GoogleCloudDocumentaiV1BarcodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1BoundingPolyInput)(nil)).Elem(), GoogleCloudDocumentaiV1BoundingPolyArgs{})
@@ -19157,8 +19079,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1UserInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1UserInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1ValueOutput{})
-	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1ValuePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1ValueMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1ValueResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1ValueResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1BarcodeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1BarcodePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1BarcodeResponseOutput{})

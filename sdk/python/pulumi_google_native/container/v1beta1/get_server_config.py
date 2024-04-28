@@ -92,7 +92,7 @@ class GetServerConfigResult:
 
     @property
     @pulumi.getter(name="windowsVersionMaps")
-    def windows_version_maps(self) -> 'outputs.WindowsVersionsResponse':
+    def windows_version_maps(self) -> Mapping[str, 'outputs.WindowsVersionsResponse']:
         """
         Maps of Kubernetes version and supported Windows server versions.
         """

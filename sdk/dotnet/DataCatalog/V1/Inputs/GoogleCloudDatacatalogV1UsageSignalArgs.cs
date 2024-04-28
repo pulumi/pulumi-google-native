@@ -15,11 +15,17 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudDatacatalogV1UsageSignalArgs : global::Pulumi.ResourceArgs
     {
+        [Input("commonUsageWithinTimeRange")]
+        private InputMap<Inputs.GoogleCloudDatacatalogV1CommonUsageStatsArgs>? _commonUsageWithinTimeRange;
+
         /// <summary>
         /// Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         /// </summary>
-        [Input("commonUsageWithinTimeRange")]
-        public Input<Inputs.GoogleCloudDatacatalogV1CommonUsageStatsArgs>? CommonUsageWithinTimeRange { get; set; }
+        public InputMap<Inputs.GoogleCloudDatacatalogV1CommonUsageStatsArgs> CommonUsageWithinTimeRange
+        {
+            get => _commonUsageWithinTimeRange ?? (_commonUsageWithinTimeRange = new InputMap<Inputs.GoogleCloudDatacatalogV1CommonUsageStatsArgs>());
+            set => _commonUsageWithinTimeRange = value;
+        }
 
         /// <summary>
         /// Favorite count in the source system.

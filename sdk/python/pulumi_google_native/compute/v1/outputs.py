@@ -1875,7 +1875,7 @@ class AutoscalingPolicyResponse(dict):
                  min_num_replicas: int,
                  mode: str,
                  scale_in_control: 'outputs.AutoscalingPolicyScaleInControlResponse',
-                 scaling_schedules: 'outputs.AutoscalingPolicyScalingScheduleResponse'):
+                 scaling_schedules: Mapping[str, 'outputs.AutoscalingPolicyScalingScheduleResponse']):
         """
         Cloud Autoscaler policy.
         :param int cool_down_period_sec: The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
@@ -1885,7 +1885,7 @@ class AutoscalingPolicyResponse(dict):
         :param int max_num_replicas: The maximum number of instances that the autoscaler can scale out to. This is required when creating or updating an autoscaler. The maximum number of replicas must not be lower than minimal number of replicas.
         :param int min_num_replicas: The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
         :param str mode: Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
-        :param 'AutoscalingPolicyScalingScheduleResponse' scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+        :param Mapping[str, 'AutoscalingPolicyScalingScheduleResponse'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
         pulumi.set(__self__, "cool_down_period_sec", cool_down_period_sec)
         pulumi.set(__self__, "cpu_utilization", cpu_utilization)
@@ -1960,7 +1960,7 @@ class AutoscalingPolicyResponse(dict):
 
     @property
     @pulumi.getter(name="scalingSchedules")
-    def scaling_schedules(self) -> 'outputs.AutoscalingPolicyScalingScheduleResponse':
+    def scaling_schedules(self) -> Mapping[str, 'outputs.AutoscalingPolicyScalingScheduleResponse']:
         """
         Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
@@ -4322,9 +4322,9 @@ class DiskResourceStatusResponse(dict):
 
     def __init__(__self__, *,
                  async_primary_disk: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse',
-                 async_secondary_disks: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse'):
+                 async_secondary_disks: Mapping[str, 'outputs.DiskResourceStatusAsyncReplicationStatusResponse']):
         """
-        :param 'DiskResourceStatusAsyncReplicationStatusResponse' async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
+        :param Mapping[str, 'DiskResourceStatusAsyncReplicationStatusResponse'] async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
         """
         pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         pulumi.set(__self__, "async_secondary_disks", async_secondary_disks)
@@ -4336,7 +4336,7 @@ class DiskResourceStatusResponse(dict):
 
     @property
     @pulumi.getter(name="asyncSecondaryDisks")
-    def async_secondary_disks(self) -> 'outputs.DiskResourceStatusAsyncReplicationStatusResponse':
+    def async_secondary_disks(self) -> Mapping[str, 'outputs.DiskResourceStatusAsyncReplicationStatusResponse']:
         """
         Key: disk, value: AsyncReplicationStatus message
         """
@@ -15752,11 +15752,11 @@ class ShareSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 project_map: 'outputs.ShareSettingsProjectConfigResponse',
+                 project_map: Mapping[str, 'outputs.ShareSettingsProjectConfigResponse'],
                  share_type: str):
         """
         The share setting for reservations and sole tenancy node groups.
-        :param 'ShareSettingsProjectConfigResponse' project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        :param Mapping[str, 'ShareSettingsProjectConfigResponse'] project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param str share_type: Type of sharing for this shared-reservation
         """
         pulumi.set(__self__, "project_map", project_map)
@@ -15764,7 +15764,7 @@ class ShareSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="projectMap")
-    def project_map(self) -> 'outputs.ShareSettingsProjectConfigResponse':
+    def project_map(self) -> Mapping[str, 'outputs.ShareSettingsProjectConfigResponse']:
         """
         A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         """
@@ -16441,14 +16441,14 @@ class StatefulPolicyPreservedStateResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 disks: 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse',
-                 external_ips: 'outputs.StatefulPolicyPreservedStateNetworkIpResponse',
-                 internal_ips: 'outputs.StatefulPolicyPreservedStateNetworkIpResponse'):
+                 disks: Mapping[str, 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse'],
+                 external_ips: Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse'],
+                 internal_ips: Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse']):
         """
         Configuration of preserved resources.
-        :param 'StatefulPolicyPreservedStateDiskDeviceResponse' disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-        :param 'StatefulPolicyPreservedStateNetworkIpResponse' external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-        :param 'StatefulPolicyPreservedStateNetworkIpResponse' internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param Mapping[str, 'StatefulPolicyPreservedStateDiskDeviceResponse'] disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
+        :param Mapping[str, 'StatefulPolicyPreservedStateNetworkIpResponse'] external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param Mapping[str, 'StatefulPolicyPreservedStateNetworkIpResponse'] internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "external_ips", external_ips)
@@ -16456,7 +16456,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter
-    def disks(self) -> 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse':
+    def disks(self) -> Mapping[str, 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse']:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
         """
@@ -16464,7 +16464,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter(name="externalIPs")
-    def external_ips(self) -> 'outputs.StatefulPolicyPreservedStateNetworkIpResponse':
+    def external_ips(self) -> Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse']:
         """
         External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
@@ -16472,7 +16472,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter(name="internalIPs")
-    def internal_ips(self) -> 'outputs.StatefulPolicyPreservedStateNetworkIpResponse':
+    def internal_ips(self) -> Mapping[str, 'outputs.StatefulPolicyPreservedStateNetworkIpResponse']:
         """
         Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """

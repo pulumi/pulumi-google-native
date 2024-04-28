@@ -5670,13 +5670,13 @@ class SourceResponse(dict):
                  additional_contexts: Sequence['outputs.SourceContextResponse'],
                  artifact_storage_source_uri: str,
                  context: 'outputs.SourceContextResponse',
-                 file_hashes: 'outputs.FileHashesResponse'):
+                 file_hashes: Mapping[str, 'outputs.FileHashesResponse']):
         """
         Source describes the location of the source used for the build.
         :param Sequence['SourceContextResponse'] additional_contexts: If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
         :param str artifact_storage_source_uri: If provided, the input binary artifacts for the build came from this location.
         :param 'SourceContextResponse' context: If provided, the source code used for the build came from this location.
-        :param 'FileHashesResponse' file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+        :param Mapping[str, 'FileHashesResponse'] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """
         pulumi.set(__self__, "additional_contexts", additional_contexts)
         pulumi.set(__self__, "artifact_storage_source_uri", artifact_storage_source_uri)
@@ -5709,7 +5709,7 @@ class SourceResponse(dict):
 
     @property
     @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> 'outputs.FileHashesResponse':
+    def file_hashes(self) -> Mapping[str, 'outputs.FileHashesResponse']:
         """
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """

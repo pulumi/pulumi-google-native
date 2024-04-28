@@ -291,12 +291,12 @@ class IpRangeArgs:
 class ManagementClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 node_type_configs: pulumi.Input['NodeTypeConfigArgs'],
+                 node_type_configs: pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]],
                  stretched_cluster_config: Optional[pulumi.Input['StretchedClusterConfigArgs']] = None):
         """
         Management cluster configuration.
         :param pulumi.Input[str] cluster_id: The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param pulumi.Input['NodeTypeConfigArgs'] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
+        :param pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         :param pulumi.Input['StretchedClusterConfigArgs'] stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -318,14 +318,14 @@ class ManagementClusterArgs:
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> pulumi.Input['NodeTypeConfigArgs']:
+    def node_type_configs(self) -> pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]]:
         """
         The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         """
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: pulumi.Input['NodeTypeConfigArgs']):
+    def node_type_configs(self, value: pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]]):
         pulumi.set(self, "node_type_configs", value)
 
     @property

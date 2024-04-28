@@ -120,11 +120,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("networkPerformanceConfig")]
         public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
+        [Input("partnerMetadata")]
+        private InputMap<Inputs.StructuredEntriesArgs>? _partnerMetadata;
+
         /// <summary>
         /// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
         /// </summary>
-        [Input("partnerMetadata")]
-        public Input<Inputs.StructuredEntriesArgs>? PartnerMetadata { get; set; }
+        public InputMap<Inputs.StructuredEntriesArgs> PartnerMetadata
+        {
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<Inputs.StructuredEntriesArgs>());
+            set => _partnerMetadata = value;
+        }
 
         /// <summary>
         /// PostKeyRevocationActionType of the instance.
@@ -198,11 +204,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _serviceAccounts = value;
         }
 
+        [Input("serviceIntegrationSpecs")]
+        private InputMap<Inputs.ServiceIntegrationSpecArgs>? _serviceIntegrationSpecs;
+
         /// <summary>
         /// Mapping of user defined keys to ServiceIntegrationSpec.
         /// </summary>
-        [Input("serviceIntegrationSpecs")]
-        public Input<Inputs.ServiceIntegrationSpecArgs>? ServiceIntegrationSpecs { get; set; }
+        public InputMap<Inputs.ServiceIntegrationSpecArgs> ServiceIntegrationSpecs
+        {
+            get => _serviceIntegrationSpecs ?? (_serviceIntegrationSpecs = new InputMap<Inputs.ServiceIntegrationSpecArgs>());
+            set => _serviceIntegrationSpecs = value;
+        }
 
         /// <summary>
         /// Note that for MachineImage, this is not supported yet.

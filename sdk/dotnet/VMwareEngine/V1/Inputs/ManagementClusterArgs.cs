@@ -21,11 +21,17 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1.Inputs
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        [Input("nodeTypeConfigs", required: true)]
+        private InputMap<Inputs.NodeTypeConfigArgs>? _nodeTypeConfigs;
+
         /// <summary>
         /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         /// </summary>
-        [Input("nodeTypeConfigs", required: true)]
-        public Input<Inputs.NodeTypeConfigArgs> NodeTypeConfigs { get; set; } = null!;
+        public InputMap<Inputs.NodeTypeConfigArgs> NodeTypeConfigs
+        {
+            get => _nodeTypeConfigs ?? (_nodeTypeConfigs = new InputMap<Inputs.NodeTypeConfigArgs>());
+            set => _nodeTypeConfigs = value;
+        }
 
         /// <summary>
         /// Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.

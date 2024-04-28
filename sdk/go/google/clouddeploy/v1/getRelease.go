@@ -65,9 +65,9 @@ type LookupReleaseResult struct {
 	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion string `pulumi:"skaffoldVersion"`
 	// Map from target ID to the target artifacts created during the render operation.
-	TargetArtifacts TargetArtifactResponse `pulumi:"targetArtifacts"`
+	TargetArtifacts map[string]TargetArtifactResponse `pulumi:"targetArtifacts"`
 	// Map from target ID to details of the render operation for that target.
-	TargetRenders TargetRenderResponse `pulumi:"targetRenders"`
+	TargetRenders map[string]TargetRenderResponse `pulumi:"targetRenders"`
 	// Snapshot of the targets taken at release creation time.
 	TargetSnapshots []TargetResponse `pulumi:"targetSnapshots"`
 	// Unique identifier of the `Release`.
@@ -198,13 +198,13 @@ func (o LookupReleaseResultOutput) SkaffoldVersion() pulumi.StringOutput {
 }
 
 // Map from target ID to the target artifacts created during the render operation.
-func (o LookupReleaseResultOutput) TargetArtifacts() TargetArtifactResponseOutput {
-	return o.ApplyT(func(v LookupReleaseResult) TargetArtifactResponse { return v.TargetArtifacts }).(TargetArtifactResponseOutput)
+func (o LookupReleaseResultOutput) TargetArtifacts() TargetArtifactResponseMapOutput {
+	return o.ApplyT(func(v LookupReleaseResult) map[string]TargetArtifactResponse { return v.TargetArtifacts }).(TargetArtifactResponseMapOutput)
 }
 
 // Map from target ID to details of the render operation for that target.
-func (o LookupReleaseResultOutput) TargetRenders() TargetRenderResponseOutput {
-	return o.ApplyT(func(v LookupReleaseResult) TargetRenderResponse { return v.TargetRenders }).(TargetRenderResponseOutput)
+func (o LookupReleaseResultOutput) TargetRenders() TargetRenderResponseMapOutput {
+	return o.ApplyT(func(v LookupReleaseResult) map[string]TargetRenderResponse { return v.TargetRenders }).(TargetRenderResponseMapOutput)
 }
 
 // Snapshot of the targets taken at release creation time.

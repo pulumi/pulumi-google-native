@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
         /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         /// </summary>
         [Output("nodeTypeConfigs")]
-        public Output<Outputs.NodeTypeConfigResponse> NodeTypeConfigs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.NodeTypeConfigResponse>> NodeTypeConfigs { get; private set; } = null!;
 
         [Output("privateCloudId")]
         public Output<string> PrivateCloudId { get; private set; } = null!;
@@ -146,11 +146,17 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        [Input("nodeTypeConfigs", required: true)]
+        private InputMap<Inputs.NodeTypeConfigArgs>? _nodeTypeConfigs;
+
         /// <summary>
         /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         /// </summary>
-        [Input("nodeTypeConfigs", required: true)]
-        public Input<Inputs.NodeTypeConfigArgs> NodeTypeConfigs { get; set; } = null!;
+        public InputMap<Inputs.NodeTypeConfigArgs> NodeTypeConfigs
+        {
+            get => _nodeTypeConfigs ?? (_nodeTypeConfigs = new InputMap<Inputs.NodeTypeConfigArgs>());
+            set => _nodeTypeConfigs = value;
+        }
 
         [Input("privateCloudId", required: true)]
         public Input<string> PrivateCloudId { get; set; } = null!;

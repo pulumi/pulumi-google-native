@@ -2121,11 +2121,11 @@ class GroupOrSegmentArgs:
 @pulumi.input_type
 class Hl7SchemaConfigArgs:
     def __init__(__self__, *,
-                 message_schema_configs: Optional[pulumi.Input['SchemaGroupArgs']] = None,
+                 message_schema_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['SchemaGroupArgs']]]] = None,
                  version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionSourceArgs']]]] = None):
         """
         Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
-        :param pulumi.Input['SchemaGroupArgs'] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SchemaGroupArgs']]] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         :param pulumi.Input[Sequence[pulumi.Input['VersionSourceArgs']]] version: Each VersionSource is tested and only if they all match is the schema used for the message.
         """
         if message_schema_configs is not None:
@@ -2135,14 +2135,14 @@ class Hl7SchemaConfigArgs:
 
     @property
     @pulumi.getter(name="messageSchemaConfigs")
-    def message_schema_configs(self) -> Optional[pulumi.Input['SchemaGroupArgs']]:
+    def message_schema_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SchemaGroupArgs']]]]:
         """
         Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         """
         return pulumi.get(self, "message_schema_configs")
 
     @message_schema_configs.setter
-    def message_schema_configs(self, value: Optional[pulumi.Input['SchemaGroupArgs']]):
+    def message_schema_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SchemaGroupArgs']]]]):
         pulumi.set(self, "message_schema_configs", value)
 
     @property
@@ -3233,24 +3233,24 @@ class SearchParameterArgs:
 @pulumi.input_type
 class SensitiveTextAnnotationArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input['DetailArgs']] = None):
+                 details: Optional[pulumi.Input[Mapping[str, pulumi.Input['DetailArgs']]]] = None):
         """
         A TextAnnotation specifies a text range that includes sensitive information.
-        :param pulumi.Input['DetailArgs'] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
+        :param pulumi.Input[Mapping[str, pulumi.Input['DetailArgs']]] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input['DetailArgs']]:
+    def details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DetailArgs']]]]:
         """
         Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input['DetailArgs']]):
+    def details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['DetailArgs']]]]):
         pulumi.set(self, "details", value)
 
 

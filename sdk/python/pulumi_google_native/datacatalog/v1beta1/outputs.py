@@ -835,11 +835,11 @@ class GoogleCloudDatacatalogV1beta1UsageSignalResponse(dict):
 
     def __init__(__self__, *,
                  update_time: str,
-                 usage_within_time_range: 'outputs.GoogleCloudDatacatalogV1beta1UsageStatsResponse'):
+                 usage_within_time_range: Mapping[str, 'outputs.GoogleCloudDatacatalogV1beta1UsageStatsResponse']):
         """
         The set of all usage signals that we store in Data Catalog.
         :param str update_time: The timestamp of the end of the usage statistics duration.
-        :param 'GoogleCloudDatacatalogV1beta1UsageStatsResponse' usage_within_time_range: Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
+        :param Mapping[str, 'GoogleCloudDatacatalogV1beta1UsageStatsResponse'] usage_within_time_range: Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
         """
         pulumi.set(__self__, "update_time", update_time)
         pulumi.set(__self__, "usage_within_time_range", usage_within_time_range)
@@ -854,7 +854,7 @@ class GoogleCloudDatacatalogV1beta1UsageSignalResponse(dict):
 
     @property
     @pulumi.getter(name="usageWithinTimeRange")
-    def usage_within_time_range(self) -> 'outputs.GoogleCloudDatacatalogV1beta1UsageStatsResponse':
+    def usage_within_time_range(self) -> Mapping[str, 'outputs.GoogleCloudDatacatalogV1beta1UsageStatsResponse']:
         """
         Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
         """

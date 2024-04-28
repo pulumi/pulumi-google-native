@@ -2746,7 +2746,7 @@ class JobConfigurationQueryArgs:
                  query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
                  schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 table_definitions: Optional[pulumi.Input['ExternalDataConfigurationArgs']] = None,
+                 table_definitions: Optional[pulumi.Input[Mapping[str, pulumi.Input['ExternalDataConfigurationArgs']]]] = None,
                  time_partitioning: Optional[pulumi.Input['TimePartitioningArgs']] = None,
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None,
                  use_query_cache: Optional[pulumi.Input[bool]] = None,
@@ -2772,7 +2772,7 @@ class JobConfigurationQueryArgs:
         :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] query_parameters: Query parameters for standard SQL queries.
         :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
-        :param pulumi.Input['ExternalDataConfigurationArgs'] table_definitions: [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ExternalDataConfigurationArgs']]] table_definitions: [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         :param pulumi.Input['TimePartitioningArgs'] time_partitioning: Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
         :param pulumi.Input[bool] use_query_cache: [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
@@ -3064,14 +3064,14 @@ class JobConfigurationQueryArgs:
 
     @property
     @pulumi.getter(name="tableDefinitions")
-    def table_definitions(self) -> Optional[pulumi.Input['ExternalDataConfigurationArgs']]:
+    def table_definitions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ExternalDataConfigurationArgs']]]]:
         """
         [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         """
         return pulumi.get(self, "table_definitions")
 
     @table_definitions.setter
-    def table_definitions(self, value: Optional[pulumi.Input['ExternalDataConfigurationArgs']]):
+    def table_definitions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ExternalDataConfigurationArgs']]]]):
         pulumi.set(self, "table_definitions", value)
 
     @property
@@ -3842,11 +3842,11 @@ class QueryParameterTypeArgs:
 class QueryParameterValueArgs:
     def __init__(__self__, *,
                  array_values: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterValueArgs']]]] = None,
-                 struct_values: Optional[pulumi.Input['QueryParameterValueArgs']] = None,
+                 struct_values: Optional[pulumi.Input[Mapping[str, pulumi.Input['QueryParameterValueArgs']]]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['QueryParameterValueArgs']]] array_values: [Optional] The array values, if this is an array type.
-        :param pulumi.Input['QueryParameterValueArgs'] struct_values: [Optional] The struct field values, in order of the struct type's declaration.
+        :param pulumi.Input[Mapping[str, pulumi.Input['QueryParameterValueArgs']]] struct_values: [Optional] The struct field values, in order of the struct type's declaration.
         :param pulumi.Input[str] value: [Optional] The value of this value, if a simple scalar type.
         """
         if array_values is not None:
@@ -3870,14 +3870,14 @@ class QueryParameterValueArgs:
 
     @property
     @pulumi.getter(name="structValues")
-    def struct_values(self) -> Optional[pulumi.Input['QueryParameterValueArgs']]:
+    def struct_values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['QueryParameterValueArgs']]]]:
         """
         [Optional] The struct field values, in order of the struct type's declaration.
         """
         return pulumi.get(self, "struct_values")
 
     @struct_values.setter
-    def struct_values(self, value: Optional[pulumi.Input['QueryParameterValueArgs']]):
+    def struct_values(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['QueryParameterValueArgs']]]]):
         pulumi.set(self, "struct_values", value)
 
     @property

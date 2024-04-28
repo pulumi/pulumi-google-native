@@ -12,17 +12,29 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 
     public sealed class InstanceGroupManagerInstanceFlexibilityPolicyArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Named instance selections configuring properties that the group will use when creating new VMs.
-        /// </summary>
         [Input("instanceSelectionLists")]
-        public Input<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>? InstanceSelectionLists { get; set; }
+        private InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>? _instanceSelectionLists;
 
         /// <summary>
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
+        public InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs> InstanceSelectionLists
+        {
+            get => _instanceSelectionLists ?? (_instanceSelectionLists = new InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>());
+            set => _instanceSelectionLists = value;
+        }
+
         [Input("instanceSelections")]
-        public Input<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>? InstanceSelections { get; set; }
+        private InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>? _instanceSelections;
+
+        /// <summary>
+        /// Named instance selections configuring properties that the group will use when creating new VMs.
+        /// </summary>
+        public InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs> InstanceSelections
+        {
+            get => _instanceSelections ?? (_instanceSelections = new InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>());
+            set => _instanceSelections = value;
+        }
 
         public InstanceGroupManagerInstanceFlexibilityPolicyArgs()
         {

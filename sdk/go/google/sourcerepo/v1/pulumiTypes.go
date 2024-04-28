@@ -1020,45 +1020,29 @@ func (i PubsubConfigArgs) ToPubsubConfigOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigOutput)
 }
 
-func (i PubsubConfigArgs) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
-	return i.ToPubsubConfigPtrOutputWithContext(context.Background())
-}
-
-func (i PubsubConfigArgs) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigOutput).ToPubsubConfigPtrOutputWithContext(ctx)
-}
-
-// PubsubConfigPtrInput is an input type that accepts PubsubConfigArgs, PubsubConfigPtr and PubsubConfigPtrOutput values.
-// You can construct a concrete instance of `PubsubConfigPtrInput` via:
+// PubsubConfigMapInput is an input type that accepts PubsubConfigMap and PubsubConfigMapOutput values.
+// You can construct a concrete instance of `PubsubConfigMapInput` via:
 //
-//	        PubsubConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type PubsubConfigPtrInput interface {
+//	PubsubConfigMap{ "key": PubsubConfigArgs{...} }
+type PubsubConfigMapInput interface {
 	pulumi.Input
 
-	ToPubsubConfigPtrOutput() PubsubConfigPtrOutput
-	ToPubsubConfigPtrOutputWithContext(context.Context) PubsubConfigPtrOutput
+	ToPubsubConfigMapOutput() PubsubConfigMapOutput
+	ToPubsubConfigMapOutputWithContext(context.Context) PubsubConfigMapOutput
 }
 
-type pubsubConfigPtrType PubsubConfigArgs
+type PubsubConfigMap map[string]PubsubConfigInput
 
-func PubsubConfigPtr(v *PubsubConfigArgs) PubsubConfigPtrInput {
-	return (*pubsubConfigPtrType)(v)
+func (PubsubConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PubsubConfig)(nil)).Elem()
 }
 
-func (*pubsubConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubConfig)(nil)).Elem()
+func (i PubsubConfigMap) ToPubsubConfigMapOutput() PubsubConfigMapOutput {
+	return i.ToPubsubConfigMapOutputWithContext(context.Background())
 }
 
-func (i *pubsubConfigPtrType) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
-	return i.ToPubsubConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *pubsubConfigPtrType) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigPtrOutput)
+func (i PubsubConfigMap) ToPubsubConfigMapOutputWithContext(ctx context.Context) PubsubConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigMapOutput)
 }
 
 // Configuration to publish a Cloud Pub/Sub message.
@@ -1076,16 +1060,6 @@ func (o PubsubConfigOutput) ToPubsubConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o PubsubConfigOutput) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
-	return o.ToPubsubConfigPtrOutputWithContext(context.Background())
-}
-
-func (o PubsubConfigOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubConfig) *PubsubConfig {
-		return &v
-	}).(PubsubConfigPtrOutput)
-}
-
 // The format of the Cloud Pub/Sub messages.
 func (o PubsubConfigOutput) MessageFormat() PubsubConfigMessageFormatPtrOutput {
 	return o.ApplyT(func(v PubsubConfig) *PubsubConfigMessageFormat { return v.MessageFormat }).(PubsubConfigMessageFormatPtrOutput)
@@ -1101,58 +1075,24 @@ func (o PubsubConfigOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PubsubConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
 
-type PubsubConfigPtrOutput struct{ *pulumi.OutputState }
+type PubsubConfigMapOutput struct{ *pulumi.OutputState }
 
-func (PubsubConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PubsubConfig)(nil)).Elem()
+func (PubsubConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PubsubConfig)(nil)).Elem()
 }
 
-func (o PubsubConfigPtrOutput) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
+func (o PubsubConfigMapOutput) ToPubsubConfigMapOutput() PubsubConfigMapOutput {
 	return o
 }
 
-func (o PubsubConfigPtrOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
+func (o PubsubConfigMapOutput) ToPubsubConfigMapOutputWithContext(ctx context.Context) PubsubConfigMapOutput {
 	return o
 }
 
-func (o PubsubConfigPtrOutput) Elem() PubsubConfigOutput {
-	return o.ApplyT(func(v *PubsubConfig) PubsubConfig {
-		if v != nil {
-			return *v
-		}
-		var ret PubsubConfig
-		return ret
+func (o PubsubConfigMapOutput) MapIndex(k pulumi.StringInput) PubsubConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PubsubConfig {
+		return vs[0].(map[string]PubsubConfig)[vs[1].(string)]
 	}).(PubsubConfigOutput)
-}
-
-// The format of the Cloud Pub/Sub messages.
-func (o PubsubConfigPtrOutput) MessageFormat() PubsubConfigMessageFormatPtrOutput {
-	return o.ApplyT(func(v *PubsubConfig) *PubsubConfigMessageFormat {
-		if v == nil {
-			return nil
-		}
-		return v.MessageFormat
-	}).(PubsubConfigMessageFormatPtrOutput)
-}
-
-// Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
-func (o PubsubConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
-// A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
-func (o PubsubConfigPtrOutput) Topic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Topic
-	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration to publish a Cloud Pub/Sub message.
@@ -1195,6 +1135,26 @@ func (o PubsubConfigResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
 }
 
+type PubsubConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PubsubConfigResponse)(nil)).Elem()
+}
+
+func (o PubsubConfigResponseMapOutput) ToPubsubConfigResponseMapOutput() PubsubConfigResponseMapOutput {
+	return o
+}
+
+func (o PubsubConfigResponseMapOutput) ToPubsubConfigResponseMapOutputWithContext(ctx context.Context) PubsubConfigResponseMapOutput {
+	return o
+}
+
+func (o PubsubConfigResponseMapOutput) MapIndex(k pulumi.StringInput) PubsubConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PubsubConfigResponse {
+		return vs[0].(map[string]PubsubConfigResponse)[vs[1].(string)]
+	}).(PubsubConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -1207,7 +1167,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MirrorConfigInput)(nil)).Elem(), MirrorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirrorConfigPtrInput)(nil)).Elem(), MirrorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigInput)(nil)).Elem(), PubsubConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigPtrInput)(nil)).Elem(), PubsubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigMapInput)(nil)).Elem(), PubsubConfigMap{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -1227,6 +1187,7 @@ func init() {
 	pulumi.RegisterOutputType(MirrorConfigPtrOutput{})
 	pulumi.RegisterOutputType(MirrorConfigResponseOutput{})
 	pulumi.RegisterOutputType(PubsubConfigOutput{})
-	pulumi.RegisterOutputType(PubsubConfigPtrOutput{})
+	pulumi.RegisterOutputType(PubsubConfigMapOutput{})
 	pulumi.RegisterOutputType(PubsubConfigResponseOutput{})
+	pulumi.RegisterOutputType(PubsubConfigResponseMapOutput{})
 }

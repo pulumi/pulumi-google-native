@@ -15,11 +15,17 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// </summary>
     public sealed class ShareSettingsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("projectMap")]
+        private InputMap<Inputs.ShareSettingsProjectConfigArgs>? _projectMap;
+
         /// <summary>
         /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
-        [Input("projectMap")]
-        public Input<Inputs.ShareSettingsProjectConfigArgs>? ProjectMap { get; set; }
+        public InputMap<Inputs.ShareSettingsProjectConfigArgs> ProjectMap
+        {
+            get => _projectMap ?? (_projectMap = new InputMap<Inputs.ShareSettingsProjectConfigArgs>());
+            set => _projectMap = value;
+        }
 
         [Input("projects")]
         private InputList<string>? _projects;

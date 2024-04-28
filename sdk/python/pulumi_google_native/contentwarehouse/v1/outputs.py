@@ -588,16 +588,16 @@ class GoogleCloudContentwarehouseV1MapPropertyResponse(dict):
     Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
     """
     def __init__(__self__, *,
-                 fields: 'outputs.GoogleCloudContentwarehouseV1ValueResponse'):
+                 fields: Mapping[str, 'outputs.GoogleCloudContentwarehouseV1ValueResponse']):
         """
         Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
-        :param 'GoogleCloudContentwarehouseV1ValueResponse' fields: Unordered map of dynamically typed values.
+        :param Mapping[str, 'GoogleCloudContentwarehouseV1ValueResponse'] fields: Unordered map of dynamically typed values.
         """
         pulumi.set(__self__, "fields", fields)
 
     @property
     @pulumi.getter
-    def fields(self) -> 'outputs.GoogleCloudContentwarehouseV1ValueResponse':
+    def fields(self) -> Mapping[str, 'outputs.GoogleCloudContentwarehouseV1ValueResponse']:
         """
         Unordered map of dynamically typed values.
         """

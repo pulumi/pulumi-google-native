@@ -4014,16 +4014,16 @@ class GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 synthesize_speech_configs: 'outputs.GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse'):
+                 synthesize_speech_configs: Mapping[str, 'outputs.GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse']):
         """
         Settings related to speech synthesizing.
-        :param 'GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse' synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
+        :param Mapping[str, 'GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse'] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
 
     @property
     @pulumi.getter(name="synthesizeSpeechConfigs")
-    def synthesize_speech_configs(self) -> 'outputs.GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse':
+    def synthesize_speech_configs(self) -> Mapping[str, 'outputs.GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse']:
         """
         Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """

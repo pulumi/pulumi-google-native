@@ -394,12 +394,12 @@ class ManagementClusterResponse(dict):
 
     def __init__(__self__, *,
                  cluster_id: str,
-                 node_type_configs: 'outputs.NodeTypeConfigResponse',
+                 node_type_configs: Mapping[str, 'outputs.NodeTypeConfigResponse'],
                  stretched_cluster_config: 'outputs.StretchedClusterConfigResponse'):
         """
         Management cluster configuration.
         :param str cluster_id: The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param 'NodeTypeConfigResponse' node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
+        :param Mapping[str, 'NodeTypeConfigResponse'] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         :param 'StretchedClusterConfigResponse' stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -416,7 +416,7 @@ class ManagementClusterResponse(dict):
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> 'outputs.NodeTypeConfigResponse':
+    def node_type_configs(self) -> Mapping[str, 'outputs.NodeTypeConfigResponse']:
         """
         The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         """

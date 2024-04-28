@@ -44,7 +44,7 @@ export class TagTemplate extends pulumi.CustomResource {
     /**
      * Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
      */
-    public readonly fields!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1TagTemplateFieldResponse>;
+    public readonly fields!: pulumi.Output<{[key: string]: outputs.datacatalog.v1.GoogleCloudDatacatalogV1TagTemplateFieldResponse}>;
     /**
      * Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
      */
@@ -111,7 +111,7 @@ export interface TagTemplateArgs {
     /**
      * Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
      */
-    fields: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1TagTemplateFieldArgs>;
+    fields: pulumi.Input<{[key: string]: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1TagTemplateFieldArgs>}>;
     /**
      * Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
      */
