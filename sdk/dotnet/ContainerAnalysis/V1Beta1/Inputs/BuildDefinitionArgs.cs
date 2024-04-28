@@ -16,18 +16,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? BuildType { get; set; }
 
         [Input("externalParameters")]
-        private InputMap<string>? _externalParameters;
-        public InputMap<string> ExternalParameters
+        private InputMap<object>? _externalParameters;
+        public InputMap<object> ExternalParameters
         {
-            get => _externalParameters ?? (_externalParameters = new InputMap<string>());
+            get => _externalParameters ?? (_externalParameters = new InputMap<object>());
             set => _externalParameters = value;
         }
 
         [Input("internalParameters")]
-        private InputMap<string>? _internalParameters;
-        public InputMap<string> InternalParameters
+        private InputMap<object>? _internalParameters;
+        public InputMap<object> InternalParameters
         {
-            get => _internalParameters ?? (_internalParameters = new InputMap<string>());
+            get => _internalParameters ?? (_internalParameters = new InputMap<object>());
             set => _internalParameters = value;
         }
 

@@ -27,17 +27,11 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
         [Input("constraintViolationLimit")]
         public Input<string>? ConstraintViolationLimit { get; set; }
 
-        [Input("deploymentConfigs")]
-        private InputMap<string>? _deploymentConfigs;
-
         /// <summary>
         /// Map of deployment configs to deployments ("admission", "audit", "mutation').
         /// </summary>
-        public InputMap<string> DeploymentConfigs
-        {
-            get => _deploymentConfigs ?? (_deploymentConfigs = new InputMap<string>());
-            set => _deploymentConfigs = value;
-        }
+        [Input("deploymentConfigs")]
+        public Input<Inputs.PolicyControllerPolicyControllerDeploymentConfigArgs>? DeploymentConfigs { get; set; }
 
         [Input("exemptableNamespaces")]
         private InputList<string>? _exemptableNamespaces;

@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         public readonly Outputs.EnterpriseCrmEventbusProtoIntParameterArrayResponse IntArray;
         public readonly string IntValue;
         public readonly Outputs.EnterpriseCrmEventbusProtoProtoParameterArrayResponse ProtoArray;
-        public readonly ImmutableDictionary<string, string> ProtoValue;
+        public readonly ImmutableDictionary<string, object> ProtoValue;
         public readonly Outputs.EnterpriseCrmEventbusProtoSerializedObjectParameterResponse SerializedObjectValue;
         public readonly Outputs.EnterpriseCrmEventbusProtoStringParameterArrayResponse StringArray;
         public readonly string StringValue;
@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             Outputs.EnterpriseCrmEventbusProtoProtoParameterArrayResponse protoArray,
 
-            ImmutableDictionary<string, string> protoValue,
+            ImmutableDictionary<string, object> protoValue,
 
             Outputs.EnterpriseCrmEventbusProtoSerializedObjectParameterResponse serializedObjectValue,
 

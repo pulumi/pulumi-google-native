@@ -1326,7 +1326,7 @@ class EnterpriseCrmEventbusProtoParameterValueTypeArgs:
                  int_array: Optional[pulumi.Input['EnterpriseCrmEventbusProtoIntParameterArrayArgs']] = None,
                  int_value: Optional[pulumi.Input[str]] = None,
                  proto_array: Optional[pulumi.Input['EnterpriseCrmEventbusProtoProtoParameterArrayArgs']] = None,
-                 proto_value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 proto_value: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  serialized_object_value: Optional[pulumi.Input['EnterpriseCrmEventbusProtoSerializedObjectParameterArgs']] = None,
                  string_array: Optional[pulumi.Input['EnterpriseCrmEventbusProtoStringParameterArrayArgs']] = None,
                  string_value: Optional[pulumi.Input[str]] = None):
@@ -1421,11 +1421,11 @@ class EnterpriseCrmEventbusProtoParameterValueTypeArgs:
 
     @property
     @pulumi.getter(name="protoValue")
-    def proto_value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def proto_value(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "proto_value")
 
     @proto_value.setter
-    def proto_value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def proto_value(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "proto_value", value)
 
     @property
@@ -1499,17 +1499,17 @@ class EnterpriseCrmEventbusProtoPropertyEntryArgs:
 @pulumi.input_type
 class EnterpriseCrmEventbusProtoProtoParameterArrayArgs:
     def __init__(__self__, *,
-                 proto_values: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 proto_values: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None):
         if proto_values is not None:
             pulumi.set(__self__, "proto_values", proto_values)
 
     @property
     @pulumi.getter(name="protoValues")
-    def proto_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def proto_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         return pulumi.get(self, "proto_values")
 
     @proto_values.setter
-    def proto_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def proto_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "proto_values", value)
 
 
@@ -2397,7 +2397,7 @@ class EnterpriseCrmEventbusProtoValueTypeArgs:
                  double_value: Optional[pulumi.Input[float]] = None,
                  int_array: Optional[pulumi.Input['EnterpriseCrmEventbusProtoIntArrayArgs']] = None,
                  int_value: Optional[pulumi.Input[str]] = None,
-                 proto_value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 proto_value: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  string_array: Optional[pulumi.Input['EnterpriseCrmEventbusProtoStringArrayArgs']] = None,
                  string_value: Optional[pulumi.Input[str]] = None):
         """
@@ -2467,11 +2467,11 @@ class EnterpriseCrmEventbusProtoValueTypeArgs:
 
     @property
     @pulumi.getter(name="protoValue")
-    def proto_value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def proto_value(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "proto_value")
 
     @proto_value.setter
-    def proto_value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def proto_value(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "proto_value", value)
 
     @property
@@ -3275,7 +3275,7 @@ class EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs:
                  int_value: Optional[pulumi.Input[str]] = None,
                  json_value: Optional[pulumi.Input[str]] = None,
                  proto_array: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs']] = None,
-                 proto_value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 proto_value: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  serialized_object_value: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterArgs']] = None,
                  string_array: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoStringParameterArrayArgs']] = None,
                  string_value: Optional[pulumi.Input[str]] = None):
@@ -3381,11 +3381,11 @@ class EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs:
 
     @property
     @pulumi.getter(name="protoValue")
-    def proto_value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def proto_value(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "proto_value")
 
     @proto_value.setter
-    def proto_value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def proto_value(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "proto_value", value)
 
     @property
@@ -3419,17 +3419,17 @@ class EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs:
 @pulumi.input_type
 class EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs:
     def __init__(__self__, *,
-                 proto_values: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 proto_values: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None):
         if proto_values is not None:
             pulumi.set(__self__, "proto_values", proto_values)
 
     @property
     @pulumi.getter(name="protoValues")
-    def proto_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def proto_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         return pulumi.get(self, "proto_values")
 
     @proto_values.setter
-    def proto_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def proto_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "proto_values", value)
 
 
@@ -3538,7 +3538,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
                  last_modified_time: Optional[pulumi.Input[str]] = None,
                  next_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoNextTaskArgs']]]] = None,
                  next_tasks_execution_policy: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy']] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 parameters: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs']] = None,
                  position: Optional[pulumi.Input['EnterpriseCrmEventbusProtoCoordinateArgs']] = None,
                  precondition: Optional[pulumi.Input[str]] = None,
                  precondition_label: Optional[pulumi.Input[str]] = None,
@@ -3567,7 +3567,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
         :param pulumi.Input[str] last_modified_time: Auto-generated.
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoNextTaskArgs']]] next_tasks: The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true.
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy'] next_tasks_execution_policy: The policy dictating the execution of the next set of tasks for the current task.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The customized parameters the user can pass to this task.
+        :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs'] parameters: The customized parameters the user can pass to this task.
         :param pulumi.Input['EnterpriseCrmEventbusProtoCoordinateArgs'] position: Optional. Informs the front-end application where to draw this task config on the UI.
         :param pulumi.Input[str] precondition: Optional. Standard filter expression evaluated before execution. Independent of other conditions and tasks. Can be used to enable rollout. e.g. "rollout(5)" will only allow 5% of incoming traffic to task.
         :param pulumi.Input[str] precondition_label: Optional. User-provided label that is attached to precondition in the UI.
@@ -3806,14 +3806,14 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def parameters(self) -> Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs']]:
         """
         The customized parameters the user can pass to this task.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def parameters(self, value: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs']]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -6877,7 +6877,7 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
                  json_validation_option: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption']] = None,
                  next_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]]] = None,
                  next_tasks_execution_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy']] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 parameters: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']] = None,
                  position: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']] = None,
                  success_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaSuccessPolicyArgs']] = None,
                  synchronous_call_failure_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaFailurePolicyArgs']] = None,
@@ -6895,7 +6895,7 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption'] json_validation_option: Optional. If set, overrides the option configured in the Task implementation class.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]] next_tasks: Optional. The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy'] next_tasks_execution_policy: Optional. The policy dictating the execution of the next set of tasks for the current task.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Optional. The customized parameters the user can pass to this task.
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs'] parameters: Optional. The customized parameters the user can pass to this task.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs'] position: Optional. Informs the front-end application where to draw this error catcher config on the UI.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaSuccessPolicyArgs'] success_policy: Optional. Determines what action to take upon successful task completion.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaFailurePolicyArgs'] synchronous_call_failure_policy: Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
@@ -7045,14 +7045,14 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def parameters(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]:
         """
         Optional. The customized parameters the user can pass to this task.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def parameters(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaEventParameterArgs']]):
         pulumi.set(self, "parameters", value)
 
     @property

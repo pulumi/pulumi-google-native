@@ -281,6 +281,255 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
     }
 
     /// <summary>
+    /// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding : IEquatable<GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This is the same as IDENTITY.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding EncodingUnspecified { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding("ENCODING_UNSPECIFIED");
+        /// <summary>
+        /// The tensor represents one feature.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding Identity { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding("IDENTITY");
+        /// <summary>
+        /// The tensor represents a bag of features where each index maps to a feature. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [27, 6.0, 150] index_feature_mapping = ["age", "height", "weight"] ```
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding BagOfFeatures { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding("BAG_OF_FEATURES");
+        /// <summary>
+        /// The tensor represents a bag of features where each index maps to a feature. Zero values in the tensor indicates feature being non-existent. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [2, 0, 5, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"] ```
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding BagOfFeaturesSparse { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding("BAG_OF_FEATURES_SPARSE");
+        /// <summary>
+        /// The tensor is a list of binaries representing whether a feature exists or not (1 indicates existence). InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [1, 0, 1, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"] ```
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding Indicator { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding("INDICATOR");
+        /// <summary>
+        /// The tensor is encoded into a 1-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. For example: ``` input = ["This", "is", "a", "test", "."] encoded = [0.1, 0.2, 0.3, 0.4, 0.5] ```
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding CombinedEmbedding { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding("COMBINED_EMBEDDING");
+        /// <summary>
+        /// Select this encoding when the input tensor is encoded into a 2-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. The first dimension of the encoded tensor's shape is the same as the input tensor's shape. For example: ``` input = ["This", "is", "a", "test", "."] encoded = [[0.1, 0.2, 0.3, 0.4, 0.5], [0.2, 0.1, 0.4, 0.3, 0.5], [0.5, 0.1, 0.3, 0.5, 0.4], [0.5, 0.3, 0.1, 0.2, 0.4], [0.4, 0.3, 0.2, 0.5, 0.1]] ```
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding ConcatEmbedding { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding("CONCAT_EMBEDDING");
+
+        public static bool operator ==(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding other && Equals(other);
+        public bool Equals(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap : IEquatable<GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Should not be used.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap ColorMapUnspecified { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap("COLOR_MAP_UNSPECIFIED");
+        /// <summary>
+        /// Positive: green. Negative: pink.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap PinkGreen { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap("PINK_GREEN");
+        /// <summary>
+        /// Viridis color map: A perceptually uniform color mapping which is easier to see by those with colorblindness and progresses from yellow to green to blue. Positive: yellow. Negative: blue.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap Viridis { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap("VIRIDIS");
+        /// <summary>
+        /// Positive: red. Negative: red.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap Red { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap("RED");
+        /// <summary>
+        /// Positive: green. Negative: green.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap Green { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap("GREEN");
+        /// <summary>
+        /// Positive: green. Negative: red.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap RedGreen { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap("RED_GREEN");
+        /// <summary>
+        /// PiYG palette.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap PinkWhiteGreen { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap("PINK_WHITE_GREEN");
+
+        public static bool operator ==(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap other && Equals(other);
+        public bool Equals(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType : IEquatable<GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This is the same as NONE.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType OverlayTypeUnspecified { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType("OVERLAY_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// No overlay.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType None { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType("NONE");
+        /// <summary>
+        /// The attributions are shown on top of the original image.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType Original { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType("ORIGINAL");
+        /// <summary>
+        /// The attributions are shown on top of grayscaled version of the original image.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType Grayscale { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType("GRAYSCALE");
+        /// <summary>
+        /// The attributions are used as a mask to reveal predictive parts of the image and hide the un-predictive parts.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType MaskBlack { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType("MASK_BLACK");
+
+        public static bool operator ==(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType other && Equals(other);
+        public bool Equals(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity : IEquatable<GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This is the same as POSITIVE.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity PolarityUnspecified { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity("POLARITY_UNSPECIFIED");
+        /// <summary>
+        /// Highlights the pixels/outlines that were most influential to the model's prediction.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity Positive { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity("POSITIVE");
+        /// <summary>
+        /// Setting polarity to negative highlights areas that does not lead to the models's current prediction.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity Negative { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity("NEGATIVE");
+        /// <summary>
+        /// Shows both positive and negative attributions.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity Both { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity("BOTH");
+
+        public static bool operator ==(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity other && Equals(other);
+        public bool Equals(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType : IEquatable<GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Should not be used.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType TypeUnspecified { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Shows which pixel contributed to the image prediction.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType Pixels { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType("PIXELS");
+        /// <summary>
+        /// Shows which region contributed to the image prediction by outlining the region.
+        /// </summary>
+        public static GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType Outlines { get; } = new GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType("OUTLINES");
+
+        public static bool operator ==(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType left, GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType other && Equals(other);
+        public bool Equals(GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. The distance measure used in nearest neighbor search.
     /// </summary>
     [EnumType]

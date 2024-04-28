@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Metadata;
+        public readonly ImmutableDictionary<string, object> Metadata;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffResponse(ImmutableDictionary<string, string> metadata)
+        private GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffResponse(ImmutableDictionary<string, object> metadata)
         {
             Metadata = metadata;
         }

@@ -22,26 +22,26 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<Inputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs>? ConfigSource { get; set; }
 
         [Input("environment")]
-        private InputMap<string>? _environment;
+        private InputMap<object>? _environment;
 
         /// <summary>
         /// Any other builder-controlled inputs necessary for correctly evaluating the build.
         /// </summary>
-        public InputMap<string> Environment
+        public InputMap<object> Environment
         {
-            get => _environment ?? (_environment = new InputMap<string>());
+            get => _environment ?? (_environment = new InputMap<object>());
             set => _environment = value;
         }
 
         [Input("parameters")]
-        private InputMap<string>? _parameters;
+        private InputMap<object>? _parameters;
 
         /// <summary>
         /// Collection of all external inputs that influenced the build on top of invocation.configSource.
         /// </summary>
-        public InputMap<string> Parameters
+        public InputMap<object> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<string>());
+            get => _parameters ?? (_parameters = new InputMap<object>());
             set => _parameters = value;
         }
 

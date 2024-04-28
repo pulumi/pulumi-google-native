@@ -53,6 +53,47 @@ namespace Pulumi.GoogleNative.Metastore.V1
     }
 
     /// <summary>
+    /// The type of the backend metastore.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendMetastoreMetastoreType : IEquatable<BackendMetastoreMetastoreType>
+    {
+        private readonly string _value;
+
+        private BackendMetastoreMetastoreType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The metastore type is not set.
+        /// </summary>
+        public static BackendMetastoreMetastoreType MetastoreTypeUnspecified { get; } = new BackendMetastoreMetastoreType("METASTORE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The backend metastore is BigQuery.
+        /// </summary>
+        public static BackendMetastoreMetastoreType Bigquery { get; } = new BackendMetastoreMetastoreType("BIGQUERY");
+        /// <summary>
+        /// The backend metastore is Dataproc Metastore.
+        /// </summary>
+        public static BackendMetastoreMetastoreType DataprocMetastore { get; } = new BackendMetastoreMetastoreType("DATAPROC_METASTORE");
+
+        public static bool operator ==(BackendMetastoreMetastoreType left, BackendMetastoreMetastoreType right) => left.Equals(right);
+        public static bool operator !=(BackendMetastoreMetastoreType left, BackendMetastoreMetastoreType right) => !left.Equals(right);
+
+        public static explicit operator string(BackendMetastoreMetastoreType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendMetastoreMetastoreType other && Equals(other);
+        public bool Equals(BackendMetastoreMetastoreType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of the database.
     /// </summary>
     [EnumType]

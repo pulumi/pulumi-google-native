@@ -26,6 +26,30 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const BackendMetastoreMetastoreType = {
+    /**
+     * The metastore type is not set.
+     */
+    MetastoreTypeUnspecified: "METASTORE_TYPE_UNSPECIFIED",
+    /**
+     * The backend metastore is Dataplex.
+     */
+    Dataplex: "DATAPLEX",
+    /**
+     * The backend metastore is BigQuery.
+     */
+    Bigquery: "BIGQUERY",
+    /**
+     * The backend metastore is Dataproc Metastore.
+     */
+    DataprocMetastore: "DATAPROC_METASTORE",
+} as const;
+
+/**
+ * The type of the backend metastore.
+ */
+export type BackendMetastoreMetastoreType = (typeof BackendMetastoreMetastoreType)[keyof typeof BackendMetastoreMetastoreType];
+
 export const DatabaseDumpDatabaseType = {
     /**
      * The type of the source database is unknown.

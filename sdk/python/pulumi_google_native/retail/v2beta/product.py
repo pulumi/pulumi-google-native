@@ -21,7 +21,7 @@ class ProductArgs:
                  catalog_id: pulumi.Input[str],
                  product_id: pulumi.Input[str],
                  title: pulumi.Input[str],
-                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 attributes: Optional[pulumi.Input['GoogleCloudRetailV2betaCustomAttributeArgs']] = None,
                  audience: Optional[pulumi.Input['GoogleCloudRetailV2betaAudienceArgs']] = None,
                  availability: Optional[pulumi.Input['ProductAvailability']] = None,
                  available_quantity: Optional[pulumi.Input[int]] = None,
@@ -58,7 +58,7 @@ class ProductArgs:
         The set of arguments for constructing a Product resource.
         :param pulumi.Input[str] product_id: Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         :param pulumi.Input[str] title: Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
+        :param pulumi.Input['GoogleCloudRetailV2betaCustomAttributeArgs'] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         :param pulumi.Input['GoogleCloudRetailV2betaAudienceArgs'] audience: The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
         :param pulumi.Input['ProductAvailability'] availability: The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
         :param pulumi.Input[int] available_quantity: The available quantity of the item.
@@ -208,14 +208,14 @@ class ProductArgs:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def attributes(self) -> Optional[pulumi.Input['GoogleCloudRetailV2betaCustomAttributeArgs']]:
         """
         Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         """
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def attributes(self, value: Optional[pulumi.Input['GoogleCloudRetailV2betaCustomAttributeArgs']]):
         pulumi.set(self, "attributes", value)
 
     @property
@@ -603,7 +603,7 @@ class Product(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 attributes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaCustomAttributeArgs']]] = None,
                  audience: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaAudienceArgs']]] = None,
                  availability: Optional[pulumi.Input['ProductAvailability']] = None,
                  available_quantity: Optional[pulumi.Input[int]] = None,
@@ -646,7 +646,7 @@ class Product(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaCustomAttributeArgs']] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaAudienceArgs']] audience: The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
         :param pulumi.Input['ProductAvailability'] availability: The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
         :param pulumi.Input[int] available_quantity: The available quantity of the item.
@@ -704,7 +704,7 @@ class Product(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 attributes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaCustomAttributeArgs']]] = None,
                  audience: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaAudienceArgs']]] = None,
                  availability: Optional[pulumi.Input['ProductAvailability']] = None,
                  available_quantity: Optional[pulumi.Input[int]] = None,
@@ -863,7 +863,7 @@ class Product(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attributes(self) -> pulumi.Output[Mapping[str, str]]:
+    def attributes(self) -> pulumi.Output['outputs.GoogleCloudRetailV2betaCustomAttributeResponse']:
         """
         Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         """

@@ -102,7 +102,7 @@ export interface GetVersionResult {
     /**
      * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
      */
-    readonly generatedCustomerMetadata: {[key: string]: string};
+    readonly generatedCustomerMetadata: {[key: string]: any};
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */

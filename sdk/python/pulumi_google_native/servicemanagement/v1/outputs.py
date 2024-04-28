@@ -3571,11 +3571,11 @@ class OptionResponse(dict):
     """
     def __init__(__self__, *,
                  name: str,
-                 value: Mapping[str, str]):
+                 value: Mapping[str, Any]):
         """
         A protocol buffer option, which can be attached to a message, field, enumeration, etc.
         :param str name: The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
-        :param Mapping[str, str] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+        :param Mapping[str, Any] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -3590,7 +3590,7 @@ class OptionResponse(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> Mapping[str, str]:
+    def value(self) -> Mapping[str, Any]:
         """
         The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
@@ -4117,16 +4117,16 @@ class SourceInfoResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 source_files: Sequence[Mapping[str, str]]):
+                 source_files: Sequence[Mapping[str, Any]]):
         """
         Source information used to create a Service Config
-        :param Sequence[Mapping[str, str]] source_files: All files used during config generation.
+        :param Sequence[Mapping[str, Any]] source_files: All files used during config generation.
         """
         pulumi.set(__self__, "source_files", source_files)
 
     @property
     @pulumi.getter(name="sourceFiles")
-    def source_files(self) -> Sequence[Mapping[str, str]]:
+    def source_files(self) -> Sequence[Mapping[str, Any]]:
         """
         All files used during config generation.
         """
@@ -4257,16 +4257,16 @@ class TrafficPercentStrategyResponse(dict):
     Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
     """
     def __init__(__self__, *,
-                 percentages: Mapping[str, str]):
+                 percentages: Mapping[str, float]):
         """
         Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
-        :param Mapping[str, str] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+        :param Mapping[str, float] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         pulumi.set(__self__, "percentages", percentages)
 
     @property
     @pulumi.getter
-    def percentages(self) -> Mapping[str, str]:
+    def percentages(self) -> Mapping[str, float]:
         """
         Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """

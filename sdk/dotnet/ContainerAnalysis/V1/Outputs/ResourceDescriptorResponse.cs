@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     [OutputType]
     public sealed class ResourceDescriptorResponse
     {
-        public readonly ImmutableDictionary<string, string> Annotations;
+        public readonly ImmutableDictionary<string, object> Annotations;
         public readonly string Content;
         public readonly ImmutableDictionary<string, string> Digest;
         public readonly string DownloadLocation;
@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
         [OutputConstructor]
         private ResourceDescriptorResponse(
-            ImmutableDictionary<string, string> annotations,
+            ImmutableDictionary<string, object> annotations,
 
             string content,
 

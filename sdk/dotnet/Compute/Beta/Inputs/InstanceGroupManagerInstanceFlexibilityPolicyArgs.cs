@@ -12,17 +12,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 
     public sealed class InstanceGroupManagerInstanceFlexibilityPolicyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("instanceSelectionLists")]
-        private InputMap<string>? _instanceSelectionLists;
-
         /// <summary>
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
-        public InputMap<string> InstanceSelectionLists
-        {
-            get => _instanceSelectionLists ?? (_instanceSelectionLists = new InputMap<string>());
-            set => _instanceSelectionLists = value;
-        }
+        [Input("instanceSelectionLists")]
+        public Input<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>? InstanceSelectionLists { get; set; }
 
         public InstanceGroupManagerInstanceFlexibilityPolicyArgs()
         {

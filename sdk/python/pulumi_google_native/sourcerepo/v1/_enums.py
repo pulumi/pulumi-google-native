@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'PubsubConfigMessageFormat',
 ]
 
 
@@ -28,4 +29,22 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class PubsubConfigMessageFormat(str, Enum):
+    """
+    The format of the Cloud Pub/Sub messages.
+    """
+    MESSAGE_FORMAT_UNSPECIFIED = "MESSAGE_FORMAT_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    PROTOBUF = "PROTOBUF"
+    """
+    The message payload is a serialized protocol buffer of SourceRepoEvent.
+    """
+    JSON = "JSON"
+    """
+    The message payload is a JSON string of SourceRepoEvent.
     """

@@ -24,7 +24,7 @@ class JobArgs:
                  title: pulumi.Input[str],
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  compensation_info: Optional[pulumi.Input['CompensationInfoArgs']] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_attributes: Optional[pulumi.Input['CustomAttributeArgs']] = None,
                  degree_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  employment_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobEmploymentTypesItem']]]] = None,
@@ -53,7 +53,7 @@ class JobArgs:
         :param pulumi.Input[str] title: The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
         :param pulumi.Input['CompensationInfoArgs'] compensation_info: Optional. Job compensation information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
+        :param pulumi.Input['CustomAttributeArgs'] custom_attributes: Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         :param pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]] degree_types: Optional. The desired education degrees for the job, such as Bachelors, Masters.
         :param pulumi.Input[str] department: Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
         :param pulumi.Input[Sequence[pulumi.Input['JobEmploymentTypesItem']]] employment_types: Optional. The employment type(s) of a job, for example, full time or part time.
@@ -212,14 +212,14 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def custom_attributes(self) -> Optional[pulumi.Input['CustomAttributeArgs']]:
         """
         Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def custom_attributes(self, value: Optional[pulumi.Input['CustomAttributeArgs']]):
         pulumi.set(self, "custom_attributes", value)
 
     @property
@@ -458,7 +458,7 @@ class Job(pulumi.CustomResource):
                  application_info: Optional[pulumi.Input[pulumi.InputType['ApplicationInfoArgs']]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
                  compensation_info: Optional[pulumi.Input[pulumi.InputType['CompensationInfoArgs']]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_attributes: Optional[pulumi.Input[pulumi.InputType['CustomAttributeArgs']]] = None,
                  degree_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -491,7 +491,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ApplicationInfoArgs']] application_info: At least one field within ApplicationInfo must be specified. Job application information.
         :param pulumi.Input[str] company_name: The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
         :param pulumi.Input[pulumi.InputType['CompensationInfoArgs']] compensation_info: Optional. Job compensation information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
+        :param pulumi.Input[pulumi.InputType['CustomAttributeArgs']] custom_attributes: Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         :param pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]] degree_types: Optional. The desired education degrees for the job, such as Bachelors, Masters.
         :param pulumi.Input[str] department: Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] description: The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
@@ -542,7 +542,7 @@ class Job(pulumi.CustomResource):
                  application_info: Optional[pulumi.Input[pulumi.InputType['ApplicationInfoArgs']]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
                  compensation_info: Optional[pulumi.Input[pulumi.InputType['CompensationInfoArgs']]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_attributes: Optional[pulumi.Input[pulumi.InputType['CustomAttributeArgs']]] = None,
                  degree_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -714,7 +714,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> pulumi.Output[Mapping[str, str]]:
+    def custom_attributes(self) -> pulumi.Output['outputs.CustomAttributeResponse']:
         """
         Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         """

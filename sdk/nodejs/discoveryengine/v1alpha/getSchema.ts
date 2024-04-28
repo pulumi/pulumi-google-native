@@ -46,7 +46,7 @@ export interface GetSchemaResult {
     /**
      * The structured representation of the schema.
      */
-    readonly structSchema: {[key: string]: string};
+    readonly structSchema: {[key: string]: any};
 }
 /**
  * Gets a Schema.

@@ -10,6 +10,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
+    'GoogleCloudDatacatalogV1FieldTypePrimitiveType',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
     'GoogleCloudDatacatalogV1VertexDatasetSpecDataType',
@@ -177,6 +178,36 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecType(str, Enum):
     EXTERNAL = "EXTERNAL"
     """
     External table.
+    """
+
+
+class GoogleCloudDatacatalogV1FieldTypePrimitiveType(str, Enum):
+    """
+    Primitive types, such as string, boolean, etc.
+    """
+    PRIMITIVE_TYPE_UNSPECIFIED = "PRIMITIVE_TYPE_UNSPECIFIED"
+    """
+    The default invalid value for a type.
+    """
+    DOUBLE = "DOUBLE"
+    """
+    A double precision number.
+    """
+    STRING = "STRING"
+    """
+    An UTF-8 string.
+    """
+    BOOL = "BOOL"
+    """
+    A boolean value.
+    """
+    TIMESTAMP = "TIMESTAMP"
+    """
+    A timestamp.
+    """
+    RICHTEXT = "RICHTEXT"
+    """
+    A Richtext description.
     """
 
 

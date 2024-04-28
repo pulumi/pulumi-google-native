@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
-        private InputMap<string>? _metadata;
+        private InputMap<object>? _metadata;
 
         /// <summary>
         /// Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
         /// </summary>
-        public InputMap<string> Metadata
+        public InputMap<object> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<string>());
+            get => _metadata ?? (_metadata = new InputMap<object>());
             set => _metadata = value;
         }
 

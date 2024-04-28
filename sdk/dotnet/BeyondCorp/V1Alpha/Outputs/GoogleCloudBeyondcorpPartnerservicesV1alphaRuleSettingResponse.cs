@@ -23,13 +23,13 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
         /// <summary>
         /// The value of the Setting.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Value;
+        public readonly ImmutableDictionary<string, object> Value;
 
         [OutputConstructor]
         private GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse(
             string type,
 
-            ImmutableDictionary<string, string> value)
+            ImmutableDictionary<string, object> value)
         {
             Type = type;
             Value = value;

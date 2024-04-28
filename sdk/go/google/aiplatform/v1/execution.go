@@ -31,8 +31,8 @@ type Execution struct {
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        pulumi.StringMapOutput `pulumi:"metadata"`
-	MetadataStoreId pulumi.StringOutput    `pulumi:"metadataStoreId"`
+	Metadata        pulumi.MapOutput    `pulumi:"metadata"`
+	MetadataStoreId pulumi.StringOutput `pulumi:"metadataStoreId"`
 	// The resource name of the Execution.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -107,9 +107,9 @@ type executionArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        map[string]string `pulumi:"metadata"`
-	MetadataStoreId string            `pulumi:"metadataStoreId"`
-	Project         *string           `pulumi:"project"`
+	Metadata        map[string]interface{} `pulumi:"metadata"`
+	MetadataStoreId string                 `pulumi:"metadataStoreId"`
+	Project         *string                `pulumi:"project"`
 	// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
 	SchemaTitle *string `pulumi:"schemaTitle"`
 	// The version of the schema in `schema_title` to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -132,7 +132,7 @@ type ExecutionArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        pulumi.StringMapInput
+	Metadata        pulumi.MapInput
 	MetadataStoreId pulumi.StringInput
 	Project         pulumi.StringPtrInput
 	// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -215,8 +215,8 @@ func (o ExecutionOutput) Location() pulumi.StringOutput {
 }
 
 // Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-func (o ExecutionOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Execution) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+func (o ExecutionOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Execution) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
 }
 
 func (o ExecutionOutput) MetadataStoreId() pulumi.StringOutput {

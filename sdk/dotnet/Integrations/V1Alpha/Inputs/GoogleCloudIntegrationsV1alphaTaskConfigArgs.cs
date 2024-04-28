@@ -69,17 +69,11 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         [Input("nextTasksExecutionPolicy")]
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy>? NextTasksExecutionPolicy { get; set; }
 
-        [Input("parameters")]
-        private InputMap<string>? _parameters;
-
         /// <summary>
         /// Optional. The customized parameters the user can pass to this task.
         /// </summary>
-        public InputMap<string> Parameters
-        {
-            get => _parameters ?? (_parameters = new InputMap<string>());
-            set => _parameters = value;
-        }
+        [Input("parameters")]
+        public Input<Inputs.GoogleCloudIntegrationsV1alphaEventParameterArgs>? Parameters { get; set; }
 
         /// <summary>
         /// Optional. Informs the front-end application where to draw this error catcher config on the UI.

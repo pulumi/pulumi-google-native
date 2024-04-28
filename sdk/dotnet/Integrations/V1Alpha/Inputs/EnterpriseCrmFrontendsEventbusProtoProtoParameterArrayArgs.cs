@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
     public sealed class EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs : global::Pulumi.ResourceArgs
     {
         [Input("protoValues")]
-        private InputList<ImmutableDictionary<string, string>>? _protoValues;
-        public InputList<ImmutableDictionary<string, string>> ProtoValues
+        private InputList<ImmutableDictionary<string, object>>? _protoValues;
+        public InputList<ImmutableDictionary<string, object>> ProtoValues
         {
-            get => _protoValues ?? (_protoValues = new InputList<ImmutableDictionary<string, string>>());
+            get => _protoValues ?? (_protoValues = new InputList<ImmutableDictionary<string, object>>());
             set => _protoValues = value;
         }
 

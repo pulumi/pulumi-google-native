@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Properties;
+        public readonly ImmutableDictionary<string, object> Properties;
 
         [OutputConstructor]
         private StepResponse(
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string name,
 
-            ImmutableDictionary<string, string> properties)
+            ImmutableDictionary<string, object> properties)
         {
             Kind = kind;
             Name = name;

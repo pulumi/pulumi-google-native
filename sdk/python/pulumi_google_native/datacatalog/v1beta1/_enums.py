@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'EntryType',
+    'GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType',
     'TaxonomyActivatedPolicyTypesItem',
 ]
 
@@ -33,6 +34,32 @@ class EntryType(str, Enum):
     FILESET = "FILESET"
     """
     An entry type which is a set of files or objects. Example: Cloud Storage fileset.
+    """
+
+
+class GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType(str, Enum):
+    """
+    Represents primitive types - string, bool etc.
+    """
+    PRIMITIVE_TYPE_UNSPECIFIED = "PRIMITIVE_TYPE_UNSPECIFIED"
+    """
+    This is the default invalid value for a type.
+    """
+    DOUBLE = "DOUBLE"
+    """
+    A double precision number.
+    """
+    STRING = "STRING"
+    """
+    An UTF-8 string.
+    """
+    BOOL = "BOOL"
+    """
+    A boolean value.
+    """
+    TIMESTAMP = "TIMESTAMP"
+    """
+    A timestamp.
     """
 
 

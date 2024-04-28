@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Outputs
         /// <summary>
         /// Specific details for the resource. This is for internal use only.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Resource;
+        public readonly ImmutableDictionary<string, object> Resource;
         /// <summary>
         /// Overall health status. Overall status is derived based on the status of each sub level resources.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse(
-            ImmutableDictionary<string, string> resource,
+            ImmutableDictionary<string, object> resource,
 
             string status,
 

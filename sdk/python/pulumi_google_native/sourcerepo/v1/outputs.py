@@ -17,6 +17,7 @@ __all__ = [
     'BindingResponse',
     'ExprResponse',
     'MirrorConfigResponse',
+    'PubsubConfigResponse',
 ]
 
 @pulumi.output_type
@@ -281,5 +282,68 @@ class MirrorConfigResponse(dict):
         ID of the webhook listening to updates to trigger mirroring. Removing this webhook from the other hosting service will stop Google Cloud Source Repositories from receiving notifications, and thereby disabling mirroring.
         """
         return pulumi.get(self, "webhook_id")
+
+
+@pulumi.output_type
+class PubsubConfigResponse(dict):
+    """
+    Configuration to publish a Cloud Pub/Sub message.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageFormat":
+            suggest = "message_format"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PubsubConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PubsubConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PubsubConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 message_format: str,
+                 service_account_email: str,
+                 topic: str):
+        """
+        Configuration to publish a Cloud Pub/Sub message.
+        :param str message_format: The format of the Cloud Pub/Sub messages.
+        :param str service_account_email: Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+        :param str topic: A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+        """
+        pulumi.set(__self__, "message_format", message_format)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> str:
+        """
+        The format of the Cloud Pub/Sub messages.
+        """
+        return pulumi.get(self, "message_format")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+        """
+        return pulumi.get(self, "topic")
 
 

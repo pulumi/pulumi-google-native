@@ -50,6 +50,7 @@ __all__ = [
     'EnvelopeArgs',
     'ExprArgs',
     'ExternalRefArgs',
+    'FileHashesArgs',
     'FileLocationArgs',
     'FileNoteArgs',
     'FileOccurrenceArgs',
@@ -540,8 +541,8 @@ class BindingArgs:
 class BuildDefinitionArgs:
     def __init__(__self__, *,
                  build_type: Optional[pulumi.Input[str]] = None,
-                 external_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 internal_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 external_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 internal_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  resolved_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceDescriptorArgs']]]] = None):
         if build_type is not None:
             pulumi.set(__self__, "build_type", build_type)
@@ -563,20 +564,20 @@ class BuildDefinitionArgs:
 
     @property
     @pulumi.getter(name="externalParameters")
-    def external_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def external_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "external_parameters")
 
     @external_parameters.setter
-    def external_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def external_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "external_parameters", value)
 
     @property
     @pulumi.getter(name="internalParameters")
-    def internal_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def internal_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "internal_parameters")
 
     @internal_parameters.setter
-    def internal_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def internal_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "internal_parameters", value)
 
     @property
@@ -2863,6 +2864,30 @@ class ExternalRefArgs:
 
 
 @pulumi.input_type
+class FileHashesArgs:
+    def __init__(__self__, *,
+                 file_hash: Optional[pulumi.Input[Sequence[pulumi.Input['HashArgs']]]] = None):
+        """
+        Container message for hashes of byte content of files, used in Source messages to verify integrity of source input to the build.
+        :param pulumi.Input[Sequence[pulumi.Input['HashArgs']]] file_hash: Collection of file hashes.
+        """
+        if file_hash is not None:
+            pulumi.set(__self__, "file_hash", file_hash)
+
+    @property
+    @pulumi.getter(name="fileHash")
+    def file_hash(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HashArgs']]]]:
+        """
+        Collection of file hashes.
+        """
+        return pulumi.get(self, "file_hash")
+
+    @file_hash.setter
+    def file_hash(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HashArgs']]]]):
+        pulumi.set(self, "file_hash", value)
+
+
+@pulumi.input_type
 class FileLocationArgs:
     def __init__(__self__, *,
                  file_path: Optional[pulumi.Input[str]] = None):
@@ -3545,13 +3570,13 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSour
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs:
     def __init__(__self__, *,
                  config_source: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs']] = None,
-                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Identifies the event that kicked off the build.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceArgs'] config_source: Describes where the config file that kicked off the build came from.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment: Any other builder-controlled inputs necessary for correctly evaluating the build.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Collection of all external inputs that influenced the build on top of invocation.configSource.
+        :param pulumi.Input[Mapping[str, Any]] environment: Any other builder-controlled inputs necessary for correctly evaluating the build.
+        :param pulumi.Input[Mapping[str, Any]] parameters: Collection of all external inputs that influenced the build on top of invocation.configSource.
         """
         if config_source is not None:
             pulumi.set(__self__, "config_source", config_source)
@@ -3574,26 +3599,26 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the build.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Collection of all external inputs that influenced the build on top of invocation.configSource.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -5347,17 +5372,17 @@ class PublisherArgs:
 @pulumi.input_type
 class RecipeArgs:
     def __init__(__self__, *,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  defined_in_material: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 environment: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         :param pulumi.Input[str] defined_in_material: Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
         :param pulumi.Input[str] entry_point: String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         :param pulumi.Input[str] type: URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
         """
         if arguments is not None:
@@ -5373,14 +5398,14 @@ class RecipeArgs:
 
     @property
     @pulumi.getter
-    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint.
         """
         return pulumi.get(self, "arguments")
 
     @arguments.setter
-    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "arguments", value)
 
     @property
@@ -5409,14 +5434,14 @@ class RecipeArgs:
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def environment(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def environment(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "environment", value)
 
     @property
@@ -5699,7 +5724,7 @@ class RepoSourceArgs:
 @pulumi.input_type
 class ResourceDescriptorArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  digest: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  download_location: Optional[pulumi.Input[str]] = None,
@@ -5723,11 +5748,11 @@ class ResourceDescriptorArgs:
 
     @property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "annotations", value)
 
     @property
@@ -6325,7 +6350,7 @@ class SlsaProvenanceV1Args:
 @pulumi.input_type
 class SlsaProvenanceZeroTwoArgs:
     def __init__(__self__, *,
-                 build_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 build_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  build_type: Optional[pulumi.Input[str]] = None,
                  builder: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs']] = None,
                  invocation: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs']] = None,
@@ -6333,7 +6358,7 @@ class SlsaProvenanceZeroTwoArgs:
                  metadata: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadataArgs']] = None):
         """
         SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_config: Lists the steps in the build.
+        :param pulumi.Input[Mapping[str, Any]] build_config: Lists the steps in the build.
         :param pulumi.Input[str] build_type: URI indicating what type of build was performed.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs'] builder: Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs'] invocation: Identifies the event that kicked off the build.
@@ -6355,14 +6380,14 @@ class SlsaProvenanceZeroTwoArgs:
 
     @property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def build_config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Lists the steps in the build.
         """
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def build_config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "build_config", value)
 
     @property
@@ -6501,17 +6526,17 @@ class SlsaProvenanceArgs:
 @pulumi.input_type
 class SlsaRecipeArgs:
     def __init__(__self__, *,
-                 arguments: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 arguments: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  defined_in_material: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
+        :param pulumi.Input[Mapping[str, Any]] arguments: Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
         :param pulumi.Input[str] defined_in_material: Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
         :param pulumi.Input[str] entry_point: String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
+        :param pulumi.Input[Mapping[str, Any]] environment: Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
         :param pulumi.Input[str] type: URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
         """
         if arguments is not None:
@@ -6527,14 +6552,14 @@ class SlsaRecipeArgs:
 
     @property
     @pulumi.getter
-    def arguments(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def arguments(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
         """
         return pulumi.get(self, "arguments")
 
     @arguments.setter
-    def arguments(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def arguments(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "arguments", value)
 
     @property
@@ -6563,14 +6588,14 @@ class SlsaRecipeArgs:
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def environment(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def environment(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "environment", value)
 
     @property
@@ -6592,7 +6617,7 @@ class SourceArgs:
                  additional_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']]]] = None,
                  artifact_storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
                  context: Optional[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']] = None,
-                 file_hashes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 file_hashes: Optional[pulumi.Input['FileHashesArgs']] = None,
                  repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
                  storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None):
         """
@@ -6600,7 +6625,7 @@ class SourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs']]] additional_contexts: If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
         :param pulumi.Input['StorageSourceArgs'] artifact_storage_source: If provided, the input binary artifacts for the build came from this location.
         :param pulumi.Input['GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs'] context: If provided, the source code used for the build came from this location.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+        :param pulumi.Input['FileHashesArgs'] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get source from this location in a Cloud Repo.
         :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
         """
@@ -6655,14 +6680,14 @@ class SourceArgs:
 
     @property
     @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def file_hashes(self) -> Optional[pulumi.Input['FileHashesArgs']]:
         """
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """
         return pulumi.get(self, "file_hashes")
 
     @file_hashes.setter
-    def file_hashes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def file_hashes(self, value: Optional[pulumi.Input['FileHashesArgs']]):
         pulumi.set(self, "file_hashes", value)
 
     @property
@@ -6694,12 +6719,12 @@ class SourceArgs:
 class StatusArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         if code is not None:
@@ -6723,14 +6748,14 @@ class StatusArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "details", value)
 
     @property

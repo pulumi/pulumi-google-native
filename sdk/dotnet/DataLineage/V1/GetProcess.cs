@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1
         /// <summary>
         /// Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Attributes;
+        public readonly ImmutableDictionary<string, object> Attributes;
         /// <summary>
         /// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&amp;.`
         /// </summary>
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1
 
         [OutputConstructor]
         private GetProcessResult(
-            ImmutableDictionary<string, string> attributes,
+            ImmutableDictionary<string, object> attributes,
 
             string displayName,
 

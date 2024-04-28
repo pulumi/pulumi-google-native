@@ -37,6 +37,7 @@ __all__ = [
     'DeidentifyConfigArgs',
     'DeidentifyOperationMetadataArgs',
     'DeleteTagArgs',
+    'DetailArgs',
     'DicomConfigArgs',
     'DicomTagConfigArgs',
     'ExprArgs',
@@ -46,12 +47,14 @@ __all__ = [
     'FhirOutputArgs',
     'FieldMetadataArgs',
     'FieldArgs',
+    'FindingArgs',
     'GoogleCloudHealthcareV1beta1ConsentPolicyArgs',
     'GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataArgs',
     'GoogleCloudHealthcareV1beta1DeidentifyOptionsArgs',
     'GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs',
     'GoogleCloudHealthcareV1beta1DicomStreamConfigArgs',
     'GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs',
+    'GroupOrSegmentArgs',
     'Hl7SchemaConfigArgs',
     'Hl7TypesConfigArgs',
     'Hl7V2NotificationConfigArgs',
@@ -76,7 +79,9 @@ __all__ = [
     'ResetTagArgs',
     'ResourceAnnotationArgs',
     'SchemaConfigArgs',
+    'SchemaGroupArgs',
     'SchemaPackageArgs',
+    'SchemaSegmentArgs',
     'SchematizedDataArgs',
     'SearchConfigArgs',
     'SearchParameterArgs',
@@ -1088,6 +1093,26 @@ class DeleteTagArgs:
 
 
 @pulumi.input_type
+class DetailArgs:
+    def __init__(__self__, *,
+                 findings: Optional[pulumi.Input[Sequence[pulumi.Input['FindingArgs']]]] = None):
+        """
+        Contains multiple sensitive information findings for each resource slice.
+        """
+        if findings is not None:
+            pulumi.set(__self__, "findings", findings)
+
+    @property
+    @pulumi.getter
+    def findings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FindingArgs']]]]:
+        return pulumi.get(self, "findings")
+
+    @findings.setter
+    def findings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FindingArgs']]]]):
+        pulumi.set(self, "findings", value)
+
+
+@pulumi.input_type
 class DicomConfigArgs:
     def __init__(__self__, *,
                  filter_profile: Optional[pulumi.Input['DicomConfigFilterProfile']] = None,
@@ -1592,6 +1617,77 @@ class FieldArgs:
 
 
 @pulumi.input_type
+class FindingArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[str]] = None,
+                 info_type: Optional[pulumi.Input[str]] = None,
+                 quote: Optional[pulumi.Input[str]] = None,
+                 start: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end: Zero-based ending index of the found text, exclusively.
+        :param pulumi.Input[str] info_type: The type of information stored in this text range. For example, HumanName, BirthDate, or Address.
+        :param pulumi.Input[str] quote: The snippet of the sensitive text. This field is only populated during deidentification if `store_quote` is set to true in DeidentifyConfig.
+        :param pulumi.Input[str] start: Zero-based starting index of the found text, inclusively.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if info_type is not None:
+            pulumi.set(__self__, "info_type", info_type)
+        if quote is not None:
+            pulumi.set(__self__, "quote", quote)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zero-based ending index of the found text, exclusively.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of information stored in this text range. For example, HumanName, BirthDate, or Address.
+        """
+        return pulumi.get(self, "info_type")
+
+    @info_type.setter
+    def info_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "info_type", value)
+
+    @property
+    @pulumi.getter
+    def quote(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snippet of the sensitive text. This field is only populated during deidentification if `store_quote` is set to true in DeidentifyConfig.
+        """
+        return pulumi.get(self, "quote")
+
+    @quote.setter
+    def quote(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quote", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zero-based starting index of the found text, inclusively.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
 class GoogleCloudHealthcareV1beta1ConsentPolicyArgs:
     def __init__(__self__, *,
                  authorization_rule: pulumi.Input['ExprArgs'],
@@ -1991,13 +2087,45 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs:
 
 
 @pulumi.input_type
+class GroupOrSegmentArgs:
+    def __init__(__self__, *,
+                 group: Optional[pulumi.Input['SchemaGroupArgs']] = None,
+                 segment: Optional[pulumi.Input['SchemaSegmentArgs']] = None):
+        """
+        Construct representing a logical group or a segment.
+        """
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if segment is not None:
+            pulumi.set(__self__, "segment", segment)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['SchemaGroupArgs']]:
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['SchemaGroupArgs']]):
+        pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def segment(self) -> Optional[pulumi.Input['SchemaSegmentArgs']]:
+        return pulumi.get(self, "segment")
+
+    @segment.setter
+    def segment(self, value: Optional[pulumi.Input['SchemaSegmentArgs']]):
+        pulumi.set(self, "segment", value)
+
+
+@pulumi.input_type
 class Hl7SchemaConfigArgs:
     def __init__(__self__, *,
-                 message_schema_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_schema_configs: Optional[pulumi.Input['SchemaGroupArgs']] = None,
                  version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionSourceArgs']]]] = None):
         """
         Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+        :param pulumi.Input['SchemaGroupArgs'] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         :param pulumi.Input[Sequence[pulumi.Input['VersionSourceArgs']]] version: Each VersionSource is tested and only if they all match is the schema used for the message.
         """
         if message_schema_configs is not None:
@@ -2007,14 +2135,14 @@ class Hl7SchemaConfigArgs:
 
     @property
     @pulumi.getter(name="messageSchemaConfigs")
-    def message_schema_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def message_schema_configs(self) -> Optional[pulumi.Input['SchemaGroupArgs']]:
         """
         Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         """
         return pulumi.get(self, "message_schema_configs")
 
     @message_schema_configs.setter
-    def message_schema_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def message_schema_configs(self, value: Optional[pulumi.Input['SchemaGroupArgs']]):
         pulumi.set(self, "message_schema_configs", value)
 
     @property
@@ -2767,6 +2895,94 @@ class SchemaConfigArgs:
 
 
 @pulumi.input_type
+class SchemaGroupArgs:
+    def __init__(__self__, *,
+                 choice: Optional[pulumi.Input[bool]] = None,
+                 max_occurs: Optional[pulumi.Input[int]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input['GroupOrSegmentArgs']]]] = None,
+                 min_occurs: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        An HL7v2 logical group construct.
+        :param pulumi.Input[bool] choice: True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+        :param pulumi.Input[int] max_occurs: The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupOrSegmentArgs']]] members: Nested groups and/or segments.
+        :param pulumi.Input[int] min_occurs: The minimum number of times this group must be present/repeated.
+        :param pulumi.Input[str] name: The name of this group. For example, "ORDER_DETAIL".
+        """
+        if choice is not None:
+            pulumi.set(__self__, "choice", choice)
+        if max_occurs is not None:
+            pulumi.set(__self__, "max_occurs", max_occurs)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if min_occurs is not None:
+            pulumi.set(__self__, "min_occurs", min_occurs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def choice(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+        """
+        return pulumi.get(self, "choice")
+
+    @choice.setter
+    def choice(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "choice", value)
+
+    @property
+    @pulumi.getter(name="maxOccurs")
+    def max_occurs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+        """
+        return pulumi.get(self, "max_occurs")
+
+    @max_occurs.setter
+    def max_occurs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_occurs", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupOrSegmentArgs']]]]:
+        """
+        Nested groups and/or segments.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupOrSegmentArgs']]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter(name="minOccurs")
+    def min_occurs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of times this group must be present/repeated.
+        """
+        return pulumi.get(self, "min_occurs")
+
+    @min_occurs.setter
+    def min_occurs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_occurs", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this group. For example, "ORDER_DETAIL".
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
 class SchemaPackageArgs:
     def __init__(__self__, *,
                  ignore_min_occurs: Optional[pulumi.Input[bool]] = None,
@@ -2852,6 +3068,62 @@ class SchemaPackageArgs:
     @unexpected_segment_handling.setter
     def unexpected_segment_handling(self, value: Optional[pulumi.Input['SchemaPackageUnexpectedSegmentHandling']]):
         pulumi.set(self, "unexpected_segment_handling", value)
+
+
+@pulumi.input_type
+class SchemaSegmentArgs:
+    def __init__(__self__, *,
+                 max_occurs: Optional[pulumi.Input[int]] = None,
+                 min_occurs: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        An HL7v2 Segment.
+        :param pulumi.Input[int] max_occurs: The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+        :param pulumi.Input[int] min_occurs: The minimum number of times this segment can be present in this group.
+        :param pulumi.Input[str] type: The Segment type. For example, "PID".
+        """
+        if max_occurs is not None:
+            pulumi.set(__self__, "max_occurs", max_occurs)
+        if min_occurs is not None:
+            pulumi.set(__self__, "min_occurs", min_occurs)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="maxOccurs")
+    def max_occurs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+        """
+        return pulumi.get(self, "max_occurs")
+
+    @max_occurs.setter
+    def max_occurs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_occurs", value)
+
+    @property
+    @pulumi.getter(name="minOccurs")
+    def min_occurs(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of times this segment can be present in this group.
+        """
+        return pulumi.get(self, "min_occurs")
+
+    @min_occurs.setter
+    def min_occurs(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_occurs", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Segment type. For example, "PID".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -2961,24 +3233,24 @@ class SearchParameterArgs:
 @pulumi.input_type
 class SensitiveTextAnnotationArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 details: Optional[pulumi.Input['DetailArgs']] = None):
         """
         A TextAnnotation specifies a text range that includes sensitive information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
+        :param pulumi.Input['DetailArgs'] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def details(self) -> Optional[pulumi.Input['DetailArgs']]:
         """
         Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def details(self, value: Optional[pulumi.Input['DetailArgs']]):
         pulumi.set(self, "details", value)
 
 

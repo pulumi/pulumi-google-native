@@ -91,7 +91,7 @@ type apiArgs struct {
 	// The HTTP request/response body as raw binary.
 	Data *string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions []map[string]string `pulumi:"extensions"`
+	Extensions []map[string]interface{} `pulumi:"extensions"`
 	// File to upload.
 	File pulumi.AssetOrArchive `pulumi:"file"`
 	// Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
@@ -110,7 +110,7 @@ type ApiArgs struct {
 	// The HTTP request/response body as raw binary.
 	Data pulumi.StringPtrInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions pulumi.StringMapArrayInput
+	Extensions pulumi.MapArrayInput
 	// File to upload.
 	File pulumi.AssetOrArchiveInput
 	// Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-

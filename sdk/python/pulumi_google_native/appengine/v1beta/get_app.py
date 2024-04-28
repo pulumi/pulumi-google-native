@@ -140,7 +140,7 @@ class GetAppResult:
 
     @property
     @pulumi.getter(name="generatedCustomerMetadata")
-    def generated_customer_metadata(self) -> Mapping[str, str]:
+    def generated_customer_metadata(self) -> Mapping[str, Any]:
         """
         Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
         """

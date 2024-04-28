@@ -883,7 +883,7 @@ class RegionDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="asyncSecondaryDisks")
-    def async_secondary_disks(self) -> pulumi.Output[Mapping[str, str]]:
+    def async_secondary_disks(self) -> pulumi.Output['outputs.DiskAsyncReplicationListResponse']:
         """
         A list of disks this disk is asynchronously replicated to.
         """

@@ -10857,7 +10857,7 @@ type MaintenanceWindow struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow *DailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions map[string]string `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions *TimeWindow `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow *RecurringTimeWindow `pulumi:"recurringWindow"`
 }
@@ -10878,7 +10878,7 @@ type MaintenanceWindowArgs struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow DailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions pulumi.StringMapInput `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions TimeWindowPtrInput `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow RecurringTimeWindowPtrInput `pulumi:"recurringWindow"`
 }
@@ -10967,8 +10967,8 @@ func (o MaintenanceWindowOutput) DailyMaintenanceWindow() DailyMaintenanceWindow
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MaintenanceWindow) map[string]string { return v.MaintenanceExclusions }).(pulumi.StringMapOutput)
+func (o MaintenanceWindowOutput) MaintenanceExclusions() TimeWindowPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindow) *TimeWindow { return v.MaintenanceExclusions }).(TimeWindowPtrOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -11011,13 +11011,13 @@ func (o MaintenanceWindowPtrOutput) DailyMaintenanceWindow() DailyMaintenanceWin
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowPtrOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) map[string]string {
+func (o MaintenanceWindowPtrOutput) MaintenanceExclusions() TimeWindowPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) *TimeWindow {
 		if v == nil {
 			return nil
 		}
 		return v.MaintenanceExclusions
-	}).(pulumi.StringMapOutput)
+	}).(TimeWindowPtrOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -11035,7 +11035,7 @@ type MaintenanceWindowResponse struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow DailyMaintenanceWindowResponse `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions map[string]string `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions TimeWindowResponse `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow RecurringTimeWindowResponse `pulumi:"recurringWindow"`
 }
@@ -11061,8 +11061,8 @@ func (o MaintenanceWindowResponseOutput) DailyMaintenanceWindow() DailyMaintenan
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowResponseOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) map[string]string { return v.MaintenanceExclusions }).(pulumi.StringMapOutput)
+func (o MaintenanceWindowResponseOutput) MaintenanceExclusions() TimeWindowResponseOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) TimeWindowResponse { return v.MaintenanceExclusions }).(TimeWindowResponseOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.

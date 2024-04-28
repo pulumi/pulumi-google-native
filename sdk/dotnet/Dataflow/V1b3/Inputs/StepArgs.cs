@@ -28,14 +28,14 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public Input<string>? Name { get; set; }
 
         [Input("properties")]
-        private InputMap<string>? _properties;
+        private InputMap<object>? _properties;
 
         /// <summary>
         /// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
         /// </summary>
-        public InputMap<string> Properties
+        public InputMap<object> Properties
         {
-            get => _properties ?? (_properties = new InputMap<string>());
+            get => _properties ?? (_properties = new InputMap<object>());
             set => _properties = value;
         }
 

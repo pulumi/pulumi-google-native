@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// <summary>
         /// A custom platform-specific response.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Payload;
+        public readonly ImmutableDictionary<string, object> Payload;
         /// <summary>
         /// Optional. The platform that this message is intended for.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
 
             Outputs.GoogleCloudDialogflowV2IntentMessageMediaContentResponse mediaContent,
 
-            ImmutableDictionary<string, string> payload,
+            ImmutableDictionary<string, object> payload,
 
             string platform,
 

@@ -15,17 +15,11 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudContentwarehouseV1MapPropertyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("fields")]
-        private InputMap<string>? _fields;
-
         /// <summary>
         /// Unordered map of dynamically typed values.
         /// </summary>
-        public InputMap<string> Fields
-        {
-            get => _fields ?? (_fields = new InputMap<string>());
-            set => _fields = value;
-        }
+        [Input("fields")]
+        public Input<Inputs.GoogleCloudContentwarehouseV1ValueArgs>? Fields { get; set; }
 
         public GoogleCloudContentwarehouseV1MapPropertyArgs()
         {

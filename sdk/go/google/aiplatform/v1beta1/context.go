@@ -30,8 +30,8 @@ type Context struct {
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        pulumi.StringMapOutput `pulumi:"metadata"`
-	MetadataStoreId pulumi.StringOutput    `pulumi:"metadataStoreId"`
+	Metadata        pulumi.MapOutput    `pulumi:"metadata"`
+	MetadataStoreId pulumi.StringOutput `pulumi:"metadataStoreId"`
 	// Immutable. The resource name of the Context.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of resource names of Contexts that are parents of this Context. A Context may have at most 10 parent_contexts.
@@ -106,8 +106,8 @@ type contextArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        map[string]string `pulumi:"metadata"`
-	MetadataStoreId string            `pulumi:"metadataStoreId"`
+	Metadata        map[string]interface{} `pulumi:"metadata"`
+	MetadataStoreId string                 `pulumi:"metadataStoreId"`
 	// Immutable. The resource name of the Context.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -131,7 +131,7 @@ type ContextArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        pulumi.StringMapInput
+	Metadata        pulumi.MapInput
 	MetadataStoreId pulumi.StringInput
 	// Immutable. The resource name of the Context.
 	Name    pulumi.StringPtrInput
@@ -214,8 +214,8 @@ func (o ContextOutput) Location() pulumi.StringOutput {
 }
 
 // Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-func (o ContextOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Context) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+func (o ContextOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Context) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
 }
 
 func (o ContextOutput) MetadataStoreId() pulumi.StringOutput {

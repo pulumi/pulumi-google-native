@@ -19,7 +19,7 @@ class ApiArgs:
                  action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  validate: Optional[pulumi.Input[bool]] = None):
@@ -28,7 +28,7 @@ class ApiArgs:
         :param pulumi.Input[str] action: Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
         :param pulumi.Input[bool] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
@@ -96,14 +96,14 @@ class ApiArgs:
 
     @property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "extensions", value)
 
     @property
@@ -151,7 +151,7 @@ class Api(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] action: Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
         :param pulumi.Input[bool] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
@@ -197,7 +197,7 @@ class Api(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,

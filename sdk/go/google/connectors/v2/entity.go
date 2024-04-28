@@ -20,8 +20,8 @@ type Entity struct {
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	EntityTypeId pulumi.StringOutput `pulumi:"entityTypeId"`
 	// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-	Fields   pulumi.StringMapOutput `pulumi:"fields"`
-	Location pulumi.StringOutput    `pulumi:"location"`
+	Fields   pulumi.MapOutput    `pulumi:"fields"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -83,9 +83,9 @@ type entityArgs struct {
 	ConnectionId string `pulumi:"connectionId"`
 	EntityTypeId string `pulumi:"entityTypeId"`
 	// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-	Fields   map[string]string `pulumi:"fields"`
-	Location *string           `pulumi:"location"`
-	Project  *string           `pulumi:"project"`
+	Fields   map[string]interface{} `pulumi:"fields"`
+	Location *string                `pulumi:"location"`
+	Project  *string                `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Entity resource.
@@ -93,7 +93,7 @@ type EntityArgs struct {
 	ConnectionId pulumi.StringInput
 	EntityTypeId pulumi.StringInput
 	// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-	Fields   pulumi.StringMapInput
+	Fields   pulumi.MapInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 }
@@ -144,8 +144,8 @@ func (o EntityOutput) EntityTypeId() pulumi.StringOutput {
 }
 
 // Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-func (o EntityOutput) Fields() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Entity) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+func (o EntityOutput) Fields() pulumi.MapOutput {
+	return o.ApplyT(func(v *Entity) pulumi.MapOutput { return v.Fields }).(pulumi.MapOutput)
 }
 
 func (o EntityOutput) Location() pulumi.StringOutput {

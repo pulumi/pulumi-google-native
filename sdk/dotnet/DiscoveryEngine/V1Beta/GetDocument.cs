@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         /// <summary>
         /// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> DerivedStructData;
+        public readonly ImmutableDictionary<string, object> DerivedStructData;
         /// <summary>
         /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
@@ -108,13 +108,13 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
         /// <summary>
         /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> StructData;
+        public readonly ImmutableDictionary<string, object> StructData;
 
         [OutputConstructor]
         private GetDocumentResult(
             Outputs.GoogleCloudDiscoveryengineV1betaDocumentContentResponse content,
 
-            ImmutableDictionary<string, string> derivedStructData,
+            ImmutableDictionary<string, object> derivedStructData,
 
             string jsonData,
 
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Beta
 
             string schemaId,
 
-            ImmutableDictionary<string, string> structData)
+            ImmutableDictionary<string, object> structData)
         {
             Content = content;
             DerivedStructData = derivedStructData;

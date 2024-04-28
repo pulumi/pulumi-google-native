@@ -37,7 +37,7 @@ type App struct {
 	// The Google Container Registry domain used for storing managed build docker images for this application.
 	GcrDomain pulumi.StringOutput `pulumi:"gcrDomain"`
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
-	GeneratedCustomerMetadata pulumi.StringMapOutput           `pulumi:"generatedCustomerMetadata"`
+	GeneratedCustomerMetadata pulumi.MapOutput                 `pulumi:"generatedCustomerMetadata"`
 	Iap                       IdentityAwareProxyResponseOutput `pulumi:"iap"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -100,8 +100,8 @@ type appArgs struct {
 	// The feature specific settings to be used in the application.
 	FeatureSettings *FeatureSettings `pulumi:"featureSettings"`
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
-	GeneratedCustomerMetadata map[string]string   `pulumi:"generatedCustomerMetadata"`
-	Iap                       *IdentityAwareProxy `pulumi:"iap"`
+	GeneratedCustomerMetadata map[string]interface{} `pulumi:"generatedCustomerMetadata"`
+	Iap                       *IdentityAwareProxy    `pulumi:"iap"`
 	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
 	Id *string `pulumi:"id"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
@@ -125,7 +125,7 @@ type AppArgs struct {
 	// The feature specific settings to be used in the application.
 	FeatureSettings FeatureSettingsPtrInput
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
-	GeneratedCustomerMetadata pulumi.StringMapInput
+	GeneratedCustomerMetadata pulumi.MapInput
 	Iap                       IdentityAwareProxyPtrInput
 	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
 	Id pulumi.StringPtrInput
@@ -220,8 +220,8 @@ func (o AppOutput) GcrDomain() pulumi.StringOutput {
 }
 
 // Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
-func (o AppOutput) GeneratedCustomerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *App) pulumi.StringMapOutput { return v.GeneratedCustomerMetadata }).(pulumi.StringMapOutput)
+func (o AppOutput) GeneratedCustomerMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *App) pulumi.MapOutput { return v.GeneratedCustomerMetadata }).(pulumi.MapOutput)
 }
 
 func (o AppOutput) Iap() IdentityAwareProxyResponseOutput {

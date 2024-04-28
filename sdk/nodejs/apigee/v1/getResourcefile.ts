@@ -37,7 +37,7 @@ export interface GetResourcefileResult {
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
-    readonly extensions: {[key: string]: string}[];
+    readonly extensions: {[key: string]: any}[];
 }
 /**
  * Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).

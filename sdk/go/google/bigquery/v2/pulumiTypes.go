@@ -8264,7 +8264,7 @@ type JobConfigurationQuery struct {
 	// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
 	// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-	TableDefinitions map[string]string `pulumi:"tableDefinitions"`
+	TableDefinitions *ExternalDataConfiguration `pulumi:"tableDefinitions"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning *TimePartitioning `pulumi:"timePartitioning"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
@@ -8330,7 +8330,7 @@ type JobConfigurationQueryArgs struct {
 	// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
 	// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-	TableDefinitions pulumi.StringMapInput `pulumi:"tableDefinitions"`
+	TableDefinitions ExternalDataConfigurationPtrInput `pulumi:"tableDefinitions"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningPtrInput `pulumi:"timePartitioning"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
@@ -8518,8 +8518,8 @@ func (o JobConfigurationQueryOutput) SchemaUpdateOptions() pulumi.StringArrayOut
 }
 
 // [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-func (o JobConfigurationQueryOutput) TableDefinitions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JobConfigurationQuery) map[string]string { return v.TableDefinitions }).(pulumi.StringMapOutput)
+func (o JobConfigurationQueryOutput) TableDefinitions() ExternalDataConfigurationPtrOutput {
+	return o.ApplyT(func(v JobConfigurationQuery) *ExternalDataConfiguration { return v.TableDefinitions }).(ExternalDataConfigurationPtrOutput)
 }
 
 // Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -8764,13 +8764,13 @@ func (o JobConfigurationQueryPtrOutput) SchemaUpdateOptions() pulumi.StringArray
 }
 
 // [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-func (o JobConfigurationQueryPtrOutput) TableDefinitions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *JobConfigurationQuery) map[string]string {
+func (o JobConfigurationQueryPtrOutput) TableDefinitions() ExternalDataConfigurationPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationQuery) *ExternalDataConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.TableDefinitions
-	}).(pulumi.StringMapOutput)
+	}).(ExternalDataConfigurationPtrOutput)
 }
 
 // Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -8865,7 +8865,7 @@ type JobConfigurationQueryResponse struct {
 	// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
 	// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-	TableDefinitions map[string]string `pulumi:"tableDefinitions"`
+	TableDefinitions ExternalDataConfigurationResponse `pulumi:"tableDefinitions"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningResponse `pulumi:"timePartitioning"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
@@ -8992,8 +8992,8 @@ func (o JobConfigurationQueryResponseOutput) SchemaUpdateOptions() pulumi.String
 }
 
 // [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-func (o JobConfigurationQueryResponseOutput) TableDefinitions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JobConfigurationQueryResponse) map[string]string { return v.TableDefinitions }).(pulumi.StringMapOutput)
+func (o JobConfigurationQueryResponseOutput) TableDefinitions() ExternalDataConfigurationResponseOutput {
+	return o.ApplyT(func(v JobConfigurationQueryResponse) ExternalDataConfigurationResponse { return v.TableDefinitions }).(ExternalDataConfigurationResponseOutput)
 }
 
 // Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -12195,7 +12195,7 @@ type QueryParameterValue struct {
 	// [Optional] The array values, if this is an array type.
 	ArrayValues []QueryParameterValue `pulumi:"arrayValues"`
 	// [Optional] The struct field values, in order of the struct type's declaration.
-	StructValues map[string]string `pulumi:"structValues"`
+	StructValues *QueryParameterValue `pulumi:"structValues"`
 	// [Optional] The value of this value, if a simple scalar type.
 	Value *string `pulumi:"value"`
 }
@@ -12215,7 +12215,7 @@ type QueryParameterValueArgs struct {
 	// [Optional] The array values, if this is an array type.
 	ArrayValues QueryParameterValueArrayInput `pulumi:"arrayValues"`
 	// [Optional] The struct field values, in order of the struct type's declaration.
-	StructValues pulumi.StringMapInput `pulumi:"structValues"`
+	StructValues QueryParameterValuePtrInput `pulumi:"structValues"`
 	// [Optional] The value of this value, if a simple scalar type.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -12328,8 +12328,8 @@ func (o QueryParameterValueOutput) ArrayValues() QueryParameterValueArrayOutput 
 }
 
 // [Optional] The struct field values, in order of the struct type's declaration.
-func (o QueryParameterValueOutput) StructValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v QueryParameterValue) map[string]string { return v.StructValues }).(pulumi.StringMapOutput)
+func (o QueryParameterValueOutput) StructValues() QueryParameterValuePtrOutput {
+	return o.ApplyT(func(v QueryParameterValue) *QueryParameterValue { return v.StructValues }).(QueryParameterValuePtrOutput)
 }
 
 // [Optional] The value of this value, if a simple scalar type.
@@ -12372,13 +12372,13 @@ func (o QueryParameterValuePtrOutput) ArrayValues() QueryParameterValueArrayOutp
 }
 
 // [Optional] The struct field values, in order of the struct type's declaration.
-func (o QueryParameterValuePtrOutput) StructValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *QueryParameterValue) map[string]string {
+func (o QueryParameterValuePtrOutput) StructValues() QueryParameterValuePtrOutput {
+	return o.ApplyT(func(v *QueryParameterValue) *QueryParameterValue {
 		if v == nil {
 			return nil
 		}
 		return v.StructValues
-	}).(pulumi.StringMapOutput)
+	}).(QueryParameterValuePtrOutput)
 }
 
 // [Optional] The value of this value, if a simple scalar type.
@@ -12415,7 +12415,7 @@ type QueryParameterValueResponse struct {
 	// [Optional] The array values, if this is an array type.
 	ArrayValues []QueryParameterValueResponse `pulumi:"arrayValues"`
 	// [Optional] The struct field values, in order of the struct type's declaration.
-	StructValues map[string]string `pulumi:"structValues"`
+	StructValues *QueryParameterValueResponse `pulumi:"structValues"`
 	// [Optional] The value of this value, if a simple scalar type.
 	Value string `pulumi:"value"`
 }
@@ -12440,13 +12440,67 @@ func (o QueryParameterValueResponseOutput) ArrayValues() QueryParameterValueResp
 }
 
 // [Optional] The struct field values, in order of the struct type's declaration.
-func (o QueryParameterValueResponseOutput) StructValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v QueryParameterValueResponse) map[string]string { return v.StructValues }).(pulumi.StringMapOutput)
+func (o QueryParameterValueResponseOutput) StructValues() QueryParameterValueResponsePtrOutput {
+	return o.ApplyT(func(v QueryParameterValueResponse) *QueryParameterValueResponse { return v.StructValues }).(QueryParameterValueResponsePtrOutput)
 }
 
 // [Optional] The value of this value, if a simple scalar type.
 func (o QueryParameterValueResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryParameterValueResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type QueryParameterValueResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterValueResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryParameterValueResponse)(nil)).Elem()
+}
+
+func (o QueryParameterValueResponsePtrOutput) ToQueryParameterValueResponsePtrOutput() QueryParameterValueResponsePtrOutput {
+	return o
+}
+
+func (o QueryParameterValueResponsePtrOutput) ToQueryParameterValueResponsePtrOutputWithContext(ctx context.Context) QueryParameterValueResponsePtrOutput {
+	return o
+}
+
+func (o QueryParameterValueResponsePtrOutput) Elem() QueryParameterValueResponseOutput {
+	return o.ApplyT(func(v *QueryParameterValueResponse) QueryParameterValueResponse {
+		if v != nil {
+			return *v
+		}
+		var ret QueryParameterValueResponse
+		return ret
+	}).(QueryParameterValueResponseOutput)
+}
+
+// [Optional] The array values, if this is an array type.
+func (o QueryParameterValueResponsePtrOutput) ArrayValues() QueryParameterValueResponseArrayOutput {
+	return o.ApplyT(func(v *QueryParameterValueResponse) []QueryParameterValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ArrayValues
+	}).(QueryParameterValueResponseArrayOutput)
+}
+
+// [Optional] The struct field values, in order of the struct type's declaration.
+func (o QueryParameterValueResponsePtrOutput) StructValues() QueryParameterValueResponsePtrOutput {
+	return o.ApplyT(func(v *QueryParameterValueResponse) *QueryParameterValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StructValues
+	}).(QueryParameterValueResponsePtrOutput)
+}
+
+// [Optional] The value of this value, if a simple scalar type.
+func (o QueryParameterValueResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueryParameterValueResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type QueryParameterValueResponseArrayOutput struct{ *pulumi.OutputState }
@@ -18138,6 +18192,7 @@ func init() {
 	pulumi.RegisterOutputType(QueryParameterValuePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueArrayOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueResponseOutput{})
+	pulumi.RegisterOutputType(QueryParameterValueResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(QueryTimelineSampleResponseOutput{})
 	pulumi.RegisterOutputType(QueryTimelineSampleResponseArrayOutput{})

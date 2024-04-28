@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// <summary>
         /// All files used during config generation.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> SourceFiles;
+        public readonly ImmutableArray<ImmutableDictionary<string, object>> SourceFiles;
 
         [OutputConstructor]
-        private SourceInfoResponse(ImmutableArray<ImmutableDictionary<string, string>> sourceFiles)
+        private SourceInfoResponse(ImmutableArray<ImmutableDictionary<string, object>> sourceFiles)
         {
             SourceFiles = sourceFiles;
         }

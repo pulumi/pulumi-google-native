@@ -174,6 +174,38 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpecType = {
  */
 export type GoogleCloudDatacatalogV1DatabaseTableSpecType = (typeof GoogleCloudDatacatalogV1DatabaseTableSpecType)[keyof typeof GoogleCloudDatacatalogV1DatabaseTableSpecType];
 
+export const GoogleCloudDatacatalogV1FieldTypePrimitiveType = {
+    /**
+     * The default invalid value for a type.
+     */
+    PrimitiveTypeUnspecified: "PRIMITIVE_TYPE_UNSPECIFIED",
+    /**
+     * A double precision number.
+     */
+    Double: "DOUBLE",
+    /**
+     * An UTF-8 string.
+     */
+    String: "STRING",
+    /**
+     * A boolean value.
+     */
+    Bool: "BOOL",
+    /**
+     * A timestamp.
+     */
+    Timestamp: "TIMESTAMP",
+    /**
+     * A Richtext description.
+     */
+    Richtext: "RICHTEXT",
+} as const;
+
+/**
+ * Primitive types, such as string, boolean, etc.
+ */
+export type GoogleCloudDatacatalogV1FieldTypePrimitiveType = (typeof GoogleCloudDatacatalogV1FieldTypePrimitiveType)[keyof typeof GoogleCloudDatacatalogV1FieldTypePrimitiveType];
+
 export const GoogleCloudDatacatalogV1RoutineSpecArgumentMode = {
     /**
      * Unspecified mode.

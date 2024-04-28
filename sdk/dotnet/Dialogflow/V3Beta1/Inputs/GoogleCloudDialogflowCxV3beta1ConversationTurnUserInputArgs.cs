@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public Input<bool>? EnableSentimentAnalysis { get; set; }
 
         [Input("injectedParameters")]
-        private InputMap<string>? _injectedParameters;
+        private InputMap<object>? _injectedParameters;
 
         /// <summary>
         /// Parameters that need to be injected into the conversation during intent detection.
         /// </summary>
-        public InputMap<string> InjectedParameters
+        public InputMap<object> InjectedParameters
         {
-            get => _injectedParameters ?? (_injectedParameters = new InputMap<string>());
+            get => _injectedParameters ?? (_injectedParameters = new InputMap<object>());
             set => _injectedParameters = value;
         }
 

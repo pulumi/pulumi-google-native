@@ -25,7 +25,7 @@ export interface GetOrganizationEventThreatDetectionSettingCustomModuleResult {
     /**
      * Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
      */
-    readonly config: {[key: string]: string};
+    readonly config: {[key: string]: any};
     /**
      * The description for the module.
      */

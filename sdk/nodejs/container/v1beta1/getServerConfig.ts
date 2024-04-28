@@ -56,7 +56,7 @@ export interface GetServerConfigResult {
     /**
      * Maps of Kubernetes version and supported Windows server versions.
      */
-    readonly windowsVersionMaps: {[key: string]: string};
+    readonly windowsVersionMaps: outputs.container.v1beta1.WindowsVersionsResponse;
 }
 /**
  * Returns configuration info about the Google Kubernetes Engine service.

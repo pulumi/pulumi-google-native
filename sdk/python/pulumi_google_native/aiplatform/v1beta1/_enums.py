@@ -10,6 +10,11 @@ __all__ = [
     'FeatureGroupFeatureValueType',
     'FeatureStoreFeatureValueType',
     'GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType',
     'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType',
     'GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline',
     'GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisState',
@@ -189,6 +194,140 @@ class GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat(str, Enum):
     JSONL = "JSONL"
     """
     Examples are stored in JSONL files.
+    """
+
+
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding(str, Enum):
+    """
+    Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+    """
+    ENCODING_UNSPECIFIED = "ENCODING_UNSPECIFIED"
+    """
+    Default value. This is the same as IDENTITY.
+    """
+    IDENTITY = "IDENTITY"
+    """
+    The tensor represents one feature.
+    """
+    BAG_OF_FEATURES = "BAG_OF_FEATURES"
+    """
+    The tensor represents a bag of features where each index maps to a feature. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [27, 6.0, 150] index_feature_mapping = ["age", "height", "weight"] ```
+    """
+    BAG_OF_FEATURES_SPARSE = "BAG_OF_FEATURES_SPARSE"
+    """
+    The tensor represents a bag of features where each index maps to a feature. Zero values in the tensor indicates feature being non-existent. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [2, 0, 5, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"] ```
+    """
+    INDICATOR = "INDICATOR"
+    """
+    The tensor is a list of binaries representing whether a feature exists or not (1 indicates existence). InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [1, 0, 1, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"] ```
+    """
+    COMBINED_EMBEDDING = "COMBINED_EMBEDDING"
+    """
+    The tensor is encoded into a 1-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. For example: ``` input = ["This", "is", "a", "test", "."] encoded = [0.1, 0.2, 0.3, 0.4, 0.5] ```
+    """
+    CONCAT_EMBEDDING = "CONCAT_EMBEDDING"
+    """
+    Select this encoding when the input tensor is encoded into a 2-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. The first dimension of the encoded tensor's shape is the same as the input tensor's shape. For example: ``` input = ["This", "is", "a", "test", "."] encoded = [[0.1, 0.2, 0.3, 0.4, 0.5], [0.2, 0.1, 0.4, 0.3, 0.5], [0.5, 0.1, 0.3, 0.5, 0.4], [0.5, 0.3, 0.1, 0.2, 0.4], [0.4, 0.3, 0.2, 0.5, 0.1]] ```
+    """
+
+
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap(str, Enum):
+    """
+    The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+    """
+    COLOR_MAP_UNSPECIFIED = "COLOR_MAP_UNSPECIFIED"
+    """
+    Should not be used.
+    """
+    PINK_GREEN = "PINK_GREEN"
+    """
+    Positive: green. Negative: pink.
+    """
+    VIRIDIS = "VIRIDIS"
+    """
+    Viridis color map: A perceptually uniform color mapping which is easier to see by those with colorblindness and progresses from yellow to green to blue. Positive: yellow. Negative: blue.
+    """
+    RED = "RED"
+    """
+    Positive: red. Negative: red.
+    """
+    GREEN = "GREEN"
+    """
+    Positive: green. Negative: green.
+    """
+    RED_GREEN = "RED_GREEN"
+    """
+    Positive: green. Negative: red.
+    """
+    PINK_WHITE_GREEN = "PINK_WHITE_GREEN"
+    """
+    PiYG palette.
+    """
+
+
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType(str, Enum):
+    """
+    How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+    """
+    OVERLAY_TYPE_UNSPECIFIED = "OVERLAY_TYPE_UNSPECIFIED"
+    """
+    Default value. This is the same as NONE.
+    """
+    NONE = "NONE"
+    """
+    No overlay.
+    """
+    ORIGINAL = "ORIGINAL"
+    """
+    The attributions are shown on top of the original image.
+    """
+    GRAYSCALE = "GRAYSCALE"
+    """
+    The attributions are shown on top of grayscaled version of the original image.
+    """
+    MASK_BLACK = "MASK_BLACK"
+    """
+    The attributions are used as a mask to reveal predictive parts of the image and hide the un-predictive parts.
+    """
+
+
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity(str, Enum):
+    """
+    Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+    """
+    POLARITY_UNSPECIFIED = "POLARITY_UNSPECIFIED"
+    """
+    Default value. This is the same as POSITIVE.
+    """
+    POSITIVE = "POSITIVE"
+    """
+    Highlights the pixels/outlines that were most influential to the model's prediction.
+    """
+    NEGATIVE = "NEGATIVE"
+    """
+    Setting polarity to negative highlights areas that does not lead to the models's current prediction.
+    """
+    BOTH = "BOTH"
+    """
+    Shows both positive and negative attributions.
+    """
+
+
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType(str, Enum):
+    """
+    Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Should not be used.
+    """
+    PIXELS = "PIXELS"
+    """
+    Shows which pixel contributed to the image prediction.
+    """
+    OUTLINES = "OUTLINES"
+    """
+    Shows which region contributed to the image prediction by outlining the region.
     """
 
 

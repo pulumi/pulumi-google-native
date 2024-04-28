@@ -31,6 +31,7 @@ __all__ = [
     'GoogleCloudHealthcareV1DicomBigQueryDestinationResponse',
     'GoogleCloudHealthcareV1DicomStreamConfigResponse',
     'GoogleCloudHealthcareV1FhirBigQueryDestinationResponse',
+    'GroupOrSegmentResponse',
     'Hl7SchemaConfigResponse',
     'Hl7TypesConfigResponse',
     'Hl7V2NotificationConfigResponse',
@@ -45,7 +46,9 @@ __all__ = [
     'RedactConfigResponse',
     'ReplaceWithInfoTypeConfigResponse',
     'SchemaConfigResponse',
+    'SchemaGroupResponse',
     'SchemaPackageResponse',
+    'SchemaSegmentResponse',
     'SchematizedDataResponse',
     'SegmentResponse',
     'SignatureResponse',
@@ -1112,6 +1115,31 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationResponse(dict):
 
 
 @pulumi.output_type
+class GroupOrSegmentResponse(dict):
+    """
+    Construct representing a logical group or a segment.
+    """
+    def __init__(__self__, *,
+                 group: 'outputs.SchemaGroupResponse',
+                 segment: 'outputs.SchemaSegmentResponse'):
+        """
+        Construct representing a logical group or a segment.
+        """
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "segment", segment)
+
+    @property
+    @pulumi.getter
+    def group(self) -> 'outputs.SchemaGroupResponse':
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def segment(self) -> 'outputs.SchemaSegmentResponse':
+        return pulumi.get(self, "segment")
+
+
+@pulumi.output_type
 class Hl7SchemaConfigResponse(dict):
     """
     Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
@@ -1134,11 +1162,11 @@ class Hl7SchemaConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 message_schema_configs: Mapping[str, str],
+                 message_schema_configs: 'outputs.SchemaGroupResponse',
                  version: Sequence['outputs.VersionSourceResponse']):
         """
         Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
-        :param Mapping[str, str] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+        :param 'SchemaGroupResponse' message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         :param Sequence['VersionSourceResponse'] version: Each VersionSource is tested and only if they all match is the schema used for the message.
         """
         pulumi.set(__self__, "message_schema_configs", message_schema_configs)
@@ -1146,7 +1174,7 @@ class Hl7SchemaConfigResponse(dict):
 
     @property
     @pulumi.getter(name="messageSchemaConfigs")
-    def message_schema_configs(self) -> Mapping[str, str]:
+    def message_schema_configs(self) -> 'outputs.SchemaGroupResponse':
         """
         Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         """
@@ -1758,6 +1786,91 @@ class SchemaConfigResponse(dict):
 
 
 @pulumi.output_type
+class SchemaGroupResponse(dict):
+    """
+    An HL7v2 logical group construct.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxOccurs":
+            suggest = "max_occurs"
+        elif key == "minOccurs":
+            suggest = "min_occurs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchemaGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchemaGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchemaGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 choice: bool,
+                 max_occurs: int,
+                 members: Sequence['outputs.GroupOrSegmentResponse'],
+                 min_occurs: int,
+                 name: str):
+        """
+        An HL7v2 logical group construct.
+        :param bool choice: True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+        :param int max_occurs: The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+        :param Sequence['GroupOrSegmentResponse'] members: Nested groups and/or segments.
+        :param int min_occurs: The minimum number of times this group must be present/repeated.
+        :param str name: The name of this group. For example, "ORDER_DETAIL".
+        """
+        pulumi.set(__self__, "choice", choice)
+        pulumi.set(__self__, "max_occurs", max_occurs)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "min_occurs", min_occurs)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def choice(self) -> bool:
+        """
+        True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+        """
+        return pulumi.get(self, "choice")
+
+    @property
+    @pulumi.getter(name="maxOccurs")
+    def max_occurs(self) -> int:
+        """
+        The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+        """
+        return pulumi.get(self, "max_occurs")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Sequence['outputs.GroupOrSegmentResponse']:
+        """
+        Nested groups and/or segments.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter(name="minOccurs")
+    def min_occurs(self) -> int:
+        """
+        The minimum number of times this group must be present/repeated.
+        """
+        return pulumi.get(self, "min_occurs")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of this group. For example, "ORDER_DETAIL".
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class SchemaPackageResponse(dict):
     """
     A schema package contains a set of schemas and type definitions.
@@ -1842,6 +1955,69 @@ class SchemaPackageResponse(dict):
         Determines how unexpected segments (segments not matched to the schema) are handled.
         """
         return pulumi.get(self, "unexpected_segment_handling")
+
+
+@pulumi.output_type
+class SchemaSegmentResponse(dict):
+    """
+    An HL7v2 Segment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxOccurs":
+            suggest = "max_occurs"
+        elif key == "minOccurs":
+            suggest = "min_occurs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchemaSegmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchemaSegmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchemaSegmentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_occurs: int,
+                 min_occurs: int,
+                 type: str):
+        """
+        An HL7v2 Segment.
+        :param int max_occurs: The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+        :param int min_occurs: The minimum number of times this segment can be present in this group.
+        :param str type: The Segment type. For example, "PID".
+        """
+        pulumi.set(__self__, "max_occurs", max_occurs)
+        pulumi.set(__self__, "min_occurs", min_occurs)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="maxOccurs")
+    def max_occurs(self) -> int:
+        """
+        The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+        """
+        return pulumi.get(self, "max_occurs")
+
+    @property
+    @pulumi.getter(name="minOccurs")
+    def min_occurs(self) -> int:
+        """
+        The minimum number of times this segment can be present in this group.
+        """
+        return pulumi.get(self, "min_occurs")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The Segment type. For example, "PID".
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

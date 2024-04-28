@@ -124,14 +124,14 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         }
 
         [Input("poolArgs")]
-        private InputMap<string>? _poolArgs;
+        private InputMap<object>? _poolArgs;
 
         /// <summary>
         /// Extra arguments for this worker pool.
         /// </summary>
-        public InputMap<string> PoolArgs
+        public InputMap<object> PoolArgs
         {
-            get => _poolArgs ?? (_poolArgs = new InputMap<string>());
+            get => _poolArgs ?? (_poolArgs = new InputMap<object>());
             set => _poolArgs = value;
         }
 

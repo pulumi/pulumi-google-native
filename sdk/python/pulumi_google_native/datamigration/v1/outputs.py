@@ -821,13 +821,13 @@ class ConditionalColumnSetValueResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 custom_features: Mapping[str, str],
+                 custom_features: Mapping[str, Any],
                  source_numeric_filter: 'outputs.SourceNumericFilterResponse',
                  source_text_filter: 'outputs.SourceTextFilterResponse',
                  value_transformation: 'outputs.ValueTransformationResponse'):
         """
         Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
-        :param Mapping[str, str] custom_features: Optional. Custom engine specific features.
+        :param Mapping[str, Any] custom_features: Optional. Custom engine specific features.
         :param 'SourceNumericFilterResponse' source_numeric_filter: Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
         :param 'SourceTextFilterResponse' source_text_filter: Optional. Optional filter on source column length. Used for text based data types like varchar.
         :param 'ValueTransformationResponse' value_transformation: Description of data transformation during migration.
@@ -839,7 +839,7 @@ class ConditionalColumnSetValueResponse(dict):
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> Mapping[str, str]:
+    def custom_features(self) -> Mapping[str, Any]:
         """
         Optional. Custom engine specific features.
         """
@@ -1683,7 +1683,7 @@ class MultiColumnDatatypeChangeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 custom_features: Mapping[str, str],
+                 custom_features: Mapping[str, Any],
                  new_data_type: str,
                  override_fractional_seconds_precision: int,
                  override_length: str,
@@ -1694,7 +1694,7 @@ class MultiColumnDatatypeChangeResponse(dict):
                  source_text_filter: 'outputs.SourceTextFilterResponse'):
         """
         Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
-        :param Mapping[str, str] custom_features: Optional. Custom engine specific features.
+        :param Mapping[str, Any] custom_features: Optional. Custom engine specific features.
         :param str new_data_type: New data type.
         :param int override_fractional_seconds_precision: Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
         :param str override_length: Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
@@ -1716,7 +1716,7 @@ class MultiColumnDatatypeChangeResponse(dict):
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> Mapping[str, str]:
+    def custom_features(self) -> Mapping[str, Any]:
         """
         Optional. Custom engine specific features.
         """
@@ -2631,7 +2631,7 @@ class SingleColumnChangeResponse(dict):
                  charset: str,
                  collation: str,
                  comment: str,
-                 custom_features: Mapping[str, str],
+                 custom_features: Mapping[str, Any],
                  data_type: str,
                  fractional_seconds_precision: int,
                  length: str,
@@ -2648,7 +2648,7 @@ class SingleColumnChangeResponse(dict):
         :param str charset: Optional. Charset override - instead of table level charset.
         :param str collation: Optional. Collation override - instead of table level collation.
         :param str comment: Optional. Comment associated with the column.
-        :param Mapping[str, str] custom_features: Optional. Custom engine specific features.
+        :param Mapping[str, Any] custom_features: Optional. Custom engine specific features.
         :param str data_type: Optional. Column data type name.
         :param int fractional_seconds_precision: Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
         :param str length: Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
@@ -2724,7 +2724,7 @@ class SingleColumnChangeResponse(dict):
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> Mapping[str, str]:
+    def custom_features(self) -> Mapping[str, Any]:
         """
         Optional. Custom engine specific features.
         """
@@ -3338,12 +3338,12 @@ class StatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -3360,7 +3360,7 @@ class StatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """

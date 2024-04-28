@@ -79,7 +79,7 @@ export class App extends pulumi.CustomResource {
     /**
      * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
      */
-    public readonly generatedCustomerMetadata!: pulumi.Output<{[key: string]: string}>;
+    public readonly generatedCustomerMetadata!: pulumi.Output<{[key: string]: any}>;
     public readonly iap!: pulumi.Output<outputs.appengine.v1beta.IdentityAwareProxyResponse>;
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
@@ -174,7 +174,7 @@ export interface AppArgs {
     /**
      * Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
      */
-    generatedCustomerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    generatedCustomerMetadata?: pulumi.Input<{[key: string]: any}>;
     iap?: pulumi.Input<inputs.appengine.v1beta.IdentityAwareProxyArgs>;
     /**
      * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.

@@ -144,17 +144,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
             set => _schemaUpdateOptions = value;
         }
 
-        [Input("tableDefinitions")]
-        private InputMap<string>? _tableDefinitions;
-
         /// <summary>
         /// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         /// </summary>
-        public InputMap<string> TableDefinitions
-        {
-            get => _tableDefinitions ?? (_tableDefinitions = new InputMap<string>());
-            set => _tableDefinitions = value;
-        }
+        [Input("tableDefinitions")]
+        public Input<Inputs.ExternalDataConfigurationArgs>? TableDefinitions { get; set; }
 
         /// <summary>
         /// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.

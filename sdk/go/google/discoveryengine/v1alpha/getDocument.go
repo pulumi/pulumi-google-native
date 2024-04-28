@@ -35,7 +35,7 @@ type LookupDocumentResult struct {
 	// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
 	Content GoogleCloudDiscoveryengineV1alphaDocumentContentResponse `pulumi:"content"`
 	// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
-	DerivedStructData map[string]string `pulumi:"derivedStructData"`
+	DerivedStructData map[string]interface{} `pulumi:"derivedStructData"`
 	// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	JsonData string `pulumi:"jsonData"`
 	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
@@ -45,7 +45,7 @@ type LookupDocumentResult struct {
 	// The identifier of the schema located in the same data store.
 	SchemaId string `pulumi:"schemaId"`
 	// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-	StructData map[string]string `pulumi:"structData"`
+	StructData map[string]interface{} `pulumi:"structData"`
 }
 
 func LookupDocumentOutput(ctx *pulumi.Context, args LookupDocumentOutputArgs, opts ...pulumi.InvokeOption) LookupDocumentResultOutput {
@@ -96,8 +96,8 @@ func (o LookupDocumentResultOutput) Content() GoogleCloudDiscoveryengineV1alphaD
 }
 
 // This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
-func (o LookupDocumentResultOutput) DerivedStructData() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupDocumentResult) map[string]string { return v.DerivedStructData }).(pulumi.StringMapOutput)
+func (o LookupDocumentResultOutput) DerivedStructData() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupDocumentResult) map[string]interface{} { return v.DerivedStructData }).(pulumi.MapOutput)
 }
 
 // The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
@@ -121,8 +121,8 @@ func (o LookupDocumentResultOutput) SchemaId() pulumi.StringOutput {
 }
 
 // The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-func (o LookupDocumentResultOutput) StructData() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupDocumentResult) map[string]string { return v.StructData }).(pulumi.StringMapOutput)
+func (o LookupDocumentResultOutput) StructData() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupDocumentResult) map[string]interface{} { return v.StructData }).(pulumi.MapOutput)
 }
 
 func init() {

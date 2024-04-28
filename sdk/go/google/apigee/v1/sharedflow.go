@@ -88,7 +88,7 @@ type sharedflowArgs struct {
 	// The HTTP request/response body as raw binary.
 	Data *string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions []map[string]string `pulumi:"extensions"`
+	Extensions []map[string]interface{} `pulumi:"extensions"`
 	// Required. The name to give the shared flow
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -103,7 +103,7 @@ type SharedflowArgs struct {
 	// The HTTP request/response body as raw binary.
 	Data pulumi.StringPtrInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions pulumi.StringMapArrayInput
+	Extensions pulumi.MapArrayInput
 	// Required. The name to give the shared flow
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

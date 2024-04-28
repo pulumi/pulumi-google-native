@@ -5,6 +5,8 @@
 from enum import Enum
 
 __all__ = [
+    'CleanupPolicyAction',
+    'CleanupPolicyConditionTagState',
     'DockerRepositoryPublicRepository',
     'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase',
     'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase',
@@ -15,6 +17,46 @@ __all__ = [
     'RepositoryFormat',
     'RepositoryMode',
 ]
+
+
+class CleanupPolicyAction(str, Enum):
+    """
+    Policy action.
+    """
+    ACTION_UNSPECIFIED = "ACTION_UNSPECIFIED"
+    """
+    Action not specified.
+    """
+    DELETE = "DELETE"
+    """
+    Delete action.
+    """
+    KEEP = "KEEP"
+    """
+    Keep action.
+    """
+
+
+class CleanupPolicyConditionTagState(str, Enum):
+    """
+    Match versions by tag status.
+    """
+    TAG_STATE_UNSPECIFIED = "TAG_STATE_UNSPECIFIED"
+    """
+    Tag status not specified.
+    """
+    TAGGED = "TAGGED"
+    """
+    Applies to tagged versions only.
+    """
+    UNTAGGED = "UNTAGGED"
+    """
+    Applies to untagged versions only.
+    """
+    ANY = "ANY"
+    """
+    Applies to all versions.
+    """
 
 
 class DockerRepositoryPublicRepository(str, Enum):

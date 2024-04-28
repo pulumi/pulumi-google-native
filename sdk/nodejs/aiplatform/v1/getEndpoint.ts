@@ -80,7 +80,7 @@ export interface GetEndpointResult {
     /**
      * A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
      */
-    readonly trafficSplit: {[key: string]: string};
+    readonly trafficSplit: {[key: string]: number};
     /**
      * Timestamp when this Endpoint was last updated.
      */

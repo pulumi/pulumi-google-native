@@ -18,7 +18,7 @@ type OrganizationEventThreatDetectionSettingCustomModule struct {
 	pulumi.CustomResourceState
 
 	// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
-	Config pulumi.StringMapOutput `pulumi:"config"`
+	Config pulumi.MapOutput `pulumi:"config"`
 	// The description for the module.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The human readable name to be displayed for the module.
@@ -84,7 +84,7 @@ func (OrganizationEventThreatDetectionSettingCustomModuleState) ElementType() re
 
 type organizationEventThreatDetectionSettingCustomModuleArgs struct {
 	// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
-	Config map[string]string `pulumi:"config"`
+	Config map[string]interface{} `pulumi:"config"`
 	// The description for the module.
 	Description *string `pulumi:"description"`
 	// The human readable name to be displayed for the module.
@@ -101,7 +101,7 @@ type organizationEventThreatDetectionSettingCustomModuleArgs struct {
 // The set of arguments for constructing a OrganizationEventThreatDetectionSettingCustomModule resource.
 type OrganizationEventThreatDetectionSettingCustomModuleArgs struct {
 	// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
-	Config pulumi.StringMapInput
+	Config pulumi.MapInput
 	// The description for the module.
 	Description pulumi.StringPtrInput
 	// The human readable name to be displayed for the module.
@@ -153,8 +153,8 @@ func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) ToOrganizatio
 }
 
 // Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
-func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) Config() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OrganizationEventThreatDetectionSettingCustomModule) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
+func (o OrganizationEventThreatDetectionSettingCustomModuleOutput) Config() pulumi.MapOutput {
+	return o.ApplyT(func(v *OrganizationEventThreatDetectionSettingCustomModule) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
 }
 
 // The description for the module.

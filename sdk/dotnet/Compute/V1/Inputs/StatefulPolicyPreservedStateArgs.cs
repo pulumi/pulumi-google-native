@@ -15,41 +15,23 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// </summary>
     public sealed class StatefulPolicyPreservedStateArgs : global::Pulumi.ResourceArgs
     {
-        [Input("disks")]
-        private InputMap<string>? _disks;
-
         /// <summary>
         /// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
         /// </summary>
-        public InputMap<string> Disks
-        {
-            get => _disks ?? (_disks = new InputMap<string>());
-            set => _disks = value;
-        }
-
-        [Input("externalIPs")]
-        private InputMap<string>? _externalIPs;
+        [Input("disks")]
+        public Input<Inputs.StatefulPolicyPreservedStateDiskDeviceArgs>? Disks { get; set; }
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         /// </summary>
-        public InputMap<string> ExternalIPs
-        {
-            get => _externalIPs ?? (_externalIPs = new InputMap<string>());
-            set => _externalIPs = value;
-        }
-
-        [Input("internalIPs")]
-        private InputMap<string>? _internalIPs;
+        [Input("externalIPs")]
+        public Input<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>? ExternalIPs { get; set; }
 
         /// <summary>
         /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         /// </summary>
-        public InputMap<string> InternalIPs
-        {
-            get => _internalIPs ?? (_internalIPs = new InputMap<string>());
-            set => _internalIPs = value;
-        }
+        [Input("internalIPs")]
+        public Input<Inputs.StatefulPolicyPreservedStateNetworkIpArgs>? InternalIPs { get; set; }
 
         public StatefulPolicyPreservedStateArgs()
         {

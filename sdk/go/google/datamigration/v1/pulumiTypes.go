@@ -2167,7 +2167,7 @@ func (o CloudSqlSettingsResponseOutput) Zone() pulumi.StringOutput {
 // Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
 type ConditionalColumnSetValue struct {
 	// Optional. Custom engine specific features.
-	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	CustomFeatures map[string]interface{} `pulumi:"customFeatures"`
 	// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
 	SourceNumericFilter *SourceNumericFilter `pulumi:"sourceNumericFilter"`
 	// Optional. Optional filter on source column length. Used for text based data types like varchar.
@@ -2190,7 +2190,7 @@ type ConditionalColumnSetValueInput interface {
 // Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
 type ConditionalColumnSetValueArgs struct {
 	// Optional. Custom engine specific features.
-	CustomFeatures pulumi.StringMapInput `pulumi:"customFeatures"`
+	CustomFeatures pulumi.MapInput `pulumi:"customFeatures"`
 	// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
 	SourceNumericFilter SourceNumericFilterPtrInput `pulumi:"sourceNumericFilter"`
 	// Optional. Optional filter on source column length. Used for text based data types like varchar.
@@ -2278,8 +2278,8 @@ func (o ConditionalColumnSetValueOutput) ToConditionalColumnSetValuePtrOutputWit
 }
 
 // Optional. Custom engine specific features.
-func (o ConditionalColumnSetValueOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ConditionalColumnSetValue) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+func (o ConditionalColumnSetValueOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValue) map[string]interface{} { return v.CustomFeatures }).(pulumi.MapOutput)
 }
 
 // Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
@@ -2322,13 +2322,13 @@ func (o ConditionalColumnSetValuePtrOutput) Elem() ConditionalColumnSetValueOutp
 }
 
 // Optional. Custom engine specific features.
-func (o ConditionalColumnSetValuePtrOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ConditionalColumnSetValue) map[string]string {
+func (o ConditionalColumnSetValuePtrOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v *ConditionalColumnSetValue) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.CustomFeatures
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
@@ -2364,7 +2364,7 @@ func (o ConditionalColumnSetValuePtrOutput) ValueTransformation() ValueTransform
 // Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
 type ConditionalColumnSetValueResponse struct {
 	// Optional. Custom engine specific features.
-	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	CustomFeatures map[string]interface{} `pulumi:"customFeatures"`
 	// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
 	SourceNumericFilter SourceNumericFilterResponse `pulumi:"sourceNumericFilter"`
 	// Optional. Optional filter on source column length. Used for text based data types like varchar.
@@ -2389,8 +2389,8 @@ func (o ConditionalColumnSetValueResponseOutput) ToConditionalColumnSetValueResp
 }
 
 // Optional. Custom engine specific features.
-func (o ConditionalColumnSetValueResponseOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ConditionalColumnSetValueResponse) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+func (o ConditionalColumnSetValueResponseOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v ConditionalColumnSetValueResponse) map[string]interface{} { return v.CustomFeatures }).(pulumi.MapOutput)
 }
 
 // Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
@@ -5425,7 +5425,7 @@ func (o MappingRuleFilterResponseOutput) ParentEntity() pulumi.StringOutput {
 // Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
 type MultiColumnDatatypeChange struct {
 	// Optional. Custom engine specific features.
-	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	CustomFeatures map[string]interface{} `pulumi:"customFeatures"`
 	// New data type.
 	NewDataType string `pulumi:"newDataType"`
 	// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
@@ -5458,7 +5458,7 @@ type MultiColumnDatatypeChangeInput interface {
 // Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
 type MultiColumnDatatypeChangeArgs struct {
 	// Optional. Custom engine specific features.
-	CustomFeatures pulumi.StringMapInput `pulumi:"customFeatures"`
+	CustomFeatures pulumi.MapInput `pulumi:"customFeatures"`
 	// New data type.
 	NewDataType pulumi.StringInput `pulumi:"newDataType"`
 	// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
@@ -5556,8 +5556,8 @@ func (o MultiColumnDatatypeChangeOutput) ToMultiColumnDatatypeChangePtrOutputWit
 }
 
 // Optional. Custom engine specific features.
-func (o MultiColumnDatatypeChangeOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MultiColumnDatatypeChange) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+func (o MultiColumnDatatypeChangeOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChange) map[string]interface{} { return v.CustomFeatures }).(pulumi.MapOutput)
 }
 
 // New data type.
@@ -5625,13 +5625,13 @@ func (o MultiColumnDatatypeChangePtrOutput) Elem() MultiColumnDatatypeChangeOutp
 }
 
 // Optional. Custom engine specific features.
-func (o MultiColumnDatatypeChangePtrOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MultiColumnDatatypeChange) map[string]string {
+func (o MultiColumnDatatypeChangePtrOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v *MultiColumnDatatypeChange) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.CustomFeatures
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // New data type.
@@ -5717,7 +5717,7 @@ func (o MultiColumnDatatypeChangePtrOutput) SourceTextFilter() SourceTextFilterP
 // Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
 type MultiColumnDatatypeChangeResponse struct {
 	// Optional. Custom engine specific features.
-	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	CustomFeatures map[string]interface{} `pulumi:"customFeatures"`
 	// New data type.
 	NewDataType string `pulumi:"newDataType"`
 	// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
@@ -5752,8 +5752,8 @@ func (o MultiColumnDatatypeChangeResponseOutput) ToMultiColumnDatatypeChangeResp
 }
 
 // Optional. Custom engine specific features.
-func (o MultiColumnDatatypeChangeResponseOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+func (o MultiColumnDatatypeChangeResponseOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v MultiColumnDatatypeChangeResponse) map[string]interface{} { return v.CustomFeatures }).(pulumi.MapOutput)
 }
 
 // New data type.
@@ -8431,7 +8431,7 @@ type SingleColumnChange struct {
 	// Optional. Comment associated with the column.
 	Comment *string `pulumi:"comment"`
 	// Optional. Custom engine specific features.
-	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	CustomFeatures map[string]interface{} `pulumi:"customFeatures"`
 	// Optional. Column data type name.
 	DataType *string `pulumi:"dataType"`
 	// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
@@ -8476,7 +8476,7 @@ type SingleColumnChangeArgs struct {
 	// Optional. Comment associated with the column.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// Optional. Custom engine specific features.
-	CustomFeatures pulumi.StringMapInput `pulumi:"customFeatures"`
+	CustomFeatures pulumi.MapInput `pulumi:"customFeatures"`
 	// Optional. Column data type name.
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
@@ -8604,8 +8604,8 @@ func (o SingleColumnChangeOutput) Comment() pulumi.StringPtrOutput {
 }
 
 // Optional. Custom engine specific features.
-func (o SingleColumnChangeOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SingleColumnChange) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+func (o SingleColumnChangeOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v SingleColumnChange) map[string]interface{} { return v.CustomFeatures }).(pulumi.MapOutput)
 }
 
 // Optional. Column data type name.
@@ -8733,13 +8733,13 @@ func (o SingleColumnChangePtrOutput) Comment() pulumi.StringPtrOutput {
 }
 
 // Optional. Custom engine specific features.
-func (o SingleColumnChangePtrOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SingleColumnChange) map[string]string {
+func (o SingleColumnChangePtrOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v *SingleColumnChange) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.CustomFeatures
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Optional. Column data type name.
@@ -8837,7 +8837,7 @@ type SingleColumnChangeResponse struct {
 	// Optional. Comment associated with the column.
 	Comment string `pulumi:"comment"`
 	// Optional. Custom engine specific features.
-	CustomFeatures map[string]string `pulumi:"customFeatures"`
+	CustomFeatures map[string]interface{} `pulumi:"customFeatures"`
 	// Optional. Column data type name.
 	DataType string `pulumi:"dataType"`
 	// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
@@ -8902,8 +8902,8 @@ func (o SingleColumnChangeResponseOutput) Comment() pulumi.StringOutput {
 }
 
 // Optional. Custom engine specific features.
-func (o SingleColumnChangeResponseOutput) CustomFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SingleColumnChangeResponse) map[string]string { return v.CustomFeatures }).(pulumi.StringMapOutput)
+func (o SingleColumnChangeResponseOutput) CustomFeatures() pulumi.MapOutput {
+	return o.ApplyT(func(v SingleColumnChangeResponse) map[string]interface{} { return v.CustomFeatures }).(pulumi.MapOutput)
 }
 
 // Optional. Column data type name.
@@ -10906,7 +10906,7 @@ type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -10932,8 +10932,8 @@ func (o StatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.

@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public Input<string> Type { get; set; } = null!;
 
         [Input("value", required: true)]
-        private InputMap<string>? _value;
+        private InputMap<object>? _value;
 
         /// <summary>
         /// The value of the Setting.
         /// </summary>
-        public InputMap<string> Value
+        public InputMap<object> Value
         {
-            get => _value ?? (_value = new InputMap<string>());
+            get => _value ?? (_value = new InputMap<object>());
             set => _value = value;
         }
 

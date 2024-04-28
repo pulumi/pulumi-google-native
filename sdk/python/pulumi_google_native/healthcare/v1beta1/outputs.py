@@ -38,6 +38,7 @@ __all__ = [
     'DeidentifyConfigResponse',
     'DeidentifyOperationMetadataResponse',
     'DeleteTagResponse',
+    'DetailResponse',
     'DicomConfigResponse',
     'DicomTagConfigResponse',
     'ExprResponse',
@@ -47,12 +48,14 @@ __all__ = [
     'FhirOutputResponse',
     'FieldMetadataResponse',
     'FieldResponse',
+    'FindingResponse',
     'GoogleCloudHealthcareV1beta1ConsentPolicyResponse',
     'GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse',
     'GoogleCloudHealthcareV1beta1DeidentifyOptionsResponse',
     'GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse',
     'GoogleCloudHealthcareV1beta1DicomStreamConfigResponse',
     'GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse',
+    'GroupOrSegmentResponse',
     'Hl7SchemaConfigResponse',
     'Hl7TypesConfigResponse',
     'Hl7V2NotificationConfigResponse',
@@ -78,7 +81,9 @@ __all__ = [
     'ResetTagResponse',
     'ResourceAnnotationResponse',
     'SchemaConfigResponse',
+    'SchemaGroupResponse',
     'SchemaPackageResponse',
+    'SchemaSegmentResponse',
     'SchematizedDataResponse',
     'SearchConfigResponse',
     'SearchParameterResponse',
@@ -1176,6 +1181,24 @@ class DeleteTagResponse(dict):
 
 
 @pulumi.output_type
+class DetailResponse(dict):
+    """
+    Contains multiple sensitive information findings for each resource slice.
+    """
+    def __init__(__self__, *,
+                 findings: Sequence['outputs.FindingResponse']):
+        """
+        Contains multiple sensitive information findings for each resource slice.
+        """
+        pulumi.set(__self__, "findings", findings)
+
+    @property
+    @pulumi.getter
+    def findings(self) -> Sequence['outputs.FindingResponse']:
+        return pulumi.get(self, "findings")
+
+
+@pulumi.output_type
 class DicomConfigResponse(dict):
     """
     Specifies the parameters needed for de-identification of DICOM stores.
@@ -1707,6 +1730,74 @@ class FieldResponse(dict):
 
 
 @pulumi.output_type
+class FindingResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoType":
+            suggest = "info_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FindingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FindingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FindingResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end: str,
+                 info_type: str,
+                 quote: str,
+                 start: str):
+        """
+        :param str end: Zero-based ending index of the found text, exclusively.
+        :param str info_type: The type of information stored in this text range. For example, HumanName, BirthDate, or Address.
+        :param str quote: The snippet of the sensitive text. This field is only populated during deidentification if `store_quote` is set to true in DeidentifyConfig.
+        :param str start: Zero-based starting index of the found text, inclusively.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "info_type", info_type)
+        pulumi.set(__self__, "quote", quote)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        """
+        Zero-based ending index of the found text, exclusively.
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> str:
+        """
+        The type of information stored in this text range. For example, HumanName, BirthDate, or Address.
+        """
+        return pulumi.get(self, "info_type")
+
+    @property
+    @pulumi.getter
+    def quote(self) -> str:
+        """
+        The snippet of the sensitive text. This field is only populated during deidentification if `store_quote` is set to true in DeidentifyConfig.
+        """
+        return pulumi.get(self, "quote")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        """
+        Zero-based starting index of the found text, inclusively.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
 class GoogleCloudHealthcareV1beta1ConsentPolicyResponse(dict):
     """
     Represents a user's consent in terms of the resources that can be accessed and under what conditions.
@@ -2143,6 +2234,31 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse(dict):
 
 
 @pulumi.output_type
+class GroupOrSegmentResponse(dict):
+    """
+    Construct representing a logical group or a segment.
+    """
+    def __init__(__self__, *,
+                 group: 'outputs.SchemaGroupResponse',
+                 segment: 'outputs.SchemaSegmentResponse'):
+        """
+        Construct representing a logical group or a segment.
+        """
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "segment", segment)
+
+    @property
+    @pulumi.getter
+    def group(self) -> 'outputs.SchemaGroupResponse':
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def segment(self) -> 'outputs.SchemaSegmentResponse':
+        return pulumi.get(self, "segment")
+
+
+@pulumi.output_type
 class Hl7SchemaConfigResponse(dict):
     """
     Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
@@ -2165,11 +2281,11 @@ class Hl7SchemaConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 message_schema_configs: Mapping[str, str],
+                 message_schema_configs: 'outputs.SchemaGroupResponse',
                  version: Sequence['outputs.VersionSourceResponse']):
         """
         Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
-        :param Mapping[str, str] message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
+        :param 'SchemaGroupResponse' message_schema_configs: Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         :param Sequence['VersionSourceResponse'] version: Each VersionSource is tested and only if they all match is the schema used for the message.
         """
         pulumi.set(__self__, "message_schema_configs", message_schema_configs)
@@ -2177,7 +2293,7 @@ class Hl7SchemaConfigResponse(dict):
 
     @property
     @pulumi.getter(name="messageSchemaConfigs")
-    def message_schema_configs(self) -> Mapping[str, str]:
+    def message_schema_configs(self) -> 'outputs.SchemaGroupResponse':
         """
         Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         """
@@ -3050,6 +3166,91 @@ class SchemaConfigResponse(dict):
 
 
 @pulumi.output_type
+class SchemaGroupResponse(dict):
+    """
+    An HL7v2 logical group construct.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxOccurs":
+            suggest = "max_occurs"
+        elif key == "minOccurs":
+            suggest = "min_occurs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchemaGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchemaGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchemaGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 choice: bool,
+                 max_occurs: int,
+                 members: Sequence['outputs.GroupOrSegmentResponse'],
+                 min_occurs: int,
+                 name: str):
+        """
+        An HL7v2 logical group construct.
+        :param bool choice: True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+        :param int max_occurs: The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+        :param Sequence['GroupOrSegmentResponse'] members: Nested groups and/or segments.
+        :param int min_occurs: The minimum number of times this group must be present/repeated.
+        :param str name: The name of this group. For example, "ORDER_DETAIL".
+        """
+        pulumi.set(__self__, "choice", choice)
+        pulumi.set(__self__, "max_occurs", max_occurs)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "min_occurs", min_occurs)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def choice(self) -> bool:
+        """
+        True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+        """
+        return pulumi.get(self, "choice")
+
+    @property
+    @pulumi.getter(name="maxOccurs")
+    def max_occurs(self) -> int:
+        """
+        The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+        """
+        return pulumi.get(self, "max_occurs")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Sequence['outputs.GroupOrSegmentResponse']:
+        """
+        Nested groups and/or segments.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter(name="minOccurs")
+    def min_occurs(self) -> int:
+        """
+        The minimum number of times this group must be present/repeated.
+        """
+        return pulumi.get(self, "min_occurs")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of this group. For example, "ORDER_DETAIL".
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class SchemaPackageResponse(dict):
     """
     A schema package contains a set of schemas and type definitions.
@@ -3134,6 +3335,69 @@ class SchemaPackageResponse(dict):
         Determines how unexpected segments (segments not matched to the schema) are handled.
         """
         return pulumi.get(self, "unexpected_segment_handling")
+
+
+@pulumi.output_type
+class SchemaSegmentResponse(dict):
+    """
+    An HL7v2 Segment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxOccurs":
+            suggest = "max_occurs"
+        elif key == "minOccurs":
+            suggest = "min_occurs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchemaSegmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchemaSegmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchemaSegmentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_occurs: int,
+                 min_occurs: int,
+                 type: str):
+        """
+        An HL7v2 Segment.
+        :param int max_occurs: The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+        :param int min_occurs: The minimum number of times this segment can be present in this group.
+        :param str type: The Segment type. For example, "PID".
+        """
+        pulumi.set(__self__, "max_occurs", max_occurs)
+        pulumi.set(__self__, "min_occurs", min_occurs)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="maxOccurs")
+    def max_occurs(self) -> int:
+        """
+        The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+        """
+        return pulumi.get(self, "max_occurs")
+
+    @property
+    @pulumi.getter(name="minOccurs")
+    def min_occurs(self) -> int:
+        """
+        The minimum number of times this segment can be present in this group.
+        """
+        return pulumi.get(self, "min_occurs")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The Segment type. For example, "PID".
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -3327,16 +3591,16 @@ class SensitiveTextAnnotationResponse(dict):
     A TextAnnotation specifies a text range that includes sensitive information.
     """
     def __init__(__self__, *,
-                 details: Mapping[str, str]):
+                 details: 'outputs.DetailResponse'):
         """
         A TextAnnotation specifies a text range that includes sensitive information.
-        :param Mapping[str, str] details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
+        :param 'DetailResponse' details: Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """
         pulumi.set(__self__, "details", details)
 
     @property
     @pulumi.getter
-    def details(self) -> Mapping[str, str]:
+    def details(self) -> 'outputs.DetailResponse':
         """
         Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --> {findings_1, findings_2, findings_3}
         """

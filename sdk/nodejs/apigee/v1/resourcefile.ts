@@ -47,7 +47,7 @@ export class Resourcefile extends pulumi.CustomResource {
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
-    public readonly extensions!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly extensions!: pulumi.Output<{[key: string]: any}[]>;
     /**
      * Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
      */
@@ -121,7 +121,7 @@ export interface ResourcefileArgs {
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
-    extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    extensions?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
     /**
      * File to upload.
      */

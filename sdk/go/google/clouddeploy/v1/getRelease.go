@@ -65,9 +65,9 @@ type LookupReleaseResult struct {
 	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion string `pulumi:"skaffoldVersion"`
 	// Map from target ID to the target artifacts created during the render operation.
-	TargetArtifacts map[string]string `pulumi:"targetArtifacts"`
+	TargetArtifacts TargetArtifactResponse `pulumi:"targetArtifacts"`
 	// Map from target ID to details of the render operation for that target.
-	TargetRenders map[string]string `pulumi:"targetRenders"`
+	TargetRenders TargetRenderResponse `pulumi:"targetRenders"`
 	// Snapshot of the targets taken at release creation time.
 	TargetSnapshots []TargetResponse `pulumi:"targetSnapshots"`
 	// Unique identifier of the `Release`.
@@ -198,13 +198,13 @@ func (o LookupReleaseResultOutput) SkaffoldVersion() pulumi.StringOutput {
 }
 
 // Map from target ID to the target artifacts created during the render operation.
-func (o LookupReleaseResultOutput) TargetArtifacts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupReleaseResult) map[string]string { return v.TargetArtifacts }).(pulumi.StringMapOutput)
+func (o LookupReleaseResultOutput) TargetArtifacts() TargetArtifactResponseOutput {
+	return o.ApplyT(func(v LookupReleaseResult) TargetArtifactResponse { return v.TargetArtifacts }).(TargetArtifactResponseOutput)
 }
 
 // Map from target ID to details of the render operation for that target.
-func (o LookupReleaseResultOutput) TargetRenders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupReleaseResult) map[string]string { return v.TargetRenders }).(pulumi.StringMapOutput)
+func (o LookupReleaseResultOutput) TargetRenders() TargetRenderResponseOutput {
+	return o.ApplyT(func(v LookupReleaseResult) TargetRenderResponse { return v.TargetRenders }).(TargetRenderResponseOutput)
 }
 
 // Snapshot of the targets taken at release creation time.

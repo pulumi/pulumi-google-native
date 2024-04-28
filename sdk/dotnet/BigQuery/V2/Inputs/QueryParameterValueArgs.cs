@@ -24,17 +24,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
             set => _arrayValues = value;
         }
 
-        [Input("structValues")]
-        private InputMap<string>? _structValues;
-
         /// <summary>
         /// [Optional] The struct field values, in order of the struct type's declaration.
         /// </summary>
-        public InputMap<string> StructValues
-        {
-            get => _structValues ?? (_structValues = new InputMap<string>());
-            set => _structValues = value;
-        }
+        [Input("structValues")]
+        public Input<Inputs.QueryParameterValueArgs>? StructValues { get; set; }
 
         /// <summary>
         /// [Optional] The value of this value, if a simple scalar type.

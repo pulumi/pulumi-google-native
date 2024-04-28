@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// <summary>
         /// Optional. Custom engine specific features.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> CustomFeatures;
+        public readonly ImmutableDictionary<string, object> CustomFeatures;
         /// <summary>
         /// Optional. Column data type name.
         /// </summary>
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             string comment,
 
-            ImmutableDictionary<string, string> customFeatures,
+            ImmutableDictionary<string, object> customFeatures,
 
             string dataType,
 

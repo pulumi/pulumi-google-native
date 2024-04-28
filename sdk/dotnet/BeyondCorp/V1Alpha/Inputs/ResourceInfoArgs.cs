@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public Input<string> Id { get; set; } = null!;
 
         [Input("resource")]
-        private InputMap<string>? _resource;
+        private InputMap<object>? _resource;
 
         /// <summary>
         /// Specific details for the resource.
         /// </summary>
-        public InputMap<string> Resource
+        public InputMap<object> Resource
         {
-            get => _resource ?? (_resource = new InputMap<string>());
+            get => _resource ?? (_resource = new InputMap<object>());
             set => _resource = value;
         }
 

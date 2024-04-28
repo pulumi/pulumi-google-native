@@ -37,6 +37,7 @@ __all__ = [
     'AutoscalingPolicyResponse',
     'AutoscalingPolicyScaleDownControlResponse',
     'AutoscalingPolicyScaleInControlResponse',
+    'AutoscalingPolicyScalingScheduleResponse',
     'BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse',
     'BackendBucketCdnPolicyCacheKeyPolicyResponse',
     'BackendBucketCdnPolicyNegativeCachingPolicyResponse',
@@ -66,6 +67,7 @@ __all__ = [
     'CustomErrorResponsePolicyResponse',
     'CustomerEncryptionKeyResponse',
     'DeprecationStatusResponse',
+    'DiskAsyncReplicationListResponse',
     'DiskAsyncReplicationResponse',
     'DiskInstantiationConfigResponse',
     'DiskParamsResponse',
@@ -122,6 +124,7 @@ __all__ = [
     'InstanceGroupManagerActionsSummaryResponse',
     'InstanceGroupManagerAllInstancesConfigResponse',
     'InstanceGroupManagerAutoHealingPolicyResponse',
+    'InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse',
     'InstanceGroupManagerInstanceFlexibilityPolicyResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyResponse',
     'InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse',
@@ -232,6 +235,7 @@ __all__ = [
     'SSLHealthCheckResponse',
     'SavedAttachedDiskResponse',
     'SavedDiskResponse',
+    'ScalingScheduleStatusResponse',
     'SchedulingNodeAffinityResponse',
     'SchedulingResponse',
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse',
@@ -267,6 +271,7 @@ __all__ = [
     'ServiceAttachmentConnectedEndpointResponse',
     'ServiceAttachmentConsumerProjectLimitResponse',
     'ServiceAttachmentTunnelingConfigResponse',
+    'ShareSettingsProjectConfigResponse',
     'ShareSettingsResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedInstanceIntegrityPolicyResponse',
@@ -279,6 +284,8 @@ __all__ = [
     'SslCertificateSelfManagedSslCertificateResponse',
     'SslPolicyWarningsItemDataItemResponse',
     'SslPolicyWarningsItemResponse',
+    'StatefulPolicyPreservedStateDiskDeviceResponse',
+    'StatefulPolicyPreservedStateNetworkIpResponse',
     'StatefulPolicyPreservedStateResponse',
     'StatefulPolicyResponse',
     'SubnetworkLogConfigResponse',
@@ -2158,7 +2165,7 @@ class AutoscalingPolicyResponse(dict):
                  mode: str,
                  scale_down_control: 'outputs.AutoscalingPolicyScaleDownControlResponse',
                  scale_in_control: 'outputs.AutoscalingPolicyScaleInControlResponse',
-                 scaling_schedules: Mapping[str, str]):
+                 scaling_schedules: 'outputs.AutoscalingPolicyScalingScheduleResponse'):
         """
         Cloud Autoscaler policy.
         :param int cool_down_period_sec: The number of seconds that your application takes to initialize on a VM instance. This is referred to as the [initialization period](/compute/docs/autoscaler#cool_down_period). Specifying an accurate initialization period improves autoscaler decisions. For example, when scaling out, the autoscaler ignores data from VMs that are still initializing because those VMs might not yet represent normal usage of your application. The default initialization period is 60 seconds. Initialization periods might vary because of numerous factors. We recommend that you test how long your application takes to initialize. To do this, create a VM and time your application's startup process.
@@ -2168,7 +2175,7 @@ class AutoscalingPolicyResponse(dict):
         :param int max_num_replicas: The maximum number of instances that the autoscaler can scale out to. This is required when creating or updating an autoscaler. The maximum number of replicas must not be lower than minimal number of replicas.
         :param int min_num_replicas: The minimum number of replicas that the autoscaler can scale in to. This cannot be less than 0. If not provided, autoscaler chooses a default value depending on maximum number of instances allowed.
         :param str mode: Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
-        :param Mapping[str, str] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
+        :param 'AutoscalingPolicyScalingScheduleResponse' scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
         pulumi.set(__self__, "cool_down_period_sec", cool_down_period_sec)
         pulumi.set(__self__, "cpu_utilization", cpu_utilization)
@@ -2249,7 +2256,7 @@ class AutoscalingPolicyResponse(dict):
 
     @property
     @pulumi.getter(name="scalingSchedules")
-    def scaling_schedules(self) -> Mapping[str, str]:
+    def scaling_schedules(self) -> 'outputs.AutoscalingPolicyScalingScheduleResponse':
         """
         Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         """
@@ -2358,6 +2365,104 @@ class AutoscalingPolicyScaleInControlResponse(dict):
         How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
         """
         return pulumi.get(self, "time_window_sec")
+
+
+@pulumi.output_type
+class AutoscalingPolicyScalingScheduleResponse(dict):
+    """
+    Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationSec":
+            suggest = "duration_sec"
+        elif key == "minRequiredReplicas":
+            suggest = "min_required_replicas"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingPolicyScalingScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingPolicyScalingScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingPolicyScalingScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: str,
+                 disabled: bool,
+                 duration_sec: int,
+                 min_required_replicas: int,
+                 schedule: str,
+                 time_zone: str):
+        """
+        Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+        :param str description: A description of a scaling schedule.
+        :param bool disabled: A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+        :param int duration_sec: The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+        :param int min_required_replicas: The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+        :param str schedule: The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+        :param str time_zone: The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "duration_sec", duration_sec)
+        pulumi.set(__self__, "min_required_replicas", min_required_replicas)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A description of a scaling schedule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="durationSec")
+    def duration_sec(self) -> int:
+        """
+        The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+        """
+        return pulumi.get(self, "duration_sec")
+
+    @property
+    @pulumi.getter(name="minRequiredReplicas")
+    def min_required_replicas(self) -> int:
+        """
+        The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+        """
+        return pulumi.get(self, "min_required_replicas")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> str:
+        """
+        The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+        """
+        return pulumi.get(self, "time_zone")
 
 
 @pulumi.output_type
@@ -4493,6 +4598,35 @@ class DeprecationStatusResponse(dict):
 
 
 @pulumi.output_type
+class DiskAsyncReplicationListResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asyncReplicationDisk":
+            suggest = "async_replication_disk"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskAsyncReplicationListResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskAsyncReplicationListResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskAsyncReplicationListResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 async_replication_disk: 'outputs.DiskAsyncReplicationResponse'):
+        pulumi.set(__self__, "async_replication_disk", async_replication_disk)
+
+    @property
+    @pulumi.getter(name="asyncReplicationDisk")
+    def async_replication_disk(self) -> 'outputs.DiskAsyncReplicationResponse':
+        return pulumi.get(self, "async_replication_disk")
+
+
+@pulumi.output_type
 class DiskAsyncReplicationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4716,9 +4850,9 @@ class DiskResourceStatusResponse(dict):
 
     def __init__(__self__, *,
                  async_primary_disk: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse',
-                 async_secondary_disks: Mapping[str, str]):
+                 async_secondary_disks: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse'):
         """
-        :param Mapping[str, str] async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
+        :param 'DiskResourceStatusAsyncReplicationStatusResponse' async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
         """
         pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         pulumi.set(__self__, "async_secondary_disks", async_secondary_disks)
@@ -4730,7 +4864,7 @@ class DiskResourceStatusResponse(dict):
 
     @property
     @pulumi.getter(name="asyncSecondaryDisks")
-    def async_secondary_disks(self) -> Mapping[str, str]:
+    def async_secondary_disks(self) -> 'outputs.DiskResourceStatusAsyncReplicationStatusResponse':
         """
         Key: disk, value: AsyncReplicationStatus message
         """
@@ -8285,6 +8419,52 @@ class InstanceGroupManagerAutoHealingPolicyResponse(dict):
 
 
 @pulumi.output_type
+class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineTypes":
+            suggest = "machine_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_types: Sequence[str],
+                 rank: int):
+        """
+        :param Sequence[str] machine_types: Full machine-type names, e.g. "n1-standard-16".
+        :param int rank: Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+        """
+        pulumi.set(__self__, "machine_types", machine_types)
+        pulumi.set(__self__, "rank", rank)
+
+    @property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> Sequence[str]:
+        """
+        Full machine-type names, e.g. "n1-standard-16".
+        """
+        return pulumi.get(self, "machine_types")
+
+    @property
+    @pulumi.getter
+    def rank(self) -> int:
+        """
+        Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
 class InstanceGroupManagerInstanceFlexibilityPolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8304,15 +8484,15 @@ class InstanceGroupManagerInstanceFlexibilityPolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 instance_selection_lists: Mapping[str, str]):
+                 instance_selection_lists: 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse'):
         """
-        :param Mapping[str, str] instance_selection_lists: Named instance selections configuring properties that the group will use when creating new VMs.
+        :param 'InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse' instance_selection_lists: Named instance selections configuring properties that the group will use when creating new VMs.
         """
         pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
 
     @property
     @pulumi.getter(name="instanceSelectionLists")
-    def instance_selection_lists(self) -> Mapping[str, str]:
+    def instance_selection_lists(self) -> 'outputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse':
         """
         Named instance selections configuring properties that the group will use when creating new VMs.
         """
@@ -15970,6 +16150,65 @@ class SavedDiskResponse(dict):
 
 
 @pulumi.output_type
+class ScalingScheduleStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastStartTime":
+            suggest = "last_start_time"
+        elif key == "nextStartTime":
+            suggest = "next_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingScheduleStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingScheduleStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingScheduleStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_start_time: str,
+                 next_start_time: str,
+                 state: str):
+        """
+        :param str last_start_time: The last time the scaling schedule became active. Note: this is a timestamp when a schedule actually became active, not when it was planned to do so. The timestamp is in RFC3339 text format.
+        :param str next_start_time: The next time the scaling schedule is to become active. Note: this is a timestamp when a schedule is planned to run, but the actual time might be slightly different. The timestamp is in RFC3339 text format.
+        :param str state: The current state of a scaling schedule.
+        """
+        pulumi.set(__self__, "last_start_time", last_start_time)
+        pulumi.set(__self__, "next_start_time", next_start_time)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="lastStartTime")
+    def last_start_time(self) -> str:
+        """
+        The last time the scaling schedule became active. Note: this is a timestamp when a schedule actually became active, not when it was planned to do so. The timestamp is in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_start_time")
+
+    @property
+    @pulumi.getter(name="nextStartTime")
+    def next_start_time(self) -> str:
+        """
+        The next time the scaling schedule is to become active. Note: this is a timestamp when a schedule is planned to run, but the actual time might be slightly different. The timestamp is in RFC3339 text format.
+        """
+        return pulumi.get(self, "next_start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of a scaling schedule.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class SchedulingNodeAffinityResponse(dict):
     """
     Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
@@ -18218,6 +18457,28 @@ class ServiceAttachmentTunnelingConfigResponse(dict):
 
 
 @pulumi.output_type
+class ShareSettingsProjectConfigResponse(dict):
+    """
+    Config for each project in the share settings.
+    """
+    def __init__(__self__, *,
+                 project: str):
+        """
+        Config for each project in the share settings.
+        :param str project: The project ID, should be same as the key of this project config in the parent map.
+        """
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project ID, should be same as the key of this project config in the parent map.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
 class ShareSettingsResponse(dict):
     """
     The share setting for reservations and sole tenancy node groups.
@@ -18242,12 +18503,12 @@ class ShareSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 project_map: Mapping[str, str],
+                 project_map: 'outputs.ShareSettingsProjectConfigResponse',
                  projects: Sequence[str],
                  share_type: str):
         """
         The share setting for reservations and sole tenancy node groups.
-        :param Mapping[str, str] project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
+        :param 'ShareSettingsProjectConfigResponse' project_map: A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param Sequence[str] projects: A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         :param str share_type: Type of sharing for this shared-reservation
         """
@@ -18257,7 +18518,7 @@ class ShareSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="projectMap")
-    def project_map(self) -> Mapping[str, str]:
+    def project_map(self) -> 'outputs.ShareSettingsProjectConfigResponse':
         """
         A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         """
@@ -18965,6 +19226,76 @@ class SslPolicyWarningsItemResponse(dict):
 
 
 @pulumi.output_type
+class StatefulPolicyPreservedStateDiskDeviceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulPolicyPreservedStateDiskDeviceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulPolicyPreservedStateDiskDeviceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulPolicyPreservedStateDiskDeviceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_delete: str):
+        """
+        :param str auto_delete: These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+        """
+        pulumi.set(__self__, "auto_delete", auto_delete)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> str:
+        """
+        These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+        """
+        return pulumi.get(self, "auto_delete")
+
+
+@pulumi.output_type
+class StatefulPolicyPreservedStateNetworkIpResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulPolicyPreservedStateNetworkIpResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulPolicyPreservedStateNetworkIpResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulPolicyPreservedStateNetworkIpResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_delete: str):
+        """
+        :param str auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        """
+        pulumi.set(__self__, "auto_delete", auto_delete)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> str:
+        """
+        These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+        """
+        return pulumi.get(self, "auto_delete")
+
+
+@pulumi.output_type
 class StatefulPolicyPreservedStateResponse(dict):
     """
     Configuration of preserved resources.
@@ -18989,14 +19320,14 @@ class StatefulPolicyPreservedStateResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 disks: Mapping[str, str],
-                 external_ips: Mapping[str, str],
-                 internal_ips: Mapping[str, str]):
+                 disks: 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse',
+                 external_ips: 'outputs.StatefulPolicyPreservedStateNetworkIpResponse',
+                 internal_ips: 'outputs.StatefulPolicyPreservedStateNetworkIpResponse'):
         """
         Configuration of preserved resources.
-        :param Mapping[str, str] disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-        :param Mapping[str, str] external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-        :param Mapping[str, str] internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param 'StatefulPolicyPreservedStateDiskDeviceResponse' disks: Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
+        :param 'StatefulPolicyPreservedStateNetworkIpResponse' external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+        :param 'StatefulPolicyPreservedStateNetworkIpResponse' internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "external_ips", external_ips)
@@ -19004,7 +19335,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter
-    def disks(self) -> Mapping[str, str]:
+    def disks(self) -> 'outputs.StatefulPolicyPreservedStateDiskDeviceResponse':
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
         """
@@ -19012,7 +19343,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter(name="externalIPs")
-    def external_ips(self) -> Mapping[str, str]:
+    def external_ips(self) -> 'outputs.StatefulPolicyPreservedStateNetworkIpResponse':
         """
         External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """
@@ -19020,7 +19351,7 @@ class StatefulPolicyPreservedStateResponse(dict):
 
     @property
     @pulumi.getter(name="internalIPs")
-    def internal_ips(self) -> Mapping[str, str]:
+    def internal_ips(self) -> 'outputs.StatefulPolicyPreservedStateNetworkIpResponse':
         """
         Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
         """

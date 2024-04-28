@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         /// </summary>
         [Output("config")]
-        public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
 
         /// <summary>
         /// The description for the module.
@@ -117,14 +117,14 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public sealed class OrganizationEventThreatDetectionSettingCustomModuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("config")]
-        private InputMap<string>? _config;
+        private InputMap<object>? _config;
 
         /// <summary>
         /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         /// </summary>
-        public InputMap<string> Config
+        public InputMap<object> Config
         {
-            get => _config ?? (_config = new InputMap<string>());
+            get => _config ?? (_config = new InputMap<object>());
             set => _config = value;
         }
 

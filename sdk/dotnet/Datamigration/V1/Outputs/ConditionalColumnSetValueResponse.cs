@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// <summary>
         /// Optional. Custom engine specific features.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> CustomFeatures;
+        public readonly ImmutableDictionary<string, object> CustomFeatures;
         /// <summary>
         /// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
         [OutputConstructor]
         private ConditionalColumnSetValueResponse(
-            ImmutableDictionary<string, string> customFeatures,
+            ImmutableDictionary<string, object> customFeatures,
 
             Outputs.SourceNumericFilterResponse sourceNumericFilter,
 

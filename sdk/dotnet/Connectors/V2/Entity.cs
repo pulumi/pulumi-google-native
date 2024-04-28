@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Connectors.V2
         /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         /// </summary>
         [Output("fields")]
-        public Output<ImmutableDictionary<string, string>> Fields { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Fields { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -99,14 +99,14 @@ namespace Pulumi.GoogleNative.Connectors.V2
         public Input<string> EntityTypeId { get; set; } = null!;
 
         [Input("fields")]
-        private InputMap<string>? _fields;
+        private InputMap<object>? _fields;
 
         /// <summary>
         /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         /// </summary>
-        public InputMap<string> Fields
+        public InputMap<object> Fields
         {
-            get => _fields ?? (_fields = new InputMap<string>());
+            get => _fields ?? (_fields = new InputMap<object>());
             set => _fields = value;
         }
 

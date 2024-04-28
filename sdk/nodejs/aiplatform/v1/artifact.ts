@@ -66,7 +66,7 @@ export class Artifact extends pulumi.CustomResource {
     /**
      * Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any}>;
     public readonly metadataStoreId!: pulumi.Output<string>;
     /**
      * The resource name of the Artifact.
@@ -177,7 +177,7 @@ export interface ArtifactArgs {
     /**
      * Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     metadataStoreId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

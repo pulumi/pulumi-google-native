@@ -16,6 +16,7 @@ __all__ = [
     'BindingArgs',
     'ExprArgs',
     'MirrorConfigArgs',
+    'PubsubConfigArgs',
 ]
 
 @pulumi.input_type
@@ -280,5 +281,61 @@ class MirrorConfigArgs:
     @webhook_id.setter
     def webhook_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "webhook_id", value)
+
+
+@pulumi.input_type
+class PubsubConfigArgs:
+    def __init__(__self__, *,
+                 message_format: Optional[pulumi.Input['PubsubConfigMessageFormat']] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration to publish a Cloud Pub/Sub message.
+        :param pulumi.Input['PubsubConfigMessageFormat'] message_format: The format of the Cloud Pub/Sub messages.
+        :param pulumi.Input[str] service_account_email: Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+        :param pulumi.Input[str] topic: A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+        """
+        if message_format is not None:
+            pulumi.set(__self__, "message_format", message_format)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="messageFormat")
+    def message_format(self) -> Optional[pulumi.Input['PubsubConfigMessageFormat']]:
+        """
+        The format of the Cloud Pub/Sub messages.
+        """
+        return pulumi.get(self, "message_format")
+
+    @message_format.setter
+    def message_format(self, value: Optional[pulumi.Input['PubsubConfigMessageFormat']]):
+        pulumi.set(self, "message_format", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 

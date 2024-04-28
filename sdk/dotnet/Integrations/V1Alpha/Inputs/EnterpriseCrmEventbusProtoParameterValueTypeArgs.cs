@@ -37,10 +37,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<Inputs.EnterpriseCrmEventbusProtoProtoParameterArrayArgs>? ProtoArray { get; set; }
 
         [Input("protoValue")]
-        private InputMap<string>? _protoValue;
-        public InputMap<string> ProtoValue
+        private InputMap<object>? _protoValue;
+        public InputMap<object> ProtoValue
         {
-            get => _protoValue ?? (_protoValue = new InputMap<string>());
+            get => _protoValue ?? (_protoValue = new InputMap<object>());
             set => _protoValue = value;
         }
 

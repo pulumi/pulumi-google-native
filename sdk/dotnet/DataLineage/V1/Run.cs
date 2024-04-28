@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1
         /// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
         /// </summary>
         [Output("attributes")]
-        public Output<ImmutableDictionary<string, string>> Attributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Attributes { get; private set; } = null!;
 
         /// <summary>
         /// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&amp;.`
@@ -118,14 +118,14 @@ namespace Pulumi.GoogleNative.DataLineage.V1
     public sealed class RunArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
-        private InputMap<string>? _attributes;
+        private InputMap<object>? _attributes;
 
         /// <summary>
         /// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
         /// </summary>
-        public InputMap<string> Attributes
+        public InputMap<object> Attributes
         {
-            get => _attributes ?? (_attributes = new InputMap<string>());
+            get => _attributes ?? (_attributes = new InputMap<object>());
             set => _attributes = value;
         }
 

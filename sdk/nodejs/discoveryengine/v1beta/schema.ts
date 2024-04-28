@@ -53,7 +53,7 @@ export class Schema extends pulumi.CustomResource {
     /**
      * The structured representation of the schema.
      */
-    public readonly structSchema!: pulumi.Output<{[key: string]: string}>;
+    public readonly structSchema!: pulumi.Output<{[key: string]: any}>;
 
     /**
      * Create a Schema resource with the given unique name, arguments, and options.
@@ -123,5 +123,5 @@ export interface SchemaArgs {
     /**
      * The structured representation of the schema.
      */
-    structSchema?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    structSchema?: pulumi.Input<{[key: string]: any}>;
 }

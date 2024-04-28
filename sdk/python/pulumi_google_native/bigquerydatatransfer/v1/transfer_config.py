@@ -27,7 +27,7 @@ class TransferConfigArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input['ScheduleOptionsArgs']] = None,
@@ -46,7 +46,7 @@ class TransferConfigArgs:
         :param pulumi.Input['EncryptionConfigurationArgs'] encryption_configuration: The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        :param pulumi.Input[Mapping[str, Any]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
         :param pulumi.Input[str] service_account_name: Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
@@ -224,14 +224,14 @@ class TransferConfigArgs:
 
     @property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def params(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def params(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "params", value)
 
     @property
@@ -321,7 +321,7 @@ class TransferConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
@@ -345,7 +345,7 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']] encryption_configuration: The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        :param pulumi.Input[Mapping[str, Any]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
         :param pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
         :param pulumi.Input[str] service_account_name: Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
@@ -388,7 +388,7 @@ class TransferConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
@@ -587,7 +587,7 @@ class TransferConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def params(self) -> pulumi.Output[Mapping[str, str]]:
+    def params(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         """

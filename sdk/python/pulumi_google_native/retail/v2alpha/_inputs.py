@@ -16,6 +16,7 @@ __all__ = [
     'GoogleCloudRetailV2alphaConditionQueryTermArgs',
     'GoogleCloudRetailV2alphaConditionTimeRangeArgs',
     'GoogleCloudRetailV2alphaConditionArgs',
+    'GoogleCloudRetailV2alphaCustomAttributeArgs',
     'GoogleCloudRetailV2alphaFulfillmentInfoArgs',
     'GoogleCloudRetailV2alphaImageArgs',
     'GoogleCloudRetailV2alphaIntervalArgs',
@@ -259,6 +260,78 @@ class GoogleCloudRetailV2alphaConditionArgs:
     @query_terms.setter
     def query_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaConditionQueryTermArgs']]]]):
         pulumi.set(self, "query_terms", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2alphaCustomAttributeArgs:
+    def __init__(__self__, *,
+                 indexable: Optional[pulumi.Input[bool]] = None,
+                 numbers: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]] = None,
+                 searchable: Optional[pulumi.Input[bool]] = None,
+                 text: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        A custom attribute that is not explicitly modeled in Product.
+        :param pulumi.Input[bool] indexable: This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[float]]] numbers: The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param pulumi.Input[bool] searchable: This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] text: The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        if indexable is not None:
+            pulumi.set(__self__, "indexable", indexable)
+        if numbers is not None:
+            pulumi.set(__self__, "numbers", numbers)
+        if searchable is not None:
+            pulumi.set(__self__, "searchable", searchable)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def indexable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+        """
+        return pulumi.get(self, "indexable")
+
+    @indexable.setter
+    def indexable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "indexable", value)
+
+    @property
+    @pulumi.getter
+    def numbers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]:
+        """
+        The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "numbers")
+
+    @numbers.setter
+    def numbers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
+        pulumi.set(self, "numbers", value)
+
+    @property
+    @pulumi.getter
+    def searchable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "searchable")
+
+    @searchable.setter
+    def searchable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "searchable", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "text", value)
 
 
 @pulumi.input_type

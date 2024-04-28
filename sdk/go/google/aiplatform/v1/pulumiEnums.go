@@ -916,6 +916,894 @@ func (in *googleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatPtr) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatPtrOutput)
 }
 
+// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding string
+
+const (
+	// Default value. This is the same as IDENTITY.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingEncodingUnspecified = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("ENCODING_UNSPECIFIED")
+	// The tensor represents one feature.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingIdentity = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("IDENTITY")
+	// The tensor represents a bag of features where each index maps to a feature. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ```input = [27, 6.0, 150] index_feature_mapping = ["age", "height", "weight"]```
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingBagOfFeatures = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("BAG_OF_FEATURES")
+	// The tensor represents a bag of features where each index maps to a feature. Zero values in the tensor indicates feature being non-existent. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ```input = [2, 0, 5, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"]```
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingBagOfFeaturesSparse = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("BAG_OF_FEATURES_SPARSE")
+	// The tensor is a list of binaries representing whether a feature exists or not (1 indicates existence). InputMetadata.index_feature_mapping must be provided for this encoding. For example: ```input = [1, 0, 1, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"]```
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingIndicator = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("INDICATOR")
+	// The tensor is encoded into a 1-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. For example: ```input = ["This", "is", "a", "test", "."] encoded = [0.1, 0.2, 0.3, 0.4, 0.5]```
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingCombinedEmbedding = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("COMBINED_EMBEDDING")
+	// Select this encoding when the input tensor is encoded into a 2-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. The first dimension of the encoded tensor's shape is the same as the input tensor's shape. For example: ```input = ["This", "is", "a", "test", "."] encoded = [[0.1, 0.2, 0.3, 0.4, 0.5], [0.2, 0.1, 0.4, 0.3, 0.5], [0.5, 0.1, 0.3, 0.5, 0.4], [0.5, 0.3, 0.1, 0.2, 0.4], [0.4, 0.3, 0.2, 0.5, 0.1]]```
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingConcatEmbedding = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("CONCAT_EMBEDDING")
+)
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding)(nil)).Elem()
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return e.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding(e).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutputWithContext(ctx).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingInput is an input type that accepts values of the GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding enum
+// A concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingInput` can be one of the following:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingEncodingUnspecified
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingIdentity
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingBagOfFeatures
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingBagOfFeaturesSparse
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingIndicator
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingCombinedEmbedding
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingConcatEmbedding
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput
+}
+
+var googleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrType = reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding)(nil)).Elem()
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtr string
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtr(v string) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtr)(&v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtr) ElementType() reflect.Type {
+	return googleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrType
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput)
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput)
+}
+
+// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap string
+
+const (
+	// Should not be used.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapColorMapUnspecified = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("COLOR_MAP_UNSPECIFIED")
+	// Positive: green. Negative: pink.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPinkGreen = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("PINK_GREEN")
+	// Viridis color map: A perceptually uniform color mapping which is easier to see by those with colorblindness and progresses from yellow to green to blue. Positive: yellow. Negative: blue.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapViridis = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("VIRIDIS")
+	// Positive: red. Negative: red.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapRed = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("RED")
+	// Positive: green. Negative: green.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapGreen = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("GREEN")
+	// Positive: green. Negative: red.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapRedGreen = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("RED_GREEN")
+	// PiYG palette.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPinkWhiteGreen = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("PINK_WHITE_GREEN")
+)
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap)(nil)).Elem()
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return e.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap(e).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutputWithContext(ctx).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapInput is an input type that accepts values of the GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap enum
+// A concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapInput` can be one of the following:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapColorMapUnspecified
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPinkGreen
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapViridis
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapRed
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapGreen
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapRedGreen
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPinkWhiteGreen
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput
+}
+
+var googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrType = reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap)(nil)).Elem()
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtr string
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtr(v string) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtr)(&v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtr) ElementType() reflect.Type {
+	return googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrType
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput)
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput)
+}
+
+// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType string
+
+const (
+	// Default value. This is the same as NONE.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOverlayTypeUnspecified = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType("OVERLAY_TYPE_UNSPECIFIED")
+	// No overlay.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeNone = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType("NONE")
+	// The attributions are shown on top of the original image.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOriginal = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType("ORIGINAL")
+	// The attributions are shown on top of grayscaled version of the original image.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeGrayscale = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType("GRAYSCALE")
+	// The attributions are used as a mask to reveal predictive parts of the image and hide the un-predictive parts.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeMaskBlack = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType("MASK_BLACK")
+)
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType)(nil)).Elem()
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return e.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType(e).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutputWithContext(ctx).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType enum
+// A concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeInput` can be one of the following:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOverlayTypeUnspecified
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeNone
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOriginal
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeGrayscale
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeMaskBlack
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput
+}
+
+var googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrType = reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType)(nil)).Elem()
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtr string
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtr(v string) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtr)(&v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtr) ElementType() reflect.Type {
+	return googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrType
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput)
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput)
+}
+
+// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity string
+
+const (
+	// Default value. This is the same as POSITIVE.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPolarityUnspecified = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity("POLARITY_UNSPECIFIED")
+	// Highlights the pixels/outlines that were most influential to the model's prediction.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPositive = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity("POSITIVE")
+	// Setting polarity to negative highlights areas that does not lead to the models's current prediction.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityNegative = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity("NEGATIVE")
+	// Shows both positive and negative attributions.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityBoth = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity("BOTH")
+)
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity)(nil)).Elem()
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return e.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity(e).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutputWithContext(ctx).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityInput is an input type that accepts values of the GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity enum
+// A concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityInput` can be one of the following:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPolarityUnspecified
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPositive
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityNegative
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityBoth
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput
+}
+
+var googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrType = reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity)(nil)).Elem()
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtr string
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtr(v string) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtr)(&v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtr) ElementType() reflect.Type {
+	return googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrType
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput)
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput)
+}
+
+// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType string
+
+const (
+	// Should not be used.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeTypeUnspecified = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType("TYPE_UNSPECIFIED")
+	// Shows which pixel contributed to the image prediction.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePixels = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType("PIXELS")
+	// Shows which region contributed to the image prediction by outlining the region.
+	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutlines = GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType("OUTLINES")
+)
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType)(nil)).Elem()
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return e.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType(e).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutputWithContext(ctx).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput)
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType enum
+// A concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeInput` can be one of the following:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeTypeUnspecified
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePixels
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutlines
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput
+}
+
+var googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrType = reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType)(nil)).Elem()
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtr string
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtr(v string) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtr)(&v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtr) ElementType() reflect.Type {
+	return googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrType
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput)
+}
+
+func (in *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtr) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput)
+}
+
 // The baseline used to do anomaly detection for the statistics generated by import features analysis.
 type GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline string
 
@@ -4215,6 +5103,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStoreFeatureValueTypePtrInput)(nil)).Elem(), FeatureStoreFeatureValueType("VALUE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatInput)(nil)).Elem(), GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat("DATA_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat("DATA_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("ENCODING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding("ENCODING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("COLOR_MAP_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap("COLOR_MAP_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType("OVERLAY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType("OVERLAY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity("POLARITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity("POLARITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineInput)(nil)).Elem(), GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline("BASELINE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline("BASELINE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateInput)(nil)).Elem(), GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisState("STATE_UNSPECIFIED"))
@@ -4263,6 +5161,16 @@ func init() {
 	pulumi.RegisterOutputType(FeatureStoreFeatureValueTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselinePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateOutput{})

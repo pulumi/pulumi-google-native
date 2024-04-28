@@ -16,7 +16,7 @@ type Process struct {
 	pulumi.CustomResourceState
 
 	// Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
-	Attributes pulumi.StringMapOutput `pulumi:"attributes"`
+	Attributes pulumi.MapOutput `pulumi:"attributes"`
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	Location    pulumi.StringOutput `pulumi:"location"`
@@ -75,7 +75,7 @@ func (ProcessState) ElementType() reflect.Type {
 
 type processArgs struct {
 	// Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
-	Attributes map[string]string `pulumi:"attributes"`
+	Attributes map[string]interface{} `pulumi:"attributes"`
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName *string `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
@@ -91,7 +91,7 @@ type processArgs struct {
 // The set of arguments for constructing a Process resource.
 type ProcessArgs struct {
 	// Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
-	Attributes pulumi.StringMapInput
+	Attributes pulumi.MapInput
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
@@ -142,8 +142,8 @@ func (o ProcessOutput) ToProcessOutputWithContext(ctx context.Context) ProcessOu
 }
 
 // Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
-func (o ProcessOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Process) pulumi.StringMapOutput { return v.Attributes }).(pulumi.StringMapOutput)
+func (o ProcessOutput) Attributes() pulumi.MapOutput {
+	return o.ApplyT(func(v *Process) pulumi.MapOutput { return v.Attributes }).(pulumi.MapOutput)
 }
 
 // Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`

@@ -20,7 +20,7 @@ class ResourcefileArgs:
                  type: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None):
         """
         The set of arguments for constructing a Resourcefile resource.
@@ -28,7 +28,7 @@ class ResourcefileArgs:
         :param pulumi.Input[str] type: Required. Resource file type. {{ resource_file_type }}
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         """
         pulumi.set(__self__, "environment_id", environment_id)
@@ -112,14 +112,14 @@ class ResourcefileArgs:
 
     @property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "extensions", value)
 
     @property
@@ -143,7 +143,7 @@ class Resourcefile(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class Resourcefile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\\\!@#$%^&{}\\[\\]()+\\-=,.~'` ]{1,255}
         :param pulumi.Input[str] type: Required. Resource file type. {{ resource_file_type }}
@@ -190,7 +190,7 @@ class Resourcefile(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
@@ -276,7 +276,7 @@ class Resourcefile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def extensions(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def extensions(self) -> pulumi.Output[Sequence[Mapping[str, Any]]]:
         """
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """

@@ -31,7 +31,7 @@ type LookupRunArgs struct {
 
 type LookupRunResult struct {
 	// Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
-	Attributes map[string]string `pulumi:"attributes"`
+	Attributes map[string]interface{} `pulumi:"attributes"`
 	// Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
 	DisplayName string `pulumi:"displayName"`
 	// Optional. The timestamp of the end of the run.
@@ -83,8 +83,8 @@ func (o LookupRunResultOutput) ToLookupRunResultOutputWithContext(ctx context.Co
 }
 
 // Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
-func (o LookupRunResultOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupRunResult) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+func (o LookupRunResultOutput) Attributes() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupRunResult) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
 }
 
 // Optional. A human-readable name you can set to display in a user interface. Must be not longer than 1024 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`

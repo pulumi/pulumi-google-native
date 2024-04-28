@@ -19,14 +19,14 @@ class SharedflowArgs:
                  organization_id: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Sharedflow resource.
         :param pulumi.Input[str] action: Required. Must be set to either `import` or `validate`.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[str] name: Required. The name to give the shared flow
         """
         pulumi.set(__self__, "action", action)
@@ -87,14 +87,14 @@ class SharedflowArgs:
 
     @property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "extensions", value)
 
     @property
@@ -118,7 +118,7 @@ class Sharedflow(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -130,7 +130,7 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[str] action: Required. Must be set to either `import` or `validate`.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[str] name: Required. The name to give the shared flow
         """
         ...
@@ -160,7 +160,7 @@ class Sharedflow(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

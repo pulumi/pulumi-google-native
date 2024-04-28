@@ -56,6 +56,55 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Represents primitive types - string, bool etc.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType : IEquatable<GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This is the default invalid value for a type.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType PrimitiveTypeUnspecified { get; } = new GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType("PRIMITIVE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A double precision number.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType Double { get; } = new GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType("DOUBLE");
+        /// <summary>
+        /// An UTF-8 string.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType String { get; } = new GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType("STRING");
+        /// <summary>
+        /// A boolean value.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType Bool { get; } = new GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType("BOOL");
+        /// <summary>
+        /// A timestamp.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType Timestamp { get; } = new GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType("TIMESTAMP");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType left, GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType left, GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct TaxonomyActivatedPolicyTypesItem : IEquatable<TaxonomyActivatedPolicyTypesItem>
     {

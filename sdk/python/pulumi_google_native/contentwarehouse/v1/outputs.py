@@ -22,6 +22,7 @@ __all__ = [
     'GoogleCloudContentwarehouseV1DeleteDocumentActionResponse',
     'GoogleCloudContentwarehouseV1EnumArrayResponse',
     'GoogleCloudContentwarehouseV1EnumTypeOptionsResponse',
+    'GoogleCloudContentwarehouseV1EnumValueResponse',
     'GoogleCloudContentwarehouseV1FloatArrayResponse',
     'GoogleCloudContentwarehouseV1FloatTypeOptionsResponse',
     'GoogleCloudContentwarehouseV1IntegerArrayResponse',
@@ -42,6 +43,7 @@ __all__ = [
     'GoogleCloudContentwarehouseV1TimestampArrayResponse',
     'GoogleCloudContentwarehouseV1TimestampTypeOptionsResponse',
     'GoogleCloudContentwarehouseV1TimestampValueResponse',
+    'GoogleCloudContentwarehouseV1ValueResponse',
     'GoogleCloudDocumentaiV1BarcodeResponse',
     'GoogleCloudDocumentaiV1BoundingPolyResponse',
     'GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse',
@@ -491,6 +493,28 @@ class GoogleCloudContentwarehouseV1EnumTypeOptionsResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudContentwarehouseV1EnumValueResponse(dict):
+    """
+    Represents the string value of the enum field.
+    """
+    def __init__(__self__, *,
+                 value: str):
+        """
+        Represents the string value of the enum field.
+        :param str value: String value of the enum field. This must match defined set of enums in document schema using EnumTypeOptions.
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        String value of the enum field. This must match defined set of enums in document schema using EnumTypeOptions.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GoogleCloudContentwarehouseV1FloatArrayResponse(dict):
     """
     Float values.
@@ -564,16 +588,16 @@ class GoogleCloudContentwarehouseV1MapPropertyResponse(dict):
     Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
     """
     def __init__(__self__, *,
-                 fields: Mapping[str, str]):
+                 fields: 'outputs.GoogleCloudContentwarehouseV1ValueResponse'):
         """
         Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
-        :param Mapping[str, str] fields: Unordered map of dynamically typed values.
+        :param 'GoogleCloudContentwarehouseV1ValueResponse' fields: Unordered map of dynamically typed values.
         """
         pulumi.set(__self__, "fields", fields)
 
     @property
     @pulumi.getter
-    def fields(self) -> Mapping[str, str]:
+    def fields(self) -> 'outputs.GoogleCloudContentwarehouseV1ValueResponse':
         """
         Unordered map of dynamically typed values.
         """
@@ -1395,6 +1419,123 @@ class GoogleCloudContentwarehouseV1TimestampValueResponse(dict):
     def timestamp_value(self) -> str:
         """
         Timestamp value
+        """
+        return pulumi.get(self, "timestamp_value")
+
+
+@pulumi.output_type
+class GoogleCloudContentwarehouseV1ValueResponse(dict):
+    """
+    `Value` represents a dynamically typed value which can be either be a float, a integer, a string, or a datetime value. A producer of value is expected to set one of these variants. Absence of any variant indicates an error.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "datetimeValue":
+            suggest = "datetime_value"
+        elif key == "enumValue":
+            suggest = "enum_value"
+        elif key == "floatValue":
+            suggest = "float_value"
+        elif key == "intValue":
+            suggest = "int_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContentwarehouseV1ValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContentwarehouseV1ValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContentwarehouseV1ValueResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boolean_value: bool,
+                 datetime_value: 'outputs.GoogleTypeDateTimeResponse',
+                 enum_value: 'outputs.GoogleCloudContentwarehouseV1EnumValueResponse',
+                 float_value: float,
+                 int_value: int,
+                 string_value: str,
+                 timestamp_value: 'outputs.GoogleCloudContentwarehouseV1TimestampValueResponse'):
+        """
+        `Value` represents a dynamically typed value which can be either be a float, a integer, a string, or a datetime value. A producer of value is expected to set one of these variants. Absence of any variant indicates an error.
+        :param bool boolean_value: Represents a boolean value.
+        :param 'GoogleTypeDateTimeResponse' datetime_value: Represents a datetime value.
+        :param 'GoogleCloudContentwarehouseV1EnumValueResponse' enum_value: Represents an enum value.
+        :param float float_value: Represents a float value.
+        :param int int_value: Represents a integer value.
+        :param str string_value: Represents a string value.
+        :param 'GoogleCloudContentwarehouseV1TimestampValueResponse' timestamp_value: Represents a timestamp value.
+        """
+        pulumi.set(__self__, "boolean_value", boolean_value)
+        pulumi.set(__self__, "datetime_value", datetime_value)
+        pulumi.set(__self__, "enum_value", enum_value)
+        pulumi.set(__self__, "float_value", float_value)
+        pulumi.set(__self__, "int_value", int_value)
+        pulumi.set(__self__, "string_value", string_value)
+        pulumi.set(__self__, "timestamp_value", timestamp_value)
+
+    @property
+    @pulumi.getter(name="booleanValue")
+    def boolean_value(self) -> bool:
+        """
+        Represents a boolean value.
+        """
+        return pulumi.get(self, "boolean_value")
+
+    @property
+    @pulumi.getter(name="datetimeValue")
+    def datetime_value(self) -> 'outputs.GoogleTypeDateTimeResponse':
+        """
+        Represents a datetime value.
+        """
+        return pulumi.get(self, "datetime_value")
+
+    @property
+    @pulumi.getter(name="enumValue")
+    def enum_value(self) -> 'outputs.GoogleCloudContentwarehouseV1EnumValueResponse':
+        """
+        Represents an enum value.
+        """
+        return pulumi.get(self, "enum_value")
+
+    @property
+    @pulumi.getter(name="floatValue")
+    def float_value(self) -> float:
+        """
+        Represents a float value.
+        """
+        return pulumi.get(self, "float_value")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> int:
+        """
+        Represents a integer value.
+        """
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> str:
+        """
+        Represents a string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @property
+    @pulumi.getter(name="timestampValue")
+    def timestamp_value(self) -> 'outputs.GoogleCloudContentwarehouseV1TimestampValueResponse':
+        """
+        Represents a timestamp value.
         """
         return pulumi.get(self, "timestamp_value")
 
@@ -4611,12 +4752,12 @@ class GoogleRpcStatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -4633,7 +4774,7 @@ class GoogleRpcStatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """

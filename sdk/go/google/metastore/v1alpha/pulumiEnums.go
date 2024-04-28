@@ -184,6 +184,180 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// The type of the backend metastore.
+type BackendMetastoreMetastoreType string
+
+const (
+	// The metastore type is not set.
+	BackendMetastoreMetastoreTypeMetastoreTypeUnspecified = BackendMetastoreMetastoreType("METASTORE_TYPE_UNSPECIFIED")
+	// The backend metastore is Dataplex.
+	BackendMetastoreMetastoreTypeDataplex = BackendMetastoreMetastoreType("DATAPLEX")
+	// The backend metastore is BigQuery.
+	BackendMetastoreMetastoreTypeBigquery = BackendMetastoreMetastoreType("BIGQUERY")
+	// The backend metastore is Dataproc Metastore.
+	BackendMetastoreMetastoreTypeDataprocMetastore = BackendMetastoreMetastoreType("DATAPROC_METASTORE")
+)
+
+func (BackendMetastoreMetastoreType) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendMetastoreMetastoreType)(nil)).Elem()
+}
+
+func (e BackendMetastoreMetastoreType) ToBackendMetastoreMetastoreTypeOutput() BackendMetastoreMetastoreTypeOutput {
+	return pulumi.ToOutput(e).(BackendMetastoreMetastoreTypeOutput)
+}
+
+func (e BackendMetastoreMetastoreType) ToBackendMetastoreMetastoreTypeOutputWithContext(ctx context.Context) BackendMetastoreMetastoreTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendMetastoreMetastoreTypeOutput)
+}
+
+func (e BackendMetastoreMetastoreType) ToBackendMetastoreMetastoreTypePtrOutput() BackendMetastoreMetastoreTypePtrOutput {
+	return e.ToBackendMetastoreMetastoreTypePtrOutputWithContext(context.Background())
+}
+
+func (e BackendMetastoreMetastoreType) ToBackendMetastoreMetastoreTypePtrOutputWithContext(ctx context.Context) BackendMetastoreMetastoreTypePtrOutput {
+	return BackendMetastoreMetastoreType(e).ToBackendMetastoreMetastoreTypeOutputWithContext(ctx).ToBackendMetastoreMetastoreTypePtrOutputWithContext(ctx)
+}
+
+func (e BackendMetastoreMetastoreType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendMetastoreMetastoreType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendMetastoreMetastoreType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendMetastoreMetastoreType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendMetastoreMetastoreTypeOutput struct{ *pulumi.OutputState }
+
+func (BackendMetastoreMetastoreTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendMetastoreMetastoreType)(nil)).Elem()
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToBackendMetastoreMetastoreTypeOutput() BackendMetastoreMetastoreTypeOutput {
+	return o
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToBackendMetastoreMetastoreTypeOutputWithContext(ctx context.Context) BackendMetastoreMetastoreTypeOutput {
+	return o
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToBackendMetastoreMetastoreTypePtrOutput() BackendMetastoreMetastoreTypePtrOutput {
+	return o.ToBackendMetastoreMetastoreTypePtrOutputWithContext(context.Background())
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToBackendMetastoreMetastoreTypePtrOutputWithContext(ctx context.Context) BackendMetastoreMetastoreTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendMetastoreMetastoreType) *BackendMetastoreMetastoreType {
+		return &v
+	}).(BackendMetastoreMetastoreTypePtrOutput)
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendMetastoreMetastoreType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendMetastoreMetastoreTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendMetastoreMetastoreType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendMetastoreMetastoreTypePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendMetastoreMetastoreTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendMetastoreMetastoreType)(nil)).Elem()
+}
+
+func (o BackendMetastoreMetastoreTypePtrOutput) ToBackendMetastoreMetastoreTypePtrOutput() BackendMetastoreMetastoreTypePtrOutput {
+	return o
+}
+
+func (o BackendMetastoreMetastoreTypePtrOutput) ToBackendMetastoreMetastoreTypePtrOutputWithContext(ctx context.Context) BackendMetastoreMetastoreTypePtrOutput {
+	return o
+}
+
+func (o BackendMetastoreMetastoreTypePtrOutput) Elem() BackendMetastoreMetastoreTypeOutput {
+	return o.ApplyT(func(v *BackendMetastoreMetastoreType) BackendMetastoreMetastoreType {
+		if v != nil {
+			return *v
+		}
+		var ret BackendMetastoreMetastoreType
+		return ret
+	}).(BackendMetastoreMetastoreTypeOutput)
+}
+
+func (o BackendMetastoreMetastoreTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendMetastoreMetastoreTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendMetastoreMetastoreType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendMetastoreMetastoreTypeInput is an input type that accepts values of the BackendMetastoreMetastoreType enum
+// A concrete instance of `BackendMetastoreMetastoreTypeInput` can be one of the following:
+//
+//	BackendMetastoreMetastoreTypeMetastoreTypeUnspecified
+//	BackendMetastoreMetastoreTypeDataplex
+//	BackendMetastoreMetastoreTypeBigquery
+//	BackendMetastoreMetastoreTypeDataprocMetastore
+type BackendMetastoreMetastoreTypeInput interface {
+	pulumi.Input
+
+	ToBackendMetastoreMetastoreTypeOutput() BackendMetastoreMetastoreTypeOutput
+	ToBackendMetastoreMetastoreTypeOutputWithContext(context.Context) BackendMetastoreMetastoreTypeOutput
+}
+
+var backendMetastoreMetastoreTypePtrType = reflect.TypeOf((**BackendMetastoreMetastoreType)(nil)).Elem()
+
+type BackendMetastoreMetastoreTypePtrInput interface {
+	pulumi.Input
+
+	ToBackendMetastoreMetastoreTypePtrOutput() BackendMetastoreMetastoreTypePtrOutput
+	ToBackendMetastoreMetastoreTypePtrOutputWithContext(context.Context) BackendMetastoreMetastoreTypePtrOutput
+}
+
+type backendMetastoreMetastoreTypePtr string
+
+func BackendMetastoreMetastoreTypePtr(v string) BackendMetastoreMetastoreTypePtrInput {
+	return (*backendMetastoreMetastoreTypePtr)(&v)
+}
+
+func (*backendMetastoreMetastoreTypePtr) ElementType() reflect.Type {
+	return backendMetastoreMetastoreTypePtrType
+}
+
+func (in *backendMetastoreMetastoreTypePtr) ToBackendMetastoreMetastoreTypePtrOutput() BackendMetastoreMetastoreTypePtrOutput {
+	return pulumi.ToOutput(in).(BackendMetastoreMetastoreTypePtrOutput)
+}
+
+func (in *backendMetastoreMetastoreTypePtr) ToBackendMetastoreMetastoreTypePtrOutputWithContext(ctx context.Context) BackendMetastoreMetastoreTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendMetastoreMetastoreTypePtrOutput)
+}
+
 // The type of the database.
 type DatabaseDumpDatabaseType string
 
@@ -1747,6 +1921,8 @@ func (in *telemetryConfigLogFormatPtr) ToTelemetryConfigLogFormatPtrOutputWithCo
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendMetastoreMetastoreTypeInput)(nil)).Elem(), BackendMetastoreMetastoreType("METASTORE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendMetastoreMetastoreTypePtrInput)(nil)).Elem(), BackendMetastoreMetastoreType("METASTORE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpDatabaseTypeInput)(nil)).Elem(), DatabaseDumpDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpDatabaseTypePtrInput)(nil)).Elem(), DatabaseDumpDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDumpTypeInput)(nil)).Elem(), DatabaseDumpType("TYPE_UNSPECIFIED"))
@@ -1767,6 +1943,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigLogFormatPtrInput)(nil)).Elem(), TelemetryConfigLogFormat("LOG_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(BackendMetastoreMetastoreTypeOutput{})
+	pulumi.RegisterOutputType(BackendMetastoreMetastoreTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpDatabaseTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpDatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpTypeOutput{})

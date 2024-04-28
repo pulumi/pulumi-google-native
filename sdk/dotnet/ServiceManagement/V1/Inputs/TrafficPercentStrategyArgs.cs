@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     public sealed class TrafficPercentStrategyArgs : global::Pulumi.ResourceArgs
     {
         [Input("percentages")]
-        private InputMap<string>? _percentages;
+        private InputMap<double>? _percentages;
 
         /// <summary>
         /// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         /// </summary>
-        public InputMap<string> Percentages
+        public InputMap<double> Percentages
         {
-            get => _percentages ?? (_percentages = new InputMap<string>());
+            get => _percentages ?? (_percentages = new InputMap<double>());
             set => _percentages = value;
         }
 

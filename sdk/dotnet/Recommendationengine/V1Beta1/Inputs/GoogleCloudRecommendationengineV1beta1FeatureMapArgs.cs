@@ -15,29 +15,17 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudRecommendationengineV1beta1FeatureMapArgs : global::Pulumi.ResourceArgs
     {
-        [Input("categoricalFeatures")]
-        private InputMap<string>? _categoricalFeatures;
-
         /// <summary>
         /// Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
         /// </summary>
-        public InputMap<string> CategoricalFeatures
-        {
-            get => _categoricalFeatures ?? (_categoricalFeatures = new InputMap<string>());
-            set => _categoricalFeatures = value;
-        }
-
-        [Input("numericalFeatures")]
-        private InputMap<string>? _numericalFeatures;
+        [Input("categoricalFeatures")]
+        public Input<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs>? CategoricalFeatures { get; set; }
 
         /// <summary>
         /// Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
         /// </summary>
-        public InputMap<string> NumericalFeatures
-        {
-            get => _numericalFeatures ?? (_numericalFeatures = new InputMap<string>());
-            set => _numericalFeatures = value;
-        }
+        [Input("numericalFeatures")]
+        public Input<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs>? NumericalFeatures { get; set; }
 
         public GoogleCloudRecommendationengineV1beta1FeatureMapArgs()
         {

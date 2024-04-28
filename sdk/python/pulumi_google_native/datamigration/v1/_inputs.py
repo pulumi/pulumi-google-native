@@ -728,13 +728,13 @@ class CloudSqlSettingsArgs:
 class ConditionalColumnSetValueArgs:
     def __init__(__self__, *,
                  value_transformation: pulumi.Input['ValueTransformationArgs'],
-                 custom_features: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_features: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  source_numeric_filter: Optional[pulumi.Input['SourceNumericFilterArgs']] = None,
                  source_text_filter: Optional[pulumi.Input['SourceTextFilterArgs']] = None):
         """
         Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
         :param pulumi.Input['ValueTransformationArgs'] value_transformation: Description of data transformation during migration.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_features: Optional. Custom engine specific features.
+        :param pulumi.Input[Mapping[str, Any]] custom_features: Optional. Custom engine specific features.
         :param pulumi.Input['SourceNumericFilterArgs'] source_numeric_filter: Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
         :param pulumi.Input['SourceTextFilterArgs'] source_text_filter: Optional. Optional filter on source column length. Used for text based data types like varchar.
         """
@@ -760,14 +760,14 @@ class ConditionalColumnSetValueArgs:
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Optional. Custom engine specific features.
         """
         return pulumi.get(self, "custom_features")
 
     @custom_features.setter
-    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "custom_features", value)
 
     @property
@@ -1471,7 +1471,7 @@ class MultiColumnDatatypeChangeArgs:
     def __init__(__self__, *,
                  new_data_type: pulumi.Input[str],
                  source_data_type_filter: pulumi.Input[str],
-                 custom_features: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_features: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  override_fractional_seconds_precision: Optional[pulumi.Input[int]] = None,
                  override_length: Optional[pulumi.Input[str]] = None,
                  override_precision: Optional[pulumi.Input[int]] = None,
@@ -1482,7 +1482,7 @@ class MultiColumnDatatypeChangeArgs:
         Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule filter field, which is the source data type, but the rule supports additional filtering capabilities such as the minimum and maximum field length. All additional filters which are specified are required to be met in order for the rule to be applied (logical AND between the fields).
         :param pulumi.Input[str] new_data_type: New data type.
         :param pulumi.Input[str] source_data_type_filter: Filter on source data type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_features: Optional. Custom engine specific features.
+        :param pulumi.Input[Mapping[str, Any]] custom_features: Optional. Custom engine specific features.
         :param pulumi.Input[int] override_fractional_seconds_precision: Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
         :param pulumi.Input[str] override_length: Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
         :param pulumi.Input[int] override_precision: Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
@@ -1533,14 +1533,14 @@ class MultiColumnDatatypeChangeArgs:
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Optional. Custom engine specific features.
         """
         return pulumi.get(self, "custom_features")
 
     @custom_features.setter
-    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "custom_features", value)
 
     @property
@@ -2333,7 +2333,7 @@ class SingleColumnChangeArgs:
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  comment: Optional[pulumi.Input[str]] = None,
-                 custom_features: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 custom_features: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  data_type: Optional[pulumi.Input[str]] = None,
                  fractional_seconds_precision: Optional[pulumi.Input[int]] = None,
                  length: Optional[pulumi.Input[str]] = None,
@@ -2350,7 +2350,7 @@ class SingleColumnChangeArgs:
         :param pulumi.Input[str] charset: Optional. Charset override - instead of table level charset.
         :param pulumi.Input[str] collation: Optional. Collation override - instead of table level collation.
         :param pulumi.Input[str] comment: Optional. Comment associated with the column.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_features: Optional. Custom engine specific features.
+        :param pulumi.Input[Mapping[str, Any]] custom_features: Optional. Custom engine specific features.
         :param pulumi.Input[str] data_type: Optional. Column data type name.
         :param pulumi.Input[int] fractional_seconds_precision: Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
         :param pulumi.Input[str] length: Optional. Column length - e.g. 50 as in varchar (50) - when relevant.
@@ -2465,14 +2465,14 @@ class SingleColumnChangeArgs:
 
     @property
     @pulumi.getter(name="customFeatures")
-    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def custom_features(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Optional. Custom engine specific features.
         """
         return pulumi.get(self, "custom_features")
 
     @custom_features.setter
-    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def custom_features(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "custom_features", value)
 
     @property

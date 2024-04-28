@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// <summary>
         /// Lists the steps in the build.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> BuildConfig;
+        public readonly ImmutableDictionary<string, object> BuildConfig;
         /// <summary>
         /// URI indicating what type of build was performed.
         /// </summary>
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
         [OutputConstructor]
         private SlsaProvenanceZeroTwoResponse(
-            ImmutableDictionary<string, string> buildConfig,
+            ImmutableDictionary<string, object> buildConfig,
 
             string buildType,
 

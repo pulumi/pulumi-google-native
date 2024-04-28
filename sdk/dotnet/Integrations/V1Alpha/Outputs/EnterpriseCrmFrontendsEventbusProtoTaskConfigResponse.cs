@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// <summary>
         /// The customized parameters the user can pass to this task.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Parameters;
+        public readonly Outputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse Parameters;
         /// <summary>
         /// Optional. Informs the front-end application where to draw this task config on the UI.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             string nextTasksExecutionPolicy,
 
-            ImmutableDictionary<string, string> parameters,
+            Outputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse parameters,
 
             Outputs.EnterpriseCrmEventbusProtoCoordinateResponse position,
 

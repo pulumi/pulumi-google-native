@@ -36,7 +36,7 @@ type LookupSchemaResult struct {
 	// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
 	Name string `pulumi:"name"`
 	// The structured representation of the schema.
-	StructSchema map[string]string `pulumi:"structSchema"`
+	StructSchema map[string]interface{} `pulumi:"structSchema"`
 }
 
 func LookupSchemaOutput(ctx *pulumi.Context, args LookupSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupSchemaResultOutput {
@@ -89,8 +89,8 @@ func (o LookupSchemaResultOutput) Name() pulumi.StringOutput {
 }
 
 // The structured representation of the schema.
-func (o LookupSchemaResultOutput) StructSchema() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupSchemaResult) map[string]string { return v.StructSchema }).(pulumi.StringMapOutput)
+func (o LookupSchemaResultOutput) StructSchema() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupSchemaResult) map[string]interface{} { return v.StructSchema }).(pulumi.MapOutput)
 }
 
 func init() {

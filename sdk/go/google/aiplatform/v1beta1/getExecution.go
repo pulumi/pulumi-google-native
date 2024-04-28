@@ -41,7 +41,7 @@ type LookupExecutionResult struct {
 	// The labels with user-defined metadata to organize your Executions. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Execution (System labels are excluded).
 	Labels map[string]string `pulumi:"labels"`
 	// Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The resource name of the Execution.
 	Name string `pulumi:"name"`
 	// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -118,8 +118,8 @@ func (o LookupExecutionResultOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-func (o LookupExecutionResultOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupExecutionResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+func (o LookupExecutionResultOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupExecutionResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
 }
 
 // The resource name of the Execution.

@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// Parameters that need to be injected into the conversation during intent detection.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> InjectedParameters;
+        public readonly ImmutableDictionary<string, object> InjectedParameters;
         /// <summary>
         /// Supports text input, event input, dtmf input in the test case.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         private GoogleCloudDialogflowCxV3ConversationTurnUserInputResponse(
             bool enableSentimentAnalysis,
 
-            ImmutableDictionary<string, string> injectedParameters,
+            ImmutableDictionary<string, object> injectedParameters,
 
             Outputs.GoogleCloudDialogflowCxV3QueryInputResponse input,
 

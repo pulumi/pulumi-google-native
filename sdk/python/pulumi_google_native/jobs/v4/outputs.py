@@ -17,6 +17,7 @@ __all__ = [
     'CompensationEntryResponse',
     'CompensationInfoResponse',
     'CompensationRangeResponse',
+    'CustomAttributeResponse',
     'JobDerivedInfoResponse',
     'LatLngResponse',
     'LocationResponse',
@@ -315,6 +316,82 @@ class CompensationRangeResponse(dict):
         The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
         """
         return pulumi.get(self, "min_compensation")
+
+
+@pulumi.output_type
+class CustomAttributeResponse(dict):
+    """
+    Custom attribute values that are either filterable or non-filterable.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keywordSearchable":
+            suggest = "keyword_searchable"
+        elif key == "longValues":
+            suggest = "long_values"
+        elif key == "stringValues":
+            suggest = "string_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomAttributeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomAttributeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomAttributeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filterable: bool,
+                 keyword_searchable: bool,
+                 long_values: Sequence[str],
+                 string_values: Sequence[str]):
+        """
+        Custom attribute values that are either filterable or non-filterable.
+        :param bool filterable: If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+        :param bool keyword_searchable: If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false.
+        :param Sequence[str] long_values: Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+        :param Sequence[str] string_values: Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed.
+        """
+        pulumi.set(__self__, "filterable", filterable)
+        pulumi.set(__self__, "keyword_searchable", keyword_searchable)
+        pulumi.set(__self__, "long_values", long_values)
+        pulumi.set(__self__, "string_values", string_values)
+
+    @property
+    @pulumi.getter
+    def filterable(self) -> bool:
+        """
+        If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+        """
+        return pulumi.get(self, "filterable")
+
+    @property
+    @pulumi.getter(name="keywordSearchable")
+    def keyword_searchable(self) -> bool:
+        """
+        If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false.
+        """
+        return pulumi.get(self, "keyword_searchable")
+
+    @property
+    @pulumi.getter(name="longValues")
+    def long_values(self) -> Sequence[str]:
+        """
+        Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+        """
+        return pulumi.get(self, "long_values")
+
+    @property
+    @pulumi.getter(name="stringValues")
+    def string_values(self) -> Sequence[str]:
+        """
+        Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed.
+        """
+        return pulumi.get(self, "string_values")
 
 
 @pulumi.output_type

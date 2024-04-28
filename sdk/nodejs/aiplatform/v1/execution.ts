@@ -66,7 +66,7 @@ export class Execution extends pulumi.CustomResource {
     /**
      * Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    public readonly metadata!: pulumi.Output<{[key: string]: any}>;
     public readonly metadataStoreId!: pulumi.Output<string>;
     /**
      * The resource name of the Execution.
@@ -171,7 +171,7 @@ export interface ExecutionArgs {
     /**
      * Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     metadataStoreId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

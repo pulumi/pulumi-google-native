@@ -8,6 +8,9 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._enums import *
+from ._inputs import *
 
 __all__ = ['FederationArgs', 'Federation']
 
@@ -15,7 +18,7 @@ __all__ = ['FederationArgs', 'Federation']
 class FederationArgs:
     def __init__(__self__, *,
                  federation_id: pulumi.Input[str],
-                 backend_metastores: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 backend_metastores: Optional[pulumi.Input['BackendMetastoreArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -25,7 +28,7 @@ class FederationArgs:
         """
         The set of arguments for constructing a Federation resource.
         :param pulumi.Input[str] federation_id: Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input['BackendMetastoreArgs'] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore federation.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
@@ -61,14 +64,14 @@ class FederationArgs:
 
     @property
     @pulumi.getter(name="backendMetastores")
-    def backend_metastores(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def backend_metastores(self) -> Optional[pulumi.Input['BackendMetastoreArgs']]:
         """
         A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         """
         return pulumi.get(self, "backend_metastores")
 
     @backend_metastores.setter
-    def backend_metastores(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def backend_metastores(self, value: Optional[pulumi.Input['BackendMetastoreArgs']]):
         pulumi.set(self, "backend_metastores", value)
 
     @property
@@ -143,7 +146,7 @@ class Federation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[pulumi.InputType['BackendMetastoreArgs']]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -157,7 +160,7 @@ class Federation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[pulumi.InputType['BackendMetastoreArgs']] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         :param pulumi.Input[str] federation_id: Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore federation.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`.
@@ -188,7 +191,7 @@ class Federation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[pulumi.InputType['BackendMetastoreArgs']]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -263,7 +266,7 @@ class Federation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="backendMetastores")
-    def backend_metastores(self) -> pulumi.Output[Mapping[str, str]]:
+    def backend_metastores(self) -> pulumi.Output['outputs.BackendMetastoreResponse']:
         """
         A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         """

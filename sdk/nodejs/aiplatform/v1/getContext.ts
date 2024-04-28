@@ -49,7 +49,7 @@ export interface GetContextResult {
     /**
      * Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
      */
-    readonly metadata: {[key: string]: string};
+    readonly metadata: {[key: string]: any};
     /**
      * Immutable. The resource name of the Context.
      */

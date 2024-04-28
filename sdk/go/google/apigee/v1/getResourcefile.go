@@ -35,7 +35,7 @@ type LookupResourcefileResult struct {
 	// The HTTP request/response body as raw binary.
 	Data string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions []map[string]string `pulumi:"extensions"`
+	Extensions []map[string]interface{} `pulumi:"extensions"`
 }
 
 func LookupResourcefileOutput(ctx *pulumi.Context, args LookupResourcefileOutputArgs, opts ...pulumi.InvokeOption) LookupResourcefileResultOutput {
@@ -87,8 +87,8 @@ func (o LookupResourcefileResultOutput) Data() pulumi.StringOutput {
 }
 
 // Application specific response metadata. Must be set in the first response for streaming APIs.
-func (o LookupResourcefileResultOutput) Extensions() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v LookupResourcefileResult) []map[string]string { return v.Extensions }).(pulumi.StringMapArrayOutput)
+func (o LookupResourcefileResultOutput) Extensions() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v LookupResourcefileResult) []map[string]interface{} { return v.Extensions }).(pulumi.MapArrayOutput)
 }
 
 func init() {

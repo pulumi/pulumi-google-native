@@ -322,6 +322,30 @@ export const GoogleCloudDialogflowCxV3TestCaseResultTestResult = {
  */
 export type GoogleCloudDialogflowCxV3TestCaseResultTestResult = (typeof GoogleCloudDialogflowCxV3TestCaseResultTestResult)[keyof typeof GoogleCloudDialogflowCxV3TestCaseResultTestResult];
 
+export const GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender = {
+    /**
+     * An unspecified gender, which means that the client doesn't care which gender the selected voice will have.
+     */
+    SsmlVoiceGenderUnspecified: "SSML_VOICE_GENDER_UNSPECIFIED",
+    /**
+     * A male voice.
+     */
+    SsmlVoiceGenderMale: "SSML_VOICE_GENDER_MALE",
+    /**
+     * A female voice.
+     */
+    SsmlVoiceGenderFemale: "SSML_VOICE_GENDER_FEMALE",
+    /**
+     * A gender-neutral voice.
+     */
+    SsmlVoiceGenderNeutral: "SSML_VOICE_GENDER_NEUTRAL",
+} as const;
+
+/**
+ * Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer substitutes a voice with a different gender rather than failing the request.
+ */
+export type GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender = (typeof GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender)[keyof typeof GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender];
+
 export const GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod = {
     /**
      * HTTP method not specified.

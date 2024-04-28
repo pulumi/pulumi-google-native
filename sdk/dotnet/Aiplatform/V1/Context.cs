@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Metadata { get; private set; } = null!;
 
         [Output("metadataStoreId")]
         public Output<string> MetadataStoreId { get; private set; } = null!;
@@ -187,14 +187,14 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Input<string>? Location { get; set; }
 
         [Input("metadata")]
-        private InputMap<string>? _metadata;
+        private InputMap<object>? _metadata;
 
         /// <summary>
         /// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
         /// </summary>
-        public InputMap<string> Metadata
+        public InputMap<object> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<string>());
+            get => _metadata ?? (_metadata = new InputMap<object>());
             set => _metadata = value;
         }
 

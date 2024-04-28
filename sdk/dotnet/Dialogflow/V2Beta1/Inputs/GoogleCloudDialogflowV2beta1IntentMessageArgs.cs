@@ -64,14 +64,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public Input<Inputs.GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs>? MediaContent { get; set; }
 
         [Input("payload")]
-        private InputMap<string>? _payload;
+        private InputMap<object>? _payload;
 
         /// <summary>
         /// A custom platform-specific response.
         /// </summary>
-        public InputMap<string> Payload
+        public InputMap<object> Payload
         {
-            get => _payload ?? (_payload = new InputMap<string>());
+            get => _payload ?? (_payload = new InputMap<object>());
             set => _payload = value;
         }
 

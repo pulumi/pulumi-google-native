@@ -46,7 +46,7 @@ class GetOrganizationEventThreatDetectionSettingCustomModuleResult:
 
     @property
     @pulumi.getter
-    def config(self) -> Mapping[str, str]:
+    def config(self) -> Mapping[str, Any]:
         """
         Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         """

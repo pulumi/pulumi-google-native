@@ -265,6 +265,129 @@ func (o GoogleCloudAiplatformV1ActiveLearningConfigResponseOutput) TrainingConfi
 	}).(GoogleCloudAiplatformV1TrainingConfigResponseOutput)
 }
 
+// Instance of a general artifact.
+type GoogleCloudAiplatformV1ArtifactResponse struct {
+	// Timestamp when this Artifact was created.
+	CreateTime string `pulumi:"createTime"`
+	// Description of the Artifact
+	Description string `pulumi:"description"`
+	// User provided display name of the Artifact. May be up to 128 Unicode characters.
+	DisplayName string `pulumi:"displayName"`
+	// An eTag used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+	Etag string `pulumi:"etag"`
+	// The labels with user-defined metadata to organize your Artifacts. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Artifact (System labels are excluded).
+	Labels map[string]string `pulumi:"labels"`
+	// Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
+	Metadata map[string]interface{} `pulumi:"metadata"`
+	// The resource name of the Artifact.
+	Name string `pulumi:"name"`
+	// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+	SchemaTitle string `pulumi:"schemaTitle"`
+	// The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+	SchemaVersion string `pulumi:"schemaVersion"`
+	// The state of this Artifact. This is a property of the Artifact, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines), and the system does not prescribe or check the validity of state transitions.
+	State string `pulumi:"state"`
+	// Timestamp when this Artifact was last updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// The uniform resource identifier of the artifact file. May be empty if there is no actual artifact file.
+	Uri string `pulumi:"uri"`
+}
+
+// Instance of a general artifact.
+type GoogleCloudAiplatformV1ArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ArtifactResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) ToGoogleCloudAiplatformV1ArtifactResponseOutput() GoogleCloudAiplatformV1ArtifactResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) ToGoogleCloudAiplatformV1ArtifactResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ArtifactResponseOutput {
+	return o
+}
+
+// Timestamp when this Artifact was created.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the Artifact
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// User provided display name of the Artifact. May be up to 128 Unicode characters.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// An eTag used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The labels with user-defined metadata to organize your Artifacts. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Artifact (System labels are excluded).
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// The resource name of the Artifact.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) SchemaTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.SchemaTitle }).(pulumi.StringOutput)
+}
+
+// The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) SchemaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.SchemaVersion }).(pulumi.StringOutput)
+}
+
+// The state of this Artifact. This is a property of the Artifact, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines), and the system does not prescribe or check the validity of state transitions.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Timestamp when this Artifact was last updated.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The uniform resource identifier of the artifact file. May be empty if there is no actual artifact file.
+func (o GoogleCloudAiplatformV1ArtifactResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ArtifactResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GoogleCloudAiplatformV1ArtifactResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ArtifactResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudAiplatformV1ArtifactResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ArtifactResponseArrayOutput) ToGoogleCloudAiplatformV1ArtifactResponseArrayOutput() GoogleCloudAiplatformV1ArtifactResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ArtifactResponseArrayOutput) ToGoogleCloudAiplatformV1ArtifactResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ArtifactResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ArtifactResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1ArtifactResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1ArtifactResponse {
+		return vs[0].([]GoogleCloudAiplatformV1ArtifactResponse)[vs[1].(int)]
+	}).(GoogleCloudAiplatformV1ArtifactResponseOutput)
+}
+
 // A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration. Each Model supporting these resources documents its specific guidelines.
 type GoogleCloudAiplatformV1AutomaticResourcesResponse struct {
 	// Immutable. The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -2024,7 +2147,7 @@ type GoogleCloudAiplatformV1ContextResponse struct {
 	// The labels with user-defined metadata to organize your Contexts. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Context (System labels are excluded).
 	Labels map[string]string `pulumi:"labels"`
 	// Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 	// Immutable. The resource name of the Context.
 	Name string `pulumi:"name"`
 	// A list of resource names of Contexts that are parents of this Context. A Context may have at most 10 parent_contexts.
@@ -2078,8 +2201,8 @@ func (o GoogleCloudAiplatformV1ContextResponseOutput) Labels() pulumi.StringMapO
 }
 
 // Properties of the Context. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-func (o GoogleCloudAiplatformV1ContextResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ContextResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1ContextResponseOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ContextResponse) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
 }
 
 // Immutable. The resource name of the Context.
@@ -4328,7 +4451,7 @@ type GoogleCloudAiplatformV1ExecutionResponse struct {
 	// The labels with user-defined metadata to organize your Executions. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Execution (System labels are excluded).
 	Labels map[string]string `pulumi:"labels"`
 	// Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The resource name of the Execution.
 	Name string `pulumi:"name"`
 	// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -4382,8 +4505,8 @@ func (o GoogleCloudAiplatformV1ExecutionResponseOutput) Labels() pulumi.StringMa
 }
 
 // Properties of the Execution. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-func (o GoogleCloudAiplatformV1ExecutionResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ExecutionResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1ExecutionResponseOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExecutionResponse) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
 }
 
 // The resource name of the Execution.
@@ -4416,11 +4539,11 @@ type GoogleCloudAiplatformV1ExplanationMetadata struct {
 	// Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
 	FeatureAttributionsSchemaUri *string `pulumi:"featureAttributionsSchemaUri"`
 	// Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-	Inputs map[string]string `pulumi:"inputs"`
+	Inputs GoogleCloudAiplatformV1ExplanationMetadataInputMetadata `pulumi:"inputs"`
 	// Name of the source to generate embeddings for example based explanations.
 	LatentSpaceSource *string `pulumi:"latentSpaceSource"`
 	// Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
-	Outputs map[string]string `pulumi:"outputs"`
+	Outputs GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata `pulumi:"outputs"`
 }
 
 // GoogleCloudAiplatformV1ExplanationMetadataInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataArgs and GoogleCloudAiplatformV1ExplanationMetadataOutput values.
@@ -4439,11 +4562,11 @@ type GoogleCloudAiplatformV1ExplanationMetadataArgs struct {
 	// Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
 	FeatureAttributionsSchemaUri pulumi.StringPtrInput `pulumi:"featureAttributionsSchemaUri"`
 	// Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-	Inputs pulumi.StringMapInput `pulumi:"inputs"`
+	Inputs GoogleCloudAiplatformV1ExplanationMetadataInputMetadataInput `pulumi:"inputs"`
 	// Name of the source to generate embeddings for example based explanations.
 	LatentSpaceSource pulumi.StringPtrInput `pulumi:"latentSpaceSource"`
 	// Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
-	Outputs pulumi.StringMapInput `pulumi:"outputs"`
+	Outputs GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataInput `pulumi:"outputs"`
 }
 
 func (GoogleCloudAiplatformV1ExplanationMetadataArgs) ElementType() reflect.Type {
@@ -4530,8 +4653,10 @@ func (o GoogleCloudAiplatformV1ExplanationMetadataOutput) FeatureAttributionsSch
 }
 
 // Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-func (o GoogleCloudAiplatformV1ExplanationMetadataOutput) Inputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadata) map[string]string { return v.Inputs }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutput) Inputs() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadata) GoogleCloudAiplatformV1ExplanationMetadataInputMetadata {
+		return v.Inputs
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput)
 }
 
 // Name of the source to generate embeddings for example based explanations.
@@ -4540,8 +4665,10 @@ func (o GoogleCloudAiplatformV1ExplanationMetadataOutput) LatentSpaceSource() pu
 }
 
 // Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
-func (o GoogleCloudAiplatformV1ExplanationMetadataOutput) Outputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadata) map[string]string { return v.Outputs }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutput) Outputs() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadata) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata {
+		return v.Outputs
+	}).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput)
 }
 
 type GoogleCloudAiplatformV1ExplanationMetadataPtrOutput struct{ *pulumi.OutputState }
@@ -4579,13 +4706,13 @@ func (o GoogleCloudAiplatformV1ExplanationMetadataPtrOutput) FeatureAttributions
 }
 
 // Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-func (o GoogleCloudAiplatformV1ExplanationMetadataPtrOutput) Inputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadata) map[string]string {
+func (o GoogleCloudAiplatformV1ExplanationMetadataPtrOutput) Inputs() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata {
 		if v == nil {
 			return nil
 		}
-		return v.Inputs
-	}).(pulumi.StringMapOutput)
+		return &v.Inputs
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput)
 }
 
 // Name of the source to generate embeddings for example based explanations.
@@ -4599,13 +4726,1299 @@ func (o GoogleCloudAiplatformV1ExplanationMetadataPtrOutput) LatentSpaceSource()
 }
 
 // Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
-func (o GoogleCloudAiplatformV1ExplanationMetadataPtrOutput) Outputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadata) map[string]string {
+func (o GoogleCloudAiplatformV1ExplanationMetadataPtrOutput) Outputs() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadata) *GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata {
 		if v == nil {
 			return nil
 		}
-		return v.Outputs
-	}).(pulumi.StringMapOutput)
+		return &v.Outputs
+	}).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput)
+}
+
+// Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadata struct {
+	// Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+	DenseShapeTensorName *string `pulumi:"denseShapeTensorName"`
+	// A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+	EncodedBaselines []interface{} `pulumi:"encodedBaselines"`
+	// Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+	EncodedTensorName *string `pulumi:"encodedTensorName"`
+	// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+	Encoding *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding `pulumi:"encoding"`
+	// The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+	FeatureValueDomain *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain `pulumi:"featureValueDomain"`
+	// Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+	GroupName *string `pulumi:"groupName"`
+	// A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+	IndexFeatureMapping []string `pulumi:"indexFeatureMapping"`
+	// Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+	IndicesTensorName *string `pulumi:"indicesTensorName"`
+	// Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+	InputBaselines []interface{} `pulumi:"inputBaselines"`
+	// Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+	InputTensorName *string `pulumi:"inputTensorName"`
+	// Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+	Modality *string `pulumi:"modality"`
+	// Visualization configurations for image explanation.
+	Visualization *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization `pulumi:"visualization"`
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs and GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataInput` via:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs{...}
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput
+}
+
+// Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs struct {
+	// Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+	DenseShapeTensorName pulumi.StringPtrInput `pulumi:"denseShapeTensorName"`
+	// A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+	EncodedBaselines pulumi.ArrayInput `pulumi:"encodedBaselines"`
+	// Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+	EncodedTensorName pulumi.StringPtrInput `pulumi:"encodedTensorName"`
+	// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+	Encoding GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrInput `pulumi:"encoding"`
+	// The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+	FeatureValueDomain GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrInput `pulumi:"featureValueDomain"`
+	// Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+	// A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+	IndexFeatureMapping pulumi.StringArrayInput `pulumi:"indexFeatureMapping"`
+	// Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+	IndicesTensorName pulumi.StringPtrInput `pulumi:"indicesTensorName"`
+	// Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+	InputBaselines pulumi.ArrayInput `pulumi:"inputBaselines"`
+	// Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+	InputTensorName pulumi.StringPtrInput `pulumi:"inputTensorName"`
+	// Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+	Modality pulumi.StringPtrInput `pulumi:"modality"`
+	// Visualization configurations for image explanation.
+	Visualization GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrInput `pulumi:"visualization"`
+}
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput)
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs, GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtr and GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataPtrType GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtr(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataInputMetadataPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataInputMetadataPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput)
+}
+
+// Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput)
+}
+
+// Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) DenseShapeTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string { return v.DenseShapeTensorName }).(pulumi.StringPtrOutput)
+}
+
+// A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) EncodedBaselines() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) []interface{} {
+		return v.EncodedBaselines
+	}).(pulumi.ArrayOutput)
+}
+
+// Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) EncodedTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string { return v.EncodedTensorName }).(pulumi.StringPtrOutput)
+}
+
+// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) Encoding() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding {
+		return v.Encoding
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput)
+}
+
+// The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) FeatureValueDomain() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain {
+		return v.FeatureValueDomain
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput)
+}
+
+// Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) IndexFeatureMapping() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) []string { return v.IndexFeatureMapping }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) IndicesTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string { return v.IndicesTensorName }).(pulumi.StringPtrOutput)
+}
+
+// Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) InputBaselines() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) []interface{} { return v.InputBaselines }).(pulumi.ArrayOutput)
+}
+
+// Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) InputTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string { return v.InputTensorName }).(pulumi.StringPtrOutput)
+}
+
+// Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) Modality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string { return v.Modality }).(pulumi.StringPtrOutput)
+}
+
+// Visualization configurations for image explanation.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput) Visualization() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization {
+		return v.Visualization
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) GoogleCloudAiplatformV1ExplanationMetadataInputMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadata
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput)
+}
+
+// Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) DenseShapeTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DenseShapeTensorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) EncodedBaselines() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EncodedBaselines
+	}).(pulumi.ArrayOutput)
+}
+
+// Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) EncodedTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncodedTensorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) Encoding() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingPtrOutput)
+}
+
+// The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) FeatureValueDomain() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureValueDomain
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput)
+}
+
+// Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) IndexFeatureMapping() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexFeatureMapping
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) IndicesTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndicesTensorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) InputBaselines() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.InputBaselines
+	}).(pulumi.ArrayOutput)
+}
+
+// Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) InputTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputTensorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) Modality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Modality
+	}).(pulumi.StringPtrOutput)
+}
+
+// Visualization configurations for image explanation.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput) Visualization() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization {
+		if v == nil {
+			return nil
+		}
+		return v.Visualization
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput)
+}
+
+// Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain struct {
+	// The maximum permissible value for this feature.
+	MaxValue *float64 `pulumi:"maxValue"`
+	// The minimum permissible value for this feature.
+	MinValue *float64 `pulumi:"minValue"`
+	// If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+	OriginalMean *float64 `pulumi:"originalMean"`
+	// If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+	OriginalStddev *float64 `pulumi:"originalStddev"`
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs and GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainInput` via:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs{...}
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput
+}
+
+// Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs struct {
+	// The maximum permissible value for this feature.
+	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
+	// The minimum permissible value for this feature.
+	MinValue pulumi.Float64PtrInput `pulumi:"minValue"`
+	// If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+	OriginalMean pulumi.Float64PtrInput `pulumi:"originalMean"`
+	// If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+	OriginalStddev pulumi.Float64PtrInput `pulumi:"originalStddev"`
+}
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput)
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs, GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtr and GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrType GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtr(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput)
+}
+
+// Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput)
+}
+
+// The maximum permissible value for this feature.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) MaxValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		return v.MaxValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum permissible value for this feature.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) MinValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		return v.MinValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) OriginalMean() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		return v.OriginalMean
+	}).(pulumi.Float64PtrOutput)
+}
+
+// If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput) OriginalStddev() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		return v.OriginalStddev
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput)
+}
+
+// The maximum permissible value for this feature.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) MaxValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum permissible value for this feature.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) MinValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) OriginalMean() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.OriginalMean
+	}).(pulumi.Float64PtrOutput)
+}
+
+// If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput) OriginalStddev() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomain) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.OriginalStddev
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse struct {
+	// The maximum permissible value for this feature.
+	MaxValue float64 `pulumi:"maxValue"`
+	// The minimum permissible value for this feature.
+	MinValue float64 `pulumi:"minValue"`
+	// If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+	OriginalMean float64 `pulumi:"originalMean"`
+	// If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+	OriginalStddev float64 `pulumi:"originalStddev"`
+}
+
+// Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput {
+	return o
+}
+
+// The maximum permissible value for this feature.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput) MaxValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse) float64 {
+		return v.MaxValue
+	}).(pulumi.Float64Output)
+}
+
+// The minimum permissible value for this feature.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput) MinValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse) float64 {
+		return v.MinValue
+	}).(pulumi.Float64Output)
+}
+
+// If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput) OriginalMean() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse) float64 {
+		return v.OriginalMean
+	}).(pulumi.Float64Output)
+}
+
+// If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput) OriginalStddev() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse) float64 {
+		return v.OriginalStddev
+	}).(pulumi.Float64Output)
+}
+
+// Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse struct {
+	// Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+	DenseShapeTensorName string `pulumi:"denseShapeTensorName"`
+	// A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+	EncodedBaselines []interface{} `pulumi:"encodedBaselines"`
+	// Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+	EncodedTensorName string `pulumi:"encodedTensorName"`
+	// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+	Encoding string `pulumi:"encoding"`
+	// The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+	FeatureValueDomain GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse `pulumi:"featureValueDomain"`
+	// Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+	GroupName string `pulumi:"groupName"`
+	// A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+	IndexFeatureMapping []string `pulumi:"indexFeatureMapping"`
+	// Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+	IndicesTensorName string `pulumi:"indicesTensorName"`
+	// Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+	InputBaselines []interface{} `pulumi:"inputBaselines"`
+	// Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+	InputTensorName string `pulumi:"inputTensorName"`
+	// Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+	Modality string `pulumi:"modality"`
+	// Visualization configurations for image explanation.
+	Visualization GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse `pulumi:"visualization"`
+}
+
+// Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput {
+	return o
+}
+
+// Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) DenseShapeTensorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) string {
+		return v.DenseShapeTensorName
+	}).(pulumi.StringOutput)
+}
+
+// A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) EncodedBaselines() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) []interface{} {
+		return v.EncodedBaselines
+	}).(pulumi.ArrayOutput)
+}
+
+// Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) EncodedTensorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) string {
+		return v.EncodedTensorName
+	}).(pulumi.StringOutput)
+}
+
+// Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) Encoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) string { return v.Encoding }).(pulumi.StringOutput)
+}
+
+// The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) FeatureValueDomain() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponse {
+		return v.FeatureValueDomain
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput)
+}
+
+// Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) IndexFeatureMapping() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) []string {
+		return v.IndexFeatureMapping
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) IndicesTensorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) string {
+		return v.IndicesTensorName
+	}).(pulumi.StringOutput)
+}
+
+// Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) InputBaselines() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) []interface{} {
+		return v.InputBaselines
+	}).(pulumi.ArrayOutput)
+}
+
+// Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) InputTensorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) string {
+		return v.InputTensorName
+	}).(pulumi.StringOutput)
+}
+
+// Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) Modality() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) string { return v.Modality }).(pulumi.StringOutput)
+}
+
+// Visualization configurations for image explanation.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput) Visualization() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse {
+		return v.Visualization
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput)
+}
+
+// Visualization configurations for image explanation.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization struct {
+	// Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+	ClipPercentLowerbound *float64 `pulumi:"clipPercentLowerbound"`
+	// Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+	ClipPercentUpperbound *float64 `pulumi:"clipPercentUpperbound"`
+	// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+	ColorMap *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap `pulumi:"colorMap"`
+	// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+	OverlayType *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType `pulumi:"overlayType"`
+	// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+	Polarity *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity `pulumi:"polarity"`
+	// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+	Type *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType `pulumi:"type"`
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs and GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationInput` via:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs{...}
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput
+}
+
+// Visualization configurations for image explanation.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs struct {
+	// Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+	ClipPercentLowerbound pulumi.Float64PtrInput `pulumi:"clipPercentLowerbound"`
+	// Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+	ClipPercentUpperbound pulumi.Float64PtrInput `pulumi:"clipPercentUpperbound"`
+	// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+	ColorMap GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrInput `pulumi:"colorMap"`
+	// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+	OverlayType GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrInput `pulumi:"overlayType"`
+	// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+	Polarity GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrInput `pulumi:"polarity"`
+	// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+	Type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrInput `pulumi:"type"`
+}
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput)
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput).ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs, GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtr and GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrType GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs
+
+func GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtr(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput)
+}
+
+// Visualization configurations for image explanation.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput)
+}
+
+// Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ClipPercentLowerbound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *float64 {
+		return v.ClipPercentLowerbound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ClipPercentUpperbound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *float64 {
+		return v.ClipPercentUpperbound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) ColorMap() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap {
+		return v.ColorMap
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput)
+}
+
+// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) OverlayType() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType {
+		return v.OverlayType
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput)
+}
+
+// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) Polarity() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity {
+		return v.Polarity
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput)
+}
+
+// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput) Type() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType {
+		return v.Type
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput)
+}
+
+// Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) ClipPercentLowerbound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ClipPercentLowerbound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) ClipPercentUpperbound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ClipPercentUpperbound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) ColorMap() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap {
+		if v == nil {
+			return nil
+		}
+		return v.ColorMap
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapPtrOutput)
+}
+
+// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) OverlayType() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType {
+		if v == nil {
+			return nil
+		}
+		return v.OverlayType
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypePtrOutput)
+}
+
+// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) Polarity() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity {
+		if v == nil {
+			return nil
+		}
+		return v.Polarity
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityPtrOutput)
+}
+
+// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput) Type() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization) *GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypePtrOutput)
+}
+
+// Visualization configurations for image explanation.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse struct {
+	// Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+	ClipPercentLowerbound float64 `pulumi:"clipPercentLowerbound"`
+	// Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+	ClipPercentUpperbound float64 `pulumi:"clipPercentUpperbound"`
+	// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+	ColorMap string `pulumi:"colorMap"`
+	// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+	OverlayType string `pulumi:"overlayType"`
+	// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+	Polarity string `pulumi:"polarity"`
+	// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+	Type string `pulumi:"type"`
+}
+
+// Visualization configurations for image explanation.
+type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput {
+	return o
+}
+
+// Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) ClipPercentLowerbound() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse) float64 {
+		return v.ClipPercentLowerbound
+	}).(pulumi.Float64Output)
+}
+
+// Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) ClipPercentUpperbound() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse) float64 {
+		return v.ClipPercentUpperbound
+	}).(pulumi.Float64Output)
+}
+
+// The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) ColorMap() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse) string {
+		return v.ColorMap
+	}).(pulumi.StringOutput)
+}
+
+// How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) OverlayType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse) string {
+		return v.OverlayType
+	}).(pulumi.StringOutput)
+}
+
+// Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) Polarity() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse) string {
+		return v.Polarity
+	}).(pulumi.StringOutput)
+}
+
+// Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+func (o GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponse) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Metadata of the prediction output to be explained.
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata struct {
+	// Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+	DisplayNameMappingKey *string `pulumi:"displayNameMappingKey"`
+	// Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+	IndexDisplayNameMapping interface{} `pulumi:"indexDisplayNameMapping"`
+	// Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+	OutputTensorName *string `pulumi:"outputTensorName"`
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs and GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataInput` via:
+//
+//	GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs{...}
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput
+}
+
+// Metadata of the prediction output to be explained.
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs struct {
+	// Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+	DisplayNameMappingKey pulumi.StringPtrInput `pulumi:"displayNameMappingKey"`
+	// Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+	IndexDisplayNameMapping pulumi.Input `pulumi:"indexDisplayNameMapping"`
+	// Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+	OutputTensorName pulumi.StringPtrInput `pulumi:"outputTensorName"`
+}
+
+func (GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput)
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput).ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrInput is an input type that accepts GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs, GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtr and GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput
+	ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput
+}
+
+type googleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrType GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs
+
+func GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtr(v *GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrInput {
+	return (*googleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return i.ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrType) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput)
+}
+
+// Metadata of the prediction output to be explained.
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return o.ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) *GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata {
+		return &v
+	}).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput)
+}
+
+// Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) DisplayNameMappingKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) *string {
+		return v.DisplayNameMappingKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) IndexDisplayNameMapping() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) interface{} {
+		return v.IndexDisplayNameMapping
+	}).(pulumi.AnyOutput)
+}
+
+// Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput) OutputTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) *string { return v.OutputTensorName }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput) Elem() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata
+		return ret
+	}).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput)
+}
+
+// Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput) DisplayNameMappingKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayNameMappingKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput) IndexDisplayNameMapping() pulumi.AnyOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.IndexDisplayNameMapping
+	}).(pulumi.AnyOutput)
+}
+
+// Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput) OutputTensorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ExplanationMetadataOutputMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputTensorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata of the prediction output to be explained.
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse struct {
+	// Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+	DisplayNameMappingKey string `pulumi:"displayNameMappingKey"`
+	// Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+	IndexDisplayNameMapping interface{} `pulumi:"indexDisplayNameMapping"`
+	// Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+	OutputTensorName string `pulumi:"outputTensorName"`
+}
+
+// Metadata of the prediction output to be explained.
+type GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput) ToGoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput {
+	return o
+}
+
+// Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput) DisplayNameMappingKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse) string {
+		return v.DisplayNameMappingKey
+	}).(pulumi.StringOutput)
+}
+
+// Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput) IndexDisplayNameMapping() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse) interface{} {
+		return v.IndexDisplayNameMapping
+	}).(pulumi.AnyOutput)
+}
+
+// Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+func (o GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput) OutputTensorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse) string {
+		return v.OutputTensorName
+	}).(pulumi.StringOutput)
 }
 
 // Metadata describing the Model's input and output for explanation.
@@ -4613,11 +6026,11 @@ type GoogleCloudAiplatformV1ExplanationMetadataResponse struct {
 	// Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
 	FeatureAttributionsSchemaUri string `pulumi:"featureAttributionsSchemaUri"`
 	// Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-	Inputs map[string]string `pulumi:"inputs"`
+	Inputs GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse `pulumi:"inputs"`
 	// Name of the source to generate embeddings for example based explanations.
 	LatentSpaceSource string `pulumi:"latentSpaceSource"`
 	// Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
-	Outputs map[string]string `pulumi:"outputs"`
+	Outputs GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse `pulumi:"outputs"`
 }
 
 // Metadata describing the Model's input and output for explanation.
@@ -4643,8 +6056,10 @@ func (o GoogleCloudAiplatformV1ExplanationMetadataResponseOutput) FeatureAttribu
 }
 
 // Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-func (o GoogleCloudAiplatformV1ExplanationMetadataResponseOutput) Inputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataResponse) map[string]string { return v.Inputs }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1ExplanationMetadataResponseOutput) Inputs() GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataResponse) GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponse {
+		return v.Inputs
+	}).(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput)
 }
 
 // Name of the source to generate embeddings for example based explanations.
@@ -4653,8 +6068,10 @@ func (o GoogleCloudAiplatformV1ExplanationMetadataResponseOutput) LatentSpaceSou
 }
 
 // Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
-func (o GoogleCloudAiplatformV1ExplanationMetadataResponseOutput) Outputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataResponse) map[string]string { return v.Outputs }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1ExplanationMetadataResponseOutput) Outputs() GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ExplanationMetadataResponse) GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponse {
+		return v.Outputs
+	}).(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput)
 }
 
 // Parameters to configure explaining for Model's predictions.
@@ -12556,11 +13973,11 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigRe
 // The config for Prediction data drift detection.
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig struct {
 	// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
-	AttributionScoreDriftThresholds map[string]string `pulumi:"attributionScoreDriftThresholds"`
+	AttributionScoreDriftThresholds *GoogleCloudAiplatformV1ThresholdConfig `pulumi:"attributionScoreDriftThresholds"`
 	// Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
 	DefaultDriftThreshold *GoogleCloudAiplatformV1ThresholdConfig `pulumi:"defaultDriftThreshold"`
 	// Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
-	DriftThresholds map[string]string `pulumi:"driftThresholds"`
+	DriftThresholds *GoogleCloudAiplatformV1ThresholdConfig `pulumi:"driftThresholds"`
 }
 
 // GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigInput is an input type that accepts GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs and GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput values.
@@ -12577,11 +13994,11 @@ type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetecti
 // The config for Prediction data drift detection.
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs struct {
 	// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
-	AttributionScoreDriftThresholds pulumi.StringMapInput `pulumi:"attributionScoreDriftThresholds"`
+	AttributionScoreDriftThresholds GoogleCloudAiplatformV1ThresholdConfigPtrInput `pulumi:"attributionScoreDriftThresholds"`
 	// Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
 	DefaultDriftThreshold GoogleCloudAiplatformV1ThresholdConfigPtrInput `pulumi:"defaultDriftThreshold"`
 	// Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
-	DriftThresholds pulumi.StringMapInput `pulumi:"driftThresholds"`
+	DriftThresholds GoogleCloudAiplatformV1ThresholdConfigPtrInput `pulumi:"driftThresholds"`
 }
 
 func (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs) ElementType() reflect.Type {
@@ -12663,10 +14080,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDete
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput) AttributionScoreDriftThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput) AttributionScoreDriftThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		return v.AttributionScoreDriftThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 // Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
@@ -12677,10 +14094,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDete
 }
 
 // Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput) DriftThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigOutput) DriftThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		return v.DriftThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput struct{ *pulumi.OutputState }
@@ -12708,13 +14125,13 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDete
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput) AttributionScoreDriftThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput) AttributionScoreDriftThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		if v == nil {
 			return nil
 		}
 		return v.AttributionScoreDriftThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 // Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
@@ -12728,23 +14145,23 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDete
 }
 
 // Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput) DriftThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigPtrOutput) DriftThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		if v == nil {
 			return nil
 		}
 		return v.DriftThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 // The config for Prediction data drift detection.
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse struct {
 	// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
-	AttributionScoreDriftThresholds map[string]string `pulumi:"attributionScoreDriftThresholds"`
+	AttributionScoreDriftThresholds GoogleCloudAiplatformV1ThresholdConfigResponse `pulumi:"attributionScoreDriftThresholds"`
 	// Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
 	DefaultDriftThreshold GoogleCloudAiplatformV1ThresholdConfigResponse `pulumi:"defaultDriftThreshold"`
 	// Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
-	DriftThresholds map[string]string `pulumi:"driftThresholds"`
+	DriftThresholds GoogleCloudAiplatformV1ThresholdConfigResponse `pulumi:"driftThresholds"`
 }
 
 // The config for Prediction data drift detection.
@@ -12763,10 +14180,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDete
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponseOutput) AttributionScoreDriftThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponseOutput) AttributionScoreDriftThresholds() GoogleCloudAiplatformV1ThresholdConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse) GoogleCloudAiplatformV1ThresholdConfigResponse {
 		return v.AttributionScoreDriftThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigResponseOutput)
 }
 
 // Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
@@ -12777,10 +14194,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDete
 }
 
 // Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponseOutput) DriftThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponseOutput) DriftThresholds() GoogleCloudAiplatformV1ThresholdConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse) GoogleCloudAiplatformV1ThresholdConfigResponse {
 		return v.DriftThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigResponseOutput)
 }
 
 // The objective configuration for model monitoring, including the information needed to detect anomalies for one particular model.
@@ -13159,11 +14576,11 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDatasetResp
 // The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig struct {
 	// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
-	AttributionScoreSkewThresholds map[string]string `pulumi:"attributionScoreSkewThresholds"`
+	AttributionScoreSkewThresholds *GoogleCloudAiplatformV1ThresholdConfig `pulumi:"attributionScoreSkewThresholds"`
 	// Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
 	DefaultSkewThreshold *GoogleCloudAiplatformV1ThresholdConfig `pulumi:"defaultSkewThreshold"`
 	// Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
-	SkewThresholds map[string]string `pulumi:"skewThresholds"`
+	SkewThresholds *GoogleCloudAiplatformV1ThresholdConfig `pulumi:"skewThresholds"`
 }
 
 // GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigInput is an input type that accepts GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs and GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput values.
@@ -13180,11 +14597,11 @@ type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkew
 // The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs struct {
 	// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
-	AttributionScoreSkewThresholds pulumi.StringMapInput `pulumi:"attributionScoreSkewThresholds"`
+	AttributionScoreSkewThresholds GoogleCloudAiplatformV1ThresholdConfigPtrInput `pulumi:"attributionScoreSkewThresholds"`
 	// Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
 	DefaultSkewThreshold GoogleCloudAiplatformV1ThresholdConfigPtrInput `pulumi:"defaultSkewThreshold"`
 	// Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
-	SkewThresholds pulumi.StringMapInput `pulumi:"skewThresholds"`
+	SkewThresholds GoogleCloudAiplatformV1ThresholdConfigPtrInput `pulumi:"skewThresholds"`
 }
 
 func (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs) ElementType() reflect.Type {
@@ -13266,10 +14683,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionS
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput) AttributionScoreSkewThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput) AttributionScoreSkewThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		return v.AttributionScoreSkewThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 // Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
@@ -13280,10 +14697,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionS
 }
 
 // Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput) SkewThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigOutput) SkewThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		return v.SkewThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput struct{ *pulumi.OutputState }
@@ -13311,13 +14728,13 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionS
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput) AttributionScoreSkewThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput) AttributionScoreSkewThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		if v == nil {
 			return nil
 		}
 		return v.AttributionScoreSkewThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 // Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
@@ -13331,23 +14748,23 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionS
 }
 
 // Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput) SkewThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigPtrOutput) SkewThresholds() GoogleCloudAiplatformV1ThresholdConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig) *GoogleCloudAiplatformV1ThresholdConfig {
 		if v == nil {
 			return nil
 		}
 		return v.SkewThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigPtrOutput)
 }
 
 // The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
 type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse struct {
 	// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
-	AttributionScoreSkewThresholds map[string]string `pulumi:"attributionScoreSkewThresholds"`
+	AttributionScoreSkewThresholds GoogleCloudAiplatformV1ThresholdConfigResponse `pulumi:"attributionScoreSkewThresholds"`
 	// Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
 	DefaultSkewThreshold GoogleCloudAiplatformV1ThresholdConfigResponse `pulumi:"defaultSkewThreshold"`
 	// Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
-	SkewThresholds map[string]string `pulumi:"skewThresholds"`
+	SkewThresholds GoogleCloudAiplatformV1ThresholdConfigResponse `pulumi:"skewThresholds"`
 }
 
 // The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
@@ -13366,10 +14783,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionS
 }
 
 // Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutput) AttributionScoreSkewThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutput) AttributionScoreSkewThresholds() GoogleCloudAiplatformV1ThresholdConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse) GoogleCloudAiplatformV1ThresholdConfigResponse {
 		return v.AttributionScoreSkewThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigResponseOutput)
 }
 
 // Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
@@ -13380,10 +14797,10 @@ func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionS
 }
 
 // Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
-func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutput) SkewThresholds() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse) map[string]string {
+func (o GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponseOutput) SkewThresholds() GoogleCloudAiplatformV1ThresholdConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse) GoogleCloudAiplatformV1ThresholdConfigResponse {
 		return v.SkewThresholds
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ThresholdConfigResponseOutput)
 }
 
 // Contains information about the original Model if this Model is a copy.
@@ -15844,7 +17261,7 @@ type GoogleCloudAiplatformV1PipelineJob struct {
 	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
 	Network *string `pulumi:"network"`
 	// The spec of the pipeline.
-	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
+	PipelineSpec map[string]interface{} `pulumi:"pipelineSpec"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -15877,7 +17294,7 @@ type GoogleCloudAiplatformV1PipelineJobArgs struct {
 	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The spec of the pipeline.
-	PipelineSpec pulumi.StringMapInput `pulumi:"pipelineSpec"`
+	PipelineSpec pulumi.MapInput `pulumi:"pipelineSpec"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges pulumi.StringArrayInput `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -15989,8 +17406,8 @@ func (o GoogleCloudAiplatformV1PipelineJobOutput) Network() pulumi.StringPtrOutp
 }
 
 // The spec of the pipeline.
-func (o GoogleCloudAiplatformV1PipelineJobOutput) PipelineSpec() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJob) map[string]string { return v.PipelineSpec }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineJobOutput) PipelineSpec() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJob) map[string]interface{} { return v.PipelineSpec }).(pulumi.MapOutput)
 }
 
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
@@ -16080,13 +17497,13 @@ func (o GoogleCloudAiplatformV1PipelineJobPtrOutput) Network() pulumi.StringPtrO
 }
 
 // The spec of the pipeline.
-func (o GoogleCloudAiplatformV1PipelineJobPtrOutput) PipelineSpec() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJob) map[string]string {
+func (o GoogleCloudAiplatformV1PipelineJobPtrOutput) PipelineSpec() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJob) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.PipelineSpec
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
@@ -16196,7 +17613,7 @@ type GoogleCloudAiplatformV1PipelineJobResponse struct {
 	// The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
 	Network string `pulumi:"network"`
 	// The spec of the pipeline.
-	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
+	PipelineSpec map[string]interface{} `pulumi:"pipelineSpec"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -16282,8 +17699,8 @@ func (o GoogleCloudAiplatformV1PipelineJobResponseOutput) Network() pulumi.Strin
 }
 
 // The spec of the pipeline.
-func (o GoogleCloudAiplatformV1PipelineJobResponseOutput) PipelineSpec() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobResponse) map[string]string { return v.PipelineSpec }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineJobResponseOutput) PipelineSpec() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobResponse) map[string]interface{} { return v.PipelineSpec }).(pulumi.MapOutput)
 }
 
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
@@ -16342,13 +17759,13 @@ type GoogleCloudAiplatformV1PipelineJobRuntimeConfig struct {
 	// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
 	GcsOutputDirectory string `pulumi:"gcsOutputDirectory"`
 	// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-	InputArtifacts map[string]string `pulumi:"inputArtifacts"`
+	InputArtifacts *GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact `pulumi:"inputArtifacts"`
 	// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-	ParameterValues map[string]string `pulumi:"parameterValues"`
+	ParameterValues map[string]interface{} `pulumi:"parameterValues"`
 	// Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
 	//
 	// Deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters *GoogleCloudAiplatformV1Value `pulumi:"parameters"`
 }
 
 // GoogleCloudAiplatformV1PipelineJobRuntimeConfigInput is an input type that accepts GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs and GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput values.
@@ -16369,13 +17786,13 @@ type GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs struct {
 	// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
 	GcsOutputDirectory pulumi.StringInput `pulumi:"gcsOutputDirectory"`
 	// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-	InputArtifacts pulumi.StringMapInput `pulumi:"inputArtifacts"`
+	InputArtifacts GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrInput `pulumi:"inputArtifacts"`
 	// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-	ParameterValues pulumi.StringMapInput `pulumi:"parameterValues"`
+	ParameterValues pulumi.MapInput `pulumi:"parameterValues"`
 	// Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
 	//
 	// Deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	Parameters GoogleCloudAiplatformV1ValuePtrInput `pulumi:"parameters"`
 }
 
 func (GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs) ElementType() reflect.Type {
@@ -16469,20 +17886,26 @@ func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput) GcsOutputDirector
 }
 
 // The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput) InputArtifacts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]string { return v.InputArtifacts }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput) InputArtifacts() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfig) *GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact {
+		return v.InputArtifacts
+	}).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput)
 }
 
 // The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput) ParameterValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]string { return v.ParameterValues }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput) ParameterValues() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]interface{} {
+		return v.ParameterValues
+	}).(pulumi.MapOutput)
 }
 
 // Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
 //
 // Deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput) Parameters() GoogleCloudAiplatformV1ValuePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfig) *GoogleCloudAiplatformV1Value {
+		return v.Parameters
+	}).(GoogleCloudAiplatformV1ValuePtrOutput)
 }
 
 type GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput struct{ *pulumi.OutputState }
@@ -16530,35 +17953,203 @@ func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput) GcsOutputDirec
 }
 
 // The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput) InputArtifacts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]string {
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput) InputArtifacts() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfig) *GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact {
 		if v == nil {
 			return nil
 		}
 		return v.InputArtifacts
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput)
 }
 
 // The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput) ParameterValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]string {
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput) ParameterValues() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ParameterValues
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
 //
 // Deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfig) map[string]string {
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput) Parameters() GoogleCloudAiplatformV1ValuePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfig) *GoogleCloudAiplatformV1Value {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1ValuePtrOutput)
+}
+
+// The type of an input artifact.
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact struct {
+	// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+	ArtifactId *string `pulumi:"artifactId"`
+}
+
+// GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactInput is an input type that accepts GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs and GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactInput` via:
+//
+//	GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs{...}
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput
+	ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutputWithContext(context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput
+}
+
+// The type of an input artifact.
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs struct {
+	// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+}
+
+func (GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput {
+	return i.ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput)
+}
+
+func (i GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return i.ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput).ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrInput is an input type that accepts GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs, GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtr and GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput
+	ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput
+}
+
+type googleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrType GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs
+
+func GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtr(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrInput {
+	return (*googleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrType) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return i.ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrType) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput)
+}
+
+// The type of an input artifact.
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return o.ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact) *GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact {
+		return &v
+	}).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput)
+}
+
+// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput) Elem() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact
+		return ret
+	}).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput)
+}
+
+// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of an input artifact.
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse struct {
+	// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+	ArtifactId string `pulumi:"artifactId"`
+}
+
+// The type of an input artifact.
+type GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput) ToGoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput {
+	return o
+}
+
+// Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse) string {
+		return v.ArtifactId
+	}).(pulumi.StringOutput)
 }
 
 // The runtime config of a PipelineJob.
@@ -16568,13 +18159,13 @@ type GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse struct {
 	// A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
 	GcsOutputDirectory string `pulumi:"gcsOutputDirectory"`
 	// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-	InputArtifacts map[string]string `pulumi:"inputArtifacts"`
+	InputArtifacts GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse `pulumi:"inputArtifacts"`
 	// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-	ParameterValues map[string]string `pulumi:"parameterValues"`
+	ParameterValues map[string]interface{} `pulumi:"parameterValues"`
 	// Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
 	//
 	// Deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters GoogleCloudAiplatformV1ValueResponse `pulumi:"parameters"`
 }
 
 // The runtime config of a PipelineJob.
@@ -16603,24 +18194,54 @@ func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput) GcsOutput
 }
 
 // The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput) InputArtifacts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse) map[string]string {
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput) InputArtifacts() GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse) GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse {
 		return v.InputArtifacts
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput)
 }
 
 // The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput) ParameterValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse) map[string]string {
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput) ParameterValues() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse) map[string]interface{} {
 		return v.ParameterValues
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
 //
 // Deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
-func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput) Parameters() GoogleCloudAiplatformV1ValueResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse) GoogleCloudAiplatformV1ValueResponse {
+		return v.Parameters
+	}).(GoogleCloudAiplatformV1ValueResponseOutput)
+}
+
+// A list of artifact metadata.
+type GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse struct {
+	// A list of artifact metadata.
+	Artifacts []GoogleCloudAiplatformV1ArtifactResponse `pulumi:"artifacts"`
+}
+
+// A list of artifact metadata.
+type GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput) ToGoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput() GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput) ToGoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput {
+	return o
+}
+
+// A list of artifact metadata.
+func (o GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput) Artifacts() GoogleCloudAiplatformV1ArtifactResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse) []GoogleCloudAiplatformV1ArtifactResponse {
+		return v.Artifacts
+	}).(GoogleCloudAiplatformV1ArtifactResponseArrayOutput)
 }
 
 // A single record of the task status.
@@ -16700,9 +18321,9 @@ type GoogleCloudAiplatformV1PipelineTaskDetailResponse struct {
 	// The detailed execution info.
 	ExecutorDetail GoogleCloudAiplatformV1PipelineTaskExecutorDetailResponse `pulumi:"executorDetail"`
 	// The runtime input artifacts of the task.
-	Inputs map[string]string `pulumi:"inputs"`
+	Inputs GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse `pulumi:"inputs"`
 	// The runtime output artifacts of the task.
-	Outputs map[string]string `pulumi:"outputs"`
+	Outputs GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse `pulumi:"outputs"`
 	// The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
 	ParentTaskId string `pulumi:"parentTaskId"`
 	// A list of task status. This field keeps a record of task status evolving over time.
@@ -16762,13 +18383,17 @@ func (o GoogleCloudAiplatformV1PipelineTaskDetailResponseOutput) ExecutorDetail(
 }
 
 // The runtime input artifacts of the task.
-func (o GoogleCloudAiplatformV1PipelineTaskDetailResponseOutput) Inputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineTaskDetailResponse) map[string]string { return v.Inputs }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineTaskDetailResponseOutput) Inputs() GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineTaskDetailResponse) GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse {
+		return v.Inputs
+	}).(GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput)
 }
 
 // The runtime output artifacts of the task.
-func (o GoogleCloudAiplatformV1PipelineTaskDetailResponseOutput) Outputs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineTaskDetailResponse) map[string]string { return v.Outputs }).(pulumi.StringMapOutput)
+func (o GoogleCloudAiplatformV1PipelineTaskDetailResponseOutput) Outputs() GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1PipelineTaskDetailResponse) GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponse {
+		return v.Outputs
+	}).(GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput)
 }
 
 // The id of the parent task if the task is within a component scope. Empty if the task is at the root level.
@@ -25168,6 +26793,224 @@ func (o GoogleCloudAiplatformV1UnmanagedContainerModelResponseOutput) PredictSch
 	}).(GoogleCloudAiplatformV1PredictSchemataResponseOutput)
 }
 
+// Value is the value of the field.
+type GoogleCloudAiplatformV1Value struct {
+	// A double value.
+	DoubleValue *float64 `pulumi:"doubleValue"`
+	// An integer value.
+	IntValue *string `pulumi:"intValue"`
+	// A string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// GoogleCloudAiplatformV1ValueInput is an input type that accepts GoogleCloudAiplatformV1ValueArgs and GoogleCloudAiplatformV1ValueOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ValueInput` via:
+//
+//	GoogleCloudAiplatformV1ValueArgs{...}
+type GoogleCloudAiplatformV1ValueInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ValueOutput() GoogleCloudAiplatformV1ValueOutput
+	ToGoogleCloudAiplatformV1ValueOutputWithContext(context.Context) GoogleCloudAiplatformV1ValueOutput
+}
+
+// Value is the value of the field.
+type GoogleCloudAiplatformV1ValueArgs struct {
+	// A double value.
+	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
+	// An integer value.
+	IntValue pulumi.StringPtrInput `pulumi:"intValue"`
+	// A string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (GoogleCloudAiplatformV1ValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1Value)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1ValueArgs) ToGoogleCloudAiplatformV1ValueOutput() GoogleCloudAiplatformV1ValueOutput {
+	return i.ToGoogleCloudAiplatformV1ValueOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ValueArgs) ToGoogleCloudAiplatformV1ValueOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ValueOutput)
+}
+
+func (i GoogleCloudAiplatformV1ValueArgs) ToGoogleCloudAiplatformV1ValuePtrOutput() GoogleCloudAiplatformV1ValuePtrOutput {
+	return i.ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1ValueArgs) ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ValueOutput).ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1ValuePtrInput is an input type that accepts GoogleCloudAiplatformV1ValueArgs, GoogleCloudAiplatformV1ValuePtr and GoogleCloudAiplatformV1ValuePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1ValuePtrInput` via:
+//
+//	        GoogleCloudAiplatformV1ValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1ValuePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1ValuePtrOutput() GoogleCloudAiplatformV1ValuePtrOutput
+	ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1ValuePtrOutput
+}
+
+type googleCloudAiplatformV1ValuePtrType GoogleCloudAiplatformV1ValueArgs
+
+func GoogleCloudAiplatformV1ValuePtr(v *GoogleCloudAiplatformV1ValueArgs) GoogleCloudAiplatformV1ValuePtrInput {
+	return (*googleCloudAiplatformV1ValuePtrType)(v)
+}
+
+func (*googleCloudAiplatformV1ValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1Value)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1ValuePtrType) ToGoogleCloudAiplatformV1ValuePtrOutput() GoogleCloudAiplatformV1ValuePtrOutput {
+	return i.ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1ValuePtrType) ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1ValuePtrOutput)
+}
+
+// Value is the value of the field.
+type GoogleCloudAiplatformV1ValueOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1Value)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ValueOutput) ToGoogleCloudAiplatformV1ValueOutput() GoogleCloudAiplatformV1ValueOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ValueOutput) ToGoogleCloudAiplatformV1ValueOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ValueOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ValueOutput) ToGoogleCloudAiplatformV1ValuePtrOutput() GoogleCloudAiplatformV1ValuePtrOutput {
+	return o.ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1ValueOutput) ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1Value) *GoogleCloudAiplatformV1Value {
+		return &v
+	}).(GoogleCloudAiplatformV1ValuePtrOutput)
+}
+
+// A double value.
+func (o GoogleCloudAiplatformV1ValueOutput) DoubleValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1Value) *float64 { return v.DoubleValue }).(pulumi.Float64PtrOutput)
+}
+
+// An integer value.
+func (o GoogleCloudAiplatformV1ValueOutput) IntValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1Value) *string { return v.IntValue }).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o GoogleCloudAiplatformV1ValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1Value) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1ValuePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1Value)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ValuePtrOutput) ToGoogleCloudAiplatformV1ValuePtrOutput() GoogleCloudAiplatformV1ValuePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ValuePtrOutput) ToGoogleCloudAiplatformV1ValuePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ValuePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ValuePtrOutput) Elem() GoogleCloudAiplatformV1ValueOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1Value) GoogleCloudAiplatformV1Value {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1Value
+		return ret
+	}).(GoogleCloudAiplatformV1ValueOutput)
+}
+
+// A double value.
+func (o GoogleCloudAiplatformV1ValuePtrOutput) DoubleValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1Value) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DoubleValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// An integer value.
+func (o GoogleCloudAiplatformV1ValuePtrOutput) IntValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1Value) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string value.
+func (o GoogleCloudAiplatformV1ValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1Value) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value is the value of the field.
+type GoogleCloudAiplatformV1ValueResponse struct {
+	// A double value.
+	DoubleValue float64 `pulumi:"doubleValue"`
+	// An integer value.
+	IntValue string `pulumi:"intValue"`
+	// A string value.
+	StringValue string `pulumi:"stringValue"`
+}
+
+// Value is the value of the field.
+type GoogleCloudAiplatformV1ValueResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1ValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1ValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1ValueResponseOutput) ToGoogleCloudAiplatformV1ValueResponseOutput() GoogleCloudAiplatformV1ValueResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1ValueResponseOutput) ToGoogleCloudAiplatformV1ValueResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1ValueResponseOutput {
+	return o
+}
+
+// A double value.
+func (o GoogleCloudAiplatformV1ValueResponseOutput) DoubleValue() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ValueResponse) float64 { return v.DoubleValue }).(pulumi.Float64Output)
+}
+
+// An integer value.
+func (o GoogleCloudAiplatformV1ValueResponseOutput) IntValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ValueResponse) string { return v.IntValue }).(pulumi.StringOutput)
+}
+
+// A string value.
+func (o GoogleCloudAiplatformV1ValueResponseOutput) StringValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1ValueResponse) string { return v.StringValue }).(pulumi.StringOutput)
+}
+
 // Represents the spec of a worker pool in a job.
 type GoogleCloudAiplatformV1WorkerPoolSpec struct {
 	// The custom container task.
@@ -25819,7 +27662,7 @@ type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -25845,8 +27688,8 @@ func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o GoogleRpcStatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o GoogleRpcStatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -26194,6 +28037,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExamplesExampleGcsSourcePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExamplesExampleGcsSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationParametersInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationParametersPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ExplanationSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1ExplanationSpecArgs{})
@@ -26290,6 +28141,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1PipelineJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobRuntimeConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1PipelineJobRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactInput)(nil)).Elem(), GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PortInput)(nil)).Elem(), GoogleCloudAiplatformV1PortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PortArrayInput)(nil)).Elem(), GoogleCloudAiplatformV1PortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1PredefinedSplitInput)(nil)).Elem(), GoogleCloudAiplatformV1PredefinedSplitArgs{})
@@ -26365,6 +28218,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1TrainingConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1TrainingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1UnmanagedContainerModelInput)(nil)).Elem(), GoogleCloudAiplatformV1UnmanagedContainerModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1UnmanagedContainerModelPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1UnmanagedContainerModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ValueInput)(nil)).Elem(), GoogleCloudAiplatformV1ValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1ValuePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1WorkerPoolSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1WorkerPoolSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1WorkerPoolSpecArrayInput)(nil)).Elem(), GoogleCloudAiplatformV1WorkerPoolSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1XraiAttributionInput)(nil)).Elem(), GoogleCloudAiplatformV1XraiAttributionArgs{})
@@ -26376,6 +28231,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ActiveLearningConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ActiveLearningConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ActiveLearningConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ArtifactResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ArtifactResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1AutomaticResourcesResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1AutoscalingMetricSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1AutoscalingMetricSpecArrayOutput{})
@@ -26443,6 +28300,18 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExecutionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataFeatureValueDomainResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationParametersOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ExplanationParametersPtrOutput{})
@@ -26614,7 +28483,11 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineJobResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineJobRuntimeConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineJobRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineTaskDetailArtifactListResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1PipelineTaskDetailResponseOutput{})
@@ -26749,6 +28622,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1UnmanagedContainerModelOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1UnmanagedContainerModelPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1UnmanagedContainerModelResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ValueOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ValuePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1ValueResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1WorkerPoolSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1WorkerPoolSpecArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1WorkerPoolSpecResponseOutput{})
