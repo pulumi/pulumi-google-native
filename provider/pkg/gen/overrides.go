@@ -17,6 +17,7 @@ package gen
 import (
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
 
 // resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
@@ -186,6 +187,26 @@ var resourceNamePropertyOverrides = map[string]string{
 	"run/v1alpha1:Job.jobsId":                                 "metadata.name",
 	"run/v1:DomainMapping.domainmappingsId":                   "metadata.name",
 	"run/v1:Service.servicesId":                               "metadata.name",
+}
+
+// schemaPropertyTypeOverrides is a map of overrides for properties of a schema type.
+var schemaPropertyTypeOverrides = map[string]map[string]*schema.TypeSpec{
+	"BackendRule": {
+		"overridesByRequestProtocol": {
+			Type: "object",
+			AdditionalProperties: &schema.TypeSpec{
+				Type: "string",
+			},
+		},
+	},
+	"BackendRuleResponse": {
+		"overridesByRequestProtocol": {
+			Type: "object",
+			AdditionalProperties: &schema.TypeSpec{
+				Type: "string",
+			},
+		},
+	},
 }
 
 // autonameOverrides is a map of exceptions to the property used for auto-naming.

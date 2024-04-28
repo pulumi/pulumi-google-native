@@ -18,6 +18,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/url"
 	"os"
 	"path"
@@ -1348,6 +1349,15 @@ func (g *packageGenerator) itemTypeToProperty(typ *schema.TypeSpec) *resources.C
 }
 
 func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
+	// Consult the override map for property type specs
+	// to see if there is a match.
+	if overrides, ok := schemaPropertyTypeOverrides[typeName]; ok {
+		if typeSpec, ok := overrides[propName]; ok {
+			log.Printf("Using type spec override for property %s in type %s", propName, typeName)
+			return typeSpec, nil
+		}
+	}
+
 	switch {
 	case prop.Items != nil:
 		items, err := g.genTypeSpec(typeName, propName+"Item", prop.Items, isOutput)
@@ -1402,9 +1412,10 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 					AdditionalProperties: &schema.TypeSpec{Ref: "pulumi.json#/Any"},
 				}, nil
 			case "array":
-				// An array for AdditionalProperties doesn't make sense
+				// An array type for AdditionalProperties doesn't make sense
 				// since it's already a map and multiple entries are
-				// allowed.
+				// allowed by definition. So generate a type
+				// based on the type of the "items" in the array.
 				typeSpec, err := g.genTypeSpec(propName, propName, prop.AdditionalProperties.Items, isOutput)
 				if err != nil {
 					return nil, err
