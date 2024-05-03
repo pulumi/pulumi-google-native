@@ -17,7 +17,6 @@ package gen
 import (
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
-	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 )
 
 // resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
@@ -189,37 +188,26 @@ var resourceNamePropertyOverrides = map[string]string{
 	"run/v1:Service.servicesId":                               "metadata.name",
 }
 
-// schemaPropertyTypeOverrides is a map of overrides for properties of a schema type.
-var schemaPropertyTypeOverrides = map[string]map[string]*schema.TypeSpec{
+// unsupportedPropertiesOverrides is a map of properties in types that
+// are not supported and should be included in the Pulumi schema spec.
+var unsupportedPropertiesOverrides = map[string][]string{
 	// API ref: https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backendrule
 	"BackendRule": {
 		// The `overridesByRequestProtocol` property in `BackendRule`,
-		// while absent, in the API reference docs, is present in the
+		// while absent in the API reference docs, is present in the
 		// discover doc that we fetch.
 		//
-		// The property is incorrectly referring to its parent type
-		// causing a recursion. This recursion is accidental as the
-		// description of the property suggests that it's a map
-		// of the protocol and the address. So we override the
-		// type spec for this property with the correct
-		// AdditionalProperties type spec.
+		// But it doesn't make sense to include
+		// `overridesByRequestProtocol` in the recursion.
+		// For now don't include this property which means
+		// we avoid the recursion.
 		//
 		// Discovery doc: https://servicemanagement.googleapis.com/$discovery/rest?version=v1
-		"overridesByRequestProtocol": {
-			Type: "object",
-			AdditionalProperties: &schema.TypeSpec{
-				Type: "string",
-			},
-		},
+		"overridesByRequestProtocol",
 	},
 	"BackendRuleResponse": {
 		// Similar to the property in `BackendRule`. See notes above.
-		"overridesByRequestProtocol": {
-			Type: "object",
-			AdditionalProperties: &schema.TypeSpec{
-				Type: "string",
-			},
-		},
+		"overridesByRequestProtocol",
 	},
 }
 

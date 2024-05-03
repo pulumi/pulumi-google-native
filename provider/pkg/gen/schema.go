@@ -1250,6 +1250,15 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		properties:    map[string]resources.CloudAPIProperty{},
 	}
 	for _, name := range codegen.SortedKeys(typeSchema.Properties) {
+		// Consult the unsupported properties map to see if we should
+		// skip this property altogether.
+		if overrides, ok := unsupportedPropertiesOverrides[typeName]; ok {
+			if contains(overrides, name) {
+				log.Printf("Skipping unsupported property %s in type %s", name, typeName)
+				continue
+			}
+		}
+
 		value := typeSchema.Properties[name]
 		sdkName := apiPropNameToSdkName(typeName, name)
 
@@ -1349,15 +1358,6 @@ func (g *packageGenerator) itemTypeToProperty(typ *schema.TypeSpec) *resources.C
 }
 
 func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
-	// Consult the override map for property type specs
-	// to see if there is a match.
-	if overrides, ok := schemaPropertyTypeOverrides[typeName]; ok {
-		if typeSpec, ok := overrides[propName]; ok {
-			log.Printf("Using type spec override for property %s in type %s", propName, typeName)
-			return typeSpec, nil
-		}
-	}
-
 	switch {
 	case prop.Items != nil:
 		items, err := g.genTypeSpec(typeName, propName+"Item", prop.Items, isOutput)
@@ -1412,18 +1412,17 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 					AdditionalProperties: &schema.TypeSpec{Ref: "pulumi.json#/Any"},
 				}, nil
 			case "array":
-				// An array type for AdditionalProperties doesn't make sense
-				// since it's already a map and multiple entries are
-				// allowed by definition. So generate a type
-				// based on the type of the "items" in the array.
 				typeSpec, err := g.genTypeSpec(propName, propName, prop.AdditionalProperties.Items, isOutput)
 				if err != nil {
 					return nil, err
 				}
 
 				return &schema.TypeSpec{
-					Type:                 "object",
-					AdditionalProperties: typeSpec,
+					Type: "object",
+					AdditionalProperties: &schema.TypeSpec{
+						Type:  "array",
+						Items: typeSpec,
+					},
 				}, nil
 			default:
 				return &schema.TypeSpec{
