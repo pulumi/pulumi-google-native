@@ -547,7 +547,6 @@ class BackendRuleArgs:
                  jwt_audience: Optional[pulumi.Input[str]] = None,
                  min_deadline: Optional[pulumi.Input[float]] = None,
                  operation_deadline: Optional[pulumi.Input[float]] = None,
-                 overrides_by_request_protocol: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  path_translation: Optional[pulumi.Input['BackendRulePathTranslation']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[str]] = None):
@@ -559,7 +558,6 @@ class BackendRuleArgs:
         :param pulumi.Input[str] jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         :param pulumi.Input[float] min_deadline: Deprecated, do not use.
         :param pulumi.Input[float] operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] overrides_by_request_protocol: The map between request protocol and the backend address.
         :param pulumi.Input[str] protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param pulumi.Input[str] selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
@@ -578,8 +576,6 @@ class BackendRuleArgs:
             pulumi.set(__self__, "min_deadline", min_deadline)
         if operation_deadline is not None:
             pulumi.set(__self__, "operation_deadline", operation_deadline)
-        if overrides_by_request_protocol is not None:
-            pulumi.set(__self__, "overrides_by_request_protocol", overrides_by_request_protocol)
         if path_translation is not None:
             pulumi.set(__self__, "path_translation", path_translation)
         if protocol is not None:
@@ -659,18 +655,6 @@ class BackendRuleArgs:
     @operation_deadline.setter
     def operation_deadline(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "operation_deadline", value)
-
-    @property
-    @pulumi.getter(name="overridesByRequestProtocol")
-    def overrides_by_request_protocol(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The map between request protocol and the backend address.
-        """
-        return pulumi.get(self, "overrides_by_request_protocol")
-
-    @overrides_by_request_protocol.setter
-    def overrides_by_request_protocol(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "overrides_by_request_protocol", value)
 
     @property
     @pulumi.getter(name="pathTranslation")

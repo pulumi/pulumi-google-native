@@ -1527,10 +1527,8 @@ type BackendRule struct {
 	// Deprecated: Deprecated, do not use.
 	MinDeadline *float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-	OperationDeadline *float64 `pulumi:"operationDeadline"`
-	// The map between request protocol and the backend address.
-	OverridesByRequestProtocol map[string]string           `pulumi:"overridesByRequestProtocol"`
-	PathTranslation            *BackendRulePathTranslation `pulumi:"pathTranslation"`
+	OperationDeadline *float64                    `pulumi:"operationDeadline"`
+	PathTranslation   *BackendRulePathTranslation `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol *string `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -1563,10 +1561,8 @@ type BackendRuleArgs struct {
 	// Deprecated: Deprecated, do not use.
 	MinDeadline pulumi.Float64PtrInput `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-	OperationDeadline pulumi.Float64PtrInput `pulumi:"operationDeadline"`
-	// The map between request protocol and the backend address.
-	OverridesByRequestProtocol pulumi.StringMapInput              `pulumi:"overridesByRequestProtocol"`
-	PathTranslation            BackendRulePathTranslationPtrInput `pulumi:"pathTranslation"`
+	OperationDeadline pulumi.Float64PtrInput             `pulumi:"operationDeadline"`
+	PathTranslation   BackendRulePathTranslationPtrInput `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -1657,11 +1653,6 @@ func (o BackendRuleOutput) OperationDeadline() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendRule) *float64 { return v.OperationDeadline }).(pulumi.Float64PtrOutput)
 }
 
-// The map between request protocol and the backend address.
-func (o BackendRuleOutput) OverridesByRequestProtocol() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BackendRule) map[string]string { return v.OverridesByRequestProtocol }).(pulumi.StringMapOutput)
-}
-
 func (o BackendRuleOutput) PathTranslation() BackendRulePathTranslationPtrOutput {
 	return o.ApplyT(func(v BackendRule) *BackendRulePathTranslation { return v.PathTranslation }).(BackendRulePathTranslationPtrOutput)
 }
@@ -1712,9 +1703,7 @@ type BackendRuleResponse struct {
 	MinDeadline float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline float64 `pulumi:"operationDeadline"`
-	// The map between request protocol and the backend address.
-	OverridesByRequestProtocol map[string]string `pulumi:"overridesByRequestProtocol"`
-	PathTranslation            string            `pulumi:"pathTranslation"`
+	PathTranslation   string  `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol string `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -1766,11 +1755,6 @@ func (o BackendRuleResponseOutput) MinDeadline() pulumi.Float64Output {
 // The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 func (o BackendRuleResponseOutput) OperationDeadline() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendRuleResponse) float64 { return v.OperationDeadline }).(pulumi.Float64Output)
-}
-
-// The map between request protocol and the backend address.
-func (o BackendRuleResponseOutput) OverridesByRequestProtocol() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BackendRuleResponse) map[string]string { return v.OverridesByRequestProtocol }).(pulumi.StringMapOutput)
 }
 
 func (o BackendRuleResponseOutput) PathTranslation() pulumi.StringOutput {

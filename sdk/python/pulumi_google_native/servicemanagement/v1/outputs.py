@@ -571,8 +571,6 @@ class BackendRuleResponse(dict):
             suggest = "min_deadline"
         elif key == "operationDeadline":
             suggest = "operation_deadline"
-        elif key == "overridesByRequestProtocol":
-            suggest = "overrides_by_request_protocol"
         elif key == "pathTranslation":
             suggest = "path_translation"
 
@@ -594,7 +592,6 @@ class BackendRuleResponse(dict):
                  jwt_audience: str,
                  min_deadline: float,
                  operation_deadline: float,
-                 overrides_by_request_protocol: Mapping[str, str],
                  path_translation: str,
                  protocol: str,
                  selector: str):
@@ -606,7 +603,6 @@ class BackendRuleResponse(dict):
         :param str jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         :param float min_deadline: Deprecated, do not use.
         :param float operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-        :param Mapping[str, str] overrides_by_request_protocol: The map between request protocol and the backend address.
         :param str protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param str selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
@@ -616,7 +612,6 @@ class BackendRuleResponse(dict):
         pulumi.set(__self__, "jwt_audience", jwt_audience)
         pulumi.set(__self__, "min_deadline", min_deadline)
         pulumi.set(__self__, "operation_deadline", operation_deadline)
-        pulumi.set(__self__, "overrides_by_request_protocol", overrides_by_request_protocol)
         pulumi.set(__self__, "path_translation", path_translation)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "selector", selector)
@@ -669,14 +664,6 @@ class BackendRuleResponse(dict):
         The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         """
         return pulumi.get(self, "operation_deadline")
-
-    @property
-    @pulumi.getter(name="overridesByRequestProtocol")
-    def overrides_by_request_protocol(self) -> Mapping[str, str]:
-        """
-        The map between request protocol and the backend address.
-        """
-        return pulumi.get(self, "overrides_by_request_protocol")
 
     @property
     @pulumi.getter(name="pathTranslation")
