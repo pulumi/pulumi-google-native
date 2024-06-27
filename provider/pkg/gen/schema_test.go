@@ -32,6 +32,7 @@ import (
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 
 	"github.com/stretchr/testify/require"
+	"google.golang.org/api/discovery/v1"
 )
 
 var root = filepath.Join("..", "..", "..")
@@ -212,4 +213,42 @@ func loadSchema() (*schema.PackageSpec, error) {
 		return nil, errors.Wrap(err, "unmarshalling pkgspec")
 	}
 	return &pkg, nil
+}
+
+type TypeSpecTestCase struct {
+	name     string
+	schema   *discovery.JsonSchema
+	expected *schema.TypeSpec
+}
+
+func Test_genTypeSpec(t *testing.T) {
+	cases := []TypeSpecTestCase{
+		{
+			name: "map[string, string]",
+			schema: &discovery.JsonSchema{
+				Type: "object",
+				AdditionalProperties: &discovery.JsonSchema{
+					Type: "string",
+				},
+			},
+			expected: &schema.TypeSpec{
+				Type:                 "object",
+				AdditionalProperties: &schema.TypeSpec{Type: "string"},
+			},
+		},
+	}
+	g := packageGenerator{
+		pkg:          nil,
+		metadata:     nil,
+		rest:         nil,
+		mod:          "foo",
+		visitedTypes: codegen.NewStringSet(),
+		docName:      "foo",
+	}
+
+	for _, tt := range cases {
+		out, err := g.genTypeSpec("foo", "bar", tt.schema, true)
+		assert.NoError(t, err)
+		assert.Equal(t, tt.expected, out)
+	}
 }
