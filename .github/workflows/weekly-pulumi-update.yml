@@ -23,6 +23,13 @@ env:
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  GOVERSION: 1.21.x
+  NODEVERSION: 20.x
+  PYTHONVERSION: "3.11"
+  DOTNETVERSION: |
+    6.0.x
+    3.1.301
+  JAVAVERSION: "11"
   GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
   GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
   GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
@@ -36,17 +43,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         lfs: true
-    - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow --tags
-    - name: Install Languages & Frameworks
-      uses: ./.github/actions/install
+    - name: Install Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: ${{ env.GOVERSION }}
+        cache-dependency-path: "**/*.sum"
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/actions@v5
+    - name: Setup DotNet
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNETVERSION }}
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODEVERSION }}
+        registry-url: https://registry.npmjs.org
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ env.PYTHONVERSION }}
     - name: Update Pulumi/Pulumi
       id: gomod
       run: >-
@@ -56,31 +79,13 @@ jobs:
 
         git checkout -b update-pulumi/${{ github.run_id }}-${{ github.run_number }}
 
-        cd provider
+        for MODFILE in $(find . -name go.mod); do pushd $(dirname $MODFILE); go get github.com/pulumi/pulumi/pkg/v3 github.com/pulumi/pulumi/sdk/v3; go mod tidy; popd; done
 
-        go get github.com/pulumi/pulumi/pkg/v3
-
-        go get github.com/pulumi/pulumi/sdk/v3
-
-        go mod download
-
-        go mod tidy
-
-        cd ../sdk
-
-        go get github.com/pulumi/pulumi/sdk/v3
-
-        go mod download
-
-        go mod tidy
-
-        cd ..
+        gh repo view pulumi/pulumi --json latestRelease --jq .latestRelease.tagName | sed 's/^v//' > .pulumi.version
 
         git update-index -q --refresh
 
-        if ! git diff-files --quiet; then 
-        	echo changes=1  >> "$GITHUB_OUTPUT"
-        fi
+        if ! git diff-files --quiet; then echo changes=1 >> "$GITHUB_OUTPUT"; fi
     - name: Initialize submodules
       run: make init_submodules
     - name: Provider with Pulumi Upgrade
@@ -110,7 +115,7 @@ jobs:
 
         git add .
 
-        git commit -m "Updated modules"
+        git commit -m "Updated modules" || echo "ignore commit failure, may be empty"
 
         git push origin update-pulumi/${{ github.run_id }}-${{ github.run_number }}
     - name: Create PR

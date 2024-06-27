@@ -23,6 +23,13 @@ env:
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  GOVERSION: 1.21.x
+  NODEVERSION: 20.x
+  PYTHONVERSION: "3.11"
+  DOTNETVERSION: |
+    6.0.x
+    3.1.301
+  JAVAVERSION: "11"
   GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
   GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
   GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
@@ -37,19 +44,20 @@ jobs:
     name: generate-sdk
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         lfs: true
-    - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow --tags
-    - name: Install Languages & Frameworks
-      uses: ./.github/actions/install
+    - name: Install Go
+      uses: actions/setup-go@v5
       with:
-        skip_dotnet_and_java: "true"
+        go-version: 1.21.x
+        cache-dependency-path: "**/*.sum"
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         repo: pulumi/pulumictl
+    - name: Install Pulumi CLI
+      uses: pulumi/actions@v5
     - name: Cleanup SDK Folder
       run: make clean
     - name: Preparing Git Branch
