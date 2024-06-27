@@ -239,7 +239,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
             __props__.__dict__["sni"] = sni
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["client_tls_policy_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clientTlsPolicyId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ClientTlsPolicy, __self__).__init__(
             'google-native:networksecurity/v1beta1:ClientTlsPolicy',

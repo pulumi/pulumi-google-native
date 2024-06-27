@@ -163,7 +163,7 @@ class BackupSchedule(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["databaseId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BackupSchedule, __self__).__init__(
             'google-native:firestore/v1:BackupSchedule',

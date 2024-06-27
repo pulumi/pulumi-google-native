@@ -773,13 +773,11 @@ class ConfigManagementConfigSyncArgs:
 
     @property
     @pulumi.getter(name="allowVerticalScale")
+    @_utilities.deprecated("""Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""")
     def allow_vertical_scale(self) -> Optional[pulumi.Input[bool]]:
         """
         Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
         """
-        warnings.warn("""Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""allow_vertical_scale is deprecated: Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.""")
-
         return pulumi.get(self, "allow_vertical_scale")
 
     @allow_vertical_scale.setter
@@ -1087,13 +1085,11 @@ class ConfigManagementMembershipSpecArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.""")
     def binauthz(self) -> Optional[pulumi.Input['ConfigManagementBinauthzConfigArgs']]:
         """
         Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
         """
-        warnings.warn("""Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.""", DeprecationWarning)
-        pulumi.log.warn("""binauthz is deprecated: Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.""")
-
         return pulumi.get(self, "binauthz")
 
     @binauthz.setter
@@ -2357,13 +2353,11 @@ class MultiClusterIngressFeatureSpecArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated: This field will be ignored and should not be set. Customer's billing structure.""")
     def billing(self) -> Optional[pulumi.Input['MultiClusterIngressFeatureSpecBilling']]:
         """
         Deprecated: This field will be ignored and should not be set. Customer's billing structure.
         """
-        warnings.warn("""Deprecated: This field will be ignored and should not be set. Customer's billing structure.""", DeprecationWarning)
-        pulumi.log.warn("""billing is deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.""")
-
         return pulumi.get(self, "billing")
 
     @billing.setter
@@ -2899,13 +2893,11 @@ class ServiceMeshMembershipSpecArgs:
 
     @property
     @pulumi.getter(name="controlPlane")
+    @_utilities.deprecated("""Deprecated: use `management` instead Enables automatic control plane management.""")
     def control_plane(self) -> Optional[pulumi.Input['ServiceMeshMembershipSpecControlPlane']]:
         """
         Deprecated: use `management` instead Enables automatic control plane management.
         """
-        warnings.warn("""Deprecated: use `management` instead Enables automatic control plane management.""", DeprecationWarning)
-        pulumi.log.warn("""control_plane is deprecated: Deprecated: use `management` instead Enables automatic control plane management.""")
-
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter

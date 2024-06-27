@@ -203,7 +203,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["source_backup"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backup_id", "cluster_id", "instance_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backupId", "clusterId", "instanceId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Backup, __self__).__init__(
             'google-native:bigtableadmin/v2:Backup',

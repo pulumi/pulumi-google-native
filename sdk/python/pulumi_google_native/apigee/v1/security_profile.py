@@ -98,13 +98,11 @@ class SecurityProfileArgs:
 
     @property
     @pulumi.getter(name="displayName")
+    @_utilities.deprecated("""DEPRECATED: DO NOT USE Display name of the security profile.""")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         DEPRECATED: DO NOT USE Display name of the security profile.
         """
-        warnings.warn("""DEPRECATED: DO NOT USE Display name of the security profile.""", DeprecationWarning)
-        pulumi.log.warn("""display_name is deprecated: DEPRECATED: DO NOT USE Display name of the security profile.""")
-
         return pulumi.get(self, "display_name")
 
     @display_name.setter
@@ -236,7 +234,7 @@ class SecurityProfile(pulumi.CustomResource):
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["revision_publish_time"] = None
             __props__.__dict__["revision_update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id", "security_profile_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId", "securityProfileId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SecurityProfile, __self__).__init__(
             'google-native:apigee/v1:SecurityProfile',
@@ -286,13 +284,11 @@ class SecurityProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
+    @_utilities.deprecated("""DEPRECATED: DO NOT USE Display name of the security profile.""")
     def display_name(self) -> pulumi.Output[str]:
         """
         DEPRECATED: DO NOT USE Display name of the security profile.
         """
-        warnings.warn("""DEPRECATED: DO NOT USE Display name of the security profile.""", DeprecationWarning)
-        pulumi.log.warn("""display_name is deprecated: DEPRECATED: DO NOT USE Display name of the security profile.""")
-
         return pulumi.get(self, "display_name")
 
     @property
@@ -358,13 +354,11 @@ class SecurityProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="revisionPublishTime")
+    @_utilities.deprecated("""Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.""")
     def revision_publish_time(self) -> pulumi.Output[str]:
         """
         DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
         """
-        warnings.warn("""Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.""", DeprecationWarning)
-        pulumi.log.warn("""revision_publish_time is deprecated: Output only. DEPRECATED: DO NOT USE The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.""")
-
         return pulumi.get(self, "revision_publish_time")
 
     @property

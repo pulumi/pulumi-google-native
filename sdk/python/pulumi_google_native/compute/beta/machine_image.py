@@ -270,7 +270,7 @@ class MachineImage(pulumi.CustomResource):
             __props__.__dict__["source_instance_properties"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["total_storage_bytes"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "source_instance"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "sourceInstance"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(MachineImage, __self__).__init__(
             'google-native:compute/beta:MachineImage',

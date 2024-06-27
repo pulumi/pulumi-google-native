@@ -253,7 +253,7 @@ class DebugSession(pulumi.CustomResource):
             __props__.__dict__["tracesize"] = tracesize
             __props__.__dict__["validity"] = validity
             __props__.__dict__["create_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "environment_id", "organization_id", "revision_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "environmentId", "organizationId", "revisionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DebugSession, __self__).__init__(
             'google-native:apigee/v1:DebugSession',

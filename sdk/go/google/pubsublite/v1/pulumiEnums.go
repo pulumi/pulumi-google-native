@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The DeliveryRequirement for this subscription.
@@ -180,12 +179,6 @@ func (in *deliveryConfigDeliveryRequirementPtr) ToDeliveryConfigDeliveryRequirem
 
 func (in *deliveryConfigDeliveryRequirementPtr) ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeliveryConfigDeliveryRequirementPtrOutput)
-}
-
-func (in *deliveryConfigDeliveryRequirementPtr) ToOutput(ctx context.Context) pulumix.Output[*DeliveryConfigDeliveryRequirement] {
-	return pulumix.Output[*DeliveryConfigDeliveryRequirement]{
-		OutputState: in.ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
@@ -363,12 +356,6 @@ func (in *exportConfigDesiredStatePtr) ToExportConfigDesiredStatePtrOutput() Exp
 
 func (in *exportConfigDesiredStatePtr) ToExportConfigDesiredStatePtrOutputWithContext(ctx context.Context) ExportConfigDesiredStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExportConfigDesiredStatePtrOutput)
-}
-
-func (in *exportConfigDesiredStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExportConfigDesiredState] {
-	return pulumix.Output[*ExportConfigDesiredState]{
-		OutputState: in.ToExportConfigDesiredStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

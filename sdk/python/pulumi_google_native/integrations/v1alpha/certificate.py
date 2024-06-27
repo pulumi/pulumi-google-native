@@ -239,7 +239,7 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["valid_end_time"] = None
             __props__.__dict__["valid_start_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "product_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "productId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Certificate, __self__).__init__(
             'google-native:integrations/v1alpha:Certificate',

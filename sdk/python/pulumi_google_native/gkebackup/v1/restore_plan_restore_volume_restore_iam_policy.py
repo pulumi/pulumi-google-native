@@ -249,7 +249,7 @@ class RestorePlanRestoreVolumeRestoreIamPolicy(pulumi.CustomResource):
             if volume_restore_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_restore_id'")
             __props__.__dict__["volume_restore_id"] = volume_restore_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "restore_id", "restore_plan_id", "volume_restore_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "restoreId", "restorePlanId", "volumeRestoreId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RestorePlanRestoreVolumeRestoreIamPolicy, __self__).__init__(
             'google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamPolicy',

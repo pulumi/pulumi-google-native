@@ -176,7 +176,7 @@ class RepositoryIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repositoryId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RepositoryIamPolicy, __self__).__init__(
             'google-native:artifactregistry/v1beta1:RepositoryIamPolicy',

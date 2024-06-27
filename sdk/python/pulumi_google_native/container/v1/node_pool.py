@@ -110,13 +110,11 @@ class NodePoolInitArgs:
 
     @property
     @pulumi.getter(name="clusterId")
+    @_utilities.deprecated("""Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
     def cluster_id(self) -> pulumi.Input[str]:
         """
         Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         """
-        warnings.warn("""Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-        pulumi.log.warn("""cluster_id is deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
-
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -290,13 +288,11 @@ class NodePoolInitArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         """
-        warnings.warn("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
-
         return pulumi.get(self, "project")
 
     @project.setter
@@ -341,13 +337,11 @@ class NodePoolInitArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
-        warnings.warn("""Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
-
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -487,7 +481,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["status_message"] = None
             __props__.__dict__["update_info"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cluster_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clusterId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NodePool, __self__).__init__(
             'google-native:container/v1:NodePool',
@@ -690,13 +684,11 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="statusMessage")
+    @_utilities.deprecated("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
     def status_message(self) -> pulumi.Output[str]:
         """
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         """
-        warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""", DeprecationWarning)
-        pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
-
         return pulumi.get(self, "status_message")
 
     @property

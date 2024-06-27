@@ -449,13 +449,11 @@ class JobArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
     def visibility(self) -> Optional[pulumi.Input['JobVisibility']]:
         """
         Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
         """
-        warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
-        pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
-
         return pulumi.get(self, "visibility")
 
     @visibility.setter
@@ -632,7 +630,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["derived_info"] = None
             __props__.__dict__["posting_create_time"] = None
             __props__.__dict__["posting_update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "tenant_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "tenantId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Job, __self__).__init__(
             'google-native:jobs/v4:Job',
@@ -934,12 +932,10 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
     def visibility(self) -> pulumi.Output[str]:
         """
         Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
         """
-        warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
-        pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
-
         return pulumi.get(self, "visibility")
 

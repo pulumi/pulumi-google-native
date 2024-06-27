@@ -310,7 +310,7 @@ class CertificateAuthority(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["tier"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["ca_pool_id", "certificate_authority_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["caPoolId", "certificateAuthorityId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CertificateAuthority, __self__).__init__(
             'google-native:privateca/v1:CertificateAuthority',

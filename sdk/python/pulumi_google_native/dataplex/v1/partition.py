@@ -190,7 +190,7 @@ class Partition(pulumi.CustomResource):
             __props__.__dict__["values"] = values
             __props__.__dict__["zone"] = zone
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entity_id", "lake_id", "location", "project", "zone"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entityId", "lakeId", "location", "project", "zone"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Partition, __self__).__init__(
             'google-native:dataplex/v1:Partition',

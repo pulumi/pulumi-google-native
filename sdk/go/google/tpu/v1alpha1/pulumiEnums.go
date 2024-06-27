@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The health status of the TPU node.
@@ -189,12 +188,6 @@ func (in *nodeHealthPtr) ToNodeHealthPtrOutput() NodeHealthPtrOutput {
 
 func (in *nodeHealthPtr) ToNodeHealthPtrOutputWithContext(ctx context.Context) NodeHealthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeHealthPtrOutput)
-}
-
-func (in *nodeHealthPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeHealth] {
-	return pulumix.Output[*NodeHealth]{
-		OutputState: in.ToNodeHealthPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

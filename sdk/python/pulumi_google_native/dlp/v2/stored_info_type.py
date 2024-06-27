@@ -51,13 +51,11 @@ class StoredInfoTypeArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. This field has no effect.""")
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated. This field has no effect.
         """
-        warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
-        pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
-
         return pulumi.get(self, "location")
 
     @location.setter

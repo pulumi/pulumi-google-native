@@ -187,7 +187,7 @@ class BillingAccountIamPolicy(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billing_account_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billingAccountId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BillingAccountIamPolicy, __self__).__init__(
             'google-native:cloudbilling/v1:BillingAccountIamPolicy',

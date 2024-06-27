@@ -197,7 +197,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["restoring_services"] = None
             __props__.__dict__["service_revision"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backup_id", "location", "project", "service_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backupId", "location", "project", "serviceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Backup, __self__).__init__(
             'google-native:metastore/v1:Backup',

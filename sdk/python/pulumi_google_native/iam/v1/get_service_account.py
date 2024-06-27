@@ -81,13 +81,11 @@ class GetServiceAccountResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. Do not use.""")
     def etag(self) -> str:
         """
         Deprecated. Do not use.
         """
-        warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
-        pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
-
         return pulumi.get(self, "etag")
 
     @property

@@ -232,13 +232,11 @@ class RatePlanArgs:
 
     @property
     @pulumi.getter(name="paymentFundingModel")
+    @_utilities.deprecated("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
     def payment_funding_model(self) -> Optional[pulumi.Input['RatePlanPaymentFundingModel']]:
         """
         DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
         """
-        warnings.warn("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""", DeprecationWarning)
-        pulumi.log.warn("""payment_funding_model is deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
-
         return pulumi.get(self, "payment_funding_model")
 
     @payment_funding_model.setter
@@ -430,7 +428,7 @@ class RatePlan(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_modified_at"] = None
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiproduct_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiproductId", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RatePlan, __self__).__init__(
             'google-native:apigee/v1:RatePlan',
@@ -593,13 +591,11 @@ class RatePlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="paymentFundingModel")
+    @_utilities.deprecated("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
     def payment_funding_model(self) -> pulumi.Output[str]:
         """
         DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
         """
-        warnings.warn("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""", DeprecationWarning)
-        pulumi.log.warn("""payment_funding_model is deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
-
         return pulumi.get(self, "payment_funding_model")
 
     @property

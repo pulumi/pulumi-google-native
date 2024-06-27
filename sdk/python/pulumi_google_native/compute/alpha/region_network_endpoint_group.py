@@ -191,13 +191,11 @@ class RegionNetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter(name="loadBalancer")
+    @_utilities.deprecated("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
     def load_balancer(self) -> Optional[pulumi.Input['NetworkEndpointGroupLbNetworkEndpointGroupArgs']]:
         """
         This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""load_balancer is deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
@@ -570,13 +568,11 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancer")
+    @_utilities.deprecated("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
     def load_balancer(self) -> pulumi.Output['outputs.NetworkEndpointGroupLbNetworkEndpointGroupResponse']:
         """
         This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""load_balancer is deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "load_balancer")
 
     @property

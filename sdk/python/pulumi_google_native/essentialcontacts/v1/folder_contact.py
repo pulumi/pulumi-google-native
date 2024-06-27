@@ -187,7 +187,7 @@ class FolderContact(pulumi.CustomResource):
             __props__.__dict__["validate_time"] = validate_time
             __props__.__dict__["validation_state"] = validation_state
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folder_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folderId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FolderContact, __self__).__init__(
             'google-native:essentialcontacts/v1:FolderContact',

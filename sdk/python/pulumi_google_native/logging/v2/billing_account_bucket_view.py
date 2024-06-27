@@ -196,7 +196,7 @@ class BillingAccountBucketView(pulumi.CustomResource):
             __props__.__dict__["view_id"] = view_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billing_account_id", "bucket_id", "location", "view_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["billingAccountId", "bucketId", "location", "viewId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BillingAccountBucketView, __self__).__init__(
             'google-native:logging/v2:BillingAccountBucketView',

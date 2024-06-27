@@ -118,13 +118,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="endpointUris")
+    @_utilities.deprecated("""Deprecated. This field is not populated.""")
     def endpoint_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Deprecated. This field is not populated.
         """
-        warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
-        pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
-
         return pulumi.get(self, "endpoint_uris")
 
     @endpoint_uris.setter
@@ -388,13 +386,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endpointUris")
+    @_utilities.deprecated("""Deprecated. This field is not populated.""")
     def endpoint_uris(self) -> pulumi.Output[Sequence[str]]:
         """
         Deprecated. This field is not populated.
         """
-        warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
-        pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
-
         return pulumi.get(self, "endpoint_uris")
 
     @property

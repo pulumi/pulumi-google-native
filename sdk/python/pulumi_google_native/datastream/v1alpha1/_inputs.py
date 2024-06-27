@@ -304,13 +304,11 @@ class GcsDestinationConfigArgs:
 
     @property
     @pulumi.getter(name="gcsFileFormat")
+    @_utilities.deprecated("""File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.""")
     def gcs_file_format(self) -> Optional[pulumi.Input['GcsDestinationConfigGcsFileFormat']]:
         """
         File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
         """
-        warnings.warn("""File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.""", DeprecationWarning)
-        pulumi.log.warn("""gcs_file_format is deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.""")
-
         return pulumi.get(self, "gcs_file_format")
 
     @gcs_file_format.setter

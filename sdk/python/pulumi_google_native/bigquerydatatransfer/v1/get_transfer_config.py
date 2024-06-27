@@ -213,13 +213,11 @@ class GetTransferConfigResult:
 
     @property
     @pulumi.getter(name="userId")
+    @_utilities.deprecated("""Deprecated. Unique ID of the user on whose behalf transfer is done.""")
     def user_id(self) -> str:
         """
         Deprecated. Unique ID of the user on whose behalf transfer is done.
         """
-        warnings.warn("""Deprecated. Unique ID of the user on whose behalf transfer is done.""", DeprecationWarning)
-        pulumi.log.warn("""user_id is deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.""")
-
         return pulumi.get(self, "user_id")
 
 

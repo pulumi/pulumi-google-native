@@ -226,7 +226,7 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["source_instance_tier"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["storage_bytes"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backup_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["backupId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Backup, __self__).__init__(
             'google-native:file/v1:Backup',

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy of the feature.
@@ -185,12 +184,6 @@ func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePoli
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput)
 }
 
-func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy] {
-	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy]{
-		OutputState: in.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // linux_isolation allows overriding the docker runtime used for containers started on Linux.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation string
 
@@ -360,12 +353,6 @@ func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolat
 
 func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtr) ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutputWithContext(ctx context.Context) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput)
-}
-
-func (in *googleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation] {
-	return pulumix.Output[*GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation]{
-		OutputState: in.ToGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

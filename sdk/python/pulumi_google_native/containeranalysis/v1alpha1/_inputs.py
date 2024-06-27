@@ -200,13 +200,11 @@ class ArtifactArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
         """
-        warnings.warn("""Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -635,13 +633,11 @@ class BuildDetailsArgs:
 
     @property
     @pulumi.getter(name="intotoProvenance")
+    @_utilities.deprecated("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
     def intoto_provenance(self) -> Optional[pulumi.Input['InTotoProvenanceArgs']]:
         """
         Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         """
-        warnings.warn("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""", DeprecationWarning)
-        pulumi.log.warn("""intoto_provenance is deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
-
         return pulumi.get(self, "intoto_provenance")
 
     @intoto_provenance.setter
@@ -4298,13 +4294,11 @@ class LocationArgs:
 
     @property
     @pulumi.getter(name="cpeUri")
+    @_utilities.deprecated("""Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""")
     def cpe_uri(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
-        warnings.warn("""Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""", DeprecationWarning)
-        pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""")
-
         return pulumi.get(self, "cpe_uri")
 
     @cpe_uri.setter
@@ -4325,13 +4319,11 @@ class LocationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The version installed at this location.""")
     def version(self) -> Optional[pulumi.Input['VersionArgs']]:
         """
         Deprecated. The version installed at this location.
         """
-        warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
-
         return pulumi.get(self, "version")
 
     @version.setter

@@ -428,7 +428,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["writable_node"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cluster_id", "instance_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clusterId", "instanceId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Instance, __self__).__init__(
             'google-native:alloydb/v1alpha:Instance',

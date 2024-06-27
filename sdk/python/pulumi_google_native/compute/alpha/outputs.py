@@ -1473,13 +1473,11 @@ class AttachedDiskInitializeParamsResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
     def interface(self) -> str:
         """
         [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
-        warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
-        pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
-
         return pulumi.get(self, "interface")
 
     @property
@@ -3790,13 +3788,11 @@ class BackendServiceLogConfigResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.""")
     def optional(self) -> str:
         """
         Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
         """
-        warnings.warn("""Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.""", DeprecationWarning)
-        pulumi.log.warn("""optional is deprecated: Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.""")
-
         return pulumi.get(self, "optional")
 
     @property
@@ -8850,13 +8846,11 @@ class ImageRawDiskResponse(dict):
 
     @property
     @pulumi.getter(name="sha1Checksum")
+    @_utilities.deprecated("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
     def sha1_checksum(self) -> str:
         """
         [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         """
-        warnings.warn("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""", DeprecationWarning)
-        pulumi.log.warn("""sha1_checksum is deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
-
         return pulumi.get(self, "sha1_checksum")
 
     @property
@@ -9827,13 +9821,11 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
 
     @property
     @pulumi.getter(name="isStateful")
+    @_utilities.deprecated("""[Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.""")
     def is_stateful(self) -> bool:
         """
         A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         """
-        warnings.warn("""[Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.""", DeprecationWarning)
-        pulumi.log.warn("""is_stateful is deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.""")
-
         return pulumi.get(self, "is_stateful")
 
     @property
@@ -10059,13 +10051,11 @@ class InstanceGroupManagerVersionResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.""")
     def tag(self) -> str:
         """
         Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
         """
-        warnings.warn("""Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.""", DeprecationWarning)
-        pulumi.log.warn("""tag is deprecated: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.""")
-
         return pulumi.get(self, "tag")
 
     @property
@@ -12332,46 +12322,38 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
 
     @property
     @pulumi.getter(name="defaultPort")
+    @_utilities.deprecated("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
     def default_port(self) -> int:
         """
         The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "default_port")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
     def network(self) -> str:
         """
         The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
     def subnetwork(self) -> str:
         """
         Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""subnetwork is deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "subnetwork")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.""")
     def zone(self) -> str:
         """
         The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""[Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "zone")
 
 
@@ -20823,13 +20805,11 @@ class SecurityPolicyRuleResponse(dict):
 
     @property
     @pulumi.getter(name="ruleManagedProtectionTier")
+    @_utilities.deprecated("""[Output Only] The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.""")
     def rule_managed_protection_tier(self) -> str:
         """
         The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.
         """
-        warnings.warn("""[Output Only] The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.""", DeprecationWarning)
-        pulumi.log.warn("""rule_managed_protection_tier is deprecated: [Output Only] The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.""")
-
         return pulumi.get(self, "rule_managed_protection_tier")
 
     @property
@@ -20987,35 +20967,29 @@ class SecuritySettingsResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Use clientTlsPolicy instead.""")
     def authentication(self) -> str:
         """
         [Deprecated] Use clientTlsPolicy instead.
         """
-        warnings.warn("""[Deprecated] Use clientTlsPolicy instead.""", DeprecationWarning)
-        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use clientTlsPolicy instead.""")
-
         return pulumi.get(self, "authentication")
 
     @property
     @pulumi.getter(name="authenticationPolicy")
+    @_utilities.deprecated("""[Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.""")
     def authentication_policy(self) -> 'outputs.AuthenticationPolicyResponse':
         """
         [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
         """
-        warnings.warn("""[Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.""", DeprecationWarning)
-        pulumi.log.warn("""authentication_policy is deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.""")
-
         return pulumi.get(self, "authentication_policy")
 
     @property
     @pulumi.getter(name="authorizationConfig")
+    @_utilities.deprecated("""[Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.""")
     def authorization_config(self) -> 'outputs.AuthorizationConfigResponse':
         """
         [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
         """
-        warnings.warn("""[Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.""", DeprecationWarning)
-        pulumi.log.warn("""authorization_config is deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.""")
-
         return pulumi.get(self, "authorization_config")
 
     @property
@@ -21036,13 +21010,11 @@ class SecuritySettingsResponse(dict):
 
     @property
     @pulumi.getter(name="clientTlsSettings")
+    @_utilities.deprecated("""[Deprecated] TLS Settings for the backend service.""")
     def client_tls_settings(self) -> 'outputs.ClientTlsSettingsResponse':
         """
         [Deprecated] TLS Settings for the backend service.
         """
-        warnings.warn("""[Deprecated] TLS Settings for the backend service.""", DeprecationWarning)
-        pulumi.log.warn("""client_tls_settings is deprecated: [Deprecated] TLS Settings for the backend service.""")
-
         return pulumi.get(self, "client_tls_settings")
 
     @property
@@ -23065,13 +23037,11 @@ class UpcomingMaintenanceResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.""")
     def date(self) -> str:
         """
         The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
         """
-        warnings.warn("""[Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.""", DeprecationWarning)
-        pulumi.log.warn("""date is deprecated: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.""")
-
         return pulumi.get(self, "date")
 
     @property
@@ -23089,24 +23059,20 @@ class UpcomingMaintenanceResponse(dict):
 
     @property
     @pulumi.getter(name="startTimeWindow")
+    @_utilities.deprecated("""[Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in \"yyyy-MM-dd'T'HH:mm:ssZ\" text format.""")
     def start_time_window(self) -> 'outputs.UpcomingMaintenanceTimeWindowResponse':
         """
         The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in "yyyy-MM-dd'T'HH:mm:ssZ" text format.
         """
-        warnings.warn("""[Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in \"yyyy-MM-dd'T'HH:mm:ssZ\" text format.""", DeprecationWarning)
-        pulumi.log.warn("""start_time_window is deprecated: [Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead. TimeWindow is a container for two strings that represent timestamps in \"yyyy-MM-dd'T'HH:mm:ssZ\" text format.""")
-
         return pulumi.get(self, "start_time_window")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.""")
     def time(self) -> str:
         """
         The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
         """
-        warnings.warn("""[Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.""", DeprecationWarning)
-        pulumi.log.warn("""time is deprecated: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.""")
-
         return pulumi.get(self, "time")
 
     @property
@@ -23286,13 +23252,11 @@ class UrlMapTestResponse(dict):
 
     @property
     @pulumi.getter(name="expectedUrlRedirect")
+    @_utilities.deprecated("""The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.""")
     def expected_url_redirect(self) -> str:
         """
         The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
         """
-        warnings.warn("""The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.""", DeprecationWarning)
-        pulumi.log.warn("""expected_url_redirect is deprecated: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.""")
-
         return pulumi.get(self, "expected_url_redirect")
 
     @property

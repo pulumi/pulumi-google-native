@@ -347,13 +347,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="currentNodeCount")
+    @_utilities.deprecated("""[Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.""")
     def current_node_count(self) -> int:
         """
         [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
         """
-        warnings.warn("""[Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.""", DeprecationWarning)
-        pulumi.log.warn("""current_node_count is deprecated: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.""")
-
         return pulumi.get(self, "current_node_count")
 
     @property
@@ -406,13 +404,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="enableTpu")
+    @_utilities.deprecated("""Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""")
     def enable_tpu(self) -> bool:
         """
         Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
         """
-        warnings.warn("""Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""", DeprecationWarning)
-        pulumi.log.warn("""enable_tpu is deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""")
-
         return pulumi.get(self, "enable_tpu")
 
     @property
@@ -473,24 +469,20 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="initialNodeCount")
+    @_utilities.deprecated("""The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""")
     def initial_node_count(self) -> int:
         """
         The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
         """
-        warnings.warn("""The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""", DeprecationWarning)
-        pulumi.log.warn("""initial_node_count is deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""")
-
         return pulumi.get(self, "initial_node_count")
 
     @property
     @pulumi.getter(name="instanceGroupUrls")
+    @_utilities.deprecated("""Deprecated. Use node_pools.instance_group_urls.""")
     def instance_group_urls(self) -> Sequence[str]:
         """
         Deprecated. Use node_pools.instance_group_urls.
         """
-        warnings.warn("""Deprecated. Use node_pools.instance_group_urls.""", DeprecationWarning)
-        pulumi.log.warn("""instance_group_urls is deprecated: Deprecated. Use node_pools.instance_group_urls.""")
-
         return pulumi.get(self, "instance_group_urls")
 
     @property
@@ -583,13 +575,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="masterIpv4CidrBlock")
+    @_utilities.deprecated("""The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.""")
     def master_ipv4_cidr_block(self) -> str:
         """
         The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
         """
-        warnings.warn("""The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.""", DeprecationWarning)
-        pulumi.log.warn("""master_ipv4_cidr_block is deprecated: The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.""")
-
         return pulumi.get(self, "master_ipv4_cidr_block")
 
     @property
@@ -650,13 +640,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="nodeConfig")
+    @_utilities.deprecated("""Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""")
     def node_config(self) -> 'outputs.NodeConfigResponse':
         """
         Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
         """
-        warnings.warn("""Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""", DeprecationWarning)
-        pulumi.log.warn("""node_config is deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""")
-
         return pulumi.get(self, "node_config")
 
     @property
@@ -717,13 +705,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="privateCluster")
+    @_utilities.deprecated("""If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""")
     def private_cluster(self) -> bool:
         """
         If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
         """
-        warnings.warn("""If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""", DeprecationWarning)
-        pulumi.log.warn("""private_cluster is deprecated: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""")
-
         return pulumi.get(self, "private_cluster")
 
     @property
@@ -736,13 +722,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="protectConfig")
+    @_utilities.deprecated("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
     def protect_config(self) -> 'outputs.ProtectConfigResponse':
         """
         Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
         """
-        warnings.warn("""Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""", DeprecationWarning)
-        pulumi.log.warn("""protect_config is deprecated: Deprecated: Use SecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.""")
-
         return pulumi.get(self, "protect_config")
 
     @property
@@ -811,13 +795,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="statusMessage")
+    @_utilities.deprecated("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.""")
     def status_message(self) -> str:
         """
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
         """
-        warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.""", DeprecationWarning)
-        pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.""")
-
         return pulumi.get(self, "status_message")
 
     @property
@@ -878,13 +860,11 @@ class GetClusterResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.""")
     def zone(self) -> str:
         """
         [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
-        warnings.warn("""[Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.""")
-
         return pulumi.get(self, "zone")
 
 

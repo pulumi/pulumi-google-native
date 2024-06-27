@@ -327,7 +327,7 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["errors"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "stream_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "streamId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Stream, __self__).__init__(
             'google-native:datastream/v1alpha1:Stream',

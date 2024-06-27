@@ -192,7 +192,7 @@ class ApiDeploymentIamPolicy(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_id", "deployment_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiId", "deploymentId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ApiDeploymentIamPolicy, __self__).__init__(
             'google-native:apigeeregistry/v1:ApiDeploymentIamPolicy',

@@ -163,7 +163,7 @@ class FolderExclusion(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folder_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folderId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FolderExclusion, __self__).__init__(
             'google-native:logging/v2:FolderExclusion',

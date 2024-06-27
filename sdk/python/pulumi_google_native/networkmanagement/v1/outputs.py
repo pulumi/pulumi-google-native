@@ -1996,13 +1996,11 @@ class LoadBalancerInfoResponse(dict):
 
     @property
     @pulumi.getter(name="healthCheckUri")
+    @_utilities.deprecated("""URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.""")
     def health_check_uri(self) -> str:
         """
         URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
         """
-        warnings.warn("""URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.""", DeprecationWarning)
-        pulumi.log.warn("""health_check_uri is deprecated: URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.""")
-
         return pulumi.get(self, "health_check_uri")
 
     @property

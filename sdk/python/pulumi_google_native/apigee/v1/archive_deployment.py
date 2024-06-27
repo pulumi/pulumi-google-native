@@ -159,7 +159,7 @@ class ArchiveDeployment(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["operation"] = None
             __props__.__dict__["updated_at"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environment_id", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["environmentId", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ArchiveDeployment, __self__).__init__(
             'google-native:apigee/v1:ArchiveDeployment',

@@ -115,13 +115,11 @@ class GetFhirStoreResult:
 
     @property
     @pulumi.getter(name="notificationConfig")
+    @_utilities.deprecated("""Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""")
     def notification_config(self) -> 'outputs.NotificationConfigResponse':
         """
         Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         """
-        warnings.warn("""Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""")
-
         return pulumi.get(self, "notification_config")
 
     @property

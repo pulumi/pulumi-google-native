@@ -260,7 +260,7 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["service_config_id"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["api_config_id", "api_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["apiConfigId", "apiId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Config, __self__).__init__(
             'google-native:apigateway/v1:Config',

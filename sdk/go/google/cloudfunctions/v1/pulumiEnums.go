@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
 type FunctionDockerRegistry string
 
@@ -360,12 +353,6 @@ func (in *functionDockerRegistryPtr) ToFunctionDockerRegistryPtrOutput() Functio
 
 func (in *functionDockerRegistryPtr) ToFunctionDockerRegistryPtrOutputWithContext(ctx context.Context) FunctionDockerRegistryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FunctionDockerRegistryPtrOutput)
-}
-
-func (in *functionDockerRegistryPtr) ToOutput(ctx context.Context) pulumix.Output[*FunctionDockerRegistry] {
-	return pulumix.Output[*FunctionDockerRegistry]{
-		OutputState: in.ToFunctionDockerRegistryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The ingress settings for the function, controlling what traffic can reach it.
@@ -542,12 +529,6 @@ func (in *functionIngressSettingsPtr) ToFunctionIngressSettingsPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(FunctionIngressSettingsPtrOutput)
 }
 
-func (in *functionIngressSettingsPtr) ToOutput(ctx context.Context) pulumix.Output[*FunctionIngressSettings] {
-	return pulumix.Output[*FunctionIngressSettings]{
-		OutputState: in.ToFunctionIngressSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The egress settings for the connector, controlling what traffic is diverted through it.
 type FunctionVpcConnectorEgressSettings string
 
@@ -719,12 +700,6 @@ func (in *functionVpcConnectorEgressSettingsPtr) ToFunctionVpcConnectorEgressSet
 	return pulumi.ToOutputWithContext(ctx, in).(FunctionVpcConnectorEgressSettingsPtrOutput)
 }
 
-func (in *functionVpcConnectorEgressSettingsPtr) ToOutput(ctx context.Context) pulumix.Output[*FunctionVpcConnectorEgressSettings] {
-	return pulumix.Output[*FunctionVpcConnectorEgressSettings]{
-		OutputState: in.ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The security level for the function.
 type HttpsTriggerSecurityLevel string
 
@@ -894,12 +869,6 @@ func (in *httpsTriggerSecurityLevelPtr) ToHttpsTriggerSecurityLevelPtrOutput() H
 
 func (in *httpsTriggerSecurityLevelPtr) ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpsTriggerSecurityLevelPtrOutput)
-}
-
-func (in *httpsTriggerSecurityLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpsTriggerSecurityLevel] {
-	return pulumix.Output[*HttpsTriggerSecurityLevel]{
-		OutputState: in.ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

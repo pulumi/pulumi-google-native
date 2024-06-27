@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The log type that this config enables.
@@ -185,12 +184,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
 type TagKeyPurpose string
 
@@ -360,12 +353,6 @@ func (in *tagKeyPurposePtr) ToTagKeyPurposePtrOutput() TagKeyPurposePtrOutput {
 
 func (in *tagKeyPurposePtr) ToTagKeyPurposePtrOutputWithContext(ctx context.Context) TagKeyPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagKeyPurposePtrOutput)
-}
-
-func (in *tagKeyPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*TagKeyPurpose] {
-	return pulumix.Output[*TagKeyPurpose]{
-		OutputState: in.ToTagKeyPurposePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

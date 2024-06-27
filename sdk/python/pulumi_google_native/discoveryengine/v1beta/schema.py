@@ -207,7 +207,7 @@ class Schema(pulumi.CustomResource):
                 raise TypeError("Missing required property 'schema_id'")
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["struct_schema"] = struct_schema
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collection_id", "data_store_id", "location", "project", "schema_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collectionId", "dataStoreId", "location", "project", "schemaId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Schema, __self__).__init__(
             'google-native:discoveryengine/v1beta:Schema',

@@ -78,13 +78,11 @@ class GetHubResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.""")
     def spokes(self) -> Sequence[str]:
         """
         A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
         """
-        warnings.warn("""Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.""", DeprecationWarning)
-        pulumi.log.warn("""spokes is deprecated: Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.""")
-
         return pulumi.get(self, "spokes")
 
     @property

@@ -294,7 +294,7 @@ class Consent(pulumi.CustomResource):
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["revision_create_time"] = None
             __props__.__dict__["revision_id"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["consent_store_id", "dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["consentStoreId", "datasetId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Consent, __self__).__init__(
             'google-native:healthcare/v1:Consent',

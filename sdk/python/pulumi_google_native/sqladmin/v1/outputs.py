@@ -1928,13 +1928,11 @@ class SettingsResponse(dict):
 
     @property
     @pulumi.getter(name="authorizedGaeApplications")
+    @_utilities.deprecated("""The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.""")
     def authorized_gae_applications(self) -> Sequence[str]:
         """
         The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
         """
-        warnings.warn("""The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.""", DeprecationWarning)
-        pulumi.log.warn("""authorized_gae_applications is deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.""")
-
         return pulumi.get(self, "authorized_gae_applications")
 
     @property
@@ -2099,13 +2097,11 @@ class SettingsResponse(dict):
 
     @property
     @pulumi.getter(name="replicationType")
+    @_utilities.deprecated("""The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.""")
     def replication_type(self) -> str:
         """
         The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
         """
-        warnings.warn("""The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.""", DeprecationWarning)
-        pulumi.log.warn("""replication_type is deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.""")
-
         return pulumi.get(self, "replication_type")
 
     @property

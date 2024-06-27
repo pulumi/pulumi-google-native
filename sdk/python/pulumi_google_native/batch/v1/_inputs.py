@@ -94,13 +94,11 @@ class AcceleratorArgs:
 
     @property
     @pulumi.getter(name="installGpuDrivers")
+    @_utilities.deprecated("""Deprecated: please use instances[0].install_gpu_drivers instead.""")
     def install_gpu_drivers(self) -> Optional[pulumi.Input[bool]]:
         """
         Deprecated: please use instances[0].install_gpu_drivers instead.
         """
-        warnings.warn("""Deprecated: please use instances[0].install_gpu_drivers instead.""", DeprecationWarning)
-        pulumi.log.warn("""install_gpu_drivers is deprecated: Deprecated: please use instances[0].install_gpu_drivers instead.""")
-
         return pulumi.get(self, "install_gpu_drivers")
 
     @install_gpu_drivers.setter
@@ -1734,13 +1732,11 @@ class TaskSpecArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated: please use environment(non-plural) instead.""")
     def environments(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Deprecated: please use environment(non-plural) instead.
         """
-        warnings.warn("""Deprecated: please use environment(non-plural) instead.""", DeprecationWarning)
-        pulumi.log.warn("""environments is deprecated: Deprecated: please use environment(non-plural) instead.""")
-
         return pulumi.get(self, "environments")
 
     @environments.setter

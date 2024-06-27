@@ -956,13 +956,11 @@ class DeidentifyConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""")
     def dicom(self) -> Optional[pulumi.Input['DicomConfigArgs']]:
         """
         Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
         """
-        warnings.warn("""Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""", DeprecationWarning)
-        pulumi.log.warn("""dicom is deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""")
-
         return pulumi.get(self, "dicom")
 
     @dicom.setter
@@ -983,13 +981,11 @@ class DeidentifyConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""")
     def fhir(self) -> Optional[pulumi.Input['FhirConfigArgs']]:
         """
         Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         """
-        warnings.warn("""Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""", DeprecationWarning)
-        pulumi.log.warn("""fhir is deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""")
-
         return pulumi.get(self, "fhir")
 
     @fhir.setter
@@ -1010,13 +1006,11 @@ class DeidentifyConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""")
     def image(self) -> Optional[pulumi.Input['ImageConfigArgs']]:
         """
         Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         """
-        warnings.warn("""Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""", DeprecationWarning)
-        pulumi.log.warn("""image is deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""")
-
         return pulumi.get(self, "image")
 
     @image.setter
@@ -3203,13 +3197,11 @@ class TextConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
     def transformations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]:
         """
         The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
-        warnings.warn("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""", DeprecationWarning)
-        pulumi.log.warn("""transformations is deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
-
         return pulumi.get(self, "transformations")
 
     @transformations.setter

@@ -176,7 +176,7 @@ class VmwareClusterIamPolicy(pulumi.CustomResource):
             if vmware_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vmware_cluster_id'")
             __props__.__dict__["vmware_cluster_id"] = vmware_cluster_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "vmware_cluster_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "vmwareClusterId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(VmwareClusterIamPolicy, __self__).__init__(
             'google-native:gkeonprem/v1:VmwareClusterIamPolicy',

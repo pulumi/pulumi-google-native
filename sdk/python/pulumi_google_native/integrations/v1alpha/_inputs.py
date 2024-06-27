@@ -191,13 +191,11 @@ class EnterpriseCrmEventbusProtoAttributesArgs:
 
     @property
     @pulumi.getter(name="isSearchable")
+    @_utilities.deprecated("""Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.""")
     def is_searchable(self) -> Optional[pulumi.Input[bool]]:
         """
         Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
         """
-        warnings.warn("""Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.""", DeprecationWarning)
-        pulumi.log.warn("""is_searchable is deprecated: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.""")
-
         return pulumi.get(self, "is_searchable")
 
     @is_searchable.setter
@@ -800,13 +798,11 @@ class EnterpriseCrmEventbusProtoNextTaskArgs:
 
     @property
     @pulumi.getter(name="combinedConditions")
+    @_utilities.deprecated("""Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`""")
     def combined_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoCombinedConditionArgs']]]]:
         """
         Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`
         """
-        warnings.warn("""Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`""", DeprecationWarning)
-        pulumi.log.warn("""combined_conditions is deprecated: Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`""")
-
         return pulumi.get(self, "combined_conditions")
 
     @combined_conditions.setter
@@ -2071,13 +2067,11 @@ class EnterpriseCrmEventbusProtoTaskMetadataArgs:
 
     @property
     @pulumi.getter(name="externalDocMarkdown")
+    @_utilities.deprecated("""DEPRECATED: Use external_doc_html.""")
     def external_doc_markdown(self) -> Optional[pulumi.Input[str]]:
         """
         DEPRECATED: Use external_doc_html.
         """
-        warnings.warn("""DEPRECATED: Use external_doc_html.""", DeprecationWarning)
-        pulumi.log.warn("""external_doc_markdown is deprecated: DEPRECATED: Use external_doc_html.""")
-
         return pulumi.get(self, "external_doc_markdown")
 
     @external_doc_markdown.setter
@@ -4051,13 +4045,11 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntityArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated - statistics from the Monarch query.""")
     def stats(self) -> Optional[pulumi.Input['EnterpriseCrmEventbusStatsArgs']]:
         """
         Deprecated - statistics from the Monarch query.
         """
-        warnings.warn("""Deprecated - statistics from the Monarch query.""", DeprecationWarning)
-        pulumi.log.warn("""stats is deprecated: Deprecated - statistics from the Monarch query.""")
-
         return pulumi.get(self, "stats")
 
     @stats.setter

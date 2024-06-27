@@ -438,7 +438,7 @@ class Step(pulumi.CustomResource):
             __props__.__dict__["step_id"] = step_id
             __props__.__dict__["test_execution_step"] = test_execution_step
             __props__.__dict__["tool_execution_step"] = tool_execution_step
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["execution_id", "history_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["executionId", "historyId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Step, __self__).__init__(
             'google-native:toolresults/v1beta3:Step',

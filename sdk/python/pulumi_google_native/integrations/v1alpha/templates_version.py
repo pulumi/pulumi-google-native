@@ -340,7 +340,7 @@ class TemplatesVersion(pulumi.CustomResource):
             __props__.__dict__["snapshot_number"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["integrationtemplate_id", "location", "product_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["integrationtemplateId", "location", "productId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TemplatesVersion, __self__).__init__(
             'google-native:integrations/v1alpha:TemplatesVersion',

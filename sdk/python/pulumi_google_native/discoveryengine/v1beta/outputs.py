@@ -301,13 +301,11 @@ class GoogleCloudDiscoveryengineV1betaReplyResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""DEPRECATED: use `summary` instead. Text reply.""")
     def reply(self) -> str:
         """
         DEPRECATED: use `summary` instead. Text reply.
         """
-        warnings.warn("""DEPRECATED: use `summary` instead. Text reply.""", DeprecationWarning)
-        pulumi.log.warn("""reply is deprecated: DEPRECATED: use `summary` instead. Text reply.""")
-
         return pulumi.get(self, "reply")
 
     @property

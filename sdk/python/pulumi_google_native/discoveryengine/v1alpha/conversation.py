@@ -213,7 +213,7 @@ class Conversation(pulumi.CustomResource):
             __props__.__dict__["user_pseudo_id"] = user_pseudo_id
             __props__.__dict__["end_time"] = None
             __props__.__dict__["start_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collection_id", "data_store_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collectionId", "dataStoreId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Conversation, __self__).__init__(
             'google-native:discoveryengine/v1alpha:Conversation',

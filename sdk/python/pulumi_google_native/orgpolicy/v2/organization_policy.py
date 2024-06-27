@@ -52,13 +52,11 @@ class OrganizationPolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated.""")
     def alternate(self) -> Optional[pulumi.Input['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]:
         """
         Deprecated.
         """
-        warnings.warn("""Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
-
         return pulumi.get(self, "alternate")
 
     @alternate.setter
@@ -170,7 +168,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["spec"] = spec
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationPolicy, __self__).__init__(
             'google-native:orgpolicy/v2:OrganizationPolicy',
@@ -203,13 +201,11 @@ class OrganizationPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated.""")
     def alternate(self) -> pulumi.Output['outputs.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse']:
         """
         Deprecated.
         """
-        warnings.warn("""Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
-
         return pulumi.get(self, "alternate")
 
     @property

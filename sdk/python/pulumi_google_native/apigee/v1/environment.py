@@ -281,7 +281,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_modified_at"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Environment, __self__).__init__(
             'google-native:apigee/v1:Environment',

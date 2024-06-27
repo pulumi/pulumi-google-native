@@ -146,7 +146,7 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["public_key_data"] = None
             __props__.__dict__["valid_after_time"] = None
             __props__.__dict__["valid_before_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "service_account_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "serviceAccountId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Key, __self__).__init__(
             'google-native:iam/v1:Key',

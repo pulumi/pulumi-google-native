@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type LoggingConfigLogActionStatesItem string
@@ -179,12 +178,6 @@ func (in *loggingConfigLogActionStatesItemPtr) ToLoggingConfigLogActionStatesIte
 
 func (in *loggingConfigLogActionStatesItemPtr) ToLoggingConfigLogActionStatesItemPtrOutputWithContext(ctx context.Context) LoggingConfigLogActionStatesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingConfigLogActionStatesItemPtrOutput)
-}
-
-func (in *loggingConfigLogActionStatesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingConfigLogActionStatesItem] {
-	return pulumix.Output[*LoggingConfigLogActionStatesItem]{
-		OutputState: in.ToLoggingConfigLogActionStatesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LoggingConfigLogActionStatesItemArrayInput is an input type that accepts LoggingConfigLogActionStatesItemArray and LoggingConfigLogActionStatesItemArrayOutput values.
@@ -405,12 +398,6 @@ func (in *loggingConfigLogActionsItemPtr) ToLoggingConfigLogActionsItemPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingConfigLogActionsItemPtrOutput)
 }
 
-func (in *loggingConfigLogActionsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingConfigLogActionsItem] {
-	return pulumix.Output[*LoggingConfigLogActionsItem]{
-		OutputState: in.ToLoggingConfigLogActionsItemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LoggingConfigLogActionsItemArrayInput is an input type that accepts LoggingConfigLogActionsItemArray and LoggingConfigLogActionsItemArrayOutput values.
 // You can construct a concrete instance of `LoggingConfigLogActionsItemArrayInput` via:
 //
@@ -627,12 +614,6 @@ func (in *metadataOptionsAclPtr) ToMetadataOptionsAclPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsAclPtrOutput)
 }
 
-func (in *metadataOptionsAclPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsAcl] {
-	return pulumix.Output[*MetadataOptionsAcl]{
-		OutputState: in.ToMetadataOptionsAclPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 type MetadataOptionsGid string
 
@@ -802,12 +783,6 @@ func (in *metadataOptionsGidPtr) ToMetadataOptionsGidPtrOutput() MetadataOptions
 
 func (in *metadataOptionsGidPtr) ToMetadataOptionsGidPtrOutputWithContext(ctx context.Context) MetadataOptionsGidPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsGidPtrOutput)
-}
-
-func (in *metadataOptionsGidPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsGid] {
-	return pulumix.Output[*MetadataOptionsGid]{
-		OutputState: in.ToMetadataOptionsGidPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
@@ -981,12 +956,6 @@ func (in *metadataOptionsKmsKeyPtr) ToMetadataOptionsKmsKeyPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsKmsKeyPtrOutput)
 }
 
-func (in *metadataOptionsKmsKeyPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsKmsKey] {
-	return pulumix.Output[*MetadataOptionsKmsKey]{
-		OutputState: in.ToMetadataOptionsKmsKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 type MetadataOptionsMode string
 
@@ -1156,12 +1125,6 @@ func (in *metadataOptionsModePtr) ToMetadataOptionsModePtrOutput() MetadataOptio
 
 func (in *metadataOptionsModePtr) ToMetadataOptionsModePtrOutputWithContext(ctx context.Context) MetadataOptionsModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsModePtrOutput)
-}
-
-func (in *metadataOptionsModePtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsMode] {
-	return pulumix.Output[*MetadataOptionsMode]{
-		OutputState: in.ToMetadataOptionsModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
@@ -1347,12 +1310,6 @@ func (in *metadataOptionsStorageClassPtr) ToMetadataOptionsStorageClassPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsStorageClassPtrOutput)
 }
 
-func (in *metadataOptionsStorageClassPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsStorageClass] {
-	return pulumix.Output[*MetadataOptionsStorageClass]{
-		OutputState: in.ToMetadataOptionsStorageClassPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 type MetadataOptionsSymlink string
 
@@ -1522,12 +1479,6 @@ func (in *metadataOptionsSymlinkPtr) ToMetadataOptionsSymlinkPtrOutput() Metadat
 
 func (in *metadataOptionsSymlinkPtr) ToMetadataOptionsSymlinkPtrOutputWithContext(ctx context.Context) MetadataOptionsSymlinkPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsSymlinkPtrOutput)
-}
-
-func (in *metadataOptionsSymlinkPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsSymlink] {
-	return pulumix.Output[*MetadataOptionsSymlink]{
-		OutputState: in.ToMetadataOptionsSymlinkPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
@@ -1701,12 +1652,6 @@ func (in *metadataOptionsTemporaryHoldPtr) ToMetadataOptionsTemporaryHoldPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
-func (in *metadataOptionsTemporaryHoldPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsTemporaryHold] {
-	return pulumix.Output[*MetadataOptionsTemporaryHold]{
-		OutputState: in.ToMetadataOptionsTemporaryHoldPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 type MetadataOptionsTimeCreated string
 
@@ -1876,12 +1821,6 @@ func (in *metadataOptionsTimeCreatedPtr) ToMetadataOptionsTimeCreatedPtrOutput()
 
 func (in *metadataOptionsTimeCreatedPtr) ToMetadataOptionsTimeCreatedPtrOutputWithContext(ctx context.Context) MetadataOptionsTimeCreatedPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsTimeCreatedPtrOutput)
-}
-
-func (in *metadataOptionsTimeCreatedPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsTimeCreated] {
-	return pulumix.Output[*MetadataOptionsTimeCreated]{
-		OutputState: in.ToMetadataOptionsTimeCreatedPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
@@ -2055,12 +1994,6 @@ func (in *metadataOptionsUidPtr) ToMetadataOptionsUidPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsUidPtrOutput)
 }
 
-func (in *metadataOptionsUidPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataOptionsUid] {
-	return pulumix.Output[*MetadataOptionsUid]{
-		OutputState: in.ToMetadataOptionsUidPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationConfigEventTypesItem string
 
 const (
@@ -2232,12 +2165,6 @@ func (in *notificationConfigEventTypesItemPtr) ToNotificationConfigEventTypesIte
 
 func (in *notificationConfigEventTypesItemPtr) ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationConfigEventTypesItemPtrOutput)
-}
-
-func (in *notificationConfigEventTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfigEventTypesItem] {
-	return pulumix.Output[*NotificationConfigEventTypesItem]{
-		OutputState: in.ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NotificationConfigEventTypesItemArrayInput is an input type that accepts NotificationConfigEventTypesItemArray and NotificationConfigEventTypesItemArrayOutput values.
@@ -2456,12 +2383,6 @@ func (in *notificationConfigPayloadFormatPtr) ToNotificationConfigPayloadFormatP
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationConfigPayloadFormatPtrOutput)
 }
 
-func (in *notificationConfigPayloadFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfigPayloadFormat] {
-	return pulumix.Output[*NotificationConfigPayloadFormat]{
-		OutputState: in.ToNotificationConfigPayloadFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
 type S3CompatibleMetadataAuthMethod string
 
@@ -2631,12 +2552,6 @@ func (in *s3compatibleMetadataAuthMethodPtr) ToS3CompatibleMetadataAuthMethodPtr
 
 func (in *s3compatibleMetadataAuthMethodPtr) ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataAuthMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataAuthMethodPtrOutput)
-}
-
-func (in *s3compatibleMetadataAuthMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*S3CompatibleMetadataAuthMethod] {
-	return pulumix.Output[*S3CompatibleMetadataAuthMethod]{
-		OutputState: in.ToS3CompatibleMetadataAuthMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
@@ -2810,12 +2725,6 @@ func (in *s3compatibleMetadataListApiPtr) ToS3CompatibleMetadataListApiPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataListApiPtrOutput)
 }
 
-func (in *s3compatibleMetadataListApiPtr) ToOutput(ctx context.Context) pulumix.Output[*S3CompatibleMetadataListApi] {
-	return pulumix.Output[*S3CompatibleMetadataListApi]{
-		OutputState: in.ToS3CompatibleMetadataListApiPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
 type S3CompatibleMetadataProtocol string
 
@@ -2987,12 +2896,6 @@ func (in *s3compatibleMetadataProtocolPtr) ToS3CompatibleMetadataProtocolPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataProtocolPtrOutput)
 }
 
-func (in *s3compatibleMetadataProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*S3CompatibleMetadataProtocol] {
-	return pulumix.Output[*S3CompatibleMetadataProtocol]{
-		OutputState: in.ToS3CompatibleMetadataProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
 type S3CompatibleMetadataRequestModel string
 
@@ -3162,12 +3065,6 @@ func (in *s3compatibleMetadataRequestModelPtr) ToS3CompatibleMetadataRequestMode
 
 func (in *s3compatibleMetadataRequestModelPtr) ToS3CompatibleMetadataRequestModelPtrOutputWithContext(ctx context.Context) S3CompatibleMetadataRequestModelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(S3CompatibleMetadataRequestModelPtrOutput)
-}
-
-func (in *s3compatibleMetadataRequestModelPtr) ToOutput(ctx context.Context) pulumix.Output[*S3CompatibleMetadataRequestModel] {
-	return pulumix.Output[*S3CompatibleMetadataRequestModel]{
-		OutputState: in.ToS3CompatibleMetadataRequestModelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
@@ -3344,12 +3241,6 @@ func (in *transferJobStatusPtr) ToTransferJobStatusPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TransferJobStatusPtrOutput)
 }
 
-func (in *transferJobStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TransferJobStatus] {
-	return pulumix.Output[*TransferJobStatus]{
-		OutputState: in.ToTransferJobStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 type TransferOptionsOverwriteWhen string
 
@@ -3522,12 +3413,6 @@ func (in *transferOptionsOverwriteWhenPtr) ToTransferOptionsOverwriteWhenPtrOutp
 
 func (in *transferOptionsOverwriteWhenPtr) ToTransferOptionsOverwriteWhenPtrOutputWithContext(ctx context.Context) TransferOptionsOverwriteWhenPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransferOptionsOverwriteWhenPtrOutput)
-}
-
-func (in *transferOptionsOverwriteWhenPtr) ToOutput(ctx context.Context) pulumix.Output[*TransferOptionsOverwriteWhen] {
-	return pulumix.Output[*TransferOptionsOverwriteWhen]{
-		OutputState: in.ToTransferOptionsOverwriteWhenPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

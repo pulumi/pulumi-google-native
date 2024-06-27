@@ -156,7 +156,7 @@ class Session(pulumi.CustomResource):
             __props__.__dict__["approximate_last_use_time"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "instance_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["databaseId", "instanceId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Session, __self__).__init__(
             'google-native:spanner/v1:Session',

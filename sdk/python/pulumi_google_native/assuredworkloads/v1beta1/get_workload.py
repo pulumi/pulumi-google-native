@@ -210,13 +210,11 @@ class GetWorkloadResult:
 
     @property
     @pulumi.getter(name="kmsSettings")
+    @_utilities.deprecated("""Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""")
     def kms_settings(self) -> 'outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse':
         """
         Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         """
-        warnings.warn("""Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""", DeprecationWarning)
-        pulumi.log.warn("""kms_settings is deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""")
-
         return pulumi.get(self, "kms_settings")
 
     @property

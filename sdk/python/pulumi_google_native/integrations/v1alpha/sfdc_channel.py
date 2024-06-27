@@ -251,7 +251,7 @@ class SfdcChannel(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "product_id", "project", "sfdc_instance_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "productId", "project", "sfdcInstanceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SfdcChannel, __self__).__init__(
             'google-native:integrations/v1alpha:SfdcChannel',

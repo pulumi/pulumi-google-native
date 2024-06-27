@@ -628,7 +628,7 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["types"] = types
             __props__.__dict__["usage"] = usage
             __props__.__dict__["source_info"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["service_name"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["serviceName"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Config, __self__).__init__(
             'google-native:servicemanagement/v1:Config',

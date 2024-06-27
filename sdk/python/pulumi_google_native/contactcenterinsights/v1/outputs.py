@@ -1097,13 +1097,11 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
 
     @property
     @pulumi.getter(name="dialogflowParticipant")
+    @_utilities.deprecated("""Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}""")
     def dialogflow_participant(self) -> str:
         """
         Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
         """
-        warnings.warn("""Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}""", DeprecationWarning)
-        pulumi.log.warn("""dialogflow_participant is deprecated: Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}""")
-
         return pulumi.get(self, "dialogflow_participant")
 
     @property

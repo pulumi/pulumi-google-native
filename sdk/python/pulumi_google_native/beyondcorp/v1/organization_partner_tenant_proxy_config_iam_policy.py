@@ -219,7 +219,7 @@ class OrganizationPartnerTenantProxyConfigIamPolicy(pulumi.CustomResource):
             __props__.__dict__["proxy_config_id"] = proxy_config_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id", "partner_tenant_id", "proxy_config_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId", "partnerTenantId", "proxyConfigId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationPartnerTenantProxyConfigIamPolicy, __self__).__init__(
             'google-native:beyondcorp/v1:OrganizationPartnerTenantProxyConfigIamPolicy',

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
@@ -188,12 +187,6 @@ func (in *customDomainCertPreferencePtr) ToCustomDomainCertPreferencePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(CustomDomainCertPreferencePtrOutput)
 }
 
-func (in *customDomainCertPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomDomainCertPreference] {
-	return pulumix.Output[*CustomDomainCertPreference]{
-		OutputState: in.ToCustomDomainCertPreferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. The redirect status code.
 type DomainRedirectType string
 
@@ -360,12 +353,6 @@ func (in *domainRedirectTypePtr) ToDomainRedirectTypePtrOutput() DomainRedirectT
 
 func (in *domainRedirectTypePtr) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DomainRedirectTypePtrOutput)
-}
-
-func (in *domainRedirectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DomainRedirectType] {
-	return pulumix.Output[*DomainRedirectType]{
-		OutputState: in.ToDomainRedirectTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
@@ -542,12 +529,6 @@ func (in *releaseTypePtr) ToReleaseTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ReleaseTypePtrOutput)
 }
 
-func (in *releaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReleaseType] {
-	return pulumix.Output[*ReleaseType]{
-		OutputState: in.ToReleaseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // How to handle well known App Association files.
 type ServingConfigAppAssociation string
 
@@ -714,12 +695,6 @@ func (in *servingConfigAppAssociationPtr) ToServingConfigAppAssociationPtrOutput
 
 func (in *servingConfigAppAssociationPtr) ToServingConfigAppAssociationPtrOutputWithContext(ctx context.Context) ServingConfigAppAssociationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServingConfigAppAssociationPtrOutput)
-}
-
-func (in *servingConfigAppAssociationPtr) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigAppAssociation] {
-	return pulumix.Output[*ServingConfigAppAssociation]{
-		OutputState: in.ToServingConfigAppAssociationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines how to handle a trailing slash in the URL path.
@@ -891,12 +866,6 @@ func (in *servingConfigTrailingSlashBehaviorPtr) ToServingConfigTrailingSlashBeh
 
 func (in *servingConfigTrailingSlashBehaviorPtr) ToServingConfigTrailingSlashBehaviorPtrOutputWithContext(ctx context.Context) ServingConfigTrailingSlashBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServingConfigTrailingSlashBehaviorPtrOutput)
-}
-
-func (in *servingConfigTrailingSlashBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*ServingConfigTrailingSlashBehavior] {
-	return pulumix.Output[*ServingConfigTrailingSlashBehavior]{
-		OutputState: in.ToServingConfigTrailingSlashBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).

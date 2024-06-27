@@ -277,7 +277,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["raw_content"] = raw_content
             __props__.__dict__["latest_reload_status"] = None
             __props__.__dict__["state"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["knowledge_base_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["knowledgeBaseId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Document, __self__).__init__(
             'google-native:dialogflow/v2:Document',

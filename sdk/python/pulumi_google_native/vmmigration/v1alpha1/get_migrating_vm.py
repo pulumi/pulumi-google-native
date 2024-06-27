@@ -130,13 +130,11 @@ class GetMigratingVmResult:
 
     @property
     @pulumi.getter(name="computeEngineVmDefaults")
+    @_utilities.deprecated("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
     def compute_engine_vm_defaults(self) -> 'outputs.TargetVMDetailsResponse':
         """
         Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         """
-        warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-        pulumi.log.warn("""compute_engine_vm_defaults is deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
-
         return pulumi.get(self, "compute_engine_vm_defaults")
 
     @property
@@ -277,13 +275,11 @@ class GetMigratingVmResult:
 
     @property
     @pulumi.getter(name="targetDefaults")
+    @_utilities.deprecated("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
     def target_defaults(self) -> 'outputs.TargetVMDetailsResponse':
         """
         The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
-        warnings.warn("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-        pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
-
         return pulumi.get(self, "target_defaults")
 
     @property

@@ -278,7 +278,7 @@ class FeatureGroupFeature(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["monitoring_stats_anomalies"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["feature_group_id", "feature_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["featureGroupId", "featureId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FeatureGroupFeature, __self__).__init__(
             'google-native:aiplatform/v1:FeatureGroupFeature',

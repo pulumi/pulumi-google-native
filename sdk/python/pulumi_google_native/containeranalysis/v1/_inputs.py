@@ -279,13 +279,11 @@ class AssessmentArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
     def cve(self) -> Optional[pulumi.Input[str]]:
         """
         Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
         """
-        warnings.warn("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""", DeprecationWarning)
-        pulumi.log.warn("""cve is deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
-
         return pulumi.get(self, "cve")
 
     @cve.setter
@@ -685,13 +683,11 @@ class BuildOccurrenceArgs:
 
     @property
     @pulumi.getter(name="intotoProvenance")
+    @_utilities.deprecated("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
     def intoto_provenance(self) -> Optional[pulumi.Input['InTotoProvenanceArgs']]:
         """
         Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         """
-        warnings.warn("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""", DeprecationWarning)
-        pulumi.log.warn("""intoto_provenance is deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
-
         return pulumi.get(self, "intoto_provenance")
 
     @intoto_provenance.setter
@@ -3634,13 +3630,11 @@ class LocationArgs:
 
     @property
     @pulumi.getter(name="cpeUri")
+    @_utilities.deprecated("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)""")
     def cpe_uri(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
         """
-        warnings.warn("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)""", DeprecationWarning)
-        pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)""")
-
         return pulumi.get(self, "cpe_uri")
 
     @cpe_uri.setter
@@ -3661,13 +3655,11 @@ class LocationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The version installed at this location.""")
     def version(self) -> Optional[pulumi.Input['VersionArgs']]:
         """
         Deprecated. The version installed at this location.
         """
-        warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
-
         return pulumi.get(self, "version")
 
     @version.setter
@@ -4095,13 +4087,11 @@ class PackageNoteArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The various channels by which a package is distributed.""")
     def distribution(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]:
         """
         Deprecated. The various channels by which a package is distributed.
         """
-        warnings.warn("""Deprecated. The various channels by which a package is distributed.""", DeprecationWarning)
-        pulumi.log.warn("""distribution is deprecated: Deprecated. The various channels by which a package is distributed.""")
-
         return pulumi.get(self, "distribution")
 
     @distribution.setter
@@ -6102,13 +6092,11 @@ class VexAssessmentArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
     def cve(self) -> Optional[pulumi.Input[str]]:
         """
         Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
         """
-        warnings.warn("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""", DeprecationWarning)
-        pulumi.log.warn("""cve is deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
-
         return pulumi.get(self, "cve")
 
     @cve.setter

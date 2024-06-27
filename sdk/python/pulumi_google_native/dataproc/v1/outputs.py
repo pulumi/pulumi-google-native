@@ -1804,13 +1804,11 @@ class GkeClusterConfigResponse(dict):
 
     @property
     @pulumi.getter(name="namespacedGkeDeploymentTarget")
+    @_utilities.deprecated("""Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.""")
     def namespaced_gke_deployment_target(self) -> 'outputs.NamespacedGkeDeploymentTargetResponse':
         """
         Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
         """
-        warnings.warn("""Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.""", DeprecationWarning)
-        pulumi.log.warn("""namespaced_gke_deployment_target is deprecated: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.""")
-
         return pulumi.get(self, "namespaced_gke_deployment_target")
 
     @property

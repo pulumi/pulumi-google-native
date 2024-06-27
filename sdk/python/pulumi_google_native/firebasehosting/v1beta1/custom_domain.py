@@ -212,7 +212,7 @@ class CustomDomain(pulumi.CustomResource):
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["required_dns_updates"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["custom_domain_id", "project", "site_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["customDomainId", "project", "siteId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CustomDomain, __self__).__init__(
             'google-native:firebasehosting/v1beta1:CustomDomain',
