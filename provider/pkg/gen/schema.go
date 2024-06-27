@@ -1419,6 +1419,10 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 						Items: typeSpec,
 					},
 				}, nil
+			case "nil":
+				return nil, errors.New(fmt.Sprintf("nil is not a valid array element type: %v", prop))
+			case "object":
+				return nil, errors.New(fmt.Sprintf("object is not a valid array element type: %v", prop))
 			default:
 				return &schema.TypeSpec{
 					Type: "object",
