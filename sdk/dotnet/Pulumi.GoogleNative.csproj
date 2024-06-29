@@ -9,6 +9,7 @@
     <PackageProjectUrl>https://pulumi.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/pulumi/pulumi-google-native</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
+    <Version>0.0.1-alpha.0+dev</Version>
 
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>

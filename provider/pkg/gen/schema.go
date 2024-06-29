@@ -286,6 +286,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		"importBasePath":               goBasePath,
 		"packageImportAliases":         golangImportAliases,
 		"liftSingleValueMethodReturns": true,
+		"respectSchemaVersion":         true,
 	})
 	pkg.Language["nodejs"] = rawMessage(map[string]interface{}{
 		"dependencies": map[string]string{
@@ -296,6 +297,7 @@ programs. This provider uses the Google Cloud REST API directly and therefore pr
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes
 will be introduced in minor version releases.`,
 		"liftSingleValueMethodReturns": true,
+		"respectSchemaVersion":         true,
 	})
 
 	pkg.Language["python"] = rawMessage(map[string]interface{}{
@@ -312,6 +314,7 @@ will be introduced in minor version releases.`,
 		"pyproject": map[string]bool{
 			"enabled": true,
 		},
+		"respectSchemaVersion": true,
 	})
 
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
@@ -320,11 +323,13 @@ will be introduced in minor version releases.`,
 		},
 		"namespaces":                   csharpNamespaces,
 		"liftSingleValueMethodReturns": true,
+		"respectSchemaVersion":         true,
 	})
 
 	pkg.Language["java"] = rawMessage(map[string]interface{}{
 		"packages":                     javaPackages,
 		"liftSingleValueMethodReturns": true,
+		"respectSchemaVersion":         true,
 	})
 
 	return &pkg, &metadata, nil
