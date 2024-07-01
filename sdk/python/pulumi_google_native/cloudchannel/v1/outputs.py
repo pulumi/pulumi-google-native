@@ -928,13 +928,11 @@ class GoogleCloudChannelV1RepricingConfigResponse(dict):
 
     @property
     @pulumi.getter(name="channelPartnerGranularity")
+    @_utilities.deprecated("""Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.""")
     def channel_partner_granularity(self) -> 'outputs.GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse':
         """
         Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
         """
-        warnings.warn("""Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.""", DeprecationWarning)
-        pulumi.log.warn("""channel_partner_granularity is deprecated: Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.""")
-
         return pulumi.get(self, "channel_partner_granularity")
 
     @property

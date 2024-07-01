@@ -188,13 +188,11 @@ class FolderSinkArgs:
 
     @property
     @pulumi.getter(name="outputVersionFormat")
+    @_utilities.deprecated("""Deprecated. This field is unused.""")
     def output_version_format(self) -> Optional[pulumi.Input['FolderSinkOutputVersionFormat']]:
         """
         Deprecated. This field is unused.
         """
-        warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
-        pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
-
         return pulumi.get(self, "output_version_format")
 
     @output_version_format.setter
@@ -313,7 +311,7 @@ class FolderSink(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["writer_identity"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folder_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["folderId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FolderSink, __self__).__init__(
             'google-native:logging/v2:FolderSink',
@@ -441,13 +439,11 @@ class FolderSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="outputVersionFormat")
+    @_utilities.deprecated("""Deprecated. This field is unused.""")
     def output_version_format(self) -> pulumi.Output[str]:
         """
         Deprecated. This field is unused.
         """
-        warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
-        pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
-
         return pulumi.get(self, "output_version_format")
 
     @property

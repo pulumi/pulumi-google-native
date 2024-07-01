@@ -420,7 +420,7 @@ class Service(pulumi.CustomResource):
             if v3_id1 is None and not opts.urn:
                 raise TypeError("Missing required property 'v3_id1'")
             __props__.__dict__["v3_id1"] = v3_id1
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["v3_id", "v3_id1"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["v3Id", "v3Id1"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Service, __self__).__init__(
             'google-native:monitoring/v3:Service',

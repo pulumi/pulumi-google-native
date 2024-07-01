@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/google-native",
-    "version": "${VERSION}",
+    "version": "0.0.1-alpha.0+dev",
     "keywords": [
         "pulumi",
         "google cloud",
@@ -22,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "google-native"
+        "name": "google-native",
+        "version": "0.0.1-alpha.0+dev"
     }
 }

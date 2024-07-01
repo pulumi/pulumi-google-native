@@ -120,7 +120,7 @@ class KeyRing(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["key_ring_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["keyRingId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(KeyRing, __self__).__init__(
             'google-native:cloudkms/v1:KeyRing',

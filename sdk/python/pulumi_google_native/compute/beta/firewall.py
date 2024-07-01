@@ -169,13 +169,11 @@ class FirewallArgs:
 
     @property
     @pulumi.getter(name="enableLogging")
+    @_utilities.deprecated("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
     def enable_logging(self) -> Optional[pulumi.Input[bool]]:
         """
         Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         """
-        warnings.warn("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""", DeprecationWarning)
-        pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
-
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
@@ -536,13 +534,11 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableLogging")
+    @_utilities.deprecated("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
     def enable_logging(self) -> pulumi.Output[bool]:
         """
         Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         """
-        warnings.warn("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""", DeprecationWarning)
-        pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
-
         return pulumi.get(self, "enable_logging")
 
     @property

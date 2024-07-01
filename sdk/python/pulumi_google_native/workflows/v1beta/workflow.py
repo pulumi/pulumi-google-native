@@ -220,7 +220,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workflow_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workflowId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Workflow, __self__).__init__(
             'google-native:workflows/v1beta:Workflow',

@@ -161,7 +161,7 @@ class DomainIamPolicy(pulumi.CustomResource):
             __props__.__dict__["etag"] = etag
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["domain_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["domainId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DomainIamPolicy, __self__).__init__(
             'google-native:managedidentities/v1alpha1:DomainIamPolicy',

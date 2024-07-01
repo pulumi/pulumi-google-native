@@ -101,13 +101,11 @@ class RegionTargetHttpsProxyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Use serverTlsPolicy instead.""")
     def authentication(self) -> Optional[pulumi.Input[str]]:
         """
         [Deprecated] Use serverTlsPolicy instead.
         """
-        warnings.warn("""[Deprecated] Use serverTlsPolicy instead.""", DeprecationWarning)
-        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use serverTlsPolicy instead.""")
-
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -116,13 +114,11 @@ class RegionTargetHttpsProxyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Use authorizationPolicy instead.""")
     def authorization(self) -> Optional[pulumi.Input[str]]:
         """
         [Deprecated] Use authorizationPolicy instead.
         """
-        warnings.warn("""[Deprecated] Use authorizationPolicy instead.""", DeprecationWarning)
-        pulumi.log.warn("""authorization is deprecated: [Deprecated] Use authorizationPolicy instead.""")
-
         return pulumi.get(self, "authorization")
 
     @authorization.setter
@@ -461,24 +457,20 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Use serverTlsPolicy instead.""")
     def authentication(self) -> pulumi.Output[str]:
         """
         [Deprecated] Use serverTlsPolicy instead.
         """
-        warnings.warn("""[Deprecated] Use serverTlsPolicy instead.""", DeprecationWarning)
-        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use serverTlsPolicy instead.""")
-
         return pulumi.get(self, "authentication")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Use authorizationPolicy instead.""")
     def authorization(self) -> pulumi.Output[str]:
         """
         [Deprecated] Use authorizationPolicy instead.
         """
-        warnings.warn("""[Deprecated] Use authorizationPolicy instead.""", DeprecationWarning)
-        pulumi.log.warn("""authorization is deprecated: [Deprecated] Use authorizationPolicy instead.""")
-
         return pulumi.get(self, "authorization")
 
     @property

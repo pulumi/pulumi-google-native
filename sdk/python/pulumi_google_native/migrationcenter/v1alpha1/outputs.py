@@ -179,13 +179,11 @@ class ExecutionReportResponse(dict):
 
     @property
     @pulumi.getter(name="jobErrors")
+    @_utilities.deprecated("""List of job-level errors. Deprecated, use the job errors under execution_errors instead.""")
     def job_errors(self) -> Sequence['outputs.ImportErrorResponse']:
         """
         List of job-level errors. Deprecated, use the job errors under execution_errors instead.
         """
-        warnings.warn("""List of job-level errors. Deprecated, use the job errors under execution_errors instead.""", DeprecationWarning)
-        pulumi.log.warn("""job_errors is deprecated: List of job-level errors. Deprecated, use the job errors under execution_errors instead.""")
-
         return pulumi.get(self, "job_errors")
 
     @property
@@ -1052,13 +1050,11 @@ class ReportSummaryGroupFindingResponse(dict):
 
     @property
     @pulumi.getter(name="overlappingAssetCount")
+    @_utilities.deprecated("""This field is deprecated, do not rely on it having a value.""")
     def overlapping_asset_count(self) -> str:
         """
         This field is deprecated, do not rely on it having a value.
         """
-        warnings.warn("""This field is deprecated, do not rely on it having a value.""", DeprecationWarning)
-        pulumi.log.warn("""overlapping_asset_count is deprecated: This field is deprecated, do not rely on it having a value.""")
-
         return pulumi.get(self, "overlapping_asset_count")
 
     @property

@@ -360,7 +360,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["gateway_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["gatewayId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Gateway, __self__).__init__(
             'google-native:networkservices/v1:Gateway',

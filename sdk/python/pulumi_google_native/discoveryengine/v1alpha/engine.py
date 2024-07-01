@@ -340,7 +340,7 @@ class Engine(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["recommendation_metadata"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collection_id", "engine_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collectionId", "engineId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Engine, __self__).__init__(
             'google-native:discoveryengine/v1alpha:Engine',

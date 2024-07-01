@@ -176,7 +176,7 @@ class TagTemplateIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tag_template_id'")
             __props__.__dict__["tag_template_id"] = tag_template_id
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "tag_template_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "tagTemplateId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TagTemplateIamPolicy, __self__).__init__(
             'google-native:datacatalog/v1:TagTemplateIamPolicy',

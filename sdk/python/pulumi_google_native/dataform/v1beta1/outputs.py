@@ -399,13 +399,11 @@ class GitRemoteSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="tokenStatus")
+    @_utilities.deprecated("""Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus""")
     def token_status(self) -> str:
         """
         Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
         """
-        warnings.warn("""Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus""", DeprecationWarning)
-        pulumi.log.warn("""token_status is deprecated: Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus""")
-
         return pulumi.get(self, "token_status")
 
     @property

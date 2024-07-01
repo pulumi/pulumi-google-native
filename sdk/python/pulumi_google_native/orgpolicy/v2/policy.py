@@ -44,13 +44,11 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated.""")
     def alternate(self) -> Optional[pulumi.Input['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]:
         """
         Deprecated.
         """
-        warnings.warn("""Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
-
         return pulumi.get(self, "alternate")
 
     @alternate.setter
@@ -200,13 +198,11 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated.""")
     def alternate(self) -> pulumi.Output['outputs.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse']:
         """
         Deprecated.
         """
-        warnings.warn("""Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
-
         return pulumi.get(self, "alternate")
 
     @property

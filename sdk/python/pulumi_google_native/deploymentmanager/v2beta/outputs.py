@@ -945,13 +945,11 @@ class OperationResponse(dict):
 
     @property
     @pulumi.getter(name="creationTimestamp")
+    @_utilities.deprecated("""[Deprecated] This field is deprecated.""")
     def creation_timestamp(self) -> str:
         """
         [Deprecated] This field is deprecated.
         """
-        warnings.warn("""[Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""creation_timestamp is deprecated: [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "creation_timestamp")
 
     @property

@@ -321,7 +321,7 @@ class ExternalAccessRule(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["external_access_rule_id", "location", "network_policy_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["externalAccessRuleId", "location", "networkPolicyId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ExternalAccessRule, __self__).__init__(
             'google-native:vmwareengine/v1:ExternalAccessRule',

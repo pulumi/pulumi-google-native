@@ -178,7 +178,7 @@ class UrlList(pulumi.CustomResource):
             __props__.__dict__["values"] = values
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "url_list_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "urlListId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(UrlList, __self__).__init__(
             'google-native:networksecurity/v1:UrlList',

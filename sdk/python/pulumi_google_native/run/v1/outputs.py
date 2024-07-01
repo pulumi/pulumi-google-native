@@ -2909,13 +2909,11 @@ class TrafficTargetResponse(dict):
 
     @property
     @pulumi.getter(name="configurationName")
+    @_utilities.deprecated("""[Deprecated] Not supported in Cloud Run. It must be empty.""")
     def configuration_name(self) -> str:
         """
         [Deprecated] Not supported in Cloud Run. It must be empty.
         """
-        warnings.warn("""[Deprecated] Not supported in Cloud Run. It must be empty.""", DeprecationWarning)
-        pulumi.log.warn("""configuration_name is deprecated: [Deprecated] Not supported in Cloud Run. It must be empty.""")
-
         return pulumi.get(self, "configuration_name")
 
     @property

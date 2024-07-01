@@ -175,7 +175,7 @@ class DestGroup(pulumi.CustomResource):
             if tunnel_dest_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tunnel_dest_group_id'")
             __props__.__dict__["tunnel_dest_group_id"] = tunnel_dest_group_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "tunnel_dest_group_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "tunnelDestGroupId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DestGroup, __self__).__init__(
             'google-native:iap/v1:DestGroup',

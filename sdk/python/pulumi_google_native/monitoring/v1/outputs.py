@@ -2237,13 +2237,11 @@ class TimeSeriesFilterRatioResponse(dict):
 
     @property
     @pulumi.getter(name="statisticalTimeSeriesFilter")
+    @_utilities.deprecated("""Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""")
     def statistical_time_series_filter(self) -> 'outputs.StatisticalTimeSeriesFilterResponse':
         """
         Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
         """
-        warnings.warn("""Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""", DeprecationWarning)
-        pulumi.log.warn("""statistical_time_series_filter is deprecated: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""")
-
         return pulumi.get(self, "statistical_time_series_filter")
 
 
@@ -2327,13 +2325,11 @@ class TimeSeriesFilterResponse(dict):
 
     @property
     @pulumi.getter(name="statisticalTimeSeriesFilter")
+    @_utilities.deprecated("""Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""")
     def statistical_time_series_filter(self) -> 'outputs.StatisticalTimeSeriesFilterResponse':
         """
         Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
         """
-        warnings.warn("""Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""", DeprecationWarning)
-        pulumi.log.warn("""statistical_time_series_filter is deprecated: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""")
-
         return pulumi.get(self, "statistical_time_series_filter")
 
 

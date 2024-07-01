@@ -116,13 +116,11 @@ class OrganizationJobTriggerArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. This field has no effect.""")
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated. This field has no effect.
         """
-        warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
-        pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
-
         return pulumi.get(self, "location")
 
     @location.setter
@@ -256,7 +254,7 @@ class OrganizationJobTrigger(pulumi.CustomResource):
             __props__.__dict__["errors"] = None
             __props__.__dict__["last_run_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationJobTrigger, __self__).__init__(
             'google-native:dlp/v2:OrganizationJobTrigger',

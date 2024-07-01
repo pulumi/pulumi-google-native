@@ -217,7 +217,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "tenant_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "tenantId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DefaultSupportedIdpConfig, __self__).__init__(
             'google-native:identitytoolkit/v2:DefaultSupportedIdpConfig',

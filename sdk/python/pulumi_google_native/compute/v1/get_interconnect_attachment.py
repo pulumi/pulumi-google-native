@@ -268,13 +268,11 @@ class GetInterconnectAttachmentResult:
 
     @property
     @pulumi.getter(name="googleReferenceId")
+    @_utilities.deprecated("""[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""")
     def google_reference_id(self) -> str:
         """
         Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
         """
-        warnings.warn("""[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""", DeprecationWarning)
-        pulumi.log.warn("""google_reference_id is deprecated: [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""")
-
         return pulumi.get(self, "google_reference_id")
 
     @property

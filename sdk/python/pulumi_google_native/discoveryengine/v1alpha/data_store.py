@@ -255,7 +255,7 @@ class DataStore(pulumi.CustomResource):
             __props__.__dict__["solution_types"] = solution_types
             __props__.__dict__["create_time"] = None
             __props__.__dict__["default_schema_id"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collection_id", "data_store_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collectionId", "dataStoreId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(DataStore, __self__).__init__(
             'google-native:discoveryengine/v1alpha:DataStore',

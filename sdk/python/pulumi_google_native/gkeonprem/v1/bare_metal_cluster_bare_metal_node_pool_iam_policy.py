@@ -192,7 +192,7 @@ class BareMetalClusterBareMetalNodePoolIamPolicy(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bare_metal_cluster_id", "bare_metal_node_pool_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bareMetalClusterId", "bareMetalNodePoolId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(BareMetalClusterBareMetalNodePoolIamPolicy, __self__).__init__(
             'google-native:gkeonprem/v1:BareMetalClusterBareMetalNodePoolIamPolicy',

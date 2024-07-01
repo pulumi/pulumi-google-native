@@ -92,13 +92,11 @@ class UserArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed from a future version of the API.""")
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
         This field is deprecated and will be removed from a future version of the API.
         """
-        warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
-        pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
-
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -336,13 +334,11 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed from a future version of the API.""")
     def etag(self) -> pulumi.Output[str]:
         """
         This field is deprecated and will be removed from a future version of the API.
         """
-        warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
-        pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
-
         return pulumi.get(self, "etag")
 
     @property

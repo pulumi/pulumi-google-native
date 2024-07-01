@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
@@ -213,12 +212,6 @@ func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOu
 
 func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AggregationCrossSeriesReducerPtrOutput)
-}
-
-func (in *aggregationCrossSeriesReducerPtr) ToOutput(ctx context.Context) pulumix.Output[*AggregationCrossSeriesReducer] {
-	return pulumix.Output[*AggregationCrossSeriesReducer]{
-		OutputState: in.ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
@@ -440,12 +433,6 @@ func (in *aggregationPerSeriesAlignerPtr) ToAggregationPerSeriesAlignerPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(AggregationPerSeriesAlignerPtrOutput)
 }
 
-func (in *aggregationPerSeriesAlignerPtr) ToOutput(ctx context.Context) pulumix.Output[*AggregationPerSeriesAligner] {
-	return pulumix.Output[*AggregationPerSeriesAligner]{
-		OutputState: in.ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The axis scale. By default, a linear scale is used.
 type AxisScale string
 
@@ -615,12 +602,6 @@ func (in *axisScalePtr) ToAxisScalePtrOutput() AxisScalePtrOutput {
 
 func (in *axisScalePtr) ToAxisScalePtrOutputWithContext(ctx context.Context) AxisScalePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AxisScalePtrOutput)
-}
-
-func (in *axisScalePtr) ToOutput(ctx context.Context) pulumix.Output[*AxisScale] {
-	return pulumix.Output[*AxisScale]{
-		OutputState: in.ToAxisScalePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The sort order is applied to the values of the breakdown column.
@@ -797,12 +778,6 @@ func (in *breakdownSortOrderPtr) ToBreakdownSortOrderPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(BreakdownSortOrderPtrOutput)
 }
 
-func (in *breakdownSortOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*BreakdownSortOrder] {
-	return pulumix.Output[*BreakdownSortOrder]{
-		OutputState: in.ToBreakdownSortOrderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The chart mode.
 type ChartOptionsMode string
 
@@ -975,12 +950,6 @@ func (in *chartOptionsModePtr) ToChartOptionsModePtrOutput() ChartOptionsModePtr
 
 func (in *chartOptionsModePtr) ToChartOptionsModePtrOutputWithContext(ctx context.Context) ChartOptionsModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ChartOptionsModePtrOutput)
-}
-
-func (in *chartOptionsModePtr) ToOutput(ctx context.Context) pulumix.Output[*ChartOptionsMode] {
-	return pulumix.Output[*ChartOptionsMode]{
-		OutputState: in.ToChartOptionsModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The specified filter type
@@ -1163,12 +1132,6 @@ func (in *dashboardFilterFilterTypePtr) ToDashboardFilterFilterTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(DashboardFilterFilterTypePtrOutput)
 }
 
-func (in *dashboardFilterFilterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DashboardFilterFilterType] {
-	return pulumix.Output[*DashboardFilterFilterType]{
-		OutputState: in.ToDashboardFilterFilterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // How this data should be plotted on the chart.
 type DataSetPlotType string
 
@@ -1346,12 +1309,6 @@ func (in *dataSetPlotTypePtr) ToDataSetPlotTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DataSetPlotTypePtrOutput)
 }
 
-func (in *dataSetPlotTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataSetPlotType] {
-	return pulumix.Output[*DataSetPlotType]{
-		OutputState: in.ToDataSetPlotTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. The target axis to use for plotting the metric.
 type DataSetTargetAxis string
 
@@ -1521,12 +1478,6 @@ func (in *dataSetTargetAxisPtr) ToDataSetTargetAxisPtrOutput() DataSetTargetAxis
 
 func (in *dataSetTargetAxisPtr) ToDataSetTargetAxisPtrOutputWithContext(ctx context.Context) DataSetTargetAxisPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataSetTargetAxisPtrOutput)
-}
-
-func (in *dataSetTargetAxisPtr) ToOutput(ctx context.Context) pulumix.Output[*DataSetTargetAxis] {
-	return pulumix.Output[*DataSetTargetAxis]{
-		OutputState: in.ToDataSetTargetAxisPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sort order applied to the sort column.
@@ -1703,12 +1654,6 @@ func (in *dimensionSortOrderPtr) ToDimensionSortOrderPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(DimensionSortOrderPtrOutput)
 }
 
-func (in *dimensionSortOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*DimensionSortOrder] {
-	return pulumix.Output[*DimensionSortOrder]{
-		OutputState: in.ToDimensionSortOrderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // How to use the ranking to select time series that pass through the filter.
 type PickTimeSeriesFilterDirection string
 
@@ -1878,12 +1823,6 @@ func (in *pickTimeSeriesFilterDirectionPtr) ToPickTimeSeriesFilterDirectionPtrOu
 
 func (in *pickTimeSeriesFilterDirectionPtr) ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PickTimeSeriesFilterDirectionPtrOutput)
-}
-
-func (in *pickTimeSeriesFilterDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*PickTimeSeriesFilterDirection] {
-	return pulumix.Output[*PickTimeSeriesFilterDirection]{
-		OutputState: in.ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
@@ -2066,12 +2005,6 @@ func (in *pickTimeSeriesFilterRankingMethodPtr) ToPickTimeSeriesFilterRankingMet
 	return pulumi.ToOutputWithContext(ctx, in).(PickTimeSeriesFilterRankingMethodPtrOutput)
 }
 
-func (in *pickTimeSeriesFilterRankingMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*PickTimeSeriesFilterRankingMethod] {
-	return pulumix.Output[*PickTimeSeriesFilterRankingMethod]{
-		OutputState: in.ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Indicates the visualization type for the PieChart.
 type PieChartChartType string
 
@@ -2241,12 +2174,6 @@ func (in *pieChartChartTypePtr) ToPieChartChartTypePtrOutput() PieChartChartType
 
 func (in *pieChartChartTypePtr) ToPieChartChartTypePtrOutputWithContext(ctx context.Context) PieChartChartTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PieChartChartTypePtrOutput)
-}
-
-func (in *pieChartChartTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PieChartChartType] {
-	return pulumix.Output[*PieChartChartType]{
-		OutputState: in.ToPieChartChartTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Required. The type of sparkchart to show in this chartView.
@@ -2420,12 +2347,6 @@ func (in *sparkChartViewSparkChartTypePtr) ToSparkChartViewSparkChartTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(SparkChartViewSparkChartTypePtrOutput)
 }
 
-func (in *sparkChartViewSparkChartTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SparkChartViewSparkChartType] {
-	return pulumix.Output[*SparkChartViewSparkChartType]{
-		OutputState: in.ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
 type StatisticalTimeSeriesFilterRankingMethod string
 
@@ -2592,12 +2513,6 @@ func (in *statisticalTimeSeriesFilterRankingMethodPtr) ToStatisticalTimeSeriesFi
 
 func (in *statisticalTimeSeriesFilterRankingMethodPtr) ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatisticalTimeSeriesFilterRankingMethodPtrOutput)
-}
-
-func (in *statisticalTimeSeriesFilterRankingMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*StatisticalTimeSeriesFilterRankingMethod] {
-	return pulumix.Output[*StatisticalTimeSeriesFilterRankingMethod]{
-		OutputState: in.ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // How the text content is formatted.
@@ -2769,12 +2684,6 @@ func (in *textFormatPtr) ToTextFormatPtrOutput() TextFormatPtrOutput {
 
 func (in *textFormatPtr) ToTextFormatPtrOutputWithContext(ctx context.Context) TextFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TextFormatPtrOutput)
-}
-
-func (in *textFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*TextFormat] {
-	return pulumix.Output[*TextFormat]{
-		OutputState: in.ToTextFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Font sizes for both the title and content. The title will still be larger relative to the content.
@@ -2957,12 +2866,6 @@ func (in *textStyleFontSizePtr) ToTextStyleFontSizePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TextStyleFontSizePtrOutput)
 }
 
-func (in *textStyleFontSizePtr) ToOutput(ctx context.Context) pulumix.Output[*TextStyleFontSize] {
-	return pulumix.Output[*TextStyleFontSize]{
-		OutputState: in.ToTextStyleFontSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The horizontal alignment of both the title and content
 type TextStyleHorizontalAlignment string
 
@@ -3135,12 +3038,6 @@ func (in *textStyleHorizontalAlignmentPtr) ToTextStyleHorizontalAlignmentPtrOutp
 
 func (in *textStyleHorizontalAlignmentPtr) ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx context.Context) TextStyleHorizontalAlignmentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TextStyleHorizontalAlignmentPtrOutput)
-}
-
-func (in *textStyleHorizontalAlignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStyleHorizontalAlignment] {
-	return pulumix.Output[*TextStyleHorizontalAlignment]{
-		OutputState: in.ToTextStyleHorizontalAlignmentPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The amount of padding around the widget
@@ -3321,12 +3218,6 @@ func (in *textStylePaddingPtr) ToTextStylePaddingPtrOutput() TextStylePaddingPtr
 
 func (in *textStylePaddingPtr) ToTextStylePaddingPtrOutputWithContext(ctx context.Context) TextStylePaddingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TextStylePaddingPtrOutput)
-}
-
-func (in *textStylePaddingPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStylePadding] {
-	return pulumix.Output[*TextStylePadding]{
-		OutputState: in.ToTextStylePaddingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pointer location for this widget (also sometimes called a "tail")
@@ -3530,12 +3421,6 @@ func (in *textStylePointerLocationPtr) ToTextStylePointerLocationPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(TextStylePointerLocationPtrOutput)
 }
 
-func (in *textStylePointerLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStylePointerLocation] {
-	return pulumix.Output[*TextStylePointerLocation]{
-		OutputState: in.ToTextStylePointerLocationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The vertical alignment of both the title and content
 type TextStyleVerticalAlignment string
 
@@ -3710,12 +3595,6 @@ func (in *textStyleVerticalAlignmentPtr) ToTextStyleVerticalAlignmentPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(TextStyleVerticalAlignmentPtrOutput)
 }
 
-func (in *textStyleVerticalAlignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*TextStyleVerticalAlignment] {
-	return pulumix.Output[*TextStyleVerticalAlignment]{
-		OutputState: in.ToTextStyleVerticalAlignmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state color for this threshold. Color is not allowed in a XyChart.
 type ThresholdColor string
 
@@ -3885,12 +3764,6 @@ func (in *thresholdColorPtr) ToThresholdColorPtrOutput() ThresholdColorPtrOutput
 
 func (in *thresholdColorPtr) ToThresholdColorPtrOutputWithContext(ctx context.Context) ThresholdColorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThresholdColorPtrOutput)
-}
-
-func (in *thresholdColorPtr) ToOutput(ctx context.Context) pulumix.Output[*ThresholdColor] {
-	return pulumix.Output[*ThresholdColor]{
-		OutputState: in.ToThresholdColorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The direction for the current threshold. Direction is not allowed in a XyChart.
@@ -4064,12 +3937,6 @@ func (in *thresholdDirectionPtr) ToThresholdDirectionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ThresholdDirectionPtrOutput)
 }
 
-func (in *thresholdDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*ThresholdDirection] {
-	return pulumix.Output[*ThresholdDirection]{
-		OutputState: in.ToThresholdDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
 type ThresholdTargetAxis string
 
@@ -4241,12 +4108,6 @@ func (in *thresholdTargetAxisPtr) ToThresholdTargetAxisPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ThresholdTargetAxisPtrOutput)
 }
 
-func (in *thresholdTargetAxisPtr) ToOutput(ctx context.Context) pulumix.Output[*ThresholdTargetAxis] {
-	return pulumix.Output[*ThresholdTargetAxis]{
-		OutputState: in.ToThresholdTargetAxisPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Store rendering strategy
 type TimeSeriesTableMetricVisualization string
 
@@ -4416,12 +4277,6 @@ func (in *timeSeriesTableMetricVisualizationPtr) ToTimeSeriesTableMetricVisualiz
 
 func (in *timeSeriesTableMetricVisualizationPtr) ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeSeriesTableMetricVisualizationPtrOutput)
-}
-
-func (in *timeSeriesTableMetricVisualizationPtr) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesTableMetricVisualization] {
-	return pulumix.Output[*TimeSeriesTableMetricVisualization]{
-		OutputState: in.ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

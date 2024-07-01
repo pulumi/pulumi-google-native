@@ -267,7 +267,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["version_retention_period"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["databaseId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Database, __self__).__init__(
             'google-native:firestore/v1:Database',

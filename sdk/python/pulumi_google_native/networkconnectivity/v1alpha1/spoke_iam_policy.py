@@ -217,7 +217,7 @@ class SpokeIamPolicy(pulumi.CustomResource):
             __props__.__dict__["spoke_id"] = spoke_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "spoke_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "spokeId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(SpokeIamPolicy, __self__).__init__(
             'google-native:networkconnectivity/v1alpha1:SpokeIamPolicy',

@@ -253,7 +253,7 @@ class Entitlement(pulumi.CustomResource):
             __props__.__dict__["suspension_reasons"] = None
             __props__.__dict__["trial_settings"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["account_id", "customer_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["accountId", "customerId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Entitlement, __self__).__init__(
             'google-native:cloudchannel/v1:Entitlement',

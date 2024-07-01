@@ -5,7 +5,6 @@ PACKDIR         := sdk
 PROJECT         := github.com/pulumi/pulumi-google-native
 PROVIDER        := pulumi-resource-${PACK}
 CODEGEN         := pulumi-gen-${PACK}
-VERSION         := $(shell pulumictl get version)
 
 PROVIDER_PKGS   := $(shell cd ./provider && go list ./...)
 WORKING_DIR     := $(shell pwd)
@@ -13,19 +12,26 @@ WORKING_DIR     := $(shell pwd)
 JAVA_GEN		 := pulumi-java-gen
 JAVA_GEN_VERSION := v0.5.4
 
-VERSION_FLAGS   := -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}"
+# Override during CI using `make [TARGET] PROVIDER_VERSION=""` or by setting a PROVIDER_VERSION environment variable
+# Local & branch builds will just used this fixed default version unless specified
+PROVIDER_VERSION ?= 0.0.1-alpha.0+dev
+# Use this normalised version everywhere rather than the raw input to ensure consistency.
+VERSION_GENERIC := $(shell pulumictl convert-version --language generic --version "$(PROVIDER_VERSION)")
+
+
+VERSION_FLAGS   := -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=$(VERSION_GENERIC)"
 
 ensure::
 	@echo "go mod download"; cd provider; go mod download
 
 local_generate:: bin/pulumi-java-gen
-	$(WORKING_DIR)/bin/$(CODEGEN) schema,nodejs,dotnet,python,go ${VERSION}
+	$(WORKING_DIR)/bin/$(CODEGEN) schema,nodejs,dotnet,python,go $(VERSION_GENERIC)
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema $(WORKING_DIR)/provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
 	echo "Finished generating schema."
 
 generate_schema:: bin/pulumi-java-gen
 	echo "Generating Pulumi schema..."
-	$(WORKING_DIR)/bin/$(CODEGEN) schema ${VERSION}
+	$(WORKING_DIR)/bin/$(CODEGEN) schema $(VERSION_GENERIC)
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema $(WORKING_DIR)/provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
 	echo "Finished generating schema."
 
@@ -45,52 +51,45 @@ lint_provider:: provider # lint the provider code
 	cd provider && GOGC=20 golangci-lint run -c ../.golangci.yml
 
 discovery::codegen
-	$(WORKING_DIR)/bin/$(CODEGEN) discovery ${VERSION}
+	$(WORKING_DIR)/bin/$(CODEGEN) discovery $(VERSION_GENERIC)
 
 generate_nodejs::
-	$(WORKING_DIR)/bin/$(CODEGEN) nodejs ${VERSION}
+	$(WORKING_DIR)/bin/$(CODEGEN) nodejs $(VERSION_GENERIC)
 
-build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
 build_nodejs::
 	cd ${PACKDIR}/nodejs/ && \
 		yarn install && \
 		node --max-old-space-size=4096 ./node_modules/.bin/tsc --diagnostics && \
-		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
+		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/
 
 generate_python::
 	# Delete files not tracked in Git
 	cd sdk/python/ && git clean -fxd
 
-	$(WORKING_DIR)/bin/$(CODEGEN) python ${VERSION}
+	$(WORKING_DIR)/bin/$(CODEGEN) python $(VERSION_GENERIC)
 
-build_python:: PYPI_VERSION := $(shell pulumictl get version --language python)
 build_python::
 	# Delete files not tracked in Git
 	cd sdk/python/ && git clean -fxd
 	cd sdk/python/ && \
         cp ../../README.md . && \
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-        sed -i.bak -e 's/^  version = .*/  version = "$(PYPI_VERSION)"/g' ./bin/pyproject.toml && \
-        rm ./bin/pyproject.toml.bak && \
 	python3 -m venv venv && \
 	./venv/bin/python -m pip install build && \
         cd ./bin && \
         ../venv/bin/python -m build .
 
 generate_dotnet::
-	$(WORKING_DIR)/bin/$(CODEGEN) dotnet ${VERSION}
+	$(WORKING_DIR)/bin/$(CODEGEN) dotnet $(VERSION_GENERIC)
 
-build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
 build_dotnet::
 	cd ${PACKDIR}/dotnet/ && \
-		echo "${PACK}\n${DOTNET_VERSION}" >version.txt && \
-		dotnet build /p:Version=${DOTNET_VERSION}
+		dotnet build
 
 generate_java:: bin/pulumi-java-gen
 	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema $(WORKING_DIR)/provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
 
-build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
+java_sdk:: PACKAGE_VERSION := $(shell pulumictl convert-version --language generic -v "$(VERSION_GENERIC)")
 build_java::
 	cd ${PACKDIR}/java/ && \
 		gradle --console=plain build
@@ -99,7 +98,7 @@ bin/pulumi-java-gen::
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
 generate_go::
-	$(WORKING_DIR)/bin/$(CODEGEN) go ${VERSION}
+	$(WORKING_DIR)/bin/$(CODEGEN) go $(VERSION_GENERIC)
 
 build_go::
 	cd sdk/ && go build github.com/pulumi/pulumi-google-native/sdk/go/google/...

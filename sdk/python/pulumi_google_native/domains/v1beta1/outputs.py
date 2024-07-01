@@ -435,13 +435,11 @@ class DnsSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="googleDomainsDns")
+    @_utilities.deprecated("""Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""")
     def google_domains_dns(self) -> 'outputs.GoogleDomainsDnsResponse':
         """
         Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
         """
-        warnings.warn("""Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""", DeprecationWarning)
-        pulumi.log.warn("""google_domains_dns is deprecated: Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).""")
-
         return pulumi.get(self, "google_domains_dns")
 
 

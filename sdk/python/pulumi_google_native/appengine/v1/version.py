@@ -628,13 +628,11 @@ class VersionArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
     def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
-        warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
-
         return pulumi.get(self, "zones")
 
     @zones.setter
@@ -852,7 +850,7 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["disk_usage_bytes"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["version_url"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_id", "service_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["appId", "serviceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Version, __self__).__init__(
             'google-native:appengine/v1:Version',
@@ -1253,12 +1251,10 @@ class Version(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
     def zones(self) -> pulumi.Output[Sequence[str]]:
         """
         The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
-        warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
-
         return pulumi.get(self, "zones")
 

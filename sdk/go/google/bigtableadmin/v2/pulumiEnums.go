@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
@@ -180,12 +179,6 @@ func (in *appProfilePriorityPtr) ToAppProfilePriorityPtrOutput() AppProfilePrior
 
 func (in *appProfilePriorityPtr) ToAppProfilePriorityPtrOutputWithContext(ctx context.Context) AppProfilePriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppProfilePriorityPtrOutput)
-}
-
-func (in *appProfilePriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*AppProfilePriority] {
-	return pulumix.Output[*AppProfilePriority]{
-		OutputState: in.ToAppProfilePriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The log type that this config enables.
@@ -362,12 +355,6 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogConfigLogType] {
-	return pulumix.Output[*AuditLogConfigLogType]{
-		OutputState: in.ToAuditLogConfigLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 type ClusterDefaultStorageType string
 
@@ -537,12 +524,6 @@ func (in *clusterDefaultStorageTypePtr) ToClusterDefaultStorageTypePtrOutput() C
 
 func (in *clusterDefaultStorageTypePtr) ToClusterDefaultStorageTypePtrOutputWithContext(ctx context.Context) ClusterDefaultStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterDefaultStorageTypePtrOutput)
-}
-
-func (in *clusterDefaultStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterDefaultStorageType] {
-	return pulumix.Output[*ClusterDefaultStorageType]{
-		OutputState: in.ToClusterDefaultStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the instance. Defaults to `PRODUCTION`.
@@ -716,12 +697,6 @@ func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceTypePtrOutput)
 }
 
-func (in *instanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceType] {
-	return pulumix.Output[*InstanceType]{
-		OutputState: in.ToInstanceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The priority of requests sent using this app profile.
 type StandardIsolationPriority string
 
@@ -893,12 +868,6 @@ func (in *standardIsolationPriorityPtr) ToStandardIsolationPriorityPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(StandardIsolationPriorityPtrOutput)
 }
 
-func (in *standardIsolationPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardIsolationPriority] {
-	return pulumix.Output[*StandardIsolationPriority]{
-		OutputState: in.ToStandardIsolationPriorityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 type TableGranularity string
 
@@ -1065,12 +1034,6 @@ func (in *tableGranularityPtr) ToTableGranularityPtrOutput() TableGranularityPtr
 
 func (in *tableGranularityPtr) ToTableGranularityPtrOutputWithContext(ctx context.Context) TableGranularityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TableGranularityPtrOutput)
-}
-
-func (in *tableGranularityPtr) ToOutput(ctx context.Context) pulumix.Output[*TableGranularity] {
-	return pulumix.Output[*TableGranularity]{
-		OutputState: in.ToTableGranularityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -266,13 +266,11 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated: use vpc_connector""")
     def network(self) -> str:
         """
         Deprecated: use vpc_connector
         """
-        warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
-
         return pulumi.get(self, "network")
 
     @property

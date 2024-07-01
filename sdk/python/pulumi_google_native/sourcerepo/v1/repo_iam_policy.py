@@ -202,7 +202,7 @@ class RepoIamPolicy(pulumi.CustomResource):
             __props__.__dict__["repo_id"] = repo_id
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "repo_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "repoId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(RepoIamPolicy, __self__).__init__(
             'google-native:sourcerepo/v1:RepoIamPolicy',

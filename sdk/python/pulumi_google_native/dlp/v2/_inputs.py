@@ -3392,13 +3392,11 @@ class GooglePrivacyDlpV2InspectConfigArgs:
 
     @property
     @pulumi.getter(name="contentOptions")
+    @_utilities.deprecated("""Deprecated and unused.""")
     def content_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]]:
         """
         Deprecated and unused.
         """
-        warnings.warn("""Deprecated and unused.""", DeprecationWarning)
-        pulumi.log.warn("""content_options is deprecated: Deprecated and unused.""")
-
         return pulumi.get(self, "content_options")
 
     @content_options.setter

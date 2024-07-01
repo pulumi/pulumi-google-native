@@ -81,13 +81,11 @@ class ServiceAccountArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. Do not use.""")
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated. Do not use.
         """
-        warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
-        pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
-
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -261,13 +259,11 @@ class ServiceAccount(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. Do not use.""")
     def etag(self) -> pulumi.Output[str]:
         """
         Deprecated. Do not use.
         """
-        warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
-        pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
-
         return pulumi.get(self, "etag")
 
     @property

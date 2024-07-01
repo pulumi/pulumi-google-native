@@ -131,13 +131,11 @@ class GetFolderSinkResult:
 
     @property
     @pulumi.getter(name="outputVersionFormat")
+    @_utilities.deprecated("""Deprecated. This field is unused.""")
     def output_version_format(self) -> str:
         """
         Deprecated. This field is unused.
         """
-        warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
-        pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
-
         return pulumi.get(self, "output_version_format")
 
     @property

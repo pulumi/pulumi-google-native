@@ -330,7 +330,7 @@ class Page(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["transition_route_groups"] = transition_route_groups
             __props__.__dict__["transition_routes"] = transition_routes
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agent_id", "flow_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["agentId", "flowId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Page, __self__).__init__(
             'google-native:dialogflow/v3:Page',

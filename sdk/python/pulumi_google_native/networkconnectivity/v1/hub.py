@@ -210,7 +210,7 @@ class Hub(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["hub_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["hubId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Hub, __self__).__init__(
             'google-native:networkconnectivity/v1:Hub',

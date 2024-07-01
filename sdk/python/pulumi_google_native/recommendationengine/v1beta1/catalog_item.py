@@ -148,13 +148,11 @@ class CatalogItemArgs:
 
     @property
     @pulumi.getter(name="languageCode")
+    @_utilities.deprecated("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
         """
-        warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
-        pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
-
         return pulumi.get(self, "language_code")
 
     @language_code.setter
@@ -304,7 +302,7 @@ class CatalogItem(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalog_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalogId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CatalogItem, __self__).__init__(
             'google-native:recommendationengine/v1beta1:CatalogItem',
@@ -380,13 +378,11 @@ class CatalogItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="languageCode")
+    @_utilities.deprecated("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
     def language_code(self) -> pulumi.Output[str]:
         """
         Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
         """
-        warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
-        pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
-
         return pulumi.get(self, "language_code")
 
     @property

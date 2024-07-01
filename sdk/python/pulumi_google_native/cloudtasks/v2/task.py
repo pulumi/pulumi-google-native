@@ -239,7 +239,7 @@ class Task(pulumi.CustomResource):
             __props__.__dict__["last_attempt"] = None
             __props__.__dict__["response_count"] = None
             __props__.__dict__["view"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "queue_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "queueId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Task, __self__).__init__(
             'google-native:cloudtasks/v2:Task',

@@ -192,13 +192,11 @@ class GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse(dict):
 
     @property
     @pulumi.getter(name="interfaceIndex")
+    @_utilities.deprecated("""The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.""")
     def interface_index(self) -> int:
         """
         The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
         """
-        warnings.warn("""The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""interface_index is deprecated: The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.""")
-
         return pulumi.get(self, "interface_index")
 
     @property

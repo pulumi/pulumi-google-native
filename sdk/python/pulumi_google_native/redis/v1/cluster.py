@@ -267,7 +267,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_info"] = None
             __props__.__dict__["uid"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cluster_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clusterId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Cluster, __self__).__init__(
             'google-native:redis/v1:Cluster',

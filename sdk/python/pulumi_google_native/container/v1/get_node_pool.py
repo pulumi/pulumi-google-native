@@ -222,13 +222,11 @@ class GetNodePoolResult:
 
     @property
     @pulumi.getter(name="statusMessage")
+    @_utilities.deprecated("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
     def status_message(self) -> str:
         """
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         """
-        warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""", DeprecationWarning)
-        pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
-
         return pulumi.get(self, "status_message")
 
     @property

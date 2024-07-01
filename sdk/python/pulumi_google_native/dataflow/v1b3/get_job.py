@@ -149,13 +149,11 @@ class GetJobResult:
 
     @property
     @pulumi.getter(name="executionInfo")
+    @_utilities.deprecated("""Deprecated.""")
     def execution_info(self) -> 'outputs.JobExecutionInfoResponse':
         """
         Deprecated.
         """
-        warnings.warn("""Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
-
         return pulumi.get(self, "execution_info")
 
     @property

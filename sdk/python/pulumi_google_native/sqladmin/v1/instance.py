@@ -236,13 +236,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
         This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
         """
-        warnings.warn("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""", DeprecationWarning)
-        pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
-
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -299,13 +297,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="ipv6Address")
+    @_utilities.deprecated("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
         """
         The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
         """
-        warnings.warn("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""", DeprecationWarning)
-        pulumi.log.warn("""ipv6_address is deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
-
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -910,13 +906,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
     def etag(self) -> pulumi.Output[str]:
         """
         This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
         """
-        warnings.warn("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""", DeprecationWarning)
-        pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
-
         return pulumi.get(self, "etag")
 
     @property
@@ -953,13 +947,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipv6Address")
+    @_utilities.deprecated("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
     def ipv6_address(self) -> pulumi.Output[str]:
         """
         The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
         """
-        warnings.warn("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""", DeprecationWarning)
-        pulumi.log.warn("""ipv6_address is deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
-
         return pulumi.get(self, "ipv6_address")
 
     @property
@@ -1020,13 +1012,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="primaryDnsName")
+    @_utilities.deprecated("""Output only. DEPRECATED: please use write_endpoint instead.""")
     def primary_dns_name(self) -> pulumi.Output[str]:
         """
         DEPRECATED: please use write_endpoint instead.
         """
-        warnings.warn("""Output only. DEPRECATED: please use write_endpoint instead.""", DeprecationWarning)
-        pulumi.log.warn("""primary_dns_name is deprecated: Output only. DEPRECATED: please use write_endpoint instead.""")
-
         return pulumi.get(self, "primary_dns_name")
 
     @property

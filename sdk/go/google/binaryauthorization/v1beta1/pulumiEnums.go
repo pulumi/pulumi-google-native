@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
@@ -228,12 +227,6 @@ func (in *pkixPublicKeySignatureAlgorithmPtr) ToPkixPublicKeySignatureAlgorithmP
 
 func (in *pkixPublicKeySignatureAlgorithmPtr) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PkixPublicKeySignatureAlgorithmPtrOutput)
-}
-
-func (in *pkixPublicKeySignatureAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*PkixPublicKeySignatureAlgorithm] {
-	return pulumix.Output[*PkixPublicKeySignatureAlgorithm]{
-		OutputState: in.ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

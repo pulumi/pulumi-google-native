@@ -279,7 +279,7 @@ class AppProfile(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["single_cluster_routing"] = single_cluster_routing
             __props__.__dict__["standard_isolation"] = standard_isolation
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["app_profile_id", "instance_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["appProfileId", "instanceId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AppProfile, __self__).__init__(
             'google-native:bigtableadmin/v2:AppProfile',

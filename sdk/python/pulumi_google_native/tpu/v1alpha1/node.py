@@ -438,13 +438,11 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
+    @_utilities.deprecated("""Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""")
     def ip_address(self) -> pulumi.Output[str]:
         """
         DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
         """
-        warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
-        pulumi.log.warn("""ip_address is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""")
-
         return pulumi.get(self, "ip_address")
 
     @property
@@ -494,13 +492,11 @@ class Node(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""")
     def port(self) -> pulumi.Output[str]:
         """
         DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         """
-        warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
-        pulumi.log.warn("""port is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""")
-
         return pulumi.get(self, "port")
 
     @property

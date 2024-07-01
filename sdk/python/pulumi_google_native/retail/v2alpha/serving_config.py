@@ -518,7 +518,7 @@ class ServingConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'solution_types'")
             __props__.__dict__["solution_types"] = solution_types
             __props__.__dict__["twoway_synonyms_control_ids"] = twoway_synonyms_control_ids
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalog_id", "location", "project", "serving_config_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["catalogId", "location", "project", "servingConfigId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(ServingConfig, __self__).__init__(
             'google-native:retail/v2alpha:ServingConfig',

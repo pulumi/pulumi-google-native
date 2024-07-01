@@ -345,13 +345,11 @@ class FunctionArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated: use vpc_connector""")
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated: use vpc_connector
         """
-        warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
-
         return pulumi.get(self, "network")
 
     @network.setter
@@ -880,13 +878,11 @@ class Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated: use vpc_connector""")
     def network(self) -> pulumi.Output[str]:
         """
         Deprecated: use vpc_connector
         """
-        warnings.warn("""Deprecated: use vpc_connector""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
-
         return pulumi.get(self, "network")
 
     @property

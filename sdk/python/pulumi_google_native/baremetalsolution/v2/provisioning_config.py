@@ -85,13 +85,11 @@ class ProvisioningConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""")
     def email(self) -> Optional[pulumi.Input[str]]:
         """
         Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
         """
-        warnings.warn("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""", DeprecationWarning)
-        pulumi.log.warn("""email is deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""")
-
         return pulumi.get(self, "email")
 
     @email.setter

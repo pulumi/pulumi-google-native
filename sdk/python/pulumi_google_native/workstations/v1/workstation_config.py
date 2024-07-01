@@ -401,7 +401,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workstation_cluster_id", "workstation_config_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workstationClusterId", "workstationConfigId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(WorkstationConfig, __self__).__init__(
             'google-native:workstations/v1:WorkstationConfig',

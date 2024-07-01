@@ -206,13 +206,11 @@ class JobArgs:
 
     @property
     @pulumi.getter(name="executionInfo")
+    @_utilities.deprecated("""Deprecated.""")
     def execution_info(self) -> Optional[pulumi.Input['JobExecutionInfoArgs']]:
         """
         Deprecated.
         """
-        warnings.warn("""Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
-
         return pulumi.get(self, "execution_info")
 
     @execution_info.setter
@@ -721,13 +719,11 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="executionInfo")
+    @_utilities.deprecated("""Deprecated.""")
     def execution_info(self) -> pulumi.Output['outputs.JobExecutionInfoResponse']:
         """
         Deprecated.
         """
-        warnings.warn("""Deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
-
         return pulumi.get(self, "execution_info")
 
     @property

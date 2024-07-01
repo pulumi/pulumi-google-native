@@ -261,7 +261,7 @@ class NodeGroup(pulumi.CustomResource):
             if roles is None and not opts.urn:
                 raise TypeError("Missing required property 'roles'")
             __props__.__dict__["roles"] = roles
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cluster_id", "project", "region_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["clusterId", "project", "regionId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NodeGroup, __self__).__init__(
             'google-native:dataproc/v1:NodeGroup',

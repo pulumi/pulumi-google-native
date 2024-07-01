@@ -248,7 +248,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["rollout_state"] = None
             __props__.__dict__["uid"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "os_policy_assignment_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "osPolicyAssignmentId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OsPolicyAssignment, __self__).__init__(
             'google-native:osconfig/v1alpha:OsPolicyAssignment',

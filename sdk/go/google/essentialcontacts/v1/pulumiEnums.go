@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ContactNotificationCategorySubscriptionsItem string
@@ -197,12 +196,6 @@ func (in *contactNotificationCategorySubscriptionsItemPtr) ToContactNotification
 
 func (in *contactNotificationCategorySubscriptionsItemPtr) ToContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) ContactNotificationCategorySubscriptionsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContactNotificationCategorySubscriptionsItemPtrOutput)
-}
-
-func (in *contactNotificationCategorySubscriptionsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[*ContactNotificationCategorySubscriptionsItem]{
-		OutputState: in.ToContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ContactNotificationCategorySubscriptionsItemArrayInput is an input type that accepts ContactNotificationCategorySubscriptionsItemArray and ContactNotificationCategorySubscriptionsItemArrayOutput values.
@@ -421,12 +414,6 @@ func (in *contactValidationStatePtr) ToContactValidationStatePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ContactValidationStatePtrOutput)
 }
 
-func (in *contactValidationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ContactValidationState] {
-	return pulumix.Output[*ContactValidationState]{
-		OutputState: in.ToContactValidationStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderContactNotificationCategorySubscriptionsItem string
 
 const (
@@ -613,12 +600,6 @@ func (in *folderContactNotificationCategorySubscriptionsItemPtr) ToFolderContact
 
 func (in *folderContactNotificationCategorySubscriptionsItemPtr) ToFolderContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) FolderContactNotificationCategorySubscriptionsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FolderContactNotificationCategorySubscriptionsItemPtrOutput)
-}
-
-func (in *folderContactNotificationCategorySubscriptionsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*FolderContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[*FolderContactNotificationCategorySubscriptionsItem]{
-		OutputState: in.ToFolderContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FolderContactNotificationCategorySubscriptionsItemArrayInput is an input type that accepts FolderContactNotificationCategorySubscriptionsItemArray and FolderContactNotificationCategorySubscriptionsItemArrayOutput values.
@@ -837,12 +818,6 @@ func (in *folderContactValidationStatePtr) ToFolderContactValidationStatePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(FolderContactValidationStatePtrOutput)
 }
 
-func (in *folderContactValidationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FolderContactValidationState] {
-	return pulumix.Output[*FolderContactValidationState]{
-		OutputState: in.ToFolderContactValidationStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationContactNotificationCategorySubscriptionsItem string
 
 const (
@@ -1029,12 +1004,6 @@ func (in *organizationContactNotificationCategorySubscriptionsItemPtr) ToOrganiz
 
 func (in *organizationContactNotificationCategorySubscriptionsItemPtr) ToOrganizationContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx context.Context) OrganizationContactNotificationCategorySubscriptionsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationContactNotificationCategorySubscriptionsItemPtrOutput)
-}
-
-func (in *organizationContactNotificationCategorySubscriptionsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationContactNotificationCategorySubscriptionsItem] {
-	return pulumix.Output[*OrganizationContactNotificationCategorySubscriptionsItem]{
-		OutputState: in.ToOrganizationContactNotificationCategorySubscriptionsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrganizationContactNotificationCategorySubscriptionsItemArrayInput is an input type that accepts OrganizationContactNotificationCategorySubscriptionsItemArray and OrganizationContactNotificationCategorySubscriptionsItemArrayOutput values.
@@ -1251,12 +1220,6 @@ func (in *organizationContactValidationStatePtr) ToOrganizationContactValidation
 
 func (in *organizationContactValidationStatePtr) ToOrganizationContactValidationStatePtrOutputWithContext(ctx context.Context) OrganizationContactValidationStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrganizationContactValidationStatePtrOutput)
-}
-
-func (in *organizationContactValidationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OrganizationContactValidationState] {
-	return pulumix.Output[*OrganizationContactValidationState]{
-		OutputState: in.ToOrganizationContactValidationStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

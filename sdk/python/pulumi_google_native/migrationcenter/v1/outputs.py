@@ -958,13 +958,11 @@ class ReportSummaryGroupFindingResponse(dict):
 
     @property
     @pulumi.getter(name="overlappingAssetCount")
+    @_utilities.deprecated("""This field is deprecated, do not rely on it having a value.""")
     def overlapping_asset_count(self) -> str:
         """
         This field is deprecated, do not rely on it having a value.
         """
-        warnings.warn("""This field is deprecated, do not rely on it having a value.""", DeprecationWarning)
-        pulumi.log.warn("""overlapping_asset_count is deprecated: This field is deprecated, do not rely on it having a value.""")
-
         return pulumi.get(self, "overlapping_asset_count")
 
     @property

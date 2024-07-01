@@ -257,7 +257,7 @@ class EventSubscription(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["connection_id", "event_subscription_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["connectionId", "eventSubscriptionId", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(EventSubscription, __self__).__init__(
             'google-native:connectors/v1:EventSubscription',

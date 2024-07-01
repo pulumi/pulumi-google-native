@@ -251,13 +251,11 @@ class DiskArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
     def interface(self) -> Optional[pulumi.Input['DiskInterface']]:
         """
         [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
-        warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
-        pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
-
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -539,13 +537,11 @@ class DiskArgs:
 
     @property
     @pulumi.getter(name="storageType")
+    @_utilities.deprecated("""[Deprecated] Storage type of the persistent disk.""")
     def storage_type(self) -> Optional[pulumi.Input['DiskStorageType']]:
         """
         [Deprecated] Storage type of the persistent disk.
         """
-        warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
-        pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
-
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
@@ -942,13 +938,11 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
     def interface(self) -> pulumi.Output[str]:
         """
         [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
-        warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
-        pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
-
         return pulumi.get(self, "interface")
 
     @property
@@ -1262,13 +1256,11 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageType")
+    @_utilities.deprecated("""[Deprecated] Storage type of the persistent disk.""")
     def storage_type(self) -> pulumi.Output[str]:
         """
         [Deprecated] Storage type of the persistent disk.
         """
-        warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
-        pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
-
         return pulumi.get(self, "storage_type")
 
     @property

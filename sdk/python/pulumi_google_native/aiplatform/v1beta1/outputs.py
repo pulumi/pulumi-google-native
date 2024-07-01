@@ -7396,13 +7396,11 @@ class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.""")
     def parameters(self) -> Mapping[str, str]:
         """
         Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
-        warnings.warn("""Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.""", DeprecationWarning)
-        pulumi.log.warn("""parameters is deprecated: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.""")
-
         return pulumi.get(self, "parameters")
 
 
@@ -10342,13 +10340,11 @@ class GoogleCloudAiplatformV1beta1StudySpecResponse(dict):
 
     @property
     @pulumi.getter(name="convexStopConfig")
+    @_utilities.deprecated("""Deprecated. The automated early stopping using convex stopping rule.""")
     def convex_stop_config(self) -> 'outputs.GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponse':
         """
         Deprecated. The automated early stopping using convex stopping rule.
         """
-        warnings.warn("""Deprecated. The automated early stopping using convex stopping rule.""", DeprecationWarning)
-        pulumi.log.warn("""convex_stop_config is deprecated: Deprecated. The automated early stopping using convex stopping rule.""")
-
         return pulumi.get(self, "convex_stop_config")
 
     @property

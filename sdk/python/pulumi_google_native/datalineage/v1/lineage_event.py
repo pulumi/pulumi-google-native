@@ -229,7 +229,7 @@ class LineageEvent(pulumi.CustomResource):
             if start_time is None and not opts.urn:
                 raise TypeError("Missing required property 'start_time'")
             __props__.__dict__["start_time"] = start_time
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "process_id", "project", "run_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "processId", "project", "runId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(LineageEvent, __self__).__init__(
             'google-native:datalineage/v1:LineageEvent',

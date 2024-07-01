@@ -192,7 +192,7 @@ class NamespaceWorkloadIamPolicy(pulumi.CustomResource):
             if workload_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_id'")
             __props__.__dict__["workload_id"] = workload_id
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespace_id", "project", "workload_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespaceId", "project", "workloadId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NamespaceWorkloadIamPolicy, __self__).__init__(
             'google-native:servicedirectory/v1beta1:NamespaceWorkloadIamPolicy',

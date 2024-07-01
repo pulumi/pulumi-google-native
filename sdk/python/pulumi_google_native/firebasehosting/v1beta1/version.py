@@ -207,7 +207,7 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["finalize_user"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["version_bytes"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "site_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "siteId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Version, __self__).__init__(
             'google-native:firebasehosting/v1beta1:Version',

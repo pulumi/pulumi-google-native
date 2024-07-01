@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates the reason code for a configuration failure.
@@ -302,12 +301,6 @@ func (in *scanConfigErrorCodePtr) ToScanConfigErrorCodePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigErrorCodePtrOutput)
 }
 
-func (in *scanConfigErrorCodePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigErrorCode] {
-	return pulumix.Output[*ScanConfigErrorCode]{
-		OutputState: in.ToScanConfigErrorCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls export of scan configurations and results to Security Command Center.
 type ScanConfigExportToSecurityCommandCenter string
 
@@ -479,12 +472,6 @@ func (in *scanConfigExportToSecurityCommandCenterPtr) ToScanConfigExportToSecuri
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigExportToSecurityCommandCenterPtrOutput)
 }
 
-func (in *scanConfigExportToSecurityCommandCenterPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigExportToSecurityCommandCenter] {
-	return pulumix.Output[*ScanConfigExportToSecurityCommandCenter]{
-		OutputState: in.ToScanConfigExportToSecurityCommandCenterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The risk level selected for the scan
 type ScanConfigRiskLevel string
 
@@ -654,12 +641,6 @@ func (in *scanConfigRiskLevelPtr) ToScanConfigRiskLevelPtrOutput() ScanConfigRis
 
 func (in *scanConfigRiskLevelPtr) ToScanConfigRiskLevelPtrOutputWithContext(ctx context.Context) ScanConfigRiskLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigRiskLevelPtrOutput)
-}
-
-func (in *scanConfigRiskLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigRiskLevel] {
-	return pulumix.Output[*ScanConfigRiskLevel]{
-		OutputState: in.ToScanConfigRiskLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ScanConfigTargetPlatformsItem string
@@ -836,12 +817,6 @@ func (in *scanConfigTargetPlatformsItemPtr) ToScanConfigTargetPlatformsItemPtrOu
 
 func (in *scanConfigTargetPlatformsItemPtr) ToScanConfigTargetPlatformsItemPtrOutputWithContext(ctx context.Context) ScanConfigTargetPlatformsItemPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigTargetPlatformsItemPtrOutput)
-}
-
-func (in *scanConfigTargetPlatformsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigTargetPlatformsItem] {
-	return pulumix.Output[*ScanConfigTargetPlatformsItem]{
-		OutputState: in.ToScanConfigTargetPlatformsItemPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScanConfigTargetPlatformsItemArrayInput is an input type that accepts ScanConfigTargetPlatformsItemArray and ScanConfigTargetPlatformsItemArrayOutput values.
@@ -1063,12 +1038,6 @@ func (in *scanConfigUserAgentPtr) ToScanConfigUserAgentPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ScanConfigUserAgentPtrOutput)
 }
 
-func (in *scanConfigUserAgentPtr) ToOutput(ctx context.Context) pulumix.Output[*ScanConfigUserAgent] {
-	return pulumix.Output[*ScanConfigUserAgent]{
-		OutputState: in.ToScanConfigUserAgentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the error reason code.
 type ScanRunErrorTraceCode string
 
@@ -1255,12 +1224,6 @@ func (in *scanRunErrorTraceCodePtr) ToScanRunErrorTraceCodePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ScanRunErrorTraceCodePtrOutput)
 }
 
-func (in *scanRunErrorTraceCodePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanRunErrorTraceCode] {
-	return pulumix.Output[*ScanRunErrorTraceCode]{
-		OutputState: in.ToScanRunErrorTraceCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The execution state of the ScanRun.
 type ScanRunExecutionState string
 
@@ -1435,12 +1398,6 @@ func (in *scanRunExecutionStatePtr) ToScanRunExecutionStatePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ScanRunExecutionStatePtrOutput)
 }
 
-func (in *scanRunExecutionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanRunExecutionState] {
-	return pulumix.Output[*ScanRunExecutionState]{
-		OutputState: in.ToScanRunExecutionStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The result state of the ScanRun. This field is only available after the execution state reaches "FINISHED".
 type ScanRunResultState string
 
@@ -1613,12 +1570,6 @@ func (in *scanRunResultStatePtr) ToScanRunResultStatePtrOutput() ScanRunResultSt
 
 func (in *scanRunResultStatePtr) ToScanRunResultStatePtrOutputWithContext(ctx context.Context) ScanRunResultStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanRunResultStatePtrOutput)
-}
-
-func (in *scanRunResultStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanRunResultState] {
-	return pulumix.Output[*ScanRunResultState]{
-		OutputState: in.ToScanRunResultStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the warning code.
@@ -1799,12 +1750,6 @@ func (in *scanRunWarningTraceCodePtr) ToScanRunWarningTraceCodePtrOutput() ScanR
 
 func (in *scanRunWarningTraceCodePtr) ToScanRunWarningTraceCodePtrOutputWithContext(ctx context.Context) ScanRunWarningTraceCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanRunWarningTraceCodePtrOutput)
-}
-
-func (in *scanRunWarningTraceCodePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanRunWarningTraceCode] {
-	return pulumix.Output[*ScanRunWarningTraceCode]{
-		OutputState: in.ToScanRunWarningTraceCodePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

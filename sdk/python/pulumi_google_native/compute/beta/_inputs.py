@@ -7038,13 +7038,11 @@ class ImageRawDiskArgs:
 
     @property
     @pulumi.getter(name="sha1Checksum")
+    @_utilities.deprecated("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
     def sha1_checksum(self) -> Optional[pulumi.Input[str]]:
         """
         [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         """
-        warnings.warn("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""", DeprecationWarning)
-        pulumi.log.warn("""sha1_checksum is deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
-
         return pulumi.get(self, "sha1_checksum")
 
     @sha1_checksum.setter
@@ -8846,13 +8844,11 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter(name="defaultPort")
+    @_utilities.deprecated("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
     def default_port(self) -> Optional[pulumi.Input[int]]:
         """
         The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "default_port")
 
     @default_port.setter
@@ -8861,13 +8857,11 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "network")
 
     @network.setter
@@ -8876,13 +8870,11 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
         Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""subnetwork is deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
-
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
@@ -14554,13 +14546,11 @@ class SecuritySettingsArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""[Deprecated] Use clientTlsPolicy instead.""")
     def authentication(self) -> Optional[pulumi.Input[str]]:
         """
         [Deprecated] Use clientTlsPolicy instead.
         """
-        warnings.warn("""[Deprecated] Use clientTlsPolicy instead.""", DeprecationWarning)
-        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use clientTlsPolicy instead.""")
-
         return pulumi.get(self, "authentication")
 
     @authentication.setter

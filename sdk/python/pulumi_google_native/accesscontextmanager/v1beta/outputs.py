@@ -490,13 +490,11 @@ class ServicePerimeterConfigResponse(dict):
 
     @property
     @pulumi.getter(name="unrestrictedServices")
+    @_utilities.deprecated("""Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard \"*\". The wildcard means that unless explicitly specified by \"restricted_services\" list, any service is treated as unrestricted.""")
     def unrestricted_services(self) -> Sequence[str]:
         """
         Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
         """
-        warnings.warn("""Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard \"*\". The wildcard means that unless explicitly specified by \"restricted_services\" list, any service is treated as unrestricted.""", DeprecationWarning)
-        pulumi.log.warn("""unrestricted_services is deprecated: Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard \"*\". The wildcard means that unless explicitly specified by \"restricted_services\" list, any service is treated as unrestricted.""")
-
         return pulumi.get(self, "unrestricted_services")
 
     @property

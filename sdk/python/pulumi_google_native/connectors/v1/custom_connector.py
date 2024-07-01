@@ -226,7 +226,7 @@ class CustomConnector(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["custom_connector_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["customConnectorId", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CustomConnector, __self__).__init__(
             'google-native:connectors/v1:CustomConnector',

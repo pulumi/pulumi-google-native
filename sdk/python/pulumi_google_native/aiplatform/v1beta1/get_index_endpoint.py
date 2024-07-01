@@ -97,13 +97,11 @@ class GetIndexEndpointResult:
 
     @property
     @pulumi.getter(name="enablePrivateServiceConnect")
+    @_utilities.deprecated("""Optional. Deprecated: If true, expose the IndexEndpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.""")
     def enable_private_service_connect(self) -> bool:
         """
         Optional. Deprecated: If true, expose the IndexEndpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.
         """
-        warnings.warn("""Optional. Deprecated: If true, expose the IndexEndpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.""", DeprecationWarning)
-        pulumi.log.warn("""enable_private_service_connect is deprecated: Optional. Deprecated: If true, expose the IndexEndpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.""")
-
         return pulumi.get(self, "enable_private_service_connect")
 
     @property

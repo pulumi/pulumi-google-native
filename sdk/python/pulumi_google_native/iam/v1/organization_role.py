@@ -241,7 +241,7 @@ class OrganizationRole(pulumi.CustomResource):
             __props__.__dict__["role_id"] = role_id
             __props__.__dict__["stage"] = stage
             __props__.__dict__["title"] = title
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organizationId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationRole, __self__).__init__(
             'google-native:iam/v1:OrganizationRole',

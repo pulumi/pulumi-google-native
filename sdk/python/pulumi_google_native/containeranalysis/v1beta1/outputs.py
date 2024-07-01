@@ -327,13 +327,11 @@ class AssessmentResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
     def cve(self) -> str:
         """
         Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
         """
-        warnings.warn("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""", DeprecationWarning)
-        pulumi.log.warn("""cve is deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
-
         return pulumi.get(self, "cve")
 
     @property
@@ -2027,13 +2025,11 @@ class DiscoveredResponse(dict):
 
     @property
     @pulumi.getter(name="lastAnalysisTime")
+    @_utilities.deprecated("""The last time continuous analysis was done for this resource. Deprecated, do not use.""")
     def last_analysis_time(self) -> str:
         """
         The last time continuous analysis was done for this resource. Deprecated, do not use.
         """
-        warnings.warn("""The last time continuous analysis was done for this resource. Deprecated, do not use.""", DeprecationWarning)
-        pulumi.log.warn("""last_analysis_time is deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.""")
-
         return pulumi.get(self, "last_analysis_time")
 
     @property
@@ -4020,13 +4016,11 @@ class LocationResponse(dict):
 
     @property
     @pulumi.getter(name="cpeUri")
+    @_utilities.deprecated("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""")
     def cpe_uri(self) -> str:
         """
         Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
-        warnings.warn("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""", DeprecationWarning)
-        pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""")
-
         return pulumi.get(self, "cpe_uri")
 
     @property
@@ -4039,13 +4033,11 @@ class LocationResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. The version installed at this location.""")
     def version(self) -> 'outputs.VersionResponse':
         """
         Deprecated. The version installed at this location.
         """
-        warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
-
         return pulumi.get(self, "version")
 
 
@@ -4499,13 +4491,11 @@ class PackageIssueResponse(dict):
 
     @property
     @pulumi.getter(name="severityName")
+    @_utilities.deprecated("""Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.""")
     def severity_name(self) -> str:
         """
         Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
         """
-        warnings.warn("""Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.""", DeprecationWarning)
-        pulumi.log.warn("""severity_name is deprecated: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.""")
-
         return pulumi.get(self, "severity_name")
 
 
@@ -5256,24 +5246,20 @@ class ResourceResponse(dict):
 
     @property
     @pulumi.getter(name="contentHash")
+    @_utilities.deprecated("""Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.""")
     def content_hash(self) -> 'outputs.HashResponse':
         """
         Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
         """
-        warnings.warn("""Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.""", DeprecationWarning)
-        pulumi.log.warn("""content_hash is deprecated: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.""")
-
         return pulumi.get(self, "content_hash")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".""")
     def name(self) -> str:
         """
         Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
         """
-        warnings.warn("""Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -6121,13 +6107,11 @@ class VexAssessmentResponse(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
     def cve(self) -> str:
         """
         Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.
         """
-        warnings.warn("""Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""", DeprecationWarning)
-        pulumi.log.warn("""cve is deprecated: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. Deprecated: Use vulnerability_id instead to denote CVEs.""")
-
         return pulumi.get(self, "cve")
 
     @property

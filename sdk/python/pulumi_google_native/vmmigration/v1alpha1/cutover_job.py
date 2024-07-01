@@ -188,7 +188,7 @@ class CutoverJob(pulumi.CustomResource):
             __props__.__dict__["state_time"] = None
             __props__.__dict__["steps"] = None
             __props__.__dict__["target_details"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cutover_job_id", "location", "migrating_vm_id", "project", "source_id"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cutoverJobId", "location", "migratingVmId", "project", "sourceId"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CutoverJob, __self__).__init__(
             'google-native:vmmigration/v1alpha1:CutoverJob',
@@ -252,13 +252,11 @@ class CutoverJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="computeEngineVmDetails")
+    @_utilities.deprecated("""Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""")
     def compute_engine_vm_details(self) -> pulumi.Output['outputs.TargetVMDetailsResponse']:
         """
         Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         """
-        warnings.warn("""Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
-        pulumi.log.warn("""compute_engine_vm_details is deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""")
-
         return pulumi.get(self, "compute_engine_vm_details")
 
     @property
@@ -379,12 +377,10 @@ class CutoverJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetDetails")
+    @_utilities.deprecated("""Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.""")
     def target_details(self) -> pulumi.Output['outputs.TargetVMDetailsResponse']:
         """
         Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
         """
-        warnings.warn("""Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
-        pulumi.log.warn("""target_details is deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.""")
-
         return pulumi.get(self, "target_details")
 
