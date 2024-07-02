@@ -118,14 +118,14 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? Data { get; set; }
 
         [Input("extensions")]
-        private InputList<ImmutableDictionary<string, string>>? _extensions;
+        private InputList<ImmutableDictionary<string, object>>? _extensions;
 
         /// <summary>
         /// Application specific response metadata. Must be set in the first response for streaming APIs.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Extensions
+        public InputList<ImmutableDictionary<string, object>> Extensions
         {
-            get => _extensions ?? (_extensions = new InputList<ImmutableDictionary<string, string>>());
+            get => _extensions ?? (_extensions = new InputList<ImmutableDictionary<string, object>>());
             set => _extensions = value;
         }
 

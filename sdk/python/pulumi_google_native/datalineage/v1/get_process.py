@@ -35,7 +35,7 @@ class GetProcessResult:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Mapping[str, str]:
+    def attributes(self) -> Mapping[str, Any]:
         """
         Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
         """

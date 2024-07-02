@@ -181,7 +181,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         /// </summary>
         [Output("partnerMetadata")]
-        public Output<ImmutableDictionary<string, string>> PartnerMetadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.StructuredEntriesResponse>> PartnerMetadata { get; private set; } = null!;
 
         /// <summary>
         /// PostKeyRevocationActionType of the instance.
@@ -268,7 +268,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         /// </summary>
         [Output("serviceIntegrationSpecs")]
-        public Output<ImmutableDictionary<string, string>> ServiceIntegrationSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.ServiceIntegrationSpecResponse>> ServiceIntegrationSpecs { get; private set; } = null!;
 
         [Output("shieldedInstanceConfig")]
         public Output<Outputs.ShieldedInstanceConfigResponse> ShieldedInstanceConfig { get; private set; } = null!;
@@ -528,14 +528,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.InstanceParamsArgs>? Params { get; set; }
 
         [Input("partnerMetadata")]
-        private InputMap<string>? _partnerMetadata;
+        private InputMap<Inputs.StructuredEntriesArgs>? _partnerMetadata;
 
         /// <summary>
         /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         /// </summary>
-        public InputMap<string> PartnerMetadata
+        public InputMap<Inputs.StructuredEntriesArgs> PartnerMetadata
         {
-            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<Inputs.StructuredEntriesArgs>());
             set => _partnerMetadata = value;
         }
 
@@ -615,14 +615,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         [Input("serviceIntegrationSpecs")]
-        private InputMap<string>? _serviceIntegrationSpecs;
+        private InputMap<Inputs.ServiceIntegrationSpecArgs>? _serviceIntegrationSpecs;
 
         /// <summary>
         /// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         /// </summary>
-        public InputMap<string> ServiceIntegrationSpecs
+        public InputMap<Inputs.ServiceIntegrationSpecArgs> ServiceIntegrationSpecs
         {
-            get => _serviceIntegrationSpecs ?? (_serviceIntegrationSpecs = new InputMap<string>());
+            get => _serviceIntegrationSpecs ?? (_serviceIntegrationSpecs = new InputMap<Inputs.ServiceIntegrationSpecArgs>());
             set => _serviceIntegrationSpecs = value;
         }
 

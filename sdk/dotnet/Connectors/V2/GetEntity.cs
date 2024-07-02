@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Connectors.V2
         /// <summary>
         /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Fields;
+        public readonly ImmutableDictionary<string, object> Fields;
         /// <summary>
         /// Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
         /// </summary>
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Connectors.V2
 
         [OutputConstructor]
         private GetEntityResult(
-            ImmutableDictionary<string, string> fields,
+            ImmutableDictionary<string, object> fields,
 
             string name)
         {

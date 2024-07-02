@@ -40,7 +40,7 @@ export interface GetDocumentResult {
     /**
      * This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
      */
-    readonly derivedStructData: {[key: string]: string};
+    readonly derivedStructData: {[key: string]: any};
     /**
      * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
@@ -60,7 +60,7 @@ export interface GetDocumentResult {
     /**
      * The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
-    readonly structData: {[key: string]: string};
+    readonly structData: {[key: string]: any};
 }
 /**
  * Gets a Document.

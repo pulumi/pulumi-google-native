@@ -33,7 +33,7 @@ type LookupRepoResult struct {
 	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
 	Name string `pulumi:"name"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-	PubsubConfigs map[string]string `pulumi:"pubsubConfigs"`
+	PubsubConfigs map[string]PubsubConfigResponse `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size string `pulumi:"size"`
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
@@ -87,8 +87,8 @@ func (o LookupRepoResultOutput) Name() pulumi.StringOutput {
 }
 
 // How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-func (o LookupRepoResultOutput) PubsubConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupRepoResult) map[string]string { return v.PubsubConfigs }).(pulumi.StringMapOutput)
+func (o LookupRepoResultOutput) PubsubConfigs() PubsubConfigResponseMapOutput {
+	return o.ApplyT(func(v LookupRepoResult) map[string]PubsubConfigResponse { return v.PubsubConfigs }).(PubsubConfigResponseMapOutput)
 }
 
 // The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.

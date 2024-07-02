@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
         /// </summary>
         [Output("generatedCustomerMetadata")]
-        public Output<ImmutableDictionary<string, string>> GeneratedCustomerMetadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> GeneratedCustomerMetadata { get; private set; } = null!;
 
         [Output("iap")]
         public Output<Outputs.IdentityAwareProxyResponse> Iap { get; private set; } = null!;
@@ -187,14 +187,14 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Input<Inputs.FeatureSettingsArgs>? FeatureSettings { get; set; }
 
         [Input("generatedCustomerMetadata")]
-        private InputMap<string>? _generatedCustomerMetadata;
+        private InputMap<object>? _generatedCustomerMetadata;
 
         /// <summary>
         /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetApplicationRequest
         /// </summary>
-        public InputMap<string> GeneratedCustomerMetadata
+        public InputMap<object> GeneratedCustomerMetadata
         {
-            get => _generatedCustomerMetadata ?? (_generatedCustomerMetadata = new InputMap<string>());
+            get => _generatedCustomerMetadata ?? (_generatedCustomerMetadata = new InputMap<object>());
             set => _generatedCustomerMetadata = value;
         }
 

@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// <summary>
         /// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Parameters;
+        public readonly ImmutableDictionary<string, object> Parameters;
 
         [OutputConstructor]
         private GoogleCloudDialogflowV2beta1ContextResponse(
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 
             string name,
 
-            ImmutableDictionary<string, string> parameters)
+            ImmutableDictionary<string, object> parameters)
         {
             LifespanCount = lifespanCount;
             Name = name;

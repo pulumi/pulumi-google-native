@@ -15,6 +15,7 @@ __all__ = [
     'CompensationEntryArgs',
     'CompensationInfoArgs',
     'CompensationRangeArgs',
+    'CustomAttributeArgs',
     'MoneyArgs',
     'ProcessingOptionsArgs',
 ]
@@ -241,6 +242,78 @@ class CompensationRangeArgs:
     @min_compensation.setter
     def min_compensation(self, value: Optional[pulumi.Input['MoneyArgs']]):
         pulumi.set(self, "min_compensation", value)
+
+
+@pulumi.input_type
+class CustomAttributeArgs:
+    def __init__(__self__, *,
+                 filterable: Optional[pulumi.Input[bool]] = None,
+                 keyword_searchable: Optional[pulumi.Input[bool]] = None,
+                 long_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 string_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Custom attribute values that are either filterable or non-filterable.
+        :param pulumi.Input[bool] filterable: If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+        :param pulumi.Input[bool] keyword_searchable: If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] long_values: Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] string_values: Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed.
+        """
+        if filterable is not None:
+            pulumi.set(__self__, "filterable", filterable)
+        if keyword_searchable is not None:
+            pulumi.set(__self__, "keyword_searchable", keyword_searchable)
+        if long_values is not None:
+            pulumi.set(__self__, "long_values", long_values)
+        if string_values is not None:
+            pulumi.set(__self__, "string_values", string_values)
+
+    @property
+    @pulumi.getter
+    def filterable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false.
+        """
+        return pulumi.get(self, "filterable")
+
+    @filterable.setter
+    def filterable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "filterable", value)
+
+    @property
+    @pulumi.getter(name="keywordSearchable")
+    def keyword_searchable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false.
+        """
+        return pulumi.get(self, "keyword_searchable")
+
+    @keyword_searchable.setter
+    def keyword_searchable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keyword_searchable", value)
+
+    @property
+    @pulumi.getter(name="longValues")
+    def long_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported.
+        """
+        return pulumi.get(self, "long_values")
+
+    @long_values.setter
+    def long_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "long_values", value)
+
+    @property
+    @pulumi.getter(name="stringValues")
+    def string_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string isn't allowed.
+        """
+        return pulumi.get(self, "string_values")
+
+    @string_values.setter
+    def string_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "string_values", value)
 
 
 @pulumi.input_type

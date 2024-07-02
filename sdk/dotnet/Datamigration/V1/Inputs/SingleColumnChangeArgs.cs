@@ -52,14 +52,14 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<string>? Comment { get; set; }
 
         [Input("customFeatures")]
-        private InputMap<string>? _customFeatures;
+        private InputMap<object>? _customFeatures;
 
         /// <summary>
         /// Optional. Custom engine specific features.
         /// </summary>
-        public InputMap<string> CustomFeatures
+        public InputMap<object> CustomFeatures
         {
-            get => _customFeatures ?? (_customFeatures = new InputMap<string>());
+            get => _customFeatures ?? (_customFeatures = new InputMap<object>());
             set => _customFeatures = value;
         }
 

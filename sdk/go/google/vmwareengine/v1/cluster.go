@@ -27,9 +27,9 @@ type Cluster struct {
 	// The resource name of this cluster. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-	NodeTypeConfigs pulumi.StringMapOutput `pulumi:"nodeTypeConfigs"`
-	PrivateCloudId  pulumi.StringOutput    `pulumi:"privateCloudId"`
-	Project         pulumi.StringOutput    `pulumi:"project"`
+	NodeTypeConfigs NodeTypeConfigResponseMapOutput `pulumi:"nodeTypeConfigs"`
+	PrivateCloudId  pulumi.StringOutput             `pulumi:"privateCloudId"`
+	Project         pulumi.StringOutput             `pulumi:"project"`
 	// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// State of the resource.
@@ -102,9 +102,9 @@ type clusterArgs struct {
 	ClusterId string  `pulumi:"clusterId"`
 	Location  *string `pulumi:"location"`
 	// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-	NodeTypeConfigs map[string]string `pulumi:"nodeTypeConfigs"`
-	PrivateCloudId  string            `pulumi:"privateCloudId"`
-	Project         *string           `pulumi:"project"`
+	NodeTypeConfigs map[string]NodeTypeConfig `pulumi:"nodeTypeConfigs"`
+	PrivateCloudId  string                    `pulumi:"privateCloudId"`
+	Project         *string                   `pulumi:"project"`
 	// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
@@ -117,7 +117,7 @@ type ClusterArgs struct {
 	ClusterId pulumi.StringInput
 	Location  pulumi.StringPtrInput
 	// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-	NodeTypeConfigs pulumi.StringMapInput
+	NodeTypeConfigs NodeTypeConfigMapInput
 	PrivateCloudId  pulumi.StringInput
 	Project         pulumi.StringPtrInput
 	// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -188,8 +188,8 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 }
 
 // The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-func (o ClusterOutput) NodeTypeConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.NodeTypeConfigs }).(pulumi.StringMapOutput)
+func (o ClusterOutput) NodeTypeConfigs() NodeTypeConfigResponseMapOutput {
+	return o.ApplyT(func(v *Cluster) NodeTypeConfigResponseMapOutput { return v.NodeTypeConfigs }).(NodeTypeConfigResponseMapOutput)
 }
 
 func (o ClusterOutput) PrivateCloudId() pulumi.StringOutput {

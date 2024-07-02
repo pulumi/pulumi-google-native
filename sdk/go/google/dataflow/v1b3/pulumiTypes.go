@@ -1966,9 +1966,9 @@ type Environment struct {
 	// Which Flexible Resource Scheduling mode to run in.
 	FlexResourceSchedulingGoal *EnvironmentFlexResourceSchedulingGoal `pulumi:"flexResourceSchedulingGoal"`
 	// Experimental settings.
-	InternalExperiments map[string]string `pulumi:"internalExperiments"`
+	InternalExperiments map[string]interface{} `pulumi:"internalExperiments"`
 	// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-	SdkPipelineOptions map[string]string `pulumi:"sdkPipelineOptions"`
+	SdkPipelineOptions map[string]interface{} `pulumi:"sdkPipelineOptions"`
 	// Identity to run virtual machines as. Defaults to the default account.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
@@ -1978,9 +1978,9 @@ type Environment struct {
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix *string `pulumi:"tempStoragePrefix"`
 	// A description of the process that generated the request.
-	UserAgent map[string]string `pulumi:"userAgent"`
+	UserAgent map[string]interface{} `pulumi:"userAgent"`
 	// A structure describing which components and their versions of the service are required in order to run the job.
-	Version map[string]string `pulumi:"version"`
+	Version map[string]interface{} `pulumi:"version"`
 	// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
 	WorkerPools []WorkerPool `pulumi:"workerPools"`
 	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
@@ -2013,9 +2013,9 @@ type EnvironmentArgs struct {
 	// Which Flexible Resource Scheduling mode to run in.
 	FlexResourceSchedulingGoal EnvironmentFlexResourceSchedulingGoalPtrInput `pulumi:"flexResourceSchedulingGoal"`
 	// Experimental settings.
-	InternalExperiments pulumi.StringMapInput `pulumi:"internalExperiments"`
+	InternalExperiments pulumi.MapInput `pulumi:"internalExperiments"`
 	// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-	SdkPipelineOptions pulumi.StringMapInput `pulumi:"sdkPipelineOptions"`
+	SdkPipelineOptions pulumi.MapInput `pulumi:"sdkPipelineOptions"`
 	// Identity to run virtual machines as. Defaults to the default account.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
@@ -2025,9 +2025,9 @@ type EnvironmentArgs struct {
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix pulumi.StringPtrInput `pulumi:"tempStoragePrefix"`
 	// A description of the process that generated the request.
-	UserAgent pulumi.StringMapInput `pulumi:"userAgent"`
+	UserAgent pulumi.MapInput `pulumi:"userAgent"`
 	// A structure describing which components and their versions of the service are required in order to run the job.
-	Version pulumi.StringMapInput `pulumi:"version"`
+	Version pulumi.MapInput `pulumi:"version"`
 	// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
 	WorkerPools WorkerPoolArrayInput `pulumi:"workerPools"`
 	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
@@ -2140,13 +2140,13 @@ func (o EnvironmentOutput) FlexResourceSchedulingGoal() EnvironmentFlexResourceS
 }
 
 // Experimental settings.
-func (o EnvironmentOutput) InternalExperiments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Environment) map[string]string { return v.InternalExperiments }).(pulumi.StringMapOutput)
+func (o EnvironmentOutput) InternalExperiments() pulumi.MapOutput {
+	return o.ApplyT(func(v Environment) map[string]interface{} { return v.InternalExperiments }).(pulumi.MapOutput)
 }
 
 // The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-func (o EnvironmentOutput) SdkPipelineOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Environment) map[string]string { return v.SdkPipelineOptions }).(pulumi.StringMapOutput)
+func (o EnvironmentOutput) SdkPipelineOptions() pulumi.MapOutput {
+	return o.ApplyT(func(v Environment) map[string]interface{} { return v.SdkPipelineOptions }).(pulumi.MapOutput)
 }
 
 // Identity to run virtual machines as. Defaults to the default account.
@@ -2170,13 +2170,13 @@ func (o EnvironmentOutput) TempStoragePrefix() pulumi.StringPtrOutput {
 }
 
 // A description of the process that generated the request.
-func (o EnvironmentOutput) UserAgent() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Environment) map[string]string { return v.UserAgent }).(pulumi.StringMapOutput)
+func (o EnvironmentOutput) UserAgent() pulumi.MapOutput {
+	return o.ApplyT(func(v Environment) map[string]interface{} { return v.UserAgent }).(pulumi.MapOutput)
 }
 
 // A structure describing which components and their versions of the service are required in order to run the job.
-func (o EnvironmentOutput) Version() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Environment) map[string]string { return v.Version }).(pulumi.StringMapOutput)
+func (o EnvironmentOutput) Version() pulumi.MapOutput {
+	return o.ApplyT(func(v Environment) map[string]interface{} { return v.Version }).(pulumi.MapOutput)
 }
 
 // The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
@@ -2269,23 +2269,23 @@ func (o EnvironmentPtrOutput) FlexResourceSchedulingGoal() EnvironmentFlexResour
 }
 
 // Experimental settings.
-func (o EnvironmentPtrOutput) InternalExperiments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
+func (o EnvironmentPtrOutput) InternalExperiments() pulumi.MapOutput {
+	return o.ApplyT(func(v *Environment) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.InternalExperiments
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-func (o EnvironmentPtrOutput) SdkPipelineOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
+func (o EnvironmentPtrOutput) SdkPipelineOptions() pulumi.MapOutput {
+	return o.ApplyT(func(v *Environment) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.SdkPipelineOptions
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Identity to run virtual machines as. Defaults to the default account.
@@ -2329,23 +2329,23 @@ func (o EnvironmentPtrOutput) TempStoragePrefix() pulumi.StringPtrOutput {
 }
 
 // A description of the process that generated the request.
-func (o EnvironmentPtrOutput) UserAgent() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
+func (o EnvironmentPtrOutput) UserAgent() pulumi.MapOutput {
+	return o.ApplyT(func(v *Environment) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.UserAgent
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // A structure describing which components and their versions of the service are required in order to run the job.
-func (o EnvironmentPtrOutput) Version() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Environment) map[string]string {
+func (o EnvironmentPtrOutput) Version() pulumi.MapOutput {
+	return o.ApplyT(func(v *Environment) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Version
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
@@ -2391,9 +2391,9 @@ type EnvironmentResponse struct {
 	// Which Flexible Resource Scheduling mode to run in.
 	FlexResourceSchedulingGoal string `pulumi:"flexResourceSchedulingGoal"`
 	// Experimental settings.
-	InternalExperiments map[string]string `pulumi:"internalExperiments"`
+	InternalExperiments map[string]interface{} `pulumi:"internalExperiments"`
 	// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-	SdkPipelineOptions map[string]string `pulumi:"sdkPipelineOptions"`
+	SdkPipelineOptions map[string]interface{} `pulumi:"sdkPipelineOptions"`
 	// Identity to run virtual machines as. Defaults to the default account.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
@@ -2407,9 +2407,9 @@ type EnvironmentResponse struct {
 	// Whether the job uses the new streaming engine billing model based on resource usage.
 	UseStreamingEngineResourceBasedBilling bool `pulumi:"useStreamingEngineResourceBasedBilling"`
 	// A description of the process that generated the request.
-	UserAgent map[string]string `pulumi:"userAgent"`
+	UserAgent map[string]interface{} `pulumi:"userAgent"`
 	// A structure describing which components and their versions of the service are required in order to run the job.
-	Version map[string]string `pulumi:"version"`
+	Version map[string]interface{} `pulumi:"version"`
 	// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
 	WorkerPools []WorkerPoolResponse `pulumi:"workerPools"`
 	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
@@ -2459,13 +2459,13 @@ func (o EnvironmentResponseOutput) FlexResourceSchedulingGoal() pulumi.StringOut
 }
 
 // Experimental settings.
-func (o EnvironmentResponseOutput) InternalExperiments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentResponse) map[string]string { return v.InternalExperiments }).(pulumi.StringMapOutput)
+func (o EnvironmentResponseOutput) InternalExperiments() pulumi.MapOutput {
+	return o.ApplyT(func(v EnvironmentResponse) map[string]interface{} { return v.InternalExperiments }).(pulumi.MapOutput)
 }
 
 // The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
-func (o EnvironmentResponseOutput) SdkPipelineOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentResponse) map[string]string { return v.SdkPipelineOptions }).(pulumi.StringMapOutput)
+func (o EnvironmentResponseOutput) SdkPipelineOptions() pulumi.MapOutput {
+	return o.ApplyT(func(v EnvironmentResponse) map[string]interface{} { return v.SdkPipelineOptions }).(pulumi.MapOutput)
 }
 
 // Identity to run virtual machines as. Defaults to the default account.
@@ -2499,13 +2499,13 @@ func (o EnvironmentResponseOutput) UseStreamingEngineResourceBasedBilling() pulu
 }
 
 // A description of the process that generated the request.
-func (o EnvironmentResponseOutput) UserAgent() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentResponse) map[string]string { return v.UserAgent }).(pulumi.StringMapOutput)
+func (o EnvironmentResponseOutput) UserAgent() pulumi.MapOutput {
+	return o.ApplyT(func(v EnvironmentResponse) map[string]interface{} { return v.UserAgent }).(pulumi.MapOutput)
 }
 
 // A structure describing which components and their versions of the service are required in order to run the job.
-func (o EnvironmentResponseOutput) Version() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnvironmentResponse) map[string]string { return v.Version }).(pulumi.StringMapOutput)
+func (o EnvironmentResponseOutput) Version() pulumi.MapOutput {
+	return o.ApplyT(func(v EnvironmentResponse) map[string]interface{} { return v.Version }).(pulumi.MapOutput)
 }
 
 // The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
@@ -3101,7 +3101,7 @@ func (o FileIODetailsResponseArrayOutput) Index(i pulumi.IntInput) FileIODetails
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfo struct {
 	// A mapping from each stage to the information about that stage.
-	Stages map[string]string `pulumi:"stages"`
+	Stages map[string]JobExecutionStageInfo `pulumi:"stages"`
 }
 
 // JobExecutionInfoInput is an input type that accepts JobExecutionInfoArgs and JobExecutionInfoOutput values.
@@ -3118,7 +3118,7 @@ type JobExecutionInfoInput interface {
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfoArgs struct {
 	// A mapping from each stage to the information about that stage.
-	Stages pulumi.StringMapInput `pulumi:"stages"`
+	Stages JobExecutionStageInfoMapInput `pulumi:"stages"`
 }
 
 func (JobExecutionInfoArgs) ElementType() reflect.Type {
@@ -3200,8 +3200,8 @@ func (o JobExecutionInfoOutput) ToJobExecutionInfoPtrOutputWithContext(ctx conte
 }
 
 // A mapping from each stage to the information about that stage.
-func (o JobExecutionInfoOutput) Stages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JobExecutionInfo) map[string]string { return v.Stages }).(pulumi.StringMapOutput)
+func (o JobExecutionInfoOutput) Stages() JobExecutionStageInfoMapOutput {
+	return o.ApplyT(func(v JobExecutionInfo) map[string]JobExecutionStageInfo { return v.Stages }).(JobExecutionStageInfoMapOutput)
 }
 
 type JobExecutionInfoPtrOutput struct{ *pulumi.OutputState }
@@ -3229,19 +3229,19 @@ func (o JobExecutionInfoPtrOutput) Elem() JobExecutionInfoOutput {
 }
 
 // A mapping from each stage to the information about that stage.
-func (o JobExecutionInfoPtrOutput) Stages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *JobExecutionInfo) map[string]string {
+func (o JobExecutionInfoPtrOutput) Stages() JobExecutionStageInfoMapOutput {
+	return o.ApplyT(func(v *JobExecutionInfo) map[string]JobExecutionStageInfo {
 		if v == nil {
 			return nil
 		}
 		return v.Stages
-	}).(pulumi.StringMapOutput)
+	}).(JobExecutionStageInfoMapOutput)
 }
 
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
 type JobExecutionInfoResponse struct {
 	// A mapping from each stage to the information about that stage.
-	Stages map[string]string `pulumi:"stages"`
+	Stages map[string]JobExecutionStageInfoResponse `pulumi:"stages"`
 }
 
 // Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
@@ -3260,8 +3260,154 @@ func (o JobExecutionInfoResponseOutput) ToJobExecutionInfoResponseOutputWithCont
 }
 
 // A mapping from each stage to the information about that stage.
-func (o JobExecutionInfoResponseOutput) Stages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JobExecutionInfoResponse) map[string]string { return v.Stages }).(pulumi.StringMapOutput)
+func (o JobExecutionInfoResponseOutput) Stages() JobExecutionStageInfoResponseMapOutput {
+	return o.ApplyT(func(v JobExecutionInfoResponse) map[string]JobExecutionStageInfoResponse { return v.Stages }).(JobExecutionStageInfoResponseMapOutput)
+}
+
+// Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
+type JobExecutionStageInfo struct {
+	// The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
+	StepName []string `pulumi:"stepName"`
+}
+
+// JobExecutionStageInfoInput is an input type that accepts JobExecutionStageInfoArgs and JobExecutionStageInfoOutput values.
+// You can construct a concrete instance of `JobExecutionStageInfoInput` via:
+//
+//	JobExecutionStageInfoArgs{...}
+type JobExecutionStageInfoInput interface {
+	pulumi.Input
+
+	ToJobExecutionStageInfoOutput() JobExecutionStageInfoOutput
+	ToJobExecutionStageInfoOutputWithContext(context.Context) JobExecutionStageInfoOutput
+}
+
+// Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
+type JobExecutionStageInfoArgs struct {
+	// The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
+	StepName pulumi.StringArrayInput `pulumi:"stepName"`
+}
+
+func (JobExecutionStageInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionStageInfo)(nil)).Elem()
+}
+
+func (i JobExecutionStageInfoArgs) ToJobExecutionStageInfoOutput() JobExecutionStageInfoOutput {
+	return i.ToJobExecutionStageInfoOutputWithContext(context.Background())
+}
+
+func (i JobExecutionStageInfoArgs) ToJobExecutionStageInfoOutputWithContext(ctx context.Context) JobExecutionStageInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionStageInfoOutput)
+}
+
+// JobExecutionStageInfoMapInput is an input type that accepts JobExecutionStageInfoMap and JobExecutionStageInfoMapOutput values.
+// You can construct a concrete instance of `JobExecutionStageInfoMapInput` via:
+//
+//	JobExecutionStageInfoMap{ "key": JobExecutionStageInfoArgs{...} }
+type JobExecutionStageInfoMapInput interface {
+	pulumi.Input
+
+	ToJobExecutionStageInfoMapOutput() JobExecutionStageInfoMapOutput
+	ToJobExecutionStageInfoMapOutputWithContext(context.Context) JobExecutionStageInfoMapOutput
+}
+
+type JobExecutionStageInfoMap map[string]JobExecutionStageInfoInput
+
+func (JobExecutionStageInfoMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobExecutionStageInfo)(nil)).Elem()
+}
+
+func (i JobExecutionStageInfoMap) ToJobExecutionStageInfoMapOutput() JobExecutionStageInfoMapOutput {
+	return i.ToJobExecutionStageInfoMapOutputWithContext(context.Background())
+}
+
+func (i JobExecutionStageInfoMap) ToJobExecutionStageInfoMapOutputWithContext(ctx context.Context) JobExecutionStageInfoMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionStageInfoMapOutput)
+}
+
+// Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
+type JobExecutionStageInfoOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionStageInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionStageInfo)(nil)).Elem()
+}
+
+func (o JobExecutionStageInfoOutput) ToJobExecutionStageInfoOutput() JobExecutionStageInfoOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoOutput) ToJobExecutionStageInfoOutputWithContext(ctx context.Context) JobExecutionStageInfoOutput {
+	return o
+}
+
+// The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
+func (o JobExecutionStageInfoOutput) StepName() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobExecutionStageInfo) []string { return v.StepName }).(pulumi.StringArrayOutput)
+}
+
+type JobExecutionStageInfoMapOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionStageInfoMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobExecutionStageInfo)(nil)).Elem()
+}
+
+func (o JobExecutionStageInfoMapOutput) ToJobExecutionStageInfoMapOutput() JobExecutionStageInfoMapOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoMapOutput) ToJobExecutionStageInfoMapOutputWithContext(ctx context.Context) JobExecutionStageInfoMapOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoMapOutput) MapIndex(k pulumi.StringInput) JobExecutionStageInfoOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobExecutionStageInfo {
+		return vs[0].(map[string]JobExecutionStageInfo)[vs[1].(string)]
+	}).(JobExecutionStageInfoOutput)
+}
+
+// Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
+type JobExecutionStageInfoResponse struct {
+	// The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
+	StepName []string `pulumi:"stepName"`
+}
+
+// Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
+type JobExecutionStageInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionStageInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionStageInfoResponse)(nil)).Elem()
+}
+
+func (o JobExecutionStageInfoResponseOutput) ToJobExecutionStageInfoResponseOutput() JobExecutionStageInfoResponseOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoResponseOutput) ToJobExecutionStageInfoResponseOutputWithContext(ctx context.Context) JobExecutionStageInfoResponseOutput {
+	return o
+}
+
+// The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
+func (o JobExecutionStageInfoResponseOutput) StepName() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobExecutionStageInfoResponse) []string { return v.StepName }).(pulumi.StringArrayOutput)
+}
+
+type JobExecutionStageInfoResponseMapOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionStageInfoResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobExecutionStageInfoResponse)(nil)).Elem()
+}
+
+func (o JobExecutionStageInfoResponseMapOutput) ToJobExecutionStageInfoResponseMapOutput() JobExecutionStageInfoResponseMapOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoResponseMapOutput) ToJobExecutionStageInfoResponseMapOutputWithContext(ctx context.Context) JobExecutionStageInfoResponseMapOutput {
+	return o
+}
+
+func (o JobExecutionStageInfoResponseMapOutput) MapIndex(k pulumi.StringInput) JobExecutionStageInfoResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobExecutionStageInfoResponse {
+		return vs[0].(map[string]JobExecutionStageInfoResponse)[vs[1].(string)]
+	}).(JobExecutionStageInfoResponseOutput)
 }
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
@@ -5947,7 +6093,7 @@ type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -5973,8 +6119,8 @@ func (o StatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -5989,7 +6135,7 @@ type Step struct {
 	// The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
 	Name *string `pulumi:"name"`
 	// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
-	Properties map[string]string `pulumi:"properties"`
+	Properties map[string]interface{} `pulumi:"properties"`
 }
 
 // StepInput is an input type that accepts StepArgs and StepOutput values.
@@ -6010,7 +6156,7 @@ type StepArgs struct {
 	// The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
+	Properties pulumi.MapInput `pulumi:"properties"`
 }
 
 func (StepArgs) ElementType() reflect.Type {
@@ -6076,8 +6222,8 @@ func (o StepOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
-func (o StepOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Step) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+func (o StepOutput) Properties() pulumi.MapOutput {
+	return o.ApplyT(func(v Step) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
 }
 
 type StepArrayOutput struct{ *pulumi.OutputState }
@@ -6107,7 +6253,7 @@ type StepResponse struct {
 	// The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
 	Name string `pulumi:"name"`
 	// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
-	Properties map[string]string `pulumi:"properties"`
+	Properties map[string]interface{} `pulumi:"properties"`
 }
 
 // Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. **Note:** The properties of this object are not stable and might change. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
@@ -6136,8 +6282,8 @@ func (o StepResponseOutput) Name() pulumi.StringOutput {
 }
 
 // Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
-func (o StepResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StepResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+func (o StepResponseOutput) Properties() pulumi.MapOutput {
+	return o.ApplyT(func(v StepResponse) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
 }
 
 type StepResponseArrayOutput struct{ *pulumi.OutputState }
@@ -7086,7 +7232,7 @@ type WorkerPool struct {
 	// Packages to be installed on workers.
 	Packages []Package `pulumi:"packages"`
 	// Extra arguments for this worker pool.
-	PoolArgs map[string]string `pulumi:"poolArgs"`
+	PoolArgs map[string]interface{} `pulumi:"poolArgs"`
 	// Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
 	SdkHarnessContainerImages []SdkHarnessContainerImage `pulumi:"sdkHarnessContainerImages"`
 	// Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -7147,7 +7293,7 @@ type WorkerPoolArgs struct {
 	// Packages to be installed on workers.
 	Packages PackageArrayInput `pulumi:"packages"`
 	// Extra arguments for this worker pool.
-	PoolArgs pulumi.StringMapInput `pulumi:"poolArgs"`
+	PoolArgs pulumi.MapInput `pulumi:"poolArgs"`
 	// Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
 	SdkHarnessContainerImages SdkHarnessContainerImageArrayInput `pulumi:"sdkHarnessContainerImages"`
 	// Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -7292,8 +7438,8 @@ func (o WorkerPoolOutput) Packages() PackageArrayOutput {
 }
 
 // Extra arguments for this worker pool.
-func (o WorkerPoolOutput) PoolArgs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WorkerPool) map[string]string { return v.PoolArgs }).(pulumi.StringMapOutput)
+func (o WorkerPoolOutput) PoolArgs() pulumi.MapOutput {
+	return o.ApplyT(func(v WorkerPool) map[string]interface{} { return v.PoolArgs }).(pulumi.MapOutput)
 }
 
 // Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
@@ -7381,7 +7527,7 @@ type WorkerPoolResponse struct {
 	// Packages to be installed on workers.
 	Packages []PackageResponse `pulumi:"packages"`
 	// Extra arguments for this worker pool.
-	PoolArgs map[string]string `pulumi:"poolArgs"`
+	PoolArgs map[string]interface{} `pulumi:"poolArgs"`
 	// Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
 	SdkHarnessContainerImages []SdkHarnessContainerImageResponse `pulumi:"sdkHarnessContainerImages"`
 	// Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
@@ -7489,8 +7635,8 @@ func (o WorkerPoolResponseOutput) Packages() PackageResponseArrayOutput {
 }
 
 // Extra arguments for this worker pool.
-func (o WorkerPoolResponseOutput) PoolArgs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WorkerPoolResponse) map[string]string { return v.PoolArgs }).(pulumi.StringMapOutput)
+func (o WorkerPoolResponseOutput) PoolArgs() pulumi.MapOutput {
+	return o.ApplyT(func(v WorkerPoolResponse) map[string]interface{} { return v.PoolArgs }).(pulumi.MapOutput)
 }
 
 // Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
@@ -7872,6 +8018,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsArrayInput)(nil)).Elem(), FileIODetailsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionInfoInput)(nil)).Elem(), JobExecutionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionInfoPtrInput)(nil)).Elem(), JobExecutionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionStageInfoInput)(nil)).Elem(), JobExecutionStageInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionStageInfoMapInput)(nil)).Elem(), JobExecutionStageInfoMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataInput)(nil)).Elem(), JobMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataPtrInput)(nil)).Elem(), JobMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
@@ -7957,6 +8105,10 @@ func init() {
 	pulumi.RegisterOutputType(JobExecutionInfoOutput{})
 	pulumi.RegisterOutputType(JobExecutionInfoPtrOutput{})
 	pulumi.RegisterOutputType(JobExecutionInfoResponseOutput{})
+	pulumi.RegisterOutputType(JobExecutionStageInfoOutput{})
+	pulumi.RegisterOutputType(JobExecutionStageInfoMapOutput{})
+	pulumi.RegisterOutputType(JobExecutionStageInfoResponseOutput{})
+	pulumi.RegisterOutputType(JobExecutionStageInfoResponseMapOutput{})
 	pulumi.RegisterOutputType(JobMetadataOutput{})
 	pulumi.RegisterOutputType(JobMetadataPtrOutput{})
 	pulumi.RegisterOutputType(JobMetadataResponseOutput{})

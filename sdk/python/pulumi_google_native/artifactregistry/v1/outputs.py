@@ -14,6 +14,9 @@ from ._enums import *
 __all__ = [
     'AptRepositoryResponse',
     'BindingResponse',
+    'CleanupPolicyConditionResponse',
+    'CleanupPolicyMostRecentVersionsResponse',
+    'CleanupPolicyResponse',
     'DockerRepositoryConfigResponse',
     'DockerRepositoryResponse',
     'ExprResponse',
@@ -112,6 +115,237 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class CleanupPolicyConditionResponse(dict):
+    """
+    CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newerThan":
+            suggest = "newer_than"
+        elif key == "olderThan":
+            suggest = "older_than"
+        elif key == "packageNamePrefixes":
+            suggest = "package_name_prefixes"
+        elif key == "tagPrefixes":
+            suggest = "tag_prefixes"
+        elif key == "tagState":
+            suggest = "tag_state"
+        elif key == "versionAge":
+            suggest = "version_age"
+        elif key == "versionNamePrefixes":
+            suggest = "version_name_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanupPolicyConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanupPolicyConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanupPolicyConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 newer_than: str,
+                 older_than: str,
+                 package_name_prefixes: Sequence[str],
+                 tag_prefixes: Sequence[str],
+                 tag_state: str,
+                 version_age: str,
+                 version_name_prefixes: Sequence[str]):
+        """
+        CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
+        :param str newer_than: Match versions newer than a duration.
+        :param str older_than: Match versions older than a duration.
+        :param Sequence[str] package_name_prefixes: Match versions by package prefix. Applied on any prefix match.
+        :param Sequence[str] tag_prefixes: Match versions by tag prefix. Applied on any prefix match.
+        :param str tag_state: Match versions by tag status.
+        :param str version_age: DEPRECATED: Use older_than.
+        :param Sequence[str] version_name_prefixes: Match versions by version name prefix. Applied on any prefix match.
+        """
+        pulumi.set(__self__, "newer_than", newer_than)
+        pulumi.set(__self__, "older_than", older_than)
+        pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+        pulumi.set(__self__, "tag_prefixes", tag_prefixes)
+        pulumi.set(__self__, "tag_state", tag_state)
+        pulumi.set(__self__, "version_age", version_age)
+        pulumi.set(__self__, "version_name_prefixes", version_name_prefixes)
+
+    @property
+    @pulumi.getter(name="newerThan")
+    def newer_than(self) -> str:
+        """
+        Match versions newer than a duration.
+        """
+        return pulumi.get(self, "newer_than")
+
+    @property
+    @pulumi.getter(name="olderThan")
+    def older_than(self) -> str:
+        """
+        Match versions older than a duration.
+        """
+        return pulumi.get(self, "older_than")
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Sequence[str]:
+        """
+        Match versions by package prefix. Applied on any prefix match.
+        """
+        return pulumi.get(self, "package_name_prefixes")
+
+    @property
+    @pulumi.getter(name="tagPrefixes")
+    def tag_prefixes(self) -> Sequence[str]:
+        """
+        Match versions by tag prefix. Applied on any prefix match.
+        """
+        return pulumi.get(self, "tag_prefixes")
+
+    @property
+    @pulumi.getter(name="tagState")
+    def tag_state(self) -> str:
+        """
+        Match versions by tag status.
+        """
+        return pulumi.get(self, "tag_state")
+
+    @property
+    @pulumi.getter(name="versionAge")
+    @_utilities.deprecated("""DEPRECATED: Use older_than.""")
+    def version_age(self) -> str:
+        """
+        DEPRECATED: Use older_than.
+        """
+        return pulumi.get(self, "version_age")
+
+    @property
+    @pulumi.getter(name="versionNamePrefixes")
+    def version_name_prefixes(self) -> Sequence[str]:
+        """
+        Match versions by version name prefix. Applied on any prefix match.
+        """
+        return pulumi.get(self, "version_name_prefixes")
+
+
+@pulumi.output_type
+class CleanupPolicyMostRecentVersionsResponse(dict):
+    """
+    CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepCount":
+            suggest = "keep_count"
+        elif key == "packageNamePrefixes":
+            suggest = "package_name_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanupPolicyMostRecentVersionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanupPolicyMostRecentVersionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanupPolicyMostRecentVersionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 keep_count: int,
+                 package_name_prefixes: Sequence[str]):
+        """
+        CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions.
+        :param int keep_count: Minimum number of versions to keep.
+        :param Sequence[str] package_name_prefixes: List of package name prefixes that will apply this rule.
+        """
+        pulumi.set(__self__, "keep_count", keep_count)
+        pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+
+    @property
+    @pulumi.getter(name="keepCount")
+    def keep_count(self) -> int:
+        """
+        Minimum number of versions to keep.
+        """
+        return pulumi.get(self, "keep_count")
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Sequence[str]:
+        """
+        List of package name prefixes that will apply this rule.
+        """
+        return pulumi.get(self, "package_name_prefixes")
+
+
+@pulumi.output_type
+class CleanupPolicyResponse(dict):
+    """
+    Artifact policy configuration for repository cleanup policies.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mostRecentVersions":
+            suggest = "most_recent_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CleanupPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CleanupPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CleanupPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 condition: 'outputs.CleanupPolicyConditionResponse',
+                 most_recent_versions: 'outputs.CleanupPolicyMostRecentVersionsResponse'):
+        """
+        Artifact policy configuration for repository cleanup policies.
+        :param str action: Policy action.
+        :param 'CleanupPolicyConditionResponse' condition: Policy condition for matching versions.
+        :param 'CleanupPolicyMostRecentVersionsResponse' most_recent_versions: Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "most_recent_versions", most_recent_versions)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Policy action.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.CleanupPolicyConditionResponse':
+        """
+        Policy condition for matching versions.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="mostRecentVersions")
+    def most_recent_versions(self) -> 'outputs.CleanupPolicyMostRecentVersionsResponse':
+        """
+        Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+        """
+        return pulumi.get(self, "most_recent_versions")
 
 
 @pulumi.output_type

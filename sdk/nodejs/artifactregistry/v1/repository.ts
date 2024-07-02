@@ -40,7 +40,7 @@ export class Repository extends pulumi.CustomResource {
     /**
      * Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
      */
-    public readonly cleanupPolicies!: pulumi.Output<{[key: string]: string}>;
+    public readonly cleanupPolicies!: pulumi.Output<{[key: string]: outputs.artifactregistry.v1.CleanupPolicyResponse}>;
     /**
      * Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
      */
@@ -176,7 +176,7 @@ export interface RepositoryArgs {
     /**
      * Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
      */
-    cleanupPolicies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    cleanupPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.artifactregistry.v1.CleanupPolicyArgs>}>;
     /**
      * Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
      */

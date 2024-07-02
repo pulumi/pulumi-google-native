@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Locations;
+        public readonly ImmutableDictionary<string, Outputs.LocationPolicyLocationResponse> Locations;
         /// <summary>
         /// Strategy for distributing VMs across zones in a region.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private LocationPolicyResponse(
-            ImmutableDictionary<string, string> locations,
+            ImmutableDictionary<string, Outputs.LocationPolicyLocationResponse> locations,
 
             string targetShape)
         {

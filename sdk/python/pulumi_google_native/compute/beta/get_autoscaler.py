@@ -118,7 +118,7 @@ class GetAutoscalerResult:
 
     @property
     @pulumi.getter(name="scalingScheduleStatus")
-    def scaling_schedule_status(self) -> Mapping[str, str]:
+    def scaling_schedule_status(self) -> Mapping[str, 'outputs.ScalingScheduleStatusResponse']:
         """
         Status information of existing scaling schedules.
         """

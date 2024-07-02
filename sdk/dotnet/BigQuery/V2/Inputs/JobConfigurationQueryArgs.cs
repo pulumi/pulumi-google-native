@@ -145,14 +145,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         [Input("tableDefinitions")]
-        private InputMap<string>? _tableDefinitions;
+        private InputMap<Inputs.ExternalDataConfigurationArgs>? _tableDefinitions;
 
         /// <summary>
         /// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         /// </summary>
-        public InputMap<string> TableDefinitions
+        public InputMap<Inputs.ExternalDataConfigurationArgs> TableDefinitions
         {
-            get => _tableDefinitions ?? (_tableDefinitions = new InputMap<string>());
+            get => _tableDefinitions ?? (_tableDefinitions = new InputMap<Inputs.ExternalDataConfigurationArgs>());
             set => _tableDefinitions = value;
         }
 

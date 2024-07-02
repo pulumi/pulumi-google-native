@@ -32,7 +32,7 @@ type LookupTriggerResult struct {
 	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
 	Channel string `pulumi:"channel"`
 	// The reason(s) why a trigger is in FAILED state.
-	Conditions map[string]string `pulumi:"conditions"`
+	Conditions map[string]StateConditionResponse `pulumi:"conditions"`
 	// The creation time.
 	CreateTime string `pulumi:"createTime"`
 	// Destination specifies where the events should be sent to.
@@ -100,8 +100,8 @@ func (o LookupTriggerResultOutput) Channel() pulumi.StringOutput {
 }
 
 // The reason(s) why a trigger is in FAILED state.
-func (o LookupTriggerResultOutput) Conditions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupTriggerResult) map[string]string { return v.Conditions }).(pulumi.StringMapOutput)
+func (o LookupTriggerResultOutput) Conditions() StateConditionResponseMapOutput {
+	return o.ApplyT(func(v LookupTriggerResult) map[string]StateConditionResponse { return v.Conditions }).(StateConditionResponseMapOutput)
 }
 
 // The creation time.

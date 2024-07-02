@@ -1119,6 +1119,151 @@ func (o ChangeStreamConfigResponseOutput) RetentionPeriod() pulumi.StringOutput 
 	return o.ApplyT(func(v ChangeStreamConfigResponse) string { return v.RetentionPeriod }).(pulumi.StringOutput)
 }
 
+// A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance.
+type ClusterType struct {
+	// Configuration for this cluster.
+	ClusterConfig *ClusterConfig `pulumi:"clusterConfig"`
+	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+	DefaultStorageType *ClusterDefaultStorageType `pulumi:"defaultStorageType"`
+	// Immutable. The encryption configuration for CMEK-protected clusters.
+	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
+	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+	Location *string `pulumi:"location"`
+	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+	Name *string `pulumi:"name"`
+	// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+	ServeNodes *int `pulumi:"serveNodes"`
+}
+
+// ClusterTypeInput is an input type that accepts ClusterTypeArgs and ClusterTypeOutput values.
+// You can construct a concrete instance of `ClusterTypeInput` via:
+//
+//	ClusterTypeArgs{...}
+type ClusterTypeInput interface {
+	pulumi.Input
+
+	ToClusterTypeOutput() ClusterTypeOutput
+	ToClusterTypeOutputWithContext(context.Context) ClusterTypeOutput
+}
+
+// A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance.
+type ClusterTypeArgs struct {
+	// Configuration for this cluster.
+	ClusterConfig ClusterConfigPtrInput `pulumi:"clusterConfig"`
+	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+	DefaultStorageType ClusterDefaultStorageTypePtrInput `pulumi:"defaultStorageType"`
+	// Immutable. The encryption configuration for CMEK-protected clusters.
+	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+	ServeNodes pulumi.IntPtrInput `pulumi:"serveNodes"`
+}
+
+func (ClusterTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterType)(nil)).Elem()
+}
+
+func (i ClusterTypeArgs) ToClusterTypeOutput() ClusterTypeOutput {
+	return i.ToClusterTypeOutputWithContext(context.Background())
+}
+
+func (i ClusterTypeArgs) ToClusterTypeOutputWithContext(ctx context.Context) ClusterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTypeOutput)
+}
+
+// ClusterTypeMapInput is an input type that accepts ClusterTypeMap and ClusterTypeMapOutput values.
+// You can construct a concrete instance of `ClusterTypeMapInput` via:
+//
+//	ClusterTypeMap{ "key": ClusterTypeArgs{...} }
+type ClusterTypeMapInput interface {
+	pulumi.Input
+
+	ToClusterTypeMapOutput() ClusterTypeMapOutput
+	ToClusterTypeMapOutputWithContext(context.Context) ClusterTypeMapOutput
+}
+
+type ClusterTypeMap map[string]ClusterTypeInput
+
+func (ClusterTypeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterType)(nil)).Elem()
+}
+
+func (i ClusterTypeMap) ToClusterTypeMapOutput() ClusterTypeMapOutput {
+	return i.ToClusterTypeMapOutputWithContext(context.Background())
+}
+
+func (i ClusterTypeMap) ToClusterTypeMapOutputWithContext(ctx context.Context) ClusterTypeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTypeMapOutput)
+}
+
+// A resizable group of nodes in a particular cloud location, capable of serving all Tables in the parent Instance.
+type ClusterTypeOutput struct{ *pulumi.OutputState }
+
+func (ClusterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterType)(nil)).Elem()
+}
+
+func (o ClusterTypeOutput) ToClusterTypeOutput() ClusterTypeOutput {
+	return o
+}
+
+func (o ClusterTypeOutput) ToClusterTypeOutputWithContext(ctx context.Context) ClusterTypeOutput {
+	return o
+}
+
+// Configuration for this cluster.
+func (o ClusterTypeOutput) ClusterConfig() ClusterConfigPtrOutput {
+	return o.ApplyT(func(v ClusterType) *ClusterConfig { return v.ClusterConfig }).(ClusterConfigPtrOutput)
+}
+
+// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+func (o ClusterTypeOutput) DefaultStorageType() ClusterDefaultStorageTypePtrOutput {
+	return o.ApplyT(func(v ClusterType) *ClusterDefaultStorageType { return v.DefaultStorageType }).(ClusterDefaultStorageTypePtrOutput)
+}
+
+// Immutable. The encryption configuration for CMEK-protected clusters.
+func (o ClusterTypeOutput) EncryptionConfig() EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v ClusterType) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
+}
+
+// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+func (o ClusterTypeOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterType) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+func (o ClusterTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+func (o ClusterTypeOutput) ServeNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterType) *int { return v.ServeNodes }).(pulumi.IntPtrOutput)
+}
+
+type ClusterTypeMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterTypeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterType)(nil)).Elem()
+}
+
+func (o ClusterTypeMapOutput) ToClusterTypeMapOutput() ClusterTypeMapOutput {
+	return o
+}
+
+func (o ClusterTypeMapOutput) ToClusterTypeMapOutputWithContext(ctx context.Context) ClusterTypeMapOutput {
+	return o
+}
+
+func (o ClusterTypeMapOutput) MapIndex(k pulumi.StringInput) ClusterTypeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterType {
+		return vs[0].(map[string]ClusterType)[vs[1].(string)]
+	}).(ClusterTypeOutput)
+}
+
 // Autoscaling config for a cluster.
 type ClusterAutoscalingConfig struct {
 	// Autoscaling limits for this cluster.
@@ -1477,6 +1622,252 @@ func (o ClusterConfigResponseOutput) ClusterAutoscalingConfig() ClusterAutoscali
 	return o.ApplyT(func(v ClusterConfigResponse) ClusterAutoscalingConfigResponse { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigResponseOutput)
 }
 
+// The state of a table's data in a particular cluster.
+type ClusterStateResponse struct {
+	// The encryption information for the table in this cluster. If the encryption key protecting this resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS). The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS.
+	EncryptionInfo []EncryptionInfoResponse `pulumi:"encryptionInfo"`
+	// The state of replication for the table in this cluster.
+	ReplicationState string `pulumi:"replicationState"`
+}
+
+// The state of a table's data in a particular cluster.
+type ClusterStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStateResponse)(nil)).Elem()
+}
+
+func (o ClusterStateResponseOutput) ToClusterStateResponseOutput() ClusterStateResponseOutput {
+	return o
+}
+
+func (o ClusterStateResponseOutput) ToClusterStateResponseOutputWithContext(ctx context.Context) ClusterStateResponseOutput {
+	return o
+}
+
+// The encryption information for the table in this cluster. If the encryption key protecting this resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS). The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS.
+func (o ClusterStateResponseOutput) EncryptionInfo() EncryptionInfoResponseArrayOutput {
+	return o.ApplyT(func(v ClusterStateResponse) []EncryptionInfoResponse { return v.EncryptionInfo }).(EncryptionInfoResponseArrayOutput)
+}
+
+// The state of replication for the table in this cluster.
+func (o ClusterStateResponseOutput) ReplicationState() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStateResponse) string { return v.ReplicationState }).(pulumi.StringOutput)
+}
+
+type ClusterStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterStateResponse)(nil)).Elem()
+}
+
+func (o ClusterStateResponseMapOutput) ToClusterStateResponseMapOutput() ClusterStateResponseMapOutput {
+	return o
+}
+
+func (o ClusterStateResponseMapOutput) ToClusterStateResponseMapOutputWithContext(ctx context.Context) ClusterStateResponseMapOutput {
+	return o
+}
+
+func (o ClusterStateResponseMapOutput) MapIndex(k pulumi.StringInput) ClusterStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterStateResponse {
+		return vs[0].(map[string]ClusterStateResponse)[vs[1].(string)]
+	}).(ClusterStateResponseOutput)
+}
+
+// A set of columns within a table which share a common configuration.
+type ColumnFamily struct {
+	// Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+	GcRule *GcRule `pulumi:"gcRule"`
+}
+
+// ColumnFamilyInput is an input type that accepts ColumnFamilyArgs and ColumnFamilyOutput values.
+// You can construct a concrete instance of `ColumnFamilyInput` via:
+//
+//	ColumnFamilyArgs{...}
+type ColumnFamilyInput interface {
+	pulumi.Input
+
+	ToColumnFamilyOutput() ColumnFamilyOutput
+	ToColumnFamilyOutputWithContext(context.Context) ColumnFamilyOutput
+}
+
+// A set of columns within a table which share a common configuration.
+type ColumnFamilyArgs struct {
+	// Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+	GcRule GcRulePtrInput `pulumi:"gcRule"`
+}
+
+func (ColumnFamilyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnFamily)(nil)).Elem()
+}
+
+func (i ColumnFamilyArgs) ToColumnFamilyOutput() ColumnFamilyOutput {
+	return i.ToColumnFamilyOutputWithContext(context.Background())
+}
+
+func (i ColumnFamilyArgs) ToColumnFamilyOutputWithContext(ctx context.Context) ColumnFamilyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnFamilyOutput)
+}
+
+// ColumnFamilyMapInput is an input type that accepts ColumnFamilyMap and ColumnFamilyMapOutput values.
+// You can construct a concrete instance of `ColumnFamilyMapInput` via:
+//
+//	ColumnFamilyMap{ "key": ColumnFamilyArgs{...} }
+type ColumnFamilyMapInput interface {
+	pulumi.Input
+
+	ToColumnFamilyMapOutput() ColumnFamilyMapOutput
+	ToColumnFamilyMapOutputWithContext(context.Context) ColumnFamilyMapOutput
+}
+
+type ColumnFamilyMap map[string]ColumnFamilyInput
+
+func (ColumnFamilyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ColumnFamily)(nil)).Elem()
+}
+
+func (i ColumnFamilyMap) ToColumnFamilyMapOutput() ColumnFamilyMapOutput {
+	return i.ToColumnFamilyMapOutputWithContext(context.Background())
+}
+
+func (i ColumnFamilyMap) ToColumnFamilyMapOutputWithContext(ctx context.Context) ColumnFamilyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnFamilyMapOutput)
+}
+
+// A set of columns within a table which share a common configuration.
+type ColumnFamilyOutput struct{ *pulumi.OutputState }
+
+func (ColumnFamilyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnFamily)(nil)).Elem()
+}
+
+func (o ColumnFamilyOutput) ToColumnFamilyOutput() ColumnFamilyOutput {
+	return o
+}
+
+func (o ColumnFamilyOutput) ToColumnFamilyOutputWithContext(ctx context.Context) ColumnFamilyOutput {
+	return o
+}
+
+// Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+func (o ColumnFamilyOutput) GcRule() GcRulePtrOutput {
+	return o.ApplyT(func(v ColumnFamily) *GcRule { return v.GcRule }).(GcRulePtrOutput)
+}
+
+type ColumnFamilyMapOutput struct{ *pulumi.OutputState }
+
+func (ColumnFamilyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ColumnFamily)(nil)).Elem()
+}
+
+func (o ColumnFamilyMapOutput) ToColumnFamilyMapOutput() ColumnFamilyMapOutput {
+	return o
+}
+
+func (o ColumnFamilyMapOutput) ToColumnFamilyMapOutputWithContext(ctx context.Context) ColumnFamilyMapOutput {
+	return o
+}
+
+func (o ColumnFamilyMapOutput) MapIndex(k pulumi.StringInput) ColumnFamilyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ColumnFamily {
+		return vs[0].(map[string]ColumnFamily)[vs[1].(string)]
+	}).(ColumnFamilyOutput)
+}
+
+// A set of columns within a table which share a common configuration.
+type ColumnFamilyResponse struct {
+	// Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+	GcRule GcRuleResponse `pulumi:"gcRule"`
+	// Only available with STATS_VIEW, this includes summary statistics about column family contents. For statistics over an entire table, see TableStats above.
+	Stats ColumnFamilyStatsResponse `pulumi:"stats"`
+}
+
+// A set of columns within a table which share a common configuration.
+type ColumnFamilyResponseOutput struct{ *pulumi.OutputState }
+
+func (ColumnFamilyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnFamilyResponse)(nil)).Elem()
+}
+
+func (o ColumnFamilyResponseOutput) ToColumnFamilyResponseOutput() ColumnFamilyResponseOutput {
+	return o
+}
+
+func (o ColumnFamilyResponseOutput) ToColumnFamilyResponseOutputWithContext(ctx context.Context) ColumnFamilyResponseOutput {
+	return o
+}
+
+// Garbage collection rule specified as a protobuf. Must serialize to at most 500 bytes. NOTE: Garbage collection executes opportunistically in the background, and so it's possible for reads to return a cell even if it matches the active GC expression for its family.
+func (o ColumnFamilyResponseOutput) GcRule() GcRuleResponseOutput {
+	return o.ApplyT(func(v ColumnFamilyResponse) GcRuleResponse { return v.GcRule }).(GcRuleResponseOutput)
+}
+
+// Only available with STATS_VIEW, this includes summary statistics about column family contents. For statistics over an entire table, see TableStats above.
+func (o ColumnFamilyResponseOutput) Stats() ColumnFamilyStatsResponseOutput {
+	return o.ApplyT(func(v ColumnFamilyResponse) ColumnFamilyStatsResponse { return v.Stats }).(ColumnFamilyStatsResponseOutput)
+}
+
+type ColumnFamilyResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ColumnFamilyResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ColumnFamilyResponse)(nil)).Elem()
+}
+
+func (o ColumnFamilyResponseMapOutput) ToColumnFamilyResponseMapOutput() ColumnFamilyResponseMapOutput {
+	return o
+}
+
+func (o ColumnFamilyResponseMapOutput) ToColumnFamilyResponseMapOutputWithContext(ctx context.Context) ColumnFamilyResponseMapOutput {
+	return o
+}
+
+func (o ColumnFamilyResponseMapOutput) MapIndex(k pulumi.StringInput) ColumnFamilyResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ColumnFamilyResponse {
+		return vs[0].(map[string]ColumnFamilyResponse)[vs[1].(string)]
+	}).(ColumnFamilyResponseOutput)
+}
+
+// Approximate statistics related to a single column family within a table. This information may change rapidly, interpreting these values at a point in time may already preset out-of-date information. Everything below is approximate, unless otherwise specified.
+type ColumnFamilyStatsResponse struct {
+	// How many cells are present per column qualifier in this column family, averaged over all rows containing any column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this field.
+	AverageCellsPerColumn float64 `pulumi:"averageCellsPerColumn"`
+	// How many column qualifiers are present in this column family, averaged over all rows in the table. e.g. For column family "family" in a table with 3 rows: * A row with cells in "family:col" and "other:col" (1 column in "family") * A row with cells in "family:col", "family:other_col", and "other:data" (2 columns in "family") * A row with cells in "other:col" (0 columns in "family", "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field.
+	AverageColumnsPerRow float64 `pulumi:"averageColumnsPerRow"`
+	// How much space the data in the column family occupies. This is roughly how many bytes would be needed to read the contents of the entire column family (e.g. by streaming all contents out).
+	LogicalDataBytes string `pulumi:"logicalDataBytes"`
+}
+
+// Approximate statistics related to a single column family within a table. This information may change rapidly, interpreting these values at a point in time may already preset out-of-date information. Everything below is approximate, unless otherwise specified.
+type ColumnFamilyStatsResponseOutput struct{ *pulumi.OutputState }
+
+func (ColumnFamilyStatsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnFamilyStatsResponse)(nil)).Elem()
+}
+
+func (o ColumnFamilyStatsResponseOutput) ToColumnFamilyStatsResponseOutput() ColumnFamilyStatsResponseOutput {
+	return o
+}
+
+func (o ColumnFamilyStatsResponseOutput) ToColumnFamilyStatsResponseOutputWithContext(ctx context.Context) ColumnFamilyStatsResponseOutput {
+	return o
+}
+
+// How many cells are present per column qualifier in this column family, averaged over all rows containing any column in the column family. e.g. For column family "family" in a table with 3 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in "family") * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in "family") * A row with 3 cells in "other:col" (0 columns in "family", "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this field.
+func (o ColumnFamilyStatsResponseOutput) AverageCellsPerColumn() pulumi.Float64Output {
+	return o.ApplyT(func(v ColumnFamilyStatsResponse) float64 { return v.AverageCellsPerColumn }).(pulumi.Float64Output)
+}
+
+// How many column qualifiers are present in this column family, averaged over all rows in the table. e.g. For column family "family" in a table with 3 rows: * A row with cells in "family:col" and "other:col" (1 column in "family") * A row with cells in "family:col", "family:other_col", and "other:data" (2 columns in "family") * A row with cells in "other:col" (0 columns in "family", "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field.
+func (o ColumnFamilyStatsResponseOutput) AverageColumnsPerRow() pulumi.Float64Output {
+	return o.ApplyT(func(v ColumnFamilyStatsResponse) float64 { return v.AverageColumnsPerRow }).(pulumi.Float64Output)
+}
+
+// How much space the data in the column family occupies. This is roughly how many bytes would be needed to read the contents of the entire column family (e.g. by streaming all contents out).
+func (o ColumnFamilyStatsResponseOutput) LogicalDataBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v ColumnFamilyStatsResponse) string { return v.LogicalDataBytes }).(pulumi.StringOutput)
+}
+
 // Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
 type EncryptionConfig struct {
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
@@ -1681,6 +2072,26 @@ func (o EncryptionInfoResponseOutput) EncryptionType() pulumi.StringOutput {
 // The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
 func (o EncryptionInfoResponseOutput) KmsKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionInfoResponse) string { return v.KmsKeyVersion }).(pulumi.StringOutput)
+}
+
+type EncryptionInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EncryptionInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EncryptionInfoResponse)(nil)).Elem()
+}
+
+func (o EncryptionInfoResponseArrayOutput) ToEncryptionInfoResponseArrayOutput() EncryptionInfoResponseArrayOutput {
+	return o
+}
+
+func (o EncryptionInfoResponseArrayOutput) ToEncryptionInfoResponseArrayOutputWithContext(ctx context.Context) EncryptionInfoResponseArrayOutput {
+	return o
+}
+
+func (o EncryptionInfoResponseArrayOutput) Index(i pulumi.IntInput) EncryptionInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EncryptionInfoResponse {
+		return vs[0].([]EncryptionInfoResponse)[vs[1].(int)]
+	}).(EncryptionInfoResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1925,6 +2336,481 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Rule for determining which cells to delete during garbage collection.
+type GcRule struct {
+	// Delete cells that would be deleted by every nested rule.
+	Intersection *Intersection `pulumi:"intersection"`
+	// Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+	MaxAge *string `pulumi:"maxAge"`
+	// Delete all cells in a column except the most recent N.
+	MaxNumVersions *int `pulumi:"maxNumVersions"`
+	// Delete cells that would be deleted by any nested rule.
+	Union *Union `pulumi:"union"`
+}
+
+// GcRuleInput is an input type that accepts GcRuleArgs and GcRuleOutput values.
+// You can construct a concrete instance of `GcRuleInput` via:
+//
+//	GcRuleArgs{...}
+type GcRuleInput interface {
+	pulumi.Input
+
+	ToGcRuleOutput() GcRuleOutput
+	ToGcRuleOutputWithContext(context.Context) GcRuleOutput
+}
+
+// Rule for determining which cells to delete during garbage collection.
+type GcRuleArgs struct {
+	// Delete cells that would be deleted by every nested rule.
+	Intersection IntersectionPtrInput `pulumi:"intersection"`
+	// Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
+	// Delete all cells in a column except the most recent N.
+	MaxNumVersions pulumi.IntPtrInput `pulumi:"maxNumVersions"`
+	// Delete cells that would be deleted by any nested rule.
+	Union UnionPtrInput `pulumi:"union"`
+}
+
+func (GcRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcRule)(nil)).Elem()
+}
+
+func (i GcRuleArgs) ToGcRuleOutput() GcRuleOutput {
+	return i.ToGcRuleOutputWithContext(context.Background())
+}
+
+func (i GcRuleArgs) ToGcRuleOutputWithContext(ctx context.Context) GcRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcRuleOutput)
+}
+
+func (i GcRuleArgs) ToGcRulePtrOutput() GcRulePtrOutput {
+	return i.ToGcRulePtrOutputWithContext(context.Background())
+}
+
+func (i GcRuleArgs) ToGcRulePtrOutputWithContext(ctx context.Context) GcRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcRuleOutput).ToGcRulePtrOutputWithContext(ctx)
+}
+
+// GcRulePtrInput is an input type that accepts GcRuleArgs, GcRulePtr and GcRulePtrOutput values.
+// You can construct a concrete instance of `GcRulePtrInput` via:
+//
+//	        GcRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcRulePtrInput interface {
+	pulumi.Input
+
+	ToGcRulePtrOutput() GcRulePtrOutput
+	ToGcRulePtrOutputWithContext(context.Context) GcRulePtrOutput
+}
+
+type gcRulePtrType GcRuleArgs
+
+func GcRulePtr(v *GcRuleArgs) GcRulePtrInput {
+	return (*gcRulePtrType)(v)
+}
+
+func (*gcRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcRule)(nil)).Elem()
+}
+
+func (i *gcRulePtrType) ToGcRulePtrOutput() GcRulePtrOutput {
+	return i.ToGcRulePtrOutputWithContext(context.Background())
+}
+
+func (i *gcRulePtrType) ToGcRulePtrOutputWithContext(ctx context.Context) GcRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcRulePtrOutput)
+}
+
+// GcRuleArrayInput is an input type that accepts GcRuleArray and GcRuleArrayOutput values.
+// You can construct a concrete instance of `GcRuleArrayInput` via:
+//
+//	GcRuleArray{ GcRuleArgs{...} }
+type GcRuleArrayInput interface {
+	pulumi.Input
+
+	ToGcRuleArrayOutput() GcRuleArrayOutput
+	ToGcRuleArrayOutputWithContext(context.Context) GcRuleArrayOutput
+}
+
+type GcRuleArray []GcRuleInput
+
+func (GcRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcRule)(nil)).Elem()
+}
+
+func (i GcRuleArray) ToGcRuleArrayOutput() GcRuleArrayOutput {
+	return i.ToGcRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GcRuleArray) ToGcRuleArrayOutputWithContext(ctx context.Context) GcRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcRuleArrayOutput)
+}
+
+// Rule for determining which cells to delete during garbage collection.
+type GcRuleOutput struct{ *pulumi.OutputState }
+
+func (GcRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcRule)(nil)).Elem()
+}
+
+func (o GcRuleOutput) ToGcRuleOutput() GcRuleOutput {
+	return o
+}
+
+func (o GcRuleOutput) ToGcRuleOutputWithContext(ctx context.Context) GcRuleOutput {
+	return o
+}
+
+func (o GcRuleOutput) ToGcRulePtrOutput() GcRulePtrOutput {
+	return o.ToGcRulePtrOutputWithContext(context.Background())
+}
+
+func (o GcRuleOutput) ToGcRulePtrOutputWithContext(ctx context.Context) GcRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcRule) *GcRule {
+		return &v
+	}).(GcRulePtrOutput)
+}
+
+// Delete cells that would be deleted by every nested rule.
+func (o GcRuleOutput) Intersection() IntersectionPtrOutput {
+	return o.ApplyT(func(v GcRule) *Intersection { return v.Intersection }).(IntersectionPtrOutput)
+}
+
+// Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+func (o GcRuleOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcRule) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+// Delete all cells in a column except the most recent N.
+func (o GcRuleOutput) MaxNumVersions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GcRule) *int { return v.MaxNumVersions }).(pulumi.IntPtrOutput)
+}
+
+// Delete cells that would be deleted by any nested rule.
+func (o GcRuleOutput) Union() UnionPtrOutput {
+	return o.ApplyT(func(v GcRule) *Union { return v.Union }).(UnionPtrOutput)
+}
+
+type GcRulePtrOutput struct{ *pulumi.OutputState }
+
+func (GcRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcRule)(nil)).Elem()
+}
+
+func (o GcRulePtrOutput) ToGcRulePtrOutput() GcRulePtrOutput {
+	return o
+}
+
+func (o GcRulePtrOutput) ToGcRulePtrOutputWithContext(ctx context.Context) GcRulePtrOutput {
+	return o
+}
+
+func (o GcRulePtrOutput) Elem() GcRuleOutput {
+	return o.ApplyT(func(v *GcRule) GcRule {
+		if v != nil {
+			return *v
+		}
+		var ret GcRule
+		return ret
+	}).(GcRuleOutput)
+}
+
+// Delete cells that would be deleted by every nested rule.
+func (o GcRulePtrOutput) Intersection() IntersectionPtrOutput {
+	return o.ApplyT(func(v *GcRule) *Intersection {
+		if v == nil {
+			return nil
+		}
+		return v.Intersection
+	}).(IntersectionPtrOutput)
+}
+
+// Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+func (o GcRulePtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delete all cells in a column except the most recent N.
+func (o GcRulePtrOutput) MaxNumVersions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GcRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNumVersions
+	}).(pulumi.IntPtrOutput)
+}
+
+// Delete cells that would be deleted by any nested rule.
+func (o GcRulePtrOutput) Union() UnionPtrOutput {
+	return o.ApplyT(func(v *GcRule) *Union {
+		if v == nil {
+			return nil
+		}
+		return v.Union
+	}).(UnionPtrOutput)
+}
+
+type GcRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GcRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcRule)(nil)).Elem()
+}
+
+func (o GcRuleArrayOutput) ToGcRuleArrayOutput() GcRuleArrayOutput {
+	return o
+}
+
+func (o GcRuleArrayOutput) ToGcRuleArrayOutputWithContext(ctx context.Context) GcRuleArrayOutput {
+	return o
+}
+
+func (o GcRuleArrayOutput) Index(i pulumi.IntInput) GcRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcRule {
+		return vs[0].([]GcRule)[vs[1].(int)]
+	}).(GcRuleOutput)
+}
+
+// Rule for determining which cells to delete during garbage collection.
+type GcRuleResponse struct {
+	// Delete cells that would be deleted by every nested rule.
+	Intersection IntersectionResponse `pulumi:"intersection"`
+	// Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+	MaxAge string `pulumi:"maxAge"`
+	// Delete all cells in a column except the most recent N.
+	MaxNumVersions int `pulumi:"maxNumVersions"`
+	// Delete cells that would be deleted by any nested rule.
+	Union UnionResponse `pulumi:"union"`
+}
+
+// Rule for determining which cells to delete during garbage collection.
+type GcRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (GcRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcRuleResponse)(nil)).Elem()
+}
+
+func (o GcRuleResponseOutput) ToGcRuleResponseOutput() GcRuleResponseOutput {
+	return o
+}
+
+func (o GcRuleResponseOutput) ToGcRuleResponseOutputWithContext(ctx context.Context) GcRuleResponseOutput {
+	return o
+}
+
+// Delete cells that would be deleted by every nested rule.
+func (o GcRuleResponseOutput) Intersection() IntersectionResponseOutput {
+	return o.ApplyT(func(v GcRuleResponse) IntersectionResponse { return v.Intersection }).(IntersectionResponseOutput)
+}
+
+// Delete cells in a column older than the given age. Values must be at least one millisecond, and will be truncated to microsecond granularity.
+func (o GcRuleResponseOutput) MaxAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GcRuleResponse) string { return v.MaxAge }).(pulumi.StringOutput)
+}
+
+// Delete all cells in a column except the most recent N.
+func (o GcRuleResponseOutput) MaxNumVersions() pulumi.IntOutput {
+	return o.ApplyT(func(v GcRuleResponse) int { return v.MaxNumVersions }).(pulumi.IntOutput)
+}
+
+// Delete cells that would be deleted by any nested rule.
+func (o GcRuleResponseOutput) Union() UnionResponseOutput {
+	return o.ApplyT(func(v GcRuleResponse) UnionResponse { return v.Union }).(UnionResponseOutput)
+}
+
+type GcRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GcRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GcRuleResponse)(nil)).Elem()
+}
+
+func (o GcRuleResponseArrayOutput) ToGcRuleResponseArrayOutput() GcRuleResponseArrayOutput {
+	return o
+}
+
+func (o GcRuleResponseArrayOutput) ToGcRuleResponseArrayOutputWithContext(ctx context.Context) GcRuleResponseArrayOutput {
+	return o
+}
+
+func (o GcRuleResponseArrayOutput) Index(i pulumi.IntInput) GcRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GcRuleResponse {
+		return vs[0].([]GcRuleResponse)[vs[1].(int)]
+	}).(GcRuleResponseOutput)
+}
+
+// A GcRule which deletes cells matching all of the given rules.
+type Intersection struct {
+	// Only delete cells which would be deleted by every element of `rules`.
+	Rules []GcRule `pulumi:"rules"`
+}
+
+// IntersectionInput is an input type that accepts IntersectionArgs and IntersectionOutput values.
+// You can construct a concrete instance of `IntersectionInput` via:
+//
+//	IntersectionArgs{...}
+type IntersectionInput interface {
+	pulumi.Input
+
+	ToIntersectionOutput() IntersectionOutput
+	ToIntersectionOutputWithContext(context.Context) IntersectionOutput
+}
+
+// A GcRule which deletes cells matching all of the given rules.
+type IntersectionArgs struct {
+	// Only delete cells which would be deleted by every element of `rules`.
+	Rules GcRuleArrayInput `pulumi:"rules"`
+}
+
+func (IntersectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Intersection)(nil)).Elem()
+}
+
+func (i IntersectionArgs) ToIntersectionOutput() IntersectionOutput {
+	return i.ToIntersectionOutputWithContext(context.Background())
+}
+
+func (i IntersectionArgs) ToIntersectionOutputWithContext(ctx context.Context) IntersectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntersectionOutput)
+}
+
+func (i IntersectionArgs) ToIntersectionPtrOutput() IntersectionPtrOutput {
+	return i.ToIntersectionPtrOutputWithContext(context.Background())
+}
+
+func (i IntersectionArgs) ToIntersectionPtrOutputWithContext(ctx context.Context) IntersectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntersectionOutput).ToIntersectionPtrOutputWithContext(ctx)
+}
+
+// IntersectionPtrInput is an input type that accepts IntersectionArgs, IntersectionPtr and IntersectionPtrOutput values.
+// You can construct a concrete instance of `IntersectionPtrInput` via:
+//
+//	        IntersectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntersectionPtrInput interface {
+	pulumi.Input
+
+	ToIntersectionPtrOutput() IntersectionPtrOutput
+	ToIntersectionPtrOutputWithContext(context.Context) IntersectionPtrOutput
+}
+
+type intersectionPtrType IntersectionArgs
+
+func IntersectionPtr(v *IntersectionArgs) IntersectionPtrInput {
+	return (*intersectionPtrType)(v)
+}
+
+func (*intersectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Intersection)(nil)).Elem()
+}
+
+func (i *intersectionPtrType) ToIntersectionPtrOutput() IntersectionPtrOutput {
+	return i.ToIntersectionPtrOutputWithContext(context.Background())
+}
+
+func (i *intersectionPtrType) ToIntersectionPtrOutputWithContext(ctx context.Context) IntersectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntersectionPtrOutput)
+}
+
+// A GcRule which deletes cells matching all of the given rules.
+type IntersectionOutput struct{ *pulumi.OutputState }
+
+func (IntersectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Intersection)(nil)).Elem()
+}
+
+func (o IntersectionOutput) ToIntersectionOutput() IntersectionOutput {
+	return o
+}
+
+func (o IntersectionOutput) ToIntersectionOutputWithContext(ctx context.Context) IntersectionOutput {
+	return o
+}
+
+func (o IntersectionOutput) ToIntersectionPtrOutput() IntersectionPtrOutput {
+	return o.ToIntersectionPtrOutputWithContext(context.Background())
+}
+
+func (o IntersectionOutput) ToIntersectionPtrOutputWithContext(ctx context.Context) IntersectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Intersection) *Intersection {
+		return &v
+	}).(IntersectionPtrOutput)
+}
+
+// Only delete cells which would be deleted by every element of `rules`.
+func (o IntersectionOutput) Rules() GcRuleArrayOutput {
+	return o.ApplyT(func(v Intersection) []GcRule { return v.Rules }).(GcRuleArrayOutput)
+}
+
+type IntersectionPtrOutput struct{ *pulumi.OutputState }
+
+func (IntersectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Intersection)(nil)).Elem()
+}
+
+func (o IntersectionPtrOutput) ToIntersectionPtrOutput() IntersectionPtrOutput {
+	return o
+}
+
+func (o IntersectionPtrOutput) ToIntersectionPtrOutputWithContext(ctx context.Context) IntersectionPtrOutput {
+	return o
+}
+
+func (o IntersectionPtrOutput) Elem() IntersectionOutput {
+	return o.ApplyT(func(v *Intersection) Intersection {
+		if v != nil {
+			return *v
+		}
+		var ret Intersection
+		return ret
+	}).(IntersectionOutput)
+}
+
+// Only delete cells which would be deleted by every element of `rules`.
+func (o IntersectionPtrOutput) Rules() GcRuleArrayOutput {
+	return o.ApplyT(func(v *Intersection) []GcRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(GcRuleArrayOutput)
+}
+
+// A GcRule which deletes cells matching all of the given rules.
+type IntersectionResponse struct {
+	// Only delete cells which would be deleted by every element of `rules`.
+	Rules []GcRuleResponse `pulumi:"rules"`
+}
+
+// A GcRule which deletes cells matching all of the given rules.
+type IntersectionResponseOutput struct{ *pulumi.OutputState }
+
+func (IntersectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntersectionResponse)(nil)).Elem()
+}
+
+func (o IntersectionResponseOutput) ToIntersectionResponseOutput() IntersectionResponseOutput {
+	return o
+}
+
+func (o IntersectionResponseOutput) ToIntersectionResponseOutputWithContext(ctx context.Context) IntersectionResponseOutput {
+	return o
+}
+
+// Only delete cells which would be deleted by every element of `rules`.
+func (o IntersectionResponseOutput) Rules() GcRuleResponseArrayOutput {
+	return o.ApplyT(func(v IntersectionResponse) []GcRuleResponse { return v.Rules }).(GcRuleResponseArrayOutput)
 }
 
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
@@ -2589,7 +3475,7 @@ type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -2615,8 +3501,8 @@ func (o StatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -2671,6 +3557,172 @@ func (o TableStatsResponseOutput) RowCount() pulumi.StringOutput {
 	return o.ApplyT(func(v TableStatsResponse) string { return v.RowCount }).(pulumi.StringOutput)
 }
 
+// A GcRule which deletes cells matching any of the given rules.
+type Union struct {
+	// Delete cells which would be deleted by any element of `rules`.
+	Rules []GcRule `pulumi:"rules"`
+}
+
+// UnionInput is an input type that accepts UnionArgs and UnionOutput values.
+// You can construct a concrete instance of `UnionInput` via:
+//
+//	UnionArgs{...}
+type UnionInput interface {
+	pulumi.Input
+
+	ToUnionOutput() UnionOutput
+	ToUnionOutputWithContext(context.Context) UnionOutput
+}
+
+// A GcRule which deletes cells matching any of the given rules.
+type UnionArgs struct {
+	// Delete cells which would be deleted by any element of `rules`.
+	Rules GcRuleArrayInput `pulumi:"rules"`
+}
+
+func (UnionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Union)(nil)).Elem()
+}
+
+func (i UnionArgs) ToUnionOutput() UnionOutput {
+	return i.ToUnionOutputWithContext(context.Background())
+}
+
+func (i UnionArgs) ToUnionOutputWithContext(ctx context.Context) UnionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnionOutput)
+}
+
+func (i UnionArgs) ToUnionPtrOutput() UnionPtrOutput {
+	return i.ToUnionPtrOutputWithContext(context.Background())
+}
+
+func (i UnionArgs) ToUnionPtrOutputWithContext(ctx context.Context) UnionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnionOutput).ToUnionPtrOutputWithContext(ctx)
+}
+
+// UnionPtrInput is an input type that accepts UnionArgs, UnionPtr and UnionPtrOutput values.
+// You can construct a concrete instance of `UnionPtrInput` via:
+//
+//	        UnionArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnionPtrInput interface {
+	pulumi.Input
+
+	ToUnionPtrOutput() UnionPtrOutput
+	ToUnionPtrOutputWithContext(context.Context) UnionPtrOutput
+}
+
+type unionPtrType UnionArgs
+
+func UnionPtr(v *UnionArgs) UnionPtrInput {
+	return (*unionPtrType)(v)
+}
+
+func (*unionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Union)(nil)).Elem()
+}
+
+func (i *unionPtrType) ToUnionPtrOutput() UnionPtrOutput {
+	return i.ToUnionPtrOutputWithContext(context.Background())
+}
+
+func (i *unionPtrType) ToUnionPtrOutputWithContext(ctx context.Context) UnionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnionPtrOutput)
+}
+
+// A GcRule which deletes cells matching any of the given rules.
+type UnionOutput struct{ *pulumi.OutputState }
+
+func (UnionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Union)(nil)).Elem()
+}
+
+func (o UnionOutput) ToUnionOutput() UnionOutput {
+	return o
+}
+
+func (o UnionOutput) ToUnionOutputWithContext(ctx context.Context) UnionOutput {
+	return o
+}
+
+func (o UnionOutput) ToUnionPtrOutput() UnionPtrOutput {
+	return o.ToUnionPtrOutputWithContext(context.Background())
+}
+
+func (o UnionOutput) ToUnionPtrOutputWithContext(ctx context.Context) UnionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Union) *Union {
+		return &v
+	}).(UnionPtrOutput)
+}
+
+// Delete cells which would be deleted by any element of `rules`.
+func (o UnionOutput) Rules() GcRuleArrayOutput {
+	return o.ApplyT(func(v Union) []GcRule { return v.Rules }).(GcRuleArrayOutput)
+}
+
+type UnionPtrOutput struct{ *pulumi.OutputState }
+
+func (UnionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Union)(nil)).Elem()
+}
+
+func (o UnionPtrOutput) ToUnionPtrOutput() UnionPtrOutput {
+	return o
+}
+
+func (o UnionPtrOutput) ToUnionPtrOutputWithContext(ctx context.Context) UnionPtrOutput {
+	return o
+}
+
+func (o UnionPtrOutput) Elem() UnionOutput {
+	return o.ApplyT(func(v *Union) Union {
+		if v != nil {
+			return *v
+		}
+		var ret Union
+		return ret
+	}).(UnionOutput)
+}
+
+// Delete cells which would be deleted by any element of `rules`.
+func (o UnionPtrOutput) Rules() GcRuleArrayOutput {
+	return o.ApplyT(func(v *Union) []GcRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(GcRuleArrayOutput)
+}
+
+// A GcRule which deletes cells matching any of the given rules.
+type UnionResponse struct {
+	// Delete cells which would be deleted by any element of `rules`.
+	Rules []GcRuleResponse `pulumi:"rules"`
+}
+
+// A GcRule which deletes cells matching any of the given rules.
+type UnionResponseOutput struct{ *pulumi.OutputState }
+
+func (UnionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnionResponse)(nil)).Elem()
+}
+
+func (o UnionResponseOutput) ToUnionResponseOutput() UnionResponseOutput {
+	return o
+}
+
+func (o UnionResponseOutput) ToUnionResponseOutputWithContext(ctx context.Context) UnionResponseOutput {
+	return o
+}
+
+// Delete cells which would be deleted by any element of `rules`.
+func (o UnionResponseOutput) Rules() GcRuleResponseArrayOutput {
+	return o.ApplyT(func(v UnionResponse) []GcRuleResponse { return v.Rules }).(GcRuleResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -2684,14 +3736,23 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamConfigInput)(nil)).Elem(), ChangeStreamConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamConfigPtrInput)(nil)).Elem(), ChangeStreamConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTypeInput)(nil)).Elem(), ClusterTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTypeMapInput)(nil)).Elem(), ClusterTypeMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigPtrInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigInput)(nil)).Elem(), ClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigPtrInput)(nil)).Elem(), ClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnFamilyInput)(nil)).Elem(), ColumnFamilyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnFamilyMapInput)(nil)).Elem(), ColumnFamilyMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcRuleInput)(nil)).Elem(), GcRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcRulePtrInput)(nil)).Elem(), GcRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcRuleArrayInput)(nil)).Elem(), GcRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntersectionInput)(nil)).Elem(), IntersectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntersectionPtrInput)(nil)).Elem(), IntersectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyInput)(nil)).Elem(), MultiClusterRoutingUseAnyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyPtrInput)(nil)).Elem(), MultiClusterRoutingUseAnyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingInput)(nil)).Elem(), SingleClusterRoutingArgs{})
@@ -2700,6 +3761,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitArrayInput)(nil)).Elem(), SplitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardIsolationInput)(nil)).Elem(), StandardIsolationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardIsolationPtrInput)(nil)).Elem(), StandardIsolationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnionInput)(nil)).Elem(), UnionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnionPtrInput)(nil)).Elem(), UnionArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2722,19 +3785,37 @@ func init() {
 	pulumi.RegisterOutputType(ChangeStreamConfigOutput{})
 	pulumi.RegisterOutputType(ChangeStreamConfigPtrOutput{})
 	pulumi.RegisterOutputType(ChangeStreamConfigResponseOutput{})
+	pulumi.RegisterOutputType(ClusterTypeOutput{})
+	pulumi.RegisterOutputType(ClusterTypeMapOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingConfigResponseOutput{})
 	pulumi.RegisterOutputType(ClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(ClusterStateResponseOutput{})
+	pulumi.RegisterOutputType(ClusterStateResponseMapOutput{})
+	pulumi.RegisterOutputType(ColumnFamilyOutput{})
+	pulumi.RegisterOutputType(ColumnFamilyMapOutput{})
+	pulumi.RegisterOutputType(ColumnFamilyResponseOutput{})
+	pulumi.RegisterOutputType(ColumnFamilyResponseMapOutput{})
+	pulumi.RegisterOutputType(ColumnFamilyStatsResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionInfoResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GcRuleOutput{})
+	pulumi.RegisterOutputType(GcRulePtrOutput{})
+	pulumi.RegisterOutputType(GcRuleArrayOutput{})
+	pulumi.RegisterOutputType(GcRuleResponseOutput{})
+	pulumi.RegisterOutputType(GcRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(IntersectionOutput{})
+	pulumi.RegisterOutputType(IntersectionPtrOutput{})
+	pulumi.RegisterOutputType(IntersectionResponseOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyPtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyResponseOutput{})
@@ -2749,4 +3830,7 @@ func init() {
 	pulumi.RegisterOutputType(StandardIsolationResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(TableStatsResponseOutput{})
+	pulumi.RegisterOutputType(UnionOutput{})
+	pulumi.RegisterOutputType(UnionPtrOutput{})
+	pulumi.RegisterOutputType(UnionResponseOutput{})
 }

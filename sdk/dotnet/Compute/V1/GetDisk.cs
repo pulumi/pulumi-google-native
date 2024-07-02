@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <summary>
         /// A list of disks this disk is asynchronously replicated to.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> AsyncSecondaryDisks;
+        public readonly ImmutableDictionary<string, Outputs.DiskAsyncReplicationListResponse> AsyncSecondaryDisks;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -242,7 +242,7 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.DiskAsyncReplicationResponse asyncPrimaryDisk,
 
-            ImmutableDictionary<string, string> asyncSecondaryDisks,
+            ImmutableDictionary<string, Outputs.DiskAsyncReplicationListResponse> asyncSecondaryDisks,
 
             string creationTimestamp,
 

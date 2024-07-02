@@ -44,7 +44,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * The reason(s) why a trigger is in FAILED state.
      */
-    public /*out*/ readonly conditions!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly conditions!: pulumi.Output<{[key: string]: outputs.eventarc.v1.StateConditionResponse}>;
     /**
      * The creation time.
      */

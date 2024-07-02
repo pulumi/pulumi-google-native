@@ -29,7 +29,7 @@ type Schema struct {
 	// Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
 	// The structured representation of the schema.
-	StructSchema pulumi.StringMapOutput `pulumi:"structSchema"`
+	StructSchema pulumi.MapOutput `pulumi:"structSchema"`
 }
 
 // NewSchema registers a new resource with the given unique name, arguments, and options.
@@ -100,7 +100,7 @@ type schemaArgs struct {
 	// Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	SchemaId string `pulumi:"schemaId"`
 	// The structured representation of the schema.
-	StructSchema map[string]string `pulumi:"structSchema"`
+	StructSchema map[string]interface{} `pulumi:"structSchema"`
 }
 
 // The set of arguments for constructing a Schema resource.
@@ -116,7 +116,7 @@ type SchemaArgs struct {
 	// Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	SchemaId pulumi.StringInput
 	// The structured representation of the schema.
-	StructSchema pulumi.StringMapInput
+	StructSchema pulumi.MapInput
 }
 
 func (SchemaArgs) ElementType() reflect.Type {
@@ -193,8 +193,8 @@ func (o SchemaOutput) SchemaId() pulumi.StringOutput {
 }
 
 // The structured representation of the schema.
-func (o SchemaOutput) StructSchema() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Schema) pulumi.StringMapOutput { return v.StructSchema }).(pulumi.StringMapOutput)
+func (o SchemaOutput) StructSchema() pulumi.MapOutput {
+	return o.ApplyT(func(v *Schema) pulumi.MapOutput { return v.StructSchema }).(pulumi.MapOutput)
 }
 
 func init() {

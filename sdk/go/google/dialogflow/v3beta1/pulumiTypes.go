@@ -2020,7 +2020,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput struct {
 	// Whether sentiment analysis is enabled.
 	EnableSentimentAnalysis *bool `pulumi:"enableSentimentAnalysis"`
 	// Parameters that need to be injected into the conversation during intent detection.
-	InjectedParameters map[string]string `pulumi:"injectedParameters"`
+	InjectedParameters map[string]interface{} `pulumi:"injectedParameters"`
 	// Supports text input, event input, dtmf input in the test case.
 	Input *GoogleCloudDialogflowCxV3beta1QueryInput `pulumi:"input"`
 	// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
@@ -2043,7 +2043,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputArgs struct {
 	// Whether sentiment analysis is enabled.
 	EnableSentimentAnalysis pulumi.BoolPtrInput `pulumi:"enableSentimentAnalysis"`
 	// Parameters that need to be injected into the conversation during intent detection.
-	InjectedParameters pulumi.StringMapInput `pulumi:"injectedParameters"`
+	InjectedParameters pulumi.MapInput `pulumi:"injectedParameters"`
 	// Supports text input, event input, dtmf input in the test case.
 	Input GoogleCloudDialogflowCxV3beta1QueryInputPtrInput `pulumi:"input"`
 	// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
@@ -2136,10 +2136,10 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputOutput) EnableSen
 }
 
 // Parameters that need to be injected into the conversation during intent detection.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputOutput) InjectedParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputOutput) InjectedParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) map[string]interface{} {
 		return v.InjectedParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Supports text input, event input, dtmf input in the test case.
@@ -2189,13 +2189,13 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) Enable
 }
 
 // Parameters that need to be injected into the conversation during intent detection.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) InjectedParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) InjectedParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.InjectedParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Supports text input, event input, dtmf input in the test case.
@@ -2223,7 +2223,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse struct {
 	// Whether sentiment analysis is enabled.
 	EnableSentimentAnalysis bool `pulumi:"enableSentimentAnalysis"`
 	// Parameters that need to be injected into the conversation during intent detection.
-	InjectedParameters map[string]string `pulumi:"injectedParameters"`
+	InjectedParameters map[string]interface{} `pulumi:"injectedParameters"`
 	// Supports text input, event input, dtmf input in the test case.
 	Input GoogleCloudDialogflowCxV3beta1QueryInputResponse `pulumi:"input"`
 	// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
@@ -2253,10 +2253,10 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput) E
 }
 
 // Parameters that need to be injected into the conversation during intent detection.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput) InjectedParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput) InjectedParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse) map[string]interface{} {
 		return v.InjectedParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Supports text input, event input, dtmf input in the test case.
@@ -2278,9 +2278,9 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage *GoogleCloudDialogflowCxV3beta1Page `pulumi:"currentPage"`
 	// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
-	DiagnosticInfo map[string]string `pulumi:"diagnosticInfo"`
+	DiagnosticInfo map[string]interface{} `pulumi:"diagnosticInfo"`
 	// The session parameters available to the bot at this point.
-	SessionParameters map[string]string `pulumi:"sessionParameters"`
+	SessionParameters map[string]interface{} `pulumi:"sessionParameters"`
 	// Response error from the agent in the test result. If set, other output is empty.
 	Status *GoogleRpcStatus `pulumi:"status"`
 	// The text responses from the agent for the turn.
@@ -2305,9 +2305,9 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs struct
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3beta1PagePtrInput `pulumi:"currentPage"`
 	// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
-	DiagnosticInfo pulumi.StringMapInput `pulumi:"diagnosticInfo"`
+	DiagnosticInfo pulumi.MapInput `pulumi:"diagnosticInfo"`
 	// The session parameters available to the bot at this point.
-	SessionParameters pulumi.StringMapInput `pulumi:"sessionParameters"`
+	SessionParameters pulumi.MapInput `pulumi:"sessionParameters"`
 	// Response error from the agent in the test result. If set, other output is empty.
 	Status GoogleRpcStatusPtrInput `pulumi:"status"`
 	// The text responses from the agent for the turn.
@@ -2402,17 +2402,17 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) 
 }
 
 // Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) DiagnosticInfo() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) DiagnosticInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]interface{} {
 		return v.DiagnosticInfo
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // The session parameters available to the bot at this point.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) SessionParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) SessionParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]interface{} {
 		return v.SessionParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Response error from the agent in the test result. If set, other output is empty.
@@ -2471,23 +2471,23 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutpu
 }
 
 // Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput) DiagnosticInfo() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput) DiagnosticInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.DiagnosticInfo
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // The session parameters available to the bot at this point.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput) SessionParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput) SessionParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.SessionParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Response error from the agent in the test result. If set, other output is empty.
@@ -2525,11 +2525,11 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse st
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3beta1PageResponse `pulumi:"currentPage"`
 	// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
-	DiagnosticInfo map[string]string `pulumi:"diagnosticInfo"`
+	DiagnosticInfo map[string]interface{} `pulumi:"diagnosticInfo"`
 	// If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
 	Differences []GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse `pulumi:"differences"`
 	// The session parameters available to the bot at this point.
-	SessionParameters map[string]string `pulumi:"sessionParameters"`
+	SessionParameters map[string]interface{} `pulumi:"sessionParameters"`
 	// Response error from the agent in the test result. If set, other output is empty.
 	Status GoogleRpcStatusResponse `pulumi:"status"`
 	// The text responses from the agent for the turn.
@@ -2561,10 +2561,10 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse
 }
 
 // Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponseOutput) DiagnosticInfo() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponseOutput) DiagnosticInfo() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse) map[string]interface{} {
 		return v.DiagnosticInfo
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
@@ -2575,10 +2575,10 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse
 }
 
 // The session parameters available to the bot at this point.
-func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponseOutput) SessionParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponseOutput) SessionParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse) map[string]interface{} {
 		return v.SessionParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Response error from the agent in the test result. If set, other output is empty.
@@ -9651,7 +9651,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessage struct {
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
 	OutputAudioText *GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText `pulumi:"outputAudioText"`
 	// Returns a response containing a custom, platform-specific payload.
-	Payload map[string]string `pulumi:"payload"`
+	Payload map[string]interface{} `pulumi:"payload"`
 	// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
 	PlayAudio *GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio `pulumi:"playAudio"`
 	// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
@@ -9684,7 +9684,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageArgs struct {
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
 	OutputAudioText GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
 	// Returns a response containing a custom, platform-specific payload.
-	Payload pulumi.StringMapInput `pulumi:"payload"`
+	Payload pulumi.MapInput `pulumi:"payload"`
 	// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
 	PlayAudio GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioPtrInput `pulumi:"playAudio"`
 	// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
@@ -9830,8 +9830,8 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) OutputAudioText() G
 }
 
 // Returns a response containing a custom, platform-specific payload.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) Payload() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessage) map[string]string { return v.Payload }).(pulumi.StringMapOutput)
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) Payload() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessage) map[string]interface{} { return v.Payload }).(pulumi.MapOutput)
 }
 
 // Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
@@ -9930,13 +9930,13 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput) OutputAudioText(
 }
 
 // Returns a response containing a custom, platform-specific payload.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput) Payload() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessage) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput) Payload() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessage) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Payload
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
@@ -9992,7 +9992,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageArrayOutput) Index(i pulumi
 // Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. * In a webhook response when you determine that you handled the customer issue.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess struct {
 	// Custom metadata. Dialogflow doesn't impose any structure on this.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 }
 
 // GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs and GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessOutput values.
@@ -10009,7 +10009,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessInput inter
 // Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. * In a webhook response when you determine that you handled the customer issue.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs struct {
 	// Custom metadata. Dialogflow doesn't impose any structure on this.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	Metadata pulumi.MapInput `pulumi:"metadata"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessArgs) ElementType() reflect.Type {
@@ -10091,10 +10091,10 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessOutput) 
 }
 
 // Custom metadata. Dialogflow doesn't impose any structure on this.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess) map[string]interface{} {
 		return v.Metadata
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
@@ -10122,19 +10122,19 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrOutpu
 }
 
 // Custom metadata. Dialogflow doesn't impose any structure on this.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Metadata
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. * In a webhook response when you determine that you handled the customer issue.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse struct {
 	// Custom metadata. Dialogflow doesn't impose any structure on this.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 }
 
 // Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. * In a webhook response when you determine that you handled the customer issue.
@@ -10153,10 +10153,10 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse
 }
 
 // Custom metadata. Dialogflow doesn't impose any structure on this.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponseOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse) map[string]interface{} {
 		return v.Metadata
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
@@ -10321,7 +10321,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCardResponseOu
 // Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can only be handled by a human.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff struct {
 	// Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 }
 
 // GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs and GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffOutput values.
@@ -10338,7 +10338,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffInput interfac
 // Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can only be handled by a human.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs struct {
 	// Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	Metadata pulumi.MapInput `pulumi:"metadata"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
@@ -10420,10 +10420,10 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffOutput) ToG
 }
 
 // Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff) map[string]interface{} {
 		return v.Metadata
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
@@ -10451,19 +10451,19 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffPtrOutput) 
 }
 
 // Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Metadata
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can only be handled by a human.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse struct {
 	// Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 }
 
 // Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can only be handled by a human.
@@ -10482,10 +10482,10 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponseOut
 }
 
 // Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponseOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse) map[string]interface{} {
 		return v.Metadata
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via play_audio. This message is generated by Dialogflow only and not supposed to be defined by the user.
@@ -10971,7 +10971,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageResponse struct {
 	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
 	OutputAudioText GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse `pulumi:"outputAudioText"`
 	// Returns a response containing a custom, platform-specific payload.
-	Payload map[string]string `pulumi:"payload"`
+	Payload map[string]interface{} `pulumi:"payload"`
 	// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
 	PlayAudio GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse `pulumi:"playAudio"`
 	// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
@@ -11043,8 +11043,8 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutput) OutputAudio
 }
 
 // Returns a response containing a custom, platform-specific payload.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutput) Payload() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageResponse) map[string]string { return v.Payload }).(pulumi.StringMapOutput)
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutput) Payload() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageResponse) map[string]interface{} { return v.Payload }).(pulumi.MapOutput)
 }
 
 // Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
@@ -12712,6 +12712,222 @@ func (o GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponseOutput) Enable
 	}).(pulumi.BoolOutput)
 }
 
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig struct {
+	// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileId []string `pulumi:"effectsProfileId"`
+	// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch *float64 `pulumi:"pitch"`
+	// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+	SpeakingRate *float64 `pulumi:"speakingRate"`
+	// Optional. The desired voice of the synthesized audio.
+	Voice *GoogleCloudDialogflowCxV3beta1VoiceSelectionParams `pulumi:"voice"`
+	// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+	VolumeGainDb *float64 `pulumi:"volumeGainDb"`
+}
+
+// GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigInput is an input type that accepts GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs and GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigInput` via:
+//
+//	GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs{...}
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput
+	ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs struct {
+	// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileId pulumi.StringArrayInput `pulumi:"effectsProfileId"`
+	// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch pulumi.Float64PtrInput `pulumi:"pitch"`
+	// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+	SpeakingRate pulumi.Float64PtrInput `pulumi:"speakingRate"`
+	// Optional. The desired voice of the synthesized audio.
+	Voice GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrInput `pulumi:"voice"`
+	// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+	VolumeGainDb pulumi.Float64PtrInput `pulumi:"volumeGainDb"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapInput is an input type that accepts GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMap and GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapInput` via:
+//
+//	GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMap{ "key": GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs{...} }
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput
+	ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput
+}
+
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMap map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigInput
+
+func (GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMap) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMap) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput)
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput {
+	return o
+}
+
+// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) EffectsProfileId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig) []string { return v.EffectsProfileId }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) Pitch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig) *float64 { return v.Pitch }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) SpeakingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig) *float64 { return v.SpeakingRate }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The desired voice of the synthesized audio.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) Voice() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig) *GoogleCloudDialogflowCxV3beta1VoiceSelectionParams {
+		return v.Voice
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput)
+}
+
+// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput) VolumeGainDb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig) *float64 { return v.VolumeGainDb }).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig {
+		return vs[0].(map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig)[vs[1].(string)]
+	}).(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput)
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse struct {
+	// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileId []string `pulumi:"effectsProfileId"`
+	// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch float64 `pulumi:"pitch"`
+	// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+	SpeakingRate float64 `pulumi:"speakingRate"`
+	// Optional. The desired voice of the synthesized audio.
+	Voice GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse `pulumi:"voice"`
+	// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+	VolumeGainDb float64 `pulumi:"volumeGainDb"`
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput {
+	return o
+}
+
+// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) EffectsProfileId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse) []string {
+		return v.EffectsProfileId
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) Pitch() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse) float64 { return v.Pitch }).(pulumi.Float64Output)
+}
+
+// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) SpeakingRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse) float64 { return v.SpeakingRate }).(pulumi.Float64Output)
+}
+
+// Optional. The desired voice of the synthesized audio.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) Voice() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse {
+		return v.Voice
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput)
+}
+
+// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput) VolumeGainDb() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse) float64 { return v.VolumeGainDb }).(pulumi.Float64Output)
+}
+
+type GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput) ToGoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse {
+		return vs[0].(map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse)[vs[1].(string)]
+	}).(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput)
+}
+
 // Represents a result from running a test case in an agent environment.
 type GoogleCloudDialogflowCxV3beta1TestCaseResult struct {
 	// The conversation turns uttered during the test case replay in chronological order.
@@ -13428,7 +13644,7 @@ func (o GoogleCloudDialogflowCxV3beta1TextInputResponseOutput) Text() pulumi.Str
 // Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3beta1TextToSpeechSettings struct {
 	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs and GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsOutput values.
@@ -13445,7 +13661,7 @@ type GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsInput interface {
 // Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs struct {
 	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-	SynthesizeSpeechConfigs pulumi.StringMapInput `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapInput `pulumi:"synthesizeSpeechConfigs"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs) ElementType() reflect.Type {
@@ -13527,10 +13743,10 @@ func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsOutput) ToGoogleCloudD
 }
 
 // Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TextToSpeechSettings) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TextToSpeechSettings) map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig {
 		return v.SynthesizeSpeechConfigs
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -13558,19 +13774,19 @@ func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsPtrOutput) Elem() Goog
 }
 
 // Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TextToSpeechSettings) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TextToSpeechSettings) map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig {
 		if v == nil {
 			return nil
 		}
 		return v.SynthesizeSpeechConfigs
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput)
 }
 
 // Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse struct {
 	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+	SynthesizeSpeechConfigs map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse `pulumi:"synthesizeSpeechConfigs"`
 }
 
 // Settings related to speech synthesizing.
@@ -13589,10 +13805,10 @@ func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponseOutput) ToGoog
 }
 
 // Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
-func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse) map[string]string {
+func (o GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse) map[string]GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse {
 		return v.SynthesizeSpeechConfigs
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput)
 }
 
 // A transition route specifies a intent that can be matched and/or a data condition that can be evaluated during a session. When a specified transition is matched, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page` associated with the transition, the session will transition into the specified page. * If there is a `target_flow` associated with the transition, the session will transition into the specified flow.
@@ -14346,6 +14562,200 @@ func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponseArrayOutput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse {
 		return vs[0].([]GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse)[vs[1].(int)]
 	}).(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponseOutput)
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParams struct {
+	// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+	Name *string `pulumi:"name"`
+	// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+	SsmlGender *GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender `pulumi:"ssmlGender"`
+}
+
+// GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs and GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsInput` via:
+//
+//	GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs{...}
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs struct {
+	// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+	SsmlGender GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrInput `pulumi:"ssmlGender"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput).ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs, GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtr and GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrInput` via:
+//
+//	        GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrType GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs
+
+func GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtr(v *GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrInput {
+	return (*googleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrType) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrType) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput)
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3beta1VoiceSelectionParams) *GoogleCloudDialogflowCxV3beta1VoiceSelectionParams {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput)
+}
+
+// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VoiceSelectionParams) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput) SsmlGender() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VoiceSelectionParams) *GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender {
+		return v.SsmlGender
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1VoiceSelectionParams) GoogleCloudDialogflowCxV3beta1VoiceSelectionParams {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3beta1VoiceSelectionParams
+		return ret
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput)
+}
+
+// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1VoiceSelectionParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput) SsmlGender() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1VoiceSelectionParams) *GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGender {
+		if v == nil {
+			return nil
+		}
+		return v.SsmlGender
+	}).(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse struct {
+	// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+	Name string `pulumi:"name"`
+	// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+	SsmlGender string `pulumi:"ssmlGender"`
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput() GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput) ToGoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput {
+	return o
+}
+
+// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+func (o GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput) SsmlGender() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse) string { return v.SsmlGender }).(pulumi.StringOutput)
 }
 
 // Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
@@ -15171,7 +15581,7 @@ type GoogleRpcStatus struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message *string `pulumi:"message"`
 }
@@ -15192,7 +15602,7 @@ type GoogleRpcStatusArgs struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	Details pulumi.MapArrayInput `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -15281,8 +15691,8 @@ func (o GoogleRpcStatusOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o GoogleRpcStatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v GoogleRpcStatus) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o GoogleRpcStatusOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v GoogleRpcStatus) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -15325,13 +15735,13 @@ func (o GoogleRpcStatusPtrOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o GoogleRpcStatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *GoogleRpcStatus) []map[string]string {
+func (o GoogleRpcStatusPtrOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *GoogleRpcStatus) []map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Details
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -15349,7 +15759,7 @@ type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -15375,8 +15785,8 @@ func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o GoogleRpcStatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o GoogleRpcStatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -15505,6 +15915,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestConfigArgs{})
@@ -15521,6 +15933,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VersionVariantsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1VersionVariantsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VersionVariantsVariantInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs{})
@@ -15731,6 +16145,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigMapOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput{})
@@ -15760,6 +16178,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput{})

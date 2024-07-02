@@ -55,7 +55,7 @@ class GetTableResult:
 
     @property
     @pulumi.getter(name="clusterStates")
-    def cluster_states(self) -> Mapping[str, str]:
+    def cluster_states(self) -> Mapping[str, 'outputs.ClusterStateResponse']:
         """
         Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
         """
@@ -63,7 +63,7 @@ class GetTableResult:
 
     @property
     @pulumi.getter(name="columnFamilies")
-    def column_families(self) -> Mapping[str, str]:
+    def column_families(self) -> Mapping[str, 'outputs.ColumnFamilyResponse']:
         """
         The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         """

@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1.Inputs
         public Input<string> ClusterId { get; set; } = null!;
 
         [Input("nodeTypeConfigs", required: true)]
-        private InputMap<string>? _nodeTypeConfigs;
+        private InputMap<Inputs.NodeTypeConfigArgs>? _nodeTypeConfigs;
 
         /// <summary>
         /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         /// </summary>
-        public InputMap<string> NodeTypeConfigs
+        public InputMap<Inputs.NodeTypeConfigArgs> NodeTypeConfigs
         {
-            get => _nodeTypeConfigs ?? (_nodeTypeConfigs = new InputMap<string>());
+            get => _nodeTypeConfigs ?? (_nodeTypeConfigs = new InputMap<Inputs.NodeTypeConfigArgs>());
             set => _nodeTypeConfigs = value;
         }
 

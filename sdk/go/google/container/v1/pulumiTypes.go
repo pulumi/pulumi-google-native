@@ -10857,7 +10857,7 @@ type MaintenanceWindow struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow *DailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions map[string]string `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions map[string]TimeWindow `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow *RecurringTimeWindow `pulumi:"recurringWindow"`
 }
@@ -10878,7 +10878,7 @@ type MaintenanceWindowArgs struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow DailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions pulumi.StringMapInput `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions TimeWindowMapInput `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow RecurringTimeWindowPtrInput `pulumi:"recurringWindow"`
 }
@@ -10967,8 +10967,8 @@ func (o MaintenanceWindowOutput) DailyMaintenanceWindow() DailyMaintenanceWindow
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MaintenanceWindow) map[string]string { return v.MaintenanceExclusions }).(pulumi.StringMapOutput)
+func (o MaintenanceWindowOutput) MaintenanceExclusions() TimeWindowMapOutput {
+	return o.ApplyT(func(v MaintenanceWindow) map[string]TimeWindow { return v.MaintenanceExclusions }).(TimeWindowMapOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -11011,13 +11011,13 @@ func (o MaintenanceWindowPtrOutput) DailyMaintenanceWindow() DailyMaintenanceWin
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowPtrOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) map[string]string {
+func (o MaintenanceWindowPtrOutput) MaintenanceExclusions() TimeWindowMapOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) map[string]TimeWindow {
 		if v == nil {
 			return nil
 		}
 		return v.MaintenanceExclusions
-	}).(pulumi.StringMapOutput)
+	}).(TimeWindowMapOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -11035,7 +11035,7 @@ type MaintenanceWindowResponse struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow DailyMaintenanceWindowResponse `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions map[string]string `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions map[string]TimeWindowResponse `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow RecurringTimeWindowResponse `pulumi:"recurringWindow"`
 }
@@ -11061,8 +11061,8 @@ func (o MaintenanceWindowResponseOutput) DailyMaintenanceWindow() DailyMaintenan
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowResponseOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) map[string]string { return v.MaintenanceExclusions }).(pulumi.StringMapOutput)
+func (o MaintenanceWindowResponseOutput) MaintenanceExclusions() TimeWindowResponseMapOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) map[string]TimeWindowResponse { return v.MaintenanceExclusions }).(TimeWindowResponseMapOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -21658,6 +21658,31 @@ func (i *timeWindowPtrType) ToTimeWindowPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowPtrOutput)
 }
 
+// TimeWindowMapInput is an input type that accepts TimeWindowMap and TimeWindowMapOutput values.
+// You can construct a concrete instance of `TimeWindowMapInput` via:
+//
+//	TimeWindowMap{ "key": TimeWindowArgs{...} }
+type TimeWindowMapInput interface {
+	pulumi.Input
+
+	ToTimeWindowMapOutput() TimeWindowMapOutput
+	ToTimeWindowMapOutputWithContext(context.Context) TimeWindowMapOutput
+}
+
+type TimeWindowMap map[string]TimeWindowInput
+
+func (TimeWindowMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeWindow)(nil)).Elem()
+}
+
+func (i TimeWindowMap) ToTimeWindowMapOutput() TimeWindowMapOutput {
+	return i.ToTimeWindowMapOutputWithContext(context.Background())
+}
+
+func (i TimeWindowMap) ToTimeWindowMapOutputWithContext(ctx context.Context) TimeWindowMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowMapOutput)
+}
+
 // Represents an arbitrary window of time.
 type TimeWindowOutput struct{ *pulumi.OutputState }
 
@@ -21752,6 +21777,26 @@ func (o TimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TimeWindowMapOutput struct{ *pulumi.OutputState }
+
+func (TimeWindowMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeWindow)(nil)).Elem()
+}
+
+func (o TimeWindowMapOutput) ToTimeWindowMapOutput() TimeWindowMapOutput {
+	return o
+}
+
+func (o TimeWindowMapOutput) ToTimeWindowMapOutputWithContext(ctx context.Context) TimeWindowMapOutput {
+	return o
+}
+
+func (o TimeWindowMapOutput) MapIndex(k pulumi.StringInput) TimeWindowOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TimeWindow {
+		return vs[0].(map[string]TimeWindow)[vs[1].(string)]
+	}).(TimeWindowOutput)
+}
+
 // Represents an arbitrary window of time.
 type TimeWindowResponse struct {
 	// The time that the window ends. The end time should take place after the start time.
@@ -21790,6 +21835,26 @@ func (o TimeWindowResponseOutput) MaintenanceExclusionOptions() MaintenanceExclu
 // The time that the window first starts.
 func (o TimeWindowResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type TimeWindowResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TimeWindowResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeWindowResponse)(nil)).Elem()
+}
+
+func (o TimeWindowResponseMapOutput) ToTimeWindowResponseMapOutput() TimeWindowResponseMapOutput {
+	return o
+}
+
+func (o TimeWindowResponseMapOutput) ToTimeWindowResponseMapOutputWithContext(ctx context.Context) TimeWindowResponseMapOutput {
+	return o
+}
+
+func (o TimeWindowResponseMapOutput) MapIndex(k pulumi.StringInput) TimeWindowResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TimeWindowResponse {
+		return vs[0].(map[string]TimeWindowResponse)[vs[1].(string)]
+	}).(TimeWindowResponseOutput)
 }
 
 // UpdateInfo contains resource (instance groups, etc), status and other intermediate information relevant to a node pool upgrade.
@@ -23265,6 +23330,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionArrayInput)(nil)).Elem(), StatusConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowInput)(nil)).Elem(), TimeWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowPtrInput)(nil)).Elem(), TimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowMapInput)(nil)).Elem(), TimeWindowMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsInput)(nil)).Elem(), UpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsPtrInput)(nil)).Elem(), UpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VerticalPodAutoscalingInput)(nil)).Elem(), VerticalPodAutoscalingArgs{})
@@ -23602,7 +23668,9 @@ func init() {
 	pulumi.RegisterOutputType(StatusConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(TimeWindowOutput{})
 	pulumi.RegisterOutputType(TimeWindowPtrOutput{})
+	pulumi.RegisterOutputType(TimeWindowMapOutput{})
 	pulumi.RegisterOutputType(TimeWindowResponseOutput{})
+	pulumi.RegisterOutputType(TimeWindowResponseMapOutput{})
 	pulumi.RegisterOutputType(UpdateInfoResponseOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsPtrOutput{})

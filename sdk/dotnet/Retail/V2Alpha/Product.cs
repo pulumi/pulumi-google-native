@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         /// </summary>
         [Output("attributes")]
-        public Output<ImmutableDictionary<string, string>> Attributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.GoogleCloudRetailV2alphaCustomAttributeResponse>> Attributes { get; private set; } = null!;
 
         /// <summary>
         /// The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
@@ -285,14 +285,14 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     public sealed class ProductArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
-        private InputMap<string>? _attributes;
+        private InputMap<Inputs.GoogleCloudRetailV2alphaCustomAttributeArgs>? _attributes;
 
         /// <summary>
         /// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         /// </summary>
-        public InputMap<string> Attributes
+        public InputMap<Inputs.GoogleCloudRetailV2alphaCustomAttributeArgs> Attributes
         {
-            get => _attributes ?? (_attributes = new InputMap<string>());
+            get => _attributes ?? (_attributes = new InputMap<Inputs.GoogleCloudRetailV2alphaCustomAttributeArgs>());
             set => _attributes = value;
         }
 

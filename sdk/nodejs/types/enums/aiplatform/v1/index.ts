@@ -170,6 +170,150 @@ export const GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat = {
  */
 export type GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat = (typeof GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat)[keyof typeof GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat];
 
+export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding = {
+    /**
+     * Default value. This is the same as IDENTITY.
+     */
+    EncodingUnspecified: "ENCODING_UNSPECIFIED",
+    /**
+     * The tensor represents one feature.
+     */
+    Identity: "IDENTITY",
+    /**
+     * The tensor represents a bag of features where each index maps to a feature. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [27, 6.0, 150] index_feature_mapping = ["age", "height", "weight"] ```
+     */
+    BagOfFeatures: "BAG_OF_FEATURES",
+    /**
+     * The tensor represents a bag of features where each index maps to a feature. Zero values in the tensor indicates feature being non-existent. InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [2, 0, 5, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"] ```
+     */
+    BagOfFeaturesSparse: "BAG_OF_FEATURES_SPARSE",
+    /**
+     * The tensor is a list of binaries representing whether a feature exists or not (1 indicates existence). InputMetadata.index_feature_mapping must be provided for this encoding. For example: ``` input = [1, 0, 1, 0, 1] index_feature_mapping = ["a", "b", "c", "d", "e"] ```
+     */
+    Indicator: "INDICATOR",
+    /**
+     * The tensor is encoded into a 1-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. For example: ``` input = ["This", "is", "a", "test", "."] encoded = [0.1, 0.2, 0.3, 0.4, 0.5] ```
+     */
+    CombinedEmbedding: "COMBINED_EMBEDDING",
+    /**
+     * Select this encoding when the input tensor is encoded into a 2-dimensional array represented by an encoded tensor. InputMetadata.encoded_tensor_name must be provided for this encoding. The first dimension of the encoded tensor's shape is the same as the input tensor's shape. For example: ``` input = ["This", "is", "a", "test", "."] encoded = [[0.1, 0.2, 0.3, 0.4, 0.5], [0.2, 0.1, 0.4, 0.3, 0.5], [0.5, 0.1, 0.3, 0.5, 0.4], [0.5, 0.3, 0.1, 0.2, 0.4], [0.4, 0.3, 0.2, 0.5, 0.1]] ```
+     */
+    ConcatEmbedding: "CONCAT_EMBEDDING",
+} as const;
+
+/**
+ * Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+ */
+export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding = (typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding)[keyof typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncoding];
+
+export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap = {
+    /**
+     * Should not be used.
+     */
+    ColorMapUnspecified: "COLOR_MAP_UNSPECIFIED",
+    /**
+     * Positive: green. Negative: pink.
+     */
+    PinkGreen: "PINK_GREEN",
+    /**
+     * Viridis color map: A perceptually uniform color mapping which is easier to see by those with colorblindness and progresses from yellow to green to blue. Positive: yellow. Negative: blue.
+     */
+    Viridis: "VIRIDIS",
+    /**
+     * Positive: red. Negative: red.
+     */
+    Red: "RED",
+    /**
+     * Positive: green. Negative: green.
+     */
+    Green: "GREEN",
+    /**
+     * Positive: green. Negative: red.
+     */
+    RedGreen: "RED_GREEN",
+    /**
+     * PiYG palette.
+     */
+    PinkWhiteGreen: "PINK_WHITE_GREEN",
+} as const;
+
+/**
+ * The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+ */
+export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap = (typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap)[keyof typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMap];
+
+export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType = {
+    /**
+     * Default value. This is the same as NONE.
+     */
+    OverlayTypeUnspecified: "OVERLAY_TYPE_UNSPECIFIED",
+    /**
+     * No overlay.
+     */
+    None: "NONE",
+    /**
+     * The attributions are shown on top of the original image.
+     */
+    Original: "ORIGINAL",
+    /**
+     * The attributions are shown on top of grayscaled version of the original image.
+     */
+    Grayscale: "GRAYSCALE",
+    /**
+     * The attributions are used as a mask to reveal predictive parts of the image and hide the un-predictive parts.
+     */
+    MaskBlack: "MASK_BLACK",
+} as const;
+
+/**
+ * How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+ */
+export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType = (typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType)[keyof typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayType];
+
+export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity = {
+    /**
+     * Default value. This is the same as POSITIVE.
+     */
+    PolarityUnspecified: "POLARITY_UNSPECIFIED",
+    /**
+     * Highlights the pixels/outlines that were most influential to the model's prediction.
+     */
+    Positive: "POSITIVE",
+    /**
+     * Setting polarity to negative highlights areas that does not lead to the models's current prediction.
+     */
+    Negative: "NEGATIVE",
+    /**
+     * Shows both positive and negative attributions.
+     */
+    Both: "BOTH",
+} as const;
+
+/**
+ * Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+ */
+export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity = (typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity)[keyof typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarity];
+
+export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType = {
+    /**
+     * Should not be used.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Shows which pixel contributed to the image prediction.
+     */
+    Pixels: "PIXELS",
+    /**
+     * Shows which region contributed to the image prediction by outlining the region.
+     */
+    Outlines: "OUTLINES",
+} as const;
+
+/**
+ * Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+ */
+export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType = (typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType)[keyof typeof GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationType];
+
 export const GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline = {
     /**
      * Should not be used.

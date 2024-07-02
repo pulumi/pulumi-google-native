@@ -38,17 +38,17 @@ type LookupFeatureResult struct {
 	// Labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
-	MembershipSpecs map[string]string `pulumi:"membershipSpecs"`
+	MembershipSpecs map[string]MembershipFeatureSpecResponse `pulumi:"membershipSpecs"`
 	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-	MembershipStates map[string]string `pulumi:"membershipStates"`
+	MembershipStates map[string]MembershipFeatureStateResponse `pulumi:"membershipStates"`
 	// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
 	Name string `pulumi:"name"`
 	// State of the Feature resource itself.
 	ResourceState FeatureResourceStateResponse `pulumi:"resourceState"`
 	// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
-	ScopeSpecs map[string]string `pulumi:"scopeSpecs"`
+	ScopeSpecs map[string]ScopeFeatureSpecResponse `pulumi:"scopeSpecs"`
 	// Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
-	ScopeStates map[string]string `pulumi:"scopeStates"`
+	ScopeStates map[string]ScopeFeatureStateResponse `pulumi:"scopeStates"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec CommonFeatureSpecResponse `pulumi:"spec"`
 	// The Hub-wide Feature state.
@@ -117,13 +117,13 @@ func (o LookupFeatureResultOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
-func (o LookupFeatureResultOutput) MembershipSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupFeatureResult) map[string]string { return v.MembershipSpecs }).(pulumi.StringMapOutput)
+func (o LookupFeatureResultOutput) MembershipSpecs() MembershipFeatureSpecResponseMapOutput {
+	return o.ApplyT(func(v LookupFeatureResult) map[string]MembershipFeatureSpecResponse { return v.MembershipSpecs }).(MembershipFeatureSpecResponseMapOutput)
 }
 
 // Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-func (o LookupFeatureResultOutput) MembershipStates() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupFeatureResult) map[string]string { return v.MembershipStates }).(pulumi.StringMapOutput)
+func (o LookupFeatureResultOutput) MembershipStates() MembershipFeatureStateResponseMapOutput {
+	return o.ApplyT(func(v LookupFeatureResult) map[string]MembershipFeatureStateResponse { return v.MembershipStates }).(MembershipFeatureStateResponseMapOutput)
 }
 
 // The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
@@ -137,13 +137,13 @@ func (o LookupFeatureResultOutput) ResourceState() FeatureResourceStateResponseO
 }
 
 // Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
-func (o LookupFeatureResultOutput) ScopeSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupFeatureResult) map[string]string { return v.ScopeSpecs }).(pulumi.StringMapOutput)
+func (o LookupFeatureResultOutput) ScopeSpecs() ScopeFeatureSpecResponseMapOutput {
+	return o.ApplyT(func(v LookupFeatureResult) map[string]ScopeFeatureSpecResponse { return v.ScopeSpecs }).(ScopeFeatureSpecResponseMapOutput)
 }
 
 // Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
-func (o LookupFeatureResultOutput) ScopeStates() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupFeatureResult) map[string]string { return v.ScopeStates }).(pulumi.StringMapOutput)
+func (o LookupFeatureResultOutput) ScopeStates() ScopeFeatureStateResponseMapOutput {
+	return o.ApplyT(func(v LookupFeatureResult) map[string]ScopeFeatureStateResponse { return v.ScopeStates }).(ScopeFeatureStateResponseMapOutput)
 }
 
 // Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.

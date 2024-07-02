@@ -31,7 +31,7 @@ export interface GetEntityResult {
     /**
      * Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
      */
-    readonly fields: {[key: string]: string};
+    readonly fields: {[key: string]: any};
     /**
      * Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
      */

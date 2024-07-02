@@ -140,11 +140,11 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// <summary>
         /// Map from target ID to the target artifacts created during the render operation.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> TargetArtifacts;
+        public readonly ImmutableDictionary<string, Outputs.TargetArtifactResponse> TargetArtifacts;
         /// <summary>
         /// Map from target ID to details of the render operation for that target.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> TargetRenders;
+        public readonly ImmutableDictionary<string, Outputs.TargetRenderResponse> TargetRenders;
         /// <summary>
         /// Snapshot of the targets taken at release creation time.
         /// </summary>
@@ -190,9 +190,9 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             string skaffoldVersion,
 
-            ImmutableDictionary<string, string> targetArtifacts,
+            ImmutableDictionary<string, Outputs.TargetArtifactResponse> targetArtifacts,
 
-            ImmutableDictionary<string, string> targetRenders,
+            ImmutableDictionary<string, Outputs.TargetRenderResponse> targetRenders,
 
             ImmutableArray<Outputs.TargetResponse> targetSnapshots,
 

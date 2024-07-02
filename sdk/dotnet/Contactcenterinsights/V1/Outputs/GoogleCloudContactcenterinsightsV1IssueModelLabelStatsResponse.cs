@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// <summary>
         /// Statistics on each issue. Key is the issue's resource name.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> IssueStats;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse> IssueStats;
         /// <summary>
         /// Number of analyzed conversations for which no issue was applicable at this point in time.
         /// </summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         private GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(
             string analyzedConversationsCount,
 
-            ImmutableDictionary<string, string> issueStats,
+            ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsResponse> issueStats,
 
             string unclassifiedConversationsCount)
         {

@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'BackendMetastoreMetastoreType',
     'DatabaseDumpDatabaseType',
     'DatabaseDumpType',
     'HiveMetastoreConfigEndpointProtocol',
@@ -37,6 +38,28 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class BackendMetastoreMetastoreType(str, Enum):
+    """
+    The type of the backend metastore.
+    """
+    METASTORE_TYPE_UNSPECIFIED = "METASTORE_TYPE_UNSPECIFIED"
+    """
+    The metastore type is not set.
+    """
+    DATAPLEX = "DATAPLEX"
+    """
+    The backend metastore is Dataplex.
+    """
+    BIGQUERY = "BIGQUERY"
+    """
+    The backend metastore is BigQuery.
+    """
+    DATAPROC_METASTORE = "DATAPROC_METASTORE"
+    """
+    The backend metastore is Dataproc Metastore.
     """
 
 

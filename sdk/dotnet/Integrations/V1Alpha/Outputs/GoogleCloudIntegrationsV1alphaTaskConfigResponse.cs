@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// <summary>
         /// Optional. The customized parameters the user can pass to this task.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Parameters;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudIntegrationsV1alphaEventParameterResponse> Parameters;
         /// <summary>
         /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
         /// </summary>
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             string nextTasksExecutionPolicy,
 
-            ImmutableDictionary<string, string> parameters,
+            ImmutableDictionary<string, Outputs.GoogleCloudIntegrationsV1alphaEventParameterResponse> parameters,
 
             Outputs.GoogleCloudIntegrationsV1alphaCoordinateResponse position,
 

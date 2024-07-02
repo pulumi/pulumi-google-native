@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// <summary>
         /// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> AttributionScoreDriftThresholds;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1ThresholdConfigResponse> AttributionScoreDriftThresholds;
         /// <summary>
         /// Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
         /// </summary>
@@ -27,15 +27,15 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// <summary>
         /// Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> DriftThresholds;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1ThresholdConfigResponse> DriftThresholds;
 
         [OutputConstructor]
         private GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse(
-            ImmutableDictionary<string, string> attributionScoreDriftThresholds,
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1ThresholdConfigResponse> attributionScoreDriftThresholds,
 
             Outputs.GoogleCloudAiplatformV1ThresholdConfigResponse defaultDriftThreshold,
 
-            ImmutableDictionary<string, string> driftThresholds)
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1ThresholdConfigResponse> driftThresholds)
         {
             AttributionScoreDriftThresholds = attributionScoreDriftThresholds;
             DefaultDriftThreshold = defaultDriftThreshold;

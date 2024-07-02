@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -41,7 +44,7 @@ export class TagTemplate extends pulumi.CustomResource {
     /**
      * Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
      */
-    public readonly fields!: pulumi.Output<{[key: string]: string}>;
+    public readonly fields!: pulumi.Output<{[key: string]: outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
@@ -102,7 +105,7 @@ export interface TagTemplateArgs {
     /**
      * Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
      */
-    fields: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    fields: pulumi.Input<{[key: string]: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs>}>;
     location?: pulumi.Input<string>;
     /**
      * The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.

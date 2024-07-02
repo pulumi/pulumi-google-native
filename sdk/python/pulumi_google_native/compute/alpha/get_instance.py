@@ -403,7 +403,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="partnerMetadata")
-    def partner_metadata(self) -> Mapping[str, str]:
+    def partner_metadata(self) -> Mapping[str, 'outputs.StructuredEntriesResponse']:
         """
         Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         """
@@ -507,7 +507,7 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter(name="serviceIntegrationSpecs")
-    def service_integration_specs(self) -> Mapping[str, str]:
+    def service_integration_specs(self) -> Mapping[str, 'outputs.ServiceIntegrationSpecResponse']:
         """
         Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         """

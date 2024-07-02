@@ -437,7 +437,7 @@ class Conversation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dialogflowIntents")
-    def dialogflow_intents(self) -> pulumi.Output[Mapping[str, str]]:
+    def dialogflow_intents(self) -> pulumi.Output[Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1DialogflowIntentResponse']]:
         """
         All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
         """

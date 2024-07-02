@@ -36,7 +36,7 @@ export interface GetRepoResult {
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
-    readonly pubsubConfigs: {[key: string]: string};
+    readonly pubsubConfigs: {[key: string]: outputs.sourcerepo.v1.PubsubConfigResponse};
     /**
      * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
      */

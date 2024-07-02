@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// <summary>
         /// Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Inputs;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataResponse> Inputs;
         /// <summary>
         /// Name of the source to generate embeddings for example based explanations.
         /// </summary>
@@ -31,17 +31,17 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// <summary>
         /// Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Outputs;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataResponse> Outputs;
 
         [OutputConstructor]
         private GoogleCloudAiplatformV1beta1ExplanationMetadataResponse(
             string featureAttributionsSchemaUri,
 
-            ImmutableDictionary<string, string> inputs,
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataResponse> inputs,
 
             string latentSpaceSource,
 
-            ImmutableDictionary<string, string> outputs)
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataResponse> outputs)
         {
             FeatureAttributionsSchemaUri = featureAttributionsSchemaUri;
             Inputs = inputs;

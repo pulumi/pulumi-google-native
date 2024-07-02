@@ -25,6 +25,7 @@ __all__ = [
     'GCSResponse',
     'InstancePolicyOrTemplateResponse',
     'InstancePolicyResponse',
+    'InstanceStatusResponse',
     'JobNotificationResponse',
     'JobStatusResponse',
     'KMSEnvMapResponse',
@@ -42,6 +43,7 @@ __all__ = [
     'StatusEventResponse',
     'TaskExecutionResponse',
     'TaskGroupResponse',
+    'TaskGroupStatusResponse',
     'TaskSpecResponse',
     'VolumeResponse',
 ]
@@ -894,6 +896,84 @@ class InstancePolicyResponse(dict):
 
 
 @pulumi.output_type
+class InstanceStatusResponse(dict):
+    """
+    VM instance status.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDisk":
+            suggest = "boot_disk"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
+        elif key == "taskPack":
+            suggest = "task_pack"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk: 'outputs.DiskResponse',
+                 machine_type: str,
+                 provisioning_model: str,
+                 task_pack: str):
+        """
+        VM instance status.
+        :param 'DiskResponse' boot_disk: The VM boot disk.
+        :param str machine_type: The Compute Engine machine type.
+        :param str provisioning_model: The VM instance provisioning model.
+        :param str task_pack: The max number of tasks can be assigned to this instance type.
+        """
+        pulumi.set(__self__, "boot_disk", boot_disk)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "provisioning_model", provisioning_model)
+        pulumi.set(__self__, "task_pack", task_pack)
+
+    @property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> 'outputs.DiskResponse':
+        """
+        The VM boot disk.
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        The Compute Engine machine type.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> str:
+        """
+        The VM instance provisioning model.
+        """
+        return pulumi.get(self, "provisioning_model")
+
+    @property
+    @pulumi.getter(name="taskPack")
+    def task_pack(self) -> str:
+        """
+        The max number of tasks can be assigned to this instance type.
+        """
+        return pulumi.get(self, "task_pack")
+
+
+@pulumi.output_type
 class JobNotificationResponse(dict):
     """
     Notification configurations.
@@ -973,13 +1053,13 @@ class JobStatusResponse(dict):
                  run_duration: str,
                  state: str,
                  status_events: Sequence['outputs.StatusEventResponse'],
-                 task_groups: Mapping[str, str]):
+                 task_groups: Mapping[str, 'outputs.TaskGroupStatusResponse']):
         """
         Job status.
         :param str run_duration: The duration of time that the Job spent in status RUNNING.
         :param str state: Job state
         :param Sequence['StatusEventResponse'] status_events: Job status events
-        :param Mapping[str, str] task_groups: Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
+        :param Mapping[str, 'TaskGroupStatusResponse'] task_groups: Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
         """
         pulumi.set(__self__, "run_duration", run_duration)
         pulumi.set(__self__, "state", state)
@@ -1012,7 +1092,7 @@ class JobStatusResponse(dict):
 
     @property
     @pulumi.getter(name="taskGroups")
-    def task_groups(self) -> Mapping[str, str]:
+    def task_groups(self) -> Mapping[str, 'outputs.TaskGroupStatusResponse']:
         """
         Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
         """
@@ -1949,6 +2029,39 @@ class TaskGroupResponse(dict):
         Tasks in the group share the same task spec.
         """
         return pulumi.get(self, "task_spec")
+
+
+@pulumi.output_type
+class TaskGroupStatusResponse(dict):
+    """
+    Aggregated task status for a TaskGroup.
+    """
+    def __init__(__self__, *,
+                 counts: Mapping[str, str],
+                 instances: Sequence['outputs.InstanceStatusResponse']):
+        """
+        Aggregated task status for a TaskGroup.
+        :param Mapping[str, str] counts: Count of task in each state in the TaskGroup. The map key is task state name.
+        :param Sequence['InstanceStatusResponse'] instances: Status of instances allocated for the TaskGroup.
+        """
+        pulumi.set(__self__, "counts", counts)
+        pulumi.set(__self__, "instances", instances)
+
+    @property
+    @pulumi.getter
+    def counts(self) -> Mapping[str, str]:
+        """
+        Count of task in each state in the TaskGroup. The map key is task state name.
+        """
+        return pulumi.get(self, "counts")
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Sequence['outputs.InstanceStatusResponse']:
+        """
+        Status of instances allocated for the TaskGroup.
+        """
+        return pulumi.get(self, "instances")
 
 
 @pulumi.output_type

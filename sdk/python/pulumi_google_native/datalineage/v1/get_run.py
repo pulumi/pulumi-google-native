@@ -40,7 +40,7 @@ class GetRunResult:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Mapping[str, str]:
+    def attributes(self) -> Mapping[str, Any]:
         """
         Optional. The attributes of the run. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the run). Up to 100 attributes are allowed.
         """

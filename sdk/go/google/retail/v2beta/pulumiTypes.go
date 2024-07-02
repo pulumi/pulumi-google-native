@@ -947,6 +947,200 @@ func (o GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput) Index(i pu
 	}).(GoogleCloudRetailV2betaConditionTimeRangeResponseOutput)
 }
 
+// A custom attribute that is not explicitly modeled in Product.
+type GoogleCloudRetailV2betaCustomAttribute struct {
+	// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+	Indexable *bool `pulumi:"indexable"`
+	// The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+	Numbers []float64 `pulumi:"numbers"`
+	// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+	Searchable *bool `pulumi:"searchable"`
+	// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+	Text []string `pulumi:"text"`
+}
+
+// GoogleCloudRetailV2betaCustomAttributeInput is an input type that accepts GoogleCloudRetailV2betaCustomAttributeArgs and GoogleCloudRetailV2betaCustomAttributeOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaCustomAttributeInput` via:
+//
+//	GoogleCloudRetailV2betaCustomAttributeArgs{...}
+type GoogleCloudRetailV2betaCustomAttributeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaCustomAttributeOutput() GoogleCloudRetailV2betaCustomAttributeOutput
+	ToGoogleCloudRetailV2betaCustomAttributeOutputWithContext(context.Context) GoogleCloudRetailV2betaCustomAttributeOutput
+}
+
+// A custom attribute that is not explicitly modeled in Product.
+type GoogleCloudRetailV2betaCustomAttributeArgs struct {
+	// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+	Indexable pulumi.BoolPtrInput `pulumi:"indexable"`
+	// The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+	Numbers pulumi.Float64ArrayInput `pulumi:"numbers"`
+	// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+	Searchable pulumi.BoolPtrInput `pulumi:"searchable"`
+	// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+	Text pulumi.StringArrayInput `pulumi:"text"`
+}
+
+func (GoogleCloudRetailV2betaCustomAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaCustomAttribute)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaCustomAttributeArgs) ToGoogleCloudRetailV2betaCustomAttributeOutput() GoogleCloudRetailV2betaCustomAttributeOutput {
+	return i.ToGoogleCloudRetailV2betaCustomAttributeOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaCustomAttributeArgs) ToGoogleCloudRetailV2betaCustomAttributeOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaCustomAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaCustomAttributeOutput)
+}
+
+// GoogleCloudRetailV2betaCustomAttributeMapInput is an input type that accepts GoogleCloudRetailV2betaCustomAttributeMap and GoogleCloudRetailV2betaCustomAttributeMapOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaCustomAttributeMapInput` via:
+//
+//	GoogleCloudRetailV2betaCustomAttributeMap{ "key": GoogleCloudRetailV2betaCustomAttributeArgs{...} }
+type GoogleCloudRetailV2betaCustomAttributeMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaCustomAttributeMapOutput() GoogleCloudRetailV2betaCustomAttributeMapOutput
+	ToGoogleCloudRetailV2betaCustomAttributeMapOutputWithContext(context.Context) GoogleCloudRetailV2betaCustomAttributeMapOutput
+}
+
+type GoogleCloudRetailV2betaCustomAttributeMap map[string]GoogleCloudRetailV2betaCustomAttributeInput
+
+func (GoogleCloudRetailV2betaCustomAttributeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRetailV2betaCustomAttribute)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaCustomAttributeMap) ToGoogleCloudRetailV2betaCustomAttributeMapOutput() GoogleCloudRetailV2betaCustomAttributeMapOutput {
+	return i.ToGoogleCloudRetailV2betaCustomAttributeMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaCustomAttributeMap) ToGoogleCloudRetailV2betaCustomAttributeMapOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaCustomAttributeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaCustomAttributeMapOutput)
+}
+
+// A custom attribute that is not explicitly modeled in Product.
+type GoogleCloudRetailV2betaCustomAttributeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaCustomAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaCustomAttribute)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeOutput) ToGoogleCloudRetailV2betaCustomAttributeOutput() GoogleCloudRetailV2betaCustomAttributeOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeOutput) ToGoogleCloudRetailV2betaCustomAttributeOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaCustomAttributeOutput {
+	return o
+}
+
+// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+func (o GoogleCloudRetailV2betaCustomAttributeOutput) Indexable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttribute) *bool { return v.Indexable }).(pulumi.BoolPtrOutput)
+}
+
+// The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaCustomAttributeOutput) Numbers() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttribute) []float64 { return v.Numbers }).(pulumi.Float64ArrayOutput)
+}
+
+// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaCustomAttributeOutput) Searchable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttribute) *bool { return v.Searchable }).(pulumi.BoolPtrOutput)
+}
+
+// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaCustomAttributeOutput) Text() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttribute) []string { return v.Text }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaCustomAttributeMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaCustomAttributeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRetailV2betaCustomAttribute)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeMapOutput) ToGoogleCloudRetailV2betaCustomAttributeMapOutput() GoogleCloudRetailV2betaCustomAttributeMapOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeMapOutput) ToGoogleCloudRetailV2betaCustomAttributeMapOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaCustomAttributeMapOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudRetailV2betaCustomAttributeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaCustomAttribute {
+		return vs[0].(map[string]GoogleCloudRetailV2betaCustomAttribute)[vs[1].(string)]
+	}).(GoogleCloudRetailV2betaCustomAttributeOutput)
+}
+
+// A custom attribute that is not explicitly modeled in Product.
+type GoogleCloudRetailV2betaCustomAttributeResponse struct {
+	// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+	Indexable bool `pulumi:"indexable"`
+	// The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+	Numbers []float64 `pulumi:"numbers"`
+	// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+	Searchable bool `pulumi:"searchable"`
+	// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+	Text []string `pulumi:"text"`
+}
+
+// A custom attribute that is not explicitly modeled in Product.
+type GoogleCloudRetailV2betaCustomAttributeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaCustomAttributeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaCustomAttributeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeResponseOutput) ToGoogleCloudRetailV2betaCustomAttributeResponseOutput() GoogleCloudRetailV2betaCustomAttributeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeResponseOutput) ToGoogleCloudRetailV2betaCustomAttributeResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaCustomAttributeResponseOutput {
+	return o
+}
+
+// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+func (o GoogleCloudRetailV2betaCustomAttributeResponseOutput) Indexable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttributeResponse) bool { return v.Indexable }).(pulumi.BoolOutput)
+}
+
+// The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaCustomAttributeResponseOutput) Numbers() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttributeResponse) []float64 { return v.Numbers }).(pulumi.Float64ArrayOutput)
+}
+
+// This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaCustomAttributeResponseOutput) Searchable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttributeResponse) bool { return v.Searchable }).(pulumi.BoolOutput)
+}
+
+// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaCustomAttributeResponseOutput) Text() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaCustomAttributeResponse) []string { return v.Text }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaCustomAttributeResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaCustomAttributeResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRetailV2betaCustomAttributeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeResponseMapOutput) ToGoogleCloudRetailV2betaCustomAttributeResponseMapOutput() GoogleCloudRetailV2betaCustomAttributeResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeResponseMapOutput) ToGoogleCloudRetailV2betaCustomAttributeResponseMapOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaCustomAttributeResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaCustomAttributeResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudRetailV2betaCustomAttributeResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaCustomAttributeResponse {
+		return vs[0].(map[string]GoogleCloudRetailV2betaCustomAttributeResponse)[vs[1].(string)]
+	}).(GoogleCloudRetailV2betaCustomAttributeResponseOutput)
+}
+
 // Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
 type GoogleCloudRetailV2betaFulfillmentInfo struct {
 	// The IDs for this type, such as the store IDs for FulfillmentInfo.type.pickup-in-store or the region IDs for FulfillmentInfo.type.same-day-delivery. A maximum of 3000 values are allowed. Each value must be a string with a length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
@@ -1484,7 +1678,7 @@ func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) Index(i pulumi.IntIn
 // The inventory information at a place (e.g. a store) identified by a place ID.
 type GoogleCloudRetailV2betaLocalInventoryResponse struct {
 	// Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
-	Attributes map[string]string `pulumi:"attributes"`
+	Attributes map[string]GoogleCloudRetailV2betaCustomAttributeResponse `pulumi:"attributes"`
 	// Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
 	FulfillmentTypes []string `pulumi:"fulfillmentTypes"`
 	// The place ID for the current set of inventory information.
@@ -1509,8 +1703,10 @@ func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) ToGoogleCloudRetail
 }
 
 // Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
-func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2betaLocalInventoryResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) Attributes() GoogleCloudRetailV2betaCustomAttributeResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaLocalInventoryResponse) map[string]GoogleCloudRetailV2betaCustomAttributeResponse {
+		return v.Attributes
+	}).(GoogleCloudRetailV2betaCustomAttributeResponseMapOutput)
 }
 
 // Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -2281,7 +2477,7 @@ func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) PriceRange() GoogleCloud
 // Product captures all metadata information of items to be recommended or searched.
 type GoogleCloudRetailV2betaProductResponse struct {
 	// Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
-	Attributes map[string]string `pulumi:"attributes"`
+	Attributes map[string]GoogleCloudRetailV2betaCustomAttributeResponse `pulumi:"attributes"`
 	// The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
 	Audience GoogleCloudRetailV2betaAudienceResponse `pulumi:"audience"`
 	// The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
@@ -2366,8 +2562,10 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) ToGoogleCloudRetailV2betaP
 }
 
 // Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
-func (o GoogleCloudRetailV2betaProductResponseOutput) Attributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+func (o GoogleCloudRetailV2betaProductResponseOutput) Attributes() GoogleCloudRetailV2betaCustomAttributeResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) map[string]GoogleCloudRetailV2betaCustomAttributeResponse {
+		return v.Attributes
+	}).(GoogleCloudRetailV2betaCustomAttributeResponseMapOutput)
 }
 
 // The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
@@ -6383,6 +6581,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionQueryTermArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionQueryTermArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionTimeRangeInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionTimeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaConditionTimeRangeArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaConditionTimeRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaCustomAttributeInput)(nil)).Elem(), GoogleCloudRetailV2betaCustomAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaCustomAttributeMapInput)(nil)).Elem(), GoogleCloudRetailV2betaCustomAttributeMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaFulfillmentInfoArrayInput)(nil)).Elem(), GoogleCloudRetailV2betaFulfillmentInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaImageInput)(nil)).Elem(), GoogleCloudRetailV2betaImageArgs{})
@@ -6448,6 +6648,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionTimeRangeArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionTimeRangeResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaConditionTimeRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaCustomAttributeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaCustomAttributeMapOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaCustomAttributeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaCustomAttributeResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaFulfillmentInfoResponseOutput{})

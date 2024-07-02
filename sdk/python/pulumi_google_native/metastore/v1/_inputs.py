@@ -13,6 +13,8 @@ from ._enums import *
 __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
+    'AuxiliaryVersionConfigArgs',
+    'BackendMetastoreArgs',
     'BindingArgs',
     'ConsumerArgs',
     'DataCatalogConfigArgs',
@@ -107,6 +109,86 @@ class AuditLogConfigArgs:
     @log_type.setter
     def log_type(self, value: Optional[pulumi.Input['AuditLogConfigLogType']]):
         pulumi.set(self, "log_type", value)
+
+
+@pulumi.input_type
+class AuxiliaryVersionConfigArgs:
+    def __init__(__self__, *,
+                 config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration information for the auxiliary service versions.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        :param pulumi.Input[str] version: The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        """
+        if config_overrides is not None:
+            pulumi.set(__self__, "config_overrides", config_overrides)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="configOverrides")
+    def config_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        """
+        return pulumi.get(self, "config_overrides")
+
+    @config_overrides.setter
+    def config_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "config_overrides", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class BackendMetastoreArgs:
+    def __init__(__self__, *,
+                 metastore_type: Optional[pulumi.Input['BackendMetastoreMetastoreType']] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Represents a backend metastore for the federation.
+        :param pulumi.Input['BackendMetastoreMetastoreType'] metastore_type: The type of the backend metastore.
+        :param pulumi.Input[str] name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id}
+        """
+        if metastore_type is not None:
+            pulumi.set(__self__, "metastore_type", metastore_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="metastoreType")
+    def metastore_type(self) -> Optional[pulumi.Input['BackendMetastoreMetastoreType']]:
+        """
+        The type of the backend metastore.
+        """
+        return pulumi.get(self, "metastore_type")
+
+    @metastore_type.setter
+    def metastore_type(self, value: Optional[pulumi.Input['BackendMetastoreMetastoreType']]):
+        pulumi.set(self, "metastore_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -384,14 +466,14 @@ class ExprArgs:
 @pulumi.input_type
 class HiveMetastoreConfigArgs:
     def __init__(__self__, *,
-                 auxiliary_versions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 auxiliary_versions: Optional[pulumi.Input[Mapping[str, pulumi.Input['AuxiliaryVersionConfigArgs']]]] = None,
                  config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_protocol: Optional[pulumi.Input['HiveMetastoreConfigEndpointProtocol']] = None,
                  kerberos_config: Optional[pulumi.Input['KerberosConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        :param pulumi.Input[Mapping[str, pulumi.Input['AuxiliaryVersionConfigArgs']]] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         :param pulumi.Input['HiveMetastoreConfigEndpointProtocol'] endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
         :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
@@ -410,14 +492,14 @@ class HiveMetastoreConfigArgs:
 
     @property
     @pulumi.getter(name="auxiliaryVersions")
-    def auxiliary_versions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def auxiliary_versions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['AuxiliaryVersionConfigArgs']]]]:
         """
         A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """
         return pulumi.get(self, "auxiliary_versions")
 
     @auxiliary_versions.setter
-    def auxiliary_versions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def auxiliary_versions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['AuxiliaryVersionConfigArgs']]]]):
         pulumi.set(self, "auxiliary_versions", value)
 
     @property

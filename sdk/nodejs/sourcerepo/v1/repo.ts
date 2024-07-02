@@ -49,7 +49,7 @@ export class Repo extends pulumi.CustomResource {
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
-    public readonly pubsubConfigs!: pulumi.Output<{[key: string]: string}>;
+    public readonly pubsubConfigs!: pulumi.Output<{[key: string]: outputs.sourcerepo.v1.PubsubConfigResponse}>;
     /**
      * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
      */
@@ -107,7 +107,7 @@ export interface RepoArgs {
     /**
      * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
      */
-    pubsubConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pubsubConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.sourcerepo.v1.PubsubConfigArgs>}>;
     /**
      * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
      */

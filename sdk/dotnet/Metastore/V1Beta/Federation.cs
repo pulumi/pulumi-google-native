@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         /// </summary>
         [Output("backendMetastores")]
-        public Output<ImmutableDictionary<string, string>> BackendMetastores { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.BackendMetastoreResponse>> BackendMetastores { get; private set; } = null!;
 
         /// <summary>
         /// The time when the metastore federation was created.
@@ -145,14 +145,14 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     public sealed class FederationArgs : global::Pulumi.ResourceArgs
     {
         [Input("backendMetastores")]
-        private InputMap<string>? _backendMetastores;
+        private InputMap<Inputs.BackendMetastoreArgs>? _backendMetastores;
 
         /// <summary>
         /// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         /// </summary>
-        public InputMap<string> BackendMetastores
+        public InputMap<Inputs.BackendMetastoreArgs> BackendMetastores
         {
-            get => _backendMetastores ?? (_backendMetastores = new InputMap<string>());
+            get => _backendMetastores ?? (_backendMetastores = new InputMap<Inputs.BackendMetastoreArgs>());
             set => _backendMetastores = value;
         }
 

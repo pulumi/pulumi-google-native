@@ -14,6 +14,8 @@ from ._enums import *
 __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AuxiliaryVersionConfigResponse',
+    'BackendMetastoreResponse',
     'BindingResponse',
     'ConsumerResponse',
     'DataCatalogConfigResponse',
@@ -23,6 +25,7 @@ __all__ = [
     'ExprResponse',
     'HiveMetastoreConfigResponse',
     'KerberosConfigResponse',
+    'LakeResponse',
     'MaintenanceWindowResponse',
     'MetadataExportResponse',
     'MetadataIntegrationResponse',
@@ -135,6 +138,119 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
+
+
+@pulumi.output_type
+class AuxiliaryVersionConfigResponse(dict):
+    """
+    Configuration information for the auxiliary service versions.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configOverrides":
+            suggest = "config_overrides"
+        elif key == "networkConfig":
+            suggest = "network_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuxiliaryVersionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuxiliaryVersionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuxiliaryVersionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_overrides: Mapping[str, str],
+                 network_config: 'outputs.NetworkConfigResponse',
+                 version: str):
+        """
+        Configuration information for the auxiliary service versions.
+        :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        :param 'NetworkConfigResponse' network_config: The network configuration contains the endpoint URI(s) of the auxiliary Hive metastore service.
+        :param str version: The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        """
+        pulumi.set(__self__, "config_overrides", config_overrides)
+        pulumi.set(__self__, "network_config", network_config)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="configOverrides")
+    def config_overrides(self) -> Mapping[str, str]:
+        """
+        A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides. If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        """
+        return pulumi.get(self, "config_overrides")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.NetworkConfigResponse':
+        """
+        The network configuration contains the endpoint URI(s) of the auxiliary Hive metastore service.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class BackendMetastoreResponse(dict):
+    """
+    Represents a backend metastore for the federation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metastoreType":
+            suggest = "metastore_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendMetastoreResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendMetastoreResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendMetastoreResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metastore_type: str,
+                 name: str):
+        """
+        Represents a backend metastore for the federation.
+        :param str metastore_type: The type of the backend metastore.
+        :param str name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id}
+        """
+        pulumi.set(__self__, "metastore_type", metastore_type)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="metastoreType")
+    def metastore_type(self) -> str:
+        """
+        The type of the backend metastore.
+        """
+        return pulumi.get(self, "metastore_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: BigQuery projects/{project_id} Dataproc Metastore projects/{project_id}/locations/{location}/services/{service_id}
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -365,16 +481,16 @@ class DataplexConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 lake_resources: Mapping[str, str]):
+                 lake_resources: Mapping[str, 'outputs.LakeResponse']):
         """
         Specifies how metastore metadata should be integrated with the Dataplex service.
-        :param Mapping[str, str] lake_resources: A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+        :param Mapping[str, 'LakeResponse'] lake_resources: A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
         """
         pulumi.set(__self__, "lake_resources", lake_resources)
 
     @property
     @pulumi.getter(name="lakeResources")
-    def lake_resources(self) -> Mapping[str, str]:
+    def lake_resources(self) -> Mapping[str, 'outputs.LakeResponse']:
         """
         A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
         """
@@ -504,14 +620,14 @@ class HiveMetastoreConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 auxiliary_versions: Mapping[str, str],
+                 auxiliary_versions: Mapping[str, 'outputs.AuxiliaryVersionConfigResponse'],
                  config_overrides: Mapping[str, str],
                  endpoint_protocol: str,
                  kerberos_config: 'outputs.KerberosConfigResponse',
                  version: str):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
-        :param Mapping[str, str] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        :param Mapping[str, 'AuxiliaryVersionConfigResponse'] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         :param str endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
         :param 'KerberosConfigResponse' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
@@ -525,7 +641,7 @@ class HiveMetastoreConfigResponse(dict):
 
     @property
     @pulumi.getter(name="auxiliaryVersions")
-    def auxiliary_versions(self) -> Mapping[str, str]:
+    def auxiliary_versions(self) -> Mapping[str, 'outputs.AuxiliaryVersionConfigResponse']:
         """
         A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         """
@@ -623,6 +739,28 @@ class KerberosConfigResponse(dict):
         A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
         """
         return pulumi.get(self, "principal")
+
+
+@pulumi.output_type
+class LakeResponse(dict):
+    """
+    Represents a Lake resource
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        Represents a Lake resource
+        :param str name: The Lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The Lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

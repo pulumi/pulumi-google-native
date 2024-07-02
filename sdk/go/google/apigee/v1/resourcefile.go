@@ -23,7 +23,7 @@ type Resourcefile struct {
 	Data          pulumi.StringOutput `pulumi:"data"`
 	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions pulumi.StringMapArrayOutput `pulumi:"extensions"`
+	Extensions pulumi.MapArrayOutput `pulumi:"extensions"`
 	// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
@@ -96,7 +96,7 @@ type resourcefileArgs struct {
 	Data          *string `pulumi:"data"`
 	EnvironmentId string  `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions []map[string]string `pulumi:"extensions"`
+	Extensions []map[string]interface{} `pulumi:"extensions"`
 	// File to upload.
 	File pulumi.AssetOrArchive `pulumi:"file"`
 	// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
@@ -114,7 +114,7 @@ type ResourcefileArgs struct {
 	Data          pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions pulumi.StringMapArrayInput
+	Extensions pulumi.MapArrayInput
 	// File to upload.
 	File pulumi.AssetOrArchiveInput
 	// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
@@ -176,8 +176,8 @@ func (o ResourcefileOutput) EnvironmentId() pulumi.StringOutput {
 }
 
 // Application specific response metadata. Must be set in the first response for streaming APIs.
-func (o ResourcefileOutput) Extensions() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Resourcefile) pulumi.StringMapArrayOutput { return v.Extensions }).(pulumi.StringMapArrayOutput)
+func (o ResourcefileOutput) Extensions() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.MapArrayOutput { return v.Extensions }).(pulumi.MapArrayOutput)
 }
 
 // Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}

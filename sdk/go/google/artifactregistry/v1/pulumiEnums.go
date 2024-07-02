@@ -10,6 +10,351 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Policy action.
+type CleanupPolicyAction string
+
+const (
+	// Action not specified.
+	CleanupPolicyActionActionUnspecified = CleanupPolicyAction("ACTION_UNSPECIFIED")
+	// Delete action.
+	CleanupPolicyActionDelete = CleanupPolicyAction("DELETE")
+	// Keep action.
+	CleanupPolicyActionKeep = CleanupPolicyAction("KEEP")
+)
+
+func (CleanupPolicyAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyAction)(nil)).Elem()
+}
+
+func (e CleanupPolicyAction) ToCleanupPolicyActionOutput() CleanupPolicyActionOutput {
+	return pulumi.ToOutput(e).(CleanupPolicyActionOutput)
+}
+
+func (e CleanupPolicyAction) ToCleanupPolicyActionOutputWithContext(ctx context.Context) CleanupPolicyActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CleanupPolicyActionOutput)
+}
+
+func (e CleanupPolicyAction) ToCleanupPolicyActionPtrOutput() CleanupPolicyActionPtrOutput {
+	return e.ToCleanupPolicyActionPtrOutputWithContext(context.Background())
+}
+
+func (e CleanupPolicyAction) ToCleanupPolicyActionPtrOutputWithContext(ctx context.Context) CleanupPolicyActionPtrOutput {
+	return CleanupPolicyAction(e).ToCleanupPolicyActionOutputWithContext(ctx).ToCleanupPolicyActionPtrOutputWithContext(ctx)
+}
+
+func (e CleanupPolicyAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CleanupPolicyAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CleanupPolicyAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CleanupPolicyAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CleanupPolicyActionOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyAction)(nil)).Elem()
+}
+
+func (o CleanupPolicyActionOutput) ToCleanupPolicyActionOutput() CleanupPolicyActionOutput {
+	return o
+}
+
+func (o CleanupPolicyActionOutput) ToCleanupPolicyActionOutputWithContext(ctx context.Context) CleanupPolicyActionOutput {
+	return o
+}
+
+func (o CleanupPolicyActionOutput) ToCleanupPolicyActionPtrOutput() CleanupPolicyActionPtrOutput {
+	return o.ToCleanupPolicyActionPtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyActionOutput) ToCleanupPolicyActionPtrOutputWithContext(ctx context.Context) CleanupPolicyActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanupPolicyAction) *CleanupPolicyAction {
+		return &v
+	}).(CleanupPolicyActionPtrOutput)
+}
+
+func (o CleanupPolicyActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CleanupPolicyAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CleanupPolicyActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CleanupPolicyAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CleanupPolicyActionPtrOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanupPolicyAction)(nil)).Elem()
+}
+
+func (o CleanupPolicyActionPtrOutput) ToCleanupPolicyActionPtrOutput() CleanupPolicyActionPtrOutput {
+	return o
+}
+
+func (o CleanupPolicyActionPtrOutput) ToCleanupPolicyActionPtrOutputWithContext(ctx context.Context) CleanupPolicyActionPtrOutput {
+	return o
+}
+
+func (o CleanupPolicyActionPtrOutput) Elem() CleanupPolicyActionOutput {
+	return o.ApplyT(func(v *CleanupPolicyAction) CleanupPolicyAction {
+		if v != nil {
+			return *v
+		}
+		var ret CleanupPolicyAction
+		return ret
+	}).(CleanupPolicyActionOutput)
+}
+
+func (o CleanupPolicyActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CleanupPolicyAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CleanupPolicyActionInput is an input type that accepts values of the CleanupPolicyAction enum
+// A concrete instance of `CleanupPolicyActionInput` can be one of the following:
+//
+//	CleanupPolicyActionActionUnspecified
+//	CleanupPolicyActionDelete
+//	CleanupPolicyActionKeep
+type CleanupPolicyActionInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyActionOutput() CleanupPolicyActionOutput
+	ToCleanupPolicyActionOutputWithContext(context.Context) CleanupPolicyActionOutput
+}
+
+var cleanupPolicyActionPtrType = reflect.TypeOf((**CleanupPolicyAction)(nil)).Elem()
+
+type CleanupPolicyActionPtrInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyActionPtrOutput() CleanupPolicyActionPtrOutput
+	ToCleanupPolicyActionPtrOutputWithContext(context.Context) CleanupPolicyActionPtrOutput
+}
+
+type cleanupPolicyActionPtr string
+
+func CleanupPolicyActionPtr(v string) CleanupPolicyActionPtrInput {
+	return (*cleanupPolicyActionPtr)(&v)
+}
+
+func (*cleanupPolicyActionPtr) ElementType() reflect.Type {
+	return cleanupPolicyActionPtrType
+}
+
+func (in *cleanupPolicyActionPtr) ToCleanupPolicyActionPtrOutput() CleanupPolicyActionPtrOutput {
+	return pulumi.ToOutput(in).(CleanupPolicyActionPtrOutput)
+}
+
+func (in *cleanupPolicyActionPtr) ToCleanupPolicyActionPtrOutputWithContext(ctx context.Context) CleanupPolicyActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CleanupPolicyActionPtrOutput)
+}
+
+// Match versions by tag status.
+type CleanupPolicyConditionTagState string
+
+const (
+	// Tag status not specified.
+	CleanupPolicyConditionTagStateTagStateUnspecified = CleanupPolicyConditionTagState("TAG_STATE_UNSPECIFIED")
+	// Applies to tagged versions only.
+	CleanupPolicyConditionTagStateTagged = CleanupPolicyConditionTagState("TAGGED")
+	// Applies to untagged versions only.
+	CleanupPolicyConditionTagStateUntagged = CleanupPolicyConditionTagState("UNTAGGED")
+	// Applies to all versions.
+	CleanupPolicyConditionTagStateAny = CleanupPolicyConditionTagState("ANY")
+)
+
+func (CleanupPolicyConditionTagState) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyConditionTagState)(nil)).Elem()
+}
+
+func (e CleanupPolicyConditionTagState) ToCleanupPolicyConditionTagStateOutput() CleanupPolicyConditionTagStateOutput {
+	return pulumi.ToOutput(e).(CleanupPolicyConditionTagStateOutput)
+}
+
+func (e CleanupPolicyConditionTagState) ToCleanupPolicyConditionTagStateOutputWithContext(ctx context.Context) CleanupPolicyConditionTagStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CleanupPolicyConditionTagStateOutput)
+}
+
+func (e CleanupPolicyConditionTagState) ToCleanupPolicyConditionTagStatePtrOutput() CleanupPolicyConditionTagStatePtrOutput {
+	return e.ToCleanupPolicyConditionTagStatePtrOutputWithContext(context.Background())
+}
+
+func (e CleanupPolicyConditionTagState) ToCleanupPolicyConditionTagStatePtrOutputWithContext(ctx context.Context) CleanupPolicyConditionTagStatePtrOutput {
+	return CleanupPolicyConditionTagState(e).ToCleanupPolicyConditionTagStateOutputWithContext(ctx).ToCleanupPolicyConditionTagStatePtrOutputWithContext(ctx)
+}
+
+func (e CleanupPolicyConditionTagState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CleanupPolicyConditionTagState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CleanupPolicyConditionTagState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CleanupPolicyConditionTagState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CleanupPolicyConditionTagStateOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyConditionTagStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyConditionTagState)(nil)).Elem()
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToCleanupPolicyConditionTagStateOutput() CleanupPolicyConditionTagStateOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToCleanupPolicyConditionTagStateOutputWithContext(ctx context.Context) CleanupPolicyConditionTagStateOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToCleanupPolicyConditionTagStatePtrOutput() CleanupPolicyConditionTagStatePtrOutput {
+	return o.ToCleanupPolicyConditionTagStatePtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToCleanupPolicyConditionTagStatePtrOutputWithContext(ctx context.Context) CleanupPolicyConditionTagStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanupPolicyConditionTagState) *CleanupPolicyConditionTagState {
+		return &v
+	}).(CleanupPolicyConditionTagStatePtrOutput)
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CleanupPolicyConditionTagState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyConditionTagStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CleanupPolicyConditionTagState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CleanupPolicyConditionTagStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyConditionTagStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanupPolicyConditionTagState)(nil)).Elem()
+}
+
+func (o CleanupPolicyConditionTagStatePtrOutput) ToCleanupPolicyConditionTagStatePtrOutput() CleanupPolicyConditionTagStatePtrOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionTagStatePtrOutput) ToCleanupPolicyConditionTagStatePtrOutputWithContext(ctx context.Context) CleanupPolicyConditionTagStatePtrOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionTagStatePtrOutput) Elem() CleanupPolicyConditionTagStateOutput {
+	return o.ApplyT(func(v *CleanupPolicyConditionTagState) CleanupPolicyConditionTagState {
+		if v != nil {
+			return *v
+		}
+		var ret CleanupPolicyConditionTagState
+		return ret
+	}).(CleanupPolicyConditionTagStateOutput)
+}
+
+func (o CleanupPolicyConditionTagStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyConditionTagStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CleanupPolicyConditionTagState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CleanupPolicyConditionTagStateInput is an input type that accepts values of the CleanupPolicyConditionTagState enum
+// A concrete instance of `CleanupPolicyConditionTagStateInput` can be one of the following:
+//
+//	CleanupPolicyConditionTagStateTagStateUnspecified
+//	CleanupPolicyConditionTagStateTagged
+//	CleanupPolicyConditionTagStateUntagged
+//	CleanupPolicyConditionTagStateAny
+type CleanupPolicyConditionTagStateInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyConditionTagStateOutput() CleanupPolicyConditionTagStateOutput
+	ToCleanupPolicyConditionTagStateOutputWithContext(context.Context) CleanupPolicyConditionTagStateOutput
+}
+
+var cleanupPolicyConditionTagStatePtrType = reflect.TypeOf((**CleanupPolicyConditionTagState)(nil)).Elem()
+
+type CleanupPolicyConditionTagStatePtrInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyConditionTagStatePtrOutput() CleanupPolicyConditionTagStatePtrOutput
+	ToCleanupPolicyConditionTagStatePtrOutputWithContext(context.Context) CleanupPolicyConditionTagStatePtrOutput
+}
+
+type cleanupPolicyConditionTagStatePtr string
+
+func CleanupPolicyConditionTagStatePtr(v string) CleanupPolicyConditionTagStatePtrInput {
+	return (*cleanupPolicyConditionTagStatePtr)(&v)
+}
+
+func (*cleanupPolicyConditionTagStatePtr) ElementType() reflect.Type {
+	return cleanupPolicyConditionTagStatePtrType
+}
+
+func (in *cleanupPolicyConditionTagStatePtr) ToCleanupPolicyConditionTagStatePtrOutput() CleanupPolicyConditionTagStatePtrOutput {
+	return pulumi.ToOutput(in).(CleanupPolicyConditionTagStatePtrOutput)
+}
+
+func (in *cleanupPolicyConditionTagStatePtr) ToCleanupPolicyConditionTagStatePtrOutputWithContext(ctx context.Context) CleanupPolicyConditionTagStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CleanupPolicyConditionTagStatePtrOutput)
+}
+
 // One of the publicly available Docker repositories supported by Artifact Registry.
 type DockerRepositoryPublicRepository string
 
@@ -1577,6 +1922,10 @@ func (in *repositoryModePtr) ToRepositoryModePtrOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyActionInput)(nil)).Elem(), CleanupPolicyAction("ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyActionPtrInput)(nil)).Elem(), CleanupPolicyAction("ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyConditionTagStateInput)(nil)).Elem(), CleanupPolicyConditionTagState("TAG_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyConditionTagStatePtrInput)(nil)).Elem(), CleanupPolicyConditionTagState("TAG_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryPublicRepositoryInput)(nil)).Elem(), DockerRepositoryPublicRepository("PUBLIC_REPOSITORY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryPublicRepositoryPtrInput)(nil)).Elem(), DockerRepositoryPublicRepository("PUBLIC_REPOSITORY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase("REPOSITORY_BASE_UNSPECIFIED"))
@@ -1595,6 +1944,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFormatPtrInput)(nil)).Elem(), RepositoryFormat("FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryModeInput)(nil)).Elem(), RepositoryMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryModePtrInput)(nil)).Elem(), RepositoryMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(CleanupPolicyActionOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyActionPtrOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyConditionTagStateOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyConditionTagStatePtrOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryPublicRepositoryOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryPublicRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseOutput{})

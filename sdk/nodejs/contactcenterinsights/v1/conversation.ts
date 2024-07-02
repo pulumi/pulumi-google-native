@@ -60,7 +60,7 @@ export class Conversation extends pulumi.CustomResource {
     /**
      * All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
      */
-    public /*out*/ readonly dialogflowIntents!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly dialogflowIntents!: pulumi.Output<{[key: string]: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1DialogflowIntentResponse}>;
     /**
      * The duration of the conversation.
      */

@@ -16,26 +16,26 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     public sealed class GoogleCloudRecommendationengineV1beta1FeatureMapArgs : global::Pulumi.ResourceArgs
     {
         [Input("categoricalFeatures")]
-        private InputMap<string>? _categoricalFeatures;
+        private InputMap<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs>? _categoricalFeatures;
 
         /// <summary>
         /// Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
         /// </summary>
-        public InputMap<string> CategoricalFeatures
+        public InputMap<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs> CategoricalFeatures
         {
-            get => _categoricalFeatures ?? (_categoricalFeatures = new InputMap<string>());
+            get => _categoricalFeatures ?? (_categoricalFeatures = new InputMap<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs>());
             set => _categoricalFeatures = value;
         }
 
         [Input("numericalFeatures")]
-        private InputMap<string>? _numericalFeatures;
+        private InputMap<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs>? _numericalFeatures;
 
         /// <summary>
         /// Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
         /// </summary>
-        public InputMap<string> NumericalFeatures
+        public InputMap<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs> NumericalFeatures
         {
-            get => _numericalFeatures ?? (_numericalFeatures = new InputMap<string>());
+            get => _numericalFeatures ?? (_numericalFeatures = new InputMap<Inputs.GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs>());
             set => _numericalFeatures = value;
         }
 

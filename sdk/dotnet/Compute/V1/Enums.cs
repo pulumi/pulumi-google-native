@@ -6822,6 +6822,68 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+    /// </summary>
+    [EnumType]
+    public readonly struct StatefulPolicyPreservedStateDiskDeviceAutoDelete : IEquatable<StatefulPolicyPreservedStateDiskDeviceAutoDelete>
+    {
+        private readonly string _value;
+
+        private StatefulPolicyPreservedStateDiskDeviceAutoDelete(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static StatefulPolicyPreservedStateDiskDeviceAutoDelete Never { get; } = new StatefulPolicyPreservedStateDiskDeviceAutoDelete("NEVER");
+        public static StatefulPolicyPreservedStateDiskDeviceAutoDelete OnPermanentInstanceDeletion { get; } = new StatefulPolicyPreservedStateDiskDeviceAutoDelete("ON_PERMANENT_INSTANCE_DELETION");
+
+        public static bool operator ==(StatefulPolicyPreservedStateDiskDeviceAutoDelete left, StatefulPolicyPreservedStateDiskDeviceAutoDelete right) => left.Equals(right);
+        public static bool operator !=(StatefulPolicyPreservedStateDiskDeviceAutoDelete left, StatefulPolicyPreservedStateDiskDeviceAutoDelete right) => !left.Equals(right);
+
+        public static explicit operator string(StatefulPolicyPreservedStateDiskDeviceAutoDelete value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StatefulPolicyPreservedStateDiskDeviceAutoDelete other && Equals(other);
+        public bool Equals(StatefulPolicyPreservedStateDiskDeviceAutoDelete other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+    /// </summary>
+    [EnumType]
+    public readonly struct StatefulPolicyPreservedStateNetworkIpAutoDelete : IEquatable<StatefulPolicyPreservedStateNetworkIpAutoDelete>
+    {
+        private readonly string _value;
+
+        private StatefulPolicyPreservedStateNetworkIpAutoDelete(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static StatefulPolicyPreservedStateNetworkIpAutoDelete Never { get; } = new StatefulPolicyPreservedStateNetworkIpAutoDelete("NEVER");
+        public static StatefulPolicyPreservedStateNetworkIpAutoDelete OnPermanentInstanceDeletion { get; } = new StatefulPolicyPreservedStateNetworkIpAutoDelete("ON_PERMANENT_INSTANCE_DELETION");
+
+        public static bool operator ==(StatefulPolicyPreservedStateNetworkIpAutoDelete left, StatefulPolicyPreservedStateNetworkIpAutoDelete right) => left.Equals(right);
+        public static bool operator !=(StatefulPolicyPreservedStateNetworkIpAutoDelete left, StatefulPolicyPreservedStateNetworkIpAutoDelete right) => !left.Equals(right);
+
+        public static explicit operator string(StatefulPolicyPreservedStateNetworkIpAutoDelete value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StatefulPolicyPreservedStateNetworkIpAutoDelete other && Equals(other);
+        public bool Equals(StatefulPolicyPreservedStateNetworkIpAutoDelete other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
     /// </summary>
     [EnumType]

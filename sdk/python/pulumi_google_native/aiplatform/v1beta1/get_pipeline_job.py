@@ -152,7 +152,7 @@ class GetPipelineJobResult:
 
     @property
     @pulumi.getter(name="pipelineSpec")
-    def pipeline_spec(self) -> Mapping[str, str]:
+    def pipeline_spec(self) -> Mapping[str, Any]:
         """
         The spec of the pipeline.
         """

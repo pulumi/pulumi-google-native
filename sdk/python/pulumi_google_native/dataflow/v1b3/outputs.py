@@ -27,6 +27,7 @@ __all__ = [
     'ExecutionStageSummaryResponse',
     'FileIODetailsResponse',
     'JobExecutionInfoResponse',
+    'JobExecutionStageInfoResponse',
     'JobMetadataResponse',
     'PackageResponse',
     'ParameterMetadataEnumOptionResponse',
@@ -746,16 +747,16 @@ class EnvironmentResponse(dict):
                  debug_options: 'outputs.DebugOptionsResponse',
                  experiments: Sequence[str],
                  flex_resource_scheduling_goal: str,
-                 internal_experiments: Mapping[str, str],
-                 sdk_pipeline_options: Mapping[str, str],
+                 internal_experiments: Mapping[str, Any],
+                 sdk_pipeline_options: Mapping[str, Any],
                  service_account_email: str,
                  service_kms_key_name: str,
                  service_options: Sequence[str],
                  shuffle_mode: str,
                  temp_storage_prefix: str,
                  use_streaming_engine_resource_based_billing: bool,
-                 user_agent: Mapping[str, str],
-                 version: Mapping[str, str],
+                 user_agent: Mapping[str, Any],
+                 version: Mapping[str, Any],
                  worker_pools: Sequence['outputs.WorkerPoolResponse'],
                  worker_region: str,
                  worker_zone: str):
@@ -766,16 +767,16 @@ class EnvironmentResponse(dict):
         :param 'DebugOptionsResponse' debug_options: Any debugging options to be supplied to the job.
         :param Sequence[str] experiments: The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
         :param str flex_resource_scheduling_goal: Which Flexible Resource Scheduling mode to run in.
-        :param Mapping[str, str] internal_experiments: Experimental settings.
-        :param Mapping[str, str] sdk_pipeline_options: The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
+        :param Mapping[str, Any] internal_experiments: Experimental settings.
+        :param Mapping[str, Any] sdk_pipeline_options: The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         :param str service_account_email: Identity to run virtual machines as. Defaults to the default account.
         :param str service_kms_key_name: If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         :param Sequence[str] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         :param str shuffle_mode: The shuffle mode used for the job.
         :param str temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param bool use_streaming_engine_resource_based_billing: Whether the job uses the new streaming engine billing model based on resource usage.
-        :param Mapping[str, str] user_agent: A description of the process that generated the request.
-        :param Mapping[str, str] version: A structure describing which components and their versions of the service are required in order to run the job.
+        :param Mapping[str, Any] user_agent: A description of the process that generated the request.
+        :param Mapping[str, Any] version: A structure describing which components and their versions of the service are required in order to run the job.
         :param Sequence['WorkerPoolResponse'] worker_pools: The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
         :param str worker_region: The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
         :param str worker_zone: The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
@@ -841,7 +842,7 @@ class EnvironmentResponse(dict):
 
     @property
     @pulumi.getter(name="internalExperiments")
-    def internal_experiments(self) -> Mapping[str, str]:
+    def internal_experiments(self) -> Mapping[str, Any]:
         """
         Experimental settings.
         """
@@ -849,7 +850,7 @@ class EnvironmentResponse(dict):
 
     @property
     @pulumi.getter(name="sdkPipelineOptions")
-    def sdk_pipeline_options(self) -> Mapping[str, str]:
+    def sdk_pipeline_options(self) -> Mapping[str, Any]:
         """
         The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         """
@@ -905,7 +906,7 @@ class EnvironmentResponse(dict):
 
     @property
     @pulumi.getter(name="userAgent")
-    def user_agent(self) -> Mapping[str, str]:
+    def user_agent(self) -> Mapping[str, Any]:
         """
         A description of the process that generated the request.
         """
@@ -913,7 +914,7 @@ class EnvironmentResponse(dict):
 
     @property
     @pulumi.getter
-    def version(self) -> Mapping[str, str]:
+    def version(self) -> Mapping[str, Any]:
         """
         A structure describing which components and their versions of the service are required in order to run the job.
         """
@@ -1167,20 +1168,59 @@ class JobExecutionInfoResponse(dict):
     Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
     """
     def __init__(__self__, *,
-                 stages: Mapping[str, str]):
+                 stages: Mapping[str, 'outputs.JobExecutionStageInfoResponse']):
         """
         Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
-        :param Mapping[str, str] stages: A mapping from each stage to the information about that stage.
+        :param Mapping[str, 'JobExecutionStageInfoResponse'] stages: A mapping from each stage to the information about that stage.
         """
         pulumi.set(__self__, "stages", stages)
 
     @property
     @pulumi.getter
-    def stages(self) -> Mapping[str, str]:
+    def stages(self) -> Mapping[str, 'outputs.JobExecutionStageInfoResponse']:
         """
         A mapping from each stage to the information about that stage.
         """
         return pulumi.get(self, "stages")
+
+
+@pulumi.output_type
+class JobExecutionStageInfoResponse(dict):
+    """
+    Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stepName":
+            suggest = "step_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobExecutionStageInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobExecutionStageInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobExecutionStageInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 step_name: Sequence[str]):
+        """
+        Contains information about how a particular google.dataflow.v1beta3.Step will be executed.
+        :param Sequence[str] step_name: The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
+        """
+        pulumi.set(__self__, "step_name", step_name)
+
+    @property
+    @pulumi.getter(name="stepName")
+    def step_name(self) -> Sequence[str]:
+        """
+        The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage.
+        """
+        return pulumi.get(self, "step_name")
 
 
 @pulumi.output_type
@@ -2165,12 +2205,12 @@ class StatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -2187,7 +2227,7 @@ class StatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """
@@ -2210,12 +2250,12 @@ class StepResponse(dict):
     def __init__(__self__, *,
                  kind: str,
                  name: str,
-                 properties: Mapping[str, str]):
+                 properties: Mapping[str, Any]):
         """
         Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. **Note:** The properties of this object are not stable and might change. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce.
         :param str kind: The kind of step in the Cloud Dataflow job.
         :param str name: The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
-        :param Mapping[str, str] properties: Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
+        :param Mapping[str, Any] properties: Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
@@ -2239,7 +2279,7 @@ class StepResponse(dict):
 
     @property
     @pulumi.getter
-    def properties(self) -> Mapping[str, str]:
+    def properties(self) -> Mapping[str, Any]:
         """
         Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
         """
@@ -2716,7 +2756,7 @@ class WorkerPoolResponse(dict):
                  num_workers: int,
                  on_host_maintenance: str,
                  packages: Sequence['outputs.PackageResponse'],
-                 pool_args: Mapping[str, str],
+                 pool_args: Mapping[str, Any],
                  sdk_harness_container_images: Sequence['outputs.SdkHarnessContainerImageResponse'],
                  subnetwork: str,
                  taskrunner_settings: 'outputs.TaskRunnerSettingsResponse',
@@ -2740,7 +2780,7 @@ class WorkerPoolResponse(dict):
         :param int num_workers: Number of Google Compute Engine workers in this pool needed to execute the job. If zero or unspecified, the service will attempt to choose a reasonable default.
         :param str on_host_maintenance: The action to take on host maintenance, as defined by the Google Compute Engine API.
         :param Sequence['PackageResponse'] packages: Packages to be installed on workers.
-        :param Mapping[str, str] pool_args: Extra arguments for this worker pool.
+        :param Mapping[str, Any] pool_args: Extra arguments for this worker pool.
         :param Sequence['SdkHarnessContainerImageResponse'] sdk_harness_container_images: Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
         :param str subnetwork: Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param 'TaskRunnerSettingsResponse' taskrunner_settings: Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
@@ -2893,7 +2933,7 @@ class WorkerPoolResponse(dict):
 
     @property
     @pulumi.getter(name="poolArgs")
-    def pool_args(self) -> Mapping[str, str]:
+    def pool_args(self) -> Mapping[str, Any]:
         """
         Extra arguments for this worker pool.
         """

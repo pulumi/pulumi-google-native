@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ServiceIntegrationStatuses;
+        public readonly ImmutableDictionary<string, Outputs.ResourceStatusServiceIntegrationStatusResponse> ServiceIntegrationStatuses;
         /// <summary>
         /// Details about stopping state of instance
         /// </summary>
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.ResourceStatusSchedulingResponse scheduling,
 
-            ImmutableDictionary<string, string> serviceIntegrationStatuses,
+            ImmutableDictionary<string, Outputs.ResourceStatusServiceIntegrationStatusResponse> serviceIntegrationStatuses,
 
             Outputs.ResourceStatusShutdownDetailsResponse shutdownDetails,
 

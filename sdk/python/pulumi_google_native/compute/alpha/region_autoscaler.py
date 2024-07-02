@@ -317,7 +317,7 @@ class RegionAutoscaler(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scalingScheduleStatus")
-    def scaling_schedule_status(self) -> pulumi.Output[Mapping[str, str]]:
+    def scaling_schedule_status(self) -> pulumi.Output[Mapping[str, 'outputs.ScalingScheduleStatusResponse']]:
         """
         Status information of existing scaling schedules.
         """

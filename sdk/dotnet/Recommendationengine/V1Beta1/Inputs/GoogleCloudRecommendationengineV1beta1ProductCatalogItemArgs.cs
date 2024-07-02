@@ -28,14 +28,14 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public Input<string>? CanonicalProductUri { get; set; }
 
         [Input("costs")]
-        private InputMap<string>? _costs;
+        private InputMap<double>? _costs;
 
         /// <summary>
         /// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
         /// </summary>
-        public InputMap<string> Costs
+        public InputMap<double> Costs
         {
-            get => _costs ?? (_costs = new InputMap<string>());
+            get => _costs ?? (_costs = new InputMap<double>());
             set => _costs = value;
         }
 

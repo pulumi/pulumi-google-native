@@ -19,11 +19,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// A map of folder id and folder config to specify consumer projects for this shared-reservation. This is only valid when share_type's value is DIRECT_PROJECTS_UNDER_SPECIFIC_FOLDERS. Folder id should be a string of number, and without "folders/" prefix.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> FolderMap;
+        public readonly ImmutableDictionary<string, Outputs.ShareSettingsFolderConfigResponse> FolderMap;
         /// <summary>
         /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ProjectMap;
+        public readonly ImmutableDictionary<string, Outputs.ShareSettingsProjectConfigResponse> ProjectMap;
         /// <summary>
         /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
@@ -35,9 +35,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private ShareSettingsResponse(
-            ImmutableDictionary<string, string> folderMap,
+            ImmutableDictionary<string, Outputs.ShareSettingsFolderConfigResponse> folderMap,
 
-            ImmutableDictionary<string, string> projectMap,
+            ImmutableDictionary<string, Outputs.ShareSettingsProjectConfigResponse> projectMap,
 
             ImmutableArray<string> projects,
 

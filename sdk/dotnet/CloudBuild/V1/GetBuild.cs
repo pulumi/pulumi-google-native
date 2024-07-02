@@ -182,7 +182,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// <summary>
         /// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Timing;
+        public readonly ImmutableDictionary<string, Outputs.TimeSpanResponse> Timing;
         /// <summary>
         /// Non-fatal problems encountered during the execution of the build.
         /// </summary>
@@ -242,7 +242,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
             string timeout,
 
-            ImmutableDictionary<string, string> timing,
+            ImmutableDictionary<string, Outputs.TimeSpanResponse> timing,
 
             ImmutableArray<Outputs.WarningResponse> warnings)
         {

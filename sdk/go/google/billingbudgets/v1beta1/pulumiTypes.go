@@ -599,7 +599,7 @@ type GoogleCloudBillingBudgetsV1beta1Filter struct {
 	// Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
 	CustomPeriod *GoogleCloudBillingBudgetsV1beta1CustomPeriod `pulumi:"customPeriod"`
 	// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
-	Labels map[string]string `pulumi:"labels"`
+	Labels map[string][]interface{} `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
 	Projects []string `pulumi:"projects"`
 	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
@@ -632,7 +632,7 @@ type GoogleCloudBillingBudgetsV1beta1FilterArgs struct {
 	// Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
 	CustomPeriod GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrInput `pulumi:"customPeriod"`
 	// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
-	Labels pulumi.StringMapInput `pulumi:"labels"`
+	Labels pulumi.ArrayMapInput `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
 	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
@@ -748,8 +748,8 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) CustomPeriod() GoogleCloud
 }
 
 // Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
-func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Filter) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+func (o GoogleCloudBillingBudgetsV1beta1FilterOutput) Labels() pulumi.ArrayMapOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1Filter) map[string][]interface{} { return v.Labels }).(pulumi.ArrayMapOutput)
 }
 
 // Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
@@ -837,13 +837,13 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) CustomPeriod() GoogleCl
 }
 
 // Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
-func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Filter) map[string]string {
+func (o GoogleCloudBillingBudgetsV1beta1FilterPtrOutput) Labels() pulumi.ArrayMapOutput {
+	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1Filter) map[string][]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Labels
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.ArrayMapOutput)
 }
 
 // Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
@@ -897,7 +897,7 @@ type GoogleCloudBillingBudgetsV1beta1FilterResponse struct {
 	// Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
 	CustomPeriod GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse `pulumi:"customPeriod"`
 	// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
-	Labels map[string]string `pulumi:"labels"`
+	Labels map[string][]interface{} `pulumi:"labels"`
 	// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
 	Projects []string `pulumi:"projects"`
 	// Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
@@ -946,8 +946,8 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) CustomPeriod() Goo
 }
 
 // Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
-func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1FilterResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+func (o GoogleCloudBillingBudgetsV1beta1FilterResponseOutput) Labels() pulumi.ArrayMapOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1FilterResponse) map[string][]interface{} { return v.Labels }).(pulumi.ArrayMapOutput)
 }
 
 // Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.

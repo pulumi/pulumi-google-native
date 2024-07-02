@@ -23,13 +23,13 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// <summary>
         /// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Value;
+        public readonly ImmutableDictionary<string, object> Value;
 
         [OutputConstructor]
         private OptionResponse(
             string name,
 
-            ImmutableDictionary<string, string> value)
+            ImmutableDictionary<string, object> value)
         {
             Name = name;
             Value = value;

@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         /// </summary>
         [Output("params")]
-        public Output<ImmutableDictionary<string, string>> Params { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Params { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -262,14 +262,14 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public Input<string>? NotificationPubsubTopic { get; set; }
 
         [Input("params")]
-        private InputMap<string>? _params;
+        private InputMap<object>? _params;
 
         /// <summary>
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         /// </summary>
-        public InputMap<string> Params
+        public InputMap<object> Params
         {
-            get => _params ?? (_params = new InputMap<string>());
+            get => _params ?? (_params = new InputMap<object>());
             set => _params = value;
         }
 

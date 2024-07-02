@@ -30,7 +30,7 @@ type LookupFederationArgs struct {
 
 type LookupFederationResult struct {
 	// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
-	BackendMetastores map[string]string `pulumi:"backendMetastores"`
+	BackendMetastores map[string]BackendMetastoreResponse `pulumi:"backendMetastores"`
 	// The time when the metastore federation was created.
 	CreateTime string `pulumi:"createTime"`
 	// The federation endpoint.
@@ -89,8 +89,8 @@ func (o LookupFederationResultOutput) ToLookupFederationResultOutputWithContext(
 }
 
 // A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
-func (o LookupFederationResultOutput) BackendMetastores() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupFederationResult) map[string]string { return v.BackendMetastores }).(pulumi.StringMapOutput)
+func (o LookupFederationResultOutput) BackendMetastores() BackendMetastoreResponseMapOutput {
+	return o.ApplyT(func(v LookupFederationResult) map[string]BackendMetastoreResponse { return v.BackendMetastores }).(BackendMetastoreResponseMapOutput)
 }
 
 // The time when the metastore federation was created.

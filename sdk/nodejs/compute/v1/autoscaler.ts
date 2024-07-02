@@ -73,7 +73,7 @@ export class Autoscaler extends pulumi.CustomResource {
     /**
      * Status information of existing scaling schedules.
      */
-    public /*out*/ readonly scalingScheduleStatus!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly scalingScheduleStatus!: pulumi.Output<{[key: string]: outputs.compute.v1.ScalingScheduleStatusResponse}>;
     /**
      * Server-defined URL for the resource.
      */

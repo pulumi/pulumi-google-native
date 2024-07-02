@@ -29,6 +29,10 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1EnvVarArgs',
     'GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceArgs',
     'GoogleCloudAiplatformV1beta1ExamplesArgs',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataFeatureValueDomainArgs',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationArgs',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataArgs',
+    'GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataArgs',
     'GoogleCloudAiplatformV1beta1ExplanationMetadataArgs',
     'GoogleCloudAiplatformV1beta1ExplanationParametersArgs',
     'GoogleCloudAiplatformV1beta1ExplanationSpecArgs',
@@ -87,6 +91,7 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1NotebookEucConfigArgs',
     'GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs',
     'GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs',
+    'GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifactArgs',
     'GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs',
     'GoogleCloudAiplatformV1beta1PipelineJobArgs',
     'GoogleCloudAiplatformV1beta1PortArgs',
@@ -134,6 +139,7 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1TimestampSplitArgs',
     'GoogleCloudAiplatformV1beta1TrainingConfigArgs',
     'GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs',
+    'GoogleCloudAiplatformV1beta1ValueArgs',
     'GoogleCloudAiplatformV1beta1WorkerPoolSpecArgs',
     'GoogleCloudAiplatformV1beta1XraiAttributionArgs',
     'GoogleIamV1BindingArgs',
@@ -1198,16 +1204,448 @@ class GoogleCloudAiplatformV1beta1ExamplesArgs:
 
 
 @pulumi.input_type
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataFeatureValueDomainArgs:
+    def __init__(__self__, *,
+                 max_value: Optional[pulumi.Input[float]] = None,
+                 min_value: Optional[pulumi.Input[float]] = None,
+                 original_mean: Optional[pulumi.Input[float]] = None,
+                 original_stddev: Optional[pulumi.Input[float]] = None):
+        """
+        Domain details of the input feature value. Provides numeric information about the feature, such as its range (min, max). If the feature has been pre-processed, for example with z-scoring, then it provides information about how to recover the original feature. For example, if the input feature is an image and it has been pre-processed to obtain 0-mean and stddev = 1 values, then original_mean, and original_stddev refer to the mean and stddev of the original feature (e.g. image tensor) from which input feature (with mean = 0 and stddev = 1) was obtained.
+        :param pulumi.Input[float] max_value: The maximum permissible value for this feature.
+        :param pulumi.Input[float] min_value: The minimum permissible value for this feature.
+        :param pulumi.Input[float] original_mean: If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+        :param pulumi.Input[float] original_stddev: If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+        """
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if original_mean is not None:
+            pulumi.set(__self__, "original_mean", original_mean)
+        if original_stddev is not None:
+            pulumi.set(__self__, "original_stddev", original_stddev)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[float]]:
+        """
+        The maximum permissible value for this feature.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[float]]:
+        """
+        The minimum permissible value for this feature.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter(name="originalMean")
+    def original_mean(self) -> Optional[pulumi.Input[float]]:
+        """
+        If this input feature has been normalized to a mean value of 0, the original_mean specifies the mean value of the domain prior to normalization.
+        """
+        return pulumi.get(self, "original_mean")
+
+    @original_mean.setter
+    def original_mean(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "original_mean", value)
+
+    @property
+    @pulumi.getter(name="originalStddev")
+    def original_stddev(self) -> Optional[pulumi.Input[float]]:
+        """
+        If this input feature has been normalized to a standard deviation of 1.0, the original_stddev specifies the standard deviation of the domain prior to normalization.
+        """
+        return pulumi.get(self, "original_stddev")
+
+    @original_stddev.setter
+    def original_stddev(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "original_stddev", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationArgs:
+    def __init__(__self__, *,
+                 clip_percent_lowerbound: Optional[pulumi.Input[float]] = None,
+                 clip_percent_upperbound: Optional[pulumi.Input[float]] = None,
+                 color_map: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap']] = None,
+                 overlay_type: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType']] = None,
+                 polarity: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity']] = None,
+                 type: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType']] = None):
+        """
+        Visualization configurations for image explanation.
+        :param pulumi.Input[float] clip_percent_lowerbound: Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+        :param pulumi.Input[float] clip_percent_upperbound: Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap'] color_map: The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType'] overlay_type: How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity'] polarity: Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType'] type: Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+        """
+        if clip_percent_lowerbound is not None:
+            pulumi.set(__self__, "clip_percent_lowerbound", clip_percent_lowerbound)
+        if clip_percent_upperbound is not None:
+            pulumi.set(__self__, "clip_percent_upperbound", clip_percent_upperbound)
+        if color_map is not None:
+            pulumi.set(__self__, "color_map", color_map)
+        if overlay_type is not None:
+            pulumi.set(__self__, "overlay_type", overlay_type)
+        if polarity is not None:
+            pulumi.set(__self__, "polarity", polarity)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="clipPercentLowerbound")
+    def clip_percent_lowerbound(self) -> Optional[pulumi.Input[float]]:
+        """
+        Excludes attributions below the specified percentile, from the highlighted areas. Defaults to 62.
+        """
+        return pulumi.get(self, "clip_percent_lowerbound")
+
+    @clip_percent_lowerbound.setter
+    def clip_percent_lowerbound(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "clip_percent_lowerbound", value)
+
+    @property
+    @pulumi.getter(name="clipPercentUpperbound")
+    def clip_percent_upperbound(self) -> Optional[pulumi.Input[float]]:
+        """
+        Excludes attributions above the specified percentile from the highlighted areas. Using the clip_percent_upperbound and clip_percent_lowerbound together can be useful for filtering out noise and making it easier to see areas of strong attribution. Defaults to 99.9.
+        """
+        return pulumi.get(self, "clip_percent_upperbound")
+
+    @clip_percent_upperbound.setter
+    def clip_percent_upperbound(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "clip_percent_upperbound", value)
+
+    @property
+    @pulumi.getter(name="colorMap")
+    def color_map(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap']]:
+        """
+        The color scheme used for the highlighted areas. Defaults to PINK_GREEN for Integrated Gradients attribution, which shows positive attributions in green and negative in pink. Defaults to VIRIDIS for XRAI attribution, which highlights the most influential regions in yellow and the least influential in blue.
+        """
+        return pulumi.get(self, "color_map")
+
+    @color_map.setter
+    def color_map(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationColorMap']]):
+        pulumi.set(self, "color_map", value)
+
+    @property
+    @pulumi.getter(name="overlayType")
+    def overlay_type(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType']]:
+        """
+        How the original image is displayed in the visualization. Adjusting the overlay can help increase visual clarity if the original image makes it difficult to view the visualization. Defaults to NONE.
+        """
+        return pulumi.get(self, "overlay_type")
+
+    @overlay_type.setter
+    def overlay_type(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationOverlayType']]):
+        pulumi.set(self, "overlay_type", value)
+
+    @property
+    @pulumi.getter
+    def polarity(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity']]:
+        """
+        Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE.
+        """
+        return pulumi.get(self, "polarity")
+
+    @polarity.setter
+    def polarity(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationPolarity']]):
+        pulumi.set(self, "polarity", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType']]:
+        """
+        Type of the image visualization. Only applicable to Integrated Gradients attribution. OUTLINES shows regions of attribution, while PIXELS shows per-pixel attribution. Defaults to OUTLINES.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataArgs:
+    def __init__(__self__, *,
+                 dense_shape_tensor_name: Optional[pulumi.Input[str]] = None,
+                 encoded_baselines: Optional[pulumi.Input[Sequence[Any]]] = None,
+                 encoded_tensor_name: Optional[pulumi.Input[str]] = None,
+                 encoding: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding']] = None,
+                 feature_value_domain: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataFeatureValueDomainArgs']] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
+                 index_feature_mapping: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 indices_tensor_name: Optional[pulumi.Input[str]] = None,
+                 input_baselines: Optional[pulumi.Input[Sequence[Any]]] = None,
+                 input_tensor_name: Optional[pulumi.Input[str]] = None,
+                 modality: Optional[pulumi.Input[str]] = None,
+                 visualization: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationArgs']] = None):
+        """
+        Metadata of the input of a feature. Fields other than InputMetadata.input_baselines are applicable only for Models that are using Vertex AI-provided images for Tensorflow.
+        :param pulumi.Input[str] dense_shape_tensor_name: Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        :param pulumi.Input[Sequence[Any]] encoded_baselines: A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+        :param pulumi.Input[str] encoded_tensor_name: Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding'] encoding: Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataFeatureValueDomainArgs'] feature_value_domain: The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+        :param pulumi.Input[str] group_name: Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] index_feature_mapping: A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+        :param pulumi.Input[str] indices_tensor_name: Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        :param pulumi.Input[Sequence[Any]] input_baselines: Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+        :param pulumi.Input[str] input_tensor_name: Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+        :param pulumi.Input[str] modality: Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationArgs'] visualization: Visualization configurations for image explanation.
+        """
+        if dense_shape_tensor_name is not None:
+            pulumi.set(__self__, "dense_shape_tensor_name", dense_shape_tensor_name)
+        if encoded_baselines is not None:
+            pulumi.set(__self__, "encoded_baselines", encoded_baselines)
+        if encoded_tensor_name is not None:
+            pulumi.set(__self__, "encoded_tensor_name", encoded_tensor_name)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if feature_value_domain is not None:
+            pulumi.set(__self__, "feature_value_domain", feature_value_domain)
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
+        if index_feature_mapping is not None:
+            pulumi.set(__self__, "index_feature_mapping", index_feature_mapping)
+        if indices_tensor_name is not None:
+            pulumi.set(__self__, "indices_tensor_name", indices_tensor_name)
+        if input_baselines is not None:
+            pulumi.set(__self__, "input_baselines", input_baselines)
+        if input_tensor_name is not None:
+            pulumi.set(__self__, "input_tensor_name", input_tensor_name)
+        if modality is not None:
+            pulumi.set(__self__, "modality", modality)
+        if visualization is not None:
+            pulumi.set(__self__, "visualization", visualization)
+
+    @property
+    @pulumi.getter(name="denseShapeTensorName")
+    def dense_shape_tensor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the shape of the values of the input if the input is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        """
+        return pulumi.get(self, "dense_shape_tensor_name")
+
+    @dense_shape_tensor_name.setter
+    def dense_shape_tensor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dense_shape_tensor_name", value)
+
+    @property
+    @pulumi.getter(name="encodedBaselines")
+    def encoded_baselines(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+        """
+        A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor.
+        """
+        return pulumi.get(self, "encoded_baselines")
+
+    @encoded_baselines.setter
+    def encoded_baselines(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+        pulumi.set(self, "encoded_baselines", value)
+
+    @property
+    @pulumi.getter(name="encodedTensorName")
+    def encoded_tensor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table.
+        """
+        return pulumi.get(self, "encoded_tensor_name")
+
+    @encoded_tensor_name.setter
+    def encoded_tensor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoded_tensor_name", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding']]:
+        """
+        Defines how the feature is encoded into the input tensor. Defaults to IDENTITY.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataEncoding']]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="featureValueDomain")
+    def feature_value_domain(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataFeatureValueDomainArgs']]:
+        """
+        The domain details of the input feature value. Like min/max, original mean or standard deviation if normalized.
+        """
+        return pulumi.get(self, "feature_value_domain")
+
+    @feature_value_domain.setter
+    def feature_value_domain(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataFeatureValueDomainArgs']]):
+        pulumi.set(self, "feature_value_domain", value)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the group that the input belongs to. Features with the same group name will be treated as one feature when computing attributions. Features grouped together can have different shapes in value. If provided, there will be one single attribution generated in Attribution.feature_attributions, keyed by the group name.
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_name", value)
+
+    @property
+    @pulumi.getter(name="indexFeatureMapping")
+    def index_feature_mapping(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.
+        """
+        return pulumi.get(self, "index_feature_mapping")
+
+    @index_feature_mapping.setter
+    def index_feature_mapping(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "index_feature_mapping", value)
+
+    @property
+    @pulumi.getter(name="indicesTensorName")
+    def indices_tensor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.
+        """
+        return pulumi.get(self, "indices_tensor_name")
+
+    @indices_tensor_name.setter
+    def indices_tensor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "indices_tensor_name", value)
+
+    @property
+    @pulumi.getter(name="inputBaselines")
+    def input_baselines(self) -> Optional[pulumi.Input[Sequence[Any]]]:
+        """
+        Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri.
+        """
+        return pulumi.get(self, "input_baselines")
+
+    @input_baselines.setter
+    def input_baselines(self, value: Optional[pulumi.Input[Sequence[Any]]]):
+        pulumi.set(self, "input_baselines", value)
+
+    @property
+    @pulumi.getter(name="inputTensorName")
+    def input_tensor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow.
+        """
+        return pulumi.get(self, "input_tensor_name")
+
+    @input_tensor_name.setter
+    def input_tensor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "input_tensor_name", value)
+
+    @property
+    @pulumi.getter
+    def modality(self) -> Optional[pulumi.Input[str]]:
+        """
+        Modality of the feature. Valid values are: numeric, image. Defaults to numeric.
+        """
+        return pulumi.get(self, "modality")
+
+    @modality.setter
+    def modality(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modality", value)
+
+    @property
+    @pulumi.getter
+    def visualization(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationArgs']]:
+        """
+        Visualization configurations for image explanation.
+        """
+        return pulumi.get(self, "visualization")
+
+    @visualization.setter
+    def visualization(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataVisualizationArgs']]):
+        pulumi.set(self, "visualization", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataArgs:
+    def __init__(__self__, *,
+                 display_name_mapping_key: Optional[pulumi.Input[str]] = None,
+                 index_display_name_mapping: Optional[Any] = None,
+                 output_tensor_name: Optional[pulumi.Input[str]] = None):
+        """
+        Metadata of the prediction output to be explained.
+        :param pulumi.Input[str] display_name_mapping_key: Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+        :param Any index_display_name_mapping: Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+        :param pulumi.Input[str] output_tensor_name: Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+        """
+        if display_name_mapping_key is not None:
+            pulumi.set(__self__, "display_name_mapping_key", display_name_mapping_key)
+        if index_display_name_mapping is not None:
+            pulumi.set(__self__, "index_display_name_mapping", index_display_name_mapping)
+        if output_tensor_name is not None:
+            pulumi.set(__self__, "output_tensor_name", output_tensor_name)
+
+    @property
+    @pulumi.getter(name="displayNameMappingKey")
+    def display_name_mapping_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify a field name in the prediction to look for the display name. Use this if the prediction contains the display names for the outputs. The display names in the prediction must have the same shape of the outputs, so that it can be located by Attribution.output_index for a specific output.
+        """
+        return pulumi.get(self, "display_name_mapping_key")
+
+    @display_name_mapping_key.setter
+    def display_name_mapping_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name_mapping_key", value)
+
+    @property
+    @pulumi.getter(name="indexDisplayNameMapping")
+    def index_display_name_mapping(self) -> Optional[Any]:
+        """
+        Static mapping between the index and display name. Use this if the outputs are a deterministic n-dimensional array, e.g. a list of scores of all the classes in a pre-defined order for a multi-classification Model. It's not feasible if the outputs are non-deterministic, e.g. the Model produces top-k classes or sort the outputs by their values. The shape of the value must be an n-dimensional array of strings. The number of dimensions must match that of the outputs to be explained. The Attribution.output_display_name is populated by locating in the mapping with Attribution.output_index.
+        """
+        return pulumi.get(self, "index_display_name_mapping")
+
+    @index_display_name_mapping.setter
+    def index_display_name_mapping(self, value: Optional[Any]):
+        pulumi.set(self, "index_display_name_mapping", value)
+
+    @property
+    @pulumi.getter(name="outputTensorName")
+    def output_tensor_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the output tensor. Required and is only applicable to Vertex AI provided images for Tensorflow.
+        """
+        return pulumi.get(self, "output_tensor_name")
+
+    @output_tensor_name.setter
+    def output_tensor_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_tensor_name", value)
+
+
+@pulumi.input_type
 class GoogleCloudAiplatformV1beta1ExplanationMetadataArgs:
     def __init__(__self__, *,
-                 inputs: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-                 outputs: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 inputs: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataArgs']]],
+                 outputs: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataArgs']]],
                  feature_attributions_schema_uri: Optional[pulumi.Input[str]] = None,
                  latent_space_source: Optional[pulumi.Input[str]] = None):
         """
         Metadata describing the Model's input and output for explanation.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataArgs']]] inputs: Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataArgs']]] outputs: Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         :param pulumi.Input[str] feature_attributions_schema_uri: Points to a YAML file stored on Google Cloud Storage describing the format of the feature attributions. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML tabular Models always have this field populated by Vertex AI. Note: The URI given on output may be different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
         :param pulumi.Input[str] latent_space_source: Name of the source to generate embeddings for example based explanations.
         """
@@ -1220,26 +1658,26 @@ class GoogleCloudAiplatformV1beta1ExplanationMetadataArgs:
 
     @property
     @pulumi.getter
-    def inputs(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def inputs(self) -> pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataArgs']]]:
         """
         Map from feature names to feature input metadata. Keys are the name of the features. Values are the specification of the feature. An empty InputMetadata is valid. It describes a text feature which has the name specified as the key in ExplanationMetadata.inputs. The baseline of the empty feature is chosen by Vertex AI. For Vertex AI-provided Tensorflow images, the key can be any friendly name of the feature. Once specified, featureAttributions are keyed by this key (if not grouped with another feature). For custom images, the key must match with the key in instance.
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def inputs(self, value: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataInputMetadataArgs']]]):
         pulumi.set(self, "inputs", value)
 
     @property
     @pulumi.getter
-    def outputs(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def outputs(self) -> pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataArgs']]]:
         """
         Map from output names to output metadata. For Vertex AI-provided Tensorflow images, keys can be any user defined string that consists of any UTF-8 characters. For custom images, keys are the name of the output field in the prediction to be explained. Currently only one key is allowed.
         """
         return pulumi.get(self, "outputs")
 
     @outputs.setter
-    def outputs(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def outputs(self, value: pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ExplanationMetadataOutputMetadataArgs']]]):
         pulumi.set(self, "outputs", value)
 
     @property
@@ -3355,14 +3793,14 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfi
 @pulumi.input_type
 class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigArgs:
     def __init__(__self__, *,
-                 attribution_score_drift_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 attribution_score_drift_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]] = None,
                  default_drift_threshold: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']] = None,
-                 drift_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 drift_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]] = None):
         """
         The config for Prediction data drift detection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]] attribution_score_drift_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs'] default_drift_threshold: Drift anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]] drift_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
         if attribution_score_drift_thresholds is not None:
             pulumi.set(__self__, "attribution_score_drift_thresholds", attribution_score_drift_thresholds)
@@ -3373,14 +3811,14 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftD
 
     @property
     @pulumi.getter(name="attributionScoreDriftThresholds")
-    def attribution_score_drift_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def attribution_score_drift_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between different time windows.
         """
         return pulumi.get(self, "attribution_score_drift_thresholds")
 
     @attribution_score_drift_thresholds.setter
-    def attribution_score_drift_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def attribution_score_drift_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]):
         pulumi.set(self, "attribution_score_drift_thresholds", value)
 
     @property
@@ -3397,14 +3835,14 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftD
 
     @property
     @pulumi.getter(name="driftThresholds")
-    def drift_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def drift_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for drift, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between different time windws.
         """
         return pulumi.get(self, "drift_thresholds")
 
     @drift_thresholds.setter
-    def drift_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def drift_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]):
         pulumi.set(self, "drift_thresholds", value)
 
 
@@ -3515,14 +3953,14 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetA
 @pulumi.input_type
 class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs:
     def __init__(__self__, *,
-                 attribution_score_skew_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 attribution_score_skew_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]] = None,
                  default_skew_threshold: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']] = None,
-                 skew_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 skew_thresholds: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]] = None):
         """
         The config for Training & Prediction data skew detection. It specifies the training dataset sources and the skew detection parameters.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]] attribution_score_skew_thresholds: Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs'] default_skew_threshold: Skew anomaly detection threshold used by all features. When the per-feature thresholds are not set, this field can be used to specify a threshold for all features.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]] skew_thresholds: Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
         if attribution_score_skew_thresholds is not None:
             pulumi.set(__self__, "attribution_score_skew_thresholds", attribution_score_skew_thresholds)
@@ -3533,14 +3971,14 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredicti
 
     @property
     @pulumi.getter(name="attributionScoreSkewThresholds")
-    def attribution_score_skew_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def attribution_score_skew_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         """
         return pulumi.get(self, "attribution_score_skew_thresholds")
 
     @attribution_score_skew_thresholds.setter
-    def attribution_score_skew_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def attribution_score_skew_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]):
         pulumi.set(self, "attribution_score_skew_thresholds", value)
 
     @property
@@ -3557,14 +3995,14 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredicti
 
     @property
     @pulumi.getter(name="skewThresholds")
-    def skew_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def skew_thresholds(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]:
         """
         Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         """
         return pulumi.get(self, "skew_thresholds")
 
     @skew_thresholds.setter
-    def skew_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def skew_thresholds(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ThresholdConfigArgs']]]]):
         pulumi.set(self, "skew_thresholds", value)
 
 
@@ -4515,20 +4953,44 @@ class GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs:
 
 
 @pulumi.input_type
+class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifactArgs:
+    def __init__(__self__, *,
+                 artifact_id: Optional[pulumi.Input[str]] = None):
+        """
+        The type of an input artifact.
+        :param pulumi.Input[str] artifact_id: Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+        """
+        if artifact_id is not None:
+            pulumi.set(__self__, "artifact_id", artifact_id)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Artifact resource id from MLMD. Which is the last portion of an artifact resource name: `projects/{project}/locations/{location}/metadataStores/default/artifacts/{artifact_id}`. The artifact must stay within the same project, location and default metadatastore as the pipeline.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @artifact_id.setter
+    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "artifact_id", value)
+
+
+@pulumi.input_type
 class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs:
     def __init__(__self__, *,
                  gcs_output_directory: pulumi.Input[str],
                  failure_policy: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy']] = None,
-                 input_artifacts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 parameter_values: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 input_artifacts: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifactArgs']]]] = None,
+                 parameter_values: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ValueArgs']]]] = None):
         """
         The runtime config of a PipelineJob.
         :param pulumi.Input[str] gcs_output_directory: A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy'] failure_policy: Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW. However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks when a task has failed. Any scheduled tasks will continue to completion.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifactArgs']]] input_artifacts: The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
+        :param pulumi.Input[Mapping[str, Any]] parameter_values: The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ValueArgs']]] parameters: Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
         pulumi.set(__self__, "gcs_output_directory", gcs_output_directory)
         if failure_policy is not None:
@@ -4569,39 +5031,39 @@ class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs:
 
     @property
     @pulumi.getter(name="inputArtifacts")
-    def input_artifacts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def input_artifacts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifactArgs']]]]:
         """
         The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         """
         return pulumi.get(self, "input_artifacts")
 
     @input_artifacts.setter
-    def input_artifacts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def input_artifacts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifactArgs']]]]):
         pulumi.set(self, "input_artifacts", value)
 
     @property
     @pulumi.getter(name="parameterValues")
-    def parameter_values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def parameter_values(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
         """
         return pulumi.get(self, "parameter_values")
 
     @parameter_values.setter
-    def parameter_values(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def parameter_values(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "parameter_values", value)
 
     @property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.""")
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ValueArgs']]]]:
         """
         Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudAiplatformV1beta1ValueArgs']]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -4612,7 +5074,7 @@ class GoogleCloudAiplatformV1beta1PipelineJobArgs:
                  encryption_spec: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 pipeline_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pipeline_spec: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime_config: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -4623,7 +5085,7 @@ class GoogleCloudAiplatformV1beta1PipelineJobArgs:
         :param pulumi.Input['GoogleCloudAiplatformV1beta1EncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a pipelineJob. If set, this PipelineJob and all of its sub-resources will be secured by this key.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
         :param pulumi.Input[str] network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pipeline_spec: The spec of the pipeline.
+        :param pulumi.Input[Mapping[str, Any]] pipeline_spec: The spec of the pipeline.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         :param pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs'] runtime_config: Runtime config of the pipeline.
         :param pulumi.Input[str] service_account: The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
@@ -4698,14 +5160,14 @@ class GoogleCloudAiplatformV1beta1PipelineJobArgs:
 
     @property
     @pulumi.getter(name="pipelineSpec")
-    def pipeline_spec(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def pipeline_spec(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The spec of the pipeline.
         """
         return pulumi.get(self, "pipeline_spec")
 
     @pipeline_spec.setter
-    def pipeline_spec(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def pipeline_spec(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "pipeline_spec", value)
 
     @property
@@ -7124,6 +7586,62 @@ class GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs:
     @predict_schemata.setter
     def predict_schemata(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1PredictSchemataArgs']]):
         pulumi.set(self, "predict_schemata", value)
+
+
+@pulumi.input_type
+class GoogleCloudAiplatformV1beta1ValueArgs:
+    def __init__(__self__, *,
+                 double_value: Optional[pulumi.Input[float]] = None,
+                 int_value: Optional[pulumi.Input[str]] = None,
+                 string_value: Optional[pulumi.Input[str]] = None):
+        """
+        Value is the value of the field.
+        :param pulumi.Input[float] double_value: A double value.
+        :param pulumi.Input[str] int_value: An integer value.
+        :param pulumi.Input[str] string_value: A string value.
+        """
+        if double_value is not None:
+            pulumi.set(__self__, "double_value", double_value)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="doubleValue")
+    def double_value(self) -> Optional[pulumi.Input[float]]:
+        """
+        A double value.
+        """
+        return pulumi.get(self, "double_value")
+
+    @double_value.setter
+    def double_value(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "double_value", value)
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        An integer value.
+        """
+        return pulumi.get(self, "int_value")
+
+    @int_value.setter
+    def int_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "int_value", value)
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "string_value", value)
 
 
 @pulumi.input_type

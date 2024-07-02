@@ -18,7 +18,7 @@ type GoogleCloudPolicysimulatorV1betaReplayConfig struct {
 	// The logs to use as input for the Replay.
 	LogSource *GoogleCloudPolicysimulatorV1betaReplayConfigLogSource `pulumi:"logSource"`
 	// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
-	PolicyOverlay map[string]string `pulumi:"policyOverlay"`
+	PolicyOverlay map[string]GoogleIamV1Policy `pulumi:"policyOverlay"`
 }
 
 // GoogleCloudPolicysimulatorV1betaReplayConfigInput is an input type that accepts GoogleCloudPolicysimulatorV1betaReplayConfigArgs and GoogleCloudPolicysimulatorV1betaReplayConfigOutput values.
@@ -37,7 +37,7 @@ type GoogleCloudPolicysimulatorV1betaReplayConfigArgs struct {
 	// The logs to use as input for the Replay.
 	LogSource GoogleCloudPolicysimulatorV1betaReplayConfigLogSourcePtrInput `pulumi:"logSource"`
 	// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
-	PolicyOverlay pulumi.StringMapInput `pulumi:"policyOverlay"`
+	PolicyOverlay GoogleIamV1PolicyMapInput `pulumi:"policyOverlay"`
 }
 
 func (GoogleCloudPolicysimulatorV1betaReplayConfigArgs) ElementType() reflect.Type {
@@ -75,8 +75,10 @@ func (o GoogleCloudPolicysimulatorV1betaReplayConfigOutput) LogSource() GoogleCl
 }
 
 // A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
-func (o GoogleCloudPolicysimulatorV1betaReplayConfigOutput) PolicyOverlay() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1betaReplayConfig) map[string]string { return v.PolicyOverlay }).(pulumi.StringMapOutput)
+func (o GoogleCloudPolicysimulatorV1betaReplayConfigOutput) PolicyOverlay() GoogleIamV1PolicyMapOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1betaReplayConfig) map[string]GoogleIamV1Policy {
+		return v.PolicyOverlay
+	}).(GoogleIamV1PolicyMapOutput)
 }
 
 // The configuration used for a Replay.
@@ -84,7 +86,7 @@ type GoogleCloudPolicysimulatorV1betaReplayConfigResponse struct {
 	// The logs to use as input for the Replay.
 	LogSource string `pulumi:"logSource"`
 	// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
-	PolicyOverlay map[string]string `pulumi:"policyOverlay"`
+	PolicyOverlay map[string]GoogleIamV1PolicyResponse `pulumi:"policyOverlay"`
 }
 
 // The configuration used for a Replay.
@@ -108,8 +110,10 @@ func (o GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput) LogSource() 
 }
 
 // A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
-func (o GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput) PolicyOverlay() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1betaReplayConfigResponse) map[string]string { return v.PolicyOverlay }).(pulumi.StringMapOutput)
+func (o GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput) PolicyOverlay() GoogleIamV1PolicyResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1betaReplayConfigResponse) map[string]GoogleIamV1PolicyResponse {
+		return v.PolicyOverlay
+	}).(GoogleIamV1PolicyResponseMapOutput)
 }
 
 // Summary statistics about the replayed log entries.
@@ -177,6 +181,702 @@ func (o GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponseOutput) Unch
 	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse) int { return v.UnchangedCount }).(pulumi.IntOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
+type GoogleIamV1AuditConfig struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []GoogleIamV1AuditLogConfig `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service *string `pulumi:"service"`
+}
+
+// GoogleIamV1AuditConfigInput is an input type that accepts GoogleIamV1AuditConfigArgs and GoogleIamV1AuditConfigOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditConfigInput` via:
+//
+//	GoogleIamV1AuditConfigArgs{...}
+type GoogleIamV1AuditConfigInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditConfigOutput() GoogleIamV1AuditConfigOutput
+	ToGoogleIamV1AuditConfigOutputWithContext(context.Context) GoogleIamV1AuditConfigOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
+type GoogleIamV1AuditConfigArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs GoogleIamV1AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (GoogleIamV1AuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditConfig)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutput() GoogleIamV1AuditConfigOutput {
+	return i.ToGoogleIamV1AuditConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigOutput)
+}
+
+// GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
+//
+//	GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
+type GoogleIamV1AuditConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditConfigArrayOutput() GoogleIamV1AuditConfigArrayOutput
+	ToGoogleIamV1AuditConfigArrayOutputWithContext(context.Context) GoogleIamV1AuditConfigArrayOutput
+}
+
+type GoogleIamV1AuditConfigArray []GoogleIamV1AuditConfigInput
+
+func (GoogleIamV1AuditConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditConfig)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutput() GoogleIamV1AuditConfigArrayOutput {
+	return i.ToGoogleIamV1AuditConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
+type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditConfig)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutput() GoogleIamV1AuditConfigOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigOutput) ToGoogleIamV1AuditConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o GoogleIamV1AuditConfigOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditConfig) []GoogleIamV1AuditLogConfig { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o GoogleIamV1AuditConfigOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type GoogleIamV1AuditConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditConfig)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutput() GoogleIamV1AuditConfigArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigArrayOutput) ToGoogleIamV1AuditConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1AuditConfig {
+		return vs[0].([]GoogleIamV1AuditConfig)[vs[1].(int)]
+	}).(GoogleIamV1AuditConfigOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
+type GoogleIamV1AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []GoogleIamV1AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
+type GoogleIamV1AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o GoogleIamV1AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GoogleIamV1AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1AuditConfigResponse {
+		return vs[0].([]GoogleIamV1AuditConfigResponse)[vs[1].(int)]
+	}).(GoogleIamV1AuditConfigResponseOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfig struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType *GoogleIamV1AuditLogConfigLogType `pulumi:"logType"`
+}
+
+// GoogleIamV1AuditLogConfigInput is an input type that accepts GoogleIamV1AuditLogConfigArgs and GoogleIamV1AuditLogConfigOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditLogConfigInput` via:
+//
+//	GoogleIamV1AuditLogConfigArgs{...}
+type GoogleIamV1AuditLogConfigInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigOutput() GoogleIamV1AuditLogConfigOutput
+	ToGoogleIamV1AuditLogConfigOutputWithContext(context.Context) GoogleIamV1AuditLogConfigOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfigArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType GoogleIamV1AuditLogConfigLogTypePtrInput `pulumi:"logType"`
+}
+
+func (GoogleIamV1AuditLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfig)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutput() GoogleIamV1AuditLogConfigOutput {
+	return i.ToGoogleIamV1AuditLogConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigOutput)
+}
+
+// GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
+//
+//	GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
+type GoogleIamV1AuditLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigArrayOutput() GoogleIamV1AuditLogConfigArrayOutput
+	ToGoogleIamV1AuditLogConfigArrayOutputWithContext(context.Context) GoogleIamV1AuditLogConfigArrayOutput
+}
+
+type GoogleIamV1AuditLogConfigArray []GoogleIamV1AuditLogConfigInput
+
+func (GoogleIamV1AuditLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditLogConfig)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutput() GoogleIamV1AuditLogConfigArrayOutput {
+	return i.ToGoogleIamV1AuditLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditLogConfigArray) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfig)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutput() GoogleIamV1AuditLogConfigOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigOutput) ToGoogleIamV1AuditLogConfigOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o GoogleIamV1AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o GoogleIamV1AuditLogConfigOutput) LogType() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditLogConfig) *GoogleIamV1AuditLogConfigLogType { return v.LogType }).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+type GoogleIamV1AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditLogConfig)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutput() GoogleIamV1AuditLogConfigArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigArrayOutput) ToGoogleIamV1AuditLogConfigArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1AuditLogConfig {
+		return vs[0].([]GoogleIamV1AuditLogConfig)[vs[1].(int)]
+	}).(GoogleIamV1AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o GoogleIamV1AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type GoogleIamV1AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1AuditLogConfigResponse {
+		return vs[0].([]GoogleIamV1AuditLogConfigResponse)[vs[1].(int)]
+	}).(GoogleIamV1AuditLogConfigResponseOutput)
+}
+
+// Associates `members`, or principals, with a `role`.
+type GoogleIamV1Binding struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition *GoogleTypeExpr `pulumi:"condition"`
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role *string `pulumi:"role"`
+}
+
+// GoogleIamV1BindingInput is an input type that accepts GoogleIamV1BindingArgs and GoogleIamV1BindingOutput values.
+// You can construct a concrete instance of `GoogleIamV1BindingInput` via:
+//
+//	GoogleIamV1BindingArgs{...}
+type GoogleIamV1BindingInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1BindingOutput() GoogleIamV1BindingOutput
+	ToGoogleIamV1BindingOutputWithContext(context.Context) GoogleIamV1BindingOutput
+}
+
+// Associates `members`, or principals, with a `role`.
+type GoogleIamV1BindingArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (GoogleIamV1BindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1Binding)(nil)).Elem()
+}
+
+func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutput() GoogleIamV1BindingOutput {
+	return i.ToGoogleIamV1BindingOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingOutput)
+}
+
+// GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
+// You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
+//
+//	GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
+type GoogleIamV1BindingArrayInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1BindingArrayOutput() GoogleIamV1BindingArrayOutput
+	ToGoogleIamV1BindingArrayOutputWithContext(context.Context) GoogleIamV1BindingArrayOutput
+}
+
+type GoogleIamV1BindingArray []GoogleIamV1BindingInput
+
+func (GoogleIamV1BindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1Binding)(nil)).Elem()
+}
+
+func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutput() GoogleIamV1BindingArrayOutput {
+	return i.ToGoogleIamV1BindingArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1BindingArray) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingArrayOutput)
+}
+
+// Associates `members`, or principals, with a `role`.
+type GoogleIamV1BindingOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1BindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1Binding)(nil)).Elem()
+}
+
+func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutput() GoogleIamV1BindingOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingOutput) ToGoogleIamV1BindingOutputWithContext(ctx context.Context) GoogleIamV1BindingOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
+}
+
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o GoogleIamV1BindingOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type GoogleIamV1BindingArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1BindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1Binding)(nil)).Elem()
+}
+
+func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutput() GoogleIamV1BindingArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingArrayOutput) ToGoogleIamV1BindingArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1Binding {
+		return vs[0].([]GoogleIamV1Binding)[vs[1].(int)]
+	}).(GoogleIamV1BindingOutput)
+}
+
+// Associates `members`, or principals, with a `role`.
+type GoogleIamV1BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition GoogleTypeExprResponse `pulumi:"condition"`
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// Associates `members`, or principals, with a `role`.
+type GoogleIamV1BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1BindingResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
+	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
+}
+
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GoogleIamV1BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1BindingResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1BindingResponse {
+		return vs[0].([]GoogleIamV1BindingResponse)[vs[1].(int)]
+	}).(GoogleIamV1BindingResponseOutput)
+}
+
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+type GoogleIamV1Policy struct {
+	// Specifies cloud audit logging configuration for this policy.
+	AuditConfigs []GoogleIamV1AuditConfig `pulumi:"auditConfigs"`
+	// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
+	Bindings []GoogleIamV1Binding `pulumi:"bindings"`
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+	Etag *string `pulumi:"etag"`
+	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Version *int `pulumi:"version"`
+}
+
+// GoogleIamV1PolicyInput is an input type that accepts GoogleIamV1PolicyArgs and GoogleIamV1PolicyOutput values.
+// You can construct a concrete instance of `GoogleIamV1PolicyInput` via:
+//
+//	GoogleIamV1PolicyArgs{...}
+type GoogleIamV1PolicyInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1PolicyOutput() GoogleIamV1PolicyOutput
+	ToGoogleIamV1PolicyOutputWithContext(context.Context) GoogleIamV1PolicyOutput
+}
+
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+type GoogleIamV1PolicyArgs struct {
+	// Specifies cloud audit logging configuration for this policy.
+	AuditConfigs GoogleIamV1AuditConfigArrayInput `pulumi:"auditConfigs"`
+	// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
+	Bindings GoogleIamV1BindingArrayInput `pulumi:"bindings"`
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (GoogleIamV1PolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1Policy)(nil)).Elem()
+}
+
+func (i GoogleIamV1PolicyArgs) ToGoogleIamV1PolicyOutput() GoogleIamV1PolicyOutput {
+	return i.ToGoogleIamV1PolicyOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1PolicyArgs) ToGoogleIamV1PolicyOutputWithContext(ctx context.Context) GoogleIamV1PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1PolicyOutput)
+}
+
+// GoogleIamV1PolicyMapInput is an input type that accepts GoogleIamV1PolicyMap and GoogleIamV1PolicyMapOutput values.
+// You can construct a concrete instance of `GoogleIamV1PolicyMapInput` via:
+//
+//	GoogleIamV1PolicyMap{ "key": GoogleIamV1PolicyArgs{...} }
+type GoogleIamV1PolicyMapInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1PolicyMapOutput() GoogleIamV1PolicyMapOutput
+	ToGoogleIamV1PolicyMapOutputWithContext(context.Context) GoogleIamV1PolicyMapOutput
+}
+
+type GoogleIamV1PolicyMap map[string]GoogleIamV1PolicyInput
+
+func (GoogleIamV1PolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleIamV1Policy)(nil)).Elem()
+}
+
+func (i GoogleIamV1PolicyMap) ToGoogleIamV1PolicyMapOutput() GoogleIamV1PolicyMapOutput {
+	return i.ToGoogleIamV1PolicyMapOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1PolicyMap) ToGoogleIamV1PolicyMapOutputWithContext(ctx context.Context) GoogleIamV1PolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1PolicyMapOutput)
+}
+
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+type GoogleIamV1PolicyOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1Policy)(nil)).Elem()
+}
+
+func (o GoogleIamV1PolicyOutput) ToGoogleIamV1PolicyOutput() GoogleIamV1PolicyOutput {
+	return o
+}
+
+func (o GoogleIamV1PolicyOutput) ToGoogleIamV1PolicyOutputWithContext(ctx context.Context) GoogleIamV1PolicyOutput {
+	return o
+}
+
+// Specifies cloud audit logging configuration for this policy.
+func (o GoogleIamV1PolicyOutput) AuditConfigs() GoogleIamV1AuditConfigArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1Policy) []GoogleIamV1AuditConfig { return v.AuditConfigs }).(GoogleIamV1AuditConfigArrayOutput)
+}
+
+// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
+func (o GoogleIamV1PolicyOutput) Bindings() GoogleIamV1BindingArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1Policy) []GoogleIamV1Binding { return v.Bindings }).(GoogleIamV1BindingArrayOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+func (o GoogleIamV1PolicyOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1Policy) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o GoogleIamV1PolicyOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleIamV1Policy) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type GoogleIamV1PolicyMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1PolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleIamV1Policy)(nil)).Elem()
+}
+
+func (o GoogleIamV1PolicyMapOutput) ToGoogleIamV1PolicyMapOutput() GoogleIamV1PolicyMapOutput {
+	return o
+}
+
+func (o GoogleIamV1PolicyMapOutput) ToGoogleIamV1PolicyMapOutputWithContext(ctx context.Context) GoogleIamV1PolicyMapOutput {
+	return o
+}
+
+func (o GoogleIamV1PolicyMapOutput) MapIndex(k pulumi.StringInput) GoogleIamV1PolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleIamV1Policy {
+		return vs[0].(map[string]GoogleIamV1Policy)[vs[1].(string)]
+	}).(GoogleIamV1PolicyOutput)
+}
+
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+type GoogleIamV1PolicyResponse struct {
+	// Specifies cloud audit logging configuration for this policy.
+	AuditConfigs []GoogleIamV1AuditConfigResponse `pulumi:"auditConfigs"`
+	// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
+	Bindings []GoogleIamV1BindingResponse `pulumi:"bindings"`
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+	Etag string `pulumi:"etag"`
+	// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Version int `pulumi:"version"`
+}
+
+// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ```{ "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }``` **YAML example:** ```bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+type GoogleIamV1PolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1PolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1PolicyResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1PolicyResponseOutput) ToGoogleIamV1PolicyResponseOutput() GoogleIamV1PolicyResponseOutput {
+	return o
+}
+
+func (o GoogleIamV1PolicyResponseOutput) ToGoogleIamV1PolicyResponseOutputWithContext(ctx context.Context) GoogleIamV1PolicyResponseOutput {
+	return o
+}
+
+// Specifies cloud audit logging configuration for this policy.
+func (o GoogleIamV1PolicyResponseOutput) AuditConfigs() GoogleIamV1AuditConfigResponseArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1PolicyResponse) []GoogleIamV1AuditConfigResponse { return v.AuditConfigs }).(GoogleIamV1AuditConfigResponseArrayOutput)
+}
+
+// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
+func (o GoogleIamV1PolicyResponseOutput) Bindings() GoogleIamV1BindingResponseArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1PolicyResponse) []GoogleIamV1BindingResponse { return v.Bindings }).(GoogleIamV1BindingResponseArrayOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+func (o GoogleIamV1PolicyResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamV1PolicyResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o GoogleIamV1PolicyResponseOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleIamV1PolicyResponse) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GoogleIamV1PolicyResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1PolicyResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleIamV1PolicyResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1PolicyResponseMapOutput) ToGoogleIamV1PolicyResponseMapOutput() GoogleIamV1PolicyResponseMapOutput {
+	return o
+}
+
+func (o GoogleIamV1PolicyResponseMapOutput) ToGoogleIamV1PolicyResponseMapOutputWithContext(ctx context.Context) GoogleIamV1PolicyResponseMapOutput {
+	return o
+}
+
+func (o GoogleIamV1PolicyResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleIamV1PolicyResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleIamV1PolicyResponse {
+		return vs[0].(map[string]GoogleIamV1PolicyResponse)[vs[1].(string)]
+	}).(GoogleIamV1PolicyResponseOutput)
+}
+
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
 type GoogleTypeDateResponse struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
@@ -217,10 +917,283 @@ func (o GoogleTypeDateResponseOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Year }).(pulumi.IntOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExpr struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression *string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// GoogleTypeExprInput is an input type that accepts GoogleTypeExprArgs and GoogleTypeExprOutput values.
+// You can construct a concrete instance of `GoogleTypeExprInput` via:
+//
+//	GoogleTypeExprArgs{...}
+type GoogleTypeExprInput interface {
+	pulumi.Input
+
+	ToGoogleTypeExprOutput() GoogleTypeExprOutput
+	ToGoogleTypeExprOutputWithContext(context.Context) GoogleTypeExprOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (GoogleTypeExprArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExpr)(nil)).Elem()
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprOutput() GoogleTypeExprOutput {
+	return i.ToGoogleTypeExprOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprOutputWithContext(ctx context.Context) GoogleTypeExprOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput)
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprOutput).ToGoogleTypeExprPtrOutputWithContext(ctx)
+}
+
+// GoogleTypeExprPtrInput is an input type that accepts GoogleTypeExprArgs, GoogleTypeExprPtr and GoogleTypeExprPtrOutput values.
+// You can construct a concrete instance of `GoogleTypeExprPtrInput` via:
+//
+//	        GoogleTypeExprArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleTypeExprPtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput
+	ToGoogleTypeExprPtrOutputWithContext(context.Context) GoogleTypeExprPtrOutput
+}
+
+type googleTypeExprPtrType GoogleTypeExprArgs
+
+func GoogleTypeExprPtr(v *GoogleTypeExprArgs) GoogleTypeExprPtrInput {
+	return (*googleTypeExprPtrType)(v)
+}
+
+func (*googleTypeExprPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeExpr)(nil)).Elem()
+}
+
+func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return i.ToGoogleTypeExprPtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeExprPtrType) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeExprOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExpr)(nil)).Elem()
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprOutput() GoogleTypeExprOutput {
+	return o
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprOutputWithContext(ctx context.Context) GoogleTypeExprOutput {
+	return o
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return o.ToGoogleTypeExprPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeExprOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeExpr) *GoogleTypeExpr {
+		return &v
+	}).(GoogleTypeExprPtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o GoogleTypeExprOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GoogleTypeExprOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o GoogleTypeExprOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o GoogleTypeExprOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeExpr) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type GoogleTypeExprPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeExprPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeExpr)(nil)).Elem()
+}
+
+func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutput() GoogleTypeExprPtrOutput {
+	return o
+}
+
+func (o GoogleTypeExprPtrOutput) ToGoogleTypeExprPtrOutputWithContext(ctx context.Context) GoogleTypeExprPtrOutput {
+	return o
+}
+
+func (o GoogleTypeExprPtrOutput) Elem() GoogleTypeExprOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) GoogleTypeExpr {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeExpr
+		return ret
+	}).(GoogleTypeExprOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o GoogleTypeExprPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GoogleTypeExprPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o GoogleTypeExprPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o GoogleTypeExprPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeExpr) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExprResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTypeExprResponseOutput {
+	return o
+}
+
+func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o GoogleTypeExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GoogleTypeExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o GoogleTypeExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudPolicysimulatorV1betaReplayConfigInput)(nil)).Elem(), GoogleCloudPolicysimulatorV1betaReplayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingInput)(nil)).Elem(), GoogleIamV1BindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingArrayInput)(nil)).Elem(), GoogleIamV1BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1PolicyInput)(nil)).Elem(), GoogleIamV1PolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1PolicyMapInput)(nil)).Elem(), GoogleIamV1PolicyMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1betaReplayConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1betaReplayConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1BindingOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1BindingArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1BindingResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1PolicyOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1PolicyMapOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1PolicyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1PolicyResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleTypeDateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeExprOutput{})
+	pulumi.RegisterOutputType(GoogleTypeExprPtrOutput{})
+	pulumi.RegisterOutputType(GoogleTypeExprResponseOutput{})
 }

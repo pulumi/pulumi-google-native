@@ -21,7 +21,7 @@ type Repo struct {
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-	PubsubConfigs pulumi.StringMapOutput `pulumi:"pubsubConfigs"`
+	PubsubConfigs PubsubConfigResponseMapOutput `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size pulumi.StringOutput `pulumi:"size"`
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
@@ -78,7 +78,7 @@ type repoArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-	PubsubConfigs map[string]string `pulumi:"pubsubConfigs"`
+	PubsubConfigs map[string]PubsubConfig `pulumi:"pubsubConfigs"`
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size *string `pulumi:"size"`
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
@@ -93,7 +93,7 @@ type RepoArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-	PubsubConfigs pulumi.StringMapInput
+	PubsubConfigs PubsubConfigMapInput
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size pulumi.StringPtrInput
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
@@ -152,8 +152,8 @@ func (o RepoOutput) Project() pulumi.StringOutput {
 }
 
 // How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-func (o RepoOutput) PubsubConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Repo) pulumi.StringMapOutput { return v.PubsubConfigs }).(pulumi.StringMapOutput)
+func (o RepoOutput) PubsubConfigs() PubsubConfigResponseMapOutput {
+	return o.ApplyT(func(v *Repo) PubsubConfigResponseMapOutput { return v.PubsubConfigs }).(PubsubConfigResponseMapOutput)
 }
 
 // The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.

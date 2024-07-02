@@ -138,7 +138,7 @@ export interface GetInstanceResult {
     /**
      * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
      */
-    readonly partnerMetadata: {[key: string]: string};
+    readonly partnerMetadata: {[key: string]: outputs.compute.alpha.StructuredEntriesResponse};
     /**
      * PostKeyRevocationActionType of the instance.
      */
@@ -190,7 +190,7 @@ export interface GetInstanceResult {
     /**
      * Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
      */
-    readonly serviceIntegrationSpecs: {[key: string]: string};
+    readonly serviceIntegrationSpecs: {[key: string]: outputs.compute.alpha.ServiceIntegrationSpecResponse};
     readonly shieldedInstanceConfig: outputs.compute.alpha.ShieldedInstanceConfigResponse;
     readonly shieldedInstanceIntegrityPolicy: outputs.compute.alpha.ShieldedInstanceIntegrityPolicyResponse;
     /**

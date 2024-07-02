@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// <summary>
         /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ProjectMap;
+        public readonly ImmutableDictionary<string, Outputs.ShareSettingsProjectConfigResponse> ProjectMap;
         /// <summary>
         /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
         [OutputConstructor]
         private ShareSettingsResponse(
-            ImmutableDictionary<string, string> projectMap,
+            ImmutableDictionary<string, Outputs.ShareSettingsProjectConfigResponse> projectMap,
 
             ImmutableArray<string> projects,
 

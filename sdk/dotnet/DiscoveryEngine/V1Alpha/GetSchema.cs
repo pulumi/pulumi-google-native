@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// <summary>
         /// The structured representation of the schema.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> StructSchema;
+        public readonly ImmutableDictionary<string, object> StructSchema;
 
         [OutputConstructor]
         private GetSchemaResult(
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
             string name,
 
-            ImmutableDictionary<string, string> structSchema)
+            ImmutableDictionary<string, object> structSchema)
         {
             FieldConfigs = fieldConfigs;
             JsonSchema = jsonSchema;

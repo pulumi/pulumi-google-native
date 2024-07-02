@@ -1485,10 +1485,10 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 }
 
 type BuildDefinition struct {
-	BuildType            *string              `pulumi:"buildType"`
-	ExternalParameters   map[string]string    `pulumi:"externalParameters"`
-	InternalParameters   map[string]string    `pulumi:"internalParameters"`
-	ResolvedDependencies []ResourceDescriptor `pulumi:"resolvedDependencies"`
+	BuildType            *string                `pulumi:"buildType"`
+	ExternalParameters   map[string]interface{} `pulumi:"externalParameters"`
+	InternalParameters   map[string]interface{} `pulumi:"internalParameters"`
+	ResolvedDependencies []ResourceDescriptor   `pulumi:"resolvedDependencies"`
 }
 
 // BuildDefinitionInput is an input type that accepts BuildDefinitionArgs and BuildDefinitionOutput values.
@@ -1504,8 +1504,8 @@ type BuildDefinitionInput interface {
 
 type BuildDefinitionArgs struct {
 	BuildType            pulumi.StringPtrInput        `pulumi:"buildType"`
-	ExternalParameters   pulumi.StringMapInput        `pulumi:"externalParameters"`
-	InternalParameters   pulumi.StringMapInput        `pulumi:"internalParameters"`
+	ExternalParameters   pulumi.MapInput              `pulumi:"externalParameters"`
+	InternalParameters   pulumi.MapInput              `pulumi:"internalParameters"`
 	ResolvedDependencies ResourceDescriptorArrayInput `pulumi:"resolvedDependencies"`
 }
 
@@ -1590,12 +1590,12 @@ func (o BuildDefinitionOutput) BuildType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildDefinition) *string { return v.BuildType }).(pulumi.StringPtrOutput)
 }
 
-func (o BuildDefinitionOutput) ExternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinition) map[string]string { return v.ExternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionOutput) ExternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinition) map[string]interface{} { return v.ExternalParameters }).(pulumi.MapOutput)
 }
 
-func (o BuildDefinitionOutput) InternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinition) map[string]string { return v.InternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionOutput) InternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinition) map[string]interface{} { return v.InternalParameters }).(pulumi.MapOutput)
 }
 
 func (o BuildDefinitionOutput) ResolvedDependencies() ResourceDescriptorArrayOutput {
@@ -1635,22 +1635,22 @@ func (o BuildDefinitionPtrOutput) BuildType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o BuildDefinitionPtrOutput) ExternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildDefinition) map[string]string {
+func (o BuildDefinitionPtrOutput) ExternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *BuildDefinition) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ExternalParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
-func (o BuildDefinitionPtrOutput) InternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildDefinition) map[string]string {
+func (o BuildDefinitionPtrOutput) InternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *BuildDefinition) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.InternalParameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o BuildDefinitionPtrOutput) ResolvedDependencies() ResourceDescriptorArrayOutput {
@@ -1664,8 +1664,8 @@ func (o BuildDefinitionPtrOutput) ResolvedDependencies() ResourceDescriptorArray
 
 type BuildDefinitionResponse struct {
 	BuildType            string                       `pulumi:"buildType"`
-	ExternalParameters   map[string]string            `pulumi:"externalParameters"`
-	InternalParameters   map[string]string            `pulumi:"internalParameters"`
+	ExternalParameters   map[string]interface{}       `pulumi:"externalParameters"`
+	InternalParameters   map[string]interface{}       `pulumi:"internalParameters"`
 	ResolvedDependencies []ResourceDescriptorResponse `pulumi:"resolvedDependencies"`
 }
 
@@ -1687,12 +1687,12 @@ func (o BuildDefinitionResponseOutput) BuildType() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildDefinitionResponse) string { return v.BuildType }).(pulumi.StringOutput)
 }
 
-func (o BuildDefinitionResponseOutput) ExternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinitionResponse) map[string]string { return v.ExternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionResponseOutput) ExternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) map[string]interface{} { return v.ExternalParameters }).(pulumi.MapOutput)
 }
 
-func (o BuildDefinitionResponseOutput) InternalParameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildDefinitionResponse) map[string]string { return v.InternalParameters }).(pulumi.StringMapOutput)
+func (o BuildDefinitionResponseOutput) InternalParameters() pulumi.MapOutput {
+	return o.ApplyT(func(v BuildDefinitionResponse) map[string]interface{} { return v.InternalParameters }).(pulumi.MapOutput)
 }
 
 func (o BuildDefinitionResponseOutput) ResolvedDependencies() ResourceDescriptorResponseArrayOutput {
@@ -8223,6 +8223,152 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashes struct {
+	// Collection of file hashes.
+	FileHash []Hash `pulumi:"fileHash"`
+}
+
+// FileHashesInput is an input type that accepts FileHashesArgs and FileHashesOutput values.
+// You can construct a concrete instance of `FileHashesInput` via:
+//
+//	FileHashesArgs{...}
+type FileHashesInput interface {
+	pulumi.Input
+
+	ToFileHashesOutput() FileHashesOutput
+	ToFileHashesOutputWithContext(context.Context) FileHashesOutput
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesArgs struct {
+	// Collection of file hashes.
+	FileHash HashArrayInput `pulumi:"fileHash"`
+}
+
+func (FileHashesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileHashes)(nil)).Elem()
+}
+
+func (i FileHashesArgs) ToFileHashesOutput() FileHashesOutput {
+	return i.ToFileHashesOutputWithContext(context.Background())
+}
+
+func (i FileHashesArgs) ToFileHashesOutputWithContext(ctx context.Context) FileHashesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileHashesOutput)
+}
+
+// FileHashesMapInput is an input type that accepts FileHashesMap and FileHashesMapOutput values.
+// You can construct a concrete instance of `FileHashesMapInput` via:
+//
+//	FileHashesMap{ "key": FileHashesArgs{...} }
+type FileHashesMapInput interface {
+	pulumi.Input
+
+	ToFileHashesMapOutput() FileHashesMapOutput
+	ToFileHashesMapOutputWithContext(context.Context) FileHashesMapOutput
+}
+
+type FileHashesMap map[string]FileHashesInput
+
+func (FileHashesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileHashes)(nil)).Elem()
+}
+
+func (i FileHashesMap) ToFileHashesMapOutput() FileHashesMapOutput {
+	return i.ToFileHashesMapOutputWithContext(context.Background())
+}
+
+func (i FileHashesMap) ToFileHashesMapOutputWithContext(ctx context.Context) FileHashesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileHashesMapOutput)
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesOutput struct{ *pulumi.OutputState }
+
+func (FileHashesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileHashes)(nil)).Elem()
+}
+
+func (o FileHashesOutput) ToFileHashesOutput() FileHashesOutput {
+	return o
+}
+
+func (o FileHashesOutput) ToFileHashesOutputWithContext(ctx context.Context) FileHashesOutput {
+	return o
+}
+
+// Collection of file hashes.
+func (o FileHashesOutput) FileHash() HashArrayOutput {
+	return o.ApplyT(func(v FileHashes) []Hash { return v.FileHash }).(HashArrayOutput)
+}
+
+type FileHashesMapOutput struct{ *pulumi.OutputState }
+
+func (FileHashesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileHashes)(nil)).Elem()
+}
+
+func (o FileHashesMapOutput) ToFileHashesMapOutput() FileHashesMapOutput {
+	return o
+}
+
+func (o FileHashesMapOutput) ToFileHashesMapOutputWithContext(ctx context.Context) FileHashesMapOutput {
+	return o
+}
+
+func (o FileHashesMapOutput) MapIndex(k pulumi.StringInput) FileHashesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FileHashes {
+		return vs[0].(map[string]FileHashes)[vs[1].(string)]
+	}).(FileHashesOutput)
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesResponse struct {
+	// Collection of file hashes.
+	FileHash []HashResponse `pulumi:"fileHash"`
+}
+
+// Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+type FileHashesResponseOutput struct{ *pulumi.OutputState }
+
+func (FileHashesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileHashesResponse)(nil)).Elem()
+}
+
+func (o FileHashesResponseOutput) ToFileHashesResponseOutput() FileHashesResponseOutput {
+	return o
+}
+
+func (o FileHashesResponseOutput) ToFileHashesResponseOutputWithContext(ctx context.Context) FileHashesResponseOutput {
+	return o
+}
+
+// Collection of file hashes.
+func (o FileHashesResponseOutput) FileHash() HashResponseArrayOutput {
+	return o.ApplyT(func(v FileHashesResponse) []HashResponse { return v.FileHash }).(HashResponseArrayOutput)
+}
+
+type FileHashesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (FileHashesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileHashesResponse)(nil)).Elem()
+}
+
+func (o FileHashesResponseMapOutput) ToFileHashesResponseMapOutput() FileHashesResponseMapOutput {
+	return o
+}
+
+func (o FileHashesResponseMapOutput) ToFileHashesResponseMapOutputWithContext(ctx context.Context) FileHashesResponseMapOutput {
+	return o
+}
+
+func (o FileHashesResponseMapOutput) MapIndex(k pulumi.StringInput) FileHashesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FileHashesResponse {
+		return vs[0].(map[string]FileHashesResponse)[vs[1].(string)]
+	}).(FileHashesResponseOutput)
+}
+
 // A set of properties that uniquely identify a given Docker image.
 type Fingerprint struct {
 	// The layer ID of the final layer in the Docker image's v1 representation.
@@ -9562,8 +9708,8 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput) Uri() pulu
 // Identifies the event that kicked off the build.
 type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation struct {
 	ConfigSource *GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource `pulumi:"configSource"`
-	Environment  map[string]string                               `pulumi:"environment"`
-	Parameters   map[string]string                               `pulumi:"parameters"`
+	Environment  map[string]interface{}                          `pulumi:"environment"`
+	Parameters   map[string]interface{}                          `pulumi:"parameters"`
 }
 
 // GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationInput is an input type that accepts GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs and GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput values.
@@ -9580,8 +9726,8 @@ type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationInput interface {
 // Identifies the event that kicked off the build.
 type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs struct {
 	ConfigSource GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrInput `pulumi:"configSource"`
-	Environment  pulumi.StringMapInput                                  `pulumi:"environment"`
-	Parameters   pulumi.StringMapInput                                  `pulumi:"parameters"`
+	Environment  pulumi.MapInput                                        `pulumi:"environment"`
+	Parameters   pulumi.MapInput                                        `pulumi:"parameters"`
 }
 
 func (GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs) ElementType() reflect.Type {
@@ -9668,12 +9814,12 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) ConfigSource() Grafe
 	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
 }
 
 type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput struct{ *pulumi.OutputState }
@@ -9709,29 +9855,29 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) ConfigSource() Gr
 	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourcePtrOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Environment
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]string {
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Identifies the event that kicked off the build.
 type GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse struct {
 	ConfigSource GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse `pulumi:"configSource"`
-	Environment  map[string]string                                      `pulumi:"environment"`
-	Parameters   map[string]string                                      `pulumi:"parameters"`
+	Environment  map[string]interface{}                                 `pulumi:"environment"`
+	Parameters   map[string]interface{}                                 `pulumi:"parameters"`
 }
 
 // Identifies the event that kicked off the build.
@@ -9755,12 +9901,16 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) ConfigSource
 	}).(GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponseOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]interface{} {
+		return v.Environment
+	}).(pulumi.MapOutput)
 }
 
-func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponseOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse) map[string]interface{} {
+		return v.Parameters
+	}).(pulumi.MapOutput)
 }
 
 // The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
@@ -10157,6 +10307,168 @@ func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) Completeness()
 
 func (o GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput) Reproducible() pulumi.BoolOutput {
 	return o.ApplyT(func(v GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse) bool { return v.Reproducible }).(pulumi.BoolOutput)
+}
+
+// Container message for hash values.
+type Hash struct {
+	// The type of hash that was performed, e.g. "SHA-256".
+	Type string `pulumi:"type"`
+	// The hash value.
+	Value string `pulumi:"value"`
+}
+
+// HashInput is an input type that accepts HashArgs and HashOutput values.
+// You can construct a concrete instance of `HashInput` via:
+//
+//	HashArgs{...}
+type HashInput interface {
+	pulumi.Input
+
+	ToHashOutput() HashOutput
+	ToHashOutputWithContext(context.Context) HashOutput
+}
+
+// Container message for hash values.
+type HashArgs struct {
+	// The type of hash that was performed, e.g. "SHA-256".
+	Type pulumi.StringInput `pulumi:"type"`
+	// The hash value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (HashArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hash)(nil)).Elem()
+}
+
+func (i HashArgs) ToHashOutput() HashOutput {
+	return i.ToHashOutputWithContext(context.Background())
+}
+
+func (i HashArgs) ToHashOutputWithContext(ctx context.Context) HashOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashOutput)
+}
+
+// HashArrayInput is an input type that accepts HashArray and HashArrayOutput values.
+// You can construct a concrete instance of `HashArrayInput` via:
+//
+//	HashArray{ HashArgs{...} }
+type HashArrayInput interface {
+	pulumi.Input
+
+	ToHashArrayOutput() HashArrayOutput
+	ToHashArrayOutputWithContext(context.Context) HashArrayOutput
+}
+
+type HashArray []HashInput
+
+func (HashArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hash)(nil)).Elem()
+}
+
+func (i HashArray) ToHashArrayOutput() HashArrayOutput {
+	return i.ToHashArrayOutputWithContext(context.Background())
+}
+
+func (i HashArray) ToHashArrayOutputWithContext(ctx context.Context) HashArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashArrayOutput)
+}
+
+// Container message for hash values.
+type HashOutput struct{ *pulumi.OutputState }
+
+func (HashOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hash)(nil)).Elem()
+}
+
+func (o HashOutput) ToHashOutput() HashOutput {
+	return o
+}
+
+func (o HashOutput) ToHashOutputWithContext(ctx context.Context) HashOutput {
+	return o
+}
+
+// The type of hash that was performed, e.g. "SHA-256".
+func (o HashOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v Hash) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The hash value.
+func (o HashOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v Hash) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HashArrayOutput struct{ *pulumi.OutputState }
+
+func (HashArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hash)(nil)).Elem()
+}
+
+func (o HashArrayOutput) ToHashArrayOutput() HashArrayOutput {
+	return o
+}
+
+func (o HashArrayOutput) ToHashArrayOutputWithContext(ctx context.Context) HashArrayOutput {
+	return o
+}
+
+func (o HashArrayOutput) Index(i pulumi.IntInput) HashOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hash {
+		return vs[0].([]Hash)[vs[1].(int)]
+	}).(HashOutput)
+}
+
+// Container message for hash values.
+type HashResponse struct {
+	// The type of hash that was performed, e.g. "SHA-256".
+	Type string `pulumi:"type"`
+	// The hash value.
+	Value string `pulumi:"value"`
+}
+
+// Container message for hash values.
+type HashResponseOutput struct{ *pulumi.OutputState }
+
+func (HashResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HashResponse)(nil)).Elem()
+}
+
+func (o HashResponseOutput) ToHashResponseOutput() HashResponseOutput {
+	return o
+}
+
+func (o HashResponseOutput) ToHashResponseOutputWithContext(ctx context.Context) HashResponseOutput {
+	return o
+}
+
+// The type of hash that was performed, e.g. "SHA-256".
+func (o HashResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The hash value.
+func (o HashResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HashResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HashResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HashResponse)(nil)).Elem()
+}
+
+func (o HashResponseArrayOutput) ToHashResponseArrayOutput() HashResponseArrayOutput {
+	return o
+}
+
+func (o HashResponseArrayOutput) ToHashResponseArrayOutputWithContext(ctx context.Context) HashResponseArrayOutput {
+	return o
+}
+
+func (o HashResponseArrayOutput) Index(i pulumi.IntInput) HashResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HashResponse {
+		return vs[0].([]HashResponse)[vs[1].(int)]
+	}).(HashResponseOutput)
 }
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
@@ -15029,13 +15341,13 @@ func (o PublisherResponseOutput) PublisherNamespace() pulumi.StringOutput {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type Recipe struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Arguments []map[string]string `pulumi:"arguments"`
+	Arguments []map[string]interface{} `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial *string `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Environment []map[string]string `pulumi:"environment"`
+	Environment []map[string]interface{} `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type *string `pulumi:"type"`
 }
@@ -15054,13 +15366,13 @@ type RecipeInput interface {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type RecipeArgs struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Arguments pulumi.StringMapArrayInput `pulumi:"arguments"`
+	Arguments pulumi.MapArrayInput `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial pulumi.StringPtrInput `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Environment pulumi.StringMapArrayInput `pulumi:"environment"`
+	Environment pulumi.MapArrayInput `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -15144,8 +15456,8 @@ func (o RecipeOutput) ToRecipePtrOutputWithContext(ctx context.Context) RecipePt
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipeOutput) Arguments() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Recipe) []map[string]string { return v.Arguments }).(pulumi.StringMapArrayOutput)
+func (o RecipeOutput) Arguments() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v Recipe) []map[string]interface{} { return v.Arguments }).(pulumi.MapArrayOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -15159,8 +15471,8 @@ func (o RecipeOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipeOutput) Environment() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Recipe) []map[string]string { return v.Environment }).(pulumi.StringMapArrayOutput)
+func (o RecipeOutput) Environment() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v Recipe) []map[string]interface{} { return v.Environment }).(pulumi.MapArrayOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -15193,13 +15505,13 @@ func (o RecipePtrOutput) Elem() RecipeOutput {
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipePtrOutput) Arguments() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Recipe) []map[string]string {
+func (o RecipePtrOutput) Arguments() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *Recipe) []map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Arguments
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -15223,13 +15535,13 @@ func (o RecipePtrOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipePtrOutput) Environment() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Recipe) []map[string]string {
+func (o RecipePtrOutput) Environment() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *Recipe) []map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Environment
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -15245,13 +15557,13 @@ func (o RecipePtrOutput) Type() pulumi.StringPtrOutput {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type RecipeResponse struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Arguments []map[string]string `pulumi:"arguments"`
+	Arguments []map[string]interface{} `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial string `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint string `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-	Environment []map[string]string `pulumi:"environment"`
+	Environment []map[string]interface{} `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type string `pulumi:"type"`
 }
@@ -15272,8 +15584,8 @@ func (o RecipeResponseOutput) ToRecipeResponseOutputWithContext(ctx context.Cont
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipeResponseOutput) Arguments() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v RecipeResponse) []map[string]string { return v.Arguments }).(pulumi.StringMapArrayOutput)
+func (o RecipeResponseOutput) Arguments() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v RecipeResponse) []map[string]interface{} { return v.Arguments }).(pulumi.MapArrayOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -15287,8 +15599,8 @@ func (o RecipeResponseOutput) EntryPoint() pulumi.StringOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
-func (o RecipeResponseOutput) Environment() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v RecipeResponse) []map[string]string { return v.Environment }).(pulumi.StringMapArrayOutput)
+func (o RecipeResponseOutput) Environment() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v RecipeResponse) []map[string]interface{} { return v.Environment }).(pulumi.MapArrayOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -15924,13 +16236,13 @@ func (o RepoIdResponseOutput) Uid() pulumi.StringOutput {
 }
 
 type ResourceDescriptor struct {
-	Annotations      map[string]string `pulumi:"annotations"`
-	Content          *string           `pulumi:"content"`
-	Digest           map[string]string `pulumi:"digest"`
-	DownloadLocation *string           `pulumi:"downloadLocation"`
-	MediaType        *string           `pulumi:"mediaType"`
-	Name             *string           `pulumi:"name"`
-	Uri              *string           `pulumi:"uri"`
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	Content          *string                `pulumi:"content"`
+	Digest           map[string]string      `pulumi:"digest"`
+	DownloadLocation *string                `pulumi:"downloadLocation"`
+	MediaType        *string                `pulumi:"mediaType"`
+	Name             *string                `pulumi:"name"`
+	Uri              *string                `pulumi:"uri"`
 }
 
 // ResourceDescriptorInput is an input type that accepts ResourceDescriptorArgs and ResourceDescriptorOutput values.
@@ -15945,7 +16257,7 @@ type ResourceDescriptorInput interface {
 }
 
 type ResourceDescriptorArgs struct {
-	Annotations      pulumi.StringMapInput `pulumi:"annotations"`
+	Annotations      pulumi.MapInput       `pulumi:"annotations"`
 	Content          pulumi.StringPtrInput `pulumi:"content"`
 	Digest           pulumi.StringMapInput `pulumi:"digest"`
 	DownloadLocation pulumi.StringPtrInput `pulumi:"downloadLocation"`
@@ -16005,8 +16317,8 @@ func (o ResourceDescriptorOutput) ToResourceDescriptorOutputWithContext(ctx cont
 	return o
 }
 
-func (o ResourceDescriptorOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceDescriptor) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+func (o ResourceDescriptorOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v ResourceDescriptor) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
 }
 
 func (o ResourceDescriptorOutput) Content() pulumi.StringPtrOutput {
@@ -16054,13 +16366,13 @@ func (o ResourceDescriptorArrayOutput) Index(i pulumi.IntInput) ResourceDescript
 }
 
 type ResourceDescriptorResponse struct {
-	Annotations      map[string]string `pulumi:"annotations"`
-	Content          string            `pulumi:"content"`
-	Digest           map[string]string `pulumi:"digest"`
-	DownloadLocation string            `pulumi:"downloadLocation"`
-	MediaType        string            `pulumi:"mediaType"`
-	Name             string            `pulumi:"name"`
-	Uri              string            `pulumi:"uri"`
+	Annotations      map[string]interface{} `pulumi:"annotations"`
+	Content          string                 `pulumi:"content"`
+	Digest           map[string]string      `pulumi:"digest"`
+	DownloadLocation string                 `pulumi:"downloadLocation"`
+	MediaType        string                 `pulumi:"mediaType"`
+	Name             string                 `pulumi:"name"`
+	Uri              string                 `pulumi:"uri"`
 }
 
 type ResourceDescriptorResponseOutput struct{ *pulumi.OutputState }
@@ -16077,8 +16389,8 @@ func (o ResourceDescriptorResponseOutput) ToResourceDescriptorResponseOutputWith
 	return o
 }
 
-func (o ResourceDescriptorResponseOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceDescriptorResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+func (o ResourceDescriptorResponseOutput) Annotations() pulumi.MapOutput {
+	return o.ApplyT(func(v ResourceDescriptorResponse) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
 }
 
 func (o ResourceDescriptorResponseOutput) Content() pulumi.StringOutput {
@@ -18625,7 +18937,7 @@ func (o SlsaProvenanceV1ResponseOutput) RunDetails() RunDetailsResponseOutput {
 
 // See full explanation of fields at slsa.dev/provenance/v0.2.
 type SlsaProvenanceZeroTwo struct {
-	BuildConfig map[string]string                             `pulumi:"buildConfig"`
+	BuildConfig map[string]interface{}                        `pulumi:"buildConfig"`
 	BuildType   *string                                       `pulumi:"buildType"`
 	Builder     *GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder    `pulumi:"builder"`
 	Invocation  *GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation `pulumi:"invocation"`
@@ -18646,7 +18958,7 @@ type SlsaProvenanceZeroTwoInput interface {
 
 // See full explanation of fields at slsa.dev/provenance/v0.2.
 type SlsaProvenanceZeroTwoArgs struct {
-	BuildConfig pulumi.StringMapInput                                `pulumi:"buildConfig"`
+	BuildConfig pulumi.MapInput                                      `pulumi:"buildConfig"`
 	BuildType   pulumi.StringPtrInput                                `pulumi:"buildType"`
 	Builder     GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderPtrInput    `pulumi:"builder"`
 	Invocation  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationPtrInput `pulumi:"invocation"`
@@ -18732,8 +19044,8 @@ func (o SlsaProvenanceZeroTwoOutput) ToSlsaProvenanceZeroTwoPtrOutputWithContext
 	}).(SlsaProvenanceZeroTwoPtrOutput)
 }
 
-func (o SlsaProvenanceZeroTwoOutput) BuildConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SlsaProvenanceZeroTwo) map[string]string { return v.BuildConfig }).(pulumi.StringMapOutput)
+func (o SlsaProvenanceZeroTwoOutput) BuildConfig() pulumi.MapOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwo) map[string]interface{} { return v.BuildConfig }).(pulumi.MapOutput)
 }
 
 func (o SlsaProvenanceZeroTwoOutput) BuildType() pulumi.StringPtrOutput {
@@ -18780,13 +19092,13 @@ func (o SlsaProvenanceZeroTwoPtrOutput) Elem() SlsaProvenanceZeroTwoOutput {
 	}).(SlsaProvenanceZeroTwoOutput)
 }
 
-func (o SlsaProvenanceZeroTwoPtrOutput) BuildConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) map[string]string {
+func (o SlsaProvenanceZeroTwoPtrOutput) BuildConfig() pulumi.MapOutput {
+	return o.ApplyT(func(v *SlsaProvenanceZeroTwo) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.BuildConfig
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o SlsaProvenanceZeroTwoPtrOutput) BuildType() pulumi.StringPtrOutput {
@@ -18836,7 +19148,7 @@ func (o SlsaProvenanceZeroTwoPtrOutput) Metadata() GrafeasV1SlsaProvenanceZeroTw
 
 // See full explanation of fields at slsa.dev/provenance/v0.2.
 type SlsaProvenanceZeroTwoResponse struct {
-	BuildConfig map[string]string                                    `pulumi:"buildConfig"`
+	BuildConfig map[string]interface{}                               `pulumi:"buildConfig"`
 	BuildType   string                                               `pulumi:"buildType"`
 	Builder     GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderResponse    `pulumi:"builder"`
 	Invocation  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse `pulumi:"invocation"`
@@ -18859,8 +19171,8 @@ func (o SlsaProvenanceZeroTwoResponseOutput) ToSlsaProvenanceZeroTwoResponseOutp
 	return o
 }
 
-func (o SlsaProvenanceZeroTwoResponseOutput) BuildConfig() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) map[string]string { return v.BuildConfig }).(pulumi.StringMapOutput)
+func (o SlsaProvenanceZeroTwoResponseOutput) BuildConfig() pulumi.MapOutput {
+	return o.ApplyT(func(v SlsaProvenanceZeroTwoResponse) map[string]interface{} { return v.BuildConfig }).(pulumi.MapOutput)
 }
 
 func (o SlsaProvenanceZeroTwoResponseOutput) BuildType() pulumi.StringOutput {
@@ -18894,13 +19206,13 @@ func (o SlsaProvenanceZeroTwoResponseOutput) Metadata() GrafeasV1SlsaProvenanceZ
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type SlsaRecipe struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-	Arguments map[string]string `pulumi:"arguments"`
+	Arguments map[string]interface{} `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial *string `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-	Environment map[string]string `pulumi:"environment"`
+	Environment map[string]interface{} `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type *string `pulumi:"type"`
 }
@@ -18919,13 +19231,13 @@ type SlsaRecipeInput interface {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type SlsaRecipeArgs struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-	Arguments pulumi.StringMapInput `pulumi:"arguments"`
+	Arguments pulumi.MapInput `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial pulumi.StringPtrInput `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-	Environment pulumi.StringMapInput `pulumi:"environment"`
+	Environment pulumi.MapInput `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -19009,8 +19321,8 @@ func (o SlsaRecipeOutput) ToSlsaRecipePtrOutputWithContext(ctx context.Context) 
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipeOutput) Arguments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SlsaRecipe) map[string]string { return v.Arguments }).(pulumi.StringMapOutput)
+func (o SlsaRecipeOutput) Arguments() pulumi.MapOutput {
+	return o.ApplyT(func(v SlsaRecipe) map[string]interface{} { return v.Arguments }).(pulumi.MapOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -19024,8 +19336,8 @@ func (o SlsaRecipeOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipeOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SlsaRecipe) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+func (o SlsaRecipeOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v SlsaRecipe) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -19058,13 +19370,13 @@ func (o SlsaRecipePtrOutput) Elem() SlsaRecipeOutput {
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipePtrOutput) Arguments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SlsaRecipe) map[string]string {
+func (o SlsaRecipePtrOutput) Arguments() pulumi.MapOutput {
+	return o.ApplyT(func(v *SlsaRecipe) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Arguments
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -19088,13 +19400,13 @@ func (o SlsaRecipePtrOutput) EntryPoint() pulumi.StringPtrOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipePtrOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SlsaRecipe) map[string]string {
+func (o SlsaRecipePtrOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v *SlsaRecipe) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Environment
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -19110,13 +19422,13 @@ func (o SlsaRecipePtrOutput) Type() pulumi.StringPtrOutput {
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
 type SlsaRecipeResponse struct {
 	// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-	Arguments map[string]string `pulumi:"arguments"`
+	Arguments map[string]interface{} `pulumi:"arguments"`
 	// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
 	DefinedInMaterial string `pulumi:"definedInMaterial"`
 	// String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
 	EntryPoint string `pulumi:"entryPoint"`
 	// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-	Environment map[string]string `pulumi:"environment"`
+	Environment map[string]interface{} `pulumi:"environment"`
 	// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
 	Type string `pulumi:"type"`
 }
@@ -19137,8 +19449,8 @@ func (o SlsaRecipeResponseOutput) ToSlsaRecipeResponseOutputWithContext(ctx cont
 }
 
 // Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipeResponseOutput) Arguments() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SlsaRecipeResponse) map[string]string { return v.Arguments }).(pulumi.StringMapOutput)
+func (o SlsaRecipeResponseOutput) Arguments() pulumi.MapOutput {
+	return o.ApplyT(func(v SlsaRecipeResponse) map[string]interface{} { return v.Arguments }).(pulumi.MapOutput)
 }
 
 // Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the recipe type were "make", then this would point to the source containing the Makefile, not the make program itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
@@ -19152,8 +19464,8 @@ func (o SlsaRecipeResponseOutput) EntryPoint() pulumi.StringOutput {
 }
 
 // Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
-func (o SlsaRecipeResponseOutput) Environment() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SlsaRecipeResponse) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+func (o SlsaRecipeResponseOutput) Environment() pulumi.MapOutput {
+	return o.ApplyT(func(v SlsaRecipeResponse) map[string]interface{} { return v.Environment }).(pulumi.MapOutput)
 }
 
 // URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
@@ -19170,7 +19482,7 @@ type Source struct {
 	// If provided, the source code used for the build came from this location.
 	Context *SourceContext `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes map[string]string `pulumi:"fileHashes"`
+	FileHashes map[string]FileHashes `pulumi:"fileHashes"`
 }
 
 // SourceInput is an input type that accepts SourceArgs and SourceOutput values.
@@ -19193,7 +19505,7 @@ type SourceArgs struct {
 	// If provided, the source code used for the build came from this location.
 	Context SourceContextPtrInput `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes pulumi.StringMapInput `pulumi:"fileHashes"`
+	FileHashes FileHashesMapInput `pulumi:"fileHashes"`
 }
 
 func (SourceArgs) ElementType() reflect.Type {
@@ -19290,8 +19602,8 @@ func (o SourceOutput) Context() SourceContextPtrOutput {
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourceOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Source) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+func (o SourceOutput) FileHashes() FileHashesMapOutput {
+	return o.ApplyT(func(v Source) map[string]FileHashes { return v.FileHashes }).(FileHashesMapOutput)
 }
 
 type SourcePtrOutput struct{ *pulumi.OutputState }
@@ -19349,13 +19661,13 @@ func (o SourcePtrOutput) Context() SourceContextPtrOutput {
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourcePtrOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Source) map[string]string {
+func (o SourcePtrOutput) FileHashes() FileHashesMapOutput {
+	return o.ApplyT(func(v *Source) map[string]FileHashes {
 		if v == nil {
 			return nil
 		}
 		return v.FileHashes
-	}).(pulumi.StringMapOutput)
+	}).(FileHashesMapOutput)
 }
 
 // A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
@@ -19676,7 +19988,7 @@ type SourceResponse struct {
 	// If provided, the source code used for the build came from this location.
 	Context SourceContextResponse `pulumi:"context"`
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-	FileHashes map[string]string `pulumi:"fileHashes"`
+	FileHashes map[string]FileHashesResponse `pulumi:"fileHashes"`
 }
 
 // Source describes the location of the source used for the build.
@@ -19710,8 +20022,8 @@ func (o SourceResponseOutput) Context() SourceContextResponseOutput {
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
-func (o SourceResponseOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SourceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+func (o SourceResponseOutput) FileHashes() FileHashesResponseMapOutput {
+	return o.ApplyT(func(v SourceResponse) map[string]FileHashesResponse { return v.FileHashes }).(FileHashesResponseMapOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -19719,7 +20031,7 @@ type Status struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message *string `pulumi:"message"`
 }
@@ -19740,7 +20052,7 @@ type StatusArgs struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	Details pulumi.MapArrayInput `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -19854,8 +20166,8 @@ func (o StatusOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v Status) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -19898,13 +20210,13 @@ func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Status) []map[string]string {
+func (o StatusPtrOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *Status) []map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Details
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -19942,7 +20254,7 @@ type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -19968,8 +20280,8 @@ func (o StatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
@@ -23221,6 +23533,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureArrayInput)(nil)).Elem(), EnvelopeSignatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileHashesInput)(nil)).Elem(), FileHashesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileHashesMapInput)(nil)).Elem(), FileHashesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintInput)(nil)).Elem(), FingerprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FingerprintPtrInput)(nil)).Elem(), FingerprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GerritSourceContextInput)(nil)).Elem(), GerritSourceContextArgs{})
@@ -23241,6 +23555,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArrayInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrInput)(nil)).Elem(), GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashInput)(nil)).Elem(), HashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashArrayInput)(nil)).Elem(), HashArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintPtrInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityInput)(nil)).Elem(), IdentityArgs{})
@@ -23474,6 +23790,10 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FileHashesOutput{})
+	pulumi.RegisterOutputType(FileHashesMapOutput{})
+	pulumi.RegisterOutputType(FileHashesResponseOutput{})
+	pulumi.RegisterOutputType(FileHashesResponseMapOutput{})
 	pulumi.RegisterOutputType(FingerprintOutput{})
 	pulumi.RegisterOutputType(FingerprintPtrOutput{})
 	pulumi.RegisterOutputType(FingerprintResponseOutput{})
@@ -23506,6 +23826,10 @@ func init() {
 	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataOutput{})
 	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponseOutput{})
+	pulumi.RegisterOutputType(HashOutput{})
+	pulumi.RegisterOutputType(HashArrayOutput{})
+	pulumi.RegisterOutputType(HashResponseOutput{})
+	pulumi.RegisterOutputType(HashResponseArrayOutput{})
 	pulumi.RegisterOutputType(HintOutput{})
 	pulumi.RegisterOutputType(HintPtrOutput{})
 	pulumi.RegisterOutputType(HintResponseOutput{})

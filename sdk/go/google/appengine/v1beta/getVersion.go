@@ -66,7 +66,7 @@ type LookupVersionResult struct {
 	// Settings for App Engine flexible runtimes.
 	FlexibleRuntimeSettings FlexibleRuntimeSettingsResponse `pulumi:"flexibleRuntimeSettings"`
 	// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-	GeneratedCustomerMetadata map[string]string `pulumi:"generatedCustomerMetadata"`
+	GeneratedCustomerMetadata map[string]interface{} `pulumi:"generatedCustomerMetadata"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers []UrlMapResponse `pulumi:"handlers"`
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
@@ -242,8 +242,8 @@ func (o LookupVersionResultOutput) FlexibleRuntimeSettings() FlexibleRuntimeSett
 }
 
 // Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-func (o LookupVersionResultOutput) GeneratedCustomerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupVersionResult) map[string]string { return v.GeneratedCustomerMetadata }).(pulumi.StringMapOutput)
+func (o LookupVersionResultOutput) GeneratedCustomerMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupVersionResult) map[string]interface{} { return v.GeneratedCustomerMetadata }).(pulumi.MapOutput)
 }
 
 // An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.

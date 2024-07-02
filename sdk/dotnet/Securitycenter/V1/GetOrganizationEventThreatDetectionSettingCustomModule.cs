@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// <summary>
         /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Config;
+        public readonly ImmutableDictionary<string, object> Config;
         /// <summary>
         /// The description for the module.
         /// </summary>
@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 
         [OutputConstructor]
         private GetOrganizationEventThreatDetectionSettingCustomModuleResult(
-            ImmutableDictionary<string, string> config,
+            ImmutableDictionary<string, object> config,
 
             string description,
 

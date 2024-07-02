@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> SynthesizeSpeechConfigs;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse> SynthesizeSpeechConfigs;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse(ImmutableDictionary<string, string> synthesizeSpeechConfigs)
+        private GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse(ImmutableDictionary<string, Outputs.GoogleCloudDialogflowCxV3SynthesizeSpeechConfigResponse> synthesizeSpeechConfigs)
         {
             SynthesizeSpeechConfigs = synthesizeSpeechConfigs;
         }

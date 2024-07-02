@@ -29,7 +29,7 @@ type LookupOrganizationEventThreatDetectionSettingCustomModuleArgs struct {
 
 type LookupOrganizationEventThreatDetectionSettingCustomModuleResult struct {
 	// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
-	Config map[string]string `pulumi:"config"`
+	Config map[string]interface{} `pulumi:"config"`
 	// The description for the module.
 	Description string `pulumi:"description"`
 	// The human readable name to be displayed for the module.
@@ -83,10 +83,10 @@ func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) T
 }
 
 // Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
-func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) Config() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupOrganizationEventThreatDetectionSettingCustomModuleResult) map[string]string {
+func (o LookupOrganizationEventThreatDetectionSettingCustomModuleResultOutput) Config() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupOrganizationEventThreatDetectionSettingCustomModuleResult) map[string]interface{} {
 		return v.Config
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // The description for the module.

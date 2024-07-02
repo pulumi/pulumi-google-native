@@ -23,19 +23,19 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// <summary>
         /// Any other builder-controlled inputs necessary for correctly evaluating the build.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Environment;
+        public readonly ImmutableDictionary<string, object> Environment;
         /// <summary>
         /// Collection of all external inputs that influenced the build on top of invocation.configSource.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Parameters;
+        public readonly ImmutableDictionary<string, object> Parameters;
 
         [OutputConstructor]
         private GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationResponse(
             Outputs.GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSourceResponse configSource,
 
-            ImmutableDictionary<string, string> environment,
+            ImmutableDictionary<string, object> environment,
 
-            ImmutableDictionary<string, string> parameters)
+            ImmutableDictionary<string, object> parameters)
         {
             ConfigSource = configSource;
             Environment = environment;

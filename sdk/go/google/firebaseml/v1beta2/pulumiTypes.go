@@ -193,11 +193,11 @@ type OperationResponse struct {
 	// The error result of the operation in case of failure or cancellation.
 	Error StatusResponse `pulumi:"error"`
 	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-	Metadata map[string]string `pulumi:"metadata"`
+	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
 	Name string `pulumi:"name"`
 	// The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-	Response map[string]string `pulumi:"response"`
+	Response map[string]interface{} `pulumi:"response"`
 }
 
 // This resource represents a long-running operation that is the result of a network API call.
@@ -226,8 +226,8 @@ func (o OperationResponseOutput) Error() StatusResponseOutput {
 }
 
 // Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+func (o OperationResponseOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
 }
 
 // The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
@@ -236,8 +236,8 @@ func (o OperationResponseOutput) Name() pulumi.StringOutput {
 }
 
 // The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationResponseOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
+func (o OperationResponseOutput) Response() pulumi.MapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]interface{} { return v.Response }).(pulumi.MapOutput)
 }
 
 type OperationResponseArrayOutput struct{ *pulumi.OutputState }
@@ -265,7 +265,7 @@ type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 	Message string `pulumi:"message"`
 }
@@ -291,8 +291,8 @@ func (o StatusResponseOutput) Code() pulumi.IntOutput {
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.

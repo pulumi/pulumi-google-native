@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
         /// <summary>
         /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         /// </summary>
-        public readonly ImmutableDictionary<string, string> NodeTypeConfigs;
+        public readonly ImmutableDictionary<string, Outputs.NodeTypeConfigResponse> NodeTypeConfigs;
         /// <summary>
         /// State of the resource.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
 
             string name,
 
-            ImmutableDictionary<string, string> nodeTypeConfigs,
+            ImmutableDictionary<string, Outputs.NodeTypeConfigResponse> nodeTypeConfigs,
 
             string state,
 

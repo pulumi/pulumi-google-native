@@ -1860,7 +1860,7 @@ type ClusterUpgradeFleetStateResponse struct {
 	// Feature state for GKE clusters.
 	GkeState ClusterUpgradeGKEUpgradeFeatureStateResponse `pulumi:"gkeState"`
 	// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
-	Ignored map[string]string `pulumi:"ignored"`
+	Ignored map[string]ClusterUpgradeIgnoredMembershipResponse `pulumi:"ignored"`
 }
 
 // **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
@@ -1891,8 +1891,10 @@ func (o ClusterUpgradeFleetStateResponseOutput) GkeState() ClusterUpgradeGKEUpgr
 }
 
 // A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
-func (o ClusterUpgradeFleetStateResponseOutput) Ignored() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ClusterUpgradeFleetStateResponse) map[string]string { return v.Ignored }).(pulumi.StringMapOutput)
+func (o ClusterUpgradeFleetStateResponseOutput) Ignored() ClusterUpgradeIgnoredMembershipResponseMapOutput {
+	return o.ApplyT(func(v ClusterUpgradeFleetStateResponse) map[string]ClusterUpgradeIgnoredMembershipResponse {
+		return v.Ignored
+	}).(ClusterUpgradeIgnoredMembershipResponseMapOutput)
 }
 
 // GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
@@ -2318,6 +2320,167 @@ func (o ClusterUpgradeGKEUpgradeStateResponseArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterUpgradeGKEUpgradeStateResponse {
 		return vs[0].([]ClusterUpgradeGKEUpgradeStateResponse)[vs[1].(int)]
 	}).(ClusterUpgradeGKEUpgradeStateResponseOutput)
+}
+
+// IgnoredMembership represents a membership ignored by the feature. A membership can be ignored because it was manually upgraded to a newer version than RC default.
+type ClusterUpgradeIgnoredMembershipResponse struct {
+	// Time when the membership was first set to ignored.
+	IgnoredTime string `pulumi:"ignoredTime"`
+	// Reason why the membership is ignored.
+	Reason string `pulumi:"reason"`
+}
+
+// IgnoredMembership represents a membership ignored by the feature. A membership can be ignored because it was manually upgraded to a newer version than RC default.
+type ClusterUpgradeIgnoredMembershipResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpgradeIgnoredMembershipResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpgradeIgnoredMembershipResponse)(nil)).Elem()
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseOutput) ToClusterUpgradeIgnoredMembershipResponseOutput() ClusterUpgradeIgnoredMembershipResponseOutput {
+	return o
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseOutput) ToClusterUpgradeIgnoredMembershipResponseOutputWithContext(ctx context.Context) ClusterUpgradeIgnoredMembershipResponseOutput {
+	return o
+}
+
+// Time when the membership was first set to ignored.
+func (o ClusterUpgradeIgnoredMembershipResponseOutput) IgnoredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUpgradeIgnoredMembershipResponse) string { return v.IgnoredTime }).(pulumi.StringOutput)
+}
+
+// Reason why the membership is ignored.
+func (o ClusterUpgradeIgnoredMembershipResponseOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUpgradeIgnoredMembershipResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+type ClusterUpgradeIgnoredMembershipResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpgradeIgnoredMembershipResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterUpgradeIgnoredMembershipResponse)(nil)).Elem()
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseMapOutput) ToClusterUpgradeIgnoredMembershipResponseMapOutput() ClusterUpgradeIgnoredMembershipResponseMapOutput {
+	return o
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseMapOutput) ToClusterUpgradeIgnoredMembershipResponseMapOutputWithContext(ctx context.Context) ClusterUpgradeIgnoredMembershipResponseMapOutput {
+	return o
+}
+
+func (o ClusterUpgradeIgnoredMembershipResponseMapOutput) MapIndex(k pulumi.StringInput) ClusterUpgradeIgnoredMembershipResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterUpgradeIgnoredMembershipResponse {
+		return vs[0].(map[string]ClusterUpgradeIgnoredMembershipResponse)[vs[1].(string)]
+	}).(ClusterUpgradeIgnoredMembershipResponseOutput)
+}
+
+// ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.
+type ClusterUpgradeMembershipGKEUpgradeStateResponse struct {
+	// Status of the upgrade.
+	Status ClusterUpgradeUpgradeStatusResponse `pulumi:"status"`
+	// Which upgrade to track the state.
+	Upgrade ClusterUpgradeGKEUpgradeResponse `pulumi:"upgrade"`
+}
+
+// ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.
+type ClusterUpgradeMembershipGKEUpgradeStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpgradeMembershipGKEUpgradeStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpgradeMembershipGKEUpgradeStateResponse)(nil)).Elem()
+}
+
+func (o ClusterUpgradeMembershipGKEUpgradeStateResponseOutput) ToClusterUpgradeMembershipGKEUpgradeStateResponseOutput() ClusterUpgradeMembershipGKEUpgradeStateResponseOutput {
+	return o
+}
+
+func (o ClusterUpgradeMembershipGKEUpgradeStateResponseOutput) ToClusterUpgradeMembershipGKEUpgradeStateResponseOutputWithContext(ctx context.Context) ClusterUpgradeMembershipGKEUpgradeStateResponseOutput {
+	return o
+}
+
+// Status of the upgrade.
+func (o ClusterUpgradeMembershipGKEUpgradeStateResponseOutput) Status() ClusterUpgradeUpgradeStatusResponseOutput {
+	return o.ApplyT(func(v ClusterUpgradeMembershipGKEUpgradeStateResponse) ClusterUpgradeUpgradeStatusResponse {
+		return v.Status
+	}).(ClusterUpgradeUpgradeStatusResponseOutput)
+}
+
+// Which upgrade to track the state.
+func (o ClusterUpgradeMembershipGKEUpgradeStateResponseOutput) Upgrade() ClusterUpgradeGKEUpgradeResponseOutput {
+	return o.ApplyT(func(v ClusterUpgradeMembershipGKEUpgradeStateResponse) ClusterUpgradeGKEUpgradeResponse {
+		return v.Upgrade
+	}).(ClusterUpgradeGKEUpgradeResponseOutput)
+}
+
+type ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterUpgradeMembershipGKEUpgradeStateResponse)(nil)).Elem()
+}
+
+func (o ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput) ToClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput() ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput {
+	return o
+}
+
+func (o ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput) ToClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutputWithContext(ctx context.Context) ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput {
+	return o
+}
+
+func (o ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput) Index(i pulumi.IntInput) ClusterUpgradeMembershipGKEUpgradeStateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterUpgradeMembershipGKEUpgradeStateResponse {
+		return vs[0].([]ClusterUpgradeMembershipGKEUpgradeStateResponse)[vs[1].(int)]
+	}).(ClusterUpgradeMembershipGKEUpgradeStateResponseOutput)
+}
+
+// Per-membership state for this feature.
+type ClusterUpgradeMembershipStateResponse struct {
+	// Project number or id of the fleet. It is set only for Memberships that are part of fleet-based Rollout Sequencing.
+	Fleet string `pulumi:"fleet"`
+	// Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel.
+	Ignored ClusterUpgradeIgnoredMembershipResponse `pulumi:"ignored"`
+	// Fully qualified scope names that this clusters is bound to which also have rollout sequencing enabled.
+	Scopes []string `pulumi:"scopes"`
+	// Actual upgrade state against desired.
+	Upgrades []ClusterUpgradeMembershipGKEUpgradeStateResponse `pulumi:"upgrades"`
+}
+
+// Per-membership state for this feature.
+type ClusterUpgradeMembershipStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpgradeMembershipStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpgradeMembershipStateResponse)(nil)).Elem()
+}
+
+func (o ClusterUpgradeMembershipStateResponseOutput) ToClusterUpgradeMembershipStateResponseOutput() ClusterUpgradeMembershipStateResponseOutput {
+	return o
+}
+
+func (o ClusterUpgradeMembershipStateResponseOutput) ToClusterUpgradeMembershipStateResponseOutputWithContext(ctx context.Context) ClusterUpgradeMembershipStateResponseOutput {
+	return o
+}
+
+// Project number or id of the fleet. It is set only for Memberships that are part of fleet-based Rollout Sequencing.
+func (o ClusterUpgradeMembershipStateResponseOutput) Fleet() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUpgradeMembershipStateResponse) string { return v.Fleet }).(pulumi.StringOutput)
+}
+
+// Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel.
+func (o ClusterUpgradeMembershipStateResponseOutput) Ignored() ClusterUpgradeIgnoredMembershipResponseOutput {
+	return o.ApplyT(func(v ClusterUpgradeMembershipStateResponse) ClusterUpgradeIgnoredMembershipResponse {
+		return v.Ignored
+	}).(ClusterUpgradeIgnoredMembershipResponseOutput)
+}
+
+// Fully qualified scope names that this clusters is bound to which also have rollout sequencing enabled.
+func (o ClusterUpgradeMembershipStateResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterUpgradeMembershipStateResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Actual upgrade state against desired.
+func (o ClusterUpgradeMembershipStateResponseOutput) Upgrades() ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput {
+	return o.ApplyT(func(v ClusterUpgradeMembershipStateResponse) []ClusterUpgradeMembershipGKEUpgradeStateResponse {
+		return v.Upgrades
+	}).(ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput)
 }
 
 // Post conditional checks after an upgrade has been applied on all eligible clusters.
@@ -3259,6 +3422,67 @@ func (o ConfigManagementBinauthzConfigResponseOutput) Enabled() pulumi.BoolOutpu
 	return o.ApplyT(func(v ConfigManagementBinauthzConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// State for Binauthz
+type ConfigManagementBinauthzStateResponse struct {
+	// The version of binauthz that is installed.
+	Version ConfigManagementBinauthzVersionResponse `pulumi:"version"`
+	// The state of the binauthz webhook.
+	Webhook string `pulumi:"webhook"`
+}
+
+// State for Binauthz
+type ConfigManagementBinauthzStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementBinauthzStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementBinauthzStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementBinauthzStateResponseOutput) ToConfigManagementBinauthzStateResponseOutput() ConfigManagementBinauthzStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementBinauthzStateResponseOutput) ToConfigManagementBinauthzStateResponseOutputWithContext(ctx context.Context) ConfigManagementBinauthzStateResponseOutput {
+	return o
+}
+
+// The version of binauthz that is installed.
+func (o ConfigManagementBinauthzStateResponseOutput) Version() ConfigManagementBinauthzVersionResponseOutput {
+	return o.ApplyT(func(v ConfigManagementBinauthzStateResponse) ConfigManagementBinauthzVersionResponse {
+		return v.Version
+	}).(ConfigManagementBinauthzVersionResponseOutput)
+}
+
+// The state of the binauthz webhook.
+func (o ConfigManagementBinauthzStateResponseOutput) Webhook() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementBinauthzStateResponse) string { return v.Webhook }).(pulumi.StringOutput)
+}
+
+// The version of binauthz.
+type ConfigManagementBinauthzVersionResponse struct {
+	// The version of the binauthz webhook.
+	WebhookVersion string `pulumi:"webhookVersion"`
+}
+
+// The version of binauthz.
+type ConfigManagementBinauthzVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementBinauthzVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementBinauthzVersionResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementBinauthzVersionResponseOutput) ToConfigManagementBinauthzVersionResponseOutput() ConfigManagementBinauthzVersionResponseOutput {
+	return o
+}
+
+func (o ConfigManagementBinauthzVersionResponseOutput) ToConfigManagementBinauthzVersionResponseOutputWithContext(ctx context.Context) ConfigManagementBinauthzVersionResponseOutput {
+	return o
+}
+
+// The version of the binauthz webhook.
+func (o ConfigManagementBinauthzVersionResponseOutput) WebhookVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementBinauthzVersionResponse) string { return v.WebhookVersion }).(pulumi.StringOutput)
+}
+
 // Configuration for Config Sync
 type ConfigManagementConfigSync struct {
 	// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
@@ -3521,6 +3745,120 @@ func (o ConfigManagementConfigSyncPtrOutput) SourceFormat() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The state of ConfigSync's deployment on a cluster
+type ConfigManagementConfigSyncDeploymentStateResponse struct {
+	// Deployment state of admission-webhook
+	AdmissionWebhook string `pulumi:"admissionWebhook"`
+	// Deployment state of the git-sync pod
+	GitSync string `pulumi:"gitSync"`
+	// Deployment state of the importer pod
+	Importer string `pulumi:"importer"`
+	// Deployment state of the monitor pod
+	Monitor string `pulumi:"monitor"`
+	// Deployment state of reconciler-manager pod
+	ReconcilerManager string `pulumi:"reconcilerManager"`
+	// Deployment state of root-reconciler
+	RootReconciler string `pulumi:"rootReconciler"`
+	// Deployment state of the syncer pod
+	Syncer string `pulumi:"syncer"`
+}
+
+// The state of ConfigSync's deployment on a cluster
+type ConfigManagementConfigSyncDeploymentStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementConfigSyncDeploymentStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementConfigSyncDeploymentStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) ToConfigManagementConfigSyncDeploymentStateResponseOutput() ConfigManagementConfigSyncDeploymentStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) ToConfigManagementConfigSyncDeploymentStateResponseOutputWithContext(ctx context.Context) ConfigManagementConfigSyncDeploymentStateResponseOutput {
+	return o
+}
+
+// Deployment state of admission-webhook
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) AdmissionWebhook() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncDeploymentStateResponse) string { return v.AdmissionWebhook }).(pulumi.StringOutput)
+}
+
+// Deployment state of the git-sync pod
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) GitSync() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncDeploymentStateResponse) string { return v.GitSync }).(pulumi.StringOutput)
+}
+
+// Deployment state of the importer pod
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) Importer() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncDeploymentStateResponse) string { return v.Importer }).(pulumi.StringOutput)
+}
+
+// Deployment state of the monitor pod
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) Monitor() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncDeploymentStateResponse) string { return v.Monitor }).(pulumi.StringOutput)
+}
+
+// Deployment state of reconciler-manager pod
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) ReconcilerManager() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncDeploymentStateResponse) string { return v.ReconcilerManager }).(pulumi.StringOutput)
+}
+
+// Deployment state of root-reconciler
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) RootReconciler() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncDeploymentStateResponse) string { return v.RootReconciler }).(pulumi.StringOutput)
+}
+
+// Deployment state of the syncer pod
+func (o ConfigManagementConfigSyncDeploymentStateResponseOutput) Syncer() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncDeploymentStateResponse) string { return v.Syncer }).(pulumi.StringOutput)
+}
+
+// Errors pertaining to the installation of Config Sync
+type ConfigManagementConfigSyncErrorResponse struct {
+	// A string representing the user facing error message
+	ErrorMessage string `pulumi:"errorMessage"`
+}
+
+// Errors pertaining to the installation of Config Sync
+type ConfigManagementConfigSyncErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementConfigSyncErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementConfigSyncErrorResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementConfigSyncErrorResponseOutput) ToConfigManagementConfigSyncErrorResponseOutput() ConfigManagementConfigSyncErrorResponseOutput {
+	return o
+}
+
+func (o ConfigManagementConfigSyncErrorResponseOutput) ToConfigManagementConfigSyncErrorResponseOutputWithContext(ctx context.Context) ConfigManagementConfigSyncErrorResponseOutput {
+	return o
+}
+
+// A string representing the user facing error message
+func (o ConfigManagementConfigSyncErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+type ConfigManagementConfigSyncErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementConfigSyncErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigManagementConfigSyncErrorResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementConfigSyncErrorResponseArrayOutput) ToConfigManagementConfigSyncErrorResponseArrayOutput() ConfigManagementConfigSyncErrorResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementConfigSyncErrorResponseArrayOutput) ToConfigManagementConfigSyncErrorResponseArrayOutputWithContext(ctx context.Context) ConfigManagementConfigSyncErrorResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementConfigSyncErrorResponseArrayOutput) Index(i pulumi.IntInput) ConfigManagementConfigSyncErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigManagementConfigSyncErrorResponse {
+		return vs[0].([]ConfigManagementConfigSyncErrorResponse)[vs[1].(int)]
+	}).(ConfigManagementConfigSyncErrorResponseOutput)
+}
+
 // Configuration for Config Sync
 type ConfigManagementConfigSyncResponse struct {
 	// Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
@@ -3591,6 +3929,238 @@ func (o ConfigManagementConfigSyncResponseOutput) PreventDrift() pulumi.BoolOutp
 // Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 func (o ConfigManagementConfigSyncResponseOutput) SourceFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigManagementConfigSyncResponse) string { return v.SourceFormat }).(pulumi.StringOutput)
+}
+
+// State information for ConfigSync
+type ConfigManagementConfigSyncStateResponse struct {
+	// Information about the deployment of ConfigSync, including the version of the various Pods deployed
+	DeploymentState ConfigManagementConfigSyncDeploymentStateResponse `pulumi:"deploymentState"`
+	// Errors pertaining to the installation of Config Sync.
+	Errors []ConfigManagementConfigSyncErrorResponse `pulumi:"errors"`
+	// The state of ConfigSync's process to sync configs to a cluster
+	SyncState ConfigManagementSyncStateResponse `pulumi:"syncState"`
+	// The version of ConfigSync deployed
+	Version ConfigManagementConfigSyncVersionResponse `pulumi:"version"`
+}
+
+// State information for ConfigSync
+type ConfigManagementConfigSyncStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementConfigSyncStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementConfigSyncStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementConfigSyncStateResponseOutput) ToConfigManagementConfigSyncStateResponseOutput() ConfigManagementConfigSyncStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementConfigSyncStateResponseOutput) ToConfigManagementConfigSyncStateResponseOutputWithContext(ctx context.Context) ConfigManagementConfigSyncStateResponseOutput {
+	return o
+}
+
+// Information about the deployment of ConfigSync, including the version of the various Pods deployed
+func (o ConfigManagementConfigSyncStateResponseOutput) DeploymentState() ConfigManagementConfigSyncDeploymentStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncStateResponse) ConfigManagementConfigSyncDeploymentStateResponse {
+		return v.DeploymentState
+	}).(ConfigManagementConfigSyncDeploymentStateResponseOutput)
+}
+
+// Errors pertaining to the installation of Config Sync.
+func (o ConfigManagementConfigSyncStateResponseOutput) Errors() ConfigManagementConfigSyncErrorResponseArrayOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncStateResponse) []ConfigManagementConfigSyncErrorResponse {
+		return v.Errors
+	}).(ConfigManagementConfigSyncErrorResponseArrayOutput)
+}
+
+// The state of ConfigSync's process to sync configs to a cluster
+func (o ConfigManagementConfigSyncStateResponseOutput) SyncState() ConfigManagementSyncStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncStateResponse) ConfigManagementSyncStateResponse { return v.SyncState }).(ConfigManagementSyncStateResponseOutput)
+}
+
+// The version of ConfigSync deployed
+func (o ConfigManagementConfigSyncStateResponseOutput) Version() ConfigManagementConfigSyncVersionResponseOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncStateResponse) ConfigManagementConfigSyncVersionResponse {
+		return v.Version
+	}).(ConfigManagementConfigSyncVersionResponseOutput)
+}
+
+// Specific versioning information pertaining to ConfigSync's Pods
+type ConfigManagementConfigSyncVersionResponse struct {
+	// Version of the deployed admission_webhook pod
+	AdmissionWebhook string `pulumi:"admissionWebhook"`
+	// Version of the deployed git-sync pod
+	GitSync string `pulumi:"gitSync"`
+	// Version of the deployed importer pod
+	Importer string `pulumi:"importer"`
+	// Version of the deployed monitor pod
+	Monitor string `pulumi:"monitor"`
+	// Version of the deployed reconciler-manager pod
+	ReconcilerManager string `pulumi:"reconcilerManager"`
+	// Version of the deployed reconciler container in root-reconciler pod
+	RootReconciler string `pulumi:"rootReconciler"`
+	// Version of the deployed syncer pod
+	Syncer string `pulumi:"syncer"`
+}
+
+// Specific versioning information pertaining to ConfigSync's Pods
+type ConfigManagementConfigSyncVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementConfigSyncVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementConfigSyncVersionResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementConfigSyncVersionResponseOutput) ToConfigManagementConfigSyncVersionResponseOutput() ConfigManagementConfigSyncVersionResponseOutput {
+	return o
+}
+
+func (o ConfigManagementConfigSyncVersionResponseOutput) ToConfigManagementConfigSyncVersionResponseOutputWithContext(ctx context.Context) ConfigManagementConfigSyncVersionResponseOutput {
+	return o
+}
+
+// Version of the deployed admission_webhook pod
+func (o ConfigManagementConfigSyncVersionResponseOutput) AdmissionWebhook() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncVersionResponse) string { return v.AdmissionWebhook }).(pulumi.StringOutput)
+}
+
+// Version of the deployed git-sync pod
+func (o ConfigManagementConfigSyncVersionResponseOutput) GitSync() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncVersionResponse) string { return v.GitSync }).(pulumi.StringOutput)
+}
+
+// Version of the deployed importer pod
+func (o ConfigManagementConfigSyncVersionResponseOutput) Importer() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncVersionResponse) string { return v.Importer }).(pulumi.StringOutput)
+}
+
+// Version of the deployed monitor pod
+func (o ConfigManagementConfigSyncVersionResponseOutput) Monitor() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncVersionResponse) string { return v.Monitor }).(pulumi.StringOutput)
+}
+
+// Version of the deployed reconciler-manager pod
+func (o ConfigManagementConfigSyncVersionResponseOutput) ReconcilerManager() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncVersionResponse) string { return v.ReconcilerManager }).(pulumi.StringOutput)
+}
+
+// Version of the deployed reconciler container in root-reconciler pod
+func (o ConfigManagementConfigSyncVersionResponseOutput) RootReconciler() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncVersionResponse) string { return v.RootReconciler }).(pulumi.StringOutput)
+}
+
+// Version of the deployed syncer pod
+func (o ConfigManagementConfigSyncVersionResponseOutput) Syncer() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementConfigSyncVersionResponse) string { return v.Syncer }).(pulumi.StringOutput)
+}
+
+// Model for a config file in the git repo with an associated Sync error
+type ConfigManagementErrorResourceResponse struct {
+	// Group/version/kind of the resource that is causing an error
+	ResourceGvk ConfigManagementGroupVersionKindResponse `pulumi:"resourceGvk"`
+	// Metadata name of the resource that is causing an error
+	ResourceName string `pulumi:"resourceName"`
+	// Namespace of the resource that is causing an error
+	ResourceNamespace string `pulumi:"resourceNamespace"`
+	// Path in the git repo of the erroneous config
+	SourcePath string `pulumi:"sourcePath"`
+}
+
+// Model for a config file in the git repo with an associated Sync error
+type ConfigManagementErrorResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementErrorResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementErrorResourceResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementErrorResourceResponseOutput) ToConfigManagementErrorResourceResponseOutput() ConfigManagementErrorResourceResponseOutput {
+	return o
+}
+
+func (o ConfigManagementErrorResourceResponseOutput) ToConfigManagementErrorResourceResponseOutputWithContext(ctx context.Context) ConfigManagementErrorResourceResponseOutput {
+	return o
+}
+
+// Group/version/kind of the resource that is causing an error
+func (o ConfigManagementErrorResourceResponseOutput) ResourceGvk() ConfigManagementGroupVersionKindResponseOutput {
+	return o.ApplyT(func(v ConfigManagementErrorResourceResponse) ConfigManagementGroupVersionKindResponse {
+		return v.ResourceGvk
+	}).(ConfigManagementGroupVersionKindResponseOutput)
+}
+
+// Metadata name of the resource that is causing an error
+func (o ConfigManagementErrorResourceResponseOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementErrorResourceResponse) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+// Namespace of the resource that is causing an error
+func (o ConfigManagementErrorResourceResponseOutput) ResourceNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementErrorResourceResponse) string { return v.ResourceNamespace }).(pulumi.StringOutput)
+}
+
+// Path in the git repo of the erroneous config
+func (o ConfigManagementErrorResourceResponseOutput) SourcePath() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementErrorResourceResponse) string { return v.SourcePath }).(pulumi.StringOutput)
+}
+
+type ConfigManagementErrorResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementErrorResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigManagementErrorResourceResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementErrorResourceResponseArrayOutput) ToConfigManagementErrorResourceResponseArrayOutput() ConfigManagementErrorResourceResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementErrorResourceResponseArrayOutput) ToConfigManagementErrorResourceResponseArrayOutputWithContext(ctx context.Context) ConfigManagementErrorResourceResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementErrorResourceResponseArrayOutput) Index(i pulumi.IntInput) ConfigManagementErrorResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigManagementErrorResourceResponse {
+		return vs[0].([]ConfigManagementErrorResourceResponse)[vs[1].(int)]
+	}).(ConfigManagementErrorResourceResponseOutput)
+}
+
+// State of Policy Controller installation.
+type ConfigManagementGatekeeperDeploymentStateResponse struct {
+	// Status of gatekeeper-audit deployment.
+	GatekeeperAudit string `pulumi:"gatekeeperAudit"`
+	// Status of gatekeeper-controller-manager pod.
+	GatekeeperControllerManagerState string `pulumi:"gatekeeperControllerManagerState"`
+	// Status of the pod serving the mutation webhook.
+	GatekeeperMutation string `pulumi:"gatekeeperMutation"`
+}
+
+// State of Policy Controller installation.
+type ConfigManagementGatekeeperDeploymentStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementGatekeeperDeploymentStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementGatekeeperDeploymentStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementGatekeeperDeploymentStateResponseOutput) ToConfigManagementGatekeeperDeploymentStateResponseOutput() ConfigManagementGatekeeperDeploymentStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementGatekeeperDeploymentStateResponseOutput) ToConfigManagementGatekeeperDeploymentStateResponseOutputWithContext(ctx context.Context) ConfigManagementGatekeeperDeploymentStateResponseOutput {
+	return o
+}
+
+// Status of gatekeeper-audit deployment.
+func (o ConfigManagementGatekeeperDeploymentStateResponseOutput) GatekeeperAudit() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementGatekeeperDeploymentStateResponse) string { return v.GatekeeperAudit }).(pulumi.StringOutput)
+}
+
+// Status of gatekeeper-controller-manager pod.
+func (o ConfigManagementGatekeeperDeploymentStateResponseOutput) GatekeeperControllerManagerState() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementGatekeeperDeploymentStateResponse) string {
+		return v.GatekeeperControllerManagerState
+	}).(pulumi.StringOutput)
+}
+
+// Status of the pod serving the mutation webhook.
+func (o ConfigManagementGatekeeperDeploymentStateResponseOutput) GatekeeperMutation() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementGatekeeperDeploymentStateResponse) string { return v.GatekeeperMutation }).(pulumi.StringOutput)
 }
 
 // Git repo configuration for a single cluster.
@@ -3941,6 +4511,46 @@ func (o ConfigManagementGitConfigResponseOutput) SyncWaitSecs() pulumi.StringOut
 	return o.ApplyT(func(v ConfigManagementGitConfigResponse) string { return v.SyncWaitSecs }).(pulumi.StringOutput)
 }
 
+// A Kubernetes object's GVK
+type ConfigManagementGroupVersionKindResponse struct {
+	// Kubernetes Group
+	Group string `pulumi:"group"`
+	// Kubernetes Kind
+	Kind string `pulumi:"kind"`
+	// Kubernetes Version
+	Version string `pulumi:"version"`
+}
+
+// A Kubernetes object's GVK
+type ConfigManagementGroupVersionKindResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementGroupVersionKindResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementGroupVersionKindResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementGroupVersionKindResponseOutput) ToConfigManagementGroupVersionKindResponseOutput() ConfigManagementGroupVersionKindResponseOutput {
+	return o
+}
+
+func (o ConfigManagementGroupVersionKindResponseOutput) ToConfigManagementGroupVersionKindResponseOutputWithContext(ctx context.Context) ConfigManagementGroupVersionKindResponseOutput {
+	return o
+}
+
+// Kubernetes Group
+func (o ConfigManagementGroupVersionKindResponseOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementGroupVersionKindResponse) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// Kubernetes Kind
+func (o ConfigManagementGroupVersionKindResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementGroupVersionKindResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Kubernetes Version
+func (o ConfigManagementGroupVersionKindResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementGroupVersionKindResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
 // Configuration for Hierarchy Controller
 type ConfigManagementHierarchyControllerConfig struct {
 	// Whether hierarchical resource quota is enabled in this cluster.
@@ -4159,6 +4769,155 @@ func (o ConfigManagementHierarchyControllerConfigResponseOutput) EnablePodTreeLa
 // Whether Hierarchy Controller is enabled in this cluster.
 func (o ConfigManagementHierarchyControllerConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigManagementHierarchyControllerConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Deployment state for Hierarchy Controller
+type ConfigManagementHierarchyControllerDeploymentStateResponse struct {
+	// The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1)
+	Extension string `pulumi:"extension"`
+	// The deployment state for open source HNC (e.g. v0.7.0-hc.0)
+	Hnc string `pulumi:"hnc"`
+}
+
+// Deployment state for Hierarchy Controller
+type ConfigManagementHierarchyControllerDeploymentStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementHierarchyControllerDeploymentStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementHierarchyControllerDeploymentStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementHierarchyControllerDeploymentStateResponseOutput) ToConfigManagementHierarchyControllerDeploymentStateResponseOutput() ConfigManagementHierarchyControllerDeploymentStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementHierarchyControllerDeploymentStateResponseOutput) ToConfigManagementHierarchyControllerDeploymentStateResponseOutputWithContext(ctx context.Context) ConfigManagementHierarchyControllerDeploymentStateResponseOutput {
+	return o
+}
+
+// The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1)
+func (o ConfigManagementHierarchyControllerDeploymentStateResponseOutput) Extension() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementHierarchyControllerDeploymentStateResponse) string { return v.Extension }).(pulumi.StringOutput)
+}
+
+// The deployment state for open source HNC (e.g. v0.7.0-hc.0)
+func (o ConfigManagementHierarchyControllerDeploymentStateResponseOutput) Hnc() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementHierarchyControllerDeploymentStateResponse) string { return v.Hnc }).(pulumi.StringOutput)
+}
+
+// State for Hierarchy Controller
+type ConfigManagementHierarchyControllerStateResponse struct {
+	// The deployment state for Hierarchy Controller
+	State ConfigManagementHierarchyControllerDeploymentStateResponse `pulumi:"state"`
+	// The version for Hierarchy Controller
+	Version ConfigManagementHierarchyControllerVersionResponse `pulumi:"version"`
+}
+
+// State for Hierarchy Controller
+type ConfigManagementHierarchyControllerStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementHierarchyControllerStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementHierarchyControllerStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementHierarchyControllerStateResponseOutput) ToConfigManagementHierarchyControllerStateResponseOutput() ConfigManagementHierarchyControllerStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementHierarchyControllerStateResponseOutput) ToConfigManagementHierarchyControllerStateResponseOutputWithContext(ctx context.Context) ConfigManagementHierarchyControllerStateResponseOutput {
+	return o
+}
+
+// The deployment state for Hierarchy Controller
+func (o ConfigManagementHierarchyControllerStateResponseOutput) State() ConfigManagementHierarchyControllerDeploymentStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementHierarchyControllerStateResponse) ConfigManagementHierarchyControllerDeploymentStateResponse {
+		return v.State
+	}).(ConfigManagementHierarchyControllerDeploymentStateResponseOutput)
+}
+
+// The version for Hierarchy Controller
+func (o ConfigManagementHierarchyControllerStateResponseOutput) Version() ConfigManagementHierarchyControllerVersionResponseOutput {
+	return o.ApplyT(func(v ConfigManagementHierarchyControllerStateResponse) ConfigManagementHierarchyControllerVersionResponse {
+		return v.Version
+	}).(ConfigManagementHierarchyControllerVersionResponseOutput)
+}
+
+// Version for Hierarchy Controller
+type ConfigManagementHierarchyControllerVersionResponse struct {
+	// Version for Hierarchy Controller extension
+	Extension string `pulumi:"extension"`
+	// Version for open source HNC
+	Hnc string `pulumi:"hnc"`
+}
+
+// Version for Hierarchy Controller
+type ConfigManagementHierarchyControllerVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementHierarchyControllerVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementHierarchyControllerVersionResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementHierarchyControllerVersionResponseOutput) ToConfigManagementHierarchyControllerVersionResponseOutput() ConfigManagementHierarchyControllerVersionResponseOutput {
+	return o
+}
+
+func (o ConfigManagementHierarchyControllerVersionResponseOutput) ToConfigManagementHierarchyControllerVersionResponseOutputWithContext(ctx context.Context) ConfigManagementHierarchyControllerVersionResponseOutput {
+	return o
+}
+
+// Version for Hierarchy Controller extension
+func (o ConfigManagementHierarchyControllerVersionResponseOutput) Extension() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementHierarchyControllerVersionResponse) string { return v.Extension }).(pulumi.StringOutput)
+}
+
+// Version for open source HNC
+func (o ConfigManagementHierarchyControllerVersionResponseOutput) Hnc() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementHierarchyControllerVersionResponse) string { return v.Hnc }).(pulumi.StringOutput)
+}
+
+// Errors pertaining to the installation of ACM
+type ConfigManagementInstallErrorResponse struct {
+	// A string representing the user facing error message
+	ErrorMessage string `pulumi:"errorMessage"`
+}
+
+// Errors pertaining to the installation of ACM
+type ConfigManagementInstallErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementInstallErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementInstallErrorResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementInstallErrorResponseOutput) ToConfigManagementInstallErrorResponseOutput() ConfigManagementInstallErrorResponseOutput {
+	return o
+}
+
+func (o ConfigManagementInstallErrorResponseOutput) ToConfigManagementInstallErrorResponseOutputWithContext(ctx context.Context) ConfigManagementInstallErrorResponseOutput {
+	return o
+}
+
+// A string representing the user facing error message
+func (o ConfigManagementInstallErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementInstallErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+type ConfigManagementInstallErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementInstallErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigManagementInstallErrorResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementInstallErrorResponseArrayOutput) ToConfigManagementInstallErrorResponseArrayOutput() ConfigManagementInstallErrorResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementInstallErrorResponseArrayOutput) ToConfigManagementInstallErrorResponseArrayOutputWithContext(ctx context.Context) ConfigManagementInstallErrorResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementInstallErrorResponseArrayOutput) Index(i pulumi.IntInput) ConfigManagementInstallErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigManagementInstallErrorResponse {
+		return vs[0].([]ConfigManagementInstallErrorResponse)[vs[1].(int)]
+	}).(ConfigManagementInstallErrorResponseOutput)
 }
 
 // **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
@@ -4477,6 +5236,86 @@ func (o ConfigManagementMembershipSpecResponseOutput) Version() pulumi.StringOut
 	return o.ApplyT(func(v ConfigManagementMembershipSpecResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
+// **Anthos Config Management**: State for a single cluster.
+type ConfigManagementMembershipStateResponse struct {
+	// Binauthz status
+	BinauthzState ConfigManagementBinauthzStateResponse `pulumi:"binauthzState"`
+	// This field is set to the `cluster_name` field of the Membership Spec if it is not empty. Otherwise, it is set to the cluster's fleet membership name.
+	ClusterName string `pulumi:"clusterName"`
+	// Current sync status
+	ConfigSyncState ConfigManagementConfigSyncStateResponse `pulumi:"configSyncState"`
+	// Hierarchy Controller status
+	HierarchyControllerState ConfigManagementHierarchyControllerStateResponse `pulumi:"hierarchyControllerState"`
+	// Membership configuration in the cluster. This represents the actual state in the cluster, while the MembershipSpec in the FeatureSpec represents the intended state
+	MembershipSpec ConfigManagementMembershipSpecResponse `pulumi:"membershipSpec"`
+	// Current install status of ACM's Operator
+	OperatorState ConfigManagementOperatorStateResponse `pulumi:"operatorState"`
+	// PolicyController status
+	PolicyControllerState ConfigManagementPolicyControllerStateResponse `pulumi:"policyControllerState"`
+}
+
+// **Anthos Config Management**: State for a single cluster.
+type ConfigManagementMembershipStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementMembershipStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementMembershipStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementMembershipStateResponseOutput) ToConfigManagementMembershipStateResponseOutput() ConfigManagementMembershipStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementMembershipStateResponseOutput) ToConfigManagementMembershipStateResponseOutputWithContext(ctx context.Context) ConfigManagementMembershipStateResponseOutput {
+	return o
+}
+
+// Binauthz status
+func (o ConfigManagementMembershipStateResponseOutput) BinauthzState() ConfigManagementBinauthzStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipStateResponse) ConfigManagementBinauthzStateResponse {
+		return v.BinauthzState
+	}).(ConfigManagementBinauthzStateResponseOutput)
+}
+
+// This field is set to the `cluster_name` field of the Membership Spec if it is not empty. Otherwise, it is set to the cluster's fleet membership name.
+func (o ConfigManagementMembershipStateResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipStateResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Current sync status
+func (o ConfigManagementMembershipStateResponseOutput) ConfigSyncState() ConfigManagementConfigSyncStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipStateResponse) ConfigManagementConfigSyncStateResponse {
+		return v.ConfigSyncState
+	}).(ConfigManagementConfigSyncStateResponseOutput)
+}
+
+// Hierarchy Controller status
+func (o ConfigManagementMembershipStateResponseOutput) HierarchyControllerState() ConfigManagementHierarchyControllerStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipStateResponse) ConfigManagementHierarchyControllerStateResponse {
+		return v.HierarchyControllerState
+	}).(ConfigManagementHierarchyControllerStateResponseOutput)
+}
+
+// Membership configuration in the cluster. This represents the actual state in the cluster, while the MembershipSpec in the FeatureSpec represents the intended state
+func (o ConfigManagementMembershipStateResponseOutput) MembershipSpec() ConfigManagementMembershipSpecResponseOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipStateResponse) ConfigManagementMembershipSpecResponse {
+		return v.MembershipSpec
+	}).(ConfigManagementMembershipSpecResponseOutput)
+}
+
+// Current install status of ACM's Operator
+func (o ConfigManagementMembershipStateResponseOutput) OperatorState() ConfigManagementOperatorStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipStateResponse) ConfigManagementOperatorStateResponse {
+		return v.OperatorState
+	}).(ConfigManagementOperatorStateResponseOutput)
+}
+
+// PolicyController status
+func (o ConfigManagementMembershipStateResponseOutput) PolicyControllerState() ConfigManagementPolicyControllerStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementMembershipStateResponse) ConfigManagementPolicyControllerStateResponse {
+		return v.PolicyControllerState
+	}).(ConfigManagementPolicyControllerStateResponseOutput)
+}
+
 // OCI repo configuration for a single cluster
 type ConfigManagementOciConfig struct {
 	// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
@@ -4745,6 +5584,46 @@ func (o ConfigManagementOciConfigResponseOutput) SyncRepo() pulumi.StringOutput 
 // Period in seconds between consecutive syncs. Default: 15.
 func (o ConfigManagementOciConfigResponseOutput) SyncWaitSecs() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigManagementOciConfigResponse) string { return v.SyncWaitSecs }).(pulumi.StringOutput)
+}
+
+// State information for an ACM's Operator
+type ConfigManagementOperatorStateResponse struct {
+	// The state of the Operator's deployment
+	DeploymentState string `pulumi:"deploymentState"`
+	// Install errors.
+	Errors []ConfigManagementInstallErrorResponse `pulumi:"errors"`
+	// The semenatic version number of the operator
+	Version string `pulumi:"version"`
+}
+
+// State information for an ACM's Operator
+type ConfigManagementOperatorStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementOperatorStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementOperatorStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementOperatorStateResponseOutput) ToConfigManagementOperatorStateResponseOutput() ConfigManagementOperatorStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementOperatorStateResponseOutput) ToConfigManagementOperatorStateResponseOutputWithContext(ctx context.Context) ConfigManagementOperatorStateResponseOutput {
+	return o
+}
+
+// The state of the Operator's deployment
+func (o ConfigManagementOperatorStateResponseOutput) DeploymentState() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementOperatorStateResponse) string { return v.DeploymentState }).(pulumi.StringOutput)
+}
+
+// Install errors.
+func (o ConfigManagementOperatorStateResponseOutput) Errors() ConfigManagementInstallErrorResponseArrayOutput {
+	return o.ApplyT(func(v ConfigManagementOperatorStateResponse) []ConfigManagementInstallErrorResponse { return v.Errors }).(ConfigManagementInstallErrorResponseArrayOutput)
+}
+
+// The semenatic version number of the operator
+func (o ConfigManagementOperatorStateResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementOperatorStateResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // Configuration for Policy Controller
@@ -5022,6 +5901,39 @@ func (o ConfigManagementPolicyControllerPtrOutput) TemplateLibraryInstalled() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// State for the migration of PolicyController from ACM -> PoCo Hub.
+type ConfigManagementPolicyControllerMigrationResponse struct {
+	// Last time this membership spec was copied to PoCo feature.
+	CopyTime string `pulumi:"copyTime"`
+	// Stage of the migration.
+	Stage string `pulumi:"stage"`
+}
+
+// State for the migration of PolicyController from ACM -> PoCo Hub.
+type ConfigManagementPolicyControllerMigrationResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementPolicyControllerMigrationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementPolicyControllerMigrationResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementPolicyControllerMigrationResponseOutput) ToConfigManagementPolicyControllerMigrationResponseOutput() ConfigManagementPolicyControllerMigrationResponseOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerMigrationResponseOutput) ToConfigManagementPolicyControllerMigrationResponseOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerMigrationResponseOutput {
+	return o
+}
+
+// Last time this membership spec was copied to PoCo feature.
+func (o ConfigManagementPolicyControllerMigrationResponseOutput) CopyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementPolicyControllerMigrationResponse) string { return v.CopyTime }).(pulumi.StringOutput)
+}
+
+// Stage of the migration.
+func (o ConfigManagementPolicyControllerMigrationResponseOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementPolicyControllerMigrationResponse) string { return v.Stage }).(pulumi.StringOutput)
+}
+
 // PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
 type ConfigManagementPolicyControllerMonitoring struct {
 	// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
@@ -5272,6 +6184,212 @@ func (o ConfigManagementPolicyControllerResponseOutput) TemplateLibraryInstalled
 // Last time this membership spec was updated.
 func (o ConfigManagementPolicyControllerResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigManagementPolicyControllerResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// State for PolicyControllerState.
+type ConfigManagementPolicyControllerStateResponse struct {
+	// The state about the policy controller installation.
+	DeploymentState ConfigManagementGatekeeperDeploymentStateResponse `pulumi:"deploymentState"`
+	// Record state of ACM -> PoCo Hub migration for this feature.
+	Migration ConfigManagementPolicyControllerMigrationResponse `pulumi:"migration"`
+	// The version of Gatekeeper Policy Controller deployed.
+	Version ConfigManagementPolicyControllerVersionResponse `pulumi:"version"`
+}
+
+// State for PolicyControllerState.
+type ConfigManagementPolicyControllerStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementPolicyControllerStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementPolicyControllerStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementPolicyControllerStateResponseOutput) ToConfigManagementPolicyControllerStateResponseOutput() ConfigManagementPolicyControllerStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerStateResponseOutput) ToConfigManagementPolicyControllerStateResponseOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerStateResponseOutput {
+	return o
+}
+
+// The state about the policy controller installation.
+func (o ConfigManagementPolicyControllerStateResponseOutput) DeploymentState() ConfigManagementGatekeeperDeploymentStateResponseOutput {
+	return o.ApplyT(func(v ConfigManagementPolicyControllerStateResponse) ConfigManagementGatekeeperDeploymentStateResponse {
+		return v.DeploymentState
+	}).(ConfigManagementGatekeeperDeploymentStateResponseOutput)
+}
+
+// Record state of ACM -> PoCo Hub migration for this feature.
+func (o ConfigManagementPolicyControllerStateResponseOutput) Migration() ConfigManagementPolicyControllerMigrationResponseOutput {
+	return o.ApplyT(func(v ConfigManagementPolicyControllerStateResponse) ConfigManagementPolicyControllerMigrationResponse {
+		return v.Migration
+	}).(ConfigManagementPolicyControllerMigrationResponseOutput)
+}
+
+// The version of Gatekeeper Policy Controller deployed.
+func (o ConfigManagementPolicyControllerStateResponseOutput) Version() ConfigManagementPolicyControllerVersionResponseOutput {
+	return o.ApplyT(func(v ConfigManagementPolicyControllerStateResponse) ConfigManagementPolicyControllerVersionResponse {
+		return v.Version
+	}).(ConfigManagementPolicyControllerVersionResponseOutput)
+}
+
+// The build version of Gatekeeper Policy Controller is using.
+type ConfigManagementPolicyControllerVersionResponse struct {
+	// The gatekeeper image tag that is composed of ACM version, git tag, build number.
+	Version string `pulumi:"version"`
+}
+
+// The build version of Gatekeeper Policy Controller is using.
+type ConfigManagementPolicyControllerVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementPolicyControllerVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementPolicyControllerVersionResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementPolicyControllerVersionResponseOutput) ToConfigManagementPolicyControllerVersionResponseOutput() ConfigManagementPolicyControllerVersionResponseOutput {
+	return o
+}
+
+func (o ConfigManagementPolicyControllerVersionResponseOutput) ToConfigManagementPolicyControllerVersionResponseOutputWithContext(ctx context.Context) ConfigManagementPolicyControllerVersionResponseOutput {
+	return o
+}
+
+// The gatekeeper image tag that is composed of ACM version, git tag, build number.
+func (o ConfigManagementPolicyControllerVersionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementPolicyControllerVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// An ACM created error representing a problem syncing configurations
+type ConfigManagementSyncErrorResponse struct {
+	// An ACM defined error code
+	Code string `pulumi:"code"`
+	// A description of the error
+	ErrorMessage string `pulumi:"errorMessage"`
+	// A list of config(s) associated with the error, if any
+	ErrorResources []ConfigManagementErrorResourceResponse `pulumi:"errorResources"`
+}
+
+// An ACM created error representing a problem syncing configurations
+type ConfigManagementSyncErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementSyncErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementSyncErrorResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementSyncErrorResponseOutput) ToConfigManagementSyncErrorResponseOutput() ConfigManagementSyncErrorResponseOutput {
+	return o
+}
+
+func (o ConfigManagementSyncErrorResponseOutput) ToConfigManagementSyncErrorResponseOutputWithContext(ctx context.Context) ConfigManagementSyncErrorResponseOutput {
+	return o
+}
+
+// An ACM defined error code
+func (o ConfigManagementSyncErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// A description of the error
+func (o ConfigManagementSyncErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// A list of config(s) associated with the error, if any
+func (o ConfigManagementSyncErrorResponseOutput) ErrorResources() ConfigManagementErrorResourceResponseArrayOutput {
+	return o.ApplyT(func(v ConfigManagementSyncErrorResponse) []ConfigManagementErrorResourceResponse {
+		return v.ErrorResources
+	}).(ConfigManagementErrorResourceResponseArrayOutput)
+}
+
+type ConfigManagementSyncErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementSyncErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigManagementSyncErrorResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementSyncErrorResponseArrayOutput) ToConfigManagementSyncErrorResponseArrayOutput() ConfigManagementSyncErrorResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementSyncErrorResponseArrayOutput) ToConfigManagementSyncErrorResponseArrayOutputWithContext(ctx context.Context) ConfigManagementSyncErrorResponseArrayOutput {
+	return o
+}
+
+func (o ConfigManagementSyncErrorResponseArrayOutput) Index(i pulumi.IntInput) ConfigManagementSyncErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigManagementSyncErrorResponse {
+		return vs[0].([]ConfigManagementSyncErrorResponse)[vs[1].(int)]
+	}).(ConfigManagementSyncErrorResponseOutput)
+}
+
+// State indicating an ACM's progress syncing configurations to a cluster
+type ConfigManagementSyncStateResponse struct {
+	// Sync status code
+	Code string `pulumi:"code"`
+	// A list of errors resulting from problematic configs. This list will be truncated after 100 errors, although it is unlikely for that many errors to simultaneously exist.
+	Errors []ConfigManagementSyncErrorResponse `pulumi:"errors"`
+	// Token indicating the state of the importer.
+	ImportToken string `pulumi:"importToken"`
+	// Deprecated: use last_sync_time instead. Timestamp of when ACM last successfully synced the repo The time format is specified in https://golang.org/pkg/time/#Time.String
+	//
+	// Deprecated: Deprecated: use last_sync_time instead. Timestamp of when ACM last successfully synced the repo The time format is specified in https://golang.org/pkg/time/#Time.String
+	LastSync string `pulumi:"lastSync"`
+	// Timestamp type of when ACM last successfully synced the repo
+	LastSyncTime string `pulumi:"lastSyncTime"`
+	// Token indicating the state of the repo.
+	SourceToken string `pulumi:"sourceToken"`
+	// Token indicating the state of the syncer.
+	SyncToken string `pulumi:"syncToken"`
+}
+
+// State indicating an ACM's progress syncing configurations to a cluster
+type ConfigManagementSyncStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementSyncStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementSyncStateResponse)(nil)).Elem()
+}
+
+func (o ConfigManagementSyncStateResponseOutput) ToConfigManagementSyncStateResponseOutput() ConfigManagementSyncStateResponseOutput {
+	return o
+}
+
+func (o ConfigManagementSyncStateResponseOutput) ToConfigManagementSyncStateResponseOutputWithContext(ctx context.Context) ConfigManagementSyncStateResponseOutput {
+	return o
+}
+
+// Sync status code
+func (o ConfigManagementSyncStateResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncStateResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// A list of errors resulting from problematic configs. This list will be truncated after 100 errors, although it is unlikely for that many errors to simultaneously exist.
+func (o ConfigManagementSyncStateResponseOutput) Errors() ConfigManagementSyncErrorResponseArrayOutput {
+	return o.ApplyT(func(v ConfigManagementSyncStateResponse) []ConfigManagementSyncErrorResponse { return v.Errors }).(ConfigManagementSyncErrorResponseArrayOutput)
+}
+
+// Token indicating the state of the importer.
+func (o ConfigManagementSyncStateResponseOutput) ImportToken() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncStateResponse) string { return v.ImportToken }).(pulumi.StringOutput)
+}
+
+// Deprecated: use last_sync_time instead. Timestamp of when ACM last successfully synced the repo The time format is specified in https://golang.org/pkg/time/#Time.String
+//
+// Deprecated: Deprecated: use last_sync_time instead. Timestamp of when ACM last successfully synced the repo The time format is specified in https://golang.org/pkg/time/#Time.String
+func (o ConfigManagementSyncStateResponseOutput) LastSync() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncStateResponse) string { return v.LastSync }).(pulumi.StringOutput)
+}
+
+// Timestamp type of when ACM last successfully synced the repo
+func (o ConfigManagementSyncStateResponseOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncStateResponse) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// Token indicating the state of the repo.
+func (o ConfigManagementSyncStateResponseOutput) SourceToken() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncStateResponse) string { return v.SourceToken }).(pulumi.StringOutput)
+}
+
+// Token indicating the state of the syncer.
+func (o ConfigManagementSyncStateResponseOutput) SyncToken() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigManagementSyncStateResponse) string { return v.SyncToken }).(pulumi.StringOutput)
 }
 
 // DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
@@ -6526,6 +7644,165 @@ func (o FleetObservabilityLoggingConfigResponseOutput) FleetScopeLogsConfig() Fl
 	}).(FleetObservabilityRoutingConfigResponseOutput)
 }
 
+// **FleetObservability**: The membership-specific input for FleetObservability feature.
+type FleetObservabilityMembershipSpec struct {
+}
+
+// FleetObservabilityMembershipSpecInput is an input type that accepts FleetObservabilityMembershipSpecArgs and FleetObservabilityMembershipSpecOutput values.
+// You can construct a concrete instance of `FleetObservabilityMembershipSpecInput` via:
+//
+//	FleetObservabilityMembershipSpecArgs{...}
+type FleetObservabilityMembershipSpecInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityMembershipSpecOutput() FleetObservabilityMembershipSpecOutput
+	ToFleetObservabilityMembershipSpecOutputWithContext(context.Context) FleetObservabilityMembershipSpecOutput
+}
+
+// **FleetObservability**: The membership-specific input for FleetObservability feature.
+type FleetObservabilityMembershipSpecArgs struct {
+}
+
+func (FleetObservabilityMembershipSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (i FleetObservabilityMembershipSpecArgs) ToFleetObservabilityMembershipSpecOutput() FleetObservabilityMembershipSpecOutput {
+	return i.ToFleetObservabilityMembershipSpecOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityMembershipSpecArgs) ToFleetObservabilityMembershipSpecOutputWithContext(ctx context.Context) FleetObservabilityMembershipSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityMembershipSpecOutput)
+}
+
+func (i FleetObservabilityMembershipSpecArgs) ToFleetObservabilityMembershipSpecPtrOutput() FleetObservabilityMembershipSpecPtrOutput {
+	return i.ToFleetObservabilityMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityMembershipSpecArgs) ToFleetObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityMembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityMembershipSpecOutput).ToFleetObservabilityMembershipSpecPtrOutputWithContext(ctx)
+}
+
+// FleetObservabilityMembershipSpecPtrInput is an input type that accepts FleetObservabilityMembershipSpecArgs, FleetObservabilityMembershipSpecPtr and FleetObservabilityMembershipSpecPtrOutput values.
+// You can construct a concrete instance of `FleetObservabilityMembershipSpecPtrInput` via:
+//
+//	        FleetObservabilityMembershipSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetObservabilityMembershipSpecPtrInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityMembershipSpecPtrOutput() FleetObservabilityMembershipSpecPtrOutput
+	ToFleetObservabilityMembershipSpecPtrOutputWithContext(context.Context) FleetObservabilityMembershipSpecPtrOutput
+}
+
+type fleetObservabilityMembershipSpecPtrType FleetObservabilityMembershipSpecArgs
+
+func FleetObservabilityMembershipSpecPtr(v *FleetObservabilityMembershipSpecArgs) FleetObservabilityMembershipSpecPtrInput {
+	return (*fleetObservabilityMembershipSpecPtrType)(v)
+}
+
+func (*fleetObservabilityMembershipSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (i *fleetObservabilityMembershipSpecPtrType) ToFleetObservabilityMembershipSpecPtrOutput() FleetObservabilityMembershipSpecPtrOutput {
+	return i.ToFleetObservabilityMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetObservabilityMembershipSpecPtrType) ToFleetObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityMembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityMembershipSpecPtrOutput)
+}
+
+// **FleetObservability**: The membership-specific input for FleetObservability feature.
+type FleetObservabilityMembershipSpecOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityMembershipSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (o FleetObservabilityMembershipSpecOutput) ToFleetObservabilityMembershipSpecOutput() FleetObservabilityMembershipSpecOutput {
+	return o
+}
+
+func (o FleetObservabilityMembershipSpecOutput) ToFleetObservabilityMembershipSpecOutputWithContext(ctx context.Context) FleetObservabilityMembershipSpecOutput {
+	return o
+}
+
+func (o FleetObservabilityMembershipSpecOutput) ToFleetObservabilityMembershipSpecPtrOutput() FleetObservabilityMembershipSpecPtrOutput {
+	return o.ToFleetObservabilityMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityMembershipSpecOutput) ToFleetObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityMembershipSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetObservabilityMembershipSpec) *FleetObservabilityMembershipSpec {
+		return &v
+	}).(FleetObservabilityMembershipSpecPtrOutput)
+}
+
+type FleetObservabilityMembershipSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityMembershipSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (o FleetObservabilityMembershipSpecPtrOutput) ToFleetObservabilityMembershipSpecPtrOutput() FleetObservabilityMembershipSpecPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityMembershipSpecPtrOutput) ToFleetObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) FleetObservabilityMembershipSpecPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityMembershipSpecPtrOutput) Elem() FleetObservabilityMembershipSpecOutput {
+	return o.ApplyT(func(v *FleetObservabilityMembershipSpec) FleetObservabilityMembershipSpec {
+		if v != nil {
+			return *v
+		}
+		var ret FleetObservabilityMembershipSpec
+		return ret
+	}).(FleetObservabilityMembershipSpecOutput)
+}
+
+// **FleetObservability**: The membership-specific input for FleetObservability feature.
+type FleetObservabilityMembershipSpecResponse struct {
+}
+
+// **FleetObservability**: The membership-specific input for FleetObservability feature.
+type FleetObservabilityMembershipSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityMembershipSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityMembershipSpecResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityMembershipSpecResponseOutput) ToFleetObservabilityMembershipSpecResponseOutput() FleetObservabilityMembershipSpecResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityMembershipSpecResponseOutput) ToFleetObservabilityMembershipSpecResponseOutputWithContext(ctx context.Context) FleetObservabilityMembershipSpecResponseOutput {
+	return o
+}
+
+// **FleetObservability**: Membership-specific Feature state for fleetobservability.
+type FleetObservabilityMembershipStateResponse struct {
+}
+
+// **FleetObservability**: Membership-specific Feature state for fleetobservability.
+type FleetObservabilityMembershipStateResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityMembershipStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityMembershipStateResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityMembershipStateResponseOutput) ToFleetObservabilityMembershipStateResponseOutput() FleetObservabilityMembershipStateResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityMembershipStateResponseOutput) ToFleetObservabilityMembershipStateResponseOutputWithContext(ctx context.Context) FleetObservabilityMembershipStateResponseOutput {
+	return o
+}
+
 // RoutingConfig configures the behaviour of fleet logging feature.
 type FleetObservabilityRoutingConfig struct {
 	// mode configures the logs routing mode.
@@ -7660,6 +8937,55 @@ func (o IdentityServiceMembershipSpecResponseOutput) AuthMethods() IdentityServi
 	}).(IdentityServiceAuthMethodResponseArrayOutput)
 }
 
+// **Anthos Identity Service**: State for a single Membership.
+type IdentityServiceMembershipStateResponse struct {
+	// The reason of the failure.
+	FailureReason string `pulumi:"failureReason"`
+	// Installed AIS version. This is the AIS version installed on this member. The values makes sense iff state is OK.
+	InstalledVersion string `pulumi:"installedVersion"`
+	// Last reconciled membership configuration
+	MemberConfig IdentityServiceMembershipSpecResponse `pulumi:"memberConfig"`
+	// Deployment state on this member
+	State string `pulumi:"state"`
+}
+
+// **Anthos Identity Service**: State for a single Membership.
+type IdentityServiceMembershipStateResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceMembershipStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceMembershipStateResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceMembershipStateResponseOutput) ToIdentityServiceMembershipStateResponseOutput() IdentityServiceMembershipStateResponseOutput {
+	return o
+}
+
+func (o IdentityServiceMembershipStateResponseOutput) ToIdentityServiceMembershipStateResponseOutputWithContext(ctx context.Context) IdentityServiceMembershipStateResponseOutput {
+	return o
+}
+
+// The reason of the failure.
+func (o IdentityServiceMembershipStateResponseOutput) FailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceMembershipStateResponse) string { return v.FailureReason }).(pulumi.StringOutput)
+}
+
+// Installed AIS version. This is the AIS version installed on this member. The values makes sense iff state is OK.
+func (o IdentityServiceMembershipStateResponseOutput) InstalledVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceMembershipStateResponse) string { return v.InstalledVersion }).(pulumi.StringOutput)
+}
+
+// Last reconciled membership configuration
+func (o IdentityServiceMembershipStateResponseOutput) MemberConfig() IdentityServiceMembershipSpecResponseOutput {
+	return o.ApplyT(func(v IdentityServiceMembershipStateResponse) IdentityServiceMembershipSpecResponse {
+		return v.MemberConfig
+	}).(IdentityServiceMembershipSpecResponseOutput)
+}
+
+// Deployment state on this member
+func (o IdentityServiceMembershipStateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceMembershipStateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
 // Configuration for OIDC Auth flow.
 type IdentityServiceOidcConfig struct {
 	// PEM-encoded CA for OIDC provider.
@@ -8748,6 +10074,574 @@ func (o MembershipEndpointResponseOutput) OnPremCluster() OnPremClusterResponseO
 	return o.ApplyT(func(v MembershipEndpointResponse) OnPremClusterResponse { return v.OnPremCluster }).(OnPremClusterResponseOutput)
 }
 
+// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
+type MembershipFeatureSpec struct {
+	// Anthos Observability-specific spec
+	Anthosobservability *AnthosObservabilityMembershipSpec `pulumi:"anthosobservability"`
+	// Cloud Build-specific spec
+	Cloudbuild *MembershipSpec `pulumi:"cloudbuild"`
+	// Config Management-specific spec.
+	Configmanagement *ConfigManagementMembershipSpec `pulumi:"configmanagement"`
+	// Fleet observability membership spec
+	Fleetobservability *FleetObservabilityMembershipSpec `pulumi:"fleetobservability"`
+	// Identity Service-specific spec.
+	Identityservice *IdentityServiceMembershipSpec `pulumi:"identityservice"`
+	// Anthos Service Mesh-specific spec
+	Mesh *ServiceMeshMembershipSpec `pulumi:"mesh"`
+	// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+	Origin *Origin `pulumi:"origin"`
+	// Policy Controller spec.
+	Policycontroller *PolicyControllerMembershipSpec `pulumi:"policycontroller"`
+}
+
+// MembershipFeatureSpecInput is an input type that accepts MembershipFeatureSpecArgs and MembershipFeatureSpecOutput values.
+// You can construct a concrete instance of `MembershipFeatureSpecInput` via:
+//
+//	MembershipFeatureSpecArgs{...}
+type MembershipFeatureSpecInput interface {
+	pulumi.Input
+
+	ToMembershipFeatureSpecOutput() MembershipFeatureSpecOutput
+	ToMembershipFeatureSpecOutputWithContext(context.Context) MembershipFeatureSpecOutput
+}
+
+// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
+type MembershipFeatureSpecArgs struct {
+	// Anthos Observability-specific spec
+	Anthosobservability AnthosObservabilityMembershipSpecPtrInput `pulumi:"anthosobservability"`
+	// Cloud Build-specific spec
+	Cloudbuild MembershipSpecPtrInput `pulumi:"cloudbuild"`
+	// Config Management-specific spec.
+	Configmanagement ConfigManagementMembershipSpecPtrInput `pulumi:"configmanagement"`
+	// Fleet observability membership spec
+	Fleetobservability FleetObservabilityMembershipSpecPtrInput `pulumi:"fleetobservability"`
+	// Identity Service-specific spec.
+	Identityservice IdentityServiceMembershipSpecPtrInput `pulumi:"identityservice"`
+	// Anthos Service Mesh-specific spec
+	Mesh ServiceMeshMembershipSpecPtrInput `pulumi:"mesh"`
+	// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+	Origin OriginPtrInput `pulumi:"origin"`
+	// Policy Controller spec.
+	Policycontroller PolicyControllerMembershipSpecPtrInput `pulumi:"policycontroller"`
+}
+
+func (MembershipFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipFeatureSpec)(nil)).Elem()
+}
+
+func (i MembershipFeatureSpecArgs) ToMembershipFeatureSpecOutput() MembershipFeatureSpecOutput {
+	return i.ToMembershipFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i MembershipFeatureSpecArgs) ToMembershipFeatureSpecOutputWithContext(ctx context.Context) MembershipFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipFeatureSpecOutput)
+}
+
+// MembershipFeatureSpecMapInput is an input type that accepts MembershipFeatureSpecMap and MembershipFeatureSpecMapOutput values.
+// You can construct a concrete instance of `MembershipFeatureSpecMapInput` via:
+//
+//	MembershipFeatureSpecMap{ "key": MembershipFeatureSpecArgs{...} }
+type MembershipFeatureSpecMapInput interface {
+	pulumi.Input
+
+	ToMembershipFeatureSpecMapOutput() MembershipFeatureSpecMapOutput
+	ToMembershipFeatureSpecMapOutputWithContext(context.Context) MembershipFeatureSpecMapOutput
+}
+
+type MembershipFeatureSpecMap map[string]MembershipFeatureSpecInput
+
+func (MembershipFeatureSpecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureSpec)(nil)).Elem()
+}
+
+func (i MembershipFeatureSpecMap) ToMembershipFeatureSpecMapOutput() MembershipFeatureSpecMapOutput {
+	return i.ToMembershipFeatureSpecMapOutputWithContext(context.Background())
+}
+
+func (i MembershipFeatureSpecMap) ToMembershipFeatureSpecMapOutputWithContext(ctx context.Context) MembershipFeatureSpecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipFeatureSpecMapOutput)
+}
+
+// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
+type MembershipFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipFeatureSpec)(nil)).Elem()
+}
+
+func (o MembershipFeatureSpecOutput) ToMembershipFeatureSpecOutput() MembershipFeatureSpecOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecOutput) ToMembershipFeatureSpecOutputWithContext(ctx context.Context) MembershipFeatureSpecOutput {
+	return o
+}
+
+// Anthos Observability-specific spec
+func (o MembershipFeatureSpecOutput) Anthosobservability() AnthosObservabilityMembershipSpecPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *AnthosObservabilityMembershipSpec { return v.Anthosobservability }).(AnthosObservabilityMembershipSpecPtrOutput)
+}
+
+// Cloud Build-specific spec
+func (o MembershipFeatureSpecOutput) Cloudbuild() MembershipSpecPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *MembershipSpec { return v.Cloudbuild }).(MembershipSpecPtrOutput)
+}
+
+// Config Management-specific spec.
+func (o MembershipFeatureSpecOutput) Configmanagement() ConfigManagementMembershipSpecPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *ConfigManagementMembershipSpec { return v.Configmanagement }).(ConfigManagementMembershipSpecPtrOutput)
+}
+
+// Fleet observability membership spec
+func (o MembershipFeatureSpecOutput) Fleetobservability() FleetObservabilityMembershipSpecPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *FleetObservabilityMembershipSpec { return v.Fleetobservability }).(FleetObservabilityMembershipSpecPtrOutput)
+}
+
+// Identity Service-specific spec.
+func (o MembershipFeatureSpecOutput) Identityservice() IdentityServiceMembershipSpecPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *IdentityServiceMembershipSpec { return v.Identityservice }).(IdentityServiceMembershipSpecPtrOutput)
+}
+
+// Anthos Service Mesh-specific spec
+func (o MembershipFeatureSpecOutput) Mesh() ServiceMeshMembershipSpecPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *ServiceMeshMembershipSpec { return v.Mesh }).(ServiceMeshMembershipSpecPtrOutput)
+}
+
+// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+func (o MembershipFeatureSpecOutput) Origin() OriginPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *Origin { return v.Origin }).(OriginPtrOutput)
+}
+
+// Policy Controller spec.
+func (o MembershipFeatureSpecOutput) Policycontroller() PolicyControllerMembershipSpecPtrOutput {
+	return o.ApplyT(func(v MembershipFeatureSpec) *PolicyControllerMembershipSpec { return v.Policycontroller }).(PolicyControllerMembershipSpecPtrOutput)
+}
+
+type MembershipFeatureSpecMapOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureSpecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureSpec)(nil)).Elem()
+}
+
+func (o MembershipFeatureSpecMapOutput) ToMembershipFeatureSpecMapOutput() MembershipFeatureSpecMapOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecMapOutput) ToMembershipFeatureSpecMapOutputWithContext(ctx context.Context) MembershipFeatureSpecMapOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecMapOutput) MapIndex(k pulumi.StringInput) MembershipFeatureSpecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MembershipFeatureSpec {
+		return vs[0].(map[string]MembershipFeatureSpec)[vs[1].(string)]
+	}).(MembershipFeatureSpecOutput)
+}
+
+// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
+type MembershipFeatureSpecResponse struct {
+	// Anthos Observability-specific spec
+	Anthosobservability AnthosObservabilityMembershipSpecResponse `pulumi:"anthosobservability"`
+	// Cloud Build-specific spec
+	Cloudbuild MembershipSpecResponse `pulumi:"cloudbuild"`
+	// Config Management-specific spec.
+	Configmanagement ConfigManagementMembershipSpecResponse `pulumi:"configmanagement"`
+	// Fleet observability membership spec
+	Fleetobservability FleetObservabilityMembershipSpecResponse `pulumi:"fleetobservability"`
+	// Identity Service-specific spec.
+	Identityservice IdentityServiceMembershipSpecResponse `pulumi:"identityservice"`
+	// Anthos Service Mesh-specific spec
+	Mesh ServiceMeshMembershipSpecResponse `pulumi:"mesh"`
+	// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+	Origin OriginResponse `pulumi:"origin"`
+	// Policy Controller spec.
+	Policycontroller PolicyControllerMembershipSpecResponse `pulumi:"policycontroller"`
+}
+
+// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in your feature name.
+type MembershipFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o MembershipFeatureSpecResponseOutput) ToMembershipFeatureSpecResponseOutput() MembershipFeatureSpecResponseOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecResponseOutput) ToMembershipFeatureSpecResponseOutputWithContext(ctx context.Context) MembershipFeatureSpecResponseOutput {
+	return o
+}
+
+// Anthos Observability-specific spec
+func (o MembershipFeatureSpecResponseOutput) Anthosobservability() AnthosObservabilityMembershipSpecResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) AnthosObservabilityMembershipSpecResponse {
+		return v.Anthosobservability
+	}).(AnthosObservabilityMembershipSpecResponseOutput)
+}
+
+// Cloud Build-specific spec
+func (o MembershipFeatureSpecResponseOutput) Cloudbuild() MembershipSpecResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) MembershipSpecResponse { return v.Cloudbuild }).(MembershipSpecResponseOutput)
+}
+
+// Config Management-specific spec.
+func (o MembershipFeatureSpecResponseOutput) Configmanagement() ConfigManagementMembershipSpecResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) ConfigManagementMembershipSpecResponse {
+		return v.Configmanagement
+	}).(ConfigManagementMembershipSpecResponseOutput)
+}
+
+// Fleet observability membership spec
+func (o MembershipFeatureSpecResponseOutput) Fleetobservability() FleetObservabilityMembershipSpecResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) FleetObservabilityMembershipSpecResponse {
+		return v.Fleetobservability
+	}).(FleetObservabilityMembershipSpecResponseOutput)
+}
+
+// Identity Service-specific spec.
+func (o MembershipFeatureSpecResponseOutput) Identityservice() IdentityServiceMembershipSpecResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) IdentityServiceMembershipSpecResponse { return v.Identityservice }).(IdentityServiceMembershipSpecResponseOutput)
+}
+
+// Anthos Service Mesh-specific spec
+func (o MembershipFeatureSpecResponseOutput) Mesh() ServiceMeshMembershipSpecResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) ServiceMeshMembershipSpecResponse { return v.Mesh }).(ServiceMeshMembershipSpecResponseOutput)
+}
+
+// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+func (o MembershipFeatureSpecResponseOutput) Origin() OriginResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) OriginResponse { return v.Origin }).(OriginResponseOutput)
+}
+
+// Policy Controller spec.
+func (o MembershipFeatureSpecResponseOutput) Policycontroller() PolicyControllerMembershipSpecResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureSpecResponse) PolicyControllerMembershipSpecResponse {
+		return v.Policycontroller
+	}).(PolicyControllerMembershipSpecResponseOutput)
+}
+
+type MembershipFeatureSpecResponseMapOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureSpecResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o MembershipFeatureSpecResponseMapOutput) ToMembershipFeatureSpecResponseMapOutput() MembershipFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecResponseMapOutput) ToMembershipFeatureSpecResponseMapOutputWithContext(ctx context.Context) MembershipFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureSpecResponseMapOutput) MapIndex(k pulumi.StringInput) MembershipFeatureSpecResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MembershipFeatureSpecResponse {
+		return vs[0].(map[string]MembershipFeatureSpecResponse)[vs[1].(string)]
+	}).(MembershipFeatureSpecResponseOutput)
+}
+
+// MembershipFeatureState contains Feature status information for a single Membership.
+type MembershipFeatureStateResponse struct {
+	// Appdevexperience specific state.
+	Appdevexperience AppDevExperienceFeatureStateResponse `pulumi:"appdevexperience"`
+	// ClusterUpgrade state.
+	Clusterupgrade ClusterUpgradeMembershipStateResponse `pulumi:"clusterupgrade"`
+	// Config Management-specific state.
+	Configmanagement ConfigManagementMembershipStateResponse `pulumi:"configmanagement"`
+	// Fleet observability membership state.
+	Fleetobservability FleetObservabilityMembershipStateResponse `pulumi:"fleetobservability"`
+	// Identity Service-specific state.
+	Identityservice IdentityServiceMembershipStateResponse `pulumi:"identityservice"`
+	// Metering-specific state.
+	Metering MeteringMembershipStateResponse `pulumi:"metering"`
+	// Policycontroller-specific state.
+	Policycontroller PolicyControllerMembershipStateResponse `pulumi:"policycontroller"`
+	// Service Mesh-specific state.
+	Servicemesh ServiceMeshMembershipStateResponse `pulumi:"servicemesh"`
+	// The high-level state of this Feature for a single membership.
+	State FeatureStateResponse `pulumi:"state"`
+}
+
+// MembershipFeatureState contains Feature status information for a single Membership.
+type MembershipFeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipFeatureStateResponse)(nil)).Elem()
+}
+
+func (o MembershipFeatureStateResponseOutput) ToMembershipFeatureStateResponseOutput() MembershipFeatureStateResponseOutput {
+	return o
+}
+
+func (o MembershipFeatureStateResponseOutput) ToMembershipFeatureStateResponseOutputWithContext(ctx context.Context) MembershipFeatureStateResponseOutput {
+	return o
+}
+
+// Appdevexperience specific state.
+func (o MembershipFeatureStateResponseOutput) Appdevexperience() AppDevExperienceFeatureStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) AppDevExperienceFeatureStateResponse { return v.Appdevexperience }).(AppDevExperienceFeatureStateResponseOutput)
+}
+
+// ClusterUpgrade state.
+func (o MembershipFeatureStateResponseOutput) Clusterupgrade() ClusterUpgradeMembershipStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) ClusterUpgradeMembershipStateResponse { return v.Clusterupgrade }).(ClusterUpgradeMembershipStateResponseOutput)
+}
+
+// Config Management-specific state.
+func (o MembershipFeatureStateResponseOutput) Configmanagement() ConfigManagementMembershipStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) ConfigManagementMembershipStateResponse {
+		return v.Configmanagement
+	}).(ConfigManagementMembershipStateResponseOutput)
+}
+
+// Fleet observability membership state.
+func (o MembershipFeatureStateResponseOutput) Fleetobservability() FleetObservabilityMembershipStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) FleetObservabilityMembershipStateResponse {
+		return v.Fleetobservability
+	}).(FleetObservabilityMembershipStateResponseOutput)
+}
+
+// Identity Service-specific state.
+func (o MembershipFeatureStateResponseOutput) Identityservice() IdentityServiceMembershipStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) IdentityServiceMembershipStateResponse {
+		return v.Identityservice
+	}).(IdentityServiceMembershipStateResponseOutput)
+}
+
+// Metering-specific state.
+func (o MembershipFeatureStateResponseOutput) Metering() MeteringMembershipStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) MeteringMembershipStateResponse { return v.Metering }).(MeteringMembershipStateResponseOutput)
+}
+
+// Policycontroller-specific state.
+func (o MembershipFeatureStateResponseOutput) Policycontroller() PolicyControllerMembershipStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) PolicyControllerMembershipStateResponse {
+		return v.Policycontroller
+	}).(PolicyControllerMembershipStateResponseOutput)
+}
+
+// Service Mesh-specific state.
+func (o MembershipFeatureStateResponseOutput) Servicemesh() ServiceMeshMembershipStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) ServiceMeshMembershipStateResponse { return v.Servicemesh }).(ServiceMeshMembershipStateResponseOutput)
+}
+
+// The high-level state of this Feature for a single membership.
+func (o MembershipFeatureStateResponseOutput) State() FeatureStateResponseOutput {
+	return o.ApplyT(func(v MembershipFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
+}
+
+type MembershipFeatureStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (MembershipFeatureStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MembershipFeatureStateResponse)(nil)).Elem()
+}
+
+func (o MembershipFeatureStateResponseMapOutput) ToMembershipFeatureStateResponseMapOutput() MembershipFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureStateResponseMapOutput) ToMembershipFeatureStateResponseMapOutputWithContext(ctx context.Context) MembershipFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o MembershipFeatureStateResponseMapOutput) MapIndex(k pulumi.StringInput) MembershipFeatureStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MembershipFeatureStateResponse {
+		return vs[0].(map[string]MembershipFeatureStateResponse)[vs[1].(string)]
+	}).(MembershipFeatureStateResponseOutput)
+}
+
+// **Cloud Build**: Configurations for each Cloud Build enabled cluster.
+type MembershipSpec struct {
+	// Whether it is allowed to run the privileged builds on the cluster or not.
+	SecurityPolicy *MembershipSpecSecurityPolicy `pulumi:"securityPolicy"`
+	// Version of the cloud build software on the cluster.
+	Version *string `pulumi:"version"`
+}
+
+// MembershipSpecInput is an input type that accepts MembershipSpecArgs and MembershipSpecOutput values.
+// You can construct a concrete instance of `MembershipSpecInput` via:
+//
+//	MembershipSpecArgs{...}
+type MembershipSpecInput interface {
+	pulumi.Input
+
+	ToMembershipSpecOutput() MembershipSpecOutput
+	ToMembershipSpecOutputWithContext(context.Context) MembershipSpecOutput
+}
+
+// **Cloud Build**: Configurations for each Cloud Build enabled cluster.
+type MembershipSpecArgs struct {
+	// Whether it is allowed to run the privileged builds on the cluster or not.
+	SecurityPolicy MembershipSpecSecurityPolicyPtrInput `pulumi:"securityPolicy"`
+	// Version of the cloud build software on the cluster.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (MembershipSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpec)(nil)).Elem()
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecOutput() MembershipSpecOutput {
+	return i.ToMembershipSpecOutputWithContext(context.Background())
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecOutputWithContext(ctx context.Context) MembershipSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipSpecOutput)
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return i.ToMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i MembershipSpecArgs) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipSpecOutput).ToMembershipSpecPtrOutputWithContext(ctx)
+}
+
+// MembershipSpecPtrInput is an input type that accepts MembershipSpecArgs, MembershipSpecPtr and MembershipSpecPtrOutput values.
+// You can construct a concrete instance of `MembershipSpecPtrInput` via:
+//
+//	        MembershipSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type MembershipSpecPtrInput interface {
+	pulumi.Input
+
+	ToMembershipSpecPtrOutput() MembershipSpecPtrOutput
+	ToMembershipSpecPtrOutputWithContext(context.Context) MembershipSpecPtrOutput
+}
+
+type membershipSpecPtrType MembershipSpecArgs
+
+func MembershipSpecPtr(v *MembershipSpecArgs) MembershipSpecPtrInput {
+	return (*membershipSpecPtrType)(v)
+}
+
+func (*membershipSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipSpec)(nil)).Elem()
+}
+
+func (i *membershipSpecPtrType) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return i.ToMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *membershipSpecPtrType) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipSpecPtrOutput)
+}
+
+// **Cloud Build**: Configurations for each Cloud Build enabled cluster.
+type MembershipSpecOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpec)(nil)).Elem()
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecOutput() MembershipSpecOutput {
+	return o
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecOutputWithContext(ctx context.Context) MembershipSpecOutput {
+	return o
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return o.ToMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (o MembershipSpecOutput) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipSpec) *MembershipSpec {
+		return &v
+	}).(MembershipSpecPtrOutput)
+}
+
+// Whether it is allowed to run the privileged builds on the cluster or not.
+func (o MembershipSpecOutput) SecurityPolicy() MembershipSpecSecurityPolicyPtrOutput {
+	return o.ApplyT(func(v MembershipSpec) *MembershipSpecSecurityPolicy { return v.SecurityPolicy }).(MembershipSpecSecurityPolicyPtrOutput)
+}
+
+// Version of the cloud build software on the cluster.
+func (o MembershipSpecOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembershipSpec) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type MembershipSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipSpec)(nil)).Elem()
+}
+
+func (o MembershipSpecPtrOutput) ToMembershipSpecPtrOutput() MembershipSpecPtrOutput {
+	return o
+}
+
+func (o MembershipSpecPtrOutput) ToMembershipSpecPtrOutputWithContext(ctx context.Context) MembershipSpecPtrOutput {
+	return o
+}
+
+func (o MembershipSpecPtrOutput) Elem() MembershipSpecOutput {
+	return o.ApplyT(func(v *MembershipSpec) MembershipSpec {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipSpec
+		return ret
+	}).(MembershipSpecOutput)
+}
+
+// Whether it is allowed to run the privileged builds on the cluster or not.
+func (o MembershipSpecPtrOutput) SecurityPolicy() MembershipSpecSecurityPolicyPtrOutput {
+	return o.ApplyT(func(v *MembershipSpec) *MembershipSpecSecurityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityPolicy
+	}).(MembershipSpecSecurityPolicyPtrOutput)
+}
+
+// Version of the cloud build software on the cluster.
+func (o MembershipSpecPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// **Cloud Build**: Configurations for each Cloud Build enabled cluster.
+type MembershipSpecResponse struct {
+	// Whether it is allowed to run the privileged builds on the cluster or not.
+	SecurityPolicy string `pulumi:"securityPolicy"`
+	// Version of the cloud build software on the cluster.
+	Version string `pulumi:"version"`
+}
+
+// **Cloud Build**: Configurations for each Cloud Build enabled cluster.
+type MembershipSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (MembershipSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipSpecResponse)(nil)).Elem()
+}
+
+func (o MembershipSpecResponseOutput) ToMembershipSpecResponseOutput() MembershipSpecResponseOutput {
+	return o
+}
+
+func (o MembershipSpecResponseOutput) ToMembershipSpecResponseOutputWithContext(ctx context.Context) MembershipSpecResponseOutput {
+	return o
+}
+
+// Whether it is allowed to run the privileged builds on the cluster or not.
+func (o MembershipSpecResponseOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipSpecResponse) string { return v.SecurityPolicy }).(pulumi.StringOutput)
+}
+
+// Version of the cloud build software on the cluster.
+func (o MembershipSpecResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipSpecResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
 // MembershipState describes the state of a Membership resource.
 type MembershipStateResponse struct {
 	// The current state of the Membership resource.
@@ -8772,6 +10666,39 @@ func (o MembershipStateResponseOutput) ToMembershipStateResponseOutputWithContex
 // The current state of the Membership resource.
 func (o MembershipStateResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipStateResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// **Metering**: Per-Membership Feature State.
+type MeteringMembershipStateResponse struct {
+	// The time stamp of the most recent measurement of the number of vCPUs in the cluster.
+	LastMeasurementTime string `pulumi:"lastMeasurementTime"`
+	// The vCPUs capacity in the cluster according to the most recent measurement (1/1000 precision).
+	PreciseLastMeasuredClusterVcpuCapacity float64 `pulumi:"preciseLastMeasuredClusterVcpuCapacity"`
+}
+
+// **Metering**: Per-Membership Feature State.
+type MeteringMembershipStateResponseOutput struct{ *pulumi.OutputState }
+
+func (MeteringMembershipStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeteringMembershipStateResponse)(nil)).Elem()
+}
+
+func (o MeteringMembershipStateResponseOutput) ToMeteringMembershipStateResponseOutput() MeteringMembershipStateResponseOutput {
+	return o
+}
+
+func (o MeteringMembershipStateResponseOutput) ToMeteringMembershipStateResponseOutputWithContext(ctx context.Context) MeteringMembershipStateResponseOutput {
+	return o
+}
+
+// The time stamp of the most recent measurement of the number of vCPUs in the cluster.
+func (o MeteringMembershipStateResponseOutput) LastMeasurementTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MeteringMembershipStateResponse) string { return v.LastMeasurementTime }).(pulumi.StringOutput)
+}
+
+// The vCPUs capacity in the cluster according to the most recent measurement (1/1000 precision).
+func (o MeteringMembershipStateResponseOutput) PreciseLastMeasuredClusterVcpuCapacity() pulumi.Float64Output {
+	return o.ApplyT(func(v MeteringMembershipStateResponse) float64 { return v.PreciseLastMeasuredClusterVcpuCapacity }).(pulumi.Float64Output)
 }
 
 // MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics.
@@ -9672,6 +11599,172 @@ func (o OnPremClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
 
+// Origin defines where this MembershipFeatureSpec originated from.
+type Origin struct {
+	// Type specifies which type of origin is set.
+	Type *OriginType `pulumi:"type"`
+}
+
+// OriginInput is an input type that accepts OriginArgs and OriginOutput values.
+// You can construct a concrete instance of `OriginInput` via:
+//
+//	OriginArgs{...}
+type OriginInput interface {
+	pulumi.Input
+
+	ToOriginOutput() OriginOutput
+	ToOriginOutputWithContext(context.Context) OriginOutput
+}
+
+// Origin defines where this MembershipFeatureSpec originated from.
+type OriginArgs struct {
+	// Type specifies which type of origin is set.
+	Type OriginTypePtrInput `pulumi:"type"`
+}
+
+func (OriginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Origin)(nil)).Elem()
+}
+
+func (i OriginArgs) ToOriginOutput() OriginOutput {
+	return i.ToOriginOutputWithContext(context.Background())
+}
+
+func (i OriginArgs) ToOriginOutputWithContext(ctx context.Context) OriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginOutput)
+}
+
+func (i OriginArgs) ToOriginPtrOutput() OriginPtrOutput {
+	return i.ToOriginPtrOutputWithContext(context.Background())
+}
+
+func (i OriginArgs) ToOriginPtrOutputWithContext(ctx context.Context) OriginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginOutput).ToOriginPtrOutputWithContext(ctx)
+}
+
+// OriginPtrInput is an input type that accepts OriginArgs, OriginPtr and OriginPtrOutput values.
+// You can construct a concrete instance of `OriginPtrInput` via:
+//
+//	        OriginArgs{...}
+//
+//	or:
+//
+//	        nil
+type OriginPtrInput interface {
+	pulumi.Input
+
+	ToOriginPtrOutput() OriginPtrOutput
+	ToOriginPtrOutputWithContext(context.Context) OriginPtrOutput
+}
+
+type originPtrType OriginArgs
+
+func OriginPtr(v *OriginArgs) OriginPtrInput {
+	return (*originPtrType)(v)
+}
+
+func (*originPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Origin)(nil)).Elem()
+}
+
+func (i *originPtrType) ToOriginPtrOutput() OriginPtrOutput {
+	return i.ToOriginPtrOutputWithContext(context.Background())
+}
+
+func (i *originPtrType) ToOriginPtrOutputWithContext(ctx context.Context) OriginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginPtrOutput)
+}
+
+// Origin defines where this MembershipFeatureSpec originated from.
+type OriginOutput struct{ *pulumi.OutputState }
+
+func (OriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Origin)(nil)).Elem()
+}
+
+func (o OriginOutput) ToOriginOutput() OriginOutput {
+	return o
+}
+
+func (o OriginOutput) ToOriginOutputWithContext(ctx context.Context) OriginOutput {
+	return o
+}
+
+func (o OriginOutput) ToOriginPtrOutput() OriginPtrOutput {
+	return o.ToOriginPtrOutputWithContext(context.Background())
+}
+
+func (o OriginOutput) ToOriginPtrOutputWithContext(ctx context.Context) OriginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Origin) *Origin {
+		return &v
+	}).(OriginPtrOutput)
+}
+
+// Type specifies which type of origin is set.
+func (o OriginOutput) Type() OriginTypePtrOutput {
+	return o.ApplyT(func(v Origin) *OriginType { return v.Type }).(OriginTypePtrOutput)
+}
+
+type OriginPtrOutput struct{ *pulumi.OutputState }
+
+func (OriginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Origin)(nil)).Elem()
+}
+
+func (o OriginPtrOutput) ToOriginPtrOutput() OriginPtrOutput {
+	return o
+}
+
+func (o OriginPtrOutput) ToOriginPtrOutputWithContext(ctx context.Context) OriginPtrOutput {
+	return o
+}
+
+func (o OriginPtrOutput) Elem() OriginOutput {
+	return o.ApplyT(func(v *Origin) Origin {
+		if v != nil {
+			return *v
+		}
+		var ret Origin
+		return ret
+	}).(OriginOutput)
+}
+
+// Type specifies which type of origin is set.
+func (o OriginPtrOutput) Type() OriginTypePtrOutput {
+	return o.ApplyT(func(v *Origin) *OriginType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(OriginTypePtrOutput)
+}
+
+// Origin defines where this MembershipFeatureSpec originated from.
+type OriginResponse struct {
+	// Type specifies which type of origin is set.
+	Type string `pulumi:"type"`
+}
+
+// Origin defines where this MembershipFeatureSpec originated from.
+type OriginResponseOutput struct{ *pulumi.OutputState }
+
+func (OriginResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginResponse)(nil)).Elem()
+}
+
+func (o OriginResponseOutput) ToOriginResponseOutput() OriginResponseOutput {
+	return o
+}
+
+func (o OriginResponseOutput) ToOriginResponseOutputWithContext(ctx context.Context) OriginResponseOutput {
+	return o
+}
+
+// Type specifies which type of origin is set.
+func (o OriginResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OriginResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Binauthz policy that applies to this cluster.
 type PolicyBinding struct {
 	// The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
@@ -9818,6 +11911,152 @@ func (o PolicyBindingResponseArrayOutput) Index(i pulumi.IntInput) PolicyBinding
 	}).(PolicyBindingResponseOutput)
 }
 
+// BundleInstallSpec is the specification configuration for a single managed bundle.
+type PolicyControllerBundleInstallSpec struct {
+	// The set of namespaces to be exempted from the bundle.
+	ExemptedNamespaces []string `pulumi:"exemptedNamespaces"`
+}
+
+// PolicyControllerBundleInstallSpecInput is an input type that accepts PolicyControllerBundleInstallSpecArgs and PolicyControllerBundleInstallSpecOutput values.
+// You can construct a concrete instance of `PolicyControllerBundleInstallSpecInput` via:
+//
+//	PolicyControllerBundleInstallSpecArgs{...}
+type PolicyControllerBundleInstallSpecInput interface {
+	pulumi.Input
+
+	ToPolicyControllerBundleInstallSpecOutput() PolicyControllerBundleInstallSpecOutput
+	ToPolicyControllerBundleInstallSpecOutputWithContext(context.Context) PolicyControllerBundleInstallSpecOutput
+}
+
+// BundleInstallSpec is the specification configuration for a single managed bundle.
+type PolicyControllerBundleInstallSpecArgs struct {
+	// The set of namespaces to be exempted from the bundle.
+	ExemptedNamespaces pulumi.StringArrayInput `pulumi:"exemptedNamespaces"`
+}
+
+func (PolicyControllerBundleInstallSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerBundleInstallSpec)(nil)).Elem()
+}
+
+func (i PolicyControllerBundleInstallSpecArgs) ToPolicyControllerBundleInstallSpecOutput() PolicyControllerBundleInstallSpecOutput {
+	return i.ToPolicyControllerBundleInstallSpecOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerBundleInstallSpecArgs) ToPolicyControllerBundleInstallSpecOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerBundleInstallSpecOutput)
+}
+
+// PolicyControllerBundleInstallSpecMapInput is an input type that accepts PolicyControllerBundleInstallSpecMap and PolicyControllerBundleInstallSpecMapOutput values.
+// You can construct a concrete instance of `PolicyControllerBundleInstallSpecMapInput` via:
+//
+//	PolicyControllerBundleInstallSpecMap{ "key": PolicyControllerBundleInstallSpecArgs{...} }
+type PolicyControllerBundleInstallSpecMapInput interface {
+	pulumi.Input
+
+	ToPolicyControllerBundleInstallSpecMapOutput() PolicyControllerBundleInstallSpecMapOutput
+	ToPolicyControllerBundleInstallSpecMapOutputWithContext(context.Context) PolicyControllerBundleInstallSpecMapOutput
+}
+
+type PolicyControllerBundleInstallSpecMap map[string]PolicyControllerBundleInstallSpecInput
+
+func (PolicyControllerBundleInstallSpecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerBundleInstallSpec)(nil)).Elem()
+}
+
+func (i PolicyControllerBundleInstallSpecMap) ToPolicyControllerBundleInstallSpecMapOutput() PolicyControllerBundleInstallSpecMapOutput {
+	return i.ToPolicyControllerBundleInstallSpecMapOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerBundleInstallSpecMap) ToPolicyControllerBundleInstallSpecMapOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerBundleInstallSpecMapOutput)
+}
+
+// BundleInstallSpec is the specification configuration for a single managed bundle.
+type PolicyControllerBundleInstallSpecOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerBundleInstallSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerBundleInstallSpec)(nil)).Elem()
+}
+
+func (o PolicyControllerBundleInstallSpecOutput) ToPolicyControllerBundleInstallSpecOutput() PolicyControllerBundleInstallSpecOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecOutput) ToPolicyControllerBundleInstallSpecOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecOutput {
+	return o
+}
+
+// The set of namespaces to be exempted from the bundle.
+func (o PolicyControllerBundleInstallSpecOutput) ExemptedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyControllerBundleInstallSpec) []string { return v.ExemptedNamespaces }).(pulumi.StringArrayOutput)
+}
+
+type PolicyControllerBundleInstallSpecMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerBundleInstallSpecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerBundleInstallSpec)(nil)).Elem()
+}
+
+func (o PolicyControllerBundleInstallSpecMapOutput) ToPolicyControllerBundleInstallSpecMapOutput() PolicyControllerBundleInstallSpecMapOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecMapOutput) ToPolicyControllerBundleInstallSpecMapOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecMapOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerBundleInstallSpecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerBundleInstallSpec {
+		return vs[0].(map[string]PolicyControllerBundleInstallSpec)[vs[1].(string)]
+	}).(PolicyControllerBundleInstallSpecOutput)
+}
+
+// BundleInstallSpec is the specification configuration for a single managed bundle.
+type PolicyControllerBundleInstallSpecResponse struct {
+	// The set of namespaces to be exempted from the bundle.
+	ExemptedNamespaces []string `pulumi:"exemptedNamespaces"`
+}
+
+// BundleInstallSpec is the specification configuration for a single managed bundle.
+type PolicyControllerBundleInstallSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerBundleInstallSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerBundleInstallSpecResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerBundleInstallSpecResponseOutput) ToPolicyControllerBundleInstallSpecResponseOutput() PolicyControllerBundleInstallSpecResponseOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecResponseOutput) ToPolicyControllerBundleInstallSpecResponseOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecResponseOutput {
+	return o
+}
+
+// The set of namespaces to be exempted from the bundle.
+func (o PolicyControllerBundleInstallSpecResponseOutput) ExemptedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyControllerBundleInstallSpecResponse) []string { return v.ExemptedNamespaces }).(pulumi.StringArrayOutput)
+}
+
+type PolicyControllerBundleInstallSpecResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerBundleInstallSpecResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerBundleInstallSpecResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerBundleInstallSpecResponseMapOutput) ToPolicyControllerBundleInstallSpecResponseMapOutput() PolicyControllerBundleInstallSpecResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecResponseMapOutput) ToPolicyControllerBundleInstallSpecResponseMapOutputWithContext(ctx context.Context) PolicyControllerBundleInstallSpecResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerBundleInstallSpecResponseMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerBundleInstallSpecResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerBundleInstallSpecResponse {
+		return vs[0].(map[string]PolicyControllerBundleInstallSpecResponse)[vs[1].(string)]
+	}).(PolicyControllerBundleInstallSpecResponseOutput)
+}
+
 // Configuration for Policy Controller
 type PolicyControllerHubConfig struct {
 	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
@@ -9825,7 +12064,7 @@ type PolicyControllerHubConfig struct {
 	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
 	ConstraintViolationLimit *string `pulumi:"constraintViolationLimit"`
 	// Map of deployment configs to deployments ("admission", "audit", "mutation').
-	DeploymentConfigs map[string]string `pulumi:"deploymentConfigs"`
+	DeploymentConfigs map[string]PolicyControllerPolicyControllerDeploymentConfig `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
 	// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
@@ -9860,7 +12099,7 @@ type PolicyControllerHubConfigArgs struct {
 	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
 	ConstraintViolationLimit pulumi.StringPtrInput `pulumi:"constraintViolationLimit"`
 	// Map of deployment configs to deployments ("admission", "audit", "mutation').
-	DeploymentConfigs pulumi.StringMapInput `pulumi:"deploymentConfigs"`
+	DeploymentConfigs PolicyControllerPolicyControllerDeploymentConfigMapInput `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
 	// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
@@ -9966,8 +12205,10 @@ func (o PolicyControllerHubConfigOutput) ConstraintViolationLimit() pulumi.Strin
 }
 
 // Map of deployment configs to deployments ("admission", "audit", "mutation').
-func (o PolicyControllerHubConfigOutput) DeploymentConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PolicyControllerHubConfig) map[string]string { return v.DeploymentConfigs }).(pulumi.StringMapOutput)
+func (o PolicyControllerHubConfigOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return o.ApplyT(func(v PolicyControllerHubConfig) map[string]PolicyControllerPolicyControllerDeploymentConfig {
+		return v.DeploymentConfigs
+	}).(PolicyControllerPolicyControllerDeploymentConfigMapOutput)
 }
 
 // The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
@@ -10050,13 +12291,13 @@ func (o PolicyControllerHubConfigPtrOutput) ConstraintViolationLimit() pulumi.St
 }
 
 // Map of deployment configs to deployments ("admission", "audit", "mutation').
-func (o PolicyControllerHubConfigPtrOutput) DeploymentConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PolicyControllerHubConfig) map[string]string {
+func (o PolicyControllerHubConfigPtrOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return o.ApplyT(func(v *PolicyControllerHubConfig) map[string]PolicyControllerPolicyControllerDeploymentConfig {
 		if v == nil {
 			return nil
 		}
 		return v.DeploymentConfigs
-	}).(pulumi.StringMapOutput)
+	}).(PolicyControllerPolicyControllerDeploymentConfigMapOutput)
 }
 
 // The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
@@ -10136,7 +12377,7 @@ type PolicyControllerHubConfigResponse struct {
 	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
 	ConstraintViolationLimit string `pulumi:"constraintViolationLimit"`
 	// Map of deployment configs to deployments ("admission", "audit", "mutation').
-	DeploymentConfigs map[string]string `pulumi:"deploymentConfigs"`
+	DeploymentConfigs map[string]PolicyControllerPolicyControllerDeploymentConfigResponse `pulumi:"deploymentConfigs"`
 	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
 	// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
@@ -10179,8 +12420,10 @@ func (o PolicyControllerHubConfigResponseOutput) ConstraintViolationLimit() pulu
 }
 
 // Map of deployment configs to deployments ("admission", "audit", "mutation').
-func (o PolicyControllerHubConfigResponseOutput) DeploymentConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PolicyControllerHubConfigResponse) map[string]string { return v.DeploymentConfigs }).(pulumi.StringMapOutput)
+func (o PolicyControllerHubConfigResponseOutput) DeploymentConfigs() PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerHubConfigResponse) map[string]PolicyControllerPolicyControllerDeploymentConfigResponse {
+		return v.DeploymentConfigs
+	}).(PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput)
 }
 
 // The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
@@ -10416,6 +12659,50 @@ func (o PolicyControllerMembershipSpecResponseOutput) Version() pulumi.StringOut
 	return o.ApplyT(func(v PolicyControllerMembershipSpecResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
+// **Policy Controller**: State for a single cluster.
+type PolicyControllerMembershipStateResponse struct {
+	// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
+	ComponentStates map[string]PolicyControllerOnClusterStateResponse `pulumi:"componentStates"`
+	// The overall content state observed by the Hub Feature controller.
+	PolicyContentState PolicyControllerPolicyContentStateResponse `pulumi:"policyContentState"`
+	// The overall Policy Controller lifecycle state observed by the Hub Feature controller.
+	State string `pulumi:"state"`
+}
+
+// **Policy Controller**: State for a single cluster.
+type PolicyControllerMembershipStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerMembershipStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerMembershipStateResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerMembershipStateResponseOutput) ToPolicyControllerMembershipStateResponseOutput() PolicyControllerMembershipStateResponseOutput {
+	return o
+}
+
+func (o PolicyControllerMembershipStateResponseOutput) ToPolicyControllerMembershipStateResponseOutputWithContext(ctx context.Context) PolicyControllerMembershipStateResponseOutput {
+	return o
+}
+
+// Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation"
+func (o PolicyControllerMembershipStateResponseOutput) ComponentStates() PolicyControllerOnClusterStateResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerMembershipStateResponse) map[string]PolicyControllerOnClusterStateResponse {
+		return v.ComponentStates
+	}).(PolicyControllerOnClusterStateResponseMapOutput)
+}
+
+// The overall content state observed by the Hub Feature controller.
+func (o PolicyControllerMembershipStateResponseOutput) PolicyContentState() PolicyControllerPolicyContentStateResponseOutput {
+	return o.ApplyT(func(v PolicyControllerMembershipStateResponse) PolicyControllerPolicyContentStateResponse {
+		return v.PolicyContentState
+	}).(PolicyControllerPolicyContentStateResponseOutput)
+}
+
+// The overall Policy Controller lifecycle state observed by the Hub Feature controller.
+func (o PolicyControllerMembershipStateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerMembershipStateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
 // MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]
 type PolicyControllerMonitoringConfig struct {
 	// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
@@ -10584,10 +12871,63 @@ func (o PolicyControllerMonitoringConfigResponseOutput) Backends() pulumi.String
 	return o.ApplyT(func(v PolicyControllerMonitoringConfigResponse) []string { return v.Backends }).(pulumi.StringArrayOutput)
 }
 
+// OnClusterState represents the state of a sub-component of Policy Controller.
+type PolicyControllerOnClusterStateResponse struct {
+	// Surface potential errors or information logs.
+	Details string `pulumi:"details"`
+	// The lifecycle state of this component.
+	State string `pulumi:"state"`
+}
+
+// OnClusterState represents the state of a sub-component of Policy Controller.
+type PolicyControllerOnClusterStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerOnClusterStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerOnClusterStateResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerOnClusterStateResponseOutput) ToPolicyControllerOnClusterStateResponseOutput() PolicyControllerOnClusterStateResponseOutput {
+	return o
+}
+
+func (o PolicyControllerOnClusterStateResponseOutput) ToPolicyControllerOnClusterStateResponseOutputWithContext(ctx context.Context) PolicyControllerOnClusterStateResponseOutput {
+	return o
+}
+
+// Surface potential errors or information logs.
+func (o PolicyControllerOnClusterStateResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerOnClusterStateResponse) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of this component.
+func (o PolicyControllerOnClusterStateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerOnClusterStateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type PolicyControllerOnClusterStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerOnClusterStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerOnClusterStateResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerOnClusterStateResponseMapOutput) ToPolicyControllerOnClusterStateResponseMapOutput() PolicyControllerOnClusterStateResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerOnClusterStateResponseMapOutput) ToPolicyControllerOnClusterStateResponseMapOutputWithContext(ctx context.Context) PolicyControllerOnClusterStateResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerOnClusterStateResponseMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerOnClusterStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerOnClusterStateResponse {
+		return vs[0].(map[string]PolicyControllerOnClusterStateResponse)[vs[1].(string)]
+	}).(PolicyControllerOnClusterStateResponseOutput)
+}
+
 // PolicyContentSpec defines the user's desired content configuration on the cluster.
 type PolicyControllerPolicyContentSpec struct {
 	// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-	Bundles map[string]string `pulumi:"bundles"`
+	Bundles map[string]PolicyControllerBundleInstallSpec `pulumi:"bundles"`
 	// Configures the installation of the Template Library.
 	TemplateLibrary *PolicyControllerTemplateLibraryConfig `pulumi:"templateLibrary"`
 }
@@ -10606,7 +12946,7 @@ type PolicyControllerPolicyContentSpecInput interface {
 // PolicyContentSpec defines the user's desired content configuration on the cluster.
 type PolicyControllerPolicyContentSpecArgs struct {
 	// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-	Bundles pulumi.StringMapInput `pulumi:"bundles"`
+	Bundles PolicyControllerBundleInstallSpecMapInput `pulumi:"bundles"`
 	// Configures the installation of the Template Library.
 	TemplateLibrary PolicyControllerTemplateLibraryConfigPtrInput `pulumi:"templateLibrary"`
 }
@@ -10690,8 +13030,10 @@ func (o PolicyControllerPolicyContentSpecOutput) ToPolicyControllerPolicyContent
 }
 
 // map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-func (o PolicyControllerPolicyContentSpecOutput) Bundles() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PolicyControllerPolicyContentSpec) map[string]string { return v.Bundles }).(pulumi.StringMapOutput)
+func (o PolicyControllerPolicyContentSpecOutput) Bundles() PolicyControllerBundleInstallSpecMapOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentSpec) map[string]PolicyControllerBundleInstallSpec {
+		return v.Bundles
+	}).(PolicyControllerBundleInstallSpecMapOutput)
 }
 
 // Configures the installation of the Template Library.
@@ -10726,13 +13068,13 @@ func (o PolicyControllerPolicyContentSpecPtrOutput) Elem() PolicyControllerPolic
 }
 
 // map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-func (o PolicyControllerPolicyContentSpecPtrOutput) Bundles() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PolicyControllerPolicyContentSpec) map[string]string {
+func (o PolicyControllerPolicyContentSpecPtrOutput) Bundles() PolicyControllerBundleInstallSpecMapOutput {
+	return o.ApplyT(func(v *PolicyControllerPolicyContentSpec) map[string]PolicyControllerBundleInstallSpec {
 		if v == nil {
 			return nil
 		}
 		return v.Bundles
-	}).(pulumi.StringMapOutput)
+	}).(PolicyControllerBundleInstallSpecMapOutput)
 }
 
 // Configures the installation of the Template Library.
@@ -10748,7 +13090,7 @@ func (o PolicyControllerPolicyContentSpecPtrOutput) TemplateLibrary() PolicyCont
 // PolicyContentSpec defines the user's desired content configuration on the cluster.
 type PolicyControllerPolicyContentSpecResponse struct {
 	// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-	Bundles map[string]string `pulumi:"bundles"`
+	Bundles map[string]PolicyControllerBundleInstallSpecResponse `pulumi:"bundles"`
 	// Configures the installation of the Template Library.
 	TemplateLibrary PolicyControllerTemplateLibraryConfigResponse `pulumi:"templateLibrary"`
 }
@@ -10769,8 +13111,10 @@ func (o PolicyControllerPolicyContentSpecResponseOutput) ToPolicyControllerPolic
 }
 
 // map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-func (o PolicyControllerPolicyContentSpecResponseOutput) Bundles() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PolicyControllerPolicyContentSpecResponse) map[string]string { return v.Bundles }).(pulumi.StringMapOutput)
+func (o PolicyControllerPolicyContentSpecResponseOutput) Bundles() PolicyControllerBundleInstallSpecResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentSpecResponse) map[string]PolicyControllerBundleInstallSpecResponse {
+		return v.Bundles
+	}).(PolicyControllerBundleInstallSpecResponseMapOutput)
 }
 
 // Configures the installation of the Template Library.
@@ -10778,6 +13122,660 @@ func (o PolicyControllerPolicyContentSpecResponseOutput) TemplateLibrary() Polic
 	return o.ApplyT(func(v PolicyControllerPolicyContentSpecResponse) PolicyControllerTemplateLibraryConfigResponse {
 		return v.TemplateLibrary
 	}).(PolicyControllerTemplateLibraryConfigResponseOutput)
+}
+
+// The state of the policy controller policy content
+type PolicyControllerPolicyContentStateResponse struct {
+	// The state of the any bundles included in the chosen version of the manifest
+	BundleStates map[string]PolicyControllerOnClusterStateResponse `pulumi:"bundleStates"`
+	// The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user.
+	ReferentialSyncConfigState PolicyControllerOnClusterStateResponse `pulumi:"referentialSyncConfigState"`
+	// The state of the template library
+	TemplateLibraryState PolicyControllerOnClusterStateResponse `pulumi:"templateLibraryState"`
+}
+
+// The state of the policy controller policy content
+type PolicyControllerPolicyContentStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerPolicyContentStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerPolicyContentStateResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerPolicyContentStateResponseOutput) ToPolicyControllerPolicyContentStateResponseOutput() PolicyControllerPolicyContentStateResponseOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyContentStateResponseOutput) ToPolicyControllerPolicyContentStateResponseOutputWithContext(ctx context.Context) PolicyControllerPolicyContentStateResponseOutput {
+	return o
+}
+
+// The state of the any bundles included in the chosen version of the manifest
+func (o PolicyControllerPolicyContentStateResponseOutput) BundleStates() PolicyControllerOnClusterStateResponseMapOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentStateResponse) map[string]PolicyControllerOnClusterStateResponse {
+		return v.BundleStates
+	}).(PolicyControllerOnClusterStateResponseMapOutput)
+}
+
+// The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user.
+func (o PolicyControllerPolicyContentStateResponseOutput) ReferentialSyncConfigState() PolicyControllerOnClusterStateResponseOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentStateResponse) PolicyControllerOnClusterStateResponse {
+		return v.ReferentialSyncConfigState
+	}).(PolicyControllerOnClusterStateResponseOutput)
+}
+
+// The state of the template library
+func (o PolicyControllerPolicyContentStateResponseOutput) TemplateLibraryState() PolicyControllerOnClusterStateResponseOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyContentStateResponse) PolicyControllerOnClusterStateResponse {
+		return v.TemplateLibraryState
+	}).(PolicyControllerOnClusterStateResponseOutput)
+}
+
+// Deployment-specific configuration.
+type PolicyControllerPolicyControllerDeploymentConfig struct {
+	// Container resource requirements.
+	ContainerResources *PolicyControllerResourceRequirements `pulumi:"containerResources"`
+	// Pod affinity configuration.
+	PodAffinity *PolicyControllerPolicyControllerDeploymentConfigPodAffinity `pulumi:"podAffinity"`
+	// Pod anti-affinity enablement.
+	PodAntiAffinity *bool `pulumi:"podAntiAffinity"`
+	// Pod tolerations of node taints.
+	PodTolerations []PolicyControllerToleration `pulumi:"podTolerations"`
+	// Pod replica count.
+	ReplicaCount *string `pulumi:"replicaCount"`
+}
+
+// PolicyControllerPolicyControllerDeploymentConfigInput is an input type that accepts PolicyControllerPolicyControllerDeploymentConfigArgs and PolicyControllerPolicyControllerDeploymentConfigOutput values.
+// You can construct a concrete instance of `PolicyControllerPolicyControllerDeploymentConfigInput` via:
+//
+//	PolicyControllerPolicyControllerDeploymentConfigArgs{...}
+type PolicyControllerPolicyControllerDeploymentConfigInput interface {
+	pulumi.Input
+
+	ToPolicyControllerPolicyControllerDeploymentConfigOutput() PolicyControllerPolicyControllerDeploymentConfigOutput
+	ToPolicyControllerPolicyControllerDeploymentConfigOutputWithContext(context.Context) PolicyControllerPolicyControllerDeploymentConfigOutput
+}
+
+// Deployment-specific configuration.
+type PolicyControllerPolicyControllerDeploymentConfigArgs struct {
+	// Container resource requirements.
+	ContainerResources PolicyControllerResourceRequirementsPtrInput `pulumi:"containerResources"`
+	// Pod affinity configuration.
+	PodAffinity PolicyControllerPolicyControllerDeploymentConfigPodAffinityPtrInput `pulumi:"podAffinity"`
+	// Pod anti-affinity enablement.
+	PodAntiAffinity pulumi.BoolPtrInput `pulumi:"podAntiAffinity"`
+	// Pod tolerations of node taints.
+	PodTolerations PolicyControllerTolerationArrayInput `pulumi:"podTolerations"`
+	// Pod replica count.
+	ReplicaCount pulumi.StringPtrInput `pulumi:"replicaCount"`
+}
+
+func (PolicyControllerPolicyControllerDeploymentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
+}
+
+func (i PolicyControllerPolicyControllerDeploymentConfigArgs) ToPolicyControllerPolicyControllerDeploymentConfigOutput() PolicyControllerPolicyControllerDeploymentConfigOutput {
+	return i.ToPolicyControllerPolicyControllerDeploymentConfigOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerPolicyControllerDeploymentConfigArgs) ToPolicyControllerPolicyControllerDeploymentConfigOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerPolicyControllerDeploymentConfigOutput)
+}
+
+// PolicyControllerPolicyControllerDeploymentConfigMapInput is an input type that accepts PolicyControllerPolicyControllerDeploymentConfigMap and PolicyControllerPolicyControllerDeploymentConfigMapOutput values.
+// You can construct a concrete instance of `PolicyControllerPolicyControllerDeploymentConfigMapInput` via:
+//
+//	PolicyControllerPolicyControllerDeploymentConfigMap{ "key": PolicyControllerPolicyControllerDeploymentConfigArgs{...} }
+type PolicyControllerPolicyControllerDeploymentConfigMapInput interface {
+	pulumi.Input
+
+	ToPolicyControllerPolicyControllerDeploymentConfigMapOutput() PolicyControllerPolicyControllerDeploymentConfigMapOutput
+	ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(context.Context) PolicyControllerPolicyControllerDeploymentConfigMapOutput
+}
+
+type PolicyControllerPolicyControllerDeploymentConfigMap map[string]PolicyControllerPolicyControllerDeploymentConfigInput
+
+func (PolicyControllerPolicyControllerDeploymentConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
+}
+
+func (i PolicyControllerPolicyControllerDeploymentConfigMap) ToPolicyControllerPolicyControllerDeploymentConfigMapOutput() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return i.ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerPolicyControllerDeploymentConfigMap) ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerPolicyControllerDeploymentConfigMapOutput)
+}
+
+// Deployment-specific configuration.
+type PolicyControllerPolicyControllerDeploymentConfigOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerPolicyControllerDeploymentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ToPolicyControllerPolicyControllerDeploymentConfigOutput() PolicyControllerPolicyControllerDeploymentConfigOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ToPolicyControllerPolicyControllerDeploymentConfigOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigOutput {
+	return o
+}
+
+// Container resource requirements.
+func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ContainerResources() PolicyControllerResourceRequirementsPtrOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfig) *PolicyControllerResourceRequirements {
+		return v.ContainerResources
+	}).(PolicyControllerResourceRequirementsPtrOutput)
+}
+
+// Pod affinity configuration.
+func (o PolicyControllerPolicyControllerDeploymentConfigOutput) PodAffinity() PolicyControllerPolicyControllerDeploymentConfigPodAffinityPtrOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfig) *PolicyControllerPolicyControllerDeploymentConfigPodAffinity {
+		return v.PodAffinity
+	}).(PolicyControllerPolicyControllerDeploymentConfigPodAffinityPtrOutput)
+}
+
+// Pod anti-affinity enablement.
+func (o PolicyControllerPolicyControllerDeploymentConfigOutput) PodAntiAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfig) *bool { return v.PodAntiAffinity }).(pulumi.BoolPtrOutput)
+}
+
+// Pod tolerations of node taints.
+func (o PolicyControllerPolicyControllerDeploymentConfigOutput) PodTolerations() PolicyControllerTolerationArrayOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfig) []PolicyControllerToleration {
+		return v.PodTolerations
+	}).(PolicyControllerTolerationArrayOutput)
+}
+
+// Pod replica count.
+func (o PolicyControllerPolicyControllerDeploymentConfigOutput) ReplicaCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfig) *string { return v.ReplicaCount }).(pulumi.StringPtrOutput)
+}
+
+type PolicyControllerPolicyControllerDeploymentConfigMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerPolicyControllerDeploymentConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerPolicyControllerDeploymentConfig)(nil)).Elem()
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigMapOutput() PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigMapOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigMapOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerPolicyControllerDeploymentConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerPolicyControllerDeploymentConfig {
+		return vs[0].(map[string]PolicyControllerPolicyControllerDeploymentConfig)[vs[1].(string)]
+	}).(PolicyControllerPolicyControllerDeploymentConfigOutput)
+}
+
+// Deployment-specific configuration.
+type PolicyControllerPolicyControllerDeploymentConfigResponse struct {
+	// Container resource requirements.
+	ContainerResources PolicyControllerResourceRequirementsResponse `pulumi:"containerResources"`
+	// Pod affinity configuration.
+	PodAffinity string `pulumi:"podAffinity"`
+	// Pod anti-affinity enablement.
+	PodAntiAffinity bool `pulumi:"podAntiAffinity"`
+	// Pod tolerations of node taints.
+	PodTolerations []PolicyControllerTolerationResponse `pulumi:"podTolerations"`
+	// Pod replica count.
+	ReplicaCount string `pulumi:"replicaCount"`
+}
+
+// Deployment-specific configuration.
+type PolicyControllerPolicyControllerDeploymentConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerPolicyControllerDeploymentConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfigResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) ToPolicyControllerPolicyControllerDeploymentConfigResponseOutput() PolicyControllerPolicyControllerDeploymentConfigResponseOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) ToPolicyControllerPolicyControllerDeploymentConfigResponseOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigResponseOutput {
+	return o
+}
+
+// Container resource requirements.
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) ContainerResources() PolicyControllerResourceRequirementsResponseOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfigResponse) PolicyControllerResourceRequirementsResponse {
+		return v.ContainerResources
+	}).(PolicyControllerResourceRequirementsResponseOutput)
+}
+
+// Pod affinity configuration.
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) PodAffinity() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfigResponse) string { return v.PodAffinity }).(pulumi.StringOutput)
+}
+
+// Pod anti-affinity enablement.
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) PodAntiAffinity() pulumi.BoolOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfigResponse) bool { return v.PodAntiAffinity }).(pulumi.BoolOutput)
+}
+
+// Pod tolerations of node taints.
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) PodTolerations() PolicyControllerTolerationResponseArrayOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfigResponse) []PolicyControllerTolerationResponse {
+		return v.PodTolerations
+	}).(PolicyControllerTolerationResponseArrayOutput)
+}
+
+// Pod replica count.
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseOutput) ReplicaCount() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerPolicyControllerDeploymentConfigResponse) string { return v.ReplicaCount }).(pulumi.StringOutput)
+}
+
+type PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyControllerPolicyControllerDeploymentConfigResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigResponseMapOutput() PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) ToPolicyControllerPolicyControllerDeploymentConfigResponseMapOutputWithContext(ctx context.Context) PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput {
+	return o
+}
+
+func (o PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput) MapIndex(k pulumi.StringInput) PolicyControllerPolicyControllerDeploymentConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyControllerPolicyControllerDeploymentConfigResponse {
+		return vs[0].(map[string]PolicyControllerPolicyControllerDeploymentConfigResponse)[vs[1].(string)]
+	}).(PolicyControllerPolicyControllerDeploymentConfigResponseOutput)
+}
+
+// ResourceList contains container resource requirements.
+type PolicyControllerResourceList struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu *string `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory *string `pulumi:"memory"`
+}
+
+// PolicyControllerResourceListInput is an input type that accepts PolicyControllerResourceListArgs and PolicyControllerResourceListOutput values.
+// You can construct a concrete instance of `PolicyControllerResourceListInput` via:
+//
+//	PolicyControllerResourceListArgs{...}
+type PolicyControllerResourceListInput interface {
+	pulumi.Input
+
+	ToPolicyControllerResourceListOutput() PolicyControllerResourceListOutput
+	ToPolicyControllerResourceListOutputWithContext(context.Context) PolicyControllerResourceListOutput
+}
+
+// ResourceList contains container resource requirements.
+type PolicyControllerResourceListArgs struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (PolicyControllerResourceListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerResourceList)(nil)).Elem()
+}
+
+func (i PolicyControllerResourceListArgs) ToPolicyControllerResourceListOutput() PolicyControllerResourceListOutput {
+	return i.ToPolicyControllerResourceListOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerResourceListArgs) ToPolicyControllerResourceListOutputWithContext(ctx context.Context) PolicyControllerResourceListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerResourceListOutput)
+}
+
+func (i PolicyControllerResourceListArgs) ToPolicyControllerResourceListPtrOutput() PolicyControllerResourceListPtrOutput {
+	return i.ToPolicyControllerResourceListPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerResourceListArgs) ToPolicyControllerResourceListPtrOutputWithContext(ctx context.Context) PolicyControllerResourceListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerResourceListOutput).ToPolicyControllerResourceListPtrOutputWithContext(ctx)
+}
+
+// PolicyControllerResourceListPtrInput is an input type that accepts PolicyControllerResourceListArgs, PolicyControllerResourceListPtr and PolicyControllerResourceListPtrOutput values.
+// You can construct a concrete instance of `PolicyControllerResourceListPtrInput` via:
+//
+//	        PolicyControllerResourceListArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyControllerResourceListPtrInput interface {
+	pulumi.Input
+
+	ToPolicyControllerResourceListPtrOutput() PolicyControllerResourceListPtrOutput
+	ToPolicyControllerResourceListPtrOutputWithContext(context.Context) PolicyControllerResourceListPtrOutput
+}
+
+type policyControllerResourceListPtrType PolicyControllerResourceListArgs
+
+func PolicyControllerResourceListPtr(v *PolicyControllerResourceListArgs) PolicyControllerResourceListPtrInput {
+	return (*policyControllerResourceListPtrType)(v)
+}
+
+func (*policyControllerResourceListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyControllerResourceList)(nil)).Elem()
+}
+
+func (i *policyControllerResourceListPtrType) ToPolicyControllerResourceListPtrOutput() PolicyControllerResourceListPtrOutput {
+	return i.ToPolicyControllerResourceListPtrOutputWithContext(context.Background())
+}
+
+func (i *policyControllerResourceListPtrType) ToPolicyControllerResourceListPtrOutputWithContext(ctx context.Context) PolicyControllerResourceListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerResourceListPtrOutput)
+}
+
+// ResourceList contains container resource requirements.
+type PolicyControllerResourceListOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerResourceListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerResourceList)(nil)).Elem()
+}
+
+func (o PolicyControllerResourceListOutput) ToPolicyControllerResourceListOutput() PolicyControllerResourceListOutput {
+	return o
+}
+
+func (o PolicyControllerResourceListOutput) ToPolicyControllerResourceListOutputWithContext(ctx context.Context) PolicyControllerResourceListOutput {
+	return o
+}
+
+func (o PolicyControllerResourceListOutput) ToPolicyControllerResourceListPtrOutput() PolicyControllerResourceListPtrOutput {
+	return o.ToPolicyControllerResourceListPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerResourceListOutput) ToPolicyControllerResourceListPtrOutputWithContext(ctx context.Context) PolicyControllerResourceListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyControllerResourceList) *PolicyControllerResourceList {
+		return &v
+	}).(PolicyControllerResourceListPtrOutput)
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o PolicyControllerResourceListOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyControllerResourceList) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o PolicyControllerResourceListOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyControllerResourceList) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type PolicyControllerResourceListPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerResourceListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyControllerResourceList)(nil)).Elem()
+}
+
+func (o PolicyControllerResourceListPtrOutput) ToPolicyControllerResourceListPtrOutput() PolicyControllerResourceListPtrOutput {
+	return o
+}
+
+func (o PolicyControllerResourceListPtrOutput) ToPolicyControllerResourceListPtrOutputWithContext(ctx context.Context) PolicyControllerResourceListPtrOutput {
+	return o
+}
+
+func (o PolicyControllerResourceListPtrOutput) Elem() PolicyControllerResourceListOutput {
+	return o.ApplyT(func(v *PolicyControllerResourceList) PolicyControllerResourceList {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyControllerResourceList
+		return ret
+	}).(PolicyControllerResourceListOutput)
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o PolicyControllerResourceListPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyControllerResourceList) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o PolicyControllerResourceListPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyControllerResourceList) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceList contains container resource requirements.
+type PolicyControllerResourceListResponse struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu string `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory string `pulumi:"memory"`
+}
+
+// ResourceList contains container resource requirements.
+type PolicyControllerResourceListResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerResourceListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerResourceListResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerResourceListResponseOutput) ToPolicyControllerResourceListResponseOutput() PolicyControllerResourceListResponseOutput {
+	return o
+}
+
+func (o PolicyControllerResourceListResponseOutput) ToPolicyControllerResourceListResponseOutputWithContext(ctx context.Context) PolicyControllerResourceListResponseOutput {
+	return o
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o PolicyControllerResourceListResponseOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerResourceListResponse) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o PolicyControllerResourceListResponseOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerResourceListResponse) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type PolicyControllerResourceRequirements struct {
+	// Limits describes the maximum amount of compute resources allowed for use by the running container.
+	Limits *PolicyControllerResourceList `pulumi:"limits"`
+	// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+	Requests *PolicyControllerResourceList `pulumi:"requests"`
+}
+
+// PolicyControllerResourceRequirementsInput is an input type that accepts PolicyControllerResourceRequirementsArgs and PolicyControllerResourceRequirementsOutput values.
+// You can construct a concrete instance of `PolicyControllerResourceRequirementsInput` via:
+//
+//	PolicyControllerResourceRequirementsArgs{...}
+type PolicyControllerResourceRequirementsInput interface {
+	pulumi.Input
+
+	ToPolicyControllerResourceRequirementsOutput() PolicyControllerResourceRequirementsOutput
+	ToPolicyControllerResourceRequirementsOutputWithContext(context.Context) PolicyControllerResourceRequirementsOutput
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type PolicyControllerResourceRequirementsArgs struct {
+	// Limits describes the maximum amount of compute resources allowed for use by the running container.
+	Limits PolicyControllerResourceListPtrInput `pulumi:"limits"`
+	// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+	Requests PolicyControllerResourceListPtrInput `pulumi:"requests"`
+}
+
+func (PolicyControllerResourceRequirementsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerResourceRequirements)(nil)).Elem()
+}
+
+func (i PolicyControllerResourceRequirementsArgs) ToPolicyControllerResourceRequirementsOutput() PolicyControllerResourceRequirementsOutput {
+	return i.ToPolicyControllerResourceRequirementsOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerResourceRequirementsArgs) ToPolicyControllerResourceRequirementsOutputWithContext(ctx context.Context) PolicyControllerResourceRequirementsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerResourceRequirementsOutput)
+}
+
+func (i PolicyControllerResourceRequirementsArgs) ToPolicyControllerResourceRequirementsPtrOutput() PolicyControllerResourceRequirementsPtrOutput {
+	return i.ToPolicyControllerResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerResourceRequirementsArgs) ToPolicyControllerResourceRequirementsPtrOutputWithContext(ctx context.Context) PolicyControllerResourceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerResourceRequirementsOutput).ToPolicyControllerResourceRequirementsPtrOutputWithContext(ctx)
+}
+
+// PolicyControllerResourceRequirementsPtrInput is an input type that accepts PolicyControllerResourceRequirementsArgs, PolicyControllerResourceRequirementsPtr and PolicyControllerResourceRequirementsPtrOutput values.
+// You can construct a concrete instance of `PolicyControllerResourceRequirementsPtrInput` via:
+//
+//	        PolicyControllerResourceRequirementsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyControllerResourceRequirementsPtrInput interface {
+	pulumi.Input
+
+	ToPolicyControllerResourceRequirementsPtrOutput() PolicyControllerResourceRequirementsPtrOutput
+	ToPolicyControllerResourceRequirementsPtrOutputWithContext(context.Context) PolicyControllerResourceRequirementsPtrOutput
+}
+
+type policyControllerResourceRequirementsPtrType PolicyControllerResourceRequirementsArgs
+
+func PolicyControllerResourceRequirementsPtr(v *PolicyControllerResourceRequirementsArgs) PolicyControllerResourceRequirementsPtrInput {
+	return (*policyControllerResourceRequirementsPtrType)(v)
+}
+
+func (*policyControllerResourceRequirementsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyControllerResourceRequirements)(nil)).Elem()
+}
+
+func (i *policyControllerResourceRequirementsPtrType) ToPolicyControllerResourceRequirementsPtrOutput() PolicyControllerResourceRequirementsPtrOutput {
+	return i.ToPolicyControllerResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (i *policyControllerResourceRequirementsPtrType) ToPolicyControllerResourceRequirementsPtrOutputWithContext(ctx context.Context) PolicyControllerResourceRequirementsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerResourceRequirementsPtrOutput)
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type PolicyControllerResourceRequirementsOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerResourceRequirementsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerResourceRequirements)(nil)).Elem()
+}
+
+func (o PolicyControllerResourceRequirementsOutput) ToPolicyControllerResourceRequirementsOutput() PolicyControllerResourceRequirementsOutput {
+	return o
+}
+
+func (o PolicyControllerResourceRequirementsOutput) ToPolicyControllerResourceRequirementsOutputWithContext(ctx context.Context) PolicyControllerResourceRequirementsOutput {
+	return o
+}
+
+func (o PolicyControllerResourceRequirementsOutput) ToPolicyControllerResourceRequirementsPtrOutput() PolicyControllerResourceRequirementsPtrOutput {
+	return o.ToPolicyControllerResourceRequirementsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyControllerResourceRequirementsOutput) ToPolicyControllerResourceRequirementsPtrOutputWithContext(ctx context.Context) PolicyControllerResourceRequirementsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyControllerResourceRequirements) *PolicyControllerResourceRequirements {
+		return &v
+	}).(PolicyControllerResourceRequirementsPtrOutput)
+}
+
+// Limits describes the maximum amount of compute resources allowed for use by the running container.
+func (o PolicyControllerResourceRequirementsOutput) Limits() PolicyControllerResourceListPtrOutput {
+	return o.ApplyT(func(v PolicyControllerResourceRequirements) *PolicyControllerResourceList { return v.Limits }).(PolicyControllerResourceListPtrOutput)
+}
+
+// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+func (o PolicyControllerResourceRequirementsOutput) Requests() PolicyControllerResourceListPtrOutput {
+	return o.ApplyT(func(v PolicyControllerResourceRequirements) *PolicyControllerResourceList { return v.Requests }).(PolicyControllerResourceListPtrOutput)
+}
+
+type PolicyControllerResourceRequirementsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerResourceRequirementsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyControllerResourceRequirements)(nil)).Elem()
+}
+
+func (o PolicyControllerResourceRequirementsPtrOutput) ToPolicyControllerResourceRequirementsPtrOutput() PolicyControllerResourceRequirementsPtrOutput {
+	return o
+}
+
+func (o PolicyControllerResourceRequirementsPtrOutput) ToPolicyControllerResourceRequirementsPtrOutputWithContext(ctx context.Context) PolicyControllerResourceRequirementsPtrOutput {
+	return o
+}
+
+func (o PolicyControllerResourceRequirementsPtrOutput) Elem() PolicyControllerResourceRequirementsOutput {
+	return o.ApplyT(func(v *PolicyControllerResourceRequirements) PolicyControllerResourceRequirements {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyControllerResourceRequirements
+		return ret
+	}).(PolicyControllerResourceRequirementsOutput)
+}
+
+// Limits describes the maximum amount of compute resources allowed for use by the running container.
+func (o PolicyControllerResourceRequirementsPtrOutput) Limits() PolicyControllerResourceListPtrOutput {
+	return o.ApplyT(func(v *PolicyControllerResourceRequirements) *PolicyControllerResourceList {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(PolicyControllerResourceListPtrOutput)
+}
+
+// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+func (o PolicyControllerResourceRequirementsPtrOutput) Requests() PolicyControllerResourceListPtrOutput {
+	return o.ApplyT(func(v *PolicyControllerResourceRequirements) *PolicyControllerResourceList {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(PolicyControllerResourceListPtrOutput)
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type PolicyControllerResourceRequirementsResponse struct {
+	// Limits describes the maximum amount of compute resources allowed for use by the running container.
+	Limits PolicyControllerResourceListResponse `pulumi:"limits"`
+	// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+	Requests PolicyControllerResourceListResponse `pulumi:"requests"`
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type PolicyControllerResourceRequirementsResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerResourceRequirementsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerResourceRequirementsResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerResourceRequirementsResponseOutput) ToPolicyControllerResourceRequirementsResponseOutput() PolicyControllerResourceRequirementsResponseOutput {
+	return o
+}
+
+func (o PolicyControllerResourceRequirementsResponseOutput) ToPolicyControllerResourceRequirementsResponseOutputWithContext(ctx context.Context) PolicyControllerResourceRequirementsResponseOutput {
+	return o
+}
+
+// Limits describes the maximum amount of compute resources allowed for use by the running container.
+func (o PolicyControllerResourceRequirementsResponseOutput) Limits() PolicyControllerResourceListResponseOutput {
+	return o.ApplyT(func(v PolicyControllerResourceRequirementsResponse) PolicyControllerResourceListResponse {
+		return v.Limits
+	}).(PolicyControllerResourceListResponseOutput)
+}
+
+// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+func (o PolicyControllerResourceRequirementsResponseOutput) Requests() PolicyControllerResourceListResponseOutput {
+	return o.ApplyT(func(v PolicyControllerResourceRequirementsResponse) PolicyControllerResourceListResponse {
+		return v.Requests
+	}).(PolicyControllerResourceListResponseOutput)
 }
 
 // The config specifying which default library templates to install.
@@ -10946,6 +13944,200 @@ func (o PolicyControllerTemplateLibraryConfigResponseOutput) ToPolicyControllerT
 // Configures the manner in which the template library is installed on the cluster.
 func (o PolicyControllerTemplateLibraryConfigResponseOutput) Installation() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyControllerTemplateLibraryConfigResponse) string { return v.Installation }).(pulumi.StringOutput)
+}
+
+// Toleration of a node taint.
+type PolicyControllerToleration struct {
+	// Matches a taint effect.
+	Effect *string `pulumi:"effect"`
+	// Matches a taint key (not necessarily unique).
+	Key *string `pulumi:"key"`
+	// Matches a taint operator.
+	Operator *string `pulumi:"operator"`
+	// Matches a taint value.
+	Value *string `pulumi:"value"`
+}
+
+// PolicyControllerTolerationInput is an input type that accepts PolicyControllerTolerationArgs and PolicyControllerTolerationOutput values.
+// You can construct a concrete instance of `PolicyControllerTolerationInput` via:
+//
+//	PolicyControllerTolerationArgs{...}
+type PolicyControllerTolerationInput interface {
+	pulumi.Input
+
+	ToPolicyControllerTolerationOutput() PolicyControllerTolerationOutput
+	ToPolicyControllerTolerationOutputWithContext(context.Context) PolicyControllerTolerationOutput
+}
+
+// Toleration of a node taint.
+type PolicyControllerTolerationArgs struct {
+	// Matches a taint effect.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Matches a taint key (not necessarily unique).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Matches a taint operator.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Matches a taint value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (PolicyControllerTolerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerToleration)(nil)).Elem()
+}
+
+func (i PolicyControllerTolerationArgs) ToPolicyControllerTolerationOutput() PolicyControllerTolerationOutput {
+	return i.ToPolicyControllerTolerationOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerTolerationArgs) ToPolicyControllerTolerationOutputWithContext(ctx context.Context) PolicyControllerTolerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerTolerationOutput)
+}
+
+// PolicyControllerTolerationArrayInput is an input type that accepts PolicyControllerTolerationArray and PolicyControllerTolerationArrayOutput values.
+// You can construct a concrete instance of `PolicyControllerTolerationArrayInput` via:
+//
+//	PolicyControllerTolerationArray{ PolicyControllerTolerationArgs{...} }
+type PolicyControllerTolerationArrayInput interface {
+	pulumi.Input
+
+	ToPolicyControllerTolerationArrayOutput() PolicyControllerTolerationArrayOutput
+	ToPolicyControllerTolerationArrayOutputWithContext(context.Context) PolicyControllerTolerationArrayOutput
+}
+
+type PolicyControllerTolerationArray []PolicyControllerTolerationInput
+
+func (PolicyControllerTolerationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyControllerToleration)(nil)).Elem()
+}
+
+func (i PolicyControllerTolerationArray) ToPolicyControllerTolerationArrayOutput() PolicyControllerTolerationArrayOutput {
+	return i.ToPolicyControllerTolerationArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyControllerTolerationArray) ToPolicyControllerTolerationArrayOutputWithContext(ctx context.Context) PolicyControllerTolerationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyControllerTolerationArrayOutput)
+}
+
+// Toleration of a node taint.
+type PolicyControllerTolerationOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerTolerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerToleration)(nil)).Elem()
+}
+
+func (o PolicyControllerTolerationOutput) ToPolicyControllerTolerationOutput() PolicyControllerTolerationOutput {
+	return o
+}
+
+func (o PolicyControllerTolerationOutput) ToPolicyControllerTolerationOutputWithContext(ctx context.Context) PolicyControllerTolerationOutput {
+	return o
+}
+
+// Matches a taint effect.
+func (o PolicyControllerTolerationOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyControllerToleration) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// Matches a taint key (not necessarily unique).
+func (o PolicyControllerTolerationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyControllerToleration) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Matches a taint operator.
+func (o PolicyControllerTolerationOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyControllerToleration) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Matches a taint value.
+func (o PolicyControllerTolerationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyControllerToleration) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type PolicyControllerTolerationArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerTolerationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyControllerToleration)(nil)).Elem()
+}
+
+func (o PolicyControllerTolerationArrayOutput) ToPolicyControllerTolerationArrayOutput() PolicyControllerTolerationArrayOutput {
+	return o
+}
+
+func (o PolicyControllerTolerationArrayOutput) ToPolicyControllerTolerationArrayOutputWithContext(ctx context.Context) PolicyControllerTolerationArrayOutput {
+	return o
+}
+
+func (o PolicyControllerTolerationArrayOutput) Index(i pulumi.IntInput) PolicyControllerTolerationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyControllerToleration {
+		return vs[0].([]PolicyControllerToleration)[vs[1].(int)]
+	}).(PolicyControllerTolerationOutput)
+}
+
+// Toleration of a node taint.
+type PolicyControllerTolerationResponse struct {
+	// Matches a taint effect.
+	Effect string `pulumi:"effect"`
+	// Matches a taint key (not necessarily unique).
+	Key string `pulumi:"key"`
+	// Matches a taint operator.
+	Operator string `pulumi:"operator"`
+	// Matches a taint value.
+	Value string `pulumi:"value"`
+}
+
+// Toleration of a node taint.
+type PolicyControllerTolerationResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerTolerationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyControllerTolerationResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerTolerationResponseOutput) ToPolicyControllerTolerationResponseOutput() PolicyControllerTolerationResponseOutput {
+	return o
+}
+
+func (o PolicyControllerTolerationResponseOutput) ToPolicyControllerTolerationResponseOutputWithContext(ctx context.Context) PolicyControllerTolerationResponseOutput {
+	return o
+}
+
+// Matches a taint effect.
+func (o PolicyControllerTolerationResponseOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerTolerationResponse) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// Matches a taint key (not necessarily unique).
+func (o PolicyControllerTolerationResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerTolerationResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Matches a taint operator.
+func (o PolicyControllerTolerationResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerTolerationResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Matches a taint value.
+func (o PolicyControllerTolerationResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyControllerTolerationResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type PolicyControllerTolerationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyControllerTolerationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyControllerTolerationResponse)(nil)).Elem()
+}
+
+func (o PolicyControllerTolerationResponseArrayOutput) ToPolicyControllerTolerationResponseArrayOutput() PolicyControllerTolerationResponseArrayOutput {
+	return o
+}
+
+func (o PolicyControllerTolerationResponseArrayOutput) ToPolicyControllerTolerationResponseArrayOutputWithContext(ctx context.Context) PolicyControllerTolerationResponseArrayOutput {
+	return o
+}
+
+func (o PolicyControllerTolerationResponseArrayOutput) Index(i pulumi.IntInput) PolicyControllerTolerationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyControllerTolerationResponse {
+		return vs[0].([]PolicyControllerTolerationResponse)[vs[1].(int)]
+	}).(PolicyControllerTolerationResponseOutput)
 }
 
 // RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
@@ -11326,6 +14518,182 @@ func (o RoleResponseOutput) PredefinedRole() pulumi.StringOutput {
 	return o.ApplyT(func(v RoleResponse) string { return v.PredefinedRole }).(pulumi.StringOutput)
 }
 
+// ScopeFeatureSpec contains feature specs for a fleet scope.
+type ScopeFeatureSpec struct {
+}
+
+// ScopeFeatureSpecInput is an input type that accepts ScopeFeatureSpecArgs and ScopeFeatureSpecOutput values.
+// You can construct a concrete instance of `ScopeFeatureSpecInput` via:
+//
+//	ScopeFeatureSpecArgs{...}
+type ScopeFeatureSpecInput interface {
+	pulumi.Input
+
+	ToScopeFeatureSpecOutput() ScopeFeatureSpecOutput
+	ToScopeFeatureSpecOutputWithContext(context.Context) ScopeFeatureSpecOutput
+}
+
+// ScopeFeatureSpec contains feature specs for a fleet scope.
+type ScopeFeatureSpecArgs struct {
+}
+
+func (ScopeFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeFeatureSpec)(nil)).Elem()
+}
+
+func (i ScopeFeatureSpecArgs) ToScopeFeatureSpecOutput() ScopeFeatureSpecOutput {
+	return i.ToScopeFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i ScopeFeatureSpecArgs) ToScopeFeatureSpecOutputWithContext(ctx context.Context) ScopeFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeFeatureSpecOutput)
+}
+
+// ScopeFeatureSpecMapInput is an input type that accepts ScopeFeatureSpecMap and ScopeFeatureSpecMapOutput values.
+// You can construct a concrete instance of `ScopeFeatureSpecMapInput` via:
+//
+//	ScopeFeatureSpecMap{ "key": ScopeFeatureSpecArgs{...} }
+type ScopeFeatureSpecMapInput interface {
+	pulumi.Input
+
+	ToScopeFeatureSpecMapOutput() ScopeFeatureSpecMapOutput
+	ToScopeFeatureSpecMapOutputWithContext(context.Context) ScopeFeatureSpecMapOutput
+}
+
+type ScopeFeatureSpecMap map[string]ScopeFeatureSpecInput
+
+func (ScopeFeatureSpecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureSpec)(nil)).Elem()
+}
+
+func (i ScopeFeatureSpecMap) ToScopeFeatureSpecMapOutput() ScopeFeatureSpecMapOutput {
+	return i.ToScopeFeatureSpecMapOutputWithContext(context.Background())
+}
+
+func (i ScopeFeatureSpecMap) ToScopeFeatureSpecMapOutputWithContext(ctx context.Context) ScopeFeatureSpecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeFeatureSpecMapOutput)
+}
+
+// ScopeFeatureSpec contains feature specs for a fleet scope.
+type ScopeFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeFeatureSpec)(nil)).Elem()
+}
+
+func (o ScopeFeatureSpecOutput) ToScopeFeatureSpecOutput() ScopeFeatureSpecOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecOutput) ToScopeFeatureSpecOutputWithContext(ctx context.Context) ScopeFeatureSpecOutput {
+	return o
+}
+
+type ScopeFeatureSpecMapOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureSpecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureSpec)(nil)).Elem()
+}
+
+func (o ScopeFeatureSpecMapOutput) ToScopeFeatureSpecMapOutput() ScopeFeatureSpecMapOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecMapOutput) ToScopeFeatureSpecMapOutputWithContext(ctx context.Context) ScopeFeatureSpecMapOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecMapOutput) MapIndex(k pulumi.StringInput) ScopeFeatureSpecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScopeFeatureSpec {
+		return vs[0].(map[string]ScopeFeatureSpec)[vs[1].(string)]
+	}).(ScopeFeatureSpecOutput)
+}
+
+// ScopeFeatureSpec contains feature specs for a fleet scope.
+type ScopeFeatureSpecResponse struct {
+}
+
+// ScopeFeatureSpec contains feature specs for a fleet scope.
+type ScopeFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o ScopeFeatureSpecResponseOutput) ToScopeFeatureSpecResponseOutput() ScopeFeatureSpecResponseOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecResponseOutput) ToScopeFeatureSpecResponseOutputWithContext(ctx context.Context) ScopeFeatureSpecResponseOutput {
+	return o
+}
+
+type ScopeFeatureSpecResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureSpecResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o ScopeFeatureSpecResponseMapOutput) ToScopeFeatureSpecResponseMapOutput() ScopeFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecResponseMapOutput) ToScopeFeatureSpecResponseMapOutputWithContext(ctx context.Context) ScopeFeatureSpecResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureSpecResponseMapOutput) MapIndex(k pulumi.StringInput) ScopeFeatureSpecResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScopeFeatureSpecResponse {
+		return vs[0].(map[string]ScopeFeatureSpecResponse)[vs[1].(string)]
+	}).(ScopeFeatureSpecResponseOutput)
+}
+
+// ScopeFeatureState contains Scope-wide Feature status information.
+type ScopeFeatureStateResponse struct {
+	// The "running state" of the Feature in this Scope.
+	State FeatureStateResponse `pulumi:"state"`
+}
+
+// ScopeFeatureState contains Scope-wide Feature status information.
+type ScopeFeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeFeatureStateResponse)(nil)).Elem()
+}
+
+func (o ScopeFeatureStateResponseOutput) ToScopeFeatureStateResponseOutput() ScopeFeatureStateResponseOutput {
+	return o
+}
+
+func (o ScopeFeatureStateResponseOutput) ToScopeFeatureStateResponseOutputWithContext(ctx context.Context) ScopeFeatureStateResponseOutput {
+	return o
+}
+
+// The "running state" of the Feature in this Scope.
+func (o ScopeFeatureStateResponseOutput) State() FeatureStateResponseOutput {
+	return o.ApplyT(func(v ScopeFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
+}
+
+type ScopeFeatureStateResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ScopeFeatureStateResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScopeFeatureStateResponse)(nil)).Elem()
+}
+
+func (o ScopeFeatureStateResponseMapOutput) ToScopeFeatureStateResponseMapOutput() ScopeFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureStateResponseMapOutput) ToScopeFeatureStateResponseMapOutputWithContext(ctx context.Context) ScopeFeatureStateResponseMapOutput {
+	return o
+}
+
+func (o ScopeFeatureStateResponseMapOutput) MapIndex(k pulumi.StringInput) ScopeFeatureStateResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScopeFeatureStateResponse {
+		return vs[0].(map[string]ScopeFeatureStateResponse)[vs[1].(string)]
+	}).(ScopeFeatureStateResponseOutput)
+}
+
 // ScopeLifecycleState describes the state of a Scope resource.
 type ScopeLifecycleStateResponse struct {
 	// The current state of the scope resource.
@@ -11544,6 +14912,72 @@ func (o SecurityPostureConfigResponseOutput) VulnerabilityMode() pulumi.StringOu
 	return o.ApplyT(func(v SecurityPostureConfigResponse) string { return v.VulnerabilityMode }).(pulumi.StringOutput)
 }
 
+// Status of control plane management.
+type ServiceMeshControlPlaneManagementResponse struct {
+	// Explanation of state.
+	Details []ServiceMeshStatusDetailsResponse `pulumi:"details"`
+	// LifecycleState of control plane management.
+	State string `pulumi:"state"`
+}
+
+// Status of control plane management.
+type ServiceMeshControlPlaneManagementResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshControlPlaneManagementResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshControlPlaneManagementResponse)(nil)).Elem()
+}
+
+func (o ServiceMeshControlPlaneManagementResponseOutput) ToServiceMeshControlPlaneManagementResponseOutput() ServiceMeshControlPlaneManagementResponseOutput {
+	return o
+}
+
+func (o ServiceMeshControlPlaneManagementResponseOutput) ToServiceMeshControlPlaneManagementResponseOutputWithContext(ctx context.Context) ServiceMeshControlPlaneManagementResponseOutput {
+	return o
+}
+
+// Explanation of state.
+func (o ServiceMeshControlPlaneManagementResponseOutput) Details() ServiceMeshStatusDetailsResponseArrayOutput {
+	return o.ApplyT(func(v ServiceMeshControlPlaneManagementResponse) []ServiceMeshStatusDetailsResponse { return v.Details }).(ServiceMeshStatusDetailsResponseArrayOutput)
+}
+
+// LifecycleState of control plane management.
+func (o ServiceMeshControlPlaneManagementResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceMeshControlPlaneManagementResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Status of data plane management. Only reported per-member.
+type ServiceMeshDataPlaneManagementResponse struct {
+	// Explanation of the status.
+	Details []ServiceMeshStatusDetailsResponse `pulumi:"details"`
+	// Lifecycle status of data plane management.
+	State string `pulumi:"state"`
+}
+
+// Status of data plane management. Only reported per-member.
+type ServiceMeshDataPlaneManagementResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshDataPlaneManagementResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshDataPlaneManagementResponse)(nil)).Elem()
+}
+
+func (o ServiceMeshDataPlaneManagementResponseOutput) ToServiceMeshDataPlaneManagementResponseOutput() ServiceMeshDataPlaneManagementResponseOutput {
+	return o
+}
+
+func (o ServiceMeshDataPlaneManagementResponseOutput) ToServiceMeshDataPlaneManagementResponseOutputWithContext(ctx context.Context) ServiceMeshDataPlaneManagementResponseOutput {
+	return o
+}
+
+// Explanation of the status.
+func (o ServiceMeshDataPlaneManagementResponseOutput) Details() ServiceMeshStatusDetailsResponseArrayOutput {
+	return o.ApplyT(func(v ServiceMeshDataPlaneManagementResponse) []ServiceMeshStatusDetailsResponse { return v.Details }).(ServiceMeshStatusDetailsResponseArrayOutput)
+}
+
+// Lifecycle status of data plane management.
+func (o ServiceMeshDataPlaneManagementResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceMeshDataPlaneManagementResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
 // **Service Mesh**: Spec for a single Membership for the servicemesh feature
 type ServiceMeshMembershipSpec struct {
 	// Deprecated: use `management` instead Enables automatic control plane management.
@@ -11748,6 +15182,96 @@ func (o ServiceMeshMembershipSpecResponseOutput) Management() pulumi.StringOutpu
 	return o.ApplyT(func(v ServiceMeshMembershipSpecResponse) string { return v.Management }).(pulumi.StringOutput)
 }
 
+// **Service Mesh**: State for a single Membership, as analyzed by the Service Mesh Hub Controller.
+type ServiceMeshMembershipStateResponse struct {
+	// Status of control plane management
+	ControlPlaneManagement ServiceMeshControlPlaneManagementResponse `pulumi:"controlPlaneManagement"`
+	// Status of data plane management.
+	DataPlaneManagement ServiceMeshDataPlaneManagementResponse `pulumi:"dataPlaneManagement"`
+}
+
+// **Service Mesh**: State for a single Membership, as analyzed by the Service Mesh Hub Controller.
+type ServiceMeshMembershipStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMembershipStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMembershipStateResponse)(nil)).Elem()
+}
+
+func (o ServiceMeshMembershipStateResponseOutput) ToServiceMeshMembershipStateResponseOutput() ServiceMeshMembershipStateResponseOutput {
+	return o
+}
+
+func (o ServiceMeshMembershipStateResponseOutput) ToServiceMeshMembershipStateResponseOutputWithContext(ctx context.Context) ServiceMeshMembershipStateResponseOutput {
+	return o
+}
+
+// Status of control plane management
+func (o ServiceMeshMembershipStateResponseOutput) ControlPlaneManagement() ServiceMeshControlPlaneManagementResponseOutput {
+	return o.ApplyT(func(v ServiceMeshMembershipStateResponse) ServiceMeshControlPlaneManagementResponse {
+		return v.ControlPlaneManagement
+	}).(ServiceMeshControlPlaneManagementResponseOutput)
+}
+
+// Status of data plane management.
+func (o ServiceMeshMembershipStateResponseOutput) DataPlaneManagement() ServiceMeshDataPlaneManagementResponseOutput {
+	return o.ApplyT(func(v ServiceMeshMembershipStateResponse) ServiceMeshDataPlaneManagementResponse {
+		return v.DataPlaneManagement
+	}).(ServiceMeshDataPlaneManagementResponseOutput)
+}
+
+// Structured and human-readable details for a status.
+type ServiceMeshStatusDetailsResponse struct {
+	// A machine-readable code that further describes a broad status.
+	Code string `pulumi:"code"`
+	// Human-readable explanation of code.
+	Details string `pulumi:"details"`
+}
+
+// Structured and human-readable details for a status.
+type ServiceMeshStatusDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshStatusDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshStatusDetailsResponse)(nil)).Elem()
+}
+
+func (o ServiceMeshStatusDetailsResponseOutput) ToServiceMeshStatusDetailsResponseOutput() ServiceMeshStatusDetailsResponseOutput {
+	return o
+}
+
+func (o ServiceMeshStatusDetailsResponseOutput) ToServiceMeshStatusDetailsResponseOutputWithContext(ctx context.Context) ServiceMeshStatusDetailsResponseOutput {
+	return o
+}
+
+// A machine-readable code that further describes a broad status.
+func (o ServiceMeshStatusDetailsResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceMeshStatusDetailsResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Human-readable explanation of code.
+func (o ServiceMeshStatusDetailsResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceMeshStatusDetailsResponse) string { return v.Details }).(pulumi.StringOutput)
+}
+
+type ServiceMeshStatusDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshStatusDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceMeshStatusDetailsResponse)(nil)).Elem()
+}
+
+func (o ServiceMeshStatusDetailsResponseArrayOutput) ToServiceMeshStatusDetailsResponseArrayOutput() ServiceMeshStatusDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ServiceMeshStatusDetailsResponseArrayOutput) ToServiceMeshStatusDetailsResponseArrayOutputWithContext(ctx context.Context) ServiceMeshStatusDetailsResponseArrayOutput {
+	return o
+}
+
+func (o ServiceMeshStatusDetailsResponseArrayOutput) Index(i pulumi.IntInput) ServiceMeshStatusDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceMeshStatusDetailsResponse {
+		return vs[0].([]ServiceMeshStatusDetailsResponse)[vs[1].(int)]
+	}).(ServiceMeshStatusDetailsResponseOutput)
+}
+
 // Status specifies state for the subcomponent.
 type StatusResponse struct {
 	// Code specifies AppDevExperienceFeature's subcomponent ready state.
@@ -11837,6 +15361,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecPtrInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityLoggingConfigInput)(nil)).Elem(), FleetObservabilityLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityLoggingConfigPtrInput)(nil)).Elem(), FleetObservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityMembershipSpecInput)(nil)).Elem(), FleetObservabilityMembershipSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityMembershipSpecPtrInput)(nil)).Elem(), FleetObservabilityMembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigInput)(nil)).Elem(), FleetObservabilityRoutingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigPtrInput)(nil)).Elem(), FleetObservabilityRoutingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
@@ -11855,6 +15381,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourcePtrInput)(nil)).Elem(), KubernetesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipFeatureSpecInput)(nil)).Elem(), MembershipFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipFeatureSpecMapInput)(nil)).Elem(), MembershipFeatureSpecMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecInput)(nil)).Elem(), MembershipSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecPtrInput)(nil)).Elem(), MembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigInput)(nil)).Elem(), MonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigPtrInput)(nil)).Elem(), MonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterInput)(nil)).Elem(), MultiCloudClusterArgs{})
@@ -11863,8 +15393,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecPtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterInput)(nil)).Elem(), OnPremClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterPtrInput)(nil)).Elem(), OnPremClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginInput)(nil)).Elem(), OriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginPtrInput)(nil)).Elem(), OriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingInput)(nil)).Elem(), PolicyBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingArrayInput)(nil)).Elem(), PolicyBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerBundleInstallSpecInput)(nil)).Elem(), PolicyControllerBundleInstallSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerBundleInstallSpecMapInput)(nil)).Elem(), PolicyControllerBundleInstallSpecMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerHubConfigInput)(nil)).Elem(), PolicyControllerHubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerHubConfigPtrInput)(nil)).Elem(), PolicyControllerHubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerMembershipSpecInput)(nil)).Elem(), PolicyControllerMembershipSpecArgs{})
@@ -11873,11 +15407,21 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerMonitoringConfigPtrInput)(nil)).Elem(), PolicyControllerMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyContentSpecInput)(nil)).Elem(), PolicyControllerPolicyContentSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyContentSpecPtrInput)(nil)).Elem(), PolicyControllerPolicyContentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfigInput)(nil)).Elem(), PolicyControllerPolicyControllerDeploymentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerPolicyControllerDeploymentConfigMapInput)(nil)).Elem(), PolicyControllerPolicyControllerDeploymentConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerResourceListInput)(nil)).Elem(), PolicyControllerResourceListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerResourceListPtrInput)(nil)).Elem(), PolicyControllerResourceListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerResourceRequirementsInput)(nil)).Elem(), PolicyControllerResourceRequirementsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerResourceRequirementsPtrInput)(nil)).Elem(), PolicyControllerResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerTemplateLibraryConfigInput)(nil)).Elem(), PolicyControllerTemplateLibraryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerTemplateLibraryConfigPtrInput)(nil)).Elem(), PolicyControllerTemplateLibraryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerTolerationInput)(nil)).Elem(), PolicyControllerTolerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyControllerTolerationArrayInput)(nil)).Elem(), PolicyControllerTolerationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsInput)(nil)).Elem(), ResourceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsPtrInput)(nil)).Elem(), ResourceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleInput)(nil)).Elem(), RoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeFeatureSpecInput)(nil)).Elem(), ScopeFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeFeatureSpecMapInput)(nil)).Elem(), ScopeFeatureSpecMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigInput)(nil)).Elem(), SecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigPtrInput)(nil)).Elem(), SecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMembershipSpecInput)(nil)).Elem(), ServiceMeshMembershipSpecArgs{})
@@ -11928,6 +15472,11 @@ func init() {
 	pulumi.RegisterOutputType(ClusterUpgradeGKEUpgradeResponseOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradeGKEUpgradeStateResponseOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradeGKEUpgradeStateResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClusterUpgradeIgnoredMembershipResponseOutput{})
+	pulumi.RegisterOutputType(ClusterUpgradeIgnoredMembershipResponseMapOutput{})
+	pulumi.RegisterOutputType(ClusterUpgradeMembershipGKEUpgradeStateResponseOutput{})
+	pulumi.RegisterOutputType(ClusterUpgradeMembershipGKEUpgradeStateResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClusterUpgradeMembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradePostConditionsOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradePostConditionsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterUpgradePostConditionsResponseOutput{})
@@ -11942,27 +15491,51 @@ func init() {
 	pulumi.RegisterOutputType(ConfigManagementBinauthzConfigOutput{})
 	pulumi.RegisterOutputType(ConfigManagementBinauthzConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementBinauthzConfigResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementBinauthzStateResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementBinauthzVersionResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementConfigSyncOutput{})
 	pulumi.RegisterOutputType(ConfigManagementConfigSyncPtrOutput{})
+	pulumi.RegisterOutputType(ConfigManagementConfigSyncDeploymentStateResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementConfigSyncErrorResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementConfigSyncErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConfigManagementConfigSyncResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementConfigSyncStateResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementConfigSyncVersionResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementErrorResourceResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementErrorResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConfigManagementGatekeeperDeploymentStateResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementGitConfigOutput{})
 	pulumi.RegisterOutputType(ConfigManagementGitConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementGitConfigResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementGroupVersionKindResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementHierarchyControllerConfigOutput{})
 	pulumi.RegisterOutputType(ConfigManagementHierarchyControllerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementHierarchyControllerConfigResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementHierarchyControllerDeploymentStateResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementHierarchyControllerStateResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementHierarchyControllerVersionResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementInstallErrorResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementInstallErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConfigManagementMembershipSpecOutput{})
 	pulumi.RegisterOutputType(ConfigManagementMembershipSpecPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementMembershipSpecResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementMembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementOciConfigOutput{})
 	pulumi.RegisterOutputType(ConfigManagementOciConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementOciConfigResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementOperatorStateResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerPtrOutput{})
+	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMigrationResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringResponseOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementPolicyControllerStateResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementPolicyControllerVersionResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementSyncErrorResponseOutput{})
+	pulumi.RegisterOutputType(ConfigManagementSyncErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConfigManagementSyncStateResponseOutput{})
 	pulumi.RegisterOutputType(DefaultClusterConfigOutput{})
 	pulumi.RegisterOutputType(DefaultClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(DefaultClusterConfigResponseOutput{})
@@ -11987,6 +15560,10 @@ func init() {
 	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityMembershipSpecOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityMembershipSpecPtrOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityMembershipSpecResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityMembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigPtrOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigResponseOutput{})
@@ -12006,6 +15583,7 @@ func init() {
 	pulumi.RegisterOutputType(IdentityServiceMembershipSpecOutput{})
 	pulumi.RegisterOutputType(IdentityServiceMembershipSpecPtrOutput{})
 	pulumi.RegisterOutputType(IdentityServiceMembershipSpecResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceMembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(IdentityServiceOidcConfigOutput{})
 	pulumi.RegisterOutputType(IdentityServiceOidcConfigPtrOutput{})
 	pulumi.RegisterOutputType(IdentityServiceOidcConfigResponseOutput{})
@@ -12017,7 +15595,17 @@ func init() {
 	pulumi.RegisterOutputType(MembershipEndpointOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointResponseOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureSpecOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureSpecMapOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureSpecResponseMapOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(MembershipFeatureStateResponseMapOutput{})
+	pulumi.RegisterOutputType(MembershipSpecOutput{})
+	pulumi.RegisterOutputType(MembershipSpecPtrOutput{})
+	pulumi.RegisterOutputType(MembershipSpecResponseOutput{})
 	pulumi.RegisterOutputType(MembershipStateResponseOutput{})
+	pulumi.RegisterOutputType(MeteringMembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(MonitoringConfigOutput{})
 	pulumi.RegisterOutputType(MonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringConfigResponseOutput{})
@@ -12031,25 +15619,50 @@ func init() {
 	pulumi.RegisterOutputType(OnPremClusterOutput{})
 	pulumi.RegisterOutputType(OnPremClusterPtrOutput{})
 	pulumi.RegisterOutputType(OnPremClusterResponseOutput{})
+	pulumi.RegisterOutputType(OriginOutput{})
+	pulumi.RegisterOutputType(OriginPtrOutput{})
+	pulumi.RegisterOutputType(OriginResponseOutput{})
 	pulumi.RegisterOutputType(PolicyBindingOutput{})
 	pulumi.RegisterOutputType(PolicyBindingArrayOutput{})
 	pulumi.RegisterOutputType(PolicyBindingResponseOutput{})
 	pulumi.RegisterOutputType(PolicyBindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecOutput{})
+	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecMapOutput{})
+	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerBundleInstallSpecResponseMapOutput{})
 	pulumi.RegisterOutputType(PolicyControllerHubConfigOutput{})
 	pulumi.RegisterOutputType(PolicyControllerHubConfigPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerHubConfigResponseOutput{})
 	pulumi.RegisterOutputType(PolicyControllerMembershipSpecOutput{})
 	pulumi.RegisterOutputType(PolicyControllerMembershipSpecPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerMembershipSpecResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerMembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerMonitoringConfigResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerOnClusterStateResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerOnClusterStateResponseMapOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyContentSpecOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyContentSpecPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerPolicyContentSpecResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerPolicyContentStateResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigOutput{})
+	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigMapOutput{})
+	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerPolicyControllerDeploymentConfigResponseMapOutput{})
+	pulumi.RegisterOutputType(PolicyControllerResourceListOutput{})
+	pulumi.RegisterOutputType(PolicyControllerResourceListPtrOutput{})
+	pulumi.RegisterOutputType(PolicyControllerResourceListResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerResourceRequirementsOutput{})
+	pulumi.RegisterOutputType(PolicyControllerResourceRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(PolicyControllerResourceRequirementsResponseOutput{})
 	pulumi.RegisterOutputType(PolicyControllerTemplateLibraryConfigOutput{})
 	pulumi.RegisterOutputType(PolicyControllerTemplateLibraryConfigPtrOutput{})
 	pulumi.RegisterOutputType(PolicyControllerTemplateLibraryConfigResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerTolerationOutput{})
+	pulumi.RegisterOutputType(PolicyControllerTolerationArrayOutput{})
+	pulumi.RegisterOutputType(PolicyControllerTolerationResponseOutput{})
+	pulumi.RegisterOutputType(PolicyControllerTolerationResponseArrayOutput{})
 	pulumi.RegisterOutputType(RBACRoleBindingLifecycleStateResponseOutput{})
 	pulumi.RegisterOutputType(ResourceManifestResponseOutput{})
 	pulumi.RegisterOutputType(ResourceManifestResponseArrayOutput{})
@@ -12058,12 +15671,23 @@ func init() {
 	pulumi.RegisterOutputType(ResourceOptionsResponseOutput{})
 	pulumi.RegisterOutputType(RoleOutput{})
 	pulumi.RegisterOutputType(RoleResponseOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureSpecOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureSpecMapOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureSpecResponseMapOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(ScopeFeatureStateResponseMapOutput{})
 	pulumi.RegisterOutputType(ScopeLifecycleStateResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigResponseOutput{})
+	pulumi.RegisterOutputType(ServiceMeshControlPlaneManagementResponseOutput{})
+	pulumi.RegisterOutputType(ServiceMeshDataPlaneManagementResponseOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMembershipSpecOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMembershipSpecPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMembershipSpecResponseOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMembershipStateResponseOutput{})
+	pulumi.RegisterOutputType(ServiceMeshStatusDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ServiceMeshStatusDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 }

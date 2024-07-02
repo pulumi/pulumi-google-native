@@ -19,6 +19,7 @@ __all__ = [
     'ManagementClusterArgs',
     'NetworkConfigArgs',
     'NetworkServiceArgs',
+    'NodeTypeConfigArgs',
     'StretchedClusterConfigArgs',
 ]
 
@@ -290,12 +291,12 @@ class IpRangeArgs:
 class ManagementClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 node_type_configs: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 node_type_configs: pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]],
                  stretched_cluster_config: Optional[pulumi.Input['StretchedClusterConfigArgs']] = None):
         """
         Management cluster configuration.
         :param pulumi.Input[str] cluster_id: The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
+        :param pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         :param pulumi.Input['StretchedClusterConfigArgs'] stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -317,14 +318,14 @@ class ManagementClusterArgs:
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def node_type_configs(self) -> pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]]:
         """
         The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         """
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def node_type_configs(self, value: pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]]):
         pulumi.set(self, "node_type_configs", value)
 
     @property
@@ -401,6 +402,45 @@ class NetworkServiceArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class NodeTypeConfigArgs:
+    def __init__(__self__, *,
+                 node_count: pulumi.Input[int],
+                 custom_core_count: Optional[pulumi.Input[int]] = None):
+        """
+        Information about the type and number of nodes associated with the cluster.
+        :param pulumi.Input[int] node_count: The number of nodes of this type in the cluster
+        :param pulumi.Input[int] custom_core_count: Optional. Customized number of cores available to each node of the type. This number must always be one of `nodeType.availableCustomCoreCounts`. If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        """
+        pulumi.set(__self__, "node_count", node_count)
+        if custom_core_count is not None:
+            pulumi.set(__self__, "custom_core_count", custom_core_count)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> pulumi.Input[int]:
+        """
+        The number of nodes of this type in the cluster
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter(name="customCoreCount")
+    def custom_core_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Customized number of cores available to each node of the type. This number must always be one of `nodeType.availableCustomCoreCounts`. If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        """
+        return pulumi.get(self, "custom_core_count")
+
+    @custom_core_count.setter
+    def custom_core_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "custom_core_count", value)
 
 
 @pulumi.input_type

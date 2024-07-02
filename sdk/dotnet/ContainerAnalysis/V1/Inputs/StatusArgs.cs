@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public Input<int>? Code { get; set; }
 
         [Input("details")]
-        private InputList<ImmutableDictionary<string, string>>? _details;
+        private InputList<ImmutableDictionary<string, object>>? _details;
 
         /// <summary>
         /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Details
+        public InputList<ImmutableDictionary<string, object>> Details
         {
-            get => _details ?? (_details = new InputList<ImmutableDictionary<string, string>>());
+            get => _details ?? (_details = new InputList<ImmutableDictionary<string, object>>());
             set => _details = value;
         }
 

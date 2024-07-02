@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// Key: disk, value: AsyncReplicationStatus message
         /// </summary>
-        public readonly ImmutableDictionary<string, string> AsyncSecondaryDisks;
+        public readonly ImmutableDictionary<string, Outputs.DiskResourceStatusAsyncReplicationStatusResponse> AsyncSecondaryDisks;
         /// <summary>
         /// Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private DiskResourceStatusResponse(
             Outputs.DiskResourceStatusAsyncReplicationStatusResponse asyncPrimaryDisk,
 
-            ImmutableDictionary<string, string> asyncSecondaryDisks,
+            ImmutableDictionary<string, Outputs.DiskResourceStatusAsyncReplicationStatusResponse> asyncSecondaryDisks,
 
             string usedBytes)
         {

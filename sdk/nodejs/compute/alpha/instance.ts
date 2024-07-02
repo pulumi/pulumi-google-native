@@ -146,7 +146,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
      */
-    public readonly partnerMetadata!: pulumi.Output<{[key: string]: string}>;
+    public readonly partnerMetadata!: pulumi.Output<{[key: string]: outputs.compute.alpha.StructuredEntriesResponse}>;
     /**
      * PostKeyRevocationActionType of the instance.
      */
@@ -203,7 +203,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
      */
-    public readonly serviceIntegrationSpecs!: pulumi.Output<{[key: string]: string}>;
+    public readonly serviceIntegrationSpecs!: pulumi.Output<{[key: string]: outputs.compute.alpha.ServiceIntegrationSpecResponse}>;
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.alpha.ShieldedInstanceConfigResponse>;
     public readonly shieldedInstanceIntegrityPolicy!: pulumi.Output<outputs.compute.alpha.ShieldedInstanceIntegrityPolicyResponse>;
     /**
@@ -463,7 +463,7 @@ export interface InstanceArgs {
     /**
      * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
      */
-    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<inputs.compute.alpha.StructuredEntriesArgs>}>;
     /**
      * PostKeyRevocationActionType of the instance.
      */
@@ -504,7 +504,7 @@ export interface InstanceArgs {
     /**
      * Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
      */
-    serviceIntegrationSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    serviceIntegrationSpecs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.compute.alpha.ServiceIntegrationSpecArgs>}>;
     shieldedInstanceConfig?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceConfigArgs>;
     shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceIntegrityPolicyArgs>;
     /**

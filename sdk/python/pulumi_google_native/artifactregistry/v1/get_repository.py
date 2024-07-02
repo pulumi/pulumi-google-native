@@ -71,7 +71,7 @@ class GetRepositoryResult:
 
     @property
     @pulumi.getter(name="cleanupPolicies")
-    def cleanup_policies(self) -> Mapping[str, str]:
+    def cleanup_policies(self) -> Mapping[str, 'outputs.CleanupPolicyResponse']:
         """
         Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         """

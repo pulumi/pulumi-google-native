@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// <summary>
         /// Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> CommonUsageWithinTimeRange;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse> CommonUsageWithinTimeRange;
         /// <summary>
         /// Favorite count in the source system.
         /// </summary>
@@ -31,17 +31,17 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// <summary>
         /// BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> UsageWithinTimeRange;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1UsageStatsResponse> UsageWithinTimeRange;
 
         [OutputConstructor]
         private GoogleCloudDatacatalogV1UsageSignalResponse(
-            ImmutableDictionary<string, string> commonUsageWithinTimeRange,
+            ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse> commonUsageWithinTimeRange,
 
             string favoriteCount,
 
             string updateTime,
 
-            ImmutableDictionary<string, string> usageWithinTimeRange)
+            ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1UsageStatsResponse> usageWithinTimeRange)
         {
             CommonUsageWithinTimeRange = commonUsageWithinTimeRange;
             FavoriteCount = favoriteCount;

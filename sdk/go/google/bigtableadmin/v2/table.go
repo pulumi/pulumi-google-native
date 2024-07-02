@@ -19,9 +19,9 @@ type Table struct {
 	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
 	ChangeStreamConfig ChangeStreamConfigResponseOutput `pulumi:"changeStreamConfig"`
 	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-	ClusterStates pulumi.StringMapOutput `pulumi:"clusterStates"`
+	ClusterStates ClusterStateResponseMapOutput `pulumi:"clusterStates"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
-	ColumnFamilies pulumi.StringMapOutput `pulumi:"columnFamilies"`
+	ColumnFamilies ColumnFamilyResponseMapOutput `pulumi:"columnFamilies"`
 	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -90,7 +90,7 @@ type tableArgs struct {
 	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
 	ChangeStreamConfig *ChangeStreamConfig `pulumi:"changeStreamConfig"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
-	ColumnFamilies map[string]string `pulumi:"columnFamilies"`
+	ColumnFamilies map[string]ColumnFamily `pulumi:"columnFamilies"`
 	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -110,7 +110,7 @@ type TableArgs struct {
 	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
 	ChangeStreamConfig ChangeStreamConfigPtrInput
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
-	ColumnFamilies pulumi.StringMapInput
+	ColumnFamilies ColumnFamilyMapInput
 	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
 	DeletionProtection pulumi.BoolPtrInput
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -168,13 +168,13 @@ func (o TableOutput) ChangeStreamConfig() ChangeStreamConfigResponseOutput {
 }
 
 // Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-func (o TableOutput) ClusterStates() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ClusterStates }).(pulumi.StringMapOutput)
+func (o TableOutput) ClusterStates() ClusterStateResponseMapOutput {
+	return o.ApplyT(func(v *Table) ClusterStateResponseMapOutput { return v.ClusterStates }).(ClusterStateResponseMapOutput)
 }
 
 // The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
-func (o TableOutput) ColumnFamilies() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ColumnFamilies }).(pulumi.StringMapOutput)
+func (o TableOutput) ColumnFamilies() ColumnFamilyResponseMapOutput {
+	return o.ApplyT(func(v *Table) ColumnFamilyResponseMapOutput { return v.ColumnFamilies }).(ColumnFamilyResponseMapOutput)
 }
 
 // Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.

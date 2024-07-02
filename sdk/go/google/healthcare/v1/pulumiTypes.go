@@ -3699,10 +3699,162 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationResponseOutput) WriteDispo
 	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestinationResponse) string { return v.WriteDisposition }).(pulumi.StringOutput)
 }
 
+// Construct representing a logical group or a segment.
+type GroupOrSegment struct {
+	Group   *SchemaGroup   `pulumi:"group"`
+	Segment *SchemaSegment `pulumi:"segment"`
+}
+
+// GroupOrSegmentInput is an input type that accepts GroupOrSegmentArgs and GroupOrSegmentOutput values.
+// You can construct a concrete instance of `GroupOrSegmentInput` via:
+//
+//	GroupOrSegmentArgs{...}
+type GroupOrSegmentInput interface {
+	pulumi.Input
+
+	ToGroupOrSegmentOutput() GroupOrSegmentOutput
+	ToGroupOrSegmentOutputWithContext(context.Context) GroupOrSegmentOutput
+}
+
+// Construct representing a logical group or a segment.
+type GroupOrSegmentArgs struct {
+	Group   SchemaGroupPtrInput   `pulumi:"group"`
+	Segment SchemaSegmentPtrInput `pulumi:"segment"`
+}
+
+func (GroupOrSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupOrSegment)(nil)).Elem()
+}
+
+func (i GroupOrSegmentArgs) ToGroupOrSegmentOutput() GroupOrSegmentOutput {
+	return i.ToGroupOrSegmentOutputWithContext(context.Background())
+}
+
+func (i GroupOrSegmentArgs) ToGroupOrSegmentOutputWithContext(ctx context.Context) GroupOrSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupOrSegmentOutput)
+}
+
+// GroupOrSegmentArrayInput is an input type that accepts GroupOrSegmentArray and GroupOrSegmentArrayOutput values.
+// You can construct a concrete instance of `GroupOrSegmentArrayInput` via:
+//
+//	GroupOrSegmentArray{ GroupOrSegmentArgs{...} }
+type GroupOrSegmentArrayInput interface {
+	pulumi.Input
+
+	ToGroupOrSegmentArrayOutput() GroupOrSegmentArrayOutput
+	ToGroupOrSegmentArrayOutputWithContext(context.Context) GroupOrSegmentArrayOutput
+}
+
+type GroupOrSegmentArray []GroupOrSegmentInput
+
+func (GroupOrSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupOrSegment)(nil)).Elem()
+}
+
+func (i GroupOrSegmentArray) ToGroupOrSegmentArrayOutput() GroupOrSegmentArrayOutput {
+	return i.ToGroupOrSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i GroupOrSegmentArray) ToGroupOrSegmentArrayOutputWithContext(ctx context.Context) GroupOrSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupOrSegmentArrayOutput)
+}
+
+// Construct representing a logical group or a segment.
+type GroupOrSegmentOutput struct{ *pulumi.OutputState }
+
+func (GroupOrSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupOrSegment)(nil)).Elem()
+}
+
+func (o GroupOrSegmentOutput) ToGroupOrSegmentOutput() GroupOrSegmentOutput {
+	return o
+}
+
+func (o GroupOrSegmentOutput) ToGroupOrSegmentOutputWithContext(ctx context.Context) GroupOrSegmentOutput {
+	return o
+}
+
+func (o GroupOrSegmentOutput) Group() SchemaGroupPtrOutput {
+	return o.ApplyT(func(v GroupOrSegment) *SchemaGroup { return v.Group }).(SchemaGroupPtrOutput)
+}
+
+func (o GroupOrSegmentOutput) Segment() SchemaSegmentPtrOutput {
+	return o.ApplyT(func(v GroupOrSegment) *SchemaSegment { return v.Segment }).(SchemaSegmentPtrOutput)
+}
+
+type GroupOrSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupOrSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupOrSegment)(nil)).Elem()
+}
+
+func (o GroupOrSegmentArrayOutput) ToGroupOrSegmentArrayOutput() GroupOrSegmentArrayOutput {
+	return o
+}
+
+func (o GroupOrSegmentArrayOutput) ToGroupOrSegmentArrayOutputWithContext(ctx context.Context) GroupOrSegmentArrayOutput {
+	return o
+}
+
+func (o GroupOrSegmentArrayOutput) Index(i pulumi.IntInput) GroupOrSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupOrSegment {
+		return vs[0].([]GroupOrSegment)[vs[1].(int)]
+	}).(GroupOrSegmentOutput)
+}
+
+// Construct representing a logical group or a segment.
+type GroupOrSegmentResponse struct {
+	Group   SchemaGroupResponse   `pulumi:"group"`
+	Segment SchemaSegmentResponse `pulumi:"segment"`
+}
+
+// Construct representing a logical group or a segment.
+type GroupOrSegmentResponseOutput struct{ *pulumi.OutputState }
+
+func (GroupOrSegmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupOrSegmentResponse)(nil)).Elem()
+}
+
+func (o GroupOrSegmentResponseOutput) ToGroupOrSegmentResponseOutput() GroupOrSegmentResponseOutput {
+	return o
+}
+
+func (o GroupOrSegmentResponseOutput) ToGroupOrSegmentResponseOutputWithContext(ctx context.Context) GroupOrSegmentResponseOutput {
+	return o
+}
+
+func (o GroupOrSegmentResponseOutput) Group() SchemaGroupResponseOutput {
+	return o.ApplyT(func(v GroupOrSegmentResponse) SchemaGroupResponse { return v.Group }).(SchemaGroupResponseOutput)
+}
+
+func (o GroupOrSegmentResponseOutput) Segment() SchemaSegmentResponseOutput {
+	return o.ApplyT(func(v GroupOrSegmentResponse) SchemaSegmentResponse { return v.Segment }).(SchemaSegmentResponseOutput)
+}
+
+type GroupOrSegmentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupOrSegmentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupOrSegmentResponse)(nil)).Elem()
+}
+
+func (o GroupOrSegmentResponseArrayOutput) ToGroupOrSegmentResponseArrayOutput() GroupOrSegmentResponseArrayOutput {
+	return o
+}
+
+func (o GroupOrSegmentResponseArrayOutput) ToGroupOrSegmentResponseArrayOutputWithContext(ctx context.Context) GroupOrSegmentResponseArrayOutput {
+	return o
+}
+
+func (o GroupOrSegmentResponseArrayOutput) Index(i pulumi.IntInput) GroupOrSegmentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupOrSegmentResponse {
+		return vs[0].([]GroupOrSegmentResponse)[vs[1].(int)]
+	}).(GroupOrSegmentResponseOutput)
+}
+
 // Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 type Hl7SchemaConfig struct {
 	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-	MessageSchemaConfigs map[string]string `pulumi:"messageSchemaConfigs"`
+	MessageSchemaConfigs map[string]SchemaGroup `pulumi:"messageSchemaConfigs"`
 	// Each VersionSource is tested and only if they all match is the schema used for the message.
 	Version []VersionSource `pulumi:"version"`
 }
@@ -3721,7 +3873,7 @@ type Hl7SchemaConfigInput interface {
 // Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 type Hl7SchemaConfigArgs struct {
 	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-	MessageSchemaConfigs pulumi.StringMapInput `pulumi:"messageSchemaConfigs"`
+	MessageSchemaConfigs SchemaGroupMapInput `pulumi:"messageSchemaConfigs"`
 	// Each VersionSource is tested and only if they all match is the schema used for the message.
 	Version VersionSourceArrayInput `pulumi:"version"`
 }
@@ -3779,8 +3931,8 @@ func (o Hl7SchemaConfigOutput) ToHl7SchemaConfigOutputWithContext(ctx context.Co
 }
 
 // Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-func (o Hl7SchemaConfigOutput) MessageSchemaConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Hl7SchemaConfig) map[string]string { return v.MessageSchemaConfigs }).(pulumi.StringMapOutput)
+func (o Hl7SchemaConfigOutput) MessageSchemaConfigs() SchemaGroupMapOutput {
+	return o.ApplyT(func(v Hl7SchemaConfig) map[string]SchemaGroup { return v.MessageSchemaConfigs }).(SchemaGroupMapOutput)
 }
 
 // Each VersionSource is tested and only if they all match is the schema used for the message.
@@ -3811,7 +3963,7 @@ func (o Hl7SchemaConfigArrayOutput) Index(i pulumi.IntInput) Hl7SchemaConfigOutp
 // Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
 type Hl7SchemaConfigResponse struct {
 	// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-	MessageSchemaConfigs map[string]string `pulumi:"messageSchemaConfigs"`
+	MessageSchemaConfigs map[string]SchemaGroupResponse `pulumi:"messageSchemaConfigs"`
 	// Each VersionSource is tested and only if they all match is the schema used for the message.
 	Version []VersionSourceResponse `pulumi:"version"`
 }
@@ -3832,8 +3984,8 @@ func (o Hl7SchemaConfigResponseOutput) ToHl7SchemaConfigResponseOutputWithContex
 }
 
 // Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
-func (o Hl7SchemaConfigResponseOutput) MessageSchemaConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Hl7SchemaConfigResponse) map[string]string { return v.MessageSchemaConfigs }).(pulumi.StringMapOutput)
+func (o Hl7SchemaConfigResponseOutput) MessageSchemaConfigs() SchemaGroupResponseMapOutput {
+	return o.ApplyT(func(v Hl7SchemaConfigResponse) map[string]SchemaGroupResponse { return v.MessageSchemaConfigs }).(SchemaGroupResponseMapOutput)
 }
 
 // Each VersionSource is tested and only if they all match is the schema used for the message.
@@ -6148,6 +6300,341 @@ func (o SchemaConfigResponseOutput) SchemaType() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaConfigResponse) string { return v.SchemaType }).(pulumi.StringOutput)
 }
 
+// An HL7v2 logical group construct.
+type SchemaGroup struct {
+	// True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+	Choice *bool `pulumi:"choice"`
+	// The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+	MaxOccurs *int `pulumi:"maxOccurs"`
+	// Nested groups and/or segments.
+	Members []GroupOrSegment `pulumi:"members"`
+	// The minimum number of times this group must be present/repeated.
+	MinOccurs *int `pulumi:"minOccurs"`
+	// The name of this group. For example, "ORDER_DETAIL".
+	Name *string `pulumi:"name"`
+}
+
+// SchemaGroupInput is an input type that accepts SchemaGroupArgs and SchemaGroupOutput values.
+// You can construct a concrete instance of `SchemaGroupInput` via:
+//
+//	SchemaGroupArgs{...}
+type SchemaGroupInput interface {
+	pulumi.Input
+
+	ToSchemaGroupOutput() SchemaGroupOutput
+	ToSchemaGroupOutputWithContext(context.Context) SchemaGroupOutput
+}
+
+// An HL7v2 logical group construct.
+type SchemaGroupArgs struct {
+	// True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+	Choice pulumi.BoolPtrInput `pulumi:"choice"`
+	// The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+	MaxOccurs pulumi.IntPtrInput `pulumi:"maxOccurs"`
+	// Nested groups and/or segments.
+	Members GroupOrSegmentArrayInput `pulumi:"members"`
+	// The minimum number of times this group must be present/repeated.
+	MinOccurs pulumi.IntPtrInput `pulumi:"minOccurs"`
+	// The name of this group. For example, "ORDER_DETAIL".
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (SchemaGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaGroup)(nil)).Elem()
+}
+
+func (i SchemaGroupArgs) ToSchemaGroupOutput() SchemaGroupOutput {
+	return i.ToSchemaGroupOutputWithContext(context.Background())
+}
+
+func (i SchemaGroupArgs) ToSchemaGroupOutputWithContext(ctx context.Context) SchemaGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaGroupOutput)
+}
+
+func (i SchemaGroupArgs) ToSchemaGroupPtrOutput() SchemaGroupPtrOutput {
+	return i.ToSchemaGroupPtrOutputWithContext(context.Background())
+}
+
+func (i SchemaGroupArgs) ToSchemaGroupPtrOutputWithContext(ctx context.Context) SchemaGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaGroupOutput).ToSchemaGroupPtrOutputWithContext(ctx)
+}
+
+// SchemaGroupPtrInput is an input type that accepts SchemaGroupArgs, SchemaGroupPtr and SchemaGroupPtrOutput values.
+// You can construct a concrete instance of `SchemaGroupPtrInput` via:
+//
+//	        SchemaGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type SchemaGroupPtrInput interface {
+	pulumi.Input
+
+	ToSchemaGroupPtrOutput() SchemaGroupPtrOutput
+	ToSchemaGroupPtrOutputWithContext(context.Context) SchemaGroupPtrOutput
+}
+
+type schemaGroupPtrType SchemaGroupArgs
+
+func SchemaGroupPtr(v *SchemaGroupArgs) SchemaGroupPtrInput {
+	return (*schemaGroupPtrType)(v)
+}
+
+func (*schemaGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaGroup)(nil)).Elem()
+}
+
+func (i *schemaGroupPtrType) ToSchemaGroupPtrOutput() SchemaGroupPtrOutput {
+	return i.ToSchemaGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *schemaGroupPtrType) ToSchemaGroupPtrOutputWithContext(ctx context.Context) SchemaGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaGroupPtrOutput)
+}
+
+// SchemaGroupMapInput is an input type that accepts SchemaGroupMap and SchemaGroupMapOutput values.
+// You can construct a concrete instance of `SchemaGroupMapInput` via:
+//
+//	SchemaGroupMap{ "key": SchemaGroupArgs{...} }
+type SchemaGroupMapInput interface {
+	pulumi.Input
+
+	ToSchemaGroupMapOutput() SchemaGroupMapOutput
+	ToSchemaGroupMapOutputWithContext(context.Context) SchemaGroupMapOutput
+}
+
+type SchemaGroupMap map[string]SchemaGroupInput
+
+func (SchemaGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SchemaGroup)(nil)).Elem()
+}
+
+func (i SchemaGroupMap) ToSchemaGroupMapOutput() SchemaGroupMapOutput {
+	return i.ToSchemaGroupMapOutputWithContext(context.Background())
+}
+
+func (i SchemaGroupMap) ToSchemaGroupMapOutputWithContext(ctx context.Context) SchemaGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaGroupMapOutput)
+}
+
+// An HL7v2 logical group construct.
+type SchemaGroupOutput struct{ *pulumi.OutputState }
+
+func (SchemaGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaGroup)(nil)).Elem()
+}
+
+func (o SchemaGroupOutput) ToSchemaGroupOutput() SchemaGroupOutput {
+	return o
+}
+
+func (o SchemaGroupOutput) ToSchemaGroupOutputWithContext(ctx context.Context) SchemaGroupOutput {
+	return o
+}
+
+func (o SchemaGroupOutput) ToSchemaGroupPtrOutput() SchemaGroupPtrOutput {
+	return o.ToSchemaGroupPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaGroupOutput) ToSchemaGroupPtrOutputWithContext(ctx context.Context) SchemaGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaGroup) *SchemaGroup {
+		return &v
+	}).(SchemaGroupPtrOutput)
+}
+
+// True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+func (o SchemaGroupOutput) Choice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchemaGroup) *bool { return v.Choice }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+func (o SchemaGroupOutput) MaxOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SchemaGroup) *int { return v.MaxOccurs }).(pulumi.IntPtrOutput)
+}
+
+// Nested groups and/or segments.
+func (o SchemaGroupOutput) Members() GroupOrSegmentArrayOutput {
+	return o.ApplyT(func(v SchemaGroup) []GroupOrSegment { return v.Members }).(GroupOrSegmentArrayOutput)
+}
+
+// The minimum number of times this group must be present/repeated.
+func (o SchemaGroupOutput) MinOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SchemaGroup) *int { return v.MinOccurs }).(pulumi.IntPtrOutput)
+}
+
+// The name of this group. For example, "ORDER_DETAIL".
+func (o SchemaGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type SchemaGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaGroup)(nil)).Elem()
+}
+
+func (o SchemaGroupPtrOutput) ToSchemaGroupPtrOutput() SchemaGroupPtrOutput {
+	return o
+}
+
+func (o SchemaGroupPtrOutput) ToSchemaGroupPtrOutputWithContext(ctx context.Context) SchemaGroupPtrOutput {
+	return o
+}
+
+func (o SchemaGroupPtrOutput) Elem() SchemaGroupOutput {
+	return o.ApplyT(func(v *SchemaGroup) SchemaGroup {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaGroup
+		return ret
+	}).(SchemaGroupOutput)
+}
+
+// True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+func (o SchemaGroupPtrOutput) Choice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchemaGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Choice
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+func (o SchemaGroupPtrOutput) MaxOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SchemaGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxOccurs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Nested groups and/or segments.
+func (o SchemaGroupPtrOutput) Members() GroupOrSegmentArrayOutput {
+	return o.ApplyT(func(v *SchemaGroup) []GroupOrSegment {
+		if v == nil {
+			return nil
+		}
+		return v.Members
+	}).(GroupOrSegmentArrayOutput)
+}
+
+// The minimum number of times this group must be present/repeated.
+func (o SchemaGroupPtrOutput) MinOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SchemaGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinOccurs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of this group. For example, "ORDER_DETAIL".
+func (o SchemaGroupPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaGroupMapOutput struct{ *pulumi.OutputState }
+
+func (SchemaGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SchemaGroup)(nil)).Elem()
+}
+
+func (o SchemaGroupMapOutput) ToSchemaGroupMapOutput() SchemaGroupMapOutput {
+	return o
+}
+
+func (o SchemaGroupMapOutput) ToSchemaGroupMapOutputWithContext(ctx context.Context) SchemaGroupMapOutput {
+	return o
+}
+
+func (o SchemaGroupMapOutput) MapIndex(k pulumi.StringInput) SchemaGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SchemaGroup {
+		return vs[0].(map[string]SchemaGroup)[vs[1].(string)]
+	}).(SchemaGroupOutput)
+}
+
+// An HL7v2 logical group construct.
+type SchemaGroupResponse struct {
+	// True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+	Choice bool `pulumi:"choice"`
+	// The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+	MaxOccurs int `pulumi:"maxOccurs"`
+	// Nested groups and/or segments.
+	Members []GroupOrSegmentResponse `pulumi:"members"`
+	// The minimum number of times this group must be present/repeated.
+	MinOccurs int `pulumi:"minOccurs"`
+	// The name of this group. For example, "ORDER_DETAIL".
+	Name string `pulumi:"name"`
+}
+
+// An HL7v2 logical group construct.
+type SchemaGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (SchemaGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaGroupResponse)(nil)).Elem()
+}
+
+func (o SchemaGroupResponseOutput) ToSchemaGroupResponseOutput() SchemaGroupResponseOutput {
+	return o
+}
+
+func (o SchemaGroupResponseOutput) ToSchemaGroupResponseOutputWithContext(ctx context.Context) SchemaGroupResponseOutput {
+	return o
+}
+
+// True indicates that this is a choice group, meaning that only one of its segments can exist in a given message.
+func (o SchemaGroupResponseOutput) Choice() pulumi.BoolOutput {
+	return o.ApplyT(func(v SchemaGroupResponse) bool { return v.Choice }).(pulumi.BoolOutput)
+}
+
+// The maximum number of times this group can be repeated. 0 or -1 means unbounded.
+func (o SchemaGroupResponseOutput) MaxOccurs() pulumi.IntOutput {
+	return o.ApplyT(func(v SchemaGroupResponse) int { return v.MaxOccurs }).(pulumi.IntOutput)
+}
+
+// Nested groups and/or segments.
+func (o SchemaGroupResponseOutput) Members() GroupOrSegmentResponseArrayOutput {
+	return o.ApplyT(func(v SchemaGroupResponse) []GroupOrSegmentResponse { return v.Members }).(GroupOrSegmentResponseArrayOutput)
+}
+
+// The minimum number of times this group must be present/repeated.
+func (o SchemaGroupResponseOutput) MinOccurs() pulumi.IntOutput {
+	return o.ApplyT(func(v SchemaGroupResponse) int { return v.MinOccurs }).(pulumi.IntOutput)
+}
+
+// The name of this group. For example, "ORDER_DETAIL".
+func (o SchemaGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SchemaGroupResponseMapOutput struct{ *pulumi.OutputState }
+
+func (SchemaGroupResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SchemaGroupResponse)(nil)).Elem()
+}
+
+func (o SchemaGroupResponseMapOutput) ToSchemaGroupResponseMapOutput() SchemaGroupResponseMapOutput {
+	return o
+}
+
+func (o SchemaGroupResponseMapOutput) ToSchemaGroupResponseMapOutputWithContext(ctx context.Context) SchemaGroupResponseMapOutput {
+	return o
+}
+
+func (o SchemaGroupResponseMapOutput) MapIndex(k pulumi.StringInput) SchemaGroupResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SchemaGroupResponse {
+		return vs[0].(map[string]SchemaGroupResponse)[vs[1].(string)]
+	}).(SchemaGroupResponseOutput)
+}
+
 // A schema package contains a set of schemas and type definitions.
 type SchemaPackage struct {
 	// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
@@ -6416,6 +6903,224 @@ func (o SchemaPackageResponseOutput) Types() Hl7TypesConfigResponseArrayOutput {
 // Determines how unexpected segments (segments not matched to the schema) are handled.
 func (o SchemaPackageResponseOutput) UnexpectedSegmentHandling() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaPackageResponse) string { return v.UnexpectedSegmentHandling }).(pulumi.StringOutput)
+}
+
+// An HL7v2 Segment.
+type SchemaSegment struct {
+	// The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+	MaxOccurs *int `pulumi:"maxOccurs"`
+	// The minimum number of times this segment can be present in this group.
+	MinOccurs *int `pulumi:"minOccurs"`
+	// The Segment type. For example, "PID".
+	Type *string `pulumi:"type"`
+}
+
+// SchemaSegmentInput is an input type that accepts SchemaSegmentArgs and SchemaSegmentOutput values.
+// You can construct a concrete instance of `SchemaSegmentInput` via:
+//
+//	SchemaSegmentArgs{...}
+type SchemaSegmentInput interface {
+	pulumi.Input
+
+	ToSchemaSegmentOutput() SchemaSegmentOutput
+	ToSchemaSegmentOutputWithContext(context.Context) SchemaSegmentOutput
+}
+
+// An HL7v2 Segment.
+type SchemaSegmentArgs struct {
+	// The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+	MaxOccurs pulumi.IntPtrInput `pulumi:"maxOccurs"`
+	// The minimum number of times this segment can be present in this group.
+	MinOccurs pulumi.IntPtrInput `pulumi:"minOccurs"`
+	// The Segment type. For example, "PID".
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SchemaSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaSegment)(nil)).Elem()
+}
+
+func (i SchemaSegmentArgs) ToSchemaSegmentOutput() SchemaSegmentOutput {
+	return i.ToSchemaSegmentOutputWithContext(context.Background())
+}
+
+func (i SchemaSegmentArgs) ToSchemaSegmentOutputWithContext(ctx context.Context) SchemaSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaSegmentOutput)
+}
+
+func (i SchemaSegmentArgs) ToSchemaSegmentPtrOutput() SchemaSegmentPtrOutput {
+	return i.ToSchemaSegmentPtrOutputWithContext(context.Background())
+}
+
+func (i SchemaSegmentArgs) ToSchemaSegmentPtrOutputWithContext(ctx context.Context) SchemaSegmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaSegmentOutput).ToSchemaSegmentPtrOutputWithContext(ctx)
+}
+
+// SchemaSegmentPtrInput is an input type that accepts SchemaSegmentArgs, SchemaSegmentPtr and SchemaSegmentPtrOutput values.
+// You can construct a concrete instance of `SchemaSegmentPtrInput` via:
+//
+//	        SchemaSegmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type SchemaSegmentPtrInput interface {
+	pulumi.Input
+
+	ToSchemaSegmentPtrOutput() SchemaSegmentPtrOutput
+	ToSchemaSegmentPtrOutputWithContext(context.Context) SchemaSegmentPtrOutput
+}
+
+type schemaSegmentPtrType SchemaSegmentArgs
+
+func SchemaSegmentPtr(v *SchemaSegmentArgs) SchemaSegmentPtrInput {
+	return (*schemaSegmentPtrType)(v)
+}
+
+func (*schemaSegmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaSegment)(nil)).Elem()
+}
+
+func (i *schemaSegmentPtrType) ToSchemaSegmentPtrOutput() SchemaSegmentPtrOutput {
+	return i.ToSchemaSegmentPtrOutputWithContext(context.Background())
+}
+
+func (i *schemaSegmentPtrType) ToSchemaSegmentPtrOutputWithContext(ctx context.Context) SchemaSegmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaSegmentPtrOutput)
+}
+
+// An HL7v2 Segment.
+type SchemaSegmentOutput struct{ *pulumi.OutputState }
+
+func (SchemaSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaSegment)(nil)).Elem()
+}
+
+func (o SchemaSegmentOutput) ToSchemaSegmentOutput() SchemaSegmentOutput {
+	return o
+}
+
+func (o SchemaSegmentOutput) ToSchemaSegmentOutputWithContext(ctx context.Context) SchemaSegmentOutput {
+	return o
+}
+
+func (o SchemaSegmentOutput) ToSchemaSegmentPtrOutput() SchemaSegmentPtrOutput {
+	return o.ToSchemaSegmentPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaSegmentOutput) ToSchemaSegmentPtrOutputWithContext(ctx context.Context) SchemaSegmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaSegment) *SchemaSegment {
+		return &v
+	}).(SchemaSegmentPtrOutput)
+}
+
+// The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+func (o SchemaSegmentOutput) MaxOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SchemaSegment) *int { return v.MaxOccurs }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of times this segment can be present in this group.
+func (o SchemaSegmentOutput) MinOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SchemaSegment) *int { return v.MinOccurs }).(pulumi.IntPtrOutput)
+}
+
+// The Segment type. For example, "PID".
+func (o SchemaSegmentOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaSegment) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SchemaSegmentPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaSegmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchemaSegment)(nil)).Elem()
+}
+
+func (o SchemaSegmentPtrOutput) ToSchemaSegmentPtrOutput() SchemaSegmentPtrOutput {
+	return o
+}
+
+func (o SchemaSegmentPtrOutput) ToSchemaSegmentPtrOutputWithContext(ctx context.Context) SchemaSegmentPtrOutput {
+	return o
+}
+
+func (o SchemaSegmentPtrOutput) Elem() SchemaSegmentOutput {
+	return o.ApplyT(func(v *SchemaSegment) SchemaSegment {
+		if v != nil {
+			return *v
+		}
+		var ret SchemaSegment
+		return ret
+	}).(SchemaSegmentOutput)
+}
+
+// The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+func (o SchemaSegmentPtrOutput) MaxOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SchemaSegment) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxOccurs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of times this segment can be present in this group.
+func (o SchemaSegmentPtrOutput) MinOccurs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SchemaSegment) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinOccurs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Segment type. For example, "PID".
+func (o SchemaSegmentPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchemaSegment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// An HL7v2 Segment.
+type SchemaSegmentResponse struct {
+	// The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+	MaxOccurs int `pulumi:"maxOccurs"`
+	// The minimum number of times this segment can be present in this group.
+	MinOccurs int `pulumi:"minOccurs"`
+	// The Segment type. For example, "PID".
+	Type string `pulumi:"type"`
+}
+
+// An HL7v2 Segment.
+type SchemaSegmentResponseOutput struct{ *pulumi.OutputState }
+
+func (SchemaSegmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaSegmentResponse)(nil)).Elem()
+}
+
+func (o SchemaSegmentResponseOutput) ToSchemaSegmentResponseOutput() SchemaSegmentResponseOutput {
+	return o
+}
+
+func (o SchemaSegmentResponseOutput) ToSchemaSegmentResponseOutputWithContext(ctx context.Context) SchemaSegmentResponseOutput {
+	return o
+}
+
+// The maximum number of times this segment can be present in this group. 0 or -1 means unbounded.
+func (o SchemaSegmentResponseOutput) MaxOccurs() pulumi.IntOutput {
+	return o.ApplyT(func(v SchemaSegmentResponse) int { return v.MaxOccurs }).(pulumi.IntOutput)
+}
+
+// The minimum number of times this segment can be present in this group.
+func (o SchemaSegmentResponseOutput) MinOccurs() pulumi.IntOutput {
+	return o.ApplyT(func(v SchemaSegmentResponse) int { return v.MinOccurs }).(pulumi.IntOutput)
+}
+
+// The Segment type. For example, "PID".
+func (o SchemaSegmentResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaSegmentResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The content of an HL7v2 message in a structured format as specified by a schema.
@@ -8328,6 +9033,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1DicomStreamConfigArrayInput)(nil)).Elem(), GoogleCloudHealthcareV1DicomStreamConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationPtrInput)(nil)).Elem(), GoogleCloudHealthcareV1FhirBigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupOrSegmentInput)(nil)).Elem(), GroupOrSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupOrSegmentArrayInput)(nil)).Elem(), GroupOrSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigInput)(nil)).Elem(), Hl7SchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7SchemaConfigArrayInput)(nil)).Elem(), Hl7SchemaConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7TypesConfigInput)(nil)).Elem(), Hl7TypesConfigArgs{})
@@ -8355,8 +9062,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplaceWithInfoTypeConfigPtrInput)(nil)).Elem(), ReplaceWithInfoTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigInput)(nil)).Elem(), SchemaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigPtrInput)(nil)).Elem(), SchemaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaGroupInput)(nil)).Elem(), SchemaGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaGroupPtrInput)(nil)).Elem(), SchemaGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaGroupMapInput)(nil)).Elem(), SchemaGroupMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageInput)(nil)).Elem(), SchemaPackageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackagePtrInput)(nil)).Elem(), SchemaPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSegmentInput)(nil)).Elem(), SchemaSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSegmentPtrInput)(nil)).Elem(), SchemaSegmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataInput)(nil)).Elem(), SchematizedDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchematizedDataPtrInput)(nil)).Elem(), SchematizedDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignatureInput)(nil)).Elem(), SignatureArgs{})
@@ -8441,6 +9153,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationResponseOutput{})
+	pulumi.RegisterOutputType(GroupOrSegmentOutput{})
+	pulumi.RegisterOutputType(GroupOrSegmentArrayOutput{})
+	pulumi.RegisterOutputType(GroupOrSegmentResponseOutput{})
+	pulumi.RegisterOutputType(GroupOrSegmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(Hl7SchemaConfigOutput{})
 	pulumi.RegisterOutputType(Hl7SchemaConfigArrayOutput{})
 	pulumi.RegisterOutputType(Hl7SchemaConfigResponseOutput{})
@@ -8488,9 +9204,17 @@ func init() {
 	pulumi.RegisterOutputType(SchemaConfigOutput{})
 	pulumi.RegisterOutputType(SchemaConfigPtrOutput{})
 	pulumi.RegisterOutputType(SchemaConfigResponseOutput{})
+	pulumi.RegisterOutputType(SchemaGroupOutput{})
+	pulumi.RegisterOutputType(SchemaGroupPtrOutput{})
+	pulumi.RegisterOutputType(SchemaGroupMapOutput{})
+	pulumi.RegisterOutputType(SchemaGroupResponseOutput{})
+	pulumi.RegisterOutputType(SchemaGroupResponseMapOutput{})
 	pulumi.RegisterOutputType(SchemaPackageOutput{})
 	pulumi.RegisterOutputType(SchemaPackagePtrOutput{})
 	pulumi.RegisterOutputType(SchemaPackageResponseOutput{})
+	pulumi.RegisterOutputType(SchemaSegmentOutput{})
+	pulumi.RegisterOutputType(SchemaSegmentPtrOutput{})
+	pulumi.RegisterOutputType(SchemaSegmentResponseOutput{})
 	pulumi.RegisterOutputType(SchematizedDataOutput{})
 	pulumi.RegisterOutputType(SchematizedDataPtrOutput{})
 	pulumi.RegisterOutputType(SchematizedDataResponseOutput{})

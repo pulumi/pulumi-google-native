@@ -13,6 +13,1209 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type StatefulPolicyPreservedStateNetworkIpResponse struct {
+	// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+	AutoDelete string `pulumi:"autoDelete"`
+}
+
+type StatefulPolicyPreservedStateNetworkIpResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) ToStatefulPolicyPreservedStateNetworkIpResponseOutput() StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) ToStatefulPolicyPreservedStateNetworkIpResponseOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return o
+}
+
+// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) AutoDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateNetworkIpResponse) string { return v.AutoDelete }).(pulumi.StringOutput)
+}
+
+type StatefulPolicyPreservedStateNetworkIpResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIpResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutput() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateNetworkIpResponse {
+		return vs[0].(map[string]StatefulPolicyPreservedStateNetworkIpResponse)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
+}
+
+// Configuration of preserved resources.
+type StatefulPolicyPreservedStateResponse struct {
+	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
+	Disks map[string]StatefulPolicyPreservedStateDiskDeviceResponse `pulumi:"disks"`
+	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	ExternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"externalIPs"`
+	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+	InternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"internalIPs"`
+}
+
+// Configuration of preserved resources.
+type StatefulPolicyPreservedStateResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateResponseOutput) ToStatefulPolicyPreservedStateResponseOutput() StatefulPolicyPreservedStateResponseOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateResponseOutput) ToStatefulPolicyPreservedStateResponseOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateResponseOutput {
+	return o
+}
+
+// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
+func (o StatefulPolicyPreservedStateResponseOutput) Disks() StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateDiskDeviceResponse {
+		return v.Disks
+	}).(StatefulPolicyPreservedStateDiskDeviceResponseMapOutput)
+}
+
+// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
+		return v.ExternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
+}
+
+// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
+func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
+		return v.InternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
+}
+
+type StatefulPolicyResponse struct {
+	PreservedState StatefulPolicyPreservedStateResponse `pulumi:"preservedState"`
+}
+
+type StatefulPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyResponseOutput) ToStatefulPolicyResponseOutput() StatefulPolicyResponseOutput {
+	return o
+}
+
+func (o StatefulPolicyResponseOutput) ToStatefulPolicyResponseOutputWithContext(ctx context.Context) StatefulPolicyResponseOutput {
+	return o
+}
+
+func (o StatefulPolicyResponseOutput) PreservedState() StatefulPolicyPreservedStateResponseOutput {
+	return o.ApplyT(func(v StatefulPolicyResponse) StatefulPolicyPreservedStateResponse { return v.PreservedState }).(StatefulPolicyPreservedStateResponseOutput)
+}
+
+// The available logging options for this subnetwork.
+type SubnetworkLogConfig struct {
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
+	AggregationInterval *SubnetworkLogConfigAggregationInterval `pulumi:"aggregationInterval"`
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	Enable *bool `pulumi:"enable"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+	FilterExpr *string `pulumi:"filterExpr"`
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
+	FlowSampling *float64 `pulumi:"flowSampling"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
+	Metadata *SubnetworkLogConfigMetadata `pulumi:"metadata"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
+	MetadataFields []string `pulumi:"metadataFields"`
+}
+
+// SubnetworkLogConfigInput is an input type that accepts SubnetworkLogConfigArgs and SubnetworkLogConfigOutput values.
+// You can construct a concrete instance of `SubnetworkLogConfigInput` via:
+//
+//	SubnetworkLogConfigArgs{...}
+type SubnetworkLogConfigInput interface {
+	pulumi.Input
+
+	ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput
+	ToSubnetworkLogConfigOutputWithContext(context.Context) SubnetworkLogConfigOutput
+}
+
+// The available logging options for this subnetwork.
+type SubnetworkLogConfigArgs struct {
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
+	AggregationInterval SubnetworkLogConfigAggregationIntervalPtrInput `pulumi:"aggregationInterval"`
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
+	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
+	Metadata SubnetworkLogConfigMetadataPtrInput `pulumi:"metadata"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
+	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
+}
+
+func (SubnetworkLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput {
+	return i.ToSubnetworkLogConfigOutputWithContext(context.Background())
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigOutputWithContext(ctx context.Context) SubnetworkLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigOutput)
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return i.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigOutput).ToSubnetworkLogConfigPtrOutputWithContext(ctx)
+}
+
+// SubnetworkLogConfigPtrInput is an input type that accepts SubnetworkLogConfigArgs, SubnetworkLogConfigPtr and SubnetworkLogConfigPtrOutput values.
+// You can construct a concrete instance of `SubnetworkLogConfigPtrInput` via:
+//
+//	        SubnetworkLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubnetworkLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput
+	ToSubnetworkLogConfigPtrOutputWithContext(context.Context) SubnetworkLogConfigPtrOutput
+}
+
+type subnetworkLogConfigPtrType SubnetworkLogConfigArgs
+
+func SubnetworkLogConfigPtr(v *SubnetworkLogConfigArgs) SubnetworkLogConfigPtrInput {
+	return (*subnetworkLogConfigPtrType)(v)
+}
+
+func (*subnetworkLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (i *subnetworkLogConfigPtrType) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return i.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetworkLogConfigPtrType) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigPtrOutput)
+}
+
+// The available logging options for this subnetwork.
+type SubnetworkLogConfigOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigOutputWithContext(ctx context.Context) SubnetworkLogConfigOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return o.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkLogConfig) *SubnetworkLogConfig {
+		return &v
+	}).(SubnetworkLogConfigPtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
+func (o SubnetworkLogConfigOutput) AggregationInterval() SubnetworkLogConfigAggregationIntervalPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *SubnetworkLogConfigAggregationInterval { return v.AggregationInterval }).(SubnetworkLogConfigAggregationIntervalPtrOutput)
+}
+
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+func (o SubnetworkLogConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+func (o SubnetworkLogConfigOutput) FilterExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.FilterExpr }).(pulumi.StringPtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
+func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *float64 { return v.FlowSampling }).(pulumi.Float64PtrOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
+func (o SubnetworkLogConfigOutput) Metadata() SubnetworkLogConfigMetadataPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *SubnetworkLogConfigMetadata { return v.Metadata }).(SubnetworkLogConfigMetadataPtrOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
+func (o SubnetworkLogConfigOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) []string { return v.MetadataFields }).(pulumi.StringArrayOutput)
+}
+
+type SubnetworkLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (o SubnetworkLogConfigPtrOutput) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigPtrOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigPtrOutput) Elem() SubnetworkLogConfigOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) SubnetworkLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkLogConfig
+		return ret
+	}).(SubnetworkLogConfigOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
+func (o SubnetworkLogConfigPtrOutput) AggregationInterval() SubnetworkLogConfigAggregationIntervalPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *SubnetworkLogConfigAggregationInterval {
+		if v == nil {
+			return nil
+		}
+		return v.AggregationInterval
+	}).(SubnetworkLogConfigAggregationIntervalPtrOutput)
+}
+
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+func (o SubnetworkLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+func (o SubnetworkLogConfigPtrOutput) FilterExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterExpr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
+func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FlowSampling
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
+func (o SubnetworkLogConfigPtrOutput) Metadata() SubnetworkLogConfigMetadataPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *SubnetworkLogConfigMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(SubnetworkLogConfigMetadataPtrOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
+func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataFields
+	}).(pulumi.StringArrayOutput)
+}
+
+// The available logging options for this subnetwork.
+type SubnetworkLogConfigResponse struct {
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
+	AggregationInterval string `pulumi:"aggregationInterval"`
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+	Enable bool `pulumi:"enable"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+	FilterExpr string `pulumi:"filterExpr"`
+	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
+	FlowSampling float64 `pulumi:"flowSampling"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
+	Metadata string `pulumi:"metadata"`
+	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
+	MetadataFields []string `pulumi:"metadataFields"`
+}
+
+// The available logging options for this subnetwork.
+type SubnetworkLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkLogConfigResponse)(nil)).Elem()
+}
+
+func (o SubnetworkLogConfigResponseOutput) ToSubnetworkLogConfigResponseOutput() SubnetworkLogConfigResponseOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigResponseOutput) ToSubnetworkLogConfigResponseOutputWithContext(ctx context.Context) SubnetworkLogConfigResponseOutput {
+	return o
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
+func (o SubnetworkLogConfigResponseOutput) AggregationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.AggregationInterval }).(pulumi.StringOutput)
+}
+
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+func (o SubnetworkLogConfigResponseOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v SubnetworkLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
+func (o SubnetworkLogConfigResponseOutput) FilterExpr() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.FilterExpr }).(pulumi.StringOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
+func (o SubnetworkLogConfigResponseOutput) FlowSampling() pulumi.Float64Output {
+	return o.ApplyT(func(v SubnetworkLogConfigResponse) float64 { return v.FlowSampling }).(pulumi.Float64Output)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
+func (o SubnetworkLogConfigResponseOutput) Metadata() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.Metadata }).(pulumi.StringOutput)
+}
+
+// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
+func (o SubnetworkLogConfigResponseOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetworkLogConfigResponse) []string { return v.MetadataFields }).(pulumi.StringArrayOutput)
+}
+
+// Represents a secondary IP range of a subnetwork.
+type SubnetworkSecondaryRange struct {
+	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
+	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+	RangeName *string `pulumi:"rangeName"`
+	// The URL of the reserved internal range.
+	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
+}
+
+// SubnetworkSecondaryRangeInput is an input type that accepts SubnetworkSecondaryRangeArgs and SubnetworkSecondaryRangeOutput values.
+// You can construct a concrete instance of `SubnetworkSecondaryRangeInput` via:
+//
+//	SubnetworkSecondaryRangeArgs{...}
+type SubnetworkSecondaryRangeInput interface {
+	pulumi.Input
+
+	ToSubnetworkSecondaryRangeOutput() SubnetworkSecondaryRangeOutput
+	ToSubnetworkSecondaryRangeOutputWithContext(context.Context) SubnetworkSecondaryRangeOutput
+}
+
+// Represents a secondary IP range of a subnetwork.
+type SubnetworkSecondaryRangeArgs struct {
+	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
+	IpCidrRange pulumi.StringPtrInput `pulumi:"ipCidrRange"`
+	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+	RangeName pulumi.StringPtrInput `pulumi:"rangeName"`
+	// The URL of the reserved internal range.
+	ReservedInternalRange pulumi.StringPtrInput `pulumi:"reservedInternalRange"`
+}
+
+func (SubnetworkSecondaryRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkSecondaryRange)(nil)).Elem()
+}
+
+func (i SubnetworkSecondaryRangeArgs) ToSubnetworkSecondaryRangeOutput() SubnetworkSecondaryRangeOutput {
+	return i.ToSubnetworkSecondaryRangeOutputWithContext(context.Background())
+}
+
+func (i SubnetworkSecondaryRangeArgs) ToSubnetworkSecondaryRangeOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkSecondaryRangeOutput)
+}
+
+// SubnetworkSecondaryRangeArrayInput is an input type that accepts SubnetworkSecondaryRangeArray and SubnetworkSecondaryRangeArrayOutput values.
+// You can construct a concrete instance of `SubnetworkSecondaryRangeArrayInput` via:
+//
+//	SubnetworkSecondaryRangeArray{ SubnetworkSecondaryRangeArgs{...} }
+type SubnetworkSecondaryRangeArrayInput interface {
+	pulumi.Input
+
+	ToSubnetworkSecondaryRangeArrayOutput() SubnetworkSecondaryRangeArrayOutput
+	ToSubnetworkSecondaryRangeArrayOutputWithContext(context.Context) SubnetworkSecondaryRangeArrayOutput
+}
+
+type SubnetworkSecondaryRangeArray []SubnetworkSecondaryRangeInput
+
+func (SubnetworkSecondaryRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetworkSecondaryRange)(nil)).Elem()
+}
+
+func (i SubnetworkSecondaryRangeArray) ToSubnetworkSecondaryRangeArrayOutput() SubnetworkSecondaryRangeArrayOutput {
+	return i.ToSubnetworkSecondaryRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetworkSecondaryRangeArray) ToSubnetworkSecondaryRangeArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkSecondaryRangeArrayOutput)
+}
+
+// Represents a secondary IP range of a subnetwork.
+type SubnetworkSecondaryRangeOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkSecondaryRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkSecondaryRange)(nil)).Elem()
+}
+
+func (o SubnetworkSecondaryRangeOutput) ToSubnetworkSecondaryRangeOutput() SubnetworkSecondaryRangeOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryRangeOutput) ToSubnetworkSecondaryRangeOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeOutput {
+	return o
+}
+
+// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
+func (o SubnetworkSecondaryRangeOutput) IpCidrRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryRange) *string { return v.IpCidrRange }).(pulumi.StringPtrOutput)
+}
+
+// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+func (o SubnetworkSecondaryRangeOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryRange) *string { return v.RangeName }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the reserved internal range.
+func (o SubnetworkSecondaryRangeOutput) ReservedInternalRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryRange) *string { return v.ReservedInternalRange }).(pulumi.StringPtrOutput)
+}
+
+type SubnetworkSecondaryRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkSecondaryRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetworkSecondaryRange)(nil)).Elem()
+}
+
+func (o SubnetworkSecondaryRangeArrayOutput) ToSubnetworkSecondaryRangeArrayOutput() SubnetworkSecondaryRangeArrayOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryRangeArrayOutput) ToSubnetworkSecondaryRangeArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeArrayOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryRangeArrayOutput) Index(i pulumi.IntInput) SubnetworkSecondaryRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkSecondaryRange {
+		return vs[0].([]SubnetworkSecondaryRange)[vs[1].(int)]
+	}).(SubnetworkSecondaryRangeOutput)
+}
+
+// Represents a secondary IP range of a subnetwork.
+type SubnetworkSecondaryRangeResponse struct {
+	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+	RangeName string `pulumi:"rangeName"`
+	// The URL of the reserved internal range.
+	ReservedInternalRange string `pulumi:"reservedInternalRange"`
+}
+
+// Represents a secondary IP range of a subnetwork.
+type SubnetworkSecondaryRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkSecondaryRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkSecondaryRangeResponse)(nil)).Elem()
+}
+
+func (o SubnetworkSecondaryRangeResponseOutput) ToSubnetworkSecondaryRangeResponseOutput() SubnetworkSecondaryRangeResponseOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryRangeResponseOutput) ToSubnetworkSecondaryRangeResponseOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeResponseOutput {
+	return o
+}
+
+// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
+func (o SubnetworkSecondaryRangeResponseOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryRangeResponse) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+func (o SubnetworkSecondaryRangeResponseOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryRangeResponse) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+// The URL of the reserved internal range.
+func (o SubnetworkSecondaryRangeResponseOutput) ReservedInternalRange() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryRangeResponse) string { return v.ReservedInternalRange }).(pulumi.StringOutput)
+}
+
+type SubnetworkSecondaryRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkSecondaryRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetworkSecondaryRangeResponse)(nil)).Elem()
+}
+
+func (o SubnetworkSecondaryRangeResponseArrayOutput) ToSubnetworkSecondaryRangeResponseArrayOutput() SubnetworkSecondaryRangeResponseArrayOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryRangeResponseArrayOutput) ToSubnetworkSecondaryRangeResponseArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeResponseArrayOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryRangeResponseArrayOutput) Index(i pulumi.IntInput) SubnetworkSecondaryRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkSecondaryRangeResponse {
+		return vs[0].([]SubnetworkSecondaryRangeResponse)[vs[1].(int)]
+	}).(SubnetworkSecondaryRangeResponseOutput)
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type Subsetting struct {
+	Policy *SubsettingPolicy `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize *int `pulumi:"subsetSize"`
+}
+
+// SubsettingInput is an input type that accepts SubsettingArgs and SubsettingOutput values.
+// You can construct a concrete instance of `SubsettingInput` via:
+//
+//	SubsettingArgs{...}
+type SubsettingInput interface {
+	pulumi.Input
+
+	ToSubsettingOutput() SubsettingOutput
+	ToSubsettingOutputWithContext(context.Context) SubsettingOutput
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingArgs struct {
+	Policy SubsettingPolicyPtrInput `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize pulumi.IntPtrInput `pulumi:"subsetSize"`
+}
+
+func (SubsettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subsetting)(nil)).Elem()
+}
+
+func (i SubsettingArgs) ToSubsettingOutput() SubsettingOutput {
+	return i.ToSubsettingOutputWithContext(context.Background())
+}
+
+func (i SubsettingArgs) ToSubsettingOutputWithContext(ctx context.Context) SubsettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingOutput)
+}
+
+func (i SubsettingArgs) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return i.ToSubsettingPtrOutputWithContext(context.Background())
+}
+
+func (i SubsettingArgs) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingOutput).ToSubsettingPtrOutputWithContext(ctx)
+}
+
+// SubsettingPtrInput is an input type that accepts SubsettingArgs, SubsettingPtr and SubsettingPtrOutput values.
+// You can construct a concrete instance of `SubsettingPtrInput` via:
+//
+//	        SubsettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubsettingPtrInput interface {
+	pulumi.Input
+
+	ToSubsettingPtrOutput() SubsettingPtrOutput
+	ToSubsettingPtrOutputWithContext(context.Context) SubsettingPtrOutput
+}
+
+type subsettingPtrType SubsettingArgs
+
+func SubsettingPtr(v *SubsettingArgs) SubsettingPtrInput {
+	return (*subsettingPtrType)(v)
+}
+
+func (*subsettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Subsetting)(nil)).Elem()
+}
+
+func (i *subsettingPtrType) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return i.ToSubsettingPtrOutputWithContext(context.Background())
+}
+
+func (i *subsettingPtrType) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubsettingPtrOutput)
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingOutput struct{ *pulumi.OutputState }
+
+func (SubsettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subsetting)(nil)).Elem()
+}
+
+func (o SubsettingOutput) ToSubsettingOutput() SubsettingOutput {
+	return o
+}
+
+func (o SubsettingOutput) ToSubsettingOutputWithContext(ctx context.Context) SubsettingOutput {
+	return o
+}
+
+func (o SubsettingOutput) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return o.ToSubsettingPtrOutputWithContext(context.Background())
+}
+
+func (o SubsettingOutput) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subsetting) *Subsetting {
+		return &v
+	}).(SubsettingPtrOutput)
+}
+
+func (o SubsettingOutput) Policy() SubsettingPolicyPtrOutput {
+	return o.ApplyT(func(v Subsetting) *SubsettingPolicy { return v.Policy }).(SubsettingPolicyPtrOutput)
+}
+
+// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o SubsettingOutput) SubsetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Subsetting) *int { return v.SubsetSize }).(pulumi.IntPtrOutput)
+}
+
+type SubsettingPtrOutput struct{ *pulumi.OutputState }
+
+func (SubsettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Subsetting)(nil)).Elem()
+}
+
+func (o SubsettingPtrOutput) ToSubsettingPtrOutput() SubsettingPtrOutput {
+	return o
+}
+
+func (o SubsettingPtrOutput) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
+	return o
+}
+
+func (o SubsettingPtrOutput) Elem() SubsettingOutput {
+	return o.ApplyT(func(v *Subsetting) Subsetting {
+		if v != nil {
+			return *v
+		}
+		var ret Subsetting
+		return ret
+	}).(SubsettingOutput)
+}
+
+func (o SubsettingPtrOutput) Policy() SubsettingPolicyPtrOutput {
+	return o.ApplyT(func(v *Subsetting) *SubsettingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(SubsettingPolicyPtrOutput)
+}
+
+// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o SubsettingPtrOutput) SubsetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Subsetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SubsetSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingResponse struct {
+	Policy string `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize int `pulumi:"subsetSize"`
+}
+
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
+type SubsettingResponseOutput struct{ *pulumi.OutputState }
+
+func (SubsettingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubsettingResponse)(nil)).Elem()
+}
+
+func (o SubsettingResponseOutput) ToSubsettingResponseOutput() SubsettingResponseOutput {
+	return o
+}
+
+func (o SubsettingResponseOutput) ToSubsettingResponseOutputWithContext(ctx context.Context) SubsettingResponseOutput {
+	return o
+}
+
+func (o SubsettingResponseOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v SubsettingResponse) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o SubsettingResponseOutput) SubsetSize() pulumi.IntOutput {
+	return o.ApplyT(func(v SubsettingResponse) int { return v.SubsetSize }).(pulumi.IntOutput)
+}
+
+type TCPHealthCheck struct {
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+	Port *int `pulumi:"port"`
+	// Not supported.
+	PortName *string `pulumi:"portName"`
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	PortSpecification *TCPHealthCheckPortSpecification `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+	ProxyHeader *TCPHealthCheckProxyHeader `pulumi:"proxyHeader"`
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
+	Request *string `pulumi:"request"`
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
+	Response *string `pulumi:"response"`
+}
+
+// TCPHealthCheckInput is an input type that accepts TCPHealthCheckArgs and TCPHealthCheckOutput values.
+// You can construct a concrete instance of `TCPHealthCheckInput` via:
+//
+//	TCPHealthCheckArgs{...}
+type TCPHealthCheckInput interface {
+	pulumi.Input
+
+	ToTCPHealthCheckOutput() TCPHealthCheckOutput
+	ToTCPHealthCheckOutputWithContext(context.Context) TCPHealthCheckOutput
+}
+
+type TCPHealthCheckArgs struct {
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Not supported.
+	PortName pulumi.StringPtrInput `pulumi:"portName"`
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	PortSpecification TCPHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+	ProxyHeader TCPHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
+	Request pulumi.StringPtrInput `pulumi:"request"`
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
+	Response pulumi.StringPtrInput `pulumi:"response"`
+}
+
+func (TCPHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPHealthCheck)(nil)).Elem()
+}
+
+func (i TCPHealthCheckArgs) ToTCPHealthCheckOutput() TCPHealthCheckOutput {
+	return i.ToTCPHealthCheckOutputWithContext(context.Background())
+}
+
+func (i TCPHealthCheckArgs) ToTCPHealthCheckOutputWithContext(ctx context.Context) TCPHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TCPHealthCheckOutput)
+}
+
+func (i TCPHealthCheckArgs) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
+	return i.ToTCPHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i TCPHealthCheckArgs) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TCPHealthCheckOutput).ToTCPHealthCheckPtrOutputWithContext(ctx)
+}
+
+// TCPHealthCheckPtrInput is an input type that accepts TCPHealthCheckArgs, TCPHealthCheckPtr and TCPHealthCheckPtrOutput values.
+// You can construct a concrete instance of `TCPHealthCheckPtrInput` via:
+//
+//	        TCPHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type TCPHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput
+	ToTCPHealthCheckPtrOutputWithContext(context.Context) TCPHealthCheckPtrOutput
+}
+
+type tcphealthCheckPtrType TCPHealthCheckArgs
+
+func TCPHealthCheckPtr(v *TCPHealthCheckArgs) TCPHealthCheckPtrInput {
+	return (*tcphealthCheckPtrType)(v)
+}
+
+func (*tcphealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TCPHealthCheck)(nil)).Elem()
+}
+
+func (i *tcphealthCheckPtrType) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
+	return i.ToTCPHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *tcphealthCheckPtrType) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TCPHealthCheckPtrOutput)
+}
+
+type TCPHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (TCPHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPHealthCheck)(nil)).Elem()
+}
+
+func (o TCPHealthCheckOutput) ToTCPHealthCheckOutput() TCPHealthCheckOutput {
+	return o
+}
+
+func (o TCPHealthCheckOutput) ToTCPHealthCheckOutputWithContext(ctx context.Context) TCPHealthCheckOutput {
+	return o
+}
+
+func (o TCPHealthCheckOutput) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
+	return o.ToTCPHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o TCPHealthCheckOutput) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TCPHealthCheck) *TCPHealthCheck {
+		return &v
+	}).(TCPHealthCheckPtrOutput)
+}
+
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+func (o TCPHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TCPHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Not supported.
+func (o TCPHealthCheckOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TCPHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+func (o TCPHealthCheckOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
+	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckPortSpecification { return v.PortSpecification }).(TCPHealthCheckPortSpecificationPtrOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+func (o TCPHealthCheckOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutput {
+	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckProxyHeader { return v.ProxyHeader }).(TCPHealthCheckProxyHeaderPtrOutput)
+}
+
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
+func (o TCPHealthCheckOutput) Request() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Request }).(pulumi.StringPtrOutput)
+}
+
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
+func (o TCPHealthCheckOutput) Response() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
+}
+
+type TCPHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (TCPHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TCPHealthCheck)(nil)).Elem()
+}
+
+func (o TCPHealthCheckPtrOutput) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
+	return o
+}
+
+func (o TCPHealthCheckPtrOutput) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
+	return o
+}
+
+func (o TCPHealthCheckPtrOutput) Elem() TCPHealthCheckOutput {
+	return o.ApplyT(func(v *TCPHealthCheck) TCPHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret TCPHealthCheck
+		return ret
+	}).(TCPHealthCheckOutput)
+}
+
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+func (o TCPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TCPHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Not supported.
+func (o TCPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TCPHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+func (o TCPHealthCheckPtrOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
+	return o.ApplyT(func(v *TCPHealthCheck) *TCPHealthCheckPortSpecification {
+		if v == nil {
+			return nil
+		}
+		return v.PortSpecification
+	}).(TCPHealthCheckPortSpecificationPtrOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+func (o TCPHealthCheckPtrOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutput {
+	return o.ApplyT(func(v *TCPHealthCheck) *TCPHealthCheckProxyHeader {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyHeader
+	}).(TCPHealthCheckProxyHeaderPtrOutput)
+}
+
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
+func (o TCPHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TCPHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Request
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
+func (o TCPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TCPHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(pulumi.StringPtrOutput)
+}
+
+type TCPHealthCheckResponse struct {
+	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+	Port int `pulumi:"port"`
+	// Not supported.
+	PortName string `pulumi:"portName"`
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	PortSpecification string `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
+	Request string `pulumi:"request"`
+	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
+	Response string `pulumi:"response"`
+}
+
+type TCPHealthCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (TCPHealthCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPHealthCheckResponse)(nil)).Elem()
+}
+
+func (o TCPHealthCheckResponseOutput) ToTCPHealthCheckResponseOutput() TCPHealthCheckResponseOutput {
+	return o
+}
+
+func (o TCPHealthCheckResponseOutput) ToTCPHealthCheckResponseOutputWithContext(ctx context.Context) TCPHealthCheckResponseOutput {
+	return o
+}
+
+// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
+func (o TCPHealthCheckResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v TCPHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Not supported.
+func (o TCPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+func (o TCPHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+func (o TCPHealthCheckResponseOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
+func (o TCPHealthCheckResponseOutput) Request() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Request }).(pulumi.StringOutput)
+}
+
+// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
+func (o TCPHealthCheckResponseOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
+}
+
+// A set of instance tags.
+type Tags struct {
+	// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
+	Items []string `pulumi:"items"`
+}
+
+// TagsInput is an input type that accepts TagsArgs and TagsOutput values.
+// You can construct a concrete instance of `TagsInput` via:
+//
+//	TagsArgs{...}
+type TagsInput interface {
+	pulumi.Input
+
+	ToTagsOutput() TagsOutput
+	ToTagsOutputWithContext(context.Context) TagsOutput
+}
+
+// A set of instance tags.
+type TagsArgs struct {
+	// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
+	Items pulumi.StringArrayInput `pulumi:"items"`
+}
+
+func (TagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tags)(nil)).Elem()
+}
+
+func (i TagsArgs) ToTagsOutput() TagsOutput {
+	return i.ToTagsOutputWithContext(context.Background())
+}
+
+func (i TagsArgs) ToTagsOutputWithContext(ctx context.Context) TagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagsOutput)
+}
+
+func (i TagsArgs) ToTagsPtrOutput() TagsPtrOutput {
+	return i.ToTagsPtrOutputWithContext(context.Background())
+}
+
+func (i TagsArgs) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagsOutput).ToTagsPtrOutputWithContext(ctx)
+}
+
+// TagsPtrInput is an input type that accepts TagsArgs, TagsPtr and TagsPtrOutput values.
+// You can construct a concrete instance of `TagsPtrInput` via:
+//
+//	        TagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TagsPtrInput interface {
+	pulumi.Input
+
+	ToTagsPtrOutput() TagsPtrOutput
+	ToTagsPtrOutputWithContext(context.Context) TagsPtrOutput
+}
+
+type tagsPtrType TagsArgs
+
+func TagsPtr(v *TagsArgs) TagsPtrInput {
+	return (*tagsPtrType)(v)
+}
+
+func (*tagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Tags)(nil)).Elem()
+}
+
+func (i *tagsPtrType) ToTagsPtrOutput() TagsPtrOutput {
+	return i.ToTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *tagsPtrType) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagsPtrOutput)
+}
+
+// A set of instance tags.
+type TagsOutput struct{ *pulumi.OutputState }
+
+func (TagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tags)(nil)).Elem()
+}
+
+func (o TagsOutput) ToTagsOutput() TagsOutput {
+	return o
+}
+
+func (o TagsOutput) ToTagsOutputWithContext(ctx context.Context) TagsOutput {
+	return o
+}
+
+func (o TagsOutput) ToTagsPtrOutput() TagsPtrOutput {
+	return o.ToTagsPtrOutputWithContext(context.Background())
+}
+
+func (o TagsOutput) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Tags) *Tags {
+		return &v
+	}).(TagsPtrOutput)
+}
+
+// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
+func (o TagsOutput) Items() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Tags) []string { return v.Items }).(pulumi.StringArrayOutput)
+}
+
+type TagsPtrOutput struct{ *pulumi.OutputState }
+
+func (TagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Tags)(nil)).Elem()
+}
+
+func (o TagsPtrOutput) ToTagsPtrOutput() TagsPtrOutput {
+	return o
+}
+
+func (o TagsPtrOutput) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
+	return o
+}
+
+func (o TagsPtrOutput) Elem() TagsOutput {
+	return o.ApplyT(func(v *Tags) Tags {
+		if v != nil {
+			return *v
+		}
+		var ret Tags
+		return ret
+	}).(TagsOutput)
+}
+
+// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
+func (o TagsPtrOutput) Items() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Tags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(pulumi.StringArrayOutput)
+}
+
 // A set of instance tags.
 type TagsResponse struct {
 	// Specifies a fingerprint for this request, which is essentially a hash of the tags' contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update tags. You must always provide an up-to-date fingerprint hash in order to update or change tags. To see the latest fingerprint, make get() request to the instance.
@@ -1093,6 +2296,16 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigPtrInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeInput)(nil)).Elem(), SubnetworkSecondaryRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeArrayInput)(nil)).Elem(), SubnetworkSecondaryRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingInput)(nil)).Elem(), SubsettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingPtrInput)(nil)).Elem(), SubsettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckInput)(nil)).Elem(), TCPHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckPtrInput)(nil)).Elem(), TCPHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagsInput)(nil)).Elem(), TagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagsPtrInput)(nil)).Elem(), TagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestInput)(nil)).Elem(), UrlMapTestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestArrayInput)(nil)).Elem(), UrlMapTestArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapTestHeaderInput)(nil)).Elem(), UrlMapTestHeaderArgs{})
@@ -1103,6 +2316,25 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseMapOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateResponseOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyResponseOutput{})
+	pulumi.RegisterOutputType(SubnetworkLogConfigOutput{})
+	pulumi.RegisterOutputType(SubnetworkLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(SubnetworkSecondaryRangeOutput{})
+	pulumi.RegisterOutputType(SubnetworkSecondaryRangeArrayOutput{})
+	pulumi.RegisterOutputType(SubnetworkSecondaryRangeResponseOutput{})
+	pulumi.RegisterOutputType(SubnetworkSecondaryRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(SubsettingOutput{})
+	pulumi.RegisterOutputType(SubsettingPtrOutput{})
+	pulumi.RegisterOutputType(SubsettingResponseOutput{})
+	pulumi.RegisterOutputType(TCPHealthCheckOutput{})
+	pulumi.RegisterOutputType(TCPHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(TCPHealthCheckResponseOutput{})
+	pulumi.RegisterOutputType(TagsOutput{})
+	pulumi.RegisterOutputType(TagsPtrOutput{})
 	pulumi.RegisterOutputType(TagsResponseOutput{})
 	pulumi.RegisterOutputType(Uint128ResponseOutput{})
 	pulumi.RegisterOutputType(UpcomingMaintenanceResponseOutput{})

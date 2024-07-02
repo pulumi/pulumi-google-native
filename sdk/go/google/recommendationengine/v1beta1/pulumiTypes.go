@@ -166,9 +166,9 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyRespon
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
 type GoogleCloudRecommendationengineV1beta1FeatureMap struct {
 	// Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-	CategoricalFeatures map[string]string `pulumi:"categoricalFeatures"`
+	CategoricalFeatures map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringList `pulumi:"categoricalFeatures"`
 	// Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
-	NumericalFeatures map[string]string `pulumi:"numericalFeatures"`
+	NumericalFeatures map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatList `pulumi:"numericalFeatures"`
 }
 
 // GoogleCloudRecommendationengineV1beta1FeatureMapInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMap and GoogleCloudRecommendationengineV1beta1FeatureMapOutput values.
@@ -185,9 +185,9 @@ type GoogleCloudRecommendationengineV1beta1FeatureMapInput interface {
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
 type GoogleCloudRecommendationengineV1beta1FeatureMapArgs struct {
 	// Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-	CategoricalFeatures pulumi.StringMapInput `pulumi:"categoricalFeatures"`
+	CategoricalFeatures GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapInput `pulumi:"categoricalFeatures"`
 	// Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
-	NumericalFeatures pulumi.StringMapInput `pulumi:"numericalFeatures"`
+	NumericalFeatures GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapInput `pulumi:"numericalFeatures"`
 }
 
 func (GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ElementType() reflect.Type {
@@ -269,15 +269,17 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) ToGoogleCloudRec
 }
 
 // Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) CategoricalFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string {
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) CategoricalFeatures() GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
 		return v.CategoricalFeatures
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput)
 }
 
 // Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) NumericalFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string { return v.NumericalFeatures }).(pulumi.StringMapOutput)
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapOutput) NumericalFeatures() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
+		return v.NumericalFeatures
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput)
 }
 
 type GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput struct{ *pulumi.OutputState }
@@ -305,31 +307,177 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) Elem() Google
 }
 
 // Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) CategoricalFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string {
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) CategoricalFeatures() GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
 		if v == nil {
 			return nil
 		}
 		return v.CategoricalFeatures
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput)
 }
 
 // Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) NumericalFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]string {
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput) NumericalFeatures() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1FeatureMap) map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
 		if v == nil {
 			return nil
 		}
 		return v.NumericalFeatures
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput)
+}
+
+// A list of float features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatList struct {
+	// Float feature value.
+	Value []float64 `pulumi:"value"`
+}
+
+// GoogleCloudRecommendationengineV1beta1FeatureMapFloatListInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs and GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapFloatListInput` via:
+//
+//	GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs{...}
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput
+}
+
+// A list of float features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs struct {
+	// Float feature value.
+	Value pulumi.Float64ArrayInput `pulumi:"value"`
+}
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapFloatList)(nil)).Elem()
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput)
+}
+
+// GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMap and GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapInput` via:
+//
+//	GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMap{ "key": GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs{...} }
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMap map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatListInput
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatList)(nil)).Elem()
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMap) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMap) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput)
+}
+
+// A list of float features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapFloatList)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput {
+	return o
+}
+
+// Float feature value.
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput) Value() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapFloatList) []float64 { return v.Value }).(pulumi.Float64ArrayOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatList)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
+		return vs[0].(map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatList)[vs[1].(string)]
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput)
+}
+
+// A list of float features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse struct {
+	// Float feature value.
+	Value []float64 `pulumi:"value"`
+}
+
+// A list of float features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput {
+	return o
+}
+
+// Float feature value.
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput) Value() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse) []float64 { return v.Value }).(pulumi.Float64ArrayOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse {
+		return vs[0].(map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse)[vs[1].(string)]
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput)
 }
 
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
 type GoogleCloudRecommendationengineV1beta1FeatureMapResponse struct {
 	// Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-	CategoricalFeatures map[string]string `pulumi:"categoricalFeatures"`
+	CategoricalFeatures map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse `pulumi:"categoricalFeatures"`
 	// Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
-	NumericalFeatures map[string]string `pulumi:"numericalFeatures"`
+	NumericalFeatures map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse `pulumi:"numericalFeatures"`
 }
 
 // FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
@@ -348,17 +496,163 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) ToGoogle
 }
 
 // Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}`
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) CategoricalFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]string {
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) CategoricalFeatures() GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse {
 		return v.CategoricalFeatures
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput)
 }
 
 // Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
-func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) NumericalFeatures() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]string {
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput) NumericalFeatures() GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapResponse) map[string]GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponse {
 		return v.NumericalFeatures
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput)
+}
+
+// A list of string features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringList struct {
+	// String feature value with a length limit of 128 bytes.
+	Value []string `pulumi:"value"`
+}
+
+// GoogleCloudRecommendationengineV1beta1FeatureMapStringListInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs and GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapStringListInput` via:
+//
+//	GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs{...}
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput
+}
+
+// A list of string features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs struct {
+	// String feature value with a length limit of 128 bytes.
+	Value pulumi.StringArrayInput `pulumi:"value"`
+}
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapStringList)(nil)).Elem()
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput)
+}
+
+// GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap and GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput values.
+// You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapInput` via:
+//
+//	GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap{ "key": GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs{...} }
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput
+	ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutputWithContext(context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringListInput
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringList)(nil)).Elem()
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput {
+	return i.ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput)
+}
+
+// A list of string features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapStringList)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput {
+	return o
+}
+
+// String feature value with a length limit of 128 bytes.
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput) Value() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapStringList) []string { return v.Value }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringList)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
+		return vs[0].(map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringList)[vs[1].(string)]
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput)
+}
+
+// A list of string features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse struct {
+	// String feature value with a length limit of 128 bytes.
+	Value []string `pulumi:"value"`
+}
+
+// A list of string features.
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput {
+	return o
+}
+
+// String feature value with a length limit of 128 bytes.
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput) Value() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse) []string { return v.Value }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput() GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput) ToGoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutputWithContext(ctx context.Context) GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse {
+		return vs[0].(map[string]GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponse)[vs[1].(string)]
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput)
 }
 
 // Catalog item thumbnail/detail image.
@@ -546,7 +840,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItem struct {
 	// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
 	CanonicalProductUri *string `pulumi:"canonicalProductUri"`
 	// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
-	Costs map[string]string `pulumi:"costs"`
+	Costs map[string]float64 `pulumi:"costs"`
 	// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
 	CurrencyCode *string `pulumi:"currencyCode"`
 	// Optional. The exact product price.
@@ -577,7 +871,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs struct {
 	// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
 	CanonicalProductUri pulumi.StringPtrInput `pulumi:"canonicalProductUri"`
 	// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
-	Costs pulumi.StringMapInput `pulumi:"costs"`
+	Costs pulumi.Float64MapInput `pulumi:"costs"`
 	// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
 	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
 	// Optional. The exact product price.
@@ -679,8 +973,8 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) Canonica
 }
 
 // Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) Costs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) map[string]string { return v.Costs }).(pulumi.StringMapOutput)
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) Costs() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) map[string]float64 { return v.Costs }).(pulumi.Float64MapOutput)
 }
 
 // Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
@@ -761,13 +1055,13 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Canon
 }
 
 // Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Costs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) map[string]string {
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Costs() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) map[string]float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Costs
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.Float64MapOutput)
 }
 
 // Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
@@ -1223,7 +1517,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse struct {
 	// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
 	CanonicalProductUri string `pulumi:"canonicalProductUri"`
 	// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
-	Costs map[string]string `pulumi:"costs"`
+	Costs map[string]float64 `pulumi:"costs"`
 	// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
 	CurrencyCode string `pulumi:"currencyCode"`
 	// Optional. The exact product price.
@@ -1266,10 +1560,10 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) 
 }
 
 // Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) Costs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) map[string]string {
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput) Costs() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse) map[string]float64 {
 		return v.Costs
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.Float64MapOutput)
 }
 
 // Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
@@ -1308,6 +1602,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1FeatureMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1FeatureMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapFloatListInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1FeatureMapFloatListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapStringListInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1FeatureMapStringListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1ImageInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1ImageArrayInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1ImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecommendationengineV1beta1ProductCatalogItemInput)(nil)).Elem(), GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs{})
@@ -1322,7 +1620,15 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListMapOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapFloatListResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapStringListOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapStringListMapOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1FeatureMapStringListResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ImageOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ImageArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecommendationengineV1beta1ImageResponseOutput{})

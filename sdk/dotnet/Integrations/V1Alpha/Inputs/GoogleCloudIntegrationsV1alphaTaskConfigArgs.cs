@@ -70,14 +70,14 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy>? NextTasksExecutionPolicy { get; set; }
 
         [Input("parameters")]
-        private InputMap<string>? _parameters;
+        private InputMap<Inputs.GoogleCloudIntegrationsV1alphaEventParameterArgs>? _parameters;
 
         /// <summary>
         /// Optional. The customized parameters the user can pass to this task.
         /// </summary>
-        public InputMap<string> Parameters
+        public InputMap<Inputs.GoogleCloudIntegrationsV1alphaEventParameterArgs> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<string>());
+            get => _parameters ?? (_parameters = new InputMap<Inputs.GoogleCloudIntegrationsV1alphaEventParameterArgs>());
             set => _parameters = value;
         }
 

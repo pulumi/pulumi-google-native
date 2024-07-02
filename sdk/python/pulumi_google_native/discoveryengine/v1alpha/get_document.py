@@ -52,7 +52,7 @@ class GetDocumentResult:
 
     @property
     @pulumi.getter(name="derivedStructData")
-    def derived_struct_data(self) -> Mapping[str, str]:
+    def derived_struct_data(self) -> Mapping[str, Any]:
         """
         This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
         """
@@ -92,7 +92,7 @@ class GetDocumentResult:
 
     @property
     @pulumi.getter(name="structData")
-    def struct_data(self) -> Mapping[str, str]:
+    def struct_data(self) -> Mapping[str, Any]:
         """
         The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """

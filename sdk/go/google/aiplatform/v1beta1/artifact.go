@@ -31,8 +31,8 @@ type Artifact struct {
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        pulumi.StringMapOutput `pulumi:"metadata"`
-	MetadataStoreId pulumi.StringOutput    `pulumi:"metadataStoreId"`
+	Metadata        pulumi.MapOutput    `pulumi:"metadata"`
+	MetadataStoreId pulumi.StringOutput `pulumi:"metadataStoreId"`
 	// The resource name of the Artifact.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -109,9 +109,9 @@ type artifactArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        map[string]string `pulumi:"metadata"`
-	MetadataStoreId string            `pulumi:"metadataStoreId"`
-	Project         *string           `pulumi:"project"`
+	Metadata        map[string]interface{} `pulumi:"metadata"`
+	MetadataStoreId string                 `pulumi:"metadataStoreId"`
+	Project         *string                `pulumi:"project"`
 	// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
 	SchemaTitle *string `pulumi:"schemaTitle"`
 	// The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -136,7 +136,7 @@ type ArtifactArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-	Metadata        pulumi.StringMapInput
+	Metadata        pulumi.MapInput
 	MetadataStoreId pulumi.StringInput
 	Project         pulumi.StringPtrInput
 	// The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
@@ -221,8 +221,8 @@ func (o ArtifactOutput) Location() pulumi.StringOutput {
 }
 
 // Properties of the Artifact. Top level metadata keys' heading and trailing spaces will be trimmed. The size of this field should not exceed 200KB.
-func (o ArtifactOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Artifact) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+func (o ArtifactOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Artifact) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
 }
 
 func (o ArtifactOutput) MetadataStoreId() pulumi.StringOutput {

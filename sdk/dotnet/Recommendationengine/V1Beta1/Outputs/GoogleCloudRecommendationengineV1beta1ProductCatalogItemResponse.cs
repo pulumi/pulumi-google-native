@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
         /// <summary>
         /// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Costs;
+        public readonly ImmutableDictionary<string, double> Costs;
         /// <summary>
         /// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
         /// </summary>
@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
 
             string canonicalProductUri,
 
-            ImmutableDictionary<string, string> costs,
+            ImmutableDictionary<string, double> costs,
 
             string currencyCode,
 

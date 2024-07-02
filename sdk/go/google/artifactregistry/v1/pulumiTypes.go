@@ -361,6 +361,719 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// Artifact policy configuration for repository cleanup policies.
+type CleanupPolicy struct {
+	// Policy action.
+	Action *CleanupPolicyAction `pulumi:"action"`
+	// Policy condition for matching versions.
+	Condition *CleanupPolicyCondition `pulumi:"condition"`
+	// The user-provided ID of the cleanup policy.
+	Id *string `pulumi:"id"`
+	// Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+	MostRecentVersions *CleanupPolicyMostRecentVersions `pulumi:"mostRecentVersions"`
+}
+
+// CleanupPolicyInput is an input type that accepts CleanupPolicyArgs and CleanupPolicyOutput values.
+// You can construct a concrete instance of `CleanupPolicyInput` via:
+//
+//	CleanupPolicyArgs{...}
+type CleanupPolicyInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyOutput() CleanupPolicyOutput
+	ToCleanupPolicyOutputWithContext(context.Context) CleanupPolicyOutput
+}
+
+// Artifact policy configuration for repository cleanup policies.
+type CleanupPolicyArgs struct {
+	// Policy action.
+	Action CleanupPolicyActionPtrInput `pulumi:"action"`
+	// Policy condition for matching versions.
+	Condition CleanupPolicyConditionPtrInput `pulumi:"condition"`
+	// The user-provided ID of the cleanup policy.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+	MostRecentVersions CleanupPolicyMostRecentVersionsPtrInput `pulumi:"mostRecentVersions"`
+}
+
+func (CleanupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicy)(nil)).Elem()
+}
+
+func (i CleanupPolicyArgs) ToCleanupPolicyOutput() CleanupPolicyOutput {
+	return i.ToCleanupPolicyOutputWithContext(context.Background())
+}
+
+func (i CleanupPolicyArgs) ToCleanupPolicyOutputWithContext(ctx context.Context) CleanupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyOutput)
+}
+
+// CleanupPolicyMapInput is an input type that accepts CleanupPolicyMap and CleanupPolicyMapOutput values.
+// You can construct a concrete instance of `CleanupPolicyMapInput` via:
+//
+//	CleanupPolicyMap{ "key": CleanupPolicyArgs{...} }
+type CleanupPolicyMapInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyMapOutput() CleanupPolicyMapOutput
+	ToCleanupPolicyMapOutputWithContext(context.Context) CleanupPolicyMapOutput
+}
+
+type CleanupPolicyMap map[string]CleanupPolicyInput
+
+func (CleanupPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CleanupPolicy)(nil)).Elem()
+}
+
+func (i CleanupPolicyMap) ToCleanupPolicyMapOutput() CleanupPolicyMapOutput {
+	return i.ToCleanupPolicyMapOutputWithContext(context.Background())
+}
+
+func (i CleanupPolicyMap) ToCleanupPolicyMapOutputWithContext(ctx context.Context) CleanupPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyMapOutput)
+}
+
+// Artifact policy configuration for repository cleanup policies.
+type CleanupPolicyOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicy)(nil)).Elem()
+}
+
+func (o CleanupPolicyOutput) ToCleanupPolicyOutput() CleanupPolicyOutput {
+	return o
+}
+
+func (o CleanupPolicyOutput) ToCleanupPolicyOutputWithContext(ctx context.Context) CleanupPolicyOutput {
+	return o
+}
+
+// Policy action.
+func (o CleanupPolicyOutput) Action() CleanupPolicyActionPtrOutput {
+	return o.ApplyT(func(v CleanupPolicy) *CleanupPolicyAction { return v.Action }).(CleanupPolicyActionPtrOutput)
+}
+
+// Policy condition for matching versions.
+func (o CleanupPolicyOutput) Condition() CleanupPolicyConditionPtrOutput {
+	return o.ApplyT(func(v CleanupPolicy) *CleanupPolicyCondition { return v.Condition }).(CleanupPolicyConditionPtrOutput)
+}
+
+// The user-provided ID of the cleanup policy.
+func (o CleanupPolicyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CleanupPolicy) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+func (o CleanupPolicyOutput) MostRecentVersions() CleanupPolicyMostRecentVersionsPtrOutput {
+	return o.ApplyT(func(v CleanupPolicy) *CleanupPolicyMostRecentVersions { return v.MostRecentVersions }).(CleanupPolicyMostRecentVersionsPtrOutput)
+}
+
+type CleanupPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CleanupPolicy)(nil)).Elem()
+}
+
+func (o CleanupPolicyMapOutput) ToCleanupPolicyMapOutput() CleanupPolicyMapOutput {
+	return o
+}
+
+func (o CleanupPolicyMapOutput) ToCleanupPolicyMapOutputWithContext(ctx context.Context) CleanupPolicyMapOutput {
+	return o
+}
+
+func (o CleanupPolicyMapOutput) MapIndex(k pulumi.StringInput) CleanupPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CleanupPolicy {
+		return vs[0].(map[string]CleanupPolicy)[vs[1].(string)]
+	}).(CleanupPolicyOutput)
+}
+
+// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
+type CleanupPolicyCondition struct {
+	// Match versions newer than a duration.
+	NewerThan *string `pulumi:"newerThan"`
+	// Match versions older than a duration.
+	OlderThan *string `pulumi:"olderThan"`
+	// Match versions by package prefix. Applied on any prefix match.
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+	// Match versions by tag prefix. Applied on any prefix match.
+	TagPrefixes []string `pulumi:"tagPrefixes"`
+	// Match versions by tag status.
+	TagState *CleanupPolicyConditionTagState `pulumi:"tagState"`
+	// DEPRECATED: Use older_than.
+	//
+	// Deprecated: DEPRECATED: Use older_than.
+	VersionAge *string `pulumi:"versionAge"`
+	// Match versions by version name prefix. Applied on any prefix match.
+	VersionNamePrefixes []string `pulumi:"versionNamePrefixes"`
+}
+
+// CleanupPolicyConditionInput is an input type that accepts CleanupPolicyConditionArgs and CleanupPolicyConditionOutput values.
+// You can construct a concrete instance of `CleanupPolicyConditionInput` via:
+//
+//	CleanupPolicyConditionArgs{...}
+type CleanupPolicyConditionInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyConditionOutput() CleanupPolicyConditionOutput
+	ToCleanupPolicyConditionOutputWithContext(context.Context) CleanupPolicyConditionOutput
+}
+
+// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
+type CleanupPolicyConditionArgs struct {
+	// Match versions newer than a duration.
+	NewerThan pulumi.StringPtrInput `pulumi:"newerThan"`
+	// Match versions older than a duration.
+	OlderThan pulumi.StringPtrInput `pulumi:"olderThan"`
+	// Match versions by package prefix. Applied on any prefix match.
+	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
+	// Match versions by tag prefix. Applied on any prefix match.
+	TagPrefixes pulumi.StringArrayInput `pulumi:"tagPrefixes"`
+	// Match versions by tag status.
+	TagState CleanupPolicyConditionTagStatePtrInput `pulumi:"tagState"`
+	// DEPRECATED: Use older_than.
+	//
+	// Deprecated: DEPRECATED: Use older_than.
+	VersionAge pulumi.StringPtrInput `pulumi:"versionAge"`
+	// Match versions by version name prefix. Applied on any prefix match.
+	VersionNamePrefixes pulumi.StringArrayInput `pulumi:"versionNamePrefixes"`
+}
+
+func (CleanupPolicyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyCondition)(nil)).Elem()
+}
+
+func (i CleanupPolicyConditionArgs) ToCleanupPolicyConditionOutput() CleanupPolicyConditionOutput {
+	return i.ToCleanupPolicyConditionOutputWithContext(context.Background())
+}
+
+func (i CleanupPolicyConditionArgs) ToCleanupPolicyConditionOutputWithContext(ctx context.Context) CleanupPolicyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyConditionOutput)
+}
+
+func (i CleanupPolicyConditionArgs) ToCleanupPolicyConditionPtrOutput() CleanupPolicyConditionPtrOutput {
+	return i.ToCleanupPolicyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i CleanupPolicyConditionArgs) ToCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) CleanupPolicyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyConditionOutput).ToCleanupPolicyConditionPtrOutputWithContext(ctx)
+}
+
+// CleanupPolicyConditionPtrInput is an input type that accepts CleanupPolicyConditionArgs, CleanupPolicyConditionPtr and CleanupPolicyConditionPtrOutput values.
+// You can construct a concrete instance of `CleanupPolicyConditionPtrInput` via:
+//
+//	        CleanupPolicyConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CleanupPolicyConditionPtrInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyConditionPtrOutput() CleanupPolicyConditionPtrOutput
+	ToCleanupPolicyConditionPtrOutputWithContext(context.Context) CleanupPolicyConditionPtrOutput
+}
+
+type cleanupPolicyConditionPtrType CleanupPolicyConditionArgs
+
+func CleanupPolicyConditionPtr(v *CleanupPolicyConditionArgs) CleanupPolicyConditionPtrInput {
+	return (*cleanupPolicyConditionPtrType)(v)
+}
+
+func (*cleanupPolicyConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanupPolicyCondition)(nil)).Elem()
+}
+
+func (i *cleanupPolicyConditionPtrType) ToCleanupPolicyConditionPtrOutput() CleanupPolicyConditionPtrOutput {
+	return i.ToCleanupPolicyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *cleanupPolicyConditionPtrType) ToCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) CleanupPolicyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyConditionPtrOutput)
+}
+
+// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
+type CleanupPolicyConditionOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyCondition)(nil)).Elem()
+}
+
+func (o CleanupPolicyConditionOutput) ToCleanupPolicyConditionOutput() CleanupPolicyConditionOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionOutput) ToCleanupPolicyConditionOutputWithContext(ctx context.Context) CleanupPolicyConditionOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionOutput) ToCleanupPolicyConditionPtrOutput() CleanupPolicyConditionPtrOutput {
+	return o.ToCleanupPolicyConditionPtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyConditionOutput) ToCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) CleanupPolicyConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanupPolicyCondition) *CleanupPolicyCondition {
+		return &v
+	}).(CleanupPolicyConditionPtrOutput)
+}
+
+// Match versions newer than a duration.
+func (o CleanupPolicyConditionOutput) NewerThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CleanupPolicyCondition) *string { return v.NewerThan }).(pulumi.StringPtrOutput)
+}
+
+// Match versions older than a duration.
+func (o CleanupPolicyConditionOutput) OlderThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CleanupPolicyCondition) *string { return v.OlderThan }).(pulumi.StringPtrOutput)
+}
+
+// Match versions by package prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyCondition) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Match versions by tag prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionOutput) TagPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyCondition) []string { return v.TagPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Match versions by tag status.
+func (o CleanupPolicyConditionOutput) TagState() CleanupPolicyConditionTagStatePtrOutput {
+	return o.ApplyT(func(v CleanupPolicyCondition) *CleanupPolicyConditionTagState { return v.TagState }).(CleanupPolicyConditionTagStatePtrOutput)
+}
+
+// DEPRECATED: Use older_than.
+//
+// Deprecated: DEPRECATED: Use older_than.
+func (o CleanupPolicyConditionOutput) VersionAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CleanupPolicyCondition) *string { return v.VersionAge }).(pulumi.StringPtrOutput)
+}
+
+// Match versions by version name prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyCondition) []string { return v.VersionNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+type CleanupPolicyConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanupPolicyCondition)(nil)).Elem()
+}
+
+func (o CleanupPolicyConditionPtrOutput) ToCleanupPolicyConditionPtrOutput() CleanupPolicyConditionPtrOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionPtrOutput) ToCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) CleanupPolicyConditionPtrOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionPtrOutput) Elem() CleanupPolicyConditionOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) CleanupPolicyCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CleanupPolicyCondition
+		return ret
+	}).(CleanupPolicyConditionOutput)
+}
+
+// Match versions newer than a duration.
+func (o CleanupPolicyConditionPtrOutput) NewerThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NewerThan
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match versions older than a duration.
+func (o CleanupPolicyConditionPtrOutput) OlderThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OlderThan
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match versions by package prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionPtrOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Match versions by tag prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionPtrOutput) TagPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TagPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Match versions by tag status.
+func (o CleanupPolicyConditionPtrOutput) TagState() CleanupPolicyConditionTagStatePtrOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) *CleanupPolicyConditionTagState {
+		if v == nil {
+			return nil
+		}
+		return v.TagState
+	}).(CleanupPolicyConditionTagStatePtrOutput)
+}
+
+// DEPRECATED: Use older_than.
+//
+// Deprecated: DEPRECATED: Use older_than.
+func (o CleanupPolicyConditionPtrOutput) VersionAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionAge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match versions by version name prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionPtrOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CleanupPolicyCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
+type CleanupPolicyConditionResponse struct {
+	// Match versions newer than a duration.
+	NewerThan string `pulumi:"newerThan"`
+	// Match versions older than a duration.
+	OlderThan string `pulumi:"olderThan"`
+	// Match versions by package prefix. Applied on any prefix match.
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+	// Match versions by tag prefix. Applied on any prefix match.
+	TagPrefixes []string `pulumi:"tagPrefixes"`
+	// Match versions by tag status.
+	TagState string `pulumi:"tagState"`
+	// DEPRECATED: Use older_than.
+	//
+	// Deprecated: DEPRECATED: Use older_than.
+	VersionAge string `pulumi:"versionAge"`
+	// Match versions by version name prefix. Applied on any prefix match.
+	VersionNamePrefixes []string `pulumi:"versionNamePrefixes"`
+}
+
+// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied.
+type CleanupPolicyConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyConditionResponse)(nil)).Elem()
+}
+
+func (o CleanupPolicyConditionResponseOutput) ToCleanupPolicyConditionResponseOutput() CleanupPolicyConditionResponseOutput {
+	return o
+}
+
+func (o CleanupPolicyConditionResponseOutput) ToCleanupPolicyConditionResponseOutputWithContext(ctx context.Context) CleanupPolicyConditionResponseOutput {
+	return o
+}
+
+// Match versions newer than a duration.
+func (o CleanupPolicyConditionResponseOutput) NewerThan() pulumi.StringOutput {
+	return o.ApplyT(func(v CleanupPolicyConditionResponse) string { return v.NewerThan }).(pulumi.StringOutput)
+}
+
+// Match versions older than a duration.
+func (o CleanupPolicyConditionResponseOutput) OlderThan() pulumi.StringOutput {
+	return o.ApplyT(func(v CleanupPolicyConditionResponse) string { return v.OlderThan }).(pulumi.StringOutput)
+}
+
+// Match versions by package prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionResponseOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyConditionResponse) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Match versions by tag prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionResponseOutput) TagPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyConditionResponse) []string { return v.TagPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Match versions by tag status.
+func (o CleanupPolicyConditionResponseOutput) TagState() pulumi.StringOutput {
+	return o.ApplyT(func(v CleanupPolicyConditionResponse) string { return v.TagState }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: Use older_than.
+//
+// Deprecated: DEPRECATED: Use older_than.
+func (o CleanupPolicyConditionResponseOutput) VersionAge() pulumi.StringOutput {
+	return o.ApplyT(func(v CleanupPolicyConditionResponse) string { return v.VersionAge }).(pulumi.StringOutput)
+}
+
+// Match versions by version name prefix. Applied on any prefix match.
+func (o CleanupPolicyConditionResponseOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyConditionResponse) []string { return v.VersionNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions.
+type CleanupPolicyMostRecentVersions struct {
+	// Minimum number of versions to keep.
+	KeepCount *int `pulumi:"keepCount"`
+	// List of package name prefixes that will apply this rule.
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+}
+
+// CleanupPolicyMostRecentVersionsInput is an input type that accepts CleanupPolicyMostRecentVersionsArgs and CleanupPolicyMostRecentVersionsOutput values.
+// You can construct a concrete instance of `CleanupPolicyMostRecentVersionsInput` via:
+//
+//	CleanupPolicyMostRecentVersionsArgs{...}
+type CleanupPolicyMostRecentVersionsInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyMostRecentVersionsOutput() CleanupPolicyMostRecentVersionsOutput
+	ToCleanupPolicyMostRecentVersionsOutputWithContext(context.Context) CleanupPolicyMostRecentVersionsOutput
+}
+
+// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions.
+type CleanupPolicyMostRecentVersionsArgs struct {
+	// Minimum number of versions to keep.
+	KeepCount pulumi.IntPtrInput `pulumi:"keepCount"`
+	// List of package name prefixes that will apply this rule.
+	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
+}
+
+func (CleanupPolicyMostRecentVersionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (i CleanupPolicyMostRecentVersionsArgs) ToCleanupPolicyMostRecentVersionsOutput() CleanupPolicyMostRecentVersionsOutput {
+	return i.ToCleanupPolicyMostRecentVersionsOutputWithContext(context.Background())
+}
+
+func (i CleanupPolicyMostRecentVersionsArgs) ToCleanupPolicyMostRecentVersionsOutputWithContext(ctx context.Context) CleanupPolicyMostRecentVersionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyMostRecentVersionsOutput)
+}
+
+func (i CleanupPolicyMostRecentVersionsArgs) ToCleanupPolicyMostRecentVersionsPtrOutput() CleanupPolicyMostRecentVersionsPtrOutput {
+	return i.ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Background())
+}
+
+func (i CleanupPolicyMostRecentVersionsArgs) ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) CleanupPolicyMostRecentVersionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyMostRecentVersionsOutput).ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx)
+}
+
+// CleanupPolicyMostRecentVersionsPtrInput is an input type that accepts CleanupPolicyMostRecentVersionsArgs, CleanupPolicyMostRecentVersionsPtr and CleanupPolicyMostRecentVersionsPtrOutput values.
+// You can construct a concrete instance of `CleanupPolicyMostRecentVersionsPtrInput` via:
+//
+//	        CleanupPolicyMostRecentVersionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CleanupPolicyMostRecentVersionsPtrInput interface {
+	pulumi.Input
+
+	ToCleanupPolicyMostRecentVersionsPtrOutput() CleanupPolicyMostRecentVersionsPtrOutput
+	ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Context) CleanupPolicyMostRecentVersionsPtrOutput
+}
+
+type cleanupPolicyMostRecentVersionsPtrType CleanupPolicyMostRecentVersionsArgs
+
+func CleanupPolicyMostRecentVersionsPtr(v *CleanupPolicyMostRecentVersionsArgs) CleanupPolicyMostRecentVersionsPtrInput {
+	return (*cleanupPolicyMostRecentVersionsPtrType)(v)
+}
+
+func (*cleanupPolicyMostRecentVersionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (i *cleanupPolicyMostRecentVersionsPtrType) ToCleanupPolicyMostRecentVersionsPtrOutput() CleanupPolicyMostRecentVersionsPtrOutput {
+	return i.ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Background())
+}
+
+func (i *cleanupPolicyMostRecentVersionsPtrType) ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) CleanupPolicyMostRecentVersionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CleanupPolicyMostRecentVersionsPtrOutput)
+}
+
+// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions.
+type CleanupPolicyMostRecentVersionsOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyMostRecentVersionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (o CleanupPolicyMostRecentVersionsOutput) ToCleanupPolicyMostRecentVersionsOutput() CleanupPolicyMostRecentVersionsOutput {
+	return o
+}
+
+func (o CleanupPolicyMostRecentVersionsOutput) ToCleanupPolicyMostRecentVersionsOutputWithContext(ctx context.Context) CleanupPolicyMostRecentVersionsOutput {
+	return o
+}
+
+func (o CleanupPolicyMostRecentVersionsOutput) ToCleanupPolicyMostRecentVersionsPtrOutput() CleanupPolicyMostRecentVersionsPtrOutput {
+	return o.ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Background())
+}
+
+func (o CleanupPolicyMostRecentVersionsOutput) ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) CleanupPolicyMostRecentVersionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CleanupPolicyMostRecentVersions) *CleanupPolicyMostRecentVersions {
+		return &v
+	}).(CleanupPolicyMostRecentVersionsPtrOutput)
+}
+
+// Minimum number of versions to keep.
+func (o CleanupPolicyMostRecentVersionsOutput) KeepCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CleanupPolicyMostRecentVersions) *int { return v.KeepCount }).(pulumi.IntPtrOutput)
+}
+
+// List of package name prefixes that will apply this rule.
+func (o CleanupPolicyMostRecentVersionsOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyMostRecentVersions) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+type CleanupPolicyMostRecentVersionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyMostRecentVersionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (o CleanupPolicyMostRecentVersionsPtrOutput) ToCleanupPolicyMostRecentVersionsPtrOutput() CleanupPolicyMostRecentVersionsPtrOutput {
+	return o
+}
+
+func (o CleanupPolicyMostRecentVersionsPtrOutput) ToCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) CleanupPolicyMostRecentVersionsPtrOutput {
+	return o
+}
+
+func (o CleanupPolicyMostRecentVersionsPtrOutput) Elem() CleanupPolicyMostRecentVersionsOutput {
+	return o.ApplyT(func(v *CleanupPolicyMostRecentVersions) CleanupPolicyMostRecentVersions {
+		if v != nil {
+			return *v
+		}
+		var ret CleanupPolicyMostRecentVersions
+		return ret
+	}).(CleanupPolicyMostRecentVersionsOutput)
+}
+
+// Minimum number of versions to keep.
+func (o CleanupPolicyMostRecentVersionsPtrOutput) KeepCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CleanupPolicyMostRecentVersions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// List of package name prefixes that will apply this rule.
+func (o CleanupPolicyMostRecentVersionsPtrOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CleanupPolicyMostRecentVersions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions.
+type CleanupPolicyMostRecentVersionsResponse struct {
+	// Minimum number of versions to keep.
+	KeepCount int `pulumi:"keepCount"`
+	// List of package name prefixes that will apply this rule.
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+}
+
+// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions.
+type CleanupPolicyMostRecentVersionsResponseOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyMostRecentVersionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyMostRecentVersionsResponse)(nil)).Elem()
+}
+
+func (o CleanupPolicyMostRecentVersionsResponseOutput) ToCleanupPolicyMostRecentVersionsResponseOutput() CleanupPolicyMostRecentVersionsResponseOutput {
+	return o
+}
+
+func (o CleanupPolicyMostRecentVersionsResponseOutput) ToCleanupPolicyMostRecentVersionsResponseOutputWithContext(ctx context.Context) CleanupPolicyMostRecentVersionsResponseOutput {
+	return o
+}
+
+// Minimum number of versions to keep.
+func (o CleanupPolicyMostRecentVersionsResponseOutput) KeepCount() pulumi.IntOutput {
+	return o.ApplyT(func(v CleanupPolicyMostRecentVersionsResponse) int { return v.KeepCount }).(pulumi.IntOutput)
+}
+
+// List of package name prefixes that will apply this rule.
+func (o CleanupPolicyMostRecentVersionsResponseOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CleanupPolicyMostRecentVersionsResponse) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Artifact policy configuration for repository cleanup policies.
+type CleanupPolicyResponse struct {
+	// Policy action.
+	Action string `pulumi:"action"`
+	// Policy condition for matching versions.
+	Condition CleanupPolicyConditionResponse `pulumi:"condition"`
+	// Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+	MostRecentVersions CleanupPolicyMostRecentVersionsResponse `pulumi:"mostRecentVersions"`
+}
+
+// Artifact policy configuration for repository cleanup policies.
+type CleanupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CleanupPolicyResponse)(nil)).Elem()
+}
+
+func (o CleanupPolicyResponseOutput) ToCleanupPolicyResponseOutput() CleanupPolicyResponseOutput {
+	return o
+}
+
+func (o CleanupPolicyResponseOutput) ToCleanupPolicyResponseOutputWithContext(ctx context.Context) CleanupPolicyResponseOutput {
+	return o
+}
+
+// Policy action.
+func (o CleanupPolicyResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v CleanupPolicyResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Policy condition for matching versions.
+func (o CleanupPolicyResponseOutput) Condition() CleanupPolicyConditionResponseOutput {
+	return o.ApplyT(func(v CleanupPolicyResponse) CleanupPolicyConditionResponse { return v.Condition }).(CleanupPolicyConditionResponseOutput)
+}
+
+// Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+func (o CleanupPolicyResponseOutput) MostRecentVersions() CleanupPolicyMostRecentVersionsResponseOutput {
+	return o.ApplyT(func(v CleanupPolicyResponse) CleanupPolicyMostRecentVersionsResponse { return v.MostRecentVersions }).(CleanupPolicyMostRecentVersionsResponseOutput)
+}
+
+type CleanupPolicyResponseMapOutput struct{ *pulumi.OutputState }
+
+func (CleanupPolicyResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CleanupPolicyResponse)(nil)).Elem()
+}
+
+func (o CleanupPolicyResponseMapOutput) ToCleanupPolicyResponseMapOutput() CleanupPolicyResponseMapOutput {
+	return o
+}
+
+func (o CleanupPolicyResponseMapOutput) ToCleanupPolicyResponseMapOutputWithContext(ctx context.Context) CleanupPolicyResponseMapOutput {
+	return o
+}
+
+func (o CleanupPolicyResponseMapOutput) MapIndex(k pulumi.StringInput) CleanupPolicyResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CleanupPolicyResponse {
+		return vs[0].(map[string]CleanupPolicyResponse)[vs[1].(string)]
+	}).(CleanupPolicyResponseOutput)
+}
+
 // Configuration for a Docker remote repository.
 type DockerRepository struct {
 	// One of the publicly available Docker repositories supported by Artifact Registry.
@@ -3247,6 +3960,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AptRepositoryPtrInput)(nil)).Elem(), AptRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyInput)(nil)).Elem(), CleanupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyMapInput)(nil)).Elem(), CleanupPolicyMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyConditionInput)(nil)).Elem(), CleanupPolicyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyConditionPtrInput)(nil)).Elem(), CleanupPolicyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyMostRecentVersionsInput)(nil)).Elem(), CleanupPolicyMostRecentVersionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CleanupPolicyMostRecentVersionsPtrInput)(nil)).Elem(), CleanupPolicyMostRecentVersionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryInput)(nil)).Elem(), DockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryPtrInput)(nil)).Elem(), DockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryConfigInput)(nil)).Elem(), DockerRepositoryConfigArgs{})
@@ -3284,6 +4003,16 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyMapOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyConditionOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyConditionPtrOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyConditionResponseOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyMostRecentVersionsOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyMostRecentVersionsPtrOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyMostRecentVersionsResponseOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyResponseOutput{})
+	pulumi.RegisterOutputType(CleanupPolicyResponseMapOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryConfigOutput{})

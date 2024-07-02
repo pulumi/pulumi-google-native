@@ -29,6 +29,7 @@ __all__ = [
     'CloudRunConfigResponse',
     'CloudRunLocationResponse',
     'CloudRunMetadataResponse',
+    'CloudRunRenderMetadataResponse',
     'CreateChildRolloutJobResponse',
     'CustomCanaryDeploymentResponse',
     'DefaultPoolResponse',
@@ -44,6 +45,7 @@ __all__ = [
     'KubernetesConfigResponse',
     'MetadataResponse',
     'MultiTargetResponse',
+    'PhaseArtifactResponse',
     'PhaseConfigResponse',
     'PhaseResponse',
     'PipelineConditionResponse',
@@ -56,6 +58,7 @@ __all__ = [
     'PromoteReleaseRuleResponse',
     'ReleaseConditionResponse',
     'ReleaseReadyConditionResponse',
+    'RenderMetadataResponse',
     'RepairModeResponse',
     'RepairRolloutRuleResponse',
     'RetryResponse',
@@ -67,7 +70,9 @@ __all__ = [
     'StageResponse',
     'StandardResponse',
     'StrategyResponse',
+    'TargetArtifactResponse',
     'TargetAttributeResponse',
+    'TargetRenderResponse',
     'TargetResponse',
     'TargetsPresentConditionResponse',
     'TargetsTypeConditionResponse',
@@ -842,6 +847,28 @@ class CloudRunMetadataResponse(dict):
         The Cloud Run Service urls that are associated with a `Rollout`.
         """
         return pulumi.get(self, "service_urls")
+
+
+@pulumi.output_type
+class CloudRunRenderMetadataResponse(dict):
+    """
+    CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.
+    """
+    def __init__(__self__, *,
+                 service: str):
+        """
+        CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.
+        :param str service: The name of the Cloud Run Service in the rendered manifest. Format is `projects/{project}/locations/{location}/services/{service}`.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The name of the Cloud Run Service in the rendered manifest. Format is `projects/{project}/locations/{location}/services/{service}`.
+        """
+        return pulumi.get(self, "service")
 
 
 @pulumi.output_type
@@ -1817,6 +1844,71 @@ class MultiTargetResponse(dict):
 
 
 @pulumi.output_type
+class PhaseArtifactResponse(dict):
+    """
+    Contains the paths to the artifacts, relative to the URI, for a phase.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobManifestsPath":
+            suggest = "job_manifests_path"
+        elif key == "manifestPath":
+            suggest = "manifest_path"
+        elif key == "skaffoldConfigPath":
+            suggest = "skaffold_config_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhaseArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhaseArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhaseArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_manifests_path: str,
+                 manifest_path: str,
+                 skaffold_config_path: str):
+        """
+        Contains the paths to the artifacts, relative to the URI, for a phase.
+        :param str job_manifests_path: File path of the directory of rendered job manifests relative to the URI. This is only set if it is applicable.
+        :param str manifest_path: File path of the rendered manifest relative to the URI.
+        :param str skaffold_config_path: File path of the resolved Skaffold configuration relative to the URI.
+        """
+        pulumi.set(__self__, "job_manifests_path", job_manifests_path)
+        pulumi.set(__self__, "manifest_path", manifest_path)
+        pulumi.set(__self__, "skaffold_config_path", skaffold_config_path)
+
+    @property
+    @pulumi.getter(name="jobManifestsPath")
+    def job_manifests_path(self) -> str:
+        """
+        File path of the directory of rendered job manifests relative to the URI. This is only set if it is applicable.
+        """
+        return pulumi.get(self, "job_manifests_path")
+
+    @property
+    @pulumi.getter(name="manifestPath")
+    def manifest_path(self) -> str:
+        """
+        File path of the rendered manifest relative to the URI.
+        """
+        return pulumi.get(self, "manifest_path")
+
+    @property
+    @pulumi.getter(name="skaffoldConfigPath")
+    def skaffold_config_path(self) -> str:
+        """
+        File path of the resolved Skaffold configuration relative to the URI.
+        """
+        return pulumi.get(self, "skaffold_config_path")
+
+
+@pulumi.output_type
 class PhaseConfigResponse(dict):
     """
     PhaseConfig represents the configuration for a phase in the custom canary deployment.
@@ -2403,6 +2495,45 @@ class ReleaseReadyConditionResponse(dict):
 
 
 @pulumi.output_type
+class RenderMetadataResponse(dict):
+    """
+    RenderMetadata includes information associated with a `Release` render.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudRun":
+            suggest = "cloud_run"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RenderMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RenderMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RenderMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_run: 'outputs.CloudRunRenderMetadataResponse'):
+        """
+        RenderMetadata includes information associated with a `Release` render.
+        :param 'CloudRunRenderMetadataResponse' cloud_run: Metadata associated with rendering for Cloud Run.
+        """
+        pulumi.set(__self__, "cloud_run", cloud_run)
+
+    @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> 'outputs.CloudRunRenderMetadataResponse':
+        """
+        Metadata associated with rendering for Cloud Run.
+        """
+        return pulumi.get(self, "cloud_run")
+
+
+@pulumi.output_type
 class RepairModeResponse(dict):
     """
     Configuration of the repair action.
@@ -2970,6 +3101,84 @@ class StrategyResponse(dict):
 
 
 @pulumi.output_type
+class TargetArtifactResponse(dict):
+    """
+    The artifacts produced by a target render operation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactUri":
+            suggest = "artifact_uri"
+        elif key == "manifestPath":
+            suggest = "manifest_path"
+        elif key == "phaseArtifacts":
+            suggest = "phase_artifacts"
+        elif key == "skaffoldConfigPath":
+            suggest = "skaffold_config_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetArtifactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetArtifactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetArtifactResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 artifact_uri: str,
+                 manifest_path: str,
+                 phase_artifacts: Mapping[str, 'outputs.PhaseArtifactResponse'],
+                 skaffold_config_path: str):
+        """
+        The artifacts produced by a target render operation.
+        :param str artifact_uri: URI of a directory containing the artifacts. This contains deployment configuration used by Skaffold during a rollout, and all paths are relative to this location.
+        :param str manifest_path: File path of the rendered manifest relative to the URI.
+        :param Mapping[str, 'PhaseArtifactResponse'] phase_artifacts: Map from the phase ID to the phase artifacts for the `Target`.
+        :param str skaffold_config_path: File path of the resolved Skaffold configuration relative to the URI.
+        """
+        pulumi.set(__self__, "artifact_uri", artifact_uri)
+        pulumi.set(__self__, "manifest_path", manifest_path)
+        pulumi.set(__self__, "phase_artifacts", phase_artifacts)
+        pulumi.set(__self__, "skaffold_config_path", skaffold_config_path)
+
+    @property
+    @pulumi.getter(name="artifactUri")
+    def artifact_uri(self) -> str:
+        """
+        URI of a directory containing the artifacts. This contains deployment configuration used by Skaffold during a rollout, and all paths are relative to this location.
+        """
+        return pulumi.get(self, "artifact_uri")
+
+    @property
+    @pulumi.getter(name="manifestPath")
+    def manifest_path(self) -> str:
+        """
+        File path of the rendered manifest relative to the URI.
+        """
+        return pulumi.get(self, "manifest_path")
+
+    @property
+    @pulumi.getter(name="phaseArtifacts")
+    def phase_artifacts(self) -> Mapping[str, 'outputs.PhaseArtifactResponse']:
+        """
+        Map from the phase ID to the phase artifacts for the `Target`.
+        """
+        return pulumi.get(self, "phase_artifacts")
+
+    @property
+    @pulumi.getter(name="skaffoldConfigPath")
+    def skaffold_config_path(self) -> str:
+        """
+        File path of the resolved Skaffold configuration relative to the URI.
+        """
+        return pulumi.get(self, "skaffold_config_path")
+
+
+@pulumi.output_type
 class TargetAttributeResponse(dict):
     """
     Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
@@ -2989,6 +3198,95 @@ class TargetAttributeResponse(dict):
         Target labels.
         """
         return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class TargetRenderResponse(dict):
+    """
+    Details of rendering for a single target.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureCause":
+            suggest = "failure_cause"
+        elif key == "failureMessage":
+            suggest = "failure_message"
+        elif key == "renderingBuild":
+            suggest = "rendering_build"
+        elif key == "renderingState":
+            suggest = "rendering_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetRenderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetRenderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetRenderResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_cause: str,
+                 failure_message: str,
+                 metadata: 'outputs.RenderMetadataResponse',
+                 rendering_build: str,
+                 rendering_state: str):
+        """
+        Details of rendering for a single target.
+        :param str failure_cause: Reason this render failed. This will always be unspecified while the render in progress.
+        :param str failure_message: Additional information about the render failure, if available.
+        :param 'RenderMetadataResponse' metadata: Metadata related to the `Release` render for this Target.
+        :param str rendering_build: The resource name of the Cloud Build `Build` object that is used to render the manifest for this target. Format is `projects/{project}/locations/{location}/builds/{build}`.
+        :param str rendering_state: Current state of the render operation for this Target.
+        """
+        pulumi.set(__self__, "failure_cause", failure_cause)
+        pulumi.set(__self__, "failure_message", failure_message)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "rendering_build", rendering_build)
+        pulumi.set(__self__, "rendering_state", rendering_state)
+
+    @property
+    @pulumi.getter(name="failureCause")
+    def failure_cause(self) -> str:
+        """
+        Reason this render failed. This will always be unspecified while the render in progress.
+        """
+        return pulumi.get(self, "failure_cause")
+
+    @property
+    @pulumi.getter(name="failureMessage")
+    def failure_message(self) -> str:
+        """
+        Additional information about the render failure, if available.
+        """
+        return pulumi.get(self, "failure_message")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> 'outputs.RenderMetadataResponse':
+        """
+        Metadata related to the `Release` render for this Target.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="renderingBuild")
+    def rendering_build(self) -> str:
+        """
+        The resource name of the Cloud Build `Build` object that is used to render the manifest for this target. Format is `projects/{project}/locations/{location}/builds/{build}`.
+        """
+        return pulumi.get(self, "rendering_build")
+
+    @property
+    @pulumi.getter(name="renderingState")
+    def rendering_state(self) -> str:
+        """
+        Current state of the render operation for this Target.
+        """
+        return pulumi.get(self, "rendering_state")
 
 
 @pulumi.output_type

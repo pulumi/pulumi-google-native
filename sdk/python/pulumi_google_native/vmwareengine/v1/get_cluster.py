@@ -71,7 +71,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Mapping[str, str]:
+    def node_type_configs(self) -> Mapping[str, 'outputs.NodeTypeConfigResponse']:
         """
         The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         """

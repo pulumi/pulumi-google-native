@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// <summary>
         /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> MaintenanceExclusions;
+        public readonly ImmutableDictionary<string, Outputs.TimeWindowResponse> MaintenanceExclusions;
         /// <summary>
         /// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
         /// </summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         private MaintenanceWindowResponse(
             Outputs.DailyMaintenanceWindowResponse dailyMaintenanceWindow,
 
-            ImmutableDictionary<string, string> maintenanceExclusions,
+            ImmutableDictionary<string, Outputs.TimeWindowResponse> maintenanceExclusions,
 
             Outputs.RecurringTimeWindowResponse recurringWindow)
         {

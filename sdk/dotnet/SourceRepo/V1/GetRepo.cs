@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         /// <summary>
         /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> PubsubConfigs;
+        public readonly ImmutableDictionary<string, Outputs.PubsubConfigResponse> PubsubConfigs;
         /// <summary>
         /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
 
             string name,
 
-            ImmutableDictionary<string, string> pubsubConfigs,
+            ImmutableDictionary<string, Outputs.PubsubConfigResponse> pubsubConfigs,
 
             string size,
 

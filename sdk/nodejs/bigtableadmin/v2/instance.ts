@@ -125,7 +125,7 @@ export interface InstanceArgs {
     /**
      * The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
      */
-    clusters: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    clusters: pulumi.Input<{[key: string]: pulumi.Input<inputs.bigtableadmin.v2.ClusterArgs>}>;
     /**
      * The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
      */

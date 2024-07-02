@@ -90,7 +90,7 @@ func (InstanceState) ElementType() reflect.Type {
 
 type instanceArgs struct {
 	// The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
-	Clusters map[string]string `pulumi:"clusters"`
+	Clusters map[string]ClusterType `pulumi:"clusters"`
 	// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
 	DisplayName string `pulumi:"displayName"`
 	// The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
@@ -109,7 +109,7 @@ type instanceArgs struct {
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
-	Clusters pulumi.StringMapInput
+	Clusters ClusterTypeMapInput
 	// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
 	DisplayName pulumi.StringInput
 	// The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.

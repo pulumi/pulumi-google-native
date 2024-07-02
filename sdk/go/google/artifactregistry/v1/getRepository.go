@@ -30,7 +30,7 @@ type LookupRepositoryArgs struct {
 
 type LookupRepositoryResult struct {
 	// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
-	CleanupPolicies map[string]string `pulumi:"cleanupPolicies"`
+	CleanupPolicies map[string]CleanupPolicyResponse `pulumi:"cleanupPolicies"`
 	// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
 	CleanupPolicyDryRun bool `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
@@ -101,8 +101,8 @@ func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(
 }
 
 // Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
-func (o LookupRepositoryResultOutput) CleanupPolicies() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.CleanupPolicies }).(pulumi.StringMapOutput)
+func (o LookupRepositoryResultOutput) CleanupPolicies() CleanupPolicyResponseMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]CleanupPolicyResponse { return v.CleanupPolicies }).(CleanupPolicyResponseMapOutput)
 }
 
 // Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.

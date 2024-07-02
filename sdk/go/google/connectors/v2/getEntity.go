@@ -32,7 +32,7 @@ type LookupEntityArgs struct {
 
 type LookupEntityResult struct {
 	// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-	Fields map[string]string `pulumi:"fields"`
+	Fields map[string]interface{} `pulumi:"fields"`
 	// Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
 	Name string `pulumi:"name"`
 }
@@ -77,8 +77,8 @@ func (o LookupEntityResultOutput) ToLookupEntityResultOutputWithContext(ctx cont
 }
 
 // Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-func (o LookupEntityResultOutput) Fields() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupEntityResult) map[string]string { return v.Fields }).(pulumi.StringMapOutput)
+func (o LookupEntityResultOutput) Fields() pulumi.MapOutput {
+	return o.ApplyT(func(v LookupEntityResult) map[string]interface{} { return v.Fields }).(pulumi.MapOutput)
 }
 
 // Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}

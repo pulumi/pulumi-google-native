@@ -115,7 +115,7 @@ class GetConversationResult:
 
     @property
     @pulumi.getter(name="dialogflowIntents")
-    def dialogflow_intents(self) -> Mapping[str, str]:
+    def dialogflow_intents(self) -> Mapping[str, 'outputs.GoogleCloudContactcenterinsightsV1DialogflowIntentResponse']:
         """
         All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
         """

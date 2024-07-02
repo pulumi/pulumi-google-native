@@ -857,6 +857,78 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+type BulkInsertOperationStatusResponse struct {
+	// Count of VMs successfully created so far.
+	CreatedVmCount int `pulumi:"createdVmCount"`
+	// Count of VMs that got deleted during rollback.
+	DeletedVmCount int `pulumi:"deletedVmCount"`
+	// Count of VMs that started creating but encountered an error.
+	FailedToCreateVmCount int `pulumi:"failedToCreateVmCount"`
+	// Creation status of BulkInsert operation - information if the flow is rolling forward or rolling back.
+	Status string `pulumi:"status"`
+	// Count of VMs originally planned to be created.
+	TargetVmCount int `pulumi:"targetVmCount"`
+}
+
+type BulkInsertOperationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertOperationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BulkInsertOperationStatusResponse)(nil)).Elem()
+}
+
+func (o BulkInsertOperationStatusResponseOutput) ToBulkInsertOperationStatusResponseOutput() BulkInsertOperationStatusResponseOutput {
+	return o
+}
+
+func (o BulkInsertOperationStatusResponseOutput) ToBulkInsertOperationStatusResponseOutputWithContext(ctx context.Context) BulkInsertOperationStatusResponseOutput {
+	return o
+}
+
+// Count of VMs successfully created so far.
+func (o BulkInsertOperationStatusResponseOutput) CreatedVmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v BulkInsertOperationStatusResponse) int { return v.CreatedVmCount }).(pulumi.IntOutput)
+}
+
+// Count of VMs that got deleted during rollback.
+func (o BulkInsertOperationStatusResponseOutput) DeletedVmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v BulkInsertOperationStatusResponse) int { return v.DeletedVmCount }).(pulumi.IntOutput)
+}
+
+// Count of VMs that started creating but encountered an error.
+func (o BulkInsertOperationStatusResponseOutput) FailedToCreateVmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v BulkInsertOperationStatusResponse) int { return v.FailedToCreateVmCount }).(pulumi.IntOutput)
+}
+
+// Creation status of BulkInsert operation - information if the flow is rolling forward or rolling back.
+func (o BulkInsertOperationStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v BulkInsertOperationStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Count of VMs originally planned to be created.
+func (o BulkInsertOperationStatusResponseOutput) TargetVmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v BulkInsertOperationStatusResponse) int { return v.TargetVmCount }).(pulumi.IntOutput)
+}
+
+type BulkInsertOperationStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertOperationStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertOperationStatusResponse)(nil)).Elem()
+}
+
+func (o BulkInsertOperationStatusResponseMapOutput) ToBulkInsertOperationStatusResponseMapOutput() BulkInsertOperationStatusResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertOperationStatusResponseMapOutput) ToBulkInsertOperationStatusResponseMapOutputWithContext(ctx context.Context) BulkInsertOperationStatusResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertOperationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) BulkInsertOperationStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BulkInsertOperationStatusResponse {
+		return vs[0].(map[string]BulkInsertOperationStatusResponse)[vs[1].(string)]
+	}).(BulkInsertOperationStatusResponseOutput)
+}
+
 // CollectionOverride allows resource handling overrides for specific resources within a BaseType
 type CollectionOverride struct {
 	// The collection that identifies this resource within its service.
@@ -2567,7 +2639,7 @@ func (o InputMappingResponseArrayOutput) Index(i pulumi.IntInput) InputMappingRe
 
 type InstancesBulkInsertOperationMetadataResponse struct {
 	// Status information per location (location name is key). Example key: zones/us-central1-a
-	PerLocationStatus map[string]string `pulumi:"perLocationStatus"`
+	PerLocationStatus map[string]BulkInsertOperationStatusResponse `pulumi:"perLocationStatus"`
 }
 
 type InstancesBulkInsertOperationMetadataResponseOutput struct{ *pulumi.OutputState }
@@ -2585,8 +2657,10 @@ func (o InstancesBulkInsertOperationMetadataResponseOutput) ToInstancesBulkInser
 }
 
 // Status information per location (location name is key). Example key: zones/us-central1-a
-func (o InstancesBulkInsertOperationMetadataResponseOutput) PerLocationStatus() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstancesBulkInsertOperationMetadataResponse) map[string]string { return v.PerLocationStatus }).(pulumi.StringMapOutput)
+func (o InstancesBulkInsertOperationMetadataResponseOutput) PerLocationStatus() BulkInsertOperationStatusResponseMapOutput {
+	return o.ApplyT(func(v InstancesBulkInsertOperationMetadataResponse) map[string]BulkInsertOperationStatusResponse {
+		return v.PerLocationStatus
+	}).(BulkInsertOperationStatusResponseMapOutput)
 }
 
 type OperationErrorErrorsItemResponse struct {
@@ -3657,11 +3731,66 @@ func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) string { return v.Email }).(pulumi.StringOutput)
 }
 
+type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse struct {
+	// If state is `ABANDONED` or `FAILED`, this field is populated.
+	Error StatusResponse `pulumi:"error"`
+	// Status of the action, which can be one of the following: `PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+	State string `pulumi:"state"`
+}
+
+type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse)(nil)).Elem()
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput) ToSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput() SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput {
+	return o
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput) ToSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutputWithContext(ctx context.Context) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput {
+	return o
+}
+
+// If state is `ABANDONED` or `FAILED`, this field is populated.
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse) StatusResponse {
+		return v.Error
+	}).(StatusResponseOutput)
+}
+
+// Status of the action, which can be one of the following: `PROPAGATING`, `PROPAGATED`, `ABANDONED`, `FAILED`, or `DONE`.
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse) string {
+		return v.State
+	}).(pulumi.StringOutput)
+}
+
+type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput struct{ *pulumi.OutputState }
+
+func (SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse)(nil)).Elem()
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) ToSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput() SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput {
+	return o
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) ToSetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutputWithContext(ctx context.Context) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput {
+	return o
+}
+
+func (o SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput) MapIndex(k pulumi.StringInput) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse {
+		return vs[0].(map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse)[vs[1].(string)]
+	}).(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput)
+}
+
 type SetCommonInstanceMetadataOperationMetadataResponse struct {
 	// The client operation id.
 	ClientOperationId string `pulumi:"clientOperationId"`
 	// Status information per location (location name is key). Example key: zones/us-central1-a
-	PerLocationOperations map[string]string `pulumi:"perLocationOperations"`
+	PerLocationOperations map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse `pulumi:"perLocationOperations"`
 }
 
 type SetCommonInstanceMetadataOperationMetadataResponseOutput struct{ *pulumi.OutputState }
@@ -3684,10 +3813,50 @@ func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) ClientOperatio
 }
 
 // Status information per location (location name is key). Example key: zones/us-central1-a
-func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) PerLocationOperations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataResponse) map[string]string {
+func (o SetCommonInstanceMetadataOperationMetadataResponseOutput) PerLocationOperations() SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput {
+	return o.ApplyT(func(v SetCommonInstanceMetadataOperationMetadataResponse) map[string]SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponse {
 		return v.PerLocationOperations
-	}).(pulumi.StringMapOutput)
+	}).(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]interface{} `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
 type TargetConfiguration struct {
@@ -4563,6 +4732,8 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(BulkInsertOperationStatusResponseOutput{})
+	pulumi.RegisterOutputType(BulkInsertOperationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideArrayOutput{})
 	pulumi.RegisterOutputType(CollectionOverrideResponseOutput{})
@@ -4617,7 +4788,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAccountOutput{})
 	pulumi.RegisterOutputType(ServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountResponseOutput{})
+	pulumi.RegisterOutputType(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseOutput{})
+	pulumi.RegisterOutputType(SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoResponseMapOutput{})
 	pulumi.RegisterOutputType(SetCommonInstanceMetadataOperationMetadataResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TargetConfigurationResponseOutput{})

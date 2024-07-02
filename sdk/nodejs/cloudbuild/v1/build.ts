@@ -149,7 +149,7 @@ export class Build extends pulumi.CustomResource {
     /**
      * Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
      */
-    public /*out*/ readonly timing!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly timing!: pulumi.Output<{[key: string]: outputs.cloudbuild.v1.TimeSpanResponse}>;
     /**
      * Non-fatal problems encountered during the execution of the build.
      */

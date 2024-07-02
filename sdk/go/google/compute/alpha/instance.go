@@ -70,7 +70,7 @@ type Instance struct {
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsResponseOutput `pulumi:"params"`
 	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata pulumi.StringMapOutput `pulumi:"partnerMetadata"`
+	PartnerMetadata StructuredEntriesResponseMapOutput `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType pulumi.StringOutput `pulumi:"postKeyRevocationActionType"`
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -99,7 +99,7 @@ type Instance struct {
 	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
 	ServiceAccounts ServiceAccountResponseArrayOutput `pulumi:"serviceAccounts"`
 	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-	ServiceIntegrationSpecs         pulumi.StringMapOutput                        `pulumi:"serviceIntegrationSpecs"`
+	ServiceIntegrationSpecs         ServiceIntegrationSpecResponseMapOutput       `pulumi:"serviceIntegrationSpecs"`
 	ShieldedInstanceConfig          ShieldedInstanceConfigResponseOutput          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponseOutput `pulumi:"shieldedInstanceIntegrityPolicy"`
 	// Deprecating, please use shielded_instance_config.
@@ -209,7 +209,7 @@ type instanceArgs struct {
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params *InstanceParams `pulumi:"params"`
 	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
+	PartnerMetadata map[string]StructuredEntries `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -230,9 +230,9 @@ type instanceArgs struct {
 	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
 	ServiceAccounts []ServiceAccount `pulumi:"serviceAccounts"`
 	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-	ServiceIntegrationSpecs         map[string]string                `pulumi:"serviceIntegrationSpecs"`
-	ShieldedInstanceConfig          *ShieldedInstanceConfig          `pulumi:"shieldedInstanceConfig"`
-	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy `pulumi:"shieldedInstanceIntegrityPolicy"`
+	ServiceIntegrationSpecs         map[string]ServiceIntegrationSpec `pulumi:"serviceIntegrationSpecs"`
+	ShieldedInstanceConfig          *ShieldedInstanceConfig           `pulumi:"shieldedInstanceConfig"`
+	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy  `pulumi:"shieldedInstanceIntegrityPolicy"`
 	// Deprecating, please use shielded_instance_config.
 	ShieldedVmConfig *ShieldedVmConfig `pulumi:"shieldedVmConfig"`
 	// Deprecating, please use shielded_instance_integrity_policy.
@@ -289,7 +289,7 @@ type InstanceArgs struct {
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsPtrInput
 	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata pulumi.StringMapInput
+	PartnerMetadata StructuredEntriesMapInput
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePostKeyRevocationActionTypePtrInput
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -310,7 +310,7 @@ type InstanceArgs struct {
 	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
 	ServiceAccounts ServiceAccountArrayInput
 	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-	ServiceIntegrationSpecs         pulumi.StringMapInput
+	ServiceIntegrationSpecs         ServiceIntegrationSpecMapInput
 	ShieldedInstanceConfig          ShieldedInstanceConfigPtrInput
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyPtrInput
 	// Deprecating, please use shielded_instance_config.
@@ -504,8 +504,8 @@ func (o InstanceOutput) Params() InstanceParamsResponseOutput {
 }
 
 // Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
-func (o InstanceOutput) PartnerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PartnerMetadata }).(pulumi.StringMapOutput)
+func (o InstanceOutput) PartnerMetadata() StructuredEntriesResponseMapOutput {
+	return o.ApplyT(func(v *Instance) StructuredEntriesResponseMapOutput { return v.PartnerMetadata }).(StructuredEntriesResponseMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -578,8 +578,8 @@ func (o InstanceOutput) ServiceAccounts() ServiceAccountResponseArrayOutput {
 }
 
 // Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-func (o InstanceOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.ServiceIntegrationSpecs }).(pulumi.StringMapOutput)
+func (o InstanceOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecResponseMapOutput {
+	return o.ApplyT(func(v *Instance) ServiceIntegrationSpecResponseMapOutput { return v.ServiceIntegrationSpecs }).(ServiceIntegrationSpecResponseMapOutput)
 }
 
 func (o InstanceOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {

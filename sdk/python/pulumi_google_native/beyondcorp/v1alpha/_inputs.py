@@ -222,14 +222,14 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs:
 class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
-                 resource: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  status: Optional[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus']] = None,
                  sub: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs']]]] = None,
                  time: Optional[pulumi.Input[str]] = None):
         """
         ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
         :param pulumi.Input[str] id: Unique Id for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource: Specific details for the resource. This is for internal use only.
+        :param pulumi.Input[Mapping[str, Any]] resource: Specific details for the resource. This is for internal use only.
         :param pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus'] status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs']]] sub: List of Info for the sub level resources.
         :param pulumi.Input[str] time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
@@ -258,14 +258,14 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs:
 
     @property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def resource(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Specific details for the resource. This is for internal use only.
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def resource(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource", value)
 
     @property
@@ -452,11 +452,11 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs:
 class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+                 value: pulumi.Input[Mapping[str, Any]]):
         """
         Message to capture settings for a BrowserDlpRule
         :param pulumi.Input[str] type: Immutable. The type of the Setting. .
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value: The value of the Setting.
+        :param pulumi.Input[Mapping[str, Any]] value: The value of the Setting.
         """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
@@ -475,14 +475,14 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def value(self) -> pulumi.Input[Mapping[str, Any]]:
         """
         The value of the Setting.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def value(self, value: pulumi.Input[Mapping[str, Any]]):
         pulumi.set(self, "value", value)
 
 
@@ -761,14 +761,14 @@ class PrincipalInfoArgs:
 class ResourceInfoArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
-                 resource: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 resource: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  status: Optional[pulumi.Input['ResourceInfoStatus']] = None,
                  sub: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceInfoArgs']]]] = None,
                  time: Optional[pulumi.Input[str]] = None):
         """
         ResourceInfo represents the information/status of the associated resource.
         :param pulumi.Input[str] id: Unique Id for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource: Specific details for the resource.
+        :param pulumi.Input[Mapping[str, Any]] resource: Specific details for the resource.
         :param pulumi.Input['ResourceInfoStatus'] status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceInfoArgs']]] sub: List of Info for the sub level resources.
         :param pulumi.Input[str] time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
@@ -797,14 +797,14 @@ class ResourceInfoArgs:
 
     @property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def resource(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Specific details for the resource.
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def resource(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "resource", value)
 
     @property

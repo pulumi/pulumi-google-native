@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// <summary>
         /// The reason(s) why a trigger is in FAILED state.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Conditions;
+        public readonly ImmutableDictionary<string, Outputs.StateConditionResponse> Conditions;
         /// <summary>
         /// The creation time.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         private GetTriggerResult(
             string channel,
 
-            ImmutableDictionary<string, string> conditions,
+            ImmutableDictionary<string, Outputs.StateConditionResponse> conditions,
 
             string createTime,
 

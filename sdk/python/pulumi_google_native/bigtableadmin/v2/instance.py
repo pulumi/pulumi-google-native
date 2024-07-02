@@ -9,13 +9,14 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 clusters: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 clusters: pulumi.Input[Mapping[str, pulumi.Input['ClusterArgs']]],
                  display_name: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  parent: pulumi.Input[str],
@@ -25,7 +26,7 @@ class InstanceArgs:
                  type: Optional[pulumi.Input['InstanceType']] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ClusterArgs']]] clusters: The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         :param pulumi.Input[str] instance_id: The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
         :param pulumi.Input[str] parent: The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
@@ -48,14 +49,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def clusters(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def clusters(self) -> pulumi.Input[Mapping[str, pulumi.Input['ClusterArgs']]]:
         """
         The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
         """
         return pulumi.get(self, "clusters")
 
     @clusters.setter
-    def clusters(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def clusters(self, value: pulumi.Input[Mapping[str, pulumi.Input['ClusterArgs']]]):
         pulumi.set(self, "clusters", value)
 
     @property
@@ -145,7 +146,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ClusterArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -159,7 +160,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] clusters: The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ClusterArgs']]]] clusters: The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         :param pulumi.Input[str] instance_id: The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\\p{Ll}\\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
@@ -191,7 +192,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 clusters: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ClusterArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

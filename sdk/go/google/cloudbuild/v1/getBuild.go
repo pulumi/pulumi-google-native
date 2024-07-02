@@ -84,7 +84,7 @@ type LookupBuildResult struct {
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 	Timeout string `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-	Timing map[string]string `pulumi:"timing"`
+	Timing map[string]TimeSpanResponse `pulumi:"timing"`
 	// Non-fatal problems encountered during the execution of the build.
 	Warnings []WarningResponse `pulumi:"warnings"`
 }
@@ -259,8 +259,8 @@ func (o LookupBuildResultOutput) Timeout() pulumi.StringOutput {
 }
 
 // Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-func (o LookupBuildResultOutput) Timing() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupBuildResult) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
+func (o LookupBuildResultOutput) Timing() TimeSpanResponseMapOutput {
+	return o.ApplyT(func(v LookupBuildResult) map[string]TimeSpanResponse { return v.Timing }).(TimeSpanResponseMapOutput)
 }
 
 // Non-fatal problems encountered during the execution of the build.

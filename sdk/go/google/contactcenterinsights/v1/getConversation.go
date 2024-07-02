@@ -39,7 +39,7 @@ type LookupConversationResult struct {
 	// The source of the audio and transcription for the conversation.
 	DataSource GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse `pulumi:"dataSource"`
 	// All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
-	DialogflowIntents map[string]string `pulumi:"dialogflowIntents"`
+	DialogflowIntents map[string]GoogleCloudContactcenterinsightsV1DialogflowIntentResponse `pulumi:"dialogflowIntents"`
 	// The duration of the conversation.
 	Duration string `pulumi:"duration"`
 	// The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
@@ -135,8 +135,10 @@ func (o LookupConversationResultOutput) DataSource() GoogleCloudContactcenterins
 }
 
 // All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
-func (o LookupConversationResultOutput) DialogflowIntents() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupConversationResult) map[string]string { return v.DialogflowIntents }).(pulumi.StringMapOutput)
+func (o LookupConversationResultOutput) DialogflowIntents() GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput {
+	return o.ApplyT(func(v LookupConversationResult) map[string]GoogleCloudContactcenterinsightsV1DialogflowIntentResponse {
+		return v.DialogflowIntents
+	}).(GoogleCloudContactcenterinsightsV1DialogflowIntentResponseMapOutput)
 }
 
 // The duration of the conversation.

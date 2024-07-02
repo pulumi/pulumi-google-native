@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> DiagnosticInfo;
+        public readonly ImmutableDictionary<string, object> DiagnosticInfo;
         /// <summary>
         /// If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// <summary>
         /// The session parameters available to the bot at this point.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> SessionParameters;
+        public readonly ImmutableDictionary<string, object> SessionParameters;
         /// <summary>
         /// Response error from the agent in the test result. If set, other output is empty.
         /// </summary>
@@ -49,11 +49,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         private GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputResponse(
             Outputs.GoogleCloudDialogflowCxV3PageResponse currentPage,
 
-            ImmutableDictionary<string, string> diagnosticInfo,
+            ImmutableDictionary<string, object> diagnosticInfo,
 
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3TestRunDifferenceResponse> differences,
 
-            ImmutableDictionary<string, string> sessionParameters,
+            ImmutableDictionary<string, object> sessionParameters,
 
             Outputs.GoogleRpcStatusResponse status,
 

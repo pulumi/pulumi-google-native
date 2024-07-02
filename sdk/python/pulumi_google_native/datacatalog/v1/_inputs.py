@@ -20,6 +20,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaArgs',
+    'GoogleCloudDatacatalogV1CommonUsageStatsArgs',
     'GoogleCloudDatacatalogV1ContactsPersonArgs',
     'GoogleCloudDatacatalogV1ContactsArgs',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs',
@@ -29,6 +30,9 @@ __all__ = [
     'GoogleCloudDatacatalogV1DataplexSpecArgs',
     'GoogleCloudDatacatalogV1DatasetSpecArgs',
     'GoogleCloudDatacatalogV1EntryOverviewArgs',
+    'GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueArgs',
+    'GoogleCloudDatacatalogV1FieldTypeEnumTypeArgs',
+    'GoogleCloudDatacatalogV1FieldTypeArgs',
     'GoogleCloudDatacatalogV1FilesetSpecArgs',
     'GoogleCloudDatacatalogV1GcsFilesetSpecArgs',
     'GoogleCloudDatacatalogV1LookerSystemSpecArgs',
@@ -46,6 +50,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1ServiceSpecArgs',
     'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs',
     'GoogleCloudDatacatalogV1SystemTimestampsArgs',
+    'GoogleCloudDatacatalogV1TagTemplateFieldArgs',
     'GoogleCloudDatacatalogV1UsageSignalArgs',
     'GoogleCloudDatacatalogV1VertexDatasetSpecArgs',
     'GoogleCloudDatacatalogV1VertexModelSourceInfoArgs',
@@ -555,6 +560,30 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1CommonUsageStatsArgs:
+    def __init__(__self__, *,
+                 view_count: Optional[pulumi.Input[str]] = None):
+        """
+        Common statistics on the entry's usage. They can be set on any system.
+        :param pulumi.Input[str] view_count: View count in source system.
+        """
+        if view_count is not None:
+            pulumi.set(__self__, "view_count", view_count)
+
+    @property
+    @pulumi.getter(name="viewCount")
+    def view_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        View count in source system.
+        """
+        return pulumi.get(self, "view_count")
+
+    @view_count.setter
+    def view_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "view_count", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1ContactsPersonArgs:
     def __init__(__self__, *,
                  designation: Optional[pulumi.Input[str]] = None,
@@ -865,6 +894,90 @@ class GoogleCloudDatacatalogV1EntryOverviewArgs:
     @overview.setter
     def overview(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "overview", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] display_name: The display name of the enum value. Must not be an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the enum value. Must not be an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1FieldTypeEnumTypeArgs:
+    def __init__(__self__, *,
+                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueArgs']]] allowed_values: The set of allowed values for this enum. This set must not be empty and can include up to 100 allowed values. The display names of the values in this set must not be empty and must be case-insensitively unique within this set. The order of items in this set is preserved. This field can be used to create, remove, and reorder enum values. To rename enum values, use the `RenameTagTemplateFieldEnumValue` method.
+        """
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueArgs']]]]:
+        """
+        The set of allowed values for this enum. This set must not be empty and can include up to 100 allowed values. The display names of the values in this set must not be empty and must be case-insensitively unique within this set. The order of items in this set is preserved. This field can be used to create, remove, and reorder enum values. To rename enum values, use the `RenameTagTemplateFieldEnumValue` method.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @allowed_values.setter
+    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueArgs']]]]):
+        pulumi.set(self, "allowed_values", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1FieldTypeArgs:
+    def __init__(__self__, *,
+                 enum_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeArgs']] = None,
+                 primitive_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1FieldTypePrimitiveType']] = None):
+        """
+        :param pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeArgs'] enum_type: An enum type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1FieldTypePrimitiveType'] primitive_type: Primitive types, such as string, boolean, etc.
+        """
+        if enum_type is not None:
+            pulumi.set(__self__, "enum_type", enum_type)
+        if primitive_type is not None:
+            pulumi.set(__self__, "primitive_type", primitive_type)
+
+    @property
+    @pulumi.getter(name="enumType")
+    def enum_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeArgs']]:
+        """
+        An enum type.
+        """
+        return pulumi.get(self, "enum_type")
+
+    @enum_type.setter
+    def enum_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1FieldTypeEnumTypeArgs']]):
+        pulumi.set(self, "enum_type", value)
+
+    @property
+    @pulumi.getter(name="primitiveType")
+    def primitive_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1FieldTypePrimitiveType']]:
+        """
+        Primitive types, such as string, boolean, etc.
+        """
+        return pulumi.get(self, "primitive_type")
+
+    @primitive_type.setter
+    def primitive_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1FieldTypePrimitiveType']]):
+        pulumi.set(self, "primitive_type", value)
 
 
 @pulumi.input_type
@@ -1550,14 +1663,101 @@ class GoogleCloudDatacatalogV1SystemTimestampsArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1TagTemplateFieldArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input['GoogleCloudDatacatalogV1FieldTypeArgs'],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 is_required: Optional[pulumi.Input[bool]] = None,
+                 order: Optional[pulumi.Input[int]] = None):
+        """
+        The template for an individual field within a tag template.
+        :param pulumi.Input['GoogleCloudDatacatalogV1FieldTypeArgs'] type: The type of value this tag field can contain.
+        :param pulumi.Input[str] description: The description for this field. Defaults to an empty string.
+        :param pulumi.Input[str] display_name: The display name for this field. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        :param pulumi.Input[bool] is_required: If true, this field is required. Defaults to false.
+        :param pulumi.Input[int] order: The order of this field with respect to other fields in this tag template. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order and field orders within a tag don't have to be sequential.
+        """
+        pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if is_required is not None:
+            pulumi.set(__self__, "is_required", is_required)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['GoogleCloudDatacatalogV1FieldTypeArgs']:
+        """
+        The type of value this tag field can contain.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['GoogleCloudDatacatalogV1FieldTypeArgs']):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description for this field. Defaults to an empty string.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name for this field. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="isRequired")
+    def is_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this field is required. Defaults to false.
+        """
+        return pulumi.get(self, "is_required")
+
+    @is_required.setter
+    def is_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_required", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[int]]:
+        """
+        The order of this field with respect to other fields in this tag template. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order and field orders within a tag don't have to be sequential.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "order", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1UsageSignalArgs:
     def __init__(__self__, *,
-                 common_usage_within_time_range: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 common_usage_within_time_range: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]]] = None,
                  favorite_count: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         :param pulumi.Input[str] favorite_count: Favorite count in the source system.
         :param pulumi.Input[str] update_time: The end timestamp of the duration of usage statistics.
         """
@@ -1570,14 +1770,14 @@ class GoogleCloudDatacatalogV1UsageSignalArgs:
 
     @property
     @pulumi.getter(name="commonUsageWithinTimeRange")
-    def common_usage_within_time_range(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def common_usage_within_time_range(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]]]:
         """
         Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         """
         return pulumi.get(self, "common_usage_within_time_range")
 
     @common_usage_within_time_range.setter
-    def common_usage_within_time_range(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def common_usage_within_time_range(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDatacatalogV1CommonUsageStatsArgs']]]]):
         pulumi.set(self, "common_usage_within_time_range", value)
 
     @property

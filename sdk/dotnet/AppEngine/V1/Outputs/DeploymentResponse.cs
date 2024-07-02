@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
         /// <summary>
         /// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Files;
+        public readonly ImmutableDictionary<string, Outputs.FileInfoResponse> Files;
         /// <summary>
         /// The zip file for this deployment, if this is a zip deployment.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 
             Outputs.ContainerInfoResponse container,
 
-            ImmutableDictionary<string, string> files,
+            ImmutableDictionary<string, Outputs.FileInfoResponse> files,
 
             Outputs.ZipInfoResponse zip)
         {

@@ -1091,14 +1091,14 @@ class GoogleCloudChannelV1ValueResponse(dict):
                  bool_value: bool,
                  double_value: float,
                  int64_value: str,
-                 proto_value: Mapping[str, str],
+                 proto_value: Mapping[str, Any],
                  string_value: str):
         """
         Data type and value of a parameter.
         :param bool bool_value: Represents a boolean value.
         :param float double_value: Represents a double value.
         :param str int64_value: Represents an int64 value.
-        :param Mapping[str, str] proto_value: Represents an 'Any' proto value.
+        :param Mapping[str, Any] proto_value: Represents an 'Any' proto value.
         :param str string_value: Represents a string value.
         """
         pulumi.set(__self__, "bool_value", bool_value)
@@ -1133,7 +1133,7 @@ class GoogleCloudChannelV1ValueResponse(dict):
 
     @property
     @pulumi.getter(name="protoValue")
-    def proto_value(self) -> Mapping[str, str]:
+    def proto_value(self) -> Mapping[str, Any]:
         """
         Represents an 'Any' proto value.
         """

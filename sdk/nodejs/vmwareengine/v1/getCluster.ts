@@ -44,7 +44,7 @@ export interface GetClusterResult {
     /**
      * The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
      */
-    readonly nodeTypeConfigs: {[key: string]: string};
+    readonly nodeTypeConfigs: {[key: string]: outputs.vmwareengine.v1.NodeTypeConfigResponse};
     /**
      * State of the resource.
      */

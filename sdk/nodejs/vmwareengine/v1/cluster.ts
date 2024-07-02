@@ -58,7 +58,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
      */
-    public readonly nodeTypeConfigs!: pulumi.Output<{[key: string]: string}>;
+    public readonly nodeTypeConfigs!: pulumi.Output<{[key: string]: outputs.vmwareengine.v1.NodeTypeConfigResponse}>;
     public readonly privateCloudId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
@@ -149,7 +149,7 @@ export interface ClusterArgs {
     /**
      * The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
      */
-    nodeTypeConfigs: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeTypeConfigs: pulumi.Input<{[key: string]: pulumi.Input<inputs.vmwareengine.v1.NodeTypeConfigArgs>}>;
     privateCloudId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

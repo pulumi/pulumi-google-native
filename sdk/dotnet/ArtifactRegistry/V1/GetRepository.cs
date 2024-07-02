@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// <summary>
         /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> CleanupPolicies;
+        public readonly ImmutableDictionary<string, Outputs.CleanupPolicyResponse> CleanupPolicies;
         /// <summary>
         /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
         /// </summary>
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
         [OutputConstructor]
         private GetRepositoryResult(
-            ImmutableDictionary<string, string> cleanupPolicies,
+            ImmutableDictionary<string, Outputs.CleanupPolicyResponse> cleanupPolicies,
 
             bool cleanupPolicyDryRun,
 

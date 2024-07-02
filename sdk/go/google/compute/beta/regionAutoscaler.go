@@ -33,7 +33,7 @@ type RegionAutoscaler struct {
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Status information of existing scaling schedules.
-	ScalingScheduleStatus pulumi.StringMapOutput `pulumi:"scalingScheduleStatus"`
+	ScalingScheduleStatus ScalingScheduleStatusResponseMapOutput `pulumi:"scalingScheduleStatus"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
@@ -205,8 +205,8 @@ func (o RegionAutoscalerOutput) RequestId() pulumi.StringPtrOutput {
 }
 
 // Status information of existing scaling schedules.
-func (o RegionAutoscalerOutput) ScalingScheduleStatus() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *RegionAutoscaler) pulumi.StringMapOutput { return v.ScalingScheduleStatus }).(pulumi.StringMapOutput)
+func (o RegionAutoscalerOutput) ScalingScheduleStatus() ScalingScheduleStatusResponseMapOutput {
+	return o.ApplyT(func(v *RegionAutoscaler) ScalingScheduleStatusResponseMapOutput { return v.ScalingScheduleStatus }).(ScalingScheduleStatusResponseMapOutput)
 }
 
 // Server-defined URL for the resource.

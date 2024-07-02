@@ -2281,6 +2281,32 @@ func (o CloudRunMetadataResponseOutput) ServiceUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudRunMetadataResponse) []string { return v.ServiceUrls }).(pulumi.StringArrayOutput)
 }
 
+// CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.
+type CloudRunRenderMetadataResponse struct {
+	// The name of the Cloud Run Service in the rendered manifest. Format is `projects/{project}/locations/{location}/services/{service}`.
+	Service string `pulumi:"service"`
+}
+
+// CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.
+type CloudRunRenderMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunRenderMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunRenderMetadataResponse)(nil)).Elem()
+}
+
+func (o CloudRunRenderMetadataResponseOutput) ToCloudRunRenderMetadataResponseOutput() CloudRunRenderMetadataResponseOutput {
+	return o
+}
+
+func (o CloudRunRenderMetadataResponseOutput) ToCloudRunRenderMetadataResponseOutputWithContext(ctx context.Context) CloudRunRenderMetadataResponseOutput {
+	return o
+}
+
+// The name of the Cloud Run Service in the rendered manifest. Format is `projects/{project}/locations/{location}/services/{service}`.
+func (o CloudRunRenderMetadataResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRenderMetadataResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
 // A createChildRollout Job.
 type CreateChildRolloutJobResponse struct {
 }
@@ -4397,6 +4423,66 @@ func (o MultiTargetResponseOutput) TargetIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MultiTargetResponse) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
 }
 
+// Contains the paths to the artifacts, relative to the URI, for a phase.
+type PhaseArtifactResponse struct {
+	// File path of the directory of rendered job manifests relative to the URI. This is only set if it is applicable.
+	JobManifestsPath string `pulumi:"jobManifestsPath"`
+	// File path of the rendered manifest relative to the URI.
+	ManifestPath string `pulumi:"manifestPath"`
+	// File path of the resolved Skaffold configuration relative to the URI.
+	SkaffoldConfigPath string `pulumi:"skaffoldConfigPath"`
+}
+
+// Contains the paths to the artifacts, relative to the URI, for a phase.
+type PhaseArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (PhaseArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhaseArtifactResponse)(nil)).Elem()
+}
+
+func (o PhaseArtifactResponseOutput) ToPhaseArtifactResponseOutput() PhaseArtifactResponseOutput {
+	return o
+}
+
+func (o PhaseArtifactResponseOutput) ToPhaseArtifactResponseOutputWithContext(ctx context.Context) PhaseArtifactResponseOutput {
+	return o
+}
+
+// File path of the directory of rendered job manifests relative to the URI. This is only set if it is applicable.
+func (o PhaseArtifactResponseOutput) JobManifestsPath() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseArtifactResponse) string { return v.JobManifestsPath }).(pulumi.StringOutput)
+}
+
+// File path of the rendered manifest relative to the URI.
+func (o PhaseArtifactResponseOutput) ManifestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseArtifactResponse) string { return v.ManifestPath }).(pulumi.StringOutput)
+}
+
+// File path of the resolved Skaffold configuration relative to the URI.
+func (o PhaseArtifactResponseOutput) SkaffoldConfigPath() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseArtifactResponse) string { return v.SkaffoldConfigPath }).(pulumi.StringOutput)
+}
+
+type PhaseArtifactResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PhaseArtifactResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PhaseArtifactResponse)(nil)).Elem()
+}
+
+func (o PhaseArtifactResponseMapOutput) ToPhaseArtifactResponseMapOutput() PhaseArtifactResponseMapOutput {
+	return o
+}
+
+func (o PhaseArtifactResponseMapOutput) ToPhaseArtifactResponseMapOutputWithContext(ctx context.Context) PhaseArtifactResponseMapOutput {
+	return o
+}
+
+func (o PhaseArtifactResponseMapOutput) MapIndex(k pulumi.StringInput) PhaseArtifactResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PhaseArtifactResponse {
+		return vs[0].(map[string]PhaseArtifactResponse)[vs[1].(string)]
+	}).(PhaseArtifactResponseOutput)
+}
+
 // PhaseConfig represents the configuration for a phase in the custom canary deployment.
 type PhaseConfig struct {
 	// Percentage deployment for the phase.
@@ -5668,6 +5754,32 @@ func (o ReleaseReadyConditionResponseOutput) ToReleaseReadyConditionResponseOutp
 // True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
 func (o ReleaseReadyConditionResponseOutput) Status() pulumi.BoolOutput {
 	return o.ApplyT(func(v ReleaseReadyConditionResponse) bool { return v.Status }).(pulumi.BoolOutput)
+}
+
+// RenderMetadata includes information associated with a `Release` render.
+type RenderMetadataResponse struct {
+	// Metadata associated with rendering for Cloud Run.
+	CloudRun CloudRunRenderMetadataResponse `pulumi:"cloudRun"`
+}
+
+// RenderMetadata includes information associated with a `Release` render.
+type RenderMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (RenderMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RenderMetadataResponse)(nil)).Elem()
+}
+
+func (o RenderMetadataResponseOutput) ToRenderMetadataResponseOutput() RenderMetadataResponseOutput {
+	return o
+}
+
+func (o RenderMetadataResponseOutput) ToRenderMetadataResponseOutputWithContext(ctx context.Context) RenderMetadataResponseOutput {
+	return o
+}
+
+// Metadata associated with rendering for Cloud Run.
+func (o RenderMetadataResponseOutput) CloudRun() CloudRunRenderMetadataResponseOutput {
+	return o.ApplyT(func(v RenderMetadataResponse) CloudRunRenderMetadataResponse { return v.CloudRun }).(CloudRunRenderMetadataResponseOutput)
 }
 
 // Configuration of the repair action.
@@ -7687,6 +7799,73 @@ func (o StrategyResponseOutput) Standard() StandardResponseOutput {
 	return o.ApplyT(func(v StrategyResponse) StandardResponse { return v.Standard }).(StandardResponseOutput)
 }
 
+// The artifacts produced by a target render operation.
+type TargetArtifactResponse struct {
+	// URI of a directory containing the artifacts. This contains deployment configuration used by Skaffold during a rollout, and all paths are relative to this location.
+	ArtifactUri string `pulumi:"artifactUri"`
+	// File path of the rendered manifest relative to the URI.
+	ManifestPath string `pulumi:"manifestPath"`
+	// Map from the phase ID to the phase artifacts for the `Target`.
+	PhaseArtifacts map[string]PhaseArtifactResponse `pulumi:"phaseArtifacts"`
+	// File path of the resolved Skaffold configuration relative to the URI.
+	SkaffoldConfigPath string `pulumi:"skaffoldConfigPath"`
+}
+
+// The artifacts produced by a target render operation.
+type TargetArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetArtifactResponse)(nil)).Elem()
+}
+
+func (o TargetArtifactResponseOutput) ToTargetArtifactResponseOutput() TargetArtifactResponseOutput {
+	return o
+}
+
+func (o TargetArtifactResponseOutput) ToTargetArtifactResponseOutputWithContext(ctx context.Context) TargetArtifactResponseOutput {
+	return o
+}
+
+// URI of a directory containing the artifacts. This contains deployment configuration used by Skaffold during a rollout, and all paths are relative to this location.
+func (o TargetArtifactResponseOutput) ArtifactUri() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetArtifactResponse) string { return v.ArtifactUri }).(pulumi.StringOutput)
+}
+
+// File path of the rendered manifest relative to the URI.
+func (o TargetArtifactResponseOutput) ManifestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetArtifactResponse) string { return v.ManifestPath }).(pulumi.StringOutput)
+}
+
+// Map from the phase ID to the phase artifacts for the `Target`.
+func (o TargetArtifactResponseOutput) PhaseArtifacts() PhaseArtifactResponseMapOutput {
+	return o.ApplyT(func(v TargetArtifactResponse) map[string]PhaseArtifactResponse { return v.PhaseArtifacts }).(PhaseArtifactResponseMapOutput)
+}
+
+// File path of the resolved Skaffold configuration relative to the URI.
+func (o TargetArtifactResponseOutput) SkaffoldConfigPath() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetArtifactResponse) string { return v.SkaffoldConfigPath }).(pulumi.StringOutput)
+}
+
+type TargetArtifactResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TargetArtifactResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetArtifactResponse)(nil)).Elem()
+}
+
+func (o TargetArtifactResponseMapOutput) ToTargetArtifactResponseMapOutput() TargetArtifactResponseMapOutput {
+	return o
+}
+
+func (o TargetArtifactResponseMapOutput) ToTargetArtifactResponseMapOutputWithContext(ctx context.Context) TargetArtifactResponseMapOutput {
+	return o
+}
+
+func (o TargetArtifactResponseMapOutput) MapIndex(k pulumi.StringInput) TargetArtifactResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetArtifactResponse {
+		return vs[0].(map[string]TargetArtifactResponse)[vs[1].(string)]
+	}).(TargetArtifactResponseOutput)
+}
+
 // Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
 type TargetAttribute struct {
 	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
@@ -7840,6 +8019,80 @@ func (o TargetAttributeResponseArrayOutput) Index(i pulumi.IntInput) TargetAttri
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetAttributeResponse {
 		return vs[0].([]TargetAttributeResponse)[vs[1].(int)]
 	}).(TargetAttributeResponseOutput)
+}
+
+// Details of rendering for a single target.
+type TargetRenderResponse struct {
+	// Reason this render failed. This will always be unspecified while the render in progress.
+	FailureCause string `pulumi:"failureCause"`
+	// Additional information about the render failure, if available.
+	FailureMessage string `pulumi:"failureMessage"`
+	// Metadata related to the `Release` render for this Target.
+	Metadata RenderMetadataResponse `pulumi:"metadata"`
+	// The resource name of the Cloud Build `Build` object that is used to render the manifest for this target. Format is `projects/{project}/locations/{location}/builds/{build}`.
+	RenderingBuild string `pulumi:"renderingBuild"`
+	// Current state of the render operation for this Target.
+	RenderingState string `pulumi:"renderingState"`
+}
+
+// Details of rendering for a single target.
+type TargetRenderResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetRenderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetRenderResponse)(nil)).Elem()
+}
+
+func (o TargetRenderResponseOutput) ToTargetRenderResponseOutput() TargetRenderResponseOutput {
+	return o
+}
+
+func (o TargetRenderResponseOutput) ToTargetRenderResponseOutputWithContext(ctx context.Context) TargetRenderResponseOutput {
+	return o
+}
+
+// Reason this render failed. This will always be unspecified while the render in progress.
+func (o TargetRenderResponseOutput) FailureCause() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetRenderResponse) string { return v.FailureCause }).(pulumi.StringOutput)
+}
+
+// Additional information about the render failure, if available.
+func (o TargetRenderResponseOutput) FailureMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetRenderResponse) string { return v.FailureMessage }).(pulumi.StringOutput)
+}
+
+// Metadata related to the `Release` render for this Target.
+func (o TargetRenderResponseOutput) Metadata() RenderMetadataResponseOutput {
+	return o.ApplyT(func(v TargetRenderResponse) RenderMetadataResponse { return v.Metadata }).(RenderMetadataResponseOutput)
+}
+
+// The resource name of the Cloud Build `Build` object that is used to render the manifest for this target. Format is `projects/{project}/locations/{location}/builds/{build}`.
+func (o TargetRenderResponseOutput) RenderingBuild() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetRenderResponse) string { return v.RenderingBuild }).(pulumi.StringOutput)
+}
+
+// Current state of the render operation for this Target.
+func (o TargetRenderResponseOutput) RenderingState() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetRenderResponse) string { return v.RenderingState }).(pulumi.StringOutput)
+}
+
+type TargetRenderResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TargetRenderResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetRenderResponse)(nil)).Elem()
+}
+
+func (o TargetRenderResponseMapOutput) ToTargetRenderResponseMapOutput() TargetRenderResponseMapOutput {
+	return o
+}
+
+func (o TargetRenderResponseMapOutput) ToTargetRenderResponseMapOutputWithContext(ctx context.Context) TargetRenderResponseMapOutput {
+	return o
+}
+
+func (o TargetRenderResponseMapOutput) MapIndex(k pulumi.StringInput) TargetRenderResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetRenderResponse {
+		return vs[0].(map[string]TargetRenderResponse)[vs[1].(string)]
+	}).(TargetRenderResponseOutput)
 }
 
 // A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.
@@ -8204,6 +8457,7 @@ func init() {
 	pulumi.RegisterOutputType(CloudRunLocationPtrOutput{})
 	pulumi.RegisterOutputType(CloudRunLocationResponseOutput{})
 	pulumi.RegisterOutputType(CloudRunMetadataResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunRenderMetadataResponseOutput{})
 	pulumi.RegisterOutputType(CreateChildRolloutJobResponseOutput{})
 	pulumi.RegisterOutputType(CustomCanaryDeploymentOutput{})
 	pulumi.RegisterOutputType(CustomCanaryDeploymentPtrOutput{})
@@ -8240,6 +8494,8 @@ func init() {
 	pulumi.RegisterOutputType(MultiTargetOutput{})
 	pulumi.RegisterOutputType(MultiTargetPtrOutput{})
 	pulumi.RegisterOutputType(MultiTargetResponseOutput{})
+	pulumi.RegisterOutputType(PhaseArtifactResponseOutput{})
+	pulumi.RegisterOutputType(PhaseArtifactResponseMapOutput{})
 	pulumi.RegisterOutputType(PhaseConfigOutput{})
 	pulumi.RegisterOutputType(PhaseConfigArrayOutput{})
 	pulumi.RegisterOutputType(PhaseConfigResponseOutput{})
@@ -8264,6 +8520,7 @@ func init() {
 	pulumi.RegisterOutputType(PromoteReleaseRuleResponseOutput{})
 	pulumi.RegisterOutputType(ReleaseConditionResponseOutput{})
 	pulumi.RegisterOutputType(ReleaseReadyConditionResponseOutput{})
+	pulumi.RegisterOutputType(RenderMetadataResponseOutput{})
 	pulumi.RegisterOutputType(RepairModeOutput{})
 	pulumi.RegisterOutputType(RepairModeArrayOutput{})
 	pulumi.RegisterOutputType(RepairModeResponseOutput{})
@@ -8297,10 +8554,14 @@ func init() {
 	pulumi.RegisterOutputType(StrategyOutput{})
 	pulumi.RegisterOutputType(StrategyPtrOutput{})
 	pulumi.RegisterOutputType(StrategyResponseOutput{})
+	pulumi.RegisterOutputType(TargetArtifactResponseOutput{})
+	pulumi.RegisterOutputType(TargetArtifactResponseMapOutput{})
 	pulumi.RegisterOutputType(TargetAttributeOutput{})
 	pulumi.RegisterOutputType(TargetAttributeArrayOutput{})
 	pulumi.RegisterOutputType(TargetAttributeResponseOutput{})
 	pulumi.RegisterOutputType(TargetAttributeResponseArrayOutput{})
+	pulumi.RegisterOutputType(TargetRenderResponseOutput{})
+	pulumi.RegisterOutputType(TargetRenderResponseMapOutput{})
 	pulumi.RegisterOutputType(TargetResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetsPresentConditionResponseOutput{})

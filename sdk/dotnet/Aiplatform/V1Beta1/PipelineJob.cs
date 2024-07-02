@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// The spec of the pipeline.
         /// </summary>
         [Output("pipelineSpec")]
-        public Output<ImmutableDictionary<string, string>> PipelineSpec { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> PipelineSpec { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -232,14 +232,14 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Input<string>? PipelineJobId { get; set; }
 
         [Input("pipelineSpec")]
-        private InputMap<string>? _pipelineSpec;
+        private InputMap<object>? _pipelineSpec;
 
         /// <summary>
         /// The spec of the pipeline.
         /// </summary>
-        public InputMap<string> PipelineSpec
+        public InputMap<object> PipelineSpec
         {
-            get => _pipelineSpec ?? (_pipelineSpec = new InputMap<string>());
+            get => _pipelineSpec ?? (_pipelineSpec = new InputMap<object>());
             set => _pipelineSpec = value;
         }
 

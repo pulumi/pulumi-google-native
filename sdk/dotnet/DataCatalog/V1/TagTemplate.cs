@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         /// </summary>
         [Output("fields")]
-        public Output<ImmutableDictionary<string, string>> Fields { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1TagTemplateFieldResponse>> Fields { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
@@ -109,14 +109,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<string>? DisplayName { get; set; }
 
         [Input("fields", required: true)]
-        private InputMap<string>? _fields;
+        private InputMap<Inputs.GoogleCloudDatacatalogV1TagTemplateFieldArgs>? _fields;
 
         /// <summary>
         /// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         /// </summary>
-        public InputMap<string> Fields
+        public InputMap<Inputs.GoogleCloudDatacatalogV1TagTemplateFieldArgs> Fields
         {
-            get => _fields ?? (_fields = new InputMap<string>());
+            get => _fields ?? (_fields = new InputMap<Inputs.GoogleCloudDatacatalogV1TagTemplateFieldArgs>());
             set => _fields = value;
         }
 

@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetTagTemplateResult',
@@ -39,7 +40,7 @@ class GetTagTemplateResult:
 
     @property
     @pulumi.getter
-    def fields(self) -> Mapping[str, str]:
+    def fields(self) -> Mapping[str, 'outputs.GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse']:
         """
         Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         """

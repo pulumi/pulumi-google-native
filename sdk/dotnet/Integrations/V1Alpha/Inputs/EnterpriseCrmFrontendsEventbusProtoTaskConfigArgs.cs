@@ -109,14 +109,14 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy>? NextTasksExecutionPolicy { get; set; }
 
         [Input("parameters")]
-        private InputMap<string>? _parameters;
+        private InputMap<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs>? _parameters;
 
         /// <summary>
         /// The customized parameters the user can pass to this task.
         /// </summary>
-        public InputMap<string> Parameters
+        public InputMap<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<string>());
+            get => _parameters ?? (_parameters = new InputMap<Inputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs>());
             set => _parameters = value;
         }
 

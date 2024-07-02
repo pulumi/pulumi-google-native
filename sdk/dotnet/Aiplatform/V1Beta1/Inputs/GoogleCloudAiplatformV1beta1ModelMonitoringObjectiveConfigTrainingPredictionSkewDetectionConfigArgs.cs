@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
     public sealed class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributionScoreSkewThresholds")]
-        private InputMap<string>? _attributionScoreSkewThresholds;
+        private InputMap<Inputs.GoogleCloudAiplatformV1beta1ThresholdConfigArgs>? _attributionScoreSkewThresholds;
 
         /// <summary>
         /// Key is the feature name and value is the threshold. The threshold here is against attribution score distance between the training and prediction feature.
         /// </summary>
-        public InputMap<string> AttributionScoreSkewThresholds
+        public InputMap<Inputs.GoogleCloudAiplatformV1beta1ThresholdConfigArgs> AttributionScoreSkewThresholds
         {
-            get => _attributionScoreSkewThresholds ?? (_attributionScoreSkewThresholds = new InputMap<string>());
+            get => _attributionScoreSkewThresholds ?? (_attributionScoreSkewThresholds = new InputMap<Inputs.GoogleCloudAiplatformV1beta1ThresholdConfigArgs>());
             set => _attributionScoreSkewThresholds = value;
         }
 
@@ -34,14 +34,14 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
         public Input<Inputs.GoogleCloudAiplatformV1beta1ThresholdConfigArgs>? DefaultSkewThreshold { get; set; }
 
         [Input("skewThresholds")]
-        private InputMap<string>? _skewThresholds;
+        private InputMap<Inputs.GoogleCloudAiplatformV1beta1ThresholdConfigArgs>? _skewThresholds;
 
         /// <summary>
         /// Key is the feature name and value is the threshold. If a feature needs to be monitored for skew, a value threshold must be configured for that feature. The threshold here is against feature distribution distance between the training and prediction feature.
         /// </summary>
-        public InputMap<string> SkewThresholds
+        public InputMap<Inputs.GoogleCloudAiplatformV1beta1ThresholdConfigArgs> SkewThresholds
         {
-            get => _skewThresholds ?? (_skewThresholds = new InputMap<string>());
+            get => _skewThresholds ?? (_skewThresholds = new InputMap<Inputs.GoogleCloudAiplatformV1beta1ThresholdConfigArgs>());
             set => _skewThresholds = value;
         }
 

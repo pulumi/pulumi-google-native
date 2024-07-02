@@ -27,7 +27,7 @@ type Job struct {
 	// Optional. Job compensation information.
 	CompensationInfo CompensationInfoResponseOutput `pulumi:"compensationInfo"`
 	// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
-	CustomAttributes pulumi.StringMapOutput `pulumi:"customAttributes"`
+	CustomAttributes CustomAttributeResponseMapOutput `pulumi:"customAttributes"`
 	// Optional. The desired education degrees for the job, such as Bachelors, Masters.
 	DegreeTypes pulumi.StringArrayOutput `pulumi:"degreeTypes"`
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
@@ -149,7 +149,7 @@ type jobArgs struct {
 	// Optional. Job compensation information.
 	CompensationInfo *CompensationInfo `pulumi:"compensationInfo"`
 	// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
-	CustomAttributes map[string]string `pulumi:"customAttributes"`
+	CustomAttributes map[string]CustomAttribute `pulumi:"customAttributes"`
 	// Optional. The desired education degrees for the job, such as Bachelors, Masters.
 	DegreeTypes []JobDegreeTypesItem `pulumi:"degreeTypes"`
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
@@ -208,7 +208,7 @@ type JobArgs struct {
 	// Optional. Job compensation information.
 	CompensationInfo CompensationInfoPtrInput
 	// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
-	CustomAttributes pulumi.StringMapInput
+	CustomAttributes CustomAttributeMapInput
 	// Optional. The desired education degrees for the job, such as Bachelors, Masters.
 	DegreeTypes JobDegreeTypesItemArrayInput
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
@@ -319,8 +319,8 @@ func (o JobOutput) CompensationInfo() CompensationInfoResponseOutput {
 }
 
 // Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
-func (o JobOutput) CustomAttributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+func (o JobOutput) CustomAttributes() CustomAttributeResponseMapOutput {
+	return o.ApplyT(func(v *Job) CustomAttributeResponseMapOutput { return v.CustomAttributes }).(CustomAttributeResponseMapOutput)
 }
 
 // Optional. The desired education degrees for the job, such as Bachelors, Masters.

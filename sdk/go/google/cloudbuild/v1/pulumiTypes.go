@@ -2245,7 +2245,7 @@ type BuildResponse struct {
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 	Timeout string `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-	Timing map[string]string `pulumi:"timing"`
+	Timing map[string]TimeSpanResponse `pulumi:"timing"`
 	// Non-fatal problems encountered during the execution of the build.
 	Warnings []WarningResponse `pulumi:"warnings"`
 }
@@ -2396,8 +2396,8 @@ func (o BuildResponseOutput) Timeout() pulumi.StringOutput {
 }
 
 // Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
-func (o BuildResponseOutput) Timing() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildResponse) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
+func (o BuildResponseOutput) Timing() TimeSpanResponseMapOutput {
+	return o.ApplyT(func(v BuildResponse) map[string]TimeSpanResponse { return v.Timing }).(TimeSpanResponseMapOutput)
 }
 
 // Non-fatal problems encountered during the execution of the build.
@@ -3115,6 +3115,26 @@ func (o FileHashesResponseOutput) ToFileHashesResponseOutputWithContext(ctx cont
 // Collection of file hashes.
 func (o FileHashesResponseOutput) FileHash() HashResponseArrayOutput {
 	return o.ApplyT(func(v FileHashesResponse) []HashResponse { return v.FileHash }).(HashResponseArrayOutput)
+}
+
+type FileHashesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (FileHashesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileHashesResponse)(nil)).Elem()
+}
+
+func (o FileHashesResponseMapOutput) ToFileHashesResponseMapOutput() FileHashesResponseMapOutput {
+	return o
+}
+
+func (o FileHashesResponseMapOutput) ToFileHashesResponseMapOutputWithContext(ctx context.Context) FileHashesResponseMapOutput {
+	return o
+}
+
+func (o FileHashesResponseMapOutput) MapIndex(k pulumi.StringInput) FileHashesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FileHashesResponse {
+		return vs[0].(map[string]FileHashesResponse)[vs[1].(string)]
+	}).(FileHashesResponseOutput)
 }
 
 // GitFileSource describes a file within a (possibly remote) code repository.
@@ -8951,7 +8971,7 @@ func (o SourcePtrOutput) StorageSourceManifest() StorageSourceManifestPtrOutput 
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
 type SourceProvenanceResponse struct {
 	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-	FileHashes map[string]string `pulumi:"fileHashes"`
+	FileHashes map[string]FileHashesResponse `pulumi:"fileHashes"`
 	// A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
 	ResolvedConnectedRepository ConnectedRepositoryResponse `pulumi:"resolvedConnectedRepository"`
 	// A copy of the build's `source.git_source`, if exists, with any revisions resolved.
@@ -8980,8 +9000,8 @@ func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponseOutputWithCont
 }
 
 // Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-func (o SourceProvenanceResponseOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SourceProvenanceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+func (o SourceProvenanceResponseOutput) FileHashes() FileHashesResponseMapOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) map[string]FileHashesResponse { return v.FileHashes }).(FileHashesResponseMapOutput)
 }
 
 // A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
@@ -9556,6 +9576,26 @@ func (o TimeSpanResponseOutput) EndTime() pulumi.StringOutput {
 // Start of time span.
 func (o TimeSpanResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSpanResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type TimeSpanResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TimeSpanResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeSpanResponse)(nil)).Elem()
+}
+
+func (o TimeSpanResponseMapOutput) ToTimeSpanResponseMapOutput() TimeSpanResponseMapOutput {
+	return o
+}
+
+func (o TimeSpanResponseMapOutput) ToTimeSpanResponseMapOutputWithContext(ctx context.Context) TimeSpanResponseMapOutput {
+	return o
+}
+
+func (o TimeSpanResponseMapOutput) MapIndex(k pulumi.StringInput) TimeSpanResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TimeSpanResponse {
+		return vs[0].(map[string]TimeSpanResponse)[vs[1].(string)]
+	}).(TimeSpanResponseOutput)
 }
 
 // A Maven artifact uploaded using the MavenArtifact directive.
@@ -10452,6 +10492,7 @@ func init() {
 	pulumi.RegisterOutputType(ConnectedRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(FailureInfoResponseOutput{})
 	pulumi.RegisterOutputType(FileHashesResponseOutput{})
+	pulumi.RegisterOutputType(FileHashesResponseMapOutput{})
 	pulumi.RegisterOutputType(GitFileSourceOutput{})
 	pulumi.RegisterOutputType(GitFileSourcePtrOutput{})
 	pulumi.RegisterOutputType(GitFileSourceResponseOutput{})
@@ -10548,6 +10589,7 @@ func init() {
 	pulumi.RegisterOutputType(StorageSourceManifestResponseOutput{})
 	pulumi.RegisterOutputType(StorageSourceResponseOutput{})
 	pulumi.RegisterOutputType(TimeSpanResponseOutput{})
+	pulumi.RegisterOutputType(TimeSpanResponseMapOutput{})
 	pulumi.RegisterOutputType(UploadedMavenArtifactResponseOutput{})
 	pulumi.RegisterOutputType(UploadedMavenArtifactResponseArrayOutput{})
 	pulumi.RegisterOutputType(UploadedNpmPackageResponseOutput{})

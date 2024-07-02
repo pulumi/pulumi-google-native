@@ -74,6 +74,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsResponse',
     'GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsResponse',
     'GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse',
+    'GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse',
     'GoogleCloudDialogflowCxV3beta1TestCaseResultResponse',
     'GoogleCloudDialogflowCxV3beta1TestConfigResponse',
     'GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse',
@@ -83,6 +84,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse',
     'GoogleCloudDialogflowCxV3beta1VersionVariantsResponse',
     'GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse',
+    'GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse',
     'GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse',
     'GoogleCloudDialogflowCxV3beta1WebhookResponse',
     'GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse',
@@ -623,13 +625,13 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(dict):
 
     def __init__(__self__, *,
                  enable_sentiment_analysis: bool,
-                 injected_parameters: Mapping[str, str],
+                 injected_parameters: Mapping[str, Any],
                  input: 'outputs.GoogleCloudDialogflowCxV3beta1QueryInputResponse',
                  is_webhook_enabled: bool):
         """
         The input from the human user.
         :param bool enable_sentiment_analysis: Whether sentiment analysis is enabled.
-        :param Mapping[str, str] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
+        :param Mapping[str, Any] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
         :param 'GoogleCloudDialogflowCxV3beta1QueryInputResponse' input: Supports text input, event input, dtmf input in the test case.
         :param bool is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
         """
@@ -648,7 +650,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(dict):
 
     @property
     @pulumi.getter(name="injectedParameters")
-    def injected_parameters(self) -> Mapping[str, str]:
+    def injected_parameters(self) -> Mapping[str, Any]:
         """
         Parameters that need to be injected into the conversation during intent detection.
         """
@@ -703,18 +705,18 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse(d
 
     def __init__(__self__, *,
                  current_page: 'outputs.GoogleCloudDialogflowCxV3beta1PageResponse',
-                 diagnostic_info: Mapping[str, str],
+                 diagnostic_info: Mapping[str, Any],
                  differences: Sequence['outputs.GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse'],
-                 session_parameters: Mapping[str, str],
+                 session_parameters: Mapping[str, Any],
                  status: 'outputs.GoogleRpcStatusResponse',
                  text_responses: Sequence['outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse'],
                  triggered_intent: 'outputs.GoogleCloudDialogflowCxV3beta1IntentResponse'):
         """
         The output from the virtual agent.
         :param 'GoogleCloudDialogflowCxV3beta1PageResponse' current_page: The Page on which the utterance was spoken. Only name and displayName will be set.
-        :param Mapping[str, str] diagnostic_info: Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
+        :param Mapping[str, Any] diagnostic_info: Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         :param Sequence['GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse'] differences: If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
-        :param Mapping[str, str] session_parameters: The session parameters available to the bot at this point.
+        :param Mapping[str, Any] session_parameters: The session parameters available to the bot at this point.
         :param 'GoogleRpcStatusResponse' status: Response error from the agent in the test result. If set, other output is empty.
         :param Sequence['GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse'] text_responses: The text responses from the agent for the turn.
         :param 'GoogleCloudDialogflowCxV3beta1IntentResponse' triggered_intent: The Intent that triggered the response. Only name and displayName will be set.
@@ -737,7 +739,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse(d
 
     @property
     @pulumi.getter(name="diagnosticInfo")
-    def diagnostic_info(self) -> Mapping[str, str]:
+    def diagnostic_info(self) -> Mapping[str, Any]:
         """
         Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         """
@@ -753,7 +755,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse(d
 
     @property
     @pulumi.getter(name="sessionParameters")
-    def session_parameters(self) -> Mapping[str, str]:
+    def session_parameters(self) -> Mapping[str, Any]:
         """
         The session parameters available to the bot at this point.
         """
@@ -2827,16 +2829,16 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse(d
     Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. * In a webhook response when you determine that you handled the customer issue.
     """
     def __init__(__self__, *,
-                 metadata: Mapping[str, str]):
+                 metadata: Mapping[str, Any]):
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. * In a webhook response when you determine that you handled the customer issue.
-        :param Mapping[str, str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        :param Mapping[str, Any] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
         """
         pulumi.set(__self__, "metadata", metadata)
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> Mapping[str, Any]:
         """
         Custom metadata. Dialogflow doesn't impose any structure on this.
         """
@@ -2873,16 +2875,16 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse(dict
     Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can only be handled by a human.
     """
     def __init__(__self__, *,
-                 metadata: Mapping[str, str]):
+                 metadata: Mapping[str, Any]):
         """
         Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can only be handled by a human.
-        :param Mapping[str, str] metadata: Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
+        :param Mapping[str, Any] metadata: Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
         """
         pulumi.set(__self__, "metadata", metadata)
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, str]:
+    def metadata(self) -> Mapping[str, Any]:
         """
         Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
         """
@@ -3129,7 +3131,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
                  live_agent_handoff: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse',
                  mixed_audio: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse',
                  output_audio_text: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse',
-                 payload: Mapping[str, str],
+                 payload: Mapping[str, Any],
                  play_audio: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse',
                  telephony_transfer_call: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse',
                  text: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse'):
@@ -3142,7 +3144,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse' live_agent_handoff: Hands off conversation to a human agent.
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse' mixed_audio: An audio response message composed of both the synthesized Dialogflow agent responses and responses defined via play_audio. This message is generated by Dialogflow only and not supposed to be defined by the user.
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse' output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        :param Mapping[str, str] payload: Returns a response containing a custom, platform-specific payload.
+        :param Mapping[str, Any] payload: Returns a response containing a custom, platform-specific payload.
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse' play_audio: Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallResponse' telephony_transfer_call: A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
         :param 'GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse' text: Returns a text response.
@@ -3217,7 +3219,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
 
     @property
     @pulumi.getter
-    def payload(self) -> Mapping[str, str]:
+    def payload(self) -> Mapping[str, Any]:
         """
         Returns a response containing a custom, platform-specific payload.
         """
@@ -3687,6 +3689,93 @@ class GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse(dict):
+    """
+    Configuration of how speech should be synthesized.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "effectsProfileId":
+            suggest = "effects_profile_id"
+        elif key == "speakingRate":
+            suggest = "speaking_rate"
+        elif key == "volumeGainDb":
+            suggest = "volume_gain_db"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effects_profile_id: Sequence[str],
+                 pitch: float,
+                 speaking_rate: float,
+                 voice: 'outputs.GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse',
+                 volume_gain_db: float):
+        """
+        Configuration of how speech should be synthesized.
+        :param Sequence[str] effects_profile_id: Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        :param float pitch: Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        :param float speaking_rate: Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+        :param 'GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse' voice: Optional. The desired voice of the synthesized audio.
+        :param float volume_gain_db: Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+        """
+        pulumi.set(__self__, "effects_profile_id", effects_profile_id)
+        pulumi.set(__self__, "pitch", pitch)
+        pulumi.set(__self__, "speaking_rate", speaking_rate)
+        pulumi.set(__self__, "voice", voice)
+        pulumi.set(__self__, "volume_gain_db", volume_gain_db)
+
+    @property
+    @pulumi.getter(name="effectsProfileId")
+    def effects_profile_id(self) -> Sequence[str]:
+        """
+        Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        """
+        return pulumi.get(self, "effects_profile_id")
+
+    @property
+    @pulumi.getter
+    def pitch(self) -> float:
+        """
+        Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        """
+        return pulumi.get(self, "pitch")
+
+    @property
+    @pulumi.getter(name="speakingRate")
+    def speaking_rate(self) -> float:
+        """
+        Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+        """
+        return pulumi.get(self, "speaking_rate")
+
+    @property
+    @pulumi.getter
+    def voice(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse':
+        """
+        Optional. The desired voice of the synthesized audio.
+        """
+        return pulumi.get(self, "voice")
+
+    @property
+    @pulumi.getter(name="volumeGainDb")
+    def volume_gain_db(self) -> float:
+        """
+        Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+        """
+        return pulumi.get(self, "volume_gain_db")
+
+
+@pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1TestCaseResultResponse(dict):
     """
     Represents a result from running a test case in an agent environment.
@@ -3912,16 +4001,16 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 synthesize_speech_configs: Mapping[str, str]):
+                 synthesize_speech_configs: Mapping[str, 'outputs.GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse']):
         """
         Settings related to speech synthesizing.
-        :param Mapping[str, str] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
+        :param Mapping[str, 'GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse'] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
 
     @property
     @pulumi.getter(name="synthesizeSpeechConfigs")
-    def synthesize_speech_configs(self) -> Mapping[str, str]:
+    def synthesize_speech_configs(self) -> Mapping[str, 'outputs.GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfigResponse']:
         """
         Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
@@ -4172,6 +4261,56 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse(dict):
         The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse(dict):
+    """
+    Description of which voice to use for speech synthesis.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ssmlGender":
+            suggest = "ssml_gender"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1VoiceSelectionParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 ssml_gender: str):
+        """
+        Description of which voice to use for speech synthesis.
+        :param str name: Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+        :param str ssml_gender: Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ssml_gender", ssml_gender)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="ssmlGender")
+    def ssml_gender(self) -> str:
+        """
+        Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+        """
+        return pulumi.get(self, "ssml_gender")
 
 
 @pulumi.output_type
@@ -4466,12 +4605,12 @@ class GoogleRpcStatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -4488,7 +4627,7 @@ class GoogleRpcStatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """

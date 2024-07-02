@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Optional] The struct field values, in order of the struct type's declaration.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> StructValues;
+        public readonly ImmutableDictionary<string, Outputs.QueryParameterValueResponse> StructValues;
         /// <summary>
         /// [Optional] The value of this value, if a simple scalar type.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private QueryParameterValueResponse(
             ImmutableArray<Outputs.QueryParameterValueResponse> arrayValues,
 
-            ImmutableDictionary<string, string> structValues,
+            ImmutableDictionary<string, Outputs.QueryParameterValueResponse> structValues,
 
             string value)
         {

@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// <summary>
         /// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Ignored;
+        public readonly ImmutableDictionary<string, Outputs.ClusterUpgradeIgnoredMembershipResponse> Ignored;
 
         [OutputConstructor]
         private ClusterUpgradeFleetStateResponse(
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 
             Outputs.ClusterUpgradeGKEUpgradeFeatureStateResponse gkeState,
 
-            ImmutableDictionary<string, string> ignored)
+            ImmutableDictionary<string, Outputs.ClusterUpgradeIgnoredMembershipResponse> ignored)
         {
             DownstreamFleets = downstreamFleets;
             GkeState = gkeState;

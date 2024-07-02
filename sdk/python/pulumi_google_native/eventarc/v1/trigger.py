@@ -336,7 +336,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Output[Mapping[str, str]]:
+    def conditions(self) -> pulumi.Output[Mapping[str, 'outputs.StateConditionResponse']]:
         """
         The reason(s) why a trigger is in FAILED state.
         """

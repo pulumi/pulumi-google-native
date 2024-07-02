@@ -85,7 +85,7 @@ type LookupInstanceResult struct {
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsResponse `pulumi:"params"`
 	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
+	PartnerMetadata map[string]StructuredEntriesResponse `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
@@ -111,9 +111,9 @@ type LookupInstanceResult struct {
 	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
 	ServiceAccounts []ServiceAccountResponse `pulumi:"serviceAccounts"`
 	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-	ServiceIntegrationSpecs         map[string]string                       `pulumi:"serviceIntegrationSpecs"`
-	ShieldedInstanceConfig          ShieldedInstanceConfigResponse          `pulumi:"shieldedInstanceConfig"`
-	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponse `pulumi:"shieldedInstanceIntegrityPolicy"`
+	ServiceIntegrationSpecs         map[string]ServiceIntegrationSpecResponse `pulumi:"serviceIntegrationSpecs"`
+	ShieldedInstanceConfig          ShieldedInstanceConfigResponse            `pulumi:"shieldedInstanceConfig"`
+	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponse   `pulumi:"shieldedInstanceIntegrityPolicy"`
 	// Deprecating, please use shielded_instance_config.
 	ShieldedVmConfig ShieldedVmConfigResponse `pulumi:"shieldedVmConfig"`
 	// Deprecating, please use shielded_instance_integrity_policy.
@@ -313,8 +313,8 @@ func (o LookupInstanceResultOutput) Params() InstanceParamsResponseOutput {
 }
 
 // Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
-func (o LookupInstanceResultOutput) PartnerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
+func (o LookupInstanceResultOutput) PartnerMetadata() StructuredEntriesResponseMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]StructuredEntriesResponse { return v.PartnerMetadata }).(StructuredEntriesResponseMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -378,8 +378,10 @@ func (o LookupInstanceResultOutput) ServiceAccounts() ServiceAccountResponseArra
 }
 
 // Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-func (o LookupInstanceResultOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.ServiceIntegrationSpecs }).(pulumi.StringMapOutput)
+func (o LookupInstanceResultOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecResponseMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]ServiceIntegrationSpecResponse {
+		return v.ServiceIntegrationSpecs
+	}).(ServiceIntegrationSpecResponseMapOutput)
 }
 
 func (o LookupInstanceResultOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {

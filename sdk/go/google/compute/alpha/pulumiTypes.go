@@ -4717,7 +4717,7 @@ type AutoscalingPolicy struct {
 	ScaleDownControl *AutoscalingPolicyScaleDownControl `pulumi:"scaleDownControl"`
 	ScaleInControl   *AutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules map[string]string `pulumi:"scalingSchedules"`
+	ScalingSchedules map[string]AutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
 // AutoscalingPolicyInput is an input type that accepts AutoscalingPolicyArgs and AutoscalingPolicyOutput values.
@@ -4750,7 +4750,7 @@ type AutoscalingPolicyArgs struct {
 	ScaleDownControl AutoscalingPolicyScaleDownControlPtrInput `pulumi:"scaleDownControl"`
 	ScaleInControl   AutoscalingPolicyScaleInControlPtrInput   `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules pulumi.StringMapInput `pulumi:"scalingSchedules"`
+	ScalingSchedules AutoscalingPolicyScalingScheduleMapInput `pulumi:"scalingSchedules"`
 }
 
 func (AutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -4879,8 +4879,8 @@ func (o AutoscalingPolicyOutput) ScaleInControl() AutoscalingPolicyScaleInContro
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyOutput) ScalingSchedules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v AutoscalingPolicy) map[string]string { return v.ScalingSchedules }).(pulumi.StringMapOutput)
+func (o AutoscalingPolicyOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleMapOutput {
+	return o.ApplyT(func(v AutoscalingPolicy) map[string]AutoscalingPolicyScalingSchedule { return v.ScalingSchedules }).(AutoscalingPolicyScalingScheduleMapOutput)
 }
 
 type AutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -4996,13 +4996,13 @@ func (o AutoscalingPolicyPtrOutput) ScaleInControl() AutoscalingPolicyScaleInCon
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyPtrOutput) ScalingSchedules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AutoscalingPolicy) map[string]string {
+func (o AutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleMapOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) map[string]AutoscalingPolicyScalingSchedule {
 		if v == nil {
 			return nil
 		}
 		return v.ScalingSchedules
-	}).(pulumi.StringMapOutput)
+	}).(AutoscalingPolicyScalingScheduleMapOutput)
 }
 
 // CPU utilization policy.
@@ -5596,7 +5596,7 @@ type AutoscalingPolicyResponse struct {
 	ScaleDownControl AutoscalingPolicyScaleDownControlResponse `pulumi:"scaleDownControl"`
 	ScaleInControl   AutoscalingPolicyScaleInControlResponse   `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules map[string]string `pulumi:"scalingSchedules"`
+	ScalingSchedules map[string]AutoscalingPolicyScalingScheduleResponse `pulumi:"scalingSchedules"`
 }
 
 // Cloud Autoscaler policy.
@@ -5662,8 +5662,10 @@ func (o AutoscalingPolicyResponseOutput) ScaleInControl() AutoscalingPolicyScale
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyResponseOutput) ScalingSchedules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v AutoscalingPolicyResponse) map[string]string { return v.ScalingSchedules }).(pulumi.StringMapOutput)
+func (o AutoscalingPolicyResponseOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o.ApplyT(func(v AutoscalingPolicyResponse) map[string]AutoscalingPolicyScalingScheduleResponse {
+		return v.ScalingSchedules
+	}).(AutoscalingPolicyScalingScheduleResponseMapOutput)
 }
 
 // Configuration that allows for slower scale in so that even if Autoscaler recommends an abrupt scale in of a MIG, it will be throttled as specified by the parameters below.
@@ -6050,6 +6052,232 @@ func (o AutoscalingPolicyScaleInControlResponseOutput) MaxScaledInReplicas() Fix
 // How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
 func (o AutoscalingPolicyScaleInControlResponseOutput) TimeWindowSec() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingPolicyScaleInControlResponse) int { return v.TimeWindowSec }).(pulumi.IntOutput)
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingSchedule struct {
+	// A description of a scaling schedule.
+	Description *string `pulumi:"description"`
+	// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+	Disabled *bool `pulumi:"disabled"`
+	// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+	DurationSec *int `pulumi:"durationSec"`
+	// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+	MinRequiredReplicas *int `pulumi:"minRequiredReplicas"`
+	// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+	Schedule *string `pulumi:"schedule"`
+	// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// AutoscalingPolicyScalingScheduleInput is an input type that accepts AutoscalingPolicyScalingScheduleArgs and AutoscalingPolicyScalingScheduleOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyScalingScheduleInput` via:
+//
+//	AutoscalingPolicyScalingScheduleArgs{...}
+type AutoscalingPolicyScalingScheduleInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyScalingScheduleOutput() AutoscalingPolicyScalingScheduleOutput
+	ToAutoscalingPolicyScalingScheduleOutputWithContext(context.Context) AutoscalingPolicyScalingScheduleOutput
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleArgs struct {
+	// A description of a scaling schedule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+	DurationSec pulumi.IntPtrInput `pulumi:"durationSec"`
+	// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+	MinRequiredReplicas pulumi.IntPtrInput `pulumi:"minRequiredReplicas"`
+	// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (AutoscalingPolicyScalingScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalingPolicyScalingScheduleArgs) ToAutoscalingPolicyScalingScheduleOutput() AutoscalingPolicyScalingScheduleOutput {
+	return i.ToAutoscalingPolicyScalingScheduleOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyScalingScheduleArgs) ToAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingScheduleOutput)
+}
+
+// AutoscalingPolicyScalingScheduleMapInput is an input type that accepts AutoscalingPolicyScalingScheduleMap and AutoscalingPolicyScalingScheduleMapOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyScalingScheduleMapInput` via:
+//
+//	AutoscalingPolicyScalingScheduleMap{ "key": AutoscalingPolicyScalingScheduleArgs{...} }
+type AutoscalingPolicyScalingScheduleMapInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput
+	ToAutoscalingPolicyScalingScheduleMapOutputWithContext(context.Context) AutoscalingPolicyScalingScheduleMapOutput
+}
+
+type AutoscalingPolicyScalingScheduleMap map[string]AutoscalingPolicyScalingScheduleInput
+
+func (AutoscalingPolicyScalingScheduleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalingPolicyScalingScheduleMap) ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput {
+	return i.ToAutoscalingPolicyScalingScheduleMapOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyScalingScheduleMap) ToAutoscalingPolicyScalingScheduleMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingScheduleMapOutput)
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingScheduleOutput() AutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+// A description of a scaling schedule.
+func (o AutoscalingPolicyScalingScheduleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+func (o AutoscalingPolicyScalingScheduleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+func (o AutoscalingPolicyScalingScheduleOutput) DurationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *int { return v.DurationSec }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+func (o AutoscalingPolicyScalingScheduleOutput) MinRequiredReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *int { return v.MinRequiredReplicas }).(pulumi.IntPtrOutput)
+}
+
+// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+func (o AutoscalingPolicyScalingScheduleOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+func (o AutoscalingPolicyScalingScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type AutoscalingPolicyScalingScheduleMapOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleMapOutput) ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleMapOutput) ToAutoscalingPolicyScalingScheduleMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyScalingScheduleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoscalingPolicyScalingSchedule {
+		return vs[0].(map[string]AutoscalingPolicyScalingSchedule)[vs[1].(string)]
+	}).(AutoscalingPolicyScalingScheduleOutput)
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleResponse struct {
+	// A description of a scaling schedule.
+	Description string `pulumi:"description"`
+	// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+	Disabled bool `pulumi:"disabled"`
+	// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+	DurationSec int `pulumi:"durationSec"`
+	// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+	MinRequiredReplicas int `pulumi:"minRequiredReplicas"`
+	// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+	Schedule string `pulumi:"schedule"`
+	// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyScalingScheduleResponse)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseOutput) ToAutoscalingPolicyScalingScheduleResponseOutput() AutoscalingPolicyScalingScheduleResponseOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseOutput) ToAutoscalingPolicyScalingScheduleResponseOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleResponseOutput {
+	return o
+}
+
+// A description of a scaling schedule.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) DurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) int { return v.DurationSec }).(pulumi.IntOutput)
+}
+
+// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) MinRequiredReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) int { return v.MinRequiredReplicas }).(pulumi.IntOutput)
+}
+
+// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type AutoscalingPolicyScalingScheduleResponseMapOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingScheduleResponse)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) ToAutoscalingPolicyScalingScheduleResponseMapOutput() AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) ToAutoscalingPolicyScalingScheduleResponseMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyScalingScheduleResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoscalingPolicyScalingScheduleResponse {
+		return vs[0].(map[string]AutoscalingPolicyScalingScheduleResponse)[vs[1].(string)]
+	}).(AutoscalingPolicyScalingScheduleResponseOutput)
 }
 
 // Message containing information of one individual backend.
@@ -10159,7 +10387,7 @@ type BulkInsertInstanceResource struct {
 	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
 	NamePattern *string `pulumi:"namePattern"`
 	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-	PerInstanceProperties map[string]string `pulumi:"perInstanceProperties"`
+	PerInstanceProperties map[string]BulkInsertInstanceResourcePerInstanceProperties `pulumi:"perInstanceProperties"`
 	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
 	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 }
@@ -10188,7 +10416,7 @@ type BulkInsertInstanceResourceArgs struct {
 	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
 	NamePattern pulumi.StringPtrInput `pulumi:"namePattern"`
 	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-	PerInstanceProperties pulumi.StringMapInput `pulumi:"perInstanceProperties"`
+	PerInstanceProperties BulkInsertInstanceResourcePerInstancePropertiesMapInput `pulumi:"perInstanceProperties"`
 	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
 	SourceInstanceTemplate pulumi.StringPtrInput `pulumi:"sourceInstanceTemplate"`
 }
@@ -10297,8 +10525,10 @@ func (o BulkInsertInstanceResourceOutput) NamePattern() pulumi.StringPtrOutput {
 }
 
 // Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-func (o BulkInsertInstanceResourceOutput) PerInstanceProperties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BulkInsertInstanceResource) map[string]string { return v.PerInstanceProperties }).(pulumi.StringMapOutput)
+func (o BulkInsertInstanceResourceOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResource) map[string]BulkInsertInstanceResourcePerInstanceProperties {
+		return v.PerInstanceProperties
+	}).(BulkInsertInstanceResourcePerInstancePropertiesMapOutput)
 }
 
 // Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
@@ -10381,13 +10611,13 @@ func (o BulkInsertInstanceResourcePtrOutput) NamePattern() pulumi.StringPtrOutpu
 }
 
 // Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-func (o BulkInsertInstanceResourcePtrOutput) PerInstanceProperties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BulkInsertInstanceResource) map[string]string {
+func (o BulkInsertInstanceResourcePtrOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return o.ApplyT(func(v *BulkInsertInstanceResource) map[string]BulkInsertInstanceResourcePerInstanceProperties {
 		if v == nil {
 			return nil
 		}
 		return v.PerInstanceProperties
-	}).(pulumi.StringMapOutput)
+	}).(BulkInsertInstanceResourcePerInstancePropertiesMapOutput)
 }
 
 // Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
@@ -10398,6 +10628,168 @@ func (o BulkInsertInstanceResourcePtrOutput) SourceInstanceTemplate() pulumi.Str
 		}
 		return v.SourceInstanceTemplate
 	}).(pulumi.StringPtrOutput)
+}
+
+// Per-instance properties to be set on individual instances. To be extended in the future.
+type BulkInsertInstanceResourcePerInstanceProperties struct {
+	// Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention
+	Hostname *string `pulumi:"hostname"`
+	// This field is only temporary. It will be removed. Do not use it.
+	Name *string `pulumi:"name"`
+}
+
+// BulkInsertInstanceResourcePerInstancePropertiesInput is an input type that accepts BulkInsertInstanceResourcePerInstancePropertiesArgs and BulkInsertInstanceResourcePerInstancePropertiesOutput values.
+// You can construct a concrete instance of `BulkInsertInstanceResourcePerInstancePropertiesInput` via:
+//
+//	BulkInsertInstanceResourcePerInstancePropertiesArgs{...}
+type BulkInsertInstanceResourcePerInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToBulkInsertInstanceResourcePerInstancePropertiesOutput() BulkInsertInstanceResourcePerInstancePropertiesOutput
+	ToBulkInsertInstanceResourcePerInstancePropertiesOutputWithContext(context.Context) BulkInsertInstanceResourcePerInstancePropertiesOutput
+}
+
+// Per-instance properties to be set on individual instances. To be extended in the future.
+type BulkInsertInstanceResourcePerInstancePropertiesArgs struct {
+	// Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// This field is only temporary. It will be removed. Do not use it.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (BulkInsertInstanceResourcePerInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
+}
+
+func (i BulkInsertInstanceResourcePerInstancePropertiesArgs) ToBulkInsertInstanceResourcePerInstancePropertiesOutput() BulkInsertInstanceResourcePerInstancePropertiesOutput {
+	return i.ToBulkInsertInstanceResourcePerInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i BulkInsertInstanceResourcePerInstancePropertiesArgs) ToBulkInsertInstanceResourcePerInstancePropertiesOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourcePerInstancePropertiesOutput)
+}
+
+// BulkInsertInstanceResourcePerInstancePropertiesMapInput is an input type that accepts BulkInsertInstanceResourcePerInstancePropertiesMap and BulkInsertInstanceResourcePerInstancePropertiesMapOutput values.
+// You can construct a concrete instance of `BulkInsertInstanceResourcePerInstancePropertiesMapInput` via:
+//
+//	BulkInsertInstanceResourcePerInstancePropertiesMap{ "key": BulkInsertInstanceResourcePerInstancePropertiesArgs{...} }
+type BulkInsertInstanceResourcePerInstancePropertiesMapInput interface {
+	pulumi.Input
+
+	ToBulkInsertInstanceResourcePerInstancePropertiesMapOutput() BulkInsertInstanceResourcePerInstancePropertiesMapOutput
+	ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(context.Context) BulkInsertInstanceResourcePerInstancePropertiesMapOutput
+}
+
+type BulkInsertInstanceResourcePerInstancePropertiesMap map[string]BulkInsertInstanceResourcePerInstancePropertiesInput
+
+func (BulkInsertInstanceResourcePerInstancePropertiesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
+}
+
+func (i BulkInsertInstanceResourcePerInstancePropertiesMap) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutput() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return i.ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(context.Background())
+}
+
+func (i BulkInsertInstanceResourcePerInstancePropertiesMap) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BulkInsertInstanceResourcePerInstancePropertiesMapOutput)
+}
+
+// Per-instance properties to be set on individual instances. To be extended in the future.
+type BulkInsertInstanceResourcePerInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourcePerInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) ToBulkInsertInstanceResourcePerInstancePropertiesOutput() BulkInsertInstanceResourcePerInstancePropertiesOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) ToBulkInsertInstanceResourcePerInstancePropertiesOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesOutput {
+	return o
+}
+
+// Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention
+func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourcePerInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// This field is only temporary. It will be removed. Do not use it.
+func (o BulkInsertInstanceResourcePerInstancePropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourcePerInstanceProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type BulkInsertInstanceResourcePerInstancePropertiesMapOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourcePerInstancePropertiesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertInstanceResourcePerInstanceProperties)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutput() BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesMapOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesMapOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesMapOutput) MapIndex(k pulumi.StringInput) BulkInsertInstanceResourcePerInstancePropertiesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BulkInsertInstanceResourcePerInstanceProperties {
+		return vs[0].(map[string]BulkInsertInstanceResourcePerInstanceProperties)[vs[1].(string)]
+	}).(BulkInsertInstanceResourcePerInstancePropertiesOutput)
+}
+
+// Per-instance properties to be set on individual instances. To be extended in the future.
+type BulkInsertInstanceResourcePerInstancePropertiesResponse struct {
+	// Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention
+	Hostname string `pulumi:"hostname"`
+	// This field is only temporary. It will be removed. Do not use it.
+	Name string `pulumi:"name"`
+}
+
+// Per-instance properties to be set on individual instances. To be extended in the future.
+type BulkInsertInstanceResourcePerInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourcePerInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BulkInsertInstanceResourcePerInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseOutput) ToBulkInsertInstanceResourcePerInstancePropertiesResponseOutput() BulkInsertInstanceResourcePerInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseOutput) ToBulkInsertInstanceResourcePerInstancePropertiesResponseOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesResponseOutput {
+	return o
+}
+
+// Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourcePerInstancePropertiesResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// This field is only temporary. It will be removed. Do not use it.
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourcePerInstancePropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput() BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) ToBulkInsertInstanceResourcePerInstancePropertiesResponseMapOutputWithContext(ctx context.Context) BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput {
+	return o
+}
+
+func (o BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput) MapIndex(k pulumi.StringInput) BulkInsertInstanceResourcePerInstancePropertiesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BulkInsertInstanceResourcePerInstancePropertiesResponse {
+		return vs[0].(map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse)[vs[1].(string)]
+	}).(BulkInsertInstanceResourcePerInstancePropertiesResponseOutput)
 }
 
 // A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
@@ -10413,7 +10805,7 @@ type BulkInsertInstanceResourceResponse struct {
 	// The string pattern used for the names of the VMs. Either name_pattern or per_instance_properties must be set. The pattern must contain one continuous sequence of placeholder hash characters (#) with each character corresponding to one digit of the generated instance name. Example: a name_pattern of inst-#### generates instance names such as inst-0001 and inst-0002. If existing instances in the same project and zone have names that match the name pattern then the generated instance numbers start after the biggest existing number. For example, if there exists an instance with name inst-0050, then instance names generated using the pattern inst-#### begin with inst-0051. The name pattern placeholder #...# can contain up to 18 characters.
 	NamePattern string `pulumi:"namePattern"`
 	// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-	PerInstanceProperties map[string]string `pulumi:"perInstanceProperties"`
+	PerInstanceProperties map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse `pulumi:"perInstanceProperties"`
 	// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
 	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 }
@@ -10459,8 +10851,10 @@ func (o BulkInsertInstanceResourceResponseOutput) NamePattern() pulumi.StringOut
 }
 
 // Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
-func (o BulkInsertInstanceResourceResponseOutput) PerInstanceProperties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) map[string]string { return v.PerInstanceProperties }).(pulumi.StringMapOutput)
+func (o BulkInsertInstanceResourceResponseOutput) PerInstanceProperties() BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput {
+	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) map[string]BulkInsertInstanceResourcePerInstancePropertiesResponse {
+		return v.PerInstanceProperties
+	}).(BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput)
 }
 
 // Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
@@ -14215,6 +14609,48 @@ func (o DiskAsyncReplicationPtrOutput) Disk() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DiskAsyncReplicationListResponse struct {
+	AsyncReplicationDisk DiskAsyncReplicationResponse `pulumi:"asyncReplicationDisk"`
+}
+
+type DiskAsyncReplicationListResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplicationListResponse)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationListResponseOutput) ToDiskAsyncReplicationListResponseOutput() DiskAsyncReplicationListResponseOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseOutput) ToDiskAsyncReplicationListResponseOutputWithContext(ctx context.Context) DiskAsyncReplicationListResponseOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseOutput) AsyncReplicationDisk() DiskAsyncReplicationResponseOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationListResponse) DiskAsyncReplicationResponse { return v.AsyncReplicationDisk }).(DiskAsyncReplicationResponseOutput)
+}
+
+type DiskAsyncReplicationListResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationListResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskAsyncReplicationListResponse)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) ToDiskAsyncReplicationListResponseMapOutput() DiskAsyncReplicationListResponseMapOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) ToDiskAsyncReplicationListResponseMapOutputWithContext(ctx context.Context) DiskAsyncReplicationListResponseMapOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) MapIndex(k pulumi.StringInput) DiskAsyncReplicationListResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskAsyncReplicationListResponse {
+		return vs[0].(map[string]DiskAsyncReplicationListResponse)[vs[1].(string)]
+	}).(DiskAsyncReplicationListResponseOutput)
+}
+
 type DiskAsyncReplicationResponse struct {
 	// URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
 	ConsistencyGroupPolicy string `pulumi:"consistencyGroupPolicy"`
@@ -14642,10 +15078,30 @@ func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) State() pulumi.S
 	return o.ApplyT(func(v DiskResourceStatusAsyncReplicationStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+type DiskResourceStatusAsyncReplicationStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskResourceStatusAsyncReplicationStatusResponse)(nil)).Elem()
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ToDiskResourceStatusAsyncReplicationStatusResponseMapOutput() DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ToDiskResourceStatusAsyncReplicationStatusResponseMapOutputWithContext(ctx context.Context) DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskResourceStatusAsyncReplicationStatusResponse {
+		return vs[0].(map[string]DiskResourceStatusAsyncReplicationStatusResponse)[vs[1].(string)]
+	}).(DiskResourceStatusAsyncReplicationStatusResponseOutput)
+}
+
 type DiskResourceStatusResponse struct {
 	AsyncPrimaryDisk DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncPrimaryDisk"`
 	// Key: disk, value: AsyncReplicationStatus message
-	AsyncSecondaryDisks map[string]string `pulumi:"asyncSecondaryDisks"`
+	AsyncSecondaryDisks map[string]DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncSecondaryDisks"`
 	// Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
 	UsedBytes string `pulumi:"usedBytes"`
 }
@@ -14671,8 +15127,10 @@ func (o DiskResourceStatusResponseOutput) AsyncPrimaryDisk() DiskResourceStatusA
 }
 
 // Key: disk, value: AsyncReplicationStatus message
-func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]string { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
+func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]DiskResourceStatusAsyncReplicationStatusResponse {
+		return v.AsyncSecondaryDisks
+	}).(DiskResourceStatusAsyncReplicationStatusResponseMapOutput)
 }
 
 // Space used by data stored in the disk (in bytes). Note that this field is set only when the disk is in a storage pool.
@@ -25084,9 +25542,9 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseArrayOutput) Index(i pulumi
 
 type InstanceGroupManagerInstanceFlexibilityPolicy struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection `pulumi:"instanceSelectionLists"`
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelections map[string]string `pulumi:"instanceSelections"`
+	InstanceSelections map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection `pulumi:"instanceSelections"`
 }
 
 // InstanceGroupManagerInstanceFlexibilityPolicyInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyArgs and InstanceGroupManagerInstanceFlexibilityPolicyOutput values.
@@ -25102,9 +25560,9 @@ type InstanceGroupManagerInstanceFlexibilityPolicyInput interface {
 
 type InstanceGroupManagerInstanceFlexibilityPolicyArgs struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelectionLists pulumi.StringMapInput `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput `pulumi:"instanceSelectionLists"`
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelections pulumi.StringMapInput `pulumi:"instanceSelections"`
+	InstanceSelections InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput `pulumi:"instanceSelections"`
 }
 
 func (InstanceGroupManagerInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
@@ -25185,15 +25643,17 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) ToInstanceGroupMana
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelectionLists() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		return v.InstanceSelectionLists
-	}).(pulumi.StringMapOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelections() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string { return v.InstanceSelections }).(pulumi.StringMapOutput)
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+		return v.InstanceSelections
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -25221,30 +25681,189 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) Elem() InstanceG
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		if v == nil {
 			return nil
 		}
 		return v.InstanceSelectionLists
-	}).(pulumi.StringMapOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelections() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		if v == nil {
 			return nil
 		}
 		return v.InstanceSelections
-	}).(pulumi.StringMapOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+	Rank *int `pulumi:"rank"`
+}
+
+// InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs and InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput` via:
+//
+//	InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{...}
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput
+	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+	Rank pulumi.IntPtrInput `pulumi:"rank"`
+}
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput)
+}
+
+// InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap and InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput` via:
+//
+//	InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap{ "key": InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{...} }
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput
+	ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return o
+}
+
+// Full machine-type names, e.g. "n1-standard-16".
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) []string { return v.MachineTypes }).(pulumi.StringArrayOutput)
+}
+
+// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) Rank() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) *int { return v.Rank }).(pulumi.IntPtrOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+		return vs[0].(map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)[vs[1].(string)]
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse struct {
+	// Full machine-type names, e.g. "n1-standard-16".
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+	Rank int `pulumi:"rank"`
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput {
+	return o
+}
+
+// Full machine-type names, e.g. "n1-standard-16".
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse) []string {
+		return v.MachineTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput) Rank() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse) int { return v.Rank }).(pulumi.IntOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
+		return vs[0].(map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse)[vs[1].(string)]
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput)
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyResponse struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse `pulumi:"instanceSelectionLists"`
 	// Named instance selections configuring properties that the group will use when creating new VMs.
-	InstanceSelections map[string]string `pulumi:"instanceSelections"`
+	InstanceSelections map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse `pulumi:"instanceSelections"`
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput struct{ *pulumi.OutputState }
@@ -25262,17 +25881,17 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) ToInstanceG
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelectionLists() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]string {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelectionLists() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
 		return v.InstanceSelectionLists
-	}).(pulumi.StringMapOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput)
 }
 
 // Named instance selections configuring properties that the group will use when creating new VMs.
-func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelections() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]string {
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelections() InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponse {
 		return v.InstanceSelections
-	}).(pulumi.StringMapOutput)
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput)
 }
 
 type InstanceGroupManagerInstanceLifecyclePolicy struct {
@@ -26962,7 +27581,7 @@ type InstanceProperties struct {
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
+	PartnerMetadata map[string]StructuredEntries `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePropertiesPostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -26980,7 +27599,7 @@ type InstanceProperties struct {
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
 	ServiceAccounts []ServiceAccount `pulumi:"serviceAccounts"`
 	// Mapping of user defined keys to ServiceIntegrationSpec.
-	ServiceIntegrationSpecs map[string]string `pulumi:"serviceIntegrationSpecs"`
+	ServiceIntegrationSpecs map[string]ServiceIntegrationSpec `pulumi:"serviceIntegrationSpecs"`
 	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
@@ -27030,7 +27649,7 @@ type InstancePropertiesArgs struct {
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata pulumi.StringMapInput `pulumi:"partnerMetadata"`
+	PartnerMetadata StructuredEntriesMapInput `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePropertiesPostKeyRevocationActionTypePtrInput `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -27048,7 +27667,7 @@ type InstancePropertiesArgs struct {
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
 	ServiceAccounts ServiceAccountArrayInput `pulumi:"serviceAccounts"`
 	// Mapping of user defined keys to ServiceIntegrationSpec.
-	ServiceIntegrationSpecs pulumi.StringMapInput `pulumi:"serviceIntegrationSpecs"`
+	ServiceIntegrationSpecs ServiceIntegrationSpecMapInput `pulumi:"serviceIntegrationSpecs"`
 	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
@@ -27207,8 +27826,8 @@ func (o InstancePropertiesOutput) NetworkPerformanceConfig() NetworkPerformanceC
 }
 
 // Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-func (o InstancePropertiesOutput) PartnerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceProperties) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
+func (o InstancePropertiesOutput) PartnerMetadata() StructuredEntriesMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]StructuredEntries { return v.PartnerMetadata }).(StructuredEntriesMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -27256,8 +27875,8 @@ func (o InstancePropertiesOutput) ServiceAccounts() ServiceAccountArrayOutput {
 }
 
 // Mapping of user defined keys to ServiceIntegrationSpec.
-func (o InstancePropertiesOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceProperties) map[string]string { return v.ServiceIntegrationSpecs }).(pulumi.StringMapOutput)
+func (o InstancePropertiesOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]ServiceIntegrationSpec { return v.ServiceIntegrationSpecs }).(ServiceIntegrationSpecMapOutput)
 }
 
 // Note that for MachineImage, this is not supported yet.
@@ -27440,13 +28059,13 @@ func (o InstancePropertiesPtrOutput) NetworkPerformanceConfig() NetworkPerforman
 }
 
 // Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-func (o InstancePropertiesPtrOutput) PartnerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceProperties) map[string]string {
+func (o InstancePropertiesPtrOutput) PartnerMetadata() StructuredEntriesMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]StructuredEntries {
 		if v == nil {
 			return nil
 		}
 		return v.PartnerMetadata
-	}).(pulumi.StringMapOutput)
+	}).(StructuredEntriesMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -27530,13 +28149,13 @@ func (o InstancePropertiesPtrOutput) ServiceAccounts() ServiceAccountArrayOutput
 }
 
 // Mapping of user defined keys to ServiceIntegrationSpec.
-func (o InstancePropertiesPtrOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceProperties) map[string]string {
+func (o InstancePropertiesPtrOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]ServiceIntegrationSpec {
 		if v == nil {
 			return nil
 		}
 		return v.ServiceIntegrationSpecs
-	}).(pulumi.StringMapOutput)
+	}).(ServiceIntegrationSpecMapOutput)
 }
 
 // Note that for MachineImage, this is not supported yet.
@@ -27791,7 +28410,7 @@ type InstancePropertiesResponse struct {
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
+	PartnerMetadata map[string]StructuredEntriesResponse `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -27809,7 +28428,7 @@ type InstancePropertiesResponse struct {
 	// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
 	ServiceAccounts []ServiceAccountResponse `pulumi:"serviceAccounts"`
 	// Mapping of user defined keys to ServiceIntegrationSpec.
-	ServiceIntegrationSpecs map[string]string `pulumi:"serviceIntegrationSpecs"`
+	ServiceIntegrationSpecs map[string]ServiceIntegrationSpecResponse `pulumi:"serviceIntegrationSpecs"`
 	// Note that for MachineImage, this is not supported yet.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
 	// Specifies the Shielded VM options for the instances that are created from these properties.
@@ -27905,8 +28524,8 @@ func (o InstancePropertiesResponseOutput) NetworkPerformanceConfig() NetworkPerf
 }
 
 // Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-func (o InstancePropertiesResponseOutput) PartnerMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
+func (o InstancePropertiesResponseOutput) PartnerMetadata() StructuredEntriesResponseMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]StructuredEntriesResponse { return v.PartnerMetadata }).(StructuredEntriesResponseMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -27950,8 +28569,10 @@ func (o InstancePropertiesResponseOutput) ServiceAccounts() ServiceAccountRespon
 }
 
 // Mapping of user defined keys to ServiceIntegrationSpec.
-func (o InstancePropertiesResponseOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) map[string]string { return v.ServiceIntegrationSpecs }).(pulumi.StringMapOutput)
+func (o InstancePropertiesResponseOutput) ServiceIntegrationSpecs() ServiceIntegrationSpecResponseMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]ServiceIntegrationSpecResponse {
+		return v.ServiceIntegrationSpecs
+	}).(ServiceIntegrationSpecResponseMapOutput)
 }
 
 // Note that for MachineImage, this is not supported yet.
@@ -30064,7 +30685,7 @@ func (o LocalizedMessageResponseOutput) Message() pulumi.StringOutput {
 // Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
 type LocationPolicy struct {
 	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-	Locations map[string]string `pulumi:"locations"`
+	Locations map[string]LocationPolicyLocation `pulumi:"locations"`
 	// Strategy for distributing VMs across zones in a region.
 	TargetShape *LocationPolicyTargetShape `pulumi:"targetShape"`
 }
@@ -30083,7 +30704,7 @@ type LocationPolicyInput interface {
 // Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
 type LocationPolicyArgs struct {
 	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-	Locations pulumi.StringMapInput `pulumi:"locations"`
+	Locations LocationPolicyLocationMapInput `pulumi:"locations"`
 	// Strategy for distributing VMs across zones in a region.
 	TargetShape LocationPolicyTargetShapePtrInput `pulumi:"targetShape"`
 }
@@ -30167,8 +30788,8 @@ func (o LocationPolicyOutput) ToLocationPolicyPtrOutputWithContext(ctx context.C
 }
 
 // Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-func (o LocationPolicyOutput) Locations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LocationPolicy) map[string]string { return v.Locations }).(pulumi.StringMapOutput)
+func (o LocationPolicyOutput) Locations() LocationPolicyLocationMapOutput {
+	return o.ApplyT(func(v LocationPolicy) map[string]LocationPolicyLocation { return v.Locations }).(LocationPolicyLocationMapOutput)
 }
 
 // Strategy for distributing VMs across zones in a region.
@@ -30201,13 +30822,13 @@ func (o LocationPolicyPtrOutput) Elem() LocationPolicyOutput {
 }
 
 // Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-func (o LocationPolicyPtrOutput) Locations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *LocationPolicy) map[string]string {
+func (o LocationPolicyPtrOutput) Locations() LocationPolicyLocationMapOutput {
+	return o.ApplyT(func(v *LocationPolicy) map[string]LocationPolicyLocation {
 		if v == nil {
 			return nil
 		}
 		return v.Locations
-	}).(pulumi.StringMapOutput)
+	}).(LocationPolicyLocationMapOutput)
 }
 
 // Strategy for distributing VMs across zones in a region.
@@ -30220,10 +30841,349 @@ func (o LocationPolicyPtrOutput) TargetShape() LocationPolicyTargetShapePtrOutpu
 	}).(LocationPolicyTargetShapePtrOutput)
 }
 
+type LocationPolicyLocation struct {
+	// Constraints that the caller requires on the result distribution in this zone.
+	Constraints *LocationPolicyLocationConstraints `pulumi:"constraints"`
+	// Names of resources to be put in the location. Must contain unique, correct resource names. If used, targetShape must be left unset.
+	Names []string `pulumi:"names"`
+	// Preference for a given location. Set to either ALLOW or DENY.
+	Preference *LocationPolicyLocationPreference `pulumi:"preference"`
+}
+
+// LocationPolicyLocationInput is an input type that accepts LocationPolicyLocationArgs and LocationPolicyLocationOutput values.
+// You can construct a concrete instance of `LocationPolicyLocationInput` via:
+//
+//	LocationPolicyLocationArgs{...}
+type LocationPolicyLocationInput interface {
+	pulumi.Input
+
+	ToLocationPolicyLocationOutput() LocationPolicyLocationOutput
+	ToLocationPolicyLocationOutputWithContext(context.Context) LocationPolicyLocationOutput
+}
+
+type LocationPolicyLocationArgs struct {
+	// Constraints that the caller requires on the result distribution in this zone.
+	Constraints LocationPolicyLocationConstraintsPtrInput `pulumi:"constraints"`
+	// Names of resources to be put in the location. Must contain unique, correct resource names. If used, targetShape must be left unset.
+	Names pulumi.StringArrayInput `pulumi:"names"`
+	// Preference for a given location. Set to either ALLOW or DENY.
+	Preference LocationPolicyLocationPreferencePtrInput `pulumi:"preference"`
+}
+
+func (LocationPolicyLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocation)(nil)).Elem()
+}
+
+func (i LocationPolicyLocationArgs) ToLocationPolicyLocationOutput() LocationPolicyLocationOutput {
+	return i.ToLocationPolicyLocationOutputWithContext(context.Background())
+}
+
+func (i LocationPolicyLocationArgs) ToLocationPolicyLocationOutputWithContext(ctx context.Context) LocationPolicyLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationOutput)
+}
+
+// LocationPolicyLocationMapInput is an input type that accepts LocationPolicyLocationMap and LocationPolicyLocationMapOutput values.
+// You can construct a concrete instance of `LocationPolicyLocationMapInput` via:
+//
+//	LocationPolicyLocationMap{ "key": LocationPolicyLocationArgs{...} }
+type LocationPolicyLocationMapInput interface {
+	pulumi.Input
+
+	ToLocationPolicyLocationMapOutput() LocationPolicyLocationMapOutput
+	ToLocationPolicyLocationMapOutputWithContext(context.Context) LocationPolicyLocationMapOutput
+}
+
+type LocationPolicyLocationMap map[string]LocationPolicyLocationInput
+
+func (LocationPolicyLocationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationPolicyLocation)(nil)).Elem()
+}
+
+func (i LocationPolicyLocationMap) ToLocationPolicyLocationMapOutput() LocationPolicyLocationMapOutput {
+	return i.ToLocationPolicyLocationMapOutputWithContext(context.Background())
+}
+
+func (i LocationPolicyLocationMap) ToLocationPolicyLocationMapOutputWithContext(ctx context.Context) LocationPolicyLocationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationMapOutput)
+}
+
+type LocationPolicyLocationOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocation)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationOutput) ToLocationPolicyLocationOutput() LocationPolicyLocationOutput {
+	return o
+}
+
+func (o LocationPolicyLocationOutput) ToLocationPolicyLocationOutputWithContext(ctx context.Context) LocationPolicyLocationOutput {
+	return o
+}
+
+// Constraints that the caller requires on the result distribution in this zone.
+func (o LocationPolicyLocationOutput) Constraints() LocationPolicyLocationConstraintsPtrOutput {
+	return o.ApplyT(func(v LocationPolicyLocation) *LocationPolicyLocationConstraints { return v.Constraints }).(LocationPolicyLocationConstraintsPtrOutput)
+}
+
+// Names of resources to be put in the location. Must contain unique, correct resource names. If used, targetShape must be left unset.
+func (o LocationPolicyLocationOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LocationPolicyLocation) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// Preference for a given location. Set to either ALLOW or DENY.
+func (o LocationPolicyLocationOutput) Preference() LocationPolicyLocationPreferencePtrOutput {
+	return o.ApplyT(func(v LocationPolicyLocation) *LocationPolicyLocationPreference { return v.Preference }).(LocationPolicyLocationPreferencePtrOutput)
+}
+
+type LocationPolicyLocationMapOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationPolicyLocation)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationMapOutput) ToLocationPolicyLocationMapOutput() LocationPolicyLocationMapOutput {
+	return o
+}
+
+func (o LocationPolicyLocationMapOutput) ToLocationPolicyLocationMapOutputWithContext(ctx context.Context) LocationPolicyLocationMapOutput {
+	return o
+}
+
+func (o LocationPolicyLocationMapOutput) MapIndex(k pulumi.StringInput) LocationPolicyLocationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LocationPolicyLocation {
+		return vs[0].(map[string]LocationPolicyLocation)[vs[1].(string)]
+	}).(LocationPolicyLocationOutput)
+}
+
+// Per-zone constraints on location policy for this zone.
+type LocationPolicyLocationConstraints struct {
+	// Maximum number of items that are allowed to be placed in this zone. The value must be non-negative.
+	MaxCount *int `pulumi:"maxCount"`
+}
+
+// LocationPolicyLocationConstraintsInput is an input type that accepts LocationPolicyLocationConstraintsArgs and LocationPolicyLocationConstraintsOutput values.
+// You can construct a concrete instance of `LocationPolicyLocationConstraintsInput` via:
+//
+//	LocationPolicyLocationConstraintsArgs{...}
+type LocationPolicyLocationConstraintsInput interface {
+	pulumi.Input
+
+	ToLocationPolicyLocationConstraintsOutput() LocationPolicyLocationConstraintsOutput
+	ToLocationPolicyLocationConstraintsOutputWithContext(context.Context) LocationPolicyLocationConstraintsOutput
+}
+
+// Per-zone constraints on location policy for this zone.
+type LocationPolicyLocationConstraintsArgs struct {
+	// Maximum number of items that are allowed to be placed in this zone. The value must be non-negative.
+	MaxCount pulumi.IntPtrInput `pulumi:"maxCount"`
+}
+
+func (LocationPolicyLocationConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocationConstraints)(nil)).Elem()
+}
+
+func (i LocationPolicyLocationConstraintsArgs) ToLocationPolicyLocationConstraintsOutput() LocationPolicyLocationConstraintsOutput {
+	return i.ToLocationPolicyLocationConstraintsOutputWithContext(context.Background())
+}
+
+func (i LocationPolicyLocationConstraintsArgs) ToLocationPolicyLocationConstraintsOutputWithContext(ctx context.Context) LocationPolicyLocationConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationConstraintsOutput)
+}
+
+func (i LocationPolicyLocationConstraintsArgs) ToLocationPolicyLocationConstraintsPtrOutput() LocationPolicyLocationConstraintsPtrOutput {
+	return i.ToLocationPolicyLocationConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i LocationPolicyLocationConstraintsArgs) ToLocationPolicyLocationConstraintsPtrOutputWithContext(ctx context.Context) LocationPolicyLocationConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationConstraintsOutput).ToLocationPolicyLocationConstraintsPtrOutputWithContext(ctx)
+}
+
+// LocationPolicyLocationConstraintsPtrInput is an input type that accepts LocationPolicyLocationConstraintsArgs, LocationPolicyLocationConstraintsPtr and LocationPolicyLocationConstraintsPtrOutput values.
+// You can construct a concrete instance of `LocationPolicyLocationConstraintsPtrInput` via:
+//
+//	        LocationPolicyLocationConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LocationPolicyLocationConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToLocationPolicyLocationConstraintsPtrOutput() LocationPolicyLocationConstraintsPtrOutput
+	ToLocationPolicyLocationConstraintsPtrOutputWithContext(context.Context) LocationPolicyLocationConstraintsPtrOutput
+}
+
+type locationPolicyLocationConstraintsPtrType LocationPolicyLocationConstraintsArgs
+
+func LocationPolicyLocationConstraintsPtr(v *LocationPolicyLocationConstraintsArgs) LocationPolicyLocationConstraintsPtrInput {
+	return (*locationPolicyLocationConstraintsPtrType)(v)
+}
+
+func (*locationPolicyLocationConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPolicyLocationConstraints)(nil)).Elem()
+}
+
+func (i *locationPolicyLocationConstraintsPtrType) ToLocationPolicyLocationConstraintsPtrOutput() LocationPolicyLocationConstraintsPtrOutput {
+	return i.ToLocationPolicyLocationConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *locationPolicyLocationConstraintsPtrType) ToLocationPolicyLocationConstraintsPtrOutputWithContext(ctx context.Context) LocationPolicyLocationConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPolicyLocationConstraintsPtrOutput)
+}
+
+// Per-zone constraints on location policy for this zone.
+type LocationPolicyLocationConstraintsOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocationConstraints)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationConstraintsOutput) ToLocationPolicyLocationConstraintsOutput() LocationPolicyLocationConstraintsOutput {
+	return o
+}
+
+func (o LocationPolicyLocationConstraintsOutput) ToLocationPolicyLocationConstraintsOutputWithContext(ctx context.Context) LocationPolicyLocationConstraintsOutput {
+	return o
+}
+
+func (o LocationPolicyLocationConstraintsOutput) ToLocationPolicyLocationConstraintsPtrOutput() LocationPolicyLocationConstraintsPtrOutput {
+	return o.ToLocationPolicyLocationConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o LocationPolicyLocationConstraintsOutput) ToLocationPolicyLocationConstraintsPtrOutputWithContext(ctx context.Context) LocationPolicyLocationConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationPolicyLocationConstraints) *LocationPolicyLocationConstraints {
+		return &v
+	}).(LocationPolicyLocationConstraintsPtrOutput)
+}
+
+// Maximum number of items that are allowed to be placed in this zone. The value must be non-negative.
+func (o LocationPolicyLocationConstraintsOutput) MaxCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LocationPolicyLocationConstraints) *int { return v.MaxCount }).(pulumi.IntPtrOutput)
+}
+
+type LocationPolicyLocationConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPolicyLocationConstraints)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationConstraintsPtrOutput) ToLocationPolicyLocationConstraintsPtrOutput() LocationPolicyLocationConstraintsPtrOutput {
+	return o
+}
+
+func (o LocationPolicyLocationConstraintsPtrOutput) ToLocationPolicyLocationConstraintsPtrOutputWithContext(ctx context.Context) LocationPolicyLocationConstraintsPtrOutput {
+	return o
+}
+
+func (o LocationPolicyLocationConstraintsPtrOutput) Elem() LocationPolicyLocationConstraintsOutput {
+	return o.ApplyT(func(v *LocationPolicyLocationConstraints) LocationPolicyLocationConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret LocationPolicyLocationConstraints
+		return ret
+	}).(LocationPolicyLocationConstraintsOutput)
+}
+
+// Maximum number of items that are allowed to be placed in this zone. The value must be non-negative.
+func (o LocationPolicyLocationConstraintsPtrOutput) MaxCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LocationPolicyLocationConstraints) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Per-zone constraints on location policy for this zone.
+type LocationPolicyLocationConstraintsResponse struct {
+	// Maximum number of items that are allowed to be placed in this zone. The value must be non-negative.
+	MaxCount int `pulumi:"maxCount"`
+}
+
+// Per-zone constraints on location policy for this zone.
+type LocationPolicyLocationConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocationConstraintsResponse)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationConstraintsResponseOutput) ToLocationPolicyLocationConstraintsResponseOutput() LocationPolicyLocationConstraintsResponseOutput {
+	return o
+}
+
+func (o LocationPolicyLocationConstraintsResponseOutput) ToLocationPolicyLocationConstraintsResponseOutputWithContext(ctx context.Context) LocationPolicyLocationConstraintsResponseOutput {
+	return o
+}
+
+// Maximum number of items that are allowed to be placed in this zone. The value must be non-negative.
+func (o LocationPolicyLocationConstraintsResponseOutput) MaxCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LocationPolicyLocationConstraintsResponse) int { return v.MaxCount }).(pulumi.IntOutput)
+}
+
+type LocationPolicyLocationResponse struct {
+	// Constraints that the caller requires on the result distribution in this zone.
+	Constraints LocationPolicyLocationConstraintsResponse `pulumi:"constraints"`
+	// Names of resources to be put in the location. Must contain unique, correct resource names. If used, targetShape must be left unset.
+	Names []string `pulumi:"names"`
+	// Preference for a given location. Set to either ALLOW or DENY.
+	Preference string `pulumi:"preference"`
+}
+
+type LocationPolicyLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPolicyLocationResponse)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationResponseOutput) ToLocationPolicyLocationResponseOutput() LocationPolicyLocationResponseOutput {
+	return o
+}
+
+func (o LocationPolicyLocationResponseOutput) ToLocationPolicyLocationResponseOutputWithContext(ctx context.Context) LocationPolicyLocationResponseOutput {
+	return o
+}
+
+// Constraints that the caller requires on the result distribution in this zone.
+func (o LocationPolicyLocationResponseOutput) Constraints() LocationPolicyLocationConstraintsResponseOutput {
+	return o.ApplyT(func(v LocationPolicyLocationResponse) LocationPolicyLocationConstraintsResponse { return v.Constraints }).(LocationPolicyLocationConstraintsResponseOutput)
+}
+
+// Names of resources to be put in the location. Must contain unique, correct resource names. If used, targetShape must be left unset.
+func (o LocationPolicyLocationResponseOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LocationPolicyLocationResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// Preference for a given location. Set to either ALLOW or DENY.
+func (o LocationPolicyLocationResponseOutput) Preference() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationPolicyLocationResponse) string { return v.Preference }).(pulumi.StringOutput)
+}
+
+type LocationPolicyLocationResponseMapOutput struct{ *pulumi.OutputState }
+
+func (LocationPolicyLocationResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LocationPolicyLocationResponse)(nil)).Elem()
+}
+
+func (o LocationPolicyLocationResponseMapOutput) ToLocationPolicyLocationResponseMapOutput() LocationPolicyLocationResponseMapOutput {
+	return o
+}
+
+func (o LocationPolicyLocationResponseMapOutput) ToLocationPolicyLocationResponseMapOutputWithContext(ctx context.Context) LocationPolicyLocationResponseMapOutput {
+	return o
+}
+
+func (o LocationPolicyLocationResponseMapOutput) MapIndex(k pulumi.StringInput) LocationPolicyLocationResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LocationPolicyLocationResponse {
+		return vs[0].(map[string]LocationPolicyLocationResponse)[vs[1].(string)]
+	}).(LocationPolicyLocationResponseOutput)
+}
+
 // Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
 type LocationPolicyResponse struct {
 	// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-	Locations map[string]string `pulumi:"locations"`
+	Locations map[string]LocationPolicyLocationResponse `pulumi:"locations"`
 	// Strategy for distributing VMs across zones in a region.
 	TargetShape string `pulumi:"targetShape"`
 }
@@ -30244,8 +31204,8 @@ func (o LocationPolicyResponseOutput) ToLocationPolicyResponseOutputWithContext(
 }
 
 // Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
-func (o LocationPolicyResponseOutput) Locations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LocationPolicyResponse) map[string]string { return v.Locations }).(pulumi.StringMapOutput)
+func (o LocationPolicyResponseOutput) Locations() LocationPolicyLocationResponseMapOutput {
+	return o.ApplyT(func(v LocationPolicyResponse) map[string]LocationPolicyLocationResponse { return v.Locations }).(LocationPolicyLocationResponseMapOutput)
 }
 
 // Strategy for distributing VMs across zones in a region.
@@ -43986,7 +44946,7 @@ type ResourceStatusResponse struct {
 	PhysicalHost string                           `pulumi:"physicalHost"`
 	Scheduling   ResourceStatusSchedulingResponse `pulumi:"scheduling"`
 	// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
-	ServiceIntegrationStatuses map[string]string `pulumi:"serviceIntegrationStatuses"`
+	ServiceIntegrationStatuses map[string]ResourceStatusServiceIntegrationStatusResponse `pulumi:"serviceIntegrationStatuses"`
 	// Details about stopping state of instance
 	ShutdownDetails     ResourceStatusShutdownDetailsResponse `pulumi:"shutdownDetails"`
 	UpcomingMaintenance UpcomingMaintenanceResponse           `pulumi:"upcomingMaintenance"`
@@ -44024,8 +44984,10 @@ func (o ResourceStatusResponseOutput) Scheduling() ResourceStatusSchedulingRespo
 }
 
 // Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
-func (o ResourceStatusResponseOutput) ServiceIntegrationStatuses() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ResourceStatusResponse) map[string]string { return v.ServiceIntegrationStatuses }).(pulumi.StringMapOutput)
+func (o ResourceStatusResponseOutput) ServiceIntegrationStatuses() ResourceStatusServiceIntegrationStatusResponseMapOutput {
+	return o.ApplyT(func(v ResourceStatusResponse) map[string]ResourceStatusServiceIntegrationStatusResponse {
+		return v.ServiceIntegrationStatuses
+	}).(ResourceStatusServiceIntegrationStatusResponseMapOutput)
 }
 
 // Details about stopping state of instance
@@ -44066,6 +45028,87 @@ func (o ResourceStatusSchedulingResponseOutput) AvailabilityDomain() pulumi.IntO
 // Time in future when the instance will be terminated in RFC3339 text format.
 func (o ResourceStatusSchedulingResponseOutput) TerminationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceStatusSchedulingResponse) string { return v.TerminationTimestamp }).(pulumi.StringOutput)
+}
+
+// Message defining compute perspective of the result of integration with Backup and DR. FAILED status indicates that the operation specified did not complete correctly and should be retried with the same value.
+type ResourceStatusServiceIntegrationStatusBackupDRStatusResponse struct {
+	// The PlanReference object created by Backup and DR to maintain the actual status of backups. May still be present if removing the backup plan fails.
+	IntegrationDetails string `pulumi:"integrationDetails"`
+	// Enum representing the registration state of a Backup and DR backup plan for the instance.
+	State string `pulumi:"state"`
+}
+
+// Message defining compute perspective of the result of integration with Backup and DR. FAILED status indicates that the operation specified did not complete correctly and should be retried with the same value.
+type ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceStatusServiceIntegrationStatusBackupDRStatusResponse)(nil)).Elem()
+}
+
+func (o ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput) ToResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput() ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput {
+	return o
+}
+
+func (o ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput) ToResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutputWithContext(ctx context.Context) ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput {
+	return o
+}
+
+// The PlanReference object created by Backup and DR to maintain the actual status of backups. May still be present if removing the backup plan fails.
+func (o ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput) IntegrationDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusServiceIntegrationStatusBackupDRStatusResponse) string {
+		return v.IntegrationDetails
+	}).(pulumi.StringOutput)
+}
+
+// Enum representing the registration state of a Backup and DR backup plan for the instance.
+func (o ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusServiceIntegrationStatusBackupDRStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Represents the status of integration between instance and another service. See go/gce-backupdr-design for more details.
+type ResourceStatusServiceIntegrationStatusResponse struct {
+	BackupDr ResourceStatusServiceIntegrationStatusBackupDRStatusResponse `pulumi:"backupDr"`
+}
+
+// Represents the status of integration between instance and another service. See go/gce-backupdr-design for more details.
+type ResourceStatusServiceIntegrationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceStatusServiceIntegrationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceStatusServiceIntegrationStatusResponse)(nil)).Elem()
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseOutput) ToResourceStatusServiceIntegrationStatusResponseOutput() ResourceStatusServiceIntegrationStatusResponseOutput {
+	return o
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseOutput) ToResourceStatusServiceIntegrationStatusResponseOutputWithContext(ctx context.Context) ResourceStatusServiceIntegrationStatusResponseOutput {
+	return o
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseOutput) BackupDr() ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput {
+	return o.ApplyT(func(v ResourceStatusServiceIntegrationStatusResponse) ResourceStatusServiceIntegrationStatusBackupDRStatusResponse {
+		return v.BackupDr
+	}).(ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput)
+}
+
+type ResourceStatusServiceIntegrationStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ResourceStatusServiceIntegrationStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ResourceStatusServiceIntegrationStatusResponse)(nil)).Elem()
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseMapOutput) ToResourceStatusServiceIntegrationStatusResponseMapOutput() ResourceStatusServiceIntegrationStatusResponseMapOutput {
+	return o
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseMapOutput) ToResourceStatusServiceIntegrationStatusResponseMapOutputWithContext(ctx context.Context) ResourceStatusServiceIntegrationStatusResponseMapOutput {
+	return o
+}
+
+func (o ResourceStatusServiceIntegrationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) ResourceStatusServiceIntegrationStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourceStatusServiceIntegrationStatusResponse {
+		return vs[0].(map[string]ResourceStatusServiceIntegrationStatusResponse)[vs[1].(string)]
+	}).(ResourceStatusServiceIntegrationStatusResponseOutput)
 }
 
 // Specifies if the instance is in `SHUTTING_DOWN` state or there is a instance stopping scheduled.
@@ -48402,6 +49445,64 @@ func (o SavedDiskResponseArrayOutput) Index(i pulumi.IntInput) SavedDiskResponse
 	}).(SavedDiskResponseOutput)
 }
 
+type ScalingScheduleStatusResponse struct {
+	// The last time the scaling schedule became active. Note: this is a timestamp when a schedule actually became active, not when it was planned to do so. The timestamp is in RFC3339 text format.
+	LastStartTime string `pulumi:"lastStartTime"`
+	// The next time the scaling schedule is to become active. Note: this is a timestamp when a schedule is planned to run, but the actual time might be slightly different. The timestamp is in RFC3339 text format.
+	NextStartTime string `pulumi:"nextStartTime"`
+	// The current state of a scaling schedule.
+	State string `pulumi:"state"`
+}
+
+type ScalingScheduleStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ScalingScheduleStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingScheduleStatusResponse)(nil)).Elem()
+}
+
+func (o ScalingScheduleStatusResponseOutput) ToScalingScheduleStatusResponseOutput() ScalingScheduleStatusResponseOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseOutput) ToScalingScheduleStatusResponseOutputWithContext(ctx context.Context) ScalingScheduleStatusResponseOutput {
+	return o
+}
+
+// The last time the scaling schedule became active. Note: this is a timestamp when a schedule actually became active, not when it was planned to do so. The timestamp is in RFC3339 text format.
+func (o ScalingScheduleStatusResponseOutput) LastStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingScheduleStatusResponse) string { return v.LastStartTime }).(pulumi.StringOutput)
+}
+
+// The next time the scaling schedule is to become active. Note: this is a timestamp when a schedule is planned to run, but the actual time might be slightly different. The timestamp is in RFC3339 text format.
+func (o ScalingScheduleStatusResponseOutput) NextStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingScheduleStatusResponse) string { return v.NextStartTime }).(pulumi.StringOutput)
+}
+
+// The current state of a scaling schedule.
+func (o ScalingScheduleStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingScheduleStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type ScalingScheduleStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ScalingScheduleStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScalingScheduleStatusResponse)(nil)).Elem()
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) ToScalingScheduleStatusResponseMapOutput() ScalingScheduleStatusResponseMapOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) ToScalingScheduleStatusResponseMapOutputWithContext(ctx context.Context) ScalingScheduleStatusResponseMapOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) MapIndex(k pulumi.StringInput) ScalingScheduleStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingScheduleStatusResponse {
+		return vs[0].(map[string]ScalingScheduleStatusResponse)[vs[1].(string)]
+	}).(ScalingScheduleStatusResponseOutput)
+}
+
 // Sets the scheduling options for an Instance.
 type Scheduling struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -51444,1484 +52545,6 @@ func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-type SecurityPolicyRecaptchaOptionsConfigResponse struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	RedirectSiteKey string `pulumi:"redirectSiteKey"`
-}
-
-type SecurityPolicyRecaptchaOptionsConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRecaptchaOptionsConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponseOutput() SecurityPolicyRecaptchaOptionsConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyRecaptchaOptionsConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRecaptchaOptionsConfigResponseOutput {
-	return o
-}
-
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) RedirectSiteKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfigResponse) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
-}
-
-// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-type SecurityPolicyRule struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
-	Action *string `pulumi:"action"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
-	Direction *SecurityPolicyRuleDirection `pulumi:"direction"`
-	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
-	EnableLogging *bool `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
-	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
-	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
-	NetworkMatch *SecurityPolicyRuleNetworkMatcher `pulumi:"networkMatch"`
-	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
-	PreconfiguredWafConfig *SecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfig"`
-	// If set to true, the specified action is not enforced.
-	Preview *bool `pulumi:"preview"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
-	Priority *int `pulumi:"priority"`
-	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
-	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
-	// This must be specified for redirect actions. Cannot be specified for any other actions.
-	RedirectTarget *string `pulumi:"redirectTarget"`
-	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
-	RuleNumber *string `pulumi:"ruleNumber"`
-	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
-	TargetResources []string `pulumi:"targetResources"`
-	// A list of service accounts indicating the sets of instances that are applied with this rule.
-	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
-}
-
-// SecurityPolicyRuleInput is an input type that accepts SecurityPolicyRuleArgs and SecurityPolicyRuleOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleInput` via:
-//
-//	SecurityPolicyRuleArgs{...}
-type SecurityPolicyRuleInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleOutput() SecurityPolicyRuleOutput
-	ToSecurityPolicyRuleOutputWithContext(context.Context) SecurityPolicyRuleOutput
-}
-
-// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-type SecurityPolicyRuleArgs struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
-	Action pulumi.StringPtrInput `pulumi:"action"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
-	Direction SecurityPolicyRuleDirectionPtrInput `pulumi:"direction"`
-	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
-	EnableLogging pulumi.BoolPtrInput `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
-	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
-	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
-	NetworkMatch SecurityPolicyRuleNetworkMatcherPtrInput `pulumi:"networkMatch"`
-	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
-	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigPtrInput `pulumi:"preconfiguredWafConfig"`
-	// If set to true, the specified action is not enforced.
-	Preview pulumi.BoolPtrInput `pulumi:"preview"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
-	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"redirectOptions"`
-	// This must be specified for redirect actions. Cannot be specified for any other actions.
-	RedirectTarget pulumi.StringPtrInput `pulumi:"redirectTarget"`
-	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
-	RuleNumber pulumi.StringPtrInput `pulumi:"ruleNumber"`
-	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
-	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
-	// A list of service accounts indicating the sets of instances that are applied with this rule.
-	TargetServiceAccounts pulumi.StringArrayInput `pulumi:"targetServiceAccounts"`
-}
-
-func (SecurityPolicyRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRule)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleArgs) ToSecurityPolicyRuleOutput() SecurityPolicyRuleOutput {
-	return i.ToSecurityPolicyRuleOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleArgs) ToSecurityPolicyRuleOutputWithContext(ctx context.Context) SecurityPolicyRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleOutput)
-}
-
-// SecurityPolicyRuleArrayInput is an input type that accepts SecurityPolicyRuleArray and SecurityPolicyRuleArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleArrayInput` via:
-//
-//	SecurityPolicyRuleArray{ SecurityPolicyRuleArgs{...} }
-type SecurityPolicyRuleArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleArrayOutput() SecurityPolicyRuleArrayOutput
-	ToSecurityPolicyRuleArrayOutputWithContext(context.Context) SecurityPolicyRuleArrayOutput
-}
-
-type SecurityPolicyRuleArray []SecurityPolicyRuleInput
-
-func (SecurityPolicyRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRule)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleArray) ToSecurityPolicyRuleArrayOutput() SecurityPolicyRuleArrayOutput {
-	return i.ToSecurityPolicyRuleArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleArray) ToSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleArrayOutput)
-}
-
-// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-type SecurityPolicyRuleOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRule)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutput() SecurityPolicyRuleOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx context.Context) SecurityPolicyRuleOutput {
-	return o
-}
-
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
-func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
-}
-
-// An optional description of this resource. Provide this property when you create the resource.
-func (o SecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleOutput) Direction() SecurityPolicyRuleDirectionPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleDirection { return v.Direction }).(SecurityPolicyRuleDirectionPtrOutput)
-}
-
-// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
-}
-
-// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleHttpHeaderAction { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
-}
-
-// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
-func (o SecurityPolicyRuleOutput) Match() SecurityPolicyRuleMatcherPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleMatcher { return v.Match }).(SecurityPolicyRuleMatcherPtrOutput)
-}
-
-// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
-func (o SecurityPolicyRuleOutput) NetworkMatch() SecurityPolicyRuleNetworkMatcherPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleNetworkMatcher { return v.NetworkMatch }).(SecurityPolicyRuleNetworkMatcherPtrOutput)
-}
-
-// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
-func (o SecurityPolicyRuleOutput) PreconfiguredWafConfig() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRulePreconfiguredWafConfig { return v.PreconfiguredWafConfig }).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
-}
-
-// If set to true, the specified action is not enforced.
-func (o SecurityPolicyRuleOutput) Preview() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *bool { return v.Preview }).(pulumi.BoolPtrOutput)
-}
-
-// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
-func (o SecurityPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
-}
-
-// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
-func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimitOptionsPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRateLimitOptions { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
-}
-
-// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRedirectOptions { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsPtrOutput)
-}
-
-// This must be specified for redirect actions. Cannot be specified for any other actions.
-func (o SecurityPolicyRuleOutput) RedirectTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.RedirectTarget }).(pulumi.StringPtrOutput)
-}
-
-// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
-func (o SecurityPolicyRuleOutput) RuleNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.RuleNumber }).(pulumi.StringPtrOutput)
-}
-
-// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) []string { return v.TargetResources }).(pulumi.StringArrayOutput)
-}
-
-// A list of service accounts indicating the sets of instances that are applied with this rule.
-func (o SecurityPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRule) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRule)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleArrayOutput) ToSecurityPolicyRuleArrayOutput() SecurityPolicyRuleArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleArrayOutput) ToSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRule {
-		return vs[0].([]SecurityPolicyRule)[vs[1].(int)]
-	}).(SecurityPolicyRuleOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderAction struct {
-	// The list of request headers to add or overwrite if they're already present.
-	RequestHeadersToAdds []SecurityPolicyRuleHttpHeaderActionHttpHeaderOption `pulumi:"requestHeadersToAdds"`
-}
-
-// SecurityPolicyRuleHttpHeaderActionInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionArgs and SecurityPolicyRuleHttpHeaderActionOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionInput` via:
-//
-//	SecurityPolicyRuleHttpHeaderActionArgs{...}
-type SecurityPolicyRuleHttpHeaderActionInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleHttpHeaderActionOutput() SecurityPolicyRuleHttpHeaderActionOutput
-	ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionOutput
-}
-
-type SecurityPolicyRuleHttpHeaderActionArgs struct {
-	// The list of request headers to add or overwrite if they're already present.
-	RequestHeadersToAdds SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput `pulumi:"requestHeadersToAdds"`
-}
-
-func (SecurityPolicyRuleHttpHeaderActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionOutput() SecurityPolicyRuleHttpHeaderActionOutput {
-	return i.ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionOutput)
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return i.ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionArgs) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionOutput).ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRuleHttpHeaderActionPtrInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionArgs, SecurityPolicyRuleHttpHeaderActionPtr and SecurityPolicyRuleHttpHeaderActionPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionPtrInput` via:
-//
-//	        SecurityPolicyRuleHttpHeaderActionArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRuleHttpHeaderActionPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput
-	ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput
-}
-
-type securityPolicyRuleHttpHeaderActionPtrType SecurityPolicyRuleHttpHeaderActionArgs
-
-func SecurityPolicyRuleHttpHeaderActionPtr(v *SecurityPolicyRuleHttpHeaderActionArgs) SecurityPolicyRuleHttpHeaderActionPtrInput {
-	return (*securityPolicyRuleHttpHeaderActionPtrType)(v)
-}
-
-func (*securityPolicyRuleHttpHeaderActionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
-}
-
-func (i *securityPolicyRuleHttpHeaderActionPtrType) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return i.ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRuleHttpHeaderActionPtrType) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleHttpHeaderActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionOutput() SecurityPolicyRuleHttpHeaderActionOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return o.ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleHttpHeaderAction) *SecurityPolicyRuleHttpHeaderAction {
-		return &v
-	}).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
-}
-
-// The list of request headers to add or overwrite if they're already present.
-func (o SecurityPolicyRuleHttpHeaderActionOutput) RequestHeadersToAdds() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderAction) []SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
-		return v.RequestHeadersToAdds
-	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleHttpHeaderActionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleHttpHeaderAction)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutput() SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) ToSecurityPolicyRuleHttpHeaderActionPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) Elem() SecurityPolicyRuleHttpHeaderActionOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleHttpHeaderAction) SecurityPolicyRuleHttpHeaderAction {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRuleHttpHeaderAction
-		return ret
-	}).(SecurityPolicyRuleHttpHeaderActionOutput)
-}
-
-// The list of request headers to add or overwrite if they're already present.
-func (o SecurityPolicyRuleHttpHeaderActionPtrOutput) RequestHeadersToAdds() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleHttpHeaderAction) []SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
-		if v == nil {
-			return nil
-		}
-		return v.RequestHeadersToAdds
-	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOption struct {
-	// The name of the header to set.
-	HeaderName *string `pulumi:"headerName"`
-	// The value to set the named header to.
-	HeaderValue *string `pulumi:"headerValue"`
-}
-
-// SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs and SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput` via:
-//
-//	SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs{...}
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput
-	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs struct {
-	// The name of the header to set.
-	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
-	// The value to set the named header to.
-	HeaderValue pulumi.StringPtrInput `pulumi:"headerValue"`
-}
-
-func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
-	return i.ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput)
-}
-
-// SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput is an input type that accepts SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray and SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput` via:
-//
-//	SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray{ SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs{...} }
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput
-	ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray []SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput
-
-func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
-	return i.ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
-	return o
-}
-
-// The name of the header to set.
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) HeaderName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOption) *string { return v.HeaderName }).(pulumi.StringPtrOutput)
-}
-
-// The value to set the named header to.
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput) HeaderValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOption) *string { return v.HeaderValue }).(pulumi.StringPtrOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleHttpHeaderActionHttpHeaderOption {
-		return vs[0].([]SecurityPolicyRuleHttpHeaderActionHttpHeaderOption)[vs[1].(int)]
-	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse struct {
-	// The name of the header to set.
-	HeaderName string `pulumi:"headerName"`
-	// The value to set the named header to.
-	HeaderValue string `pulumi:"headerValue"`
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput {
-	return o
-}
-
-// The name of the header to set.
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) HeaderName() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse) string { return v.HeaderName }).(pulumi.StringOutput)
-}
-
-// The value to set the named header to.
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput) HeaderValue() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse) string { return v.HeaderValue }).(pulumi.StringOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) ToSecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse {
-		return vs[0].([]SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse)[vs[1].(int)]
-	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput)
-}
-
-type SecurityPolicyRuleHttpHeaderActionResponse struct {
-	// The list of request headers to add or overwrite if they're already present.
-	RequestHeadersToAdds []SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse `pulumi:"requestHeadersToAdds"`
-}
-
-type SecurityPolicyRuleHttpHeaderActionResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleHttpHeaderActionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionResponseOutput() SecurityPolicyRuleHttpHeaderActionResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) ToSecurityPolicyRuleHttpHeaderActionResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleHttpHeaderActionResponseOutput {
-	return o
-}
-
-// The list of request headers to add or overwrite if they're already present.
-func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) RequestHeadersToAdds() SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleHttpHeaderActionResponse) []SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse {
-		return v.RequestHeadersToAdds
-	}).(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput)
-}
-
-// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-type SecurityPolicyRuleMatcher struct {
-	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-	Config *SecurityPolicyRuleMatcherConfig `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
-	Expr *Expr `pulumi:"expr"`
-	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
-	ExprOptions *SecurityPolicyRuleMatcherExprOptions `pulumi:"exprOptions"`
-	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
-}
-
-// SecurityPolicyRuleMatcherInput is an input type that accepts SecurityPolicyRuleMatcherArgs and SecurityPolicyRuleMatcherOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherInput` via:
-//
-//	SecurityPolicyRuleMatcherArgs{...}
-type SecurityPolicyRuleMatcherInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherOutput() SecurityPolicyRuleMatcherOutput
-	ToSecurityPolicyRuleMatcherOutputWithContext(context.Context) SecurityPolicyRuleMatcherOutput
-}
-
-// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-type SecurityPolicyRuleMatcherArgs struct {
-	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-	Config SecurityPolicyRuleMatcherConfigPtrInput `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
-	Expr ExprPtrInput `pulumi:"expr"`
-	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
-	ExprOptions SecurityPolicyRuleMatcherExprOptionsPtrInput `pulumi:"exprOptions"`
-	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-	VersionedExpr SecurityPolicyRuleMatcherVersionedExprPtrInput `pulumi:"versionedExpr"`
-}
-
-func (SecurityPolicyRuleMatcherArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcher)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherOutput() SecurityPolicyRuleMatcherOutput {
-	return i.ToSecurityPolicyRuleMatcherOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherOutput)
-}
-
-func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
-	return i.ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherArgs) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherOutput).ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRuleMatcherPtrInput is an input type that accepts SecurityPolicyRuleMatcherArgs, SecurityPolicyRuleMatcherPtr and SecurityPolicyRuleMatcherPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherPtrInput` via:
-//
-//	        SecurityPolicyRuleMatcherArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRuleMatcherPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput
-	ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherPtrOutput
-}
-
-type securityPolicyRuleMatcherPtrType SecurityPolicyRuleMatcherArgs
-
-func SecurityPolicyRuleMatcherPtr(v *SecurityPolicyRuleMatcherArgs) SecurityPolicyRuleMatcherPtrInput {
-	return (*securityPolicyRuleMatcherPtrType)(v)
-}
-
-func (*securityPolicyRuleMatcherPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleMatcher)(nil)).Elem()
-}
-
-func (i *securityPolicyRuleMatcherPtrType) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
-	return i.ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRuleMatcherPtrType) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherPtrOutput)
-}
-
-// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
-type SecurityPolicyRuleMatcherOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcher)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherOutput() SecurityPolicyRuleMatcherOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
-	return o.ToSecurityPolicyRuleMatcherPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRuleMatcherOutput) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcher {
-		return &v
-	}).(SecurityPolicyRuleMatcherPtrOutput)
-}
-
-// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-func (o SecurityPolicyRuleMatcherOutput) Config() SecurityPolicyRuleMatcherConfigPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherConfig { return v.Config }).(SecurityPolicyRuleMatcherConfigPtrOutput)
-}
-
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
-func (o SecurityPolicyRuleMatcherOutput) Expr() ExprPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *Expr { return v.Expr }).(ExprPtrOutput)
-}
-
-// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
-func (o SecurityPolicyRuleMatcherOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions { return v.ExprOptions }).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
-}
-
-// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-func (o SecurityPolicyRuleMatcherOutput) VersionedExpr() SecurityPolicyRuleMatcherVersionedExprPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherVersionedExpr { return v.VersionedExpr }).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
-}
-
-type SecurityPolicyRuleMatcherPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleMatcher)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherPtrOutput) ToSecurityPolicyRuleMatcherPtrOutput() SecurityPolicyRuleMatcherPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherPtrOutput) ToSecurityPolicyRuleMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherPtrOutput) Elem() SecurityPolicyRuleMatcherOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) SecurityPolicyRuleMatcher {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRuleMatcher
-		return ret
-	}).(SecurityPolicyRuleMatcherOutput)
-}
-
-// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-func (o SecurityPolicyRuleMatcherPtrOutput) Config() SecurityPolicyRuleMatcherConfigPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherConfig {
-		if v == nil {
-			return nil
-		}
-		return v.Config
-	}).(SecurityPolicyRuleMatcherConfigPtrOutput)
-}
-
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
-func (o SecurityPolicyRuleMatcherPtrOutput) Expr() ExprPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *Expr {
-		if v == nil {
-			return nil
-		}
-		return v.Expr
-	}).(ExprPtrOutput)
-}
-
-// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
-func (o SecurityPolicyRuleMatcherPtrOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions {
-		if v == nil {
-			return nil
-		}
-		return v.ExprOptions
-	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
-}
-
-// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
-func (o SecurityPolicyRuleMatcherPtrOutput) VersionedExpr() SecurityPolicyRuleMatcherVersionedExprPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherVersionedExpr {
-		if v == nil {
-			return nil
-		}
-		return v.VersionedExpr
-	}).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
-}
-
-type SecurityPolicyRuleMatcherConfig struct {
-	// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
-	DestIpRanges []string `pulumi:"destIpRanges"`
-	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-	DestPorts []SecurityPolicyRuleMatcherConfigDestinationPort `pulumi:"destPorts"`
-	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-	Layer4Configs []SecurityPolicyRuleMatcherConfigLayer4Config `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-	SrcIpRanges []string `pulumi:"srcIpRanges"`
-}
-
-// SecurityPolicyRuleMatcherConfigInput is an input type that accepts SecurityPolicyRuleMatcherConfigArgs and SecurityPolicyRuleMatcherConfigOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigInput` via:
-//
-//	SecurityPolicyRuleMatcherConfigArgs{...}
-type SecurityPolicyRuleMatcherConfigInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherConfigOutput() SecurityPolicyRuleMatcherConfigOutput
-	ToSecurityPolicyRuleMatcherConfigOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigOutput
-}
-
-type SecurityPolicyRuleMatcherConfigArgs struct {
-	// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
-	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
-	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-	DestPorts SecurityPolicyRuleMatcherConfigDestinationPortArrayInput `pulumi:"destPorts"`
-	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-	Layer4Configs SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
-}
-
-func (SecurityPolicyRuleMatcherConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfig)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigOutput() SecurityPolicyRuleMatcherConfigOutput {
-	return i.ToSecurityPolicyRuleMatcherConfigOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigOutput)
-}
-
-func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
-	return i.ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherConfigArgs) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigOutput).ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRuleMatcherConfigPtrInput is an input type that accepts SecurityPolicyRuleMatcherConfigArgs, SecurityPolicyRuleMatcherConfigPtr and SecurityPolicyRuleMatcherConfigPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigPtrInput` via:
-//
-//	        SecurityPolicyRuleMatcherConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRuleMatcherConfigPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput
-	ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigPtrOutput
-}
-
-type securityPolicyRuleMatcherConfigPtrType SecurityPolicyRuleMatcherConfigArgs
-
-func SecurityPolicyRuleMatcherConfigPtr(v *SecurityPolicyRuleMatcherConfigArgs) SecurityPolicyRuleMatcherConfigPtrInput {
-	return (*securityPolicyRuleMatcherConfigPtrType)(v)
-}
-
-func (*securityPolicyRuleMatcherConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleMatcherConfig)(nil)).Elem()
-}
-
-func (i *securityPolicyRuleMatcherConfigPtrType) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
-	return i.ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRuleMatcherConfigPtrType) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigPtrOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfig)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigOutput() SecurityPolicyRuleMatcherConfigOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
-	return o.ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRuleMatcherConfigOutput) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherConfig) *SecurityPolicyRuleMatcherConfig {
-		return &v
-	}).(SecurityPolicyRuleMatcherConfigPtrOutput)
-}
-
-// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigOutput) DestIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
-}
-
-// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigOutput) DestPorts() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigDestinationPort {
-		return v.DestPorts
-	}).(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput)
-}
-
-// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigOutput) Layer4Configs() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigLayer4Config {
-		return v.Layer4Configs
-	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput)
-}
-
-// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-func (o SecurityPolicyRuleMatcherConfigOutput) SrcIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfig) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleMatcherConfig)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigPtrOutput) ToSecurityPolicyRuleMatcherConfigPtrOutput() SecurityPolicyRuleMatcherConfigPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigPtrOutput) ToSecurityPolicyRuleMatcherConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigPtrOutput) Elem() SecurityPolicyRuleMatcherConfigOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) SecurityPolicyRuleMatcherConfig {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRuleMatcherConfig
-		return ret
-	}).(SecurityPolicyRuleMatcherConfigOutput)
-}
-
-// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DestIpRanges
-	}).(pulumi.StringArrayOutput)
-}
-
-// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigPtrOutput) DestPorts() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigDestinationPort {
-		if v == nil {
-			return nil
-		}
-		return v.DestPorts
-	}).(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput)
-}
-
-// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigPtrOutput) Layer4Configs() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []SecurityPolicyRuleMatcherConfigLayer4Config {
-		if v == nil {
-			return nil
-		}
-		return v.Layer4Configs
-	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput)
-}
-
-// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-func (o SecurityPolicyRuleMatcherConfigPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SrcIpRanges
-	}).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPort struct {
-	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-	IpProtocol *string `pulumi:"ipProtocol"`
-	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-	Ports []string `pulumi:"ports"`
-}
-
-// SecurityPolicyRuleMatcherConfigDestinationPortInput is an input type that accepts SecurityPolicyRuleMatcherConfigDestinationPortArgs and SecurityPolicyRuleMatcherConfigDestinationPortOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigDestinationPortInput` via:
-//
-//	SecurityPolicyRuleMatcherConfigDestinationPortArgs{...}
-type SecurityPolicyRuleMatcherConfigDestinationPortInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherConfigDestinationPortOutput() SecurityPolicyRuleMatcherConfigDestinationPortOutput
-	ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigDestinationPortOutput
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPortArgs struct {
-	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
-	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-}
-
-func (SecurityPolicyRuleMatcherConfigDestinationPortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleMatcherConfigDestinationPortArgs) ToSecurityPolicyRuleMatcherConfigDestinationPortOutput() SecurityPolicyRuleMatcherConfigDestinationPortOutput {
-	return i.ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherConfigDestinationPortArgs) ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigDestinationPortOutput)
-}
-
-// SecurityPolicyRuleMatcherConfigDestinationPortArrayInput is an input type that accepts SecurityPolicyRuleMatcherConfigDestinationPortArray and SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigDestinationPortArrayInput` via:
-//
-//	SecurityPolicyRuleMatcherConfigDestinationPortArray{ SecurityPolicyRuleMatcherConfigDestinationPortArgs{...} }
-type SecurityPolicyRuleMatcherConfigDestinationPortArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput
-	ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPortArray []SecurityPolicyRuleMatcherConfigDestinationPortInput
-
-func (SecurityPolicyRuleMatcherConfigDestinationPortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleMatcherConfigDestinationPortArray) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
-	return i.ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherConfigDestinationPortArray) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPortOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigDestinationPortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortOutput() SecurityPolicyRuleMatcherConfigDestinationPortOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortOutput {
-	return o
-}
-
-// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) IpProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPort) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
-}
-
-// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigDestinationPortOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPort) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigDestinationPort)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigDestinationPortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigDestinationPort {
-		return vs[0].([]SecurityPolicyRuleMatcherConfigDestinationPort)[vs[1].(int)]
-	}).(SecurityPolicyRuleMatcherConfigDestinationPortOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPortResponse struct {
-	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-	IpProtocol string `pulumi:"ipProtocol"`
-	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-	Ports []string `pulumi:"ports"`
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPortResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseOutput() SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput {
-	return o
-}
-
-// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) IpProtocol() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPortResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
-}
-
-// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigDestinationPortResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigDestinationPortResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput() SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigDestinationPortResponse {
-		return vs[0].([]SecurityPolicyRuleMatcherConfigDestinationPortResponse)[vs[1].(int)]
-	}).(SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4Config struct {
-	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-	IpProtocol *string `pulumi:"ipProtocol"`
-	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-	Ports []string `pulumi:"ports"`
-}
-
-// SecurityPolicyRuleMatcherConfigLayer4ConfigInput is an input type that accepts SecurityPolicyRuleMatcherConfigLayer4ConfigArgs and SecurityPolicyRuleMatcherConfigLayer4ConfigOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigLayer4ConfigInput` via:
-//
-//	SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{...}
-type SecurityPolicyRuleMatcherConfigLayer4ConfigInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigOutput
-	ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4ConfigArgs struct {
-	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
-	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-	Ports pulumi.StringArrayInput `pulumi:"ports"`
-}
-
-func (SecurityPolicyRuleMatcherConfigLayer4ConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArgs) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
-	return i.ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArgs) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigLayer4ConfigOutput)
-}
-
-// SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput is an input type that accepts SecurityPolicyRuleMatcherConfigLayer4ConfigArray and SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput` via:
-//
-//	SecurityPolicyRuleMatcherConfigLayer4ConfigArray{ SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{...} }
-type SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput
-	ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4ConfigArray []SecurityPolicyRuleMatcherConfigLayer4ConfigInput
-
-func (SecurityPolicyRuleMatcherConfigLayer4ConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArray) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
-	return i.ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherConfigLayer4ConfigArray) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4ConfigOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
-	return o
-}
-
-// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) IpProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4Config) *string { return v.IpProtocol }).(pulumi.StringPtrOutput)
-}
-
-// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4Config) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigLayer4Config)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigLayer4ConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigLayer4Config {
-		return vs[0].([]SecurityPolicyRuleMatcherConfigLayer4Config)[vs[1].(int)]
-	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4ConfigResponse struct {
-	// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-	IpProtocol string `pulumi:"ipProtocol"`
-	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-	Ports []string `pulumi:"ports"`
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput {
-	return o
-}
-
-// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) IpProtocol() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4ConfigResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
-}
-
-// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"], ["80","443"], and ["12345-12349"]. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput) Ports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigLayer4ConfigResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleMatcherConfigLayer4ConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput() SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) ToSecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleMatcherConfigLayer4ConfigResponse {
-		return vs[0].([]SecurityPolicyRuleMatcherConfigLayer4ConfigResponse)[vs[1].(int)]
-	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput)
-}
-
-type SecurityPolicyRuleMatcherConfigResponse struct {
-	// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
-	DestIpRanges []string `pulumi:"destIpRanges"`
-	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-	DestPorts []SecurityPolicyRuleMatcherConfigDestinationPortResponse `pulumi:"destPorts"`
-	// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-	Layer4Configs []SecurityPolicyRuleMatcherConfigLayer4ConfigResponse `pulumi:"layer4Configs"`
-	// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-	SrcIpRanges []string `pulumi:"srcIpRanges"`
-}
-
-type SecurityPolicyRuleMatcherConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigResponseOutput() SecurityPolicyRuleMatcherConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherConfigResponseOutput) ToSecurityPolicyRuleMatcherConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherConfigResponseOutput {
-	return o
-}
-
-// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
-}
-
-// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigResponseOutput) DestPorts() SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []SecurityPolicyRuleMatcherConfigDestinationPortResponse {
-		return v.DestPorts
-	}).(SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput)
-}
-
-// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-func (o SecurityPolicyRuleMatcherConfigResponseOutput) Layer4Configs() SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []SecurityPolicyRuleMatcherConfigLayer4ConfigResponse {
-		return v.Layer4Configs
-	}).(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput)
-}
-
-// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
-}
-
-type SecurityPolicyRuleMatcherExprOptions struct {
-	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-	RecaptchaOptions *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions `pulumi:"recaptchaOptions"`
-}
-
-// SecurityPolicyRuleMatcherExprOptionsInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs and SecurityPolicyRuleMatcherExprOptionsOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsInput` via:
-//
-//	SecurityPolicyRuleMatcherExprOptionsArgs{...}
-type SecurityPolicyRuleMatcherExprOptionsInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput
-	ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsOutput
-}
-
-type SecurityPolicyRuleMatcherExprOptionsArgs struct {
-	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput `pulumi:"recaptchaOptions"`
-}
-
-func (SecurityPolicyRuleMatcherExprOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
-	return i.ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput)
-}
-
-func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput).ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRuleMatcherExprOptionsPtrInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs, SecurityPolicyRuleMatcherExprOptionsPtr and SecurityPolicyRuleMatcherExprOptionsPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsPtrInput` via:
-//
-//	        SecurityPolicyRuleMatcherExprOptionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRuleMatcherExprOptionsPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput
-	ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput
-}
-
-type securityPolicyRuleMatcherExprOptionsPtrType SecurityPolicyRuleMatcherExprOptionsArgs
-
-func SecurityPolicyRuleMatcherExprOptionsPtr(v *SecurityPolicyRuleMatcherExprOptionsArgs) SecurityPolicyRuleMatcherExprOptionsPtrInput {
-	return (*securityPolicyRuleMatcherExprOptionsPtrType)(v)
-}
-
-func (*securityPolicyRuleMatcherExprOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
-}
-
-func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
-}
-
-type SecurityPolicyRuleMatcherExprOptionsOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherExprOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return o.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptions {
-		return &v
-	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
-}
-
-// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-func (o SecurityPolicyRuleMatcherExprOptionsOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
-		return v.RecaptchaOptions
-	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
-}
-
-type SecurityPolicyRuleMatcherExprOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleMatcherExprOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) Elem() SecurityPolicyRuleMatcherExprOptionsOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) SecurityPolicyRuleMatcherExprOptions {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRuleMatcherExprOptions
-		return ret
-	}).(SecurityPolicyRuleMatcherExprOptionsOutput)
-}
-
-// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
-		if v == nil {
-			return nil
-		}
-		return v.RecaptchaOptions
-	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignatureInput)(nil)).Elem(), AWSV4SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignaturePtrInput)(nil)).Elem(), AWSV4SignatureArgs{})
@@ -52971,6 +52594,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleDownControlPtrInput)(nil)).Elem(), AutoscalingPolicyScaleDownControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlPtrInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScalingScheduleInput)(nil)).Elem(), AutoscalingPolicyScalingScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScalingScheduleMapInput)(nil)).Elem(), AutoscalingPolicyScalingScheduleMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendInput)(nil)).Elem(), BackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendArrayInput)(nil)).Elem(), BackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyInput)(nil)).Elem(), BackendBucketCdnPolicyArgs{})
@@ -53009,6 +52634,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourceInput)(nil)).Elem(), BulkInsertInstanceResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePtrInput)(nil)).Elem(), BulkInsertInstanceResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePerInstancePropertiesInput)(nil)).Elem(), BulkInsertInstanceResourcePerInstancePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BulkInsertInstanceResourcePerInstancePropertiesMapInput)(nil)).Elem(), BulkInsertInstanceResourcePerInstancePropertiesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyInput)(nil)).Elem(), CacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CacheKeyPolicyPtrInput)(nil)).Elem(), CacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CallCredentialsInput)(nil)).Elem(), CallCredentialsArgs{})
@@ -53138,6 +52765,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersPtrInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs{})
@@ -53174,6 +52803,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalDiskArrayInput)(nil)).Elem(), LocalDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyInput)(nil)).Elem(), LocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyPtrInput)(nil)).Elem(), LocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationInput)(nil)).Elem(), LocationPolicyLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationMapInput)(nil)).Elem(), LocationPolicyLocationMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationConstraintsInput)(nil)).Elem(), LocationPolicyLocationConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyLocationConstraintsPtrInput)(nil)).Elem(), LocationPolicyLocationConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigInput)(nil)).Elem(), LogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigArrayInput)(nil)).Elem(), LogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigCloudAuditOptionsInput)(nil)).Elem(), LogConfigCloudAuditOptionsArgs{})
@@ -53358,22 +52991,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleInput)(nil)).Elem(), SecurityPolicyRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleArrayInput)(nil)).Elem(), SecurityPolicyRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionPtrInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayInput)(nil)).Elem(), SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherInput)(nil)).Elem(), SecurityPolicyRuleMatcherArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPortInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigDestinationPortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigDestinationPortArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigDestinationPortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
 	pulumi.RegisterOutputType(AWSV4SignatureOutput{})
 	pulumi.RegisterOutputType(AWSV4SignaturePtrOutput{})
 	pulumi.RegisterOutputType(AWSV4SignatureResponseOutput{})
@@ -53459,6 +53076,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleMapOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleResponseMapOutput{})
 	pulumi.RegisterOutputType(BackendOutput{})
 	pulumi.RegisterOutputType(BackendArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyOutput{})
@@ -53523,6 +53144,10 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(BulkInsertInstanceResourceOutput{})
 	pulumi.RegisterOutputType(BulkInsertInstanceResourcePtrOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesMapOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(BulkInsertInstanceResourcePerInstancePropertiesResponseMapOutput{})
 	pulumi.RegisterOutputType(BulkInsertInstanceResourceResponseOutput{})
 	pulumi.RegisterOutputType(CacheKeyPolicyOutput{})
 	pulumi.RegisterOutputType(CacheKeyPolicyPtrOutput{})
@@ -53575,6 +53200,8 @@ func init() {
 	pulumi.RegisterOutputType(DeprecationStatusResponseOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationPtrOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationListResponseOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationListResponseMapOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
@@ -53584,6 +53211,7 @@ func init() {
 	pulumi.RegisterOutputType(DiskParamsPtrOutput{})
 	pulumi.RegisterOutputType(DiskParamsResponseOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
 	pulumi.RegisterOutputType(DisplayDevicePtrOutput{})
@@ -53751,6 +53379,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionMapOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResponseMapOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyPtrOutput{})
@@ -53830,6 +53462,13 @@ func init() {
 	pulumi.RegisterOutputType(LocalizedMessageResponseOutput{})
 	pulumi.RegisterOutputType(LocationPolicyOutput{})
 	pulumi.RegisterOutputType(LocationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationMapOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationConstraintsOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationConstraintsResponseOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationResponseOutput{})
+	pulumi.RegisterOutputType(LocationPolicyLocationResponseMapOutput{})
 	pulumi.RegisterOutputType(LocationPolicyResponseOutput{})
 	pulumi.RegisterOutputType(LogConfigOutput{})
 	pulumi.RegisterOutputType(LogConfigArrayOutput{})
@@ -54063,6 +53702,9 @@ func init() {
 	pulumi.RegisterOutputType(ResourceStatusLastInstanceTerminationDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusSchedulingResponseOutput{})
+	pulumi.RegisterOutputType(ResourceStatusServiceIntegrationStatusBackupDRStatusResponseOutput{})
+	pulumi.RegisterOutputType(ResourceStatusServiceIntegrationStatusResponseOutput{})
+	pulumi.RegisterOutputType(ResourceStatusServiceIntegrationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(ResourceStatusShutdownDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyPtrOutput{})
@@ -54130,6 +53772,8 @@ func init() {
 	pulumi.RegisterOutputType(SavedDiskArrayOutput{})
 	pulumi.RegisterOutputType(SavedDiskResponseOutput{})
 	pulumi.RegisterOutputType(SavedDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScalingScheduleStatusResponseOutput{})
+	pulumi.RegisterOutputType(ScalingScheduleStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingGracefulShutdownOutput{})
@@ -54174,29 +53818,4 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigPtrOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionPtrOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleHttpHeaderActionResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherPtrOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigPtrOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigDestinationPortResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsPtrOutput{})
 }

@@ -58,7 +58,7 @@ export interface GetAutoscalerResult {
     /**
      * Status information of existing scaling schedules.
      */
-    readonly scalingScheduleStatus: {[key: string]: string};
+    readonly scalingScheduleStatus: {[key: string]: outputs.compute.beta.ScalingScheduleStatusResponse};
     /**
      * Server-defined URL for the resource.
      */

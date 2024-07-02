@@ -48,7 +48,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * A list of disks this disk is asynchronously replicated to.
      */
-    public /*out*/ readonly asyncSecondaryDisks!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly asyncSecondaryDisks!: pulumi.Output<{[key: string]: outputs.compute.beta.DiskAsyncReplicationListResponse}>;
     /**
      * Creation timestamp in RFC3339 text format.
      */

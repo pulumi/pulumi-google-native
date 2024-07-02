@@ -28,14 +28,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public Input<string> Name { get; set; } = null!;
 
         [Input("parameters")]
-        private InputMap<string>? _parameters;
+        private InputMap<object>? _parameters;
 
         /// <summary>
         /// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
         /// </summary>
-        public InputMap<string> Parameters
+        public InputMap<object> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<string>());
+            get => _parameters ?? (_parameters = new InputMap<object>());
             set => _parameters = value;
         }
 

@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// Extra arguments for this worker pool.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> PoolArgs;
+        public readonly ImmutableDictionary<string, object> PoolArgs;
         /// <summary>
         /// Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries.
         /// </summary>
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             ImmutableArray<Outputs.PackageResponse> packages,
 
-            ImmutableDictionary<string, string> poolArgs,
+            ImmutableDictionary<string, object> poolArgs,
 
             ImmutableArray<Outputs.SdkHarnessContainerImageResponse> sdkHarnessContainerImages,
 

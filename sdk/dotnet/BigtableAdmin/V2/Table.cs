@@ -25,13 +25,13 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
         /// </summary>
         [Output("clusterStates")]
-        public Output<ImmutableDictionary<string, string>> ClusterStates { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.ClusterStateResponse>> ClusterStates { get; private set; } = null!;
 
         /// <summary>
         /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         [Output("columnFamilies")]
-        public Output<ImmutableDictionary<string, string>> ColumnFamilies { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.ColumnFamilyResponse>> ColumnFamilies { get; private set; } = null!;
 
         /// <summary>
         /// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
@@ -126,14 +126,14 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Input<Inputs.ChangeStreamConfigArgs>? ChangeStreamConfig { get; set; }
 
         [Input("columnFamilies")]
-        private InputMap<string>? _columnFamilies;
+        private InputMap<Inputs.ColumnFamilyArgs>? _columnFamilies;
 
         /// <summary>
         /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
-        public InputMap<string> ColumnFamilies
+        public InputMap<Inputs.ColumnFamilyArgs> ColumnFamilies
         {
-            get => _columnFamilies ?? (_columnFamilies = new InputMap<string>());
+            get => _columnFamilies ?? (_columnFamilies = new InputMap<Inputs.ColumnFamilyArgs>());
             set => _columnFamilies = value;
         }
 

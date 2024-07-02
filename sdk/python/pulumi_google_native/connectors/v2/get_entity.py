@@ -28,7 +28,7 @@ class GetEntityResult:
 
     @property
     @pulumi.getter
-    def fields(self) -> Mapping[str, str]:
+    def fields(self) -> Mapping[str, Any]:
         """
         Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
         """

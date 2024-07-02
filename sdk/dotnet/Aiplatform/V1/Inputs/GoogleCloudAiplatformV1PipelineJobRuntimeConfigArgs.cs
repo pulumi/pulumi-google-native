@@ -28,39 +28,39 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         public Input<string> GcsOutputDirectory { get; set; } = null!;
 
         [Input("inputArtifacts")]
-        private InputMap<string>? _inputArtifacts;
+        private InputMap<Inputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs>? _inputArtifacts;
 
         /// <summary>
         /// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         /// </summary>
-        public InputMap<string> InputArtifacts
+        public InputMap<Inputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs> InputArtifacts
         {
-            get => _inputArtifacts ?? (_inputArtifacts = new InputMap<string>());
+            get => _inputArtifacts ?? (_inputArtifacts = new InputMap<Inputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactArgs>());
             set => _inputArtifacts = value;
         }
 
         [Input("parameterValues")]
-        private InputMap<string>? _parameterValues;
+        private InputMap<object>? _parameterValues;
 
         /// <summary>
         /// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
         /// </summary>
-        public InputMap<string> ParameterValues
+        public InputMap<object> ParameterValues
         {
-            get => _parameterValues ?? (_parameterValues = new InputMap<string>());
+            get => _parameterValues ?? (_parameterValues = new InputMap<object>());
             set => _parameterValues = value;
         }
 
         [Input("parameters")]
-        private InputMap<string>? _parameters;
+        private InputMap<Inputs.GoogleCloudAiplatformV1ValueArgs>? _parameters;
 
         /// <summary>
         /// Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         /// </summary>
         [Obsolete(@"Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.")]
-        public InputMap<string> Parameters
+        public InputMap<Inputs.GoogleCloudAiplatformV1ValueArgs> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<string>());
+            get => _parameters ?? (_parameters = new InputMap<Inputs.GoogleCloudAiplatformV1ValueArgs>());
             set => _parameters = value;
         }
 

@@ -46,14 +46,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextArgs>? OutputAudioText { get; set; }
 
         [Input("payload")]
-        private InputMap<string>? _payload;
+        private InputMap<object>? _payload;
 
         /// <summary>
         /// Returns a response containing a custom, platform-specific payload.
         /// </summary>
-        public InputMap<string> Payload
+        public InputMap<object> Payload
         {
-            get => _payload ?? (_payload = new InputMap<string>());
+            get => _payload ?? (_payload = new InputMap<object>());
             set => _payload = value;
         }
 

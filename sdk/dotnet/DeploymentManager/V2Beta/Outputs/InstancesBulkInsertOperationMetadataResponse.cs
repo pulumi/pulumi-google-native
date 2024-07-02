@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Outputs
         /// <summary>
         /// Status information per location (location name is key). Example key: zones/us-central1-a
         /// </summary>
-        public readonly ImmutableDictionary<string, string> PerLocationStatus;
+        public readonly ImmutableDictionary<string, Outputs.BulkInsertOperationStatusResponse> PerLocationStatus;
 
         [OutputConstructor]
-        private InstancesBulkInsertOperationMetadataResponse(ImmutableDictionary<string, string> perLocationStatus)
+        private InstancesBulkInsertOperationMetadataResponse(ImmutableDictionary<string, Outputs.BulkInsertOperationStatusResponse> perLocationStatus)
         {
             PerLocationStatus = perLocationStatus;
         }

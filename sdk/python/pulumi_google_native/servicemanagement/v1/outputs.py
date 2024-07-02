@@ -571,8 +571,6 @@ class BackendRuleResponse(dict):
             suggest = "min_deadline"
         elif key == "operationDeadline":
             suggest = "operation_deadline"
-        elif key == "overridesByRequestProtocol":
-            suggest = "overrides_by_request_protocol"
         elif key == "pathTranslation":
             suggest = "path_translation"
 
@@ -594,7 +592,6 @@ class BackendRuleResponse(dict):
                  jwt_audience: str,
                  min_deadline: float,
                  operation_deadline: float,
-                 overrides_by_request_protocol: Mapping[str, str],
                  path_translation: str,
                  protocol: str,
                  selector: str):
@@ -606,7 +603,6 @@ class BackendRuleResponse(dict):
         :param str jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         :param float min_deadline: Deprecated, do not use.
         :param float operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-        :param Mapping[str, str] overrides_by_request_protocol: The map between request protocol and the backend address.
         :param str protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param str selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
@@ -616,7 +612,6 @@ class BackendRuleResponse(dict):
         pulumi.set(__self__, "jwt_audience", jwt_audience)
         pulumi.set(__self__, "min_deadline", min_deadline)
         pulumi.set(__self__, "operation_deadline", operation_deadline)
-        pulumi.set(__self__, "overrides_by_request_protocol", overrides_by_request_protocol)
         pulumi.set(__self__, "path_translation", path_translation)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "selector", selector)
@@ -669,14 +664,6 @@ class BackendRuleResponse(dict):
         The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         """
         return pulumi.get(self, "operation_deadline")
-
-    @property
-    @pulumi.getter(name="overridesByRequestProtocol")
-    def overrides_by_request_protocol(self) -> Mapping[str, str]:
-        """
-        The map between request protocol and the backend address.
-        """
-        return pulumi.get(self, "overrides_by_request_protocol")
 
     @property
     @pulumi.getter(name="pathTranslation")
@@ -3571,11 +3558,11 @@ class OptionResponse(dict):
     """
     def __init__(__self__, *,
                  name: str,
-                 value: Mapping[str, str]):
+                 value: Mapping[str, Any]):
         """
         A protocol buffer option, which can be attached to a message, field, enumeration, etc.
         :param str name: The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
-        :param Mapping[str, str] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+        :param Mapping[str, Any] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -3590,7 +3577,7 @@ class OptionResponse(dict):
 
     @property
     @pulumi.getter
-    def value(self) -> Mapping[str, str]:
+    def value(self) -> Mapping[str, Any]:
         """
         The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
@@ -4117,16 +4104,16 @@ class SourceInfoResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 source_files: Sequence[Mapping[str, str]]):
+                 source_files: Sequence[Mapping[str, Any]]):
         """
         Source information used to create a Service Config
-        :param Sequence[Mapping[str, str]] source_files: All files used during config generation.
+        :param Sequence[Mapping[str, Any]] source_files: All files used during config generation.
         """
         pulumi.set(__self__, "source_files", source_files)
 
     @property
     @pulumi.getter(name="sourceFiles")
-    def source_files(self) -> Sequence[Mapping[str, str]]:
+    def source_files(self) -> Sequence[Mapping[str, Any]]:
         """
         All files used during config generation.
         """
@@ -4257,16 +4244,16 @@ class TrafficPercentStrategyResponse(dict):
     Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
     """
     def __init__(__self__, *,
-                 percentages: Mapping[str, str]):
+                 percentages: Mapping[str, float]):
         """
         Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
-        :param Mapping[str, str] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+        :param Mapping[str, float] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         pulumi.set(__self__, "percentages", percentages)
 
     @property
     @pulumi.getter
-    def percentages(self) -> Mapping[str, str]:
+    def percentages(self) -> Mapping[str, float]:
         """
         Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """

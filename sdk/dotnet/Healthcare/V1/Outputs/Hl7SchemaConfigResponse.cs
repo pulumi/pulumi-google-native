@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
         /// <summary>
         /// Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> MessageSchemaConfigs;
+        public readonly ImmutableDictionary<string, Outputs.SchemaGroupResponse> MessageSchemaConfigs;
         /// <summary>
         /// Each VersionSource is tested and only if they all match is the schema used for the message.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 
         [OutputConstructor]
         private Hl7SchemaConfigResponse(
-            ImmutableDictionary<string, string> messageSchemaConfigs,
+            ImmutableDictionary<string, Outputs.SchemaGroupResponse> messageSchemaConfigs,
 
             ImmutableArray<Outputs.VersionSourceResponse> version)
         {

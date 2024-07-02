@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         /// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         /// </summary>
         [Output("fields")]
-        public Output<ImmutableDictionary<string, string>> Fields { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse>> Fields { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -103,14 +103,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public Input<string>? DisplayName { get; set; }
 
         [Input("fields", required: true)]
-        private InputMap<string>? _fields;
+        private InputMap<Inputs.GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs>? _fields;
 
         /// <summary>
         /// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         /// </summary>
-        public InputMap<string> Fields
+        public InputMap<Inputs.GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs> Fields
         {
-            get => _fields ?? (_fields = new InputMap<string>());
+            get => _fields ?? (_fields = new InputMap<Inputs.GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs>());
             set => _fields = value;
         }
 

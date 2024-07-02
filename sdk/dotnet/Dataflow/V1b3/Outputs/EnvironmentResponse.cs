@@ -39,11 +39,11 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// Experimental settings.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> InternalExperiments;
+        public readonly ImmutableDictionary<string, object> InternalExperiments;
         /// <summary>
         /// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> SdkPipelineOptions;
+        public readonly ImmutableDictionary<string, object> SdkPipelineOptions;
         /// <summary>
         /// Identity to run virtual machines as. Defaults to the default account.
         /// </summary>
@@ -71,11 +71,11 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// A description of the process that generated the request.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> UserAgent;
+        public readonly ImmutableDictionary<string, object> UserAgent;
         /// <summary>
         /// A structure describing which components and their versions of the service are required in order to run the job.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Version;
+        public readonly ImmutableDictionary<string, object> Version;
         /// <summary>
         /// The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
         /// </summary>
@@ -101,9 +101,9 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string flexResourceSchedulingGoal,
 
-            ImmutableDictionary<string, string> internalExperiments,
+            ImmutableDictionary<string, object> internalExperiments,
 
-            ImmutableDictionary<string, string> sdkPipelineOptions,
+            ImmutableDictionary<string, object> sdkPipelineOptions,
 
             string serviceAccountEmail,
 
@@ -117,9 +117,9 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             bool useStreamingEngineResourceBasedBilling,
 
-            ImmutableDictionary<string, string> userAgent,
+            ImmutableDictionary<string, object> userAgent,
 
-            ImmutableDictionary<string, string> version,
+            ImmutableDictionary<string, object> version,
 
             ImmutableArray<Outputs.WorkerPoolResponse> workerPools,
 

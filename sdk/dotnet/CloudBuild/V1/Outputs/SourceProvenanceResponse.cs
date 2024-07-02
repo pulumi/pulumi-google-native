@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// <summary>
         /// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> FileHashes;
+        public readonly ImmutableDictionary<string, Outputs.FileHashesResponse> FileHashes;
         /// <summary>
         /// A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
         /// </summary>
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
         [OutputConstructor]
         private SourceProvenanceResponse(
-            ImmutableDictionary<string, string> fileHashes,
+            ImmutableDictionary<string, Outputs.FileHashesResponse> fileHashes,
 
             Outputs.ConnectedRepositoryResponse resolvedConnectedRepository,
 

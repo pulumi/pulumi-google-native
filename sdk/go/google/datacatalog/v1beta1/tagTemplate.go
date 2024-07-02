@@ -19,8 +19,8 @@ type TagTemplate struct {
 	// The display name for this template. Defaults to an empty string.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields   pulumi.StringMapOutput `pulumi:"fields"`
-	Location pulumi.StringOutput    `pulumi:"location"`
+	Fields   GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput `pulumi:"fields"`
+	Location pulumi.StringOutput                                            `pulumi:"location"`
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -83,8 +83,8 @@ type tagTemplateArgs struct {
 	// The display name for this template. Defaults to an empty string.
 	DisplayName *string `pulumi:"displayName"`
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields   map[string]string `pulumi:"fields"`
-	Location *string           `pulumi:"location"`
+	Fields   map[string]GoogleCloudDatacatalogV1beta1TagTemplateField `pulumi:"fields"`
+	Location *string                                                  `pulumi:"location"`
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -97,7 +97,7 @@ type TagTemplateArgs struct {
 	// The display name for this template. Defaults to an empty string.
 	DisplayName pulumi.StringPtrInput
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-	Fields   pulumi.StringMapInput
+	Fields   GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput
 	Location pulumi.StringPtrInput
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 	Name    pulumi.StringPtrInput
@@ -149,8 +149,8 @@ func (o TagTemplateOutput) DisplayName() pulumi.StringOutput {
 }
 
 // Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-func (o TagTemplateOutput) Fields() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TagTemplate) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
+func (o TagTemplateOutput) Fields() GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput {
+	return o.ApplyT(func(v *TagTemplate) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput { return v.Fields }).(GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput)
 }
 
 func (o TagTemplateOutput) Location() pulumi.StringOutput {

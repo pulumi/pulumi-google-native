@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     public sealed class RecipeArgs : global::Pulumi.ResourceArgs
     {
         [Input("arguments")]
-        private InputList<ImmutableDictionary<string, string>>? _arguments;
+        private InputList<ImmutableDictionary<string, object>>? _arguments;
 
         /// <summary>
         /// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Arguments
+        public InputList<ImmutableDictionary<string, object>> Arguments
         {
-            get => _arguments ?? (_arguments = new InputList<ImmutableDictionary<string, string>>());
+            get => _arguments ?? (_arguments = new InputList<ImmutableDictionary<string, object>>());
             set => _arguments = value;
         }
 
@@ -40,14 +40,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public Input<string>? EntryPoint { get; set; }
 
         [Input("environment")]
-        private InputList<ImmutableDictionary<string, string>>? _environment;
+        private InputList<ImmutableDictionary<string, object>>? _environment;
 
         /// <summary>
         /// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any".
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Environment
+        public InputList<ImmutableDictionary<string, object>> Environment
         {
-            get => _environment ?? (_environment = new InputList<ImmutableDictionary<string, string>>());
+            get => _environment ?? (_environment = new InputList<ImmutableDictionary<string, object>>());
             set => _environment = value;
         }
 

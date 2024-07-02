@@ -17,6 +17,7 @@ __all__ = [
     'GoogleCloudRetailV2betaConditionQueryTermResponse',
     'GoogleCloudRetailV2betaConditionResponse',
     'GoogleCloudRetailV2betaConditionTimeRangeResponse',
+    'GoogleCloudRetailV2betaCustomAttributeResponse',
     'GoogleCloudRetailV2betaFulfillmentInfoResponse',
     'GoogleCloudRetailV2betaImageResponse',
     'GoogleCloudRetailV2betaIntervalResponse',
@@ -315,6 +316,61 @@ class GoogleCloudRetailV2betaConditionTimeRangeResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudRetailV2betaCustomAttributeResponse(dict):
+    """
+    A custom attribute that is not explicitly modeled in Product.
+    """
+    def __init__(__self__, *,
+                 indexable: bool,
+                 numbers: Sequence[float],
+                 searchable: bool,
+                 text: Sequence[str]):
+        """
+        A custom attribute that is not explicitly modeled in Product.
+        :param bool indexable: This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+        :param Sequence[float] numbers: The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param bool searchable: This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+        :param Sequence[str] text: The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        pulumi.set(__self__, "indexable", indexable)
+        pulumi.set(__self__, "numbers", numbers)
+        pulumi.set(__self__, "searchable", searchable)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def indexable(self) -> bool:
+        """
+        This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are indexed, so that they can be filtered, faceted or boosted in SearchService.Search. This field is ignored in a UserEvent. See SearchRequest.filter, SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+        """
+        return pulumi.get(self, "indexable")
+
+    @property
+    @pulumi.getter
+    def numbers(self) -> Sequence[float]:
+        """
+        The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "numbers")
+
+    @property
+    @pulumi.getter
+    def searchable(self) -> bool:
+        """
+        This field is normally ignored unless AttributesConfig.attribute_config_level of the Catalog is set to the deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode. For information about product-level attribute configuration, see [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes). If true, custom attribute values are searchable by text queries in SearchService.Search. This field is ignored in a UserEvent. Only set if type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "searchable")
+
+    @property
+    @pulumi.getter
+    def text(self) -> Sequence[str]:
+        """
+        The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
 class GoogleCloudRetailV2betaFulfillmentInfoResponse(dict):
     """
     Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
@@ -509,13 +565,13 @@ class GoogleCloudRetailV2betaLocalInventoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attributes: Mapping[str, str],
+                 attributes: Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse'],
                  fulfillment_types: Sequence[str],
                  place_id: str,
                  price_info: 'outputs.GoogleCloudRetailV2betaPriceInfoResponse'):
         """
         The inventory information at a place (e.g. a store) identified by a place ID.
-        :param Mapping[str, str] attributes: Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+        :param Mapping[str, 'GoogleCloudRetailV2betaCustomAttributeResponse'] attributes: Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
         :param Sequence[str] fulfillment_types: Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
         :param str place_id: The place ID for the current set of inventory information.
         :param 'GoogleCloudRetailV2betaPriceInfoResponse' price_info: Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
@@ -527,7 +583,7 @@ class GoogleCloudRetailV2betaLocalInventoryResponse(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Mapping[str, str]:
+    def attributes(self) -> Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse']:
         """
         Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
         """
@@ -883,7 +939,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 attributes: Mapping[str, str],
+                 attributes: Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse'],
                  audience: 'outputs.GoogleCloudRetailV2betaAudienceResponse',
                  availability: str,
                  available_quantity: int,
@@ -918,7 +974,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
                  variants: Sequence['outputs.GoogleCloudRetailV2betaProductResponse']):
         """
         Product captures all metadata information of items to be recommended or searched.
-        :param Mapping[str, str] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
+        :param Mapping[str, 'GoogleCloudRetailV2betaCustomAttributeResponse'] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         :param 'GoogleCloudRetailV2betaAudienceResponse' audience: The target group associated with a given audience (e.g. male, veterans, car owners, musicians, etc.) of the product.
         :param str availability: The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
         :param int available_quantity: The available quantity of the item.
@@ -988,7 +1044,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Mapping[str, str]:
+    def attributes(self) -> Mapping[str, 'outputs.GoogleCloudRetailV2betaCustomAttributeResponse']:
         """
         Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200. * The key must be a UTF-8 encoded string with a length limit of 128 characters. * For indexable attribute, the key must match the pattern: `a-zA-Z0-9*`. For example, `key0LikeThis` or `KEY_1_LIKE_THIS`. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value must be a non-empty UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400 values are allowed.
         """

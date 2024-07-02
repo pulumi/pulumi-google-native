@@ -70,14 +70,14 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Inputs.AutoscalingPolicyScaleInControlArgs>? ScaleInControl { get; set; }
 
         [Input("scalingSchedules")]
-        private InputMap<string>? _scalingSchedules;
+        private InputMap<Inputs.AutoscalingPolicyScalingScheduleArgs>? _scalingSchedules;
 
         /// <summary>
         /// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
         /// </summary>
-        public InputMap<string> ScalingSchedules
+        public InputMap<Inputs.AutoscalingPolicyScalingScheduleArgs> ScalingSchedules
         {
-            get => _scalingSchedules ?? (_scalingSchedules = new InputMap<string>());
+            get => _scalingSchedules ?? (_scalingSchedules = new InputMap<Inputs.AutoscalingPolicyScalingScheduleArgs>());
             set => _scalingSchedules = value;
         }
 

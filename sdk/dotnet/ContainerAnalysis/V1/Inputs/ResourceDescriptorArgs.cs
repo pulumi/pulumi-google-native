@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     public sealed class ResourceDescriptorArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
-        private InputMap<string>? _annotations;
-        public InputMap<string> Annotations
+        private InputMap<object>? _annotations;
+        public InputMap<object> Annotations
         {
-            get => _annotations ?? (_annotations = new InputMap<string>());
+            get => _annotations ?? (_annotations = new InputMap<object>());
             set => _annotations = value;
         }
 

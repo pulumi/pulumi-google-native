@@ -5291,6 +5291,31 @@ func (i *externalDataConfigurationPtrType) ToExternalDataConfigurationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalDataConfigurationPtrOutput)
 }
 
+// ExternalDataConfigurationMapInput is an input type that accepts ExternalDataConfigurationMap and ExternalDataConfigurationMapOutput values.
+// You can construct a concrete instance of `ExternalDataConfigurationMapInput` via:
+//
+//	ExternalDataConfigurationMap{ "key": ExternalDataConfigurationArgs{...} }
+type ExternalDataConfigurationMapInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationMapOutput() ExternalDataConfigurationMapOutput
+	ToExternalDataConfigurationMapOutputWithContext(context.Context) ExternalDataConfigurationMapOutput
+}
+
+type ExternalDataConfigurationMap map[string]ExternalDataConfigurationInput
+
+func (ExternalDataConfigurationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ExternalDataConfiguration)(nil)).Elem()
+}
+
+func (i ExternalDataConfigurationMap) ToExternalDataConfigurationMapOutput() ExternalDataConfigurationMapOutput {
+	return i.ToExternalDataConfigurationMapOutputWithContext(context.Background())
+}
+
+func (i ExternalDataConfigurationMap) ToExternalDataConfigurationMapOutputWithContext(ctx context.Context) ExternalDataConfigurationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDataConfigurationMapOutput)
+}
+
 type ExternalDataConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ExternalDataConfigurationOutput) ElementType() reflect.Type {
@@ -5639,6 +5664,26 @@ func (o ExternalDataConfigurationPtrOutput) SourceUris() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+type ExternalDataConfigurationMapOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ExternalDataConfiguration)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationMapOutput) ToExternalDataConfigurationMapOutput() ExternalDataConfigurationMapOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationMapOutput) ToExternalDataConfigurationMapOutputWithContext(ctx context.Context) ExternalDataConfigurationMapOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationMapOutput) MapIndex(k pulumi.StringInput) ExternalDataConfigurationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ExternalDataConfiguration {
+		return vs[0].(map[string]ExternalDataConfiguration)[vs[1].(string)]
+	}).(ExternalDataConfigurationOutput)
+}
+
 type ExternalDataConfigurationResponse struct {
 	// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
 	Autodetect bool `pulumi:"autodetect"`
@@ -5796,6 +5841,26 @@ func (o ExternalDataConfigurationResponseOutput) SourceFormat() pulumi.StringOut
 // [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
 func (o ExternalDataConfigurationResponseOutput) SourceUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) []string { return v.SourceUris }).(pulumi.StringArrayOutput)
+}
+
+type ExternalDataConfigurationResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ExternalDataConfigurationResponse)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationResponseMapOutput) ToExternalDataConfigurationResponseMapOutput() ExternalDataConfigurationResponseMapOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationResponseMapOutput) ToExternalDataConfigurationResponseMapOutputWithContext(ctx context.Context) ExternalDataConfigurationResponseMapOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) ExternalDataConfigurationResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ExternalDataConfigurationResponse {
+		return vs[0].(map[string]ExternalDataConfigurationResponse)[vs[1].(string)]
+	}).(ExternalDataConfigurationResponseOutput)
 }
 
 type ExternalDatasetReference struct {
@@ -8264,7 +8329,7 @@ type JobConfigurationQuery struct {
 	// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
 	// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-	TableDefinitions map[string]string `pulumi:"tableDefinitions"`
+	TableDefinitions map[string]ExternalDataConfiguration `pulumi:"tableDefinitions"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning *TimePartitioning `pulumi:"timePartitioning"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
@@ -8330,7 +8395,7 @@ type JobConfigurationQueryArgs struct {
 	// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
 	// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-	TableDefinitions pulumi.StringMapInput `pulumi:"tableDefinitions"`
+	TableDefinitions ExternalDataConfigurationMapInput `pulumi:"tableDefinitions"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningPtrInput `pulumi:"timePartitioning"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
@@ -8518,8 +8583,8 @@ func (o JobConfigurationQueryOutput) SchemaUpdateOptions() pulumi.StringArrayOut
 }
 
 // [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-func (o JobConfigurationQueryOutput) TableDefinitions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JobConfigurationQuery) map[string]string { return v.TableDefinitions }).(pulumi.StringMapOutput)
+func (o JobConfigurationQueryOutput) TableDefinitions() ExternalDataConfigurationMapOutput {
+	return o.ApplyT(func(v JobConfigurationQuery) map[string]ExternalDataConfiguration { return v.TableDefinitions }).(ExternalDataConfigurationMapOutput)
 }
 
 // Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -8764,13 +8829,13 @@ func (o JobConfigurationQueryPtrOutput) SchemaUpdateOptions() pulumi.StringArray
 }
 
 // [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-func (o JobConfigurationQueryPtrOutput) TableDefinitions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *JobConfigurationQuery) map[string]string {
+func (o JobConfigurationQueryPtrOutput) TableDefinitions() ExternalDataConfigurationMapOutput {
+	return o.ApplyT(func(v *JobConfigurationQuery) map[string]ExternalDataConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.TableDefinitions
-	}).(pulumi.StringMapOutput)
+	}).(ExternalDataConfigurationMapOutput)
 }
 
 // Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -8865,7 +8930,7 @@ type JobConfigurationQueryResponse struct {
 	// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
 	// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-	TableDefinitions map[string]string `pulumi:"tableDefinitions"`
+	TableDefinitions map[string]ExternalDataConfigurationResponse `pulumi:"tableDefinitions"`
 	// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
 	TimePartitioning TimePartitioningResponse `pulumi:"timePartitioning"`
 	// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
@@ -8992,8 +9057,10 @@ func (o JobConfigurationQueryResponseOutput) SchemaUpdateOptions() pulumi.String
 }
 
 // [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-func (o JobConfigurationQueryResponseOutput) TableDefinitions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JobConfigurationQueryResponse) map[string]string { return v.TableDefinitions }).(pulumi.StringMapOutput)
+func (o JobConfigurationQueryResponseOutput) TableDefinitions() ExternalDataConfigurationResponseMapOutput {
+	return o.ApplyT(func(v JobConfigurationQueryResponse) map[string]ExternalDataConfigurationResponse {
+		return v.TableDefinitions
+	}).(ExternalDataConfigurationResponseMapOutput)
 }
 
 // Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -12195,7 +12262,7 @@ type QueryParameterValue struct {
 	// [Optional] The array values, if this is an array type.
 	ArrayValues []QueryParameterValue `pulumi:"arrayValues"`
 	// [Optional] The struct field values, in order of the struct type's declaration.
-	StructValues map[string]string `pulumi:"structValues"`
+	StructValues map[string]QueryParameterValue `pulumi:"structValues"`
 	// [Optional] The value of this value, if a simple scalar type.
 	Value *string `pulumi:"value"`
 }
@@ -12215,7 +12282,7 @@ type QueryParameterValueArgs struct {
 	// [Optional] The array values, if this is an array type.
 	ArrayValues QueryParameterValueArrayInput `pulumi:"arrayValues"`
 	// [Optional] The struct field values, in order of the struct type's declaration.
-	StructValues pulumi.StringMapInput `pulumi:"structValues"`
+	StructValues QueryParameterValueMapInput `pulumi:"structValues"`
 	// [Optional] The value of this value, if a simple scalar type.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -12298,6 +12365,31 @@ func (i QueryParameterValueArray) ToQueryParameterValueArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterValueArrayOutput)
 }
 
+// QueryParameterValueMapInput is an input type that accepts QueryParameterValueMap and QueryParameterValueMapOutput values.
+// You can construct a concrete instance of `QueryParameterValueMapInput` via:
+//
+//	QueryParameterValueMap{ "key": QueryParameterValueArgs{...} }
+type QueryParameterValueMapInput interface {
+	pulumi.Input
+
+	ToQueryParameterValueMapOutput() QueryParameterValueMapOutput
+	ToQueryParameterValueMapOutputWithContext(context.Context) QueryParameterValueMapOutput
+}
+
+type QueryParameterValueMap map[string]QueryParameterValueInput
+
+func (QueryParameterValueMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]QueryParameterValue)(nil)).Elem()
+}
+
+func (i QueryParameterValueMap) ToQueryParameterValueMapOutput() QueryParameterValueMapOutput {
+	return i.ToQueryParameterValueMapOutputWithContext(context.Background())
+}
+
+func (i QueryParameterValueMap) ToQueryParameterValueMapOutputWithContext(ctx context.Context) QueryParameterValueMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryParameterValueMapOutput)
+}
+
 type QueryParameterValueOutput struct{ *pulumi.OutputState }
 
 func (QueryParameterValueOutput) ElementType() reflect.Type {
@@ -12328,8 +12420,8 @@ func (o QueryParameterValueOutput) ArrayValues() QueryParameterValueArrayOutput 
 }
 
 // [Optional] The struct field values, in order of the struct type's declaration.
-func (o QueryParameterValueOutput) StructValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v QueryParameterValue) map[string]string { return v.StructValues }).(pulumi.StringMapOutput)
+func (o QueryParameterValueOutput) StructValues() QueryParameterValueMapOutput {
+	return o.ApplyT(func(v QueryParameterValue) map[string]QueryParameterValue { return v.StructValues }).(QueryParameterValueMapOutput)
 }
 
 // [Optional] The value of this value, if a simple scalar type.
@@ -12372,13 +12464,13 @@ func (o QueryParameterValuePtrOutput) ArrayValues() QueryParameterValueArrayOutp
 }
 
 // [Optional] The struct field values, in order of the struct type's declaration.
-func (o QueryParameterValuePtrOutput) StructValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *QueryParameterValue) map[string]string {
+func (o QueryParameterValuePtrOutput) StructValues() QueryParameterValueMapOutput {
+	return o.ApplyT(func(v *QueryParameterValue) map[string]QueryParameterValue {
 		if v == nil {
 			return nil
 		}
 		return v.StructValues
-	}).(pulumi.StringMapOutput)
+	}).(QueryParameterValueMapOutput)
 }
 
 // [Optional] The value of this value, if a simple scalar type.
@@ -12411,11 +12503,31 @@ func (o QueryParameterValueArrayOutput) Index(i pulumi.IntInput) QueryParameterV
 	}).(QueryParameterValueOutput)
 }
 
+type QueryParameterValueMapOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterValueMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]QueryParameterValue)(nil)).Elem()
+}
+
+func (o QueryParameterValueMapOutput) ToQueryParameterValueMapOutput() QueryParameterValueMapOutput {
+	return o
+}
+
+func (o QueryParameterValueMapOutput) ToQueryParameterValueMapOutputWithContext(ctx context.Context) QueryParameterValueMapOutput {
+	return o
+}
+
+func (o QueryParameterValueMapOutput) MapIndex(k pulumi.StringInput) QueryParameterValueOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QueryParameterValue {
+		return vs[0].(map[string]QueryParameterValue)[vs[1].(string)]
+	}).(QueryParameterValueOutput)
+}
+
 type QueryParameterValueResponse struct {
 	// [Optional] The array values, if this is an array type.
 	ArrayValues []QueryParameterValueResponse `pulumi:"arrayValues"`
 	// [Optional] The struct field values, in order of the struct type's declaration.
-	StructValues map[string]string `pulumi:"structValues"`
+	StructValues map[string]QueryParameterValueResponse `pulumi:"structValues"`
 	// [Optional] The value of this value, if a simple scalar type.
 	Value string `pulumi:"value"`
 }
@@ -12440,8 +12552,8 @@ func (o QueryParameterValueResponseOutput) ArrayValues() QueryParameterValueResp
 }
 
 // [Optional] The struct field values, in order of the struct type's declaration.
-func (o QueryParameterValueResponseOutput) StructValues() pulumi.StringMapOutput {
-	return o.ApplyT(func(v QueryParameterValueResponse) map[string]string { return v.StructValues }).(pulumi.StringMapOutput)
+func (o QueryParameterValueResponseOutput) StructValues() QueryParameterValueResponseMapOutput {
+	return o.ApplyT(func(v QueryParameterValueResponse) map[string]QueryParameterValueResponse { return v.StructValues }).(QueryParameterValueResponseMapOutput)
 }
 
 // [Optional] The value of this value, if a simple scalar type.
@@ -12466,6 +12578,26 @@ func (o QueryParameterValueResponseArrayOutput) ToQueryParameterValueResponseArr
 func (o QueryParameterValueResponseArrayOutput) Index(i pulumi.IntInput) QueryParameterValueResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueryParameterValueResponse {
 		return vs[0].([]QueryParameterValueResponse)[vs[1].(int)]
+	}).(QueryParameterValueResponseOutput)
+}
+
+type QueryParameterValueResponseMapOutput struct{ *pulumi.OutputState }
+
+func (QueryParameterValueResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]QueryParameterValueResponse)(nil)).Elem()
+}
+
+func (o QueryParameterValueResponseMapOutput) ToQueryParameterValueResponseMapOutput() QueryParameterValueResponseMapOutput {
+	return o
+}
+
+func (o QueryParameterValueResponseMapOutput) ToQueryParameterValueResponseMapOutputWithContext(ctx context.Context) QueryParameterValueResponseMapOutput {
+	return o
+}
+
+func (o QueryParameterValueResponseMapOutput) MapIndex(k pulumi.StringInput) QueryParameterValueResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QueryParameterValueResponse {
+		return vs[0].(map[string]QueryParameterValueResponse)[vs[1].(string)]
 	}).(QueryParameterValueResponseOutput)
 }
 
@@ -17883,6 +18015,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationPtrInput)(nil)).Elem(), ExternalDataConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationMapInput)(nil)).Elem(), ExternalDataConfigurationMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDatasetReferenceInput)(nil)).Elem(), ExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDatasetReferencePtrInput)(nil)).Elem(), ExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleSheetsOptionsInput)(nil)).Elem(), GoogleSheetsOptionsArgs{})
@@ -17922,6 +18055,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueInput)(nil)).Elem(), QueryParameterValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValuePtrInput)(nil)).Elem(), QueryParameterValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueArrayInput)(nil)).Elem(), QueryParameterValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryParameterValueMapInput)(nil)).Elem(), QueryParameterValueMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningInput)(nil)).Elem(), RangePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningPtrInput)(nil)).Elem(), RangePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeInput)(nil)).Elem(), RangePartitioningRangeArgs{})
@@ -18061,7 +18195,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(ExternalDataConfigurationOutput{})
 	pulumi.RegisterOutputType(ExternalDataConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationMapOutput{})
 	pulumi.RegisterOutputType(ExternalDataConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationResponseMapOutput{})
 	pulumi.RegisterOutputType(ExternalDatasetReferenceOutput{})
 	pulumi.RegisterOutputType(ExternalDatasetReferencePtrOutput{})
 	pulumi.RegisterOutputType(ExternalDatasetReferenceResponseOutput{})
@@ -18137,8 +18273,10 @@ func init() {
 	pulumi.RegisterOutputType(QueryParameterValueOutput{})
 	pulumi.RegisterOutputType(QueryParameterValuePtrOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueArrayOutput{})
+	pulumi.RegisterOutputType(QueryParameterValueMapOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueResponseOutput{})
 	pulumi.RegisterOutputType(QueryParameterValueResponseArrayOutput{})
+	pulumi.RegisterOutputType(QueryParameterValueResponseMapOutput{})
 	pulumi.RegisterOutputType(QueryTimelineSampleResponseOutput{})
 	pulumi.RegisterOutputType(QueryTimelineSampleResponseArrayOutput{})
 	pulumi.RegisterOutputType(RangePartitioningOutput{})

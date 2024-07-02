@@ -62,11 +62,11 @@ export class Feature extends pulumi.CustomResource {
     /**
      * Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
      */
-    public readonly membershipSpecs!: pulumi.Output<{[key: string]: string}>;
+    public readonly membershipSpecs!: pulumi.Output<{[key: string]: outputs.gkehub.v1alpha.MembershipFeatureSpecResponse}>;
     /**
      * Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
      */
-    public /*out*/ readonly membershipStates!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly membershipStates!: pulumi.Output<{[key: string]: outputs.gkehub.v1alpha.MembershipFeatureStateResponse}>;
     /**
      * The full, unique name of this Feature resource in the format `projects/*&#47;locations/*&#47;features/*`.
      */
@@ -83,11 +83,11 @@ export class Feature extends pulumi.CustomResource {
     /**
      * Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
      */
-    public readonly scopeSpecs!: pulumi.Output<{[key: string]: string}>;
+    public readonly scopeSpecs!: pulumi.Output<{[key: string]: outputs.gkehub.v1alpha.ScopeFeatureSpecResponse}>;
     /**
      * Scope-specific Feature status. If this Feature does report any per-Scope status, this field may be unused. The keys indicate which Scope the state is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project.
      */
-    public /*out*/ readonly scopeStates!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly scopeStates!: pulumi.Output<{[key: string]: outputs.gkehub.v1alpha.ScopeFeatureStateResponse}>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
@@ -175,7 +175,7 @@ export interface FeatureArgs {
     /**
      * Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
      */
-    membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.gkehub.v1alpha.MembershipFeatureSpecArgs>}>;
     project?: pulumi.Input<string>;
     /**
      * A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -184,7 +184,7 @@ export interface FeatureArgs {
     /**
      * Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
      */
-    scopeSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    scopeSpecs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.gkehub.v1alpha.ScopeFeatureSpecArgs>}>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */

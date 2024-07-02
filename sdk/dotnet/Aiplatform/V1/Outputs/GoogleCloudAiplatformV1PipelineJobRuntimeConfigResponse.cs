@@ -27,15 +27,15 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// <summary>
         /// The runtime artifacts of the PipelineJob. The key will be the input artifact name and the value would be one of the InputArtifact.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> InputArtifacts;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse> InputArtifacts;
         /// <summary>
         /// The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ParameterValues;
+        public readonly ImmutableDictionary<string, object> ParameterValues;
         /// <summary>
         /// Deprecated. Use RuntimeConfig.parameter_values instead. The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Parameters;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1ValueResponse> Parameters;
 
         [OutputConstructor]
         private GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse(
@@ -43,11 +43,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
 
             string gcsOutputDirectory,
 
-            ImmutableDictionary<string, string> inputArtifacts,
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifactResponse> inputArtifacts,
 
-            ImmutableDictionary<string, string> parameterValues,
+            ImmutableDictionary<string, object> parameterValues,
 
-            ImmutableDictionary<string, string> parameters)
+            ImmutableDictionary<string, Outputs.GoogleCloudAiplatformV1ValueResponse> parameters)
         {
             FailurePolicy = failurePolicy;
             GcsOutputDirectory = gcsOutputDirectory;

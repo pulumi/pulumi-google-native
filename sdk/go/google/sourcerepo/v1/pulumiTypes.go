@@ -977,6 +977,184 @@ func (o MirrorConfigResponseOutput) WebhookId() pulumi.StringOutput {
 	return o.ApplyT(func(v MirrorConfigResponse) string { return v.WebhookId }).(pulumi.StringOutput)
 }
 
+// Configuration to publish a Cloud Pub/Sub message.
+type PubsubConfig struct {
+	// The format of the Cloud Pub/Sub messages.
+	MessageFormat *PubsubConfigMessageFormat `pulumi:"messageFormat"`
+	// Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+	Topic *string `pulumi:"topic"`
+}
+
+// PubsubConfigInput is an input type that accepts PubsubConfigArgs and PubsubConfigOutput values.
+// You can construct a concrete instance of `PubsubConfigInput` via:
+//
+//	PubsubConfigArgs{...}
+type PubsubConfigInput interface {
+	pulumi.Input
+
+	ToPubsubConfigOutput() PubsubConfigOutput
+	ToPubsubConfigOutputWithContext(context.Context) PubsubConfigOutput
+}
+
+// Configuration to publish a Cloud Pub/Sub message.
+type PubsubConfigArgs struct {
+	// The format of the Cloud Pub/Sub messages.
+	MessageFormat PubsubConfigMessageFormatPtrInput `pulumi:"messageFormat"`
+	// Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (PubsubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfig)(nil)).Elem()
+}
+
+func (i PubsubConfigArgs) ToPubsubConfigOutput() PubsubConfigOutput {
+	return i.ToPubsubConfigOutputWithContext(context.Background())
+}
+
+func (i PubsubConfigArgs) ToPubsubConfigOutputWithContext(ctx context.Context) PubsubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigOutput)
+}
+
+// PubsubConfigMapInput is an input type that accepts PubsubConfigMap and PubsubConfigMapOutput values.
+// You can construct a concrete instance of `PubsubConfigMapInput` via:
+//
+//	PubsubConfigMap{ "key": PubsubConfigArgs{...} }
+type PubsubConfigMapInput interface {
+	pulumi.Input
+
+	ToPubsubConfigMapOutput() PubsubConfigMapOutput
+	ToPubsubConfigMapOutputWithContext(context.Context) PubsubConfigMapOutput
+}
+
+type PubsubConfigMap map[string]PubsubConfigInput
+
+func (PubsubConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PubsubConfig)(nil)).Elem()
+}
+
+func (i PubsubConfigMap) ToPubsubConfigMapOutput() PubsubConfigMapOutput {
+	return i.ToPubsubConfigMapOutputWithContext(context.Background())
+}
+
+func (i PubsubConfigMap) ToPubsubConfigMapOutputWithContext(ctx context.Context) PubsubConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigMapOutput)
+}
+
+// Configuration to publish a Cloud Pub/Sub message.
+type PubsubConfigOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfig)(nil)).Elem()
+}
+
+func (o PubsubConfigOutput) ToPubsubConfigOutput() PubsubConfigOutput {
+	return o
+}
+
+func (o PubsubConfigOutput) ToPubsubConfigOutputWithContext(ctx context.Context) PubsubConfigOutput {
+	return o
+}
+
+// The format of the Cloud Pub/Sub messages.
+func (o PubsubConfigOutput) MessageFormat() PubsubConfigMessageFormatPtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *PubsubConfigMessageFormat { return v.MessageFormat }).(PubsubConfigMessageFormatPtrOutput)
+}
+
+// Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+func (o PubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+func (o PubsubConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type PubsubConfigMapOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PubsubConfig)(nil)).Elem()
+}
+
+func (o PubsubConfigMapOutput) ToPubsubConfigMapOutput() PubsubConfigMapOutput {
+	return o
+}
+
+func (o PubsubConfigMapOutput) ToPubsubConfigMapOutputWithContext(ctx context.Context) PubsubConfigMapOutput {
+	return o
+}
+
+func (o PubsubConfigMapOutput) MapIndex(k pulumi.StringInput) PubsubConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PubsubConfig {
+		return vs[0].(map[string]PubsubConfig)[vs[1].(string)]
+	}).(PubsubConfigOutput)
+}
+
+// Configuration to publish a Cloud Pub/Sub message.
+type PubsubConfigResponse struct {
+	// The format of the Cloud Pub/Sub messages.
+	MessageFormat string `pulumi:"messageFormat"`
+	// Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+	Topic string `pulumi:"topic"`
+}
+
+// Configuration to publish a Cloud Pub/Sub message.
+type PubsubConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfigResponse)(nil)).Elem()
+}
+
+func (o PubsubConfigResponseOutput) ToPubsubConfigResponseOutput() PubsubConfigResponseOutput {
+	return o
+}
+
+func (o PubsubConfigResponseOutput) ToPubsubConfigResponseOutputWithContext(ctx context.Context) PubsubConfigResponseOutput {
+	return o
+}
+
+// The format of the Cloud Pub/Sub messages.
+func (o PubsubConfigResponseOutput) MessageFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) string { return v.MessageFormat }).(pulumi.StringOutput)
+}
+
+// Email address of the service account used for publishing Cloud Pub/Sub messages. This service account needs to be in the same project as the PubsubConfig. When added, the caller needs to have iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute engine default service account.
+func (o PubsubConfigResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the same project as this config is in.
+func (o PubsubConfigResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type PubsubConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PubsubConfigResponse)(nil)).Elem()
+}
+
+func (o PubsubConfigResponseMapOutput) ToPubsubConfigResponseMapOutput() PubsubConfigResponseMapOutput {
+	return o
+}
+
+func (o PubsubConfigResponseMapOutput) ToPubsubConfigResponseMapOutputWithContext(ctx context.Context) PubsubConfigResponseMapOutput {
+	return o
+}
+
+func (o PubsubConfigResponseMapOutput) MapIndex(k pulumi.StringInput) PubsubConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PubsubConfigResponse {
+		return vs[0].(map[string]PubsubConfigResponse)[vs[1].(string)]
+	}).(PubsubConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -988,6 +1166,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirrorConfigInput)(nil)).Elem(), MirrorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirrorConfigPtrInput)(nil)).Elem(), MirrorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigInput)(nil)).Elem(), PubsubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubsubConfigMapInput)(nil)).Elem(), PubsubConfigMap{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -1006,4 +1186,8 @@ func init() {
 	pulumi.RegisterOutputType(MirrorConfigOutput{})
 	pulumi.RegisterOutputType(MirrorConfigPtrOutput{})
 	pulumi.RegisterOutputType(MirrorConfigResponseOutput{})
+	pulumi.RegisterOutputType(PubsubConfigOutput{})
+	pulumi.RegisterOutputType(PubsubConfigMapOutput{})
+	pulumi.RegisterOutputType(PubsubConfigResponseOutput{})
+	pulumi.RegisterOutputType(PubsubConfigResponseMapOutput{})
 }

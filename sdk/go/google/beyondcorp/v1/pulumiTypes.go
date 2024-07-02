@@ -642,7 +642,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo struct {
 	// Unique Id for the resource.
 	Id string `pulumi:"id"`
 	// Specific details for the resource. This is for internal use only.
-	Resource map[string]string `pulumi:"resource"`
+	Resource map[string]interface{} `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status *GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -667,7 +667,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs struct {
 	// Unique Id for the resource.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Specific details for the resource. This is for internal use only.
-	Resource pulumi.StringMapInput `pulumi:"resource"`
+	Resource pulumi.MapInput `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusPtrInput `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -785,8 +785,8 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) Id() pulumi.Stri
 }
 
 // Specific details for the resource. This is for internal use only.
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) map[string]string { return v.Resource }).(pulumi.StringMapOutput)
+func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) map[string]interface{} { return v.Resource }).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -843,13 +843,13 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) Id() pulumi.S
 }
 
 // Specific details for the resource. This is for internal use only.
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) map[string]string {
+func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoPtrOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Resource
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.
@@ -905,7 +905,7 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArrayOutput) Index(i pul
 // ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
 type GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse struct {
 	// Specific details for the resource. This is for internal use only.
-	Resource map[string]string `pulumi:"resource"`
+	Resource map[string]interface{} `pulumi:"resource"`
 	// Overall health status. Overall status is derived based on the status of each sub level resources.
 	Status string `pulumi:"status"`
 	// List of Info for the sub level resources.
@@ -930,8 +930,10 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) ToGoogle
 }
 
 // Specific details for the resource. This is for internal use only.
-func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) Resource() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse) map[string]string { return v.Resource }).(pulumi.StringMapOutput)
+func (o GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponseOutput) Resource() pulumi.MapOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse) map[string]interface{} {
+		return v.Resource
+	}).(pulumi.MapOutput)
 }
 
 // Overall health status. Overall status is derived based on the status of each sub level resources.

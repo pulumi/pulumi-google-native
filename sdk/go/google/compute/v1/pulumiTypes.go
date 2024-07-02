@@ -3390,7 +3390,7 @@ type AutoscalingPolicy struct {
 	Mode           *AutoscalingPolicyMode           `pulumi:"mode"`
 	ScaleInControl *AutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules map[string]string `pulumi:"scalingSchedules"`
+	ScalingSchedules map[string]AutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
 // AutoscalingPolicyInput is an input type that accepts AutoscalingPolicyArgs and AutoscalingPolicyOutput values.
@@ -3422,7 +3422,7 @@ type AutoscalingPolicyArgs struct {
 	Mode           AutoscalingPolicyModePtrInput           `pulumi:"mode"`
 	ScaleInControl AutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules pulumi.StringMapInput `pulumi:"scalingSchedules"`
+	ScalingSchedules AutoscalingPolicyScalingScheduleMapInput `pulumi:"scalingSchedules"`
 }
 
 func (AutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -3547,8 +3547,8 @@ func (o AutoscalingPolicyOutput) ScaleInControl() AutoscalingPolicyScaleInContro
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyOutput) ScalingSchedules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v AutoscalingPolicy) map[string]string { return v.ScalingSchedules }).(pulumi.StringMapOutput)
+func (o AutoscalingPolicyOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleMapOutput {
+	return o.ApplyT(func(v AutoscalingPolicy) map[string]AutoscalingPolicyScalingSchedule { return v.ScalingSchedules }).(AutoscalingPolicyScalingScheduleMapOutput)
 }
 
 type AutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -3655,13 +3655,13 @@ func (o AutoscalingPolicyPtrOutput) ScaleInControl() AutoscalingPolicyScaleInCon
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyPtrOutput) ScalingSchedules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *AutoscalingPolicy) map[string]string {
+func (o AutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleMapOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) map[string]AutoscalingPolicyScalingSchedule {
 		if v == nil {
 			return nil
 		}
 		return v.ScalingSchedules
-	}).(pulumi.StringMapOutput)
+	}).(AutoscalingPolicyScalingScheduleMapOutput)
 }
 
 // CPU utilization policy.
@@ -4254,7 +4254,7 @@ type AutoscalingPolicyResponse struct {
 	Mode           string                                  `pulumi:"mode"`
 	ScaleInControl AutoscalingPolicyScaleInControlResponse `pulumi:"scaleInControl"`
 	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-	ScalingSchedules map[string]string `pulumi:"scalingSchedules"`
+	ScalingSchedules map[string]AutoscalingPolicyScalingScheduleResponse `pulumi:"scalingSchedules"`
 }
 
 // Cloud Autoscaler policy.
@@ -4316,8 +4316,10 @@ func (o AutoscalingPolicyResponseOutput) ScaleInControl() AutoscalingPolicyScale
 }
 
 // Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-func (o AutoscalingPolicyResponseOutput) ScalingSchedules() pulumi.StringMapOutput {
-	return o.ApplyT(func(v AutoscalingPolicyResponse) map[string]string { return v.ScalingSchedules }).(pulumi.StringMapOutput)
+func (o AutoscalingPolicyResponseOutput) ScalingSchedules() AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o.ApplyT(func(v AutoscalingPolicyResponse) map[string]AutoscalingPolicyScalingScheduleResponse {
+		return v.ScalingSchedules
+	}).(AutoscalingPolicyScalingScheduleResponseMapOutput)
 }
 
 // Configuration that allows for slower scale in so that even if Autoscaler recommends an abrupt scale in of a MIG, it will be throttled as specified by the parameters below.
@@ -4510,6 +4512,232 @@ func (o AutoscalingPolicyScaleInControlResponseOutput) MaxScaledInReplicas() Fix
 // How far back autoscaling looks when computing recommendations to include directives regarding slower scale in, as described above.
 func (o AutoscalingPolicyScaleInControlResponseOutput) TimeWindowSec() pulumi.IntOutput {
 	return o.ApplyT(func(v AutoscalingPolicyScaleInControlResponse) int { return v.TimeWindowSec }).(pulumi.IntOutput)
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingSchedule struct {
+	// A description of a scaling schedule.
+	Description *string `pulumi:"description"`
+	// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+	Disabled *bool `pulumi:"disabled"`
+	// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+	DurationSec *int `pulumi:"durationSec"`
+	// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+	MinRequiredReplicas *int `pulumi:"minRequiredReplicas"`
+	// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+	Schedule *string `pulumi:"schedule"`
+	// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// AutoscalingPolicyScalingScheduleInput is an input type that accepts AutoscalingPolicyScalingScheduleArgs and AutoscalingPolicyScalingScheduleOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyScalingScheduleInput` via:
+//
+//	AutoscalingPolicyScalingScheduleArgs{...}
+type AutoscalingPolicyScalingScheduleInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyScalingScheduleOutput() AutoscalingPolicyScalingScheduleOutput
+	ToAutoscalingPolicyScalingScheduleOutputWithContext(context.Context) AutoscalingPolicyScalingScheduleOutput
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleArgs struct {
+	// A description of a scaling schedule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+	DurationSec pulumi.IntPtrInput `pulumi:"durationSec"`
+	// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+	MinRequiredReplicas pulumi.IntPtrInput `pulumi:"minRequiredReplicas"`
+	// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (AutoscalingPolicyScalingScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalingPolicyScalingScheduleArgs) ToAutoscalingPolicyScalingScheduleOutput() AutoscalingPolicyScalingScheduleOutput {
+	return i.ToAutoscalingPolicyScalingScheduleOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyScalingScheduleArgs) ToAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingScheduleOutput)
+}
+
+// AutoscalingPolicyScalingScheduleMapInput is an input type that accepts AutoscalingPolicyScalingScheduleMap and AutoscalingPolicyScalingScheduleMapOutput values.
+// You can construct a concrete instance of `AutoscalingPolicyScalingScheduleMapInput` via:
+//
+//	AutoscalingPolicyScalingScheduleMap{ "key": AutoscalingPolicyScalingScheduleArgs{...} }
+type AutoscalingPolicyScalingScheduleMapInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput
+	ToAutoscalingPolicyScalingScheduleMapOutputWithContext(context.Context) AutoscalingPolicyScalingScheduleMapOutput
+}
+
+type AutoscalingPolicyScalingScheduleMap map[string]AutoscalingPolicyScalingScheduleInput
+
+func (AutoscalingPolicyScalingScheduleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalingPolicyScalingScheduleMap) ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput {
+	return i.ToAutoscalingPolicyScalingScheduleMapOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicyScalingScheduleMap) ToAutoscalingPolicyScalingScheduleMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyScalingScheduleMapOutput)
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingScheduleOutput() AutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleOutput) ToAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+// A description of a scaling schedule.
+func (o AutoscalingPolicyScalingScheduleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+func (o AutoscalingPolicyScalingScheduleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+func (o AutoscalingPolicyScalingScheduleOutput) DurationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *int { return v.DurationSec }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+func (o AutoscalingPolicyScalingScheduleOutput) MinRequiredReplicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *int { return v.MinRequiredReplicas }).(pulumi.IntPtrOutput)
+}
+
+// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+func (o AutoscalingPolicyScalingScheduleOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+func (o AutoscalingPolicyScalingScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type AutoscalingPolicyScalingScheduleMapOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleMapOutput) ToAutoscalingPolicyScalingScheduleMapOutput() AutoscalingPolicyScalingScheduleMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleMapOutput) ToAutoscalingPolicyScalingScheduleMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyScalingScheduleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoscalingPolicyScalingSchedule {
+		return vs[0].(map[string]AutoscalingPolicyScalingSchedule)[vs[1].(string)]
+	}).(AutoscalingPolicyScalingScheduleOutput)
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleResponse struct {
+	// A description of a scaling schedule.
+	Description string `pulumi:"description"`
+	// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+	Disabled bool `pulumi:"disabled"`
+	// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+	DurationSec int `pulumi:"durationSec"`
+	// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+	MinRequiredReplicas int `pulumi:"minRequiredReplicas"`
+	// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+	Schedule string `pulumi:"schedule"`
+	// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// Scaling based on user-defined schedule. The message describes a single scaling schedule. A scaling schedule changes the minimum number of VM instances an autoscaler can recommend, which can trigger scaling out.
+type AutoscalingPolicyScalingScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyScalingScheduleResponse)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseOutput) ToAutoscalingPolicyScalingScheduleResponseOutput() AutoscalingPolicyScalingScheduleResponseOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseOutput) ToAutoscalingPolicyScalingScheduleResponseOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleResponseOutput {
+	return o
+}
+
+// A description of a scaling schedule.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A boolean value that specifies whether a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect. This field is optional, and its value is false by default.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The duration of time intervals, in seconds, for which this scaling schedule is to run. The minimum allowed value is 300. This field is required.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) DurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) int { return v.DurationSec }).(pulumi.IntOutput)
+}
+
+// The minimum number of VM instances that the autoscaler will recommend in time intervals starting according to schedule. This field is required.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) MinRequiredReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) int { return v.MinRequiredReplicas }).(pulumi.IntOutput)
+}
+
+// The start timestamps of time intervals when this scaling schedule is to provide a scaling signal. This field uses the extended cron format (with an optional year field). The expression can describe a single timestamp if the optional year is set, in which case the scaling schedule runs once. The schedule is interpreted with respect to time_zone. This field is required. Note: These timestamps only describe when autoscaler starts providing the scaling signal. The VMs need additional time to become serving.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of "UTC" if left empty.
+func (o AutoscalingPolicyScalingScheduleResponseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingPolicyScalingScheduleResponse) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type AutoscalingPolicyScalingScheduleResponseMapOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingPolicyScalingScheduleResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AutoscalingPolicyScalingScheduleResponse)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) ToAutoscalingPolicyScalingScheduleResponseMapOutput() AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) ToAutoscalingPolicyScalingScheduleResponseMapOutputWithContext(ctx context.Context) AutoscalingPolicyScalingScheduleResponseMapOutput {
+	return o
+}
+
+func (o AutoscalingPolicyScalingScheduleResponseMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyScalingScheduleResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AutoscalingPolicyScalingScheduleResponse {
+		return vs[0].(map[string]AutoscalingPolicyScalingScheduleResponse)[vs[1].(string)]
+	}).(AutoscalingPolicyScalingScheduleResponseOutput)
 }
 
 // Message containing information of one individual backend.
@@ -10888,6 +11116,48 @@ func (o DiskAsyncReplicationPtrOutput) Disk() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DiskAsyncReplicationListResponse struct {
+	AsyncReplicationDisk DiskAsyncReplicationResponse `pulumi:"asyncReplicationDisk"`
+}
+
+type DiskAsyncReplicationListResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplicationListResponse)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationListResponseOutput) ToDiskAsyncReplicationListResponseOutput() DiskAsyncReplicationListResponseOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseOutput) ToDiskAsyncReplicationListResponseOutputWithContext(ctx context.Context) DiskAsyncReplicationListResponseOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseOutput) AsyncReplicationDisk() DiskAsyncReplicationResponseOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationListResponse) DiskAsyncReplicationResponse { return v.AsyncReplicationDisk }).(DiskAsyncReplicationResponseOutput)
+}
+
+type DiskAsyncReplicationListResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationListResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskAsyncReplicationListResponse)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) ToDiskAsyncReplicationListResponseMapOutput() DiskAsyncReplicationListResponseMapOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) ToDiskAsyncReplicationListResponseMapOutputWithContext(ctx context.Context) DiskAsyncReplicationListResponseMapOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationListResponseMapOutput) MapIndex(k pulumi.StringInput) DiskAsyncReplicationListResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskAsyncReplicationListResponse {
+		return vs[0].(map[string]DiskAsyncReplicationListResponse)[vs[1].(string)]
+	}).(DiskAsyncReplicationListResponseOutput)
+}
+
 type DiskAsyncReplicationResponse struct {
 	// URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
 	ConsistencyGroupPolicy string `pulumi:"consistencyGroupPolicy"`
@@ -11315,10 +11585,30 @@ func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) State() pulumi.S
 	return o.ApplyT(func(v DiskResourceStatusAsyncReplicationStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+type DiskResourceStatusAsyncReplicationStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskResourceStatusAsyncReplicationStatusResponse)(nil)).Elem()
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ToDiskResourceStatusAsyncReplicationStatusResponseMapOutput() DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) ToDiskResourceStatusAsyncReplicationStatusResponseMapOutputWithContext(ctx context.Context) DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseMapOutput) MapIndex(k pulumi.StringInput) DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskResourceStatusAsyncReplicationStatusResponse {
+		return vs[0].(map[string]DiskResourceStatusAsyncReplicationStatusResponse)[vs[1].(string)]
+	}).(DiskResourceStatusAsyncReplicationStatusResponseOutput)
+}
+
 type DiskResourceStatusResponse struct {
 	AsyncPrimaryDisk DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncPrimaryDisk"`
 	// Key: disk, value: AsyncReplicationStatus message
-	AsyncSecondaryDisks map[string]string `pulumi:"asyncSecondaryDisks"`
+	AsyncSecondaryDisks map[string]DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncSecondaryDisks"`
 }
 
 type DiskResourceStatusResponseOutput struct{ *pulumi.OutputState }
@@ -11342,8 +11632,10 @@ func (o DiskResourceStatusResponseOutput) AsyncPrimaryDisk() DiskResourceStatusA
 }
 
 // Key: disk, value: AsyncReplicationStatus message
-func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]string { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
+func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() DiskResourceStatusAsyncReplicationStatusResponseMapOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]DiskResourceStatusAsyncReplicationStatusResponse {
+		return v.AsyncSecondaryDisks
+	}).(DiskResourceStatusAsyncReplicationStatusResponseMapOutput)
 }
 
 // A set of Display Device options
@@ -37185,6 +37477,64 @@ func (o SavedDiskResponseArrayOutput) Index(i pulumi.IntInput) SavedDiskResponse
 	}).(SavedDiskResponseOutput)
 }
 
+type ScalingScheduleStatusResponse struct {
+	// The last time the scaling schedule became active. Note: this is a timestamp when a schedule actually became active, not when it was planned to do so. The timestamp is in RFC3339 text format.
+	LastStartTime string `pulumi:"lastStartTime"`
+	// The next time the scaling schedule is to become active. Note: this is a timestamp when a schedule is planned to run, but the actual time might be slightly different. The timestamp is in RFC3339 text format.
+	NextStartTime string `pulumi:"nextStartTime"`
+	// The current state of a scaling schedule.
+	State string `pulumi:"state"`
+}
+
+type ScalingScheduleStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ScalingScheduleStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingScheduleStatusResponse)(nil)).Elem()
+}
+
+func (o ScalingScheduleStatusResponseOutput) ToScalingScheduleStatusResponseOutput() ScalingScheduleStatusResponseOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseOutput) ToScalingScheduleStatusResponseOutputWithContext(ctx context.Context) ScalingScheduleStatusResponseOutput {
+	return o
+}
+
+// The last time the scaling schedule became active. Note: this is a timestamp when a schedule actually became active, not when it was planned to do so. The timestamp is in RFC3339 text format.
+func (o ScalingScheduleStatusResponseOutput) LastStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingScheduleStatusResponse) string { return v.LastStartTime }).(pulumi.StringOutput)
+}
+
+// The next time the scaling schedule is to become active. Note: this is a timestamp when a schedule is planned to run, but the actual time might be slightly different. The timestamp is in RFC3339 text format.
+func (o ScalingScheduleStatusResponseOutput) NextStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingScheduleStatusResponse) string { return v.NextStartTime }).(pulumi.StringOutput)
+}
+
+// The current state of a scaling schedule.
+func (o ScalingScheduleStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingScheduleStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type ScalingScheduleStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ScalingScheduleStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ScalingScheduleStatusResponse)(nil)).Elem()
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) ToScalingScheduleStatusResponseMapOutput() ScalingScheduleStatusResponseMapOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) ToScalingScheduleStatusResponseMapOutputWithContext(ctx context.Context) ScalingScheduleStatusResponseMapOutput {
+	return o
+}
+
+func (o ScalingScheduleStatusResponseMapOutput) MapIndex(k pulumi.StringInput) ScalingScheduleStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ScalingScheduleStatusResponse {
+		return vs[0].(map[string]ScalingScheduleStatusResponse)[vs[1].(string)]
+	}).(ScalingScheduleStatusResponseOutput)
+}
+
 // Sets the scheduling options for an Instance.
 type Scheduling struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -43027,7 +43377,7 @@ func (o ServiceAttachmentConsumerProjectLimitResponseArrayOutput) Index(i pulumi
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettings struct {
 	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-	ProjectMap map[string]string `pulumi:"projectMap"`
+	ProjectMap map[string]ShareSettingsProjectConfig `pulumi:"projectMap"`
 	// Type of sharing for this shared-reservation
 	ShareType *ShareSettingsShareType `pulumi:"shareType"`
 }
@@ -43046,7 +43396,7 @@ type ShareSettingsInput interface {
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettingsArgs struct {
 	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-	ProjectMap pulumi.StringMapInput `pulumi:"projectMap"`
+	ProjectMap ShareSettingsProjectConfigMapInput `pulumi:"projectMap"`
 	// Type of sharing for this shared-reservation
 	ShareType ShareSettingsShareTypePtrInput `pulumi:"shareType"`
 }
@@ -43130,8 +43480,8 @@ func (o ShareSettingsOutput) ToShareSettingsPtrOutputWithContext(ctx context.Con
 }
 
 // A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-func (o ShareSettingsOutput) ProjectMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ShareSettings) map[string]string { return v.ProjectMap }).(pulumi.StringMapOutput)
+func (o ShareSettingsOutput) ProjectMap() ShareSettingsProjectConfigMapOutput {
+	return o.ApplyT(func(v ShareSettings) map[string]ShareSettingsProjectConfig { return v.ProjectMap }).(ShareSettingsProjectConfigMapOutput)
 }
 
 // Type of sharing for this shared-reservation
@@ -43164,13 +43514,13 @@ func (o ShareSettingsPtrOutput) Elem() ShareSettingsOutput {
 }
 
 // A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-func (o ShareSettingsPtrOutput) ProjectMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ShareSettings) map[string]string {
+func (o ShareSettingsPtrOutput) ProjectMap() ShareSettingsProjectConfigMapOutput {
+	return o.ApplyT(func(v *ShareSettings) map[string]ShareSettingsProjectConfig {
 		if v == nil {
 			return nil
 		}
 		return v.ProjectMap
-	}).(pulumi.StringMapOutput)
+	}).(ShareSettingsProjectConfigMapOutput)
 }
 
 // Type of sharing for this shared-reservation
@@ -43183,10 +43533,156 @@ func (o ShareSettingsPtrOutput) ShareType() ShareSettingsShareTypePtrOutput {
 	}).(ShareSettingsShareTypePtrOutput)
 }
 
+// Config for each project in the share settings.
+type ShareSettingsProjectConfig struct {
+	// The project ID, should be same as the key of this project config in the parent map.
+	Project *string `pulumi:"project"`
+}
+
+// ShareSettingsProjectConfigInput is an input type that accepts ShareSettingsProjectConfigArgs and ShareSettingsProjectConfigOutput values.
+// You can construct a concrete instance of `ShareSettingsProjectConfigInput` via:
+//
+//	ShareSettingsProjectConfigArgs{...}
+type ShareSettingsProjectConfigInput interface {
+	pulumi.Input
+
+	ToShareSettingsProjectConfigOutput() ShareSettingsProjectConfigOutput
+	ToShareSettingsProjectConfigOutputWithContext(context.Context) ShareSettingsProjectConfigOutput
+}
+
+// Config for each project in the share settings.
+type ShareSettingsProjectConfigArgs struct {
+	// The project ID, should be same as the key of this project config in the parent map.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (ShareSettingsProjectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettingsProjectConfig)(nil)).Elem()
+}
+
+func (i ShareSettingsProjectConfigArgs) ToShareSettingsProjectConfigOutput() ShareSettingsProjectConfigOutput {
+	return i.ToShareSettingsProjectConfigOutputWithContext(context.Background())
+}
+
+func (i ShareSettingsProjectConfigArgs) ToShareSettingsProjectConfigOutputWithContext(ctx context.Context) ShareSettingsProjectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsProjectConfigOutput)
+}
+
+// ShareSettingsProjectConfigMapInput is an input type that accepts ShareSettingsProjectConfigMap and ShareSettingsProjectConfigMapOutput values.
+// You can construct a concrete instance of `ShareSettingsProjectConfigMapInput` via:
+//
+//	ShareSettingsProjectConfigMap{ "key": ShareSettingsProjectConfigArgs{...} }
+type ShareSettingsProjectConfigMapInput interface {
+	pulumi.Input
+
+	ToShareSettingsProjectConfigMapOutput() ShareSettingsProjectConfigMapOutput
+	ToShareSettingsProjectConfigMapOutputWithContext(context.Context) ShareSettingsProjectConfigMapOutput
+}
+
+type ShareSettingsProjectConfigMap map[string]ShareSettingsProjectConfigInput
+
+func (ShareSettingsProjectConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsProjectConfig)(nil)).Elem()
+}
+
+func (i ShareSettingsProjectConfigMap) ToShareSettingsProjectConfigMapOutput() ShareSettingsProjectConfigMapOutput {
+	return i.ToShareSettingsProjectConfigMapOutputWithContext(context.Background())
+}
+
+func (i ShareSettingsProjectConfigMap) ToShareSettingsProjectConfigMapOutputWithContext(ctx context.Context) ShareSettingsProjectConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShareSettingsProjectConfigMapOutput)
+}
+
+// Config for each project in the share settings.
+type ShareSettingsProjectConfigOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsProjectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettingsProjectConfig)(nil)).Elem()
+}
+
+func (o ShareSettingsProjectConfigOutput) ToShareSettingsProjectConfigOutput() ShareSettingsProjectConfigOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigOutput) ToShareSettingsProjectConfigOutputWithContext(ctx context.Context) ShareSettingsProjectConfigOutput {
+	return o
+}
+
+// The project ID, should be same as the key of this project config in the parent map.
+func (o ShareSettingsProjectConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShareSettingsProjectConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type ShareSettingsProjectConfigMapOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsProjectConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsProjectConfig)(nil)).Elem()
+}
+
+func (o ShareSettingsProjectConfigMapOutput) ToShareSettingsProjectConfigMapOutput() ShareSettingsProjectConfigMapOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigMapOutput) ToShareSettingsProjectConfigMapOutputWithContext(ctx context.Context) ShareSettingsProjectConfigMapOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigMapOutput) MapIndex(k pulumi.StringInput) ShareSettingsProjectConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareSettingsProjectConfig {
+		return vs[0].(map[string]ShareSettingsProjectConfig)[vs[1].(string)]
+	}).(ShareSettingsProjectConfigOutput)
+}
+
+// Config for each project in the share settings.
+type ShareSettingsProjectConfigResponse struct {
+	// The project ID, should be same as the key of this project config in the parent map.
+	Project string `pulumi:"project"`
+}
+
+// Config for each project in the share settings.
+type ShareSettingsProjectConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsProjectConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShareSettingsProjectConfigResponse)(nil)).Elem()
+}
+
+func (o ShareSettingsProjectConfigResponseOutput) ToShareSettingsProjectConfigResponseOutput() ShareSettingsProjectConfigResponseOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigResponseOutput) ToShareSettingsProjectConfigResponseOutputWithContext(ctx context.Context) ShareSettingsProjectConfigResponseOutput {
+	return o
+}
+
+// The project ID, should be same as the key of this project config in the parent map.
+func (o ShareSettingsProjectConfigResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ShareSettingsProjectConfigResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type ShareSettingsProjectConfigResponseMapOutput struct{ *pulumi.OutputState }
+
+func (ShareSettingsProjectConfigResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ShareSettingsProjectConfigResponse)(nil)).Elem()
+}
+
+func (o ShareSettingsProjectConfigResponseMapOutput) ToShareSettingsProjectConfigResponseMapOutput() ShareSettingsProjectConfigResponseMapOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigResponseMapOutput) ToShareSettingsProjectConfigResponseMapOutputWithContext(ctx context.Context) ShareSettingsProjectConfigResponseMapOutput {
+	return o
+}
+
+func (o ShareSettingsProjectConfigResponseMapOutput) MapIndex(k pulumi.StringInput) ShareSettingsProjectConfigResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareSettingsProjectConfigResponse {
+		return vs[0].(map[string]ShareSettingsProjectConfigResponse)[vs[1].(string)]
+	}).(ShareSettingsProjectConfigResponseOutput)
+}
+
 // The share setting for reservations and sole tenancy node groups.
 type ShareSettingsResponse struct {
 	// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-	ProjectMap map[string]string `pulumi:"projectMap"`
+	ProjectMap map[string]ShareSettingsProjectConfigResponse `pulumi:"projectMap"`
 	// Type of sharing for this shared-reservation
 	ShareType string `pulumi:"shareType"`
 }
@@ -43207,8 +43703,8 @@ func (o ShareSettingsResponseOutput) ToShareSettingsResponseOutputWithContext(ct
 }
 
 // A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-func (o ShareSettingsResponseOutput) ProjectMap() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ShareSettingsResponse) map[string]string { return v.ProjectMap }).(pulumi.StringMapOutput)
+func (o ShareSettingsResponseOutput) ProjectMap() ShareSettingsProjectConfigResponseMapOutput {
+	return o.ApplyT(func(v ShareSettingsResponse) map[string]ShareSettingsProjectConfigResponse { return v.ProjectMap }).(ShareSettingsProjectConfigResponseMapOutput)
 }
 
 // Type of sharing for this shared-reservation
@@ -44657,11 +45153,11 @@ func (o StatefulPolicyPtrOutput) PreservedState() StatefulPolicyPreservedStatePt
 // Configuration of preserved resources.
 type StatefulPolicyPreservedState struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-	Disks map[string]string `pulumi:"disks"`
+	Disks map[string]StatefulPolicyPreservedStateDiskDevice `pulumi:"disks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	ExternalIPs map[string]string `pulumi:"externalIPs"`
+	ExternalIPs map[string]StatefulPolicyPreservedStateNetworkIp `pulumi:"externalIPs"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	InternalIPs map[string]string `pulumi:"internalIPs"`
+	InternalIPs map[string]StatefulPolicyPreservedStateNetworkIp `pulumi:"internalIPs"`
 }
 
 // StatefulPolicyPreservedStateInput is an input type that accepts StatefulPolicyPreservedStateArgs and StatefulPolicyPreservedStateOutput values.
@@ -44678,11 +45174,11 @@ type StatefulPolicyPreservedStateInput interface {
 // Configuration of preserved resources.
 type StatefulPolicyPreservedStateArgs struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-	Disks pulumi.StringMapInput `pulumi:"disks"`
+	Disks StatefulPolicyPreservedStateDiskDeviceMapInput `pulumi:"disks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	ExternalIPs pulumi.StringMapInput `pulumi:"externalIPs"`
+	ExternalIPs StatefulPolicyPreservedStateNetworkIpMapInput `pulumi:"externalIPs"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	InternalIPs pulumi.StringMapInput `pulumi:"internalIPs"`
+	InternalIPs StatefulPolicyPreservedStateNetworkIpMapInput `pulumi:"internalIPs"`
 }
 
 func (StatefulPolicyPreservedStateArgs) ElementType() reflect.Type {
@@ -44764,18 +45260,22 @@ func (o StatefulPolicyPreservedStateOutput) ToStatefulPolicyPreservedStatePtrOut
 }
 
 // Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-func (o StatefulPolicyPreservedStateOutput) Disks() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]string { return v.Disks }).(pulumi.StringMapOutput)
+func (o StatefulPolicyPreservedStateOutput) Disks() StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateDiskDevice { return v.Disks }).(StatefulPolicyPreservedStateDiskDeviceMapOutput)
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateOutput) ExternalIPs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]string { return v.ExternalIPs }).(pulumi.StringMapOutput)
+func (o StatefulPolicyPreservedStateOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
+		return v.ExternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 // Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateOutput) InternalIPs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]string { return v.InternalIPs }).(pulumi.StringMapOutput)
+func (o StatefulPolicyPreservedStateOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
+		return v.InternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 type StatefulPolicyPreservedStatePtrOutput struct{ *pulumi.OutputState }
@@ -44803,43 +45303,329 @@ func (o StatefulPolicyPreservedStatePtrOutput) Elem() StatefulPolicyPreservedSta
 }
 
 // Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-func (o StatefulPolicyPreservedStatePtrOutput) Disks() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]string {
+func (o StatefulPolicyPreservedStatePtrOutput) Disks() StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateDiskDevice {
 		if v == nil {
 			return nil
 		}
 		return v.Disks
-	}).(pulumi.StringMapOutput)
+	}).(StatefulPolicyPreservedStateDiskDeviceMapOutput)
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStatePtrOutput) ExternalIPs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]string {
+func (o StatefulPolicyPreservedStatePtrOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
 		if v == nil {
 			return nil
 		}
 		return v.ExternalIPs
-	}).(pulumi.StringMapOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
 }
 
 // Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStatePtrOutput) InternalIPs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]string {
+func (o StatefulPolicyPreservedStatePtrOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o.ApplyT(func(v *StatefulPolicyPreservedState) map[string]StatefulPolicyPreservedStateNetworkIp {
 		if v == nil {
 			return nil
 		}
 		return v.InternalIPs
-	}).(pulumi.StringMapOutput)
+	}).(StatefulPolicyPreservedStateNetworkIpMapOutput)
+}
+
+type StatefulPolicyPreservedStateDiskDevice struct {
+	// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+	AutoDelete *StatefulPolicyPreservedStateDiskDeviceAutoDelete `pulumi:"autoDelete"`
+}
+
+// StatefulPolicyPreservedStateDiskDeviceInput is an input type that accepts StatefulPolicyPreservedStateDiskDeviceArgs and StatefulPolicyPreservedStateDiskDeviceOutput values.
+// You can construct a concrete instance of `StatefulPolicyPreservedStateDiskDeviceInput` via:
+//
+//	StatefulPolicyPreservedStateDiskDeviceArgs{...}
+type StatefulPolicyPreservedStateDiskDeviceInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateDiskDeviceOutput() StatefulPolicyPreservedStateDiskDeviceOutput
+	ToStatefulPolicyPreservedStateDiskDeviceOutputWithContext(context.Context) StatefulPolicyPreservedStateDiskDeviceOutput
+}
+
+type StatefulPolicyPreservedStateDiskDeviceArgs struct {
+	// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+	AutoDelete StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrInput `pulumi:"autoDelete"`
+}
+
+func (StatefulPolicyPreservedStateDiskDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
+}
+
+func (i StatefulPolicyPreservedStateDiskDeviceArgs) ToStatefulPolicyPreservedStateDiskDeviceOutput() StatefulPolicyPreservedStateDiskDeviceOutput {
+	return i.ToStatefulPolicyPreservedStateDiskDeviceOutputWithContext(context.Background())
+}
+
+func (i StatefulPolicyPreservedStateDiskDeviceArgs) ToStatefulPolicyPreservedStateDiskDeviceOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateDiskDeviceOutput)
+}
+
+// StatefulPolicyPreservedStateDiskDeviceMapInput is an input type that accepts StatefulPolicyPreservedStateDiskDeviceMap and StatefulPolicyPreservedStateDiskDeviceMapOutput values.
+// You can construct a concrete instance of `StatefulPolicyPreservedStateDiskDeviceMapInput` via:
+//
+//	StatefulPolicyPreservedStateDiskDeviceMap{ "key": StatefulPolicyPreservedStateDiskDeviceArgs{...} }
+type StatefulPolicyPreservedStateDiskDeviceMapInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateDiskDeviceMapOutput() StatefulPolicyPreservedStateDiskDeviceMapOutput
+	ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(context.Context) StatefulPolicyPreservedStateDiskDeviceMapOutput
+}
+
+type StatefulPolicyPreservedStateDiskDeviceMap map[string]StatefulPolicyPreservedStateDiskDeviceInput
+
+func (StatefulPolicyPreservedStateDiskDeviceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
+}
+
+func (i StatefulPolicyPreservedStateDiskDeviceMap) ToStatefulPolicyPreservedStateDiskDeviceMapOutput() StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return i.ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(context.Background())
+}
+
+func (i StatefulPolicyPreservedStateDiskDeviceMap) ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateDiskDeviceMapOutput)
+}
+
+type StatefulPolicyPreservedStateDiskDeviceOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateDiskDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceOutput) ToStatefulPolicyPreservedStateDiskDeviceOutput() StatefulPolicyPreservedStateDiskDeviceOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceOutput) ToStatefulPolicyPreservedStateDiskDeviceOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceOutput {
+	return o
+}
+
+// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+func (o StatefulPolicyPreservedStateDiskDeviceOutput) AutoDelete() StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateDiskDevice) *StatefulPolicyPreservedStateDiskDeviceAutoDelete {
+		return v.AutoDelete
+	}).(StatefulPolicyPreservedStateDiskDeviceAutoDeletePtrOutput)
+}
+
+type StatefulPolicyPreservedStateDiskDeviceMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateDiskDeviceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateDiskDevice)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceMapOutput) ToStatefulPolicyPreservedStateDiskDeviceMapOutput() StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceMapOutput) ToStatefulPolicyPreservedStateDiskDeviceMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateDiskDeviceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateDiskDevice {
+		return vs[0].(map[string]StatefulPolicyPreservedStateDiskDevice)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateDiskDeviceOutput)
+}
+
+type StatefulPolicyPreservedStateDiskDeviceResponse struct {
+	// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+	AutoDelete string `pulumi:"autoDelete"`
+}
+
+type StatefulPolicyPreservedStateDiskDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateDiskDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseOutput) ToStatefulPolicyPreservedStateDiskDeviceResponseOutput() StatefulPolicyPreservedStateDiskDeviceResponseOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseOutput) ToStatefulPolicyPreservedStateDiskDeviceResponseOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceResponseOutput {
+	return o
+}
+
+// These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+func (o StatefulPolicyPreservedStateDiskDeviceResponseOutput) AutoDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateDiskDeviceResponse) string { return v.AutoDelete }).(pulumi.StringOutput)
+}
+
+type StatefulPolicyPreservedStateDiskDeviceResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateDiskDeviceResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) ToStatefulPolicyPreservedStateDiskDeviceResponseMapOutput() StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) ToStatefulPolicyPreservedStateDiskDeviceResponseMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateDiskDeviceResponseMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateDiskDeviceResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateDiskDeviceResponse {
+		return vs[0].(map[string]StatefulPolicyPreservedStateDiskDeviceResponse)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateDiskDeviceResponseOutput)
+}
+
+type StatefulPolicyPreservedStateNetworkIp struct {
+	// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+	AutoDelete *StatefulPolicyPreservedStateNetworkIpAutoDelete `pulumi:"autoDelete"`
+}
+
+// StatefulPolicyPreservedStateNetworkIpInput is an input type that accepts StatefulPolicyPreservedStateNetworkIpArgs and StatefulPolicyPreservedStateNetworkIpOutput values.
+// You can construct a concrete instance of `StatefulPolicyPreservedStateNetworkIpInput` via:
+//
+//	StatefulPolicyPreservedStateNetworkIpArgs{...}
+type StatefulPolicyPreservedStateNetworkIpInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateNetworkIpOutput() StatefulPolicyPreservedStateNetworkIpOutput
+	ToStatefulPolicyPreservedStateNetworkIpOutputWithContext(context.Context) StatefulPolicyPreservedStateNetworkIpOutput
+}
+
+type StatefulPolicyPreservedStateNetworkIpArgs struct {
+	// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+	AutoDelete StatefulPolicyPreservedStateNetworkIpAutoDeletePtrInput `pulumi:"autoDelete"`
+}
+
+func (StatefulPolicyPreservedStateNetworkIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
+}
+
+func (i StatefulPolicyPreservedStateNetworkIpArgs) ToStatefulPolicyPreservedStateNetworkIpOutput() StatefulPolicyPreservedStateNetworkIpOutput {
+	return i.ToStatefulPolicyPreservedStateNetworkIpOutputWithContext(context.Background())
+}
+
+func (i StatefulPolicyPreservedStateNetworkIpArgs) ToStatefulPolicyPreservedStateNetworkIpOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateNetworkIpOutput)
+}
+
+// StatefulPolicyPreservedStateNetworkIpMapInput is an input type that accepts StatefulPolicyPreservedStateNetworkIpMap and StatefulPolicyPreservedStateNetworkIpMapOutput values.
+// You can construct a concrete instance of `StatefulPolicyPreservedStateNetworkIpMapInput` via:
+//
+//	StatefulPolicyPreservedStateNetworkIpMap{ "key": StatefulPolicyPreservedStateNetworkIpArgs{...} }
+type StatefulPolicyPreservedStateNetworkIpMapInput interface {
+	pulumi.Input
+
+	ToStatefulPolicyPreservedStateNetworkIpMapOutput() StatefulPolicyPreservedStateNetworkIpMapOutput
+	ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(context.Context) StatefulPolicyPreservedStateNetworkIpMapOutput
+}
+
+type StatefulPolicyPreservedStateNetworkIpMap map[string]StatefulPolicyPreservedStateNetworkIpInput
+
+func (StatefulPolicyPreservedStateNetworkIpMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
+}
+
+func (i StatefulPolicyPreservedStateNetworkIpMap) ToStatefulPolicyPreservedStateNetworkIpMapOutput() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return i.ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(context.Background())
+}
+
+func (i StatefulPolicyPreservedStateNetworkIpMap) ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulPolicyPreservedStateNetworkIpMapOutput)
+}
+
+type StatefulPolicyPreservedStateNetworkIpOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpOutput) ToStatefulPolicyPreservedStateNetworkIpOutput() StatefulPolicyPreservedStateNetworkIpOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpOutput) ToStatefulPolicyPreservedStateNetworkIpOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpOutput {
+	return o
+}
+
+// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+func (o StatefulPolicyPreservedStateNetworkIpOutput) AutoDelete() StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateNetworkIp) *StatefulPolicyPreservedStateNetworkIpAutoDelete {
+		return v.AutoDelete
+	}).(StatefulPolicyPreservedStateNetworkIpAutoDeletePtrOutput)
+}
+
+type StatefulPolicyPreservedStateNetworkIpMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIp)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpMapOutput) ToStatefulPolicyPreservedStateNetworkIpMapOutput() StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpMapOutput) ToStatefulPolicyPreservedStateNetworkIpMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateNetworkIpOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateNetworkIp {
+		return vs[0].(map[string]StatefulPolicyPreservedStateNetworkIp)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateNetworkIpOutput)
+}
+
+type StatefulPolicyPreservedStateNetworkIpResponse struct {
+	// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+	AutoDelete string `pulumi:"autoDelete"`
+}
+
+type StatefulPolicyPreservedStateNetworkIpResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) ToStatefulPolicyPreservedStateNetworkIpResponseOutput() StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) ToStatefulPolicyPreservedStateNetworkIpResponseOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return o
+}
+
+// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+func (o StatefulPolicyPreservedStateNetworkIpResponseOutput) AutoDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateNetworkIpResponse) string { return v.AutoDelete }).(pulumi.StringOutput)
+}
+
+type StatefulPolicyPreservedStateNetworkIpResponseMapOutput struct{ *pulumi.OutputState }
+
+func (StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]StatefulPolicyPreservedStateNetworkIpResponse)(nil)).Elem()
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutput() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) ToStatefulPolicyPreservedStateNetworkIpResponseMapOutputWithContext(ctx context.Context) StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o
+}
+
+func (o StatefulPolicyPreservedStateNetworkIpResponseMapOutput) MapIndex(k pulumi.StringInput) StatefulPolicyPreservedStateNetworkIpResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StatefulPolicyPreservedStateNetworkIpResponse {
+		return vs[0].(map[string]StatefulPolicyPreservedStateNetworkIpResponse)[vs[1].(string)]
+	}).(StatefulPolicyPreservedStateNetworkIpResponseOutput)
 }
 
 // Configuration of preserved resources.
 type StatefulPolicyPreservedStateResponse struct {
 	// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-	Disks map[string]string `pulumi:"disks"`
+	Disks map[string]StatefulPolicyPreservedStateDiskDeviceResponse `pulumi:"disks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	ExternalIPs map[string]string `pulumi:"externalIPs"`
+	ExternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"externalIPs"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-	InternalIPs map[string]string `pulumi:"internalIPs"`
+	InternalIPs map[string]StatefulPolicyPreservedStateNetworkIpResponse `pulumi:"internalIPs"`
 }
 
 // Configuration of preserved resources.
@@ -44858,18 +45644,24 @@ func (o StatefulPolicyPreservedStateResponseOutput) ToStatefulPolicyPreservedSta
 }
 
 // Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
-func (o StatefulPolicyPreservedStateResponseOutput) Disks() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]string { return v.Disks }).(pulumi.StringMapOutput)
+func (o StatefulPolicyPreservedStateResponseOutput) Disks() StatefulPolicyPreservedStateDiskDeviceResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateDiskDeviceResponse {
+		return v.Disks
+	}).(StatefulPolicyPreservedStateDiskDeviceResponseMapOutput)
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]string { return v.ExternalIPs }).(pulumi.StringMapOutput)
+func (o StatefulPolicyPreservedStateResponseOutput) ExternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
+		return v.ExternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
 }
 
 // Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]string { return v.InternalIPs }).(pulumi.StringMapOutput)
+func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() StatefulPolicyPreservedStateNetworkIpResponseMapOutput {
+	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]StatefulPolicyPreservedStateNetworkIpResponse {
+		return v.InternalIPs
+	}).(StatefulPolicyPreservedStateNetworkIpResponseMapOutput)
 }
 
 type StatefulPolicyResponse struct {
@@ -47052,6 +47844,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyLoadBalancingUtilizationPtrInput)(nil)).Elem(), AutoscalingPolicyLoadBalancingUtilizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScaleInControlPtrInput)(nil)).Elem(), AutoscalingPolicyScaleInControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScalingScheduleInput)(nil)).Elem(), AutoscalingPolicyScalingScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyScalingScheduleMapInput)(nil)).Elem(), AutoscalingPolicyScalingScheduleMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendInput)(nil)).Elem(), BackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendArrayInput)(nil)).Elem(), BackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyInput)(nil)).Elem(), BackendBucketCdnPolicyArgs{})
@@ -47397,6 +48191,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerProjectLimitArrayInput)(nil)).Elem(), ServiceAttachmentConsumerProjectLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsInput)(nil)).Elem(), ShareSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsPtrInput)(nil)).Elem(), ShareSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsProjectConfigInput)(nil)).Elem(), ShareSettingsProjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShareSettingsProjectConfigMapInput)(nil)).Elem(), ShareSettingsProjectConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceIntegrityPolicyInput)(nil)).Elem(), ShieldedInstanceIntegrityPolicyArgs{})
@@ -47413,6 +48209,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPtrInput)(nil)).Elem(), StatefulPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStatePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceInput)(nil)).Elem(), StatefulPolicyPreservedStateDiskDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateDiskDeviceMapInput)(nil)).Elem(), StatefulPolicyPreservedStateDiskDeviceMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpInput)(nil)).Elem(), StatefulPolicyPreservedStateNetworkIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateNetworkIpMapInput)(nil)).Elem(), StatefulPolicyPreservedStateNetworkIpMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigPtrInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeInput)(nil)).Elem(), SubnetworkSecondaryRangeArgs{})
@@ -47499,6 +48299,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyScaleInControlResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleMapOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingPolicyScalingScheduleResponseMapOutput{})
 	pulumi.RegisterOutputType(BackendOutput{})
 	pulumi.RegisterOutputType(BackendArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyOutput{})
@@ -47591,6 +48395,8 @@ func init() {
 	pulumi.RegisterOutputType(DeprecationStatusResponseOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationPtrOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationListResponseOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationListResponseMapOutput{})
 	pulumi.RegisterOutputType(DiskAsyncReplicationResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
@@ -47600,6 +48406,7 @@ func init() {
 	pulumi.RegisterOutputType(DiskParamsPtrOutput{})
 	pulumi.RegisterOutputType(DiskParamsResponseOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(DiskResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
 	pulumi.RegisterOutputType(DisplayDevicePtrOutput{})
@@ -48021,6 +48828,8 @@ func init() {
 	pulumi.RegisterOutputType(SavedDiskArrayOutput{})
 	pulumi.RegisterOutputType(SavedDiskResponseOutput{})
 	pulumi.RegisterOutputType(SavedDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScalingScheduleStatusResponseOutput{})
+	pulumi.RegisterOutputType(ScalingScheduleStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(SchedulingOutput{})
 	pulumi.RegisterOutputType(SchedulingPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOutput{})
@@ -48120,6 +48929,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerProjectLimitResponseArrayOutput{})
 	pulumi.RegisterOutputType(ShareSettingsOutput{})
 	pulumi.RegisterOutputType(ShareSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ShareSettingsProjectConfigOutput{})
+	pulumi.RegisterOutputType(ShareSettingsProjectConfigMapOutput{})
+	pulumi.RegisterOutputType(ShareSettingsProjectConfigResponseOutput{})
+	pulumi.RegisterOutputType(ShareSettingsProjectConfigResponseMapOutput{})
 	pulumi.RegisterOutputType(ShareSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
@@ -48149,6 +48962,14 @@ func init() {
 	pulumi.RegisterOutputType(StatefulPolicyPtrOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStatePtrOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceMapOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceResponseOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateDiskDeviceResponseMapOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpMapOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseOutput{})
+	pulumi.RegisterOutputType(StatefulPolicyPreservedStateNetworkIpResponseMapOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateResponseOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyResponseOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigOutput{})

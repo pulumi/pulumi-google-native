@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Outputs
         /// <summary>
         /// Maps from a resource slice. For example, FHIR resource field path to a set of sensitive text findings. For example, Appointment.Narrative text1 --&gt; {findings_1, findings_2, findings_3}
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Details;
+        public readonly ImmutableDictionary<string, Outputs.DetailResponse> Details;
 
         [OutputConstructor]
-        private SensitiveTextAnnotationResponse(ImmutableDictionary<string, string> details)
+        private SensitiveTextAnnotationResponse(ImmutableDictionary<string, Outputs.DetailResponse> details)
         {
             Details = details;
         }

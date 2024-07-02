@@ -1017,6 +1017,404 @@ func (o GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayOutput) Index(i pu
 	}).(GoogleCloudDatacatalogV1beta1ColumnSchemaResponseOutput)
 }
 
+type GoogleCloudDatacatalogV1beta1FieldType struct {
+	// Represents an enum type.
+	EnumType *GoogleCloudDatacatalogV1beta1FieldTypeEnumType `pulumi:"enumType"`
+	// Represents primitive types - string, bool etc.
+	PrimitiveType *GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType `pulumi:"primitiveType"`
+}
+
+// GoogleCloudDatacatalogV1beta1FieldTypeInput is an input type that accepts GoogleCloudDatacatalogV1beta1FieldTypeArgs and GoogleCloudDatacatalogV1beta1FieldTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1FieldTypeInput` via:
+//
+//	GoogleCloudDatacatalogV1beta1FieldTypeArgs{...}
+type GoogleCloudDatacatalogV1beta1FieldTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1FieldTypeOutput() GoogleCloudDatacatalogV1beta1FieldTypeOutput
+	ToGoogleCloudDatacatalogV1beta1FieldTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1FieldTypeOutput
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeArgs struct {
+	// Represents an enum type.
+	EnumType GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrInput `pulumi:"enumType"`
+	// Represents primitive types - string, bool etc.
+	PrimitiveType GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypePtrInput `pulumi:"primitiveType"`
+}
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldType)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeOutput() GoogleCloudDatacatalogV1beta1FieldTypeOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1FieldTypeOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1FieldTypeOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeOutput() GoogleCloudDatacatalogV1beta1FieldTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeOutput {
+	return o
+}
+
+// Represents an enum type.
+func (o GoogleCloudDatacatalogV1beta1FieldTypeOutput) EnumType() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldType) *GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
+		return v.EnumType
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput)
+}
+
+// Represents primitive types - string, bool etc.
+func (o GoogleCloudDatacatalogV1beta1FieldTypeOutput) PrimitiveType() GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldType) *GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType {
+		return v.PrimitiveType
+	}).(GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypePtrOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumType struct {
+	AllowedValues []GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue `pulumi:"allowedValues"`
+}
+
+// GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeInput is an input type that accepts GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs and GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeInput` via:
+//
+//	GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs{...}
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs struct {
+	AllowedValues GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayInput `pulumi:"allowedValues"`
+}
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumType)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput)
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput).ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrInput is an input type that accepts GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs, GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtr and GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrInput` via:
+//
+//	        GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput
+}
+
+type googleCloudDatacatalogV1beta1FieldTypeEnumTypePtrType GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs
+
+func GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtr(v *GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrInput {
+	return (*googleCloudDatacatalogV1beta1FieldTypeEnumTypePtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1beta1FieldTypeEnumTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1beta1FieldTypeEnumType)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1beta1FieldTypeEnumTypePtrType) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1beta1FieldTypeEnumTypePtrType) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1beta1FieldTypeEnumType) *GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
+		return &v
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput) AllowedValues() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldTypeEnumType) []GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
+		return v.AllowedValues
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1beta1FieldTypeEnumType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput) Elem() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1FieldTypeEnumType) GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1beta1FieldTypeEnumType
+		return ret
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput)
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput) AllowedValues() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1FieldTypeEnumType) []GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedValues
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue struct {
+	// The display name of the enum value. Must not be an empty string.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueInput is an input type that accepts GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs and GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueInput` via:
+//
+//	GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs{...}
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs struct {
+	// The display name of the enum value. Must not be an empty string.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput)
+}
+
+// GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayInput is an input type that accepts GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArray and GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayInput` via:
+//
+//	GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArray{ GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs{...} }
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput
+	ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArray []GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueInput
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArray) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArray) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput {
+	return o
+}
+
+// The display name of the enum value. Must not be an empty string.
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
+		return vs[0].([]GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse struct {
+	// The display name of the enum value. Must not be an empty string.
+	DisplayName string `pulumi:"displayName"`
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput {
+	return o
+}
+
+// The display name of the enum value. Must not be an empty string.
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse {
+		return vs[0].([]GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponse struct {
+	AllowedValues []GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse `pulumi:"allowedValues"`
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput) AllowedValues() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponse) []GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponse {
+		return v.AllowedValues
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeResponse struct {
+	// Represents an enum type.
+	EnumType GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponse `pulumi:"enumType"`
+	// Represents primitive types - string, bool etc.
+	PrimitiveType string `pulumi:"primitiveType"`
+}
+
+type GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeResponseOutput() GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput) ToGoogleCloudDatacatalogV1beta1FieldTypeResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput {
+	return o
+}
+
+// Represents an enum type.
+func (o GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput) EnumType() GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldTypeResponse) GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponse {
+		return v.EnumType
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput)
+}
+
+// Represents primitive types - string, bool etc.
+func (o GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput) PrimitiveType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1FieldTypeResponse) string { return v.PrimitiveType }).(pulumi.StringOutput)
+}
+
 // Specifications of a single file in Cloud Storage.
 type GoogleCloudDatacatalogV1beta1GcsFileSpecResponse struct {
 	// The full file path. Example: `gs://bucket_name/a/b.txt`.
@@ -1611,6 +2009,227 @@ func (o GoogleCloudDatacatalogV1beta1TableSpecResponseOutput) GroupedEntry() pul
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TableSpecResponse) string { return v.GroupedEntry }).(pulumi.StringOutput)
 }
 
+// The template for an individual field within a tag template.
+type GoogleCloudDatacatalogV1beta1TagTemplateField struct {
+	// The description for this field. Defaults to an empty string.
+	Description *string `pulumi:"description"`
+	// The display name for this field. Defaults to an empty string.
+	DisplayName *string `pulumi:"displayName"`
+	// Whether this is a required field. Defaults to false.
+	IsRequired *bool `pulumi:"isRequired"`
+	// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+	Order *int `pulumi:"order"`
+	// The type of value this tag field can contain.
+	Type GoogleCloudDatacatalogV1beta1FieldType `pulumi:"type"`
+}
+
+// GoogleCloudDatacatalogV1beta1TagTemplateFieldInput is an input type that accepts GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs and GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1TagTemplateFieldInput` via:
+//
+//	GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs{...}
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1TagTemplateFieldOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput
+	ToGoogleCloudDatacatalogV1beta1TagTemplateFieldOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput
+}
+
+// The template for an individual field within a tag template.
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs struct {
+	// The description for this field. Defaults to an empty string.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The display name for this field. Defaults to an empty string.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Whether this is a required field. Defaults to false.
+	IsRequired pulumi.BoolPtrInput `pulumi:"isRequired"`
+	// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+	Order pulumi.IntPtrInput `pulumi:"order"`
+	// The type of value this tag field can contain.
+	Type GoogleCloudDatacatalogV1beta1FieldTypeInput `pulumi:"type"`
+}
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TagTemplateField)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1TagTemplateFieldOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput)
+}
+
+// GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput is an input type that accepts GoogleCloudDatacatalogV1beta1TagTemplateFieldMap and GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput` via:
+//
+//	GoogleCloudDatacatalogV1beta1TagTemplateFieldMap{ "key": GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs{...} }
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput
+	ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput
+}
+
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldMap map[string]GoogleCloudDatacatalogV1beta1TagTemplateFieldInput
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1TagTemplateField)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1TagTemplateFieldMap) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1TagTemplateFieldMap) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput)
+}
+
+// The template for an individual field within a tag template.
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TagTemplateField)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput {
+	return o
+}
+
+// The description for this field. Defaults to an empty string.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateField) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name for this field. Defaults to an empty string.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateField) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Whether this is a required field. Defaults to false.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) IsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateField) *bool { return v.IsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateField) *int { return v.Order }).(pulumi.IntPtrOutput)
+}
+
+// The type of value this tag field can contain.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput) Type() GoogleCloudDatacatalogV1beta1FieldTypeOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateField) GoogleCloudDatacatalogV1beta1FieldType {
+		return v.Type
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1TagTemplateField)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1TagTemplateField {
+		return vs[0].(map[string]GoogleCloudDatacatalogV1beta1TagTemplateField)[vs[1].(string)]
+	}).(GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput)
+}
+
+// The template for an individual field within a tag template.
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse struct {
+	// The description for this field. Defaults to an empty string.
+	Description string `pulumi:"description"`
+	// The display name for this field. Defaults to an empty string.
+	DisplayName string `pulumi:"displayName"`
+	// Whether this is a required field. Defaults to false.
+	IsRequired bool `pulumi:"isRequired"`
+	// The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.
+	Name string `pulumi:"name"`
+	// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+	Order int `pulumi:"order"`
+	// The type of value this tag field can contain.
+	Type GoogleCloudDatacatalogV1beta1FieldTypeResponse `pulumi:"type"`
+}
+
+// The template for an individual field within a tag template.
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput {
+	return o
+}
+
+// The description for this field. Defaults to an empty string.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name for this field. Defaults to an empty string.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Whether this is a required field. Defaults to false.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) IsRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse) bool { return v.IsRequired }).(pulumi.BoolOutput)
+}
+
+// The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse) int { return v.Order }).(pulumi.IntOutput)
+}
+
+// The type of value this tag field can contain.
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput) Type() GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse) GoogleCloudDatacatalogV1beta1FieldTypeResponse {
+		return v.Type
+	}).(GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput() GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) ToGoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse {
+		return vs[0].(map[string]GoogleCloudDatacatalogV1beta1TagTemplateFieldResponse)[vs[1].(string)]
+	}).(GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput)
+}
+
 // The source system of the Taxonomy.
 type GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse struct {
 	// The service agent for the service.
@@ -1649,7 +2268,7 @@ type GoogleCloudDatacatalogV1beta1UsageSignalResponse struct {
 	// The timestamp of the end of the usage statistics duration.
 	UpdateTime string `pulumi:"updateTime"`
 	// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
-	UsageWithinTimeRange map[string]string `pulumi:"usageWithinTimeRange"`
+	UsageWithinTimeRange map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse `pulumi:"usageWithinTimeRange"`
 }
 
 // The set of all usage signals that we store in Data Catalog.
@@ -1673,10 +2292,79 @@ func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UpdateTime() pul
 }
 
 // Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
-func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UsageWithinTimeRange() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) map[string]string {
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UsageWithinTimeRange() GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse {
 		return v.UsageWithinTimeRange
-	}).(pulumi.StringMapOutput)
+	}).(GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput)
+}
+
+// Detailed counts on the entry's usage. Caveats: - Only BigQuery tables have usage stats - The usage stats only include BigQuery query jobs - The usage stats might be underestimated, e.g. wildcard table references are not yet counted in usage computation https://cloud.google.com/bigquery/docs/querying-wildcard-tables
+type GoogleCloudDatacatalogV1beta1UsageStatsResponse struct {
+	// The number of times that the underlying entry was attempted to be used but was cancelled by the user.
+	TotalCancellations float64 `pulumi:"totalCancellations"`
+	// The number of times that the underlying entry was successfully used.
+	TotalCompletions float64 `pulumi:"totalCompletions"`
+	// Total time spent (in milliseconds) during uses the resulted in completions.
+	TotalExecutionTimeForCompletionsMillis float64 `pulumi:"totalExecutionTimeForCompletionsMillis"`
+	// The number of times that the underlying entry was attempted to be used but failed.
+	TotalFailures float64 `pulumi:"totalFailures"`
+}
+
+// Detailed counts on the entry's usage. Caveats: - Only BigQuery tables have usage stats - The usage stats only include BigQuery query jobs - The usage stats might be underestimated, e.g. wildcard table references are not yet counted in usage computation https://cloud.google.com/bigquery/docs/querying-wildcard-tables
+type GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1UsageStatsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) ToGoogleCloudDatacatalogV1beta1UsageStatsResponseOutput() GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) ToGoogleCloudDatacatalogV1beta1UsageStatsResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput {
+	return o
+}
+
+// The number of times that the underlying entry was attempted to be used but was cancelled by the user.
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) TotalCancellations() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageStatsResponse) float64 { return v.TotalCancellations }).(pulumi.Float64Output)
+}
+
+// The number of times that the underlying entry was successfully used.
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) TotalCompletions() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageStatsResponse) float64 { return v.TotalCompletions }).(pulumi.Float64Output)
+}
+
+// Total time spent (in milliseconds) during uses the resulted in completions.
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) TotalExecutionTimeForCompletionsMillis() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageStatsResponse) float64 {
+		return v.TotalExecutionTimeForCompletionsMillis
+	}).(pulumi.Float64Output)
+}
+
+// The number of times that the underlying entry was attempted to be used but failed.
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput) TotalFailures() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageStatsResponse) float64 { return v.TotalFailures }).(pulumi.Float64Output)
+}
+
+type GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) ToGoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput() GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) ToGoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1beta1UsageStatsResponse {
+		return vs[0].(map[string]GoogleCloudDatacatalogV1beta1UsageStatsResponse)[vs[1].(string)]
+	}).(GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput)
 }
 
 // Table view specification.
@@ -1837,12 +2525,19 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1BigQueryTableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1ColumnSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1ColumnSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1ColumnSchemaArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1ColumnSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1FieldTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1GcsFilesetSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1SchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1SchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1SchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1SchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TableSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TableSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TableSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TableSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TagTemplateFieldInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TagTemplateFieldMapInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1TagTemplateFieldMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1ViewSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1ViewSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1beta1ViewSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1beta1ViewSpecArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
@@ -1862,6 +2557,15 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ColumnSchemaArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ColumnSchemaResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1FieldTypeResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1GcsFileSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1GcsFileSpecResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput{})
@@ -1874,8 +2578,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldMapOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TagTemplateFieldResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageStatsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageStatsResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecResponseOutput{})

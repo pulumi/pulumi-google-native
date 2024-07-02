@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// Application specific response metadata. Must be set in the first response for streaming APIs.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> Extensions;
+        public readonly ImmutableArray<ImmutableDictionary<string, object>> Extensions;
 
         [OutputConstructor]
         private GetResourcefileResult(
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string data,
 
-            ImmutableArray<ImmutableDictionary<string, string>> extensions)
+            ImmutableArray<ImmutableDictionary<string, object>> extensions)
         {
             ContentType = contentType;
             Data = data;

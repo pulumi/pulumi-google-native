@@ -19,18 +19,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public Input<Inputs.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs>? ConfigSource { get; set; }
 
         [Input("environment")]
-        private InputMap<string>? _environment;
-        public InputMap<string> Environment
+        private InputMap<object>? _environment;
+        public InputMap<object> Environment
         {
-            get => _environment ?? (_environment = new InputMap<string>());
+            get => _environment ?? (_environment = new InputMap<object>());
             set => _environment = value;
         }
 
         [Input("parameters")]
-        private InputMap<string>? _parameters;
-        public InputMap<string> Parameters
+        private InputMap<object>? _parameters;
+        public InputMap<object> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<string>());
+            get => _parameters ?? (_parameters = new InputMap<object>());
             set => _parameters = value;
         }
 

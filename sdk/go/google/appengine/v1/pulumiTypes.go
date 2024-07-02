@@ -1868,7 +1868,7 @@ type Deployment struct {
 	// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
 	Container *ContainerInfo `pulumi:"container"`
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
-	Files map[string]string `pulumi:"files"`
+	Files map[string]FileInfo `pulumi:"files"`
 	// The zip file for this deployment, if this is a zip deployment.
 	Zip *ZipInfo `pulumi:"zip"`
 }
@@ -1891,7 +1891,7 @@ type DeploymentArgs struct {
 	// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
 	Container ContainerInfoPtrInput `pulumi:"container"`
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
-	Files pulumi.StringMapInput `pulumi:"files"`
+	Files FileInfoMapInput `pulumi:"files"`
 	// The zip file for this deployment, if this is a zip deployment.
 	Zip ZipInfoPtrInput `pulumi:"zip"`
 }
@@ -1985,8 +1985,8 @@ func (o DeploymentOutput) Container() ContainerInfoPtrOutput {
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
-func (o DeploymentOutput) Files() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Deployment) map[string]string { return v.Files }).(pulumi.StringMapOutput)
+func (o DeploymentOutput) Files() FileInfoMapOutput {
+	return o.ApplyT(func(v Deployment) map[string]FileInfo { return v.Files }).(FileInfoMapOutput)
 }
 
 // The zip file for this deployment, if this is a zip deployment.
@@ -2039,13 +2039,13 @@ func (o DeploymentPtrOutput) Container() ContainerInfoPtrOutput {
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
-func (o DeploymentPtrOutput) Files() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Deployment) map[string]string {
+func (o DeploymentPtrOutput) Files() FileInfoMapOutput {
+	return o.ApplyT(func(v *Deployment) map[string]FileInfo {
 		if v == nil {
 			return nil
 		}
 		return v.Files
-	}).(pulumi.StringMapOutput)
+	}).(FileInfoMapOutput)
 }
 
 // The zip file for this deployment, if this is a zip deployment.
@@ -2065,7 +2065,7 @@ type DeploymentResponse struct {
 	// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
 	Container ContainerInfoResponse `pulumi:"container"`
 	// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
-	Files map[string]string `pulumi:"files"`
+	Files map[string]FileInfoResponse `pulumi:"files"`
 	// The zip file for this deployment, if this is a zip deployment.
 	Zip ZipInfoResponse `pulumi:"zip"`
 }
@@ -2096,8 +2096,8 @@ func (o DeploymentResponseOutput) Container() ContainerInfoResponseOutput {
 }
 
 // Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
-func (o DeploymentResponseOutput) Files() pulumi.StringMapOutput {
-	return o.ApplyT(func(v DeploymentResponse) map[string]string { return v.Files }).(pulumi.StringMapOutput)
+func (o DeploymentResponseOutput) Files() FileInfoResponseMapOutput {
+	return o.ApplyT(func(v DeploymentResponse) map[string]FileInfoResponse { return v.Files }).(FileInfoResponseMapOutput)
 }
 
 // The zip file for this deployment, if this is a zip deployment.
@@ -3127,6 +3127,184 @@ func (o FeatureSettingsResponseOutput) SplitHealthChecks() pulumi.BoolOutput {
 // If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image.
 func (o FeatureSettingsResponseOutput) UseContainerOptimizedOs() pulumi.BoolOutput {
 	return o.ApplyT(func(v FeatureSettingsResponse) bool { return v.UseContainerOptimizedOs }).(pulumi.BoolOutput)
+}
+
+// Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.
+type FileInfo struct {
+	// The MIME type of the file.Defaults to the value from Google Cloud Storage.
+	MimeType *string `pulumi:"mimeType"`
+	// The SHA1 hash of the file, in hex.
+	Sha1Sum *string `pulumi:"sha1Sum"`
+	// URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+	SourceUrl *string `pulumi:"sourceUrl"`
+}
+
+// FileInfoInput is an input type that accepts FileInfoArgs and FileInfoOutput values.
+// You can construct a concrete instance of `FileInfoInput` via:
+//
+//	FileInfoArgs{...}
+type FileInfoInput interface {
+	pulumi.Input
+
+	ToFileInfoOutput() FileInfoOutput
+	ToFileInfoOutputWithContext(context.Context) FileInfoOutput
+}
+
+// Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.
+type FileInfoArgs struct {
+	// The MIME type of the file.Defaults to the value from Google Cloud Storage.
+	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
+	// The SHA1 hash of the file, in hex.
+	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
+	// URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+	SourceUrl pulumi.StringPtrInput `pulumi:"sourceUrl"`
+}
+
+func (FileInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileInfo)(nil)).Elem()
+}
+
+func (i FileInfoArgs) ToFileInfoOutput() FileInfoOutput {
+	return i.ToFileInfoOutputWithContext(context.Background())
+}
+
+func (i FileInfoArgs) ToFileInfoOutputWithContext(ctx context.Context) FileInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileInfoOutput)
+}
+
+// FileInfoMapInput is an input type that accepts FileInfoMap and FileInfoMapOutput values.
+// You can construct a concrete instance of `FileInfoMapInput` via:
+//
+//	FileInfoMap{ "key": FileInfoArgs{...} }
+type FileInfoMapInput interface {
+	pulumi.Input
+
+	ToFileInfoMapOutput() FileInfoMapOutput
+	ToFileInfoMapOutputWithContext(context.Context) FileInfoMapOutput
+}
+
+type FileInfoMap map[string]FileInfoInput
+
+func (FileInfoMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileInfo)(nil)).Elem()
+}
+
+func (i FileInfoMap) ToFileInfoMapOutput() FileInfoMapOutput {
+	return i.ToFileInfoMapOutputWithContext(context.Background())
+}
+
+func (i FileInfoMap) ToFileInfoMapOutputWithContext(ctx context.Context) FileInfoMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileInfoMapOutput)
+}
+
+// Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.
+type FileInfoOutput struct{ *pulumi.OutputState }
+
+func (FileInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileInfo)(nil)).Elem()
+}
+
+func (o FileInfoOutput) ToFileInfoOutput() FileInfoOutput {
+	return o
+}
+
+func (o FileInfoOutput) ToFileInfoOutputWithContext(ctx context.Context) FileInfoOutput {
+	return o
+}
+
+// The MIME type of the file.Defaults to the value from Google Cloud Storage.
+func (o FileInfoOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileInfo) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+}
+
+// The SHA1 hash of the file, in hex.
+func (o FileInfoOutput) Sha1Sum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileInfo) *string { return v.Sha1Sum }).(pulumi.StringPtrOutput)
+}
+
+// URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+func (o FileInfoOutput) SourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileInfo) *string { return v.SourceUrl }).(pulumi.StringPtrOutput)
+}
+
+type FileInfoMapOutput struct{ *pulumi.OutputState }
+
+func (FileInfoMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileInfo)(nil)).Elem()
+}
+
+func (o FileInfoMapOutput) ToFileInfoMapOutput() FileInfoMapOutput {
+	return o
+}
+
+func (o FileInfoMapOutput) ToFileInfoMapOutputWithContext(ctx context.Context) FileInfoMapOutput {
+	return o
+}
+
+func (o FileInfoMapOutput) MapIndex(k pulumi.StringInput) FileInfoOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FileInfo {
+		return vs[0].(map[string]FileInfo)[vs[1].(string)]
+	}).(FileInfoOutput)
+}
+
+// Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.
+type FileInfoResponse struct {
+	// The MIME type of the file.Defaults to the value from Google Cloud Storage.
+	MimeType string `pulumi:"mimeType"`
+	// The SHA1 hash of the file, in hex.
+	Sha1Sum string `pulumi:"sha1Sum"`
+	// URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+	SourceUrl string `pulumi:"sourceUrl"`
+}
+
+// Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.
+type FileInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (FileInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileInfoResponse)(nil)).Elem()
+}
+
+func (o FileInfoResponseOutput) ToFileInfoResponseOutput() FileInfoResponseOutput {
+	return o
+}
+
+func (o FileInfoResponseOutput) ToFileInfoResponseOutputWithContext(ctx context.Context) FileInfoResponseOutput {
+	return o
+}
+
+// The MIME type of the file.Defaults to the value from Google Cloud Storage.
+func (o FileInfoResponseOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v FileInfoResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// The SHA1 hash of the file, in hex.
+func (o FileInfoResponseOutput) Sha1Sum() pulumi.StringOutput {
+	return o.ApplyT(func(v FileInfoResponse) string { return v.Sha1Sum }).(pulumi.StringOutput)
+}
+
+// URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+func (o FileInfoResponseOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v FileInfoResponse) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+type FileInfoResponseMapOutput struct{ *pulumi.OutputState }
+
+func (FileInfoResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FileInfoResponse)(nil)).Elem()
+}
+
+func (o FileInfoResponseMapOutput) ToFileInfoResponseMapOutput() FileInfoResponseMapOutput {
+	return o
+}
+
+func (o FileInfoResponseMapOutput) ToFileInfoResponseMapOutputWithContext(ctx context.Context) FileInfoResponseMapOutput {
+	return o
+}
+
+func (o FileInfoResponseMapOutput) MapIndex(k pulumi.StringInput) FileInfoResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FileInfoResponse {
+		return vs[0].(map[string]FileInfoResponse)[vs[1].(string)]
+	}).(FileInfoResponseOutput)
 }
 
 // Runtime settings for the App Engine flexible environment.
@@ -7893,6 +8071,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ErrorHandlerArrayInput)(nil)).Elem(), ErrorHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSettingsInput)(nil)).Elem(), FeatureSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSettingsPtrInput)(nil)).Elem(), FeatureSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileInfoInput)(nil)).Elem(), FileInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileInfoMapInput)(nil)).Elem(), FileInfoMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleRuntimeSettingsInput)(nil)).Elem(), FlexibleRuntimeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleRuntimeSettingsPtrInput)(nil)).Elem(), FlexibleRuntimeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckInput)(nil)).Elem(), HealthCheckArgs{})
@@ -7976,6 +8156,10 @@ func init() {
 	pulumi.RegisterOutputType(FeatureSettingsOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsResponseOutput{})
+	pulumi.RegisterOutputType(FileInfoOutput{})
+	pulumi.RegisterOutputType(FileInfoMapOutput{})
+	pulumi.RegisterOutputType(FileInfoResponseOutput{})
+	pulumi.RegisterOutputType(FileInfoResponseMapOutput{})
 	pulumi.RegisterOutputType(FlexibleRuntimeSettingsOutput{})
 	pulumi.RegisterOutputType(FlexibleRuntimeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FlexibleRuntimeSettingsResponseOutput{})

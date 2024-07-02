@@ -13,26 +13,26 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class InstanceGroupManagerInstanceFlexibilityPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("instanceSelectionLists")]
-        private InputMap<string>? _instanceSelectionLists;
+        private InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>? _instanceSelectionLists;
 
         /// <summary>
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
-        public InputMap<string> InstanceSelectionLists
+        public InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs> InstanceSelectionLists
         {
-            get => _instanceSelectionLists ?? (_instanceSelectionLists = new InputMap<string>());
+            get => _instanceSelectionLists ?? (_instanceSelectionLists = new InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>());
             set => _instanceSelectionLists = value;
         }
 
         [Input("instanceSelections")]
-        private InputMap<string>? _instanceSelections;
+        private InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>? _instanceSelections;
 
         /// <summary>
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
-        public InputMap<string> InstanceSelections
+        public InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs> InstanceSelections
         {
-            get => _instanceSelections ?? (_instanceSelections = new InputMap<string>());
+            get => _instanceSelections ?? (_instanceSelections = new InputMap<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs>());
             set => _instanceSelections = value;
         }
 

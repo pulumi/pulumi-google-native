@@ -100,11 +100,11 @@ export interface GetReleaseResult {
     /**
      * Map from target ID to the target artifacts created during the render operation.
      */
-    readonly targetArtifacts: {[key: string]: string};
+    readonly targetArtifacts: {[key: string]: outputs.clouddeploy.v1.TargetArtifactResponse};
     /**
      * Map from target ID to details of the render operation for that target.
      */
-    readonly targetRenders: {[key: string]: string};
+    readonly targetRenders: {[key: string]: outputs.clouddeploy.v1.TargetRenderResponse};
     /**
      * Snapshot of the targets taken at release creation time.
      */

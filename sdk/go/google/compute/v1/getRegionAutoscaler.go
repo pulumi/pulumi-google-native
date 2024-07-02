@@ -44,7 +44,7 @@ type LookupRegionAutoscalerResult struct {
 	// URL of the region where the instance group resides (for autoscalers living in regional scope).
 	Region string `pulumi:"region"`
 	// Status information of existing scaling schedules.
-	ScalingScheduleStatus map[string]string `pulumi:"scalingScheduleStatus"`
+	ScalingScheduleStatus map[string]ScalingScheduleStatusResponse `pulumi:"scalingScheduleStatus"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
@@ -130,8 +130,10 @@ func (o LookupRegionAutoscalerResultOutput) Region() pulumi.StringOutput {
 }
 
 // Status information of existing scaling schedules.
-func (o LookupRegionAutoscalerResultOutput) ScalingScheduleStatus() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupRegionAutoscalerResult) map[string]string { return v.ScalingScheduleStatus }).(pulumi.StringMapOutput)
+func (o LookupRegionAutoscalerResultOutput) ScalingScheduleStatus() ScalingScheduleStatusResponseMapOutput {
+	return o.ApplyT(func(v LookupRegionAutoscalerResult) map[string]ScalingScheduleStatusResponse {
+		return v.ScalingScheduleStatus
+	}).(ScalingScheduleStatusResponseMapOutput)
 }
 
 // Server-defined URL for the resource.

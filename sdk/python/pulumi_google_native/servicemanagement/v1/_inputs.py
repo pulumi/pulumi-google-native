@@ -547,7 +547,6 @@ class BackendRuleArgs:
                  jwt_audience: Optional[pulumi.Input[str]] = None,
                  min_deadline: Optional[pulumi.Input[float]] = None,
                  operation_deadline: Optional[pulumi.Input[float]] = None,
-                 overrides_by_request_protocol: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  path_translation: Optional[pulumi.Input['BackendRulePathTranslation']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[str]] = None):
@@ -559,7 +558,6 @@ class BackendRuleArgs:
         :param pulumi.Input[str] jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         :param pulumi.Input[float] min_deadline: Deprecated, do not use.
         :param pulumi.Input[float] operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] overrides_by_request_protocol: The map between request protocol and the backend address.
         :param pulumi.Input[str] protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param pulumi.Input[str] selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
@@ -578,8 +576,6 @@ class BackendRuleArgs:
             pulumi.set(__self__, "min_deadline", min_deadline)
         if operation_deadline is not None:
             pulumi.set(__self__, "operation_deadline", operation_deadline)
-        if overrides_by_request_protocol is not None:
-            pulumi.set(__self__, "overrides_by_request_protocol", overrides_by_request_protocol)
         if path_translation is not None:
             pulumi.set(__self__, "path_translation", path_translation)
         if protocol is not None:
@@ -659,18 +655,6 @@ class BackendRuleArgs:
     @operation_deadline.setter
     def operation_deadline(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "operation_deadline", value)
-
-    @property
-    @pulumi.getter(name="overridesByRequestProtocol")
-    def overrides_by_request_protocol(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The map between request protocol and the backend address.
-        """
-        return pulumi.get(self, "overrides_by_request_protocol")
-
-    @overrides_by_request_protocol.setter
-    def overrides_by_request_protocol(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "overrides_by_request_protocol", value)
 
     @property
     @pulumi.getter(name="pathTranslation")
@@ -3621,11 +3605,11 @@ class OAuthRequirementsArgs:
 class OptionArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 value: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         A protocol buffer option, which can be attached to a message, field, enumeration, etc.
         :param pulumi.Input[str] name: The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+        :param pulumi.Input[Mapping[str, Any]] value: The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -3646,14 +3630,14 @@ class OptionArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def value(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def value(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "value", value)
 
 
@@ -4308,24 +4292,24 @@ class SystemParameterArgs:
 @pulumi.input_type
 class TrafficPercentStrategyArgs:
     def __init__(__self__, *,
-                 percentages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 percentages: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None):
         """
         Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+        :param pulumi.Input[Mapping[str, pulumi.Input[float]]] percentages: Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         if percentages is not None:
             pulumi.set(__self__, "percentages", percentages)
 
     @property
     @pulumi.getter
-    def percentages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def percentages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]:
         """
         Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
         """
         return pulumi.get(self, "percentages")
 
     @percentages.setter
-    def percentages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def percentages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]]):
         pulumi.set(self, "percentages", value)
 
 

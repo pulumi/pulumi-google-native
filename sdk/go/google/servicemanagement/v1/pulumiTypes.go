@@ -1527,10 +1527,8 @@ type BackendRule struct {
 	// Deprecated: Deprecated, do not use.
 	MinDeadline *float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-	OperationDeadline *float64 `pulumi:"operationDeadline"`
-	// The map between request protocol and the backend address.
-	OverridesByRequestProtocol map[string]string           `pulumi:"overridesByRequestProtocol"`
-	PathTranslation            *BackendRulePathTranslation `pulumi:"pathTranslation"`
+	OperationDeadline *float64                    `pulumi:"operationDeadline"`
+	PathTranslation   *BackendRulePathTranslation `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol *string `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -1563,10 +1561,8 @@ type BackendRuleArgs struct {
 	// Deprecated: Deprecated, do not use.
 	MinDeadline pulumi.Float64PtrInput `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-	OperationDeadline pulumi.Float64PtrInput `pulumi:"operationDeadline"`
-	// The map between request protocol and the backend address.
-	OverridesByRequestProtocol pulumi.StringMapInput              `pulumi:"overridesByRequestProtocol"`
-	PathTranslation            BackendRulePathTranslationPtrInput `pulumi:"pathTranslation"`
+	OperationDeadline pulumi.Float64PtrInput             `pulumi:"operationDeadline"`
+	PathTranslation   BackendRulePathTranslationPtrInput `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -1657,11 +1653,6 @@ func (o BackendRuleOutput) OperationDeadline() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendRule) *float64 { return v.OperationDeadline }).(pulumi.Float64PtrOutput)
 }
 
-// The map between request protocol and the backend address.
-func (o BackendRuleOutput) OverridesByRequestProtocol() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BackendRule) map[string]string { return v.OverridesByRequestProtocol }).(pulumi.StringMapOutput)
-}
-
 func (o BackendRuleOutput) PathTranslation() BackendRulePathTranslationPtrOutput {
 	return o.ApplyT(func(v BackendRule) *BackendRulePathTranslation { return v.PathTranslation }).(BackendRulePathTranslationPtrOutput)
 }
@@ -1712,9 +1703,7 @@ type BackendRuleResponse struct {
 	MinDeadline float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline float64 `pulumi:"operationDeadline"`
-	// The map between request protocol and the backend address.
-	OverridesByRequestProtocol map[string]string `pulumi:"overridesByRequestProtocol"`
-	PathTranslation            string            `pulumi:"pathTranslation"`
+	PathTranslation   string  `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol string `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -1766,11 +1755,6 @@ func (o BackendRuleResponseOutput) MinDeadline() pulumi.Float64Output {
 // The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 func (o BackendRuleResponseOutput) OperationDeadline() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendRuleResponse) float64 { return v.OperationDeadline }).(pulumi.Float64Output)
-}
-
-// The map between request protocol and the backend address.
-func (o BackendRuleResponseOutput) OverridesByRequestProtocol() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BackendRuleResponse) map[string]string { return v.OverridesByRequestProtocol }).(pulumi.StringMapOutput)
 }
 
 func (o BackendRuleResponseOutput) PathTranslation() pulumi.StringOutput {
@@ -10752,7 +10736,7 @@ type Option struct {
 	// The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
 	Name *string `pulumi:"name"`
 	// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
-	Value map[string]string `pulumi:"value"`
+	Value map[string]interface{} `pulumi:"value"`
 }
 
 // OptionInput is an input type that accepts OptionArgs and OptionOutput values.
@@ -10771,7 +10755,7 @@ type OptionArgs struct {
 	// The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
-	Value pulumi.StringMapInput `pulumi:"value"`
+	Value pulumi.MapInput `pulumi:"value"`
 }
 
 func (OptionArgs) ElementType() reflect.Type {
@@ -10832,8 +10816,8 @@ func (o OptionOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
-func (o OptionOutput) Value() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Option) map[string]string { return v.Value }).(pulumi.StringMapOutput)
+func (o OptionOutput) Value() pulumi.MapOutput {
+	return o.ApplyT(func(v Option) map[string]interface{} { return v.Value }).(pulumi.MapOutput)
 }
 
 type OptionArrayOutput struct{ *pulumi.OutputState }
@@ -10861,7 +10845,7 @@ type OptionResponse struct {
 	// The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
 	Name string `pulumi:"name"`
 	// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
-	Value map[string]string `pulumi:"value"`
+	Value map[string]interface{} `pulumi:"value"`
 }
 
 // A protocol buffer option, which can be attached to a message, field, enumeration, etc.
@@ -10885,8 +10869,8 @@ func (o OptionResponseOutput) Name() pulumi.StringOutput {
 }
 
 // The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
-func (o OptionResponseOutput) Value() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OptionResponse) map[string]string { return v.Value }).(pulumi.StringMapOutput)
+func (o OptionResponseOutput) Value() pulumi.MapOutput {
+	return o.ApplyT(func(v OptionResponse) map[string]interface{} { return v.Value }).(pulumi.MapOutput)
 }
 
 type OptionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -12636,7 +12620,7 @@ func (o SourceContextResponseOutput) FileName() pulumi.StringOutput {
 // Source information used to create a Service Config
 type SourceInfoResponse struct {
 	// All files used during config generation.
-	SourceFiles []map[string]string `pulumi:"sourceFiles"`
+	SourceFiles []map[string]interface{} `pulumi:"sourceFiles"`
 }
 
 // Source information used to create a Service Config
@@ -12655,8 +12639,8 @@ func (o SourceInfoResponseOutput) ToSourceInfoResponseOutputWithContext(ctx cont
 }
 
 // All files used during config generation.
-func (o SourceInfoResponseOutput) SourceFiles() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v SourceInfoResponse) []map[string]string { return v.SourceFiles }).(pulumi.StringMapArrayOutput)
+func (o SourceInfoResponseOutput) SourceFiles() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v SourceInfoResponse) []map[string]interface{} { return v.SourceFiles }).(pulumi.MapArrayOutput)
 }
 
 // Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
@@ -13168,7 +13152,7 @@ func (o SystemParametersResponseOutput) Rules() SystemParameterRuleResponseArray
 // Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
 type TrafficPercentStrategy struct {
 	// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
-	Percentages map[string]string `pulumi:"percentages"`
+	Percentages map[string]float64 `pulumi:"percentages"`
 }
 
 // TrafficPercentStrategyInput is an input type that accepts TrafficPercentStrategyArgs and TrafficPercentStrategyOutput values.
@@ -13185,7 +13169,7 @@ type TrafficPercentStrategyInput interface {
 // Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
 type TrafficPercentStrategyArgs struct {
 	// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
-	Percentages pulumi.StringMapInput `pulumi:"percentages"`
+	Percentages pulumi.Float64MapInput `pulumi:"percentages"`
 }
 
 func (TrafficPercentStrategyArgs) ElementType() reflect.Type {
@@ -13267,8 +13251,8 @@ func (o TrafficPercentStrategyOutput) ToTrafficPercentStrategyPtrOutputWithConte
 }
 
 // Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
-func (o TrafficPercentStrategyOutput) Percentages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TrafficPercentStrategy) map[string]string { return v.Percentages }).(pulumi.StringMapOutput)
+func (o TrafficPercentStrategyOutput) Percentages() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v TrafficPercentStrategy) map[string]float64 { return v.Percentages }).(pulumi.Float64MapOutput)
 }
 
 type TrafficPercentStrategyPtrOutput struct{ *pulumi.OutputState }
@@ -13296,19 +13280,19 @@ func (o TrafficPercentStrategyPtrOutput) Elem() TrafficPercentStrategyOutput {
 }
 
 // Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
-func (o TrafficPercentStrategyPtrOutput) Percentages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TrafficPercentStrategy) map[string]string {
+func (o TrafficPercentStrategyPtrOutput) Percentages() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v *TrafficPercentStrategy) map[string]float64 {
 		if v == nil {
 			return nil
 		}
 		return v.Percentages
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.Float64MapOutput)
 }
 
 // Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
 type TrafficPercentStrategyResponse struct {
 	// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
-	Percentages map[string]string `pulumi:"percentages"`
+	Percentages map[string]float64 `pulumi:"percentages"`
 }
 
 // Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
@@ -13327,8 +13311,8 @@ func (o TrafficPercentStrategyResponseOutput) ToTrafficPercentStrategyResponseOu
 }
 
 // Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
-func (o TrafficPercentStrategyResponseOutput) Percentages() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TrafficPercentStrategyResponse) map[string]string { return v.Percentages }).(pulumi.StringMapOutput)
+func (o TrafficPercentStrategyResponseOutput) Percentages() pulumi.Float64MapOutput {
+	return o.ApplyT(func(v TrafficPercentStrategyResponse) map[string]float64 { return v.Percentages }).(pulumi.Float64MapOutput)
 }
 
 // A protocol buffer message type.

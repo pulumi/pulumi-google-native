@@ -27,7 +27,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         /// <summary>
         /// Map of deployment configs to deployments ("admission", "audit", "mutation').
         /// </summary>
-        public readonly ImmutableDictionary<string, string> DeploymentConfigs;
+        public readonly ImmutableDictionary<string, Outputs.PolicyControllerPolicyControllerDeploymentConfigResponse> DeploymentConfigs;
         /// <summary>
         /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
             string constraintViolationLimit,
 
-            ImmutableDictionary<string, string> deploymentConfigs,
+            ImmutableDictionary<string, Outputs.PolicyControllerPolicyControllerDeploymentConfigResponse> deploymentConfigs,
 
             ImmutableArray<string> exemptableNamespaces,
 

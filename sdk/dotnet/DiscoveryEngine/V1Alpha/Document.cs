@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
         /// </summary>
         [Output("derivedStructData")]
-        public Output<ImmutableDictionary<string, string>> DerivedStructData { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> DerivedStructData { get; private set; } = null!;
 
         /// <summary>
         /// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         [Output("structData")]
-        public Output<ImmutableDictionary<string, string>> StructData { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> StructData { get; private set; } = null!;
 
 
         /// <summary>
@@ -190,14 +190,14 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         public Input<string>? SchemaId { get; set; }
 
         [Input("structData")]
-        private InputMap<string>? _structData;
+        private InputMap<object>? _structData;
 
         /// <summary>
         /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
-        public InputMap<string> StructData
+        public InputMap<object> StructData
         {
-            get => _structData ?? (_structData = new InputMap<string>());
+            get => _structData ?? (_structData = new InputMap<object>());
             set => _structData = value;
         }
 

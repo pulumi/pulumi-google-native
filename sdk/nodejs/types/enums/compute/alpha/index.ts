@@ -2429,6 +2429,26 @@ export const InterconnectRequestedFeaturesItem = {
 
 export type InterconnectRequestedFeaturesItem = (typeof InterconnectRequestedFeaturesItem)[keyof typeof InterconnectRequestedFeaturesItem];
 
+export const LocationPolicyLocationPreference = {
+    /**
+     * Location is allowed for use.
+     */
+    Allow: "ALLOW",
+    /**
+     * Location is prohibited.
+     */
+    Deny: "DENY",
+    /**
+     * Default value, unused.
+     */
+    PreferenceUnspecified: "PREFERENCE_UNSPECIFIED",
+} as const;
+
+/**
+ * Preference for a given location. Set to either ALLOW or DENY.
+ */
+export type LocationPolicyLocationPreference = (typeof LocationPolicyLocationPreference)[keyof typeof LocationPolicyLocationPreference];
+
 export const LocationPolicyTargetShape = {
     /**
      * GCE picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
@@ -4395,6 +4415,26 @@ export const SslPolicyProfile = {
  * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
  */
 export type SslPolicyProfile = (typeof SslPolicyProfile)[keyof typeof SslPolicyProfile];
+
+export const StatefulPolicyPreservedStateDiskDeviceAutoDelete = {
+    Never: "NEVER",
+    OnPermanentInstanceDeletion: "ON_PERMANENT_INSTANCE_DELETION",
+} as const;
+
+/**
+ * These stateful disks will never be deleted during autohealing, update or VM instance recreate operations. This flag is used to configure if the disk should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted. Note: disks attached in READ_ONLY mode cannot be auto-deleted.
+ */
+export type StatefulPolicyPreservedStateDiskDeviceAutoDelete = (typeof StatefulPolicyPreservedStateDiskDeviceAutoDelete)[keyof typeof StatefulPolicyPreservedStateDiskDeviceAutoDelete];
+
+export const StatefulPolicyPreservedStateNetworkIpAutoDelete = {
+    Never: "NEVER",
+    OnPermanentInstanceDeletion: "ON_PERMANENT_INSTANCE_DELETION",
+} as const;
+
+/**
+ * These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
+ */
+export type StatefulPolicyPreservedStateNetworkIpAutoDelete = (typeof StatefulPolicyPreservedStateNetworkIpAutoDelete)[keyof typeof StatefulPolicyPreservedStateNetworkIpAutoDelete];
 
 export const StoragePoolCapacityProvisioningType = {
     /**

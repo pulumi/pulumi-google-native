@@ -107,7 +107,7 @@ class GoogleCloudBillingBudgetsV1FilterArgs:
                  credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  credit_types_treatment: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment']] = None,
                  custom_period: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1CustomPeriodArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[Any]]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_ancestors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -118,7 +118,7 @@ class GoogleCloudBillingBudgetsV1FilterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment'] credit_types_treatment: Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1CustomPeriodArgs'] custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report includes all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[Any]]]] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report includes all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report includes all usage for the billing account, regardless of which project the usage occurred on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_ancestors: Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report includes usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
@@ -193,14 +193,14 @@ class GoogleCloudBillingBudgetsV1FilterArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[Any]]]]]:
         """
         Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report includes all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[Any]]]]]):
         pulumi.set(self, "labels", value)
 
     @property

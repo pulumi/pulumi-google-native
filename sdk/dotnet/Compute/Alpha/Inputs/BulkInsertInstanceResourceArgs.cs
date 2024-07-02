@@ -46,14 +46,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? NamePattern { get; set; }
 
         [Input("perInstanceProperties")]
-        private InputMap<string>? _perInstanceProperties;
+        private InputMap<Inputs.BulkInsertInstanceResourcePerInstancePropertiesArgs>? _perInstanceProperties;
 
         /// <summary>
         /// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
         /// </summary>
-        public InputMap<string> PerInstanceProperties
+        public InputMap<Inputs.BulkInsertInstanceResourcePerInstancePropertiesArgs> PerInstanceProperties
         {
-            get => _perInstanceProperties ?? (_perInstanceProperties = new InputMap<string>());
+            get => _perInstanceProperties ?? (_perInstanceProperties = new InputMap<Inputs.BulkInsertInstanceResourcePerInstancePropertiesArgs>());
             set => _perInstanceProperties = value;
         }
 

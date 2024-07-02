@@ -23,7 +23,7 @@ type RegionDisk struct {
 	// Disk asynchronously replicated into this disk.
 	AsyncPrimaryDisk DiskAsyncReplicationResponseOutput `pulumi:"asyncPrimaryDisk"`
 	// A list of disks this disk is asynchronously replicated to.
-	AsyncSecondaryDisks pulumi.StringMapOutput `pulumi:"asyncSecondaryDisks"`
+	AsyncSecondaryDisks DiskAsyncReplicationListResponseMapOutput `pulumi:"asyncSecondaryDisks"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -393,8 +393,8 @@ func (o RegionDiskOutput) AsyncPrimaryDisk() DiskAsyncReplicationResponseOutput 
 }
 
 // A list of disks this disk is asynchronously replicated to.
-func (o RegionDiskOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *RegionDisk) pulumi.StringMapOutput { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
+func (o RegionDiskOutput) AsyncSecondaryDisks() DiskAsyncReplicationListResponseMapOutput {
+	return o.ApplyT(func(v *RegionDisk) DiskAsyncReplicationListResponseMapOutput { return v.AsyncSecondaryDisks }).(DiskAsyncReplicationListResponseMapOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -18,7 +18,7 @@ __all__ = ['RepositoryArgs', 'Repository']
 class RepositoryArgs:
     def __init__(__self__, *,
                  repository_id: pulumi.Input[str],
-                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['CleanupPolicyArgs']]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input['DockerRepositoryConfigArgs']] = None,
@@ -35,7 +35,7 @@ class RepositoryArgs:
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] repository_id: Required. The repository id to use for this repository.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        :param pulumi.Input[Mapping[str, pulumi.Input['CleanupPolicyArgs']]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         :param pulumi.Input[bool] cleanup_policy_dry_run: Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['DockerRepositoryConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -92,14 +92,14 @@ class RepositoryArgs:
 
     @property
     @pulumi.getter(name="cleanupPolicies")
-    def cleanup_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def cleanup_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['CleanupPolicyArgs']]]]:
         """
         Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         """
         return pulumi.get(self, "cleanup_policies")
 
     @cleanup_policies.setter
-    def cleanup_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def cleanup_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['CleanupPolicyArgs']]]]):
         pulumi.set(self, "cleanup_policies", value)
 
     @property
@@ -258,7 +258,7 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CleanupPolicyArgs']]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
@@ -279,7 +279,7 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CleanupPolicyArgs']]]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         :param pulumi.Input[bool] cleanup_policy_dry_run: Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -317,7 +317,7 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CleanupPolicyArgs']]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
@@ -409,7 +409,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cleanupPolicies")
-    def cleanup_policies(self) -> pulumi.Output[Mapping[str, str]]:
+    def cleanup_policies(self) -> pulumi.Output[Mapping[str, 'outputs.CleanupPolicyResponse']]:
         """
         Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         """

@@ -41,7 +41,7 @@ export class OrganizationEventThreatDetectionSettingCustomModule extends pulumi.
     /**
      * Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string}>;
+    public readonly config!: pulumi.Output<{[key: string]: any}>;
     /**
      * The description for the module.
      */
@@ -120,7 +120,7 @@ export interface OrganizationEventThreatDetectionSettingCustomModuleArgs {
     /**
      * Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: any}>;
     /**
      * The description for the module.
      */

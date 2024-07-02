@@ -21,6 +21,7 @@ __all__ = [
     'ManagementClusterResponse',
     'NetworkConfigResponse',
     'NetworkServiceResponse',
+    'NodeTypeConfigResponse',
     'NsxResponse',
     'StretchedClusterConfigResponse',
     'VcenterResponse',
@@ -393,12 +394,12 @@ class ManagementClusterResponse(dict):
 
     def __init__(__self__, *,
                  cluster_id: str,
-                 node_type_configs: Mapping[str, str],
+                 node_type_configs: Mapping[str, 'outputs.NodeTypeConfigResponse'],
                  stretched_cluster_config: 'outputs.StretchedClusterConfigResponse'):
         """
         Management cluster configuration.
         :param str cluster_id: The user-provided identifier of the new `Cluster`. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param Mapping[str, str] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
+        :param Mapping[str, 'NodeTypeConfigResponse'] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         :param 'StretchedClusterConfigResponse' stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -415,7 +416,7 @@ class ManagementClusterResponse(dict):
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Mapping[str, str]:
+    def node_type_configs(self) -> Mapping[str, 'outputs.NodeTypeConfigResponse']:
         """
         The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         """
@@ -552,6 +553,58 @@ class NetworkServiceResponse(dict):
         State of the service. New values may be added to this enum when appropriate.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class NodeTypeConfigResponse(dict):
+    """
+    Information about the type and number of nodes associated with the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customCoreCount":
+            suggest = "custom_core_count"
+        elif key == "nodeCount":
+            suggest = "node_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeTypeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeTypeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeTypeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_core_count: int,
+                 node_count: int):
+        """
+        Information about the type and number of nodes associated with the cluster.
+        :param int custom_core_count: Optional. Customized number of cores available to each node of the type. This number must always be one of `nodeType.availableCustomCoreCounts`. If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        :param int node_count: The number of nodes of this type in the cluster
+        """
+        pulumi.set(__self__, "custom_core_count", custom_core_count)
+        pulumi.set(__self__, "node_count", node_count)
+
+    @property
+    @pulumi.getter(name="customCoreCount")
+    def custom_core_count(self) -> int:
+        """
+        Optional. Customized number of cores available to each node of the type. This number must always be one of `nodeType.availableCustomCoreCounts`. If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        """
+        return pulumi.get(self, "custom_core_count")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        """
+        The number of nodes of this type in the cluster
+        """
+        return pulumi.get(self, "node_count")
 
 
 @pulumi.output_type

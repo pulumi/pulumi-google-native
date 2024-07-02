@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['RepoArgs', 'Repo']
@@ -19,14 +20,14 @@ class RepoArgs:
                  mirror_config: Optional[pulumi.Input['MirrorConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['PubsubConfigArgs']]]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Repo resource.
         :param pulumi.Input['MirrorConfigArgs'] mirror_config: How this repository mirrors a repository managed by another service. Read-only field.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        :param pulumi.Input[Mapping[str, pulumi.Input['PubsubConfigArgs']]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         :param pulumi.Input[str] size: The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories. Read-only field.
         """
@@ -78,14 +79,14 @@ class RepoArgs:
 
     @property
     @pulumi.getter(name="pubsubConfigs")
-    def pubsub_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def pubsub_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['PubsubConfigArgs']]]]:
         """
         How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         """
         return pulumi.get(self, "pubsub_configs")
 
     @pubsub_configs.setter
-    def pubsub_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def pubsub_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['PubsubConfigArgs']]]]):
         pulumi.set(self, "pubsub_configs", value)
 
     @property
@@ -121,7 +122,7 @@ class Repo(pulumi.CustomResource):
                  mirror_config: Optional[pulumi.Input[pulumi.InputType['MirrorConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['PubsubConfigArgs']]]]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -132,7 +133,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['MirrorConfigArgs']] mirror_config: How this repository mirrors a repository managed by another service. Read-only field.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['PubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         :param pulumi.Input[str] size: The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories. Read-only field.
         """
@@ -163,7 +164,7 @@ class Repo(pulumi.CustomResource):
                  mirror_config: Optional[pulumi.Input[pulumi.InputType['MirrorConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pubsub_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['PubsubConfigArgs']]]]] = None,
                  size: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -236,7 +237,7 @@ class Repo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pubsubConfigs")
-    def pubsub_configs(self) -> pulumi.Output[Mapping[str, str]]:
+    def pubsub_configs(self) -> pulumi.Output[Mapping[str, 'outputs.PubsubConfigResponse']]:
         """
         How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         """

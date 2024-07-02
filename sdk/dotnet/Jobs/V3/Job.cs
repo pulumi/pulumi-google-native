@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         /// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         /// </summary>
         [Output("customAttributes")]
-        public Output<ImmutableDictionary<string, string>> CustomAttributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.CustomAttributeResponse>> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The desired education degrees for the job, such as Bachelors, Masters.
@@ -278,14 +278,14 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<Inputs.CompensationInfoArgs>? CompensationInfo { get; set; }
 
         [Input("customAttributes")]
-        private InputMap<string>? _customAttributes;
+        private InputMap<Inputs.CustomAttributeArgs>? _customAttributes;
 
         /// <summary>
         /// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         /// </summary>
-        public InputMap<string> CustomAttributes
+        public InputMap<Inputs.CustomAttributeArgs> CustomAttributes
         {
-            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
+            get => _customAttributes ?? (_customAttributes = new InputMap<Inputs.CustomAttributeArgs>());
             set => _customAttributes = value;
         }
 

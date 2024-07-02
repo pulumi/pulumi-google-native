@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -27,7 +30,7 @@ export interface GetFederationResult {
     /**
      * A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
      */
-    readonly backendMetastores: {[key: string]: string};
+    readonly backendMetastores: {[key: string]: outputs.metastore.v1alpha.BackendMetastoreResponse};
     /**
      * The time when the metastore federation was created.
      */

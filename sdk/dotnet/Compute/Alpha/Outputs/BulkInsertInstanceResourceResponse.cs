@@ -39,7 +39,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// <summary>
         /// Per-instance properties to be set on individual instances. Keys of this map specify requested instance names. Can be empty if name_pattern is used.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> PerInstanceProperties;
+        public readonly ImmutableDictionary<string, Outputs.BulkInsertInstanceResourcePerInstancePropertiesResponse> PerInstanceProperties;
         /// <summary>
         /// Specifies the instance template from which to create instances. You may combine sourceInstanceTemplate with instanceProperties to override specific values from an existing instance template. Bulk API follows the semantics of JSON Merge Patch described by RFC 7396. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate This field is optional.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string namePattern,
 
-            ImmutableDictionary<string, string> perInstanceProperties,
+            ImmutableDictionary<string, Outputs.BulkInsertInstanceResourcePerInstancePropertiesResponse> perInstanceProperties,
 
             string sourceInstanceTemplate)
         {

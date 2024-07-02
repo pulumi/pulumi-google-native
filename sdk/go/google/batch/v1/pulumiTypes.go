@@ -2943,6 +2943,73 @@ func (o InstancePolicyResponseOutput) Reservation() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) string { return v.Reservation }).(pulumi.StringOutput)
 }
 
+// VM instance status.
+type InstanceStatusResponse struct {
+	// The VM boot disk.
+	BootDisk DiskResponse `pulumi:"bootDisk"`
+	// The Compute Engine machine type.
+	MachineType string `pulumi:"machineType"`
+	// The VM instance provisioning model.
+	ProvisioningModel string `pulumi:"provisioningModel"`
+	// The max number of tasks can be assigned to this instance type.
+	TaskPack string `pulumi:"taskPack"`
+}
+
+// VM instance status.
+type InstanceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceStatusResponse)(nil)).Elem()
+}
+
+func (o InstanceStatusResponseOutput) ToInstanceStatusResponseOutput() InstanceStatusResponseOutput {
+	return o
+}
+
+func (o InstanceStatusResponseOutput) ToInstanceStatusResponseOutputWithContext(ctx context.Context) InstanceStatusResponseOutput {
+	return o
+}
+
+// The VM boot disk.
+func (o InstanceStatusResponseOutput) BootDisk() DiskResponseOutput {
+	return o.ApplyT(func(v InstanceStatusResponse) DiskResponse { return v.BootDisk }).(DiskResponseOutput)
+}
+
+// The Compute Engine machine type.
+func (o InstanceStatusResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceStatusResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The VM instance provisioning model.
+func (o InstanceStatusResponseOutput) ProvisioningModel() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceStatusResponse) string { return v.ProvisioningModel }).(pulumi.StringOutput)
+}
+
+// The max number of tasks can be assigned to this instance type.
+func (o InstanceStatusResponseOutput) TaskPack() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceStatusResponse) string { return v.TaskPack }).(pulumi.StringOutput)
+}
+
+type InstanceStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceStatusResponse)(nil)).Elem()
+}
+
+func (o InstanceStatusResponseArrayOutput) ToInstanceStatusResponseArrayOutput() InstanceStatusResponseArrayOutput {
+	return o
+}
+
+func (o InstanceStatusResponseArrayOutput) ToInstanceStatusResponseArrayOutputWithContext(ctx context.Context) InstanceStatusResponseArrayOutput {
+	return o
+}
+
+func (o InstanceStatusResponseArrayOutput) Index(i pulumi.IntInput) InstanceStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceStatusResponse {
+		return vs[0].([]InstanceStatusResponse)[vs[1].(int)]
+	}).(InstanceStatusResponseOutput)
+}
+
 // Notification configurations.
 type JobNotification struct {
 	// The attribute requirements of messages to be sent to this Pub/Sub topic. Without this field, no message will be sent.
@@ -3114,7 +3181,7 @@ type JobStatusResponse struct {
 	// Job status events
 	StatusEvents []StatusEventResponse `pulumi:"statusEvents"`
 	// Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
-	TaskGroups map[string]string `pulumi:"taskGroups"`
+	TaskGroups map[string]TaskGroupStatusResponse `pulumi:"taskGroups"`
 }
 
 // Job status.
@@ -3148,8 +3215,8 @@ func (o JobStatusResponseOutput) StatusEvents() StatusEventResponseArrayOutput {
 }
 
 // Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
-func (o JobStatusResponseOutput) TaskGroups() pulumi.StringMapOutput {
-	return o.ApplyT(func(v JobStatusResponse) map[string]string { return v.TaskGroups }).(pulumi.StringMapOutput)
+func (o JobStatusResponseOutput) TaskGroups() TaskGroupStatusResponseMapOutput {
+	return o.ApplyT(func(v JobStatusResponse) map[string]TaskGroupStatusResponse { return v.TaskGroups }).(TaskGroupStatusResponseMapOutput)
 }
 
 type KMSEnvMap struct {
@@ -5865,6 +5932,59 @@ func (o TaskGroupResponseArrayOutput) Index(i pulumi.IntInput) TaskGroupResponse
 	}).(TaskGroupResponseOutput)
 }
 
+// Aggregated task status for a TaskGroup.
+type TaskGroupStatusResponse struct {
+	// Count of task in each state in the TaskGroup. The map key is task state name.
+	Counts map[string]string `pulumi:"counts"`
+	// Status of instances allocated for the TaskGroup.
+	Instances []InstanceStatusResponse `pulumi:"instances"`
+}
+
+// Aggregated task status for a TaskGroup.
+type TaskGroupStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (TaskGroupStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskGroupStatusResponse)(nil)).Elem()
+}
+
+func (o TaskGroupStatusResponseOutput) ToTaskGroupStatusResponseOutput() TaskGroupStatusResponseOutput {
+	return o
+}
+
+func (o TaskGroupStatusResponseOutput) ToTaskGroupStatusResponseOutputWithContext(ctx context.Context) TaskGroupStatusResponseOutput {
+	return o
+}
+
+// Count of task in each state in the TaskGroup. The map key is task state name.
+func (o TaskGroupStatusResponseOutput) Counts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskGroupStatusResponse) map[string]string { return v.Counts }).(pulumi.StringMapOutput)
+}
+
+// Status of instances allocated for the TaskGroup.
+func (o TaskGroupStatusResponseOutput) Instances() InstanceStatusResponseArrayOutput {
+	return o.ApplyT(func(v TaskGroupStatusResponse) []InstanceStatusResponse { return v.Instances }).(InstanceStatusResponseArrayOutput)
+}
+
+type TaskGroupStatusResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TaskGroupStatusResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TaskGroupStatusResponse)(nil)).Elem()
+}
+
+func (o TaskGroupStatusResponseMapOutput) ToTaskGroupStatusResponseMapOutput() TaskGroupStatusResponseMapOutput {
+	return o
+}
+
+func (o TaskGroupStatusResponseMapOutput) ToTaskGroupStatusResponseMapOutputWithContext(ctx context.Context) TaskGroupStatusResponseMapOutput {
+	return o
+}
+
+func (o TaskGroupStatusResponseMapOutput) MapIndex(k pulumi.StringInput) TaskGroupStatusResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TaskGroupStatusResponse {
+		return vs[0].(map[string]TaskGroupStatusResponse)[vs[1].(string)]
+	}).(TaskGroupStatusResponseOutput)
+}
+
 // Spec of a task
 type TaskSpec struct {
 	// ComputeResource requirements.
@@ -6381,6 +6501,8 @@ func init() {
 	pulumi.RegisterOutputType(InstancePolicyOrTemplateResponseOutput{})
 	pulumi.RegisterOutputType(InstancePolicyOrTemplateResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstancePolicyResponseOutput{})
+	pulumi.RegisterOutputType(InstanceStatusResponseOutput{})
+	pulumi.RegisterOutputType(InstanceStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobNotificationOutput{})
 	pulumi.RegisterOutputType(JobNotificationArrayOutput{})
 	pulumi.RegisterOutputType(JobNotificationResponseOutput{})
@@ -6432,6 +6554,8 @@ func init() {
 	pulumi.RegisterOutputType(TaskGroupArrayOutput{})
 	pulumi.RegisterOutputType(TaskGroupResponseOutput{})
 	pulumi.RegisterOutputType(TaskGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(TaskGroupStatusResponseOutput{})
+	pulumi.RegisterOutputType(TaskGroupStatusResponseMapOutput{})
 	pulumi.RegisterOutputType(TaskSpecOutput{})
 	pulumi.RegisterOutputType(TaskSpecResponseOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})

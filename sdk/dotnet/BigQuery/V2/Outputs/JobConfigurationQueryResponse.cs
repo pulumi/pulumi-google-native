@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> TableDefinitions;
+        public readonly ImmutableDictionary<string, Outputs.ExternalDataConfigurationResponse> TableDefinitions;
         /// <summary>
         /// Time-based partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         /// </summary>
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<string> schemaUpdateOptions,
 
-            ImmutableDictionary<string, string> tableDefinitions,
+            ImmutableDictionary<string, Outputs.ExternalDataConfigurationResponse> tableDefinitions,
 
             Outputs.TimePartitioningResponse timePartitioning,
 

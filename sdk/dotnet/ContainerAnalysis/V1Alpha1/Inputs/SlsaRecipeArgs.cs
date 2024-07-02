@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class SlsaRecipeArgs : global::Pulumi.ResourceArgs
     {
         [Input("arguments")]
-        private InputMap<string>? _arguments;
+        private InputMap<object>? _arguments;
 
         /// <summary>
         /// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different.
         /// </summary>
-        public InputMap<string> Arguments
+        public InputMap<object> Arguments
         {
-            get => _arguments ?? (_arguments = new InputMap<string>());
+            get => _arguments ?? (_arguments = new InputMap<object>());
             set => _arguments = value;
         }
 
@@ -40,14 +40,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public Input<string>? EntryPoint { get; set; }
 
         [Input("environment")]
-        private InputMap<string>? _environment;
+        private InputMap<object>? _environment;
 
         /// <summary>
         /// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
         /// </summary>
-        public InputMap<string> Environment
+        public InputMap<object> Environment
         {
-            get => _environment ?? (_environment = new InputMap<string>());
+            get => _environment ?? (_environment = new InputMap<object>());
             set => _environment = value;
         }
 

@@ -46,14 +46,14 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Inputs
         public Input<Inputs.GoogleCloudBillingBudgetsV1CustomPeriodArgs>? CustomPeriod { get; set; }
 
         [Input("labels")]
-        private InputMap<string>? _labels;
+        private InputMap<ImmutableArray<object>>? _labels;
 
         /// <summary>
         /// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report includes all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         /// </summary>
-        public InputMap<string> Labels
+        public InputMap<ImmutableArray<object>> Labels
         {
-            get => _labels ?? (_labels = new InputMap<string>());
+            get => _labels ?? (_labels = new InputMap<ImmutableArray<object>>());
             set => _labels = value;
         }
 

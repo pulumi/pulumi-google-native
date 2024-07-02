@@ -188,6 +188,29 @@ var resourceNamePropertyOverrides = map[string]string{
 	"run/v1:Service.servicesId":                               "metadata.name",
 }
 
+// unsupportedPropertiesOverrides is a map of properties in types that
+// are not supported and should be included in the Pulumi schema spec.
+var unsupportedPropertiesOverrides = map[string][]string{
+	// API ref: https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backendrule
+	"BackendRule": {
+		// The `overridesByRequestProtocol` property in `BackendRule`,
+		// while absent in the API reference docs, is present in the
+		// discover doc that we fetch.
+		//
+		// But it doesn't make sense to include
+		// `overridesByRequestProtocol` in the recursion.
+		// For now don't include this property which means
+		// we avoid the recursion.
+		//
+		// Discovery doc: https://servicemanagement.googleapis.com/$discovery/rest?version=v1
+		"overridesByRequestProtocol",
+	},
+	"BackendRuleResponse": {
+		// Similar to the property in `BackendRule`. See notes above.
+		"overridesByRequestProtocol",
+	},
+}
+
 // autonameOverrides is a map of exceptions to the property used for auto-naming.
 // The key is the resource token, and the value is the property to use for auto-naming.
 var autonameOverrides = map[string]string{

@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// <summary>
         /// All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
         /// </summary>
-        public readonly ImmutableDictionary<string, string> DialogflowIntents;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1DialogflowIntentResponse> DialogflowIntents;
         /// <summary>
         /// The duration of the conversation.
         /// </summary>
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
             Outputs.GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse dataSource,
 
-            ImmutableDictionary<string, string> dialogflowIntents,
+            ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1DialogflowIntentResponse> dialogflowIntents,
 
             string duration,
 

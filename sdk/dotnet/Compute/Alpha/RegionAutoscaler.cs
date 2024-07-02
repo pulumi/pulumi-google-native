@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Status information of existing scaling schedules.
         /// </summary>
         [Output("scalingScheduleStatus")]
-        public Output<ImmutableDictionary<string, string>> ScalingScheduleStatus { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.ScalingScheduleStatusResponse>> ScalingScheduleStatus { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined URL for the resource.

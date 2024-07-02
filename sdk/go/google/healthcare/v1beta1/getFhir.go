@@ -37,7 +37,7 @@ type GetFhirResult struct {
 	// The HTTP request/response body as raw binary.
 	Data string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions []map[string]string `pulumi:"extensions"`
+	Extensions []map[string]interface{} `pulumi:"extensions"`
 }
 
 func GetFhirOutput(ctx *pulumi.Context, args GetFhirOutputArgs, opts ...pulumi.InvokeOption) GetFhirResultOutput {
@@ -91,8 +91,8 @@ func (o GetFhirResultOutput) Data() pulumi.StringOutput {
 }
 
 // Application specific response metadata. Must be set in the first response for streaming APIs.
-func (o GetFhirResultOutput) Extensions() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v GetFhirResult) []map[string]string { return v.Extensions }).(pulumi.StringMapArrayOutput)
+func (o GetFhirResultOutput) Extensions() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v GetFhirResult) []map[string]interface{} { return v.Extensions }).(pulumi.MapArrayOutput)
 }
 
 func init() {

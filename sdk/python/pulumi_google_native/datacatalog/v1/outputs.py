@@ -25,6 +25,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse',
     'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse',
     'GoogleCloudDatacatalogV1ColumnSchemaResponse',
+    'GoogleCloudDatacatalogV1CommonUsageStatsResponse',
     'GoogleCloudDatacatalogV1ContactsPersonResponse',
     'GoogleCloudDatacatalogV1ContactsResponse',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse',
@@ -37,6 +38,9 @@ __all__ = [
     'GoogleCloudDatacatalogV1DataplexTableSpecResponse',
     'GoogleCloudDatacatalogV1DatasetSpecResponse',
     'GoogleCloudDatacatalogV1EntryOverviewResponse',
+    'GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse',
+    'GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse',
+    'GoogleCloudDatacatalogV1FieldTypeResponse',
     'GoogleCloudDatacatalogV1FilesetSpecResponse',
     'GoogleCloudDatacatalogV1GcsFileSpecResponse',
     'GoogleCloudDatacatalogV1GcsFilesetSpecResponse',
@@ -58,8 +62,10 @@ __all__ = [
     'GoogleCloudDatacatalogV1StoragePropertiesResponse',
     'GoogleCloudDatacatalogV1SystemTimestampsResponse',
     'GoogleCloudDatacatalogV1TableSpecResponse',
+    'GoogleCloudDatacatalogV1TagTemplateFieldResponse',
     'GoogleCloudDatacatalogV1TaxonomyServiceResponse',
     'GoogleCloudDatacatalogV1UsageSignalResponse',
+    'GoogleCloudDatacatalogV1UsageStatsResponse',
     'GoogleCloudDatacatalogV1VertexDatasetSpecResponse',
     'GoogleCloudDatacatalogV1VertexModelSourceInfoResponse',
     'GoogleCloudDatacatalogV1VertexModelSpecResponse',
@@ -842,6 +848,45 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1CommonUsageStatsResponse(dict):
+    """
+    Common statistics on the entry's usage. They can be set on any system.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "viewCount":
+            suggest = "view_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1CommonUsageStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1CommonUsageStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1CommonUsageStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 view_count: str):
+        """
+        Common statistics on the entry's usage. They can be set on any system.
+        :param str view_count: View count in source system.
+        """
+        pulumi.set(__self__, "view_count", view_count)
+
+    @property
+    @pulumi.getter(name="viewCount")
+    def view_count(self) -> str:
+        """
+        View count in source system.
+        """
+        return pulumi.get(self, "view_count")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1ContactsPersonResponse(dict):
     """
     A contact person for the entry.
@@ -1450,6 +1495,124 @@ class GoogleCloudDatacatalogV1EntryOverviewResponse(dict):
         Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
         """
         return pulumi.get(self, "overview")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str):
+        """
+        :param str display_name: The display name of the enum value. Must not be an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of the enum value. Must not be an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedValues":
+            suggest = "allowed_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_values: Sequence['outputs.GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse']):
+        """
+        :param Sequence['GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse'] allowed_values: The set of allowed values for this enum. This set must not be empty and can include up to 100 allowed values. The display names of the values in this set must not be empty and must be case-insensitively unique within this set. The order of items in this set is preserved. This field can be used to create, remove, and reorder enum values. To rename enum values, use the `RenameTagTemplateFieldEnumValue` method.
+        """
+        pulumi.set(__self__, "allowed_values", allowed_values)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence['outputs.GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueResponse']:
+        """
+        The set of allowed values for this enum. This set must not be empty and can include up to 100 allowed values. The display names of the values in this set must not be empty and must be case-insensitively unique within this set. The order of items in this set is preserved. This field can be used to create, remove, and reorder enum values. To rename enum values, use the `RenameTagTemplateFieldEnumValue` method.
+        """
+        return pulumi.get(self, "allowed_values")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1FieldTypeResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumType":
+            suggest = "enum_type"
+        elif key == "primitiveType":
+            suggest = "primitive_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1FieldTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1FieldTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1FieldTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enum_type: 'outputs.GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse',
+                 primitive_type: str):
+        """
+        :param 'GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse' enum_type: An enum type.
+        :param str primitive_type: Primitive types, such as string, boolean, etc.
+        """
+        pulumi.set(__self__, "enum_type", enum_type)
+        pulumi.set(__self__, "primitive_type", primitive_type)
+
+    @property
+    @pulumi.getter(name="enumType")
+    def enum_type(self) -> 'outputs.GoogleCloudDatacatalogV1FieldTypeEnumTypeResponse':
+        """
+        An enum type.
+        """
+        return pulumi.get(self, "enum_type")
+
+    @property
+    @pulumi.getter(name="primitiveType")
+    def primitive_type(self) -> str:
+        """
+        Primitive types, such as string, boolean, etc.
+        """
+        return pulumi.get(self, "primitive_type")
 
 
 @pulumi.output_type
@@ -2409,6 +2572,102 @@ class GoogleCloudDatacatalogV1TableSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1TagTemplateFieldResponse(dict):
+    """
+    The template for an individual field within a tag template.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "isRequired":
+            suggest = "is_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1TagTemplateFieldResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1TagTemplateFieldResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1TagTemplateFieldResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: str,
+                 display_name: str,
+                 is_required: bool,
+                 name: str,
+                 order: int,
+                 type: 'outputs.GoogleCloudDatacatalogV1FieldTypeResponse'):
+        """
+        The template for an individual field within a tag template.
+        :param str description: The description for this field. Defaults to an empty string.
+        :param str display_name: The display name for this field. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        :param bool is_required: If true, this field is required. Defaults to false.
+        :param str name: The resource name of the tag template field in URL format. Example: `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE}/fields/{FIELD}` Note: The tag template field itself might not be stored in the location specified in its name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 64 characters.
+        :param int order: The order of this field with respect to other fields in this tag template. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order and field orders within a tag don't have to be sequential.
+        :param 'GoogleCloudDatacatalogV1FieldTypeResponse' type: The type of value this tag field can contain.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "is_required", is_required)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description for this field. Defaults to an empty string.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name for this field. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="isRequired")
+    def is_required(self) -> bool:
+        """
+        If true, this field is required. Defaults to false.
+        """
+        return pulumi.get(self, "is_required")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the tag template field in URL format. Example: `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE}/fields/{FIELD}` Note: The tag template field itself might not be stored in the location specified in its name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 64 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def order(self) -> int:
+        """
+        The order of this field with respect to other fields in this tag template. For example, a higher value can indicate a more important field. The value can be negative. Multiple fields can have the same order and field orders within a tag don't have to be sequential.
+        """
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def type(self) -> 'outputs.GoogleCloudDatacatalogV1FieldTypeResponse':
+        """
+        The type of value this tag field can contain.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1TaxonomyServiceResponse(dict):
     """
     The source system of the Taxonomy.
@@ -2470,16 +2729,16 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 common_usage_within_time_range: Mapping[str, str],
+                 common_usage_within_time_range: Mapping[str, 'outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse'],
                  favorite_count: str,
                  update_time: str,
-                 usage_within_time_range: Mapping[str, str]):
+                 usage_within_time_range: Mapping[str, 'outputs.GoogleCloudDatacatalogV1UsageStatsResponse']):
         """
         The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
-        :param Mapping[str, str] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        :param Mapping[str, 'GoogleCloudDatacatalogV1CommonUsageStatsResponse'] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         :param str favorite_count: Favorite count in the source system.
         :param str update_time: The end timestamp of the duration of usage statistics.
-        :param Mapping[str, str] usage_within_time_range: BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
+        :param Mapping[str, 'GoogleCloudDatacatalogV1UsageStatsResponse'] usage_within_time_range: BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
         """
         pulumi.set(__self__, "common_usage_within_time_range", common_usage_within_time_range)
         pulumi.set(__self__, "favorite_count", favorite_count)
@@ -2488,7 +2747,7 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
 
     @property
     @pulumi.getter(name="commonUsageWithinTimeRange")
-    def common_usage_within_time_range(self) -> Mapping[str, str]:
+    def common_usage_within_time_range(self) -> Mapping[str, 'outputs.GoogleCloudDatacatalogV1CommonUsageStatsResponse']:
         """
         Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
         """
@@ -2512,11 +2771,89 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
 
     @property
     @pulumi.getter(name="usageWithinTimeRange")
-    def usage_within_time_range(self) -> Mapping[str, str]:
+    def usage_within_time_range(self) -> Mapping[str, 'outputs.GoogleCloudDatacatalogV1UsageStatsResponse']:
         """
         BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
         """
         return pulumi.get(self, "usage_within_time_range")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1UsageStatsResponse(dict):
+    """
+    Detailed statistics on the entry's usage. Usage statistics have the following limitations: - Only BigQuery tables have them. - They only include BigQuery query jobs. - They might be underestimated because wildcard table references are not yet counted. For more information, see [Querying multiple tables using a wildcard table] (https://cloud.google.com/bigquery/docs/querying-wildcard-tables)
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalCancellations":
+            suggest = "total_cancellations"
+        elif key == "totalCompletions":
+            suggest = "total_completions"
+        elif key == "totalExecutionTimeForCompletionsMillis":
+            suggest = "total_execution_time_for_completions_millis"
+        elif key == "totalFailures":
+            suggest = "total_failures"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1UsageStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1UsageStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1UsageStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_cancellations: float,
+                 total_completions: float,
+                 total_execution_time_for_completions_millis: float,
+                 total_failures: float):
+        """
+        Detailed statistics on the entry's usage. Usage statistics have the following limitations: - Only BigQuery tables have them. - They only include BigQuery query jobs. - They might be underestimated because wildcard table references are not yet counted. For more information, see [Querying multiple tables using a wildcard table] (https://cloud.google.com/bigquery/docs/querying-wildcard-tables)
+        :param float total_cancellations: The number of cancelled attempts to use the underlying entry.
+        :param float total_completions: The number of successful uses of the underlying entry.
+        :param float total_execution_time_for_completions_millis: Total time spent only on successful uses, in milliseconds.
+        :param float total_failures: The number of failed attempts to use the underlying entry.
+        """
+        pulumi.set(__self__, "total_cancellations", total_cancellations)
+        pulumi.set(__self__, "total_completions", total_completions)
+        pulumi.set(__self__, "total_execution_time_for_completions_millis", total_execution_time_for_completions_millis)
+        pulumi.set(__self__, "total_failures", total_failures)
+
+    @property
+    @pulumi.getter(name="totalCancellations")
+    def total_cancellations(self) -> float:
+        """
+        The number of cancelled attempts to use the underlying entry.
+        """
+        return pulumi.get(self, "total_cancellations")
+
+    @property
+    @pulumi.getter(name="totalCompletions")
+    def total_completions(self) -> float:
+        """
+        The number of successful uses of the underlying entry.
+        """
+        return pulumi.get(self, "total_completions")
+
+    @property
+    @pulumi.getter(name="totalExecutionTimeForCompletionsMillis")
+    def total_execution_time_for_completions_millis(self) -> float:
+        """
+        Total time spent only on successful uses, in milliseconds.
+        """
+        return pulumi.get(self, "total_execution_time_for_completions_millis")
+
+    @property
+    @pulumi.getter(name="totalFailures")
+    def total_failures(self) -> float:
+        """
+        The number of failed attempts to use the underlying entry.
+        """
+        return pulumi.get(self, "total_failures")
 
 
 @pulumi.output_type

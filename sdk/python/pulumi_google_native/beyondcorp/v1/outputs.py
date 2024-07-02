@@ -261,13 +261,13 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse(dict):
     ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
     """
     def __init__(__self__, *,
-                 resource: Mapping[str, str],
+                 resource: Mapping[str, Any],
                  status: str,
                  sub: Sequence['outputs.GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse'],
                  time: str):
         """
         ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
-        :param Mapping[str, str] resource: Specific details for the resource. This is for internal use only.
+        :param Mapping[str, Any] resource: Specific details for the resource. This is for internal use only.
         :param str status: Overall health status. Overall status is derived based on the status of each sub level resources.
         :param Sequence['GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse'] sub: List of Info for the sub level resources.
         :param str time: The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
@@ -279,7 +279,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse(dict):
 
     @property
     @pulumi.getter
-    def resource(self) -> Mapping[str, str]:
+    def resource(self) -> Mapping[str, Any]:
         """
         Specific details for the resource. This is for internal use only.
         """

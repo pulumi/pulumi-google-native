@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     public sealed class HiveMetastoreConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("auxiliaryVersions")]
-        private InputMap<string>? _auxiliaryVersions;
+        private InputMap<Inputs.AuxiliaryVersionConfigArgs>? _auxiliaryVersions;
 
         /// <summary>
         /// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         /// </summary>
-        public InputMap<string> AuxiliaryVersions
+        public InputMap<Inputs.AuxiliaryVersionConfigArgs> AuxiliaryVersions
         {
-            get => _auxiliaryVersions ?? (_auxiliaryVersions = new InputMap<string>());
+            get => _auxiliaryVersions ?? (_auxiliaryVersions = new InputMap<Inputs.AuxiliaryVersionConfigArgs>());
             set => _auxiliaryVersions = value;
         }
 

@@ -22,14 +22,14 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<Inputs.DailyMaintenanceWindowArgs>? DailyMaintenanceWindow { get; set; }
 
         [Input("maintenanceExclusions")]
-        private InputMap<string>? _maintenanceExclusions;
+        private InputMap<Inputs.TimeWindowArgs>? _maintenanceExclusions;
 
         /// <summary>
         /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         /// </summary>
-        public InputMap<string> MaintenanceExclusions
+        public InputMap<Inputs.TimeWindowArgs> MaintenanceExclusions
         {
-            get => _maintenanceExclusions ?? (_maintenanceExclusions = new InputMap<string>());
+            get => _maintenanceExclusions ?? (_maintenanceExclusions = new InputMap<Inputs.TimeWindowArgs>());
             set => _maintenanceExclusions = value;
         }
 

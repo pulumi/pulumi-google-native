@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// <summary>
         /// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> SynthesizeSpeechConfigs;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse> SynthesizeSpeechConfigs;
 
         [OutputConstructor]
         private GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse(
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 
             int sampleRateHertz,
 
-            ImmutableDictionary<string, string> synthesizeSpeechConfigs)
+            ImmutableDictionary<string, Outputs.GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse> synthesizeSpeechConfigs)
         {
             EnableTextToSpeech = enableTextToSpeech;
             OutputAudioEncoding = outputAudioEncoding;

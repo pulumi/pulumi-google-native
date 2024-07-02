@@ -44,11 +44,11 @@ export class Table extends pulumi.CustomResource {
     /**
      * Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
      */
-    public /*out*/ readonly clusterStates!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly clusterStates!: pulumi.Output<{[key: string]: outputs.bigtableadmin.v2.ClusterStateResponse}>;
     /**
      * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
      */
-    public readonly columnFamilies!: pulumi.Output<{[key: string]: string}>;
+    public readonly columnFamilies!: pulumi.Output<{[key: string]: outputs.bigtableadmin.v2.ColumnFamilyResponse}>;
     /**
      * Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
      */
@@ -131,7 +131,7 @@ export interface TableArgs {
     /**
      * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
      */
-    columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.bigtableadmin.v2.ColumnFamilyArgs>}>;
     /**
      * Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
      */

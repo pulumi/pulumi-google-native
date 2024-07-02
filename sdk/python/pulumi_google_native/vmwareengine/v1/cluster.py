@@ -17,7 +17,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 node_type_configs: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 node_type_configs: pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]],
                  private_cloud_id: pulumi.Input[str],
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -26,7 +26,7 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: Required. The user-provided identifier of the new `Cluster`. This identifier must be unique among clusters within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
+        :param pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         :param pulumi.Input[str] request_id: Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['StretchedClusterConfigArgs'] stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
         """
@@ -56,14 +56,14 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def node_type_configs(self) -> pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]]:
         """
         The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         """
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def node_type_configs(self, value: pulumi.Input[Mapping[str, pulumi.Input['NodeTypeConfigArgs']]]):
         pulumi.set(self, "node_type_configs", value)
 
     @property
@@ -125,7 +125,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NodeTypeConfigArgs']]]]] = None,
                  private_cloud_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Required. The user-provided identifier of the new `Cluster`. This identifier must be unique among clusters within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NodeTypeConfigArgs']]]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         :param pulumi.Input[str] request_id: Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['StretchedClusterConfigArgs']] stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
         """
@@ -169,7 +169,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NodeTypeConfigArgs']]]]] = None,
                  private_cloud_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -280,7 +280,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> pulumi.Output[Mapping[str, str]]:
+    def node_type_configs(self) -> pulumi.Output[Mapping[str, 'outputs.NodeTypeConfigResponse']]:
         """
         The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         """

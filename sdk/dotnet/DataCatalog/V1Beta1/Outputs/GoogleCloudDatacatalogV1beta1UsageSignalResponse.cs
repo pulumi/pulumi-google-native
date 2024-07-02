@@ -23,13 +23,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
         /// <summary>
         /// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> UsageWithinTimeRange;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1beta1UsageStatsResponse> UsageWithinTimeRange;
 
         [OutputConstructor]
         private GoogleCloudDatacatalogV1beta1UsageSignalResponse(
             string updateTime,
 
-            ImmutableDictionary<string, string> usageWithinTimeRange)
+            ImmutableDictionary<string, Outputs.GoogleCloudDatacatalogV1beta1UsageStatsResponse> usageWithinTimeRange)
         {
             UpdateTime = updateTime;
             UsageWithinTimeRange = usageWithinTimeRange;

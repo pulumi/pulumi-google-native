@@ -204,12 +204,12 @@ class GoogleCloudDialogflowV2ContextResponse(dict):
     def __init__(__self__, *,
                  lifespan_count: int,
                  name: str,
-                 parameters: Mapping[str, str]):
+                 parameters: Mapping[str, Any]):
         """
         Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
         :param int lifespan_count: Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
         :param str name: The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
-        :param Mapping[str, str] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
+        :param Mapping[str, Any] parameters: Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
         """
         pulumi.set(__self__, "lifespan_count", lifespan_count)
         pulumi.set(__self__, "name", name)
@@ -233,7 +233,7 @@ class GoogleCloudDialogflowV2ContextResponse(dict):
 
     @property
     @pulumi.getter
-    def parameters(self) -> Mapping[str, str]:
+    def parameters(self) -> Mapping[str, Any]:
         """
         Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite entity then use map from composite entity property names to property values, otherwise, use parameter value.
         """
@@ -2844,7 +2844,7 @@ class GoogleCloudDialogflowV2IntentMessageResponse(dict):
                  link_out_suggestion: 'outputs.GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse',
                  list_select: 'outputs.GoogleCloudDialogflowV2IntentMessageListSelectResponse',
                  media_content: 'outputs.GoogleCloudDialogflowV2IntentMessageMediaContentResponse',
-                 payload: Mapping[str, str],
+                 payload: Mapping[str, Any],
                  platform: str,
                  quick_replies: 'outputs.GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse',
                  simple_responses: 'outputs.GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse',
@@ -2861,7 +2861,7 @@ class GoogleCloudDialogflowV2IntentMessageResponse(dict):
         :param 'GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse' link_out_suggestion: The link out suggestion chip for Actions on Google.
         :param 'GoogleCloudDialogflowV2IntentMessageListSelectResponse' list_select: The list card response for Actions on Google.
         :param 'GoogleCloudDialogflowV2IntentMessageMediaContentResponse' media_content: The media content card for Actions on Google.
-        :param Mapping[str, str] payload: A custom platform-specific response.
+        :param Mapping[str, Any] payload: A custom platform-specific response.
         :param str platform: Optional. The platform that this message is intended for.
         :param 'GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse' quick_replies: The quick replies response.
         :param 'GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse' simple_responses: The voice and text-only responses for Actions on Google.
@@ -2951,7 +2951,7 @@ class GoogleCloudDialogflowV2IntentMessageResponse(dict):
 
     @property
     @pulumi.getter
-    def payload(self) -> Mapping[str, str]:
+    def payload(self) -> Mapping[str, Any]:
         """
         A custom platform-specific response.
         """
@@ -4071,13 +4071,13 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsResponse(dict):
                  enable_text_to_speech: bool,
                  output_audio_encoding: str,
                  sample_rate_hertz: int,
-                 synthesize_speech_configs: Mapping[str, str]):
+                 synthesize_speech_configs: Mapping[str, 'outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse']):
         """
         Instructs the speech synthesizer on how to generate the output audio content.
         :param bool enable_text_to_speech: Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
         :param str output_audio_encoding: Audio encoding of the synthesized audio content.
         :param int sample_rate_hertz: Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
-        :param Mapping[str, str] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+        :param Mapping[str, 'GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse'] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """
         pulumi.set(__self__, "enable_text_to_speech", enable_text_to_speech)
         pulumi.set(__self__, "output_audio_encoding", output_audio_encoding)
@@ -4110,7 +4110,7 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsResponse(dict):
 
     @property
     @pulumi.getter(name="synthesizeSpeechConfigs")
-    def synthesize_speech_configs(self) -> Mapping[str, str]:
+    def synthesize_speech_configs(self) -> Mapping[str, 'outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse']:
         """
         Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
         """
@@ -4174,12 +4174,12 @@ class GoogleRpcStatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -4196,7 +4196,7 @@ class GoogleRpcStatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """

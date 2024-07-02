@@ -37,7 +37,7 @@ class InstanceArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
                  params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input['StructuredEntriesArgs']]]] = None,
                  post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  preserved_state_size_gb: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
@@ -48,7 +48,7 @@ class InstanceArgs:
                  scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
-                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input['ServiceIntegrationSpecArgs']]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']] = None,
                  shielded_vm_config: Optional[pulumi.Input['ShieldedVmConfigArgs']] = None,
@@ -78,7 +78,7 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
         :param pulumi.Input['InstanceParamsArgs'] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        :param pulumi.Input[Mapping[str, pulumi.Input['StructuredEntriesArgs']]] partner_metadata: Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
         :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -88,7 +88,7 @@ class InstanceArgs:
         :param pulumi.Input['SchedulingArgs'] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_integration_specs: Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+        :param pulumi.Input[Mapping[str, pulumi.Input['ServiceIntegrationSpecArgs']]] service_integration_specs: Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         :param pulumi.Input['ShieldedVmConfigArgs'] shielded_vm_config: Deprecating, please use shielded_instance_config.
         :param pulumi.Input['ShieldedVmIntegrityPolicyArgs'] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_instance_template: Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
@@ -415,14 +415,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="partnerMetadata")
-    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['StructuredEntriesArgs']]]]:
         """
         Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         """
         return pulumi.get(self, "partner_metadata")
 
     @partner_metadata.setter
-    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['StructuredEntriesArgs']]]]):
         pulumi.set(self, "partner_metadata", value)
 
     @property
@@ -544,14 +544,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="serviceIntegrationSpecs")
-    def service_integration_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def service_integration_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ServiceIntegrationSpecArgs']]]]:
         """
         Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         """
         return pulumi.get(self, "service_integration_specs")
 
     @service_integration_specs.setter
-    def service_integration_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def service_integration_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ServiceIntegrationSpecArgs']]]]):
         pulumi.set(self, "service_integration_specs", value)
 
     @property
@@ -679,7 +679,7 @@ class Instance(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
                  params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['StructuredEntriesArgs']]]]] = None,
                  post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  preserved_state_size_gb: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
@@ -690,7 +690,7 @@ class Instance(pulumi.CustomResource):
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
-                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ServiceIntegrationSpecArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
                  shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']]] = None,
@@ -724,7 +724,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
         :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] partner_metadata: Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['StructuredEntriesArgs']]]] partner_metadata: Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
         :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -734,7 +734,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_integration_specs: Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ServiceIntegrationSpecArgs']]]] service_integration_specs: Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         :param pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']] shielded_vm_config: Deprecating, please use shielded_instance_config.
         :param pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_instance_template: Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
@@ -786,7 +786,7 @@ class Instance(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
                  params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['StructuredEntriesArgs']]]]] = None,
                  post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  preserved_state_size_gb: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
@@ -797,7 +797,7 @@ class Instance(pulumi.CustomResource):
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
-                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ServiceIntegrationSpecArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
                  shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']]] = None,
@@ -1176,7 +1176,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="partnerMetadata")
-    def partner_metadata(self) -> pulumi.Output[Mapping[str, str]]:
+    def partner_metadata(self) -> pulumi.Output[Mapping[str, 'outputs.StructuredEntriesResponse']]:
         """
         Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         """
@@ -1293,7 +1293,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceIntegrationSpecs")
-    def service_integration_specs(self) -> pulumi.Output[Mapping[str, str]]:
+    def service_integration_specs(self) -> pulumi.Output[Mapping[str, 'outputs.ServiceIntegrationSpecResponse']]:
         """
         Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         """

@@ -30,6 +30,34 @@ export const EntryType = {
  */
 export type EntryType = (typeof EntryType)[keyof typeof EntryType];
 
+export const GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType = {
+    /**
+     * This is the default invalid value for a type.
+     */
+    PrimitiveTypeUnspecified: "PRIMITIVE_TYPE_UNSPECIFIED",
+    /**
+     * A double precision number.
+     */
+    Double: "DOUBLE",
+    /**
+     * An UTF-8 string.
+     */
+    String: "STRING",
+    /**
+     * A boolean value.
+     */
+    Bool: "BOOL",
+    /**
+     * A timestamp.
+     */
+    Timestamp: "TIMESTAMP",
+} as const;
+
+/**
+ * Represents primitive types - string, bool etc.
+ */
+export type GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType = (typeof GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType)[keyof typeof GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType];
+
 export const TaxonomyActivatedPolicyTypesItem = {
     /**
      * Unspecified policy type.

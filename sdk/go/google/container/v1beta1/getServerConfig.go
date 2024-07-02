@@ -43,7 +43,7 @@ type GetServerConfigResult struct {
 	// List of valid node upgrade target versions, in descending order.
 	ValidNodeVersions []string `pulumi:"validNodeVersions"`
 	// Maps of Kubernetes version and supported Windows server versions.
-	WindowsVersionMaps map[string]string `pulumi:"windowsVersionMaps"`
+	WindowsVersionMaps map[string]WindowsVersionsResponse `pulumi:"windowsVersionMaps"`
 }
 
 func GetServerConfigOutput(ctx *pulumi.Context, args GetServerConfigOutputArgs, opts ...pulumi.InvokeOption) GetServerConfigResultOutput {
@@ -115,8 +115,8 @@ func (o GetServerConfigResultOutput) ValidNodeVersions() pulumi.StringArrayOutpu
 }
 
 // Maps of Kubernetes version and supported Windows server versions.
-func (o GetServerConfigResultOutput) WindowsVersionMaps() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetServerConfigResult) map[string]string { return v.WindowsVersionMaps }).(pulumi.StringMapOutput)
+func (o GetServerConfigResultOutput) WindowsVersionMaps() WindowsVersionsResponseMapOutput {
+	return o.ApplyT(func(v GetServerConfigResult) map[string]WindowsVersionsResponse { return v.WindowsVersionMaps }).(WindowsVersionsResponseMapOutput)
 }
 
 func init() {

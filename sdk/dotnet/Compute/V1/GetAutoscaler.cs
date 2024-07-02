@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <summary>
         /// Status information of existing scaling schedules.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ScalingScheduleStatus;
+        public readonly ImmutableDictionary<string, Outputs.ScalingScheduleStatusResponse> ScalingScheduleStatus;
         /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
@@ -132,7 +132,7 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string region,
 
-            ImmutableDictionary<string, string> scalingScheduleStatus,
+            ImmutableDictionary<string, Outputs.ScalingScheduleStatusResponse> scalingScheduleStatus,
 
             string selfLink,
 

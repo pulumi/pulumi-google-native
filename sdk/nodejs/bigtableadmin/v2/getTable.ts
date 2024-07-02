@@ -36,11 +36,11 @@ export interface GetTableResult {
     /**
      * Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
      */
-    readonly clusterStates: {[key: string]: string};
+    readonly clusterStates: {[key: string]: outputs.bigtableadmin.v2.ClusterStateResponse};
     /**
      * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
      */
-    readonly columnFamilies: {[key: string]: string};
+    readonly columnFamilies: {[key: string]: outputs.bigtableadmin.v2.ColumnFamilyResponse};
     /**
      * Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
      */

@@ -121,11 +121,11 @@ export class Release extends pulumi.CustomResource {
     /**
      * Map from target ID to the target artifacts created during the render operation.
      */
-    public /*out*/ readonly targetArtifacts!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly targetArtifacts!: pulumi.Output<{[key: string]: outputs.clouddeploy.v1.TargetArtifactResponse}>;
     /**
      * Map from target ID to details of the render operation for that target.
      */
-    public /*out*/ readonly targetRenders!: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly targetRenders!: pulumi.Output<{[key: string]: outputs.clouddeploy.v1.TargetRenderResponse}>;
     /**
      * Snapshot of the targets taken at release creation time.
      */

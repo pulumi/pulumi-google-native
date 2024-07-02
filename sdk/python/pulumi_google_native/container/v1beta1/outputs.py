@@ -43,6 +43,7 @@ __all__ = [
     'DNSConfigResponse',
     'DailyMaintenanceWindowResponse',
     'DatabaseEncryptionResponse',
+    'DateResponse',
     'DefaultSnatStatusResponse',
     'DnsCacheConfigResponse',
     'EnterpriseConfigResponse',
@@ -137,6 +138,8 @@ __all__ = [
     'VerticalPodAutoscalingResponse',
     'VirtualNICResponse',
     'WindowsNodeConfigResponse',
+    'WindowsVersionResponse',
+    'WindowsVersionsResponse',
     'WorkloadALTSConfigResponse',
     'WorkloadCertificatesResponse',
     'WorkloadConfigResponse',
@@ -1910,6 +1913,50 @@ class DatabaseEncryptionResponse(dict):
 
 
 @pulumi.output_type
+class DateResponse(dict):
+    """
+    Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+    """
+    def __init__(__self__, *,
+                 day: int,
+                 month: int,
+                 year: int):
+        """
+        Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> int:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> int:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> int:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
 class DefaultSnatStatusResponse(dict):
     """
     DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
@@ -3263,12 +3310,12 @@ class MaintenanceWindowResponse(dict):
 
     def __init__(__self__, *,
                  daily_maintenance_window: 'outputs.DailyMaintenanceWindowResponse',
-                 maintenance_exclusions: Mapping[str, str],
+                 maintenance_exclusions: Mapping[str, 'outputs.TimeWindowResponse'],
                  recurring_window: 'outputs.RecurringTimeWindowResponse'):
         """
         MaintenanceWindow defines the maintenance window to be used for the cluster.
         :param 'DailyMaintenanceWindowResponse' daily_maintenance_window: DailyMaintenanceWindow specifies a daily maintenance operation window.
-        :param Mapping[str, str] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
+        :param Mapping[str, 'TimeWindowResponse'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         :param 'RecurringTimeWindowResponse' recurring_window: RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
         """
         pulumi.set(__self__, "daily_maintenance_window", daily_maintenance_window)
@@ -3285,7 +3332,7 @@ class MaintenanceWindowResponse(dict):
 
     @property
     @pulumi.getter(name="maintenanceExclusions")
-    def maintenance_exclusions(self) -> Mapping[str, str]:
+    def maintenance_exclusions(self) -> Mapping[str, 'outputs.TimeWindowResponse']:
         """
         Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         """
@@ -7081,6 +7128,72 @@ class WindowsNodeConfigResponse(dict):
         OSVersion specifies the Windows node config to be used on the node
         """
         return pulumi.get(self, "os_version")
+
+
+@pulumi.output_type
+class WindowsVersionResponse(dict):
+    """
+    Windows server version.
+    """
+    def __init__(__self__, *,
+                 image_type: str,
+                 os_version: str,
+                 support_end_date: 'outputs.DateResponse'):
+        """
+        Windows server version.
+        :param str image_type: Windows server image type
+        :param str os_version: Windows server build number
+        :param 'DateResponse' support_end_date: Mainstream support end date
+        """
+        pulumi.set(__self__, "image_type", image_type)
+        pulumi.set(__self__, "os_version", os_version)
+        pulumi.set(__self__, "support_end_date", support_end_date)
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> str:
+        """
+        Windows server image type
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> str:
+        """
+        Windows server build number
+        """
+        return pulumi.get(self, "os_version")
+
+    @property
+    @pulumi.getter(name="supportEndDate")
+    def support_end_date(self) -> 'outputs.DateResponse':
+        """
+        Mainstream support end date
+        """
+        return pulumi.get(self, "support_end_date")
+
+
+@pulumi.output_type
+class WindowsVersionsResponse(dict):
+    """
+    Windows server versions.
+    """
+    def __init__(__self__, *,
+                 windows_versions: Sequence['outputs.WindowsVersionResponse']):
+        """
+        Windows server versions.
+        :param Sequence['WindowsVersionResponse'] windows_versions: List of Windows server versions.
+        """
+        pulumi.set(__self__, "windows_versions", windows_versions)
+
+    @property
+    @pulumi.getter(name="windowsVersions")
+    def windows_versions(self) -> Sequence['outputs.WindowsVersionResponse']:
+        """
+        List of Windows server versions.
+        """
+        return pulumi.get(self, "windows_versions")
 
 
 @pulumi.output_type

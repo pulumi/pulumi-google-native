@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
         /// <summary>
         /// Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Labels;
+        public readonly ImmutableDictionary<string, ImmutableArray<object>> Labels;
         /// <summary>
         /// Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Outputs
 
             Outputs.GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse customPeriod,
 
-            ImmutableDictionary<string, string> labels,
+            ImmutableDictionary<string, ImmutableArray<object>> labels,
 
             ImmutableArray<string> projects,
 

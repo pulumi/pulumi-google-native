@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// <summary>
         /// Unordered map of dynamically typed values.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Fields;
+        public readonly ImmutableDictionary<string, Outputs.GoogleCloudContentwarehouseV1ValueResponse> Fields;
 
         [OutputConstructor]
-        private GoogleCloudContentwarehouseV1MapPropertyResponse(ImmutableDictionary<string, string> fields)
+        private GoogleCloudContentwarehouseV1MapPropertyResponse(ImmutableDictionary<string, Outputs.GoogleCloudContentwarehouseV1ValueResponse> fields)
         {
             Fields = fields;
         }

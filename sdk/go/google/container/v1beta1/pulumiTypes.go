@@ -5999,6 +5999,46 @@ func (o DatabaseEncryptionResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEncryptionResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type DateResponse struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year int `pulumi:"year"`
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type DateResponseOutput struct{ *pulumi.OutputState }
+
+func (DateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateResponse)(nil)).Elem()
+}
+
+func (o DateResponseOutput) ToDateResponseOutput() DateResponseOutput {
+	return o
+}
+
+func (o DateResponseOutput) ToDateResponseOutputWithContext(ctx context.Context) DateResponseOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o DateResponseOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v DateResponse) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o DateResponseOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v DateResponse) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o DateResponseOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v DateResponse) int { return v.Year }).(pulumi.IntOutput)
+}
+
 // DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
 type DefaultSnatStatus struct {
 	// Disables cluster default sNAT rules.
@@ -12121,7 +12161,7 @@ type MaintenanceWindow struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow *DailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions map[string]string `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions map[string]TimeWindow `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow *RecurringTimeWindow `pulumi:"recurringWindow"`
 }
@@ -12142,7 +12182,7 @@ type MaintenanceWindowArgs struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow DailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions pulumi.StringMapInput `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions TimeWindowMapInput `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow RecurringTimeWindowPtrInput `pulumi:"recurringWindow"`
 }
@@ -12231,8 +12271,8 @@ func (o MaintenanceWindowOutput) DailyMaintenanceWindow() DailyMaintenanceWindow
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MaintenanceWindow) map[string]string { return v.MaintenanceExclusions }).(pulumi.StringMapOutput)
+func (o MaintenanceWindowOutput) MaintenanceExclusions() TimeWindowMapOutput {
+	return o.ApplyT(func(v MaintenanceWindow) map[string]TimeWindow { return v.MaintenanceExclusions }).(TimeWindowMapOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -12275,13 +12315,13 @@ func (o MaintenanceWindowPtrOutput) DailyMaintenanceWindow() DailyMaintenanceWin
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowPtrOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) map[string]string {
+func (o MaintenanceWindowPtrOutput) MaintenanceExclusions() TimeWindowMapOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) map[string]TimeWindow {
 		if v == nil {
 			return nil
 		}
 		return v.MaintenanceExclusions
-	}).(pulumi.StringMapOutput)
+	}).(TimeWindowMapOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -12299,7 +12339,7 @@ type MaintenanceWindowResponse struct {
 	// DailyMaintenanceWindow specifies a daily maintenance operation window.
 	DailyMaintenanceWindow DailyMaintenanceWindowResponse `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-	MaintenanceExclusions map[string]string `pulumi:"maintenanceExclusions"`
+	MaintenanceExclusions map[string]TimeWindowResponse `pulumi:"maintenanceExclusions"`
 	// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
 	RecurringWindow RecurringTimeWindowResponse `pulumi:"recurringWindow"`
 }
@@ -12325,8 +12365,8 @@ func (o MaintenanceWindowResponseOutput) DailyMaintenanceWindow() DailyMaintenan
 }
 
 // Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-func (o MaintenanceWindowResponseOutput) MaintenanceExclusions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v MaintenanceWindowResponse) map[string]string { return v.MaintenanceExclusions }).(pulumi.StringMapOutput)
+func (o MaintenanceWindowResponseOutput) MaintenanceExclusions() TimeWindowResponseMapOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) map[string]TimeWindowResponse { return v.MaintenanceExclusions }).(TimeWindowResponseMapOutput)
 }
 
 // RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
@@ -23992,6 +24032,31 @@ func (i *timeWindowPtrType) ToTimeWindowPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowPtrOutput)
 }
 
+// TimeWindowMapInput is an input type that accepts TimeWindowMap and TimeWindowMapOutput values.
+// You can construct a concrete instance of `TimeWindowMapInput` via:
+//
+//	TimeWindowMap{ "key": TimeWindowArgs{...} }
+type TimeWindowMapInput interface {
+	pulumi.Input
+
+	ToTimeWindowMapOutput() TimeWindowMapOutput
+	ToTimeWindowMapOutputWithContext(context.Context) TimeWindowMapOutput
+}
+
+type TimeWindowMap map[string]TimeWindowInput
+
+func (TimeWindowMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeWindow)(nil)).Elem()
+}
+
+func (i TimeWindowMap) ToTimeWindowMapOutput() TimeWindowMapOutput {
+	return i.ToTimeWindowMapOutputWithContext(context.Background())
+}
+
+func (i TimeWindowMap) ToTimeWindowMapOutputWithContext(ctx context.Context) TimeWindowMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowMapOutput)
+}
+
 // Represents an arbitrary window of time.
 type TimeWindowOutput struct{ *pulumi.OutputState }
 
@@ -24086,6 +24151,26 @@ func (o TimeWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TimeWindowMapOutput struct{ *pulumi.OutputState }
+
+func (TimeWindowMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeWindow)(nil)).Elem()
+}
+
+func (o TimeWindowMapOutput) ToTimeWindowMapOutput() TimeWindowMapOutput {
+	return o
+}
+
+func (o TimeWindowMapOutput) ToTimeWindowMapOutputWithContext(ctx context.Context) TimeWindowMapOutput {
+	return o
+}
+
+func (o TimeWindowMapOutput) MapIndex(k pulumi.StringInput) TimeWindowOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TimeWindow {
+		return vs[0].(map[string]TimeWindow)[vs[1].(string)]
+	}).(TimeWindowOutput)
+}
+
 // Represents an arbitrary window of time.
 type TimeWindowResponse struct {
 	// The time that the window ends. The end time should take place after the start time.
@@ -24124,6 +24209,26 @@ func (o TimeWindowResponseOutput) MaintenanceExclusionOptions() MaintenanceExclu
 // The time that the window first starts.
 func (o TimeWindowResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type TimeWindowResponseMapOutput struct{ *pulumi.OutputState }
+
+func (TimeWindowResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeWindowResponse)(nil)).Elem()
+}
+
+func (o TimeWindowResponseMapOutput) ToTimeWindowResponseMapOutput() TimeWindowResponseMapOutput {
+	return o
+}
+
+func (o TimeWindowResponseMapOutput) ToTimeWindowResponseMapOutputWithContext(ctx context.Context) TimeWindowResponseMapOutput {
+	return o
+}
+
+func (o TimeWindowResponseMapOutput) MapIndex(k pulumi.StringInput) TimeWindowResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TimeWindowResponse {
+		return vs[0].(map[string]TimeWindowResponse)[vs[1].(string)]
+	}).(TimeWindowResponseOutput)
 }
 
 // Configuration for Cloud TPU.
@@ -25110,6 +25215,112 @@ func (o WindowsNodeConfigResponseOutput) ToWindowsNodeConfigResponseOutputWithCo
 // OSVersion specifies the Windows node config to be used on the node
 func (o WindowsNodeConfigResponseOutput) OsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v WindowsNodeConfigResponse) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+// Windows server version.
+type WindowsVersionResponse struct {
+	// Windows server image type
+	ImageType string `pulumi:"imageType"`
+	// Windows server build number
+	OsVersion string `pulumi:"osVersion"`
+	// Mainstream support end date
+	SupportEndDate DateResponse `pulumi:"supportEndDate"`
+}
+
+// Windows server version.
+type WindowsVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (WindowsVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsVersionResponse)(nil)).Elem()
+}
+
+func (o WindowsVersionResponseOutput) ToWindowsVersionResponseOutput() WindowsVersionResponseOutput {
+	return o
+}
+
+func (o WindowsVersionResponseOutput) ToWindowsVersionResponseOutputWithContext(ctx context.Context) WindowsVersionResponseOutput {
+	return o
+}
+
+// Windows server image type
+func (o WindowsVersionResponseOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsVersionResponse) string { return v.ImageType }).(pulumi.StringOutput)
+}
+
+// Windows server build number
+func (o WindowsVersionResponseOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsVersionResponse) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+// Mainstream support end date
+func (o WindowsVersionResponseOutput) SupportEndDate() DateResponseOutput {
+	return o.ApplyT(func(v WindowsVersionResponse) DateResponse { return v.SupportEndDate }).(DateResponseOutput)
+}
+
+type WindowsVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WindowsVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WindowsVersionResponse)(nil)).Elem()
+}
+
+func (o WindowsVersionResponseArrayOutput) ToWindowsVersionResponseArrayOutput() WindowsVersionResponseArrayOutput {
+	return o
+}
+
+func (o WindowsVersionResponseArrayOutput) ToWindowsVersionResponseArrayOutputWithContext(ctx context.Context) WindowsVersionResponseArrayOutput {
+	return o
+}
+
+func (o WindowsVersionResponseArrayOutput) Index(i pulumi.IntInput) WindowsVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WindowsVersionResponse {
+		return vs[0].([]WindowsVersionResponse)[vs[1].(int)]
+	}).(WindowsVersionResponseOutput)
+}
+
+// Windows server versions.
+type WindowsVersionsResponse struct {
+	// List of Windows server versions.
+	WindowsVersions []WindowsVersionResponse `pulumi:"windowsVersions"`
+}
+
+// Windows server versions.
+type WindowsVersionsResponseOutput struct{ *pulumi.OutputState }
+
+func (WindowsVersionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsVersionsResponse)(nil)).Elem()
+}
+
+func (o WindowsVersionsResponseOutput) ToWindowsVersionsResponseOutput() WindowsVersionsResponseOutput {
+	return o
+}
+
+func (o WindowsVersionsResponseOutput) ToWindowsVersionsResponseOutputWithContext(ctx context.Context) WindowsVersionsResponseOutput {
+	return o
+}
+
+// List of Windows server versions.
+func (o WindowsVersionsResponseOutput) WindowsVersions() WindowsVersionResponseArrayOutput {
+	return o.ApplyT(func(v WindowsVersionsResponse) []WindowsVersionResponse { return v.WindowsVersions }).(WindowsVersionResponseArrayOutput)
+}
+
+type WindowsVersionsResponseMapOutput struct{ *pulumi.OutputState }
+
+func (WindowsVersionsResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WindowsVersionsResponse)(nil)).Elem()
+}
+
+func (o WindowsVersionsResponseMapOutput) ToWindowsVersionsResponseMapOutput() WindowsVersionsResponseMapOutput {
+	return o
+}
+
+func (o WindowsVersionsResponseMapOutput) ToWindowsVersionsResponseMapOutputWithContext(ctx context.Context) WindowsVersionsResponseMapOutput {
+	return o
+}
+
+func (o WindowsVersionsResponseMapOutput) MapIndex(k pulumi.StringInput) WindowsVersionsResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WindowsVersionsResponse {
+		return vs[0].(map[string]WindowsVersionsResponse)[vs[1].(string)]
+	}).(WindowsVersionsResponseOutput)
 }
 
 // Configuration for direct-path (via ALTS) with workload identity.
@@ -26415,6 +26626,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionArrayInput)(nil)).Elem(), StatusConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowInput)(nil)).Elem(), TimeWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowPtrInput)(nil)).Elem(), TimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowMapInput)(nil)).Elem(), TimeWindowMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TpuConfigInput)(nil)).Elem(), TpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TpuConfigPtrInput)(nil)).Elem(), TpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsInput)(nil)).Elem(), UpgradeSettingsArgs{})
@@ -26529,6 +26741,7 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseEncryptionOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(DateResponseOutput{})
 	pulumi.RegisterOutputType(DefaultSnatStatusOutput{})
 	pulumi.RegisterOutputType(DefaultSnatStatusPtrOutput{})
 	pulumi.RegisterOutputType(DefaultSnatStatusResponseOutput{})
@@ -26796,7 +27009,9 @@ func init() {
 	pulumi.RegisterOutputType(StatusConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(TimeWindowOutput{})
 	pulumi.RegisterOutputType(TimeWindowPtrOutput{})
+	pulumi.RegisterOutputType(TimeWindowMapOutput{})
 	pulumi.RegisterOutputType(TimeWindowResponseOutput{})
+	pulumi.RegisterOutputType(TimeWindowResponseMapOutput{})
 	pulumi.RegisterOutputType(TpuConfigOutput{})
 	pulumi.RegisterOutputType(TpuConfigPtrOutput{})
 	pulumi.RegisterOutputType(TpuConfigResponseOutput{})
@@ -26813,6 +27028,10 @@ func init() {
 	pulumi.RegisterOutputType(WindowsNodeConfigOutput{})
 	pulumi.RegisterOutputType(WindowsNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(WindowsNodeConfigResponseOutput{})
+	pulumi.RegisterOutputType(WindowsVersionResponseOutput{})
+	pulumi.RegisterOutputType(WindowsVersionResponseArrayOutput{})
+	pulumi.RegisterOutputType(WindowsVersionsResponseOutput{})
+	pulumi.RegisterOutputType(WindowsVersionsResponseMapOutput{})
 	pulumi.RegisterOutputType(WorkloadALTSConfigOutput{})
 	pulumi.RegisterOutputType(WorkloadALTSConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadALTSConfigResponseOutput{})

@@ -8,6 +8,92 @@ using Pulumi;
 namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 {
     /// <summary>
+    /// Policy action.
+    /// </summary>
+    [EnumType]
+    public readonly struct CleanupPolicyAction : IEquatable<CleanupPolicyAction>
+    {
+        private readonly string _value;
+
+        private CleanupPolicyAction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Action not specified.
+        /// </summary>
+        public static CleanupPolicyAction ActionUnspecified { get; } = new CleanupPolicyAction("ACTION_UNSPECIFIED");
+        /// <summary>
+        /// Delete action.
+        /// </summary>
+        public static CleanupPolicyAction Delete { get; } = new CleanupPolicyAction("DELETE");
+        /// <summary>
+        /// Keep action.
+        /// </summary>
+        public static CleanupPolicyAction Keep { get; } = new CleanupPolicyAction("KEEP");
+
+        public static bool operator ==(CleanupPolicyAction left, CleanupPolicyAction right) => left.Equals(right);
+        public static bool operator !=(CleanupPolicyAction left, CleanupPolicyAction right) => !left.Equals(right);
+
+        public static explicit operator string(CleanupPolicyAction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CleanupPolicyAction other && Equals(other);
+        public bool Equals(CleanupPolicyAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Match versions by tag status.
+    /// </summary>
+    [EnumType]
+    public readonly struct CleanupPolicyConditionTagState : IEquatable<CleanupPolicyConditionTagState>
+    {
+        private readonly string _value;
+
+        private CleanupPolicyConditionTagState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Tag status not specified.
+        /// </summary>
+        public static CleanupPolicyConditionTagState TagStateUnspecified { get; } = new CleanupPolicyConditionTagState("TAG_STATE_UNSPECIFIED");
+        /// <summary>
+        /// Applies to tagged versions only.
+        /// </summary>
+        public static CleanupPolicyConditionTagState Tagged { get; } = new CleanupPolicyConditionTagState("TAGGED");
+        /// <summary>
+        /// Applies to untagged versions only.
+        /// </summary>
+        public static CleanupPolicyConditionTagState Untagged { get; } = new CleanupPolicyConditionTagState("UNTAGGED");
+        /// <summary>
+        /// Applies to all versions.
+        /// </summary>
+        public static CleanupPolicyConditionTagState Any { get; } = new CleanupPolicyConditionTagState("ANY");
+
+        public static bool operator ==(CleanupPolicyConditionTagState left, CleanupPolicyConditionTagState right) => left.Equals(right);
+        public static bool operator !=(CleanupPolicyConditionTagState left, CleanupPolicyConditionTagState right) => !left.Equals(right);
+
+        public static explicit operator string(CleanupPolicyConditionTagState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CleanupPolicyConditionTagState other && Equals(other);
+        public bool Equals(CleanupPolicyConditionTagState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// One of the publicly available Docker repositories supported by Artifact Registry.
     /// </summary>
     [EnumType]

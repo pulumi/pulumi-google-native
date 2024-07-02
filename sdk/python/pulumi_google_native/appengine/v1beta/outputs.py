@@ -28,6 +28,7 @@ __all__ = [
     'EntrypointResponse',
     'ErrorHandlerResponse',
     'FeatureSettingsResponse',
+    'FileInfoResponse',
     'FlexibleRuntimeSettingsResponse',
     'HealthCheckResponse',
     'IdentityAwareProxyResponse',
@@ -768,14 +769,14 @@ class DeploymentResponse(dict):
                  build: 'outputs.BuildInfoResponse',
                  cloud_build_options: 'outputs.CloudBuildOptionsResponse',
                  container: 'outputs.ContainerInfoResponse',
-                 files: Mapping[str, str],
+                 files: Mapping[str, 'outputs.FileInfoResponse'],
                  zip: 'outputs.ZipInfoResponse'):
         """
         Code and application artifacts used to deploy a version to App Engine.
         :param 'BuildInfoResponse' build: Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment.
         :param 'CloudBuildOptionsResponse' cloud_build_options: Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
         :param 'ContainerInfoResponse' container: The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
-        :param Mapping[str, str] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
+        :param Mapping[str, 'FileInfoResponse'] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         :param 'ZipInfoResponse' zip: The zip file for this deployment, if this is a zip deployment.
         """
         pulumi.set(__self__, "build", build)
@@ -810,7 +811,7 @@ class DeploymentResponse(dict):
 
     @property
     @pulumi.getter
-    def files(self) -> Mapping[str, str]:
+    def files(self) -> Mapping[str, 'outputs.FileInfoResponse']:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
         """
@@ -1116,6 +1117,71 @@ class FeatureSettingsResponse(dict):
         If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image.
         """
         return pulumi.get(self, "use_container_optimized_os")
+
+
+@pulumi.output_type
+class FileInfoResponse(dict):
+    """
+    Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+        elif key == "sha1Sum":
+            suggest = "sha1_sum"
+        elif key == "sourceUrl":
+            suggest = "source_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mime_type: str,
+                 sha1_sum: str,
+                 source_url: str):
+        """
+        Single source file that is part of the version to be deployed. Each source file that is deployed must be specified separately.
+        :param str mime_type: The MIME type of the file.Defaults to the value from Google Cloud Storage.
+        :param str sha1_sum: The SHA1 hash of the file, in hex.
+        :param str source_url: URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+        """
+        pulumi.set(__self__, "mime_type", mime_type)
+        pulumi.set(__self__, "sha1_sum", sha1_sum)
+        pulumi.set(__self__, "source_url", source_url)
+
+    @property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> str:
+        """
+        The MIME type of the file.Defaults to the value from Google Cloud Storage.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @property
+    @pulumi.getter(name="sha1Sum")
+    def sha1_sum(self) -> str:
+        """
+        The SHA1 hash of the file, in hex.
+        """
+        return pulumi.get(self, "sha1_sum")
+
+    @property
+    @pulumi.getter(name="sourceUrl")
+    def source_url(self) -> str:
+        """
+        URL source to use to fetch this file. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+        """
+        return pulumi.get(self, "source_url")
 
 
 @pulumi.output_type

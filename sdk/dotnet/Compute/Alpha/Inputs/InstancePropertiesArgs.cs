@@ -121,14 +121,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         [Input("partnerMetadata")]
-        private InputMap<string>? _partnerMetadata;
+        private InputMap<Inputs.StructuredEntriesArgs>? _partnerMetadata;
 
         /// <summary>
         /// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
         /// </summary>
-        public InputMap<string> PartnerMetadata
+        public InputMap<Inputs.StructuredEntriesArgs> PartnerMetadata
         {
-            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<string>());
+            get => _partnerMetadata ?? (_partnerMetadata = new InputMap<Inputs.StructuredEntriesArgs>());
             set => _partnerMetadata = value;
         }
 
@@ -205,14 +205,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         [Input("serviceIntegrationSpecs")]
-        private InputMap<string>? _serviceIntegrationSpecs;
+        private InputMap<Inputs.ServiceIntegrationSpecArgs>? _serviceIntegrationSpecs;
 
         /// <summary>
         /// Mapping of user defined keys to ServiceIntegrationSpec.
         /// </summary>
-        public InputMap<string> ServiceIntegrationSpecs
+        public InputMap<Inputs.ServiceIntegrationSpecArgs> ServiceIntegrationSpecs
         {
-            get => _serviceIntegrationSpecs ?? (_serviceIntegrationSpecs = new InputMap<string>());
+            get => _serviceIntegrationSpecs ?? (_serviceIntegrationSpecs = new InputMap<Inputs.ServiceIntegrationSpecArgs>());
             set => _serviceIntegrationSpecs = value;
         }
 

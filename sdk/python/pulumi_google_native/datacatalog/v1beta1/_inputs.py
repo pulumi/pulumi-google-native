@@ -16,9 +16,13 @@ __all__ = [
     'GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs',
     'GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs',
     'GoogleCloudDatacatalogV1beta1ColumnSchemaArgs',
+    'GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs',
+    'GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs',
+    'GoogleCloudDatacatalogV1beta1FieldTypeArgs',
     'GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs',
     'GoogleCloudDatacatalogV1beta1SchemaArgs',
     'GoogleCloudDatacatalogV1beta1TableSpecArgs',
+    'GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs',
     'GoogleCloudDatacatalogV1beta1ViewSpecArgs',
 ]
 
@@ -286,6 +290,84 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] display_name: The display name of the enum value. Must not be an empty string.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the enum value. Must not be an empty string.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs:
+    def __init__(__self__, *,
+                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs']]]] = None):
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs']]]]:
+        return pulumi.get(self, "allowed_values")
+
+    @allowed_values.setter
+    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs']]]]):
+        pulumi.set(self, "allowed_values", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1beta1FieldTypeArgs:
+    def __init__(__self__, *,
+                 enum_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs']] = None,
+                 primitive_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType']] = None):
+        """
+        :param pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs'] enum_type: Represents an enum type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType'] primitive_type: Represents primitive types - string, bool etc.
+        """
+        if enum_type is not None:
+            pulumi.set(__self__, "enum_type", enum_type)
+        if primitive_type is not None:
+            pulumi.set(__self__, "primitive_type", primitive_type)
+
+    @property
+    @pulumi.getter(name="enumType")
+    def enum_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs']]:
+        """
+        Represents an enum type.
+        """
+        return pulumi.get(self, "enum_type")
+
+    @enum_type.setter
+    def enum_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs']]):
+        pulumi.set(self, "enum_type", value)
+
+    @property
+    @pulumi.getter(name="primitiveType")
+    def primitive_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType']]:
+        """
+        Represents primitive types - string, bool etc.
+        """
+        return pulumi.get(self, "primitive_type")
+
+    @primitive_type.setter
+    def primitive_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypePrimitiveType']]):
+        pulumi.set(self, "primitive_type", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs:
     def __init__(__self__, *,
                  file_patterns: pulumi.Input[Sequence[pulumi.Input[str]]]):
@@ -338,6 +420,93 @@ class GoogleCloudDatacatalogV1beta1TableSpecArgs:
         Normal BigQuery table spec.
         """
         pass
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1beta1TagTemplateFieldArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeArgs'],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 is_required: Optional[pulumi.Input[bool]] = None,
+                 order: Optional[pulumi.Input[int]] = None):
+        """
+        The template for an individual field within a tag template.
+        :param pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeArgs'] type: The type of value this tag field can contain.
+        :param pulumi.Input[str] description: The description for this field. Defaults to an empty string.
+        :param pulumi.Input[str] display_name: The display name for this field. Defaults to an empty string.
+        :param pulumi.Input[bool] is_required: Whether this is a required field. Defaults to false.
+        :param pulumi.Input[int] order: The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+        """
+        pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if is_required is not None:
+            pulumi.set(__self__, "is_required", is_required)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeArgs']:
+        """
+        The type of value this tag field can contain.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeArgs']):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description for this field. Defaults to an empty string.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name for this field. Defaults to an empty string.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="isRequired")
+    def is_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this is a required field. Defaults to false.
+        """
+        return pulumi.get(self, "is_required")
+
+    @is_required.setter
+    def is_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_required", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[int]]:
+        """
+        The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "order", value)
 
 
 @pulumi.input_type

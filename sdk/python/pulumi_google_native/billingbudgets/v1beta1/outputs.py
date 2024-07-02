@@ -252,7 +252,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
                  credit_types: Sequence[str],
                  credit_types_treatment: str,
                  custom_period: 'outputs.GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse',
-                 labels: Mapping[str, str],
+                 labels: Mapping[str, Sequence[Any]],
                  projects: Sequence[str],
                  resource_ancestors: Sequence[str],
                  services: Sequence[str],
@@ -263,7 +263,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
         :param Sequence[str] credit_types: Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         :param str credit_types_treatment: Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
         :param 'GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse' custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
-        :param Mapping[str, str] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
+        :param Mapping[str, Sequence[Any]] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         :param Sequence[str] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on.
         :param Sequence[str] resource_ancestors: Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
         :param Sequence[str] services: Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
@@ -313,7 +313,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, str]:
+    def labels(self) -> Mapping[str, Sequence[Any]]:
         """
         Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._
         """

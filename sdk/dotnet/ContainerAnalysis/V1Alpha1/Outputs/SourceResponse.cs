@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// <summary>
         /// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> FileHashes;
+        public readonly ImmutableDictionary<string, Outputs.FileHashesResponse> FileHashes;
         /// <summary>
         /// If provided, get source from this location in a Cloud Repo.
         /// </summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             Outputs.GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse context,
 
-            ImmutableDictionary<string, string> fileHashes,
+            ImmutableDictionary<string, Outputs.FileHashesResponse> fileHashes,
 
             Outputs.RepoSourceResponse repoSource,
 

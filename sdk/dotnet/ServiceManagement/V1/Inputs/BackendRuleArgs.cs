@@ -51,18 +51,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         [Input("operationDeadline")]
         public Input<double>? OperationDeadline { get; set; }
 
-        [Input("overridesByRequestProtocol")]
-        private InputMap<string>? _overridesByRequestProtocol;
-
-        /// <summary>
-        /// The map between request protocol and the backend address.
-        /// </summary>
-        public InputMap<string> OverridesByRequestProtocol
-        {
-            get => _overridesByRequestProtocol ?? (_overridesByRequestProtocol = new InputMap<string>());
-            set => _overridesByRequestProtocol = value;
-        }
-
         [Input("pathTranslation")]
         public Input<Pulumi.GoogleNative.ServiceManagement.V1.BackendRulePathTranslation>? PathTranslation { get; set; }
 

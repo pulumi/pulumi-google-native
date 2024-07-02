@@ -60,9 +60,9 @@ type Release struct {
 	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion pulumi.StringOutput `pulumi:"skaffoldVersion"`
 	// Map from target ID to the target artifacts created during the render operation.
-	TargetArtifacts pulumi.StringMapOutput `pulumi:"targetArtifacts"`
+	TargetArtifacts TargetArtifactResponseMapOutput `pulumi:"targetArtifacts"`
 	// Map from target ID to details of the render operation for that target.
-	TargetRenders pulumi.StringMapOutput `pulumi:"targetRenders"`
+	TargetRenders TargetRenderResponseMapOutput `pulumi:"targetRenders"`
 	// Snapshot of the targets taken at release creation time.
 	TargetSnapshots TargetResponseArrayOutput `pulumi:"targetSnapshots"`
 	// Unique identifier of the `Release`.
@@ -327,13 +327,13 @@ func (o ReleaseOutput) SkaffoldVersion() pulumi.StringOutput {
 }
 
 // Map from target ID to the target artifacts created during the render operation.
-func (o ReleaseOutput) TargetArtifacts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.TargetArtifacts }).(pulumi.StringMapOutput)
+func (o ReleaseOutput) TargetArtifacts() TargetArtifactResponseMapOutput {
+	return o.ApplyT(func(v *Release) TargetArtifactResponseMapOutput { return v.TargetArtifacts }).(TargetArtifactResponseMapOutput)
 }
 
 // Map from target ID to details of the render operation for that target.
-func (o ReleaseOutput) TargetRenders() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.TargetRenders }).(pulumi.StringMapOutput)
+func (o ReleaseOutput) TargetRenders() TargetRenderResponseMapOutput {
+	return o.ApplyT(func(v *Release) TargetRenderResponseMapOutput { return v.TargetRenders }).(TargetRenderResponseMapOutput)
 }
 
 // Snapshot of the targets taken at release creation time.

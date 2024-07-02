@@ -38,8 +38,8 @@ type PipelineJob struct {
 	// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
 	PipelineJobId pulumi.StringPtrOutput `pulumi:"pipelineJobId"`
 	// The spec of the pipeline.
-	PipelineSpec pulumi.StringMapOutput `pulumi:"pipelineSpec"`
-	Project      pulumi.StringOutput    `pulumi:"project"`
+	PipelineSpec pulumi.MapOutput    `pulumi:"pipelineSpec"`
+	Project      pulumi.StringOutput `pulumi:"project"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges pulumi.StringArrayOutput `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -117,8 +117,8 @@ type pipelineJobArgs struct {
 	// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
 	PipelineJobId *string `pulumi:"pipelineJobId"`
 	// The spec of the pipeline.
-	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
-	Project      *string           `pulumi:"project"`
+	PipelineSpec map[string]interface{} `pulumi:"pipelineSpec"`
+	Project      *string                `pulumi:"project"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -143,7 +143,7 @@ type PipelineJobArgs struct {
 	// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
 	PipelineJobId pulumi.StringPtrInput
 	// The spec of the pipeline.
-	PipelineSpec pulumi.StringMapInput
+	PipelineSpec pulumi.MapInput
 	Project      pulumi.StringPtrInput
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges pulumi.StringArrayInput
@@ -247,8 +247,8 @@ func (o PipelineJobOutput) PipelineJobId() pulumi.StringPtrOutput {
 }
 
 // The spec of the pipeline.
-func (o PipelineJobOutput) PipelineSpec() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *PipelineJob) pulumi.StringMapOutput { return v.PipelineSpec }).(pulumi.StringMapOutput)
+func (o PipelineJobOutput) PipelineSpec() pulumi.MapOutput {
+	return o.ApplyT(func(v *PipelineJob) pulumi.MapOutput { return v.PipelineSpec }).(pulumi.MapOutput)
 }
 
 func (o PipelineJobOutput) Project() pulumi.StringOutput {

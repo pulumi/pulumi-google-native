@@ -37,7 +37,7 @@ type LookupClusterResult struct {
 	// The resource name of this cluster. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
 	Name string `pulumi:"name"`
 	// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-	NodeTypeConfigs map[string]string `pulumi:"nodeTypeConfigs"`
+	NodeTypeConfigs map[string]NodeTypeConfigResponse `pulumi:"nodeTypeConfigs"`
 	// State of the resource.
 	State string `pulumi:"state"`
 	// Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
@@ -102,8 +102,8 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 }
 
 // The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
-func (o LookupClusterResultOutput) NodeTypeConfigs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.NodeTypeConfigs }).(pulumi.StringMapOutput)
+func (o LookupClusterResultOutput) NodeTypeConfigs() NodeTypeConfigResponseMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]NodeTypeConfigResponse { return v.NodeTypeConfigs }).(NodeTypeConfigResponseMapOutput)
 }
 
 // State of the resource.

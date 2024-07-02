@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
         /// </summary>
         [Output("dialogflowIntents")]
-        public Output<ImmutableDictionary<string, string>> DialogflowIntents { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.GoogleCloudContactcenterinsightsV1DialogflowIntentResponse>> DialogflowIntents { get; private set; } = null!;
 
         /// <summary>
         /// The duration of the conversation.

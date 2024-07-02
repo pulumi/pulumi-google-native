@@ -30,7 +30,7 @@ export interface GetRepositoryResult {
     /**
      * Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
      */
-    readonly cleanupPolicies: {[key: string]: string};
+    readonly cleanupPolicies: {[key: string]: outputs.artifactregistry.v1.CleanupPolicyResponse};
     /**
      * Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
      */

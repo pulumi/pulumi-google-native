@@ -54,7 +54,7 @@ class GetRepoResult:
 
     @property
     @pulumi.getter(name="pubsubConfigs")
-    def pubsub_configs(self) -> Mapping[str, str]:
+    def pubsub_configs(self) -> Mapping[str, 'outputs.PubsubConfigResponse']:
         """
         How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
         """

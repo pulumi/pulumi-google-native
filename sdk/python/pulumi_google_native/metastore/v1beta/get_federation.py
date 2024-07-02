@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetFederationResult',
@@ -52,7 +53,7 @@ class GetFederationResult:
 
     @property
     @pulumi.getter(name="backendMetastores")
-    def backend_metastores(self) -> Mapping[str, str]:
+    def backend_metastores(self) -> Mapping[str, 'outputs.BackendMetastoreResponse']:
         """
         A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         """

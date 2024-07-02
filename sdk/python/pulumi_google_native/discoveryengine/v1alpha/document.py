@@ -28,7 +28,7 @@ class DocumentArgs:
                  parent_document_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 struct_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 struct_data: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Document resource.
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
@@ -38,7 +38,7 @@ class DocumentArgs:
         :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
+        :param pulumi.Input[Mapping[str, Any]] struct_data: The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         pulumi.set(__self__, "branch_id", branch_id)
         pulumi.set(__self__, "collection_id", collection_id)
@@ -194,14 +194,14 @@ class DocumentArgs:
 
     @property
     @pulumi.getter(name="structData")
-    def struct_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def struct_data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "struct_data")
 
     @struct_data.setter
-    def struct_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def struct_data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "struct_data", value)
 
 
@@ -222,7 +222,7 @@ class Document(pulumi.CustomResource):
                  parent_document_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 struct_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 struct_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         Creates a Document.
@@ -236,7 +236,7 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
+        :param pulumi.Input[Mapping[str, Any]] struct_data: The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """
         ...
     @overload
@@ -274,7 +274,7 @@ class Document(pulumi.CustomResource):
                  parent_document_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 struct_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 struct_data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,7 +370,7 @@ class Document(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="derivedStructData")
-    def derived_struct_data(self) -> pulumi.Output[Mapping[str, str]]:
+    def derived_struct_data(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
         """
@@ -428,7 +428,7 @@ class Document(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="structData")
-    def struct_data(self) -> pulumi.Output[Mapping[str, str]]:
+    def struct_data(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         """

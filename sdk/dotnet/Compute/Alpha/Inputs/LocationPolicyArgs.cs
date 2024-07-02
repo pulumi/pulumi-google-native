@@ -16,14 +16,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class LocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("locations")]
-        private InputMap<string>? _locations;
+        private InputMap<Inputs.LocationPolicyLocationArgs>? _locations;
 
         /// <summary>
         /// Location configurations mapped by location name. Currently only zone names are supported and must be represented as valid internal URLs, such as zones/us-central1-a.
         /// </summary>
-        public InputMap<string> Locations
+        public InputMap<Inputs.LocationPolicyLocationArgs> Locations
         {
-            get => _locations ?? (_locations = new InputMap<string>());
+            get => _locations ?? (_locations = new InputMap<Inputs.LocationPolicyLocationArgs>());
             set => _locations = value;
         }
 

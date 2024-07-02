@@ -315,7 +315,7 @@ class GetBuildResult:
 
     @property
     @pulumi.getter
-    def timing(self) -> Mapping[str, str]:
+    def timing(self) -> Mapping[str, 'outputs.TimeSpanResponse']:
         """
         Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         """

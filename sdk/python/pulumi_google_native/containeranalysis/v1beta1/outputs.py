@@ -48,6 +48,7 @@ __all__ = [
     'EnvironmentResponse',
     'ExprResponse',
     'ExternalRefResponse',
+    'FileHashesResponse',
     'FileNoteResponse',
     'FileOccurrenceResponse',
     'FingerprintResponse',
@@ -590,8 +591,8 @@ class BuildDefinitionResponse(dict):
 
     def __init__(__self__, *,
                  build_type: str,
-                 external_parameters: Mapping[str, str],
-                 internal_parameters: Mapping[str, str],
+                 external_parameters: Mapping[str, Any],
+                 internal_parameters: Mapping[str, Any],
                  resolved_dependencies: Sequence['outputs.ResourceDescriptorResponse']):
         pulumi.set(__self__, "build_type", build_type)
         pulumi.set(__self__, "external_parameters", external_parameters)
@@ -605,12 +606,12 @@ class BuildDefinitionResponse(dict):
 
     @property
     @pulumi.getter(name="externalParameters")
-    def external_parameters(self) -> Mapping[str, str]:
+    def external_parameters(self) -> Mapping[str, Any]:
         return pulumi.get(self, "external_parameters")
 
     @property
     @pulumi.getter(name="internalParameters")
-    def internal_parameters(self) -> Mapping[str, str]:
+    def internal_parameters(self) -> Mapping[str, Any]:
         return pulumi.get(self, "internal_parameters")
 
     @property
@@ -2571,6 +2572,45 @@ class ExternalRefResponse(dict):
         Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class FileHashesResponse(dict):
+    """
+    Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileHash":
+            suggest = "file_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileHashesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileHashesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileHashesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_hash: Sequence['outputs.HashResponse']):
+        """
+        Container message for hashes of byte content of files, used in source messages to verify integrity of source input to the build.
+        :param Sequence['HashResponse'] file_hash: Collection of file hashes.
+        """
+        pulumi.set(__self__, "file_hash", file_hash)
+
+    @property
+    @pulumi.getter(name="fileHash")
+    def file_hash(self) -> Sequence['outputs.HashResponse']:
+        """
+        Collection of file hashes.
+        """
+        return pulumi.get(self, "file_hash")
 
 
 @pulumi.output_type
@@ -5157,7 +5197,7 @@ class ResourceDescriptorResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 annotations: Mapping[str, str],
+                 annotations: Mapping[str, Any],
                  content: str,
                  digest: Mapping[str, str],
                  download_location: str,
@@ -5174,7 +5214,7 @@ class ResourceDescriptorResponse(dict):
 
     @property
     @pulumi.getter
-    def annotations(self) -> Mapping[str, str]:
+    def annotations(self) -> Mapping[str, Any]:
         return pulumi.get(self, "annotations")
 
     @property
@@ -5861,13 +5901,13 @@ class SourceResponse(dict):
                  additional_contexts: Sequence['outputs.SourceContextResponse'],
                  artifact_storage_source_uri: str,
                  context: 'outputs.SourceContextResponse',
-                 file_hashes: Mapping[str, str]):
+                 file_hashes: Mapping[str, 'outputs.FileHashesResponse']):
         """
         Source describes the location of the source used for the build.
         :param Sequence['SourceContextResponse'] additional_contexts: If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
         :param str artifact_storage_source_uri: If provided, the input binary artifacts for the build came from this location.
         :param 'SourceContextResponse' context: If provided, the source code used for the build came from this location.
-        :param Mapping[str, str] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+        :param Mapping[str, 'FileHashesResponse'] file_hashes: Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """
         pulumi.set(__self__, "additional_contexts", additional_contexts)
         pulumi.set(__self__, "artifact_storage_source_uri", artifact_storage_source_uri)
@@ -5900,7 +5940,7 @@ class SourceResponse(dict):
 
     @property
     @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> Mapping[str, str]:
+    def file_hashes(self) -> Mapping[str, 'outputs.FileHashesResponse']:
         """
         Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
         """
@@ -5914,12 +5954,12 @@ class StatusResponse(dict):
     """
     def __init__(__self__, *,
                  code: int,
-                 details: Sequence[Mapping[str, str]],
+                 details: Sequence[Mapping[str, Any]],
                  message: str):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param int code: The status code, which should be an enum value of google.rpc.Code.
-        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         pulumi.set(__self__, "code", code)
@@ -5936,7 +5976,7 @@ class StatusResponse(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Sequence[Mapping[str, str]]:
+    def details(self) -> Sequence[Mapping[str, Any]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """

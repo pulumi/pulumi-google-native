@@ -5216,7 +5216,7 @@ type EnterpriseCrmEventbusProtoParameterValueType struct {
 	IntArray              *EnterpriseCrmEventbusProtoIntParameterArray         `pulumi:"intArray"`
 	IntValue              *string                                              `pulumi:"intValue"`
 	ProtoArray            *EnterpriseCrmEventbusProtoProtoParameterArray       `pulumi:"protoArray"`
-	ProtoValue            map[string]string                                    `pulumi:"protoValue"`
+	ProtoValue            map[string]interface{}                               `pulumi:"protoValue"`
 	SerializedObjectValue *EnterpriseCrmEventbusProtoSerializedObjectParameter `pulumi:"serializedObjectValue"`
 	StringArray           *EnterpriseCrmEventbusProtoStringParameterArray      `pulumi:"stringArray"`
 	StringValue           *string                                              `pulumi:"stringValue"`
@@ -5242,7 +5242,7 @@ type EnterpriseCrmEventbusProtoParameterValueTypeArgs struct {
 	IntArray              EnterpriseCrmEventbusProtoIntParameterArrayPtrInput         `pulumi:"intArray"`
 	IntValue              pulumi.StringPtrInput                                       `pulumi:"intValue"`
 	ProtoArray            EnterpriseCrmEventbusProtoProtoParameterArrayPtrInput       `pulumi:"protoArray"`
-	ProtoValue            pulumi.StringMapInput                                       `pulumi:"protoValue"`
+	ProtoValue            pulumi.MapInput                                             `pulumi:"protoValue"`
 	SerializedObjectValue EnterpriseCrmEventbusProtoSerializedObjectParameterPtrInput `pulumi:"serializedObjectValue"`
 	StringArray           EnterpriseCrmEventbusProtoStringParameterArrayPtrInput      `pulumi:"stringArray"`
 	StringValue           pulumi.StringPtrInput                                       `pulumi:"stringValue"`
@@ -5362,8 +5362,8 @@ func (o EnterpriseCrmEventbusProtoParameterValueTypeOutput) ProtoArray() Enterpr
 	}).(EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoParameterValueTypeOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterValueType) map[string]string { return v.ProtoValue }).(pulumi.StringMapOutput)
+func (o EnterpriseCrmEventbusProtoParameterValueTypeOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterValueType) map[string]interface{} { return v.ProtoValue }).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmEventbusProtoParameterValueTypeOutput) SerializedObjectValue() EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput {
@@ -5469,13 +5469,13 @@ func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) ProtoArray() Ente
 	}).(EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoParameterValueType) map[string]string {
+func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoParameterValueType) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ProtoValue
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmEventbusProtoParameterValueTypePtrOutput) SerializedObjectValue() EnterpriseCrmEventbusProtoSerializedObjectParameterPtrOutput {
@@ -5514,7 +5514,7 @@ type EnterpriseCrmEventbusProtoParameterValueTypeResponse struct {
 	IntArray              EnterpriseCrmEventbusProtoIntParameterArrayResponse         `pulumi:"intArray"`
 	IntValue              string                                                      `pulumi:"intValue"`
 	ProtoArray            EnterpriseCrmEventbusProtoProtoParameterArrayResponse       `pulumi:"protoArray"`
-	ProtoValue            map[string]string                                           `pulumi:"protoValue"`
+	ProtoValue            map[string]interface{}                                      `pulumi:"protoValue"`
 	SerializedObjectValue EnterpriseCrmEventbusProtoSerializedObjectParameterResponse `pulumi:"serializedObjectValue"`
 	StringArray           EnterpriseCrmEventbusProtoStringParameterArrayResponse      `pulumi:"stringArray"`
 	StringValue           string                                                      `pulumi:"stringValue"`
@@ -5571,8 +5571,10 @@ func (o EnterpriseCrmEventbusProtoParameterValueTypeResponseOutput) ProtoArray()
 	}).(EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoParameterValueTypeResponseOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterValueTypeResponse) map[string]string { return v.ProtoValue }).(pulumi.StringMapOutput)
+func (o EnterpriseCrmEventbusProtoParameterValueTypeResponseOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterValueTypeResponse) map[string]interface{} {
+		return v.ProtoValue
+	}).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmEventbusProtoParameterValueTypeResponseOutput) SerializedObjectValue() EnterpriseCrmEventbusProtoSerializedObjectParameterResponseOutput {
@@ -5756,7 +5758,7 @@ func (o EnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutput) Index(i pulu
 }
 
 type EnterpriseCrmEventbusProtoProtoParameterArray struct {
-	ProtoValues []map[string]string `pulumi:"protoValues"`
+	ProtoValues []map[string]interface{} `pulumi:"protoValues"`
 }
 
 // EnterpriseCrmEventbusProtoProtoParameterArrayInput is an input type that accepts EnterpriseCrmEventbusProtoProtoParameterArray and EnterpriseCrmEventbusProtoProtoParameterArrayOutput values.
@@ -5771,7 +5773,7 @@ type EnterpriseCrmEventbusProtoProtoParameterArrayInput interface {
 }
 
 type EnterpriseCrmEventbusProtoProtoParameterArrayArgs struct {
-	ProtoValues pulumi.StringMapArrayInput `pulumi:"protoValues"`
+	ProtoValues pulumi.MapArrayInput `pulumi:"protoValues"`
 }
 
 func (EnterpriseCrmEventbusProtoProtoParameterArrayArgs) ElementType() reflect.Type {
@@ -5851,8 +5853,8 @@ func (o EnterpriseCrmEventbusProtoProtoParameterArrayOutput) ToEnterpriseCrmEven
 	}).(EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoProtoParameterArrayOutput) ProtoValues() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v EnterpriseCrmEventbusProtoProtoParameterArray) []map[string]string { return v.ProtoValues }).(pulumi.StringMapArrayOutput)
+func (o EnterpriseCrmEventbusProtoProtoParameterArrayOutput) ProtoValues() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoProtoParameterArray) []map[string]interface{} { return v.ProtoValues }).(pulumi.MapArrayOutput)
 }
 
 type EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput struct{ *pulumi.OutputState }
@@ -5879,17 +5881,17 @@ func (o EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput) Elem() Enterpris
 	}).(EnterpriseCrmEventbusProtoProtoParameterArrayOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput) ProtoValues() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoProtoParameterArray) []map[string]string {
+func (o EnterpriseCrmEventbusProtoProtoParameterArrayPtrOutput) ProtoValues() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoProtoParameterArray) []map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ProtoValues
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 type EnterpriseCrmEventbusProtoProtoParameterArrayResponse struct {
-	ProtoValues []map[string]string `pulumi:"protoValues"`
+	ProtoValues []map[string]interface{} `pulumi:"protoValues"`
 }
 
 type EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput struct{ *pulumi.OutputState }
@@ -5906,10 +5908,10 @@ func (o EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput) ToEnterpris
 	return o
 }
 
-func (o EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput) ProtoValues() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v EnterpriseCrmEventbusProtoProtoParameterArrayResponse) []map[string]string {
+func (o EnterpriseCrmEventbusProtoProtoParameterArrayResponseOutput) ProtoValues() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoProtoParameterArrayResponse) []map[string]interface{} {
 		return v.ProtoValues
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 type EnterpriseCrmEventbusProtoSerializedObjectParameter struct {
@@ -8688,7 +8690,7 @@ type EnterpriseCrmEventbusProtoValueType struct {
 	DoubleValue  *float64                               `pulumi:"doubleValue"`
 	IntArray     *EnterpriseCrmEventbusProtoIntArray    `pulumi:"intArray"`
 	IntValue     *string                                `pulumi:"intValue"`
-	ProtoValue   map[string]string                      `pulumi:"protoValue"`
+	ProtoValue   map[string]interface{}                 `pulumi:"protoValue"`
 	StringArray  *EnterpriseCrmEventbusProtoStringArray `pulumi:"stringArray"`
 	StringValue  *string                                `pulumi:"stringValue"`
 }
@@ -8711,7 +8713,7 @@ type EnterpriseCrmEventbusProtoValueTypeArgs struct {
 	DoubleValue  pulumi.Float64PtrInput                        `pulumi:"doubleValue"`
 	IntArray     EnterpriseCrmEventbusProtoIntArrayPtrInput    `pulumi:"intArray"`
 	IntValue     pulumi.StringPtrInput                         `pulumi:"intValue"`
-	ProtoValue   pulumi.StringMapInput                         `pulumi:"protoValue"`
+	ProtoValue   pulumi.MapInput                               `pulumi:"protoValue"`
 	StringArray  EnterpriseCrmEventbusProtoStringArrayPtrInput `pulumi:"stringArray"`
 	StringValue  pulumi.StringPtrInput                         `pulumi:"stringValue"`
 }
@@ -8816,8 +8818,8 @@ func (o EnterpriseCrmEventbusProtoValueTypeOutput) IntValue() pulumi.StringPtrOu
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoValueType) *string { return v.IntValue }).(pulumi.StringPtrOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoValueTypeOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmEventbusProtoValueType) map[string]string { return v.ProtoValue }).(pulumi.StringMapOutput)
+func (o EnterpriseCrmEventbusProtoValueTypeOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoValueType) map[string]interface{} { return v.ProtoValue }).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmEventbusProtoValueTypeOutput) StringArray() EnterpriseCrmEventbusProtoStringArrayPtrOutput {
@@ -8899,13 +8901,13 @@ func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) IntValue() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoValueType) map[string]string {
+func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoValueType) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ProtoValue
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmEventbusProtoValueTypePtrOutput) StringArray() EnterpriseCrmEventbusProtoStringArrayPtrOutput {
@@ -8933,7 +8935,7 @@ type EnterpriseCrmEventbusProtoValueTypeResponse struct {
 	DoubleValue  float64                                       `pulumi:"doubleValue"`
 	IntArray     EnterpriseCrmEventbusProtoIntArrayResponse    `pulumi:"intArray"`
 	IntValue     string                                        `pulumi:"intValue"`
-	ProtoValue   map[string]string                             `pulumi:"protoValue"`
+	ProtoValue   map[string]interface{}                        `pulumi:"protoValue"`
 	StringArray  EnterpriseCrmEventbusProtoStringArrayResponse `pulumi:"stringArray"`
 	StringValue  string                                        `pulumi:"stringValue"`
 }
@@ -8977,8 +8979,8 @@ func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) IntValue() pulumi.Str
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoValueTypeResponse) string { return v.IntValue }).(pulumi.StringOutput)
 }
 
-func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmEventbusProtoValueTypeResponse) map[string]string { return v.ProtoValue }).(pulumi.StringMapOutput)
+func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoValueTypeResponse) map[string]interface{} { return v.ProtoValue }).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) StringArray() EnterpriseCrmEventbusProtoStringArrayResponseOutput {
@@ -11156,6 +11158,31 @@ func (i EnterpriseCrmFrontendsEventbusProtoParameterEntryArray) ToEnterpriseCrmF
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput)
 }
 
+// EnterpriseCrmFrontendsEventbusProtoParameterEntryMapInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoParameterEntryMap and EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput values.
+// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoParameterEntryMapInput` via:
+//
+//	EnterpriseCrmFrontendsEventbusProtoParameterEntryMap{ "key": EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs{...} }
+type EnterpriseCrmFrontendsEventbusProtoParameterEntryMapInput interface {
+	pulumi.Input
+
+	ToEnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput() EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput
+	ToEnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutputWithContext(context.Context) EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput
+}
+
+type EnterpriseCrmFrontendsEventbusProtoParameterEntryMap map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntryInput
+
+func (EnterpriseCrmFrontendsEventbusProtoParameterEntryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntry)(nil)).Elem()
+}
+
+func (i EnterpriseCrmFrontendsEventbusProtoParameterEntryMap) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput() EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput {
+	return i.ToEnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutputWithContext(context.Background())
+}
+
+func (i EnterpriseCrmFrontendsEventbusProtoParameterEntryMap) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput)
+}
+
 // Key-value pair of EventBus parameters.
 type EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput struct{ *pulumi.OutputState }
 
@@ -11207,6 +11234,26 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput) ToEnterpri
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput) Index(i pulumi.IntInput) EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoParameterEntry {
 		return vs[0].([]EnterpriseCrmFrontendsEventbusProtoParameterEntry)[vs[1].(int)]
+	}).(EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput)
+}
+
+type EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntry)(nil)).Elem()
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput() EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput) MapIndex(k pulumi.StringInput) EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoParameterEntry {
+		return vs[0].(map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntry)[vs[1].(string)]
 	}).(EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput)
 }
 
@@ -11272,6 +11319,26 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput) In
 	}).(EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput)
 }
 
+type EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse)(nil)).Elem()
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput() EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput) MapIndex(k pulumi.StringInput) EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse {
+		return vs[0].(map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse)[vs[1].(string)]
+	}).(EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput)
+}
+
 // To support various types of parameter values. Next available id: 14
 type EnterpriseCrmFrontendsEventbusProtoParameterValueType struct {
 	BooleanArray          *EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray     `pulumi:"booleanArray"`
@@ -11282,7 +11349,7 @@ type EnterpriseCrmFrontendsEventbusProtoParameterValueType struct {
 	IntValue              *string                                                       `pulumi:"intValue"`
 	JsonValue             *string                                                       `pulumi:"jsonValue"`
 	ProtoArray            *EnterpriseCrmFrontendsEventbusProtoProtoParameterArray       `pulumi:"protoArray"`
-	ProtoValue            map[string]string                                             `pulumi:"protoValue"`
+	ProtoValue            map[string]interface{}                                        `pulumi:"protoValue"`
 	SerializedObjectValue *EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter `pulumi:"serializedObjectValue"`
 	StringArray           *EnterpriseCrmFrontendsEventbusProtoStringParameterArray      `pulumi:"stringArray"`
 	StringValue           *string                                                       `pulumi:"stringValue"`
@@ -11309,7 +11376,7 @@ type EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs struct {
 	IntValue              pulumi.StringPtrInput                                                `pulumi:"intValue"`
 	JsonValue             pulumi.StringPtrInput                                                `pulumi:"jsonValue"`
 	ProtoArray            EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrInput       `pulumi:"protoArray"`
-	ProtoValue            pulumi.StringMapInput                                                `pulumi:"protoValue"`
+	ProtoValue            pulumi.MapInput                                                      `pulumi:"protoValue"`
 	SerializedObjectValue EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrInput `pulumi:"serializedObjectValue"`
 	StringArray           EnterpriseCrmFrontendsEventbusProtoStringParameterArrayPtrInput      `pulumi:"stringArray"`
 	StringValue           pulumi.StringPtrInput                                                `pulumi:"stringValue"`
@@ -11433,8 +11500,10 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput) ProtoArray(
 	}).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput)
 }
 
-func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterValueType) map[string]string { return v.ProtoValue }).(pulumi.StringMapOutput)
+func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterValueType) map[string]interface{} {
+		return v.ProtoValue
+	}).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput) SerializedObjectValue() EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput {
@@ -11549,13 +11618,13 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) ProtoArr
 	}).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput)
 }
 
-func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EnterpriseCrmFrontendsEventbusProtoParameterValueType) map[string]string {
+func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v *EnterpriseCrmFrontendsEventbusProtoParameterValueType) map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ProtoValue
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput) SerializedObjectValue() EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterPtrOutput {
@@ -11595,7 +11664,7 @@ type EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse struct {
 	IntValue              string                                                               `pulumi:"intValue"`
 	JsonValue             string                                                               `pulumi:"jsonValue"`
 	ProtoArray            EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse       `pulumi:"protoArray"`
-	ProtoValue            map[string]string                                                    `pulumi:"protoValue"`
+	ProtoValue            map[string]interface{}                                               `pulumi:"protoValue"`
 	SerializedObjectValue EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse `pulumi:"serializedObjectValue"`
 	StringArray           EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse      `pulumi:"stringArray"`
 	StringValue           string                                                               `pulumi:"stringValue"`
@@ -11656,10 +11725,10 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) Pro
 	}).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput)
 }
 
-func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) ProtoValue() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse) map[string]string {
+func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) ProtoValue() pulumi.MapOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse) map[string]interface{} {
 		return v.ProtoValue
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.MapOutput)
 }
 
 func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) SerializedObjectValue() EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponseOutput {
@@ -11679,7 +11748,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput) Str
 }
 
 type EnterpriseCrmFrontendsEventbusProtoProtoParameterArray struct {
-	ProtoValues []map[string]string `pulumi:"protoValues"`
+	ProtoValues []map[string]interface{} `pulumi:"protoValues"`
 }
 
 // EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoProtoParameterArray and EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput values.
@@ -11694,7 +11763,7 @@ type EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayInput interface {
 }
 
 type EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs struct {
-	ProtoValues pulumi.StringMapArrayInput `pulumi:"protoValues"`
+	ProtoValues pulumi.MapArrayInput `pulumi:"protoValues"`
 }
 
 func (EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs) ElementType() reflect.Type {
@@ -11774,10 +11843,10 @@ func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput) ToEnterpri
 	}).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput)
 }
 
-func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput) ProtoValues() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoProtoParameterArray) []map[string]string {
+func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput) ProtoValues() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoProtoParameterArray) []map[string]interface{} {
 		return v.ProtoValues
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 type EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput struct{ *pulumi.OutputState }
@@ -11804,17 +11873,17 @@ func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput) Elem() 
 	}).(EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayOutput)
 }
 
-func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput) ProtoValues() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *EnterpriseCrmFrontendsEventbusProtoProtoParameterArray) []map[string]string {
+func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayPtrOutput) ProtoValues() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *EnterpriseCrmFrontendsEventbusProtoProtoParameterArray) []map[string]interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ProtoValues
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 type EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse struct {
-	ProtoValues []map[string]string `pulumi:"protoValues"`
+	ProtoValues []map[string]interface{} `pulumi:"protoValues"`
 }
 
 type EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput struct{ *pulumi.OutputState }
@@ -11831,10 +11900,10 @@ func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput) To
 	return o
 }
 
-func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput) ProtoValues() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse) []map[string]string {
+func (o EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponseOutput) ProtoValues() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayResponse) []map[string]interface{} {
 		return v.ProtoValues
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.MapArrayOutput)
 }
 
 // Next available id: 4
@@ -12409,7 +12478,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfig struct {
 	// The policy dictating the execution of the next set of tasks for the current task.
 	NextTasksExecutionPolicy *EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy `pulumi:"nextTasksExecutionPolicy"`
 	// The customized parameters the user can pass to this task.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntry `pulumi:"parameters"`
 	// Optional. Informs the front-end application where to draw this task config on the UI.
 	Position *EnterpriseCrmEventbusProtoCoordinate `pulumi:"position"`
 	// Optional. Standard filter expression evaluated before execution. Independent of other conditions and tasks. Can be used to enable rollout. e.g. "rollout(5)" will only allow 5% of incoming traffic to task.
@@ -12479,7 +12548,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs struct {
 	// The policy dictating the execution of the next set of tasks for the current task.
 	NextTasksExecutionPolicy EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyPtrInput `pulumi:"nextTasksExecutionPolicy"`
 	// The customized parameters the user can pass to this task.
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	Parameters EnterpriseCrmFrontendsEventbusProtoParameterEntryMapInput `pulumi:"parameters"`
 	// Optional. Informs the front-end application where to draw this task config on the UI.
 	Position EnterpriseCrmEventbusProtoCoordinatePtrInput `pulumi:"position"`
 	// Optional. Standard filter expression evaluated before execution. Independent of other conditions and tasks. Can be used to enable rollout. e.g. "rollout(5)" will only allow 5% of incoming traffic to task.
@@ -12642,8 +12711,10 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) NextTasksExecutionP
 }
 
 // The customized parameters the user can pass to this task.
-func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfig) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfig) map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntry {
+		return v.Parameters
+	}).(EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput)
 }
 
 // Optional. Informs the front-end application where to draw this task config on the UI.
@@ -12775,7 +12846,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse struct {
 	// The policy dictating the execution of the next set of tasks for the current task.
 	NextTasksExecutionPolicy string `pulumi:"nextTasksExecutionPolicy"`
 	// The customized parameters the user can pass to this task.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse `pulumi:"parameters"`
 	// Optional. Informs the front-end application where to draw this task config on the UI.
 	Position EnterpriseCrmEventbusProtoCoordinateResponse `pulumi:"position"`
 	// Optional. Standard filter expression evaluated before execution. Independent of other conditions and tasks. Can be used to enable rollout. e.g. "rollout(5)" will only allow 5% of incoming traffic to task.
@@ -12899,8 +12970,10 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) NextTasksEx
 }
 
 // The customized parameters the user can pass to this task.
-func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) Parameters() EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse) map[string]EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse {
+		return v.Parameters
+	}).(EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput)
 }
 
 // Optional. Informs the front-end application where to draw this task config on the UI.
@@ -17359,6 +17432,31 @@ func (i GoogleCloudIntegrationsV1alphaEventParameterArray) ToGoogleCloudIntegrat
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaEventParameterArrayOutput)
 }
 
+// GoogleCloudIntegrationsV1alphaEventParameterMapInput is an input type that accepts GoogleCloudIntegrationsV1alphaEventParameterMap and GoogleCloudIntegrationsV1alphaEventParameterMapOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaEventParameterMapInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaEventParameterMap{ "key": GoogleCloudIntegrationsV1alphaEventParameterArgs{...} }
+type GoogleCloudIntegrationsV1alphaEventParameterMapInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaEventParameterMapOutput() GoogleCloudIntegrationsV1alphaEventParameterMapOutput
+	ToGoogleCloudIntegrationsV1alphaEventParameterMapOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaEventParameterMapOutput
+}
+
+type GoogleCloudIntegrationsV1alphaEventParameterMap map[string]GoogleCloudIntegrationsV1alphaEventParameterInput
+
+func (GoogleCloudIntegrationsV1alphaEventParameterMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
+}
+
+func (i GoogleCloudIntegrationsV1alphaEventParameterMap) ToGoogleCloudIntegrationsV1alphaEventParameterMapOutput() GoogleCloudIntegrationsV1alphaEventParameterMapOutput {
+	return i.ToGoogleCloudIntegrationsV1alphaEventParameterMapOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIntegrationsV1alphaEventParameterMap) ToGoogleCloudIntegrationsV1alphaEventParameterMapOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaEventParameterMapOutput)
+}
+
 // This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
 type GoogleCloudIntegrationsV1alphaEventParameterOutput struct{ *pulumi.OutputState }
 
@@ -17460,6 +17558,26 @@ func (o GoogleCloudIntegrationsV1alphaEventParameterArrayOutput) Index(i pulumi.
 	}).(GoogleCloudIntegrationsV1alphaEventParameterOutput)
 }
 
+type GoogleCloudIntegrationsV1alphaEventParameterMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaEventParameterMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaEventParameterMapOutput) ToGoogleCloudIntegrationsV1alphaEventParameterMapOutput() GoogleCloudIntegrationsV1alphaEventParameterMapOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaEventParameterMapOutput) ToGoogleCloudIntegrationsV1alphaEventParameterMapOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterMapOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaEventParameterMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudIntegrationsV1alphaEventParameterOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaEventParameter {
+		return vs[0].(map[string]GoogleCloudIntegrationsV1alphaEventParameter)[vs[1].(string)]
+	}).(GoogleCloudIntegrationsV1alphaEventParameterOutput)
+}
+
 // This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
 type GoogleCloudIntegrationsV1alphaEventParameterResponse struct {
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
@@ -17512,6 +17630,26 @@ func (o GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput) ToGoogl
 func (o GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaEventParameterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaEventParameterResponse {
 		return vs[0].([]GoogleCloudIntegrationsV1alphaEventParameterResponse)[vs[1].(int)]
+	}).(GoogleCloudIntegrationsV1alphaEventParameterResponseOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GoogleCloudIntegrationsV1alphaEventParameterResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput) ToGoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput() GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput) ToGoogleCloudIntegrationsV1alphaEventParameterResponseMapOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput) MapIndex(k pulumi.StringInput) GoogleCloudIntegrationsV1alphaEventParameterResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaEventParameterResponse {
+		return vs[0].(map[string]GoogleCloudIntegrationsV1alphaEventParameterResponse)[vs[1].(string)]
 	}).(GoogleCloudIntegrationsV1alphaEventParameterResponseOutput)
 }
 
@@ -21888,7 +22026,7 @@ type GoogleCloudIntegrationsV1alphaTaskConfig struct {
 	// Optional. The policy dictating the execution of the next set of tasks for the current task.
 	NextTasksExecutionPolicy *GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy `pulumi:"nextTasksExecutionPolicy"`
 	// Optional. The customized parameters the user can pass to this task.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters map[string]GoogleCloudIntegrationsV1alphaEventParameter `pulumi:"parameters"`
 	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
 	Position *GoogleCloudIntegrationsV1alphaCoordinate `pulumi:"position"`
 	// Optional. Determines what action to take upon successful task completion.
@@ -21935,7 +22073,7 @@ type GoogleCloudIntegrationsV1alphaTaskConfigArgs struct {
 	// Optional. The policy dictating the execution of the next set of tasks for the current task.
 	NextTasksExecutionPolicy GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrInput `pulumi:"nextTasksExecutionPolicy"`
 	// Optional. The customized parameters the user can pass to this task.
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	Parameters GoogleCloudIntegrationsV1alphaEventParameterMapInput `pulumi:"parameters"`
 	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
 	Position GoogleCloudIntegrationsV1alphaCoordinatePtrInput `pulumi:"position"`
 	// Optional. Determines what action to take upon successful task completion.
@@ -22055,8 +22193,10 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) NextTasksExecutionPolicy
 }
 
 // Optional. The customized parameters the user can pass to this task.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Parameters() GoogleCloudIntegrationsV1alphaEventParameterMapOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) map[string]GoogleCloudIntegrationsV1alphaEventParameter {
+		return v.Parameters
+	}).(GoogleCloudIntegrationsV1alphaEventParameterMapOutput)
 }
 
 // Optional. Informs the front-end application where to draw this error catcher config on the UI.
@@ -22141,7 +22281,7 @@ type GoogleCloudIntegrationsV1alphaTaskConfigResponse struct {
 	// Optional. The policy dictating the execution of the next set of tasks for the current task.
 	NextTasksExecutionPolicy string `pulumi:"nextTasksExecutionPolicy"`
 	// Optional. The customized parameters the user can pass to this task.
-	Parameters map[string]string `pulumi:"parameters"`
+	Parameters map[string]GoogleCloudIntegrationsV1alphaEventParameterResponse `pulumi:"parameters"`
 	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
 	Position GoogleCloudIntegrationsV1alphaCoordinateResponse `pulumi:"position"`
 	// Optional. Determines what action to take upon successful task completion.
@@ -22218,8 +22358,10 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) NextTasksExecuti
 }
 
 // Optional. The customized parameters the user can pass to this task.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) Parameters() GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) map[string]GoogleCloudIntegrationsV1alphaEventParameterResponse {
+		return v.Parameters
+	}).(GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput)
 }
 
 // Optional. Informs the front-end application where to draw this error catcher config on the UI.
@@ -23530,6 +23672,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParamSpecsMessagePtrInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParameterEntryInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParameterEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParameterEntryMapInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParameterEntryMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParameterValueTypeInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoProtoParameterArrayArgs{})
@@ -23579,6 +23722,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaEventParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaEventParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaEventParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterMapInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaEventParameterMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaFailurePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaFailurePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntParameterArrayArgs{})
@@ -23791,8 +23935,10 @@ func init() {
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponseOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput{})
+	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryMapOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseArrayOutput{})
+	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseMapOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterValueTypeOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponseOutput{})
@@ -23870,8 +24016,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterResponseMapOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyResponseOutput{})

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// The reason(s) why a trigger is in FAILED state.
         /// </summary>
         [Output("conditions")]
-        public Output<ImmutableDictionary<string, string>> Conditions { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.StateConditionResponse>> Conditions { get; private set; } = null!;
 
         /// <summary>
         /// The creation time.

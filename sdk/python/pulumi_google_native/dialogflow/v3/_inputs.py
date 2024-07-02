@@ -70,6 +70,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs',
     'GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs',
     'GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs',
+    'GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs',
     'GoogleCloudDialogflowCxV3TestCaseResultArgs',
     'GoogleCloudDialogflowCxV3TestConfigArgs',
     'GoogleCloudDialogflowCxV3TextInputArgs',
@@ -78,6 +79,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3VariantsHistoryArgs',
     'GoogleCloudDialogflowCxV3VersionVariantsVariantArgs',
     'GoogleCloudDialogflowCxV3VersionVariantsArgs',
+    'GoogleCloudDialogflowCxV3VoiceSelectionParamsArgs',
     'GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs',
     'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs',
     'GoogleCloudDialogflowCxV3WebhookArgs',
@@ -478,13 +480,13 @@ class GoogleCloudDialogflowCxV3BargeInConfigArgs:
 class GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs:
     def __init__(__self__, *,
                  enable_sentiment_analysis: Optional[pulumi.Input[bool]] = None,
-                 injected_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 injected_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  input: Optional[pulumi.Input['GoogleCloudDialogflowCxV3QueryInputArgs']] = None,
                  is_webhook_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The input from the human user.
         :param pulumi.Input[bool] enable_sentiment_analysis: Whether sentiment analysis is enabled.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
+        :param pulumi.Input[Mapping[str, Any]] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
         :param pulumi.Input['GoogleCloudDialogflowCxV3QueryInputArgs'] input: Supports text input, event input, dtmf input in the test case.
         :param pulumi.Input[bool] is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
         """
@@ -511,14 +513,14 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs:
 
     @property
     @pulumi.getter(name="injectedParameters")
-    def injected_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def injected_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Parameters that need to be injected into the conversation during intent detection.
         """
         return pulumi.get(self, "injected_parameters")
 
     @injected_parameters.setter
-    def injected_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def injected_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "injected_parameters", value)
 
     @property
@@ -549,17 +551,17 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
     def __init__(__self__, *,
-                 diagnostic_info: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 diagnostic_info: pulumi.Input[Mapping[str, Any]],
                  current_page: Optional[pulumi.Input['GoogleCloudDialogflowCxV3PageArgs']] = None,
-                 session_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 session_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  status: Optional[pulumi.Input['GoogleRpcStatusArgs']] = None,
                  text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTextArgs']]]] = None,
                  triggered_intent: Optional[pulumi.Input['GoogleCloudDialogflowCxV3IntentArgs']] = None):
         """
         The output from the virtual agent.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] diagnostic_info: Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
+        :param pulumi.Input[Mapping[str, Any]] diagnostic_info: Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         :param pulumi.Input['GoogleCloudDialogflowCxV3PageArgs'] current_page: The Page on which the utterance was spoken. Only name and displayName will be set.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_parameters: The session parameters available to the bot at this point.
+        :param pulumi.Input[Mapping[str, Any]] session_parameters: The session parameters available to the bot at this point.
         :param pulumi.Input['GoogleRpcStatusArgs'] status: Response error from the agent in the test result. If set, other output is empty.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTextArgs']]] text_responses: The text responses from the agent for the turn.
         :param pulumi.Input['GoogleCloudDialogflowCxV3IntentArgs'] triggered_intent: The Intent that triggered the response. Only name and displayName will be set.
@@ -578,14 +580,14 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
 
     @property
     @pulumi.getter(name="diagnosticInfo")
-    def diagnostic_info(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+    def diagnostic_info(self) -> pulumi.Input[Mapping[str, Any]]:
         """
         Input only. The diagnostic info output for the turn. Required to calculate the testing coverage.
         """
         return pulumi.get(self, "diagnostic_info")
 
     @diagnostic_info.setter
-    def diagnostic_info(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+    def diagnostic_info(self, value: pulumi.Input[Mapping[str, Any]]):
         pulumi.set(self, "diagnostic_info", value)
 
     @property
@@ -602,14 +604,14 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
 
     @property
     @pulumi.getter(name="sessionParameters")
-    def session_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def session_parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         The session parameters available to the bot at this point.
         """
         return pulumi.get(self, "session_parameters")
 
     @session_parameters.setter
-    def session_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def session_parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "session_parameters", value)
 
     @property
@@ -2665,24 +2667,24 @@ class GoogleCloudDialogflowCxV3QueryInputArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs:
     def __init__(__self__, *,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about. Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates that the conversation succeeded. * In a webhook response when you determine that you handled the customer issue.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
         """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Custom metadata. Dialogflow doesn't impose any structure on this.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "metadata", value)
 
 
@@ -2698,24 +2700,24 @@ class GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCardArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Indicates that the conversation should be handed off to a live agent. Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures. You may set this, for example: * In the entry_fulfillment of a Page if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when you determine that the customer issue can only be handled by a human.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
+        :param pulumi.Input[Mapping[str, Any]] metadata: Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
         """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "metadata", value)
 
 
@@ -2837,7 +2839,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
                  knowledge_info_card: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCardArgs']] = None,
                  live_agent_handoff: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs']] = None,
                  output_audio_text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs']] = None,
-                 payload: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 payload: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  play_audio: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs']] = None,
                  response_type: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageResponseType']] = None,
                  telephony_transfer_call: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs']] = None,
@@ -2849,7 +2851,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCardArgs'] knowledge_info_card: Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs'] live_agent_handoff: Hands off conversation to a human agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] payload: Returns a response containing a custom, platform-specific payload.
+        :param pulumi.Input[Mapping[str, Any]] payload: Returns a response containing a custom, platform-specific payload.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs'] play_audio: Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageResponseType'] response_type: Response type.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs'] telephony_transfer_call: A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
@@ -2938,14 +2940,14 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
 
     @property
     @pulumi.getter
-    def payload(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def payload(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Returns a response containing a custom, platform-specific payload.
         """
         return pulumi.get(self, "payload")
 
     @payload.setter
-    def payload(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def payload(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "payload", value)
 
     @property
@@ -3286,6 +3288,94 @@ class GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs:
+    def __init__(__self__, *,
+                 effects_profile_id: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pitch: Optional[pulumi.Input[float]] = None,
+                 speaking_rate: Optional[pulumi.Input[float]] = None,
+                 voice: Optional[pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsArgs']] = None,
+                 volume_gain_db: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration of how speech should be synthesized.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] effects_profile_id: Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        :param pulumi.Input[float] pitch: Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        :param pulumi.Input[float] speaking_rate: Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsArgs'] voice: Optional. The desired voice of the synthesized audio.
+        :param pulumi.Input[float] volume_gain_db: Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+        """
+        if effects_profile_id is not None:
+            pulumi.set(__self__, "effects_profile_id", effects_profile_id)
+        if pitch is not None:
+            pulumi.set(__self__, "pitch", pitch)
+        if speaking_rate is not None:
+            pulumi.set(__self__, "speaking_rate", speaking_rate)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+        if volume_gain_db is not None:
+            pulumi.set(__self__, "volume_gain_db", volume_gain_db)
+
+    @property
+    @pulumi.getter(name="effectsProfileId")
+    def effects_profile_id(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        """
+        return pulumi.get(self, "effects_profile_id")
+
+    @effects_profile_id.setter
+    def effects_profile_id(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "effects_profile_id", value)
+
+    @property
+    @pulumi.getter
+    def pitch(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        """
+        return pulumi.get(self, "pitch")
+
+    @pitch.setter
+    def pitch(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "pitch", value)
+
+    @property
+    @pulumi.getter(name="speakingRate")
+    def speaking_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+        """
+        return pulumi.get(self, "speaking_rate")
+
+    @speaking_rate.setter
+    def speaking_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "speaking_rate", value)
+
+    @property
+    @pulumi.getter
+    def voice(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsArgs']]:
+        """
+        Optional. The desired voice of the synthesized audio.
+        """
+        return pulumi.get(self, "voice")
+
+    @voice.setter
+    def voice(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsArgs']]):
+        pulumi.set(self, "voice", value)
+
+    @property
+    @pulumi.getter(name="volumeGainDb")
+    def volume_gain_db(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+        """
+        return pulumi.get(self, "volume_gain_db")
+
+    @volume_gain_db.setter
+    def volume_gain_db(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "volume_gain_db", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowCxV3TestCaseResultArgs:
     def __init__(__self__, *,
                  conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ConversationTurnArgs']]]] = None,
@@ -3455,24 +3545,24 @@ class GoogleCloudDialogflowCxV3TextInputArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs:
     def __init__(__self__, *,
-                 synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs']]]] = None):
         """
         Settings related to speech synthesizing.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs']]] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         if synthesize_speech_configs is not None:
             pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
 
     @property
     @pulumi.getter(name="synthesizeSpeechConfigs")
-    def synthesize_speech_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def synthesize_speech_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs']]]]:
         """
         Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.
         """
         return pulumi.get(self, "synthesize_speech_configs")
 
     @synthesize_speech_configs.setter
-    def synthesize_speech_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def synthesize_speech_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GoogleCloudDialogflowCxV3SynthesizeSpeechConfigArgs']]]]):
         pulumi.set(self, "synthesize_speech_configs", value)
 
 
@@ -3698,6 +3788,46 @@ class GoogleCloudDialogflowCxV3VersionVariantsArgs:
     @variants.setter
     def variants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3VersionVariantsVariantArgs']]]]):
         pulumi.set(self, "variants", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3VoiceSelectionParamsArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ssml_gender: Optional[pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender']] = None):
+        """
+        Description of which voice to use for speech synthesis.
+        :param pulumi.Input[str] name: Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+        :param pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender'] ssml_gender: Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer substitutes a voice with a different gender rather than failing the request.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ssml_gender is not None:
+            pulumi.set(__self__, "ssml_gender", ssml_gender)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="ssmlGender")
+    def ssml_gender(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender']]:
+        """
+        Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer substitutes a voice with a different gender rather than failing the request.
+        """
+        return pulumi.get(self, "ssml_gender")
+
+    @ssml_gender.setter
+    def ssml_gender(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3VoiceSelectionParamsSsmlGender']]):
+        pulumi.set(self, "ssml_gender", value)
 
 
 @pulumi.input_type
@@ -3997,12 +4127,12 @@ class GoogleCloudDialogflowCxV3WebhookArgs:
 class GoogleRpcStatusArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
         :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
         :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         if code is not None:
@@ -4026,14 +4156,14 @@ class GoogleRpcStatusArgs:
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
         """
         A list of messages that carry the error details. There is a common set of message types for APIs to use.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
         pulumi.set(self, "details", value)
 
     @property
