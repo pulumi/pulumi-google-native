@@ -166,11 +166,11 @@ class Certificate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['ManagedCertificateArgs']]] = None,
+                 managed: Optional[pulumi.Input[Union['ManagedCertificateArgs', 'ManagedCertificateArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input['CertificateScope']] = None,
-                 self_managed: Optional[pulumi.Input[pulumi.InputType['SelfManagedCertificateArgs']]] = None,
+                 self_managed: Optional[pulumi.Input[Union['SelfManagedCertificateArgs', 'SelfManagedCertificateArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Certificate in a given project and location.
@@ -180,10 +180,10 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_id: Required. A user-provided name of the certificate.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate.
-        :param pulumi.Input[pulumi.InputType['ManagedCertificateArgs']] managed: If set, contains configuration and state of a managed certificate.
+        :param pulumi.Input[Union['ManagedCertificateArgs', 'ManagedCertificateArgsDict']] managed: If set, contains configuration and state of a managed certificate.
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`.
         :param pulumi.Input['CertificateScope'] scope: Immutable. The scope of the certificate.
-        :param pulumi.Input[pulumi.InputType['SelfManagedCertificateArgs']] self_managed: If set, defines data of a self-managed certificate.
+        :param pulumi.Input[Union['SelfManagedCertificateArgs', 'SelfManagedCertificateArgsDict']] self_managed: If set, defines data of a self-managed certificate.
         """
         ...
     @overload
@@ -213,11 +213,11 @@ class Certificate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 managed: Optional[pulumi.Input[pulumi.InputType['ManagedCertificateArgs']]] = None,
+                 managed: Optional[pulumi.Input[Union['ManagedCertificateArgs', 'ManagedCertificateArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input['CertificateScope']] = None,
-                 self_managed: Optional[pulumi.Input[pulumi.InputType['SelfManagedCertificateArgs']]] = None,
+                 self_managed: Optional[pulumi.Input[Union['SelfManagedCertificateArgs', 'SelfManagedCertificateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

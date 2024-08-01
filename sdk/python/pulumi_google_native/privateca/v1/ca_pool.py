@@ -146,11 +146,11 @@ class CaPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pool_id: Optional[pulumi.Input[str]] = None,
-                 issuance_policy: Optional[pulumi.Input[pulumi.InputType['IssuancePolicyArgs']]] = None,
+                 issuance_policy: Optional[pulumi.Input[Union['IssuancePolicyArgs', 'IssuancePolicyArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publishing_options: Optional[pulumi.Input[pulumi.InputType['PublishingOptionsArgs']]] = None,
+                 publishing_options: Optional[pulumi.Input[Union['PublishingOptionsArgs', 'PublishingOptionsArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['CaPoolTier']] = None,
                  __props__=None):
@@ -161,9 +161,9 @@ class CaPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_pool_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-        :param pulumi.Input[pulumi.InputType['IssuancePolicyArgs']] issuance_policy: Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
+        :param pulumi.Input[Union['IssuancePolicyArgs', 'IssuancePolicyArgsDict']] issuance_policy: Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
-        :param pulumi.Input[pulumi.InputType['PublishingOptionsArgs']] publishing_options: Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+        :param pulumi.Input[Union['PublishingOptionsArgs', 'PublishingOptionsArgsDict']] publishing_options: Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
         :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['CaPoolTier'] tier: Immutable. The Tier of this CaPool.
         """
@@ -193,11 +193,11 @@ class CaPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ca_pool_id: Optional[pulumi.Input[str]] = None,
-                 issuance_policy: Optional[pulumi.Input[pulumi.InputType['IssuancePolicyArgs']]] = None,
+                 issuance_policy: Optional[pulumi.Input[Union['IssuancePolicyArgs', 'IssuancePolicyArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publishing_options: Optional[pulumi.Input[pulumi.InputType['PublishingOptionsArgs']]] = None,
+                 publishing_options: Optional[pulumi.Input[Union['PublishingOptionsArgs', 'PublishingOptionsArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['CaPoolTier']] = None,
                  __props__=None):

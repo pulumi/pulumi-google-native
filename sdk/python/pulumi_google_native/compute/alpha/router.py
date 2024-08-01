@@ -210,14 +210,14 @@ class Router(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
-                 bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]]] = None,
+                 bgp: Optional[pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+                 bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterBgpPeerArgs', 'RouterBgpPeerArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]]] = None,
-                 md5_authentication_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterMd5AuthenticationKeyArgs']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterInterfaceArgs', 'RouterInterfaceArgsDict']]]]] = None,
+                 md5_authentication_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterMd5AuthenticationKeyArgs', 'RouterMd5AuthenticationKeyArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]]] = None,
+                 nats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatArgs', 'RouterNatArgsDict']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -228,14 +228,14 @@ class Router(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]] bgp_peers: BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
+        :param pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']] bgp: BGP information specific to this router.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterBgpPeerArgs', 'RouterBgpPeerArgsDict']]]] bgp_peers: BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]] interfaces: Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterMd5AuthenticationKeyArgs']]]] md5_authentication_keys: Keys used for MD5 authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterInterfaceArgs', 'RouterInterfaceArgsDict']]]] interfaces: Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterMd5AuthenticationKeyArgs', 'RouterMd5AuthenticationKeyArgsDict']]]] md5_authentication_keys: Keys used for MD5 authentication.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]] nats: A list of NAT services created in this router.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterNatArgs', 'RouterNatArgsDict']]]] nats: A list of NAT services created in this router.
         :param pulumi.Input[str] network: URI of the network to which this router belongs.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         """
@@ -263,14 +263,14 @@ class Router(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[pulumi.InputType['RouterBgpArgs']]] = None,
-                 bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterBgpPeerArgs']]]]] = None,
+                 bgp: Optional[pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+                 bgp_peers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterBgpPeerArgs', 'RouterBgpPeerArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypted_interconnect_router: Optional[pulumi.Input[bool]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterInterfaceArgs']]]]] = None,
-                 md5_authentication_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterMd5AuthenticationKeyArgs']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterInterfaceArgs', 'RouterInterfaceArgsDict']]]]] = None,
+                 md5_authentication_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterMd5AuthenticationKeyArgs', 'RouterMd5AuthenticationKeyArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatArgs']]]]] = None,
+                 nats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterNatArgs', 'RouterNatArgsDict']]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,

@@ -131,7 +131,7 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']]] = None,
+                 cloud_sql: Optional[pulumi.Input[Union['CloudSqlPropertiesArgs', 'CloudSqlPropertiesArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']] cloud_sql: Cloud SQL properties.
+        :param pulumi.Input[Union['CloudSqlPropertiesArgs', 'CloudSqlPropertiesArgsDict']] cloud_sql: Cloud SQL properties.
         :param pulumi.Input[str] connection_id: Optional. Connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: User provided description.
         :param pulumi.Input[str] friendly_name: User provided display name for the connection.
@@ -174,7 +174,7 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']]] = None,
+                 cloud_sql: Optional[pulumi.Input[Union['CloudSqlPropertiesArgs', 'CloudSqlPropertiesArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,

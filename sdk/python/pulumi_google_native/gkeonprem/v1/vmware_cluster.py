@@ -370,24 +370,24 @@ class VmwareCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_cluster_membership: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VmwareAAGConfigArgs']]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AuthorizationArgs']]] = None,
-                 auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VmwareAutoRepairConfigArgs']]] = None,
-                 control_plane_node: Optional[pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']]] = None,
-                 dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']]] = None,
+                 anti_affinity_groups: Optional[pulumi.Input[Union['VmwareAAGConfigArgs', 'VmwareAAGConfigArgsDict']]] = None,
+                 authorization: Optional[pulumi.Input[Union['AuthorizationArgs', 'AuthorizationArgsDict']]] = None,
+                 auto_repair_config: Optional[pulumi.Input[Union['VmwareAutoRepairConfigArgs', 'VmwareAutoRepairConfigArgsDict']]] = None,
+                 control_plane_node: Optional[pulumi.Input[Union['VmwareControlPlaneNodeConfigArgs', 'VmwareControlPlaneNodeConfigArgsDict']]] = None,
+                 dataplane_v2: Optional[pulumi.Input[Union['VmwareDataplaneV2ConfigArgs', 'VmwareDataplaneV2ConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['VmwareLoadBalancerConfigArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[Union['VmwareLoadBalancerConfigArgs', 'VmwareLoadBalancerConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['VmwareNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['VmwareNetworkConfigArgs', 'VmwareNetworkConfigArgsDict']]] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['VmwareStorageConfigArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VmwareClusterUpgradePolicyArgs']]] = None,
-                 vcenter: Optional[pulumi.Input[pulumi.InputType['VmwareVCenterConfigArgs']]] = None,
+                 storage: Optional[pulumi.Input[Union['VmwareStorageConfigArgs', 'VmwareStorageConfigArgsDict']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['VmwareClusterUpgradePolicyArgs', 'VmwareClusterUpgradePolicyArgsDict']]] = None,
+                 vcenter: Optional[pulumi.Input[Union['VmwareVCenterConfigArgs', 'VmwareVCenterConfigArgsDict']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  vmware_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -398,22 +398,22 @@ class VmwareCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin_cluster_membership: The admin cluster this VMware user cluster belongs to. This is the full resource name of the admin cluster's fleet membership. In the future, references to other resource types might be allowed if admin clusters are modeled as their own resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the VMware user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['VmwareAAGConfigArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware user cluster nodes across at least three physical hosts in the datacenter.
-        :param pulumi.Input[pulumi.InputType['AuthorizationArgs']] authorization: RBAC policy that will be applied and managed by the Anthos On-Prem API.
-        :param pulumi.Input[pulumi.InputType['VmwareAutoRepairConfigArgs']] auto_repair_config: Configuration for auto repairing.
-        :param pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']] control_plane_node: VMware user cluster control plane nodes must have either 1 or 3 replicas.
-        :param pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+        :param pulumi.Input[Union['VmwareAAGConfigArgs', 'VmwareAAGConfigArgsDict']] anti_affinity_groups: AAGConfig specifies whether to spread VMware user cluster nodes across at least three physical hosts in the datacenter.
+        :param pulumi.Input[Union['AuthorizationArgs', 'AuthorizationArgsDict']] authorization: RBAC policy that will be applied and managed by the Anthos On-Prem API.
+        :param pulumi.Input[Union['VmwareAutoRepairConfigArgs', 'VmwareAutoRepairConfigArgsDict']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[Union['VmwareControlPlaneNodeConfigArgs', 'VmwareControlPlaneNodeConfigArgsDict']] control_plane_node: VMware user cluster control plane nodes must have either 1 or 3 replicas.
+        :param pulumi.Input[Union['VmwareDataplaneV2ConfigArgs', 'VmwareDataplaneV2ConfigArgsDict']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
         :param pulumi.Input[str] description: A human readable description of this VMware user cluster.
         :param pulumi.Input[bool] disable_bundled_ingress: Disable bundled ingress.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
-        :param pulumi.Input[pulumi.InputType['VmwareLoadBalancerConfigArgs']] load_balancer: Load balancer configuration.
+        :param pulumi.Input[Union['VmwareLoadBalancerConfigArgs', 'VmwareLoadBalancerConfigArgsDict']] load_balancer: Load balancer configuration.
         :param pulumi.Input[str] name: Immutable. The VMware user cluster resource name.
-        :param pulumi.Input[pulumi.InputType['VmwareNetworkConfigArgs']] network_config: The VMware user cluster network configuration.
+        :param pulumi.Input[Union['VmwareNetworkConfigArgs', 'VmwareNetworkConfigArgsDict']] network_config: The VMware user cluster network configuration.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
-        :param pulumi.Input[pulumi.InputType['VmwareStorageConfigArgs']] storage: Storage configuration.
-        :param pulumi.Input[pulumi.InputType['VmwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
-        :param pulumi.Input[pulumi.InputType['VmwareVCenterConfigArgs']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
+        :param pulumi.Input[Union['VmwareStorageConfigArgs', 'VmwareStorageConfigArgsDict']] storage: Storage configuration.
+        :param pulumi.Input[Union['VmwareClusterUpgradePolicyArgs', 'VmwareClusterUpgradePolicyArgsDict']] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input[Union['VmwareVCenterConfigArgs', 'VmwareVCenterConfigArgsDict']] vcenter: VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         :param pulumi.Input[str] vmware_cluster_id: User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
         """
@@ -443,24 +443,24 @@ class VmwareCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_cluster_membership: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VmwareAAGConfigArgs']]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AuthorizationArgs']]] = None,
-                 auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VmwareAutoRepairConfigArgs']]] = None,
-                 control_plane_node: Optional[pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']]] = None,
-                 dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']]] = None,
+                 anti_affinity_groups: Optional[pulumi.Input[Union['VmwareAAGConfigArgs', 'VmwareAAGConfigArgsDict']]] = None,
+                 authorization: Optional[pulumi.Input[Union['AuthorizationArgs', 'AuthorizationArgsDict']]] = None,
+                 auto_repair_config: Optional[pulumi.Input[Union['VmwareAutoRepairConfigArgs', 'VmwareAutoRepairConfigArgsDict']]] = None,
+                 control_plane_node: Optional[pulumi.Input[Union['VmwareControlPlaneNodeConfigArgs', 'VmwareControlPlaneNodeConfigArgsDict']]] = None,
+                 dataplane_v2: Optional[pulumi.Input[Union['VmwareDataplaneV2ConfigArgs', 'VmwareDataplaneV2ConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_bundled_ingress: Optional[pulumi.Input[bool]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['VmwareLoadBalancerConfigArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[Union['VmwareLoadBalancerConfigArgs', 'VmwareLoadBalancerConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['VmwareNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['VmwareNetworkConfigArgs', 'VmwareNetworkConfigArgsDict']]] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['VmwareStorageConfigArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VmwareClusterUpgradePolicyArgs']]] = None,
-                 vcenter: Optional[pulumi.Input[pulumi.InputType['VmwareVCenterConfigArgs']]] = None,
+                 storage: Optional[pulumi.Input[Union['VmwareStorageConfigArgs', 'VmwareStorageConfigArgsDict']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['VmwareClusterUpgradePolicyArgs', 'VmwareClusterUpgradePolicyArgsDict']]] = None,
+                 vcenter: Optional[pulumi.Input[Union['VmwareVCenterConfigArgs', 'VmwareVCenterConfigArgsDict']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  vmware_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

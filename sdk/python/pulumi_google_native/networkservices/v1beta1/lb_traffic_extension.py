@@ -176,7 +176,7 @@ class LbTrafficExtension(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 extension_chains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionChainArgs']]]]] = None,
+                 extension_chains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExtensionChainArgs', 'ExtensionChainArgsDict']]]]] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lb_traffic_extension_id: Optional[pulumi.Input[str]] = None,
@@ -192,7 +192,7 @@ class LbTrafficExtension(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionChainArgs']]]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExtensionChainArgs', 'ExtensionChainArgsDict']]]] extension_chains: A set of ordered extension chains that contain the match conditions and extensions to execute. Match conditions for each extension chain are evaluated in sequence for a given request. The first extension chain that has a condition that matches the request is executed. Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] forwarding_rules: A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding rule.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
         :param pulumi.Input[str] lb_traffic_extension_id: Required. User-provided ID of the `LbTrafficExtension` resource to be created.
@@ -225,7 +225,7 @@ class LbTrafficExtension(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 extension_chains: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExtensionChainArgs']]]]] = None,
+                 extension_chains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExtensionChainArgs', 'ExtensionChainArgsDict']]]]] = None,
                  forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lb_traffic_extension_id: Optional[pulumi.Input[str]] = None,

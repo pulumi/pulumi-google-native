@@ -270,22 +270,22 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: Optional[pulumi.Input[pulumi.InputType['AdminSettingsArgs']]] = None,
+                 admin_settings: Optional[pulumi.Input[Union['AdminSettingsArgs', 'AdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
-                 custom_domain: Optional[pulumi.Input[pulumi.InputType['CustomDomainArgs']]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['DenyMaintenancePeriodArgs']]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 custom_domain: Optional[pulumi.Input[Union['CustomDomainArgs', 'CustomDomainArgsDict']]] = None,
+                 deny_maintenance_period: Optional[pulumi.Input[Union['DenyMaintenancePeriodArgs', 'DenyMaintenancePeriodArgsDict']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['MaintenanceScheduleArgs']]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
-                 oauth_config: Optional[pulumi.Input[pulumi.InputType['OAuthConfigArgs']]] = None,
+                 maintenance_schedule: Optional[pulumi.Input[Union['MaintenanceScheduleArgs', 'MaintenanceScheduleArgsDict']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['MaintenanceWindowArgs', 'MaintenanceWindowArgsDict']]] = None,
+                 oauth_config: Optional[pulumi.Input[Union['OAuthConfigArgs', 'OAuthConfigArgsDict']]] = None,
                  platform_edition: Optional[pulumi.Input['InstancePlatformEdition']] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
-                 user_metadata: Optional[pulumi.Input[pulumi.InputType['UserMetadataArgs']]] = None,
+                 user_metadata: Optional[pulumi.Input[Union['UserMetadataArgs', 'UserMetadataArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Instance in a given project and location.
@@ -293,19 +293,19 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AdminSettingsArgs']] admin_settings: Looker Instance Admin settings.
+        :param pulumi.Input[Union['AdminSettingsArgs', 'AdminSettingsArgsDict']] admin_settings: Looker Instance Admin settings.
         :param pulumi.Input[str] consumer_network: Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
-        :param pulumi.Input[pulumi.InputType['DenyMaintenancePeriodArgs']] deny_maintenance_period: Maintenance denial period for this instance.
-        :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
+        :param pulumi.Input[Union['DenyMaintenancePeriodArgs', 'DenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
+        :param pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']] encryption_config: Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
         :param pulumi.Input[str] instance_id: Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum.
-        :param pulumi.Input[pulumi.InputType['MaintenanceScheduleArgs']] maintenance_schedule: Maintenance schedule for this instance.
-        :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: Maintenance window for this instance.
-        :param pulumi.Input[pulumi.InputType['OAuthConfigArgs']] oauth_config: Looker instance OAuth login settings.
+        :param pulumi.Input[Union['MaintenanceScheduleArgs', 'MaintenanceScheduleArgsDict']] maintenance_schedule: Maintenance schedule for this instance.
+        :param pulumi.Input[Union['MaintenanceWindowArgs', 'MaintenanceWindowArgsDict']] maintenance_window: Maintenance window for this instance.
+        :param pulumi.Input[Union['OAuthConfigArgs', 'OAuthConfigArgsDict']] oauth_config: Looker instance OAuth login settings.
         :param pulumi.Input['InstancePlatformEdition'] platform_edition: Platform edition.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[str] reserved_range: Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request.
-        :param pulumi.Input[pulumi.InputType['UserMetadataArgs']] user_metadata: User metadata.
+        :param pulumi.Input[Union['UserMetadataArgs', 'UserMetadataArgsDict']] user_metadata: User metadata.
         """
         ...
     @overload
@@ -332,22 +332,22 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_settings: Optional[pulumi.Input[pulumi.InputType['AdminSettingsArgs']]] = None,
+                 admin_settings: Optional[pulumi.Input[Union['AdminSettingsArgs', 'AdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
-                 custom_domain: Optional[pulumi.Input[pulumi.InputType['CustomDomainArgs']]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input[pulumi.InputType['DenyMaintenancePeriodArgs']]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 custom_domain: Optional[pulumi.Input[Union['CustomDomainArgs', 'CustomDomainArgsDict']]] = None,
+                 deny_maintenance_period: Optional[pulumi.Input[Union['DenyMaintenancePeriodArgs', 'DenyMaintenancePeriodArgsDict']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['MaintenanceScheduleArgs']]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
-                 oauth_config: Optional[pulumi.Input[pulumi.InputType['OAuthConfigArgs']]] = None,
+                 maintenance_schedule: Optional[pulumi.Input[Union['MaintenanceScheduleArgs', 'MaintenanceScheduleArgsDict']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['MaintenanceWindowArgs', 'MaintenanceWindowArgsDict']]] = None,
+                 oauth_config: Optional[pulumi.Input[Union['OAuthConfigArgs', 'OAuthConfigArgsDict']]] = None,
                  platform_edition: Optional[pulumi.Input['InstancePlatformEdition']] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
-                 user_metadata: Optional[pulumi.Input[pulumi.InputType['UserMetadataArgs']]] = None,
+                 user_metadata: Optional[pulumi.Input[Union['UserMetadataArgs', 'UserMetadataArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

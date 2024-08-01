@@ -129,7 +129,7 @@ class FeatureGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureGroupBigQueryArgs']]] = None,
+                 big_query: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1FeatureGroupBigQueryArgs', 'GoogleCloudAiplatformV1FeatureGroupBigQueryArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_group_id: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class FeatureGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureGroupBigQueryArgs']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entity_id and a feature_timestamp column in the source.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1FeatureGroupBigQueryArgs', 'GoogleCloudAiplatformV1FeatureGroupBigQueryArgsDict']] big_query: Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entity_id and a feature_timestamp column in the source.
         :param pulumi.Input[str] description: Optional. Description of the FeatureGroup.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[str] feature_group_id: Required. The ID to use for this FeatureGroup, which will become the final component of the FeatureGroup's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
@@ -174,7 +174,7 @@ class FeatureGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureGroupBigQueryArgs']]] = None,
+                 big_query: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1FeatureGroupBigQueryArgs', 'GoogleCloudAiplatformV1FeatureGroupBigQueryArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_group_id: Optional[pulumi.Input[str]] = None,

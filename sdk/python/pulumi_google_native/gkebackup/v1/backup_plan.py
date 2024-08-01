@@ -176,16 +176,16 @@ class BackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupConfigArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[Union['BackupConfigArgs', 'BackupConfigArgsDict']]] = None,
                  backup_plan_id: Optional[pulumi.Input[str]] = None,
-                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
+                 backup_schedule: Optional[pulumi.Input[Union['ScheduleArgs', 'ScheduleArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['RetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[Union['RetentionPolicyArgs', 'RetentionPolicyArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new BackupPlan in a given location.
@@ -193,14 +193,14 @@ class BackupPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BackupConfigArgs']] backup_config: Optional. Defines the configuration of Backups created via this BackupPlan.
+        :param pulumi.Input[Union['BackupConfigArgs', 'BackupConfigArgsDict']] backup_config: Optional. Defines the configuration of Backups created via this BackupPlan.
         :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
-        :param pulumi.Input[pulumi.InputType['ScheduleArgs']] backup_schedule: Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
+        :param pulumi.Input[Union['ScheduleArgs', 'ScheduleArgsDict']] backup_schedule: Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
         :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         :param pulumi.Input[bool] deactivated: Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         :param pulumi.Input[str] description: Optional. User specified descriptive string for this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A set of custom labels supplied by user.
-        :param pulumi.Input[pulumi.InputType['RetentionPolicyArgs']] retention_policy: Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
+        :param pulumi.Input[Union['RetentionPolicyArgs', 'RetentionPolicyArgsDict']] retention_policy: Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
         """
         ...
     @overload
@@ -227,16 +227,16 @@ class BackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_config: Optional[pulumi.Input[pulumi.InputType['BackupConfigArgs']]] = None,
+                 backup_config: Optional[pulumi.Input[Union['BackupConfigArgs', 'BackupConfigArgsDict']]] = None,
                  backup_plan_id: Optional[pulumi.Input[str]] = None,
-                 backup_schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
+                 backup_schedule: Optional[pulumi.Input[Union['ScheduleArgs', 'ScheduleArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input[pulumi.InputType['RetentionPolicyArgs']]] = None,
+                 retention_policy: Optional[pulumi.Input[Union['RetentionPolicyArgs', 'RetentionPolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -111,7 +111,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['HiveDatabaseOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[Union['HiveDatabaseOptionsArgs', 'HiveDatabaseOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['DatabaseType']] = None,
@@ -123,7 +123,7 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name.
-        :param pulumi.Input[pulumi.InputType['HiveDatabaseOptionsArgs']] hive_options: Options of a Hive database.
+        :param pulumi.Input[Union['HiveDatabaseOptionsArgs', 'HiveDatabaseOptionsArgsDict']] hive_options: Options of a Hive database.
         :param pulumi.Input['DatabaseType'] type: The database type.
         """
         ...
@@ -153,7 +153,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['HiveDatabaseOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[Union['HiveDatabaseOptionsArgs', 'HiveDatabaseOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['DatabaseType']] = None,

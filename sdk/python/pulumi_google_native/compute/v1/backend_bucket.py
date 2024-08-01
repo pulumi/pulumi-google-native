@@ -184,7 +184,7 @@ class BackendBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
                  compression_mode: Optional[pulumi.Input['BackendBucketCompressionMode']] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -200,7 +200,7 @@ class BackendBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
-        :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendBucket.
+        :param pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']] cdn_policy: Cloud CDN configuration for this BackendBucket.
         :param pulumi.Input['BackendBucketCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the Application Load Balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
@@ -234,7 +234,7 @@ class BackendBucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 cdn_policy: Optional[pulumi.Input[Union['BackendBucketCdnPolicyArgs', 'BackendBucketCdnPolicyArgsDict']]] = None,
                  compression_mode: Optional[pulumi.Input['BackendBucketCompressionMode']] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,

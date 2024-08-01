@@ -167,10 +167,10 @@ class AppConnector(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 principal_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs']]] = None,
+                 principal_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs', 'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs']]] = None,
+                 resource_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs', 'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new AppConnector in a given project and location.
@@ -181,9 +181,9 @@ class AppConnector(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the AppConnector. Cannot exceed 64 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: Unique resource name of the AppConnector. The name is ignored when creating a AppConnector.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs']] principal_info: Principal information about the Identity of the AppConnector.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs', 'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgsDict']] principal_info: Principal information about the Identity of the AppConnector.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs']] resource_info: Optional. Resource info of the connector.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs', 'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgsDict']] resource_info: Optional. Resource info of the connector.
         """
         ...
     @overload
@@ -214,10 +214,10 @@ class AppConnector(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 principal_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs']]] = None,
+                 principal_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs', 'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs']]] = None,
+                 resource_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs', 'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

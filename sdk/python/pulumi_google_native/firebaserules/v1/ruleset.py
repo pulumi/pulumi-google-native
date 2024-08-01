@@ -54,7 +54,7 @@ class Ruleset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['SourceArgs', 'SourceArgsDict']]] = None,
                  __props__=None):
         """
         Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
@@ -62,7 +62,7 @@ class Ruleset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SourceArgs']] source: `Source` for the `Ruleset`.
+        :param pulumi.Input[Union['SourceArgs', 'SourceArgsDict']] source: `Source` for the `Ruleset`.
         """
         ...
     @overload
@@ -90,7 +90,7 @@ class Ruleset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
+                 source: Optional[pulumi.Input[Union['SourceArgs', 'SourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

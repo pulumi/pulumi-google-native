@@ -202,18 +202,18 @@ class NodeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LocalDiskArgs', 'LocalDiskArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
+                 node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 server_binding: Optional[pulumi.Input[pulumi.InputType['ServerBindingArgs']]] = None,
+                 server_binding: Optional[pulumi.Input[Union['ServerBindingArgs', 'ServerBindingArgsDict']]] = None,
                  __props__=None):
         """
         Creates a NodeTemplate resource in the specified project using the data included in the request.
@@ -225,9 +225,9 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
         :param pulumi.Input[str] node_type: The node type to use for nodes group that are created from this template.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: Do not use. Instead, use the node_type property.
+        :param pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']] node_type_flexibility: Do not use. Instead, use the node_type property.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['ServerBindingArgs']] server_binding: Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
+        :param pulumi.Input[Union['ServerBindingArgs', 'ServerBindingArgsDict']] server_binding: Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         """
         ...
     @overload
@@ -253,18 +253,18 @@ class NodeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input['NodeTemplateCpuOvercommitType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalDiskArgs']]]]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LocalDiskArgs', 'LocalDiskArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
-                 node_type_flexibility: Optional[pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']]] = None,
+                 node_type_flexibility: Optional[pulumi.Input[Union['NodeTemplateNodeTypeFlexibilityArgs', 'NodeTemplateNodeTypeFlexibilityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 server_binding: Optional[pulumi.Input[pulumi.InputType['ServerBindingArgs']]] = None,
+                 server_binding: Optional[pulumi.Input[Union['ServerBindingArgs', 'ServerBindingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

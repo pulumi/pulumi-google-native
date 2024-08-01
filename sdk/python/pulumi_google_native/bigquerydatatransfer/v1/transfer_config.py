@@ -316,15 +316,15 @@ class TransferConfig(pulumi.CustomResource):
                  destination_dataset_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 email_preferences: Optional[pulumi.Input[pulumi.InputType['EmailPreferencesArgs']]] = None,
-                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
+                 email_preferences: Optional[pulumi.Input[Union['EmailPreferencesArgs', 'EmailPreferencesArgsDict']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
-                 schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
+                 schedule_options: Optional[pulumi.Input[Union['ScheduleOptionsArgs', 'ScheduleOptionsArgsDict']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,
@@ -341,13 +341,13 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
         :param pulumi.Input[bool] disabled: Is this config disabled. When set to true, no runs are scheduled for a given transfer.
         :param pulumi.Input[str] display_name: User specified display name for the data transfer.
-        :param pulumi.Input[pulumi.InputType['EmailPreferencesArgs']] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
-        :param pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']] encryption_configuration: The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+        :param pulumi.Input[Union['EmailPreferencesArgs', 'EmailPreferencesArgsDict']] email_preferences: Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
+        :param pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']] encryption_configuration: The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
         :param pulumi.Input[Mapping[str, Any]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
-        :param pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
+        :param pulumi.Input[Union['ScheduleOptionsArgs', 'ScheduleOptionsArgsDict']] schedule_options: Options customizing the data transfer schedule.
         :param pulumi.Input[str] service_account_name: Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
         :param pulumi.Input[str] user_id: Deprecated. Unique ID of the user on whose behalf transfer is done.
         :param pulumi.Input[str] version_info: Optional version info. This is required only if `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
@@ -383,15 +383,15 @@ class TransferConfig(pulumi.CustomResource):
                  destination_dataset_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 email_preferences: Optional[pulumi.Input[pulumi.InputType['EmailPreferencesArgs']]] = None,
-                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
+                 email_preferences: Optional[pulumi.Input[Union['EmailPreferencesArgs', 'EmailPreferencesArgsDict']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_pubsub_topic: Optional[pulumi.Input[str]] = None,
                  params: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
-                 schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
+                 schedule_options: Optional[pulumi.Input[Union['ScheduleOptionsArgs', 'ScheduleOptionsArgsDict']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,

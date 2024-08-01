@@ -145,12 +145,12 @@ class Featurestore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 online_serving_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs']]] = None,
+                 online_serving_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs', 'GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgsDict']]] = None,
                  online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -160,11 +160,11 @@ class Featurestore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] encryption_spec: Optional. Customer-managed encryption key spec for data storage. If set, both of the online and offline data storage will be secured by this key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for data storage. If set, both of the online and offline data storage will be secured by this key.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[str] featurestore_id: Required. The ID to use for this Featurestore, which will become the final component of the Featurestore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your Featurestore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Featurestore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs']] online_serving_config: Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs', 'GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgsDict']] online_serving_config: Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
         :param pulumi.Input[int] online_storage_ttl_days: Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
         """
         ...
@@ -192,12 +192,12 @@ class Featurestore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 online_serving_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs']]] = None,
+                 online_serving_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgs', 'GoogleCloudAiplatformV1beta1FeaturestoreOnlineServingConfigArgsDict']]] = None,
                  online_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):

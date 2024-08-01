@@ -216,7 +216,7 @@ class FeatureGroupFeature(pulumi.CustomResource):
                  feature_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs', 'GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input['FeatureGroupFeatureValueType']] = None,
@@ -233,7 +233,7 @@ class FeatureGroupFeature(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[str] feature_id: Required. The ID to use for the Feature, which will become the final component of the Feature's resource name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within an EntityType/FeatureGroup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your Features. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Feature (System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs']] monitoring_config: Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs', 'GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgsDict']] monitoring_config: Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.
         :param pulumi.Input[str] name: Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
         :param pulumi.Input['FeatureGroupFeatureValueType'] value_type: Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
         :param pulumi.Input[str] version_column_name: Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
@@ -270,7 +270,7 @@ class FeatureGroupFeature(pulumi.CustomResource):
                  feature_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs', 'GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input['FeatureGroupFeatureValueType']] = None,

@@ -125,7 +125,7 @@ class InspectTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']]] = None,
+                 inspect_config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2InspectConfigArgs', 'GooglePrivacyDlpV2InspectConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class InspectTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']] inspect_config: The core content of the template. Configuration of the scanning process.
+        :param pulumi.Input[Union['GooglePrivacyDlpV2InspectConfigArgs', 'GooglePrivacyDlpV2InspectConfigArgsDict']] inspect_config: The core content of the template. Configuration of the scanning process.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
@@ -169,7 +169,7 @@ class InspectTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']]] = None,
+                 inspect_config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2InspectConfigArgs', 'GooglePrivacyDlpV2InspectConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,

@@ -354,24 +354,24 @@ class NodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
-                 best_effort_provisioning: Optional[pulumi.Input[pulumi.InputType['BestEffortProvisioningArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
+                 best_effort_provisioning: Optional[pulumi.Input[Union['BestEffortProvisioningArgs', 'BestEffortProvisioningArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatusConditionArgs', 'StatusConditionArgsDict']]]]] = None,
+                 config: Optional[pulumi.Input[Union['NodeConfigArgs', 'NodeConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[Union['NodeManagementArgs', 'NodeManagementArgsDict']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[Union['MaxPodsConstraintArgs', 'MaxPodsConstraintArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NodeNetworkConfigArgs', 'NodeNetworkConfigArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
+                 placement_policy: Optional[pulumi.Input[Union['PlacementPolicyArgs', 'PlacementPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 queued_provisioning: Optional[pulumi.Input[pulumi.InputType['QueuedProvisioningArgs']]] = None,
-                 upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
+                 queued_provisioning: Optional[pulumi.Input[Union['QueuedProvisioningArgs', 'QueuedProvisioningArgsDict']]] = None,
+                 upgrade_settings: Optional[pulumi.Input[Union['UpgradeSettingsArgs', 'UpgradeSettingsArgsDict']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -380,23 +380,23 @@ class NodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-        :param pulumi.Input[pulumi.InputType['BestEffortProvisioningArgs']] best_effort_provisioning: Enable best effort provisioning for nodes
+        :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        :param pulumi.Input[Union['BestEffortProvisioningArgs', 'BestEffortProvisioningArgsDict']] best_effort_provisioning: Enable best effort provisioning for nodes
         :param pulumi.Input[str] cluster_id: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current node pool state.
-        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] config: The node configuration of the pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StatusConditionArgs', 'StatusConditionArgsDict']]]] conditions: Which conditions caused the current node pool state.
+        :param pulumi.Input[Union['NodeConfigArgs', 'NodeConfigArgsDict']] config: The node configuration of the pool.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-        :param pulumi.Input[pulumi.InputType['NodeManagementArgs']] management: NodeManagement configuration for this NodePool.
-        :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[Union['NodeManagementArgs', 'NodeManagementArgsDict']] management: NodeManagement configuration for this NodePool.
+        :param pulumi.Input[Union['MaxPodsConstraintArgs', 'MaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
-        :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        :param pulumi.Input[Union['NodeNetworkConfigArgs', 'NodeNetworkConfigArgsDict']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-        :param pulumi.Input[pulumi.InputType['PlacementPolicyArgs']] placement_policy: Specifies the node placement policy.
+        :param pulumi.Input[Union['PlacementPolicyArgs', 'PlacementPolicyArgsDict']] placement_policy: Specifies the node placement policy.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
-        :param pulumi.Input[pulumi.InputType['QueuedProvisioningArgs']] queued_provisioning: Specifies the configuration of queued provisioning.
-        :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
+        :param pulumi.Input[Union['QueuedProvisioningArgs', 'QueuedProvisioningArgsDict']] queued_provisioning: Specifies the configuration of queued provisioning.
+        :param pulumi.Input[Union['UpgradeSettingsArgs', 'UpgradeSettingsArgsDict']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
@@ -424,24 +424,24 @@ class NodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
-                 best_effort_provisioning: Optional[pulumi.Input[pulumi.InputType['BestEffortProvisioningArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict']]] = None,
+                 best_effort_provisioning: Optional[pulumi.Input[Union['BestEffortProvisioningArgs', 'BestEffortProvisioningArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StatusConditionArgs', 'StatusConditionArgsDict']]]]] = None,
+                 config: Optional[pulumi.Input[Union['NodeConfigArgs', 'NodeConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['NodeManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[Union['NodeManagementArgs', 'NodeManagementArgsDict']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[Union['MaxPodsConstraintArgs', 'MaxPodsConstraintArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NodeNetworkConfigArgs', 'NodeNetworkConfigArgsDict']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
+                 placement_policy: Optional[pulumi.Input[Union['PlacementPolicyArgs', 'PlacementPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 queued_provisioning: Optional[pulumi.Input[pulumi.InputType['QueuedProvisioningArgs']]] = None,
-                 upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
+                 queued_provisioning: Optional[pulumi.Input[Union['QueuedProvisioningArgs', 'QueuedProvisioningArgsDict']]] = None,
+                 upgrade_settings: Optional[pulumi.Input[Union['UpgradeSettingsArgs', 'UpgradeSettingsArgsDict']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):

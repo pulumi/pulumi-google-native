@@ -133,10 +133,10 @@ class Environment(pulumi.CustomResource):
                  agent_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2FulfillmentArgs']]] = None,
+                 fulfillment: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2FulfillmentArgs', 'GoogleCloudDialogflowV2FulfillmentArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2TextToSpeechSettingsArgs', 'GoogleCloudDialogflowV2TextToSpeechSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Creates an agent environment.
@@ -147,8 +147,8 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] agent_version: Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         :param pulumi.Input[str] description: Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] environment_id: Required. The unique id of the new environment.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2FulfillmentArgs']] fulfillment: Optional. The fulfillment settings to use for this environment.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']] text_to_speech_settings: Optional. Text to speech settings for this environment.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2FulfillmentArgs', 'GoogleCloudDialogflowV2FulfillmentArgsDict']] fulfillment: Optional. The fulfillment settings to use for this environment.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2TextToSpeechSettingsArgs', 'GoogleCloudDialogflowV2TextToSpeechSettingsArgsDict']] text_to_speech_settings: Optional. Text to speech settings for this environment.
         """
         ...
     @overload
@@ -178,10 +178,10 @@ class Environment(pulumi.CustomResource):
                  agent_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2FulfillmentArgs']]] = None,
+                 fulfillment: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2FulfillmentArgs', 'GoogleCloudDialogflowV2FulfillmentArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2TextToSpeechSettingsArgs', 'GoogleCloudDialogflowV2TextToSpeechSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

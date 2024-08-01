@@ -200,12 +200,12 @@ class IndexEndpoint(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_private_service_connect: Optional[pulumi.Input[bool]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs', 'GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -218,11 +218,11 @@ class IndexEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the IndexEndpoint.
         :param pulumi.Input[str] display_name: The display name of the IndexEndpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[bool] enable_private_service_connect: Optional. Deprecated: If true, expose the IndexEndpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] encryption_spec: Immutable. Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']] encryption_spec: Immutable. Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your IndexEndpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the IndexEndpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. network and private_service_connect_config are mutually exclusive. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in '12345', and {network} is network name.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs']] private_service_connect_config: Optional. Configuration for private service connect. network and private_service_connect_config are mutually exclusive.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs', 'GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgsDict']] private_service_connect_config: Optional. Configuration for private service connect. network and private_service_connect_config are mutually exclusive.
         :param pulumi.Input[bool] public_endpoint_enabled: Optional. If true, the deployed index will be accessible through public endpoint.
         """
         ...
@@ -253,12 +253,12 @@ class IndexEndpoint(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_private_service_connect: Optional[pulumi.Input[bool]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgs', 'GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):

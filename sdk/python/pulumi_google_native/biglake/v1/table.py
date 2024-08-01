@@ -139,7 +139,7 @@ class Table(pulumi.CustomResource):
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['HiveTableOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[Union['HiveTableOptionsArgs', 'HiveTableOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
@@ -152,7 +152,7 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: The checksum of a table object computed by the server based on the value of other fields. It may be sent on update requests to ensure the client has an up-to-date value before proceeding. It is only checked for update table operations.
-        :param pulumi.Input[pulumi.InputType['HiveTableOptionsArgs']] hive_options: Options of a Hive table.
+        :param pulumi.Input[Union['HiveTableOptionsArgs', 'HiveTableOptionsArgsDict']] hive_options: Options of a Hive table.
         :param pulumi.Input[str] table_id: Required. The ID to use for the table, which will become the final component of the table's resource name.
         :param pulumi.Input['TableType'] type: The table type.
         """
@@ -184,7 +184,7 @@ class Table(pulumi.CustomResource):
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 hive_options: Optional[pulumi.Input[pulumi.InputType['HiveTableOptionsArgs']]] = None,
+                 hive_options: Optional[pulumi.Input[Union['HiveTableOptionsArgs', 'HiveTableOptionsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,

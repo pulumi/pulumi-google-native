@@ -201,10 +201,10 @@ class Secret(pulumi.CustomResource):
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
-                 rotation: Optional[pulumi.Input[pulumi.InputType['RotationArgs']]] = None,
+                 replication: Optional[pulumi.Input[Union['ReplicationArgs', 'ReplicationArgsDict']]] = None,
+                 rotation: Optional[pulumi.Input[Union['RotationArgs', 'RotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TopicArgs', 'TopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -218,10 +218,10 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Optional. Etag of the currently stored Secret.
         :param pulumi.Input[str] expire_time: Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\\p{Ll}\\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-        :param pulumi.Input[pulumi.InputType['ReplicationArgs']] replication: Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
-        :param pulumi.Input[pulumi.InputType['RotationArgs']] rotation: Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+        :param pulumi.Input[Union['ReplicationArgs', 'ReplicationArgsDict']] replication: Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        :param pulumi.Input[Union['RotationArgs', 'RotationArgsDict']] rotation: Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
         :param pulumi.Input[str] secret_id: Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TopicArgs', 'TopicArgsDict']]]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
         :param pulumi.Input[str] ttl: Input only. The TTL for the Secret.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version_aliases: Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
         """
@@ -255,10 +255,10 @@ class Secret(pulumi.CustomResource):
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
-                 rotation: Optional[pulumi.Input[pulumi.InputType['RotationArgs']]] = None,
+                 replication: Optional[pulumi.Input[Union['ReplicationArgs', 'ReplicationArgsDict']]] = None,
+                 rotation: Optional[pulumi.Input[Union['RotationArgs', 'RotationArgsDict']]] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]]] = None,
+                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TopicArgs', 'TopicArgsDict']]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):

@@ -92,7 +92,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 push_config: Optional[pulumi.Input[pulumi.InputType['PushConfigArgs']]] = None,
+                 push_config: Optional[pulumi.Input[Union['PushConfigArgs', 'PushConfigArgsDict']]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -102,7 +102,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ack_deadline_seconds: For either push or pull delivery, the value is the maximum time after a subscriber receives a message before the subscriber should acknowledge or Nack the message. If the Ack deadline for a message passes without an Ack or a Nack, the Pub/Sub system will eventually redeliver the message. If a subscriber acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it is possible that the message has been already delivered again. Multiple Acks to the message are allowed and will succeed. For push delivery, this value is used to set the request timeout for the call to the push endpoint. For pull delivery, this value is used as the initial value for the Ack deadline. It may be overridden for each message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system will not deliver that message to another pull subscriber (on a best-effort basis).
         :param pulumi.Input[str] name: Name of the subscription.
-        :param pulumi.Input[pulumi.InputType['PushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[Union['PushConfigArgs', 'PushConfigArgsDict']] push_config: If push delivery is used with this subscription, this field is used to configure it.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages.
         """
         ...
@@ -131,7 +131,7 @@ class Subscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 push_config: Optional[pulumi.Input[pulumi.InputType['PushConfigArgs']]] = None,
+                 push_config: Optional[pulumi.Input[Union['PushConfigArgs', 'PushConfigArgsDict']]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

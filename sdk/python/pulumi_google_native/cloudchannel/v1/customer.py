@@ -181,8 +181,8 @@ class Customer(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
-                 org_postal_address: Optional[pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']]] = None,
-                 primary_contact_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ContactInfoArgs']]] = None,
+                 org_postal_address: Optional[pulumi.Input[Union['GoogleTypePostalAddressArgs', 'GoogleTypePostalAddressArgsDict']]] = None,
+                 primary_contact_info: Optional[pulumi.Input[Union['GoogleCloudChannelV1ContactInfoArgs', 'GoogleCloudChannelV1ContactInfoArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: * The reseller account making the request is different from the reseller account in the API request. * You are not authorized to create a customer. See https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
@@ -196,8 +196,8 @@ class Customer(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The customer's primary domain. Must match the primary contact email's domain.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param pulumi.Input[str] org_display_name: Name of the organization that the customer entity represents.
-        :param pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']] org_postal_address: The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ContactInfoArgs']] primary_contact_info: Primary contact info.
+        :param pulumi.Input[Union['GoogleTypePostalAddressArgs', 'GoogleTypePostalAddressArgsDict']] org_postal_address: The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+        :param pulumi.Input[Union['GoogleCloudChannelV1ContactInfoArgs', 'GoogleCloudChannelV1ContactInfoArgsDict']] primary_contact_info: Primary contact info.
         """
         ...
     @overload
@@ -232,8 +232,8 @@ class Customer(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
-                 org_postal_address: Optional[pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']]] = None,
-                 primary_contact_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ContactInfoArgs']]] = None,
+                 org_postal_address: Optional[pulumi.Input[Union['GoogleTypePostalAddressArgs', 'GoogleTypePostalAddressArgsDict']]] = None,
+                 primary_contact_info: Optional[pulumi.Input[Union['GoogleCloudChannelV1ContactInfoArgs', 'GoogleCloudChannelV1ContactInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

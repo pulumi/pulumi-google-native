@@ -220,7 +220,7 @@ class Connector(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 subnet: Optional[pulumi.Input[pulumi.InputType['SubnetArgs']]] = None,
+                 subnet: Optional[pulumi.Input[Union['SubnetArgs', 'SubnetArgsDict']]] = None,
                  __props__=None):
         """
         Creates a Serverless VPC Access connector, returns an operation.
@@ -236,7 +236,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Refers to the expected throughput when using an `e2-micro` machine type. Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by --max-throughput. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput. The use of `min-throughput` is discouraged in favor of `min-instances`.
         :param pulumi.Input[str] name: The resource name in the format `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] network: Name of a VPC network.
-        :param pulumi.Input[pulumi.InputType['SubnetArgs']] subnet: The subnet in which to house the VPC Access Connector.
+        :param pulumi.Input[Union['SubnetArgs', 'SubnetArgsDict']] subnet: The subnet in which to house the VPC Access Connector.
         """
         ...
     @overload
@@ -273,7 +273,7 @@ class Connector(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 subnet: Optional[pulumi.Input[pulumi.InputType['SubnetArgs']]] = None,
+                 subnet: Optional[pulumi.Input[Union['SubnetArgs', 'SubnetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

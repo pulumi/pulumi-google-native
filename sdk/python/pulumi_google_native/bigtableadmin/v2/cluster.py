@@ -161,10 +161,10 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
+                 cluster_config: Optional[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -176,10 +176,10 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] cluster_config: Configuration for this cluster.
+        :param pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']] cluster_config: Configuration for this cluster.
         :param pulumi.Input[str] cluster_id: Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
         :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
-        :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
+        :param pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
         :param pulumi.Input[int] serve_nodes: The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -208,10 +208,10 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
+                 cluster_config: Optional[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  default_storage_type: Optional[pulumi.Input['ClusterDefaultStorageType']] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

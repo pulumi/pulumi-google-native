@@ -185,7 +185,7 @@ class GrpcRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRouteRuleArgs', 'GrpcRouteRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new GrpcRoute in a given project and location.
@@ -199,7 +199,7 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the GrpcRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/`
         :param pulumi.Input[str] name: Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRouteRuleArgs']]]] rules: A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRouteRuleArgs', 'GrpcRouteRouteRuleArgsDict']]]] rules: A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
         """
         ...
     @overload
@@ -234,7 +234,7 @@ class GrpcRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrpcRouteRouteRuleArgs', 'GrpcRouteRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

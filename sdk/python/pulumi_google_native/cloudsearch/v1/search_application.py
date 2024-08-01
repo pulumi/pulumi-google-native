@@ -187,32 +187,32 @@ class SearchApplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataSourceRestrictionArgs']]]]] = None,
-                 default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FacetOptionsArgs']]]]] = None,
-                 default_sort_options: Optional[pulumi.Input[pulumi.InputType['SortOptionsArgs']]] = None,
+                 data_source_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataSourceRestrictionArgs', 'DataSourceRestrictionArgsDict']]]]] = None,
+                 default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FacetOptionsArgs', 'FacetOptionsArgsDict']]]]] = None,
+                 default_sort_options: Optional[pulumi.Input[Union['SortOptionsArgs', 'SortOptionsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 query_interpretation_config: Optional[pulumi.Input[pulumi.InputType['QueryInterpretationConfigArgs']]] = None,
+                 query_interpretation_config: Optional[pulumi.Input[Union['QueryInterpretationConfigArgs', 'QueryInterpretationConfigArgsDict']]] = None,
                  return_result_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
-                 scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
-                 source_config: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]]] = None,
+                 scoring_config: Optional[pulumi.Input[Union['ScoringConfigArgs', 'ScoringConfigArgsDict']]] = None,
+                 source_config: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SourceConfigArgs', 'SourceConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a search application. **Note:** This API requires an admin account to execute.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataSourceRestrictionArgs']]]] data_source_restrictions: Retrictions applied to the configurations. The maximum number of elements is 10.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FacetOptionsArgs']]]] default_facet_options: The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
-        :param pulumi.Input[pulumi.InputType['SortOptionsArgs']] default_sort_options: The default options for sorting the search results
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataSourceRestrictionArgs', 'DataSourceRestrictionArgsDict']]]] data_source_restrictions: Retrictions applied to the configurations. The maximum number of elements is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FacetOptionsArgs', 'FacetOptionsArgsDict']]]] default_facet_options: The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+        :param pulumi.Input[Union['SortOptionsArgs', 'SortOptionsArgsDict']] default_sort_options: The default options for sorting the search results
         :param pulumi.Input[str] display_name: Display name of the Search Application. The maximum length is 300 characters.
         :param pulumi.Input[bool] enable_audit_log: Indicates whether audit logging is on/off for requests made for the search application in query APIs.
         :param pulumi.Input[str] name: The name of the Search Application. Format: searchapplications/{application_id}.
-        :param pulumi.Input[pulumi.InputType['QueryInterpretationConfigArgs']] query_interpretation_config: The default options for query interpretation
+        :param pulumi.Input[Union['QueryInterpretationConfigArgs', 'QueryInterpretationConfigArgsDict']] query_interpretation_config: The default options for query interpretation
         :param pulumi.Input[bool] return_result_thumbnail_urls: With each result we should return the URI for its thumbnail (when applicable)
-        :param pulumi.Input[pulumi.InputType['ScoringConfigArgs']] scoring_config: Configuration for ranking results.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]] source_config: Configuration for a sources specified in data_source_restrictions.
+        :param pulumi.Input[Union['ScoringConfigArgs', 'ScoringConfigArgsDict']] scoring_config: Configuration for ranking results.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SourceConfigArgs', 'SourceConfigArgsDict']]]] source_config: Configuration for a sources specified in data_source_restrictions.
         """
         ...
     @overload
@@ -238,16 +238,16 @@ class SearchApplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataSourceRestrictionArgs']]]]] = None,
-                 default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FacetOptionsArgs']]]]] = None,
-                 default_sort_options: Optional[pulumi.Input[pulumi.InputType['SortOptionsArgs']]] = None,
+                 data_source_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataSourceRestrictionArgs', 'DataSourceRestrictionArgsDict']]]]] = None,
+                 default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FacetOptionsArgs', 'FacetOptionsArgsDict']]]]] = None,
+                 default_sort_options: Optional[pulumi.Input[Union['SortOptionsArgs', 'SortOptionsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 query_interpretation_config: Optional[pulumi.Input[pulumi.InputType['QueryInterpretationConfigArgs']]] = None,
+                 query_interpretation_config: Optional[pulumi.Input[Union['QueryInterpretationConfigArgs', 'QueryInterpretationConfigArgsDict']]] = None,
                  return_result_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
-                 scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
-                 source_config: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]]] = None,
+                 scoring_config: Optional[pulumi.Input[Union['ScoringConfigArgs', 'ScoringConfigArgsDict']]] = None,
+                 source_config: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SourceConfigArgs', 'SourceConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

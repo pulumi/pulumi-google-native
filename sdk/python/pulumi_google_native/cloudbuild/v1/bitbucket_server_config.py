@@ -216,7 +216,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                  peered_network: Optional[pulumi.Input[str]] = None,
                  peered_network_ip_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Union['BitbucketServerSecretsArgs', 'BitbucketServerSecretsArgsDict']]] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -232,7 +232,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the config.
         :param pulumi.Input[str] peered_network: Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[str] peered_network_ip_range: Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.
-        :param pulumi.Input[pulumi.InputType['BitbucketServerSecretsArgs']] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input[Union['BitbucketServerSecretsArgs', 'BitbucketServerSecretsArgsDict']] secrets: Secret Manager secrets needed by the config.
         :param pulumi.Input[str] ssl_ca: Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
         :param pulumi.Input[str] username: Username of the account Cloud Build will use on Bitbucket Server.
         """
@@ -269,7 +269,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
                  peered_network: Optional[pulumi.Input[str]] = None,
                  peered_network_ip_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['BitbucketServerSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Union['BitbucketServerSecretsArgs', 'BitbucketServerSecretsArgsDict']]] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):

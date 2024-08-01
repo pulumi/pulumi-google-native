@@ -174,13 +174,13 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs', 'GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrderedJobArgs']]]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrderedJobArgs', 'OrderedJobArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateParameterArgs', 'TemplateParameterArgsDict']]]]] = None,
+                 placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -191,11 +191,11 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dag_timeout: Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs']] encryption_config: Optional. Encryption settings for the encrypting customer core content.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrderedJobArgs']]]] jobs: The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Union['GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs', 'GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgsDict']] encryption_config: Optional. Encryption settings for the encrypting customer core content.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrderedJobArgs', 'OrderedJobArgsDict']]]] jobs: The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: WorkflowTemplate scheduling information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateParameterArgs', 'TemplateParameterArgsDict']]]] parameters: Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']] placement: WorkflowTemplate scheduling information.
         :param pulumi.Input[int] version: Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
         """
         ...
@@ -224,13 +224,13 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgs', 'GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrderedJobArgs']]]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrderedJobArgs', 'OrderedJobArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateParameterArgs']]]]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateParameterArgs', 'TemplateParameterArgsDict']]]]] = None,
+                 placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):

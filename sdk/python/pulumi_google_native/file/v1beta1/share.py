@@ -180,7 +180,7 @@ class Share(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mount_name: Optional[pulumi.Input[str]] = None,
-                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NfsExportOptionsArgs']]]]] = None,
+                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NfsExportOptionsArgs', 'NfsExportOptionsArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  share_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -195,7 +195,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] mount_name: The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters, numbers, and underscores.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NfsExportOptionsArgs']]]] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NfsExportOptionsArgs', 'NfsExportOptionsArgsDict']]]] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param pulumi.Input[str] share_id: Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         """
         ...
@@ -230,7 +230,7 @@ class Share(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mount_name: Optional[pulumi.Input[str]] = None,
-                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NfsExportOptionsArgs']]]]] = None,
+                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NfsExportOptionsArgs', 'NfsExportOptionsArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  share_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

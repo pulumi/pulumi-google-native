@@ -168,28 +168,28 @@ class Annotation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
+                 annotation_source: Optional[pulumi.Input[Union['AnnotationSourceArgs', 'AnnotationSourceArgsDict']]] = None,
                  annotation_store_id: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 image_annotation: Optional[pulumi.Input[pulumi.InputType['ImageAnnotationArgs']]] = None,
+                 image_annotation: Optional[pulumi.Input[Union['ImageAnnotationArgs', 'ImageAnnotationArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_annotation: Optional[pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']]] = None,
-                 text_annotation: Optional[pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']]] = None,
+                 resource_annotation: Optional[pulumi.Input[Union['ResourceAnnotationArgs', 'ResourceAnnotationArgsDict']]] = None,
+                 text_annotation: Optional[pulumi.Input[Union['SensitiveTextAnnotationArgs', 'SensitiveTextAnnotationArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AnnotationSourceArgs']] annotation_source: Details of the source.
+        :param pulumi.Input[Union['AnnotationSourceArgs', 'AnnotationSourceArgsDict']] annotation_source: Details of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
-        :param pulumi.Input[pulumi.InputType['ImageAnnotationArgs']] image_annotation: Annotations for images. For example, bounding polygons.
+        :param pulumi.Input[Union['ImageAnnotationArgs', 'ImageAnnotationArgsDict']] image_annotation: Annotations for images. For example, bounding polygons.
         :param pulumi.Input[str] name: Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-        :param pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']] resource_annotation: Annotations for resource. For example, classification tags.
-        :param pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+        :param pulumi.Input[Union['ResourceAnnotationArgs', 'ResourceAnnotationArgsDict']] resource_annotation: Annotations for resource. For example, classification tags.
+        :param pulumi.Input[Union['SensitiveTextAnnotationArgs', 'SensitiveTextAnnotationArgsDict']] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
         """
         ...
     @overload
@@ -215,16 +215,16 @@ class Annotation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
+                 annotation_source: Optional[pulumi.Input[Union['AnnotationSourceArgs', 'AnnotationSourceArgsDict']]] = None,
                  annotation_store_id: Optional[pulumi.Input[str]] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 image_annotation: Optional[pulumi.Input[pulumi.InputType['ImageAnnotationArgs']]] = None,
+                 image_annotation: Optional[pulumi.Input[Union['ImageAnnotationArgs', 'ImageAnnotationArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_annotation: Optional[pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']]] = None,
-                 text_annotation: Optional[pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']]] = None,
+                 resource_annotation: Optional[pulumi.Input[Union['ResourceAnnotationArgs', 'ResourceAnnotationArgsDict']]] = None,
+                 text_annotation: Optional[pulumi.Input[Union['SensitiveTextAnnotationArgs', 'SensitiveTextAnnotationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

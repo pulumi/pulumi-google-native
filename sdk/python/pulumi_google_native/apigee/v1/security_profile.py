@@ -153,11 +153,11 @@ class SecurityProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs']]]]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs', 'GoogleCloudApigeeV1SecurityProfileEnvironmentArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 profile_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ProfileConfigArgs']]] = None,
-                 scoring_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityProfileScoringConfigArgs']]]]] = None,
+                 profile_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1ProfileConfigArgs', 'GoogleCloudApigeeV1ProfileConfigArgsDict']]] = None,
+                 scoring_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityProfileScoringConfigArgs', 'GoogleCloudApigeeV1SecurityProfileScoringConfigArgsDict']]]]] = None,
                  security_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -167,10 +167,10 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the security profile.
         :param pulumi.Input[str] display_name: DEPRECATED: DO NOT USE Display name of the security profile.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs']]]] environments: List of environments attached to security profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs', 'GoogleCloudApigeeV1SecurityProfileEnvironmentArgsDict']]]] environments: List of environments attached to security profile.
         :param pulumi.Input[str] name: Immutable. Name of the security profile resource. Format: organizations/{org}/securityProfiles/{profile}
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ProfileConfigArgs']] profile_config: Customized profile configuration that computes the security score.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityProfileScoringConfigArgs']]]] scoring_configs: List of profile scoring configs in this revision.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1ProfileConfigArgs', 'GoogleCloudApigeeV1ProfileConfigArgsDict']] profile_config: Customized profile configuration that computes the security score.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityProfileScoringConfigArgs', 'GoogleCloudApigeeV1SecurityProfileScoringConfigArgsDict']]]] scoring_configs: List of profile scoring configs in this revision.
         :param pulumi.Input[str] security_profile_id: Required. The ID to use for the SecurityProfile, which will become the final component of the action's resource name. This value should be 1-63 characters and validated by "(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)".
         """
         ...
@@ -199,11 +199,11 @@ class SecurityProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs']]]]] = None,
+                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityProfileEnvironmentArgs', 'GoogleCloudApigeeV1SecurityProfileEnvironmentArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 profile_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ProfileConfigArgs']]] = None,
-                 scoring_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityProfileScoringConfigArgs']]]]] = None,
+                 profile_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1ProfileConfigArgs', 'GoogleCloudApigeeV1ProfileConfigArgsDict']]] = None,
+                 scoring_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityProfileScoringConfigArgs', 'GoogleCloudApigeeV1SecurityProfileScoringConfigArgsDict']]]]] = None,
                  security_profile_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

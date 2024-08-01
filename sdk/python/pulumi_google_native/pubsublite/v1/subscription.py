@@ -146,8 +146,8 @@ class Subscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_config: Optional[pulumi.Input[pulumi.InputType['DeliveryConfigArgs']]] = None,
-                 export_config: Optional[pulumi.Input[pulumi.InputType['ExportConfigArgs']]] = None,
+                 delivery_config: Optional[pulumi.Input[Union['DeliveryConfigArgs', 'DeliveryConfigArgsDict']]] = None,
+                 export_config: Optional[pulumi.Input[Union['ExportConfigArgs', 'ExportConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -160,8 +160,8 @@ class Subscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DeliveryConfigArgs']] delivery_config: The settings for this subscription's message delivery.
-        :param pulumi.Input[pulumi.InputType['ExportConfigArgs']] export_config: If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+        :param pulumi.Input[Union['DeliveryConfigArgs', 'DeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input[Union['ExportConfigArgs', 'ExportConfigArgsDict']] export_config: If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         :param pulumi.Input[bool] skip_backlog: If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
         :param pulumi.Input[str] subscription_id: Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
@@ -191,8 +191,8 @@ class Subscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_config: Optional[pulumi.Input[pulumi.InputType['DeliveryConfigArgs']]] = None,
-                 export_config: Optional[pulumi.Input[pulumi.InputType['ExportConfigArgs']]] = None,
+                 delivery_config: Optional[pulumi.Input[Union['DeliveryConfigArgs', 'DeliveryConfigArgsDict']]] = None,
+                 export_config: Optional[pulumi.Input[Union['ExportConfigArgs', 'ExportConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

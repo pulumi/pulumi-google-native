@@ -126,7 +126,7 @@ class CanaryEvaluation(pulumi.CustomResource):
                  control: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 metric_labels: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]] = None,
+                 metric_labels: Optional[pulumi.Input[Union['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs', 'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  treatment: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class CanaryEvaluation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] control: The stable version that is serving requests.
         :param pulumi.Input[str] end_time: End time for the evaluation's analysis.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']] metric_labels: Labels used to filter the metrics used for a canary evaluation.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs', 'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgsDict']] metric_labels: Labels used to filter the metrics used for a canary evaluation.
         :param pulumi.Input[str] start_time: Start time for the canary evaluation's analysis.
         :param pulumi.Input[str] treatment: The newer version that is serving requests.
         """
@@ -175,7 +175,7 @@ class CanaryEvaluation(pulumi.CustomResource):
                  control: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 metric_labels: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]] = None,
+                 metric_labels: Optional[pulumi.Input[Union['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs', 'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  treatment: Optional[pulumi.Input[str]] = None,

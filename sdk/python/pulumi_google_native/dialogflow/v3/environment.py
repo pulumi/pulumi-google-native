@@ -163,9 +163,9 @@ class Environment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 test_cases_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs']]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs']]]]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs']]] = None,
+                 test_cases_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgsDict']]] = None,
+                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgsDict']]]]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
@@ -175,9 +175,9 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[str] name: The name of the environment. Format: `projects//locations//agents//environments/`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs']] test_cases_config: The test cases config for continuous tests of this environment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs']] webhook_config: The webhook configuration for this environment.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgsDict']] test_cases_config: The test cases config for continuous tests of this environment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgsDict']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgsDict']] webhook_config: The webhook configuration for this environment.
         """
         ...
     @overload
@@ -209,9 +209,9 @@ class Environment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 test_cases_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs']]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs']]]]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs']]] = None,
+                 test_cases_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgsDict']]] = None,
+                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgsDict']]]]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs', 'GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

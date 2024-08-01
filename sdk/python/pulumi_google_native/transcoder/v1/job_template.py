@@ -114,7 +114,7 @@ class JobTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']]] = None,
                  job_template_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class JobTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this template.
+        :param pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']] config: The configuration for this template.
         :param pulumi.Input[str] job_template_id: Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job template. You can use these to organize and group your job templates.
         :param pulumi.Input[str] name: The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
@@ -155,7 +155,7 @@ class JobTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']]] = None,
                  job_template_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

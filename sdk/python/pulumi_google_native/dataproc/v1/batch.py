@@ -195,16 +195,16 @@ class Batch(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_id: Optional[pulumi.Input[str]] = None,
-                 environment_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+                 environment_config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pyspark_batch: Optional[pulumi.Input[pulumi.InputType['PySparkBatchArgs']]] = None,
+                 pyspark_batch: Optional[pulumi.Input[Union['PySparkBatchArgs', 'PySparkBatchArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['RuntimeConfigArgs']]] = None,
-                 spark_batch: Optional[pulumi.Input[pulumi.InputType['SparkBatchArgs']]] = None,
-                 spark_r_batch: Optional[pulumi.Input[pulumi.InputType['SparkRBatchArgs']]] = None,
-                 spark_sql_batch: Optional[pulumi.Input[pulumi.InputType['SparkSqlBatchArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']]] = None,
+                 spark_batch: Optional[pulumi.Input[Union['SparkBatchArgs', 'SparkBatchArgsDict']]] = None,
+                 spark_r_batch: Optional[pulumi.Input[Union['SparkRBatchArgs', 'SparkRBatchArgsDict']]] = None,
+                 spark_sql_batch: Optional[pulumi.Input[Union['SparkSqlBatchArgs', 'SparkSqlBatchArgsDict']]] = None,
                  __props__=None):
         """
         Creates a batch workload that executes asynchronously.
@@ -213,14 +213,14 @@ class Batch(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] batch_id: Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] environment_config: Optional. Environment configuration for the batch execution.
+        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] environment_config: Optional. Environment configuration for the batch execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
-        :param pulumi.Input[pulumi.InputType['PySparkBatchArgs']] pyspark_batch: Optional. PySpark batch config.
+        :param pulumi.Input[Union['PySparkBatchArgs', 'PySparkBatchArgsDict']] pyspark_batch: Optional. PySpark batch config.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-        :param pulumi.Input[pulumi.InputType['RuntimeConfigArgs']] runtime_config: Optional. Runtime configuration for the batch execution.
-        :param pulumi.Input[pulumi.InputType['SparkBatchArgs']] spark_batch: Optional. Spark batch config.
-        :param pulumi.Input[pulumi.InputType['SparkRBatchArgs']] spark_r_batch: Optional. SparkR batch config.
-        :param pulumi.Input[pulumi.InputType['SparkSqlBatchArgs']] spark_sql_batch: Optional. SparkSql batch config.
+        :param pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']] runtime_config: Optional. Runtime configuration for the batch execution.
+        :param pulumi.Input[Union['SparkBatchArgs', 'SparkBatchArgsDict']] spark_batch: Optional. Spark batch config.
+        :param pulumi.Input[Union['SparkRBatchArgs', 'SparkRBatchArgsDict']] spark_r_batch: Optional. SparkR batch config.
+        :param pulumi.Input[Union['SparkSqlBatchArgs', 'SparkSqlBatchArgsDict']] spark_sql_batch: Optional. SparkSql batch config.
         """
         ...
     @overload
@@ -248,16 +248,16 @@ class Batch(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_id: Optional[pulumi.Input[str]] = None,
-                 environment_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+                 environment_config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pyspark_batch: Optional[pulumi.Input[pulumi.InputType['PySparkBatchArgs']]] = None,
+                 pyspark_batch: Optional[pulumi.Input[Union['PySparkBatchArgs', 'PySparkBatchArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['RuntimeConfigArgs']]] = None,
-                 spark_batch: Optional[pulumi.Input[pulumi.InputType['SparkBatchArgs']]] = None,
-                 spark_r_batch: Optional[pulumi.Input[pulumi.InputType['SparkRBatchArgs']]] = None,
-                 spark_sql_batch: Optional[pulumi.Input[pulumi.InputType['SparkSqlBatchArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']]] = None,
+                 spark_batch: Optional[pulumi.Input[Union['SparkBatchArgs', 'SparkBatchArgsDict']]] = None,
+                 spark_r_batch: Optional[pulumi.Input[Union['SparkRBatchArgs', 'SparkRBatchArgsDict']]] = None,
+                 spark_sql_batch: Optional[pulumi.Input[Union['SparkSqlBatchArgs', 'SparkSqlBatchArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

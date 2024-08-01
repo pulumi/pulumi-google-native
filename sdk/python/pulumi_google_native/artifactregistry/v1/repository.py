@@ -258,40 +258,40 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CleanupPolicyArgs']]]]] = None,
+                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['CleanupPolicyArgs', 'CleanupPolicyArgsDict']]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
+                 docker_config: Optional[pulumi.Input[Union['DockerRepositoryConfigArgs', 'DockerRepositoryConfigArgsDict']]] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maven_config: Optional[pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']]] = None,
+                 maven_config: Optional[pulumi.Input[Union['MavenRepositoryConfigArgs', 'MavenRepositoryConfigArgsDict']]] = None,
                  mode: Optional[pulumi.Input['RepositoryMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RemoteRepositoryConfigArgs']]] = None,
+                 remote_repository_config: Optional[pulumi.Input[Union['RemoteRepositoryConfigArgs', 'RemoteRepositoryConfigArgsDict']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['VirtualRepositoryConfigArgs']]] = None,
+                 virtual_repository_config: Optional[pulumi.Input[Union['VirtualRepositoryConfigArgs', 'VirtualRepositoryConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CleanupPolicyArgs']]]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['CleanupPolicyArgs', 'CleanupPolicyArgsDict']]]] cleanup_policies: Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
         :param pulumi.Input[bool] cleanup_policy_dry_run: Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+        :param pulumi.Input[Union['DockerRepositoryConfigArgs', 'DockerRepositoryConfigArgsDict']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
         :param pulumi.Input['RepositoryFormat'] format: Optional. The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
-        :param pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
+        :param pulumi.Input[Union['MavenRepositoryConfigArgs', 'MavenRepositoryConfigArgsDict']] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
         :param pulumi.Input['RepositoryMode'] mode: Optional. The mode of the repository.
         :param pulumi.Input[str] name: The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
-        :param pulumi.Input[pulumi.InputType['RemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
+        :param pulumi.Input[Union['RemoteRepositoryConfigArgs', 'RemoteRepositoryConfigArgsDict']] remote_repository_config: Configuration specific for a Remote Repository.
         :param pulumi.Input[str] repository_id: Required. The repository id to use for this repository.
-        :param pulumi.Input[pulumi.InputType['VirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
+        :param pulumi.Input[Union['VirtualRepositoryConfigArgs', 'VirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
         """
         ...
     @overload
@@ -317,21 +317,21 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CleanupPolicyArgs']]]]] = None,
+                 cleanup_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['CleanupPolicyArgs', 'CleanupPolicyArgsDict']]]]] = None,
                  cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
+                 docker_config: Optional[pulumi.Input[Union['DockerRepositoryConfigArgs', 'DockerRepositoryConfigArgsDict']]] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maven_config: Optional[pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']]] = None,
+                 maven_config: Optional[pulumi.Input[Union['MavenRepositoryConfigArgs', 'MavenRepositoryConfigArgsDict']]] = None,
                  mode: Optional[pulumi.Input['RepositoryMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RemoteRepositoryConfigArgs']]] = None,
+                 remote_repository_config: Optional[pulumi.Input[Union['RemoteRepositoryConfigArgs', 'RemoteRepositoryConfigArgsDict']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['VirtualRepositoryConfigArgs']]] = None,
+                 virtual_repository_config: Optional[pulumi.Input[Union['VirtualRepositoryConfigArgs', 'VirtualRepositoryConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

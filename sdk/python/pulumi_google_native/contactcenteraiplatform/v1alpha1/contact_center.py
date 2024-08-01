@@ -240,19 +240,19 @@ class ContactCenter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_user: Optional[pulumi.Input[pulumi.InputType['AdminUserArgs']]] = None,
+                 admin_user: Optional[pulumi.Input[Union['AdminUserArgs', 'AdminUserArgsDict']]] = None,
                  ccaip_managed_users: Optional[pulumi.Input[bool]] = None,
                  contact_center_id: Optional[pulumi.Input[str]] = None,
                  customer_domain_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]] = None,
+                 instance_config: Optional[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 saml_params: Optional[pulumi.Input[pulumi.InputType['SAMLParamsArgs']]] = None,
+                 saml_params: Optional[pulumi.Input[Union['SAMLParamsArgs', 'SAMLParamsArgsDict']]] = None,
                  user_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -260,17 +260,17 @@ class ContactCenter(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AdminUserArgs']] admin_user: Optional. Info about the first admin user, such as given name and family name.
+        :param pulumi.Input[Union['AdminUserArgs', 'AdminUserArgsDict']] admin_user: Optional. Info about the first admin user, such as given name and family name.
         :param pulumi.Input[bool] ccaip_managed_users: Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
         :param pulumi.Input[str] contact_center_id: Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC
         :param pulumi.Input[str] customer_domain_prefix: Immutable. At least 2 and max 16 char long, must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt).
         :param pulumi.Input[str] display_name: A user friendly name for the ContactCenter.
-        :param pulumi.Input[pulumi.InputType['InstanceConfigArgs']] instance_config: The configuration of this instance, it is currently immutable once created.
+        :param pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']] instance_config: The configuration of this instance, it is currently immutable once created.
         :param pulumi.Input[str] kms_key: Immutable. The KMS key name to encrypt the user input (`ContactCenter`).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] name: name of resource
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['SAMLParamsArgs']] saml_params: Optional. Params that sets up Google as IdP.
+        :param pulumi.Input[Union['SAMLParamsArgs', 'SAMLParamsArgsDict']] saml_params: Optional. Params that sets up Google as IdP.
         :param pulumi.Input[str] user_email: Optional. Email address of the first admin user.
         """
         ...
@@ -297,19 +297,19 @@ class ContactCenter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_user: Optional[pulumi.Input[pulumi.InputType['AdminUserArgs']]] = None,
+                 admin_user: Optional[pulumi.Input[Union['AdminUserArgs', 'AdminUserArgsDict']]] = None,
                  ccaip_managed_users: Optional[pulumi.Input[bool]] = None,
                  contact_center_id: Optional[pulumi.Input[str]] = None,
                  customer_domain_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]] = None,
+                 instance_config: Optional[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 saml_params: Optional[pulumi.Input[pulumi.InputType['SAMLParamsArgs']]] = None,
+                 saml_params: Optional[pulumi.Input[Union['SAMLParamsArgs', 'SAMLParamsArgsDict']]] = None,
                  user_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

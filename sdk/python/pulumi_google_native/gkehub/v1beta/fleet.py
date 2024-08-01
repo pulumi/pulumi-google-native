@@ -99,7 +99,7 @@ class Fleet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['DefaultClusterConfigArgs']]] = None,
+                 default_cluster_config: Optional[pulumi.Input[Union['DefaultClusterConfigArgs', 'DefaultClusterConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class Fleet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DefaultClusterConfigArgs']] default_cluster_config: Optional. The default cluster configurations to apply across the fleet.
+        :param pulumi.Input[Union['DefaultClusterConfigArgs', 'DefaultClusterConfigArgsDict']] default_cluster_config: Optional. The default cluster configurations to apply across the fleet.
         :param pulumi.Input[str] display_name: Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this Fleet.
         """
@@ -140,7 +140,7 @@ class Fleet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['DefaultClusterConfigArgs']]] = None,
+                 default_cluster_config: Optional[pulumi.Input[Union['DefaultClusterConfigArgs', 'DefaultClusterConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

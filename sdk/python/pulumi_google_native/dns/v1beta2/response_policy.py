@@ -148,10 +148,10 @@ class ResponsePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGKEClusterArgs', 'ResponsePolicyGKEClusterArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -163,9 +163,9 @@ class ResponsePolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: User-provided description for this Response Policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGKEClusterArgs', 'ResponsePolicyGKEClusterArgsDict']]]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] response_policy_name: User assigned name for this Response Policy.
         """
         ...
@@ -195,10 +195,10 @@ class ResponsePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGKEClusterArgs', 'ResponsePolicyGKEClusterArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):

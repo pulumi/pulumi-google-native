@@ -150,7 +150,7 @@ class WorkforcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['AccessRestrictionsArgs']]] = None,
+                 access_restrictions: Optional[pulumi.Input[Union['AccessRestrictionsArgs', 'AccessRestrictionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -165,7 +165,7 @@ class WorkforcePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AccessRestrictionsArgs']] access_restrictions: Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        :param pulumi.Input[Union['AccessRestrictionsArgs', 'AccessRestrictionsArgsDict']] access_restrictions: Optional. Configure access restrictions on the workforce pool users. This is an optional field. If specified web sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
@@ -198,7 +198,7 @@ class WorkforcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['AccessRestrictionsArgs']]] = None,
+                 access_restrictions: Optional[pulumi.Input[Union['AccessRestrictionsArgs', 'AccessRestrictionsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,

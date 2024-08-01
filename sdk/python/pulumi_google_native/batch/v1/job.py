@@ -178,16 +178,16 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_policy: Optional[pulumi.Input[pulumi.InputType['AllocationPolicyArgs']]] = None,
+                 allocation_policy: Optional[pulumi.Input[Union['AllocationPolicyArgs', 'AllocationPolicyArgsDict']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logs_policy: Optional[pulumi.Input[pulumi.InputType['LogsPolicyArgs']]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobNotificationArgs']]]]] = None,
+                 logs_policy: Optional[pulumi.Input[Union['LogsPolicyArgs', 'LogsPolicyArgsDict']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobNotificationArgs', 'JobNotificationArgsDict']]]]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 task_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskGroupArgs']]]]] = None,
+                 task_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TaskGroupArgs', 'TaskGroupArgsDict']]]]] = None,
                  __props__=None):
         """
         Create a Job.
@@ -195,14 +195,14 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AllocationPolicyArgs']] allocation_policy: Compute resource allocation for all TaskGroups in the Job.
+        :param pulumi.Input[Union['AllocationPolicyArgs', 'AllocationPolicyArgsDict']] allocation_policy: Compute resource allocation for all TaskGroups in the Job.
         :param pulumi.Input[str] job_id: ID used to uniquely identify the Job within its parent scope. This field should contain at most 63 characters and must start with lowercase characters. Only lowercase characters, numbers and '-' are accepted. The '-' character cannot be the first or the last one. A system generated ID will be used if the field is not set. The job.name field in the request will be ignored and the created resource name of the Job will be "{parent}/jobs/{job_id}".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the Job. Labels could be user provided or system generated. For example, "labels": { "department": "finance", "environment": "test" } You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
-        :param pulumi.Input[pulumi.InputType['LogsPolicyArgs']] logs_policy: Log preservation policy for the Job.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobNotificationArgs']]]] notifications: Notification configurations.
+        :param pulumi.Input[Union['LogsPolicyArgs', 'LogsPolicyArgsDict']] logs_policy: Log preservation policy for the Job.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['JobNotificationArgs', 'JobNotificationArgsDict']]]] notifications: Notification configurations.
         :param pulumi.Input[str] priority: Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskGroupArgs']]]] task_groups: TaskGroups in the Job. Only one TaskGroup is supported now.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TaskGroupArgs', 'TaskGroupArgsDict']]]] task_groups: TaskGroups in the Job. Only one TaskGroup is supported now.
         """
         ...
     @overload
@@ -229,16 +229,16 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_policy: Optional[pulumi.Input[pulumi.InputType['AllocationPolicyArgs']]] = None,
+                 allocation_policy: Optional[pulumi.Input[Union['AllocationPolicyArgs', 'AllocationPolicyArgsDict']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logs_policy: Optional[pulumi.Input[pulumi.InputType['LogsPolicyArgs']]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobNotificationArgs']]]]] = None,
+                 logs_policy: Optional[pulumi.Input[Union['LogsPolicyArgs', 'LogsPolicyArgsDict']]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobNotificationArgs', 'JobNotificationArgsDict']]]]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 task_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TaskGroupArgs']]]]] = None,
+                 task_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TaskGroupArgs', 'TaskGroupArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

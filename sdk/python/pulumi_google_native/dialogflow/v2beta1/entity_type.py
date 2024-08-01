@@ -164,7 +164,7 @@ class EntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs', 'GoogleCloudDialogflowV2beta1EntityTypeEntityArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input['EntityTypeKind']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -180,7 +180,7 @@ class EntityType(pulumi.CustomResource):
         :param pulumi.Input['EntityTypeAutoExpansionMode'] auto_expansion_mode: Optional. Indicates whether the entity type can be automatically expanded.
         :param pulumi.Input[str] display_name: The name of the entity type.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Optional. Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]] entities: Optional. The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs', 'GoogleCloudDialogflowV2beta1EntityTypeEntityArgsDict']]]] entities: Optional. The collection of entity entries associated with the entity type.
         :param pulumi.Input['EntityTypeKind'] kind: Indicates the kind of entity type.
         :param pulumi.Input[str] language_code: Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -213,7 +213,7 @@ class EntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs', 'GoogleCloudDialogflowV2beta1EntityTypeEntityArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input['EntityTypeKind']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

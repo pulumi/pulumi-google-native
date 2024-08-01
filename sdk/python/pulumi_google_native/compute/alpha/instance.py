@@ -659,46 +659,46 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']]] = None,
+                 advanced_machine_features: Optional[pulumi.Input[Union['AdvancedMachineFeaturesArgs', 'AdvancedMachineFeaturesArgsDict']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['ConfidentialInstanceConfigArgs']]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[Union['ConfidentialInstanceConfigArgs', 'ConfidentialInstanceConfigArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
-                 display_device: Optional[pulumi.Input[pulumi.InputType['DisplayDeviceArgs']]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttachedDiskArgs', 'AttachedDiskArgsDict']]]]] = None,
+                 display_device: Optional[pulumi.Input[Union['DisplayDeviceArgs', 'DisplayDeviceArgsDict']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 instance_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 instance_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  key_revocation_action_type: Optional[pulumi.Input['InstanceKeyRevocationActionType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['MetadataArgs', 'MetadataArgsDict']]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
-                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['StructuredEntriesArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkInterfaceArgs', 'NetworkInterfaceArgsDict']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[Union['NetworkPerformanceConfigArgs', 'NetworkPerformanceConfigArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['InstanceParamsArgs', 'InstanceParamsArgsDict']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['StructuredEntriesArgs', 'StructuredEntriesArgsDict']]]]] = None,
                  post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  preserved_state_size_gb: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[Union['ReservationAffinityArgs', 'ReservationAffinityArgsDict']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[Union['SchedulingArgs', 'SchedulingArgsDict']]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
-                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ServiceIntegrationSpecArgs']]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
-                 shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
-                 shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']]] = None,
-                 shielded_vm_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']]] = None,
+                 service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountArgs', 'ServiceAccountArgsDict']]]]] = None,
+                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ServiceIntegrationSpecArgs', 'ServiceIntegrationSpecArgsDict']]]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ShieldedInstanceConfigArgs', 'ShieldedInstanceConfigArgsDict']]] = None,
+                 shielded_instance_integrity_policy: Optional[pulumi.Input[Union['ShieldedInstanceIntegrityPolicyArgs', 'ShieldedInstanceIntegrityPolicyArgsDict']]] = None,
+                 shielded_vm_config: Optional[pulumi.Input[Union['ShieldedVmConfigArgs', 'ShieldedVmConfigArgsDict']]] = None,
+                 shielded_vm_integrity_policy: Optional[pulumi.Input[Union['ShieldedVmIntegrityPolicyArgs', 'ShieldedVmIntegrityPolicyArgsDict']]] = None,
                  source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
-                 source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
+                 tags: Optional[pulumi.Input[Union['TagsArgs', 'TagsArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -706,41 +706,41 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
+        :param pulumi.Input[Union['AdvancedMachineFeaturesArgs', 'AdvancedMachineFeaturesArgsDict']] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-        :param pulumi.Input[pulumi.InputType['DisplayDeviceArgs']] display_device: Enables display device for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttachedDiskArgs', 'AttachedDiskArgsDict']]]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
+        :param pulumi.Input[Union['DisplayDeviceArgs', 'DisplayDeviceArgsDict']] display_device: Enables display device for the instance.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']]]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] instance_encryption_key: Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+        :param pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']] instance_encryption_key: Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
         :param pulumi.Input['InstanceKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
-        :param pulumi.Input[pulumi.InputType['MetadataArgs']] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
+        :param pulumi.Input[Union['MetadataArgs', 'MetadataArgsDict']] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-        :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['StructuredEntriesArgs']]]] partner_metadata: Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkInterfaceArgs', 'NetworkInterfaceArgsDict']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        :param pulumi.Input[Union['InstanceParamsArgs', 'InstanceParamsArgsDict']] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['StructuredEntriesArgs', 'StructuredEntriesArgsDict']]]] partner_metadata: Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
         :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
         :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
+        :param pulumi.Input[Union['ReservationAffinityArgs', 'ReservationAffinityArgsDict']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
-        :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
+        :param pulumi.Input[Union['SchedulingArgs', 'SchedulingArgsDict']] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ServiceIntegrationSpecArgs']]]] service_integration_specs: Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-        :param pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']] shielded_vm_config: Deprecating, please use shielded_instance_config.
-        :param pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountArgs', 'ServiceAccountArgsDict']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ServiceIntegrationSpecArgs', 'ServiceIntegrationSpecArgsDict']]]] service_integration_specs: Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+        :param pulumi.Input[Union['ShieldedVmConfigArgs', 'ShieldedVmConfigArgsDict']] shielded_vm_config: Deprecating, please use shielded_instance_config.
+        :param pulumi.Input[Union['ShieldedVmIntegrityPolicyArgs', 'ShieldedVmIntegrityPolicyArgsDict']] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_instance_template: Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
         :param pulumi.Input[str] source_machine_image: Source machine image
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
-        :param pulumi.Input[pulumi.InputType['TagsArgs']] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
+        :param pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']] source_machine_image_encryption_key: Source machine image encryption key when creating an instance from a machine image.
+        :param pulumi.Input[Union['TagsArgs', 'TagsArgsDict']] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
         ...
     @overload
@@ -766,46 +766,46 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']]] = None,
+                 advanced_machine_features: Optional[pulumi.Input[Union['AdvancedMachineFeaturesArgs', 'AdvancedMachineFeaturesArgsDict']]] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[pulumi.InputType['ConfidentialInstanceConfigArgs']]] = None,
+                 confidential_instance_config: Optional[pulumi.Input[Union['ConfidentialInstanceConfigArgs', 'ConfidentialInstanceConfigArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
-                 display_device: Optional[pulumi.Input[pulumi.InputType['DisplayDeviceArgs']]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttachedDiskArgs', 'AttachedDiskArgsDict']]]]] = None,
+                 display_device: Optional[pulumi.Input[Union['DisplayDeviceArgs', 'DisplayDeviceArgsDict']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]]] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 instance_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 instance_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  key_revocation_action_type: Optional[pulumi.Input['InstanceKeyRevocationActionType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['MetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['MetadataArgs', 'MetadataArgsDict']]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
-                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['StructuredEntriesArgs']]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkInterfaceArgs', 'NetworkInterfaceArgsDict']]]]] = None,
+                 network_performance_config: Optional[pulumi.Input[Union['NetworkPerformanceConfigArgs', 'NetworkPerformanceConfigArgsDict']]] = None,
+                 params: Optional[pulumi.Input[Union['InstanceParamsArgs', 'InstanceParamsArgsDict']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['StructuredEntriesArgs', 'StructuredEntriesArgsDict']]]]] = None,
                  post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  preserved_state_size_gb: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
+                 reservation_affinity: Optional[pulumi.Input[Union['ReservationAffinityArgs', 'ReservationAffinityArgsDict']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[Union['SchedulingArgs', 'SchedulingArgsDict']]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
-                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ServiceIntegrationSpecArgs']]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
-                 shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
-                 shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']]] = None,
-                 shielded_vm_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']]] = None,
+                 service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountArgs', 'ServiceAccountArgsDict']]]]] = None,
+                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ServiceIntegrationSpecArgs', 'ServiceIntegrationSpecArgsDict']]]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ShieldedInstanceConfigArgs', 'ShieldedInstanceConfigArgsDict']]] = None,
+                 shielded_instance_integrity_policy: Optional[pulumi.Input[Union['ShieldedInstanceIntegrityPolicyArgs', 'ShieldedInstanceIntegrityPolicyArgsDict']]] = None,
+                 shielded_vm_config: Optional[pulumi.Input[Union['ShieldedVmConfigArgs', 'ShieldedVmConfigArgsDict']]] = None,
+                 shielded_vm_integrity_policy: Optional[pulumi.Input[Union['ShieldedVmIntegrityPolicyArgs', 'ShieldedVmIntegrityPolicyArgsDict']]] = None,
                  source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
-                 source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 tags: Optional[pulumi.Input[pulumi.InputType['TagsArgs']]] = None,
+                 source_machine_image_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
+                 tags: Optional[pulumi.Input[Union['TagsArgs', 'TagsArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

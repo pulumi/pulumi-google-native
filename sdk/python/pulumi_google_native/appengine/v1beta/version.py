@@ -645,34 +645,34 @@ class Version(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']]] = None,
+                 api_config: Optional[pulumi.Input[Union['ApiConfigHandlerArgs', 'ApiConfigHandlerArgsDict']]] = None,
                  app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
-                 basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
+                 automatic_scaling: Optional[pulumi.Input[Union['AutomaticScalingArgs', 'AutomaticScalingArgsDict']]] = None,
+                 basic_scaling: Optional[pulumi.Input[Union['BasicScalingArgs', 'BasicScalingArgsDict']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
-                 endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']]] = None,
-                 entrypoint: Optional[pulumi.Input[pulumi.InputType['EntrypointArgs']]] = None,
+                 deployment: Optional[pulumi.Input[Union['DeploymentArgs', 'DeploymentArgsDict']]] = None,
+                 endpoints_api_service: Optional[pulumi.Input[Union['EndpointsApiServiceArgs', 'EndpointsApiServiceArgsDict']]] = None,
+                 entrypoint: Optional[pulumi.Input[Union['EntrypointArgs', 'EntrypointArgsDict']]] = None,
                  env: Optional[pulumi.Input[str]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
-                 flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']]] = None,
+                 error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ErrorHandlerArgs', 'ErrorHandlerArgsDict']]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input[Union['FlexibleRuntimeSettingsArgs', 'FlexibleRuntimeSettingsArgsDict']]] = None,
                  generated_customer_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
-                 health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
+                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UrlMapArgs', 'UrlMapArgsDict']]]]] = None,
+                 health_check: Optional[pulumi.Input[Union['HealthCheckArgs', 'HealthCheckArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
-                 liveness_check: Optional[pulumi.Input[pulumi.InputType['LivenessCheckArgs']]] = None,
-                 manual_scaling: Optional[pulumi.Input[pulumi.InputType['ManualScalingArgs']]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['NetworkArgs']]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LibraryArgs', 'LibraryArgsDict']]]]] = None,
+                 liveness_check: Optional[pulumi.Input[Union['LivenessCheckArgs', 'LivenessCheckArgsDict']]] = None,
+                 manual_scaling: Optional[pulumi.Input[Union['ManualScalingArgs', 'ManualScalingArgsDict']]] = None,
+                 network: Optional[pulumi.Input[Union['NetworkArgs', 'NetworkArgsDict']]] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
-                 readiness_check: Optional[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]] = None,
-                 resources: Optional[pulumi.Input[pulumi.InputType['ResourcesArgs']]] = None,
+                 readiness_check: Optional[pulumi.Input[Union['ReadinessCheckArgs', 'ReadinessCheckArgsDict']]] = None,
+                 resources: Optional[pulumi.Input[Union['ResourcesArgs', 'ResourcesArgsDict']]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
@@ -682,7 +682,7 @@ class Version(pulumi.CustomResource):
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
-                 vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
+                 vpc_access_connector: Optional[pulumi.Input[Union['VpcAccessConnectorArgs', 'VpcAccessConnectorArgsDict']]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -691,33 +691,33 @@ class Version(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Union['ApiConfigHandlerArgs', 'ApiConfigHandlerArgsDict']] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
-        :param pulumi.Input[pulumi.InputType['AutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
-        :param pulumi.Input[pulumi.InputType['BasicScalingArgs']] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+        :param pulumi.Input[Union['AutomaticScalingArgs', 'AutomaticScalingArgsDict']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
+        :param pulumi.Input[Union['BasicScalingArgs', 'BasicScalingArgsDict']] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] build_env_variables: Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[str] default_expiration: Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['DeploymentArgs']] deployment: Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']] endpoints_api_service: Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
-        :param pulumi.Input[pulumi.InputType['EntrypointArgs']] entrypoint: The entrypoint for the application.
+        :param pulumi.Input[Union['DeploymentArgs', 'DeploymentArgsDict']] deployment: Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Union['EndpointsApiServiceArgs', 'EndpointsApiServiceArgsDict']] endpoints_api_service: Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
+        :param pulumi.Input[Union['EntrypointArgs', 'EntrypointArgsDict']] entrypoint: The entrypoint for the application.
         :param pulumi.Input[str] env: App Engine execution environment for this version.Defaults to standard.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']] flexible_runtime_settings: Settings for App Engine flexible runtimes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ErrorHandlerArgs', 'ErrorHandlerArgsDict']]]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Union['FlexibleRuntimeSettingsArgs', 'FlexibleRuntimeSettingsArgsDict']] flexible_runtime_settings: Settings for App Engine flexible runtimes.
         :param pulumi.Input[Mapping[str, Any]] generated_customer_metadata: Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested by setting the IncludeExtraData field in GetVersionRequest
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['HealthCheckArgs']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UrlMapArgs', 'UrlMapArgsDict']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Union['HealthCheckArgs', 'HealthCheckArgsDict']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]] inbound_services: Before an application can receive email or XMPP messages, the application must be configured to enable the service.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['LivenessCheckArgs']] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
-        :param pulumi.Input[pulumi.InputType['ManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
-        :param pulumi.Input[pulumi.InputType['NetworkArgs']] network: Extra network settings. Only applicable in the App Engine flexible environment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LibraryArgs', 'LibraryArgsDict']]]] libraries: Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[Union['LivenessCheckArgs', 'LivenessCheckArgsDict']] liveness_check: Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instances
+        :param pulumi.Input[Union['ManualScalingArgs', 'ManualScalingArgsDict']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
+        :param pulumi.Input[Union['NetworkArgs', 'NetworkArgsDict']] network: Extra network settings. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
-        :param pulumi.Input[pulumi.InputType['ReadinessCheckArgs']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
-        :param pulumi.Input[pulumi.InputType['ResourcesArgs']] resources: Machine resources for this version. Only applicable in the App Engine flexible environment.
+        :param pulumi.Input[Union['ReadinessCheckArgs', 'ReadinessCheckArgsDict']] readiness_check: Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
+        :param pulumi.Input[Union['ResourcesArgs', 'ResourcesArgsDict']] resources: Machine resources for this version. Only applicable in the App Engine flexible environment.
         :param pulumi.Input[str] runtime: Desired runtime. Example: python27.
         :param pulumi.Input[str] runtime_api_version: The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
         :param pulumi.Input[str] runtime_channel: The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
@@ -726,7 +726,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input['VersionServingStatus'] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
-        :param pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
+        :param pulumi.Input[Union['VpcAccessConnectorArgs', 'VpcAccessConnectorArgsDict']] vpc_access_connector: Enables VPC connectivity for standard apps.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
         ...
@@ -754,34 +754,34 @@ class Version(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']]] = None,
+                 api_config: Optional[pulumi.Input[Union['ApiConfigHandlerArgs', 'ApiConfigHandlerArgsDict']]] = None,
                  app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
-                 basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
+                 automatic_scaling: Optional[pulumi.Input[Union['AutomaticScalingArgs', 'AutomaticScalingArgsDict']]] = None,
+                 basic_scaling: Optional[pulumi.Input[Union['BasicScalingArgs', 'BasicScalingArgsDict']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  default_expiration: Optional[pulumi.Input[str]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
-                 endpoints_api_service: Optional[pulumi.Input[pulumi.InputType['EndpointsApiServiceArgs']]] = None,
-                 entrypoint: Optional[pulumi.Input[pulumi.InputType['EntrypointArgs']]] = None,
+                 deployment: Optional[pulumi.Input[Union['DeploymentArgs', 'DeploymentArgsDict']]] = None,
+                 endpoints_api_service: Optional[pulumi.Input[Union['EndpointsApiServiceArgs', 'EndpointsApiServiceArgsDict']]] = None,
+                 entrypoint: Optional[pulumi.Input[Union['EntrypointArgs', 'EntrypointArgsDict']]] = None,
                  env: Optional[pulumi.Input[str]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
-                 flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']]] = None,
+                 error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ErrorHandlerArgs', 'ErrorHandlerArgsDict']]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input[Union['FlexibleRuntimeSettingsArgs', 'FlexibleRuntimeSettingsArgsDict']]] = None,
                  generated_customer_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
-                 health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
+                 handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UrlMapArgs', 'UrlMapArgsDict']]]]] = None,
+                 health_check: Optional[pulumi.Input[Union['HealthCheckArgs', 'HealthCheckArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  inbound_services: Optional[pulumi.Input[Sequence[pulumi.Input['VersionInboundServicesItem']]]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LibraryArgs']]]]] = None,
-                 liveness_check: Optional[pulumi.Input[pulumi.InputType['LivenessCheckArgs']]] = None,
-                 manual_scaling: Optional[pulumi.Input[pulumi.InputType['ManualScalingArgs']]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['NetworkArgs']]] = None,
+                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LibraryArgs', 'LibraryArgsDict']]]]] = None,
+                 liveness_check: Optional[pulumi.Input[Union['LivenessCheckArgs', 'LivenessCheckArgsDict']]] = None,
+                 manual_scaling: Optional[pulumi.Input[Union['ManualScalingArgs', 'ManualScalingArgsDict']]] = None,
+                 network: Optional[pulumi.Input[Union['NetworkArgs', 'NetworkArgsDict']]] = None,
                  nobuild_files_regex: Optional[pulumi.Input[str]] = None,
-                 readiness_check: Optional[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]] = None,
-                 resources: Optional[pulumi.Input[pulumi.InputType['ResourcesArgs']]] = None,
+                 readiness_check: Optional[pulumi.Input[Union['ReadinessCheckArgs', 'ReadinessCheckArgsDict']]] = None,
+                 resources: Optional[pulumi.Input[Union['ResourcesArgs', 'ResourcesArgsDict']]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
                  runtime_api_version: Optional[pulumi.Input[str]] = None,
                  runtime_channel: Optional[pulumi.Input[str]] = None,
@@ -791,7 +791,7 @@ class Version(pulumi.CustomResource):
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
-                 vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
+                 vpc_access_connector: Optional[pulumi.Input[Union['VpcAccessConnectorArgs', 'VpcAccessConnectorArgsDict']]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

@@ -119,7 +119,7 @@ class RuleSet(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1RuleArgs', 'GoogleCloudContentwarehouseV1RuleArgsDict']]]]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -129,7 +129,7 @@ class RuleSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Short description of the rule-set.
         :param pulumi.Input[str] name: The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RuleArgs']]]] rules: List of rules given by the customer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1RuleArgs', 'GoogleCloudContentwarehouseV1RuleArgsDict']]]] rules: List of rules given by the customer.
         :param pulumi.Input[str] source: Source of the rules i.e., customer name.
         """
         ...
@@ -160,7 +160,7 @@ class RuleSet(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1RuleArgs', 'GoogleCloudContentwarehouseV1RuleArgsDict']]]]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

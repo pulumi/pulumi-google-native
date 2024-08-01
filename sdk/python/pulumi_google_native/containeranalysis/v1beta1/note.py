@@ -358,27 +358,27 @@ class Note(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
-                 base_image: Optional[pulumi.Input[pulumi.InputType['BasisArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
-                 deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
-                 discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
+                 attestation_authority: Optional[pulumi.Input[Union['AuthorityArgs', 'AuthorityArgsDict']]] = None,
+                 base_image: Optional[pulumi.Input[Union['BasisArgs', 'BasisArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['BuildArgs', 'BuildArgsDict']]] = None,
+                 deployable: Optional[pulumi.Input[Union['DeployableArgs', 'DeployableArgsDict']]] = None,
+                 discovery: Optional[pulumi.Input[Union['DiscoveryArgs', 'DiscoveryArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 intoto: Optional[pulumi.Input[pulumi.InputType['InTotoArgs']]] = None,
+                 intoto: Optional[pulumi.Input[Union['InTotoArgs', 'InTotoArgsDict']]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
-                 package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
+                 package: Optional[pulumi.Input[Union['PackageArgs', 'PackageArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
-                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']]] = None,
+                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RelatedUrlArgs', 'RelatedUrlArgsDict']]]]] = None,
+                 sbom: Optional[pulumi.Input[Union['DocumentNoteArgs', 'DocumentNoteArgsDict']]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceNoteArgs', 'SBOMReferenceNoteArgsDict']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']]] = None,
-                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
-                 vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityArgs']]] = None,
-                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
+                 spdx_file: Optional[pulumi.Input[Union['FileNoteArgs', 'FileNoteArgsDict']]] = None,
+                 spdx_package: Optional[pulumi.Input[Union['PackageInfoNoteArgs', 'PackageInfoNoteArgsDict']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[Union['RelationshipNoteArgs', 'RelationshipNoteArgsDict']]] = None,
+                 vulnerability: Optional[pulumi.Input[Union['VulnerabilityArgs', 'VulnerabilityArgsDict']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[Union['VulnerabilityAssessmentNoteArgs', 'VulnerabilityAssessmentNoteArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new note.
@@ -386,26 +386,26 @@ class Note(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AuthorityArgs']] attestation_authority: A note describing an attestation role.
-        :param pulumi.Input[pulumi.InputType['BasisArgs']] base_image: A note describing a base image.
-        :param pulumi.Input[pulumi.InputType['BuildArgs']] build: A note describing build provenance for a verifiable build.
-        :param pulumi.Input[pulumi.InputType['DeployableArgs']] deployable: A note describing something that can be deployed.
-        :param pulumi.Input[pulumi.InputType['DiscoveryArgs']] discovery: A note describing the initial analysis of a resource.
+        :param pulumi.Input[Union['AuthorityArgs', 'AuthorityArgsDict']] attestation_authority: A note describing an attestation role.
+        :param pulumi.Input[Union['BasisArgs', 'BasisArgsDict']] base_image: A note describing a base image.
+        :param pulumi.Input[Union['BuildArgs', 'BuildArgsDict']] build: A note describing build provenance for a verifiable build.
+        :param pulumi.Input[Union['DeployableArgs', 'DeployableArgsDict']] deployable: A note describing something that can be deployed.
+        :param pulumi.Input[Union['DiscoveryArgs', 'DiscoveryArgsDict']] discovery: A note describing the initial analysis of a resource.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
-        :param pulumi.Input[pulumi.InputType['InTotoArgs']] intoto: A note describing an in-toto link.
+        :param pulumi.Input[Union['InTotoArgs', 'InTotoArgsDict']] intoto: A note describing an in-toto link.
         :param pulumi.Input[str] long_description: A detailed description of this note.
         :param pulumi.Input[str] note_id: Required. The ID to use for this note.
-        :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
+        :param pulumi.Input[Union['PackageArgs', 'PackageArgsDict']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note.
-        :param pulumi.Input[pulumi.InputType['DocumentNoteArgs']] sbom: A note describing a software bill of materials.
-        :param pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']] sbom_reference: A note describing an SBOM reference.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RelatedUrlArgs', 'RelatedUrlArgsDict']]]] related_url: URLs associated with this note.
+        :param pulumi.Input[Union['DocumentNoteArgs', 'DocumentNoteArgsDict']] sbom: A note describing a software bill of materials.
+        :param pulumi.Input[Union['SBOMReferenceNoteArgs', 'SBOMReferenceNoteArgsDict']] sbom_reference: A note describing an SBOM reference.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
-        :param pulumi.Input[pulumi.InputType['FileNoteArgs']] spdx_file: A note describing an SPDX File.
-        :param pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']] spdx_package: A note describing an SPDX Package.
-        :param pulumi.Input[pulumi.InputType['RelationshipNoteArgs']] spdx_relationship: A note describing an SPDX File.
-        :param pulumi.Input[pulumi.InputType['VulnerabilityArgs']] vulnerability: A note describing a package vulnerability.
-        :param pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']] vulnerability_assessment: A note describing a vulnerability assessment.
+        :param pulumi.Input[Union['FileNoteArgs', 'FileNoteArgsDict']] spdx_file: A note describing an SPDX File.
+        :param pulumi.Input[Union['PackageInfoNoteArgs', 'PackageInfoNoteArgsDict']] spdx_package: A note describing an SPDX Package.
+        :param pulumi.Input[Union['RelationshipNoteArgs', 'RelationshipNoteArgsDict']] spdx_relationship: A note describing an SPDX File.
+        :param pulumi.Input[Union['VulnerabilityArgs', 'VulnerabilityArgsDict']] vulnerability: A note describing a package vulnerability.
+        :param pulumi.Input[Union['VulnerabilityAssessmentNoteArgs', 'VulnerabilityAssessmentNoteArgsDict']] vulnerability_assessment: A note describing a vulnerability assessment.
         """
         ...
     @overload
@@ -432,27 +432,27 @@ class Note(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
-                 base_image: Optional[pulumi.Input[pulumi.InputType['BasisArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
-                 deployable: Optional[pulumi.Input[pulumi.InputType['DeployableArgs']]] = None,
-                 discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryArgs']]] = None,
+                 attestation_authority: Optional[pulumi.Input[Union['AuthorityArgs', 'AuthorityArgsDict']]] = None,
+                 base_image: Optional[pulumi.Input[Union['BasisArgs', 'BasisArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['BuildArgs', 'BuildArgsDict']]] = None,
+                 deployable: Optional[pulumi.Input[Union['DeployableArgs', 'DeployableArgsDict']]] = None,
+                 discovery: Optional[pulumi.Input[Union['DiscoveryArgs', 'DiscoveryArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 intoto: Optional[pulumi.Input[pulumi.InputType['InTotoArgs']]] = None,
+                 intoto: Optional[pulumi.Input[Union['InTotoArgs', 'InTotoArgsDict']]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
-                 package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
+                 package: Optional[pulumi.Input[Union['PackageArgs', 'PackageArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
-                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']]] = None,
+                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RelatedUrlArgs', 'RelatedUrlArgsDict']]]]] = None,
+                 sbom: Optional[pulumi.Input[Union['DocumentNoteArgs', 'DocumentNoteArgsDict']]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceNoteArgs', 'SBOMReferenceNoteArgsDict']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']]] = None,
-                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
-                 vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityArgs']]] = None,
-                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
+                 spdx_file: Optional[pulumi.Input[Union['FileNoteArgs', 'FileNoteArgsDict']]] = None,
+                 spdx_package: Optional[pulumi.Input[Union['PackageInfoNoteArgs', 'PackageInfoNoteArgsDict']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[Union['RelationshipNoteArgs', 'RelationshipNoteArgsDict']]] = None,
+                 vulnerability: Optional[pulumi.Input[Union['VulnerabilityArgs', 'VulnerabilityArgsDict']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[Union['VulnerabilityAssessmentNoteArgs', 'VulnerabilityAssessmentNoteArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

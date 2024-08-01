@@ -235,17 +235,17 @@ class TemplatesVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
+                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs', 'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgsDict']]]]] = None,
                  integrationtemplate_id: Optional[pulumi.Input[str]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent_integration_version_id: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]] = None,
-                 teardown: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']]] = None,
-                 template_parameters: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]] = None,
-                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]] = None,
+                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTaskConfigArgsDict']]]]] = None,
+                 teardown: Optional[pulumi.Input[Union['EnterpriseCrmEventbusProtoTeardownArgs', 'EnterpriseCrmEventbusProtoTeardownArgsDict']]] = None,
+                 template_parameters: Optional[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs', 'EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgsDict']]] = None,
+                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgsDict']]]]] = None,
                  user_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -258,13 +258,13 @@ class TemplatesVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['TemplatesVersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] error_catcher_configs: Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs', 'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgsDict']]]] error_catcher_configs: Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
         :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] parent_integration_version_id: Optional. ID of the IntegrationVersion that was used to create this IntegrationTemplateVersion
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]] task_configs: Optional. Task configuration for the IntegrationTemplateVersion. It's optional, but the IntegrationTemplateVersion doesn't do anything without task_configs.
-        :param pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']] teardown: Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-        :param pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']] template_parameters: Optional. Parameters that are expected to be passed to the IntegrationTemplateVersion when an event is triggered. This consists of all the parameters that are expected in the IntegrationTemplateVersion execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]] trigger_configs: Optional. Trigger configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTaskConfigArgsDict']]]] task_configs: Optional. Task configuration for the IntegrationTemplateVersion. It's optional, but the IntegrationTemplateVersion doesn't do anything without task_configs.
+        :param pulumi.Input[Union['EnterpriseCrmEventbusProtoTeardownArgs', 'EnterpriseCrmEventbusProtoTeardownArgsDict']] teardown: Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
+        :param pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs', 'EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgsDict']] template_parameters: Optional. Parameters that are expected to be passed to the IntegrationTemplateVersion when an event is triggered. This consists of all the parameters that are expected in the IntegrationTemplateVersion execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgsDict']]]] trigger_configs: Optional. Trigger configurations.
         :param pulumi.Input[str] user_label: Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
         """
         ...
@@ -296,17 +296,17 @@ class TemplatesVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
+                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs', 'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgsDict']]]]] = None,
                  integrationtemplate_id: Optional[pulumi.Input[str]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent_integration_version_id: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]] = None,
-                 teardown: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']]] = None,
-                 template_parameters: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]] = None,
-                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]] = None,
+                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTaskConfigArgsDict']]]]] = None,
+                 teardown: Optional[pulumi.Input[Union['EnterpriseCrmEventbusProtoTeardownArgs', 'EnterpriseCrmEventbusProtoTeardownArgsDict']]] = None,
+                 template_parameters: Optional[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs', 'EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgsDict']]] = None,
+                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgsDict']]]]] = None,
                  user_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

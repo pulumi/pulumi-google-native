@@ -176,10 +176,10 @@ class Feed(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ExprArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ExprArgs', 'ExprArgsDict']]] = None,
                  content_type: Optional[pulumi.Input['FeedContentType']] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
-                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['FeedOutputConfigArgs']]] = None,
+                 feed_output_config: Optional[pulumi.Input[Union['FeedOutputConfigArgs', 'FeedOutputConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  relationship_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  v1_id: Optional[pulumi.Input[str]] = None,
@@ -193,10 +193,10 @@ class Feed(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. For a list of the full names for supported asset types, see [Resource name format](/asset-inventory/docs/resource-name-format).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` For a list of all supported asset types, see [Supported asset types](/asset-inventory/docs/supported-asset-types).
-        :param pulumi.Input[pulumi.InputType['ExprArgs']] condition: A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions.
+        :param pulumi.Input[Union['ExprArgs', 'ExprArgsDict']] condition: A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions.
         :param pulumi.Input['FeedContentType'] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-        :param pulumi.Input[pulumi.InputType['FeedOutputConfigArgs']] feed_output_config: Feed output configuration defining where the asset updates are published to.
+        :param pulumi.Input[Union['FeedOutputConfigArgs', 'FeedOutputConfigArgsDict']] feed_output_config: Feed output configuration defining where the asset updates are published to.
         :param pulumi.Input[str] name: The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] relationship_types: A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types.
         """
@@ -227,10 +227,10 @@ class Feed(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ExprArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ExprArgs', 'ExprArgsDict']]] = None,
                  content_type: Optional[pulumi.Input['FeedContentType']] = None,
                  feed_id: Optional[pulumi.Input[str]] = None,
-                 feed_output_config: Optional[pulumi.Input[pulumi.InputType['FeedOutputConfigArgs']]] = None,
+                 feed_output_config: Optional[pulumi.Input[Union['FeedOutputConfigArgs', 'FeedOutputConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  relationship_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  v1_id: Optional[pulumi.Input[str]] = None,

@@ -217,9 +217,9 @@ class MetricDescriptor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LabelDescriptorArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LabelDescriptorArgs', 'LabelDescriptorArgsDict']]]]] = None,
                  launch_stage: Optional[pulumi.Input['MetricDescriptorLaunchStage']] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
                  metric_kind: Optional[pulumi.Input['MetricDescriptorMetricKind']] = None,
                  monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -235,9 +235,9 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LabelDescriptorArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LabelDescriptorArgs', 'LabelDescriptorArgsDict']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
         :param pulumi.Input['MetricDescriptorLaunchStage'] launch_stage: Optional. The launch stage of the metric definition.
-        :param pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']] metadata: Optional. Metadata which can be used to guide usage of the metric.
+        :param pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']] metadata: Optional. Metadata which can be used to guide usage of the metric.
         :param pulumi.Input['MetricDescriptorMetricKind'] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
         :param pulumi.Input[str] name: The resource name of the metric descriptor.
@@ -271,9 +271,9 @@ class MetricDescriptor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LabelDescriptorArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LabelDescriptorArgs', 'LabelDescriptorArgsDict']]]]] = None,
                  launch_stage: Optional[pulumi.Input['MetricDescriptorLaunchStage']] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorMetadataArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['MetricDescriptorMetadataArgs', 'MetricDescriptorMetadataArgsDict']]] = None,
                  metric_kind: Optional[pulumi.Input['MetricDescriptorMetricKind']] = None,
                  monitored_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

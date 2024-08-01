@@ -336,25 +336,25 @@ class Agent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]] = None,
-                 answer_feedback_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgsDict']]] = None,
+                 answer_feedback_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 gen_app_builder_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs']]] = None,
-                 git_integration_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs']]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgsDict']]] = None,
+                 git_integration_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs']]] = None,
+                 speech_to_text_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs', 'GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgsDict']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs']]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs', 'GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -362,23 +362,23 @@ class Agent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs']] answer_feedback_settings: Optional. Answer feedback collection settings.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgsDict']] answer_feedback_settings: Optional. Answer feedback collection settings.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
         :param pulumi.Input[str] default_language_code: Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         :param pulumi.Input[str] description: The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs']] gen_app_builder_settings: Gen App Builder-related agent-level settings.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs']] git_integration_settings: Git integration settings for this agent.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgsDict']] gen_app_builder_settings: Gen App Builder-related agent-level settings.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgsDict']] git_integration_settings: Git integration settings for this agent.
         :param pulumi.Input[bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs']] speech_to_text_settings: Speech recognition related settings.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs', 'GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgsDict']] speech_to_text_settings: Speech recognition related settings.
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by the agent (except for the `default_language_code`).
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs']] text_to_speech_settings: Settings on instructing the speech synthesizer on how to generate the output audio content.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs', 'GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgsDict']] text_to_speech_settings: Settings on instructing the speech synthesizer on how to generate the output audio content.
         :param pulumi.Input[str] time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         """
         ...
@@ -405,25 +405,25 @@ class Agent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs']]] = None,
-                 answer_feedback_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgsDict']]] = None,
+                 answer_feedback_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettingsArgsDict']]] = None,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
-                 gen_app_builder_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs']]] = None,
-                 git_integration_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs']]] = None,
+                 gen_app_builder_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettingsArgsDict']]] = None,
+                 git_integration_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgs', 'GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs']]] = None,
+                 speech_to_text_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs', 'GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgsDict']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs']]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs', 'GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

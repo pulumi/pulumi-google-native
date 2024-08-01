@@ -160,11 +160,11 @@ class Webhook(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']]] = None,
+                 generic_web_service: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs', 'GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_directory: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs']]] = None,
+                 service_directory: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs', 'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgsDict']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -174,9 +174,9 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs', 'GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgsDict']] generic_web_service: Configuration for a generic web service.
         :param pulumi.Input[str] name: The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs']] service_directory: Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs', 'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgsDict']] service_directory: Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
         :param pulumi.Input[str] timeout: Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
         """
         ...
@@ -206,11 +206,11 @@ class Webhook(pulumi.CustomResource):
                  agent_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 generic_web_service: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']]] = None,
+                 generic_web_service: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs', 'GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_directory: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs']]] = None,
+                 service_directory: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs', 'GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgsDict']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

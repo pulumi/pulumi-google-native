@@ -196,7 +196,7 @@ class Developer(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[str]] = None,
                  app_family: Optional[pulumi.Input[str]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  companies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  developer_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -214,7 +214,7 @@ class Developer(pulumi.CustomResource):
         :param pulumi.Input[str] access_type: Access type.
         :param pulumi.Input[str] app_family: Developer app family.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] apps: List of apps associated with the developer.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]] attributes: Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]] attributes: Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] companies: List of companies associated with the developer.
         :param pulumi.Input[str] developer_id: ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
         :param pulumi.Input[str] email: Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
@@ -250,7 +250,7 @@ class Developer(pulumi.CustomResource):
                  access_type: Optional[pulumi.Input[str]] = None,
                  app_family: Optional[pulumi.Input[str]] = None,
                  apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  companies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  developer_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,

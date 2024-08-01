@@ -145,26 +145,26 @@ class ConversationModel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 article_suggestion_model_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs']]] = None,
-                 datasets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2InputDatasetArgs']]]]] = None,
+                 article_suggestion_model_metadata: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs', 'GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgsDict']]] = None,
+                 datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2InputDatasetArgs', 'GoogleCloudDialogflowV2InputDatasetArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 smart_reply_model_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SmartReplyModelMetadataArgs']]] = None,
+                 smart_reply_model_metadata: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2SmartReplyModelMetadataArgs', 'GoogleCloudDialogflowV2SmartReplyModelMetadataArgsDict']]] = None,
                  __props__=None):
         """
         Creates a model. This method is a [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned `Operation` type has the following method-specific fields: - `metadata`: CreateConversationModelOperationMetadata - `response`: ConversationModel
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs']] article_suggestion_model_metadata: Metadata for article suggestion models.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2InputDatasetArgs']]]] datasets: Datasets used to create model.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs', 'GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgsDict']] article_suggestion_model_metadata: Metadata for article suggestion models.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2InputDatasetArgs', 'GoogleCloudDialogflowV2InputDatasetArgsDict']]]] datasets: Datasets used to create model.
         :param pulumi.Input[str] display_name: The display name of the model. At most 64 bytes long.
         :param pulumi.Input[str] language_code: Language code for the conversation model. If not specified, the language is en-US. Language at ConversationModel should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
         :param pulumi.Input[str] name: ConversationModel resource name. Format: `projects//conversationModels/`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SmartReplyModelMetadataArgs']] smart_reply_model_metadata: Metadata for smart reply models.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2SmartReplyModelMetadataArgs', 'GoogleCloudDialogflowV2SmartReplyModelMetadataArgsDict']] smart_reply_model_metadata: Metadata for smart reply models.
         """
         ...
     @overload
@@ -190,14 +190,14 @@ class ConversationModel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 article_suggestion_model_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs']]] = None,
-                 datasets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2InputDatasetArgs']]]]] = None,
+                 article_suggestion_model_metadata: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs', 'GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgsDict']]] = None,
+                 datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2InputDatasetArgs', 'GoogleCloudDialogflowV2InputDatasetArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 smart_reply_model_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SmartReplyModelMetadataArgs']]] = None,
+                 smart_reply_model_metadata: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2SmartReplyModelMetadataArgs', 'GoogleCloudDialogflowV2SmartReplyModelMetadataArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -237,17 +237,17 @@ class Entry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']]] = None,
-                 bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']]] = None,
+                 bigquery_date_sharded_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs', 'GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgsDict']]] = None,
+                 bigquery_table_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs', 'GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs', 'GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgsDict']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']]] = None,
+                 schema: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1SchemaArgs', 'GoogleCloudDatacatalogV1beta1SchemaArgsDict']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
@@ -258,14 +258,14 @@ class Entry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']] bigquery_table_spec: Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs', 'GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgsDict']] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs', 'GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgsDict']] bigquery_table_spec: Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
         :param pulumi.Input[str] entry_id: Required. The id of the entry to create.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs', 'GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1beta1SchemaArgs', 'GoogleCloudDatacatalogV1beta1SchemaArgsDict']] schema: Schema of the entry. An entry might not have any schema attached to it.
         :param pulumi.Input['EntryType'] type: The type of the entry. Only used for Entries with types in the EntryType enum.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
@@ -295,17 +295,17 @@ class Entry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']]] = None,
-                 bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']]] = None,
+                 bigquery_date_sharded_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs', 'GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgsDict']]] = None,
+                 bigquery_table_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs', 'GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs', 'GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgsDict']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']]] = None,
+                 schema: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1beta1SchemaArgs', 'GoogleCloudDatacatalogV1beta1SchemaArgsDict']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,

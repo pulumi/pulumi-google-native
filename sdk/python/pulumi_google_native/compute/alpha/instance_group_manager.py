@@ -419,30 +419,30 @@ class InstanceGroupManager(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
-                 auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
+                 all_instances_config: Optional[pulumi.Input[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
+                 auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerAutoHealingPolicyArgs', 'InstanceGroupManagerAutoHealingPolicyArgsDict']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
+                 distribution_policy: Optional[pulumi.Input[Union['DistributionPolicyArgs', 'DistributionPolicyArgsDict']]] = None,
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
-                 instance_flexibility_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceFlexibilityPolicyArgs']]] = None,
-                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input[Union['InstanceGroupManagerInstanceFlexibilityPolicyArgs', 'InstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NamedPortArgs', 'NamedPortArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 standby_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']]] = None,
-                 stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
+                 standby_policy: Optional[pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']]] = None,
+                 stateful_policy: Optional[pulumi.Input[Union['StatefulPolicyArgs', 'StatefulPolicyArgsDict']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  target_size_unit: Optional[pulumi.Input['InstanceGroupManagerTargetSizeUnit']] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerVersionArgs', 'InstanceGroupManagerVersionArgsDict']]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -450,29 +450,29 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Specifies configuration that overrides the instance template configuration for the group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
+        :param pulumi.Input[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict']] all_instances_config: Specifies configuration that overrides the instance template configuration for the group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerAutoHealingPolicyArgs', 'InstanceGroupManagerAutoHealingPolicyArgsDict']]]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
+        :param pulumi.Input[Union['DistributionPolicyArgs', 'DistributionPolicyArgsDict']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['InstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceFlexibilityPolicyArgs']] instance_flexibility_policy: Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The repair policy for this managed instance group.
+        :param pulumi.Input[Union['InstanceGroupManagerInstanceFlexibilityPolicyArgs', 'InstanceGroupManagerInstanceFlexibilityPolicyArgsDict']] instance_flexibility_policy: Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        :param pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The repair policy for this managed instance group.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         :param pulumi.Input['InstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
         :param pulumi.Input[str] name: The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NamedPortArgs', 'NamedPortArgsDict']]]] named_ports: Named ports configured for the Instance Groups complementary to this Instance Group Manager.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] service_account: The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']] standby_policy: Standby policy for stopped and suspended instances.
-        :param pulumi.Input[pulumi.InputType['StatefulPolicyArgs']] stateful_policy: Stateful configuration for this Instanced Group Manager
+        :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: Standby policy for stopped and suspended instances.
+        :param pulumi.Input[Union['StatefulPolicyArgs', 'StatefulPolicyArgsDict']] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
         :param pulumi.Input['InstanceGroupManagerTargetSizeUnit'] target_size_unit: The unit of measure for the target size.
         :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        :param pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerVersionArgs', 'InstanceGroupManagerVersionArgsDict']]]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
         ...
     @overload
@@ -498,30 +498,30 @@ class InstanceGroupManager(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
-                 auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
+                 all_instances_config: Optional[pulumi.Input[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
+                 auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerAutoHealingPolicyArgs', 'InstanceGroupManagerAutoHealingPolicyArgsDict']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
+                 distribution_policy: Optional[pulumi.Input[Union['DistributionPolicyArgs', 'DistributionPolicyArgsDict']]] = None,
                  failover_action: Optional[pulumi.Input['InstanceGroupManagerFailoverAction']] = None,
-                 instance_flexibility_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceFlexibilityPolicyArgs']]] = None,
-                 instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input[Union['InstanceGroupManagerInstanceFlexibilityPolicyArgs', 'InstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
+                 instance_lifecycle_policy: Optional[pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['InstanceGroupManagerListManagedInstancesResults']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NamedPortArgs']]]]] = None,
+                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NamedPortArgs', 'NamedPortArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 standby_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerStandbyPolicyArgs']]] = None,
-                 stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
+                 standby_policy: Optional[pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']]] = None,
+                 stateful_policy: Optional[pulumi.Input[Union['StatefulPolicyArgs', 'StatefulPolicyArgsDict']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
                  target_size_unit: Optional[pulumi.Input['InstanceGroupManagerTargetSizeUnit']] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
+                 update_policy: Optional[pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerVersionArgs', 'InstanceGroupManagerVersionArgsDict']]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

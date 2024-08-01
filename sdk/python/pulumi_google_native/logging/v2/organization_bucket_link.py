@@ -123,7 +123,7 @@ class OrganizationBucketLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['BigQueryDatasetArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[Union['BigQueryDatasetArgs', 'BigQueryDatasetArgsDict']]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  link_id: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class OrganizationBucketLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BigQueryDatasetArgs']] bigquery_dataset: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+        :param pulumi.Input[Union['BigQueryDatasetArgs', 'BigQueryDatasetArgsDict']] bigquery_dataset: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
         :param pulumi.Input[str] description: Describes this link.The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] link_id: Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it.
         :param pulumi.Input[str] name: The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
@@ -167,7 +167,7 @@ class OrganizationBucketLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['BigQueryDatasetArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[Union['BigQueryDatasetArgs', 'BigQueryDatasetArgsDict']]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  link_id: Optional[pulumi.Input[str]] = None,

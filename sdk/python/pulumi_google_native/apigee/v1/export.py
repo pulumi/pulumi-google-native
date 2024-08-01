@@ -143,7 +143,7 @@ class Export(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  datastore_name: Optional[pulumi.Input[str]] = None,
-                 date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
+                 date_range: Optional[pulumi.Input[Union['GoogleCloudApigeeV1DateRangeArgs', 'GoogleCloudApigeeV1DateRangeArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class Export(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csv_delimiter: Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\\t`).
         :param pulumi.Input[str] datastore_name: Name of the preconfigured datastore.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']] date_range: Date range of the data to export.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1DateRangeArgs', 'GoogleCloudApigeeV1DateRangeArgsDict']] date_range: Date range of the data to export.
         :param pulumi.Input[str] description: Optional. Description of the export job.
         :param pulumi.Input[str] name: Display name of the export job.
         :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
@@ -192,7 +192,7 @@ class Export(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  datastore_name: Optional[pulumi.Input[str]] = None,
-                 date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
+                 date_range: Optional[pulumi.Input[Union['GoogleCloudApigeeV1DateRangeArgs', 'GoogleCloudApigeeV1DateRangeArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

@@ -146,14 +146,14 @@ class Runtime(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 access_config: Optional[pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  runtime_id: Optional[pulumi.Input[str]] = None,
-                 software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
+                 software_config: Optional[pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
+                 virtual_machine: Optional[pulumi.Input[Union['VirtualMachineArgs', 'VirtualMachineArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Runtime in a given project and location.
@@ -161,12 +161,12 @@ class Runtime(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']] access_config: The config settings for accessing runtime.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[str] runtime_id: Required. User-defined unique ID of this Runtime.
-        :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
-        :param pulumi.Input[pulumi.InputType['VirtualMachineArgs']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
+        :param pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']] software_config: The config settings for software inside the runtime.
+        :param pulumi.Input[Union['VirtualMachineArgs', 'VirtualMachineArgsDict']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
         """
         ...
     @overload
@@ -193,14 +193,14 @@ class Runtime(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 access_config: Optional[pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  runtime_id: Optional[pulumi.Input[str]] = None,
-                 software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
+                 software_config: Optional[pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
+                 virtual_machine: Optional[pulumi.Input[Union['VirtualMachineArgs', 'VirtualMachineArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

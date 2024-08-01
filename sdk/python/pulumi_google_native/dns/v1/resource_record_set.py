@@ -179,7 +179,7 @@ class ResourceRecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']]] = None,
+                 routing_policy: Optional[pulumi.Input[Union['RRSetRoutingPolicyArgs', 'RRSetRoutingPolicyArgsDict']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
@@ -192,7 +192,7 @@ class ResourceRecordSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] name: For example, www.example.com.
-        :param pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']] routing_policy: Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
+        :param pulumi.Input[Union['RRSetRoutingPolicyArgs', 'RRSetRoutingPolicyArgsDict']] routing_policy: Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
@@ -227,7 +227,7 @@ class ResourceRecordSet(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routing_policy: Optional[pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']]] = None,
+                 routing_policy: Optional[pulumi.Input[Union['RRSetRoutingPolicyArgs', 'RRSetRoutingPolicyArgsDict']]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,

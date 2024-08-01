@@ -82,8 +82,8 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['JobConfigurationArgs']]] = None,
-                 job_reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['JobConfigurationArgs', 'JobConfigurationArgsDict']]] = None,
+                 job_reference: Optional[pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  __props__=None):
@@ -93,8 +93,8 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['JobConfigurationArgs']] configuration: [Required] Describes the job configuration.
-        :param pulumi.Input[pulumi.InputType['JobReferenceArgs']] job_reference: [Optional] Reference describing the unique-per-user name of the job.
+        :param pulumi.Input[Union['JobConfigurationArgs', 'JobConfigurationArgsDict']] configuration: [Required] Describes the job configuration.
+        :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']] job_reference: [Optional] Reference describing the unique-per-user name of the job.
         """
         ...
     @overload
@@ -121,8 +121,8 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['JobConfigurationArgs']]] = None,
-                 job_reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['JobConfigurationArgs', 'JobConfigurationArgsDict']]] = None,
+                 job_reference: Optional[pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  __props__=None):

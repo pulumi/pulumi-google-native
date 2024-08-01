@@ -98,11 +98,11 @@ class BackupSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 daily_recurrence: Optional[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1DailyRecurrenceArgs']]] = None,
+                 daily_recurrence: Optional[pulumi.Input[Union['GoogleFirestoreAdminV1DailyRecurrenceArgs', 'GoogleFirestoreAdminV1DailyRecurrenceArgsDict']]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  retention: Optional[pulumi.Input[str]] = None,
-                 weekly_recurrence: Optional[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1WeeklyRecurrenceArgs']]] = None,
+                 weekly_recurrence: Optional[pulumi.Input[Union['GoogleFirestoreAdminV1WeeklyRecurrenceArgs', 'GoogleFirestoreAdminV1WeeklyRecurrenceArgsDict']]] = None,
                  __props__=None):
         """
         Creates a backup schedule on a database. At most two backup schedules can be configured on a database, one daily backup schedule with retention up to 7 days and one weekly backup schedule with retention up to 14 weeks.
@@ -110,9 +110,9 @@ class BackupSchedule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1DailyRecurrenceArgs']] daily_recurrence: For a schedule that runs daily at a specified time.
+        :param pulumi.Input[Union['GoogleFirestoreAdminV1DailyRecurrenceArgs', 'GoogleFirestoreAdminV1DailyRecurrenceArgsDict']] daily_recurrence: For a schedule that runs daily at a specified time.
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
-        :param pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1WeeklyRecurrenceArgs']] weekly_recurrence: For a schedule that runs weekly on a specific day and time.
+        :param pulumi.Input[Union['GoogleFirestoreAdminV1WeeklyRecurrenceArgs', 'GoogleFirestoreAdminV1WeeklyRecurrenceArgsDict']] weekly_recurrence: For a schedule that runs weekly on a specific day and time.
         """
         ...
     @overload
@@ -139,11 +139,11 @@ class BackupSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 daily_recurrence: Optional[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1DailyRecurrenceArgs']]] = None,
+                 daily_recurrence: Optional[pulumi.Input[Union['GoogleFirestoreAdminV1DailyRecurrenceArgs', 'GoogleFirestoreAdminV1DailyRecurrenceArgsDict']]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  retention: Optional[pulumi.Input[str]] = None,
-                 weekly_recurrence: Optional[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1WeeklyRecurrenceArgs']]] = None,
+                 weekly_recurrence: Optional[pulumi.Input[Union['GoogleFirestoreAdminV1WeeklyRecurrenceArgs', 'GoogleFirestoreAdminV1WeeklyRecurrenceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

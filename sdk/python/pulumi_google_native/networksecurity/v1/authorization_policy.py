@@ -152,7 +152,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleArgs', 'RuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new AuthorizationPolicy in a given project and location.
@@ -164,7 +164,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the AuthorizationPolicy resource.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleArgs']]]] rules: Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleArgs', 'RuleArgsDict']]]] rules: Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
         """
         ...
     @overload
@@ -197,7 +197,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleArgs', 'RuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

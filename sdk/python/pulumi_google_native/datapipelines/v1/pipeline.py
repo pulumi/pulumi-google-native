@@ -181,11 +181,11 @@ class Pipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatapipelinesV1ScheduleSpecArgs']]] = None,
+                 schedule_info: Optional[pulumi.Input[Union['GoogleCloudDatapipelinesV1ScheduleSpecArgs', 'GoogleCloudDatapipelinesV1ScheduleSpecArgsDict']]] = None,
                  scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['PipelineState']] = None,
                  type: Optional[pulumi.Input['PipelineType']] = None,
-                 workload: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatapipelinesV1WorkloadArgs']]] = None,
+                 workload: Optional[pulumi.Input[Union['GoogleCloudDatapipelinesV1WorkloadArgs', 'GoogleCloudDatapipelinesV1WorkloadArgsDict']]] = None,
                  __props__=None):
         """
         Creates a pipeline. For a batch pipeline, you can pass scheduler information. Data Pipelines uses the scheduler information to create an internal scheduler that runs jobs periodically. If the internal scheduler is not configured, you can use RunPipeline to run jobs.
@@ -195,11 +195,11 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
         :param pulumi.Input[str] name: The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pipeline_sources: Immutable. The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatapipelinesV1ScheduleSpecArgs']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
+        :param pulumi.Input[Union['GoogleCloudDatapipelinesV1ScheduleSpecArgs', 'GoogleCloudDatapipelinesV1ScheduleSpecArgsDict']] schedule_info: Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
         :param pulumi.Input[str] scheduler_service_account_email: Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
         :param pulumi.Input['PipelineState'] state: The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.
         :param pulumi.Input['PipelineType'] type: The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatapipelinesV1WorkloadArgs']] workload: Workload information for creating new jobs.
+        :param pulumi.Input[Union['GoogleCloudDatapipelinesV1WorkloadArgs', 'GoogleCloudDatapipelinesV1WorkloadArgsDict']] workload: Workload information for creating new jobs.
         """
         ...
     @overload
@@ -230,11 +230,11 @@ class Pipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  pipeline_sources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatapipelinesV1ScheduleSpecArgs']]] = None,
+                 schedule_info: Optional[pulumi.Input[Union['GoogleCloudDatapipelinesV1ScheduleSpecArgs', 'GoogleCloudDatapipelinesV1ScheduleSpecArgsDict']]] = None,
                  scheduler_service_account_email: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['PipelineState']] = None,
                  type: Optional[pulumi.Input['PipelineType']] = None,
-                 workload: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatapipelinesV1WorkloadArgs']]] = None,
+                 workload: Optional[pulumi.Input[Union['GoogleCloudDatapipelinesV1WorkloadArgs', 'GoogleCloudDatapipelinesV1WorkloadArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

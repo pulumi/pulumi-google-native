@@ -170,13 +170,13 @@ class Asset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 discovery_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetDiscoverySpecArgs']]] = None,
+                 discovery_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1AssetDiscoverySpecArgs', 'GoogleCloudDataplexV1AssetDiscoverySpecArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetResourceSpecArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1AssetResourceSpecArgs', 'GoogleCloudDataplexV1AssetResourceSpecArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -187,10 +187,10 @@ class Asset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] asset_id: Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
         :param pulumi.Input[str] description: Optional. Description of the asset.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetDiscoverySpecArgs']] discovery_spec: Optional. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1AssetDiscoverySpecArgs', 'GoogleCloudDataplexV1AssetDiscoverySpecArgsDict']] discovery_spec: Optional. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetResourceSpecArgs']] resource_spec: Specification of the resource that is referenced by this asset.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1AssetResourceSpecArgs', 'GoogleCloudDataplexV1AssetResourceSpecArgsDict']] resource_spec: Specification of the resource that is referenced by this asset.
         """
         ...
     @overload
@@ -219,13 +219,13 @@ class Asset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 discovery_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetDiscoverySpecArgs']]] = None,
+                 discovery_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1AssetDiscoverySpecArgs', 'GoogleCloudDataplexV1AssetDiscoverySpecArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetResourceSpecArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1AssetResourceSpecArgs', 'GoogleCloudDataplexV1AssetResourceSpecArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

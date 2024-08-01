@@ -118,7 +118,7 @@ class License(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_requirements: Optional[pulumi.Input[pulumi.InputType['LicenseResourceRequirementsArgs']]] = None,
+                 resource_requirements: Optional[pulumi.Input[Union['LicenseResourceRequirementsArgs', 'LicenseResourceRequirementsArgsDict']]] = None,
                  transferable: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -159,7 +159,7 @@ class License(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_requirements: Optional[pulumi.Input[pulumi.InputType['LicenseResourceRequirementsArgs']]] = None,
+                 resource_requirements: Optional[pulumi.Input[Union['LicenseResourceRequirementsArgs', 'LicenseResourceRequirementsArgsDict']]] = None,
                  transferable: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

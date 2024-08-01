@@ -125,11 +125,11 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NodeTypeConfigArgs']]]]] = None,
+                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NodeTypeConfigArgs', 'NodeTypeConfigArgsDict']]]]] = None,
                  private_cloud_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 stretched_cluster_config: Optional[pulumi.Input[pulumi.InputType['StretchedClusterConfigArgs']]] = None,
+                 stretched_cluster_config: Optional[pulumi.Input[Union['StretchedClusterConfigArgs', 'StretchedClusterConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new cluster in a given private cloud. Creating a new cluster provides additional nodes for use in the parent private cloud and requires sufficient [node quota](https://cloud.google.com/vmware-engine/quotas).
@@ -138,9 +138,9 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: Required. The user-provided identifier of the new `Cluster`. This identifier must be unique among clusters within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NodeTypeConfigArgs']]]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NodeTypeConfigArgs', 'NodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
         :param pulumi.Input[str] request_id: Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['StretchedClusterConfigArgs']] stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
+        :param pulumi.Input[Union['StretchedClusterConfigArgs', 'StretchedClusterConfigArgsDict']] stretched_cluster_config: Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
         """
         ...
     @overload
@@ -169,11 +169,11 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NodeTypeConfigArgs']]]]] = None,
+                 node_type_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NodeTypeConfigArgs', 'NodeTypeConfigArgsDict']]]]] = None,
                  private_cloud_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 stretched_cluster_config: Optional[pulumi.Input[pulumi.InputType['StretchedClusterConfigArgs']]] = None,
+                 stretched_cluster_config: Optional[pulumi.Input[Union['StretchedClusterConfigArgs', 'StretchedClusterConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

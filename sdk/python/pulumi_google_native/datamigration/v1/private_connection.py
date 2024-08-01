@@ -169,7 +169,7 @@ class PrivateConnection(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['VpcPeeringConfigArgs']]] = None,
+                 vpc_peering_config: Optional[pulumi.Input[Union['VpcPeeringConfigArgs', 'VpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new private connection in a given project and location.
@@ -182,7 +182,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[str] private_connection_id: Required. The private connection identifier.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. If set to true, will skip validations.
-        :param pulumi.Input[pulumi.InputType['VpcPeeringConfigArgs']] vpc_peering_config: VPC peering configuration.
+        :param pulumi.Input[Union['VpcPeeringConfigArgs', 'VpcPeeringConfigArgsDict']] vpc_peering_config: VPC peering configuration.
         """
         ...
     @overload
@@ -216,7 +216,7 @@ class PrivateConnection(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
-                 vpc_peering_config: Optional[pulumi.Input[pulumi.InputType['VpcPeeringConfigArgs']]] = None,
+                 vpc_peering_config: Optional[pulumi.Input[Union['VpcPeeringConfigArgs', 'VpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

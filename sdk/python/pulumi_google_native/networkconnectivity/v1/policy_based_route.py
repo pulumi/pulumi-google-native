@@ -229,8 +229,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['FilterArgs']]] = None,
-                 interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['InterconnectAttachmentArgs']]] = None,
+                 filter: Optional[pulumi.Input[Union['FilterArgs', 'FilterArgsDict']]] = None,
+                 interconnect_attachment: Optional[pulumi.Input[Union['InterconnectAttachmentArgs', 'InterconnectAttachmentArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -240,7 +240,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
+                 virtual_machine: Optional[pulumi.Input[Union['VirtualMachineArgs', 'VirtualMachineArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new policy-based route in a given project and location.
@@ -249,8 +249,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. An optional description of this resource. Provide this field when you create the resource.
-        :param pulumi.Input[pulumi.InputType['FilterArgs']] filter: The filter to match L4 traffic.
-        :param pulumi.Input[pulumi.InputType['InterconnectAttachmentArgs']] interconnect_attachment: Optional. The interconnect attachments that this policy-based route applies to.
+        :param pulumi.Input[Union['FilterArgs', 'FilterArgsDict']] filter: The filter to match L4 traffic.
+        :param pulumi.Input[Union['InterconnectAttachmentArgs', 'InterconnectAttachmentArgsDict']] interconnect_attachment: Optional. The interconnect attachments that this policy-based route applies to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. A unique name of the resource in the form of `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -259,7 +259,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
         :param pulumi.Input[str] policy_based_route_id: Required. Unique id for the policy-based route to create.
         :param pulumi.Input[int] priority: Optional. The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['VirtualMachineArgs']] virtual_machine: Optional. VM instances to which this policy-based route applies to.
+        :param pulumi.Input[Union['VirtualMachineArgs', 'VirtualMachineArgsDict']] virtual_machine: Optional. VM instances to which this policy-based route applies to.
         """
         ...
     @overload
@@ -287,8 +287,8 @@ class PolicyBasedRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['FilterArgs']]] = None,
-                 interconnect_attachment: Optional[pulumi.Input[pulumi.InputType['InterconnectAttachmentArgs']]] = None,
+                 filter: Optional[pulumi.Input[Union['FilterArgs', 'FilterArgsDict']]] = None,
+                 interconnect_attachment: Optional[pulumi.Input[Union['InterconnectAttachmentArgs', 'InterconnectAttachmentArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -298,7 +298,7 @@ class PolicyBasedRoute(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
+                 virtual_machine: Optional[pulumi.Input[Union['VirtualMachineArgs', 'VirtualMachineArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

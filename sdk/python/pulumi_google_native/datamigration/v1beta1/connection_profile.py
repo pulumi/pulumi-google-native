@@ -194,12 +194,12 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
+                 cloudsql: Optional[pulumi.Input[Union['CloudSqlConnectionProfileArgs', 'CloudSqlConnectionProfileArgsDict']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
+                 mysql: Optional[pulumi.Input[Union['MySqlConnectionProfileArgs', 'MySqlConnectionProfileArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
@@ -211,11 +211,11 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']] cloudsql: A CloudSQL database connection profile.
+        :param pulumi.Input[Union['CloudSqlConnectionProfileArgs', 'CloudSqlConnectionProfileArgsDict']] cloudsql: A CloudSQL database connection profile.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        :param pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']] mysql: A MySQL database connection profile.
+        :param pulumi.Input[Union['MySqlConnectionProfileArgs', 'MySqlConnectionProfileArgsDict']] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
         :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
@@ -245,12 +245,12 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
+                 cloudsql: Optional[pulumi.Input[Union['CloudSqlConnectionProfileArgs', 'CloudSqlConnectionProfileArgsDict']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
+                 mysql: Optional[pulumi.Input[Union['MySqlConnectionProfileArgs', 'MySqlConnectionProfileArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,

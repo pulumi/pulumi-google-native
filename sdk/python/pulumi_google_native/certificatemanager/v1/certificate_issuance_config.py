@@ -174,7 +174,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityConfigArgs']]] = None,
+                 certificate_authority_config: Optional[pulumi.Input[Union['CertificateAuthorityConfigArgs', 'CertificateAuthorityConfigArgsDict']]] = None,
                  certificate_issuance_config_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key_algorithm: Optional[pulumi.Input['CertificateIssuanceConfigKeyAlgorithm']] = None,
@@ -190,7 +190,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CertificateAuthorityConfigArgs']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+        :param pulumi.Input[Union['CertificateAuthorityConfigArgs', 'CertificateAuthorityConfigArgsDict']] certificate_authority_config: The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
         :param pulumi.Input[str] certificate_issuance_config_id: Required. A user-provided name of the certificate config.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a CertificateIssuanceConfig.
         :param pulumi.Input['CertificateIssuanceConfigKeyAlgorithm'] key_algorithm: The key algorithm to use when generating the private key.
@@ -223,7 +223,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityConfigArgs']]] = None,
+                 certificate_authority_config: Optional[pulumi.Input[Union['CertificateAuthorityConfigArgs', 'CertificateAuthorityConfigArgsDict']]] = None,
                  certificate_issuance_config_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key_algorithm: Optional[pulumi.Input['CertificateIssuanceConfigKeyAlgorithm']] = None,

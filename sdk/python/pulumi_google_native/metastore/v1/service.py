@@ -307,22 +307,22 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: Optional[pulumi.Input['ServiceDatabaseType']] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
-                 hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
+                 hive_metastore_config: Optional[pulumi.Input[Union['HiveMetastoreConfigArgs', 'HiveMetastoreConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
-                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['MaintenanceWindowArgs', 'MaintenanceWindowArgsDict']]] = None,
+                 metadata_integration: Optional[pulumi.Input[Union['MetadataIntegrationArgs', 'MetadataIntegrationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scaling_config: Optional[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]] = None,
+                 scaling_config: Optional[pulumi.Input[Union['ScalingConfigArgs', 'ScalingConfigArgsDict']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['TelemetryConfigArgs']]] = None,
+                 telemetry_config: Optional[pulumi.Input[Union['TelemetryConfigArgs', 'TelemetryConfigArgsDict']]] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None,
                  __props__=None):
         """
@@ -331,20 +331,20 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['ServiceDatabaseType'] database_type: Immutable. The database type that the Metastore service stores its data.
-        :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
-        :param pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
+        :param pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']] encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+        :param pulumi.Input[Union['HiveMetastoreConfigArgs', 'HiveMetastoreConfigArgsDict']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
-        :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
-        :param pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']] metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param pulumi.Input[Union['MaintenanceWindowArgs', 'MaintenanceWindowArgsDict']] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
+        :param pulumi.Input[Union['MetadataIntegrationArgs', 'MetadataIntegrationArgsDict']] metadata_integration: Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         :param pulumi.Input[str] network: Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
-        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+        :param pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-        :param pulumi.Input[pulumi.InputType['ScalingConfigArgs']] scaling_config: Scaling configuration of the metastore service.
+        :param pulumi.Input[Union['ScalingConfigArgs', 'ScalingConfigArgsDict']] scaling_config: Scaling configuration of the metastore service.
         :param pulumi.Input[str] service_id: Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
-        :param pulumi.Input[pulumi.InputType['TelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        :param pulumi.Input[Union['TelemetryConfigArgs', 'TelemetryConfigArgsDict']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         ...
@@ -372,22 +372,22 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: Optional[pulumi.Input['ServiceDatabaseType']] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
-                 hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
+                 hive_metastore_config: Optional[pulumi.Input[Union['HiveMetastoreConfigArgs', 'HiveMetastoreConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']]] = None,
-                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetadataIntegrationArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['MaintenanceWindowArgs', 'MaintenanceWindowArgsDict']]] = None,
+                 metadata_integration: Optional[pulumi.Input[Union['MetadataIntegrationArgs', 'MetadataIntegrationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scaling_config: Optional[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]] = None,
+                 scaling_config: Optional[pulumi.Input[Union['ScalingConfigArgs', 'ScalingConfigArgsDict']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['TelemetryConfigArgs']]] = None,
+                 telemetry_config: Optional[pulumi.Input[Union['TelemetryConfigArgs', 'TelemetryConfigArgsDict']]] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

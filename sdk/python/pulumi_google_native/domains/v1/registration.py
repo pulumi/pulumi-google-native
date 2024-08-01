@@ -193,16 +193,16 @@ class Registration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
-                 contact_settings: Optional[pulumi.Input[pulumi.InputType['ContactSettingsArgs']]] = None,
-                 dns_settings: Optional[pulumi.Input[pulumi.InputType['DnsSettingsArgs']]] = None,
+                 contact_settings: Optional[pulumi.Input[Union['ContactSettingsArgs', 'ContactSettingsArgsDict']]] = None,
+                 dns_settings: Optional[pulumi.Input[Union['DnsSettingsArgs', 'DnsSettingsArgsDict']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
+                 management_settings: Optional[pulumi.Input[Union['ManagementSettingsArgs', 'ManagementSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
-                 yearly_price: Optional[pulumi.Input[pulumi.InputType['MoneyArgs']]] = None,
+                 yearly_price: Optional[pulumi.Input[Union['MoneyArgs', 'MoneyArgsDict']]] = None,
                  __props__=None):
         """
         Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration.
@@ -211,14 +211,14 @@ class Registration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]] contact_notices: The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
-        :param pulumi.Input[pulumi.InputType['ContactSettingsArgs']] contact_settings: Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
-        :param pulumi.Input[pulumi.InputType['DnsSettingsArgs']] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
+        :param pulumi.Input[Union['ContactSettingsArgs', 'ContactSettingsArgsDict']] contact_settings: Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        :param pulumi.Input[Union['DnsSettingsArgs', 'DnsSettingsArgsDict']] dns_settings: Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
         :param pulumi.Input[str] domain_name: Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]] domain_notices: The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with the `Registration`.
-        :param pulumi.Input[pulumi.InputType['ManagementSettingsArgs']] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
+        :param pulumi.Input[Union['ManagementSettingsArgs', 'ManagementSettingsArgsDict']] management_settings: Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
         :param pulumi.Input[bool] validate_only: When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
-        :param pulumi.Input[pulumi.InputType['MoneyArgs']] yearly_price: Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
+        :param pulumi.Input[Union['MoneyArgs', 'MoneyArgsDict']] yearly_price: Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
         """
         ...
     @overload
@@ -246,16 +246,16 @@ class Registration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationContactNoticesItem']]]] = None,
-                 contact_settings: Optional[pulumi.Input[pulumi.InputType['ContactSettingsArgs']]] = None,
-                 dns_settings: Optional[pulumi.Input[pulumi.InputType['DnsSettingsArgs']]] = None,
+                 contact_settings: Optional[pulumi.Input[Union['ContactSettingsArgs', 'ContactSettingsArgsDict']]] = None,
+                 dns_settings: Optional[pulumi.Input[Union['DnsSettingsArgs', 'DnsSettingsArgsDict']]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input['RegistrationDomainNoticesItem']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
+                 management_settings: Optional[pulumi.Input[Union['ManagementSettingsArgs', 'ManagementSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
-                 yearly_price: Optional[pulumi.Input[pulumi.InputType['MoneyArgs']]] = None,
+                 yearly_price: Optional[pulumi.Input[Union['MoneyArgs', 'MoneyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

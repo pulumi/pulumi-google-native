@@ -158,12 +158,12 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs']]] = None,
+                 infrastructure_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs', 'GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 session_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']]] = None,
+                 session_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1EnvironmentSessionSpecArgs', 'GoogleCloudDataplexV1EnvironmentSessionSpecArgsDict']]] = None,
                  __props__=None):
         """
         Create an environment resource.
@@ -174,9 +174,9 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[str] environment_id: Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs']] infrastructure_spec: Infrastructure specification for the Environment.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs', 'GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgsDict']] infrastructure_spec: Infrastructure specification for the Environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the environment.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']] session_spec: Optional. Configuration for sessions created for this environment.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1EnvironmentSessionSpecArgs', 'GoogleCloudDataplexV1EnvironmentSessionSpecArgsDict']] session_spec: Optional. Configuration for sessions created for this environment.
         """
         ...
     @overload
@@ -206,12 +206,12 @@ class Environment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
-                 infrastructure_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs']]] = None,
+                 infrastructure_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs', 'GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 session_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']]] = None,
+                 session_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1EnvironmentSessionSpecArgs', 'GoogleCloudDataplexV1EnvironmentSessionSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

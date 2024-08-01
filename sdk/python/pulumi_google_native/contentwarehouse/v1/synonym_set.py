@@ -102,7 +102,7 @@ class SynonymSet(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1SynonymSetSynonymArgs']]]]] = None,
+                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1SynonymSetSynonymArgs', 'GoogleCloudContentwarehouseV1SynonymSetSynonymArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a SynonymSet for a single context. Throws an ALREADY_EXISTS exception if a synonymset already exists for the context.
@@ -111,7 +111,7 @@ class SynonymSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] context: This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
         :param pulumi.Input[str] name: The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1SynonymSetSynonymArgs']]]] synonyms: List of Synonyms for the context.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1SynonymSetSynonymArgs', 'GoogleCloudContentwarehouseV1SynonymSetSynonymArgsDict']]]] synonyms: List of Synonyms for the context.
         """
         ...
     @overload
@@ -141,7 +141,7 @@ class SynonymSet(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1SynonymSetSynonymArgs']]]]] = None,
+                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1SynonymSetSynonymArgs', 'GoogleCloudContentwarehouseV1SynonymSetSynonymArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
