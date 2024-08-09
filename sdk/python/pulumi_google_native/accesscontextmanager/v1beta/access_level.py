@@ -119,8 +119,8 @@ class AccessLevel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_policy_id: Optional[pulumi.Input[str]] = None,
-                 basic: Optional[pulumi.Input[pulumi.InputType['BasicLevelArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['CustomLevelArgs']]] = None,
+                 basic: Optional[pulumi.Input[Union['BasicLevelArgs', 'BasicLevelArgsDict']]] = None,
+                 custom: Optional[pulumi.Input[Union['CustomLevelArgs', 'CustomLevelArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -130,8 +130,8 @@ class AccessLevel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BasicLevelArgs']] basic: A `BasicLevel` composed of `Conditions`.
-        :param pulumi.Input[pulumi.InputType['CustomLevelArgs']] custom: A `CustomLevel` written in the Common Expression Language.
+        :param pulumi.Input[Union['BasicLevelArgs', 'BasicLevelArgsDict']] basic: A `BasicLevel` composed of `Conditions`.
+        :param pulumi.Input[Union['CustomLevelArgs', 'CustomLevelArgsDict']] custom: A `CustomLevel` written in the Common Expression Language.
         :param pulumi.Input[str] description: Description of the `AccessLevel` and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
@@ -161,8 +161,8 @@ class AccessLevel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_policy_id: Optional[pulumi.Input[str]] = None,
-                 basic: Optional[pulumi.Input[pulumi.InputType['BasicLevelArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['CustomLevelArgs']]] = None,
+                 basic: Optional[pulumi.Input[Union['BasicLevelArgs', 'BasicLevelArgsDict']]] = None,
+                 custom: Optional[pulumi.Input[Union['CustomLevelArgs', 'CustomLevelArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,

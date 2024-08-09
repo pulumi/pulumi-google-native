@@ -212,7 +212,7 @@ class Document(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 content: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs']]] = None,
+                 content: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs', 'GoogleCloudDiscoveryengineV1alphaDocumentContentArgsDict']]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  document_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class Document(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs']] content: The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
+        :param pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs', 'GoogleCloudDiscoveryengineV1alphaDocumentContentArgsDict']] content: The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
@@ -264,7 +264,7 @@ class Document(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 content: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs']]] = None,
+                 content: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs', 'GoogleCloudDiscoveryengineV1alphaDocumentContentArgsDict']]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  document_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,

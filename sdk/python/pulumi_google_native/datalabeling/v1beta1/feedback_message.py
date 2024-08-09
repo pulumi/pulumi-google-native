@@ -166,9 +166,9 @@ class FeedbackMessage(pulumi.CustomResource):
                  feedback_thread_id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operator_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs']]] = None,
+                 operator_feedback_metadata: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs', 'GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 requester_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs']]] = None,
+                 requester_feedback_metadata: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs', 'GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgsDict']]] = None,
                  __props__=None):
         """
         Create a FeedbackMessage object.
@@ -211,9 +211,9 @@ class FeedbackMessage(pulumi.CustomResource):
                  feedback_thread_id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 operator_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs']]] = None,
+                 operator_feedback_metadata: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs', 'GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 requester_feedback_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs']]] = None,
+                 requester_feedback_metadata: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs', 'GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

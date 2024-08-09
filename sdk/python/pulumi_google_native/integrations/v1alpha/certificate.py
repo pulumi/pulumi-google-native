@@ -164,7 +164,7 @@ class Certificate(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 raw_certificate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaClientCertificateArgs']]] = None,
+                 raw_certificate: Optional[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaClientCertificateArgs', 'GoogleCloudIntegrationsV1alphaClientCertificateArgsDict']]] = None,
                  requestor_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -177,7 +177,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] credential_id: Immutable. Credential id that will be used to register with trawler INTERNAL_ONLY
         :param pulumi.Input[str] description: Description of the certificate
         :param pulumi.Input[str] display_name: Name of the certificate
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaClientCertificateArgs']] raw_certificate: Input only. Raw client certificate which would be registered with trawler
+        :param pulumi.Input[Union['GoogleCloudIntegrationsV1alphaClientCertificateArgs', 'GoogleCloudIntegrationsV1alphaClientCertificateArgsDict']] raw_certificate: Input only. Raw client certificate which would be registered with trawler
         :param pulumi.Input[str] requestor_id: Immutable. Requestor ID to be used to register certificate with trawler
         """
         ...
@@ -212,7 +212,7 @@ class Certificate(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 raw_certificate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaClientCertificateArgs']]] = None,
+                 raw_certificate: Optional[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaClientCertificateArgs', 'GoogleCloudIntegrationsV1alphaClientCertificateArgsDict']]] = None,
                  requestor_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

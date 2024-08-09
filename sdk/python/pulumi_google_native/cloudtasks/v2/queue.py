@@ -147,26 +147,26 @@ class Queue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine_routing_override: Optional[pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']]] = None,
-                 http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
+                 app_engine_routing_override: Optional[pulumi.Input[Union['AppEngineRoutingArgs', 'AppEngineRoutingArgsDict']]] = None,
+                 http_target: Optional[pulumi.Input[Union['HttpTargetArgs', 'HttpTargetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
-                 retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
-                 stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
+                 rate_limits: Optional[pulumi.Input[Union['RateLimitsArgs', 'RateLimitsArgsDict']]] = None,
+                 retry_config: Optional[pulumi.Input[Union['RetryConfigArgs', 'RetryConfigArgsDict']]] = None,
+                 stackdriver_logging_config: Optional[pulumi.Input[Union['StackdriverLoggingConfigArgs', 'StackdriverLoggingConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']] app_engine_routing_override: Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-        :param pulumi.Input[pulumi.InputType['HttpTargetArgs']] http_target: Modifies HTTP target for HTTP tasks.
+        :param pulumi.Input[Union['AppEngineRoutingArgs', 'AppEngineRoutingArgsDict']] app_engine_routing_override: Overrides for task-level app_engine_routing. These settings apply only to App Engine tasks in this queue. Http tasks are not affected. If set, `app_engine_routing_override` is used for all App Engine tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
+        :param pulumi.Input[Union['HttpTargetArgs', 'HttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
         :param pulumi.Input[str] name: Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
-        :param pulumi.Input[pulumi.InputType['RateLimitsArgs']] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
-        :param pulumi.Input[pulumi.InputType['RetryConfigArgs']] retry_config: Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
-        :param pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']] stackdriver_logging_config: Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
+        :param pulumi.Input[Union['RateLimitsArgs', 'RateLimitsArgsDict']] rate_limits: Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts. However they control task attempts in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). The queue's actual dispatch rate is the result of: * Number of tasks in the queue * User-specified throttling: rate_limits, retry_config, and the queue's state. * System throttling due to `429` (Too Many Requests) or `503` (Service Unavailable) responses from the worker, high error rates, or to smooth sudden large traffic spikes.
+        :param pulumi.Input[Union['RetryConfigArgs', 'RetryConfigArgsDict']] retry_config: Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
+        :param pulumi.Input[Union['StackdriverLoggingConfigArgs', 'StackdriverLoggingConfigArgsDict']] stackdriver_logging_config: Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
         """
         ...
     @overload
@@ -192,14 +192,14 @@ class Queue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine_routing_override: Optional[pulumi.Input[pulumi.InputType['AppEngineRoutingArgs']]] = None,
-                 http_target: Optional[pulumi.Input[pulumi.InputType['HttpTargetArgs']]] = None,
+                 app_engine_routing_override: Optional[pulumi.Input[Union['AppEngineRoutingArgs', 'AppEngineRoutingArgsDict']]] = None,
+                 http_target: Optional[pulumi.Input[Union['HttpTargetArgs', 'HttpTargetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rate_limits: Optional[pulumi.Input[pulumi.InputType['RateLimitsArgs']]] = None,
-                 retry_config: Optional[pulumi.Input[pulumi.InputType['RetryConfigArgs']]] = None,
-                 stackdriver_logging_config: Optional[pulumi.Input[pulumi.InputType['StackdriverLoggingConfigArgs']]] = None,
+                 rate_limits: Optional[pulumi.Input[Union['RateLimitsArgs', 'RateLimitsArgsDict']]] = None,
+                 retry_config: Optional[pulumi.Input[Union['RetryConfigArgs', 'RetryConfigArgsDict']]] = None,
+                 stackdriver_logging_config: Optional[pulumi.Input[Union['StackdriverLoggingConfigArgs', 'StackdriverLoggingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

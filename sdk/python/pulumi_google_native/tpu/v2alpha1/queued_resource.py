@@ -179,16 +179,16 @@ class QueuedResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 best_effort: Optional[pulumi.Input[pulumi.InputType['BestEffortArgs']]] = None,
-                 guaranteed: Optional[pulumi.Input[pulumi.InputType['GuaranteedArgs']]] = None,
+                 best_effort: Optional[pulumi.Input[Union['BestEffortArgs', 'BestEffortArgsDict']]] = None,
+                 guaranteed: Optional[pulumi.Input[Union['GuaranteedArgs', 'GuaranteedArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  queued_resource_id: Optional[pulumi.Input[str]] = None,
-                 queueing_policy: Optional[pulumi.Input[pulumi.InputType['QueueingPolicyArgs']]] = None,
+                 queueing_policy: Optional[pulumi.Input[Union['QueueingPolicyArgs', 'QueueingPolicyArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_name: Optional[pulumi.Input[str]] = None,
-                 spot: Optional[pulumi.Input[pulumi.InputType['SpotArgs']]] = None,
-                 tpu: Optional[pulumi.Input[pulumi.InputType['TpuArgs']]] = None,
+                 spot: Optional[pulumi.Input[Union['SpotArgs', 'SpotArgsDict']]] = None,
+                 tpu: Optional[pulumi.Input[Union['TpuArgs', 'TpuArgsDict']]] = None,
                  __props__=None):
         """
         Creates a QueuedResource TPU instance.
@@ -196,14 +196,14 @@ class QueuedResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BestEffortArgs']] best_effort: The BestEffort tier.
-        :param pulumi.Input[pulumi.InputType['GuaranteedArgs']] guaranteed: The Guaranteed tier.
+        :param pulumi.Input[Union['BestEffortArgs', 'BestEffortArgsDict']] best_effort: The BestEffort tier.
+        :param pulumi.Input[Union['GuaranteedArgs', 'GuaranteedArgsDict']] guaranteed: The Guaranteed tier.
         :param pulumi.Input[str] queued_resource_id: The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
-        :param pulumi.Input[pulumi.InputType['QueueingPolicyArgs']] queueing_policy: The queueing policy of the QueuedRequest.
+        :param pulumi.Input[Union['QueueingPolicyArgs', 'QueueingPolicyArgsDict']] queueing_policy: The queueing policy of the QueuedRequest.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[str] reservation_name: Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
-        :param pulumi.Input[pulumi.InputType['SpotArgs']] spot: Optional. The Spot tier.
-        :param pulumi.Input[pulumi.InputType['TpuArgs']] tpu: Defines a TPU resource.
+        :param pulumi.Input[Union['SpotArgs', 'SpotArgsDict']] spot: Optional. The Spot tier.
+        :param pulumi.Input[Union['TpuArgs', 'TpuArgsDict']] tpu: Defines a TPU resource.
         """
         ...
     @overload
@@ -230,16 +230,16 @@ class QueuedResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 best_effort: Optional[pulumi.Input[pulumi.InputType['BestEffortArgs']]] = None,
-                 guaranteed: Optional[pulumi.Input[pulumi.InputType['GuaranteedArgs']]] = None,
+                 best_effort: Optional[pulumi.Input[Union['BestEffortArgs', 'BestEffortArgsDict']]] = None,
+                 guaranteed: Optional[pulumi.Input[Union['GuaranteedArgs', 'GuaranteedArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  queued_resource_id: Optional[pulumi.Input[str]] = None,
-                 queueing_policy: Optional[pulumi.Input[pulumi.InputType['QueueingPolicyArgs']]] = None,
+                 queueing_policy: Optional[pulumi.Input[Union['QueueingPolicyArgs', 'QueueingPolicyArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_name: Optional[pulumi.Input[str]] = None,
-                 spot: Optional[pulumi.Input[pulumi.InputType['SpotArgs']]] = None,
-                 tpu: Optional[pulumi.Input[pulumi.InputType['TpuArgs']]] = None,
+                 spot: Optional[pulumi.Input[Union['SpotArgs', 'SpotArgsDict']]] = None,
+                 tpu: Optional[pulumi.Input[Union['TpuArgs', 'TpuArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

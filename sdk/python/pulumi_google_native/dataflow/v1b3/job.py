@@ -468,23 +468,23 @@ class Job(pulumi.CustomResource):
                  created_from_snapshot_id: Optional[pulumi.Input[str]] = None,
                  current_state: Optional[pulumi.Input['JobCurrentState']] = None,
                  current_state_time: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
-                 execution_info: Optional[pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']]] = None,
+                 environment: Optional[pulumi.Input[Union['EnvironmentArgs', 'EnvironmentArgsDict']]] = None,
+                 execution_info: Optional[pulumi.Input[Union['JobExecutionInfoArgs', 'JobExecutionInfoArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
+                 job_metadata: Optional[pulumi.Input[Union['JobMetadataArgs', 'JobMetadataArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pipeline_description: Optional[pulumi.Input[pulumi.InputType['PipelineDescriptionArgs']]] = None,
+                 pipeline_description: Optional[pulumi.Input[Union['PipelineDescriptionArgs', 'PipelineDescriptionArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replace_job_id: Optional[pulumi.Input[str]] = None,
                  replaced_by_job_id: Optional[pulumi.Input[str]] = None,
                  requested_state: Optional[pulumi.Input['JobRequestedState']] = None,
-                 runtime_updatable_params: Optional[pulumi.Input[pulumi.InputType['RuntimeUpdatableParamsArgs']]] = None,
+                 runtime_updatable_params: Optional[pulumi.Input[Union['RuntimeUpdatableParamsArgs', 'RuntimeUpdatableParamsArgsDict']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
-                 stage_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]]] = None,
+                 stage_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExecutionStageStateArgs', 'ExecutionStageStateArgsDict']]]]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StepArgs']]]]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StepArgs', 'StepArgsDict']]]]] = None,
                  steps_location: Optional[pulumi.Input[str]] = None,
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -503,23 +503,23 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] created_from_snapshot_id: If this is specified, the job's initial state is populated from the given snapshot.
         :param pulumi.Input['JobCurrentState'] current_state: The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field might be mutated by the Dataflow service; callers cannot mutate it.
         :param pulumi.Input[str] current_state_time: The timestamp associated with the current state.
-        :param pulumi.Input[pulumi.InputType['EnvironmentArgs']] environment: The environment for the job.
-        :param pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']] execution_info: Deprecated.
+        :param pulumi.Input[Union['EnvironmentArgs', 'EnvironmentArgsDict']] environment: The environment for the job.
+        :param pulumi.Input[Union['JobExecutionInfoArgs', 'JobExecutionInfoArgsDict']] execution_info: Deprecated.
         :param pulumi.Input[str] id: The unique ID of this job. This field is set by the Dataflow service when the job is created, and is immutable for the life of the job.
-        :param pulumi.Input[pulumi.InputType['JobMetadataArgs']] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
+        :param pulumi.Input[Union['JobMetadataArgs', 'JobMetadataArgsDict']] job_metadata: This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \\p{Ll}\\p{Lo}{0,62} * Values must conform to regexp: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
         :param pulumi.Input[str] name: The user-specified Dataflow job name. Only one active job with a given name can exist in a project within one region at any given time. Jobs in different regions can have the same name. If a caller attempts to create a job with the same name as an active job that already exists, the attempt returns the existing job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
-        :param pulumi.Input[pulumi.InputType['PipelineDescriptionArgs']] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
+        :param pulumi.Input[Union['PipelineDescriptionArgs', 'PipelineDescriptionArgsDict']] pipeline_description: Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
         :param pulumi.Input[str] project: The ID of the Google Cloud project that the job belongs to.
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
         :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. Applies to `UpdateJob` requests. Set `requested_state` with `UpdateJob` requests to switch between the states `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING`. You can also use `UpdateJob` requests to change a job's state from `JOB_STATE_RUNNING` to `JOB_STATE_CANCELLED`, `JOB_STATE_DONE`, or `JOB_STATE_DRAINED`. These states irrevocably terminate the job if it hasn't already reached a terminal state. This field has no effect on `CreateJob` requests.
-        :param pulumi.Input[pulumi.InputType['RuntimeUpdatableParamsArgs']] runtime_updatable_params: This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+        :param pulumi.Input[Union['RuntimeUpdatableParamsArgs', 'RuntimeUpdatableParamsArgsDict']] runtime_updatable_params: This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]] stage_states: This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExecutionStageStateArgs', 'ExecutionStageStateArgsDict']]]] stage_states: This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
         :param pulumi.Input[str] start_time: The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StepArgs']]]] steps: Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StepArgs', 'StepArgsDict']]]] steps: Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
         :param pulumi.Input[str] steps_location: The Cloud Storage location where the steps are stored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
@@ -557,23 +557,23 @@ class Job(pulumi.CustomResource):
                  created_from_snapshot_id: Optional[pulumi.Input[str]] = None,
                  current_state: Optional[pulumi.Input['JobCurrentState']] = None,
                  current_state_time: Optional[pulumi.Input[str]] = None,
-                 environment: Optional[pulumi.Input[pulumi.InputType['EnvironmentArgs']]] = None,
-                 execution_info: Optional[pulumi.Input[pulumi.InputType['JobExecutionInfoArgs']]] = None,
+                 environment: Optional[pulumi.Input[Union['EnvironmentArgs', 'EnvironmentArgsDict']]] = None,
+                 execution_info: Optional[pulumi.Input[Union['JobExecutionInfoArgs', 'JobExecutionInfoArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 job_metadata: Optional[pulumi.Input[pulumi.InputType['JobMetadataArgs']]] = None,
+                 job_metadata: Optional[pulumi.Input[Union['JobMetadataArgs', 'JobMetadataArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pipeline_description: Optional[pulumi.Input[pulumi.InputType['PipelineDescriptionArgs']]] = None,
+                 pipeline_description: Optional[pulumi.Input[Union['PipelineDescriptionArgs', 'PipelineDescriptionArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  replace_job_id: Optional[pulumi.Input[str]] = None,
                  replaced_by_job_id: Optional[pulumi.Input[str]] = None,
                  requested_state: Optional[pulumi.Input['JobRequestedState']] = None,
-                 runtime_updatable_params: Optional[pulumi.Input[pulumi.InputType['RuntimeUpdatableParamsArgs']]] = None,
+                 runtime_updatable_params: Optional[pulumi.Input[Union['RuntimeUpdatableParamsArgs', 'RuntimeUpdatableParamsArgsDict']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
-                 stage_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]]] = None,
+                 stage_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExecutionStageStateArgs', 'ExecutionStageStateArgsDict']]]]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StepArgs']]]]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StepArgs', 'StepArgsDict']]]]] = None,
                  steps_location: Optional[pulumi.Input[str]] = None,
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

@@ -216,13 +216,13 @@ class Endpoint(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_private_service_connect: Optional[pulumi.Input[bool]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 predict_request_response_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgs']]] = None,
+                 predict_request_response_logging_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgs', 'GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  __props__=None):
@@ -235,12 +235,12 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[bool] enable_private_service_connect: Deprecated: If true, expose the Endpoint via private service connect. Only one of the fields, network or enable_private_service_connect, can be set.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
         :param pulumi.Input[str] endpoint_id: Immutable. The ID to use for endpoint, which will become the final component of the endpoint resource name. If not provided, Vertex AI will generate a value for this ID. If the first character is a letter, this value may be up to 63 characters, and valid characters are `[a-z0-9-]`. The last character must be a letter or number. If the first character is a number, this value may be up to 9 characters, and valid characters are `[0-9]` with no leading zeros. When using HTTP/JSON, this field is populated based on a query string argument, such as `?endpoint_id=12345`. This is the fallback for fields that are not included in either the URI or the body.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgs']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgs', 'GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgsDict']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] traffic_split: A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
         """
         ...
@@ -271,13 +271,13 @@ class Endpoint(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_private_service_connect: Optional[pulumi.Input[bool]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 predict_request_response_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgs']]] = None,
+                 predict_request_response_logging_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgs', 'GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  traffic_split: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  __props__=None):

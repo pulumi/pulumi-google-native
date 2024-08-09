@@ -85,9 +85,9 @@ class Membership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
-                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]]] = None,
+                 member_key: Optional[pulumi.Input[Union['EntityKeyArgs', 'EntityKeyArgsDict']]] = None,
+                 preferred_member_key: Optional[pulumi.Input[Union['EntityKeyArgs', 'EntityKeyArgsDict']]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MembershipRoleArgs', 'MembershipRoleArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a `Membership`.
@@ -95,9 +95,9 @@ class Membership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-        :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] preferred_member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+        :param pulumi.Input[Union['EntityKeyArgs', 'EntityKeyArgsDict']] member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        :param pulumi.Input[Union['EntityKeyArgs', 'EntityKeyArgsDict']] preferred_member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MembershipRoleArgs', 'MembershipRoleArgsDict']]]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
         """
         ...
     @overload
@@ -125,9 +125,9 @@ class Membership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
-                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]]] = None,
+                 member_key: Optional[pulumi.Input[Union['EntityKeyArgs', 'EntityKeyArgsDict']]] = None,
+                 preferred_member_key: Optional[pulumi.Input[Union['EntityKeyArgs', 'EntityKeyArgsDict']]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MembershipRoleArgs', 'MembershipRoleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -152,7 +152,7 @@ class LineageEvent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogLineageV1EventLinkArgs']]]]] = None,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDatacatalogLineageV1EventLinkArgs', 'GoogleCloudDatacatalogLineageV1EventLinkArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  process_id: Optional[pulumi.Input[str]] = None,
@@ -167,7 +167,7 @@ class LineageEvent(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_time: Optional. The end of the transformation which resulted in this lineage event. For streaming scenarios, it should be the end of the period from which the lineage is being reported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogLineageV1EventLinkArgs']]]] links: Optional. List of source-target pairs. Can't contain more than 100 tuples.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDatacatalogLineageV1EventLinkArgs', 'GoogleCloudDatacatalogLineageV1EventLinkArgsDict']]]] links: Optional. List of source-target pairs. Can't contain more than 100 tuples.
         :param pulumi.Input[str] name: Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
         :param pulumi.Input[str] request_id: A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
         :param pulumi.Input[str] start_time: The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
@@ -197,7 +197,7 @@ class LineageEvent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogLineageV1EventLinkArgs']]]]] = None,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDatacatalogLineageV1EventLinkArgs', 'GoogleCloudDatacatalogLineageV1EventLinkArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  process_id: Optional[pulumi.Input[str]] = None,

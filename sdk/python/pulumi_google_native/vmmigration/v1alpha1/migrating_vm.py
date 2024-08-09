@@ -245,20 +245,20 @@ class MigratingVm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_engine_disks_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineDisksTargetDefaultsArgs']]] = None,
-                 compute_engine_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']]] = None,
-                 compute_engine_vm_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
+                 compute_engine_disks_target_defaults: Optional[pulumi.Input[Union['ComputeEngineDisksTargetDefaultsArgs', 'ComputeEngineDisksTargetDefaultsArgsDict']]] = None,
+                 compute_engine_target_defaults: Optional[pulumi.Input[Union['ComputeEngineTargetDefaultsArgs', 'ComputeEngineTargetDefaultsArgsDict']]] = None,
+                 compute_engine_vm_defaults: Optional[pulumi.Input[Union['TargetVMDetailsArgs', 'TargetVMDetailsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migrating_vm_id: Optional[pulumi.Input[str]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['SchedulePolicyArgs']]] = None,
+                 policy: Optional[pulumi.Input[Union['SchedulePolicyArgs', 'SchedulePolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  source_vm_id: Optional[pulumi.Input[str]] = None,
-                 target_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
+                 target_defaults: Optional[pulumi.Input[Union['TargetVMDetailsArgs', 'TargetVMDetailsArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new MigratingVm in a given Source.
@@ -266,17 +266,17 @@ class MigratingVm(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ComputeEngineDisksTargetDefaultsArgs']] compute_engine_disks_target_defaults: Details of the target Persistent Disks in Compute Engine.
-        :param pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']] compute_engine_target_defaults: Details of the target VM in Compute Engine.
-        :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] compute_engine_vm_defaults: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+        :param pulumi.Input[Union['ComputeEngineDisksTargetDefaultsArgs', 'ComputeEngineDisksTargetDefaultsArgsDict']] compute_engine_disks_target_defaults: Details of the target Persistent Disks in Compute Engine.
+        :param pulumi.Input[Union['ComputeEngineTargetDefaultsArgs', 'ComputeEngineTargetDefaultsArgsDict']] compute_engine_target_defaults: Details of the target VM in Compute Engine.
+        :param pulumi.Input[Union['TargetVMDetailsArgs', 'TargetVMDetailsArgsDict']] compute_engine_vm_defaults: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         :param pulumi.Input[str] description: The description attached to the migrating VM by the user.
         :param pulumi.Input[str] display_name: The display name attached to the MigratingVm by the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the migrating VM.
         :param pulumi.Input[str] migrating_vm_id: Required. The migratingVm identifier.
-        :param pulumi.Input[pulumi.InputType['SchedulePolicyArgs']] policy: The replication schedule policy.
+        :param pulumi.Input[Union['SchedulePolicyArgs', 'SchedulePolicyArgsDict']] policy: The replication schedule policy.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
-        :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] target_defaults: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        :param pulumi.Input[Union['TargetVMDetailsArgs', 'TargetVMDetailsArgsDict']] target_defaults: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         ...
     @overload
@@ -303,20 +303,20 @@ class MigratingVm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compute_engine_disks_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineDisksTargetDefaultsArgs']]] = None,
-                 compute_engine_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']]] = None,
-                 compute_engine_vm_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
+                 compute_engine_disks_target_defaults: Optional[pulumi.Input[Union['ComputeEngineDisksTargetDefaultsArgs', 'ComputeEngineDisksTargetDefaultsArgsDict']]] = None,
+                 compute_engine_target_defaults: Optional[pulumi.Input[Union['ComputeEngineTargetDefaultsArgs', 'ComputeEngineTargetDefaultsArgsDict']]] = None,
+                 compute_engine_vm_defaults: Optional[pulumi.Input[Union['TargetVMDetailsArgs', 'TargetVMDetailsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migrating_vm_id: Optional[pulumi.Input[str]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['SchedulePolicyArgs']]] = None,
+                 policy: Optional[pulumi.Input[Union['SchedulePolicyArgs', 'SchedulePolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  source_vm_id: Optional[pulumi.Input[str]] = None,
-                 target_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
+                 target_defaults: Optional[pulumi.Input[Union['TargetVMDetailsArgs', 'TargetVMDetailsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

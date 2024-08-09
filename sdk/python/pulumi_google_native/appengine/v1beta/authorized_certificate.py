@@ -70,7 +70,7 @@ class AuthorizedCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 certificate_raw_data: Optional[pulumi.Input[pulumi.InputType['CertificateRawDataArgs']]] = None,
+                 certificate_raw_data: Optional[pulumi.Input[Union['CertificateRawDataArgs', 'CertificateRawDataArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -79,7 +79,7 @@ class AuthorizedCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CertificateRawDataArgs']] certificate_raw_data: The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
+        :param pulumi.Input[Union['CertificateRawDataArgs', 'CertificateRawDataArgsDict']] certificate_raw_data: The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
         :param pulumi.Input[str] display_name: The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
         """
         ...
@@ -108,7 +108,7 @@ class AuthorizedCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 certificate_raw_data: Optional[pulumi.Input[pulumi.InputType['CertificateRawDataArgs']]] = None,
+                 certificate_raw_data: Optional[pulumi.Input[Union['CertificateRawDataArgs', 'CertificateRawDataArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

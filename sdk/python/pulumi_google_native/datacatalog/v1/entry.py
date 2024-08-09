@@ -445,31 +445,31 @@ class Entry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
-                 cloud_bigtable_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]] = None,
-                 data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
-                 database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
-                 dataset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatasetSpecArgs']]] = None,
+                 business_context: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1BusinessContextArgs', 'GoogleCloudDatacatalogV1BusinessContextArgsDict']]] = None,
+                 cloud_bigtable_system_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs', 'GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgsDict']]] = None,
+                 data_source_connection_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs', 'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgsDict']]] = None,
+                 database_table_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1DatabaseTableSpecArgs', 'GoogleCloudDatacatalogV1DatabaseTableSpecArgsDict']]] = None,
+                 dataset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1DatasetSpecArgs', 'GoogleCloudDatacatalogV1DatasetSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
-                 fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']]] = None,
+                 fileset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1FilesetSpecArgs', 'GoogleCloudDatacatalogV1FilesetSpecArgsDict']]] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1GcsFilesetSpecArgs', 'GoogleCloudDatacatalogV1GcsFilesetSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 looker_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1LookerSystemSpecArgs']]] = None,
-                 model_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ModelSpecArgs']]] = None,
+                 looker_system_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1LookerSystemSpecArgs', 'GoogleCloudDatacatalogV1LookerSystemSpecArgsDict']]] = None,
+                 model_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1ModelSpecArgs', 'GoogleCloudDatacatalogV1ModelSpecArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
-                 service_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ServiceSpecArgs']]] = None,
-                 source_system_timestamps: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']]] = None,
-                 sql_database_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']]] = None,
+                 routine_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1RoutineSpecArgs', 'GoogleCloudDatacatalogV1RoutineSpecArgsDict']]] = None,
+                 schema: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1SchemaArgs', 'GoogleCloudDatacatalogV1SchemaArgsDict']]] = None,
+                 service_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1ServiceSpecArgs', 'GoogleCloudDatacatalogV1ServiceSpecArgsDict']]] = None,
+                 source_system_timestamps: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1SystemTimestampsArgs', 'GoogleCloudDatacatalogV1SystemTimestampsArgsDict']]] = None,
+                 sql_database_system_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs', 'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
-                 usage_signal: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']]] = None,
+                 usage_signal: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1UsageSignalArgs', 'GoogleCloudDatacatalogV1UsageSignalArgsDict']]] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -479,28 +479,28 @@ class Entry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']] business_context: Business Context of the entry. Not supported for BigQuery datasets
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']] cloud_bigtable_system_spec: Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatasetSpecArgs']] dataset_spec: Specification that applies to a dataset.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1BusinessContextArgs', 'GoogleCloudDatacatalogV1BusinessContextArgsDict']] business_context: Business Context of the entry. Not supported for BigQuery datasets
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs', 'GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgsDict']] cloud_bigtable_system_spec: Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs', 'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgsDict']] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1DatabaseTableSpecArgs', 'GoogleCloudDatacatalogV1DatabaseTableSpecArgsDict']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1DatasetSpecArgs', 'GoogleCloudDatacatalogV1DatasetSpecArgsDict']] dataset_spec: Specification that applies to a dataset.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] entry_id: Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1FilesetSpecArgs', 'GoogleCloudDatacatalogV1FilesetSpecArgsDict']] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[str] fully_qualified_name: [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries. 
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1GcsFilesetSpecArgs', 'GoogleCloudDatacatalogV1GcsFilesetSpecArgsDict']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1LookerSystemSpecArgs']] looker_system_spec: Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ModelSpecArgs']] model_spec: Model specification.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ServiceSpecArgs']] service_spec: Specification that applies to a Service resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']] sql_database_system_spec: Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1LookerSystemSpecArgs', 'GoogleCloudDatacatalogV1LookerSystemSpecArgsDict']] looker_system_spec: Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1ModelSpecArgs', 'GoogleCloudDatacatalogV1ModelSpecArgsDict']] model_spec: Model specification.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1RoutineSpecArgs', 'GoogleCloudDatacatalogV1RoutineSpecArgsDict']] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1SchemaArgs', 'GoogleCloudDatacatalogV1SchemaArgsDict']] schema: Schema of the entry. An entry might not have any schema attached to it.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1ServiceSpecArgs', 'GoogleCloudDatacatalogV1ServiceSpecArgsDict']] service_spec: Specification that applies to a Service resource.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1SystemTimestampsArgs', 'GoogleCloudDatacatalogV1SystemTimestampsArgsDict']] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs', 'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgsDict']] sql_database_system_spec: Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
         :param pulumi.Input['EntryType'] type: The type of the entry. For details, see [`EntryType`](#entrytype).
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']] usage_signal: Resource usage statistics.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogV1UsageSignalArgs', 'GoogleCloudDatacatalogV1UsageSignalArgsDict']] usage_signal: Resource usage statistics.
         :param pulumi.Input[str] user_specified_system: Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         """
@@ -529,31 +529,31 @@ class Entry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
-                 cloud_bigtable_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]] = None,
-                 data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
-                 database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
-                 dataset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatasetSpecArgs']]] = None,
+                 business_context: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1BusinessContextArgs', 'GoogleCloudDatacatalogV1BusinessContextArgsDict']]] = None,
+                 cloud_bigtable_system_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs', 'GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgsDict']]] = None,
+                 data_source_connection_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs', 'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgsDict']]] = None,
+                 database_table_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1DatabaseTableSpecArgs', 'GoogleCloudDatacatalogV1DatabaseTableSpecArgsDict']]] = None,
+                 dataset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1DatasetSpecArgs', 'GoogleCloudDatacatalogV1DatasetSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_id: Optional[pulumi.Input[str]] = None,
-                 fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']]] = None,
+                 fileset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1FilesetSpecArgs', 'GoogleCloudDatacatalogV1FilesetSpecArgsDict']]] = None,
                  fully_qualified_name: Optional[pulumi.Input[str]] = None,
-                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1GcsFilesetSpecArgs', 'GoogleCloudDatacatalogV1GcsFilesetSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 looker_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1LookerSystemSpecArgs']]] = None,
-                 model_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ModelSpecArgs']]] = None,
+                 looker_system_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1LookerSystemSpecArgs', 'GoogleCloudDatacatalogV1LookerSystemSpecArgsDict']]] = None,
+                 model_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1ModelSpecArgs', 'GoogleCloudDatacatalogV1ModelSpecArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 routine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
-                 service_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ServiceSpecArgs']]] = None,
-                 source_system_timestamps: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']]] = None,
-                 sql_database_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']]] = None,
+                 routine_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1RoutineSpecArgs', 'GoogleCloudDatacatalogV1RoutineSpecArgsDict']]] = None,
+                 schema: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1SchemaArgs', 'GoogleCloudDatacatalogV1SchemaArgsDict']]] = None,
+                 service_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1ServiceSpecArgs', 'GoogleCloudDatacatalogV1ServiceSpecArgsDict']]] = None,
+                 source_system_timestamps: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1SystemTimestampsArgs', 'GoogleCloudDatacatalogV1SystemTimestampsArgsDict']]] = None,
+                 sql_database_system_spec: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs', 'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgsDict']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
-                 usage_signal: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']]] = None,
+                 usage_signal: Optional[pulumi.Input[Union['GoogleCloudDatacatalogV1UsageSignalArgs', 'GoogleCloudDatacatalogV1UsageSignalArgsDict']]] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):

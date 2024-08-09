@@ -206,13 +206,13 @@ class SecurityAction(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionAllowArgs']]] = None,
-                 condition_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionConditionConfigArgs']]] = None,
-                 deny: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionDenyArgs']]] = None,
+                 allow: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionAllowArgs', 'GoogleCloudApigeeV1SecurityActionAllowArgsDict']]] = None,
+                 condition_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionConditionConfigArgs', 'GoogleCloudApigeeV1SecurityActionConditionConfigArgsDict']]] = None,
+                 deny: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionDenyArgs', 'GoogleCloudApigeeV1SecurityActionDenyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 flag: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionFlagArgs']]] = None,
+                 flag: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionFlagArgs', 'GoogleCloudApigeeV1SecurityActionFlagArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  security_action_id: Optional[pulumi.Input[str]] = None,
@@ -226,12 +226,12 @@ class SecurityAction(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionAllowArgs']] allow: Allow a request through if it matches this SecurityAction.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionConditionConfigArgs']] condition_config: A valid SecurityAction must contain at least one condition.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionDenyArgs']] deny: Deny a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionAllowArgs', 'GoogleCloudApigeeV1SecurityActionAllowArgsDict']] allow: Allow a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionConditionConfigArgs', 'GoogleCloudApigeeV1SecurityActionConditionConfigArgsDict']] condition_config: A valid SecurityAction must contain at least one condition.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionDenyArgs', 'GoogleCloudApigeeV1SecurityActionDenyArgsDict']] deny: Deny a request through if it matches this SecurityAction.
         :param pulumi.Input[str] description: Optional. An optional user provided description of the SecurityAction.
         :param pulumi.Input[str] expire_time: The expiration for this SecurityAction.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionFlagArgs']] flag: Flag a request through if it matches this SecurityAction.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionFlagArgs', 'GoogleCloudApigeeV1SecurityActionFlagArgsDict']] flag: Flag a request through if it matches this SecurityAction.
         :param pulumi.Input[str] name: Immutable. This field is ignored during creation as per AIP-133. Please set the `security_action_id` field in the CreateSecurityActionRequest when creating a new SecurityAction. Format: organizations/{org}/environments/{env}/securityActions/{security_action}
         :param pulumi.Input[str] security_action_id: Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{​0,61}[a-z0-9])?$).
         :param pulumi.Input['SecurityActionState'] state: Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
@@ -263,13 +263,13 @@ class SecurityAction(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionAllowArgs']]] = None,
-                 condition_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionConditionConfigArgs']]] = None,
-                 deny: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionDenyArgs']]] = None,
+                 allow: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionAllowArgs', 'GoogleCloudApigeeV1SecurityActionAllowArgsDict']]] = None,
+                 condition_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionConditionConfigArgs', 'GoogleCloudApigeeV1SecurityActionConditionConfigArgsDict']]] = None,
+                 deny: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionDenyArgs', 'GoogleCloudApigeeV1SecurityActionDenyArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 flag: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityActionFlagArgs']]] = None,
+                 flag: Optional[pulumi.Input[Union['GoogleCloudApigeeV1SecurityActionFlagArgs', 'GoogleCloudApigeeV1SecurityActionFlagArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  security_action_id: Optional[pulumi.Input[str]] = None,

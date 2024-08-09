@@ -147,9 +147,9 @@ class DicomStore(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['NotificationConfigArgs', 'NotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1DicomStreamConfigArgs']]]]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudHealthcareV1DicomStreamConfigArgs', 'GoogleCloudHealthcareV1DicomStreamConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new DICOM store within the parent dataset.
@@ -159,8 +159,8 @@ class DicomStore(pulumi.CustomResource):
         :param pulumi.Input[str] dicom_store_id: The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] name: Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-        :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification destination for new DICOM instances. Supplied by the client.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1DicomStreamConfigArgs']]]] stream_configs: Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+        :param pulumi.Input[Union['NotificationConfigArgs', 'NotificationConfigArgsDict']] notification_config: Notification destination for new DICOM instances. Supplied by the client.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudHealthcareV1DicomStreamConfigArgs', 'GoogleCloudHealthcareV1DicomStreamConfigArgsDict']]]] stream_configs: Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
         """
         ...
     @overload
@@ -191,9 +191,9 @@ class DicomStore(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['NotificationConfigArgs', 'NotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1DicomStreamConfigArgs']]]]] = None,
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudHealthcareV1DicomStreamConfigArgs', 'GoogleCloudHealthcareV1DicomStreamConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

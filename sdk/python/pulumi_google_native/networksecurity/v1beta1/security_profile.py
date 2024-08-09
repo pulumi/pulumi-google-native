@@ -151,7 +151,7 @@ class SecurityProfile(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  security_profile_id: Optional[pulumi.Input[str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[pulumi.InputType['ThreatPreventionProfileArgs']]] = None,
+                 threat_prevention_profile: Optional[pulumi.Input[Union['ThreatPreventionProfileArgs', 'ThreatPreventionProfileArgsDict']]] = None,
                  type: Optional[pulumi.Input['SecurityProfileType']] = None,
                  __props__=None):
         """
@@ -164,7 +164,7 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
         :param pulumi.Input[str] name: Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
         :param pulumi.Input[str] security_profile_id: Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1".
-        :param pulumi.Input[pulumi.InputType['ThreatPreventionProfileArgs']] threat_prevention_profile: The threat prevention configuration for the SecurityProfile.
+        :param pulumi.Input[Union['ThreatPreventionProfileArgs', 'ThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the SecurityProfile.
         :param pulumi.Input['SecurityProfileType'] type: Immutable. The single ProfileType that the SecurityProfile resource configures.
         """
         ...
@@ -198,7 +198,7 @@ class SecurityProfile(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  security_profile_id: Optional[pulumi.Input[str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[pulumi.InputType['ThreatPreventionProfileArgs']]] = None,
+                 threat_prevention_profile: Optional[pulumi.Input[Union['ThreatPreventionProfileArgs', 'ThreatPreventionProfileArgsDict']]] = None,
                  type: Optional[pulumi.Input['SecurityProfileType']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

@@ -161,10 +161,10 @@ class Content(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentNotebookArgs']]] = None,
+                 notebook: Optional[pulumi.Input[Union['GoogleCloudDataplexV1ContentNotebookArgs', 'GoogleCloudDataplexV1ContentNotebookArgsDict']]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sql_script: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentSqlScriptArgs']]] = None,
+                 sql_script: Optional[pulumi.Input[Union['GoogleCloudDataplexV1ContentSqlScriptArgs', 'GoogleCloudDataplexV1ContentSqlScriptArgsDict']]] = None,
                  __props__=None):
         """
         Create a content.
@@ -175,9 +175,9 @@ class Content(pulumi.CustomResource):
         :param pulumi.Input[str] data_text: Content data in string format.
         :param pulumi.Input[str] description: Optional. Description of the content.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the content.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentNotebookArgs']] notebook: Notebook related configurations.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1ContentNotebookArgs', 'GoogleCloudDataplexV1ContentNotebookArgsDict']] notebook: Notebook related configurations.
         :param pulumi.Input[str] path: The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentSqlScriptArgs']] sql_script: Sql Script related configurations.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1ContentSqlScriptArgs', 'GoogleCloudDataplexV1ContentSqlScriptArgsDict']] sql_script: Sql Script related configurations.
         """
         ...
     @overload
@@ -209,10 +209,10 @@ class Content(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentNotebookArgs']]] = None,
+                 notebook: Optional[pulumi.Input[Union['GoogleCloudDataplexV1ContentNotebookArgs', 'GoogleCloudDataplexV1ContentNotebookArgsDict']]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sql_script: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentSqlScriptArgs']]] = None,
+                 sql_script: Optional[pulumi.Input[Union['GoogleCloudDataplexV1ContentSqlScriptArgs', 'GoogleCloudDataplexV1ContentSqlScriptArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

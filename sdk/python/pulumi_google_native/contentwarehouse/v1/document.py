@@ -386,8 +386,8 @@ class Document(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_ai_document: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDocumentaiV1DocumentArgs']]] = None,
-                 cloud_ai_document_option: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']]] = None,
+                 cloud_ai_document: Optional[pulumi.Input[Union['GoogleCloudDocumentaiV1DocumentArgs', 'GoogleCloudDocumentaiV1DocumentArgsDict']]] = None,
+                 cloud_ai_document_option: Optional[pulumi.Input[Union['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs', 'GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgsDict']]] = None,
                  content_category: Optional[pulumi.Input['DocumentContentCategory']] = None,
                  create_mask: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
@@ -398,13 +398,13 @@ class Document(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text: Optional[pulumi.Input[str]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['GoogleIamV1PolicyArgs']]] = None,
+                 policy: Optional[pulumi.Input[Union['GoogleIamV1PolicyArgs', 'GoogleIamV1PolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1PropertyArgs', 'GoogleCloudContentwarehouseV1PropertyArgsDict']]]]] = None,
                  raw_document_file_type: Optional[pulumi.Input['DocumentRawDocumentFileType']] = None,
                  raw_document_path: Optional[pulumi.Input[str]] = None,
                  reference_id: Optional[pulumi.Input[str]] = None,
-                 request_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RequestMetadataArgs']]] = None,
+                 request_metadata: Optional[pulumi.Input[Union['GoogleCloudContentwarehouseV1RequestMetadataArgs', 'GoogleCloudContentwarehouseV1RequestMetadataArgsDict']]] = None,
                  text_extraction_disabled: Optional[pulumi.Input[bool]] = None,
                  text_extraction_enabled: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -415,8 +415,8 @@ class Document(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDocumentaiV1DocumentArgs']] cloud_ai_document: Document AI format to save the structured content, including OCR.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']] cloud_ai_document_option: Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
+        :param pulumi.Input[Union['GoogleCloudDocumentaiV1DocumentArgs', 'GoogleCloudDocumentaiV1DocumentArgsDict']] cloud_ai_document: Document AI format to save the structured content, including OCR.
+        :param pulumi.Input[Union['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs', 'GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgsDict']] cloud_ai_document_option: Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
         :param pulumi.Input['DocumentContentCategory'] content_category: Indicates the category (image, audio, video etc.) of the original content.
         :param pulumi.Input[str] create_mask: Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
         :param pulumi.Input[str] creator: The user who creates the document.
@@ -426,12 +426,12 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] inline_raw_document: Raw document content.
         :param pulumi.Input[str] name: The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
         :param pulumi.Input[str] plain_text: Other document format, such as PPTX, XLXS
-        :param pulumi.Input[pulumi.InputType['GoogleIamV1PolicyArgs']] policy: Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyArgs']]]] properties: List of values that are user supplied metadata.
+        :param pulumi.Input[Union['GoogleIamV1PolicyArgs', 'GoogleIamV1PolicyArgsDict']] policy: Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1PropertyArgs', 'GoogleCloudContentwarehouseV1PropertyArgsDict']]]] properties: List of values that are user supplied metadata.
         :param pulumi.Input['DocumentRawDocumentFileType'] raw_document_file_type: This is used when DocAI was not used to load the document and parsing/ extracting is needed for the inline_raw_document. For example, if inline_raw_document is the byte representation of a PDF file, then this should be set to: RAW_DOCUMENT_FILE_TYPE_PDF.
         :param pulumi.Input[str] raw_document_path: Raw document file in Cloud Storage path.
         :param pulumi.Input[str] reference_id: The reference ID set by customers. Must be unique per project and location.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RequestMetadataArgs']] request_metadata: The meta information collected about the end user, used to enforce access control for the service.
+        :param pulumi.Input[Union['GoogleCloudContentwarehouseV1RequestMetadataArgs', 'GoogleCloudContentwarehouseV1RequestMetadataArgsDict']] request_metadata: The meta information collected about the end user, used to enforce access control for the service.
         :param pulumi.Input[bool] text_extraction_disabled: If true, text extraction will not be performed.
         :param pulumi.Input[bool] text_extraction_enabled: If true, text extraction will be performed.
         :param pulumi.Input[str] title: Title that describes the document. This can be the top heading or text that describes the document.
@@ -461,8 +461,8 @@ class Document(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_ai_document: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDocumentaiV1DocumentArgs']]] = None,
-                 cloud_ai_document_option: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']]] = None,
+                 cloud_ai_document: Optional[pulumi.Input[Union['GoogleCloudDocumentaiV1DocumentArgs', 'GoogleCloudDocumentaiV1DocumentArgsDict']]] = None,
+                 cloud_ai_document_option: Optional[pulumi.Input[Union['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs', 'GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgsDict']]] = None,
                  content_category: Optional[pulumi.Input['DocumentContentCategory']] = None,
                  create_mask: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
@@ -473,13 +473,13 @@ class Document(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text: Optional[pulumi.Input[str]] = None,
-                 policy: Optional[pulumi.Input[pulumi.InputType['GoogleIamV1PolicyArgs']]] = None,
+                 policy: Optional[pulumi.Input[Union['GoogleIamV1PolicyArgs', 'GoogleIamV1PolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1PropertyArgs', 'GoogleCloudContentwarehouseV1PropertyArgsDict']]]]] = None,
                  raw_document_file_type: Optional[pulumi.Input['DocumentRawDocumentFileType']] = None,
                  raw_document_path: Optional[pulumi.Input[str]] = None,
                  reference_id: Optional[pulumi.Input[str]] = None,
-                 request_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RequestMetadataArgs']]] = None,
+                 request_metadata: Optional[pulumi.Input[Union['GoogleCloudContentwarehouseV1RequestMetadataArgs', 'GoogleCloudContentwarehouseV1RequestMetadataArgsDict']]] = None,
                  text_extraction_disabled: Optional[pulumi.Input[bool]] = None,
                  text_extraction_enabled: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,

@@ -159,26 +159,26 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
-                 group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
-                 instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+                 group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+                 instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
+                 snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new resource policy.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']] disk_consistency_group_policy: Resource policy for disk consistency groups.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances for placement configuration.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
+        :param pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']] disk_consistency_group_policy: Resource policy for disk consistency groups.
+        :param pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']] group_placement_policy: Resource policy for instances for placement configuration.
+        :param pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']] instance_schedule_policy: Resource policy for scheduling instance operations.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']] snapshot_schedule_policy: Resource policy for persistent disks for creating snapshots.
+        :param pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']] snapshot_schedule_policy: Resource policy for persistent disks for creating snapshots.
         """
         ...
     @overload
@@ -205,14 +205,14 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
-                 group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
-                 instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+                 group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+                 instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicySnapshotSchedulePolicyArgs']]] = None,
+                 snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

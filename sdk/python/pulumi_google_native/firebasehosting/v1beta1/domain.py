@@ -97,7 +97,7 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domain_redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
+                 domain_redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  site: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: The domain name of the association.
-        :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] domain_redirect: If set, the domain should redirect with the provided parameters.
+        :param pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']] domain_redirect: If set, the domain should redirect with the provided parameters.
         :param pulumi.Input[str] site: The site name of the association.
         """
         ...
@@ -138,7 +138,7 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domain_redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
+                 domain_redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  site: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,

@@ -235,7 +235,7 @@ class Node(pulumi.CustomResource):
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[Union['SchedulingConfigArgs', 'SchedulingConfigArgsDict']]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -253,7 +253,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
         :param pulumi.Input[str] node_id: The unqualified resource name.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
-        :param pulumi.Input[pulumi.InputType['SchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
+        :param pulumi.Input[Union['SchedulingConfigArgs', 'SchedulingConfigArgsDict']] scheduling_config: The scheduling options for this node.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
         """
@@ -292,7 +292,7 @@ class Node(pulumi.CustomResource):
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[Union['SchedulingConfigArgs', 'SchedulingConfigArgsDict']]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  __props__=None):

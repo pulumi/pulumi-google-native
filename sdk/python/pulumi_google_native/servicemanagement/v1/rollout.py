@@ -123,10 +123,10 @@ class Rollout(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
-                 delete_service_strategy: Optional[pulumi.Input[pulumi.InputType['DeleteServiceStrategyArgs']]] = None,
+                 delete_service_strategy: Optional[pulumi.Input[Union['DeleteServiceStrategyArgs', 'DeleteServiceStrategyArgsDict']]] = None,
                  rollout_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 traffic_percent_strategy: Optional[pulumi.Input[pulumi.InputType['TrafficPercentStrategyArgs']]] = None,
+                 traffic_percent_strategy: Optional[pulumi.Input[Union['TrafficPercentStrategyArgs', 'TrafficPercentStrategyArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new service configuration rollout. Based on rollout, the Google Service Management will roll out the service configurations to different backend services. For example, the logging configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be deleted eventually. Operation
@@ -138,10 +138,10 @@ class Rollout(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation time of the rollout. Readonly.
         :param pulumi.Input[str] created_by: The user who created the Rollout. Readonly.
-        :param pulumi.Input[pulumi.InputType['DeleteServiceStrategyArgs']] delete_service_strategy: The strategy associated with a rollout to delete a `ManagedService`. Readonly.
+        :param pulumi.Input[Union['DeleteServiceStrategyArgs', 'DeleteServiceStrategyArgsDict']] delete_service_strategy: The strategy associated with a rollout to delete a `ManagedService`. Readonly.
         :param pulumi.Input[str] rollout_id: Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
         :param pulumi.Input[str] service_name: The name of the service associated with this Rollout.
-        :param pulumi.Input[pulumi.InputType['TrafficPercentStrategyArgs']] traffic_percent_strategy: Google Service Control selects service configurations based on traffic percentage.
+        :param pulumi.Input[Union['TrafficPercentStrategyArgs', 'TrafficPercentStrategyArgsDict']] traffic_percent_strategy: Google Service Control selects service configurations based on traffic percentage.
         """
         ...
     @overload
@@ -172,10 +172,10 @@ class Rollout(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
-                 delete_service_strategy: Optional[pulumi.Input[pulumi.InputType['DeleteServiceStrategyArgs']]] = None,
+                 delete_service_strategy: Optional[pulumi.Input[Union['DeleteServiceStrategyArgs', 'DeleteServiceStrategyArgsDict']]] = None,
                  rollout_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 traffic_percent_strategy: Optional[pulumi.Input[pulumi.InputType['TrafficPercentStrategyArgs']]] = None,
+                 traffic_percent_strategy: Optional[pulumi.Input[Union['TrafficPercentStrategyArgs', 'TrafficPercentStrategyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

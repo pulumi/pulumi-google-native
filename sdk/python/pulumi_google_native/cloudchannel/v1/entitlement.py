@@ -161,12 +161,12 @@ class Entitlement(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 association_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']]] = None,
+                 association_info: Optional[pulumi.Input[Union['GoogleCloudChannelV1AssociationInfoArgs', 'GoogleCloudChannelV1AssociationInfoArgsDict']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
-                 commitment_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']]] = None,
+                 commitment_settings: Optional[pulumi.Input[Union['GoogleCloudChannelV1CommitmentSettingsArgs', 'GoogleCloudChannelV1CommitmentSettingsArgsDict']]] = None,
                  customer_id: Optional[pulumi.Input[str]] = None,
                  offer: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudChannelV1ParameterArgs', 'GoogleCloudChannelV1ParameterArgsDict']]]]] = None,
                  purchase_order_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -178,11 +178,11 @@ class Entitlement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']] association_info: Association information to other entitlements.
+        :param pulumi.Input[Union['GoogleCloudChannelV1AssociationInfoArgs', 'GoogleCloudChannelV1AssociationInfoArgsDict']] association_info: Association information to other entitlements.
         :param pulumi.Input[str] billing_account: Optional. The billing account resource name that is used to pay for this entitlement.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']] commitment_settings: Commitment settings for a commitment-based Offer. Required for commitment based offers.
+        :param pulumi.Input[Union['GoogleCloudChannelV1CommitmentSettingsArgs', 'GoogleCloudChannelV1CommitmentSettingsArgsDict']] commitment_settings: Commitment settings for a commitment-based Offer. Required for commitment based offers.
         :param pulumi.Input[str] offer: The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]] parameters: Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudChannelV1ParameterArgs', 'GoogleCloudChannelV1ParameterArgsDict']]]] parameters: Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
         :param pulumi.Input[str] purchase_order_id: Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
         :param pulumi.Input[str] request_id: Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
         """
@@ -214,12 +214,12 @@ class Entitlement(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 association_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1AssociationInfoArgs']]] = None,
+                 association_info: Optional[pulumi.Input[Union['GoogleCloudChannelV1AssociationInfoArgs', 'GoogleCloudChannelV1AssociationInfoArgsDict']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
-                 commitment_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1CommitmentSettingsArgs']]] = None,
+                 commitment_settings: Optional[pulumi.Input[Union['GoogleCloudChannelV1CommitmentSettingsArgs', 'GoogleCloudChannelV1CommitmentSettingsArgsDict']]] = None,
                  customer_id: Optional[pulumi.Input[str]] = None,
                  offer: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudChannelV1ParameterArgs', 'GoogleCloudChannelV1ParameterArgsDict']]]]] = None,
                  purchase_order_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

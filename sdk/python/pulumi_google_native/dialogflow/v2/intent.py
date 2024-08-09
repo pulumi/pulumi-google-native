@@ -381,16 +381,16 @@ class Intent(pulumi.CustomResource):
                  language_code: Optional[pulumi.Input[str]] = None,
                  live_agent_handoff: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentMessageArgs']]]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentMessageArgs', 'GoogleCloudDialogflowV2IntentMessageArgsDict']]]]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2ContextArgs']]]]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentParameterArgs']]]]] = None,
+                 output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2ContextArgs', 'GoogleCloudDialogflowV2ContextArgsDict']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentParameterArgs', 'GoogleCloudDialogflowV2IntentParameterArgsDict']]]]] = None,
                  parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]]] = None,
+                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentTrainingPhraseArgs', 'GoogleCloudDialogflowV2IntentTrainingPhraseArgsDict']]]]] = None,
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None,
                  __props__=None):
         """
@@ -409,15 +409,15 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[bool] is_fallback: Optional. Indicates whether this is a fallback intent.
         :param pulumi.Input[str] language_code: Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
         :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentMessageArgs']]]] messages: Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentMessageArgs', 'GoogleCloudDialogflowV2IntentMessageArgsDict']]]] messages: Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
         :param pulumi.Input[bool] ml_disabled: Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
         :param pulumi.Input[str] name: Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2ContextArgs']]]] output_contexts: Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentParameterArgs']]]] parameters: Optional. The collection of parameters associated with the intent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2ContextArgs', 'GoogleCloudDialogflowV2ContextArgsDict']]]] output_contexts: Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentParameterArgs', 'GoogleCloudDialogflowV2IntentParameterArgsDict']]]] parameters: Optional. The collection of parameters associated with the intent.
         :param pulumi.Input[str] parent_followup_intent_name: Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
         :param pulumi.Input[int] priority: Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[bool] reset_contexts: Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]] training_phrases: Optional. The collection of examples that the agent is trained on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentTrainingPhraseArgs', 'GoogleCloudDialogflowV2IntentTrainingPhraseArgsDict']]]] training_phrases: Optional. The collection of examples that the agent is trained on.
         :param pulumi.Input['IntentWebhookState'] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
         ...
@@ -456,16 +456,16 @@ class Intent(pulumi.CustomResource):
                  language_code: Optional[pulumi.Input[str]] = None,
                  live_agent_handoff: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentMessageArgs']]]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentMessageArgs', 'GoogleCloudDialogflowV2IntentMessageArgsDict']]]]] = None,
                  ml_disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2ContextArgs']]]]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentParameterArgs']]]]] = None,
+                 output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2ContextArgs', 'GoogleCloudDialogflowV2ContextArgsDict']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentParameterArgs', 'GoogleCloudDialogflowV2IntentParameterArgsDict']]]]] = None,
                  parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
-                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2IntentTrainingPhraseArgs']]]]] = None,
+                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowV2IntentTrainingPhraseArgs', 'GoogleCloudDialogflowV2IntentTrainingPhraseArgsDict']]]]] = None,
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

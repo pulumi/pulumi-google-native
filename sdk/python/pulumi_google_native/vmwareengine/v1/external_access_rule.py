@@ -223,7 +223,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input['ExternalAccessRuleAction']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpRangeArgs']]]]] = None,
+                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpRangeArgs', 'IpRangeArgsDict']]]]] = None,
                  destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  external_access_rule_id: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
@@ -232,7 +232,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpRangeArgs']]]]] = None,
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpRangeArgs', 'IpRangeArgsDict']]]]] = None,
                  source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -243,13 +243,13 @@ class ExternalAccessRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['ExternalAccessRuleAction'] action: The action that the external access rule performs.
         :param pulumi.Input[str] description: User-provided description for this external access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpRangeArgs']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to the traffic that has a destination IP address in these ranges. The specified IP addresses must have reserved external IP addresses in the scope of the parent network policy. To match all external IP addresses in the scope of the parent network policy, specify `0.0.0.0/0`. To match a specific external IP address, specify it using the `IpRange.external_address` property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpRangeArgs', 'IpRangeArgsDict']]]] destination_ip_ranges: If destination ranges are specified, the external access rule applies only to the traffic that has a destination IP address in these ranges. The specified IP addresses must have reserved external IP addresses in the scope of the parent network policy. To match all external IP addresses in the scope of the parent network policy, specify `0.0.0.0/0`. To match a specific external IP address, specify it using the `IpRange.external_address` property.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ports: A list of destination ports to which the external access rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. For example: `["22"]`, `["80","443"]`, or `["12345-12349"]`. To match all destination ports, specify `["0-65535"]`.
         :param pulumi.Input[str] external_access_rule_id: Required. The user-provided identifier of the `ExternalAccessRule` to be created. This identifier must be unique among `ExternalAccessRule` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
         :param pulumi.Input[str] ip_protocol: The IP protocol to which the external access rule applies. This value can be one of the following three protocol strings (not case-sensitive): `tcp`, `udp`, or `icmp`.
         :param pulumi.Input[int] priority: External access rule priority, which determines the external access rule to use when multiple rules apply. If multiple rules have the same priority, their ordering is non-deterministic. If specific ordering is required, assign unique priorities to enforce such ordering. The external access rule priority is an integer from 100 to 4096, both inclusive. Lower integers indicate higher precedence. For example, a rule with priority `100` has higher precedence than a rule with priority `101`.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpRangeArgs']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to traffic that has a source IP address in these ranges. These ranges can either be expressed in the CIDR format or as an IP address. As only inbound rules are supported, `ExternalAddress` resources cannot be the source IP addresses of an external access rule. To match all source addresses, specify `0.0.0.0/0`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpRangeArgs', 'IpRangeArgsDict']]]] source_ip_ranges: If source ranges are specified, the external access rule applies only to traffic that has a source IP address in these ranges. These ranges can either be expressed in the CIDR format or as an IP address. As only inbound rules are supported, `ExternalAddress` resources cannot be the source IP addresses of an external access rule. To match all source addresses, specify `0.0.0.0/0`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ports: A list of source ports to which the external access rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. For example: `["22"]`, `["80","443"]`, or `["12345-12349"]`. To match all source ports, specify `["0-65535"]`.
         """
         ...
@@ -279,7 +279,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input['ExternalAccessRuleAction']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpRangeArgs']]]]] = None,
+                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpRangeArgs', 'IpRangeArgsDict']]]]] = None,
                  destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  external_access_rule_id: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
@@ -288,7 +288,7 @@ class ExternalAccessRule(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpRangeArgs']]]]] = None,
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpRangeArgs', 'IpRangeArgsDict']]]]] = None,
                  source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

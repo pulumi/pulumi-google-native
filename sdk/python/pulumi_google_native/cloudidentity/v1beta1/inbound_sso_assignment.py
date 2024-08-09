@@ -141,8 +141,8 @@ class InboundSsoAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer: Optional[pulumi.Input[str]] = None,
                  rank: Optional[pulumi.Input[int]] = None,
-                 saml_sso_info: Optional[pulumi.Input[pulumi.InputType['SamlSsoInfoArgs']]] = None,
-                 sign_in_behavior: Optional[pulumi.Input[pulumi.InputType['SignInBehaviorArgs']]] = None,
+                 saml_sso_info: Optional[pulumi.Input[Union['SamlSsoInfoArgs', 'SamlSsoInfoArgsDict']]] = None,
+                 sign_in_behavior: Optional[pulumi.Input[Union['SignInBehaviorArgs', 'SignInBehaviorArgsDict']]] = None,
                  sso_mode: Optional[pulumi.Input['InboundSsoAssignmentSsoMode']] = None,
                  target_group: Optional[pulumi.Input[str]] = None,
                  target_org_unit: Optional[pulumi.Input[str]] = None,
@@ -155,8 +155,8 @@ class InboundSsoAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] customer: Immutable. The customer. For example: `customers/C0123abc`.
         :param pulumi.Input[int] rank: Must be zero (which is the default value so it can be omitted) for assignments with `target_org_unit` set and must be greater-than-or-equal-to one for assignments with `target_group` set.
-        :param pulumi.Input[pulumi.InputType['SamlSsoInfoArgs']] saml_sso_info: SAML SSO details. Must be set if and only if `sso_mode` is set to `SAML_SSO`.
-        :param pulumi.Input[pulumi.InputType['SignInBehaviorArgs']] sign_in_behavior: Assertions about users assigned to an IdP will always be accepted from that IdP. This controls whether/when Google should redirect a user to the IdP. Unset (defaults) is the recommended configuration.
+        :param pulumi.Input[Union['SamlSsoInfoArgs', 'SamlSsoInfoArgsDict']] saml_sso_info: SAML SSO details. Must be set if and only if `sso_mode` is set to `SAML_SSO`.
+        :param pulumi.Input[Union['SignInBehaviorArgs', 'SignInBehaviorArgsDict']] sign_in_behavior: Assertions about users assigned to an IdP will always be accepted from that IdP. This controls whether/when Google should redirect a user to the IdP. Unset (defaults) is the recommended configuration.
         :param pulumi.Input['InboundSsoAssignmentSsoMode'] sso_mode: Inbound SSO behavior.
         :param pulumi.Input[str] target_group: Immutable. Must be of the form `groups/{group}`.
         :param pulumi.Input[str] target_org_unit: Immutable. Must be of the form `orgUnits/{org_unit}`.
@@ -188,8 +188,8 @@ class InboundSsoAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer: Optional[pulumi.Input[str]] = None,
                  rank: Optional[pulumi.Input[int]] = None,
-                 saml_sso_info: Optional[pulumi.Input[pulumi.InputType['SamlSsoInfoArgs']]] = None,
-                 sign_in_behavior: Optional[pulumi.Input[pulumi.InputType['SignInBehaviorArgs']]] = None,
+                 saml_sso_info: Optional[pulumi.Input[Union['SamlSsoInfoArgs', 'SamlSsoInfoArgsDict']]] = None,
+                 sign_in_behavior: Optional[pulumi.Input[Union['SignInBehaviorArgs', 'SignInBehaviorArgsDict']]] = None,
                  sso_mode: Optional[pulumi.Input['InboundSsoAssignmentSsoMode']] = None,
                  target_group: Optional[pulumi.Input[str]] = None,
                  target_org_unit: Optional[pulumi.Input[str]] = None,

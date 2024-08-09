@@ -114,7 +114,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 grpc_settings: Optional[pulumi.Input[pulumi.InputType['NotificationEndpointGrpcSettingsArgs']]] = None,
+                 grpc_settings: Optional[pulumi.Input[Union['NotificationEndpointGrpcSettingsArgs', 'NotificationEndpointGrpcSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -126,7 +126,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['NotificationEndpointGrpcSettingsArgs']] grpc_settings: Settings of the gRPC notification endpoint including the endpoint URL and the retry duration.
+        :param pulumi.Input[Union['NotificationEndpointGrpcSettingsArgs', 'NotificationEndpointGrpcSettingsArgsDict']] grpc_settings: Settings of the gRPC notification endpoint including the endpoint URL and the retry duration.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         """
@@ -155,7 +155,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 grpc_settings: Optional[pulumi.Input[pulumi.InputType['NotificationEndpointGrpcSettingsArgs']]] = None,
+                 grpc_settings: Optional[pulumi.Input[Union['NotificationEndpointGrpcSettingsArgs', 'NotificationEndpointGrpcSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,

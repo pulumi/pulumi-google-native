@@ -120,9 +120,9 @@ class Model(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
+                 state: Optional[pulumi.Input[Union['ModelStateArgs', 'ModelStateArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tflite_model: Optional[pulumi.Input[pulumi.InputType['TfLiteModelArgs']]] = None,
+                 tflite_model: Optional[pulumi.Input[Union['TfLiteModelArgs', 'TfLiteModelArgsDict']]] = None,
                  __props__=None):
         """
         Creates a model in Firebase ML. The longrunning operation will eventually return a Model
@@ -131,9 +131,9 @@ class Model(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
         :param pulumi.Input[str] name: The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
-        :param pulumi.Input[pulumi.InputType['ModelStateArgs']] state: State common to all model types. Includes publishing and validation information.
+        :param pulumi.Input[Union['ModelStateArgs', 'ModelStateArgsDict']] state: State common to all model types. Includes publishing and validation information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: User defined tags which can be used to group/filter models during listing
-        :param pulumi.Input[pulumi.InputType['TfLiteModelArgs']] tflite_model: A TFLite Model
+        :param pulumi.Input[Union['TfLiteModelArgs', 'TfLiteModelArgsDict']] tflite_model: A TFLite Model
         """
         ...
     @overload
@@ -162,9 +162,9 @@ class Model(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
+                 state: Optional[pulumi.Input[Union['ModelStateArgs', 'ModelStateArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tflite_model: Optional[pulumi.Input[pulumi.InputType['TfLiteModelArgs']]] = None,
+                 tflite_model: Optional[pulumi.Input[Union['TfLiteModelArgs', 'TfLiteModelArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

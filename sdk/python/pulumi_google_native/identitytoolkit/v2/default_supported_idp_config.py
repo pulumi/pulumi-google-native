@@ -145,7 +145,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apple_sign_in_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs']]] = None,
+                 apple_sign_in_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgsDict']]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -159,7 +159,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs']] apple_sign_in_config: Additional config for Apple-based projects.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgsDict']] apple_sign_in_config: Additional config for Apple-based projects.
         :param pulumi.Input[str] client_id: OAuth client ID.
         :param pulumi.Input[str] client_secret: OAuth client secret.
         :param pulumi.Input[bool] enabled: True if allows the user to sign in with the provider.
@@ -190,7 +190,7 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apple_sign_in_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs']]] = None,
+                 apple_sign_in_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigArgsDict']]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,

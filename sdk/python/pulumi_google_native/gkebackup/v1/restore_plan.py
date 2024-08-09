@@ -149,7 +149,7 @@ class RestorePlan(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restore_config: Optional[pulumi.Input[pulumi.InputType['RestoreConfigArgs']]] = None,
+                 restore_config: Optional[pulumi.Input[Union['RestoreConfigArgs', 'RestoreConfigArgsDict']]] = None,
                  restore_plan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -162,7 +162,7 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         :param pulumi.Input[str] description: Optional. User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A set of custom labels supplied by user.
-        :param pulumi.Input[pulumi.InputType['RestoreConfigArgs']] restore_config: Configuration of Restores created via this RestorePlan.
+        :param pulumi.Input[Union['RestoreConfigArgs', 'RestoreConfigArgsDict']] restore_config: Configuration of Restores created via this RestorePlan.
         :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
         """
         ...
@@ -196,7 +196,7 @@ class RestorePlan(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restore_config: Optional[pulumi.Input[pulumi.InputType['RestoreConfigArgs']]] = None,
+                 restore_config: Optional[pulumi.Input[Union['RestoreConfigArgs', 'RestoreConfigArgsDict']]] = None,
                  restore_plan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

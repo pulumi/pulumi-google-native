@@ -165,29 +165,29 @@ class GuestPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[pulumi.InputType['AssignmentArgs']]] = None,
+                 assignment: Optional[pulumi.Input[Union['AssignmentArgs', 'AssignmentArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PackageRepositoryArgs', 'PackageRepositoryArgsDict']]]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PackageArgs', 'PackageArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SoftwareRecipeArgs', 'SoftwareRecipeArgsDict']]]]] = None,
                  __props__=None):
         """
         Create an OS Config guest policy.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        :param pulumi.Input[Union['AssignmentArgs', 'AssignmentArgsDict']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[str] guest_policy_id: Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
         :param pulumi.Input[str] name: Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]] packages: The software packages to be managed by this policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PackageRepositoryArgs', 'PackageRepositoryArgsDict']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PackageArgs', 'PackageArgsDict']]]] packages: The software packages to be managed by this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SoftwareRecipeArgs', 'SoftwareRecipeArgsDict']]]] recipes: A list of Recipes to install on the VM instance.
         """
         ...
     @overload
@@ -213,15 +213,15 @@ class GuestPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment: Optional[pulumi.Input[pulumi.InputType['AssignmentArgs']]] = None,
+                 assignment: Optional[pulumi.Input[Union['AssignmentArgs', 'AssignmentArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]]] = None,
-                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]]] = None,
+                 package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PackageRepositoryArgs', 'PackageRepositoryArgsDict']]]]] = None,
+                 packages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PackageArgs', 'PackageArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]]] = None,
+                 recipes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SoftwareRecipeArgs', 'SoftwareRecipeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

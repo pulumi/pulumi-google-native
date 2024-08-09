@@ -138,10 +138,10 @@ class InstanceTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['InstancePropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['InstancePropertiesArgs', 'InstancePropertiesArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
-                 source_instance_params: Optional[pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']]] = None,
+                 source_instance_params: Optional[pulumi.Input[Union['SourceInstanceParamsArgs', 'SourceInstanceParamsArgsDict']]] = None,
                  __props__=None):
         """
         Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
@@ -150,10 +150,10 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[pulumi.InputType['InstancePropertiesArgs']] properties: The instance properties for this instance template.
+        :param pulumi.Input[Union['InstancePropertiesArgs', 'InstancePropertiesArgsDict']] properties: The instance properties for this instance template.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_instance: The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
-        :param pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']] source_instance_params: The source instance params to use to create this instance template.
+        :param pulumi.Input[Union['SourceInstanceParamsArgs', 'SourceInstanceParamsArgsDict']] source_instance_params: The source instance params to use to create this instance template.
         """
         ...
     @overload
@@ -182,10 +182,10 @@ class InstanceTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['InstancePropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['InstancePropertiesArgs', 'InstancePropertiesArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
-                 source_instance_params: Optional[pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']]] = None,
+                 source_instance_params: Optional[pulumi.Input[Union['SourceInstanceParamsArgs', 'SourceInstanceParamsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

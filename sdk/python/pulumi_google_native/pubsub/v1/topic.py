@@ -165,11 +165,11 @@ class Topic(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
+                 message_storage_policy: Optional[pulumi.Input[Union['MessageStoragePolicyArgs', 'MessageStoragePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
-                 schema_settings: Optional[pulumi.Input[pulumi.InputType['SchemaSettingsArgs']]] = None,
+                 schema_settings: Optional[pulumi.Input[Union['SchemaSettingsArgs', 'SchemaSettingsArgsDict']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -180,10 +180,10 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         :param pulumi.Input[str] message_retention_duration: Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
-        :param pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']] message_storage_policy: Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+        :param pulumi.Input[Union['MessageStoragePolicyArgs', 'MessageStoragePolicyArgsDict']] message_storage_policy: Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
         :param pulumi.Input[str] name: The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[bool] satisfies_pzs: Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
-        :param pulumi.Input[pulumi.InputType['SchemaSettingsArgs']] schema_settings: Optional. Settings for validating messages published against a schema.
+        :param pulumi.Input[Union['SchemaSettingsArgs', 'SchemaSettingsArgsDict']] schema_settings: Optional. Settings for validating messages published against a schema.
         """
         ...
     @overload
@@ -212,11 +212,11 @@ class Topic(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
-                 message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
+                 message_storage_policy: Optional[pulumi.Input[Union['MessageStoragePolicyArgs', 'MessageStoragePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
-                 schema_settings: Optional[pulumi.Input[pulumi.InputType['SchemaSettingsArgs']]] = None,
+                 schema_settings: Optional[pulumi.Input[Union['SchemaSettingsArgs', 'SchemaSettingsArgsDict']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

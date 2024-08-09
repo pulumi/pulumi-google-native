@@ -290,22 +290,22 @@ class Node(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
+                 accelerator_config: Optional[pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttachedDiskArgs', 'AttachedDiskArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  health: Optional[pulumi.Input['NodeHealth']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[Union['SchedulingConfigArgs', 'SchedulingConfigArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[Union['ServiceAccountArgs', 'ServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ShieldedInstanceConfigArgs', 'ShieldedInstanceConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -314,20 +314,20 @@ class Node(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']] accelerator_config: The AccleratorConfig for the TPU Node.
+        :param pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']] accelerator_config: The AccleratorConfig for the TPU Node.
         :param pulumi.Input[str] accelerator_type: Optional. The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]] data_disks: The additional data disks for the Node.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttachedDiskArgs', 'AttachedDiskArgsDict']]]] data_disks: The additional data disks for the Node.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
         :param pulumi.Input['NodeHealth'] health: The health status of the TPU node.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
-        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configurations for the TPU node.
+        :param pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']] network_config: Network configurations for the TPU node.
         :param pulumi.Input[str] node_id: The unqualified resource name.
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
-        :param pulumi.Input[pulumi.InputType['SchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
-        :param pulumi.Input[pulumi.InputType['ServiceAccountArgs']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
-        :param pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']] shielded_instance_config: Shielded Instance options.
+        :param pulumi.Input[Union['SchedulingConfigArgs', 'SchedulingConfigArgsDict']] scheduling_config: The scheduling options for this node.
+        :param pulumi.Input[Union['ServiceAccountArgs', 'ServiceAccountArgsDict']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+        :param pulumi.Input[Union['ShieldedInstanceConfigArgs', 'ShieldedInstanceConfigArgsDict']] shielded_instance_config: Shielded Instance options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
         ...
@@ -355,22 +355,22 @@ class Node(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
+                 accelerator_config: Optional[pulumi.Input[Union['AcceleratorConfigArgs', 'AcceleratorConfigArgsDict']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttachedDiskArgs', 'AttachedDiskArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  health: Optional[pulumi.Input['NodeHealth']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
-                 scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
+                 scheduling_config: Optional[pulumi.Input[Union['SchedulingConfigArgs', 'SchedulingConfigArgsDict']]] = None,
+                 service_account: Optional[pulumi.Input[Union['ServiceAccountArgs', 'ServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[Union['ShieldedInstanceConfigArgs', 'ShieldedInstanceConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

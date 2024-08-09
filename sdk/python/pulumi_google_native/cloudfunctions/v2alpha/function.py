@@ -195,32 +195,32 @@ class Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['BuildConfigArgs']]] = None,
+                 build_config: Optional[pulumi.Input[Union['BuildConfigArgs', 'BuildConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input['FunctionEnvironment']] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[Union['EventTriggerArgs', 'EventTriggerArgsDict']]] = None,
                  function_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_config: Optional[pulumi.Input[pulumi.InputType['ServiceConfigArgs']]] = None,
+                 service_config: Optional[pulumi.Input[Union['ServiceConfigArgs', 'ServiceConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BuildConfigArgs']] build_config: Describes the Build step of the function that builds a container from the given source.
+        :param pulumi.Input[Union['BuildConfigArgs', 'BuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container from the given source.
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is 1st Gen or 2nd Gen.
-        :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
+        :param pulumi.Input[Union['EventTriggerArgs', 'EventTriggerArgsDict']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
         :param pulumi.Input[str] function_id: The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[str] kms_key_name: [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
-        :param pulumi.Input[pulumi.InputType['ServiceConfigArgs']] service_config: Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
+        :param pulumi.Input[Union['ServiceConfigArgs', 'ServiceConfigArgsDict']] service_config: Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
         """
         ...
     @overload
@@ -246,17 +246,17 @@ class Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 build_config: Optional[pulumi.Input[pulumi.InputType['BuildConfigArgs']]] = None,
+                 build_config: Optional[pulumi.Input[Union['BuildConfigArgs', 'BuildConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input['FunctionEnvironment']] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[Union['EventTriggerArgs', 'EventTriggerArgsDict']]] = None,
                  function_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_config: Optional[pulumi.Input[pulumi.InputType['ServiceConfigArgs']]] = None,
+                 service_config: Optional[pulumi.Input[Union['ServiceConfigArgs', 'ServiceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

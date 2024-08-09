@@ -119,7 +119,7 @@ class Key(pulumi.CustomResource):
                  key_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input[pulumi.InputType['V2RestrictionsArgs']]] = None,
+                 restrictions: Optional[pulumi.Input[Union['V2RestrictionsArgs', 'V2RestrictionsArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
@@ -130,7 +130,7 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         :param pulumi.Input[str] display_name: Human-readable display name of this key that you can modify. The maximum length is 63 characters.
         :param pulumi.Input[str] key_id: User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
-        :param pulumi.Input[pulumi.InputType['V2RestrictionsArgs']] restrictions: Key restrictions.
+        :param pulumi.Input[Union['V2RestrictionsArgs', 'V2RestrictionsArgsDict']] restrictions: Key restrictions.
         """
         ...
     @overload
@@ -162,7 +162,7 @@ class Key(pulumi.CustomResource):
                  key_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input[pulumi.InputType['V2RestrictionsArgs']]] = None,
+                 restrictions: Optional[pulumi.Input[Union['V2RestrictionsArgs', 'V2RestrictionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

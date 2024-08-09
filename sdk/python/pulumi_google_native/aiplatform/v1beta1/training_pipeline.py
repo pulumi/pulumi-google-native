@@ -193,12 +193,12 @@ class TrainingPipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
-                 input_data_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1InputDataConfigArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
+                 input_data_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1InputDataConfigArgs', 'GoogleCloudAiplatformV1beta1InputDataConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  model_id: Optional[pulumi.Input[str]] = None,
-                 model_to_upload: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelArgs']]] = None,
+                 model_to_upload: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelArgs', 'GoogleCloudAiplatformV1beta1ModelArgsDict']]] = None,
                  parent_model: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  training_task_definition: Optional[pulumi.Input[str]] = None,
@@ -211,11 +211,11 @@ class TrainingPipeline(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The user-defined name of this TrainingPipeline.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a TrainingPipeline. If set, this TrainingPipeline will be secured by this key. Note: Model trained by this TrainingPipeline is also secured by this key if model_to_upload is not set separately.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1InputDataConfigArgs']] input_data_config: Specifies Vertex AI owned input data that may be used for training the Model. The TrainingPipeline's training_task_definition should make clear whether this config is used and if there are any special requirements on how it should be filled. If nothing about this config is mentioned in the training_task_definition, then it should be assumed that the TrainingPipeline does not depend on this configuration.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for a TrainingPipeline. If set, this TrainingPipeline will be secured by this key. Note: Model trained by this TrainingPipeline is also secured by this key if model_to_upload is not set separately.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1InputDataConfigArgs', 'GoogleCloudAiplatformV1beta1InputDataConfigArgsDict']] input_data_config: Specifies Vertex AI owned input data that may be used for training the Model. The TrainingPipeline's training_task_definition should make clear whether this config is used and if there are any special requirements on how it should be filled. If nothing about this config is mentioned in the training_task_definition, then it should be assumed that the TrainingPipeline does not depend on this configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize TrainingPipelines. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] model_id: Optional. The ID to use for the uploaded Model, which will become the final component of the model resource name. This value may be up to 63 characters, and valid characters are `[a-z0-9_-]`. The first character cannot be a number or hyphen.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelArgs']] model_to_upload: Describes the Model that may be uploaded (via ModelService.UploadModel) by this TrainingPipeline. The TrainingPipeline's training_task_definition should make clear whether this Model description should be populated, and if there are any special requirements regarding how it should be filled. If nothing is mentioned in the training_task_definition, then it should be assumed that this field should not be filled and the training task either uploads the Model without a need of this information, or that training task does not support uploading a Model as part of the pipeline. When the Pipeline's state becomes `PIPELINE_STATE_SUCCEEDED` and the trained Model had been uploaded into Vertex AI, then the model_to_upload's resource name is populated. The Model is always uploaded into the Project and Location in which this pipeline is.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelArgs', 'GoogleCloudAiplatformV1beta1ModelArgsDict']] model_to_upload: Describes the Model that may be uploaded (via ModelService.UploadModel) by this TrainingPipeline. The TrainingPipeline's training_task_definition should make clear whether this Model description should be populated, and if there are any special requirements regarding how it should be filled. If nothing is mentioned in the training_task_definition, then it should be assumed that this field should not be filled and the training task either uploads the Model without a need of this information, or that training task does not support uploading a Model as part of the pipeline. When the Pipeline's state becomes `PIPELINE_STATE_SUCCEEDED` and the trained Model had been uploaded into Vertex AI, then the model_to_upload's resource name is populated. The Model is always uploaded into the Project and Location in which this pipeline is.
         :param pulumi.Input[str] parent_model: Optional. When specify this field, the `model_to_upload` will not be uploaded as a new model, instead, it will become a new version of this `parent_model`.
         :param pulumi.Input[str] training_task_definition: A Google Cloud Storage path to the YAML file that defines the training task which is responsible for producing the model artifact, and may also include additional auxiliary work. The definition files that can be used here are found in gs://google-cloud-aiplatform/schema/trainingjob/definition/. Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
         :param Any training_task_inputs: The training task's parameter(s), as specified in the training_task_definition's `inputs`.
@@ -246,12 +246,12 @@ class TrainingPipeline(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
-                 input_data_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1InputDataConfigArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
+                 input_data_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1InputDataConfigArgs', 'GoogleCloudAiplatformV1beta1InputDataConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  model_id: Optional[pulumi.Input[str]] = None,
-                 model_to_upload: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelArgs']]] = None,
+                 model_to_upload: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelArgs', 'GoogleCloudAiplatformV1beta1ModelArgsDict']]] = None,
                  parent_model: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  training_task_definition: Optional[pulumi.Input[str]] = None,

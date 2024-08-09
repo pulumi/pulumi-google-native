@@ -163,9 +163,9 @@ class ImportJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_source: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gcs_payload: Optional[pulumi.Input[pulumi.InputType['GCSPayloadInfoArgs']]] = None,
+                 gcs_payload: Optional[pulumi.Input[Union['GCSPayloadInfoArgs', 'GCSPayloadInfoArgsDict']]] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
-                 inline_payload: Optional[pulumi.Input[pulumi.InputType['InlinePayloadInfoArgs']]] = None,
+                 inline_payload: Optional[pulumi.Input[Union['InlinePayloadInfoArgs', 'InlinePayloadInfoArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -179,9 +179,9 @@ class ImportJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] asset_source: Reference to a source.
         :param pulumi.Input[str] display_name: User-friendly display name. Maximum length is 63 characters.
-        :param pulumi.Input[pulumi.InputType['GCSPayloadInfoArgs']] gcs_payload: The payload is in Google Cloud Storage.
+        :param pulumi.Input[Union['GCSPayloadInfoArgs', 'GCSPayloadInfoArgsDict']] gcs_payload: The payload is in Google Cloud Storage.
         :param pulumi.Input[str] import_job_id: Required. ID of the import job.
-        :param pulumi.Input[pulumi.InputType['InlinePayloadInfoArgs']] inline_payload: The payload is included in the request, mainly used for small import jobs.
+        :param pulumi.Input[Union['InlinePayloadInfoArgs', 'InlinePayloadInfoArgsDict']] inline_payload: The payload is included in the request, mainly used for small import jobs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
@@ -212,9 +212,9 @@ class ImportJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_source: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gcs_payload: Optional[pulumi.Input[pulumi.InputType['GCSPayloadInfoArgs']]] = None,
+                 gcs_payload: Optional[pulumi.Input[Union['GCSPayloadInfoArgs', 'GCSPayloadInfoArgsDict']]] = None,
                  import_job_id: Optional[pulumi.Input[str]] = None,
-                 inline_payload: Optional[pulumi.Input[pulumi.InputType['InlinePayloadInfoArgs']]] = None,
+                 inline_payload: Optional[pulumi.Input[Union['InlinePayloadInfoArgs', 'InlinePayloadInfoArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

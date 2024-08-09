@@ -579,33 +579,33 @@ class Instance(pulumi.CustomResource):
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input['InstanceDatabaseVersion']] = None,
-                 disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
-                 disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
+                 disk_encryption_configuration: Optional[pulumi.Input[Union['DiskEncryptionConfigurationArgs', 'DiskEncryptionConfigurationArgsDict']]] = None,
+                 disk_encryption_status: Optional[pulumi.Input[Union['DiskEncryptionStatusArgs', 'DiskEncryptionStatusArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
+                 failover_replica: Optional[pulumi.Input[Union['InstanceFailoverReplicaArgs', 'InstanceFailoverReplicaArgsDict']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpMappingArgs', 'IpMappingArgsDict']]]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 on_premises_configuration: Optional[pulumi.Input[pulumi.InputType['OnPremisesConfigurationArgs']]] = None,
-                 out_of_disk_report: Optional[pulumi.Input[pulumi.InputType['SqlOutOfDiskReportArgs']]] = None,
+                 on_premises_configuration: Optional[pulumi.Input[Union['OnPremisesConfigurationArgs', 'OnPremisesConfigurationArgsDict']]] = None,
+                 out_of_disk_report: Optional[pulumi.Input[Union['SqlOutOfDiskReportArgs', 'SqlOutOfDiskReportArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 replica_configuration: Optional[pulumi.Input[pulumi.InputType['ReplicaConfigurationArgs']]] = None,
+                 replica_configuration: Optional[pulumi.Input[Union['ReplicaConfigurationArgs', 'ReplicaConfigurationArgsDict']]] = None,
                  replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
-                 scheduled_maintenance: Optional[pulumi.Input[pulumi.InputType['SqlScheduledMaintenanceArgs']]] = None,
+                 scheduled_maintenance: Optional[pulumi.Input[Union['SqlScheduledMaintenanceArgs', 'SqlScheduledMaintenanceArgsDict']]] = None,
                  secondary_gce_zone: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 server_ca_cert: Optional[pulumi.Input[pulumi.InputType['SslCertArgs']]] = None,
+                 server_ca_cert: Optional[pulumi.Input[Union['SslCertArgs', 'SslCertArgsDict']]] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['SettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['SettingsArgs', 'SettingsArgsDict']]] = None,
                  sql_network_architecture: Optional[pulumi.Input['InstanceSqlNetworkArchitecture']] = None,
                  state: Optional[pulumi.Input['InstanceState']] = None,
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None,
@@ -619,33 +619,33 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
         :param pulumi.Input['InstanceDatabaseVersion'] database_version: The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance.
+        :param pulumi.Input[Union['DiskEncryptionConfigurationArgs', 'DiskEncryptionConfigurationArgsDict']] disk_encryption_configuration: Disk encryption configuration specific to an instance.
+        :param pulumi.Input[Union['DiskEncryptionStatusArgs', 'DiskEncryptionStatusArgsDict']] disk_encryption_status: Disk encryption status specific to an instance.
         :param pulumi.Input[str] etag: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
-        :param pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']] failover_replica: The name and status of the failover replica.
+        :param pulumi.Input[Union['InstanceFailoverReplicaArgs', 'InstanceFailoverReplicaArgsDict']] failover_replica: The name and status of the failover replica.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The instance type.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpMappingArgs', 'IpMappingArgsDict']]]] ip_addresses: The assigned IP addresses for the instance.
         :param pulumi.Input[str] ipv6_address: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
         :param pulumi.Input[str] kind: This is always `sql#instance`.
         :param pulumi.Input[str] maintenance_version: The current software version on the instance.
         :param pulumi.Input[str] master_instance_name: The name of the instance which will act as primary in the replication setup.
         :param pulumi.Input[str] max_disk_size: The maximum disk size of the instance in bytes.
         :param pulumi.Input[str] name: Name of the Cloud SQL instance. This does not include the project ID.
-        :param pulumi.Input[pulumi.InputType['OnPremisesConfigurationArgs']] on_premises_configuration: Configuration specific to on-premises instances.
-        :param pulumi.Input[pulumi.InputType['SqlOutOfDiskReportArgs']] out_of_disk_report: This field represents the report generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
+        :param pulumi.Input[Union['OnPremisesConfigurationArgs', 'OnPremisesConfigurationArgsDict']] on_premises_configuration: Configuration specific to on-premises instances.
+        :param pulumi.Input[Union['SqlOutOfDiskReportArgs', 'SqlOutOfDiskReportArgsDict']] out_of_disk_report: This field represents the report generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
         :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
         :param pulumi.Input[str] region: The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
-        :param pulumi.Input[pulumi.InputType['ReplicaConfigurationArgs']] replica_configuration: Configuration specific to failover replicas and read replicas.
+        :param pulumi.Input[Union['ReplicaConfigurationArgs', 'ReplicaConfigurationArgsDict']] replica_configuration: Configuration specific to failover replicas and read replicas.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: The replicas of the instance.
         :param pulumi.Input[str] root_password: Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         :param pulumi.Input[bool] satisfies_pzs: The status indicating if instance satisfiesPzs. Reserved for future use.
-        :param pulumi.Input[pulumi.InputType['SqlScheduledMaintenanceArgs']] scheduled_maintenance: The start time of any upcoming scheduled maintenance for this instance.
+        :param pulumi.Input[Union['SqlScheduledMaintenanceArgs', 'SqlScheduledMaintenanceArgsDict']] scheduled_maintenance: The start time of any upcoming scheduled maintenance for this instance.
         :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
         :param pulumi.Input[str] self_link: The URI of this resource.
-        :param pulumi.Input[pulumi.InputType['SslCertArgs']] server_ca_cert: SSL configuration.
+        :param pulumi.Input[Union['SslCertArgs', 'SslCertArgsDict']] server_ca_cert: SSL configuration.
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the instance.\\This property is read-only.
-        :param pulumi.Input[pulumi.InputType['SettingsArgs']] settings: The user settings.
+        :param pulumi.Input[Union['SettingsArgs', 'SettingsArgsDict']] settings: The user settings.
         :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
@@ -677,33 +677,33 @@ class Instance(pulumi.CustomResource):
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input['InstanceDatabaseVersion']] = None,
-                 disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
-                 disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
+                 disk_encryption_configuration: Optional[pulumi.Input[Union['DiskEncryptionConfigurationArgs', 'DiskEncryptionConfigurationArgsDict']]] = None,
+                 disk_encryption_status: Optional[pulumi.Input[Union['DiskEncryptionStatusArgs', 'DiskEncryptionStatusArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 failover_replica: Optional[pulumi.Input[pulumi.InputType['InstanceFailoverReplicaArgs']]] = None,
+                 failover_replica: Optional[pulumi.Input[Union['InstanceFailoverReplicaArgs', 'InstanceFailoverReplicaArgsDict']]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpMappingArgs', 'IpMappingArgsDict']]]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  maintenance_version: Optional[pulumi.Input[str]] = None,
                  master_instance_name: Optional[pulumi.Input[str]] = None,
                  max_disk_size: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 on_premises_configuration: Optional[pulumi.Input[pulumi.InputType['OnPremisesConfigurationArgs']]] = None,
-                 out_of_disk_report: Optional[pulumi.Input[pulumi.InputType['SqlOutOfDiskReportArgs']]] = None,
+                 on_premises_configuration: Optional[pulumi.Input[Union['OnPremisesConfigurationArgs', 'OnPremisesConfigurationArgsDict']]] = None,
+                 out_of_disk_report: Optional[pulumi.Input[Union['SqlOutOfDiskReportArgs', 'SqlOutOfDiskReportArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 replica_configuration: Optional[pulumi.Input[pulumi.InputType['ReplicaConfigurationArgs']]] = None,
+                 replica_configuration: Optional[pulumi.Input[Union['ReplicaConfigurationArgs', 'ReplicaConfigurationArgsDict']]] = None,
                  replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
-                 scheduled_maintenance: Optional[pulumi.Input[pulumi.InputType['SqlScheduledMaintenanceArgs']]] = None,
+                 scheduled_maintenance: Optional[pulumi.Input[Union['SqlScheduledMaintenanceArgs', 'SqlScheduledMaintenanceArgsDict']]] = None,
                  secondary_gce_zone: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 server_ca_cert: Optional[pulumi.Input[pulumi.InputType['SslCertArgs']]] = None,
+                 server_ca_cert: Optional[pulumi.Input[Union['SslCertArgs', 'SslCertArgsDict']]] = None,
                  service_account_email_address: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[pulumi.InputType['SettingsArgs']]] = None,
+                 settings: Optional[pulumi.Input[Union['SettingsArgs', 'SettingsArgsDict']]] = None,
                  sql_network_architecture: Optional[pulumi.Input['InstanceSqlNetworkArchitecture']] = None,
                  state: Optional[pulumi.Input['InstanceState']] = None,
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None,

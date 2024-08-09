@@ -455,10 +455,10 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 application_info: Optional[pulumi.Input[pulumi.InputType['ApplicationInfoArgs']]] = None,
+                 application_info: Optional[pulumi.Input[Union['ApplicationInfoArgs', 'ApplicationInfoArgsDict']]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
-                 compensation_info: Optional[pulumi.Input[pulumi.InputType['CompensationInfoArgs']]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CustomAttributeArgs']]]]] = None,
+                 compensation_info: Optional[pulumi.Input[Union['CompensationInfoArgs', 'CompensationInfoArgsDict']]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['CustomAttributeArgs', 'CustomAttributeArgsDict']]]]] = None,
                  degree_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -473,7 +473,7 @@ class Job(pulumi.CustomResource):
                  posting_expire_time: Optional[pulumi.Input[str]] = None,
                  posting_publish_time: Optional[pulumi.Input[str]] = None,
                  posting_region: Optional[pulumi.Input['JobPostingRegion']] = None,
-                 processing_options: Optional[pulumi.Input[pulumi.InputType['ProcessingOptionsArgs']]] = None,
+                 processing_options: Optional[pulumi.Input[Union['ProcessingOptionsArgs', 'ProcessingOptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  promotion_value: Optional[pulumi.Input[int]] = None,
                  qualifications: Optional[pulumi.Input[str]] = None,
@@ -488,10 +488,10 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
-        :param pulumi.Input[pulumi.InputType['ApplicationInfoArgs']] application_info: At least one field within ApplicationInfo must be specified. Job application information.
+        :param pulumi.Input[Union['ApplicationInfoArgs', 'ApplicationInfoArgsDict']] application_info: At least one field within ApplicationInfo must be specified. Job application information.
         :param pulumi.Input[str] company_name: The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
-        :param pulumi.Input[pulumi.InputType['CompensationInfoArgs']] compensation_info: Optional. Job compensation information.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CustomAttributeArgs']]]] custom_attributes: Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
+        :param pulumi.Input[Union['CompensationInfoArgs', 'CompensationInfoArgsDict']] compensation_info: Optional. Job compensation information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['CustomAttributeArgs', 'CustomAttributeArgsDict']]]] custom_attributes: Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         :param pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]] degree_types: Optional. The desired education degrees for the job, such as Bachelors, Masters.
         :param pulumi.Input[str] department: Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] description: The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
@@ -506,7 +506,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] posting_expire_time: Optional but strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API or updated with the UpdateJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company_name, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum of open jobs count over the past week, otherwise jobs with earlier expire time are cleaned first. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. Timestamp before the instant request is made is considered valid, the job will be treated as expired immediately. If this value is not provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value is not provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include expiry_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated.
         :param pulumi.Input[str] posting_publish_time: Optional. The timestamp this job posting was most recently published. The default value is the time the request arrives at the server. Invalid timestamps are ignored.
         :param pulumi.Input['JobPostingRegion'] posting_region: Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
-        :param pulumi.Input[pulumi.InputType['ProcessingOptionsArgs']] processing_options: Optional. Options for job processing.
+        :param pulumi.Input[Union['ProcessingOptionsArgs', 'ProcessingOptionsArgsDict']] processing_options: Optional. Options for job processing.
         :param pulumi.Input[int] promotion_value: Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
         :param pulumi.Input[str] qualifications: Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
         :param pulumi.Input[str] requisition_id: The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
@@ -539,10 +539,10 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 application_info: Optional[pulumi.Input[pulumi.InputType['ApplicationInfoArgs']]] = None,
+                 application_info: Optional[pulumi.Input[Union['ApplicationInfoArgs', 'ApplicationInfoArgsDict']]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
-                 compensation_info: Optional[pulumi.Input[pulumi.InputType['CompensationInfoArgs']]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['CustomAttributeArgs']]]]] = None,
+                 compensation_info: Optional[pulumi.Input[Union['CompensationInfoArgs', 'CompensationInfoArgsDict']]] = None,
+                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['CustomAttributeArgs', 'CustomAttributeArgsDict']]]]] = None,
                  degree_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -557,7 +557,7 @@ class Job(pulumi.CustomResource):
                  posting_expire_time: Optional[pulumi.Input[str]] = None,
                  posting_publish_time: Optional[pulumi.Input[str]] = None,
                  posting_region: Optional[pulumi.Input['JobPostingRegion']] = None,
-                 processing_options: Optional[pulumi.Input[pulumi.InputType['ProcessingOptionsArgs']]] = None,
+                 processing_options: Optional[pulumi.Input[Union['ProcessingOptionsArgs', 'ProcessingOptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  promotion_value: Optional[pulumi.Input[int]] = None,
                  qualifications: Optional[pulumi.Input[str]] = None,

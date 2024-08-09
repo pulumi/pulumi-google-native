@@ -209,9 +209,9 @@ class User(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordValidationPolicyArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[Union['UserPasswordValidationPolicyArgs', 'UserPasswordValidationPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sqlserver_user_details: Optional[pulumi.Input[pulumi.InputType['SqlServerUserDetailsArgs']]] = None,
+                 sqlserver_user_details: Optional[pulumi.Input[Union['SqlServerUserDetailsArgs', 'SqlServerUserDetailsArgsDict']]] = None,
                  type: Optional[pulumi.Input['UserType']] = None,
                  __props__=None):
         """
@@ -226,7 +226,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] kind: This is always `sql#user`.
         :param pulumi.Input[str] name: The name of the user in the Cloud SQL instance. Can be omitted for `update` because it is already specified in the URL.
         :param pulumi.Input[str] password: The password for the user.
-        :param pulumi.Input[pulumi.InputType['UserPasswordValidationPolicyArgs']] password_policy: User level password validation policy.
+        :param pulumi.Input[Union['UserPasswordValidationPolicyArgs', 'UserPasswordValidationPolicyArgsDict']] password_policy: User level password validation policy.
         :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for `update` because it is already specified on the URL.
         :param pulumi.Input['UserType'] type: The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
         """
@@ -261,9 +261,9 @@ class User(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordValidationPolicyArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[Union['UserPasswordValidationPolicyArgs', 'UserPasswordValidationPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sqlserver_user_details: Optional[pulumi.Input[pulumi.InputType['SqlServerUserDetailsArgs']]] = None,
+                 sqlserver_user_details: Optional[pulumi.Input[Union['SqlServerUserDetailsArgs', 'SqlServerUserDetailsArgsDict']]] = None,
                  type: Optional[pulumi.Input['UserType']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

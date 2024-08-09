@@ -94,11 +94,11 @@ class BrowserDlpRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs']]] = None,
+                 group: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  partner_tenant_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rule_setting: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs']]] = None,
+                 rule_setting: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new BrowserDlpRule in a given organization and PartnerTenant.
@@ -106,9 +106,9 @@ class BrowserDlpRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs']] group: The group to which this Rule should be applied to.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgsDict']] group: The group to which this Rule should be applied to.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs']] rule_setting: The policy settings to apply.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgsDict']] rule_setting: The policy settings to apply.
         """
         ...
     @overload
@@ -135,11 +135,11 @@ class BrowserDlpRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs']]] = None,
+                 group: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  partner_tenant_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rule_setting: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs']]] = None,
+                 rule_setting: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

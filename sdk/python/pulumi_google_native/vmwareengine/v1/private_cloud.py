@@ -146,8 +146,8 @@ class PrivateCloud(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_cluster: Optional[pulumi.Input[pulumi.InputType['ManagementClusterArgs']]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 management_cluster: Optional[pulumi.Input[Union['ManagementClusterArgs', 'ManagementClusterArgsDict']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  private_cloud_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -160,8 +160,8 @@ class PrivateCloud(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description for this private cloud.
-        :param pulumi.Input[pulumi.InputType['ManagementClusterArgs']] management_cluster: Input only. The management cluster for this private cloud. This field is required during creation of the private cloud to provide details for the default cluster. The following fields can't be changed after private cloud creation: `ManagementCluster.clusterId`, `ManagementCluster.nodeTypeId`.
-        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration of the private cloud.
+        :param pulumi.Input[Union['ManagementClusterArgs', 'ManagementClusterArgsDict']] management_cluster: Input only. The management cluster for this private cloud. This field is required during creation of the private cloud to provide details for the default cluster. The following fields can't be changed after private cloud creation: `ManagementCluster.clusterId`, `ManagementCluster.nodeTypeId`.
+        :param pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']] network_config: Network configuration of the private cloud.
         :param pulumi.Input[str] private_cloud_id: Required. The user-provided identifier of the private cloud to be created. This identifier must be unique among each `PrivateCloud` within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
         :param pulumi.Input[str] request_id: Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['PrivateCloudType'] type: Optional. Type of the private cloud. Defaults to STANDARD.
@@ -193,8 +193,8 @@ class PrivateCloud(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management_cluster: Optional[pulumi.Input[pulumi.InputType['ManagementClusterArgs']]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 management_cluster: Optional[pulumi.Input[Union['ManagementClusterArgs', 'ManagementClusterArgsDict']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  private_cloud_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,

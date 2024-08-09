@@ -110,7 +110,7 @@ class WorkflowInvocation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compilation_result: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input[pulumi.InputType['InvocationConfigArgs']]] = None,
+                 invocation_config: Optional[pulumi.Input[Union['InvocationConfigArgs', 'InvocationConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class WorkflowInvocation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] compilation_result: Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-        :param pulumi.Input[pulumi.InputType['InvocationConfigArgs']] invocation_config: Immutable. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[Union['InvocationConfigArgs', 'InvocationConfigArgsDict']] invocation_config: Immutable. If left unset, a default InvocationConfig will be used.
         :param pulumi.Input[str] workflow_config: Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
         """
         ...
@@ -152,7 +152,7 @@ class WorkflowInvocation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compilation_result: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input[pulumi.InputType['InvocationConfigArgs']]] = None,
+                 invocation_config: Optional[pulumi.Input[Union['InvocationConfigArgs', 'InvocationConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,

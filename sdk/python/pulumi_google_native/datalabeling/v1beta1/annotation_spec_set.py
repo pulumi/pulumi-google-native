@@ -84,7 +84,7 @@ class AnnotationSpecSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]]] = None,
+                 annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs', 'GoogleCloudDatalabelingV1beta1AnnotationSpecArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,7 @@ class AnnotationSpecSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]] annotation_specs: The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs', 'GoogleCloudDatalabelingV1beta1AnnotationSpecArgsDict']]]] annotation_specs: The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
         :param pulumi.Input[str] display_name: The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         """
@@ -124,7 +124,7 @@ class AnnotationSpecSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs']]]]] = None,
+                 annotation_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1AnnotationSpecArgs', 'GoogleCloudDatalabelingV1beta1AnnotationSpecArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

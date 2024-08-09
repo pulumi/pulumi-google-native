@@ -131,7 +131,7 @@ class SessionEntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs', 'GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgsDict']]]]] = None,
                  entity_override_mode: Optional[pulumi.Input['SessionEntityTypeEntityOverrideMode']] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class SessionEntityType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs']]]] entities: The collection of entities to override or supplement the custom entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs', 'GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgsDict']]]] entities: The collection of entities to override or supplement the custom entity type.
         :param pulumi.Input['SessionEntityTypeEntityOverrideMode'] entity_override_mode: Indicates whether the additional data should override or supplement the custom entity type definition.
         :param pulumi.Input[str] name: The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         """
@@ -173,7 +173,7 @@ class SessionEntityType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs', 'GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgsDict']]]]] = None,
                  entity_override_mode: Optional[pulumi.Input['SessionEntityTypeEntityOverrideMode']] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

@@ -98,7 +98,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 gke_policy: Optional[pulumi.Input[pulumi.InputType['GkePolicyArgs']]] = None,
+                 gke_policy: Optional[pulumi.Input[Union['GkePolicyArgs', 'GkePolicyArgsDict']]] = None,
                  platform_id: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A description comment about the policy.
-        :param pulumi.Input[pulumi.InputType['GkePolicyArgs']] gke_policy: Optional. GKE platform-specific policy.
+        :param pulumi.Input[Union['GkePolicyArgs', 'GkePolicyArgsDict']] gke_policy: Optional. GKE platform-specific policy.
         :param pulumi.Input[str] policy_id: Required. The platform policy ID.
         """
         ...
@@ -139,7 +139,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 gke_policy: Optional[pulumi.Input[pulumi.InputType['GkePolicyArgs']]] = None,
+                 gke_policy: Optional[pulumi.Input[Union['GkePolicyArgs', 'GkePolicyArgsDict']]] = None,
                  platform_id: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

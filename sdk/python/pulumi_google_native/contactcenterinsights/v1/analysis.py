@@ -94,7 +94,7 @@ class Analysis(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotator_selector: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']]] = None,
+                 annotator_selector: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs', 'GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgsDict']]] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class Analysis(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']] annotator_selector: To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        :param pulumi.Input[Union['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs', 'GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgsDict']] annotator_selector: To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
         :param pulumi.Input[str] name: Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
         """
         ...
@@ -132,7 +132,7 @@ class Analysis(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotator_selector: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']]] = None,
+                 annotator_selector: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs', 'GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgsDict']]] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

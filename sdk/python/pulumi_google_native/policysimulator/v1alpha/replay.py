@@ -66,7 +66,7 @@ class Replay(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1alphaReplayConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['GoogleCloudPolicysimulatorV1alphaReplayConfigArgs', 'GoogleCloudPolicysimulatorV1alphaReplayConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -78,7 +78,7 @@ class Replay(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1alphaReplayConfigArgs']] config: The configuration used for the `Replay`.
+        :param pulumi.Input[Union['GoogleCloudPolicysimulatorV1alphaReplayConfigArgs', 'GoogleCloudPolicysimulatorV1alphaReplayConfigArgsDict']] config: The configuration used for the `Replay`.
         """
         ...
     @overload
@@ -107,7 +107,7 @@ class Replay(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1alphaReplayConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['GoogleCloudPolicysimulatorV1alphaReplayConfigArgs', 'GoogleCloudPolicysimulatorV1alphaReplayConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):

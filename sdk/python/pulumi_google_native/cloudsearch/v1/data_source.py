@@ -173,7 +173,7 @@ class DataSource(pulumi.CustomResource):
                  disable_serving: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  indexing_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]]] = None,
+                 items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GSuitePrincipalArgs', 'GSuitePrincipalArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  return_thumbnail_urls: Optional[pulumi.Input[bool]] = None,
@@ -188,7 +188,7 @@ class DataSource(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_serving: Disable serving any search or assist results.
         :param pulumi.Input[str] display_name: Display name of the datasource The maximum length is 300 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] indexing_service_accounts: List of service accounts that have indexing access.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GSuitePrincipalArgs', 'GSuitePrincipalArgsDict']]]] items_visibility: This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
         :param pulumi.Input[str] name: The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: IDs of the Long Running Operations (LROs) currently running for this schema.
         :param pulumi.Input[bool] return_thumbnail_urls: Can a user request to get thumbnail URI for Items indexed in this data source.
@@ -222,7 +222,7 @@ class DataSource(pulumi.CustomResource):
                  disable_serving: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  indexing_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GSuitePrincipalArgs']]]]] = None,
+                 items_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GSuitePrincipalArgs', 'GSuitePrincipalArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  operation_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  return_thumbnail_urls: Optional[pulumi.Input[bool]] = None,

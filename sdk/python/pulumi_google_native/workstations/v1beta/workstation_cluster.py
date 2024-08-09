@@ -211,13 +211,13 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 domain_config: Optional[pulumi.Input[pulumi.InputType['DomainConfigArgs']]] = None,
+                 domain_config: Optional[pulumi.Input[Union['DomainConfigArgs', 'DomainConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
+                 private_cluster_config: Optional[pulumi.Input[Union['PrivateClusterConfigArgs', 'PrivateClusterConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -229,12 +229,12 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
         :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation cluster.
-        :param pulumi.Input[pulumi.InputType['DomainConfigArgs']] domain_config: Optional. Configuration options for a custom domain.
+        :param pulumi.Input[Union['DomainConfigArgs', 'DomainConfigArgsDict']] domain_config: Optional. Configuration options for a custom domain.
         :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Identifier. Full name of this workstation cluster.
         :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
-        :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Optional. Configuration for private workstation cluster.
+        :param pulumi.Input[Union['PrivateClusterConfigArgs', 'PrivateClusterConfigArgsDict']] private_cluster_config: Optional. Configuration for private workstation cluster.
         :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
         :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
         """
@@ -264,13 +264,13 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 domain_config: Optional[pulumi.Input[pulumi.InputType['DomainConfigArgs']]] = None,
+                 domain_config: Optional[pulumi.Input[Union['DomainConfigArgs', 'DomainConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
+                 private_cluster_config: Optional[pulumi.Input[Union['PrivateClusterConfigArgs', 'PrivateClusterConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,

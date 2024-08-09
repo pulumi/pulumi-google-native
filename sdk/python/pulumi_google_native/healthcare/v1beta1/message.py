@@ -207,9 +207,9 @@ class Message(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]]] = None,
+                 patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PatientIdArgs', 'PatientIdArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schematized_data: Optional[pulumi.Input[pulumi.InputType['SchematizedDataArgs']]] = None,
+                 schematized_data: Optional[pulumi.Input[Union['SchematizedDataArgs', 'SchematizedDataArgsDict']]] = None,
                  send_facility: Optional[pulumi.Input[str]] = None,
                  send_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -222,8 +222,8 @@ class Message(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] message_type: The message type for this message. MSH-9.1.
         :param pulumi.Input[str] name: Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]] patient_ids: All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-        :param pulumi.Input[pulumi.InputType['SchematizedDataArgs']] schematized_data: The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PatientIdArgs', 'PatientIdArgsDict']]]] patient_ids: All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+        :param pulumi.Input[Union['SchematizedDataArgs', 'SchematizedDataArgsDict']] schematized_data: The parsed version of the raw message data schematized according to this store's schemas and type definitions.
         :param pulumi.Input[str] send_facility: The hospital that this message came from. MSH-4.
         :param pulumi.Input[str] send_time: The datetime the sending application sent this message. MSH-7.
         """
@@ -258,9 +258,9 @@ class Message(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]]] = None,
+                 patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PatientIdArgs', 'PatientIdArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schematized_data: Optional[pulumi.Input[pulumi.InputType['SchematizedDataArgs']]] = None,
+                 schematized_data: Optional[pulumi.Input[Union['SchematizedDataArgs', 'SchematizedDataArgsDict']]] = None,
                  send_facility: Optional[pulumi.Input[str]] = None,
                  send_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):

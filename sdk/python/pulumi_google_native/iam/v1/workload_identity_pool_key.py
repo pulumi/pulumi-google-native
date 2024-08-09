@@ -119,7 +119,7 @@ class WorkloadIdentityPoolKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_data: Optional[pulumi.Input[pulumi.InputType['KeyDataArgs']]] = None,
+                 key_data: Optional[pulumi.Input[Union['KeyDataArgs', 'KeyDataArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider_id: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class WorkloadIdentityPoolKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KeyDataArgs']] key_data: Immutable. Public half of the asymmetric key.
+        :param pulumi.Input[Union['KeyDataArgs', 'KeyDataArgsDict']] key_data: Immutable. Public half of the asymmetric key.
         :param pulumi.Input['WorkloadIdentityPoolKeyUse'] use: The purpose of the key.
         :param pulumi.Input[str] workload_identity_pool_provider_key_id: Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
         """
@@ -162,7 +162,7 @@ class WorkloadIdentityPoolKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_data: Optional[pulumi.Input[pulumi.InputType['KeyDataArgs']]] = None,
+                 key_data: Optional[pulumi.Input[Union['KeyDataArgs', 'KeyDataArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider_id: Optional[pulumi.Input[str]] = None,

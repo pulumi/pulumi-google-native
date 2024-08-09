@@ -222,14 +222,14 @@ class ProvisioningConfig(pulumi.CustomResource):
                  custom_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  handover_service_account: Optional[pulumi.Input[str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeConfigArgs', 'VolumeConfigArgsDict']]]]] = None,
                  vpc_sc_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -243,13 +243,13 @@ class ProvisioningConfig(pulumi.CustomResource):
         :param pulumi.Input[str] custom_id: Optional. The user-defined identifier of the provisioning config.
         :param pulumi.Input[str] email: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
         :param pulumi.Input[str] handover_service_account: A service account to enable customers to access instance credentials upon handover.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]] instances: Instances to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]] instances: Instances to be created.
         :param pulumi.Input[str] location: Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: Networks to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]] networks: Networks to be created.
         :param pulumi.Input[str] pod: Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
         :param pulumi.Input[str] status_message: Optional status messages associated with the FAILED state.
         :param pulumi.Input[str] ticket_id: A generated ticket id to track provisioning request.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]] volumes: Volumes to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeConfigArgs', 'VolumeConfigArgsDict']]]] volumes: Volumes to be created.
         :param pulumi.Input[bool] vpc_sc_enabled: If true, VPC SC is enabled for the cluster.
         """
         ...
@@ -282,14 +282,14 @@ class ProvisioningConfig(pulumi.CustomResource):
                  custom_id: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
                  handover_service_account: Optional[pulumi.Input[str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceConfigArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
                  ticket_id: Optional[pulumi.Input[str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeConfigArgs']]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeConfigArgs', 'VolumeConfigArgsDict']]]]] = None,
                  vpc_sc_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

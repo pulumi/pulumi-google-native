@@ -162,9 +162,9 @@ class ServiceLbPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_capacity_drain: Optional[pulumi.Input[pulumi.InputType['ServiceLbPolicyAutoCapacityDrainArgs']]] = None,
+                 auto_capacity_drain: Optional[pulumi.Input[Union['ServiceLbPolicyAutoCapacityDrainArgs', 'ServiceLbPolicyAutoCapacityDrainArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 failover_config: Optional[pulumi.Input[pulumi.InputType['ServiceLbPolicyFailoverConfigArgs']]] = None,
+                 failover_config: Optional[pulumi.Input[Union['ServiceLbPolicyFailoverConfigArgs', 'ServiceLbPolicyFailoverConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input['ServiceLbPolicyLoadBalancingAlgorithm']] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -177,9 +177,9 @@ class ServiceLbPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServiceLbPolicyAutoCapacityDrainArgs']] auto_capacity_drain: Optional. Configuration to automatically move traffic away for unhealthy IG/NEG for the associated Backend Service.
+        :param pulumi.Input[Union['ServiceLbPolicyAutoCapacityDrainArgs', 'ServiceLbPolicyAutoCapacityDrainArgsDict']] auto_capacity_drain: Optional. Configuration to automatically move traffic away for unhealthy IG/NEG for the associated Backend Service.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[pulumi.InputType['ServiceLbPolicyFailoverConfigArgs']] failover_config: Optional. Configuration related to health based failover.
+        :param pulumi.Input[Union['ServiceLbPolicyFailoverConfigArgs', 'ServiceLbPolicyFailoverConfigArgsDict']] failover_config: Optional. Configuration related to health based failover.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the ServiceLbPolicy resource.
         :param pulumi.Input['ServiceLbPolicyLoadBalancingAlgorithm'] load_balancing_algorithm: Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
         :param pulumi.Input[str] name: Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
@@ -209,9 +209,9 @@ class ServiceLbPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_capacity_drain: Optional[pulumi.Input[pulumi.InputType['ServiceLbPolicyAutoCapacityDrainArgs']]] = None,
+                 auto_capacity_drain: Optional[pulumi.Input[Union['ServiceLbPolicyAutoCapacityDrainArgs', 'ServiceLbPolicyAutoCapacityDrainArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 failover_config: Optional[pulumi.Input[pulumi.InputType['ServiceLbPolicyFailoverConfigArgs']]] = None,
+                 failover_config: Optional[pulumi.Input[Union['ServiceLbPolicyFailoverConfigArgs', 'ServiceLbPolicyFailoverConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_algorithm: Optional[pulumi.Input['ServiceLbPolicyLoadBalancingAlgorithm']] = None,
                  location: Optional[pulumi.Input[str]] = None,

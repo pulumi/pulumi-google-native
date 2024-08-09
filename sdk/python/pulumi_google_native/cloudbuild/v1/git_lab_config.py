@@ -145,13 +145,13 @@ class GitLabConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitLabRepositoryIdArgs']]]]] = None,
-                 enterprise_config: Optional[pulumi.Input[pulumi.InputType['GitLabEnterpriseConfigArgs']]] = None,
+                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitLabRepositoryIdArgs', 'GitLabRepositoryIdArgsDict']]]]] = None,
+                 enterprise_config: Optional[pulumi.Input[Union['GitLabEnterpriseConfigArgs', 'GitLabEnterpriseConfigArgsDict']]] = None,
                  gitlab_config_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['GitLabSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Union['GitLabSecretsArgs', 'GitLabSecretsArgsDict']]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -159,11 +159,11 @@ class GitLabConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitLabRepositoryIdArgs']]]] connected_repositories: Connected GitLab.com or GitLabEnterprise repositories for this config.
-        :param pulumi.Input[pulumi.InputType['GitLabEnterpriseConfigArgs']] enterprise_config: Optional. GitLabEnterprise config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitLabRepositoryIdArgs', 'GitLabRepositoryIdArgsDict']]]] connected_repositories: Connected GitLab.com or GitLabEnterprise repositories for this config.
+        :param pulumi.Input[Union['GitLabEnterpriseConfigArgs', 'GitLabEnterpriseConfigArgsDict']] enterprise_config: Optional. GitLabEnterprise config.
         :param pulumi.Input[str] gitlab_config_id: Optional. The ID to use for the GitLabConfig, which will become the final component of the GitLabConfig’s resource name. gitlab_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
         :param pulumi.Input[str] name: The resource name for the config.
-        :param pulumi.Input[pulumi.InputType['GitLabSecretsArgs']] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input[Union['GitLabSecretsArgs', 'GitLabSecretsArgsDict']] secrets: Secret Manager secrets needed by the config.
         :param pulumi.Input[str] username: Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
         """
         ...
@@ -190,13 +190,13 @@ class GitLabConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GitLabRepositoryIdArgs']]]]] = None,
-                 enterprise_config: Optional[pulumi.Input[pulumi.InputType['GitLabEnterpriseConfigArgs']]] = None,
+                 connected_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GitLabRepositoryIdArgs', 'GitLabRepositoryIdArgsDict']]]]] = None,
+                 enterprise_config: Optional[pulumi.Input[Union['GitLabEnterpriseConfigArgs', 'GitLabEnterpriseConfigArgsDict']]] = None,
                  gitlab_config_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['GitLabSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Union['GitLabSecretsArgs', 'GitLabSecretsArgsDict']]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

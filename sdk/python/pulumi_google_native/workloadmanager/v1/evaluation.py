@@ -201,7 +201,7 @@ class Evaluation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_filter: Optional[pulumi.Input[pulumi.InputType['ResourceFilterArgs']]] = None,
+                 resource_filter: Optional[pulumi.Input[Union['ResourceFilterArgs', 'ResourceFilterArgsDict']]] = None,
                  rule_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -218,7 +218,7 @@ class Evaluation(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] name: name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['ResourceFilterArgs']] resource_filter: annotations as key value pairs
+        :param pulumi.Input[Union['ResourceFilterArgs', 'ResourceFilterArgsDict']] resource_filter: annotations as key value pairs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_names: the name of the rule
         :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
         """
@@ -256,7 +256,7 @@ class Evaluation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 resource_filter: Optional[pulumi.Input[pulumi.InputType['ResourceFilterArgs']]] = None,
+                 resource_filter: Optional[pulumi.Input[Union['ResourceFilterArgs', 'ResourceFilterArgsDict']]] = None,
                  rule_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  __props__=None):

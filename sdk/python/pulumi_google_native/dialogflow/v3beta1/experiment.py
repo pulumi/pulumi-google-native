@@ -314,7 +314,7 @@ class Experiment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 definition: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs']]] = None,
+                 definition: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs', 'GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -324,13 +324,13 @@ class Experiment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']]] = None,
-                 rollout_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']]] = None,
+                 result: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs', 'GoogleCloudDialogflowCxV3beta1ExperimentResultArgsDict']]] = None,
+                 rollout_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs', 'GoogleCloudDialogflowCxV3beta1RolloutConfigArgsDict']]] = None,
                  rollout_failure_reason: Optional[pulumi.Input[str]] = None,
-                 rollout_state: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']]] = None,
+                 rollout_state: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1RolloutStateArgs', 'GoogleCloudDialogflowCxV3beta1RolloutStateArgsDict']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ExperimentState']] = None,
-                 variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]]] = None,
+                 variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs', 'GoogleCloudDialogflowCxV3beta1VariantsHistoryArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates an Experiment in the specified Environment.
@@ -338,20 +338,20 @@ class Experiment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation time of this experiment.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs']] definition: The definition of the experiment.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs', 'GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgsDict']] definition: The definition of the experiment.
         :param pulumi.Input[str] description: The human-readable description of the experiment.
         :param pulumi.Input[str] display_name: The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         :param pulumi.Input[str] end_time: End time of this experiment.
         :param pulumi.Input[str] experiment_length: Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         :param pulumi.Input[str] last_update_time: Last update time of this experiment.
         :param pulumi.Input[str] name: The name of the experiment. Format: projects//locations//agents//environments//experiments/..
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']] result: Inference result of the experiment.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']] rollout_config: The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs', 'GoogleCloudDialogflowCxV3beta1ExperimentResultArgsDict']] result: Inference result of the experiment.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs', 'GoogleCloudDialogflowCxV3beta1RolloutConfigArgsDict']] rollout_config: The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
         :param pulumi.Input[str] rollout_failure_reason: The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']] rollout_state: State of the auto rollout process.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1RolloutStateArgs', 'GoogleCloudDialogflowCxV3beta1RolloutStateArgsDict']] rollout_state: State of the auto rollout process.
         :param pulumi.Input[str] start_time: Start time of this experiment.
         :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]] variants_history: The history of updates to the experiment variants.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs', 'GoogleCloudDialogflowCxV3beta1VariantsHistoryArgsDict']]]] variants_history: The history of updates to the experiment variants.
         """
         ...
     @overload
@@ -379,7 +379,7 @@ class Experiment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 definition: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs']]] = None,
+                 definition: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs', 'GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -389,13 +389,13 @@ class Experiment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']]] = None,
-                 rollout_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs']]] = None,
+                 result: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs', 'GoogleCloudDialogflowCxV3beta1ExperimentResultArgsDict']]] = None,
+                 rollout_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1RolloutConfigArgs', 'GoogleCloudDialogflowCxV3beta1RolloutConfigArgsDict']]] = None,
                  rollout_failure_reason: Optional[pulumi.Input[str]] = None,
-                 rollout_state: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1RolloutStateArgs']]] = None,
+                 rollout_state: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1RolloutStateArgs', 'GoogleCloudDialogflowCxV3beta1RolloutStateArgsDict']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ExperimentState']] = None,
-                 variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]]] = None,
+                 variants_history: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs', 'GoogleCloudDialogflowCxV3beta1VariantsHistoryArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

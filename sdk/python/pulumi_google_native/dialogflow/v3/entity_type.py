@@ -208,8 +208,8 @@ class EntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EntityTypeEntityArgs', 'GoogleCloudDialogflowCxV3EntityTypeEntityArgsDict']]]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs', 'GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input['EntityTypeKind']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -225,8 +225,8 @@ class EntityType(pulumi.CustomResource):
         :param pulumi.Input['EntityTypeAutoExpansionMode'] auto_expansion_mode: Indicates whether the entity type can be automatically expanded.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EntityTypeEntityArgs', 'GoogleCloudDialogflowCxV3EntityTypeEntityArgsDict']]]] entities: The collection of entity entries associated with the entity type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs', 'GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgsDict']]]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
         :param pulumi.Input['EntityTypeKind'] kind: Indicates the kind of entity type.
         :param pulumi.Input[str] language_code: The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
@@ -260,8 +260,8 @@ class EntityType(pulumi.CustomResource):
                  auto_expansion_mode: Optional[pulumi.Input['EntityTypeAutoExpansionMode']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_fuzzy_extraction: Optional[pulumi.Input[bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeEntityArgs']]]]] = None,
-                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs']]]]] = None,
+                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EntityTypeEntityArgs', 'GoogleCloudDialogflowCxV3EntityTypeEntityArgsDict']]]]] = None,
+                 excluded_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs', 'GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input['EntityTypeKind']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

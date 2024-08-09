@@ -315,11 +315,11 @@ class Report(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  from_time: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[str]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CustomReportMetricArgs']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1CustomReportMetricArgs', 'GoogleCloudApigeeV1CustomReportMetricArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offset: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ReportPropertyArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1ReportPropertyArgs', 'GoogleCloudApigeeV1ReportPropertyArgsDict']]]]] = None,
                  sort_by_cols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sort_order: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -339,10 +339,10 @@ class Report(pulumi.CustomResource):
         :param pulumi.Input[str] filter: This field contains the filter expression
         :param pulumi.Input[str] from_time: Legacy field: not used. Contains the from time for the report
         :param pulumi.Input[str] limit: Legacy field: not used This field contains the limit for the result retrieved
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CustomReportMetricArgs']]]] metrics: This contains the list of metrics
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1CustomReportMetricArgs', 'GoogleCloudApigeeV1CustomReportMetricArgsDict']]]] metrics: This contains the list of metrics
         :param pulumi.Input[str] name: Unique identifier for the report T his is a legacy field used to encode custom report unique id
         :param pulumi.Input[str] offset: Legacy field: not used. This field contains the offset for the data
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ReportPropertyArgs']]]] properties: This field contains report properties such as ui metadata etc.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1ReportPropertyArgs', 'GoogleCloudApigeeV1ReportPropertyArgsDict']]]] properties: This field contains report properties such as ui metadata etc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sort_by_cols: Legacy field: not used much. Contains the list of sort by columns
         :param pulumi.Input[str] sort_order: Legacy field: not used much. Contains the sort order for the sort columns
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Legacy field: not used. This field contains a list of tags associated with custom report
@@ -381,11 +381,11 @@ class Report(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  from_time: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[str]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CustomReportMetricArgs']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1CustomReportMetricArgs', 'GoogleCloudApigeeV1CustomReportMetricArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  offset: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ReportPropertyArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1ReportPropertyArgs', 'GoogleCloudApigeeV1ReportPropertyArgsDict']]]]] = None,
                  sort_by_cols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sort_order: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

@@ -112,7 +112,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input['IndexApiScope']] = None,
                  collection_group_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleFirestoreAdminV1IndexFieldArgs', 'GoogleFirestoreAdminV1IndexFieldArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input['IndexQueryScope']] = None,
                  __props__=None):
@@ -123,7 +123,7 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['IndexApiScope'] api_scope: The API scope supported by this index.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]] fields: The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleFirestoreAdminV1IndexFieldArgs', 'GoogleFirestoreAdminV1IndexFieldArgsDict']]]] fields: The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
         :param pulumi.Input['IndexQueryScope'] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
         """
         ...
@@ -154,7 +154,7 @@ class Index(pulumi.CustomResource):
                  api_scope: Optional[pulumi.Input['IndexApiScope']] = None,
                  collection_group_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleFirestoreAdminV1IndexFieldArgs', 'GoogleFirestoreAdminV1IndexFieldArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input['IndexQueryScope']] = None,
                  __props__=None):

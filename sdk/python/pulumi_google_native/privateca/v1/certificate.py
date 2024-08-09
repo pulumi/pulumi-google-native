@@ -208,7 +208,7 @@ class Certificate(pulumi.CustomResource):
                  ca_pool_id: Optional[pulumi.Input[str]] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
                  issuing_certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
@@ -228,7 +228,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_id: Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
         :param pulumi.Input[str] certificate_template: Immutable. The resource name for a CertificateTemplate used to issue this certificate, in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified, the caller must have the necessary permission to use this template. If this is omitted, no template will be used. This template must be in the same location as the Certificate.
-        :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
+        :param pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']] config: Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
         :param pulumi.Input[str] issuing_certificate_authority_id: Optional. The resource ID of the CertificateAuthority that should issue the certificate. This optional field will ignore the load-balancing scheme of the Pool and directly issue the certificate from the CA with the specified ID, contained in the same CaPool referenced by `parent`. Per-CA quota rules apply. If left empty, a CertificateAuthority will be chosen from the CaPool by the service. For example, to issue a Certificate from a Certificate Authority with resource name "projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca", you can set the parent to "projects/my-project/locations/us-central1/caPools/my-pool" and the issuing_certificate_authority_id to "my-ca".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
@@ -266,7 +266,7 @@ class Certificate(pulumi.CustomResource):
                  ca_pool_id: Optional[pulumi.Input[str]] = None,
                  certificate_id: Optional[pulumi.Input[str]] = None,
                  certificate_template: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['CertificateConfigArgs', 'CertificateConfigArgsDict']]] = None,
                  issuing_certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,

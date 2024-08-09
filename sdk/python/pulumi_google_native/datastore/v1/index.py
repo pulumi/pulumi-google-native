@@ -87,7 +87,7 @@ class Index(pulumi.CustomResource):
                  ancestor: Optional[pulumi.Input['IndexAncestor']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleDatastoreAdminV1IndexedPropertyArgs', 'GoogleDatastoreAdminV1IndexedPropertyArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During index creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single property cannot be created.
@@ -97,7 +97,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['IndexAncestor'] ancestor: The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         :param pulumi.Input[str] kind: The entity kind to which this index applies.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] properties: An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleDatastoreAdminV1IndexedPropertyArgs', 'GoogleDatastoreAdminV1IndexedPropertyArgsDict']]]] properties: An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
         """
         ...
     @overload
@@ -127,7 +127,7 @@ class Index(pulumi.CustomResource):
                  ancestor: Optional[pulumi.Input['IndexAncestor']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleDatastoreAdminV1IndexedPropertyArgs', 'GoogleDatastoreAdminV1IndexedPropertyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

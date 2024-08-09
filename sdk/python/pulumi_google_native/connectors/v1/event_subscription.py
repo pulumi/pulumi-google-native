@@ -174,10 +174,10 @@ class EventSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
-                 destinations: Optional[pulumi.Input[pulumi.InputType['EventSubscriptionDestinationArgs']]] = None,
+                 destinations: Optional[pulumi.Input[Union['EventSubscriptionDestinationArgs', 'EventSubscriptionDestinationArgsDict']]] = None,
                  event_subscription_id: Optional[pulumi.Input[str]] = None,
                  event_type_id: Optional[pulumi.Input[str]] = None,
-                 jms: Optional[pulumi.Input[pulumi.InputType['JMSArgs']]] = None,
+                 jms: Optional[pulumi.Input[Union['JMSArgs', 'JMSArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -189,10 +189,10 @@ class EventSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EventSubscriptionDestinationArgs']] destinations: Optional. The destination to hit when we receive an event
+        :param pulumi.Input[Union['EventSubscriptionDestinationArgs', 'EventSubscriptionDestinationArgsDict']] destinations: Optional. The destination to hit when we receive an event
         :param pulumi.Input[str] event_subscription_id: Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] event_type_id: Optional. Event type id of the event of current EventSubscription.
-        :param pulumi.Input[pulumi.InputType['JMSArgs']] jms: Optional. JMS is the source for the event listener.
+        :param pulumi.Input[Union['JMSArgs', 'JMSArgsDict']] jms: Optional. JMS is the source for the event listener.
         :param pulumi.Input[str] name: Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
         :param pulumi.Input[str] subscriber: Optional. name of the Subscriber for the current EventSubscription.
         :param pulumi.Input[str] subscriber_link: Optional. Link for Subscriber of the current EventSubscription.
@@ -222,10 +222,10 @@ class EventSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
-                 destinations: Optional[pulumi.Input[pulumi.InputType['EventSubscriptionDestinationArgs']]] = None,
+                 destinations: Optional[pulumi.Input[Union['EventSubscriptionDestinationArgs', 'EventSubscriptionDestinationArgsDict']]] = None,
                  event_subscription_id: Optional[pulumi.Input[str]] = None,
                  event_type_id: Optional[pulumi.Input[str]] = None,
-                 jms: Optional[pulumi.Input[pulumi.InputType['JMSArgs']]] = None,
+                 jms: Optional[pulumi.Input[Union['JMSArgs', 'JMSArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

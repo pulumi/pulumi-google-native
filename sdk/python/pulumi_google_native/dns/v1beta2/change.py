@@ -126,9 +126,9 @@ class Change(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
+                 additions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceRecordSetArgs', 'ResourceRecordSetArgsDict']]]]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
-                 deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
+                 deletions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceRecordSetArgs', 'ResourceRecordSetArgsDict']]]]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
@@ -142,9 +142,9 @@ class Change(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] additions: Which ResourceRecordSets to add?
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceRecordSetArgs', 'ResourceRecordSetArgsDict']]]] additions: Which ResourceRecordSets to add?
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] deletions: Which ResourceRecordSets to remove? Must match existing data exactly.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceRecordSetArgs', 'ResourceRecordSetArgsDict']]]] deletions: Which ResourceRecordSets to remove? Must match existing data exactly.
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
         """
         ...
@@ -174,9 +174,9 @@ class Change(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
+                 additions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceRecordSetArgs', 'ResourceRecordSetArgsDict']]]]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
-                 deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
+                 deletions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceRecordSetArgs', 'ResourceRecordSetArgsDict']]]]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,

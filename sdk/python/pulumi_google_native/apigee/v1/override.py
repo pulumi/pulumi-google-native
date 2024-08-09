@@ -101,7 +101,7 @@ class Override(pulumi.CustomResource):
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 sampling_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TraceSamplingConfigArgs']]] = None,
+                 sampling_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1TraceSamplingConfigArgs', 'GoogleCloudApigeeV1TraceSamplingConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
@@ -110,7 +110,7 @@ class Override(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_proxy: ID of the API proxy that will have its trace configuration overridden.
         :param pulumi.Input[str] name: ID of the trace configuration override specified as a system-generated UUID.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TraceSamplingConfigArgs']] sampling_config: Trace configuration to override.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1TraceSamplingConfigArgs', 'GoogleCloudApigeeV1TraceSamplingConfigArgsDict']] sampling_config: Trace configuration to override.
         """
         ...
     @overload
@@ -140,7 +140,7 @@ class Override(pulumi.CustomResource):
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 sampling_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TraceSamplingConfigArgs']]] = None,
+                 sampling_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1TraceSamplingConfigArgs', 'GoogleCloudApigeeV1TraceSamplingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

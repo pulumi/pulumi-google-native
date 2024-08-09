@@ -145,14 +145,14 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
+                 container_image: Optional[pulumi.Input[Union['ContainerImageArgs', 'ContainerImageArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input[pulumi.InputType['VmImageArgs']]] = None,
+                 vm_image: Optional[pulumi.Input[Union['VmImageArgs', 'VmImageArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Environment.
@@ -160,12 +160,12 @@ class Environment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ContainerImageArgs']] container_image: Use a container image to start the notebook instance.
+        :param pulumi.Input[Union['ContainerImageArgs', 'ContainerImageArgsDict']] container_image: Use a container image to start the notebook instance.
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
         :param pulumi.Input[str] environment_id: Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
-        :param pulumi.Input[pulumi.InputType['VmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
+        :param pulumi.Input[Union['VmImageArgs', 'VmImageArgsDict']] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """
         ...
     @overload
@@ -192,14 +192,14 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
+                 container_image: Optional[pulumi.Input[Union['ContainerImageArgs', 'ContainerImageArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 vm_image: Optional[pulumi.Input[pulumi.InputType['VmImageArgs']]] = None,
+                 vm_image: Optional[pulumi.Input[Union['VmImageArgs', 'VmImageArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -179,7 +179,7 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['AutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['AutoscaleArgs', 'AutoscaleArgsDict']]] = None,
                  concurrency: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input['ReservationEdition']] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
@@ -195,7 +195,7 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature.
+        :param pulumi.Input[Union['AutoscaleArgs', 'AutoscaleArgsDict']] autoscale: The configuration parameters for the auto scaling feature.
         :param pulumi.Input[str] concurrency: Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
         :param pulumi.Input['ReservationEdition'] edition: Edition of the reservation.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
@@ -228,7 +228,7 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['AutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['AutoscaleArgs', 'AutoscaleArgsDict']]] = None,
                  concurrency: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input['ReservationEdition']] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,

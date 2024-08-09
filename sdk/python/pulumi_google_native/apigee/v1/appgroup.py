@@ -133,7 +133,7 @@ class Appgroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
                  channel_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -146,7 +146,7 @@ class Appgroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]] attributes: A list of attributes
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]] attributes: A list of attributes
         :param pulumi.Input[str] channel_id: channel identifier identifies the owner maintaing this grouping.
         :param pulumi.Input[str] channel_uri: A reference to the associated storefront/marketplace.
         :param pulumi.Input[str] display_name: app group name displayed in the UI
@@ -177,7 +177,7 @@ class Appgroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
                  channel_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,

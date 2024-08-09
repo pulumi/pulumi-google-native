@@ -161,14 +161,14 @@ class FeatureOnlineStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs']]] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs']]] = None,
-                 embedding_management: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs']]] = None,
+                 bigtable: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgsDict']]] = None,
+                 dedicated_serving_endpoint: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 embedding_management: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 optimized: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']]] = None,
+                 optimized: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -177,13 +177,13 @@ class FeatureOnlineStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs']] bigtable: Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs']] dedicated_serving_endpoint: Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: Optional. The settings for embedding management in FeatureOnlineStore.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgsDict']] bigtable: Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgsDict']] dedicated_serving_endpoint: Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgsDict']] embedding_management: Optional. The settings for embedding management in FeatureOnlineStore.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[str] feature_online_store_id: Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']] optimized: Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgsDict']] optimized: Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
         """
         ...
     @overload
@@ -210,14 +210,14 @@ class FeatureOnlineStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs']]] = None,
-                 dedicated_serving_endpoint: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs']]] = None,
-                 embedding_management: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs']]] = None,
+                 bigtable: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgsDict']]] = None,
+                 dedicated_serving_endpoint: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
+                 embedding_management: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 optimized: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']]] = None,
+                 optimized: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs', 'GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

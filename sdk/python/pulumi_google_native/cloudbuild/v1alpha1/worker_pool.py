@@ -110,7 +110,7 @@ class WorkerPool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -121,7 +121,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
         :param pulumi.Input[str] project: The project ID of the GCP project for which the `WorkerPool` is created.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
-        :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
+        :param pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         :param pulumi.Input[str] worker_count: Total number of workers to be created across all requested regions.
         """
         ...
@@ -151,7 +151,7 @@ class WorkerPool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolRegionsItem']]]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

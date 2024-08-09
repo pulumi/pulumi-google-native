@@ -167,7 +167,7 @@ class TargetServer(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input['TargetServerProtocol']] = None,
-                 s_sl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']]] = None,
+                 s_sl_info: Optional[pulumi.Input[Union['GoogleCloudApigeeV1TlsInfoArgs', 'GoogleCloudApigeeV1TlsInfoArgsDict']]] = None,
                  __props__=None):
         """
         Creates a TargetServer in the specified environment.
@@ -180,7 +180,7 @@ class TargetServer(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource id of this target server. Values must match the regular expression 
         :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input['TargetServerProtocol'] protocol: Immutable. The protocol used by this TargetServer.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']] s_sl_info: Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1TlsInfoArgs', 'GoogleCloudApigeeV1TlsInfoArgsDict']] s_sl_info: Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
         """
         ...
     @overload
@@ -214,7 +214,7 @@ class TargetServer(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input['TargetServerProtocol']] = None,
-                 s_sl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']]] = None,
+                 s_sl_info: Optional[pulumi.Input[Union['GoogleCloudApigeeV1TlsInfoArgs', 'GoogleCloudApigeeV1TlsInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

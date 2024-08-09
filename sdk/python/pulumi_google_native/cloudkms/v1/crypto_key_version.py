@@ -107,7 +107,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
+                 external_protection_level_options: Optional[pulumi.Input[Union['ExternalProtectionLevelOptionsArgs', 'ExternalProtectionLevelOptionsArgsDict']]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        :param pulumi.Input[Union['ExternalProtectionLevelOptionsArgs', 'ExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         :param pulumi.Input['CryptoKeyVersionState'] state: The current state of the CryptoKeyVersion.
         """
         ...
@@ -150,7 +150,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
-                 external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
+                 external_protection_level_options: Optional[pulumi.Input[Union['ExternalProtectionLevelOptionsArgs', 'ExternalProtectionLevelOptionsArgsDict']]] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

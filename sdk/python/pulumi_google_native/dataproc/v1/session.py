@@ -194,14 +194,14 @@ class Session(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 environment_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
-                 jupyter_session: Optional[pulumi.Input[pulumi.InputType['JupyterConfigArgs']]] = None,
+                 environment_config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 jupyter_session: Optional[pulumi.Input[Union['JupyterConfigArgs', 'JupyterConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['RuntimeConfigArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']]] = None,
                  session_id: Optional[pulumi.Input[str]] = None,
                  session_template: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
@@ -211,12 +211,12 @@ class Session(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] environment_config: Optional. Environment configuration for the session execution.
-        :param pulumi.Input[pulumi.InputType['JupyterConfigArgs']] jupyter_session: Optional. Jupyter session config.
+        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] environment_config: Optional. Environment configuration for the session execution.
+        :param pulumi.Input[Union['JupyterConfigArgs', 'JupyterConfigArgsDict']] jupyter_session: Optional. Jupyter session config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with the session. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a session.
         :param pulumi.Input[str] name: The resource name of the session.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the service receives two CreateSessionRequests (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateSessionRequest)s with the same ID, the second request is ignored, and the first Session is created and stored in the backend.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-        :param pulumi.Input[pulumi.InputType['RuntimeConfigArgs']] runtime_config: Optional. Runtime configuration for the session execution.
+        :param pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']] runtime_config: Optional. Runtime configuration for the session execution.
         :param pulumi.Input[str] session_id: Required. The ID to use for the session, which becomes the final component of the session's resource name.This value must be 4-63 characters. Valid characters are /a-z-/.
         :param pulumi.Input[str] session_template: Optional. The session template used by the session.Only resource names, including project ID and location, are valid.Example: * https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in the same project and Dataproc region as the session.
         :param pulumi.Input[str] user: Optional. The email address of the user who owns the session.
@@ -245,14 +245,14 @@ class Session(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 environment_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
-                 jupyter_session: Optional[pulumi.Input[pulumi.InputType['JupyterConfigArgs']]] = None,
+                 environment_config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 jupyter_session: Optional[pulumi.Input[Union['JupyterConfigArgs', 'JupyterConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['RuntimeConfigArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']]] = None,
                  session_id: Optional[pulumi.Input[str]] = None,
                  session_template: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,

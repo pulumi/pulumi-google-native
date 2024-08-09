@@ -168,7 +168,7 @@ class DataExchange(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sharing_environment_config: Optional[pulumi.Input[pulumi.InputType['SharingEnvironmentConfigArgs']]] = None,
+                 sharing_environment_config: Optional[pulumi.Input[Union['SharingEnvironmentConfigArgs', 'SharingEnvironmentConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new data exchange.
@@ -182,7 +182,7 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[str] documentation: Optional. Documentation describing the data exchange.
         :param pulumi.Input[str] icon: Optional. Base64 encoded image representing the data exchange. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the content of the fields are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[str] primary_contact: Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
-        :param pulumi.Input[pulumi.InputType['SharingEnvironmentConfigArgs']] sharing_environment_config: Optional. Configurable data sharing environment option for a data exchange.
+        :param pulumi.Input[Union['SharingEnvironmentConfigArgs', 'SharingEnvironmentConfigArgsDict']] sharing_environment_config: Optional. Configurable data sharing environment option for a data exchange.
         """
         ...
     @overload
@@ -217,7 +217,7 @@ class DataExchange(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sharing_environment_config: Optional[pulumi.Input[pulumi.InputType['SharingEnvironmentConfigArgs']]] = None,
+                 sharing_environment_config: Optional[pulumi.Input[Union['SharingEnvironmentConfigArgs', 'SharingEnvironmentConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

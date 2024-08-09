@@ -115,7 +115,7 @@ class DataPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataMaskingPolicyArgs']]] = None,
+                 data_masking_policy: Optional[pulumi.Input[Union['DataMaskingPolicyArgs', 'DataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: Optional[pulumi.Input[str]] = None,
                  data_policy_type: Optional[pulumi.Input['DataPolicyDataPolicyType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -128,7 +128,7 @@ class DataPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DataMaskingPolicyArgs']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
+        :param pulumi.Input[Union['DataMaskingPolicyArgs', 'DataMaskingPolicyArgsDict']] data_masking_policy: The data masking policy that specifies the data masking rule to use.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {data_policy_id} in part of the resource name.
         :param pulumi.Input['DataPolicyDataPolicyType'] data_policy_type: Type of data policy.
         :param pulumi.Input[str] policy_tag: Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
@@ -158,7 +158,7 @@ class DataPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_masking_policy: Optional[pulumi.Input[pulumi.InputType['DataMaskingPolicyArgs']]] = None,
+                 data_masking_policy: Optional[pulumi.Input[Union['DataMaskingPolicyArgs', 'DataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: Optional[pulumi.Input[str]] = None,
                  data_policy_type: Optional[pulumi.Input['DataPolicyDataPolicyType']] = None,
                  location: Optional[pulumi.Input[str]] = None,

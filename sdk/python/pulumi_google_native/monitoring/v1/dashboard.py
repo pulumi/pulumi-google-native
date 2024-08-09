@@ -182,31 +182,31 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
-                 dashboard_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]]] = None,
+                 column_layout: Optional[pulumi.Input[Union['ColumnLayoutArgs', 'ColumnLayoutArgsDict']]] = None,
+                 dashboard_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
+                 grid_layout: Optional[pulumi.Input[Union['GridLayoutArgs', 'GridLayoutArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 mosaic_layout: Optional[pulumi.Input[pulumi.InputType['MosaicLayoutArgs']]] = None,
+                 mosaic_layout: Optional[pulumi.Input[Union['MosaicLayoutArgs', 'MosaicLayoutArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
+                 row_layout: Optional[pulumi.Input[Union['RowLayoutArgs', 'RowLayoutArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ColumnLayoutArgs']] column_layout: The content is divided into equally spaced columns and the widgets are arranged vertically.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] dashboard_filters: Filters to reduce the amount of data charted based on the filter criteria.
+        :param pulumi.Input[Union['ColumnLayoutArgs', 'ColumnLayoutArgsDict']] column_layout: The content is divided into equally spaced columns and the widgets are arranged vertically.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]] dashboard_filters: Filters to reduce the amount of data charted based on the filter criteria.
         :param pulumi.Input[str] display_name: The mutable, human-readable name.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
-        :param pulumi.Input[pulumi.InputType['GridLayoutArgs']] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
+        :param pulumi.Input[Union['GridLayoutArgs', 'GridLayoutArgsDict']] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to the dashboard
-        :param pulumi.Input[pulumi.InputType['MosaicLayoutArgs']] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
+        :param pulumi.Input[Union['MosaicLayoutArgs', 'MosaicLayoutArgsDict']] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
-        :param pulumi.Input[pulumi.InputType['RowLayoutArgs']] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
+        :param pulumi.Input[Union['RowLayoutArgs', 'RowLayoutArgsDict']] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
         ...
     @overload
@@ -232,16 +232,16 @@ class Dashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
-                 dashboard_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]]] = None,
+                 column_layout: Optional[pulumi.Input[Union['ColumnLayoutArgs', 'ColumnLayoutArgsDict']]] = None,
+                 dashboard_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardFilterArgs', 'DashboardFilterArgsDict']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
+                 grid_layout: Optional[pulumi.Input[Union['GridLayoutArgs', 'GridLayoutArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 mosaic_layout: Optional[pulumi.Input[pulumi.InputType['MosaicLayoutArgs']]] = None,
+                 mosaic_layout: Optional[pulumi.Input[Union['MosaicLayoutArgs', 'MosaicLayoutArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
+                 row_layout: Optional[pulumi.Input[Union['RowLayoutArgs', 'RowLayoutArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -301,22 +301,22 @@ class HealthCheck(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 grpc_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCHealthCheckArgs']]] = None,
+                 grpc_health_check: Optional[pulumi.Input[Union['GRPCHealthCheckArgs', 'GRPCHealthCheckArgsDict']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
-                 http2_health_check: Optional[pulumi.Input[pulumi.InputType['HTTP2HealthCheckArgs']]] = None,
-                 http_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPHealthCheckArgs']]] = None,
-                 https_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPSHealthCheckArgs']]] = None,
+                 http2_health_check: Optional[pulumi.Input[Union['HTTP2HealthCheckArgs', 'HTTP2HealthCheckArgsDict']]] = None,
+                 http_health_check: Optional[pulumi.Input[Union['HTTPHealthCheckArgs', 'HTTPHealthCheckArgsDict']]] = None,
+                 https_health_check: Optional[pulumi.Input[Union['HTTPSHealthCheckArgs', 'HTTPSHealthCheckArgsDict']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
-                 tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
+                 ssl_health_check: Optional[pulumi.Input[Union['SSLHealthCheckArgs', 'SSLHealthCheckArgsDict']]] = None,
+                 tcp_health_check: Optional[pulumi.Input[Union['TCPHealthCheckArgs', 'TCPHealthCheckArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['HealthCheckType']] = None,
-                 udp_health_check: Optional[pulumi.Input[pulumi.InputType['UDPHealthCheckArgs']]] = None,
+                 udp_health_check: Optional[pulumi.Input[Union['UDPHealthCheckArgs', 'UDPHealthCheckArgsDict']]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -328,7 +328,7 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
         :param pulumi.Input[str] kind: Type of the resource.
-        :param pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']] log_config: Configure logging on this health check.
+        :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_regions: The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
@@ -362,22 +362,22 @@ class HealthCheck(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 grpc_health_check: Optional[pulumi.Input[pulumi.InputType['GRPCHealthCheckArgs']]] = None,
+                 grpc_health_check: Optional[pulumi.Input[Union['GRPCHealthCheckArgs', 'GRPCHealthCheckArgsDict']]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
-                 http2_health_check: Optional[pulumi.Input[pulumi.InputType['HTTP2HealthCheckArgs']]] = None,
-                 http_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPHealthCheckArgs']]] = None,
-                 https_health_check: Optional[pulumi.Input[pulumi.InputType['HTTPSHealthCheckArgs']]] = None,
+                 http2_health_check: Optional[pulumi.Input[Union['HTTP2HealthCheckArgs', 'HTTP2HealthCheckArgsDict']]] = None,
+                 http_health_check: Optional[pulumi.Input[Union['HTTPHealthCheckArgs', 'HTTPHealthCheckArgsDict']]] = None,
+                 https_health_check: Optional[pulumi.Input[Union['HTTPSHealthCheckArgs', 'HTTPSHealthCheckArgsDict']]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['HealthCheckLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
-                 tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
+                 ssl_health_check: Optional[pulumi.Input[Union['SSLHealthCheckArgs', 'SSLHealthCheckArgsDict']]] = None,
+                 tcp_health_check: Optional[pulumi.Input[Union['TCPHealthCheckArgs', 'TCPHealthCheckArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['HealthCheckType']] = None,
-                 udp_health_check: Optional[pulumi.Input[pulumi.InputType['UDPHealthCheckArgs']]] = None,
+                 udp_health_check: Optional[pulumi.Input[Union['UDPHealthCheckArgs', 'UDPHealthCheckArgsDict']]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

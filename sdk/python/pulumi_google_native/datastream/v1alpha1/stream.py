@@ -223,17 +223,17 @@ class Stream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_all: Optional[pulumi.Input[pulumi.InputType['BackfillAllStrategyArgs']]] = None,
-                 backfill_none: Optional[pulumi.Input[pulumi.InputType['BackfillNoneStrategyArgs']]] = None,
+                 backfill_all: Optional[pulumi.Input[Union['BackfillAllStrategyArgs', 'BackfillAllStrategyArgsDict']]] = None,
+                 backfill_none: Optional[pulumi.Input[Union['BackfillNoneStrategyArgs', 'BackfillNoneStrategyArgsDict']]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 source_config: Optional[pulumi.Input[pulumi.InputType['SourceConfigArgs']]] = None,
+                 source_config: Optional[pulumi.Input[Union['SourceConfigArgs', 'SourceConfigArgsDict']]] = None,
                  state: Optional[pulumi.Input['StreamState']] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -243,15 +243,15 @@ class Stream(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BackfillAllStrategyArgs']] backfill_all: Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
-        :param pulumi.Input[pulumi.InputType['BackfillNoneStrategyArgs']] backfill_none: Do not automatically backfill any objects.
+        :param pulumi.Input[Union['BackfillAllStrategyArgs', 'BackfillAllStrategyArgsDict']] backfill_all: Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
+        :param pulumi.Input[Union['BackfillNoneStrategyArgs', 'BackfillNoneStrategyArgsDict']] backfill_none: Do not automatically backfill any objects.
         :param pulumi.Input[str] customer_managed_encryption_key: Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[pulumi.InputType['DestinationConfigArgs']] destination_config: Destination connection profile configuration.
+        :param pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']] destination_config: Destination connection profile configuration.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[bool] force: Optional. Create the stream without validating it.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['SourceConfigArgs']] source_config: Source connection profile configuration.
+        :param pulumi.Input[Union['SourceConfigArgs', 'SourceConfigArgsDict']] source_config: Source connection profile configuration.
         :param pulumi.Input['StreamState'] state: The state of the stream.
         :param pulumi.Input[str] stream_id: Required. The stream identifier.
         """
@@ -280,17 +280,17 @@ class Stream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_all: Optional[pulumi.Input[pulumi.InputType['BackfillAllStrategyArgs']]] = None,
-                 backfill_none: Optional[pulumi.Input[pulumi.InputType['BackfillNoneStrategyArgs']]] = None,
+                 backfill_all: Optional[pulumi.Input[Union['BackfillAllStrategyArgs', 'BackfillAllStrategyArgsDict']]] = None,
+                 backfill_none: Optional[pulumi.Input[Union['BackfillNoneStrategyArgs', 'BackfillNoneStrategyArgsDict']]] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 source_config: Optional[pulumi.Input[pulumi.InputType['SourceConfigArgs']]] = None,
+                 source_config: Optional[pulumi.Input[Union['SourceConfigArgs', 'SourceConfigArgsDict']]] = None,
                  state: Optional[pulumi.Input['StreamState']] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

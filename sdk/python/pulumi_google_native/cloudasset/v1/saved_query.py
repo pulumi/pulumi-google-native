@@ -127,7 +127,7 @@ class SavedQuery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[pulumi.InputType['QueryContentArgs']]] = None,
+                 content: Optional[pulumi.Input[Union['QueryContentArgs', 'QueryContentArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class SavedQuery(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['QueryContentArgs']] content: The query content.
+        :param pulumi.Input[Union['QueryContentArgs', 'QueryContentArgsDict']] content: The query content.
         :param pulumi.Input[str] description: The description of this saved query. This value should be fewer than 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters.
         :param pulumi.Input[str] name: The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
@@ -172,7 +172,7 @@ class SavedQuery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[pulumi.InputType['QueryContentArgs']]] = None,
+                 content: Optional[pulumi.Input[Union['QueryContentArgs', 'QueryContentArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,

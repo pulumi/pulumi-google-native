@@ -167,14 +167,14 @@ class TypeProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CollectionOverrideArgs']]]]] = None,
-                 credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
+                 collection_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CollectionOverrideArgs', 'CollectionOverrideArgsDict']]]]] = None,
+                 credential: Optional[pulumi.Input[Union['CredentialArgs', 'CredentialArgsDict']]] = None,
                  custom_certificate_authority_roots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  descriptor_url: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeProviderLabelEntryArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TypeProviderLabelEntryArgs', 'TypeProviderLabelEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['OptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['OptionsArgs', 'OptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -182,14 +182,14 @@ class TypeProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CollectionOverrideArgs']]]] collection_overrides: Allows resource handling overrides for specific collections
-        :param pulumi.Input[pulumi.InputType['CredentialArgs']] credential: Credential used when interacting with this type.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CollectionOverrideArgs', 'CollectionOverrideArgsDict']]]] collection_overrides: Allows resource handling overrides for specific collections
+        :param pulumi.Input[Union['CredentialArgs', 'CredentialArgsDict']] credential: Credential used when interacting with this type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_certificate_authority_roots: List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[str] descriptor_url: Descriptor Url for the this type provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeProviderLabelEntryArgs']]]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TypeProviderLabelEntryArgs', 'TypeProviderLabelEntryArgsDict']]]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[pulumi.InputType['OptionsArgs']] options: Options to apply when handling any resources in this service.
+        :param pulumi.Input[Union['OptionsArgs', 'OptionsArgsDict']] options: Options to apply when handling any resources in this service.
         """
         ...
     @overload
@@ -215,14 +215,14 @@ class TypeProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CollectionOverrideArgs']]]]] = None,
-                 credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
+                 collection_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CollectionOverrideArgs', 'CollectionOverrideArgsDict']]]]] = None,
+                 credential: Optional[pulumi.Input[Union['CredentialArgs', 'CredentialArgsDict']]] = None,
                  custom_certificate_authority_roots: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  descriptor_url: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeProviderLabelEntryArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TypeProviderLabelEntryArgs', 'TypeProviderLabelEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['OptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['OptionsArgs', 'OptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

@@ -162,13 +162,13 @@ class Membership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
-                 endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
+                 authority: Optional[pulumi.Input[Union['AuthorityArgs', 'AuthorityArgsDict']]] = None,
+                 endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['MonitoringConfigArgs', 'MonitoringConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -178,12 +178,12 @@ class Membership(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AuthorityArgs']] authority: Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
-        :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: Optional. Endpoint information to reach this member.
+        :param pulumi.Input[Union['AuthorityArgs', 'AuthorityArgsDict']] authority: Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        :param pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']] endpoint: Optional. Endpoint information to reach this member.
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this membership.
         :param pulumi.Input[str] membership_id: Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-        :param pulumi.Input[pulumi.InputType['MonitoringConfigArgs']] monitoring_config: Optional. The monitoring config information for this membership.
+        :param pulumi.Input[Union['MonitoringConfigArgs', 'MonitoringConfigArgsDict']] monitoring_config: Optional. The monitoring config information for this membership.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
@@ -211,13 +211,13 @@ class Membership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[pulumi.InputType['AuthorityArgs']]] = None,
-                 endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
+                 authority: Optional[pulumi.Input[Union['AuthorityArgs', 'AuthorityArgsDict']]] = None,
+                 endpoint: Optional[pulumi.Input[Union['MembershipEndpointArgs', 'MembershipEndpointArgsDict']]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[Union['MonitoringConfigArgs', 'MonitoringConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
