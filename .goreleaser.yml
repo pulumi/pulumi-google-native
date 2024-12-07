@@ -21,6 +21,8 @@ builds:
   ignore: []
   main: ./cmd/pulumi-resource-google-native/
   ldflags:
+  - -s
+  - -w
   - -X
     github.com/pulumi/pulumi-google-native/provider/pkg/version.Version={{.Tag}}
   binary: pulumi-resource-google-native
