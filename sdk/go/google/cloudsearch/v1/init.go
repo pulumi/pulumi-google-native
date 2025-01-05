@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudsearch/v1:DataSource":
 		r = &DataSource{}
+	case "google-native:cloudsearch/v1:Item":
+		r = &Item{}
 	case "google-native:cloudsearch/v1:SearchApplication":
 		r = &SearchApplication{}
 	default:

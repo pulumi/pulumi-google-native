@@ -13,20 +13,43 @@ from ._enums import *
 
 __all__ = [
     'CompositeFilterResponse',
+    'ContextAttributeResponse',
     'DataSourceRestrictionResponse',
     'DateResponse',
+    'DateValuesResponse',
+    'DoubleValuesResponse',
+    'EnumValuesResponse',
     'FacetOptionsResponse',
+    'FieldViolationResponse',
     'FilterOptionsResponse',
     'FilterResponse',
     'GSuitePrincipalResponse',
+    'HtmlValuesResponse',
     'IntegerFacetingOptionsResponse',
+    'IntegerValuesResponse',
+    'InteractionResponse',
+    'ItemAclResponse',
+    'ItemContentResponse',
+    'ItemMetadataResponse',
+    'ItemStatusResponse',
+    'ItemStructuredDataResponse',
+    'NamedPropertyResponse',
+    'ObjectValuesResponse',
+    'PrincipalResponse',
+    'ProcessingErrorResponse',
     'QueryInterpretationConfigResponse',
+    'RepositoryErrorResponse',
     'ScoringConfigResponse',
+    'SearchQualityMetadataResponse',
     'SortOptionsResponse',
     'SourceConfigResponse',
     'SourceCrowdingConfigResponse',
     'SourceResponse',
     'SourceScoringConfigResponse',
+    'StructuredDataObjectResponse',
+    'TextValuesResponse',
+    'TimestampValuesResponse',
+    'UploadItemRefResponse',
     'ValueFilterResponse',
     'ValueResponse',
 ]
@@ -77,6 +100,39 @@ class CompositeFilterResponse(dict):
         Sub filters.
         """
         return pulumi.get(self, "sub_filters")
+
+
+@pulumi.output_type
+class ContextAttributeResponse(dict):
+    """
+    A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request.
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request.
+        :param str name: The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched.
+        :param Sequence[str] values: Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the array is 32 characters. The value will be normalized (lower-cased) before being matched.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the array is 32 characters. The value will be normalized (lower-cased) before being matched.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -174,6 +230,64 @@ class DateResponse(dict):
 
 
 @pulumi.output_type
+class DateValuesResponse(dict):
+    """
+    List of date values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence['outputs.DateResponse']):
+        """
+        List of date values.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence['outputs.DateResponse']:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class DoubleValuesResponse(dict):
+    """
+    List of double values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence[float]):
+        """
+        List of double values.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[float]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class EnumValuesResponse(dict):
+    """
+    List of enum values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        """
+        List of enum values.
+        :param Sequence[str] values: The maximum allowable length for string values is 32 characters.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The maximum allowable length for string values is 32 characters.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class FacetOptionsResponse(dict):
     """
     Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
@@ -262,6 +376,35 @@ class FacetOptionsResponse(dict):
         Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
         """
         return pulumi.get(self, "source_name")
+
+
+@pulumi.output_type
+class FieldViolationResponse(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 field: str):
+        """
+        :param str description: The description of the error.
+        :param str field: Path of field with violation.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "field", field)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the error.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def field(self) -> str:
+        """
+        Path of field with violation.
+        """
+        return pulumi.get(self, "field")
 
 
 @pulumi.output_type
@@ -420,6 +563,28 @@ class GSuitePrincipalResponse(dict):
 
 
 @pulumi.output_type
+class HtmlValuesResponse(dict):
+    """
+    List of html values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        """
+        List of html values.
+        :param Sequence[str] values: The maximum allowable length for html values is 2048 characters.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The maximum allowable length for html values is 2048 characters.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class IntegerFacetingOptionsResponse(dict):
     """
     Used to specify integer faceting options.
@@ -456,6 +621,783 @@ class IntegerFacetingOptionsResponse(dict):
         Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
         """
         return pulumi.get(self, "integer_buckets")
+
+
+@pulumi.output_type
+class IntegerValuesResponse(dict):
+    """
+    List of integer values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        """
+        List of integer values.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class InteractionResponse(dict):
+    """
+    Represents an interaction between a user and an item.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "interactionTime":
+            suggest = "interaction_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InteractionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InteractionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InteractionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 interaction_time: str,
+                 principal: 'outputs.PrincipalResponse',
+                 type: str):
+        """
+        Represents an interaction between a user and an item.
+        :param str interaction_time: The time when the user acted on the item. If multiple actions of the same type exist for a single user, only the most recent action is recorded.
+        :param 'PrincipalResponse' principal: The user that acted on the item.
+        """
+        pulumi.set(__self__, "interaction_time", interaction_time)
+        pulumi.set(__self__, "principal", principal)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="interactionTime")
+    def interaction_time(self) -> str:
+        """
+        The time when the user acted on the item. If multiple actions of the same type exist for a single user, only the most recent action is recorded.
+        """
+        return pulumi.get(self, "interaction_time")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> 'outputs.PrincipalResponse':
+        """
+        The user that acted on the item.
+        """
+        return pulumi.get(self, "principal")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ItemAclResponse(dict):
+    """
+    Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aclInheritanceType":
+            suggest = "acl_inheritance_type"
+        elif key == "deniedReaders":
+            suggest = "denied_readers"
+        elif key == "inheritAclFrom":
+            suggest = "inherit_acl_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ItemAclResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ItemAclResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ItemAclResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acl_inheritance_type: str,
+                 denied_readers: Sequence['outputs.PrincipalResponse'],
+                 inherit_acl_from: str,
+                 owners: Sequence['outputs.PrincipalResponse'],
+                 readers: Sequence['outputs.PrincipalResponse']):
+        """
+        Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+        :param str acl_inheritance_type: Sets the type of access rules to apply when an item inherits its ACL from a parent. This should always be set in tandem with the inheritAclFrom field. Also, when the inheritAclFrom field is set, this field should be set to a valid AclInheritanceType.
+        :param Sequence['PrincipalResponse'] denied_readers: List of principals who are explicitly denied access to the item in search results. While principals are denied access by default, use denied readers to handle exceptions and override the list allowed readers. The maximum number of elements is 100.
+        :param str inherit_acl_from: The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters.
+        :param Sequence['PrincipalResponse'] owners: Optional. List of owners for the item. This field has no bearing on document access permissions. It does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number of elements is 5.
+        :param Sequence['PrincipalResponse'] readers: List of principals who are allowed to see the item in search results. Optional if inheriting permissions from another item or if the item is not intended to be visible, such as virtual containers. The maximum number of elements is 1000.
+        """
+        pulumi.set(__self__, "acl_inheritance_type", acl_inheritance_type)
+        pulumi.set(__self__, "denied_readers", denied_readers)
+        pulumi.set(__self__, "inherit_acl_from", inherit_acl_from)
+        pulumi.set(__self__, "owners", owners)
+        pulumi.set(__self__, "readers", readers)
+
+    @property
+    @pulumi.getter(name="aclInheritanceType")
+    def acl_inheritance_type(self) -> str:
+        """
+        Sets the type of access rules to apply when an item inherits its ACL from a parent. This should always be set in tandem with the inheritAclFrom field. Also, when the inheritAclFrom field is set, this field should be set to a valid AclInheritanceType.
+        """
+        return pulumi.get(self, "acl_inheritance_type")
+
+    @property
+    @pulumi.getter(name="deniedReaders")
+    def denied_readers(self) -> Sequence['outputs.PrincipalResponse']:
+        """
+        List of principals who are explicitly denied access to the item in search results. While principals are denied access by default, use denied readers to handle exceptions and override the list allowed readers. The maximum number of elements is 100.
+        """
+        return pulumi.get(self, "denied_readers")
+
+    @property
+    @pulumi.getter(name="inheritAclFrom")
+    def inherit_acl_from(self) -> str:
+        """
+        The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters.
+        """
+        return pulumi.get(self, "inherit_acl_from")
+
+    @property
+    @pulumi.getter
+    def owners(self) -> Sequence['outputs.PrincipalResponse']:
+        """
+        Optional. List of owners for the item. This field has no bearing on document access permissions. It does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number of elements is 5.
+        """
+        return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter
+    def readers(self) -> Sequence['outputs.PrincipalResponse']:
+        """
+        List of principals who are allowed to see the item in search results. Optional if inheriting permissions from another item or if the item is not intended to be visible, such as virtual containers. The maximum number of elements is 1000.
+        """
+        return pulumi.get(self, "readers")
+
+
+@pulumi.output_type
+class ItemContentResponse(dict):
+    """
+    Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentDataRef":
+            suggest = "content_data_ref"
+        elif key == "contentFormat":
+            suggest = "content_format"
+        elif key == "inlineContent":
+            suggest = "inline_content"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ItemContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ItemContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ItemContentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_data_ref: 'outputs.UploadItemRefResponse',
+                 content_format: str,
+                 hash: str,
+                 inline_content: str):
+        """
+        Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded.
+        :param 'UploadItemRefResponse' content_data_ref: Upload reference ID of a previously uploaded content via write method.
+        :param str hash: Hashing info calculated and provided by the API client for content. Can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+        :param str inline_content: Content that is supplied inlined within the update method. The maximum length is 102400 bytes (100 KiB).
+        """
+        pulumi.set(__self__, "content_data_ref", content_data_ref)
+        pulumi.set(__self__, "content_format", content_format)
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "inline_content", inline_content)
+
+    @property
+    @pulumi.getter(name="contentDataRef")
+    def content_data_ref(self) -> 'outputs.UploadItemRefResponse':
+        """
+        Upload reference ID of a previously uploaded content via write method.
+        """
+        return pulumi.get(self, "content_data_ref")
+
+    @property
+    @pulumi.getter(name="contentFormat")
+    def content_format(self) -> str:
+        return pulumi.get(self, "content_format")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hashing info calculated and provided by the API client for content. Can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter(name="inlineContent")
+    def inline_content(self) -> str:
+        """
+        Content that is supplied inlined within the update method. The maximum length is 102400 bytes (100 KiB).
+        """
+        return pulumi.get(self, "inline_content")
+
+
+@pulumi.output_type
+class ItemMetadataResponse(dict):
+    """
+    Available metadata fields for the item.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerName":
+            suggest = "container_name"
+        elif key == "contentLanguage":
+            suggest = "content_language"
+        elif key == "contextAttributes":
+            suggest = "context_attributes"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "mimeType":
+            suggest = "mime_type"
+        elif key == "objectType":
+            suggest = "object_type"
+        elif key == "searchQualityMetadata":
+            suggest = "search_quality_metadata"
+        elif key == "sourceRepositoryUrl":
+            suggest = "source_repository_url"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ItemMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ItemMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ItemMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_name: str,
+                 content_language: str,
+                 context_attributes: Sequence['outputs.ContextAttributeResponse'],
+                 create_time: str,
+                 hash: str,
+                 interactions: Sequence['outputs.InteractionResponse'],
+                 keywords: Sequence[str],
+                 mime_type: str,
+                 object_type: str,
+                 search_quality_metadata: 'outputs.SearchQualityMetadataResponse',
+                 source_repository_url: str,
+                 title: str,
+                 update_time: str):
+        """
+        Available metadata fields for the item.
+        :param str container_name: The name of the container for this item. Deletion of the container item leads to automatic deletion of this item. Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item, use the inheritAclFrom field. The maximum length is 1536 characters.
+        :param str content_language: The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The maximum length is 32 characters.
+        :param Sequence['ContextAttributeResponse'] context_attributes: A set of named attributes associated with the item. This can be used for influencing the ranking of the item based on the context in the request. The maximum number of elements is 10.
+        :param str create_time: The time when the item was created in the source repository.
+        :param str hash: Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+        :param Sequence['InteractionResponse'] interactions: A list of interactions for the item. Interactions are used to improve Search quality, but are not exposed to end users. The maximum number of elements is 1000.
+        :param Sequence[str] keywords: Additional keywords or phrases that should match the item. Used internally for user generated content. The maximum number of elements is 100. The maximum length is 8192 characters.
+        :param str mime_type: The original mime-type of ItemContent.content in the source repository. The maximum length is 256 characters.
+        :param str object_type: The type of the item. This should correspond to the name of an object definition in the schema registered for the data source. For example, if the schema for the data source contains an object definition with name 'document', then item indexing requests for objects of that type should set objectType to 'document'. The maximum length is 256 characters.
+        :param 'SearchQualityMetadataResponse' search_quality_metadata: Additional search quality metadata of the item
+        :param str source_repository_url: Link to the source repository serving the data. Seach results apply this link to the title. Whitespace or special characters may cause Cloud Seach result links to trigger a redirect notice; to avoid this, encode the URL. The maximum length is 2048 characters.
+        :param str title: The title of the item. If given, this will be the displayed title of the Search result. The maximum length is 2048 characters.
+        :param str update_time: The time when the item was last modified in the source repository.
+        """
+        pulumi.set(__self__, "container_name", container_name)
+        pulumi.set(__self__, "content_language", content_language)
+        pulumi.set(__self__, "context_attributes", context_attributes)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "interactions", interactions)
+        pulumi.set(__self__, "keywords", keywords)
+        pulumi.set(__self__, "mime_type", mime_type)
+        pulumi.set(__self__, "object_type", object_type)
+        pulumi.set(__self__, "search_quality_metadata", search_quality_metadata)
+        pulumi.set(__self__, "source_repository_url", source_repository_url)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="containerName")
+    def container_name(self) -> str:
+        """
+        The name of the container for this item. Deletion of the container item leads to automatic deletion of this item. Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item, use the inheritAclFrom field. The maximum length is 1536 characters.
+        """
+        return pulumi.get(self, "container_name")
+
+    @property
+    @pulumi.getter(name="contentLanguage")
+    def content_language(self) -> str:
+        """
+        The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The maximum length is 32 characters.
+        """
+        return pulumi.get(self, "content_language")
+
+    @property
+    @pulumi.getter(name="contextAttributes")
+    def context_attributes(self) -> Sequence['outputs.ContextAttributeResponse']:
+        """
+        A set of named attributes associated with the item. This can be used for influencing the ranking of the item based on the context in the request. The maximum number of elements is 10.
+        """
+        return pulumi.get(self, "context_attributes")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the item was created in the source repository.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def interactions(self) -> Sequence['outputs.InteractionResponse']:
+        """
+        A list of interactions for the item. Interactions are used to improve Search quality, but are not exposed to end users. The maximum number of elements is 1000.
+        """
+        return pulumi.get(self, "interactions")
+
+    @property
+    @pulumi.getter
+    def keywords(self) -> Sequence[str]:
+        """
+        Additional keywords or phrases that should match the item. Used internally for user generated content. The maximum number of elements is 100. The maximum length is 8192 characters.
+        """
+        return pulumi.get(self, "keywords")
+
+    @property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> str:
+        """
+        The original mime-type of ItemContent.content in the source repository. The maximum length is 256 characters.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @property
+    @pulumi.getter(name="objectType")
+    def object_type(self) -> str:
+        """
+        The type of the item. This should correspond to the name of an object definition in the schema registered for the data source. For example, if the schema for the data source contains an object definition with name 'document', then item indexing requests for objects of that type should set objectType to 'document'. The maximum length is 256 characters.
+        """
+        return pulumi.get(self, "object_type")
+
+    @property
+    @pulumi.getter(name="searchQualityMetadata")
+    def search_quality_metadata(self) -> 'outputs.SearchQualityMetadataResponse':
+        """
+        Additional search quality metadata of the item
+        """
+        return pulumi.get(self, "search_quality_metadata")
+
+    @property
+    @pulumi.getter(name="sourceRepositoryUrl")
+    def source_repository_url(self) -> str:
+        """
+        Link to the source repository serving the data. Seach results apply this link to the title. Whitespace or special characters may cause Cloud Seach result links to trigger a redirect notice; to avoid this, encode the URL. The maximum length is 2048 characters.
+        """
+        return pulumi.get(self, "source_repository_url")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the item. If given, this will be the displayed title of the Search result. The maximum length is 2048 characters.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time when the item was last modified in the source repository.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class ItemStatusResponse(dict):
+    """
+    This contains item's status and any errors.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "processingErrors":
+            suggest = "processing_errors"
+        elif key == "repositoryErrors":
+            suggest = "repository_errors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ItemStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ItemStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ItemStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 processing_errors: Sequence['outputs.ProcessingErrorResponse'],
+                 repository_errors: Sequence['outputs.RepositoryErrorResponse']):
+        """
+        This contains item's status and any errors.
+        :param str code: Status code.
+        :param Sequence['ProcessingErrorResponse'] processing_errors: Error details in case the item is in ERROR state.
+        :param Sequence['RepositoryErrorResponse'] repository_errors: Repository error reported by connector.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "processing_errors", processing_errors)
+        pulumi.set(__self__, "repository_errors", repository_errors)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Status code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="processingErrors")
+    def processing_errors(self) -> Sequence['outputs.ProcessingErrorResponse']:
+        """
+        Error details in case the item is in ERROR state.
+        """
+        return pulumi.get(self, "processing_errors")
+
+    @property
+    @pulumi.getter(name="repositoryErrors")
+    def repository_errors(self) -> Sequence['outputs.RepositoryErrorResponse']:
+        """
+        Repository error reported by connector.
+        """
+        return pulumi.get(self, "repository_errors")
+
+
+@pulumi.output_type
+class ItemStructuredDataResponse(dict):
+    """
+    Available structured data fields for the item.
+    """
+    def __init__(__self__, *,
+                 hash: str,
+                 object: 'outputs.StructuredDataObjectResponse'):
+        """
+        Available structured data fields for the item.
+        :param str hash: Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+        :param 'StructuredDataObjectResponse' object: The structured data object that should conform to a registered object definition in the schema for the data source.
+        """
+        pulumi.set(__self__, "hash", hash)
+        pulumi.set(__self__, "object", object)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+        """
+        return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def object(self) -> 'outputs.StructuredDataObjectResponse':
+        """
+        The structured data object that should conform to a registered object definition in the schema for the data source.
+        """
+        return pulumi.get(self, "object")
+
+
+@pulumi.output_type
+class NamedPropertyResponse(dict):
+    """
+    A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "dateValues":
+            suggest = "date_values"
+        elif key == "doubleValues":
+            suggest = "double_values"
+        elif key == "enumValues":
+            suggest = "enum_values"
+        elif key == "htmlValues":
+            suggest = "html_values"
+        elif key == "integerValues":
+            suggest = "integer_values"
+        elif key == "objectValues":
+            suggest = "object_values"
+        elif key == "textValues":
+            suggest = "text_values"
+        elif key == "timestampValues":
+            suggest = "timestamp_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamedPropertyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamedPropertyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamedPropertyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boolean_value: bool,
+                 date_values: 'outputs.DateValuesResponse',
+                 double_values: 'outputs.DoubleValuesResponse',
+                 enum_values: 'outputs.EnumValuesResponse',
+                 html_values: 'outputs.HtmlValuesResponse',
+                 integer_values: 'outputs.IntegerValuesResponse',
+                 name: str,
+                 object_values: 'outputs.ObjectValuesResponse',
+                 text_values: 'outputs.TextValuesResponse',
+                 timestamp_values: 'outputs.TimestampValuesResponse'):
+        """
+        A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`.
+        :param str name: The name of the property. This name should correspond to the name of the property that was registered for object definition in the schema. The maximum allowable length for this property is 256 characters.
+        """
+        pulumi.set(__self__, "boolean_value", boolean_value)
+        pulumi.set(__self__, "date_values", date_values)
+        pulumi.set(__self__, "double_values", double_values)
+        pulumi.set(__self__, "enum_values", enum_values)
+        pulumi.set(__self__, "html_values", html_values)
+        pulumi.set(__self__, "integer_values", integer_values)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "object_values", object_values)
+        pulumi.set(__self__, "text_values", text_values)
+        pulumi.set(__self__, "timestamp_values", timestamp_values)
+
+    @property
+    @pulumi.getter(name="booleanValue")
+    def boolean_value(self) -> bool:
+        return pulumi.get(self, "boolean_value")
+
+    @property
+    @pulumi.getter(name="dateValues")
+    def date_values(self) -> 'outputs.DateValuesResponse':
+        return pulumi.get(self, "date_values")
+
+    @property
+    @pulumi.getter(name="doubleValues")
+    def double_values(self) -> 'outputs.DoubleValuesResponse':
+        return pulumi.get(self, "double_values")
+
+    @property
+    @pulumi.getter(name="enumValues")
+    def enum_values(self) -> 'outputs.EnumValuesResponse':
+        return pulumi.get(self, "enum_values")
+
+    @property
+    @pulumi.getter(name="htmlValues")
+    def html_values(self) -> 'outputs.HtmlValuesResponse':
+        return pulumi.get(self, "html_values")
+
+    @property
+    @pulumi.getter(name="integerValues")
+    def integer_values(self) -> 'outputs.IntegerValuesResponse':
+        return pulumi.get(self, "integer_values")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the property. This name should correspond to the name of the property that was registered for object definition in the schema. The maximum allowable length for this property is 256 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="objectValues")
+    def object_values(self) -> 'outputs.ObjectValuesResponse':
+        return pulumi.get(self, "object_values")
+
+    @property
+    @pulumi.getter(name="textValues")
+    def text_values(self) -> 'outputs.TextValuesResponse':
+        return pulumi.get(self, "text_values")
+
+    @property
+    @pulumi.getter(name="timestampValues")
+    def timestamp_values(self) -> 'outputs.TimestampValuesResponse':
+        return pulumi.get(self, "timestamp_values")
+
+
+@pulumi.output_type
+class ObjectValuesResponse(dict):
+    """
+    List of object values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence['outputs.StructuredDataObjectResponse']):
+        """
+        List of object values.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence['outputs.StructuredDataObjectResponse']:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PrincipalResponse(dict):
+    """
+    Reference to a user, group, or domain.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupResourceName":
+            suggest = "group_resource_name"
+        elif key == "gsuitePrincipal":
+            suggest = "gsuite_principal"
+        elif key == "userResourceName":
+            suggest = "user_resource_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrincipalResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrincipalResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrincipalResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_resource_name: str,
+                 gsuite_principal: 'outputs.GSuitePrincipalResponse',
+                 user_resource_name: str):
+        """
+        Reference to a user, group, or domain.
+        :param str group_resource_name: This principal is a group identified using an external identity. The name field must specify the group resource name with this format: identitysources/{source_id}/groups/{ID}
+        :param 'GSuitePrincipalResponse' gsuite_principal: This principal is a Google Workspace user, group or domain.
+        :param str user_resource_name: This principal is a user identified using an external identity. The name field must specify the user resource name with this format: identitysources/{source_id}/users/{ID}
+        """
+        pulumi.set(__self__, "group_resource_name", group_resource_name)
+        pulumi.set(__self__, "gsuite_principal", gsuite_principal)
+        pulumi.set(__self__, "user_resource_name", user_resource_name)
+
+    @property
+    @pulumi.getter(name="groupResourceName")
+    def group_resource_name(self) -> str:
+        """
+        This principal is a group identified using an external identity. The name field must specify the group resource name with this format: identitysources/{source_id}/groups/{ID}
+        """
+        return pulumi.get(self, "group_resource_name")
+
+    @property
+    @pulumi.getter(name="gsuitePrincipal")
+    def gsuite_principal(self) -> 'outputs.GSuitePrincipalResponse':
+        """
+        This principal is a Google Workspace user, group or domain.
+        """
+        return pulumi.get(self, "gsuite_principal")
+
+    @property
+    @pulumi.getter(name="userResourceName")
+    def user_resource_name(self) -> str:
+        """
+        This principal is a user identified using an external identity. The name field must specify the user resource name with this format: identitysources/{source_id}/users/{ID}
+        """
+        return pulumi.get(self, "user_resource_name")
+
+
+@pulumi.output_type
+class ProcessingErrorResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorMessage":
+            suggest = "error_message"
+        elif key == "fieldViolations":
+            suggest = "field_violations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProcessingErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProcessingErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProcessingErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 error_message: str,
+                 field_violations: Sequence['outputs.FieldViolationResponse']):
+        """
+        :param str code: Error code indicating the nature of the error.
+        :param str error_message: The description of the error.
+        :param Sequence['FieldViolationResponse'] field_violations: In case the item fields are invalid, this field contains the details about the validation errors.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "field_violations", field_violations)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Error code indicating the nature of the error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> str:
+        """
+        The description of the error.
+        """
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter(name="fieldViolations")
+    def field_violations(self) -> Sequence['outputs.FieldViolationResponse']:
+        """
+        In case the item fields are invalid, this field contains the details about the validation errors.
+        """
+        return pulumi.get(self, "field_violations")
 
 
 @pulumi.output_type
@@ -511,6 +1453,69 @@ class QueryInterpretationConfigResponse(dict):
 
 
 @pulumi.output_type
+class RepositoryErrorResponse(dict):
+    """
+    Errors when the connector is communicating to the source repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorMessage":
+            suggest = "error_message"
+        elif key == "httpStatusCode":
+            suggest = "http_status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_message: str,
+                 http_status_code: int,
+                 type: str):
+        """
+        Errors when the connector is communicating to the source repository.
+        :param str error_message: Message that describes the error. The maximum allowable length of the message is 8192 characters.
+        :param int http_status_code: Error codes. Matches the definition of HTTP status codes.
+        :param str type: The type of error.
+        """
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "http_status_code", http_status_code)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> str:
+        """
+        Message that describes the error. The maximum allowable length of the message is 8192 characters.
+        """
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter(name="httpStatusCode")
+    def http_status_code(self) -> int:
+        """
+        Error codes. Matches the definition of HTTP status codes.
+        """
+        return pulumi.get(self, "http_status_code")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of error.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class ScoringConfigResponse(dict):
     """
     Scoring configurations for a source while processing a Search or Suggest request.
@@ -560,6 +1565,28 @@ class ScoringConfigResponse(dict):
         Whether to personalize the results. By default, personal signals will be used to boost results.
         """
         return pulumi.get(self, "disable_personalization")
+
+
+@pulumi.output_type
+class SearchQualityMetadataResponse(dict):
+    """
+    Additional search quality metadata of the item.
+    """
+    def __init__(__self__, *,
+                 quality: float):
+        """
+        Additional search quality metadata of the item.
+        :param float quality: An indication of the quality of the item, used to influence search quality. Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0.
+        """
+        pulumi.set(__self__, "quality", quality)
+
+    @property
+    @pulumi.getter
+    def quality(self) -> float:
+        """
+        An indication of the quality of the item, used to influence search quality. Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0.
+        """
+        return pulumi.get(self, "quality")
 
 
 @pulumi.output_type
@@ -812,6 +1839,90 @@ class SourceScoringConfigResponse(dict):
         Importance of the source.
         """
         return pulumi.get(self, "source_importance")
+
+
+@pulumi.output_type
+class StructuredDataObjectResponse(dict):
+    """
+    A structured data object consisting of named properties.
+    """
+    def __init__(__self__, *,
+                 properties: Sequence['outputs.NamedPropertyResponse']):
+        """
+        A structured data object consisting of named properties.
+        :param Sequence['NamedPropertyResponse'] properties: The properties for the object. The maximum number of elements is 1000.
+        """
+        pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Sequence['outputs.NamedPropertyResponse']:
+        """
+        The properties for the object. The maximum number of elements is 1000.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class TextValuesResponse(dict):
+    """
+    List of text values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        """
+        List of text values.
+        :param Sequence[str] values: The maximum allowable length for text values is 2048 characters.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        The maximum allowable length for text values is 2048 characters.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class TimestampValuesResponse(dict):
+    """
+    List of timestamp values.
+    """
+    def __init__(__self__, *,
+                 values: Sequence[str]):
+        """
+        List of timestamp values.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class UploadItemRefResponse(dict):
+    """
+    Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef.
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef.
+        :param str name: The name of the content reference. The maximum length is 2048 characters.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the content reference. The maximum length is 2048 characters.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
