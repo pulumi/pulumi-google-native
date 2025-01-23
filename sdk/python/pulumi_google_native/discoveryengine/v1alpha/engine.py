@@ -235,19 +235,19 @@ class Engine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chat_engine_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs']]] = None,
+                 chat_engine_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgsDict']]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 common_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs']]] = None,
+                 common_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  industry_vertical: Optional[pulumi.Input['EngineIndustryVertical']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 media_recommendation_engine_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs']]] = None,
+                 media_recommendation_engine_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 search_engine_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs']]] = None,
-                 similar_documents_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs']]] = None,
+                 search_engine_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgsDict']]] = None,
+                 similar_documents_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgsDict']]] = None,
                  solution_type: Optional[pulumi.Input['EngineSolutionType']] = None,
                  __props__=None):
         """
@@ -255,16 +255,16 @@ class Engine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs']] chat_engine_config: Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs']] common_config: Common config spec that specifies the metadata of the engine.
+        :param pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgsDict']] chat_engine_config: Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
+        :param pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary intializations.
         :param pulumi.Input[str] display_name: The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[str] engine_id: Required. The ID to use for the Engine, which will become the final component of the Engine's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         :param pulumi.Input['EngineIndustryVertical'] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs']] media_recommendation_engine_config: Configurations for the Media Engine. Only applicable on the data stores with solution_type SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
+        :param pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgsDict']] media_recommendation_engine_config: Configurations for the Media Engine. Only applicable on the data stores with solution_type SOLUTION_TYPE_RECOMMENDATION and IndustryVertical.MEDIA vertical.
         :param pulumi.Input[str] name: Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a length limit of 1024 characters. Format: `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs']] search_engine_config: Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs']] similar_documents_config: Additional config specs for a `similar-items` engine.
+        :param pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgsDict']] search_engine_config: Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        :param pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgsDict']] similar_documents_config: Additional config specs for a `similar-items` engine.
         :param pulumi.Input['EngineSolutionType'] solution_type: The solutions of the engine.
         """
         ...
@@ -291,19 +291,19 @@ class Engine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chat_engine_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs']]] = None,
+                 chat_engine_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigArgsDict']]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
-                 common_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs']]] = None,
+                 common_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  engine_id: Optional[pulumi.Input[str]] = None,
                  industry_vertical: Optional[pulumi.Input['EngineIndustryVertical']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 media_recommendation_engine_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs']]] = None,
+                 media_recommendation_engine_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 search_engine_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs']]] = None,
-                 similar_documents_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs']]] = None,
+                 search_engine_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigArgsDict']]] = None,
+                 similar_documents_config: Optional[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgs', 'GoogleCloudDiscoveryengineV1alphaEngineSimilarDocumentsEngineConfigArgsDict']]] = None,
                  solution_type: Optional[pulumi.Input['EngineSolutionType']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

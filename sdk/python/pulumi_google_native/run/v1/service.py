@@ -134,9 +134,9 @@ class Service(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['ObjectMetaArgs', 'ObjectMetaArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Service. Service creation will trigger a new deployment. Use GetService, and check service.status to determine if the Service is ready.
@@ -147,8 +147,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] api_version: The API version for this call. It must be "serving.knative.dev/v1".
         :param pulumi.Input[str] dry_run: Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
         :param pulumi.Input[str] kind: The kind of resource. It must be "Service".
-        :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/disable-default-url` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
-        :param pulumi.Input[pulumi.InputType['ServiceSpecArgs']] spec: Holds the desired state of the Service (from the client).
+        :param pulumi.Input[Union['ObjectMetaArgs', 'ObjectMetaArgsDict']] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/disable-default-url` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        :param pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']] spec: Holds the desired state of the Service (from the client).
         """
         ...
     @overload
@@ -179,9 +179,9 @@ class Service(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['ObjectMetaArgs', 'ObjectMetaArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

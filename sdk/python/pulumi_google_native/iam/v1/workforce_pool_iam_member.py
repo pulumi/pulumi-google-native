@@ -97,7 +97,7 @@ class WorkforcePoolIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConditionArgs', 'ConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,7 @@ class WorkforcePoolIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConditionArgs']] condition: An IAM Condition for a given binding.
+        :param pulumi.Input[Union['ConditionArgs', 'ConditionArgsDict']] condition: An IAM Condition for a given binding.
         :param pulumi.Input[str] member: Identity that will be granted the privilege in role. The entry can have one of the following values:
                
                 * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -141,7 +141,7 @@ class WorkforcePoolIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[Union['ConditionArgs', 'ConditionArgsDict']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,

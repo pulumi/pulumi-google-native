@@ -227,8 +227,8 @@ class Automation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]]] = None,
-                 selector: Optional[pulumi.Input[pulumi.InputType['AutomationResourceSelectorArgs']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
+                 selector: Optional[pulumi.Input[Union['AutomationResourceSelectorArgs', 'AutomationResourceSelectorArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -244,8 +244,8 @@ class Automation(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Optional. The weak etag of the `Automation` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]] rules: List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
-        :param pulumi.Input[pulumi.InputType['AutomationResourceSelectorArgs']] selector: Selected resources to which the automation will be applied.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]] rules: List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.
+        :param pulumi.Input[Union['AutomationResourceSelectorArgs', 'AutomationResourceSelectorArgsDict']] selector: Selected resources to which the automation will be applied.
         :param pulumi.Input[str] service_account: Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
         :param pulumi.Input[bool] suspended: Optional. When Suspended, automation is deactivated from execution.
         """
@@ -283,8 +283,8 @@ class Automation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AutomationRuleArgs']]]]] = None,
-                 selector: Optional[pulumi.Input[pulumi.InputType['AutomationResourceSelectorArgs']]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutomationRuleArgs', 'AutomationRuleArgsDict']]]]] = None,
+                 selector: Optional[pulumi.Input[Union['AutomationResourceSelectorArgs', 'AutomationResourceSelectorArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):

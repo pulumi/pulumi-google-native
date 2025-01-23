@@ -289,8 +289,8 @@ class TestCase(pulumi.CustomResource):
                  lock_holder_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  test_case_id: Optional[pulumi.Input[str]] = None,
-                 test_input_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]] = None,
-                 test_task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTestTaskConfigArgs']]]]] = None,
+                 test_input_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs', 'GoogleCloudIntegrationsV1alphaIntegrationParameterArgsDict']]]]] = None,
+                 test_task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTestTaskConfigArgs', 'GoogleCloudIntegrationsV1alphaTestTaskConfigArgsDict']]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
@@ -310,8 +310,8 @@ class TestCase(pulumi.CustomResource):
         :param pulumi.Input[str] last_modifier_email: The last modifer's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] lock_holder_email: Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] test_case_id: Required. Required
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]] test_input_parameters: Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTestTaskConfigArgs']]]] test_task_configs: Optional. However, the test case doesn't mock or assert anything without test_task_configs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs', 'GoogleCloudIntegrationsV1alphaIntegrationParameterArgsDict']]]] test_input_parameters: Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTestTaskConfigArgs', 'GoogleCloudIntegrationsV1alphaTestTaskConfigArgsDict']]]] test_task_configs: Optional. However, the test case doesn't mock or assert anything without test_task_configs.
         :param pulumi.Input[str] trigger_id: This defines the trigger ID in workflow which is considered to be executed as starting point of the test case
         :param pulumi.Input[str] update_time: Auto-generated.
         :param pulumi.Input[str] workflow_id: ID of the workflow with which this test case is associated
@@ -352,8 +352,8 @@ class TestCase(pulumi.CustomResource):
                  lock_holder_email: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  test_case_id: Optional[pulumi.Input[str]] = None,
-                 test_input_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]] = None,
-                 test_task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTestTaskConfigArgs']]]]] = None,
+                 test_input_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs', 'GoogleCloudIntegrationsV1alphaIntegrationParameterArgsDict']]]]] = None,
+                 test_task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTestTaskConfigArgs', 'GoogleCloudIntegrationsV1alphaTestTaskConfigArgsDict']]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,

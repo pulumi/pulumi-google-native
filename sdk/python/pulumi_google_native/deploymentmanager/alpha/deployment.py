@@ -163,14 +163,14 @@ class Deployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: Optional[pulumi.Input[str]] = None,
-                 credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
+                 credential: Optional[pulumi.Input[Union['CredentialArgs', 'CredentialArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelEntryArgs', 'DeploymentLabelEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[pulumi.InputType['TargetConfigurationArgs']]] = None,
+                 target: Optional[pulumi.Input[Union['TargetConfigurationArgs', 'TargetConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Creates a deployment and all of the resources described by the deployment manifest.
@@ -178,12 +178,12 @@ class Deployment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_policy: Sets the policy to use for creating new resources.
-        :param pulumi.Input[pulumi.InputType['CredentialArgs']] credential: User provided default credential for the deployment.
+        :param pulumi.Input[Union['CredentialArgs', 'CredentialArgsDict']] credential: User provided default credential for the deployment.
         :param pulumi.Input[str] description: An optional user-provided description of the deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelEntryArgs', 'DeploymentLabelEntryArgsDict']]]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[bool] preview: If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
-        :param pulumi.Input[pulumi.InputType['TargetConfigurationArgs']] target: [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
+        :param pulumi.Input[Union['TargetConfigurationArgs', 'TargetConfigurationArgsDict']] target: [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
         """
         ...
     @overload
@@ -210,14 +210,14 @@ class Deployment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_policy: Optional[pulumi.Input[str]] = None,
-                 credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
+                 credential: Optional[pulumi.Input[Union['CredentialArgs', 'CredentialArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelEntryArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLabelEntryArgs', 'DeploymentLabelEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[pulumi.InputType['TargetConfigurationArgs']]] = None,
+                 target: Optional[pulumi.Input[Union['TargetConfigurationArgs', 'TargetConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -162,7 +162,7 @@ class Rbacrolebinding(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rbacrolebinding_id: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['RoleArgs']]] = None,
+                 role: Optional[pulumi.Input[Union['RoleArgs', 'RoleArgsDict']]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -176,7 +176,7 @@ class Rbacrolebinding(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels for this RBACRolebinding.
         :param pulumi.Input[str] name: The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
         :param pulumi.Input[str] rbacrolebinding_id: Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-        :param pulumi.Input[pulumi.InputType['RoleArgs']] role: Role to bind to the principal
+        :param pulumi.Input[Union['RoleArgs', 'RoleArgsDict']] role: Role to bind to the principal
         :param pulumi.Input[str] user: user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
         """
         ...
@@ -210,7 +210,7 @@ class Rbacrolebinding(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rbacrolebinding_id: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[pulumi.InputType['RoleArgs']]] = None,
+                 role: Optional[pulumi.Input[Union['RoleArgs', 'RoleArgsDict']]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):

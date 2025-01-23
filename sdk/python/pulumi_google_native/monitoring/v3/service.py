@@ -304,21 +304,21 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine: Optional[pulumi.Input[pulumi.InputType['AppEngineArgs']]] = None,
-                 basic_service: Optional[pulumi.Input[pulumi.InputType['BasicServiceArgs']]] = None,
-                 cloud_endpoints: Optional[pulumi.Input[pulumi.InputType['CloudEndpointsArgs']]] = None,
-                 cloud_run: Optional[pulumi.Input[pulumi.InputType['CloudRunArgs']]] = None,
-                 cluster_istio: Optional[pulumi.Input[pulumi.InputType['ClusterIstioArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['CustomArgs']]] = None,
+                 app_engine: Optional[pulumi.Input[Union['AppEngineArgs', 'AppEngineArgsDict']]] = None,
+                 basic_service: Optional[pulumi.Input[Union['BasicServiceArgs', 'BasicServiceArgsDict']]] = None,
+                 cloud_endpoints: Optional[pulumi.Input[Union['CloudEndpointsArgs', 'CloudEndpointsArgsDict']]] = None,
+                 cloud_run: Optional[pulumi.Input[Union['CloudRunArgs', 'CloudRunArgsDict']]] = None,
+                 cluster_istio: Optional[pulumi.Input[Union['ClusterIstioArgs', 'ClusterIstioArgsDict']]] = None,
+                 custom: Optional[pulumi.Input[Union['CustomArgs', 'CustomArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gke_namespace: Optional[pulumi.Input[pulumi.InputType['GkeNamespaceArgs']]] = None,
-                 gke_service: Optional[pulumi.Input[pulumi.InputType['GkeServiceArgs']]] = None,
-                 gke_workload: Optional[pulumi.Input[pulumi.InputType['GkeWorkloadArgs']]] = None,
-                 istio_canonical_service: Optional[pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']]] = None,
-                 mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
+                 gke_namespace: Optional[pulumi.Input[Union['GkeNamespaceArgs', 'GkeNamespaceArgsDict']]] = None,
+                 gke_service: Optional[pulumi.Input[Union['GkeServiceArgs', 'GkeServiceArgsDict']]] = None,
+                 gke_workload: Optional[pulumi.Input[Union['GkeWorkloadArgs', 'GkeWorkloadArgsDict']]] = None,
+                 istio_canonical_service: Optional[pulumi.Input[Union['IstioCanonicalServiceArgs', 'IstioCanonicalServiceArgsDict']]] = None,
+                 mesh_istio: Optional[pulumi.Input[Union['MeshIstioArgs', 'MeshIstioArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input[pulumi.InputType['TelemetryArgs']]] = None,
+                 telemetry: Optional[pulumi.Input[Union['TelemetryArgs', 'TelemetryArgsDict']]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,
@@ -329,21 +329,21 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AppEngineArgs']] app_engine: Type used for App Engine services.
-        :param pulumi.Input[pulumi.InputType['BasicServiceArgs']] basic_service: Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
-        :param pulumi.Input[pulumi.InputType['CloudEndpointsArgs']] cloud_endpoints: Type used for Cloud Endpoints services.
-        :param pulumi.Input[pulumi.InputType['CloudRunArgs']] cloud_run: Type used for Cloud Run services.
-        :param pulumi.Input[pulumi.InputType['ClusterIstioArgs']] cluster_istio: Type used for Istio services that live in a Kubernetes cluster.
-        :param pulumi.Input[pulumi.InputType['CustomArgs']] custom: Custom service type.
+        :param pulumi.Input[Union['AppEngineArgs', 'AppEngineArgsDict']] app_engine: Type used for App Engine services.
+        :param pulumi.Input[Union['BasicServiceArgs', 'BasicServiceArgsDict']] basic_service: Message that contains the service type and service labels of this service if it is a basic service. Documentation and examples here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+        :param pulumi.Input[Union['CloudEndpointsArgs', 'CloudEndpointsArgsDict']] cloud_endpoints: Type used for Cloud Endpoints services.
+        :param pulumi.Input[Union['CloudRunArgs', 'CloudRunArgsDict']] cloud_run: Type used for Cloud Run services.
+        :param pulumi.Input[Union['ClusterIstioArgs', 'ClusterIstioArgsDict']] cluster_istio: Type used for Istio services that live in a Kubernetes cluster.
+        :param pulumi.Input[Union['CustomArgs', 'CustomArgsDict']] custom: Custom service type.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
-        :param pulumi.Input[pulumi.InputType['GkeNamespaceArgs']] gke_namespace: Type used for GKE Namespaces.
-        :param pulumi.Input[pulumi.InputType['GkeServiceArgs']] gke_service: Type used for GKE Services (the Kubernetes concept of a service).
-        :param pulumi.Input[pulumi.InputType['GkeWorkloadArgs']] gke_workload: Type used for GKE Workloads.
-        :param pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']] istio_canonical_service: Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
-        :param pulumi.Input[pulumi.InputType['MeshIstioArgs']] mesh_istio: Type used for Istio services scoped to an Istio mesh.
+        :param pulumi.Input[Union['GkeNamespaceArgs', 'GkeNamespaceArgsDict']] gke_namespace: Type used for GKE Namespaces.
+        :param pulumi.Input[Union['GkeServiceArgs', 'GkeServiceArgsDict']] gke_service: Type used for GKE Services (the Kubernetes concept of a service).
+        :param pulumi.Input[Union['GkeWorkloadArgs', 'GkeWorkloadArgsDict']] gke_workload: Type used for GKE Workloads.
+        :param pulumi.Input[Union['IstioCanonicalServiceArgs', 'IstioCanonicalServiceArgsDict']] istio_canonical_service: Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+        :param pulumi.Input[Union['MeshIstioArgs', 'MeshIstioArgsDict']] mesh_istio: Type used for Istio services scoped to an Istio mesh.
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         :param pulumi.Input[str] service_id: Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\\-]+
-        :param pulumi.Input[pulumi.InputType['TelemetryArgs']] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[Union['TelemetryArgs', 'TelemetryArgsDict']] telemetry: Configuration for how to query telemetry on a Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         ...
@@ -371,21 +371,21 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_engine: Optional[pulumi.Input[pulumi.InputType['AppEngineArgs']]] = None,
-                 basic_service: Optional[pulumi.Input[pulumi.InputType['BasicServiceArgs']]] = None,
-                 cloud_endpoints: Optional[pulumi.Input[pulumi.InputType['CloudEndpointsArgs']]] = None,
-                 cloud_run: Optional[pulumi.Input[pulumi.InputType['CloudRunArgs']]] = None,
-                 cluster_istio: Optional[pulumi.Input[pulumi.InputType['ClusterIstioArgs']]] = None,
-                 custom: Optional[pulumi.Input[pulumi.InputType['CustomArgs']]] = None,
+                 app_engine: Optional[pulumi.Input[Union['AppEngineArgs', 'AppEngineArgsDict']]] = None,
+                 basic_service: Optional[pulumi.Input[Union['BasicServiceArgs', 'BasicServiceArgsDict']]] = None,
+                 cloud_endpoints: Optional[pulumi.Input[Union['CloudEndpointsArgs', 'CloudEndpointsArgsDict']]] = None,
+                 cloud_run: Optional[pulumi.Input[Union['CloudRunArgs', 'CloudRunArgsDict']]] = None,
+                 cluster_istio: Optional[pulumi.Input[Union['ClusterIstioArgs', 'ClusterIstioArgsDict']]] = None,
+                 custom: Optional[pulumi.Input[Union['CustomArgs', 'CustomArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gke_namespace: Optional[pulumi.Input[pulumi.InputType['GkeNamespaceArgs']]] = None,
-                 gke_service: Optional[pulumi.Input[pulumi.InputType['GkeServiceArgs']]] = None,
-                 gke_workload: Optional[pulumi.Input[pulumi.InputType['GkeWorkloadArgs']]] = None,
-                 istio_canonical_service: Optional[pulumi.Input[pulumi.InputType['IstioCanonicalServiceArgs']]] = None,
-                 mesh_istio: Optional[pulumi.Input[pulumi.InputType['MeshIstioArgs']]] = None,
+                 gke_namespace: Optional[pulumi.Input[Union['GkeNamespaceArgs', 'GkeNamespaceArgsDict']]] = None,
+                 gke_service: Optional[pulumi.Input[Union['GkeServiceArgs', 'GkeServiceArgsDict']]] = None,
+                 gke_workload: Optional[pulumi.Input[Union['GkeWorkloadArgs', 'GkeWorkloadArgsDict']]] = None,
+                 istio_canonical_service: Optional[pulumi.Input[Union['IstioCanonicalServiceArgs', 'IstioCanonicalServiceArgsDict']]] = None,
+                 mesh_istio: Optional[pulumi.Input[Union['MeshIstioArgs', 'MeshIstioArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input[pulumi.InputType['TelemetryArgs']]] = None,
+                 telemetry: Optional[pulumi.Input[Union['TelemetryArgs', 'TelemetryArgsDict']]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,

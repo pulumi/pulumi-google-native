@@ -199,32 +199,32 @@ class ConsentArtifact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]]] = None,
+                 consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageArgs', 'ImageArgsDict']]]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 guardian_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
+                 guardian_signature: Optional[pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
-                 user_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
-                 witness_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
+                 user_signature: Optional[pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']]] = None,
+                 witness_signature: Optional[pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Consent artifact in the parent consent store.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]] consent_content_screenshots: Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageArgs', 'ImageArgsDict']]]] consent_content_screenshots: Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
         :param pulumi.Input[str] consent_content_version: Optional. An string indicating the version of the consent information shown to the user.
-        :param pulumi.Input[pulumi.InputType['SignatureArgs']] guardian_signature: Optional. A signature from a guardian.
+        :param pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']] guardian_signature: Optional. A signature from a guardian.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
         :param pulumi.Input[str] name: Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
         :param pulumi.Input[str] user_id: User's UUID provided by the client.
-        :param pulumi.Input[pulumi.InputType['SignatureArgs']] user_signature: Optional. User's signature.
-        :param pulumi.Input[pulumi.InputType['SignatureArgs']] witness_signature: Optional. A signature from a witness.
+        :param pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']] user_signature: Optional. User's signature.
+        :param pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']] witness_signature: Optional. A signature from a witness.
         """
         ...
     @overload
@@ -250,18 +250,18 @@ class ConsentArtifact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]]] = None,
+                 consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageArgs', 'ImageArgsDict']]]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  consent_store_id: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
-                 guardian_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
+                 guardian_signature: Optional[pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
-                 user_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
-                 witness_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
+                 user_signature: Optional[pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']]] = None,
+                 witness_signature: Optional[pulumi.Input[Union['SignatureArgs', 'SignatureArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

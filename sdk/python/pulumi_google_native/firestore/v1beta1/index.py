@@ -116,7 +116,7 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleFirestoreAdminV1beta1IndexFieldArgs', 'GoogleFirestoreAdminV1beta1IndexFieldArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['IndexState']] = None,
@@ -127,7 +127,7 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] collection_id: The collection ID to which this index applies. Required.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]] fields: The fields to index.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleFirestoreAdminV1beta1IndexFieldArgs', 'GoogleFirestoreAdminV1beta1IndexFieldArgsDict']]]] fields: The fields to index.
         :param pulumi.Input[str] name: The resource name of the index. Output only.
         :param pulumi.Input['IndexState'] state: The state of the index. Output only.
         """
@@ -157,7 +157,7 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleFirestoreAdminV1beta1IndexFieldArgs', 'GoogleFirestoreAdminV1beta1IndexFieldArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['IndexState']] = None,

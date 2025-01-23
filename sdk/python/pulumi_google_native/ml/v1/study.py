@@ -83,7 +83,7 @@ class Study(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 study_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']]] = None,
+                 study_config: Optional[pulumi.Input[Union['GoogleCloudMlV1__StudyConfigArgs', 'GoogleCloudMlV1__StudyConfigArgsDict']]] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -92,7 +92,7 @@ class Study(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']] study_config: Configuration of the study.
+        :param pulumi.Input[Union['GoogleCloudMlV1__StudyConfigArgs', 'GoogleCloudMlV1__StudyConfigArgsDict']] study_config: Configuration of the study.
         :param pulumi.Input[str] study_id: Required. The ID to use for the study, which will become the final component of the study's resource name.
         """
         ...
@@ -122,7 +122,7 @@ class Study(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 study_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']]] = None,
+                 study_config: Optional[pulumi.Input[Union['GoogleCloudMlV1__StudyConfigArgs', 'GoogleCloudMlV1__StudyConfigArgsDict']]] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

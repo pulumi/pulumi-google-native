@@ -113,9 +113,9 @@ class Glossary(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 input_config: Optional[pulumi.Input[pulumi.InputType['GlossaryInputConfigArgs']]] = None,
-                 language_codes_set: Optional[pulumi.Input[pulumi.InputType['LanguageCodesSetArgs']]] = None,
-                 language_pair: Optional[pulumi.Input[pulumi.InputType['LanguageCodePairArgs']]] = None,
+                 input_config: Optional[pulumi.Input[Union['GlossaryInputConfigArgs', 'GlossaryInputConfigArgsDict']]] = None,
+                 language_codes_set: Optional[pulumi.Input[Union['LanguageCodesSetArgs', 'LanguageCodesSetArgsDict']]] = None,
+                 language_pair: Optional[pulumi.Input[Union['LanguageCodePairArgs', 'LanguageCodePairArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -125,9 +125,9 @@ class Glossary(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GlossaryInputConfigArgs']] input_config: Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
-        :param pulumi.Input[pulumi.InputType['LanguageCodesSetArgs']] language_codes_set: Used with equivalent term set glossaries.
-        :param pulumi.Input[pulumi.InputType['LanguageCodePairArgs']] language_pair: Used with unidirectional glossaries.
+        :param pulumi.Input[Union['GlossaryInputConfigArgs', 'GlossaryInputConfigArgsDict']] input_config: Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+        :param pulumi.Input[Union['LanguageCodesSetArgs', 'LanguageCodesSetArgsDict']] language_codes_set: Used with equivalent term set glossaries.
+        :param pulumi.Input[Union['LanguageCodePairArgs', 'LanguageCodePairArgsDict']] language_pair: Used with unidirectional glossaries.
         :param pulumi.Input[str] name: The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         """
         ...
@@ -154,9 +154,9 @@ class Glossary(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 input_config: Optional[pulumi.Input[pulumi.InputType['GlossaryInputConfigArgs']]] = None,
-                 language_codes_set: Optional[pulumi.Input[pulumi.InputType['LanguageCodesSetArgs']]] = None,
-                 language_pair: Optional[pulumi.Input[pulumi.InputType['LanguageCodePairArgs']]] = None,
+                 input_config: Optional[pulumi.Input[Union['GlossaryInputConfigArgs', 'GlossaryInputConfigArgsDict']]] = None,
+                 language_codes_set: Optional[pulumi.Input[Union['LanguageCodesSetArgs', 'LanguageCodesSetArgsDict']]] = None,
+                 language_pair: Optional[pulumi.Input[Union['LanguageCodePairArgs', 'LanguageCodePairArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

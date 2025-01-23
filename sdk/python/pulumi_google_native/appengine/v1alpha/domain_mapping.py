@@ -105,7 +105,7 @@ class DomainMapping(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[bool]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
-                 ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
+                 ssl_settings: Optional[pulumi.Input[Union['SslSettingsArgs', 'SslSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
@@ -116,7 +116,7 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
         :param pulumi.Input[bool] no_managed_certificate: Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
-        :param pulumi.Input[pulumi.InputType['SslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        :param pulumi.Input[Union['SslSettingsArgs', 'SslSettingsArgsDict']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
         ...
     @overload
@@ -147,7 +147,7 @@ class DomainMapping(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  no_managed_certificate: Optional[pulumi.Input[bool]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
-                 ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
+                 ssl_settings: Optional[pulumi.Input[Union['SslSettingsArgs', 'SslSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

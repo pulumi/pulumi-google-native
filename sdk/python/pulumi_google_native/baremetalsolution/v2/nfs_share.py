@@ -147,7 +147,7 @@ class NfsShare(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AllowedClientArgs']]]]] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AllowedClientArgs', 'AllowedClientArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,7 @@ class NfsShare(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AllowedClientArgs']]]] allowed_clients: List of allowed access points.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AllowedClientArgs', 'AllowedClientArgsDict']]]] allowed_clients: List of allowed access points.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
         :param pulumi.Input[str] name: Immutable. The name of the NFS share.
         :param pulumi.Input[str] pod: Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
@@ -192,7 +192,7 @@ class NfsShare(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AllowedClientArgs']]]]] = None,
+                 allowed_clients: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AllowedClientArgs', 'AllowedClientArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

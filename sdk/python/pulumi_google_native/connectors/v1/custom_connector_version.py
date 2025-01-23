@@ -158,10 +158,10 @@ class CustomConnectorVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[pulumi.InputType['AuthConfigArgs']]] = None,
+                 auth_config: Optional[pulumi.Input[Union['AuthConfigArgs', 'AuthConfigArgsDict']]] = None,
                  custom_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_connector_version_id: Optional[pulumi.Input[str]] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
                  enable_backend_destination_config: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -174,9 +174,9 @@ class CustomConnectorVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AuthConfigArgs']] auth_config: Configuration for establishing the authentication to the connector destination.
+        :param pulumi.Input[Union['AuthConfigArgs', 'AuthConfigArgsDict']] auth_config: Configuration for establishing the authentication to the connector destination.
         :param pulumi.Input[str] custom_connector_version_id: Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource.
-        :param pulumi.Input[pulumi.InputType['DestinationConfigArgs']] destination_config: Configuration of the customConnector's destination.
+        :param pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']] destination_config: Configuration of the customConnector's destination.
         :param pulumi.Input[bool] enable_backend_destination_config: Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] service_account: Service account needed for runtime plane to access Custom Connector secrets.
@@ -207,10 +207,10 @@ class CustomConnectorVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[pulumi.InputType['AuthConfigArgs']]] = None,
+                 auth_config: Optional[pulumi.Input[Union['AuthConfigArgs', 'AuthConfigArgsDict']]] = None,
                  custom_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_connector_version_id: Optional[pulumi.Input[str]] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
                  enable_backend_destination_config: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,

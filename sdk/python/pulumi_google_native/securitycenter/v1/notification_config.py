@@ -122,7 +122,7 @@ class NotificationConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 streaming_config: Optional[pulumi.Input[pulumi.InputType['StreamingConfigArgs']]] = None,
+                 streaming_config: Optional[pulumi.Input[Union['StreamingConfigArgs', 'StreamingConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a notification config.
@@ -134,7 +134,7 @@ class NotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[str] name: The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
         :param pulumi.Input[str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[pulumi.InputType['StreamingConfigArgs']] streaming_config: The config for triggering streaming-based notifications.
+        :param pulumi.Input[Union['StreamingConfigArgs', 'StreamingConfigArgsDict']] streaming_config: The config for triggering streaming-based notifications.
         """
         ...
     @overload
@@ -166,7 +166,7 @@ class NotificationConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 streaming_config: Optional[pulumi.Input[pulumi.InputType['StreamingConfigArgs']]] = None,
+                 streaming_config: Optional[pulumi.Input[Union['StreamingConfigArgs', 'StreamingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

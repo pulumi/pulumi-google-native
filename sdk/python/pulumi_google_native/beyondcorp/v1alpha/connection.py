@@ -193,11 +193,11 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['ApplicationEndpointArgs']]] = None,
+                 application_endpoint: Optional[pulumi.Input[Union['ApplicationEndpointArgs', 'ApplicationEndpointArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['GatewayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[Union['GatewayArgs', 'GatewayArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -210,11 +210,11 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApplicationEndpointArgs']] application_endpoint: Address of the remote application endpoint for the BeyondCorp Connection.
+        :param pulumi.Input[Union['ApplicationEndpointArgs', 'ApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp Connection.
         :param pulumi.Input[str] connection_id: Optional. User-settable connection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connectors: Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorised to be associated with this Connection.
         :param pulumi.Input[str] display_name: Optional. An arbitrary user-provided name for the connection. Cannot exceed 64 characters.
-        :param pulumi.Input[pulumi.InputType['GatewayArgs']] gateway: Optional. Gateway used by the connection.
+        :param pulumi.Input[Union['GatewayArgs', 'GatewayArgsDict']] gateway: Optional. Gateway used by the connection.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: Unique resource name of the connection. The name is ignored when creating a connection.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -244,11 +244,11 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_endpoint: Optional[pulumi.Input[pulumi.InputType['ApplicationEndpointArgs']]] = None,
+                 application_endpoint: Optional[pulumi.Input[Union['ApplicationEndpointArgs', 'ApplicationEndpointArgsDict']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['GatewayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[Union['GatewayArgs', 'GatewayArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

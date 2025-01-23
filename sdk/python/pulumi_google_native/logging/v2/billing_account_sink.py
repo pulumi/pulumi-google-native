@@ -217,13 +217,13 @@ class BillingAccountSink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[Union['BigQueryOptionsArgs', 'BigQueryOptionsArgsDict']]] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LogExclusionArgs', 'LogExclusionArgsDict']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -235,12 +235,12 @@ class BillingAccountSink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']] bigquery_options: Optional. Options that affect sinks exporting data to BigQuery.
+        :param pulumi.Input[Union['BigQueryOptionsArgs', 'BigQueryOptionsArgsDict']] bigquery_options: Optional. Options that affect sinks exporting data to BigQuery.
         :param pulumi.Input[str] custom_writer_identity: Optional. A service account provided by the caller that will be used to write the log entries. The format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a destination outside this sink's project. If not specified, a Logging service account will automatically be generated.
         :param pulumi.Input[str] description: Optional. A description of this sink.The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" "logging.googleapis.com/projects/[PROJECT_ID]" "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         :param pulumi.Input[bool] disabled: Optional. If set to true, then this sink is disabled and it does not export any log entries.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogExclusionArgs']]]] exclusions: Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LogExclusionArgs', 'LogExclusionArgsDict']]]] exclusions: Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -271,13 +271,13 @@ class BillingAccountSink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[pulumi.InputType['BigQueryOptionsArgs']]] = None,
+                 bigquery_options: Optional[pulumi.Input[Union['BigQueryOptionsArgs', 'BigQueryOptionsArgsDict']]] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  custom_writer_identity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogExclusionArgs']]]]] = None,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LogExclusionArgs', 'LogExclusionArgsDict']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,

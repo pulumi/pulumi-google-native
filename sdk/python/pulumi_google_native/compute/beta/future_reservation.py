@@ -228,7 +228,7 @@ class FutureReservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_created_reservations_delete_time: Optional[pulumi.Input[str]] = None,
-                 auto_created_reservations_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 auto_created_reservations_duration: Optional[pulumi.Input[Union['DurationArgs', 'DurationArgsDict']]] = None,
                  auto_delete_auto_created_reservations: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -236,9 +236,9 @@ class FutureReservation(pulumi.CustomResource):
                  planning_status: Optional[pulumi.Input['FutureReservationPlanningStatus']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
-                 specific_sku_properties: Optional[pulumi.Input[pulumi.InputType['FutureReservationSpecificSKUPropertiesArgs']]] = None,
-                 time_window: Optional[pulumi.Input[pulumi.InputType['FutureReservationTimeWindowArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[Union['ShareSettingsArgs', 'ShareSettingsArgsDict']]] = None,
+                 specific_sku_properties: Optional[pulumi.Input[Union['FutureReservationSpecificSKUPropertiesArgs', 'FutureReservationSpecificSKUPropertiesArgsDict']]] = None,
+                 time_window: Optional[pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -247,16 +247,16 @@ class FutureReservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
-        :param pulumi.Input[pulumi.InputType['DurationArgs']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        :param pulumi.Input[Union['DurationArgs', 'DurationArgsDict']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         :param pulumi.Input[bool] auto_delete_auto_created_reservations: Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         :param pulumi.Input['FutureReservationPlanningStatus'] planning_status: Planning state before being submitted for evaluation
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: List of Projects/Folders to share with.
-        :param pulumi.Input[pulumi.InputType['FutureReservationSpecificSKUPropertiesArgs']] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
-        :param pulumi.Input[pulumi.InputType['FutureReservationTimeWindowArgs']] time_window: Time window for this Future Reservation.
+        :param pulumi.Input[Union['ShareSettingsArgs', 'ShareSettingsArgsDict']] share_settings: List of Projects/Folders to share with.
+        :param pulumi.Input[Union['FutureReservationSpecificSKUPropertiesArgs', 'FutureReservationSpecificSKUPropertiesArgsDict']] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
+        :param pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']] time_window: Time window for this Future Reservation.
         """
         ...
     @overload
@@ -283,7 +283,7 @@ class FutureReservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_created_reservations_delete_time: Optional[pulumi.Input[str]] = None,
-                 auto_created_reservations_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 auto_created_reservations_duration: Optional[pulumi.Input[Union['DurationArgs', 'DurationArgsDict']]] = None,
                  auto_delete_auto_created_reservations: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -291,9 +291,9 @@ class FutureReservation(pulumi.CustomResource):
                  planning_status: Optional[pulumi.Input['FutureReservationPlanningStatus']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
-                 specific_sku_properties: Optional[pulumi.Input[pulumi.InputType['FutureReservationSpecificSKUPropertiesArgs']]] = None,
-                 time_window: Optional[pulumi.Input[pulumi.InputType['FutureReservationTimeWindowArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[Union['ShareSettingsArgs', 'ShareSettingsArgsDict']]] = None,
+                 specific_sku_properties: Optional[pulumi.Input[Union['FutureReservationSpecificSKUPropertiesArgs', 'FutureReservationSpecificSKUPropertiesArgsDict']]] = None,
+                 time_window: Optional[pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

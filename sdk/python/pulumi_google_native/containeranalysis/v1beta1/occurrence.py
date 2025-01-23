@@ -309,24 +309,24 @@ class Occurrence(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['DetailsArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1BuildDetailsArgs']]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DeploymentDetailsArgs']]] = None,
-                 derived_image: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1ImageDetailsArgs']]] = None,
-                 discovered: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']]] = None,
-                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
-                 installation: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']]] = None,
-                 intoto: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']]] = None,
+                 attestation: Optional[pulumi.Input[Union['DetailsArgs', 'DetailsArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['GrafeasV1beta1BuildDetailsArgs', 'GrafeasV1beta1BuildDetailsArgsDict']]] = None,
+                 deployment: Optional[pulumi.Input[Union['GrafeasV1beta1DeploymentDetailsArgs', 'GrafeasV1beta1DeploymentDetailsArgsDict']]] = None,
+                 derived_image: Optional[pulumi.Input[Union['GrafeasV1beta1ImageDetailsArgs', 'GrafeasV1beta1ImageDetailsArgsDict']]] = None,
+                 discovered: Optional[pulumi.Input[Union['GrafeasV1beta1DiscoveryDetailsArgs', 'GrafeasV1beta1DiscoveryDetailsArgsDict']]] = None,
+                 envelope: Optional[pulumi.Input[Union['EnvelopeArgs', 'EnvelopeArgsDict']]] = None,
+                 installation: Optional[pulumi.Input[Union['GrafeasV1beta1PackageDetailsArgs', 'GrafeasV1beta1PackageDetailsArgsDict']]] = None,
+                 intoto: Optional[pulumi.Input[Union['GrafeasV1beta1IntotoDetailsArgs', 'GrafeasV1beta1IntotoDetailsArgsDict']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
-                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
-                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
-                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
-                 vulnerability: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']]] = None,
+                 resource: Optional[pulumi.Input[Union['ResourceArgs', 'ResourceArgsDict']]] = None,
+                 sbom: Optional[pulumi.Input[Union['DocumentOccurrenceArgs', 'DocumentOccurrenceArgsDict']]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceOccurrenceArgs', 'SBOMReferenceOccurrenceArgsDict']]] = None,
+                 spdx_file: Optional[pulumi.Input[Union['FileOccurrenceArgs', 'FileOccurrenceArgsDict']]] = None,
+                 spdx_package: Optional[pulumi.Input[Union['PackageInfoOccurrenceArgs', 'PackageInfoOccurrenceArgsDict']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[Union['RelationshipOccurrenceArgs', 'RelationshipOccurrenceArgsDict']]] = None,
+                 vulnerability: Optional[pulumi.Input[Union['GrafeasV1beta1VulnerabilityDetailsArgs', 'GrafeasV1beta1VulnerabilityDetailsArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new occurrence.
@@ -334,23 +334,23 @@ class Occurrence(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DetailsArgs']] attestation: Describes an attestation of an artifact.
-        :param pulumi.Input[pulumi.InputType['GrafeasV1beta1BuildDetailsArgs']] build: Describes a verifiable build.
-        :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DeploymentDetailsArgs']] deployment: Describes the deployment of an artifact on a runtime.
-        :param pulumi.Input[pulumi.InputType['GrafeasV1beta1ImageDetailsArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
-        :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']] discovered: Describes when a resource was discovered.
-        :param pulumi.Input[pulumi.InputType['EnvelopeArgs']] envelope: https://github.com/secure-systems-lab/dsse
-        :param pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']] installation: Describes the installation of a package on the linked resource.
-        :param pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']] intoto: Describes a specific in-toto link.
+        :param pulumi.Input[Union['DetailsArgs', 'DetailsArgsDict']] attestation: Describes an attestation of an artifact.
+        :param pulumi.Input[Union['GrafeasV1beta1BuildDetailsArgs', 'GrafeasV1beta1BuildDetailsArgsDict']] build: Describes a verifiable build.
+        :param pulumi.Input[Union['GrafeasV1beta1DeploymentDetailsArgs', 'GrafeasV1beta1DeploymentDetailsArgsDict']] deployment: Describes the deployment of an artifact on a runtime.
+        :param pulumi.Input[Union['GrafeasV1beta1ImageDetailsArgs', 'GrafeasV1beta1ImageDetailsArgsDict']] derived_image: Describes how this resource derives from the basis in the associated note.
+        :param pulumi.Input[Union['GrafeasV1beta1DiscoveryDetailsArgs', 'GrafeasV1beta1DiscoveryDetailsArgsDict']] discovered: Describes when a resource was discovered.
+        :param pulumi.Input[Union['EnvelopeArgs', 'EnvelopeArgsDict']] envelope: https://github.com/secure-systems-lab/dsse
+        :param pulumi.Input[Union['GrafeasV1beta1PackageDetailsArgs', 'GrafeasV1beta1PackageDetailsArgsDict']] installation: Describes the installation of a package on the linked resource.
+        :param pulumi.Input[Union['GrafeasV1beta1IntotoDetailsArgs', 'GrafeasV1beta1IntotoDetailsArgsDict']] intoto: Describes a specific in-toto link.
         :param pulumi.Input[str] note_name: Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
-        :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Immutable. The resource for which the occurrence applies.
-        :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific software bill of materials document.
-        :param pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']] sbom_reference: Describes a specific SBOM reference occurrences.
-        :param pulumi.Input[pulumi.InputType['FileOccurrenceArgs']] spdx_file: Describes a specific SPDX File.
-        :param pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
-        :param pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']] spdx_relationship: Describes a specific SPDX Relationship.
-        :param pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']] vulnerability: Describes a security vulnerability.
+        :param pulumi.Input[Union['ResourceArgs', 'ResourceArgsDict']] resource: Immutable. The resource for which the occurrence applies.
+        :param pulumi.Input[Union['DocumentOccurrenceArgs', 'DocumentOccurrenceArgsDict']] sbom: Describes a specific software bill of materials document.
+        :param pulumi.Input[Union['SBOMReferenceOccurrenceArgs', 'SBOMReferenceOccurrenceArgsDict']] sbom_reference: Describes a specific SBOM reference occurrences.
+        :param pulumi.Input[Union['FileOccurrenceArgs', 'FileOccurrenceArgsDict']] spdx_file: Describes a specific SPDX File.
+        :param pulumi.Input[Union['PackageInfoOccurrenceArgs', 'PackageInfoOccurrenceArgsDict']] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input[Union['RelationshipOccurrenceArgs', 'RelationshipOccurrenceArgsDict']] spdx_relationship: Describes a specific SPDX Relationship.
+        :param pulumi.Input[Union['GrafeasV1beta1VulnerabilityDetailsArgs', 'GrafeasV1beta1VulnerabilityDetailsArgsDict']] vulnerability: Describes a security vulnerability.
         """
         ...
     @overload
@@ -377,24 +377,24 @@ class Occurrence(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['DetailsArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1BuildDetailsArgs']]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DeploymentDetailsArgs']]] = None,
-                 derived_image: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1ImageDetailsArgs']]] = None,
-                 discovered: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']]] = None,
-                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
-                 installation: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']]] = None,
-                 intoto: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']]] = None,
+                 attestation: Optional[pulumi.Input[Union['DetailsArgs', 'DetailsArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['GrafeasV1beta1BuildDetailsArgs', 'GrafeasV1beta1BuildDetailsArgsDict']]] = None,
+                 deployment: Optional[pulumi.Input[Union['GrafeasV1beta1DeploymentDetailsArgs', 'GrafeasV1beta1DeploymentDetailsArgsDict']]] = None,
+                 derived_image: Optional[pulumi.Input[Union['GrafeasV1beta1ImageDetailsArgs', 'GrafeasV1beta1ImageDetailsArgsDict']]] = None,
+                 discovered: Optional[pulumi.Input[Union['GrafeasV1beta1DiscoveryDetailsArgs', 'GrafeasV1beta1DiscoveryDetailsArgsDict']]] = None,
+                 envelope: Optional[pulumi.Input[Union['EnvelopeArgs', 'EnvelopeArgsDict']]] = None,
+                 installation: Optional[pulumi.Input[Union['GrafeasV1beta1PackageDetailsArgs', 'GrafeasV1beta1PackageDetailsArgsDict']]] = None,
+                 intoto: Optional[pulumi.Input[Union['GrafeasV1beta1IntotoDetailsArgs', 'GrafeasV1beta1IntotoDetailsArgsDict']]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
-                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
-                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
-                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
-                 vulnerability: Optional[pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']]] = None,
+                 resource: Optional[pulumi.Input[Union['ResourceArgs', 'ResourceArgsDict']]] = None,
+                 sbom: Optional[pulumi.Input[Union['DocumentOccurrenceArgs', 'DocumentOccurrenceArgsDict']]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceOccurrenceArgs', 'SBOMReferenceOccurrenceArgsDict']]] = None,
+                 spdx_file: Optional[pulumi.Input[Union['FileOccurrenceArgs', 'FileOccurrenceArgsDict']]] = None,
+                 spdx_package: Optional[pulumi.Input[Union['PackageInfoOccurrenceArgs', 'PackageInfoOccurrenceArgsDict']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[Union['RelationshipOccurrenceArgs', 'RelationshipOccurrenceArgsDict']]] = None,
+                 vulnerability: Optional[pulumi.Input[Union['GrafeasV1beta1VulnerabilityDetailsArgs', 'GrafeasV1beta1VulnerabilityDetailsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

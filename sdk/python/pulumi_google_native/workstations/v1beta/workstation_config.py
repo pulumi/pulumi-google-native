@@ -334,21 +334,21 @@ class WorkstationConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 container: Optional[pulumi.Input[pulumi.InputType['ContainerArgs']]] = None,
+                 container: Optional[pulumi.Input[Union['ContainerArgs', 'ContainerArgsDict']]] = None,
                  disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
-                 encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EphemeralDirectoryArgs']]]]] = None,
+                 encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EphemeralDirectoryArgs', 'EphemeralDirectoryArgsDict']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[pulumi.InputType['HostArgs']]] = None,
+                 host: Optional[pulumi.Input[Union['HostArgs', 'HostArgsDict']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]]] = None,
+                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PersistentDirectoryArgs', 'PersistentDirectoryArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]]]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReadinessCheckArgs', 'ReadinessCheckArgsDict']]]]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -360,19 +360,19 @@ class WorkstationConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
-        :param pulumi.Input[pulumi.InputType['ContainerArgs']] container: Optional. Container that runs upon startup for each workstation using this workstation configuration.
+        :param pulumi.Input[Union['ContainerArgs', 'ContainerArgsDict']] container: Optional. Container that runs upon startup for each workstation using this workstation configuration.
         :param pulumi.Input[bool] disable_tcp_connections: Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation configuration.
         :param pulumi.Input[bool] enable_audit_agent: Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] encryption_key: Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EphemeralDirectoryArgs']]]] ephemeral_directories: Optional. Ephemeral directories which won't persist across workstation sessions.
+        :param pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']] encryption_key: Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EphemeralDirectoryArgs', 'EphemeralDirectoryArgsDict']]]] ephemeral_directories: Optional. Ephemeral directories which won't persist across workstation sessions.
         :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-        :param pulumi.Input[pulumi.InputType['HostArgs']] host: Optional. Runtime host for the workstation.
+        :param pulumi.Input[Union['HostArgs', 'HostArgsDict']] host: Optional. Runtime host for the workstation.
         :param pulumi.Input[str] idle_timeout: Optional. Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to idleness. Provide [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation configuration and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Identifier. Full name of this workstation configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]] persistent_directories: Optional. Directories to persist across workstation sessions.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]]] readiness_checks: Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PersistentDirectoryArgs', 'PersistentDirectoryArgsDict']]]] persistent_directories: Optional. Directories to persist across workstation sessions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReadinessCheckArgs', 'ReadinessCheckArgsDict']]]] readiness_checks: Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend that workstations be shut down daily to reduce costs and so that security updates can be applied upon restart. The idle_timeout and running_timeout fields are independent of each other. Note that the running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is strongly discouraged because you incur costs and will not pick up security updates.
         :param pulumi.Input[str] workstation_config_id: Required. ID to use for the workstation configuration.
@@ -402,21 +402,21 @@ class WorkstationConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 container: Optional[pulumi.Input[pulumi.InputType['ContainerArgs']]] = None,
+                 container: Optional[pulumi.Input[Union['ContainerArgs', 'ContainerArgsDict']]] = None,
                  disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
-                 encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
-                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EphemeralDirectoryArgs']]]]] = None,
+                 encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
+                 ephemeral_directories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EphemeralDirectoryArgs', 'EphemeralDirectoryArgsDict']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[pulumi.InputType['HostArgs']]] = None,
+                 host: Optional[pulumi.Input[Union['HostArgs', 'HostArgsDict']]] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]]] = None,
+                 persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PersistentDirectoryArgs', 'PersistentDirectoryArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]]]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReadinessCheckArgs', 'ReadinessCheckArgsDict']]]]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,

@@ -177,13 +177,13 @@ class DataScan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataSourceArgs']]] = None,
-                 data_profile_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataProfileSpecArgs']]] = None,
-                 data_quality_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataQualitySpecArgs']]] = None,
+                 data: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataSourceArgs', 'GoogleCloudDataplexV1DataSourceArgsDict']]] = None,
+                 data_profile_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataProfileSpecArgs', 'GoogleCloudDataplexV1DataProfileSpecArgsDict']]] = None,
+                 data_quality_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataQualitySpecArgs', 'GoogleCloudDataplexV1DataQualitySpecArgsDict']]] = None,
                  data_scan_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataScanExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataScanExecutionSpecArgs', 'GoogleCloudDataplexV1DataScanExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -194,13 +194,13 @@ class DataScan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataSourceArgs']] data: The data source for DataScan.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataProfileSpecArgs']] data_profile_spec: DataProfileScan related setting.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1DataSourceArgs', 'GoogleCloudDataplexV1DataSourceArgsDict']] data: The data source for DataScan.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1DataProfileSpecArgs', 'GoogleCloudDataplexV1DataProfileSpecArgsDict']] data_profile_spec: DataProfileScan related setting.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1DataQualitySpecArgs', 'GoogleCloudDataplexV1DataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
         :param pulumi.Input[str] data_scan_id: Required. DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter. Must be between 1-63 characters. Must be unique within the customer project / location.
         :param pulumi.Input[str] description: Optional. Description of the scan. Must be between 1-1024 characters.
         :param pulumi.Input[str] display_name: Optional. User friendly display name. Must be between 1-256 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataScanExecutionSpecArgs']] execution_spec: Optional. DataScan execution settings.If not specified, the fields in it will use their default values.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1DataScanExecutionSpecArgs', 'GoogleCloudDataplexV1DataScanExecutionSpecArgsDict']] execution_spec: Optional. DataScan execution settings.If not specified, the fields in it will use their default values.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the scan.
         """
         ...
@@ -228,13 +228,13 @@ class DataScan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataSourceArgs']]] = None,
-                 data_profile_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataProfileSpecArgs']]] = None,
-                 data_quality_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataQualitySpecArgs']]] = None,
+                 data: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataSourceArgs', 'GoogleCloudDataplexV1DataSourceArgsDict']]] = None,
+                 data_profile_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataProfileSpecArgs', 'GoogleCloudDataplexV1DataProfileSpecArgsDict']]] = None,
+                 data_quality_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataQualitySpecArgs', 'GoogleCloudDataplexV1DataQualitySpecArgsDict']]] = None,
                  data_scan_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataScanExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataScanExecutionSpecArgs', 'GoogleCloudDataplexV1DataScanExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

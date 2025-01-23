@@ -375,55 +375,55 @@ class Occurrence(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['AttestationArgs']]] = None,
-                 build_details: Optional[pulumi.Input[pulumi.InputType['BuildDetailsArgs']]] = None,
-                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceOccurrenceArgs']]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
-                 derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
-                 discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
-                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']]] = None,
-                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
-                 installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
+                 attestation: Optional[pulumi.Input[Union['AttestationArgs', 'AttestationArgsDict']]] = None,
+                 build_details: Optional[pulumi.Input[Union['BuildDetailsArgs', 'BuildDetailsArgsDict']]] = None,
+                 compliance: Optional[pulumi.Input[Union['ComplianceOccurrenceArgs', 'ComplianceOccurrenceArgsDict']]] = None,
+                 deployment: Optional[pulumi.Input[Union['DeploymentArgs', 'DeploymentArgsDict']]] = None,
+                 derived_image: Optional[pulumi.Input[Union['DerivedArgs', 'DerivedArgsDict']]] = None,
+                 discovered: Optional[pulumi.Input[Union['DiscoveredArgs', 'DiscoveredArgsDict']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[Union['DSSEAttestationOccurrenceArgs', 'DSSEAttestationOccurrenceArgsDict']]] = None,
+                 envelope: Optional[pulumi.Input[Union['EnvelopeArgs', 'EnvelopeArgsDict']]] = None,
+                 installation: Optional[pulumi.Input[Union['InstallationArgs', 'InstallationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
+                 resource: Optional[pulumi.Input[Union['ResourceArgs', 'ResourceArgsDict']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
-                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
-                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
-                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
-                 upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
-                 vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
+                 sbom: Optional[pulumi.Input[Union['DocumentOccurrenceArgs', 'DocumentOccurrenceArgsDict']]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceOccurrenceArgs', 'SBOMReferenceOccurrenceArgsDict']]] = None,
+                 spdx_file: Optional[pulumi.Input[Union['FileOccurrenceArgs', 'FileOccurrenceArgsDict']]] = None,
+                 spdx_package: Optional[pulumi.Input[Union['PackageInfoOccurrenceArgs', 'PackageInfoOccurrenceArgsDict']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[Union['RelationshipOccurrenceArgs', 'RelationshipOccurrenceArgsDict']]] = None,
+                 upgrade: Optional[pulumi.Input[Union['UpgradeOccurrenceArgs', 'UpgradeOccurrenceArgsDict']]] = None,
+                 vulnerability_details: Optional[pulumi.Input[Union['VulnerabilityDetailsArgs', 'VulnerabilityDetailsArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AttestationArgs']] attestation: Describes an attestation of an artifact.
-        :param pulumi.Input[pulumi.InputType['BuildDetailsArgs']] build_details: Build details for a verifiable build.
-        :param pulumi.Input[pulumi.InputType['ComplianceOccurrenceArgs']] compliance: Describes whether or not a resource passes compliance checks.
-        :param pulumi.Input[pulumi.InputType['DeploymentArgs']] deployment: Describes the deployment of an artifact on a runtime.
-        :param pulumi.Input[pulumi.InputType['DerivedArgs']] derived_image: Describes how this resource derives from the basis in the associated note.
-        :param pulumi.Input[pulumi.InputType['DiscoveredArgs']] discovered: Describes the initial scan status for this resource.
-        :param pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']] dsse_attestation: This represents a DSSE attestation occurrence
-        :param pulumi.Input[pulumi.InputType['EnvelopeArgs']] envelope: https://github.com/secure-systems-lab/dsse
-        :param pulumi.Input[pulumi.InputType['InstallationArgs']] installation: Describes the installation of a package on the linked resource.
+        :param pulumi.Input[Union['AttestationArgs', 'AttestationArgsDict']] attestation: Describes an attestation of an artifact.
+        :param pulumi.Input[Union['BuildDetailsArgs', 'BuildDetailsArgsDict']] build_details: Build details for a verifiable build.
+        :param pulumi.Input[Union['ComplianceOccurrenceArgs', 'ComplianceOccurrenceArgsDict']] compliance: Describes whether or not a resource passes compliance checks.
+        :param pulumi.Input[Union['DeploymentArgs', 'DeploymentArgsDict']] deployment: Describes the deployment of an artifact on a runtime.
+        :param pulumi.Input[Union['DerivedArgs', 'DerivedArgsDict']] derived_image: Describes how this resource derives from the basis in the associated note.
+        :param pulumi.Input[Union['DiscoveredArgs', 'DiscoveredArgsDict']] discovered: Describes the initial scan status for this resource.
+        :param pulumi.Input[Union['DSSEAttestationOccurrenceArgs', 'DSSEAttestationOccurrenceArgsDict']] dsse_attestation: This represents a DSSE attestation occurrence
+        :param pulumi.Input[Union['EnvelopeArgs', 'EnvelopeArgsDict']] envelope: https://github.com/secure-systems-lab/dsse
+        :param pulumi.Input[Union['InstallationArgs', 'InstallationArgsDict']] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input[str] name: The name of the project. Should be of the form "projects/{project_id}". @Deprecated
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
-        :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource:  The resource for which the `Occurrence` applies.
+        :param pulumi.Input[Union['ResourceArgs', 'ResourceArgsDict']] resource:  The resource for which the `Occurrence` applies.
         :param pulumi.Input[str] resource_url: The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
-        :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific software bill of materials document.
-        :param pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']] sbom_reference: This represents an SBOM reference occurrence
-        :param pulumi.Input[pulumi.InputType['FileOccurrenceArgs']] spdx_file: Describes a specific SPDX File.
-        :param pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
-        :param pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']] spdx_relationship: Describes a specific relationship between SPDX elements.
-        :param pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']] upgrade: Describes an upgrade.
-        :param pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']] vulnerability_details: Details of a security vulnerability note.
+        :param pulumi.Input[Union['DocumentOccurrenceArgs', 'DocumentOccurrenceArgsDict']] sbom: Describes a specific software bill of materials document.
+        :param pulumi.Input[Union['SBOMReferenceOccurrenceArgs', 'SBOMReferenceOccurrenceArgsDict']] sbom_reference: This represents an SBOM reference occurrence
+        :param pulumi.Input[Union['FileOccurrenceArgs', 'FileOccurrenceArgsDict']] spdx_file: Describes a specific SPDX File.
+        :param pulumi.Input[Union['PackageInfoOccurrenceArgs', 'PackageInfoOccurrenceArgsDict']] spdx_package: Describes a specific SPDX Package.
+        :param pulumi.Input[Union['RelationshipOccurrenceArgs', 'RelationshipOccurrenceArgsDict']] spdx_relationship: Describes a specific relationship between SPDX elements.
+        :param pulumi.Input[Union['UpgradeOccurrenceArgs', 'UpgradeOccurrenceArgsDict']] upgrade: Describes an upgrade.
+        :param pulumi.Input[Union['VulnerabilityDetailsArgs', 'VulnerabilityDetailsArgsDict']] vulnerability_details: Details of a security vulnerability note.
         """
         ...
     @overload
@@ -449,28 +449,28 @@ class Occurrence(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['AttestationArgs']]] = None,
-                 build_details: Optional[pulumi.Input[pulumi.InputType['BuildDetailsArgs']]] = None,
-                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceOccurrenceArgs']]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentArgs']]] = None,
-                 derived_image: Optional[pulumi.Input[pulumi.InputType['DerivedArgs']]] = None,
-                 discovered: Optional[pulumi.Input[pulumi.InputType['DiscoveredArgs']]] = None,
-                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']]] = None,
-                 envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
-                 installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
+                 attestation: Optional[pulumi.Input[Union['AttestationArgs', 'AttestationArgsDict']]] = None,
+                 build_details: Optional[pulumi.Input[Union['BuildDetailsArgs', 'BuildDetailsArgsDict']]] = None,
+                 compliance: Optional[pulumi.Input[Union['ComplianceOccurrenceArgs', 'ComplianceOccurrenceArgsDict']]] = None,
+                 deployment: Optional[pulumi.Input[Union['DeploymentArgs', 'DeploymentArgsDict']]] = None,
+                 derived_image: Optional[pulumi.Input[Union['DerivedArgs', 'DerivedArgsDict']]] = None,
+                 discovered: Optional[pulumi.Input[Union['DiscoveredArgs', 'DiscoveredArgsDict']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[Union['DSSEAttestationOccurrenceArgs', 'DSSEAttestationOccurrenceArgsDict']]] = None,
+                 envelope: Optional[pulumi.Input[Union['EnvelopeArgs', 'EnvelopeArgsDict']]] = None,
+                 installation: Optional[pulumi.Input[Union['InstallationArgs', 'InstallationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
+                 resource: Optional[pulumi.Input[Union['ResourceArgs', 'ResourceArgsDict']]] = None,
                  resource_url: Optional[pulumi.Input[str]] = None,
-                 sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
-                 spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
-                 spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
-                 spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
-                 upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
-                 vulnerability_details: Optional[pulumi.Input[pulumi.InputType['VulnerabilityDetailsArgs']]] = None,
+                 sbom: Optional[pulumi.Input[Union['DocumentOccurrenceArgs', 'DocumentOccurrenceArgsDict']]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceOccurrenceArgs', 'SBOMReferenceOccurrenceArgsDict']]] = None,
+                 spdx_file: Optional[pulumi.Input[Union['FileOccurrenceArgs', 'FileOccurrenceArgsDict']]] = None,
+                 spdx_package: Optional[pulumi.Input[Union['PackageInfoOccurrenceArgs', 'PackageInfoOccurrenceArgsDict']]] = None,
+                 spdx_relationship: Optional[pulumi.Input[Union['RelationshipOccurrenceArgs', 'RelationshipOccurrenceArgsDict']]] = None,
+                 upgrade: Optional[pulumi.Input[Union['UpgradeOccurrenceArgs', 'UpgradeOccurrenceArgsDict']]] = None,
+                 vulnerability_details: Optional[pulumi.Input[Union['VulnerabilityDetailsArgs', 'VulnerabilityDetailsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -103,7 +103,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 feature_policy: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']]] = None,
+                 feature_policy: Optional[pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']] feature_policy: The policy to define whether or not RBE features can be used or how they can be used.
+        :param pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgsDict']] feature_policy: The policy to define whether or not RBE features can be used or how they can be used.
         :param pulumi.Input[str] instance_id: ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
         :param pulumi.Input[str] location: The location is a GCP region. Currently only `us-central1` is supported.
         :param pulumi.Input[str] parent: Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
@@ -145,7 +145,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 feature_policy: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']]] = None,
+                 feature_policy: Optional[pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,

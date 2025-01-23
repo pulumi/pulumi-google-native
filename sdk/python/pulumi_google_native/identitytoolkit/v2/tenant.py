@@ -281,19 +281,19 @@ class Tenant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-                 client: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs']]] = None,
+                 client: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgsDict']]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 email_privacy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']]] = None,
+                 email_privacy_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgsDict']]] = None,
                  enable_anonymous_user: Optional[pulumi.Input[bool]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
-                 inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
-                 mfa_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']]] = None,
-                 monitoring: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]] = None,
-                 password_policy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']]] = None,
+                 inheritance: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs', 'GoogleCloudIdentitytoolkitAdminV2InheritanceArgsDict']]] = None,
+                 mfa_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgsDict']]] = None,
+                 monitoring: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgsDict']]] = None,
+                 password_policy_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recaptcha_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs']]] = None,
-                 sms_region_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs']]] = None,
+                 recaptcha_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgsDict']]] = None,
+                 sms_region_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgsDict']]] = None,
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -304,18 +304,18 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_password_signup: Whether to allow email/password user authentication.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs']] client: Options related to how clients making requests on behalf of a project should be configured.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgsDict']] client: Options related to how clients making requests on behalf of a project should be configured.
         :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
         :param pulumi.Input[str] display_name: Display name of the tenant.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']] email_privacy_config: Configuration for settings related to email privacy and public visibility.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgsDict']] email_privacy_config: Configuration for settings related to email privacy and public visibility.
         :param pulumi.Input[bool] enable_anonymous_user: Whether to enable anonymous user authentication.
         :param pulumi.Input[bool] enable_email_link_signin: Whether to enable email link user authentication.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']] inheritance: Specify the settings that the tenant could inherit.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']] mfa_config: The tenant-level configuration of MFA options.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']] monitoring: Configuration related to monitoring project activity.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']] password_policy_config: The tenant-level password policy config
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs']] recaptcha_config: The tenant-level reCAPTCHA config.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs']] sms_region_config: Configures which regions are enabled for SMS verification code sending.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs', 'GoogleCloudIdentitytoolkitAdminV2InheritanceArgsDict']] inheritance: Specify the settings that the tenant could inherit.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgsDict']] mfa_config: The tenant-level configuration of MFA options.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgsDict']] monitoring: Configuration related to monitoring project activity.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgsDict']] password_policy_config: The tenant-level password policy config
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgsDict']] recaptcha_config: The tenant-level reCAPTCHA config.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgsDict']] sms_region_config: Configures which regions are enabled for SMS verification code sending.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
         """
         ...
@@ -345,19 +345,19 @@ class Tenant(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_password_signup: Optional[pulumi.Input[bool]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-                 client: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs']]] = None,
+                 client: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgsDict']]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 email_privacy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']]] = None,
+                 email_privacy_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgsDict']]] = None,
                  enable_anonymous_user: Optional[pulumi.Input[bool]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
-                 inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
-                 mfa_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']]] = None,
-                 monitoring: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]] = None,
-                 password_policy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']]] = None,
+                 inheritance: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs', 'GoogleCloudIdentitytoolkitAdminV2InheritanceArgsDict']]] = None,
+                 mfa_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgsDict']]] = None,
+                 monitoring: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgsDict']]] = None,
+                 password_policy_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recaptcha_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs']]] = None,
-                 sms_region_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs']]] = None,
+                 recaptcha_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgsDict']]] = None,
+                 sms_region_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgsDict']]] = None,
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

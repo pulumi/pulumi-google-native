@@ -101,7 +101,7 @@ class DeviceSession(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_device: Optional[pulumi.Input[pulumi.InputType['AndroidDeviceArgs']]] = None,
+                 android_device: Optional[pulumi.Input[Union['AndroidDeviceArgs', 'AndroidDeviceArgsDict']]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class DeviceSession(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AndroidDeviceArgs']] android_device: The requested device
+        :param pulumi.Input[Union['AndroidDeviceArgs', 'AndroidDeviceArgsDict']] android_device: The requested device
         :param pulumi.Input[str] expire_time: Optional. If the device is still in use at this time, any connections will be ended and the SessionState will transition from ACTIVE to FINISHED.
         :param pulumi.Input[str] name: Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
         :param pulumi.Input[str] ttl: Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
@@ -145,7 +145,7 @@ class DeviceSession(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_device: Optional[pulumi.Input[pulumi.InputType['AndroidDeviceArgs']]] = None,
+                 android_device: Optional[pulumi.Input[Union['AndroidDeviceArgs', 'AndroidDeviceArgsDict']]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

@@ -179,10 +179,10 @@ class FolderBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_enabled: Optional[pulumi.Input[bool]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['CmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[Union['CmekSettingsArgs', 'CmekSettingsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexConfigArgs']]]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexConfigArgs', 'IndexConfigArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -196,9 +196,9 @@ class FolderBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] analytics_enabled: Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
         :param pulumi.Input[str] bucket_id: Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
-        :param pulumi.Input[pulumi.InputType['CmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[Union['CmekSettingsArgs', 'CmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexConfigArgs']]]] index_configs: A list of indexed fields and related configuration data.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IndexConfigArgs', 'IndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data.
         :param pulumi.Input[bool] locked: Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_fields: Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
@@ -230,10 +230,10 @@ class FolderBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_enabled: Optional[pulumi.Input[bool]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
-                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['CmekSettingsArgs']]] = None,
+                 cmek_settings: Optional[pulumi.Input[Union['CmekSettingsArgs', 'CmekSettingsArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
-                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IndexConfigArgs']]]]] = None,
+                 index_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IndexConfigArgs', 'IndexConfigArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

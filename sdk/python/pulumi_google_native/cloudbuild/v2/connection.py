@@ -181,9 +181,9 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 github_config: Optional[pulumi.Input[pulumi.InputType['GitHubConfigArgs']]] = None,
-                 github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs']]] = None,
-                 gitlab_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsCloudbuildV2GitLabConfigArgs']]] = None,
+                 github_config: Optional[pulumi.Input[Union['GitHubConfigArgs', 'GitHubConfigArgsDict']]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[Union['GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs', 'GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: Optional[pulumi.Input[Union['GoogleDevtoolsCloudbuildV2GitLabConfigArgs', 'GoogleDevtoolsCloudbuildV2GitLabConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -197,9 +197,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] connection_id: Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-        :param pulumi.Input[pulumi.InputType['GitHubConfigArgs']] github_config: Configuration for connections to github.com.
-        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
-        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsCloudbuildV2GitLabConfigArgs']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        :param pulumi.Input[Union['GitHubConfigArgs', 'GitHubConfigArgsDict']] github_config: Configuration for connections to github.com.
+        :param pulumi.Input[Union['GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs', 'GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgsDict']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input[Union['GoogleDevtoolsCloudbuildV2GitLabConfigArgs', 'GoogleDevtoolsCloudbuildV2GitLabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
         """
         ...
@@ -230,9 +230,9 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 github_config: Optional[pulumi.Input[pulumi.InputType['GitHubConfigArgs']]] = None,
-                 github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs']]] = None,
-                 gitlab_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsCloudbuildV2GitLabConfigArgs']]] = None,
+                 github_config: Optional[pulumi.Input[Union['GitHubConfigArgs', 'GitHubConfigArgsDict']]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[Union['GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgs', 'GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: Optional[pulumi.Input[Union['GoogleDevtoolsCloudbuildV2GitLabConfigArgs', 'GoogleDevtoolsCloudbuildV2GitLabConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

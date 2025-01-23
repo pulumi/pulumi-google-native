@@ -155,7 +155,7 @@ class ReleaseConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_compilation_config: Optional[pulumi.Input[pulumi.InputType['CodeCompilationConfigArgs']]] = None,
+                 code_compilation_config: Optional[pulumi.Input[Union['CodeCompilationConfigArgs', 'CodeCompilationConfigArgsDict']]] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  git_commitish: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class ReleaseConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CodeCompilationConfigArgs']] code_compilation_config: Optional. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.
+        :param pulumi.Input[Union['CodeCompilationConfigArgs', 'CodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
         :param pulumi.Input[str] release_compilation_result: Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
@@ -203,7 +203,7 @@ class ReleaseConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code_compilation_config: Optional[pulumi.Input[pulumi.InputType['CodeCompilationConfigArgs']]] = None,
+                 code_compilation_config: Optional[pulumi.Input[Union['CodeCompilationConfigArgs', 'CodeCompilationConfigArgsDict']]] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  git_commitish: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

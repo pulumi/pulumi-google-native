@@ -243,7 +243,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerProjectLimitArgs', 'ServiceAttachmentConsumerProjectLimitArgsDict']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -263,7 +263,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['ServiceAttachmentConnectionPreference'] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerProjectLimitArgs', 'ServiceAttachmentConsumerProjectLimitArgsDict']]]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
@@ -300,7 +300,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerProjectLimitArgs', 'ServiceAttachmentConsumerProjectLimitArgsDict']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

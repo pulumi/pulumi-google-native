@@ -126,10 +126,10 @@ class Trial(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 final_measurement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]] = None,
+                 final_measurement: Optional[pulumi.Input[Union['GoogleCloudMlV1__MeasurementArgs', 'GoogleCloudMlV1__MeasurementArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
+                 measurements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudMlV1__MeasurementArgs', 'GoogleCloudMlV1__MeasurementArgsDict']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudMlV1_Trial_ParameterArgs', 'GoogleCloudMlV1_Trial_ParameterArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['TrialState']] = None,
                  study_id: Optional[pulumi.Input[str]] = None,
@@ -140,9 +140,9 @@ class Trial(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']] final_measurement: The final measurement containing the objective value.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]] measurements: A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]] parameters: The parameters of the trial.
+        :param pulumi.Input[Union['GoogleCloudMlV1__MeasurementArgs', 'GoogleCloudMlV1__MeasurementArgsDict']] final_measurement: The final measurement containing the objective value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudMlV1__MeasurementArgs', 'GoogleCloudMlV1__MeasurementArgsDict']]]] measurements: A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudMlV1_Trial_ParameterArgs', 'GoogleCloudMlV1_Trial_ParameterArgsDict']]]] parameters: The parameters of the trial.
         :param pulumi.Input['TrialState'] state: The detailed state of a trial.
         """
         ...
@@ -170,10 +170,10 @@ class Trial(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 final_measurement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]] = None,
+                 final_measurement: Optional[pulumi.Input[Union['GoogleCloudMlV1__MeasurementArgs', 'GoogleCloudMlV1__MeasurementArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
+                 measurements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudMlV1__MeasurementArgs', 'GoogleCloudMlV1__MeasurementArgsDict']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudMlV1_Trial_ParameterArgs', 'GoogleCloudMlV1_Trial_ParameterArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['TrialState']] = None,
                  study_id: Optional[pulumi.Input[str]] = None,

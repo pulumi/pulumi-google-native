@@ -316,7 +316,7 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
+                 addons_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1AddonsConfigArgs', 'GoogleCloudApigeeV1AddonsConfigArgsDict']]] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  api_consumer_data_location: Optional[pulumi.Input[str]] = None,
@@ -330,7 +330,7 @@ class Organization(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  portal_disabled: Optional[pulumi.Input[bool]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['GoogleCloudApigeeV1PropertiesArgs', 'GoogleCloudApigeeV1PropertiesArgsDict']]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input['OrganizationRuntimeType']] = None,
                  type: Optional[pulumi.Input['OrganizationType']] = None,
@@ -341,7 +341,7 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1AddonsConfigArgs', 'GoogleCloudApigeeV1AddonsConfigArgsDict']] addons_config: Addon configurations of the Apigee organization.
         :param pulumi.Input[str] analytics_region: DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
@@ -355,7 +355,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
         :param pulumi.Input[str] parent: Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         :param pulumi.Input[bool] portal_disabled: Configuration for the Portals settings.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Properties defined in the Apigee organization profile.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1PropertiesArgs', 'GoogleCloudApigeeV1PropertiesArgsDict']] properties: Properties defined in the Apigee organization profile.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
         :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
         :param pulumi.Input['OrganizationType'] type: Not used by Apigee.
@@ -385,7 +385,7 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
+                 addons_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1AddonsConfigArgs', 'GoogleCloudApigeeV1AddonsConfigArgsDict']]] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  api_consumer_data_location: Optional[pulumi.Input[str]] = None,
@@ -399,7 +399,7 @@ class Organization(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  portal_disabled: Optional[pulumi.Input[bool]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['GoogleCloudApigeeV1PropertiesArgs', 'GoogleCloudApigeeV1PropertiesArgsDict']]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  runtime_type: Optional[pulumi.Input['OrganizationRuntimeType']] = None,
                  type: Optional[pulumi.Input['OrganizationType']] = None,

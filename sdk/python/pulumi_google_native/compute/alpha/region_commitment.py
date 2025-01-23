@@ -262,15 +262,15 @@ class RegionCommitment(pulumi.CustomResource):
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  existing_reservations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 license_resource: Optional[pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']]] = None,
+                 license_resource: Optional[pulumi.Input[Union['LicenseResourceCommitmentArgs', 'LicenseResourceCommitmentArgsDict']]] = None,
                  merge_source_commitments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
+                 reservations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservationArgs', 'ReservationArgsDict']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceCommitmentArgs', 'ResourceCommitmentArgsDict']]]]] = None,
                  split_source_commitment: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['RegionCommitmentType']] = None,
                  __props__=None):
@@ -285,13 +285,13 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input['RegionCommitmentCategory'] category: The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] existing_reservations: Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation 
-        :param pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']] license_resource: The license specification required as part of a license commitment.
+        :param pulumi.Input[Union['LicenseResourceCommitmentArgs', 'LicenseResourceCommitmentArgsDict']] license_resource: The license specification required as part of a license commitment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] merge_source_commitments: List of source commitments to be merged into a new commitment.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['RegionCommitmentPlan'] plan: The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]] reservations: List of create-on-create reseravtions for this commitment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationArgs', 'ReservationArgsDict']]]] reservations: List of create-on-create reseravtions for this commitment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceCommitmentArgs', 'ResourceCommitmentArgsDict']]]] resources: A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
         :param pulumi.Input[str] split_source_commitment: Source commitment to be split into a new commitment.
         :param pulumi.Input['RegionCommitmentType'] type: The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
         """
@@ -325,15 +325,15 @@ class RegionCommitment(pulumi.CustomResource):
                  category: Optional[pulumi.Input['RegionCommitmentCategory']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  existing_reservations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 license_resource: Optional[pulumi.Input[pulumi.InputType['LicenseResourceCommitmentArgs']]] = None,
+                 license_resource: Optional[pulumi.Input[Union['LicenseResourceCommitmentArgs', 'LicenseResourceCommitmentArgsDict']]] = None,
                  merge_source_commitments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input['RegionCommitmentPlan']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
+                 reservations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservationArgs', 'ReservationArgsDict']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceCommitmentArgs', 'ResourceCommitmentArgsDict']]]]] = None,
                  split_source_commitment: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['RegionCommitmentType']] = None,
                  __props__=None):

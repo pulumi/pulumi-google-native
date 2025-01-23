@@ -165,7 +165,7 @@ class ManagementServer(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_server_id: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['ManagementServerType']] = None,
@@ -180,7 +180,7 @@ class ManagementServer(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Optional. Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata. Labels currently defined: 1. migrate_from_go= If set to true, the MS is created in migration ready mode.
         :param pulumi.Input[str] management_server_id: Required. The name of the management server to create. The name must be unique for the specified project and location.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]] networks: VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['ManagementServerType'] type: The type of the ManagementServer resource.
         """
@@ -214,7 +214,7 @@ class ManagementServer(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management_server_id: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['ManagementServerType']] = None,

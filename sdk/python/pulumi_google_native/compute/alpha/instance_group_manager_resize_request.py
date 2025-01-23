@@ -178,9 +178,9 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
                  instance_group_manager: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 queuing_policy: Optional[pulumi.Input[pulumi.InputType['QueuingPolicyArgs']]] = None,
+                 queuing_policy: Optional[pulumi.Input[Union['QueuingPolicyArgs', 'QueuingPolicyArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 requested_run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 requested_run_duration: Optional[pulumi.Input[Union['DurationArgs', 'DurationArgsDict']]] = None,
                  resize_by: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -192,9 +192,9 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[int] count: The count of instances to create as part of this resize request.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
-        :param pulumi.Input[pulumi.InputType['QueuingPolicyArgs']] queuing_policy: When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+        :param pulumi.Input[Union['QueuingPolicyArgs', 'QueuingPolicyArgsDict']] queuing_policy: When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['DurationArgs']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
+        :param pulumi.Input[Union['DurationArgs', 'DurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
         """
         ...
@@ -226,9 +226,9 @@ class InstanceGroupManagerResizeRequest(pulumi.CustomResource):
                  instance_group_manager: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 queuing_policy: Optional[pulumi.Input[pulumi.InputType['QueuingPolicyArgs']]] = None,
+                 queuing_policy: Optional[pulumi.Input[Union['QueuingPolicyArgs', 'QueuingPolicyArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 requested_run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 requested_run_duration: Optional[pulumi.Input[Union['DurationArgs', 'DurationArgsDict']]] = None,
                  resize_by: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):

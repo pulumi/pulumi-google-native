@@ -175,14 +175,14 @@ class TestCase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 last_test_result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']]] = None,
+                 last_test_result: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs', 'GoogleCloudDialogflowCxV3beta1TestCaseResultArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]]]] = None,
-                 test_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestConfigArgs']]] = None,
+                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs', 'GoogleCloudDialogflowCxV3beta1ConversationTurnArgsDict']]]]] = None,
+                 test_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TestConfigArgs', 'GoogleCloudDialogflowCxV3beta1TestConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a test case for the given agent.
@@ -192,12 +192,12 @@ class TestCase(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']] last_test_result: The latest test result.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs', 'GoogleCloudDialogflowCxV3beta1TestCaseResultArgsDict']] last_test_result: The latest test result.
         :param pulumi.Input[str] name: The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
         :param pulumi.Input[str] notes: Additional freeform notes about the test case. Limit of 400 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestConfigArgs']] test_config: Config for the test case.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs', 'GoogleCloudDialogflowCxV3beta1ConversationTurnArgsDict']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TestConfigArgs', 'GoogleCloudDialogflowCxV3beta1TestConfigArgsDict']] test_config: Config for the test case.
         """
         ...
     @overload
@@ -227,14 +227,14 @@ class TestCase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 last_test_result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']]] = None,
+                 last_test_result: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs', 'GoogleCloudDialogflowCxV3beta1TestCaseResultArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs']]]]] = None,
-                 test_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestConfigArgs']]] = None,
+                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1ConversationTurnArgs', 'GoogleCloudDialogflowCxV3beta1ConversationTurnArgsDict']]]]] = None,
+                 test_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3beta1TestConfigArgs', 'GoogleCloudDialogflowCxV3beta1TestConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

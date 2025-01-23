@@ -96,7 +96,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ConfigArgs', 'ConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConfigArgs']] config: Config of the Instance.
+        :param pulumi.Input[Union['ConfigArgs', 'ConfigArgsDict']] config: Config of the Instance.
         :param pulumi.Input[str] instance_id: Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] name: Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         """
@@ -137,7 +137,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ConfigArgs', 'ConfigArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

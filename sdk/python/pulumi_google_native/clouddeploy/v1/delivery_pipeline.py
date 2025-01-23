@@ -202,7 +202,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 serial_pipeline: Optional[pulumi.Input[pulumi.InputType['SerialPipelineArgs']]] = None,
+                 serial_pipeline: Optional[pulumi.Input[Union['SerialPipelineArgs', 'SerialPipelineArgsDict']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -217,7 +217,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] name: Optional. Name of the `DeliveryPipeline`. Format is `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['SerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[Union['SerialPipelineArgs', 'SerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         """
         ...
@@ -253,7 +253,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 serial_pipeline: Optional[pulumi.Input[pulumi.InputType['SerialPipelineArgs']]] = None,
+                 serial_pipeline: Optional[pulumi.Input[Union['SerialPipelineArgs', 'SerialPipelineArgsDict']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

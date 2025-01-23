@@ -135,9 +135,9 @@ class DomainMapping(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['ObjectMetaArgs', 'ObjectMetaArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']]] = None,
                  __props__=None):
         """
         Create a new domain mapping.
@@ -148,8 +148,8 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] api_version: The API version for this call such as "domains.cloudrun.com/v1".
         :param pulumi.Input[str] dry_run: Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
         :param pulumi.Input[str] kind: The kind of resource, in this case "DomainMapping".
-        :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this BuildTemplate.
-        :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
+        :param pulumi.Input[Union['ObjectMetaArgs', 'ObjectMetaArgsDict']] metadata: Metadata associated with this BuildTemplate.
+        :param pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']] spec: The spec for this DomainMapping.
         """
         ...
     @overload
@@ -180,9 +180,9 @@ class DomainMapping(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
+                 metadata: Optional[pulumi.Input[Union['ObjectMetaArgs', 'ObjectMetaArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['DomainMappingSpecArgs', 'DomainMappingSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

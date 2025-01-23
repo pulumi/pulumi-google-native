@@ -177,16 +177,16 @@ class OrganizationDiscoveryConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DataProfileActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2DataProfileActionArgs', 'GooglePrivacyDlpV2DataProfileActionArgsDict']]]]] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 org_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2OrgConfigArgs']]] = None,
+                 org_config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2OrgConfigArgs', 'GooglePrivacyDlpV2OrgConfigArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['OrganizationDiscoveryConfigStatus']] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DiscoveryTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2DiscoveryTargetArgs', 'GooglePrivacyDlpV2DiscoveryTargetArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a config for discovery to scan and profile storage.
@@ -194,14 +194,14 @@ class OrganizationDiscoveryConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DataProfileActionArgs']]]] actions: Actions to execute at the completion of scanning.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2DataProfileActionArgs', 'GooglePrivacyDlpV2DataProfileActionArgsDict']]]] actions: Actions to execute at the completion of scanning.
         :param pulumi.Input[str] config_id: The config ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[str] display_name: Display name (max 100 chars)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inspect_templates: Detection logic for profile generation. Not all template features are used by Discovery. FindingLimits, include_quote and exclude_info_types have no impact on Discovery. Multiple templates may be provided if there is data in multiple regions. At most one template must be specified per-region (including "global"). Each region is scanned using the applicable template. If no region-specific template is specified, but a "global" template is specified, it will be copied to that region and used instead. If no global or region-specific template is provided for a region with data, that region's data will not be scanned. For more information, see https://cloud.google.com/dlp/docs/data-profiles#data-residency.
         :param pulumi.Input[str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created, for example `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2OrgConfigArgs']] org_config: Only set when the parent is an org.
+        :param pulumi.Input[Union['GooglePrivacyDlpV2OrgConfigArgs', 'GooglePrivacyDlpV2OrgConfigArgsDict']] org_config: Only set when the parent is an org.
         :param pulumi.Input['OrganizationDiscoveryConfigStatus'] status: A status for this configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DiscoveryTargetArgs']]]] targets: Target to match against for determining what to scan and how frequently.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2DiscoveryTargetArgs', 'GooglePrivacyDlpV2DiscoveryTargetArgsDict']]]] targets: Target to match against for determining what to scan and how frequently.
         """
         ...
     @overload
@@ -228,16 +228,16 @@ class OrganizationDiscoveryConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DataProfileActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2DataProfileActionArgs', 'GooglePrivacyDlpV2DataProfileActionArgsDict']]]]] = None,
                  config_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_templates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 org_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2OrgConfigArgs']]] = None,
+                 org_config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2OrgConfigArgs', 'GooglePrivacyDlpV2OrgConfigArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['OrganizationDiscoveryConfigStatus']] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DiscoveryTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2DiscoveryTargetArgs', 'GooglePrivacyDlpV2DiscoveryTargetArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -152,7 +152,7 @@ class TrustConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  trust_config_id: Optional[pulumi.Input[str]] = None,
-                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustStoreArgs']]]]] = None,
+                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrustStoreArgs', 'TrustStoreArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new TrustConfig in a given project and location.
@@ -164,7 +164,7 @@ class TrustConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a TrustConfig.
         :param pulumi.Input[str] name: A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
         :param pulumi.Input[str] trust_config_id: Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustStoreArgs']]]] trust_stores: Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrustStoreArgs', 'TrustStoreArgsDict']]]] trust_stores: Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
         """
         ...
     @overload
@@ -197,7 +197,7 @@ class TrustConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  trust_config_id: Optional[pulumi.Input[str]] = None,
-                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustStoreArgs']]]]] = None,
+                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrustStoreArgs', 'TrustStoreArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

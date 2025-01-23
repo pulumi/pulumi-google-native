@@ -192,15 +192,15 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
+                 destination: Optional[pulumi.Input[Union['DestinationArgs', 'DestinationArgsDict']]] = None,
                  event_data_content_type: Optional[pulumi.Input[str]] = None,
-                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventFilterArgs']]]]] = None,
+                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventFilterArgs', 'EventFilterArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transport: Optional[pulumi.Input[pulumi.InputType['TransportArgs']]] = None,
+                 transport: Optional[pulumi.Input[Union['TransportArgs', 'TransportArgsDict']]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -209,13 +209,13 @@ class Trigger(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
-        :param pulumi.Input[pulumi.InputType['DestinationArgs']] destination: Destination specifies where the events should be sent to.
+        :param pulumi.Input[Union['DestinationArgs', 'DestinationArgsDict']] destination: Destination specifies where the events should be sent to.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventFilterArgs']]]] event_filters: Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EventFilterArgs', 'EventFilterArgsDict']]]] event_filters: Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The `iam.serviceAccounts.actAs` permission must be granted on the service account to allow a principal to impersonate the service account. For more information, see the [Roles and permissions](/eventarc/docs/all-roles-permissions) page specific to the trigger destination.
-        :param pulumi.Input[pulumi.InputType['TransportArgs']] transport: Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[Union['TransportArgs', 'TransportArgsDict']] transport: Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
         """
         ...
@@ -243,15 +243,15 @@ class Trigger(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
+                 destination: Optional[pulumi.Input[Union['DestinationArgs', 'DestinationArgsDict']]] = None,
                  event_data_content_type: Optional[pulumi.Input[str]] = None,
-                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventFilterArgs']]]]] = None,
+                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventFilterArgs', 'EventFilterArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transport: Optional[pulumi.Input[pulumi.InputType['TransportArgs']]] = None,
+                 transport: Optional[pulumi.Input[Union['TransportArgs', 'TransportArgsDict']]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

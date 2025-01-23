@@ -97,7 +97,7 @@ class DeploymentResourcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1DedicatedResourcesArgs']]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1DedicatedResourcesArgs', 'GoogleCloudAiplatformV1beta1DedicatedResourcesArgsDict']]] = None,
                  deployment_resource_pool_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class DeploymentResourcePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1DedicatedResourcesArgs']] dedicated_resources: The underlying DedicatedResources that the DeploymentResourcePool uses.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1DedicatedResourcesArgs', 'GoogleCloudAiplatformV1beta1DedicatedResourcesArgsDict']] dedicated_resources: The underlying DedicatedResources that the DeploymentResourcePool uses.
         :param pulumi.Input[str] deployment_resource_pool_id: The ID to use for the DeploymentResourcePool, which will become the final component of the DeploymentResourcePool's resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
         :param pulumi.Input[str] name: Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
         """
@@ -136,7 +136,7 @@ class DeploymentResourcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1DedicatedResourcesArgs']]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1DedicatedResourcesArgs', 'GoogleCloudAiplatformV1beta1DedicatedResourcesArgsDict']]] = None,
                  deployment_resource_pool_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

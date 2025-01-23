@@ -106,21 +106,21 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]] = None,
-                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
+                 alternate: Optional[pulumi.Input[Union['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs', 'GoogleCloudOrgpolicyV2AlternatePolicySpecArgsDict']]] = None,
+                 dry_run_spec: Optional[pulumi.Input[Union['GoogleCloudOrgpolicyV2PolicySpecArgs', 'GoogleCloudOrgpolicyV2PolicySpecArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['GoogleCloudOrgpolicyV2PolicySpecArgs', 'GoogleCloudOrgpolicyV2PolicySpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']] alternate: Deprecated.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param pulumi.Input[Union['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs', 'GoogleCloudOrgpolicyV2AlternatePolicySpecArgsDict']] alternate: Deprecated.
+        :param pulumi.Input[Union['GoogleCloudOrgpolicyV2PolicySpecArgs', 'GoogleCloudOrgpolicyV2PolicySpecArgsDict']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']] spec: Basic information about the Organization Policy.
+        :param pulumi.Input[Union['GoogleCloudOrgpolicyV2PolicySpecArgs', 'GoogleCloudOrgpolicyV2PolicySpecArgsDict']] spec: Basic information about the Organization Policy.
         """
         ...
     @overload
@@ -146,11 +146,11 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]] = None,
-                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
+                 alternate: Optional[pulumi.Input[Union['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs', 'GoogleCloudOrgpolicyV2AlternatePolicySpecArgsDict']]] = None,
+                 dry_run_spec: Optional[pulumi.Input[Union['GoogleCloudOrgpolicyV2PolicySpecArgs', 'GoogleCloudOrgpolicyV2PolicySpecArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
+                 spec: Optional[pulumi.Input[Union['GoogleCloudOrgpolicyV2PolicySpecArgs', 'GoogleCloudOrgpolicyV2PolicySpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

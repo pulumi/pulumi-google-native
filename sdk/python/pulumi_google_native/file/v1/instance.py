@@ -180,12 +180,12 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
+                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileShareConfigArgs', 'FileShareConfigArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  __props__=None):
@@ -197,11 +197,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FileShareConfigArgs', 'FileShareConfigArgsDict']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[str] instance_id: Required. The name of the instance to create. The name must be unique for the specified project and location.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
         ...
@@ -231,12 +231,12 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
+                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileShareConfigArgs', 'FileShareConfigArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  __props__=None):

@@ -304,13 +304,13 @@ class Snapshot(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 snapshot_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
-                 source_instant_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_instant_snapshot_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -326,13 +326,13 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
+        :param pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
         :param pulumi.Input['SnapshotSnapshotType'] snapshot_type: Indicates the type of the snapshot.
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
+        :param pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_disk_for_recovery_checkpoint: The source disk whose recovery checkpoint will be used to create this snapshot.
         :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_instant_snapshot_encryption_key: Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        :param pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']] source_instant_snapshot_encryption_key: Customer provided encryption key when creating Snapshot from Instant Snapshot.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         ...
@@ -368,13 +368,13 @@ class Snapshot(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 snapshot_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_disk_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
-                 source_instant_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_instant_snapshot_encryption_key: Optional[pulumi.Input[Union['CustomerEncryptionKeyArgs', 'CustomerEncryptionKeyArgsDict']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

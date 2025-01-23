@@ -196,7 +196,7 @@ class AppGroupApp(pulumi.CustomResource):
                  app_group: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  appgroup_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  callback_url: Optional[pulumi.Input[str]] = None,
                  key_expires_in: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -213,7 +213,7 @@ class AppGroupApp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_products: List of API products associated with the AppGroup app.
         :param pulumi.Input[str] app_group: Immutable. Name of the parent AppGroup whose resource name format is of syntax (organizations/*/appgroups/*).
         :param pulumi.Input[str] app_id: Immutable. ID of the AppGroup app.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]] attributes: List of attributes for the AppGroup app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]] attributes: List of attributes for the AppGroup app.
         :param pulumi.Input[str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to AppGroup apps.
         :param pulumi.Input[str] key_expires_in: Immutable. Expiration time, in seconds, for the consumer key that is generated for the AppGroup app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
         :param pulumi.Input[str] name: Immutable. Name of the AppGroup app whose resource name format is of syntax (organizations/*/appgroups/*/apps/*).
@@ -249,7 +249,7 @@ class AppGroupApp(pulumi.CustomResource):
                  app_group: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  appgroup_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  callback_url: Optional[pulumi.Input[str]] = None,
                  key_expires_in: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,

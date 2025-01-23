@@ -89,7 +89,7 @@ class StoredInfoType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2StoredInfoTypeConfigArgs', 'GooglePrivacyDlpV2StoredInfoTypeConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
@@ -100,7 +100,7 @@ class StoredInfoType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] config: Configuration of the storedInfoType to create.
+        :param pulumi.Input[Union['GooglePrivacyDlpV2StoredInfoTypeConfigArgs', 'GooglePrivacyDlpV2StoredInfoTypeConfigArgsDict']] config: Configuration of the storedInfoType to create.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
@@ -129,7 +129,7 @@ class StoredInfoType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2StoredInfoTypeConfigArgs', 'GooglePrivacyDlpV2StoredInfoTypeConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,

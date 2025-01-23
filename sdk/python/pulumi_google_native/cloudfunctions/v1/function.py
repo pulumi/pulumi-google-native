@@ -511,8 +511,8 @@ class Function(pulumi.CustomResource):
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
-                 https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[Union['EventTriggerArgs', 'EventTriggerArgsDict']]] = None,
+                 https_trigger: Optional[pulumi.Input[Union['HttpsTriggerArgs', 'HttpsTriggerArgsDict']]] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -523,11 +523,11 @@ class Function(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretEnvVarArgs', 'SecretEnvVarArgsDict']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretVolumeArgs', 'SecretVolumeArgsDict']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_url: Optional[pulumi.Input[str]] = None,
-                 source_repository: Optional[pulumi.Input[pulumi.InputType['SourceRepositoryArgs']]] = None,
+                 source_repository: Optional[pulumi.Input[Union['SourceRepositoryArgs', 'SourceRepositoryArgsDict']]] = None,
                  source_token: Optional[pulumi.Input[str]] = None,
                  source_upload_url: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
@@ -547,8 +547,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix (ID of the function), if not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
-        :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: A source that fires events in response to a condition in another service.
-        :param pulumi.Input[pulumi.InputType['HttpsTriggerArgs']] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
+        :param pulumi.Input[Union['EventTriggerArgs', 'EventTriggerArgsDict']] event_trigger: A source that fires events in response to a condition in another service.
+        :param pulumi.Input[Union['HttpsTriggerArgs', 'HttpsTriggerArgsDict']] https_trigger: An HTTPS endpoint type of source that can be triggered via URL.
         :param pulumi.Input['FunctionIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
         :param pulumi.Input[str] kms_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
@@ -557,11 +557,11 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input[str] network: Deprecated: use vpc_connector
         :param pulumi.Input[str] runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]] secret_environment_variables: Secret environment variables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]] secret_volumes: Secret volumes configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretEnvVarArgs', 'SecretEnvVarArgsDict']]]] secret_environment_variables: Secret environment variables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretVolumeArgs', 'SecretVolumeArgsDict']]]] secret_volumes: Secret volumes configuration.
         :param pulumi.Input[str] service_account_email: The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
         :param pulumi.Input[str] source_archive_url: The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
-        :param pulumi.Input[pulumi.InputType['SourceRepositoryArgs']] source_repository: **Beta Feature** The source repository where a function is hosted.
+        :param pulumi.Input[Union['SourceRepositoryArgs', 'SourceRepositoryArgsDict']] source_repository: **Beta Feature** The source repository where a function is hosted.
         :param pulumi.Input[str] source_token: Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
         :param pulumi.Input[str] source_upload_url: The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
         :param pulumi.Input[str] timeout: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -600,8 +600,8 @@ class Function(pulumi.CustomResource):
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
-                 https_trigger: Optional[pulumi.Input[pulumi.InputType['HttpsTriggerArgs']]] = None,
+                 event_trigger: Optional[pulumi.Input[Union['EventTriggerArgs', 'EventTriggerArgsDict']]] = None,
+                 https_trigger: Optional[pulumi.Input[Union['HttpsTriggerArgs', 'HttpsTriggerArgsDict']]] = None,
                  ingress_settings: Optional[pulumi.Input['FunctionIngressSettings']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -612,11 +612,11 @@ class Function(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretEnvVarArgs']]]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretVolumeArgs']]]]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretEnvVarArgs', 'SecretEnvVarArgsDict']]]]] = None,
+                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretVolumeArgs', 'SecretVolumeArgsDict']]]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  source_archive_url: Optional[pulumi.Input[str]] = None,
-                 source_repository: Optional[pulumi.Input[pulumi.InputType['SourceRepositoryArgs']]] = None,
+                 source_repository: Optional[pulumi.Input[Union['SourceRepositoryArgs', 'SourceRepositoryArgsDict']]] = None,
                  source_token: Optional[pulumi.Input[str]] = None,
                  source_upload_url: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,

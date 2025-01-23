@@ -142,13 +142,13 @@ class ProxyConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']]] = None,
+                 encryption_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  partner_tenant_id: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 routing_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs']]] = None,
-                 transport_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']]] = None,
+                 routing_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgsDict']]] = None,
+                 transport_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new BeyondCorp Enterprise ProxyConfig in a given organization and PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
@@ -157,11 +157,11 @@ class ProxyConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']] encryption_info: Optional. Information to encrypt JWT for the proxy server.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgsDict']] encryption_info: Optional. Information to encrypt JWT for the proxy server.
         :param pulumi.Input[str] proxy_uri: The URI of the proxy server.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs']] routing_info: Routing info to direct traffic to the proxy server.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']] transport_info: Transport layer information to verify for the proxy server.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgsDict']] routing_info: Routing info to direct traffic to the proxy server.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgsDict']] transport_info: Transport layer information to verify for the proxy server.
         """
         ...
     @overload
@@ -189,13 +189,13 @@ class ProxyConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']]] = None,
+                 encryption_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  partner_tenant_id: Optional[pulumi.Input[str]] = None,
                  proxy_uri: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 routing_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs']]] = None,
-                 transport_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']]] = None,
+                 routing_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgsDict']]] = None,
+                 transport_info: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

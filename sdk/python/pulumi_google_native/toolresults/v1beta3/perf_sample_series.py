@@ -88,7 +88,7 @@ class PerfSampleSeries(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_perf_sample_series: Optional[pulumi.Input[pulumi.InputType['BasicPerfSampleSeriesArgs']]] = None,
+                 basic_perf_sample_series: Optional[pulumi.Input[Union['BasicPerfSampleSeriesArgs', 'BasicPerfSampleSeriesArgsDict']]] = None,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -102,7 +102,7 @@ class PerfSampleSeries(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BasicPerfSampleSeriesArgs']] basic_perf_sample_series: Basic series represented by a line chart
+        :param pulumi.Input[Union['BasicPerfSampleSeriesArgs', 'BasicPerfSampleSeriesArgsDict']] basic_perf_sample_series: Basic series represented by a line chart
         """
         ...
     @overload
@@ -131,7 +131,7 @@ class PerfSampleSeries(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_perf_sample_series: Optional[pulumi.Input[pulumi.InputType['BasicPerfSampleSeriesArgs']]] = None,
+                 basic_perf_sample_series: Optional[pulumi.Input[Union['BasicPerfSampleSeriesArgs', 'BasicPerfSampleSeriesArgsDict']]] = None,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

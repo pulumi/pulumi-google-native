@@ -244,9 +244,9 @@ class Conversation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 call_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs']]] = None,
+                 call_metadata: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs', 'GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgsDict']]] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
-                 data_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs']]] = None,
+                 data_source: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs', 'GoogleCloudContactcenterinsightsV1ConversationDataSourceArgsDict']]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -264,9 +264,9 @@ class Conversation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] agent_id: An opaque, user-specified string representing the human agent who handled the conversation.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs']] call_metadata: Call-specific metadata.
+        :param pulumi.Input[Union['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs', 'GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgsDict']] call_metadata: Call-specific metadata.
         :param pulumi.Input[str] conversation_id: A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs']] data_source: The source of the audio and transcription for the conversation.
+        :param pulumi.Input[Union['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs', 'GoogleCloudContactcenterinsightsV1ConversationDataSourceArgsDict']] data_source: The source of the audio and transcription for the conversation.
         :param pulumi.Input[str] expire_time: The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
         :param pulumi.Input[str] language_code: A user-specified language code for the conversation.
@@ -301,9 +301,9 @@ class Conversation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
-                 call_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs']]] = None,
+                 call_metadata: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs', 'GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgsDict']]] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
-                 data_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs']]] = None,
+                 data_source: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs', 'GoogleCloudContactcenterinsightsV1ConversationDataSourceArgsDict']]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,

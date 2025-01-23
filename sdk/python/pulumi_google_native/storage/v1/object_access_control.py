@@ -280,7 +280,7 @@ class ObjectAccessControl(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
-                 project_team: Optional[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]] = None,
+                 project_team: Optional[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict']]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
@@ -312,7 +312,7 @@ class ObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
-        :param pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']] project_team: The project team associated with the entity, if any.
+        :param pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict']] project_team: The project team associated with the entity, if any.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
@@ -352,7 +352,7 @@ class ObjectAccessControl(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
-                 project_team: Optional[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]] = None,
+                 project_team: Optional[pulumi.Input[Union['ObjectAccessControlProjectTeamArgs', 'ObjectAccessControlProjectTeamArgsDict']]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,

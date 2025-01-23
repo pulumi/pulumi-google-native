@@ -470,34 +470,34 @@ class Config(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiArgs']]]]] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AuthenticationArgs']]] = None,
-                 backend: Optional[pulumi.Input[pulumi.InputType['BackendArgs']]] = None,
-                 billing: Optional[pulumi.Input[pulumi.InputType['BillingArgs']]] = None,
+                 apis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiArgs', 'ApiArgsDict']]]]] = None,
+                 authentication: Optional[pulumi.Input[Union['AuthenticationArgs', 'AuthenticationArgsDict']]] = None,
+                 backend: Optional[pulumi.Input[Union['BackendArgs', 'BackendArgsDict']]] = None,
+                 billing: Optional[pulumi.Input[Union['BillingArgs', 'BillingArgsDict']]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
-                 context: Optional[pulumi.Input[pulumi.InputType['ContextArgs']]] = None,
-                 control: Optional[pulumi.Input[pulumi.InputType['ControlArgs']]] = None,
-                 custom_error: Optional[pulumi.Input[pulumi.InputType['CustomErrorArgs']]] = None,
-                 documentation: Optional[pulumi.Input[pulumi.InputType['DocumentationArgs']]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]]] = None,
-                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]]] = None,
-                 http: Optional[pulumi.Input[pulumi.InputType['HttpArgs']]] = None,
+                 context: Optional[pulumi.Input[Union['ContextArgs', 'ContextArgsDict']]] = None,
+                 control: Optional[pulumi.Input[Union['ControlArgs', 'ControlArgsDict']]] = None,
+                 custom_error: Optional[pulumi.Input[Union['CustomErrorArgs', 'CustomErrorArgsDict']]] = None,
+                 documentation: Optional[pulumi.Input[Union['DocumentationArgs', 'DocumentationArgsDict']]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EndpointArgs', 'EndpointArgsDict']]]]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnumArgs', 'EnumArgsDict']]]]] = None,
+                 http: Optional[pulumi.Input[Union['HttpArgs', 'HttpArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['LoggingArgs']]] = None,
-                 logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogDescriptorArgs']]]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]]]] = None,
-                 monitored_resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitoredResourceDescriptorArgs']]]]] = None,
-                 monitoring: Optional[pulumi.Input[pulumi.InputType['MonitoringArgs']]] = None,
+                 logging: Optional[pulumi.Input[Union['LoggingArgs', 'LoggingArgsDict']]] = None,
+                 logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LogDescriptorArgs', 'LogDescriptorArgsDict']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorArgs', 'MetricDescriptorArgsDict']]]]] = None,
+                 monitored_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitoredResourceDescriptorArgs', 'MonitoredResourceDescriptorArgsDict']]]]] = None,
+                 monitoring: Optional[pulumi.Input[Union['MonitoringArgs', 'MonitoringArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  producer_project_id: Optional[pulumi.Input[str]] = None,
-                 publishing: Optional[pulumi.Input[pulumi.InputType['PublishingArgs']]] = None,
-                 quota: Optional[pulumi.Input[pulumi.InputType['QuotaArgs']]] = None,
+                 publishing: Optional[pulumi.Input[Union['PublishingArgs', 'PublishingArgsDict']]] = None,
+                 quota: Optional[pulumi.Input[Union['QuotaArgs', 'QuotaArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 system_parameters: Optional[pulumi.Input[pulumi.InputType['SystemParametersArgs']]] = None,
-                 system_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]]] = None,
+                 system_parameters: Optional[pulumi.Input[Union['SystemParametersArgs', 'SystemParametersArgsDict']]] = None,
+                 system_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TypeArgs', 'TypeArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]]] = None,
-                 usage: Optional[pulumi.Input[pulumi.InputType['UsageArgs']]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TypeArgs', 'TypeArgsDict']]]]] = None,
+                 usage: Optional[pulumi.Input[Union['UsageArgs', 'UsageArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.
@@ -506,33 +506,33 @@ class Config(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiArgs']]]] apis: A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
-        :param pulumi.Input[pulumi.InputType['AuthenticationArgs']] authentication: Auth configuration.
-        :param pulumi.Input[pulumi.InputType['BackendArgs']] backend: API backend configuration.
-        :param pulumi.Input[pulumi.InputType['BillingArgs']] billing: Billing configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApiArgs', 'ApiArgsDict']]]] apis: A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
+        :param pulumi.Input[Union['AuthenticationArgs', 'AuthenticationArgsDict']] authentication: Auth configuration.
+        :param pulumi.Input[Union['BackendArgs', 'BackendArgsDict']] backend: API backend configuration.
+        :param pulumi.Input[Union['BillingArgs', 'BillingArgsDict']] billing: Billing configuration.
         :param pulumi.Input[int] config_version: Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
-        :param pulumi.Input[pulumi.InputType['ContextArgs']] context: Context configuration.
-        :param pulumi.Input[pulumi.InputType['ControlArgs']] control: Configuration for the service control plane.
-        :param pulumi.Input[pulumi.InputType['CustomErrorArgs']] custom_error: Custom error configuration.
-        :param pulumi.Input[pulumi.InputType['DocumentationArgs']] documentation: Additional API documentation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]] endpoints: Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
-        :param pulumi.Input[pulumi.InputType['HttpArgs']] http: HTTP configuration.
+        :param pulumi.Input[Union['ContextArgs', 'ContextArgsDict']] context: Context configuration.
+        :param pulumi.Input[Union['ControlArgs', 'ControlArgsDict']] control: Configuration for the service control plane.
+        :param pulumi.Input[Union['CustomErrorArgs', 'CustomErrorArgsDict']] custom_error: Custom error configuration.
+        :param pulumi.Input[Union['DocumentationArgs', 'DocumentationArgsDict']] documentation: Additional API documentation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EndpointArgs', 'EndpointArgsDict']]]] endpoints: Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnumArgs', 'EnumArgsDict']]]] enums: A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
+        :param pulumi.Input[Union['HttpArgs', 'HttpArgsDict']] http: HTTP configuration.
         :param pulumi.Input[str] id: A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
-        :param pulumi.Input[pulumi.InputType['LoggingArgs']] logging: Logging configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogDescriptorArgs']]]] logs: Defines the logs used by this service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]]] metrics: Defines the metrics used by this service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitoredResourceDescriptorArgs']]]] monitored_resources: Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
-        :param pulumi.Input[pulumi.InputType['MonitoringArgs']] monitoring: Monitoring configuration.
+        :param pulumi.Input[Union['LoggingArgs', 'LoggingArgsDict']] logging: Logging configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LogDescriptorArgs', 'LogDescriptorArgsDict']]]] logs: Defines the logs used by this service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorArgs', 'MetricDescriptorArgsDict']]]] metrics: Defines the metrics used by this service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitoredResourceDescriptorArgs', 'MonitoredResourceDescriptorArgsDict']]]] monitored_resources: Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
+        :param pulumi.Input[Union['MonitoringArgs', 'MonitoringArgsDict']] monitoring: Monitoring configuration.
         :param pulumi.Input[str] name: The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
         :param pulumi.Input[str] producer_project_id: The Google project that owns this service.
-        :param pulumi.Input[pulumi.InputType['PublishingArgs']] publishing: Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
-        :param pulumi.Input[pulumi.InputType['QuotaArgs']] quota: Quota configuration.
-        :param pulumi.Input[pulumi.InputType['SystemParametersArgs']] system_parameters: System parameter configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
+        :param pulumi.Input[Union['PublishingArgs', 'PublishingArgsDict']] publishing: Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+        :param pulumi.Input[Union['QuotaArgs', 'QuotaArgsDict']] quota: Quota configuration.
+        :param pulumi.Input[Union['SystemParametersArgs', 'SystemParametersArgsDict']] system_parameters: System parameter configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TypeArgs', 'TypeArgsDict']]]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
         :param pulumi.Input[str] title: The product title for this service, it is the name displayed in Google Cloud Console.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] types: A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
-        :param pulumi.Input[pulumi.InputType['UsageArgs']] usage: Configuration controlling usage of this service.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TypeArgs', 'TypeArgsDict']]]] types: A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
+        :param pulumi.Input[Union['UsageArgs', 'UsageArgsDict']] usage: Configuration controlling usage of this service.
         """
         ...
     @overload
@@ -560,34 +560,34 @@ class Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apis: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiArgs']]]]] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AuthenticationArgs']]] = None,
-                 backend: Optional[pulumi.Input[pulumi.InputType['BackendArgs']]] = None,
-                 billing: Optional[pulumi.Input[pulumi.InputType['BillingArgs']]] = None,
+                 apis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiArgs', 'ApiArgsDict']]]]] = None,
+                 authentication: Optional[pulumi.Input[Union['AuthenticationArgs', 'AuthenticationArgsDict']]] = None,
+                 backend: Optional[pulumi.Input[Union['BackendArgs', 'BackendArgsDict']]] = None,
+                 billing: Optional[pulumi.Input[Union['BillingArgs', 'BillingArgsDict']]] = None,
                  config_version: Optional[pulumi.Input[int]] = None,
-                 context: Optional[pulumi.Input[pulumi.InputType['ContextArgs']]] = None,
-                 control: Optional[pulumi.Input[pulumi.InputType['ControlArgs']]] = None,
-                 custom_error: Optional[pulumi.Input[pulumi.InputType['CustomErrorArgs']]] = None,
-                 documentation: Optional[pulumi.Input[pulumi.InputType['DocumentationArgs']]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointArgs']]]]] = None,
-                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnumArgs']]]]] = None,
-                 http: Optional[pulumi.Input[pulumi.InputType['HttpArgs']]] = None,
+                 context: Optional[pulumi.Input[Union['ContextArgs', 'ContextArgsDict']]] = None,
+                 control: Optional[pulumi.Input[Union['ControlArgs', 'ControlArgsDict']]] = None,
+                 custom_error: Optional[pulumi.Input[Union['CustomErrorArgs', 'CustomErrorArgsDict']]] = None,
+                 documentation: Optional[pulumi.Input[Union['DocumentationArgs', 'DocumentationArgsDict']]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EndpointArgs', 'EndpointArgsDict']]]]] = None,
+                 enums: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnumArgs', 'EnumArgsDict']]]]] = None,
+                 http: Optional[pulumi.Input[Union['HttpArgs', 'HttpArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 logging: Optional[pulumi.Input[pulumi.InputType['LoggingArgs']]] = None,
-                 logs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogDescriptorArgs']]]]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]]]] = None,
-                 monitored_resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitoredResourceDescriptorArgs']]]]] = None,
-                 monitoring: Optional[pulumi.Input[pulumi.InputType['MonitoringArgs']]] = None,
+                 logging: Optional[pulumi.Input[Union['LoggingArgs', 'LoggingArgsDict']]] = None,
+                 logs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LogDescriptorArgs', 'LogDescriptorArgsDict']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricDescriptorArgs', 'MetricDescriptorArgsDict']]]]] = None,
+                 monitored_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitoredResourceDescriptorArgs', 'MonitoredResourceDescriptorArgsDict']]]]] = None,
+                 monitoring: Optional[pulumi.Input[Union['MonitoringArgs', 'MonitoringArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  producer_project_id: Optional[pulumi.Input[str]] = None,
-                 publishing: Optional[pulumi.Input[pulumi.InputType['PublishingArgs']]] = None,
-                 quota: Optional[pulumi.Input[pulumi.InputType['QuotaArgs']]] = None,
+                 publishing: Optional[pulumi.Input[Union['PublishingArgs', 'PublishingArgsDict']]] = None,
+                 quota: Optional[pulumi.Input[Union['QuotaArgs', 'QuotaArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 system_parameters: Optional[pulumi.Input[pulumi.InputType['SystemParametersArgs']]] = None,
-                 system_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]]] = None,
+                 system_parameters: Optional[pulumi.Input[Union['SystemParametersArgs', 'SystemParametersArgsDict']]] = None,
+                 system_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TypeArgs', 'TypeArgsDict']]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]]] = None,
-                 usage: Optional[pulumi.Input[pulumi.InputType['UsageArgs']]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TypeArgs', 'TypeArgsDict']]]]] = None,
+                 usage: Optional[pulumi.Input[Union['UsageArgs', 'UsageArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

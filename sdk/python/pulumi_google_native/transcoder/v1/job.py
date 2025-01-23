@@ -212,7 +212,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_mode_priority: Optional[pulumi.Input[int]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -230,7 +230,7 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] batch_mode_priority: The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
-        :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this job.
+        :param pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']] config: The configuration for this job.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobMode'] mode: The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
@@ -265,7 +265,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  batch_mode_priority: Optional[pulumi.Input[int]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['JobConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['JobConfigArgs', 'JobConfigArgsDict']]] = None,
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

@@ -132,9 +132,9 @@ class WorkerPool(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -145,8 +145,8 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
-        :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
+        :param pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`.
+        :param pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']] worker_config: Worker configuration for the `WorkerPool`.
         :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         """
         ...
@@ -177,9 +177,9 @@ class WorkerPool(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

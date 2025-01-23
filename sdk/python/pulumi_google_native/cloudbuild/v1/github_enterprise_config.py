@@ -218,7 +218,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
                  peered_network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['GitHubEnterpriseSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Union['GitHubEnterpriseSecretsArgs', 'GitHubEnterpriseSecretsArgsDict']]] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  webhook_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -234,7 +234,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         :param pulumi.Input[str] peered_network: Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
         :param pulumi.Input[str] project_id: ID of the project.
-        :param pulumi.Input[pulumi.InputType['GitHubEnterpriseSecretsArgs']] secrets: Names of secrets in Secret Manager.
+        :param pulumi.Input[Union['GitHubEnterpriseSecretsArgs', 'GitHubEnterpriseSecretsArgsDict']] secrets: Names of secrets in Secret Manager.
         :param pulumi.Input[str] ssl_ca: Optional. SSL certificate to use for requests to GitHub Enterprise.
         :param pulumi.Input[str] webhook_key: The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
         """
@@ -271,7 +271,7 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
                  peered_network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[pulumi.InputType['GitHubEnterpriseSecretsArgs']]] = None,
+                 secrets: Optional[pulumi.Input[Union['GitHubEnterpriseSecretsArgs', 'GitHubEnterpriseSecretsArgsDict']]] = None,
                  ssl_ca: Optional[pulumi.Input[str]] = None,
                  webhook_key: Optional[pulumi.Input[str]] = None,
                  __props__=None):

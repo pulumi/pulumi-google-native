@@ -185,7 +185,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRouteRuleArgs', 'HttpRouteRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new HttpRoute in a given project and location.
@@ -199,7 +199,7 @@ class HttpRoute(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the HttpRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Optional. Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the HttpRoute resource. It matches pattern `projects/*/locations/global/httpRoutes/http_route_name>`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled. Rules will be matched sequentially based on the RouteMatch specified for the rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRouteRuleArgs', 'HttpRouteRouteRuleArgsDict']]]] rules: Rules that define how traffic is routed and handled. Rules will be matched sequentially based on the RouteMatch specified for the rule.
         """
         ...
     @overload
@@ -234,7 +234,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HttpRouteRouteRuleArgs', 'HttpRouteRouteRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

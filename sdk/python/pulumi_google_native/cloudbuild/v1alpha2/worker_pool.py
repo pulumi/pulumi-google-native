@@ -100,10 +100,10 @@ class WorkerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -112,9 +112,9 @@ class WorkerPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
+        :param pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[str] region: Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
-        :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
+        :param pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']] worker_config: Worker configuration for the `WorkerPool`.
         :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         """
         ...
@@ -142,10 +142,10 @@ class WorkerPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['WorkerConfigArgs', 'WorkerConfigArgsDict']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

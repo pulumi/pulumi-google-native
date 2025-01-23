@@ -244,16 +244,16 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 app_engine: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']]] = None,
-                 cloud_function: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']]] = None,
-                 cloud_run: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']]] = None,
+                 app_engine: Optional[pulumi.Input[Union['NetworkEndpointGroupAppEngineArgs', 'NetworkEndpointGroupAppEngineArgsDict']]] = None,
+                 cloud_function: Optional[pulumi.Input[Union['NetworkEndpointGroupCloudFunctionArgs', 'NetworkEndpointGroupCloudFunctionArgsDict']]] = None,
+                 cloud_run: Optional[pulumi.Input[Union['NetworkEndpointGroupCloudRunArgs', 'NetworkEndpointGroupCloudRunArgsDict']]] = None,
                  default_port: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['GlobalNetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_data: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupPscDataArgs']]] = None,
+                 psc_data: Optional[pulumi.Input[Union['NetworkEndpointGroupPscDataArgs', 'NetworkEndpointGroupPscDataArgsDict']]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -264,9 +264,9 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Metadata defined as annotations on the network endpoint group.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
-        :param pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input[Union['NetworkEndpointGroupAppEngineArgs', 'NetworkEndpointGroupAppEngineArgsDict']] app_engine: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input[Union['NetworkEndpointGroupCloudFunctionArgs', 'NetworkEndpointGroupCloudFunctionArgsDict']] cloud_function: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        :param pulumi.Input[Union['NetworkEndpointGroupCloudRunArgs', 'NetworkEndpointGroupCloudRunArgsDict']] cloud_run: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
         :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -301,16 +301,16 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 app_engine: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupAppEngineArgs']]] = None,
-                 cloud_function: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudFunctionArgs']]] = None,
-                 cloud_run: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupCloudRunArgs']]] = None,
+                 app_engine: Optional[pulumi.Input[Union['NetworkEndpointGroupAppEngineArgs', 'NetworkEndpointGroupAppEngineArgsDict']]] = None,
+                 cloud_function: Optional[pulumi.Input[Union['NetworkEndpointGroupCloudFunctionArgs', 'NetworkEndpointGroupCloudFunctionArgsDict']]] = None,
+                 cloud_run: Optional[pulumi.Input[Union['NetworkEndpointGroupCloudRunArgs', 'NetworkEndpointGroupCloudRunArgsDict']]] = None,
                  default_port: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['GlobalNetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_data: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupPscDataArgs']]] = None,
+                 psc_data: Optional[pulumi.Input[Union['NetworkEndpointGroupPscDataArgs', 'NetworkEndpointGroupPscDataArgsDict']]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,

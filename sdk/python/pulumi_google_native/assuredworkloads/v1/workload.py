@@ -282,15 +282,15 @@ class Workload(pulumi.CustomResource):
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
+                 kms_settings: Optional[pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  partner: Optional[pulumi.Input['WorkloadPartner']] = None,
-                 partner_permissions: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs']]] = None,
+                 partner_permissions: Optional[pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgsDict']]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgsDict']]]]] = None,
                  violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -304,13 +304,13 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
         :param pulumi.Input[str] external_id: Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+        :param pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgsDict']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
         :param pulumi.Input['WorkloadPartner'] partner: Optional. Partner regime associated with this workload.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
+        :param pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgsDict']] partner_permissions: Optional. Permissions granted to the AW Partner SA account for the customer workload
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgsDict']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
         """
         ...
@@ -343,15 +343,15 @@ class Workload(pulumi.CustomResource):
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
-                 kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
+                 kms_settings: Optional[pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  partner: Optional[pulumi.Input['WorkloadPartner']] = None,
-                 partner_permissions: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs']]] = None,
+                 partner_permissions: Optional[pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgsDict']]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs', 'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgsDict']]]]] = None,
                  violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

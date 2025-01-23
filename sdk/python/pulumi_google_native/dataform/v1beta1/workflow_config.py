@@ -140,7 +140,7 @@ class WorkflowConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input[pulumi.InputType['InvocationConfigArgs']]] = None,
+                 invocation_config: Optional[pulumi.Input[Union['InvocationConfigArgs', 'InvocationConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_config: Optional[pulumi.Input[str]] = None,
@@ -155,7 +155,7 @@ class WorkflowConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic execution of this workflow config.
-        :param pulumi.Input[pulumi.InputType['InvocationConfigArgs']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
+        :param pulumi.Input[Union['InvocationConfigArgs', 'InvocationConfigArgsDict']] invocation_config: Optional. If left unset, a default InvocationConfig will be used.
         :param pulumi.Input[str] release_config: The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         :param pulumi.Input[str] workflow_config_id: Required. The ID to use for the workflow config, which will become the final component of the workflow config's resource name.
@@ -186,7 +186,7 @@ class WorkflowConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
-                 invocation_config: Optional[pulumi.Input[pulumi.InputType['InvocationConfigArgs']]] = None,
+                 invocation_config: Optional[pulumi.Input[Union['InvocationConfigArgs', 'InvocationConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_config: Optional[pulumi.Input[str]] = None,

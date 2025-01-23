@@ -121,11 +121,11 @@ class Instruction(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csv_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]] = None,
+                 csv_instruction: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1CsvInstructionArgs', 'GoogleCloudDatalabelingV1beta1CsvInstructionArgsDict']]] = None,
                  data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 pdf_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]] = None,
+                 pdf_instruction: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1PdfInstructionArgs', 'GoogleCloudDatalabelingV1beta1PdfInstructionArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -134,11 +134,11 @@ class Instruction(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        :param pulumi.Input[Union['GoogleCloudDatalabelingV1beta1CsvInstructionArgs', 'GoogleCloudDatalabelingV1beta1CsvInstructionArgsDict']] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
         :param pulumi.Input['InstructionDataType'] data_type: The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: The display name of the instruction. Maximum of 64 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+        :param pulumi.Input[Union['GoogleCloudDatalabelingV1beta1PdfInstructionArgs', 'GoogleCloudDatalabelingV1beta1PdfInstructionArgsDict']] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
         """
         ...
     @overload
@@ -165,11 +165,11 @@ class Instruction(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csv_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]] = None,
+                 csv_instruction: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1CsvInstructionArgs', 'GoogleCloudDatalabelingV1beta1CsvInstructionArgsDict']]] = None,
                  data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 pdf_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]] = None,
+                 pdf_instruction: Optional[pulumi.Input[Union['GoogleCloudDatalabelingV1beta1PdfInstructionArgs', 'GoogleCloudDatalabelingV1beta1PdfInstructionArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

@@ -258,40 +258,40 @@ class ConversationProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_agent_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']]] = None,
+                 automated_agent_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2AutomatedAgentConfigArgs', 'GoogleCloudDialogflowV2AutomatedAgentConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 human_agent_assistant_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']]] = None,
-                 human_agent_handoff_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']]] = None,
+                 human_agent_assistant_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs', 'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgsDict']]] = None,
+                 human_agent_handoff_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs', 'GoogleCloudDialogflowV2HumanAgentHandoffConfigArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2LoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2LoggingConfigArgs', 'GoogleCloudDialogflowV2LoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 new_message_event_notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
+                 new_message_event_notification_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2NotificationConfigArgs', 'GoogleCloudDialogflowV2NotificationConfigArgsDict']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2NotificationConfigArgs', 'GoogleCloudDialogflowV2NotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 stt_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]] = None,
+                 stt_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2SpeechToTextConfigArgs', 'GoogleCloudDialogflowV2SpeechToTextConfigArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
-                 tts_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]] = None,
+                 tts_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs', 'GoogleCloudDialogflowV2SynthesizeSpeechConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']] automated_agent_config: Configuration for an automated agent to use with this profile.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2AutomatedAgentConfigArgs', 'GoogleCloudDialogflowV2AutomatedAgentConfigArgsDict']] automated_agent_config: Configuration for an automated agent to use with this profile.
         :param pulumi.Input[str] display_name: Human readable name for this profile. Max length 1024 bytes.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs', 'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgsDict']] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs', 'GoogleCloudDialogflowV2HumanAgentHandoffConfigArgsDict']] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
         :param pulumi.Input[str] language_code: Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2LoggingConfigArgs']] logging_config: Configuration for logging conversation lifecycle events.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2LoggingConfigArgs', 'GoogleCloudDialogflowV2LoggingConfigArgsDict']] logging_config: Configuration for logging conversation lifecycle events.
         :param pulumi.Input[str] name: The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']] new_message_event_notification_config: Configuration for publishing new message events. Event will be sent in format of ConversationEvent
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']] notification_config: Configuration for publishing conversation lifecycle events.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2NotificationConfigArgs', 'GoogleCloudDialogflowV2NotificationConfigArgsDict']] new_message_event_notification_config: Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2NotificationConfigArgs', 'GoogleCloudDialogflowV2NotificationConfigArgsDict']] notification_config: Configuration for publishing conversation lifecycle events.
         :param pulumi.Input[str] security_settings: Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] stt_config: Settings for speech transcription.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2SpeechToTextConfigArgs', 'GoogleCloudDialogflowV2SpeechToTextConfigArgsDict']] stt_config: Settings for speech transcription.
         :param pulumi.Input[str] time_zone: The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']] tts_config: Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs', 'GoogleCloudDialogflowV2SynthesizeSpeechConfigArgsDict']] tts_config: Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
         """
         ...
     @overload
@@ -317,21 +317,21 @@ class ConversationProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automated_agent_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']]] = None,
+                 automated_agent_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2AutomatedAgentConfigArgs', 'GoogleCloudDialogflowV2AutomatedAgentConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 human_agent_assistant_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']]] = None,
-                 human_agent_handoff_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']]] = None,
+                 human_agent_assistant_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs', 'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgsDict']]] = None,
+                 human_agent_handoff_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs', 'GoogleCloudDialogflowV2HumanAgentHandoffConfigArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2LoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2LoggingConfigArgs', 'GoogleCloudDialogflowV2LoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 new_message_event_notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2NotificationConfigArgs']]] = None,
+                 new_message_event_notification_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2NotificationConfigArgs', 'GoogleCloudDialogflowV2NotificationConfigArgsDict']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2NotificationConfigArgs', 'GoogleCloudDialogflowV2NotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 stt_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]] = None,
+                 stt_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2SpeechToTextConfigArgs', 'GoogleCloudDialogflowV2SpeechToTextConfigArgsDict']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
-                 tts_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]] = None,
+                 tts_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs', 'GoogleCloudDialogflowV2SynthesizeSpeechConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

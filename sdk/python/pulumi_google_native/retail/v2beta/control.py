@@ -174,11 +174,11 @@ class Control(pulumi.CustomResource):
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  control_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 facet_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs']]] = None,
+                 facet_spec: Optional[pulumi.Input[Union['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs', 'GoogleCloudRetailV2betaSearchRequestFacetSpecArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaRuleArgs']]] = None,
+                 rule: Optional[pulumi.Input[Union['GoogleCloudRetailV2betaRuleArgs', 'GoogleCloudRetailV2betaRuleArgsDict']]] = None,
                  search_solution_use_case: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]]] = None,
                  __props__=None):
@@ -190,9 +190,9 @@ class Control(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] control_id: Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
         :param pulumi.Input[str] display_name: The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs']] facet_spec: A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
+        :param pulumi.Input[Union['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs', 'GoogleCloudRetailV2betaSearchRequestFacetSpecArgsDict']] facet_spec: A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
         :param pulumi.Input[str] name: Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaRuleArgs']] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
+        :param pulumi.Input[Union['GoogleCloudRetailV2betaRuleArgs', 'GoogleCloudRetailV2betaRuleArgsDict']] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
         :param pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]] search_solution_use_case: Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
         :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
@@ -224,11 +224,11 @@ class Control(pulumi.CustomResource):
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  control_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 facet_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs']]] = None,
+                 facet_spec: Optional[pulumi.Input[Union['GoogleCloudRetailV2betaSearchRequestFacetSpecArgs', 'GoogleCloudRetailV2betaSearchRequestFacetSpecArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaRuleArgs']]] = None,
+                 rule: Optional[pulumi.Input[Union['GoogleCloudRetailV2betaRuleArgs', 'GoogleCloudRetailV2betaRuleArgsDict']]] = None,
                  search_solution_use_case: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]]] = None,
                  __props__=None):

@@ -140,7 +140,7 @@ class Conversation(pulumi.CustomResource):
                  collection_id: Optional[pulumi.Input[str]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs', 'GoogleCloudDiscoveryengineV1alphaConversationMessageArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ConversationState']] = None,
@@ -152,7 +152,7 @@ class Conversation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]]] messages: Conversation messages.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs', 'GoogleCloudDiscoveryengineV1alphaConversationMessageArgsDict']]]] messages: Conversation messages.
         :param pulumi.Input[str] name: Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
         :param pulumi.Input['ConversationState'] state: The state of the Conversation.
         :param pulumi.Input[str] user_pseudo_id: A unique identifier for tracking users.
@@ -185,7 +185,7 @@ class Conversation(pulumi.CustomResource):
                  collection_id: Optional[pulumi.Input[str]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs', 'GoogleCloudDiscoveryengineV1alphaConversationMessageArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ConversationState']] = None,

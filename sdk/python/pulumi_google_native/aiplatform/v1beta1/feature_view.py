@@ -189,17 +189,17 @@ class FeatureView(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs']]] = None,
+                 big_query_source: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs', 'GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
-                 feature_registry_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs']]] = None,
+                 feature_registry_source: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs', 'GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgsDict']]] = None,
                  feature_view_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  run_sync_immediately: Optional[pulumi.Input[bool]] = None,
-                 sync_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs']]] = None,
-                 vector_search_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs']]] = None,
+                 sync_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs', 'GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgsDict']]] = None,
+                 vector_search_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs', 'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new FeatureView in a given FeatureOnlineStore.
@@ -207,14 +207,14 @@ class FeatureView(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs']] big_query_source: Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs', 'GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgsDict']] big_query_source: Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs']] feature_registry_source: Optional. Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs', 'GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgsDict']] feature_registry_source: Optional. Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
         :param pulumi.Input[str] feature_view_id: Required. The ID to use for the FeatureView, which will become the final component of the FeatureView's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a FeatureOnlineStore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
         :param pulumi.Input[bool] run_sync_immediately: Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs']] vector_search_config: Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs', 'GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs', 'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgsDict']] vector_search_config: Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         """
         ...
     @overload
@@ -241,17 +241,17 @@ class FeatureView(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs']]] = None,
+                 big_query_source: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs', 'GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
-                 feature_registry_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs']]] = None,
+                 feature_registry_source: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs', 'GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgsDict']]] = None,
                  feature_view_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  run_sync_immediately: Optional[pulumi.Input[bool]] = None,
-                 sync_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs']]] = None,
-                 vector_search_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs']]] = None,
+                 sync_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs', 'GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgsDict']]] = None,
+                 vector_search_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs', 'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

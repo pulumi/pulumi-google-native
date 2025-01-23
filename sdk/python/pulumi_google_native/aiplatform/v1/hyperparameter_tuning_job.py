@@ -175,15 +175,15 @@ class HyperparameterTuningJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_failed_trial_count: Optional[pulumi.Input[int]] = None,
                  max_trial_count: Optional[pulumi.Input[int]] = None,
                  parallel_trial_count: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 study_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1StudySpecArgs']]] = None,
-                 trial_job_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1CustomJobSpecArgs']]] = None,
+                 study_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1StudySpecArgs', 'GoogleCloudAiplatformV1StudySpecArgsDict']]] = None,
+                 trial_job_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1CustomJobSpecArgs', 'GoogleCloudAiplatformV1CustomJobSpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a HyperparameterTuningJob
@@ -192,13 +192,13 @@ class HyperparameterTuningJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name of the HyperparameterTuningJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']] encryption_spec: Customer-managed encryption key options for a HyperparameterTuningJob. If this is set, then all resources created by the HyperparameterTuningJob will be encrypted with the provided encryption key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key options for a HyperparameterTuningJob. If this is set, then all resources created by the HyperparameterTuningJob will be encrypted with the provided encryption key.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize HyperparameterTuningJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[int] max_failed_trial_count: The number of failed Trials that need to be seen before failing the HyperparameterTuningJob. If set to 0, Vertex AI decides how many Trials must fail before the whole job fails.
         :param pulumi.Input[int] max_trial_count: The desired total number of Trials.
         :param pulumi.Input[int] parallel_trial_count: The desired number of Trials to run in parallel.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1StudySpecArgs']] study_spec: Study configuration of the HyperparameterTuningJob.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1CustomJobSpecArgs']] trial_job_spec: The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1StudySpecArgs', 'GoogleCloudAiplatformV1StudySpecArgsDict']] study_spec: Study configuration of the HyperparameterTuningJob.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1CustomJobSpecArgs', 'GoogleCloudAiplatformV1CustomJobSpecArgsDict']] trial_job_spec: The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
         """
         ...
     @overload
@@ -226,15 +226,15 @@ class HyperparameterTuningJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_failed_trial_count: Optional[pulumi.Input[int]] = None,
                  max_trial_count: Optional[pulumi.Input[int]] = None,
                  parallel_trial_count: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 study_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1StudySpecArgs']]] = None,
-                 trial_job_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1CustomJobSpecArgs']]] = None,
+                 study_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1StudySpecArgs', 'GoogleCloudAiplatformV1StudySpecArgsDict']]] = None,
+                 trial_job_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1CustomJobSpecArgs', 'GoogleCloudAiplatformV1CustomJobSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

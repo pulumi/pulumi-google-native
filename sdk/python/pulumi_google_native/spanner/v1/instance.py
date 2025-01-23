@@ -216,11 +216,11 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingConfigArgs']]] = None,
+                 autoscaling_config: Optional[pulumi.Input[Union['AutoscalingConfigArgs', 'AutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 free_instance_metadata: Optional[pulumi.Input[pulumi.InputType['FreeInstanceMetadataArgs']]] = None,
+                 free_instance_metadata: Optional[pulumi.Input[Union['FreeInstanceMetadataArgs', 'FreeInstanceMetadataArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -234,11 +234,11 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AutoscalingConfigArgs']] autoscaling_config: Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+        :param pulumi.Input[Union['AutoscalingConfigArgs', 'AutoscalingConfigArgsDict']] autoscaling_config: Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
         :param pulumi.Input[str] config: The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_uris: Deprecated. This field is not populated.
-        :param pulumi.Input[pulumi.InputType['FreeInstanceMetadataArgs']] free_instance_metadata: Free instance metadata. Only populated for free instances.
+        :param pulumi.Input[Union['FreeInstanceMetadataArgs', 'FreeInstanceMetadataArgsDict']] free_instance_metadata: Free instance metadata. Only populated for free instances.
         :param pulumi.Input[str] instance_id: The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The `InstanceType` of the current instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.
@@ -270,11 +270,11 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_config: Optional[pulumi.Input[pulumi.InputType['AutoscalingConfigArgs']]] = None,
+                 autoscaling_config: Optional[pulumi.Input[Union['AutoscalingConfigArgs', 'AutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 free_instance_metadata: Optional[pulumi.Input[pulumi.InputType['FreeInstanceMetadataArgs']]] = None,
+                 free_instance_metadata: Optional[pulumi.Input[Union['FreeInstanceMetadataArgs', 'FreeInstanceMetadataArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

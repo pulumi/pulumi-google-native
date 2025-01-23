@@ -148,7 +148,7 @@ class BlockchainNode(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blockchain_node_id: Optional[pulumi.Input[str]] = None,
                  blockchain_type: Optional[pulumi.Input['BlockchainNodeBlockchainType']] = None,
-                 ethereum_details: Optional[pulumi.Input[pulumi.InputType['EthereumDetailsArgs']]] = None,
+                 ethereum_details: Optional[pulumi.Input[Union['EthereumDetailsArgs', 'EthereumDetailsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_service_connect_enabled: Optional[pulumi.Input[bool]] = None,
@@ -163,7 +163,7 @@ class BlockchainNode(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] blockchain_node_id: Required. ID of the requesting object.
         :param pulumi.Input['BlockchainNodeBlockchainType'] blockchain_type: Immutable. The blockchain type of the node.
-        :param pulumi.Input[pulumi.InputType['EthereumDetailsArgs']] ethereum_details: Ethereum-specific blockchain node details.
+        :param pulumi.Input[Union['EthereumDetailsArgs', 'EthereumDetailsArgsDict']] ethereum_details: Ethereum-specific blockchain node details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided key-value pairs.
         :param pulumi.Input[bool] private_service_connect_enabled: Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -195,7 +195,7 @@ class BlockchainNode(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blockchain_node_id: Optional[pulumi.Input[str]] = None,
                  blockchain_type: Optional[pulumi.Input['BlockchainNodeBlockchainType']] = None,
-                 ethereum_details: Optional[pulumi.Input[pulumi.InputType['EthereumDetailsArgs']]] = None,
+                 ethereum_details: Optional[pulumi.Input[Union['EthereumDetailsArgs', 'EthereumDetailsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_service_connect_enabled: Optional[pulumi.Input[bool]] = None,

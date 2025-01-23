@@ -178,7 +178,7 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
+                 git_remote_settings: Optional[pulumi.Input[Union['GitRemoteSettingsArgs', 'GitRemoteSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -186,7 +186,7 @@ class Repository(pulumi.CustomResource):
                  repository_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  set_authenticated_user_admin: Optional[pulumi.Input[bool]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[Union['WorkspaceCompilationOverridesArgs', 'WorkspaceCompilationOverridesArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Repository in a given project and location.
@@ -195,13 +195,13 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. The repository's user-friendly name.
-        :param pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[Union['GitRemoteSettingsArgs', 'GitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
         :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
         :param pulumi.Input[bool] set_authenticated_user_admin: Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
-        :param pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+        :param pulumi.Input[Union['WorkspaceCompilationOverridesArgs', 'WorkspaceCompilationOverridesArgsDict']] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
         """
         ...
     @overload
@@ -229,7 +229,7 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
+                 git_remote_settings: Optional[pulumi.Input[Union['GitRemoteSettingsArgs', 'GitRemoteSettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
@@ -237,7 +237,7 @@ class Repository(pulumi.CustomResource):
                  repository_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  set_authenticated_user_admin: Optional[pulumi.Input[bool]] = None,
-                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[Union['WorkspaceCompilationOverridesArgs', 'WorkspaceCompilationOverridesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

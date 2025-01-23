@@ -171,13 +171,13 @@ class OrganizationJobTrigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
+                 inspect_job: Optional[pulumi.Input[Union['GooglePrivacyDlpV2InspectJobConfigArgs', 'GooglePrivacyDlpV2InspectJobConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['OrganizationJobTriggerStatus']] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2TriggerArgs', 'GooglePrivacyDlpV2TriggerArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
@@ -187,12 +187,12 @@ class OrganizationJobTrigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User provided description (max 256 chars)
         :param pulumi.Input[str] display_name: Display name (max 100 chars)
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']] inspect_job: For inspect jobs, a snapshot of the configuration.
+        :param pulumi.Input[Union['GooglePrivacyDlpV2InspectJobConfigArgs', 'GooglePrivacyDlpV2InspectJobConfigArgsDict']] inspect_job: For inspect jobs, a snapshot of the configuration.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
         :param pulumi.Input['OrganizationJobTriggerStatus'] status: A status for this trigger.
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2TriggerArgs', 'GooglePrivacyDlpV2TriggerArgsDict']]]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
         """
         ...
     @overload
@@ -221,13 +221,13 @@ class OrganizationJobTrigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
+                 inspect_job: Optional[pulumi.Input[Union['GooglePrivacyDlpV2InspectJobConfigArgs', 'GooglePrivacyDlpV2InspectJobConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['OrganizationJobTriggerStatus']] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GooglePrivacyDlpV2TriggerArgs', 'GooglePrivacyDlpV2TriggerArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

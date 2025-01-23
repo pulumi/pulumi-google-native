@@ -306,23 +306,23 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['AutomatedBackupPolicyArgs']]] = None,
+                 automated_backup_policy: Optional[pulumi.Input[Union['AutomatedBackupPolicyArgs', 'AutomatedBackupPolicyArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ContinuousBackupConfigArgs']]] = None,
+                 continuous_backup_config: Optional[pulumi.Input[Union['ContinuousBackupConfigArgs', 'ContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input['ClusterDatabaseVersion']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 initial_user: Optional[pulumi.Input[pulumi.InputType['UserPasswordArgs']]] = None,
+                 initial_user: Optional[pulumi.Input[Union['UserPasswordArgs', 'UserPasswordArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_config: Optional[pulumi.Input[pulumi.InputType['PscConfigArgs']]] = None,
+                 psc_config: Optional[pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 secondary_config: Optional[pulumi.Input[pulumi.InputType['SecondaryConfigArgs']]] = None,
-                 ssl_config: Optional[pulumi.Input[pulumi.InputType['SslConfigArgs']]] = None,
+                 secondary_config: Optional[pulumi.Input[Union['SecondaryConfigArgs', 'SecondaryConfigArgsDict']]] = None,
+                 ssl_config: Optional[pulumi.Input[Union['SslConfigArgs', 'SslConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Cluster in a given project and location.
@@ -331,20 +331,20 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
-        :param pulumi.Input[pulumi.InputType['AutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. If no policy is provided then the default policy will be used. If backups are supported for the cluster, the default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days. For more information on the defaults, consult the documentation for the message type.
+        :param pulumi.Input[Union['AutomatedBackupPolicyArgs', 'AutomatedBackupPolicyArgsDict']] automated_backup_policy: The automated backup policy for this cluster. If no policy is provided then the default policy will be used. If backups are supported for the cluster, the default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days. For more information on the defaults, consult the documentation for the message type.
         :param pulumi.Input[str] cluster_id: Required. ID of the requesting object.
-        :param pulumi.Input[pulumi.InputType['ContinuousBackupConfigArgs']] continuous_backup_config: Optional. Continuous backup configuration for this cluster.
+        :param pulumi.Input[Union['ContinuousBackupConfigArgs', 'ContinuousBackupConfigArgsDict']] continuous_backup_config: Optional. Continuous backup configuration for this cluster.
         :param pulumi.Input['ClusterDatabaseVersion'] database_version: Optional. The database engine major version. This is an optional field and it is populated at the Cluster creation time. If a database version is not supplied at cluster creation time, then a default database version will be used.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
-        :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+        :param pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']] encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
-        :param pulumi.Input[pulumi.InputType['UserPasswordArgs']] initial_user: Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
+        :param pulumi.Input[Union['UserPasswordArgs', 'UserPasswordArgsDict']] initial_user: Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
-        :param pulumi.Input[pulumi.InputType['PscConfigArgs']] psc_config: Optional. The configuration for Private Service Connect (PSC) for the cluster.
+        :param pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']] psc_config: Optional. The configuration for Private Service Connect (PSC) for the cluster.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['SecondaryConfigArgs']] secondary_config: Cross Region replication config specific to SECONDARY cluster.
-        :param pulumi.Input[pulumi.InputType['SslConfigArgs']] ssl_config: SSL configuration for this AlloyDB cluster.
+        :param pulumi.Input[Union['SecondaryConfigArgs', 'SecondaryConfigArgsDict']] secondary_config: Cross Region replication config specific to SECONDARY cluster.
+        :param pulumi.Input[Union['SslConfigArgs', 'SslConfigArgsDict']] ssl_config: SSL configuration for this AlloyDB cluster.
         """
         ...
     @overload
@@ -372,23 +372,23 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['AutomatedBackupPolicyArgs']]] = None,
+                 automated_backup_policy: Optional[pulumi.Input[Union['AutomatedBackupPolicyArgs', 'AutomatedBackupPolicyArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
-                 continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ContinuousBackupConfigArgs']]] = None,
+                 continuous_backup_config: Optional[pulumi.Input[Union['ContinuousBackupConfigArgs', 'ContinuousBackupConfigArgsDict']]] = None,
                  database_version: Optional[pulumi.Input['ClusterDatabaseVersion']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 initial_user: Optional[pulumi.Input[pulumi.InputType['UserPasswordArgs']]] = None,
+                 initial_user: Optional[pulumi.Input[Union['UserPasswordArgs', 'UserPasswordArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_config: Optional[pulumi.Input[pulumi.InputType['PscConfigArgs']]] = None,
+                 psc_config: Optional[pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 secondary_config: Optional[pulumi.Input[pulumi.InputType['SecondaryConfigArgs']]] = None,
-                 ssl_config: Optional[pulumi.Input[pulumi.InputType['SslConfigArgs']]] = None,
+                 secondary_config: Optional[pulumi.Input[Union['SecondaryConfigArgs', 'SecondaryConfigArgsDict']]] = None,
+                 ssl_config: Optional[pulumi.Input[Union['SslConfigArgs', 'SslConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

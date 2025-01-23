@@ -145,14 +145,14 @@ class Budget(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1BudgetAmountArgs']]] = None,
+                 amount: Optional[pulumi.Input[Union['GoogleCloudBillingBudgetsV1BudgetAmountArgs', 'GoogleCloudBillingBudgetsV1BudgetAmountArgsDict']]] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 budget_filter: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1FilterArgs']]] = None,
+                 budget_filter: Optional[pulumi.Input[Union['GoogleCloudBillingBudgetsV1FilterArgs', 'GoogleCloudBillingBudgetsV1FilterArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 notifications_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']]] = None,
+                 notifications_rule: Optional[pulumi.Input[Union['GoogleCloudBillingBudgetsV1NotificationsRuleArgs', 'GoogleCloudBillingBudgetsV1NotificationsRuleArgsDict']]] = None,
                  ownership_scope: Optional[pulumi.Input['BudgetOwnershipScope']] = None,
-                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudBillingBudgetsV1ThresholdRuleArgs', 'GoogleCloudBillingBudgetsV1ThresholdRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
@@ -160,12 +160,12 @@ class Budget(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1BudgetAmountArgs']] amount: Budgeted amount.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1FilterArgs']] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
+        :param pulumi.Input[Union['GoogleCloudBillingBudgetsV1BudgetAmountArgs', 'GoogleCloudBillingBudgetsV1BudgetAmountArgsDict']] amount: Budgeted amount.
+        :param pulumi.Input[Union['GoogleCloudBillingBudgetsV1FilterArgs', 'GoogleCloudBillingBudgetsV1FilterArgsDict']] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         :param pulumi.Input[str] display_name: User data for display name in UI. The name must be less than or equal to 60 characters.
         :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
+        :param pulumi.Input[Union['GoogleCloudBillingBudgetsV1NotificationsRuleArgs', 'GoogleCloudBillingBudgetsV1NotificationsRuleArgsDict']] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudBillingBudgetsV1ThresholdRuleArgs', 'GoogleCloudBillingBudgetsV1ThresholdRuleArgsDict']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         """
         ...
     @overload
@@ -192,14 +192,14 @@ class Budget(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1BudgetAmountArgs']]] = None,
+                 amount: Optional[pulumi.Input[Union['GoogleCloudBillingBudgetsV1BudgetAmountArgs', 'GoogleCloudBillingBudgetsV1BudgetAmountArgsDict']]] = None,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
-                 budget_filter: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1FilterArgs']]] = None,
+                 budget_filter: Optional[pulumi.Input[Union['GoogleCloudBillingBudgetsV1FilterArgs', 'GoogleCloudBillingBudgetsV1FilterArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 notifications_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']]] = None,
+                 notifications_rule: Optional[pulumi.Input[Union['GoogleCloudBillingBudgetsV1NotificationsRuleArgs', 'GoogleCloudBillingBudgetsV1NotificationsRuleArgsDict']]] = None,
                  ownership_scope: Optional[pulumi.Input['BudgetOwnershipScope']] = None,
-                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudBillingBudgetsV1ThresholdRuleArgs', 'GoogleCloudBillingBudgetsV1ThresholdRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -273,19 +273,19 @@ class Build(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
-                 available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
+                 artifacts: Optional[pulumi.Input[Union['ArtifactsArgs', 'ArtifactsArgsDict']]] = None,
+                 available_secrets: Optional[pulumi.Input[Union['SecretsArgs', 'SecretsArgsDict']]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['BuildOptionsArgs', 'BuildOptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretArgs', 'SecretArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
-                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]]] = None,
+                 source: Optional[pulumi.Input[Union['SourceArgs', 'SourceArgsDict']]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BuildStepArgs', 'BuildStepArgsDict']]]]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
@@ -298,17 +298,17 @@ class Build(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ArtifactsArgs']] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
-        :param pulumi.Input[pulumi.InputType['SecretsArgs']] available_secrets: Secrets and secret environment variables.
+        :param pulumi.Input[Union['ArtifactsArgs', 'ArtifactsArgsDict']] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        :param pulumi.Input[Union['SecretsArgs', 'SecretsArgsDict']] available_secrets: Secrets and secret environment variables.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         :param pulumi.Input[str] logs_bucket: Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
-        :param pulumi.Input[pulumi.InputType['BuildOptionsArgs']] options: Special options for this build.
+        :param pulumi.Input[Union['BuildOptionsArgs', 'BuildOptionsArgsDict']] options: Special options for this build.
         :param pulumi.Input[str] project_id: Required. ID of the project.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretArgs', 'SecretArgsDict']]]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
-        :param pulumi.Input[pulumi.InputType['SourceArgs']] source: The location of the source files to build.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]] steps: The operations to be performed on the workspace.
+        :param pulumi.Input[Union['SourceArgs', 'SourceArgsDict']] source: The location of the source files to build.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BuildStepArgs', 'BuildStepArgsDict']]]] steps: The operations to be performed on the workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for `Build` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
@@ -340,19 +340,19 @@ class Build(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
-                 available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
+                 artifacts: Optional[pulumi.Input[Union['ArtifactsArgs', 'ArtifactsArgsDict']]] = None,
+                 available_secrets: Optional[pulumi.Input[Union['SecretsArgs', 'SecretsArgsDict']]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
-                 options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
+                 options: Optional[pulumi.Input[Union['BuildOptionsArgs', 'BuildOptionsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecretArgs', 'SecretArgsDict']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
-                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]]] = None,
+                 source: Optional[pulumi.Input[Union['SourceArgs', 'SourceArgsDict']]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BuildStepArgs', 'BuildStepArgsDict']]]]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,

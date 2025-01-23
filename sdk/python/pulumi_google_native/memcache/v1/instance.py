@@ -259,15 +259,15 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
+                 instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMessageArgs', 'InstanceMessageArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMemcacheV1MaintenancePolicyArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['GoogleCloudMemcacheV1MaintenancePolicyArgs', 'GoogleCloudMemcacheV1MaintenancePolicyArgsDict']]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['NodeConfigArgs', 'NodeConfigArgsDict']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
-                 parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Union['MemcacheParametersArgs', 'MemcacheParametersArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range_id: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -280,14 +280,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         :param pulumi.Input[str] instance_id: Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMessageArgs', 'InstanceMessageArgsDict']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-        :param pulumi.Input[pulumi.InputType['GoogleCloudMemcacheV1MaintenancePolicyArgs']] maintenance_policy: The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+        :param pulumi.Input[Union['GoogleCloudMemcacheV1MaintenancePolicyArgs', 'GoogleCloudMemcacheV1MaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Configuration for Memcached nodes.
+        :param pulumi.Input[Union['NodeConfigArgs', 'NodeConfigArgsDict']] node_config: Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Number of nodes in the Memcached instance.
-        :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: User defined parameters to apply to the memcached process on each node.
+        :param pulumi.Input[Union['MemcacheParametersArgs', 'MemcacheParametersArgsDict']] parameters: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_range_id: Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
@@ -318,15 +318,15 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
+                 instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMessageArgs', 'InstanceMessageArgsDict']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMemcacheV1MaintenancePolicyArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[Union['GoogleCloudMemcacheV1MaintenancePolicyArgs', 'GoogleCloudMemcacheV1MaintenancePolicyArgsDict']]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[Union['NodeConfigArgs', 'NodeConfigArgsDict']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
-                 parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Union['MemcacheParametersArgs', 'MemcacheParametersArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range_id: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

@@ -84,7 +84,7 @@ class Study(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 study_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1StudySpecArgs']]] = None,
+                 study_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1StudySpecArgs', 'GoogleCloudAiplatformV1StudySpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a Study. A resource name will be generated after creation of the Study.
@@ -93,7 +93,7 @@ class Study(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Describes the Study, default value is empty string.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1StudySpecArgs']] study_spec: Configuration of the Study.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1StudySpecArgs', 'GoogleCloudAiplatformV1StudySpecArgsDict']] study_spec: Configuration of the Study.
         """
         ...
     @overload
@@ -123,7 +123,7 @@ class Study(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 study_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1StudySpecArgs']]] = None,
+                 study_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1StudySpecArgs', 'GoogleCloudAiplatformV1StudySpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

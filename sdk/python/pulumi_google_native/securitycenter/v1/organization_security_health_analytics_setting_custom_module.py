@@ -102,7 +102,7 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModule(pulumi.CustomResour
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudSecuritycenterV1CustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[Union['GoogleCloudSecuritycenterV1CustomConfigArgs', 'GoogleCloudSecuritycenterV1CustomConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input['OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModule(pulumi.CustomResour
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudSecuritycenterV1CustomConfigArgs']] custom_config: The user specified custom configuration for the module.
+        :param pulumi.Input[Union['GoogleCloudSecuritycenterV1CustomConfigArgs', 'GoogleCloudSecuritycenterV1CustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
         :param pulumi.Input[str] display_name: The display name of the Security Health Analytics custom module. This display name becomes the finding category for all findings that are returned by this custom module. The display name must be between 1 and 128 characters, start with a lowercase letter, and contain alphanumeric characters or underscores only.
         :param pulumi.Input['OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState'] enablement_state: The enablement state of the custom module.
         :param pulumi.Input[str] name: Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
@@ -144,7 +144,7 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModule(pulumi.CustomResour
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudSecuritycenterV1CustomConfigArgs']]] = None,
+                 custom_config: Optional[pulumi.Input[Union['GoogleCloudSecuritycenterV1CustomConfigArgs', 'GoogleCloudSecuritycenterV1CustomConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enablement_state: Optional[pulumi.Input['OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState']] = None,
                  name: Optional[pulumi.Input[str]] = None,

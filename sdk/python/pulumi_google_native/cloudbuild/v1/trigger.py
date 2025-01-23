@@ -466,18 +466,18 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_config: Optional[pulumi.Input[pulumi.InputType['ApprovalConfigArgs']]] = None,
+                 approval_config: Optional[pulumi.Input[Union['ApprovalConfigArgs', 'ApprovalConfigArgsDict']]] = None,
                  autodetect: Optional[pulumi.Input[bool]] = None,
-                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['BitbucketServerTriggerConfigArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[Union['BitbucketServerTriggerConfigArgs', 'BitbucketServerTriggerConfigArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['BuildArgs', 'BuildArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  event_type: Optional[pulumi.Input['TriggerEventType']] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
-                 github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
-                 gitlab_enterprise_events_config: Optional[pulumi.Input[pulumi.InputType['GitLabEventsConfigArgs']]] = None,
+                 git_file_source: Optional[pulumi.Input[Union['GitFileSourceArgs', 'GitFileSourceArgsDict']]] = None,
+                 github: Optional[pulumi.Input[Union['GitHubEventsConfigArgs', 'GitHubEventsConfigArgsDict']]] = None,
+                 gitlab_enterprise_events_config: Optional[pulumi.Input[Union['GitLabEventsConfigArgs', 'GitLabEventsConfigArgsDict']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -485,47 +485,47 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
-                 repository_event_config: Optional[pulumi.Input[pulumi.InputType['RepositoryEventConfigArgs']]] = None,
+                 pubsub_config: Optional[pulumi.Input[Union['PubsubConfigArgs', 'PubsubConfigArgsDict']]] = None,
+                 repository_event_config: Optional[pulumi.Input[Union['RepositoryEventConfigArgs', 'RepositoryEventConfigArgsDict']]] = None,
                  resource_name_: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source_to_build: Optional[pulumi.Input[pulumi.InputType['GitRepoSourceArgs']]] = None,
+                 source_to_build: Optional[pulumi.Input[Union['GitRepoSourceArgs', 'GitRepoSourceArgsDict']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 trigger_template: Optional[pulumi.Input[pulumi.InputType['RepoSourceArgs']]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['WebhookConfigArgs']]] = None,
+                 trigger_template: Optional[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['WebhookConfigArgs', 'WebhookConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new `BuildTrigger`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApprovalConfigArgs']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
+        :param pulumi.Input[Union['ApprovalConfigArgs', 'ApprovalConfigArgsDict']] approval_config: Configuration for manual approval to start a build invocation of this BuildTrigger.
         :param pulumi.Input[bool] autodetect: Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
-        :param pulumi.Input[pulumi.InputType['BitbucketServerTriggerConfigArgs']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
-        :param pulumi.Input[pulumi.InputType['BuildArgs']] build: Contents of the build template.
+        :param pulumi.Input[Union['BitbucketServerTriggerConfigArgs', 'BitbucketServerTriggerConfigArgsDict']] bitbucket_server_trigger_config: BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+        :param pulumi.Input[Union['BuildArgs', 'BuildArgsDict']] build: Contents of the build template.
         :param pulumi.Input[str] description: Human-readable description of this trigger.
         :param pulumi.Input[bool] disabled: If true, the trigger will never automatically execute a build.
         :param pulumi.Input['TriggerEventType'] event_type: EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
         :param pulumi.Input[str] filename: Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
         :param pulumi.Input[str] filter: A Common Expression Language string.
-        :param pulumi.Input[pulumi.InputType['GitFileSourceArgs']] git_file_source: The file source describing the local or remote Build template.
-        :param pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
-        :param pulumi.Input[pulumi.InputType['GitLabEventsConfigArgs']] gitlab_enterprise_events_config: GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
+        :param pulumi.Input[Union['GitFileSourceArgs', 'GitFileSourceArgsDict']] git_file_source: The file source describing the local or remote Build template.
+        :param pulumi.Input[Union['GitHubEventsConfigArgs', 'GitHubEventsConfigArgsDict']] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
+        :param pulumi.Input[Union['GitLabEventsConfigArgs', 'GitLabEventsConfigArgsDict']] gitlab_enterprise_events_config: GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
         :param pulumi.Input['TriggerIncludeBuildLogs'] include_build_logs: If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         :param pulumi.Input[str] project_id: Required. ID of the project for which to configure automatic builds.
-        :param pulumi.Input[pulumi.InputType['PubsubConfigArgs']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
-        :param pulumi.Input[pulumi.InputType['RepositoryEventConfigArgs']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        :param pulumi.Input[Union['PubsubConfigArgs', 'PubsubConfigArgsDict']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+        :param pulumi.Input[Union['RepositoryEventConfigArgs', 'RepositoryEventConfigArgsDict']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
         :param pulumi.Input[str] resource_name_: The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service.
         :param pulumi.Input[str] service_account: The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build service account ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
-        :param pulumi.Input[pulumi.InputType['GitRepoSourceArgs']] source_to_build: The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+        :param pulumi.Input[Union['GitRepoSourceArgs', 'GitRepoSourceArgsDict']] source_to_build: The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `BuildTrigger`
-        :param pulumi.Input[pulumi.InputType['RepoSourceArgs']] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
-        :param pulumi.Input[pulumi.InputType['WebhookConfigArgs']] webhook_config: WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+        :param pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
+        :param pulumi.Input[Union['WebhookConfigArgs', 'WebhookConfigArgsDict']] webhook_config: WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
         """
         ...
     @overload
@@ -551,18 +551,18 @@ class Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_config: Optional[pulumi.Input[pulumi.InputType['ApprovalConfigArgs']]] = None,
+                 approval_config: Optional[pulumi.Input[Union['ApprovalConfigArgs', 'ApprovalConfigArgsDict']]] = None,
                  autodetect: Optional[pulumi.Input[bool]] = None,
-                 bitbucket_server_trigger_config: Optional[pulumi.Input[pulumi.InputType['BitbucketServerTriggerConfigArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['BuildArgs']]] = None,
+                 bitbucket_server_trigger_config: Optional[pulumi.Input[Union['BitbucketServerTriggerConfigArgs', 'BitbucketServerTriggerConfigArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['BuildArgs', 'BuildArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  event_type: Optional[pulumi.Input['TriggerEventType']] = None,
                  filename: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
-                 github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
-                 gitlab_enterprise_events_config: Optional[pulumi.Input[pulumi.InputType['GitLabEventsConfigArgs']]] = None,
+                 git_file_source: Optional[pulumi.Input[Union['GitFileSourceArgs', 'GitFileSourceArgsDict']]] = None,
+                 github: Optional[pulumi.Input[Union['GitHubEventsConfigArgs', 'GitHubEventsConfigArgsDict']]] = None,
+                 gitlab_enterprise_events_config: Optional[pulumi.Input[Union['GitLabEventsConfigArgs', 'GitLabEventsConfigArgsDict']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -570,15 +570,15 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
-                 repository_event_config: Optional[pulumi.Input[pulumi.InputType['RepositoryEventConfigArgs']]] = None,
+                 pubsub_config: Optional[pulumi.Input[Union['PubsubConfigArgs', 'PubsubConfigArgsDict']]] = None,
+                 repository_event_config: Optional[pulumi.Input[Union['RepositoryEventConfigArgs', 'RepositoryEventConfigArgsDict']]] = None,
                  resource_name_: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 source_to_build: Optional[pulumi.Input[pulumi.InputType['GitRepoSourceArgs']]] = None,
+                 source_to_build: Optional[pulumi.Input[Union['GitRepoSourceArgs', 'GitRepoSourceArgsDict']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 trigger_template: Optional[pulumi.Input[pulumi.InputType['RepoSourceArgs']]] = None,
-                 webhook_config: Optional[pulumi.Input[pulumi.InputType['WebhookConfigArgs']]] = None,
+                 trigger_template: Optional[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]] = None,
+                 webhook_config: Optional[pulumi.Input[Union['WebhookConfigArgs', 'WebhookConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

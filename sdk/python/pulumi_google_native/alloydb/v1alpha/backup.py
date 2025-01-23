@@ -214,7 +214,7 @@ class Backup(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -233,7 +233,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{region}/clusters/{cluster_id}).
         :param pulumi.Input[str] description: User-provided description of the backup.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Backup.
-        :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Optional. The encryption config can be specified to encrypt the backup with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
+        :param pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']] encryption_config: Optional. The encryption config can be specified to encrypt the backup with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -269,7 +269,7 @@ class Backup(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['EncryptionConfigArgs', 'EncryptionConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

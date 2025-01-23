@@ -135,7 +135,7 @@ class Process(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 origin: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogLineageV1OriginArgs']]] = None,
+                 origin: Optional[pulumi.Input[Union['GoogleCloudDatacatalogLineageV1OriginArgs', 'GoogleCloudDatacatalogLineageV1OriginArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -147,7 +147,7 @@ class Process(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] attributes: Optional. The attributes of the process. Should only be used for the purpose of non-semantic management (classifying, describing or labeling the process). Up to 100 attributes are allowed.
         :param pulumi.Input[str] display_name: Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
         :param pulumi.Input[str] name: Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogLineageV1OriginArgs']] origin: Optional. The origin of this process and its runs and lineage events.
+        :param pulumi.Input[Union['GoogleCloudDatacatalogLineageV1OriginArgs', 'GoogleCloudDatacatalogLineageV1OriginArgsDict']] origin: Optional. The origin of this process and its runs and lineage events.
         :param pulumi.Input[str] request_id: A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
         """
         ...
@@ -178,7 +178,7 @@ class Process(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 origin: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogLineageV1OriginArgs']]] = None,
+                 origin: Optional[pulumi.Input[Union['GoogleCloudDatacatalogLineageV1OriginArgs', 'GoogleCloudDatacatalogLineageV1OriginArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
