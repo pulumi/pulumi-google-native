@@ -1,3 +1,0 @@
-name: google-native-bucket-iam-ts
-runtime: nodejs
-description: A simple example of setting IAM policy for a storage bucket
