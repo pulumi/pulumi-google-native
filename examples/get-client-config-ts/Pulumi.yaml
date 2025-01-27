@@ -1,3 +1,0 @@
-name: get-client-config
-runtime: nodejs
-description: A simple example to demonstrate retrieving client config used by the provider.
