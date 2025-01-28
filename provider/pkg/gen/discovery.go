@@ -113,7 +113,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			switch methodName {
 			case "create", "insert":
 				createMethod = &restMethod
-			case "submit", "register":
+			case "submit", "register", "upload":
 				if createMethod == nil {
 					createMethod = &restMethod
 				}

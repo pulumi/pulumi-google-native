@@ -14,6 +14,7 @@ __all__ = [
     'CompositeFilterArgs',
     'DataSourceRestrictionArgs',
     'DateArgs',
+    'DebugOptionsArgs',
     'FacetOptionsArgs',
     'FilterOptionsArgs',
     'FilterArgs',
@@ -163,6 +164,30 @@ class DateArgs:
     @year.setter
     def year(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "year", value)
+
+
+@pulumi.input_type
+class DebugOptionsArgs:
+    def __init__(__self__, *,
+                 enable_debugging: Optional[pulumi.Input[bool]] = None):
+        """
+        Shared request debug options for all cloudsearch RPC methods.
+        :param pulumi.Input[bool] enable_debugging: If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+        """
+        if enable_debugging is not None:
+            pulumi.set(__self__, "enable_debugging", enable_debugging)
+
+    @property
+    @pulumi.getter(name="enableDebugging")
+    def enable_debugging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+        """
+        return pulumi.get(self, "enable_debugging")
+
+    @enable_debugging.setter
+    def enable_debugging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_debugging", value)
 
 
 @pulumi.input_type
