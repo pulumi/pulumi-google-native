@@ -147,7 +147,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
-                 gce_setup: Optional[pulumi.Input[pulumi.InputType['GceSetupArgs']]] = None,
+                 gce_setup: Optional[pulumi.Input[Union['GceSetupArgs', 'GceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -162,7 +162,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the notebook instance will not register with the proxy.
-        :param pulumi.Input[pulumi.InputType['GceSetupArgs']] gce_setup: Optional. Compute Engine setup for the notebook. Uses notebook-defined fields.
+        :param pulumi.Input[Union['GceSetupArgs', 'GceSetupArgsDict']] gce_setup: Optional. Compute Engine setup for the notebook. Uses notebook-defined fields.
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Optional. Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to apply to this instance. These can be later modified by the UpdateInstance method.
@@ -194,7 +194,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
-                 gce_setup: Optional[pulumi.Input[pulumi.InputType['GceSetupArgs']]] = None,
+                 gce_setup: Optional[pulumi.Input[Union['GceSetupArgs', 'GceSetupArgsDict']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

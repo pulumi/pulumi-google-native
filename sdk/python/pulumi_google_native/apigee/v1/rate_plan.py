@@ -312,19 +312,19 @@ class RatePlan(pulumi.CustomResource):
                  apiproduct: Optional[pulumi.Input[str]] = None,
                  apiproduct_id: Optional[pulumi.Input[str]] = None,
                  billing_period: Optional[pulumi.Input['RatePlanBillingPeriod']] = None,
-                 consumption_pricing_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RateRangeArgs']]]]] = None,
+                 consumption_pricing_rates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1RateRangeArgs', 'GoogleCloudApigeeV1RateRangeArgsDict']]]]] = None,
                  consumption_pricing_type: Optional[pulumi.Input['RatePlanConsumptionPricingType']] = None,
                  currency_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  fixed_fee_frequency: Optional[pulumi.Input[int]] = None,
-                 fixed_recurring_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
+                 fixed_recurring_fee: Optional[pulumi.Input[Union['GoogleTypeMoneyArgs', 'GoogleTypeMoneyArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  payment_funding_model: Optional[pulumi.Input['RatePlanPaymentFundingModel']] = None,
-                 revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]]] = None,
+                 revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1RevenueShareRangeArgs', 'GoogleCloudApigeeV1RevenueShareRangeArgsDict']]]]] = None,
                  revenue_share_type: Optional[pulumi.Input['RatePlanRevenueShareType']] = None,
-                 setup_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
+                 setup_fee: Optional[pulumi.Input[Union['GoogleTypeMoneyArgs', 'GoogleTypeMoneyArgsDict']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['RatePlanState']] = None,
                  __props__=None):
@@ -336,18 +336,18 @@ class RatePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] apiproduct: Name of the API product that the rate plan is associated with.
         :param pulumi.Input['RatePlanBillingPeriod'] billing_period: Frequency at which the customer will be billed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RateRangeArgs']]]] consumption_pricing_rates: API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ``` { "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, } ``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1RateRangeArgs', 'GoogleCloudApigeeV1RateRangeArgsDict']]]] consumption_pricing_rates: API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ``` { "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, } ``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
         :param pulumi.Input['RatePlanConsumptionPricingType'] consumption_pricing_type: Pricing model used for consumption-based charges.
         :param pulumi.Input[str] currency_code: Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
         :param pulumi.Input[str] description: Description of the rate plan.
         :param pulumi.Input[str] display_name: Display name of the rate plan.
         :param pulumi.Input[str] end_time: Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire.
         :param pulumi.Input[int] fixed_fee_frequency: Frequency at which the fixed fee is charged.
-        :param pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']] fixed_recurring_fee: Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
+        :param pulumi.Input[Union['GoogleTypeMoneyArgs', 'GoogleTypeMoneyArgsDict']] fixed_recurring_fee: Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
         :param pulumi.Input['RatePlanPaymentFundingModel'] payment_funding_model: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]] revenue_share_rates: Details of the revenue sharing model.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1RevenueShareRangeArgs', 'GoogleCloudApigeeV1RevenueShareRangeArgsDict']]]] revenue_share_rates: Details of the revenue sharing model.
         :param pulumi.Input['RatePlanRevenueShareType'] revenue_share_type: Method used to calculate the revenue that is shared with developers.
-        :param pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']] setup_fee: Initial, one-time fee paid when purchasing the API product.
+        :param pulumi.Input[Union['GoogleTypeMoneyArgs', 'GoogleTypeMoneyArgsDict']] setup_fee: Initial, one-time fee paid when purchasing the API product.
         :param pulumi.Input[str] start_time: Time when the rate plan becomes active in milliseconds since epoch.
         :param pulumi.Input['RatePlanState'] state: Current state of the rate plan (draft or published).
         """
@@ -379,19 +379,19 @@ class RatePlan(pulumi.CustomResource):
                  apiproduct: Optional[pulumi.Input[str]] = None,
                  apiproduct_id: Optional[pulumi.Input[str]] = None,
                  billing_period: Optional[pulumi.Input['RatePlanBillingPeriod']] = None,
-                 consumption_pricing_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RateRangeArgs']]]]] = None,
+                 consumption_pricing_rates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1RateRangeArgs', 'GoogleCloudApigeeV1RateRangeArgsDict']]]]] = None,
                  consumption_pricing_type: Optional[pulumi.Input['RatePlanConsumptionPricingType']] = None,
                  currency_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  fixed_fee_frequency: Optional[pulumi.Input[int]] = None,
-                 fixed_recurring_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
+                 fixed_recurring_fee: Optional[pulumi.Input[Union['GoogleTypeMoneyArgs', 'GoogleTypeMoneyArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  payment_funding_model: Optional[pulumi.Input['RatePlanPaymentFundingModel']] = None,
-                 revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]]] = None,
+                 revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1RevenueShareRangeArgs', 'GoogleCloudApigeeV1RevenueShareRangeArgsDict']]]]] = None,
                  revenue_share_type: Optional[pulumi.Input['RatePlanRevenueShareType']] = None,
-                 setup_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
+                 setup_fee: Optional[pulumi.Input[Union['GoogleTypeMoneyArgs', 'GoogleTypeMoneyArgsDict']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['RatePlanState']] = None,
                  __props__=None):

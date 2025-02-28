@@ -219,7 +219,7 @@ class HostSecurityReport(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  group_by_time_unit: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[int]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityReportQueryMetricArgs']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityReportQueryMetricArgs', 'GoogleCloudApigeeV1SecurityReportQueryMetricArgsDict']]]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  report_definition_id: Optional[pulumi.Input[str]] = None,
@@ -240,7 +240,7 @@ class HostSecurityReport(pulumi.CustomResource):
         :param pulumi.Input[str] filter: Boolean expression that can be used to filter data. Filter expressions can be combined using AND/OR terms and should be fully parenthesized to avoid ambiguity. See Analytics metrics, dimensions, and filters reference https://docs.apigee.com/api-platform/analytics/analytics-reference for more information on the fields available to filter on. For more information on the tokens that you use to build filter expressions, see Filter expression syntax. https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-expression-syntax
         :param pulumi.Input[str] group_by_time_unit: Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
         :param pulumi.Input[int] limit: Maximum number of rows that can be returned in the result.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityReportQueryMetricArgs']]]] metrics: A list of Metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityReportQueryMetricArgs', 'GoogleCloudApigeeV1SecurityReportQueryMetricArgsDict']]]] metrics: A list of Metrics.
         :param pulumi.Input[str] mime_type: Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
         :param pulumi.Input[str] report_definition_id: Report Definition ID.
         :param Any time_range: Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
@@ -279,7 +279,7 @@ class HostSecurityReport(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  group_by_time_unit: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[int]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1SecurityReportQueryMetricArgs']]]]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1SecurityReportQueryMetricArgs', 'GoogleCloudApigeeV1SecurityReportQueryMetricArgsDict']]]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  report_definition_id: Optional[pulumi.Input[str]] = None,

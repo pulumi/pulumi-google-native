@@ -166,29 +166,29 @@ class Key(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']]] = None,
+                 android_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ios_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']]] = None,
+                 ios_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 testing_options: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']]] = None,
-                 waf_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs']]] = None,
-                 web_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs']]] = None,
+                 testing_options: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs', 'GoogleCloudRecaptchaenterpriseV1TestingOptionsArgsDict']]] = None,
+                 waf_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs', 'GoogleCloudRecaptchaenterpriseV1WafSettingsArgsDict']]] = None,
+                 web_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new reCAPTCHA Enterprise key.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']] android_settings: Settings for keys that can be used by Android apps.
+        :param pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgsDict']] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
+        :param pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
         :param pulumi.Input[str] name: Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']] testing_options: Optional. Options for user acceptance testing.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs']] waf_settings: Optional. Settings for WAF
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs']] web_settings: Settings for keys that can be used by websites.
+        :param pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs', 'GoogleCloudRecaptchaenterpriseV1TestingOptionsArgsDict']] testing_options: Optional. Options for user acceptance testing.
+        :param pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs', 'GoogleCloudRecaptchaenterpriseV1WafSettingsArgsDict']] waf_settings: Optional. Settings for WAF
+        :param pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgsDict']] web_settings: Settings for keys that can be used by websites.
         """
         ...
     @overload
@@ -214,15 +214,15 @@ class Key(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']]] = None,
+                 android_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ios_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']]] = None,
+                 ios_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 testing_options: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs']]] = None,
-                 waf_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs']]] = None,
-                 web_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs']]] = None,
+                 testing_options: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs', 'GoogleCloudRecaptchaenterpriseV1TestingOptionsArgsDict']]] = None,
+                 waf_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1WafSettingsArgs', 'GoogleCloudRecaptchaenterpriseV1WafSettingsArgsDict']]] = None,
+                 web_settings: Optional[pulumi.Input[Union['GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs', 'GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

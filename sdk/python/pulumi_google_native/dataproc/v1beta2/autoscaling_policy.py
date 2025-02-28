@@ -108,12 +108,12 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
+                 basic_algorithm: Optional[pulumi.Input[Union['BasicAutoscalingAlgorithmArgs', 'BasicAutoscalingAlgorithmArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
+                 secondary_worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates new autoscaling policy.
@@ -122,8 +122,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] worker_config: Describes how the autoscaler will operate for primary workers.
+        :param pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
+        :param pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']] worker_config: Describes how the autoscaler will operate for primary workers.
         """
         ...
     @overload
@@ -150,12 +150,12 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
+                 basic_algorithm: Optional[pulumi.Input[Union['BasicAutoscalingAlgorithmArgs', 'BasicAutoscalingAlgorithmArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
+                 secondary_worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

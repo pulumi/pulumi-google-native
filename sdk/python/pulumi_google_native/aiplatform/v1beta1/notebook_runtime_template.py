@@ -242,16 +242,16 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_persistent_disk_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs']]] = None,
+                 data_persistent_disk_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs', 'GoogleCloudAiplatformV1beta1PersistentDiskSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 euc_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookEucConfigArgs']]] = None,
-                 idle_shutdown_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs']]] = None,
+                 euc_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1NotebookEucConfigArgs', 'GoogleCloudAiplatformV1beta1NotebookEucConfigArgsDict']]] = None,
+                 idle_shutdown_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs', 'GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 machine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1MachineSpecArgs']]] = None,
-                 network_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NetworkSpecArgs']]] = None,
+                 machine_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1MachineSpecArgs', 'GoogleCloudAiplatformV1beta1MachineSpecArgsDict']]] = None,
+                 network_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1NetworkSpecArgs', 'GoogleCloudAiplatformV1beta1NetworkSpecArgsDict']]] = None,
                  notebook_runtime_template_id: Optional[pulumi.Input[str]] = None,
                  notebook_runtime_type: Optional[pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -263,15 +263,15 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs']] data_persistent_disk_spec: Optional. The specification of persistent disk attached to the runtime as data disk storage.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs', 'GoogleCloudAiplatformV1beta1PersistentDiskSpecArgsDict']] data_persistent_disk_spec: Optional. The specification of persistent disk attached to the runtime as data disk storage.
         :param pulumi.Input[str] description: The description of the NotebookRuntimeTemplate.
         :param pulumi.Input[str] display_name: The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookEucConfigArgs']] euc_config: EUC configuration of the NotebookRuntimeTemplate.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs']] idle_shutdown_config: The idle shutdown configuration of NotebookRuntimeTemplate. This config will only be set when idle shutdown is enabled.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1NotebookEucConfigArgs', 'GoogleCloudAiplatformV1beta1NotebookEucConfigArgsDict']] euc_config: EUC configuration of the NotebookRuntimeTemplate.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs', 'GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgsDict']] idle_shutdown_config: The idle shutdown configuration of NotebookRuntimeTemplate. This config will only be set when idle shutdown is enabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1MachineSpecArgs']] machine_spec: Optional. Immutable. The specification of a single machine for the template.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NetworkSpecArgs']] network_spec: Optional. Network spec.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1MachineSpecArgs', 'GoogleCloudAiplatformV1beta1MachineSpecArgsDict']] machine_spec: Optional. Immutable. The specification of a single machine for the template.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1NetworkSpecArgs', 'GoogleCloudAiplatformV1beta1NetworkSpecArgsDict']] network_spec: Optional. Network spec.
         :param pulumi.Input[str] notebook_runtime_template_id: Optional. User specified ID for the notebook runtime template.
         :param pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType'] notebook_runtime_type: Optional. Immutable. The type of the notebook runtime template.
         :param pulumi.Input[str] service_account: The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
@@ -301,16 +301,16 @@ class NotebookRuntimeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_persistent_disk_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs']]] = None,
+                 data_persistent_disk_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs', 'GoogleCloudAiplatformV1beta1PersistentDiskSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 euc_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookEucConfigArgs']]] = None,
-                 idle_shutdown_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs']]] = None,
+                 euc_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1NotebookEucConfigArgs', 'GoogleCloudAiplatformV1beta1NotebookEucConfigArgsDict']]] = None,
+                 idle_shutdown_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs', 'GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 machine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1MachineSpecArgs']]] = None,
-                 network_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1NetworkSpecArgs']]] = None,
+                 machine_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1MachineSpecArgs', 'GoogleCloudAiplatformV1beta1MachineSpecArgsDict']]] = None,
+                 network_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1NetworkSpecArgs', 'GoogleCloudAiplatformV1beta1NetworkSpecArgsDict']]] = None,
                  notebook_runtime_template_id: Optional[pulumi.Input[str]] = None,
                  notebook_runtime_type: Optional[pulumi.Input['NotebookRuntimeTemplateNotebookRuntimeType']] = None,
                  project: Optional[pulumi.Input[str]] = None,

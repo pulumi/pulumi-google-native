@@ -166,7 +166,7 @@ class PhraseMatcher(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 phrase_match_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs']]]]] = None,
+                 phrase_match_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs', 'GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role_match: Optional[pulumi.Input['PhraseMatcherRoleMatch']] = None,
                  type: Optional[pulumi.Input['PhraseMatcherType']] = None,
@@ -180,7 +180,7 @@ class PhraseMatcher(pulumi.CustomResource):
         :param pulumi.Input[bool] active: Applies the phrase matcher only when it is active.
         :param pulumi.Input[str] display_name: The human-readable name of the phrase matcher.
         :param pulumi.Input[str] name: The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs']]]] phrase_match_rule_groups: A list of phase match rule groups that are included in this matcher.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs', 'GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgsDict']]]] phrase_match_rule_groups: A list of phase match rule groups that are included in this matcher.
         :param pulumi.Input['PhraseMatcherRoleMatch'] role_match: The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
         :param pulumi.Input['PhraseMatcherType'] type: The type of this phrase matcher.
         :param pulumi.Input[str] version_tag: The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
@@ -213,7 +213,7 @@ class PhraseMatcher(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 phrase_match_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs']]]]] = None,
+                 phrase_match_rule_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs', 'GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role_match: Optional[pulumi.Input['PhraseMatcherRoleMatch']] = None,
                  type: Optional[pulumi.Input['PhraseMatcherType']] = None,

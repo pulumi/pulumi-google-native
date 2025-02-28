@@ -273,19 +273,19 @@ class ModelDeploymentMonitoringJob(pulumi.CustomResource):
                  analysis_instance_schema_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_monitoring_pipeline_logs: Optional[pulumi.Input[bool]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_ttl: Optional[pulumi.Input[str]] = None,
-                 logging_sampling_strategy: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1SamplingStrategyArgs']]] = None,
-                 model_deployment_monitoring_objective_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs']]]]] = None,
-                 model_deployment_monitoring_schedule_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs']]] = None,
-                 model_monitoring_alert_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs']]] = None,
+                 logging_sampling_strategy: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1SamplingStrategyArgs', 'GoogleCloudAiplatformV1beta1SamplingStrategyArgsDict']]] = None,
+                 model_deployment_monitoring_objective_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs', 'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgsDict']]]]] = None,
+                 model_deployment_monitoring_schedule_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs', 'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgsDict']]] = None,
+                 model_monitoring_alert_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgsDict']]] = None,
                  predict_instance_schema_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sample_predict_instance: Optional[Any] = None,
-                 stats_anomalies_base_directory: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1GcsDestinationArgs']]] = None,
+                 stats_anomalies_base_directory: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1GcsDestinationArgs', 'GoogleCloudAiplatformV1beta1GcsDestinationArgsDict']]] = None,
                  __props__=None):
         """
         Creates a ModelDeploymentMonitoringJob. It will run periodically on a configured interval.
@@ -296,17 +296,17 @@ class ModelDeploymentMonitoringJob(pulumi.CustomResource):
         :param pulumi.Input[str] analysis_instance_schema_uri: YAML schema file uri describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If this field is empty, all the feature data types are inferred from predict_instance_schema_uri, meaning that TFDV will use the data in the exact format(data type) as prediction request/response. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.
         :param pulumi.Input[str] display_name: The user-defined name of the ModelDeploymentMonitoringJob. The name can be up to 128 characters long and can consist of any UTF-8 characters. Display name of a ModelDeploymentMonitoringJob.
         :param pulumi.Input[bool] enable_monitoring_pipeline_logs: If true, the scheduled monitoring pipeline logs are sent to Google Cloud Logging, including pipeline status and anomalies detected. Please note the logs incur cost, which are subject to [Cloud Logging pricing](https://cloud.google.com/logging#pricing).
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a ModelDeploymentMonitoringJob. If set, this ModelDeploymentMonitoringJob and all sub-resources of this ModelDeploymentMonitoringJob will be secured by this key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for a ModelDeploymentMonitoringJob. If set, this ModelDeploymentMonitoringJob and all sub-resources of this ModelDeploymentMonitoringJob will be secured by this key.
         :param pulumi.Input[str] endpoint: Endpoint resource name. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your ModelDeploymentMonitoringJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] log_ttl: The TTL of BigQuery tables in user projects which stores logs. A day is the basic unit of the TTL and we take the ceil of TTL/86400(a day). e.g. { second: 3600} indicates ttl = 1 day.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1SamplingStrategyArgs']] logging_sampling_strategy: Sample Strategy for logging.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs']]]] model_deployment_monitoring_objective_configs: The config for monitoring objectives. This is a per DeployedModel config. Each DeployedModel needs to be configured separately.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs']] model_deployment_monitoring_schedule_config: Schedule config for running the monitoring job.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs']] model_monitoring_alert_config: Alert config for model monitoring.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1SamplingStrategyArgs', 'GoogleCloudAiplatformV1beta1SamplingStrategyArgsDict']] logging_sampling_strategy: Sample Strategy for logging.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs', 'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgsDict']]]] model_deployment_monitoring_objective_configs: The config for monitoring objectives. This is a per DeployedModel config. Each DeployedModel needs to be configured separately.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs', 'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgsDict']] model_deployment_monitoring_schedule_config: Schedule config for running the monitoring job.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgsDict']] model_monitoring_alert_config: Alert config for model monitoring.
         :param pulumi.Input[str] predict_instance_schema_uri: YAML schema file uri describing the format of a single instance, which are given to format this Endpoint's prediction (and explanation). If not set, we will generate predict schema from collected predict requests.
         :param Any sample_predict_instance: Sample Predict instance, same format as PredictRequest.instances, this can be set as a replacement of ModelDeploymentMonitoringJob.predict_instance_schema_uri. If not set, we will generate predict schema from collected predict requests.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1GcsDestinationArgs']] stats_anomalies_base_directory: Stats anomalies base folder path.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1GcsDestinationArgs', 'GoogleCloudAiplatformV1beta1GcsDestinationArgsDict']] stats_anomalies_base_directory: Stats anomalies base folder path.
         """
         ...
     @overload
@@ -336,19 +336,19 @@ class ModelDeploymentMonitoringJob(pulumi.CustomResource):
                  analysis_instance_schema_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_monitoring_pipeline_logs: Optional[pulumi.Input[bool]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_ttl: Optional[pulumi.Input[str]] = None,
-                 logging_sampling_strategy: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1SamplingStrategyArgs']]] = None,
-                 model_deployment_monitoring_objective_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs']]]]] = None,
-                 model_deployment_monitoring_schedule_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs']]] = None,
-                 model_monitoring_alert_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs']]] = None,
+                 logging_sampling_strategy: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1SamplingStrategyArgs', 'GoogleCloudAiplatformV1beta1SamplingStrategyArgsDict']]] = None,
+                 model_deployment_monitoring_objective_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs', 'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgsDict']]]]] = None,
+                 model_deployment_monitoring_schedule_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs', 'GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgsDict']]] = None,
+                 model_monitoring_alert_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgsDict']]] = None,
                  predict_instance_schema_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sample_predict_instance: Optional[Any] = None,
-                 stats_anomalies_base_directory: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1GcsDestinationArgs']]] = None,
+                 stats_anomalies_base_directory: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1GcsDestinationArgs', 'GoogleCloudAiplatformV1beta1GcsDestinationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

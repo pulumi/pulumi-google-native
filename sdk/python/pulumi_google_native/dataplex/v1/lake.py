@@ -134,7 +134,7 @@ class Lake(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metastore: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1LakeMetastoreArgs']]] = None,
+                 metastore: Optional[pulumi.Input[Union['GoogleCloudDataplexV1LakeMetastoreArgs', 'GoogleCloudDataplexV1LakeMetastoreArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -147,7 +147,7 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the lake.
         :param pulumi.Input[str] lake_id: Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1LakeMetastoreArgs']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1LakeMetastoreArgs', 'GoogleCloudDataplexV1LakeMetastoreArgsDict']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         """
         ...
     @overload
@@ -179,7 +179,7 @@ class Lake(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 metastore: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1LakeMetastoreArgs']]] = None,
+                 metastore: Optional[pulumi.Input[Union['GoogleCloudDataplexV1LakeMetastoreArgs', 'GoogleCloudDataplexV1LakeMetastoreArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

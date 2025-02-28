@@ -131,10 +131,10 @@ class Topic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 partition_config: Optional[pulumi.Input[pulumi.InputType['PartitionConfigArgs']]] = None,
+                 partition_config: Optional[pulumi.Input[Union['PartitionConfigArgs', 'PartitionConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_config: Optional[pulumi.Input[pulumi.InputType['ReservationConfigArgs']]] = None,
-                 retention_config: Optional[pulumi.Input[pulumi.InputType['RetentionConfigArgs']]] = None,
+                 reservation_config: Optional[pulumi.Input[Union['ReservationConfigArgs', 'ReservationConfigArgsDict']]] = None,
+                 retention_config: Optional[pulumi.Input[Union['RetentionConfigArgs', 'RetentionConfigArgsDict']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -143,9 +143,9 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-        :param pulumi.Input[pulumi.InputType['PartitionConfigArgs']] partition_config: The settings for this topic's partitions.
-        :param pulumi.Input[pulumi.InputType['ReservationConfigArgs']] reservation_config: The settings for this topic's Reservation usage.
-        :param pulumi.Input[pulumi.InputType['RetentionConfigArgs']] retention_config: The settings for this topic's message retention.
+        :param pulumi.Input[Union['PartitionConfigArgs', 'PartitionConfigArgsDict']] partition_config: The settings for this topic's partitions.
+        :param pulumi.Input[Union['ReservationConfigArgs', 'ReservationConfigArgsDict']] reservation_config: The settings for this topic's Reservation usage.
+        :param pulumi.Input[Union['RetentionConfigArgs', 'RetentionConfigArgsDict']] retention_config: The settings for this topic's message retention.
         :param pulumi.Input[str] topic_id: Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
         """
         ...
@@ -174,10 +174,10 @@ class Topic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 partition_config: Optional[pulumi.Input[pulumi.InputType['PartitionConfigArgs']]] = None,
+                 partition_config: Optional[pulumi.Input[Union['PartitionConfigArgs', 'PartitionConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 reservation_config: Optional[pulumi.Input[pulumi.InputType['ReservationConfigArgs']]] = None,
-                 retention_config: Optional[pulumi.Input[pulumi.InputType['RetentionConfigArgs']]] = None,
+                 reservation_config: Optional[pulumi.Input[Union['ReservationConfigArgs', 'ReservationConfigArgsDict']]] = None,
+                 retention_config: Optional[pulumi.Input[Union['RetentionConfigArgs', 'RetentionConfigArgsDict']]] = None,
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

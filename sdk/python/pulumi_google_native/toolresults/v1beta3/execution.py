@@ -194,15 +194,15 @@ class Execution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 completion_time: Optional[pulumi.Input[pulumi.InputType['TimestampArgs']]] = None,
-                 creation_time: Optional[pulumi.Input[pulumi.InputType['TimestampArgs']]] = None,
-                 dimension_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatrixDimensionDefinitionArgs']]]]] = None,
+                 completion_time: Optional[pulumi.Input[Union['TimestampArgs', 'TimestampArgsDict']]] = None,
+                 creation_time: Optional[pulumi.Input[Union['TimestampArgs', 'TimestampArgsDict']]] = None,
+                 dimension_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MatrixDimensionDefinitionArgs', 'MatrixDimensionDefinitionArgsDict']]]]] = None,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
-                 outcome: Optional[pulumi.Input[pulumi.InputType['OutcomeArgs']]] = None,
+                 outcome: Optional[pulumi.Input[Union['OutcomeArgs', 'OutcomeArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 specification: Optional[pulumi.Input[pulumi.InputType['SpecificationArgs']]] = None,
+                 specification: Optional[pulumi.Input[Union['SpecificationArgs', 'SpecificationArgsDict']]] = None,
                  state: Optional[pulumi.Input['ExecutionState']] = None,
                  test_execution_matrix_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -214,13 +214,13 @@ class Execution(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TimestampArgs']] completion_time: The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
-        :param pulumi.Input[pulumi.InputType['TimestampArgs']] creation_time: The time when the Execution was created. This value will be set automatically when CreateExecution is called. - In response: always set - In create/update request: never set
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatrixDimensionDefinitionArgs']]]] dimension_definitions: The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
+        :param pulumi.Input[Union['TimestampArgs', 'TimestampArgsDict']] completion_time: The time when the Execution status transitioned to COMPLETE. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
+        :param pulumi.Input[Union['TimestampArgs', 'TimestampArgsDict']] creation_time: The time when the Execution was created. This value will be set automatically when CreateExecution is called. - In response: always set - In create/update request: never set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MatrixDimensionDefinitionArgs', 'MatrixDimensionDefinitionArgsDict']]]] dimension_definitions: The dimensions along which different steps in this execution may vary. This must remain fixed over the life of the execution. Returns INVALID_ARGUMENT if this field is set in an update request. Returns INVALID_ARGUMENT if the same name occurs in more than one dimension_definition. Returns INVALID_ARGUMENT if the size of the list is over 100. - In response: present if set by create - In create request: optional - In update request: never set
         :param pulumi.Input[str] execution_id: A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set
-        :param pulumi.Input[pulumi.InputType['OutcomeArgs']] outcome: Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
+        :param pulumi.Input[Union['OutcomeArgs', 'OutcomeArgsDict']] outcome: Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
         :param pulumi.Input[str] request_id: A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
-        :param pulumi.Input[pulumi.InputType['SpecificationArgs']] specification: Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
+        :param pulumi.Input[Union['SpecificationArgs', 'SpecificationArgsDict']] specification: Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
         :param pulumi.Input['ExecutionState'] state: The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
         :param pulumi.Input[str] test_execution_matrix_id: TestExecution Matrix ID that the TestExecutionService uses. - In response: present if set by create - In create: optional - In update: never set
         """
@@ -251,15 +251,15 @@ class Execution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 completion_time: Optional[pulumi.Input[pulumi.InputType['TimestampArgs']]] = None,
-                 creation_time: Optional[pulumi.Input[pulumi.InputType['TimestampArgs']]] = None,
-                 dimension_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatrixDimensionDefinitionArgs']]]]] = None,
+                 completion_time: Optional[pulumi.Input[Union['TimestampArgs', 'TimestampArgsDict']]] = None,
+                 creation_time: Optional[pulumi.Input[Union['TimestampArgs', 'TimestampArgsDict']]] = None,
+                 dimension_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MatrixDimensionDefinitionArgs', 'MatrixDimensionDefinitionArgsDict']]]]] = None,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
-                 outcome: Optional[pulumi.Input[pulumi.InputType['OutcomeArgs']]] = None,
+                 outcome: Optional[pulumi.Input[Union['OutcomeArgs', 'OutcomeArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 specification: Optional[pulumi.Input[pulumi.InputType['SpecificationArgs']]] = None,
+                 specification: Optional[pulumi.Input[Union['SpecificationArgs', 'SpecificationArgsDict']]] = None,
                  state: Optional[pulumi.Input['ExecutionState']] = None,
                  test_execution_matrix_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

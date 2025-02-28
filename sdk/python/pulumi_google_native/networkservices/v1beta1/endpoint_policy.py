@@ -211,14 +211,14 @@ class EndpointPolicy(pulumi.CustomResource):
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint_matcher: Optional[pulumi.Input[pulumi.InputType['EndpointMatcherArgs']]] = None,
+                 endpoint_matcher: Optional[pulumi.Input[Union['EndpointMatcherArgs', 'EndpointMatcherArgsDict']]] = None,
                  endpoint_policy_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
-                 traffic_port_selector: Optional[pulumi.Input[pulumi.InputType['TrafficPortSelectorArgs']]] = None,
+                 traffic_port_selector: Optional[pulumi.Input[Union['TrafficPortSelectorArgs', 'TrafficPortSelectorArgsDict']]] = None,
                  type: Optional[pulumi.Input['EndpointPolicyType']] = None,
                  __props__=None):
         """
@@ -229,12 +229,12 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] authorization_policy: Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
         :param pulumi.Input[str] client_tls_policy: Optional. A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints. More specifically, it is applied to the outgoing traffic from the proxy to the endpoint. This is typically used for sidecar model where the proxy identifies itself as endpoint to the control plane, with the connection between sidecar and endpoint requiring authentication. If this field is not set, authentication is disabled(open). Applicable only when EndpointPolicyType is SIDECAR_PROXY.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[pulumi.InputType['EndpointMatcherArgs']] endpoint_matcher: A matcher that selects endpoints to which the policies should be applied.
+        :param pulumi.Input[Union['EndpointMatcherArgs', 'EndpointMatcherArgsDict']] endpoint_matcher: A matcher that selects endpoints to which the policies should be applied.
         :param pulumi.Input[str] endpoint_policy_id: Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the EndpointPolicy resource.
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource. It matches pattern `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
         :param pulumi.Input[str] server_tls_policy: Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends. If this field is not set, authentication is disabled(open) for this endpoint.
-        :param pulumi.Input[pulumi.InputType['TrafficPortSelectorArgs']] traffic_port_selector: Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
+        :param pulumi.Input[Union['TrafficPortSelectorArgs', 'TrafficPortSelectorArgsDict']] traffic_port_selector: Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
         :param pulumi.Input['EndpointPolicyType'] type: The type of endpoint policy. This is primarily used to validate the configuration.
         """
         ...
@@ -264,14 +264,14 @@ class EndpointPolicy(pulumi.CustomResource):
                  authorization_policy: Optional[pulumi.Input[str]] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint_matcher: Optional[pulumi.Input[pulumi.InputType['EndpointMatcherArgs']]] = None,
+                 endpoint_matcher: Optional[pulumi.Input[Union['EndpointMatcherArgs', 'EndpointMatcherArgsDict']]] = None,
                  endpoint_policy_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
-                 traffic_port_selector: Optional[pulumi.Input[pulumi.InputType['TrafficPortSelectorArgs']]] = None,
+                 traffic_port_selector: Optional[pulumi.Input[Union['TrafficPortSelectorArgs', 'TrafficPortSelectorArgsDict']]] = None,
                  type: Optional[pulumi.Input['EndpointPolicyType']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

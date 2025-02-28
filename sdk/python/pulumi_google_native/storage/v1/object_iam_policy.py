@@ -160,7 +160,7 @@ class ObjectIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectIamPolicyBindingsItemArgs']]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectIamPolicyBindingsItemArgs', 'ObjectIamPolicyBindingsItemArgsDict']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
@@ -177,7 +177,7 @@ class ObjectIamPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectIamPolicyBindingsItemArgs']]]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectIamPolicyBindingsItemArgs', 'ObjectIamPolicyBindingsItemArgsDict']]]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
         :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
         :param pulumi.Input[str] generation: If present, selects a specific revision of this object (as opposed to the latest version, the default).
         :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -211,7 +211,7 @@ class ObjectIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectIamPolicyBindingsItemArgs']]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectIamPolicyBindingsItemArgs', 'ObjectIamPolicyBindingsItemArgsDict']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,

@@ -256,21 +256,21 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['BigQueryProfileArgs']]] = None,
+                 bigquery_profile: Optional[pulumi.Input[Union['BigQueryProfileArgs', 'BigQueryProfileArgsDict']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
-                 forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ForwardSshTunnelConnectivityArgs']]] = None,
-                 gcs_profile: Optional[pulumi.Input[pulumi.InputType['GcsProfileArgs']]] = None,
+                 forward_ssh_connectivity: Optional[pulumi.Input[Union['ForwardSshTunnelConnectivityArgs', 'ForwardSshTunnelConnectivityArgsDict']]] = None,
+                 gcs_profile: Optional[pulumi.Input[Union['GcsProfileArgs', 'GcsProfileArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql_profile: Optional[pulumi.Input[pulumi.InputType['MysqlProfileArgs']]] = None,
-                 oracle_profile: Optional[pulumi.Input[pulumi.InputType['OracleProfileArgs']]] = None,
-                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['PostgresqlProfileArgs']]] = None,
-                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']]] = None,
+                 mysql_profile: Optional[pulumi.Input[Union['MysqlProfileArgs', 'MysqlProfileArgsDict']]] = None,
+                 oracle_profile: Optional[pulumi.Input[Union['OracleProfileArgs', 'OracleProfileArgsDict']]] = None,
+                 postgresql_profile: Optional[pulumi.Input[Union['PostgresqlProfileArgs', 'PostgresqlProfileArgsDict']]] = None,
+                 private_connectivity: Optional[pulumi.Input[Union['PrivateConnectivityArgs', 'PrivateConnectivityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
+                 static_service_ip_connectivity: Optional[pulumi.Input[Union['StaticServiceIpConnectivityArgs', 'StaticServiceIpConnectivityArgsDict']]] = None,
                  __props__=None):
         """
         Use this method to create a connection profile in a project and location.
@@ -278,19 +278,19 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BigQueryProfileArgs']] bigquery_profile: BigQuery Connection Profile configuration.
+        :param pulumi.Input[Union['BigQueryProfileArgs', 'BigQueryProfileArgsDict']] bigquery_profile: BigQuery Connection Profile configuration.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[bool] force: Optional. Create the connection profile without validating it.
-        :param pulumi.Input[pulumi.InputType['ForwardSshTunnelConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
-        :param pulumi.Input[pulumi.InputType['GcsProfileArgs']] gcs_profile: Cloud Storage ConnectionProfile configuration.
+        :param pulumi.Input[Union['ForwardSshTunnelConnectivityArgs', 'ForwardSshTunnelConnectivityArgsDict']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param pulumi.Input[Union['GcsProfileArgs', 'GcsProfileArgsDict']] gcs_profile: Cloud Storage ConnectionProfile configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[pulumi.InputType['MysqlProfileArgs']] mysql_profile: MySQL ConnectionProfile configuration.
-        :param pulumi.Input[pulumi.InputType['OracleProfileArgs']] oracle_profile: Oracle ConnectionProfile configuration.
-        :param pulumi.Input[pulumi.InputType['PostgresqlProfileArgs']] postgresql_profile: PostgreSQL Connection Profile configuration.
-        :param pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']] private_connectivity: Private connectivity.
+        :param pulumi.Input[Union['MysqlProfileArgs', 'MysqlProfileArgsDict']] mysql_profile: MySQL ConnectionProfile configuration.
+        :param pulumi.Input[Union['OracleProfileArgs', 'OracleProfileArgsDict']] oracle_profile: Oracle ConnectionProfile configuration.
+        :param pulumi.Input[Union['PostgresqlProfileArgs', 'PostgresqlProfileArgsDict']] postgresql_profile: PostgreSQL Connection Profile configuration.
+        :param pulumi.Input[Union['PrivateConnectivityArgs', 'PrivateConnectivityArgsDict']] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']] static_service_ip_connectivity: Static Service IP connectivity.
+        :param pulumi.Input[Union['StaticServiceIpConnectivityArgs', 'StaticServiceIpConnectivityArgsDict']] static_service_ip_connectivity: Static Service IP connectivity.
         """
         ...
     @overload
@@ -317,21 +317,21 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['BigQueryProfileArgs']]] = None,
+                 bigquery_profile: Optional[pulumi.Input[Union['BigQueryProfileArgs', 'BigQueryProfileArgsDict']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
-                 forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ForwardSshTunnelConnectivityArgs']]] = None,
-                 gcs_profile: Optional[pulumi.Input[pulumi.InputType['GcsProfileArgs']]] = None,
+                 forward_ssh_connectivity: Optional[pulumi.Input[Union['ForwardSshTunnelConnectivityArgs', 'ForwardSshTunnelConnectivityArgsDict']]] = None,
+                 gcs_profile: Optional[pulumi.Input[Union['GcsProfileArgs', 'GcsProfileArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mysql_profile: Optional[pulumi.Input[pulumi.InputType['MysqlProfileArgs']]] = None,
-                 oracle_profile: Optional[pulumi.Input[pulumi.InputType['OracleProfileArgs']]] = None,
-                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['PostgresqlProfileArgs']]] = None,
-                 private_connectivity: Optional[pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']]] = None,
+                 mysql_profile: Optional[pulumi.Input[Union['MysqlProfileArgs', 'MysqlProfileArgsDict']]] = None,
+                 oracle_profile: Optional[pulumi.Input[Union['OracleProfileArgs', 'OracleProfileArgsDict']]] = None,
+                 postgresql_profile: Optional[pulumi.Input[Union['PostgresqlProfileArgs', 'PostgresqlProfileArgsDict']]] = None,
+                 private_connectivity: Optional[pulumi.Input[Union['PrivateConnectivityArgs', 'PrivateConnectivityArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
+                 static_service_ip_connectivity: Optional[pulumi.Input[Union['StaticServiceIpConnectivityArgs', 'StaticServiceIpConnectivityArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

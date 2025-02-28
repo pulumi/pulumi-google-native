@@ -212,7 +212,7 @@ class PipelineJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class PipelineJob(pulumi.CustomResource):
                  pipeline_spec: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs', 'GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  template_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -231,13 +231,13 @@ class PipelineJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a pipelineJob. If set, this PipelineJob and all of its sub-resources will be secured by this key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for a pipelineJob. If set, this PipelineJob and all of its sub-resources will be secured by this key.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
         :param pulumi.Input[str] network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
         :param pulumi.Input[str] pipeline_job_id: The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
         :param pulumi.Input[Mapping[str, Any]] pipeline_spec: The spec of the pipeline.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']] runtime_config: Runtime config of the pipeline.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs', 'GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgsDict']] runtime_config: Runtime config of the pipeline.
         :param pulumi.Input[str] service_account: The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
         :param pulumi.Input[str] template_uri: A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
         """
@@ -267,7 +267,7 @@ class PipelineJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -275,7 +275,7 @@ class PipelineJob(pulumi.CustomResource):
                  pipeline_spec: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs', 'GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  template_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):

@@ -144,7 +144,7 @@ class Schedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 execution_template: Optional[pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']]] = None,
+                 execution_template: Optional[pulumi.Input[Union['ExecutionTemplateArgs', 'ExecutionTemplateArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule_id: Optional[pulumi.Input[str]] = None,
@@ -159,7 +159,7 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cron_schedule: Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
         :param pulumi.Input[str] description: A brief description of this environment.
-        :param pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']] execution_template: Notebook Execution Template corresponding to this schedule.
+        :param pulumi.Input[Union['ExecutionTemplateArgs', 'ExecutionTemplateArgsDict']] execution_template: Notebook Execution Template corresponding to this schedule.
         :param pulumi.Input[str] schedule_id: Required. User-defined unique ID of this schedule.
         :param pulumi.Input[str] time_zone: Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         """
@@ -190,7 +190,7 @@ class Schedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 execution_template: Optional[pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']]] = None,
+                 execution_template: Optional[pulumi.Input[Union['ExecutionTemplateArgs', 'ExecutionTemplateArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schedule_id: Optional[pulumi.Input[str]] = None,

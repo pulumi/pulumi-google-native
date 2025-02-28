@@ -92,8 +92,8 @@ class InboundSamlSsoProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['SamlIdpConfigArgs']]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['SamlSpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[Union['SamlIdpConfigArgs', 'SamlIdpConfigArgsDict']]] = None,
+                 sp_config: Optional[pulumi.Input[Union['SamlSpConfigArgs', 'SamlSpConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates an InboundSamlSsoProfile for a customer.
@@ -103,8 +103,8 @@ class InboundSamlSsoProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] customer: Immutable. The customer. For example: `customers/C0123abc`.
         :param pulumi.Input[str] display_name: Human-readable name of the SAML SSO profile.
-        :param pulumi.Input[pulumi.InputType['SamlIdpConfigArgs']] idp_config: SAML identity provider configuration.
-        :param pulumi.Input[pulumi.InputType['SamlSpConfigArgs']] sp_config: SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
+        :param pulumi.Input[Union['SamlIdpConfigArgs', 'SamlIdpConfigArgsDict']] idp_config: SAML identity provider configuration.
+        :param pulumi.Input[Union['SamlSpConfigArgs', 'SamlSpConfigArgsDict']] sp_config: SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
         """
         ...
     @overload
@@ -133,8 +133,8 @@ class InboundSamlSsoProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customer: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['SamlIdpConfigArgs']]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['SamlSpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[Union['SamlIdpConfigArgs', 'SamlIdpConfigArgsDict']]] = None,
+                 sp_config: Optional[pulumi.Input[Union['SamlSpConfigArgs', 'SamlSpConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

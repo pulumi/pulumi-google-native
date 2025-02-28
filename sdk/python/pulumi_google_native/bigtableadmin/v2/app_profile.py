@@ -198,12 +198,12 @@ class AppProfile(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
+                 multi_cluster_routing_use_any: Optional[pulumi.Input[Union['MultiClusterRoutingUseAnyArgs', 'MultiClusterRoutingUseAnyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['AppProfilePriority']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['SingleClusterRoutingArgs']]] = None,
-                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['StandardIsolationArgs']]] = None,
+                 single_cluster_routing: Optional[pulumi.Input[Union['SingleClusterRoutingArgs', 'SingleClusterRoutingArgsDict']]] = None,
+                 standard_isolation: Optional[pulumi.Input[Union['StandardIsolationArgs', 'StandardIsolationArgsDict']]] = None,
                  __props__=None):
         """
         Creates an app profile within an instance.
@@ -214,11 +214,11 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] description: Long form description of the use case for this AppProfile.
         :param pulumi.Input[str] etag: Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when creating the app profile.
-        :param pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']] multi_cluster_routing_use_any: Use a multi-cluster routing policy.
+        :param pulumi.Input[Union['MultiClusterRoutingUseAnyArgs', 'MultiClusterRoutingUseAnyArgsDict']] multi_cluster_routing_use_any: Use a multi-cluster routing policy.
         :param pulumi.Input[str] name: The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
         :param pulumi.Input['AppProfilePriority'] priority: This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
-        :param pulumi.Input[pulumi.InputType['SingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
-        :param pulumi.Input[pulumi.InputType['StandardIsolationArgs']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
+        :param pulumi.Input[Union['SingleClusterRoutingArgs', 'SingleClusterRoutingArgsDict']] single_cluster_routing: Use a single-cluster routing policy.
+        :param pulumi.Input[Union['StandardIsolationArgs', 'StandardIsolationArgsDict']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
         """
         ...
     @overload
@@ -249,12 +249,12 @@ class AppProfile(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
+                 multi_cluster_routing_use_any: Optional[pulumi.Input[Union['MultiClusterRoutingUseAnyArgs', 'MultiClusterRoutingUseAnyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['AppProfilePriority']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['SingleClusterRoutingArgs']]] = None,
-                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['StandardIsolationArgs']]] = None,
+                 single_cluster_routing: Optional[pulumi.Input[Union['SingleClusterRoutingArgs', 'SingleClusterRoutingArgsDict']]] = None,
+                 standard_isolation: Optional[pulumi.Input[Union['StandardIsolationArgs', 'StandardIsolationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

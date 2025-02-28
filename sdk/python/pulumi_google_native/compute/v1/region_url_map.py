@@ -210,34 +210,34 @@ class RegionUrlMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_route_action: Optional[pulumi.Input[pulumi.InputType['HttpRouteActionArgs']]] = None,
+                 default_route_action: Optional[pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']]] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
-                 default_url_redirect: Optional[pulumi.Input[pulumi.InputType['HttpRedirectActionArgs']]] = None,
+                 default_url_redirect: Optional[pulumi.Input[Union['HttpRedirectActionArgs', 'HttpRedirectActionArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input[pulumi.InputType['HttpHeaderActionArgs']]] = None,
-                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuleArgs']]]]] = None,
+                 header_action: Optional[pulumi.Input[Union['HttpHeaderActionArgs', 'HttpHeaderActionArgsDict']]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostRuleArgs', 'HostRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PathMatcherArgs', 'PathMatcherArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UrlMapTestArgs', 'UrlMapTestArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a UrlMap resource in the specified project using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HttpRouteActionArgs']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        :param pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for classic Application Load Balancers only support the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         :param pulumi.Input[str] default_service: The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. defaultService has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
-        :param pulumi.Input[pulumi.InputType['HttpRedirectActionArgs']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
+        :param pulumi.Input[Union['HttpRedirectActionArgs', 'HttpRedirectActionArgsDict']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['HttpHeaderActionArgs']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuleArgs']]]] host_rules: The list of host rules to use against the URL.
+        :param pulumi.Input[Union['HttpHeaderActionArgs', 'HttpHeaderActionArgsDict']] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HostRuleArgs', 'HostRuleArgsDict']]]] host_rules: The list of host rules to use against the URL.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]] path_matchers: The list of named PathMatchers to use against the URL.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PathMatcherArgs', 'PathMatcherArgsDict']]]] path_matchers: The list of named PathMatchers to use against the URL.
         :param pulumi.Input[str] request_id: begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UrlMapTestArgs', 'UrlMapTestArgsDict']]]] tests: The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         ...
     @overload
@@ -263,18 +263,18 @@ class RegionUrlMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_route_action: Optional[pulumi.Input[pulumi.InputType['HttpRouteActionArgs']]] = None,
+                 default_route_action: Optional[pulumi.Input[Union['HttpRouteActionArgs', 'HttpRouteActionArgsDict']]] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
-                 default_url_redirect: Optional[pulumi.Input[pulumi.InputType['HttpRedirectActionArgs']]] = None,
+                 default_url_redirect: Optional[pulumi.Input[Union['HttpRedirectActionArgs', 'HttpRedirectActionArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input[pulumi.InputType['HttpHeaderActionArgs']]] = None,
-                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuleArgs']]]]] = None,
+                 header_action: Optional[pulumi.Input[Union['HttpHeaderActionArgs', 'HttpHeaderActionArgsDict']]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostRuleArgs', 'HostRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PathMatcherArgs', 'PathMatcherArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UrlMapTestArgs', 'UrlMapTestArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

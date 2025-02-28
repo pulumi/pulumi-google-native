@@ -201,7 +201,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_config: Optional[pulumi.Input[pulumi.InputType['PscConfigArgs']]] = None,
+                 psc_config: Optional[pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_class: Optional[pulumi.Input[str]] = None,
                  service_connection_policy_id: Optional[pulumi.Input[str]] = None,
@@ -216,7 +216,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
         :param pulumi.Input[str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
-        :param pulumi.Input[pulumi.InputType['PscConfigArgs']] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+        :param pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         :param pulumi.Input[str] service_connection_policy_id: Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/serviceConnectionPolicies/foo') See https://google.aip.dev/122#resource-id-segments Unique per location.
@@ -252,7 +252,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_config: Optional[pulumi.Input[pulumi.InputType['PscConfigArgs']]] = None,
+                 psc_config: Optional[pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_class: Optional[pulumi.Input[str]] = None,
                  service_connection_policy_id: Optional[pulumi.Input[str]] = None,

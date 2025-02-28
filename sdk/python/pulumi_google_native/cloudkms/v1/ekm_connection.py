@@ -137,7 +137,7 @@ class EkmConnection(pulumi.CustomResource):
                  key_management_mode: Optional[pulumi.Input['EkmConnectionKeyManagementMode']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceResolverArgs']]]]] = None,
+                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceResolverArgs', 'ServiceResolverArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new EkmConnection in a given Project and Location.
@@ -150,7 +150,7 @@ class EkmConnection(pulumi.CustomResource):
         :param pulumi.Input[str] ekm_connection_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
         :param pulumi.Input[str] etag: Optional. Etag of the currently stored EkmConnection.
         :param pulumi.Input['EkmConnectionKeyManagementMode'] key_management_mode: Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceResolverArgs']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceResolverArgs', 'ServiceResolverArgsDict']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
         """
         ...
     @overload
@@ -184,7 +184,7 @@ class EkmConnection(pulumi.CustomResource):
                  key_management_mode: Optional[pulumi.Input['EkmConnectionKeyManagementMode']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceResolverArgs']]]]] = None,
+                 service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceResolverArgs', 'ServiceResolverArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

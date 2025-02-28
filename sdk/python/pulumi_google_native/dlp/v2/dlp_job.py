@@ -107,11 +107,11 @@ class DlpJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
+                 inspect_job: Optional[pulumi.Input[Union['GooglePrivacyDlpV2InspectJobConfigArgs', 'GooglePrivacyDlpV2InspectJobConfigArgsDict']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 risk_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]] = None,
+                 risk_job: Optional[pulumi.Input[Union['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs', 'GooglePrivacyDlpV2RiskAnalysisJobConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.
@@ -119,10 +119,10 @@ class DlpJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']] inspect_job: An inspection job scans a storage repository for InfoTypes.
+        :param pulumi.Input[Union['GooglePrivacyDlpV2InspectJobConfigArgs', 'GooglePrivacyDlpV2InspectJobConfigArgsDict']] inspect_job: An inspection job scans a storage repository for InfoTypes.
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
+        :param pulumi.Input[Union['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs', 'GooglePrivacyDlpV2RiskAnalysisJobConfigArgsDict']] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
         ...
     @overload
@@ -149,11 +149,11 @@ class DlpJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
+                 inspect_job: Optional[pulumi.Input[Union['GooglePrivacyDlpV2InspectJobConfigArgs', 'GooglePrivacyDlpV2InspectJobConfigArgsDict']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 risk_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]] = None,
+                 risk_job: Optional[pulumi.Input[Union['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs', 'GooglePrivacyDlpV2RiskAnalysisJobConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

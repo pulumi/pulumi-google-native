@@ -141,7 +141,7 @@ class MetadataImport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
+                 database_dump: Optional[pulumi.Input[Union['DatabaseDumpArgs', 'DatabaseDumpArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metadata_import_id: Optional[pulumi.Input[str]] = None,
@@ -157,7 +157,7 @@ class MetadataImport(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatabaseDumpArgs']] database_dump: Immutable. A database dump from a pre-existing metastore's database.
+        :param pulumi.Input[Union['DatabaseDumpArgs', 'DatabaseDumpArgsDict']] database_dump: Immutable. A database dump from a pre-existing metastore's database.
         :param pulumi.Input[str] description: The description of the metadata import.
         :param pulumi.Input[str] metadata_import_id: Required. The ID of the metadata import, which is used as the final component of the metadata import's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
@@ -189,7 +189,7 @@ class MetadataImport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
+                 database_dump: Optional[pulumi.Input[Union['DatabaseDumpArgs', 'DatabaseDumpArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metadata_import_id: Optional[pulumi.Input[str]] = None,

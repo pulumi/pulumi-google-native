@@ -136,7 +136,7 @@ class DocumentSchema(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyDefinitionArgs']]]]] = None,
+                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1PropertyDefinitionArgs', 'GoogleCloudContentwarehouseV1PropertyDefinitionArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a document schema.
@@ -147,7 +147,7 @@ class DocumentSchema(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Name of the schema given by the user. Must be unique per project.
         :param pulumi.Input[bool] document_is_folder: Document Type, true refers the document is a folder, otherwise it is a typical document.
         :param pulumi.Input[str] name: The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyDefinitionArgs']]]] property_definitions: Document details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1PropertyDefinitionArgs', 'GoogleCloudContentwarehouseV1PropertyDefinitionArgsDict']]]] property_definitions: Document details.
         """
         ...
     @overload
@@ -179,7 +179,7 @@ class DocumentSchema(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyDefinitionArgs']]]]] = None,
+                 property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudContentwarehouseV1PropertyDefinitionArgs', 'GoogleCloudContentwarehouseV1PropertyDefinitionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

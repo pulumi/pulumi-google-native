@@ -140,7 +140,7 @@ class UserDataMapping(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]]] = None,
+                 resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttributeArgs', 'AttributeArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -150,7 +150,7 @@ class UserDataMapping(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_id: A unique identifier for the mapped resource.
         :param pulumi.Input[str] name: Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]] resource_attributes: Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AttributeArgs', 'AttributeArgsDict']]]] resource_attributes: Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
         :param pulumi.Input[str] user_id: User's UUID provided by the client.
         """
         ...
@@ -183,7 +183,7 @@ class UserDataMapping(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]]] = None,
+                 resource_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AttributeArgs', 'AttributeArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

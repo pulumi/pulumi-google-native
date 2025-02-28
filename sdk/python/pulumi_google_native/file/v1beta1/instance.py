@@ -260,16 +260,16 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 directory_services: Optional[pulumi.Input[pulumi.InputType['DirectoryServicesConfigArgs']]] = None,
+                 directory_services: Optional[pulumi.Input[Union['DirectoryServicesConfigArgs', 'DirectoryServicesConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
+                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileShareConfigArgs', 'FileShareConfigArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_share_count: Optional[pulumi.Input[str]] = None,
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['InstanceProtocol']] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
@@ -282,15 +282,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] capacity_gb: The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
-        :param pulumi.Input[pulumi.InputType['DirectoryServicesConfigArgs']] directory_services: Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        :param pulumi.Input[Union['DirectoryServicesConfigArgs', 'DirectoryServicesConfigArgsDict']] directory_services: Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FileShareConfigArgs', 'FileShareConfigArgsDict']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[str] instance_id: Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] max_share_count: The max number of shares allowed.
         :param pulumi.Input[bool] multi_share_enabled: Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceProtocol'] protocol: Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
@@ -321,16 +321,16 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 directory_services: Optional[pulumi.Input[pulumi.InputType['DirectoryServicesConfigArgs']]] = None,
+                 directory_services: Optional[pulumi.Input[Union['DirectoryServicesConfigArgs', 'DirectoryServicesConfigArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
+                 file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileShareConfigArgs', 'FileShareConfigArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_share_count: Optional[pulumi.Input[str]] = None,
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkConfigArgs', 'NetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['InstanceProtocol']] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,

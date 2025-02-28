@@ -234,7 +234,7 @@ class CryptoKey(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
+                 version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
                  __props__=None):
         """
         Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
@@ -252,7 +252,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input['CryptoKeyPurpose'] purpose: Immutable. The immutable purpose of this CryptoKey.
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+        :param pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
         ...
     @overload
@@ -292,7 +292,7 @@ class CryptoKey(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
-                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
+                 version_template: Optional[pulumi.Input[Union['CryptoKeyVersionTemplateArgs', 'CryptoKeyVersionTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

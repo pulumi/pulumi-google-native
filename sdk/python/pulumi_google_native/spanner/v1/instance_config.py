@@ -190,7 +190,7 @@ class InstanceConfig(pulumi.CustomResource):
                  leader_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReplicaInfoArgs']]]]] = None,
+                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReplicaInfoArgs', 'ReplicaInfoArgsDict']]]]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -205,7 +205,7 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. Therefore, you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] leader_options: Allowed values of the "default_leader" schema option for databases in instances that use this instance configuration.
         :param pulumi.Input[str] name: A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReplicaInfoArgs']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReplicaInfoArgs', 'ReplicaInfoArgsDict']]]] replicas: The geographic placement of nodes in this instance configuration and their replication properties.
         :param pulumi.Input[bool] validate_only: An option to validate, but not actually execute, a request, and provide the same response.
         """
         ...
@@ -240,7 +240,7 @@ class InstanceConfig(pulumi.CustomResource):
                  leader_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReplicaInfoArgs']]]]] = None,
+                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReplicaInfoArgs', 'ReplicaInfoArgsDict']]]]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

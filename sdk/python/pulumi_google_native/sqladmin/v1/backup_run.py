@@ -296,11 +296,11 @@ class BackupRun(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_kind: Optional[pulumi.Input['BackupRunBackupKind']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
-                 disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
+                 disk_encryption_configuration: Optional[pulumi.Input[Union['DiskEncryptionConfigurationArgs', 'DiskEncryptionConfigurationArgsDict']]] = None,
+                 disk_encryption_status: Optional[pulumi.Input[Union['DiskEncryptionStatusArgs', 'DiskEncryptionStatusArgsDict']]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  enqueued_time: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input[pulumi.InputType['OperationErrorArgs']]] = None,
+                 error: Optional[pulumi.Input[Union['OperationErrorArgs', 'OperationErrorArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -320,11 +320,11 @@ class BackupRun(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['BackupRunBackupKind'] backup_kind: Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
         :param pulumi.Input[str] description: The description of this run, only applicable to on-demand backups.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Encryption configuration specific to a backup.
-        :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Encryption status specific to a backup.
+        :param pulumi.Input[Union['DiskEncryptionConfigurationArgs', 'DiskEncryptionConfigurationArgsDict']] disk_encryption_configuration: Encryption configuration specific to a backup.
+        :param pulumi.Input[Union['DiskEncryptionStatusArgs', 'DiskEncryptionStatusArgsDict']] disk_encryption_status: Encryption status specific to a backup.
         :param pulumi.Input[str] end_time: The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         :param pulumi.Input[str] enqueued_time: The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-        :param pulumi.Input[pulumi.InputType['OperationErrorArgs']] error: Information about why the backup operation failed. This is only present if the run has the FAILED status.
+        :param pulumi.Input[Union['OperationErrorArgs', 'OperationErrorArgsDict']] error: Information about why the backup operation failed. This is only present if the run has the FAILED status.
         :param pulumi.Input[str] id: The identifier for this backup run. Unique only for a specific Cloud SQL instance.
         :param pulumi.Input[str] instance: Name of the database instance.
         :param pulumi.Input[str] kind: This is always `sql#backupRun`.
@@ -362,11 +362,11 @@ class BackupRun(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_kind: Optional[pulumi.Input['BackupRunBackupKind']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
-                 disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
+                 disk_encryption_configuration: Optional[pulumi.Input[Union['DiskEncryptionConfigurationArgs', 'DiskEncryptionConfigurationArgsDict']]] = None,
+                 disk_encryption_status: Optional[pulumi.Input[Union['DiskEncryptionStatusArgs', 'DiskEncryptionStatusArgsDict']]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  enqueued_time: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input[pulumi.InputType['OperationErrorArgs']]] = None,
+                 error: Optional[pulumi.Input[Union['OperationErrorArgs', 'OperationErrorArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,

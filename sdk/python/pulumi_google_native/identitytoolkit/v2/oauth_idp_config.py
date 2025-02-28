@@ -185,7 +185,7 @@ class OauthIdpConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  oauth_idp_config_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 response_type: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs']]] = None,
+                 response_type: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs', 'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgsDict']]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -200,7 +200,7 @@ class OauthIdpConfig(pulumi.CustomResource):
         :param pulumi.Input[str] issuer: For OIDC Idps, the issuer identifier.
         :param pulumi.Input[str] name: The name of the OAuthIdpConfig resource, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. Ignored during create requests.
         :param pulumi.Input[str] oauth_idp_config_id: The id to use for this config.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs']] response_type: The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs', 'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgsDict']] response_type: The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported.
         """
         ...
     @overload
@@ -234,7 +234,7 @@ class OauthIdpConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  oauth_idp_config_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 response_type: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs']]] = None,
+                 response_type: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs', 'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgsDict']]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

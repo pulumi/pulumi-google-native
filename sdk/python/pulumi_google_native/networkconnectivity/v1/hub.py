@@ -139,7 +139,7 @@ class Hub(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingVPCArgs']]]]] = None,
+                 routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutingVPCArgs', 'RoutingVPCArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new Network Connectivity Center hub in the specified project.
@@ -152,7 +152,7 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingVPCArgs']]]] routing_vpcs: The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoutingVPCArgs', 'RoutingVPCArgsDict']]]] routing_vpcs: The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         ...
     @overload
@@ -185,7 +185,7 @@ class Hub(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutingVPCArgs']]]]] = None,
+                 routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoutingVPCArgs', 'RoutingVPCArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

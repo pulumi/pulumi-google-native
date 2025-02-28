@@ -175,7 +175,7 @@ class NodeGroup(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_group_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupConfigArgs']]] = None,
+                 node_group_config: Optional[pulumi.Input[Union['InstanceGroupConfigArgs', 'InstanceGroupConfigArgsDict']]] = None,
                  node_group_id: Optional[pulumi.Input[str]] = None,
                  parent_operation_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
         :param pulumi.Input[str] name: The Node group resource name (https://aip.dev/122).
-        :param pulumi.Input[pulumi.InputType['InstanceGroupConfigArgs']] node_group_config: Optional. The node group instance group configuration.
+        :param pulumi.Input[Union['InstanceGroupConfigArgs', 'InstanceGroupConfigArgsDict']] node_group_config: Optional. The node group instance group configuration.
         :param pulumi.Input[str] node_group_id: Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
         :param pulumi.Input[str] parent_operation_id: Optional. operation id of the parent operation sending the create request
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
@@ -229,7 +229,7 @@ class NodeGroup(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_group_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupConfigArgs']]] = None,
+                 node_group_config: Optional[pulumi.Input[Union['InstanceGroupConfigArgs', 'InstanceGroupConfigArgsDict']]] = None,
                  node_group_id: Optional[pulumi.Input[str]] = None,
                  parent_operation_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

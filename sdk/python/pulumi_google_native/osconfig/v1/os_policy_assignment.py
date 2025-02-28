@@ -161,13 +161,13 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OSPolicyAssignmentInstanceFilterArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[Union['OSPolicyAssignmentInstanceFilterArgs', 'OSPolicyAssignmentInstanceFilterArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OSPolicyArgs']]]]] = None,
+                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OSPolicyArgs', 'OSPolicyArgsDict']]]]] = None,
                  os_policy_assignment_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['OSPolicyAssignmentRolloutArgs']]] = None,
+                 rollout: Optional[pulumi.Input[Union['OSPolicyAssignmentRolloutArgs', 'OSPolicyAssignmentRolloutArgsDict']]] = None,
                  __props__=None):
         """
         Create an OS policy assignment. This method also creates the first revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
@@ -176,11 +176,11 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
-        :param pulumi.Input[pulumi.InputType['OSPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs.
+        :param pulumi.Input[Union['OSPolicyAssignmentInstanceFilterArgs', 'OSPolicyAssignmentInstanceFilterArgsDict']] instance_filter: Filter to select VMs.
         :param pulumi.Input[str] name: Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OSPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OSPolicyArgs', 'OSPolicyArgsDict']]]] os_policies: List of OS policies to be applied to the VMs.
         :param pulumi.Input[str] os_policy_assignment_id: Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-        :param pulumi.Input[pulumi.InputType['OSPolicyAssignmentRolloutArgs']] rollout: Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+        :param pulumi.Input[Union['OSPolicyAssignmentRolloutArgs', 'OSPolicyAssignmentRolloutArgsDict']] rollout: Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
         """
         ...
     @overload
@@ -208,13 +208,13 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input[pulumi.InputType['OSPolicyAssignmentInstanceFilterArgs']]] = None,
+                 instance_filter: Optional[pulumi.Input[Union['OSPolicyAssignmentInstanceFilterArgs', 'OSPolicyAssignmentInstanceFilterArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OSPolicyArgs']]]]] = None,
+                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OSPolicyArgs', 'OSPolicyArgsDict']]]]] = None,
                  os_policy_assignment_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rollout: Optional[pulumi.Input[pulumi.InputType['OSPolicyAssignmentRolloutArgs']]] = None,
+                 rollout: Optional[pulumi.Input[Union['OSPolicyAssignmentRolloutArgs', 'OSPolicyAssignmentRolloutArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

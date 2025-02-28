@@ -194,7 +194,7 @@ class PersistentResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -202,8 +202,8 @@ class PersistentResource(pulumi.CustomResource):
                  persistent_resource_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 resource_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ResourcePoolArgs']]]]] = None,
-                 resource_runtime_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs']]] = None,
+                 resource_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ResourcePoolArgs', 'GoogleCloudAiplatformV1beta1ResourcePoolArgsDict']]]]] = None,
+                 resource_runtime_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs', 'GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a PersistentResource.
@@ -211,14 +211,14 @@ class PersistentResource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. The display name of the PersistentResource. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] encryption_spec: Optional. Customer-managed encryption key spec for a PersistentResource. If set, this PersistentResource and all sub-resources of this PersistentResource will be secured by this key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for a PersistentResource. If set, this PersistentResource and all sub-resources of this PersistentResource will be secured by this key.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize PersistentResource. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] name: Immutable. Resource name of a PersistentResource.
         :param pulumi.Input[str] network: Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to peered with Vertex AI to host the persistent resources. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the resources aren't peered with any network.
         :param pulumi.Input[str] persistent_resource_id: Required. The ID to use for the PersistentResource, which become the final component of the PersistentResource's resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_ranges: Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this persistent resource. If set, we will deploy the persistent resource within the provided IP ranges. Otherwise, the persistent resource is deployed to any IP ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ResourcePoolArgs']]]] resource_pools: The spec of the pools of different resources.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs']] resource_runtime_spec: Optional. Persistent Resource runtime spec. For example, used for Ray cluster configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ResourcePoolArgs', 'GoogleCloudAiplatformV1beta1ResourcePoolArgsDict']]]] resource_pools: The spec of the pools of different resources.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs', 'GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgsDict']] resource_runtime_spec: Optional. Persistent Resource runtime spec. For example, used for Ray cluster configuration.
         """
         ...
     @overload
@@ -245,7 +245,7 @@ class PersistentResource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -253,8 +253,8 @@ class PersistentResource(pulumi.CustomResource):
                  persistent_resource_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 resource_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ResourcePoolArgs']]]]] = None,
-                 resource_runtime_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs']]] = None,
+                 resource_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ResourcePoolArgs', 'GoogleCloudAiplatformV1beta1ResourcePoolArgsDict']]]]] = None,
+                 resource_runtime_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgs', 'GoogleCloudAiplatformV1beta1ResourceRuntimeSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

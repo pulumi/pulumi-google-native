@@ -130,7 +130,7 @@ class Version(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ServingConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ServingConfigArgs', 'ServingConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class Version(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ServingConfigArgs']] config: The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
+        :param pulumi.Input[Union['ServingConfigArgs', 'ServingConfigArgsDict']] config: The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels used for extra metadata and/or filtering.
         :param pulumi.Input[str] name: The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
         :param pulumi.Input[str] size_bytes: The self-reported size of the version. This value is used for a pre-emptive quota check for legacy version uploads.
@@ -173,7 +173,7 @@ class Version(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ServingConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['ServingConfigArgs', 'ServingConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

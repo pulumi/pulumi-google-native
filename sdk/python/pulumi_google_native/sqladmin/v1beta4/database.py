@@ -177,7 +177,7 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 sqlserver_database_details: Optional[pulumi.Input[pulumi.InputType['SqlServerDatabaseDetailsArgs']]] = None,
+                 sqlserver_database_details: Optional[pulumi.Input[Union['SqlServerDatabaseDetailsArgs', 'SqlServerDatabaseDetailsArgsDict']]] = None,
                  __props__=None):
         """
         Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.
@@ -225,7 +225,7 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 sqlserver_database_details: Optional[pulumi.Input[pulumi.InputType['SqlServerDatabaseDetailsArgs']]] = None,
+                 sqlserver_database_details: Optional[pulumi.Input[Union['SqlServerDatabaseDetailsArgs', 'SqlServerDatabaseDetailsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

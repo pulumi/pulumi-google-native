@@ -286,7 +286,7 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
                  macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,
@@ -308,7 +308,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        :param pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
+        :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router.
         :param pulumi.Input[bool] macsec_enabled: Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
@@ -348,7 +348,7 @@ class Interconnect(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 macsec: Optional[pulumi.Input[pulumi.InputType['InterconnectMacsecArgs']]] = None,
+                 macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
                  macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  noc_contact_email: Optional[pulumi.Input[str]] = None,

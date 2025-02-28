@@ -231,35 +231,35 @@ class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
-                 advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
-                 associations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]]] = None,
-                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyDdosProtectionConfigArgs']]] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 associations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyAssociationArgs', 'SecurityPolicyAssociationArgsDict']]]]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[Union['SecurityPolicyDdosProtectionConfigArgs', 'SecurityPolicyDdosProtectionConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input['SecurityPolicyType']] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyUserDefinedFieldArgs', 'SecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new policy in the specified project using the data included in the request.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]] associations: A list of associations that belong to this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyAssociationArgs', 'SecurityPolicyAssociationArgsDict']]]] associations: A list of associations that belong to this policy.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] display_name: User-provided name of the Organization security plicy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]] rules: A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         :param pulumi.Input['SecurityPolicyType'] type: The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyUserDefinedFieldArgs', 'SecurityPolicyUserDefinedFieldArgsDict']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
         """
         ...
     @overload
@@ -285,20 +285,20 @@ class SecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
-                 advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
-                 associations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]]] = None,
-                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyDdosProtectionConfigArgs']]] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[Union['SecurityPolicyAdaptiveProtectionConfigArgs', 'SecurityPolicyAdaptiveProtectionConfigArgsDict']]] = None,
+                 advanced_options_config: Optional[pulumi.Input[Union['SecurityPolicyAdvancedOptionsConfigArgs', 'SecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 associations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyAssociationArgs', 'SecurityPolicyAssociationArgsDict']]]]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[Union['SecurityPolicyDdosProtectionConfigArgs', 'SecurityPolicyDdosProtectionConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[Union['SecurityPolicyRecaptchaOptionsConfigArgs', 'SecurityPolicyRecaptchaOptionsConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyRuleArgs', 'SecurityPolicyRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input['SecurityPolicyType']] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityPolicyUserDefinedFieldArgs', 'SecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -180,7 +180,7 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  index_update_method: Optional[pulumi.Input['IndexIndexUpdateMethod']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -197,7 +197,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the Index.
         :param pulumi.Input[str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']] encryption_spec: Immutable. Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']] encryption_spec: Immutable. Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input['IndexIndexUpdateMethod'] index_update_method: Immutable. The update method to use with this Index. If not set, BATCH_UPDATE will be used by default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
@@ -231,7 +231,7 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1EncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1EncryptionSpecArgs', 'GoogleCloudAiplatformV1EncryptionSpecArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  index_update_method: Optional[pulumi.Input['IndexIndexUpdateMethod']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

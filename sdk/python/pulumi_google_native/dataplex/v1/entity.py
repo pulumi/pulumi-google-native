@@ -249,12 +249,12 @@ class Entity(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1StorageFormatArgs']]] = None,
+                 format: Optional[pulumi.Input[Union['GoogleCloudDataplexV1StorageFormatArgs', 'GoogleCloudDataplexV1StorageFormatArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']]] = None,
+                 schema: Optional[pulumi.Input[Union['GoogleCloudDataplexV1SchemaArgs', 'GoogleCloudDataplexV1SchemaArgsDict']]] = None,
                  system: Optional[pulumi.Input['EntitySystem']] = None,
                  type: Optional[pulumi.Input['EntityType']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -271,9 +271,9 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
         :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 256 characters.
         :param pulumi.Input[str] etag: Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1StorageFormatArgs']] format: Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1StorageFormatArgs', 'GoogleCloudDataplexV1StorageFormatArgsDict']] format: Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
         :param pulumi.Input[str] id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores, and consist of 256 or fewer characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1SchemaArgs', 'GoogleCloudDataplexV1SchemaArgsDict']] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
         :param pulumi.Input['EntitySystem'] system: Immutable. Identifies the storage system of the entity data.
         :param pulumi.Input['EntityType'] type: Immutable. The type of entity.
         """
@@ -308,12 +308,12 @@ class Entity(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1StorageFormatArgs']]] = None,
+                 format: Optional[pulumi.Input[Union['GoogleCloudDataplexV1StorageFormatArgs', 'GoogleCloudDataplexV1StorageFormatArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']]] = None,
+                 schema: Optional[pulumi.Input[Union['GoogleCloudDataplexV1SchemaArgs', 'GoogleCloudDataplexV1SchemaArgsDict']]] = None,
                  system: Optional[pulumi.Input['EntitySystem']] = None,
                  type: Optional[pulumi.Input['EntityType']] = None,
                  zone: Optional[pulumi.Input[str]] = None,

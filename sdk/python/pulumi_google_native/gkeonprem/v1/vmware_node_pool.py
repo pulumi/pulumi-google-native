@@ -190,12 +190,12 @@ class VmwareNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['VmwareNodeConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['VmwareNodeConfigArgs', 'VmwareNodeConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VmwareNodePoolAutoscalingConfigArgs']]] = None,
+                 node_pool_autoscaling: Optional[pulumi.Input[Union['VmwareNodePoolAutoscalingConfigArgs', 'VmwareNodePoolAutoscalingConfigArgsDict']]] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  vmware_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -207,11 +207,11 @@ class VmwareNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[pulumi.InputType['VmwareNodeConfigArgs']] config: The node configuration of the node pool.
+        :param pulumi.Input[Union['VmwareNodeConfigArgs', 'VmwareNodeConfigArgsDict']] config: The node configuration of the node pool.
         :param pulumi.Input[str] display_name: The display name for the node pool.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
         :param pulumi.Input[str] name: Immutable. The resource name of this node pool.
-        :param pulumi.Input[pulumi.InputType['VmwareNodePoolAutoscalingConfigArgs']] node_pool_autoscaling: Node pool autoscaling config for the node pool.
+        :param pulumi.Input[Union['VmwareNodePoolAutoscalingConfigArgs', 'VmwareNodePoolAutoscalingConfigArgsDict']] node_pool_autoscaling: Node pool autoscaling config for the node pool.
         :param pulumi.Input[str] on_prem_version: Anthos version for the node pool. Defaults to the user cluster version.
         :param pulumi.Input[str] vmware_node_pool_id: The ID to use for the node pool, which will become the final component of the node pool's resource name. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format. The value must not be permitted to be a UUID (or UUID-like: anything matching /^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i).
         """
@@ -240,12 +240,12 @@ class VmwareNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['VmwareNodeConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['VmwareNodeConfigArgs', 'VmwareNodeConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input[pulumi.InputType['VmwareNodePoolAutoscalingConfigArgs']]] = None,
+                 node_pool_autoscaling: Optional[pulumi.Input[Union['VmwareNodePoolAutoscalingConfigArgs', 'VmwareNodePoolAutoscalingConfigArgsDict']]] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  vmware_cluster_id: Optional[pulumi.Input[str]] = None,

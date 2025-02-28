@@ -162,8 +162,8 @@ class NetworkPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_services_cidr: Optional[pulumi.Input[str]] = None,
-                 external_ip: Optional[pulumi.Input[pulumi.InputType['NetworkServiceArgs']]] = None,
-                 internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkServiceArgs']]] = None,
+                 external_ip: Optional[pulumi.Input[Union['NetworkServiceArgs', 'NetworkServiceArgsDict']]] = None,
+                 internet_access: Optional[pulumi.Input[Union['NetworkServiceArgs', 'NetworkServiceArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -178,8 +178,8 @@ class NetworkPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. User-provided description for this network policy.
         :param pulumi.Input[str] edge_services_cidr: IP address range in CIDR notation used to create internet access and external IP access. An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
-        :param pulumi.Input[pulumi.InputType['NetworkServiceArgs']] external_ip: Network service that allows External IP addresses to be assigned to VMware workloads. This service can only be enabled when `internet_access` is also enabled.
-        :param pulumi.Input[pulumi.InputType['NetworkServiceArgs']] internet_access: Network service that allows VMware workloads to access the internet.
+        :param pulumi.Input[Union['NetworkServiceArgs', 'NetworkServiceArgsDict']] external_ip: Network service that allows External IP addresses to be assigned to VMware workloads. This service can only be enabled when `internet_access` is also enabled.
+        :param pulumi.Input[Union['NetworkServiceArgs', 'NetworkServiceArgsDict']] internet_access: Network service that allows VMware workloads to access the internet.
         :param pulumi.Input[str] network_policy_id: Required. The user-provided identifier of the network policy to be created. This identifier must be unique within parent `projects/{my-project}/locations/{us-central1}/networkPolicies` and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] vmware_engine_network: Optional. The relative resource name of the VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
@@ -211,8 +211,8 @@ class NetworkPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_services_cidr: Optional[pulumi.Input[str]] = None,
-                 external_ip: Optional[pulumi.Input[pulumi.InputType['NetworkServiceArgs']]] = None,
-                 internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkServiceArgs']]] = None,
+                 external_ip: Optional[pulumi.Input[Union['NetworkServiceArgs', 'NetworkServiceArgsDict']]] = None,
+                 internet_access: Optional[pulumi.Input[Union['NetworkServiceArgs', 'NetworkServiceArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network_policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

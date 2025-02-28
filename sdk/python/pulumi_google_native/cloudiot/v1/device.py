@@ -191,9 +191,9 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocked: Optional[pulumi.Input[bool]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
-                 gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['DeviceConfigArgs', 'DeviceConfigArgsDict']]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceCredentialArgs', 'DeviceCredentialArgsDict']]]]] = None,
+                 gateway_config: Optional[pulumi.Input[Union['GatewayConfigArgs', 'GatewayConfigArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,
@@ -208,9 +208,9 @@ class Device(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail. Can be used to temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs maintenance.
-        :param pulumi.Input[pulumi.InputType['DeviceConfigArgs']] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device. If not present on creation, the configuration will be initialized with an empty payload and version value of `1`. To update this field after creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
-        :param pulumi.Input[pulumi.InputType['GatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
+        :param pulumi.Input[Union['DeviceConfigArgs', 'DeviceConfigArgsDict']] config: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device. If not present on creation, the configuration will be initialized with an empty payload and version value of `1`. To update this field after creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceCredentialArgs', 'DeviceCredentialArgsDict']]]] credentials: The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
+        :param pulumi.Input[Union['GatewayConfigArgs', 'GatewayConfigArgsDict']] gateway_config: Gateway-related configuration and state.
         :param pulumi.Input[str] id: The user-defined device identifier. The device ID must be unique within a device registry.
         :param pulumi.Input['DeviceLogLevel'] log_level: **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device. This metadata is not interpreted or indexed by Cloud IoT Core. It can be used to add contextual information for the device. Keys must conform to the regular expression a-zA-Z+ and be less than 128 bytes in length. Values are free-form strings. Each value must be less than or equal to 32 KB in size. The total size of all keys and values must be less than 256 KB, and the maximum number of key-value pairs is 500.
@@ -241,9 +241,9 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  blocked: Optional[pulumi.Input[bool]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
-                 gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['DeviceConfigArgs', 'DeviceConfigArgsDict']]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceCredentialArgs', 'DeviceCredentialArgsDict']]]]] = None,
+                 gateway_config: Optional[pulumi.Input[Union['GatewayConfigArgs', 'GatewayConfigArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['DeviceLogLevel']] = None,

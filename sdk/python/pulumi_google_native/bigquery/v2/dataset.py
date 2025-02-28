@@ -259,13 +259,13 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
-                 dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
+                 access: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessItemArgs', 'DatasetAccessItemArgsDict']]]]] = None,
+                 dataset_reference: Optional[pulumi.Input[Union['DatasetReferenceArgs', 'DatasetReferenceArgsDict']]] = None,
+                 default_encryption_configuration: Optional[pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[Union['ExternalDatasetReferenceArgs', 'ExternalDatasetReferenceArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -273,7 +273,7 @@ class Dataset(pulumi.CustomResource):
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage_billing_model: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatasetTagsItemArgs', 'DatasetTagsItemArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a new empty dataset.
@@ -281,19 +281,19 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-        :param pulumi.Input[pulumi.InputType['DatasetReferenceArgs']] dataset_reference: [Required] A reference that identifies the dataset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessItemArgs', 'DatasetAccessItemArgsDict']]]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        :param pulumi.Input[Union['DatasetReferenceArgs', 'DatasetReferenceArgsDict']] dataset_reference: [Required] A reference that identifies the dataset.
         :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
         :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
-        :param pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']] external_dataset_reference: [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+        :param pulumi.Input[Union['ExternalDatasetReferenceArgs', 'ExternalDatasetReferenceArgsDict']] external_dataset_reference: [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
         :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         :param pulumi.Input[str] max_time_travel_hours: [Optional] Number of hours for the max time travel for all tables in the dataset.
         :param pulumi.Input[str] storage_billing_model: [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatasetTagsItemArgs', 'DatasetTagsItemArgsDict']]]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
         """
         ...
     @overload
@@ -320,13 +320,13 @@ class Dataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
-                 dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
-                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
+                 access: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatasetAccessItemArgs', 'DatasetAccessItemArgsDict']]]]] = None,
+                 dataset_reference: Optional[pulumi.Input[Union['DatasetReferenceArgs', 'DatasetReferenceArgsDict']]] = None,
+                 default_encryption_configuration: Optional[pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['ExternalDatasetReferenceArgs']]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[Union['ExternalDatasetReferenceArgs', 'ExternalDatasetReferenceArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -334,7 +334,7 @@ class Dataset(pulumi.CustomResource):
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage_billing_model: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatasetTagsItemArgs', 'DatasetTagsItemArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

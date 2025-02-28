@@ -123,7 +123,7 @@ class Attestor(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 user_owned_drydock_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedDrydockNoteArgs']]] = None,
+                 user_owned_drydock_note: Optional[pulumi.Input[Union['UserOwnedDrydockNoteArgs', 'UserOwnedDrydockNoteArgsDict']]] = None,
                  __props__=None):
         """
         Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
@@ -134,7 +134,7 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] etag: Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
         :param pulumi.Input[str] name: The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-        :param pulumi.Input[pulumi.InputType['UserOwnedDrydockNoteArgs']] user_owned_drydock_note: A Drydock ATTESTATION_AUTHORITY Note, created by the user.
+        :param pulumi.Input[Union['UserOwnedDrydockNoteArgs', 'UserOwnedDrydockNoteArgsDict']] user_owned_drydock_note: A Drydock ATTESTATION_AUTHORITY Note, created by the user.
         """
         ...
     @overload
@@ -165,7 +165,7 @@ class Attestor(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 user_owned_drydock_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedDrydockNoteArgs']]] = None,
+                 user_owned_drydock_note: Optional[pulumi.Input[Union['UserOwnedDrydockNoteArgs', 'UserOwnedDrydockNoteArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

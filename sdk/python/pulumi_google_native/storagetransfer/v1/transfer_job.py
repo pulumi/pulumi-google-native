@@ -188,15 +188,15 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_stream: Optional[pulumi.Input[pulumi.InputType['EventStreamArgs']]] = None,
+                 event_stream: Optional[pulumi.Input[Union['EventStreamArgs', 'EventStreamArgsDict']]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['LoggingConfigArgs', 'LoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['NotificationConfigArgs', 'NotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['ScheduleArgs', 'ScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input['TransferJobStatus']] = None,
-                 transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
+                 transfer_spec: Optional[pulumi.Input[Union['TransferSpecArgs', 'TransferSpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a transfer job that runs periodically.
@@ -204,15 +204,15 @@ class TransferJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
-        :param pulumi.Input[pulumi.InputType['EventStreamArgs']] event_stream: Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+        :param pulumi.Input[Union['EventStreamArgs', 'EventStreamArgsDict']] event_stream: Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
-        :param pulumi.Input[pulumi.InputType['LoggingConfigArgs']] logging_config: Logging configuration.
+        :param pulumi.Input[Union['LoggingConfigArgs', 'LoggingConfigArgsDict']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with `transferJobs/OPI` specifically. For all other transfer types, this name must not start with `transferJobs/OPI`. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
-        :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem.
+        :param pulumi.Input[Union['NotificationConfigArgs', 'NotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem.
         :param pulumi.Input[str] project: The ID of the Google Cloud project that owns the job.
-        :param pulumi.Input[pulumi.InputType['ScheduleArgs']] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
+        :param pulumi.Input[Union['ScheduleArgs', 'ScheduleArgsDict']] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
         :param pulumi.Input['TransferJobStatus'] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-        :param pulumi.Input[pulumi.InputType['TransferSpecArgs']] transfer_spec: Transfer specification.
+        :param pulumi.Input[Union['TransferSpecArgs', 'TransferSpecArgsDict']] transfer_spec: Transfer specification.
         """
         ...
     @overload
@@ -239,15 +239,15 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 event_stream: Optional[pulumi.Input[pulumi.InputType['EventStreamArgs']]] = None,
+                 event_stream: Optional[pulumi.Input[Union['EventStreamArgs', 'EventStreamArgsDict']]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[Union['LoggingConfigArgs', 'LoggingConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
+                 notification_config: Optional[pulumi.Input[Union['NotificationConfigArgs', 'NotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['ScheduleArgs', 'ScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input['TransferJobStatus']] = None,
-                 transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
+                 transfer_spec: Optional[pulumi.Input[Union['TransferSpecArgs', 'TransferSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

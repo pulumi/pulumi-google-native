@@ -393,14 +393,14 @@ class Version(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_logging_details: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]] = None,
+                 cloud_logging_details: Optional[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs', 'GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgsDict']]] = None,
                  create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
+                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs', 'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgsDict']]]]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
-                 integration_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]] = None,
-                 integration_parameters_internal: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]] = None,
+                 integration_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs', 'GoogleCloudIntegrationsV1alphaIntegrationParameterArgsDict']]]]] = None,
+                 integration_parameters_internal: Optional[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs', 'EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgsDict']]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_holder: Optional[pulumi.Input[str]] = None,
@@ -411,11 +411,11 @@ class Version(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  run_as_service_account: Optional[pulumi.Input[str]] = None,
                  snapshot_number: Optional[pulumi.Input[str]] = None,
-                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]]] = None,
-                 task_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]] = None,
-                 teardown: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']]] = None,
-                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]]] = None,
-                 trigger_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]] = None,
+                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTaskConfigArgs', 'GoogleCloudIntegrationsV1alphaTaskConfigArgsDict']]]]] = None,
+                 task_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTaskConfigArgsDict']]]]] = None,
+                 teardown: Optional[pulumi.Input[Union['EnterpriseCrmEventbusProtoTeardownArgs', 'EnterpriseCrmEventbusProtoTeardownArgsDict']]] = None,
+                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTriggerConfigArgs', 'GoogleCloudIntegrationsV1alphaTriggerConfigArgsDict']]]]] = None,
+                 trigger_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgsDict']]]]] = None,
                  user_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -424,13 +424,13 @@ class Version(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']] cloud_logging_details: Optional. Cloud Logging details for the integration version
+        :param pulumi.Input[Union['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs', 'GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgsDict']] cloud_logging_details: Optional. Cloud Logging details for the integration version
         :param pulumi.Input[bool] create_sample_integrations: Optional. Optional. Indicates if sample workflow should be created.
         :param pulumi.Input['VersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The integration description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] error_catcher_configs: Optional. Error Catch Task configuration for the integration. It's optional.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]] integration_parameters: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        :param pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']] integration_parameters_internal: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs', 'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgsDict']]]] error_catcher_configs: Optional. Error Catch Task configuration for the integration. It's optional.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs', 'GoogleCloudIntegrationsV1alphaIntegrationParameterArgsDict']]]] integration_parameters: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
+        :param pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs', 'EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgsDict']] integration_parameters_internal: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
         :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] lock_holder: Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[bool] new_integration: Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
@@ -438,11 +438,11 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[str] parent_template_id: Optional. The id of the template which was used to create this integration_version.
         :param pulumi.Input[str] run_as_service_account: Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
         :param pulumi.Input[str] snapshot_number: Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]] task_configs: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]] task_configs_internal: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        :param pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']] teardown: Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]] trigger_configs: Optional. Trigger configurations.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]] trigger_configs_internal: Optional. Trigger configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTaskConfigArgs', 'GoogleCloudIntegrationsV1alphaTaskConfigArgsDict']]]] task_configs: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTaskConfigArgsDict']]]] task_configs_internal: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
+        :param pulumi.Input[Union['EnterpriseCrmEventbusProtoTeardownArgs', 'EnterpriseCrmEventbusProtoTeardownArgsDict']] teardown: Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTriggerConfigArgs', 'GoogleCloudIntegrationsV1alphaTriggerConfigArgsDict']]]] trigger_configs: Optional. Trigger configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgsDict']]]] trigger_configs_internal: Optional. Trigger configurations.
         :param pulumi.Input[str] user_label: Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
         """
         ...
@@ -470,14 +470,14 @@ class Version(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_logging_details: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]] = None,
+                 cloud_logging_details: Optional[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs', 'GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgsDict']]] = None,
                  create_sample_integrations: Optional[pulumi.Input[bool]] = None,
                  database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
+                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs', 'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgsDict']]]]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
-                 integration_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]] = None,
-                 integration_parameters_internal: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]] = None,
+                 integration_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs', 'GoogleCloudIntegrationsV1alphaIntegrationParameterArgsDict']]]]] = None,
+                 integration_parameters_internal: Optional[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs', 'EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgsDict']]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_holder: Optional[pulumi.Input[str]] = None,
@@ -488,11 +488,11 @@ class Version(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  run_as_service_account: Optional[pulumi.Input[str]] = None,
                  snapshot_number: Optional[pulumi.Input[str]] = None,
-                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]]] = None,
-                 task_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]] = None,
-                 teardown: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']]] = None,
-                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]]] = None,
-                 trigger_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]] = None,
+                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTaskConfigArgs', 'GoogleCloudIntegrationsV1alphaTaskConfigArgsDict']]]]] = None,
+                 task_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTaskConfigArgsDict']]]]] = None,
+                 teardown: Optional[pulumi.Input[Union['EnterpriseCrmEventbusProtoTeardownArgs', 'EnterpriseCrmEventbusProtoTeardownArgsDict']]] = None,
+                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudIntegrationsV1alphaTriggerConfigArgs', 'GoogleCloudIntegrationsV1alphaTriggerConfigArgsDict']]]]] = None,
+                 trigger_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs', 'EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgsDict']]]]] = None,
                  user_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

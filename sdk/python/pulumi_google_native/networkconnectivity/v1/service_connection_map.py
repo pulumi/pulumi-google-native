@@ -210,13 +210,13 @@ class ServiceConnectionMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consumer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConsumerPscConfigArgs']]]]] = None,
+                 consumer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConsumerPscConfigArgs', 'ConsumerPscConfigArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 producer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProducerPscConfigArgs']]]]] = None,
+                 producer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProducerPscConfigArgs', 'ProducerPscConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_class: Optional[pulumi.Input[str]] = None,
@@ -228,12 +228,12 @@ class ServiceConnectionMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConsumerPscConfigArgs']]]] consumer_psc_configs: The PSC configurations on consumer side.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConsumerPscConfigArgs', 'ConsumerPscConfigArgsDict']]]] consumer_psc_configs: The PSC configurations on consumer side.
         :param pulumi.Input[str] description: A description of this resource.
         :param pulumi.Input[str] etag: Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
         :param pulumi.Input[str] name: Immutable. The name of a ServiceConnectionMap. Format: projects/{project}/locations/{location}/serviceConnectionMaps/{service_connection_map} See: https://google.aip.dev/122#fields-representing-resource-names
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProducerPscConfigArgs']]]] producer_psc_configs: The PSC configurations on producer side.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProducerPscConfigArgs', 'ProducerPscConfigArgsDict']]]] producer_psc_configs: The PSC configurations on producer side.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] service_class: The service class identifier this ServiceConnectionMap is for. The user of ServiceConnectionMap create API needs to have networkconnecitivty.serviceclasses.use iam permission for the service class.
         :param pulumi.Input[str] service_connection_map_id: Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/serviceConnectionMaps/foo') See https://google.aip.dev/122#resource-id-segments Unique per location. If one is not provided, one will be generated.
@@ -263,13 +263,13 @@ class ServiceConnectionMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consumer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConsumerPscConfigArgs']]]]] = None,
+                 consumer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConsumerPscConfigArgs', 'ConsumerPscConfigArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 producer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProducerPscConfigArgs']]]]] = None,
+                 producer_psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProducerPscConfigArgs', 'ProducerPscConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  service_class: Optional[pulumi.Input[str]] = None,

@@ -166,10 +166,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mtls_policy: Optional[pulumi.Input[pulumi.InputType['MTLSPolicyArgs']]] = None,
+                 mtls_policy: Optional[pulumi.Input[Union['MTLSPolicyArgs', 'MTLSPolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 server_certificate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']]] = None,
+                 server_certificate: Optional[pulumi.Input[Union['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs', 'GoogleCloudNetworksecurityV1beta1CertificateProviderArgsDict']]] = None,
                  server_tls_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -180,9 +180,9 @@ class ServerTlsPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_open: This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the resource.
-        :param pulumi.Input[pulumi.InputType['MTLSPolicyArgs']] mtls_policy: This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+        :param pulumi.Input[Union['MTLSPolicyArgs', 'MTLSPolicyArgsDict']] mtls_policy: This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']] server_certificate: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+        :param pulumi.Input[Union['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs', 'GoogleCloudNetworksecurityV1beta1CertificateProviderArgsDict']] server_certificate: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         :param pulumi.Input[str] server_tls_policy_id: Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
         """
         ...
@@ -213,10 +213,10 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 mtls_policy: Optional[pulumi.Input[pulumi.InputType['MTLSPolicyArgs']]] = None,
+                 mtls_policy: Optional[pulumi.Input[Union['MTLSPolicyArgs', 'MTLSPolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 server_certificate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']]] = None,
+                 server_certificate: Optional[pulumi.Input[Union['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs', 'GoogleCloudNetworksecurityV1beta1CertificateProviderArgsDict']]] = None,
                  server_tls_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

@@ -179,30 +179,30 @@ class Registry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]]] = None,
-                 event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventNotificationConfigArgs']]]]] = None,
-                 http_config: Optional[pulumi.Input[pulumi.InputType['HttpConfigArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegistryCredentialArgs', 'RegistryCredentialArgsDict']]]]] = None,
+                 event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventNotificationConfigArgs', 'EventNotificationConfigArgsDict']]]]] = None,
+                 http_config: Optional[pulumi.Input[Union['HttpConfigArgs', 'HttpConfigArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['RegistryLogLevel']] = None,
-                 mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
+                 mqtt_config: Optional[pulumi.Input[Union['MqttConfigArgs', 'MqttConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state_notification_config: Optional[pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']]] = None,
+                 state_notification_config: Optional[pulumi.Input[Union['StateNotificationConfigArgs', 'StateNotificationConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a device registry that contains devices.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]] credentials: The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventNotificationConfigArgs']]]] event_notification_configs: The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
-        :param pulumi.Input[pulumi.InputType['HttpConfigArgs']] http_config: The DeviceService (HTTP) configuration for this device registry.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryCredentialArgs', 'RegistryCredentialArgsDict']]]] credentials: The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EventNotificationConfigArgs', 'EventNotificationConfigArgsDict']]]] event_notification_configs: The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
+        :param pulumi.Input[Union['HttpConfigArgs', 'HttpConfigArgsDict']] http_config: The DeviceService (HTTP) configuration for this device registry.
         :param pulumi.Input[str] id: The identifier of this device registry. For example, `myRegistry`.
         :param pulumi.Input['RegistryLogLevel'] log_level: **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
-        :param pulumi.Input[pulumi.InputType['MqttConfigArgs']] mqtt_config: The MQTT configuration for this device registry.
+        :param pulumi.Input[Union['MqttConfigArgs', 'MqttConfigArgsDict']] mqtt_config: The MQTT configuration for this device registry.
         :param pulumi.Input[str] name: The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
-        :param pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']] state_notification_config: The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
+        :param pulumi.Input[Union['StateNotificationConfigArgs', 'StateNotificationConfigArgsDict']] state_notification_config: The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
         """
         ...
     @overload
@@ -228,16 +228,16 @@ class Registry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegistryCredentialArgs']]]]] = None,
-                 event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventNotificationConfigArgs']]]]] = None,
-                 http_config: Optional[pulumi.Input[pulumi.InputType['HttpConfigArgs']]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegistryCredentialArgs', 'RegistryCredentialArgsDict']]]]] = None,
+                 event_notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventNotificationConfigArgs', 'EventNotificationConfigArgsDict']]]]] = None,
+                 http_config: Optional[pulumi.Input[Union['HttpConfigArgs', 'HttpConfigArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input['RegistryLogLevel']] = None,
-                 mqtt_config: Optional[pulumi.Input[pulumi.InputType['MqttConfigArgs']]] = None,
+                 mqtt_config: Optional[pulumi.Input[Union['MqttConfigArgs', 'MqttConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state_notification_config: Optional[pulumi.Input[pulumi.InputType['StateNotificationConfigArgs']]] = None,
+                 state_notification_config: Optional[pulumi.Input[Union['StateNotificationConfigArgs', 'StateNotificationConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

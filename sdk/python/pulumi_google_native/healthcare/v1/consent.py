@@ -205,7 +205,7 @@ class Consent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1ConsentPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudHealthcareV1ConsentPolicyArgs', 'GoogleCloudHealthcareV1ConsentPolicyArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ConsentState']] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class Consent(pulumi.CustomResource):
         :param pulumi.Input[str] expire_time: Timestamp in UTC of when this Consent is considered expired.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
         :param pulumi.Input[str] name: Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1ConsentPolicyArgs']]]] policies: Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudHealthcareV1ConsentPolicyArgs', 'GoogleCloudHealthcareV1ConsentPolicyArgsDict']]]] policies: Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
         :param pulumi.Input['ConsentState'] state: Indicates the current state of this Consent.
         :param pulumi.Input[str] ttl: Input only. The time to live for this Consent from when it is created.
         :param pulumi.Input[str] user_id: User's UUID provided by the client.
@@ -256,7 +256,7 @@ class Consent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1ConsentPolicyArgs']]]]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudHealthcareV1ConsentPolicyArgs', 'GoogleCloudHealthcareV1ConsentPolicyArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['ConsentState']] = None,
                  ttl: Optional[pulumi.Input[str]] = None,

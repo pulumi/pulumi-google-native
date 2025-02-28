@@ -194,7 +194,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['GoogleCloudRunV2BinaryAuthorizationArgs', 'GoogleCloudRunV2BinaryAuthorizationArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -203,7 +203,7 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2ExecutionTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[Union['GoogleCloudRunV2ExecutionTemplateArgs', 'GoogleCloudRunV2ExecutionTemplateArgsDict']]] = None,
                  __props__=None):
         """
         Creates a Job.
@@ -211,14 +211,14 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources. All system annotations in v1 now have a corresponding field in v2 Job. This field follows Kubernetes annotations' namespacing, limits, and rules.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['GoogleCloudRunV2BinaryAuthorizationArgs', 'GoogleCloudRunV2BinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[str] job_id: Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
         :param pulumi.Input['JobLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2ExecutionTemplateArgs']] template: The template used to create executions for this Job.
+        :param pulumi.Input[Union['GoogleCloudRunV2ExecutionTemplateArgs', 'GoogleCloudRunV2ExecutionTemplateArgsDict']] template: The template used to create executions for this Job.
         """
         ...
     @overload
@@ -245,7 +245,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['GoogleCloudRunV2BinaryAuthorizationArgs', 'GoogleCloudRunV2BinaryAuthorizationArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -254,7 +254,7 @@ class Job(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2ExecutionTemplateArgs']]] = None,
+                 template: Optional[pulumi.Input[Union['GoogleCloudRunV2ExecutionTemplateArgs', 'GoogleCloudRunV2ExecutionTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

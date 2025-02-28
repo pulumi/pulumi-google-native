@@ -352,23 +352,23 @@ class BareMetalCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_cluster_id: Optional[pulumi.Input[str]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
-                 cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterOperationsConfigArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalControlPlaneConfigArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['BinaryAuthorizationArgs', 'BinaryAuthorizationArgsDict']]] = None,
+                 cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterOperationsConfigArgs', 'BareMetalClusterOperationsConfigArgsDict']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['BareMetalControlPlaneConfigArgs', 'BareMetalControlPlaneConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['BareMetalLoadBalancerConfigArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[Union['BareMetalLoadBalancerConfigArgs', 'BareMetalLoadBalancerConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_config: Optional[pulumi.Input[pulumi.InputType['BareMetalMaintenanceConfigArgs']]] = None,
+                 maintenance_config: Optional[pulumi.Input[Union['BareMetalMaintenanceConfigArgs', 'BareMetalMaintenanceConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['BareMetalNetworkConfigArgs']]] = None,
-                 node_access_config: Optional[pulumi.Input[pulumi.InputType['BareMetalNodeAccessConfigArgs']]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['BareMetalWorkloadNodeConfigArgs']]] = None,
-                 os_environment_config: Optional[pulumi.Input[pulumi.InputType['BareMetalOsEnvironmentConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['BareMetalNetworkConfigArgs', 'BareMetalNetworkConfigArgsDict']]] = None,
+                 node_access_config: Optional[pulumi.Input[Union['BareMetalNodeAccessConfigArgs', 'BareMetalNodeAccessConfigArgsDict']]] = None,
+                 node_config: Optional[pulumi.Input[Union['BareMetalWorkloadNodeConfigArgs', 'BareMetalWorkloadNodeConfigArgsDict']]] = None,
+                 os_environment_config: Optional[pulumi.Input[Union['BareMetalOsEnvironmentConfigArgs', 'BareMetalOsEnvironmentConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['BareMetalProxyConfigArgs']]] = None,
-                 security_config: Optional[pulumi.Input[pulumi.InputType['BareMetalSecurityConfigArgs']]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['BareMetalStorageConfigArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['BareMetalProxyConfigArgs', 'BareMetalProxyConfigArgsDict']]] = None,
+                 security_config: Optional[pulumi.Input[Union['BareMetalSecurityConfigArgs', 'BareMetalSecurityConfigArgsDict']]] = None,
+                 storage: Optional[pulumi.Input[Union['BareMetalStorageConfigArgs', 'BareMetalStorageConfigArgsDict']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new bare metal cluster in a given project and location.
@@ -379,21 +379,21 @@ class BareMetalCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the bare metal user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] bare_metal_cluster_id: Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
         :param pulumi.Input[str] bare_metal_version: The Anthos clusters on bare metal version for your user cluster.
-        :param pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterOperationsConfigArgs']] cluster_operations: Cluster operations configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalControlPlaneConfigArgs']] control_plane: Control plane configuration.
+        :param pulumi.Input[Union['BinaryAuthorizationArgs', 'BinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization related configurations.
+        :param pulumi.Input[Union['BareMetalClusterOperationsConfigArgs', 'BareMetalClusterOperationsConfigArgsDict']] cluster_operations: Cluster operations configuration.
+        :param pulumi.Input[Union['BareMetalControlPlaneConfigArgs', 'BareMetalControlPlaneConfigArgsDict']] control_plane: Control plane configuration.
         :param pulumi.Input[str] description: A human readable description of this bare metal user cluster.
-        :param pulumi.Input[pulumi.InputType['BareMetalLoadBalancerConfigArgs']] load_balancer: Load balancer configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalMaintenanceConfigArgs']] maintenance_config: Maintenance configuration.
+        :param pulumi.Input[Union['BareMetalLoadBalancerConfigArgs', 'BareMetalLoadBalancerConfigArgsDict']] load_balancer: Load balancer configuration.
+        :param pulumi.Input[Union['BareMetalMaintenanceConfigArgs', 'BareMetalMaintenanceConfigArgsDict']] maintenance_config: Maintenance configuration.
         :param pulumi.Input[str] name: Immutable. The bare metal user cluster resource name.
-        :param pulumi.Input[pulumi.InputType['BareMetalNetworkConfigArgs']] network_config: Network configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalNodeAccessConfigArgs']] node_access_config: Node access related configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalWorkloadNodeConfigArgs']] node_config: Workload node configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalOsEnvironmentConfigArgs']] os_environment_config: OS environment related configurations.
-        :param pulumi.Input[pulumi.InputType['BareMetalProxyConfigArgs']] proxy: Proxy configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalSecurityConfigArgs']] security_config: Security related setting configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalStorageConfigArgs']] storage: Storage configuration.
-        :param pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']] upgrade_policy: The cluster upgrade policy.
+        :param pulumi.Input[Union['BareMetalNetworkConfigArgs', 'BareMetalNetworkConfigArgsDict']] network_config: Network configuration.
+        :param pulumi.Input[Union['BareMetalNodeAccessConfigArgs', 'BareMetalNodeAccessConfigArgsDict']] node_access_config: Node access related configurations.
+        :param pulumi.Input[Union['BareMetalWorkloadNodeConfigArgs', 'BareMetalWorkloadNodeConfigArgsDict']] node_config: Workload node configuration.
+        :param pulumi.Input[Union['BareMetalOsEnvironmentConfigArgs', 'BareMetalOsEnvironmentConfigArgsDict']] os_environment_config: OS environment related configurations.
+        :param pulumi.Input[Union['BareMetalProxyConfigArgs', 'BareMetalProxyConfigArgsDict']] proxy: Proxy configuration.
+        :param pulumi.Input[Union['BareMetalSecurityConfigArgs', 'BareMetalSecurityConfigArgsDict']] security_config: Security related setting configuration.
+        :param pulumi.Input[Union['BareMetalStorageConfigArgs', 'BareMetalStorageConfigArgsDict']] storage: Storage configuration.
+        :param pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']] upgrade_policy: The cluster upgrade policy.
         """
         ...
     @overload
@@ -423,23 +423,23 @@ class BareMetalCluster(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bare_metal_cluster_id: Optional[pulumi.Input[str]] = None,
                  bare_metal_version: Optional[pulumi.Input[str]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
-                 cluster_operations: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterOperationsConfigArgs']]] = None,
-                 control_plane: Optional[pulumi.Input[pulumi.InputType['BareMetalControlPlaneConfigArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[Union['BinaryAuthorizationArgs', 'BinaryAuthorizationArgsDict']]] = None,
+                 cluster_operations: Optional[pulumi.Input[Union['BareMetalClusterOperationsConfigArgs', 'BareMetalClusterOperationsConfigArgsDict']]] = None,
+                 control_plane: Optional[pulumi.Input[Union['BareMetalControlPlaneConfigArgs', 'BareMetalControlPlaneConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['BareMetalLoadBalancerConfigArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[Union['BareMetalLoadBalancerConfigArgs', 'BareMetalLoadBalancerConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_config: Optional[pulumi.Input[pulumi.InputType['BareMetalMaintenanceConfigArgs']]] = None,
+                 maintenance_config: Optional[pulumi.Input[Union['BareMetalMaintenanceConfigArgs', 'BareMetalMaintenanceConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['BareMetalNetworkConfigArgs']]] = None,
-                 node_access_config: Optional[pulumi.Input[pulumi.InputType['BareMetalNodeAccessConfigArgs']]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['BareMetalWorkloadNodeConfigArgs']]] = None,
-                 os_environment_config: Optional[pulumi.Input[pulumi.InputType['BareMetalOsEnvironmentConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[Union['BareMetalNetworkConfigArgs', 'BareMetalNetworkConfigArgsDict']]] = None,
+                 node_access_config: Optional[pulumi.Input[Union['BareMetalNodeAccessConfigArgs', 'BareMetalNodeAccessConfigArgsDict']]] = None,
+                 node_config: Optional[pulumi.Input[Union['BareMetalWorkloadNodeConfigArgs', 'BareMetalWorkloadNodeConfigArgsDict']]] = None,
+                 os_environment_config: Optional[pulumi.Input[Union['BareMetalOsEnvironmentConfigArgs', 'BareMetalOsEnvironmentConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['BareMetalProxyConfigArgs']]] = None,
-                 security_config: Optional[pulumi.Input[pulumi.InputType['BareMetalSecurityConfigArgs']]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['BareMetalStorageConfigArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['BareMetalClusterUpgradePolicyArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['BareMetalProxyConfigArgs', 'BareMetalProxyConfigArgsDict']]] = None,
+                 security_config: Optional[pulumi.Input[Union['BareMetalSecurityConfigArgs', 'BareMetalSecurityConfigArgsDict']]] = None,
+                 storage: Optional[pulumi.Input[Union['BareMetalStorageConfigArgs', 'BareMetalStorageConfigArgsDict']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[Union['BareMetalClusterUpgradePolicyArgs', 'BareMetalClusterUpgradePolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

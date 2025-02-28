@@ -84,7 +84,7 @@ class Datastore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']]] = None,
+                 datastore_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1DatastoreConfigArgs', 'GoogleCloudApigeeV1DatastoreConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  target_type: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,7 @@ class Datastore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']] datastore_config: Datastore Configurations.
+        :param pulumi.Input[Union['GoogleCloudApigeeV1DatastoreConfigArgs', 'GoogleCloudApigeeV1DatastoreConfigArgsDict']] datastore_config: Datastore Configurations.
         :param pulumi.Input[str] display_name: Display name in UI
         :param pulumi.Input[str] target_type: Destination storage type. Supported types `gcs` or `bigquery`.
         """
@@ -124,7 +124,7 @@ class Datastore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']]] = None,
+                 datastore_config: Optional[pulumi.Input[Union['GoogleCloudApigeeV1DatastoreConfigArgs', 'GoogleCloudApigeeV1DatastoreConfigArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  target_type: Optional[pulumi.Input[str]] = None,

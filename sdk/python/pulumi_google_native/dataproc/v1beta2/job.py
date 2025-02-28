@@ -256,21 +256,21 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
-                 hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
+                 hadoop_job: Optional[pulumi.Input[Union['HadoopJobArgs', 'HadoopJobArgsDict']]] = None,
+                 hive_job: Optional[pulumi.Input[Union['HiveJobArgs', 'HiveJobArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 pig_job: Optional[pulumi.Input[pulumi.InputType['PigJobArgs']]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
-                 presto_job: Optional[pulumi.Input[pulumi.InputType['PrestoJobArgs']]] = None,
+                 pig_job: Optional[pulumi.Input[Union['PigJobArgs', 'PigJobArgsDict']]] = None,
+                 placement: Optional[pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict']]] = None,
+                 presto_job: Optional[pulumi.Input[Union['PrestoJobArgs', 'PrestoJobArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pyspark_job: Optional[pulumi.Input[pulumi.InputType['PySparkJobArgs']]] = None,
-                 reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
+                 pyspark_job: Optional[pulumi.Input[Union['PySparkJobArgs', 'PySparkJobArgsDict']]] = None,
+                 reference: Optional[pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
-                 spark_job: Optional[pulumi.Input[pulumi.InputType['SparkJobArgs']]] = None,
-                 spark_r_job: Optional[pulumi.Input[pulumi.InputType['SparkRJobArgs']]] = None,
-                 spark_sql_job: Optional[pulumi.Input[pulumi.InputType['SparkSqlJobArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
+                 spark_job: Optional[pulumi.Input[Union['SparkJobArgs', 'SparkJobArgsDict']]] = None,
+                 spark_r_job: Optional[pulumi.Input[Union['SparkRJobArgs', 'SparkRJobArgsDict']]] = None,
+                 spark_sql_job: Optional[pulumi.Input[Union['SparkSqlJobArgs', 'SparkSqlJobArgsDict']]] = None,
                  __props__=None):
         """
         Submits a job to a cluster.
@@ -278,19 +278,19 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HadoopJobArgs']] hadoop_job: Optional. Job is a Hadoop job.
-        :param pulumi.Input[pulumi.InputType['HiveJobArgs']] hive_job: Optional. Job is a Hive job.
+        :param pulumi.Input[Union['HadoopJobArgs', 'HadoopJobArgsDict']] hadoop_job: Optional. Job is a Hadoop job.
+        :param pulumi.Input[Union['HiveJobArgs', 'HiveJobArgsDict']] hive_job: Optional. Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
-        :param pulumi.Input[pulumi.InputType['PigJobArgs']] pig_job: Optional. Job is a Pig job.
-        :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: Job information, including how, when, and where to run the job.
-        :param pulumi.Input[pulumi.InputType['PrestoJobArgs']] presto_job: Optional. Job is a Presto job.
-        :param pulumi.Input[pulumi.InputType['PySparkJobArgs']] pyspark_job: Optional. Job is a PySpark job.
-        :param pulumi.Input[pulumi.InputType['JobReferenceArgs']] reference: Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
+        :param pulumi.Input[Union['PigJobArgs', 'PigJobArgsDict']] pig_job: Optional. Job is a Pig job.
+        :param pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict']] placement: Job information, including how, when, and where to run the job.
+        :param pulumi.Input[Union['PrestoJobArgs', 'PrestoJobArgsDict']] presto_job: Optional. Job is a Presto job.
+        :param pulumi.Input[Union['PySparkJobArgs', 'PySparkJobArgsDict']] pyspark_job: Optional. Job is a PySpark job.
+        :param pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']] reference: Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
         :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1.SubmitJobRequest)s with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-        :param pulumi.Input[pulumi.InputType['JobSchedulingArgs']] scheduling: Optional. Job scheduling configuration.
-        :param pulumi.Input[pulumi.InputType['SparkJobArgs']] spark_job: Optional. Job is a Spark job.
-        :param pulumi.Input[pulumi.InputType['SparkRJobArgs']] spark_r_job: Optional. Job is a SparkR job.
-        :param pulumi.Input[pulumi.InputType['SparkSqlJobArgs']] spark_sql_job: Optional. Job is a SparkSql job.
+        :param pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']] scheduling: Optional. Job scheduling configuration.
+        :param pulumi.Input[Union['SparkJobArgs', 'SparkJobArgsDict']] spark_job: Optional. Job is a Spark job.
+        :param pulumi.Input[Union['SparkRJobArgs', 'SparkRJobArgsDict']] spark_r_job: Optional. Job is a SparkR job.
+        :param pulumi.Input[Union['SparkSqlJobArgs', 'SparkSqlJobArgsDict']] spark_sql_job: Optional. Job is a SparkSql job.
         """
         ...
     @overload
@@ -317,21 +317,21 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
-                 hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
+                 hadoop_job: Optional[pulumi.Input[Union['HadoopJobArgs', 'HadoopJobArgsDict']]] = None,
+                 hive_job: Optional[pulumi.Input[Union['HiveJobArgs', 'HiveJobArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 pig_job: Optional[pulumi.Input[pulumi.InputType['PigJobArgs']]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
-                 presto_job: Optional[pulumi.Input[pulumi.InputType['PrestoJobArgs']]] = None,
+                 pig_job: Optional[pulumi.Input[Union['PigJobArgs', 'PigJobArgsDict']]] = None,
+                 placement: Optional[pulumi.Input[Union['JobPlacementArgs', 'JobPlacementArgsDict']]] = None,
+                 presto_job: Optional[pulumi.Input[Union['PrestoJobArgs', 'PrestoJobArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 pyspark_job: Optional[pulumi.Input[pulumi.InputType['PySparkJobArgs']]] = None,
-                 reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
+                 pyspark_job: Optional[pulumi.Input[Union['PySparkJobArgs', 'PySparkJobArgsDict']]] = None,
+                 reference: Optional[pulumi.Input[Union['JobReferenceArgs', 'JobReferenceArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
-                 spark_job: Optional[pulumi.Input[pulumi.InputType['SparkJobArgs']]] = None,
-                 spark_r_job: Optional[pulumi.Input[pulumi.InputType['SparkRJobArgs']]] = None,
-                 spark_sql_job: Optional[pulumi.Input[pulumi.InputType['SparkSqlJobArgs']]] = None,
+                 scheduling: Optional[pulumi.Input[Union['JobSchedulingArgs', 'JobSchedulingArgsDict']]] = None,
+                 spark_job: Optional[pulumi.Input[Union['SparkJobArgs', 'SparkJobArgsDict']]] = None,
+                 spark_r_job: Optional[pulumi.Input[Union['SparkRJobArgs', 'SparkRJobArgsDict']]] = None,
+                 spark_sql_job: Optional[pulumi.Input[Union['SparkSqlJobArgs', 'SparkSqlJobArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -368,27 +368,27 @@ class MigrationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cmek_key_name: Optional[pulumi.Input[str]] = None,
-                 conversion_workspace: Optional[pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']]] = None,
+                 conversion_workspace: Optional[pulumi.Input[Union['ConversionWorkspaceInfoArgs', 'ConversionWorkspaceInfoArgsDict']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
-                 destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
+                 destination_database: Optional[pulumi.Input[Union['DatabaseTypeArgs', 'DatabaseTypeArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 dump_flags: Optional[pulumi.Input[pulumi.InputType['DumpFlagsArgs']]] = None,
+                 dump_flags: Optional[pulumi.Input[Union['DumpFlagsArgs', 'DumpFlagsArgsDict']]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 performance_config: Optional[pulumi.Input[pulumi.InputType['PerformanceConfigArgs']]] = None,
+                 performance_config: Optional[pulumi.Input[Union['PerformanceConfigArgs', 'PerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
+                 reverse_ssh_connectivity: Optional[pulumi.Input[Union['ReverseSshConnectivityArgs', 'ReverseSshConnectivityArgsDict']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
-                 source_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
+                 source_database: Optional[pulumi.Input[Union['DatabaseTypeArgs', 'DatabaseTypeArgsDict']]] = None,
                  state: Optional[pulumi.Input['MigrationJobState']] = None,
-                 static_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']]] = None,
+                 static_ip_connectivity: Optional[pulumi.Input[Union['StaticIpConnectivityArgs', 'StaticIpConnectivityArgsDict']]] = None,
                  type: Optional[pulumi.Input['MigrationJobType']] = None,
-                 vpc_peering_connectivity: Optional[pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']]] = None,
+                 vpc_peering_connectivity: Optional[pulumi.Input[Union['VpcPeeringConnectivityArgs', 'VpcPeeringConnectivityArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new migration job in a given project and location.
@@ -396,25 +396,25 @@ class MigrationJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cmek_key_name: The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
-        :param pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']] conversion_workspace: The conversion workspace used by the migration.
+        :param pulumi.Input[Union['ConversionWorkspaceInfoArgs', 'ConversionWorkspaceInfoArgsDict']] conversion_workspace: The conversion workspace used by the migration.
         :param pulumi.Input[str] destination: The resource name (URI) of the destination connection profile.
-        :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] destination_database: The database engine type and provider of the destination.
+        :param pulumi.Input[Union['DatabaseTypeArgs', 'DatabaseTypeArgsDict']] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
-        :param pulumi.Input[pulumi.InputType['DumpFlagsArgs']] dump_flags: The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        :param pulumi.Input[Union['DumpFlagsArgs', 'DumpFlagsArgsDict']] dump_flags: The initial dump flags. This field and the "dump_path" field are mutually exclusive.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         :param pulumi.Input[str] filter: This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
-        :param pulumi.Input[pulumi.InputType['PerformanceConfigArgs']] performance_config: Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
+        :param pulumi.Input[Union['PerformanceConfigArgs', 'PerformanceConfigArgsDict']] performance_config: Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud SQL for MySQL migrations only.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-        :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+        :param pulumi.Input[Union['ReverseSshConnectivityArgs', 'ReverseSshConnectivityArgsDict']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
-        :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
+        :param pulumi.Input[Union['DatabaseTypeArgs', 'DatabaseTypeArgsDict']] source_database: The database engine type and provider of the source.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
-        :param pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
+        :param pulumi.Input[Union['StaticIpConnectivityArgs', 'StaticIpConnectivityArgsDict']] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
         :param pulumi.Input['MigrationJobType'] type: The migration job type.
-        :param pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
+        :param pulumi.Input[Union['VpcPeeringConnectivityArgs', 'VpcPeeringConnectivityArgsDict']] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
         ...
     @overload
@@ -441,27 +441,27 @@ class MigrationJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cmek_key_name: Optional[pulumi.Input[str]] = None,
-                 conversion_workspace: Optional[pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']]] = None,
+                 conversion_workspace: Optional[pulumi.Input[Union['ConversionWorkspaceInfoArgs', 'ConversionWorkspaceInfoArgsDict']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
-                 destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
+                 destination_database: Optional[pulumi.Input[Union['DatabaseTypeArgs', 'DatabaseTypeArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 dump_flags: Optional[pulumi.Input[pulumi.InputType['DumpFlagsArgs']]] = None,
+                 dump_flags: Optional[pulumi.Input[Union['DumpFlagsArgs', 'DumpFlagsArgsDict']]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 performance_config: Optional[pulumi.Input[pulumi.InputType['PerformanceConfigArgs']]] = None,
+                 performance_config: Optional[pulumi.Input[Union['PerformanceConfigArgs', 'PerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
+                 reverse_ssh_connectivity: Optional[pulumi.Input[Union['ReverseSshConnectivityArgs', 'ReverseSshConnectivityArgsDict']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
-                 source_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
+                 source_database: Optional[pulumi.Input[Union['DatabaseTypeArgs', 'DatabaseTypeArgsDict']]] = None,
                  state: Optional[pulumi.Input['MigrationJobState']] = None,
-                 static_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']]] = None,
+                 static_ip_connectivity: Optional[pulumi.Input[Union['StaticIpConnectivityArgs', 'StaticIpConnectivityArgsDict']]] = None,
                  type: Optional[pulumi.Input['MigrationJobType']] = None,
-                 vpc_peering_connectivity: Optional[pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']]] = None,
+                 vpc_peering_connectivity: Optional[pulumi.Input[Union['VpcPeeringConnectivityArgs', 'VpcPeeringConnectivityArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

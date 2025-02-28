@@ -302,7 +302,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  availability_type: Optional[pulumi.Input['InstanceAvailabilityType']] = None,
-                 client_connection_config: Optional[pulumi.Input[pulumi.InputType['ClientConnectionConfigArgs']]] = None,
+                 client_connection_config: Optional[pulumi.Input[Union['ClientConnectionConfigArgs', 'ClientConnectionConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -312,12 +312,12 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 machine_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigArgs']]] = None,
+                 machine_config: Optional[pulumi.Input[Union['MachineConfigArgs', 'MachineConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 query_insights_config: Optional[pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']]] = None,
-                 read_pool_config: Optional[pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']]] = None,
+                 query_insights_config: Optional[pulumi.Input[Union['QueryInsightsInstanceConfigArgs', 'QueryInsightsInstanceConfigArgsDict']]] = None,
+                 read_pool_config: Optional[pulumi.Input[Union['ReadPoolConfigArgs', 'ReadPoolConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['UpdatePolicyArgs']]] = None,
+                 update_policy: Optional[pulumi.Input[Union['UpdatePolicyArgs', 'UpdatePolicyArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new Instance in a given project and location.
@@ -327,7 +327,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
         :param pulumi.Input['InstanceAvailabilityType'] availability_type: Availability type of an Instance. If empty, defaults to REGIONAL for primary instances. For read pools, availability_type is always UNSPECIFIED. Instances in the read pools are evenly distributed across available zones within the region (i.e. read pools with more than one node will have a node in at least two zones).
-        :param pulumi.Input[pulumi.InputType['ClientConnectionConfigArgs']] client_connection_config: Optional. Client connection specific configurations
+        :param pulumi.Input[Union['ClientConnectionConfigArgs', 'ClientConnectionConfigArgsDict']] client_connection_config: Optional. Client connection specific configurations
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary. This is a list of "key": "value" pairs. "key": The name of the flag. These flags are passed at instance setup time, so include both server options and system variables for Postgres. Flags are specified with underscores, not hyphens. "value": The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
@@ -335,11 +335,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: Required. ID of the requesting object.
         :param pulumi.Input['InstanceInstanceType'] instance_type: The type of the instance. Specified at creation time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
-        :param pulumi.Input[pulumi.InputType['MachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
-        :param pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']] query_insights_config: Configuration for query insights.
-        :param pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']] read_pool_config: Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
+        :param pulumi.Input[Union['MachineConfigArgs', 'MachineConfigArgsDict']] machine_config: Configurations for the machines that host the underlying database engine.
+        :param pulumi.Input[Union['QueryInsightsInstanceConfigArgs', 'QueryInsightsInstanceConfigArgsDict']] query_insights_config: Configuration for query insights.
+        :param pulumi.Input[Union['ReadPoolConfigArgs', 'ReadPoolConfigArgsDict']] read_pool_config: Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[pulumi.InputType['UpdatePolicyArgs']] update_policy: Update policy that will be applied during instance update. This field is not persisted when you update the instance. To use a non-default update policy, you must specify explicitly specify the value in each update request.
+        :param pulumi.Input[Union['UpdatePolicyArgs', 'UpdatePolicyArgsDict']] update_policy: Update policy that will be applied during instance update. This field is not persisted when you update the instance. To use a non-default update policy, you must specify explicitly specify the value in each update request.
         """
         ...
     @overload
@@ -368,7 +368,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  availability_type: Optional[pulumi.Input['InstanceAvailabilityType']] = None,
-                 client_connection_config: Optional[pulumi.Input[pulumi.InputType['ClientConnectionConfigArgs']]] = None,
+                 client_connection_config: Optional[pulumi.Input[Union['ClientConnectionConfigArgs', 'ClientConnectionConfigArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -378,12 +378,12 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input['InstanceInstanceType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 machine_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigArgs']]] = None,
+                 machine_config: Optional[pulumi.Input[Union['MachineConfigArgs', 'MachineConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 query_insights_config: Optional[pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']]] = None,
-                 read_pool_config: Optional[pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']]] = None,
+                 query_insights_config: Optional[pulumi.Input[Union['QueryInsightsInstanceConfigArgs', 'QueryInsightsInstanceConfigArgsDict']]] = None,
+                 read_pool_config: Optional[pulumi.Input[Union['ReadPoolConfigArgs', 'ReadPoolConfigArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 update_policy: Optional[pulumi.Input[pulumi.InputType['UpdatePolicyArgs']]] = None,
+                 update_policy: Optional[pulumi.Input[Union['UpdatePolicyArgs', 'UpdatePolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

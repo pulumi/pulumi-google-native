@@ -148,13 +148,13 @@ class SessionTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
-                 jupyter_session: Optional[pulumi.Input[pulumi.InputType['JupyterConfigArgs']]] = None,
+                 environment_config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 jupyter_session: Optional[pulumi.Input[Union['JupyterConfigArgs', 'JupyterConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['RuntimeConfigArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']]] = None,
                  __props__=None):
         """
         Create a session template synchronously.
@@ -162,11 +162,11 @@ class SessionTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. Brief description of the template.
-        :param pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']] environment_config: Optional. Environment configuration for session execution.
-        :param pulumi.Input[pulumi.InputType['JupyterConfigArgs']] jupyter_session: Optional. Jupyter session config.
+        :param pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']] environment_config: Optional. Environment configuration for session execution.
+        :param pulumi.Input[Union['JupyterConfigArgs', 'JupyterConfigArgsDict']] jupyter_session: Optional. Jupyter session config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to associate with sessions created using this template. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must contain 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a session.
         :param pulumi.Input[str] name: The resource name of the session template.
-        :param pulumi.Input[pulumi.InputType['RuntimeConfigArgs']] runtime_config: Optional. Runtime configuration for session execution.
+        :param pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']] runtime_config: Optional. Runtime configuration for session execution.
         """
         ...
     @overload
@@ -193,13 +193,13 @@ class SessionTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environment_config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
-                 jupyter_session: Optional[pulumi.Input[pulumi.InputType['JupyterConfigArgs']]] = None,
+                 environment_config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 jupyter_session: Optional[pulumi.Input[Union['JupyterConfigArgs', 'JupyterConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 runtime_config: Optional[pulumi.Input[pulumi.InputType['RuntimeConfigArgs']]] = None,
+                 runtime_config: Optional[pulumi.Input[Union['RuntimeConfigArgs', 'RuntimeConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

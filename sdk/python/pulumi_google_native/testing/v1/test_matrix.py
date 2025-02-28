@@ -152,14 +152,14 @@ class TestMatrix(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_info: Optional[pulumi.Input[pulumi.InputType['ClientInfoArgs']]] = None,
-                 environment_matrix: Optional[pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']]] = None,
+                 client_info: Optional[pulumi.Input[Union['ClientInfoArgs', 'ClientInfoArgsDict']]] = None,
+                 environment_matrix: Optional[pulumi.Input[Union['EnvironmentMatrixArgs', 'EnvironmentMatrixArgsDict']]] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
-                 test_specification: Optional[pulumi.Input[pulumi.InputType['TestSpecificationArgs']]] = None,
+                 result_storage: Optional[pulumi.Input[Union['ResultStorageArgs', 'ResultStorageArgsDict']]] = None,
+                 test_specification: Optional[pulumi.Input[Union['TestSpecificationArgs', 'TestSpecificationArgsDict']]] = None,
                  __props__=None):
         """
         Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. The returned matrix will not yet contain the executions that will be created for this matrix. Execution creation happens later on and will require a call to GetTestMatrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.
@@ -169,14 +169,14 @@ class TestMatrix(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClientInfoArgs']] client_info: Information about the client which invoked the test.
-        :param pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']] environment_matrix: The devices the tests are being executed on.
+        :param pulumi.Input[Union['ClientInfoArgs', 'ClientInfoArgsDict']] client_info: Information about the client which invoked the test.
+        :param pulumi.Input[Union['EnvironmentMatrixArgs', 'EnvironmentMatrixArgsDict']] environment_matrix: The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
         :param pulumi.Input[str] request_id: A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
-        :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Where the results for the matrix are written.
-        :param pulumi.Input[pulumi.InputType['TestSpecificationArgs']] test_specification: How to run the test.
+        :param pulumi.Input[Union['ResultStorageArgs', 'ResultStorageArgsDict']] result_storage: Where the results for the matrix are written.
+        :param pulumi.Input[Union['TestSpecificationArgs', 'TestSpecificationArgsDict']] test_specification: How to run the test.
         """
         ...
     @overload
@@ -205,14 +205,14 @@ class TestMatrix(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_info: Optional[pulumi.Input[pulumi.InputType['ClientInfoArgs']]] = None,
-                 environment_matrix: Optional[pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']]] = None,
+                 client_info: Optional[pulumi.Input[Union['ClientInfoArgs', 'ClientInfoArgsDict']]] = None,
+                 environment_matrix: Optional[pulumi.Input[Union['EnvironmentMatrixArgs', 'EnvironmentMatrixArgsDict']]] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
-                 test_specification: Optional[pulumi.Input[pulumi.InputType['TestSpecificationArgs']]] = None,
+                 result_storage: Optional[pulumi.Input[Union['ResultStorageArgs', 'ResultStorageArgsDict']]] = None,
+                 test_specification: Optional[pulumi.Input[Union['TestSpecificationArgs', 'TestSpecificationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

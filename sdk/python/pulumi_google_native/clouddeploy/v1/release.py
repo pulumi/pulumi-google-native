@@ -253,7 +253,7 @@ class Release(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 build_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildArtifactArgs']]]]] = None,
+                 build_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BuildArtifactArgs', 'BuildArtifactArgsDict']]]]] = None,
                  delivery_pipeline_id: Optional[pulumi.Input[str]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -276,7 +276,7 @@ class Release(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildArtifactArgs']]]] build_artifacts: List of artifacts to pass through to Skaffold command.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BuildArtifactArgs', 'BuildArtifactArgsDict']]]] build_artifacts: List of artifacts to pass through to Skaffold command.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for all targets in this release.
         :param pulumi.Input[str] description: Description of the `Release`. Max length is 255 characters.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -315,7 +315,7 @@ class Release(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 build_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildArtifactArgs']]]]] = None,
+                 build_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BuildArtifactArgs', 'BuildArtifactArgsDict']]]]] = None,
                  delivery_pipeline_id: Optional[pulumi.Input[str]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,

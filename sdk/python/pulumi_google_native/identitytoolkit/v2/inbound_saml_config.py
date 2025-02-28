@@ -147,11 +147,11 @@ class InboundSamlConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2IdpConfigArgsDict']]] = None,
                  inbound_saml_config_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SpConfigArgs']]] = None,
+                 sp_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2SpConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2SpConfigArgsDict']]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -161,10 +161,10 @@ class InboundSamlConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The config's display name set by developers.
         :param pulumi.Input[bool] enabled: True if allows the user to sign in with the provider.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs']] idp_config: The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2IdpConfigArgsDict']] idp_config: The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
         :param pulumi.Input[str] inbound_saml_config_id: The id to use for this config.
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SpConfigArgs']] sp_config: The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
+        :param pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2SpConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2SpConfigArgsDict']] sp_config: The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
         """
         ...
     @overload
@@ -192,11 +192,11 @@ class InboundSamlConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2IdpConfigArgsDict']]] = None,
                  inbound_saml_config_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SpConfigArgs']]] = None,
+                 sp_config: Optional[pulumi.Input[Union['GoogleCloudIdentitytoolkitAdminV2SpConfigArgs', 'GoogleCloudIdentitytoolkitAdminV2SpConfigArgsDict']]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

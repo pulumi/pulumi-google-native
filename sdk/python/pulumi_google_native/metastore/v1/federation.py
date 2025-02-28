@@ -146,7 +146,7 @@ class Federation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BackendMetastoreArgs']]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BackendMetastoreArgs', 'BackendMetastoreArgsDict']]]]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class Federation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BackendMetastoreArgs']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['BackendMetastoreArgs', 'BackendMetastoreArgsDict']]]] backend_metastores: A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
         :param pulumi.Input[str] federation_id: Required. The ID of the metastore federation, which is used as the final component of the metastore federation's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore federation.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the federation, of the form: projects/{project_number}/locations/{location_id}/federations/{federation_id}`.
@@ -191,7 +191,7 @@ class Federation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_metastores: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['BackendMetastoreArgs']]]]] = None,
+                 backend_metastores: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['BackendMetastoreArgs', 'BackendMetastoreArgsDict']]]]] = None,
                  federation_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,

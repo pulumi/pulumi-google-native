@@ -229,10 +229,10 @@ class Spoke(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['LinkedInterconnectAttachmentsArgs']]] = None,
-                 linked_router_appliance_instances: Optional[pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']]] = None,
-                 linked_vpc_network: Optional[pulumi.Input[pulumi.InputType['LinkedVpcNetworkArgs']]] = None,
-                 linked_vpn_tunnels: Optional[pulumi.Input[pulumi.InputType['LinkedVpnTunnelsArgs']]] = None,
+                 linked_interconnect_attachments: Optional[pulumi.Input[Union['LinkedInterconnectAttachmentsArgs', 'LinkedInterconnectAttachmentsArgsDict']]] = None,
+                 linked_router_appliance_instances: Optional[pulumi.Input[Union['LinkedRouterApplianceInstancesArgs', 'LinkedRouterApplianceInstancesArgsDict']]] = None,
+                 linked_vpc_network: Optional[pulumi.Input[Union['LinkedVpcNetworkArgs', 'LinkedVpcNetworkArgsDict']]] = None,
+                 linked_vpn_tunnels: Optional[pulumi.Input[Union['LinkedVpnTunnelsArgs', 'LinkedVpnTunnelsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -248,10 +248,10 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[str] group: Optional. The name of the group that this spoke is associated with.
         :param pulumi.Input[str] hub: Immutable. The name of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key-value pair format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
-        :param pulumi.Input[pulumi.InputType['LinkedInterconnectAttachmentsArgs']] linked_interconnect_attachments: VLAN attachments that are associated with the spoke.
-        :param pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
-        :param pulumi.Input[pulumi.InputType['LinkedVpcNetworkArgs']] linked_vpc_network: Optional. VPC network that is associated with the spoke.
-        :param pulumi.Input[pulumi.InputType['LinkedVpnTunnelsArgs']] linked_vpn_tunnels: VPN tunnels that are associated with the spoke.
+        :param pulumi.Input[Union['LinkedInterconnectAttachmentsArgs', 'LinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: VLAN attachments that are associated with the spoke.
+        :param pulumi.Input[Union['LinkedRouterApplianceInstancesArgs', 'LinkedRouterApplianceInstancesArgsDict']] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
+        :param pulumi.Input[Union['LinkedVpcNetworkArgs', 'LinkedVpcNetworkArgsDict']] linked_vpc_network: Optional. VPC network that is associated with the spoke.
+        :param pulumi.Input[Union['LinkedVpnTunnelsArgs', 'LinkedVpnTunnelsArgsDict']] linked_vpn_tunnels: VPN tunnels that are associated with the spoke.
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] spoke_id: Required. Unique id for the spoke to create.
@@ -284,10 +284,10 @@ class Spoke(pulumi.CustomResource):
                  group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['LinkedInterconnectAttachmentsArgs']]] = None,
-                 linked_router_appliance_instances: Optional[pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']]] = None,
-                 linked_vpc_network: Optional[pulumi.Input[pulumi.InputType['LinkedVpcNetworkArgs']]] = None,
-                 linked_vpn_tunnels: Optional[pulumi.Input[pulumi.InputType['LinkedVpnTunnelsArgs']]] = None,
+                 linked_interconnect_attachments: Optional[pulumi.Input[Union['LinkedInterconnectAttachmentsArgs', 'LinkedInterconnectAttachmentsArgsDict']]] = None,
+                 linked_router_appliance_instances: Optional[pulumi.Input[Union['LinkedRouterApplianceInstancesArgs', 'LinkedRouterApplianceInstancesArgsDict']]] = None,
+                 linked_vpc_network: Optional[pulumi.Input[Union['LinkedVpcNetworkArgs', 'LinkedVpcNetworkArgsDict']]] = None,
+                 linked_vpn_tunnels: Optional[pulumi.Input[Union['LinkedVpnTunnelsArgs', 'LinkedVpnTunnelsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

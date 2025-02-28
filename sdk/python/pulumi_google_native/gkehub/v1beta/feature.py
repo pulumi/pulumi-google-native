@@ -164,14 +164,14 @@ class Feature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  feature_id: Optional[pulumi.Input[str]] = None,
-                 fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['CommonFleetDefaultMemberConfigSpecArgs']]] = None,
+                 fleet_default_member_config: Optional[pulumi.Input[Union['CommonFleetDefaultMemberConfigSpecArgs', 'CommonFleetDefaultMemberConfigSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['MembershipFeatureSpecArgs']]]]] = None,
+                 membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MembershipFeatureSpecArgs', 'MembershipFeatureSpecArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scope_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ScopeFeatureSpecArgs']]]]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
+                 scope_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScopeFeatureSpecArgs', 'ScopeFeatureSpecArgsDict']]]]] = None,
+                 spec: Optional[pulumi.Input[Union['CommonFeatureSpecArgs', 'CommonFeatureSpecArgsDict']]] = None,
                  __props__=None):
         """
         Adds a new Feature.
@@ -180,12 +180,12 @@ class Feature(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] feature_id: The ID of the feature to create.
-        :param pulumi.Input[pulumi.InputType['CommonFleetDefaultMemberConfigSpecArgs']] fleet_default_member_config: Optional. Feature configuration applicable to all memberships of the fleet.
+        :param pulumi.Input[Union['CommonFleetDefaultMemberConfigSpecArgs', 'CommonFleetDefaultMemberConfigSpecArgsDict']] fleet_default_member_config: Optional. Feature configuration applicable to all memberships of the fleet.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Feature.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['MembershipFeatureSpecArgs']]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MembershipFeatureSpecArgs', 'MembershipFeatureSpecArgsDict']]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ScopeFeatureSpecArgs']]]] scope_specs: Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
-        :param pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ScopeFeatureSpecArgs', 'ScopeFeatureSpecArgsDict']]]] scope_specs: Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+        :param pulumi.Input[Union['CommonFeatureSpecArgs', 'CommonFeatureSpecArgsDict']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         """
         ...
     @overload
@@ -213,14 +213,14 @@ class Feature(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  feature_id: Optional[pulumi.Input[str]] = None,
-                 fleet_default_member_config: Optional[pulumi.Input[pulumi.InputType['CommonFleetDefaultMemberConfigSpecArgs']]] = None,
+                 fleet_default_member_config: Optional[pulumi.Input[Union['CommonFleetDefaultMemberConfigSpecArgs', 'CommonFleetDefaultMemberConfigSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['MembershipFeatureSpecArgs']]]]] = None,
+                 membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MembershipFeatureSpecArgs', 'MembershipFeatureSpecArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 scope_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ScopeFeatureSpecArgs']]]]] = None,
-                 spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
+                 scope_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ScopeFeatureSpecArgs', 'ScopeFeatureSpecArgsDict']]]]] = None,
+                 spec: Optional[pulumi.Input[Union['CommonFeatureSpecArgs', 'CommonFeatureSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

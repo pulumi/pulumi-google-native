@@ -194,7 +194,7 @@ class Schedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_queueing: Optional[pulumi.Input[bool]] = None,
-                 create_pipeline_job_request: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs']]] = None,
+                 create_pipeline_job_request: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs', 'GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgsDict']]] = None,
                  cron: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
@@ -211,7 +211,7 @@ class Schedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_queueing: Optional. Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs']] create_pipeline_job_request: Request for PipelineService.CreatePipelineJob. CreatePipelineJobRequest.parent field is required (format: projects/{project}/locations/{location}).
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs', 'GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgsDict']] create_pipeline_job_request: Request for PipelineService.CreatePipelineJob. CreatePipelineJobRequest.parent field is required (format: projects/{project}/locations/{location}).
         :param pulumi.Input[str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         :param pulumi.Input[str] display_name: User provided name of the Schedule. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[str] end_time: Optional. Timestamp after which no new runs can be scheduled. If specified, The schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
@@ -245,7 +245,7 @@ class Schedule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_queueing: Optional[pulumi.Input[bool]] = None,
-                 create_pipeline_job_request: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs']]] = None,
+                 create_pipeline_job_request: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgs', 'GoogleCloudAiplatformV1beta1CreatePipelineJobRequestArgsDict']]] = None,
                  cron: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,

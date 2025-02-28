@@ -259,7 +259,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerProjectLimitArgs', 'ServiceAttachmentConsumerProjectLimitArgsDict']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -272,7 +272,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
-                 tunneling_config: Optional[pulumi.Input[pulumi.InputType['ServiceAttachmentTunnelingConfigArgs']]] = None,
+                 tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request.
@@ -280,7 +280,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['ServiceAttachmentConnectionPreference'] connection_preference: The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerProjectLimitArgs', 'ServiceAttachmentConsumerProjectLimitArgsDict']]]] consumer_accept_lists: Projects that are allowed to connect to this service attachment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_reject_lists: Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domain_names: If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
@@ -291,7 +291,7 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] target_service: The URL of a service serving the endpoint identified by this service attachment.
-        :param pulumi.Input[pulumi.InputType['ServiceAttachmentTunnelingConfigArgs']] tunneling_config: When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
+        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. - 
         """
         ...
     @overload
@@ -318,7 +318,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_preference: Optional[pulumi.Input['ServiceAttachmentConnectionPreference']] = None,
-                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerProjectLimitArgs']]]]] = None,
+                 consumer_accept_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAttachmentConsumerProjectLimitArgs', 'ServiceAttachmentConsumerProjectLimitArgsDict']]]]] = None,
                  consumer_reject_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -331,7 +331,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
-                 tunneling_config: Optional[pulumi.Input[pulumi.InputType['ServiceAttachmentTunnelingConfigArgs']]] = None,
+                 tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

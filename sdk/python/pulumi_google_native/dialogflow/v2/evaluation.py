@@ -111,7 +111,7 @@ class Evaluation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  conversation_model_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 evaluation_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2EvaluationConfigArgs']]] = None,
+                 evaluation_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2EvaluationConfigArgs', 'GoogleCloudDialogflowV2EvaluationConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class Evaluation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. The display name of the model evaluation. At most 64 bytes long.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2EvaluationConfigArgs']] evaluation_config: Optional. The configuration of the evaluation task.
+        :param pulumi.Input[Union['GoogleCloudDialogflowV2EvaluationConfigArgs', 'GoogleCloudDialogflowV2EvaluationConfigArgsDict']] evaluation_config: Optional. The configuration of the evaluation task.
         :param pulumi.Input[str] name: The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
         """
         ...
@@ -155,7 +155,7 @@ class Evaluation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  conversation_model_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 evaluation_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2EvaluationConfigArgs']]] = None,
+                 evaluation_config: Optional[pulumi.Input[Union['GoogleCloudDialogflowV2EvaluationConfigArgs', 'GoogleCloudDialogflowV2EvaluationConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

@@ -102,9 +102,9 @@ class PartnerTenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs']]] = None,
+                 group: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 partner_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -114,8 +114,8 @@ class PartnerTenant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Optional. An arbitrary caller-provided name for the PartnerTenant. Cannot exceed 64 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs']] group: Optional. Group information for the users enabled to use the partnerTenant. If the group information is not provided then the partnerTenant will be enabled for all users.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs']] partner_metadata: Optional. Metadata provided by the Partner associated with PartnerTenant.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgsDict']] group: Optional. Group information for the users enabled to use the partnerTenant. If the group information is not provided then the partnerTenant will be enabled for all users.
+        :param pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgsDict']] partner_metadata: Optional. Metadata provided by the Partner associated with PartnerTenant.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
@@ -144,9 +144,9 @@ class PartnerTenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 group: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs']]] = None,
+                 group: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaGroupArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 partner_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs']]] = None,
+                 partner_metadata: Optional[pulumi.Input[Union['GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs', 'GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgsDict']]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

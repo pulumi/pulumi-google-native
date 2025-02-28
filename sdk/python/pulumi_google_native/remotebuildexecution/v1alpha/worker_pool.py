@@ -161,14 +161,14 @@ class WorkerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgsDict']]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgsDict']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -176,12 +176,12 @@ class WorkerPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs']] autoscale: The autoscale policy to apply on a pool.
+        :param pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgsDict']] autoscale: The autoscale policy to apply on a pool.
         :param pulumi.Input[str] channel: Channel specifies the release channel of the pool.
         :param pulumi.Input[str] name: WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
         :param pulumi.Input[str] parent: Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         :param pulumi.Input[str] pool_id: ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
-        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']] worker_config: Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+        :param pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgsDict']] worker_config: Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
         :param pulumi.Input[str] worker_count: The desired number of workers in the worker pool. Must be a value between 0 and 15000.
         """
         ...
@@ -208,14 +208,14 @@ class WorkerPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs']]] = None,
+                 autoscale: Optional[pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgsDict']]] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs', 'GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgsDict']]] = None,
                  worker_count: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

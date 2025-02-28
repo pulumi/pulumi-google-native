@@ -199,7 +199,7 @@ class DeveloperApp(pulumi.CustomResource):
                  api_products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_family: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  callback_url: Optional[pulumi.Input[str]] = None,
                  developer_id: Optional[pulumi.Input[str]] = None,
                  key_expires_in: Optional[pulumi.Input[str]] = None,
@@ -216,7 +216,7 @@ class DeveloperApp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] api_products: List of API products associated with the developer app.
         :param pulumi.Input[str] app_family: Developer app family.
         :param pulumi.Input[str] app_id: ID of the developer app.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]] attributes: List of attributes for the developer app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]] attributes: List of attributes for the developer app.
         :param pulumi.Input[str] callback_url: Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
         :param pulumi.Input[str] developer_id: ID of the developer.
         :param pulumi.Input[str] key_expires_in: Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
@@ -251,7 +251,7 @@ class DeveloperApp(pulumi.CustomResource):
                  api_products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_family: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AttributeArgs']]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudApigeeV1AttributeArgs', 'GoogleCloudApigeeV1AttributeArgsDict']]]]] = None,
                  callback_url: Optional[pulumi.Input[str]] = None,
                  developer_id: Optional[pulumi.Input[str]] = None,
                  key_expires_in: Optional[pulumi.Input[str]] = None,

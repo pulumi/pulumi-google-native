@@ -70,7 +70,7 @@ class TraceSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 output_config: Optional[pulumi.Input[pulumi.InputType['OutputConfigArgs']]] = None,
+                 output_config: Optional[pulumi.Input[Union['OutputConfigArgs', 'OutputConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -79,7 +79,7 @@ class TraceSink(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
-        :param pulumi.Input[pulumi.InputType['OutputConfigArgs']] output_config: The export destination.
+        :param pulumi.Input[Union['OutputConfigArgs', 'OutputConfigArgsDict']] output_config: The export destination.
         """
         ...
     @overload
@@ -106,7 +106,7 @@ class TraceSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 output_config: Optional[pulumi.Input[pulumi.InputType['OutputConfigArgs']]] = None,
+                 output_config: Optional[pulumi.Input[Union['OutputConfigArgs', 'OutputConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

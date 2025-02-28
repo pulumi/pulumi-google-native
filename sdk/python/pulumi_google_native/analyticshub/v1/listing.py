@@ -251,10 +251,10 @@ class Listing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['BigQueryDatasetSourceArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[Union['BigQueryDatasetSourceArgs', 'BigQueryDatasetSourceArgsDict']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCategoriesItem']]]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
-                 data_provider: Optional[pulumi.Input[pulumi.InputType['DataProviderArgs']]] = None,
+                 data_provider: Optional[pulumi.Input[Union['DataProviderArgs', 'DataProviderArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
@@ -263,9 +263,9 @@ class Listing(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input[pulumi.InputType['PublisherArgs']]] = None,
+                 publisher: Optional[pulumi.Input[Union['PublisherArgs', 'PublisherArgsDict']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
-                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['RestrictedExportConfigArgs']]] = None,
+                 restricted_export_config: Optional[pulumi.Input[Union['RestrictedExportConfigArgs', 'RestrictedExportConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new listing.
@@ -273,18 +273,18 @@ class Listing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BigQueryDatasetSourceArgs']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
+        :param pulumi.Input[Union['BigQueryDatasetSourceArgs', 'BigQueryDatasetSourceArgsDict']] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
         :param pulumi.Input[Sequence[pulumi.Input['ListingCategoriesItem']]] categories: Optional. Categories of the listing. Up to two categories are allowed.
-        :param pulumi.Input[pulumi.InputType['DataProviderArgs']] data_provider: Optional. Details of the data provider who owns the source data.
+        :param pulumi.Input[Union['DataProviderArgs', 'DataProviderArgsDict']] data_provider: Optional. Details of the data provider who owns the source data.
         :param pulumi.Input[str] description: Optional. Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
         :param pulumi.Input[str] display_name: Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
         :param pulumi.Input[str] documentation: Optional. Documentation describing the listing.
         :param pulumi.Input[str] icon: Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire.
         :param pulumi.Input[str] listing_id: Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
         :param pulumi.Input[str] primary_contact: Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
-        :param pulumi.Input[pulumi.InputType['PublisherArgs']] publisher: Optional. Details of the publisher who owns the listing and who can share the source data.
+        :param pulumi.Input[Union['PublisherArgs', 'PublisherArgsDict']] publisher: Optional. Details of the publisher who owns the listing and who can share the source data.
         :param pulumi.Input[str] request_access: Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
-        :param pulumi.Input[pulumi.InputType['RestrictedExportConfigArgs']] restricted_export_config: Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        :param pulumi.Input[Union['RestrictedExportConfigArgs', 'RestrictedExportConfigArgsDict']] restricted_export_config: Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
         """
         ...
     @overload
@@ -311,10 +311,10 @@ class Listing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_dataset: Optional[pulumi.Input[pulumi.InputType['BigQueryDatasetSourceArgs']]] = None,
+                 bigquery_dataset: Optional[pulumi.Input[Union['BigQueryDatasetSourceArgs', 'BigQueryDatasetSourceArgsDict']]] = None,
                  categories: Optional[pulumi.Input[Sequence[pulumi.Input['ListingCategoriesItem']]]] = None,
                  data_exchange_id: Optional[pulumi.Input[str]] = None,
-                 data_provider: Optional[pulumi.Input[pulumi.InputType['DataProviderArgs']]] = None,
+                 data_provider: Optional[pulumi.Input[Union['DataProviderArgs', 'DataProviderArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  documentation: Optional[pulumi.Input[str]] = None,
@@ -323,9 +323,9 @@ class Listing(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publisher: Optional[pulumi.Input[pulumi.InputType['PublisherArgs']]] = None,
+                 publisher: Optional[pulumi.Input[Union['PublisherArgs', 'PublisherArgsDict']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
-                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['RestrictedExportConfigArgs']]] = None,
+                 restricted_export_config: Optional[pulumi.Input[Union['RestrictedExportConfigArgs', 'RestrictedExportConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

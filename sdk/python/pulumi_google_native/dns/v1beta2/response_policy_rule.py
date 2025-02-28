@@ -146,7 +146,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
+                 local_data: Optional[pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param pulumi.Input['ResponsePolicyRuleBehavior'] behavior: Answer this query with a behavior rather than DNS data.
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-        :param pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+        :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         """
         ...
@@ -192,7 +192,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
+                 local_data: Optional[pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  response_policy: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,

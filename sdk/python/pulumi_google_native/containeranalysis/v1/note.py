@@ -326,25 +326,25 @@ class Note(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['AttestationNoteArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['BuildNoteArgs']]] = None,
-                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceNoteArgs']]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentNoteArgs']]] = None,
-                 discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryNoteArgs']]] = None,
-                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationNoteArgs']]] = None,
+                 attestation: Optional[pulumi.Input[Union['AttestationNoteArgs', 'AttestationNoteArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['BuildNoteArgs', 'BuildNoteArgsDict']]] = None,
+                 compliance: Optional[pulumi.Input[Union['ComplianceNoteArgs', 'ComplianceNoteArgsDict']]] = None,
+                 deployment: Optional[pulumi.Input[Union['DeploymentNoteArgs', 'DeploymentNoteArgsDict']]] = None,
+                 discovery: Optional[pulumi.Input[Union['DiscoveryNoteArgs', 'DiscoveryNoteArgsDict']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[Union['DSSEAttestationNoteArgs', 'DSSEAttestationNoteArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input[pulumi.InputType['ImageNoteArgs']]] = None,
+                 image: Optional[pulumi.Input[Union['ImageNoteArgs', 'ImageNoteArgsDict']]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
-                 package: Optional[pulumi.Input[pulumi.InputType['PackageNoteArgs']]] = None,
+                 package: Optional[pulumi.Input[Union['PackageNoteArgs', 'PackageNoteArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']]] = None,
+                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RelatedUrlArgs', 'RelatedUrlArgsDict']]]]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceNoteArgs', 'SBOMReferenceNoteArgsDict']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
-                 vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityNoteArgs']]] = None,
-                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
+                 upgrade: Optional[pulumi.Input[Union['UpgradeNoteArgs', 'UpgradeNoteArgsDict']]] = None,
+                 vulnerability: Optional[pulumi.Input[Union['VulnerabilityNoteArgs', 'VulnerabilityNoteArgsDict']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[Union['VulnerabilityAssessmentNoteArgs', 'VulnerabilityAssessmentNoteArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new note.
@@ -352,24 +352,24 @@ class Note(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AttestationNoteArgs']] attestation: A note describing an attestation role.
-        :param pulumi.Input[pulumi.InputType['BuildNoteArgs']] build: A note describing build provenance for a verifiable build.
-        :param pulumi.Input[pulumi.InputType['ComplianceNoteArgs']] compliance: A note describing a compliance check.
-        :param pulumi.Input[pulumi.InputType['DeploymentNoteArgs']] deployment: A note describing something that can be deployed.
-        :param pulumi.Input[pulumi.InputType['DiscoveryNoteArgs']] discovery: A note describing the initial analysis of a resource.
-        :param pulumi.Input[pulumi.InputType['DSSEAttestationNoteArgs']] dsse_attestation: A note describing a dsse attestation note.
+        :param pulumi.Input[Union['AttestationNoteArgs', 'AttestationNoteArgsDict']] attestation: A note describing an attestation role.
+        :param pulumi.Input[Union['BuildNoteArgs', 'BuildNoteArgsDict']] build: A note describing build provenance for a verifiable build.
+        :param pulumi.Input[Union['ComplianceNoteArgs', 'ComplianceNoteArgsDict']] compliance: A note describing a compliance check.
+        :param pulumi.Input[Union['DeploymentNoteArgs', 'DeploymentNoteArgsDict']] deployment: A note describing something that can be deployed.
+        :param pulumi.Input[Union['DiscoveryNoteArgs', 'DiscoveryNoteArgsDict']] discovery: A note describing the initial analysis of a resource.
+        :param pulumi.Input[Union['DSSEAttestationNoteArgs', 'DSSEAttestationNoteArgsDict']] dsse_attestation: A note describing a dsse attestation note.
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
-        :param pulumi.Input[pulumi.InputType['ImageNoteArgs']] image: A note describing a base image.
+        :param pulumi.Input[Union['ImageNoteArgs', 'ImageNoteArgsDict']] image: A note describing a base image.
         :param pulumi.Input[str] long_description: A detailed description of this note.
         :param pulumi.Input[str] note_id: Required. The ID to use for this note.
-        :param pulumi.Input[pulumi.InputType['PackageNoteArgs']] package: A note describing a package hosted by various package managers.
+        :param pulumi.Input[Union['PackageNoteArgs', 'PackageNoteArgsDict']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note.
-        :param pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']] sbom_reference: A note describing an SBOM reference.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RelatedUrlArgs', 'RelatedUrlArgsDict']]]] related_url: URLs associated with this note.
+        :param pulumi.Input[Union['SBOMReferenceNoteArgs', 'SBOMReferenceNoteArgsDict']] sbom_reference: A note describing an SBOM reference.
         :param pulumi.Input[str] short_description: A one sentence description of this note.
-        :param pulumi.Input[pulumi.InputType['UpgradeNoteArgs']] upgrade: A note describing available package upgrades.
-        :param pulumi.Input[pulumi.InputType['VulnerabilityNoteArgs']] vulnerability: A note describing a package vulnerability.
-        :param pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']] vulnerability_assessment: A note describing a vulnerability assessment.
+        :param pulumi.Input[Union['UpgradeNoteArgs', 'UpgradeNoteArgsDict']] upgrade: A note describing available package upgrades.
+        :param pulumi.Input[Union['VulnerabilityNoteArgs', 'VulnerabilityNoteArgsDict']] vulnerability: A note describing a package vulnerability.
+        :param pulumi.Input[Union['VulnerabilityAssessmentNoteArgs', 'VulnerabilityAssessmentNoteArgsDict']] vulnerability_assessment: A note describing a vulnerability assessment.
         """
         ...
     @overload
@@ -396,25 +396,25 @@ class Note(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['AttestationNoteArgs']]] = None,
-                 build: Optional[pulumi.Input[pulumi.InputType['BuildNoteArgs']]] = None,
-                 compliance: Optional[pulumi.Input[pulumi.InputType['ComplianceNoteArgs']]] = None,
-                 deployment: Optional[pulumi.Input[pulumi.InputType['DeploymentNoteArgs']]] = None,
-                 discovery: Optional[pulumi.Input[pulumi.InputType['DiscoveryNoteArgs']]] = None,
-                 dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationNoteArgs']]] = None,
+                 attestation: Optional[pulumi.Input[Union['AttestationNoteArgs', 'AttestationNoteArgsDict']]] = None,
+                 build: Optional[pulumi.Input[Union['BuildNoteArgs', 'BuildNoteArgsDict']]] = None,
+                 compliance: Optional[pulumi.Input[Union['ComplianceNoteArgs', 'ComplianceNoteArgsDict']]] = None,
+                 deployment: Optional[pulumi.Input[Union['DeploymentNoteArgs', 'DeploymentNoteArgsDict']]] = None,
+                 discovery: Optional[pulumi.Input[Union['DiscoveryNoteArgs', 'DiscoveryNoteArgsDict']]] = None,
+                 dsse_attestation: Optional[pulumi.Input[Union['DSSEAttestationNoteArgs', 'DSSEAttestationNoteArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input[pulumi.InputType['ImageNoteArgs']]] = None,
+                 image: Optional[pulumi.Input[Union['ImageNoteArgs', 'ImageNoteArgsDict']]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  note_id: Optional[pulumi.Input[str]] = None,
-                 package: Optional[pulumi.Input[pulumi.InputType['PackageNoteArgs']]] = None,
+                 package: Optional[pulumi.Input[Union['PackageNoteArgs', 'PackageNoteArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
-                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']]] = None,
+                 related_url: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RelatedUrlArgs', 'RelatedUrlArgsDict']]]]] = None,
+                 sbom_reference: Optional[pulumi.Input[Union['SBOMReferenceNoteArgs', 'SBOMReferenceNoteArgsDict']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
-                 upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
-                 vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityNoteArgs']]] = None,
-                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
+                 upgrade: Optional[pulumi.Input[Union['UpgradeNoteArgs', 'UpgradeNoteArgsDict']]] = None,
+                 vulnerability: Optional[pulumi.Input[Union['VulnerabilityNoteArgs', 'VulnerabilityNoteArgsDict']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[Union['VulnerabilityAssessmentNoteArgs', 'VulnerabilityAssessmentNoteArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

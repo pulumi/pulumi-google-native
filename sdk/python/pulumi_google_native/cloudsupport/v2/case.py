@@ -241,9 +241,9 @@ class Case(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 classification: Optional[pulumi.Input[pulumi.InputType['CaseClassificationArgs']]] = None,
+                 classification: Optional[pulumi.Input[Union['CaseClassificationArgs', 'CaseClassificationArgsDict']]] = None,
                  contact_email: Optional[pulumi.Input[str]] = None,
-                 creator: Optional[pulumi.Input[pulumi.InputType['ActorArgs']]] = None,
+                 creator: Optional[pulumi.Input[Union['ActorArgs', 'ActorArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  escalated: Optional[pulumi.Input[bool]] = None,
@@ -263,9 +263,9 @@ class Case(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CaseClassificationArgs']] classification: The issue classification applicable to this case.
+        :param pulumi.Input[Union['CaseClassificationArgs', 'CaseClassificationArgsDict']] classification: The issue classification applicable to this case.
         :param pulumi.Input[str] contact_email: A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
-        :param pulumi.Input[pulumi.InputType['ActorArgs']] creator: The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
+        :param pulumi.Input[Union['ActorArgs', 'ActorArgsDict']] creator: The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
         :param pulumi.Input[str] description: A broad description of the issue.
         :param pulumi.Input[str] display_name: The short summary of the issue reported in this case.
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
@@ -302,9 +302,9 @@ class Case(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 classification: Optional[pulumi.Input[pulumi.InputType['CaseClassificationArgs']]] = None,
+                 classification: Optional[pulumi.Input[Union['CaseClassificationArgs', 'CaseClassificationArgsDict']]] = None,
                  contact_email: Optional[pulumi.Input[str]] = None,
-                 creator: Optional[pulumi.Input[pulumi.InputType['ActorArgs']]] = None,
+                 creator: Optional[pulumi.Input[Union['ActorArgs', 'ActorArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  escalated: Optional[pulumi.Input[bool]] = None,

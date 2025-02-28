@@ -132,7 +132,7 @@ class IssueModel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 input_data_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs']]] = None,
+                 input_data_config: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs', 'GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  model_type: Optional[pulumi.Input['IssueModelModelType']] = None,
@@ -145,7 +145,7 @@ class IssueModel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The representative name for the issue model.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs']] input_data_config: Configs for the input data that used to create the issue model.
+        :param pulumi.Input[Union['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs', 'GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgsDict']] input_data_config: Configs for the input data that used to create the issue model.
         :param pulumi.Input[str] language_code: Language of the model.
         :param pulumi.Input['IssueModelModelType'] model_type: Type of the model.
         :param pulumi.Input[str] name: Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
@@ -175,7 +175,7 @@ class IssueModel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 input_data_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs']]] = None,
+                 input_data_config: Optional[pulumi.Input[Union['GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs', 'GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  model_type: Optional[pulumi.Input['IssueModelModelType']] = None,

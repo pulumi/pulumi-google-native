@@ -362,27 +362,27 @@ class MappingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditional_column_set_value: Optional[pulumi.Input[pulumi.InputType['ConditionalColumnSetValueArgs']]] = None,
+                 conditional_column_set_value: Optional[pulumi.Input[Union['ConditionalColumnSetValueArgs', 'ConditionalColumnSetValueArgsDict']]] = None,
                  conversion_workspace_id: Optional[pulumi.Input[str]] = None,
-                 convert_rowid_column: Optional[pulumi.Input[pulumi.InputType['ConvertRowIdToColumnArgs']]] = None,
+                 convert_rowid_column: Optional[pulumi.Input[Union['ConvertRowIdToColumnArgs', 'ConvertRowIdToColumnArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 entity_move: Optional[pulumi.Input[pulumi.InputType['EntityMoveArgs']]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['MappingRuleFilterArgs']]] = None,
-                 filter_table_columns: Optional[pulumi.Input[pulumi.InputType['FilterTableColumnsArgs']]] = None,
+                 entity_move: Optional[pulumi.Input[Union['EntityMoveArgs', 'EntityMoveArgsDict']]] = None,
+                 filter: Optional[pulumi.Input[Union['MappingRuleFilterArgs', 'MappingRuleFilterArgsDict']]] = None,
+                 filter_table_columns: Optional[pulumi.Input[Union['FilterTableColumnsArgs', 'FilterTableColumnsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mapping_rule_id: Optional[pulumi.Input[str]] = None,
-                 multi_column_data_type_change: Optional[pulumi.Input[pulumi.InputType['MultiColumnDatatypeChangeArgs']]] = None,
-                 multi_entity_rename: Optional[pulumi.Input[pulumi.InputType['MultiEntityRenameArgs']]] = None,
+                 multi_column_data_type_change: Optional[pulumi.Input[Union['MultiColumnDatatypeChangeArgs', 'MultiColumnDatatypeChangeArgsDict']]] = None,
+                 multi_entity_rename: Optional[pulumi.Input[Union['MultiEntityRenameArgs', 'MultiEntityRenameArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rule_order: Optional[pulumi.Input[str]] = None,
                  rule_scope: Optional[pulumi.Input['MappingRuleRuleScope']] = None,
-                 set_table_primary_key: Optional[pulumi.Input[pulumi.InputType['SetTablePrimaryKeyArgs']]] = None,
-                 single_column_change: Optional[pulumi.Input[pulumi.InputType['SingleColumnChangeArgs']]] = None,
-                 single_entity_rename: Optional[pulumi.Input[pulumi.InputType['SingleEntityRenameArgs']]] = None,
-                 single_package_change: Optional[pulumi.Input[pulumi.InputType['SinglePackageChangeArgs']]] = None,
-                 source_sql_change: Optional[pulumi.Input[pulumi.InputType['SourceSqlChangeArgs']]] = None,
+                 set_table_primary_key: Optional[pulumi.Input[Union['SetTablePrimaryKeyArgs', 'SetTablePrimaryKeyArgsDict']]] = None,
+                 single_column_change: Optional[pulumi.Input[Union['SingleColumnChangeArgs', 'SingleColumnChangeArgsDict']]] = None,
+                 single_entity_rename: Optional[pulumi.Input[Union['SingleEntityRenameArgs', 'SingleEntityRenameArgsDict']]] = None,
+                 single_package_change: Optional[pulumi.Input[Union['SinglePackageChangeArgs', 'SinglePackageChangeArgsDict']]] = None,
+                 source_sql_change: Optional[pulumi.Input[Union['SourceSqlChangeArgs', 'SourceSqlChangeArgsDict']]] = None,
                  state: Optional[pulumi.Input['MappingRuleState']] = None,
                  __props__=None):
         """
@@ -390,24 +390,24 @@ class MappingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConditionalColumnSetValueArgs']] conditional_column_set_value: Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.
-        :param pulumi.Input[pulumi.InputType['ConvertRowIdToColumnArgs']] convert_rowid_column: Optional. Rule to specify how multiple tables should be converted with an additional rowid column.
+        :param pulumi.Input[Union['ConditionalColumnSetValueArgs', 'ConditionalColumnSetValueArgsDict']] conditional_column_set_value: Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.
+        :param pulumi.Input[Union['ConvertRowIdToColumnArgs', 'ConvertRowIdToColumnArgsDict']] convert_rowid_column: Optional. Rule to specify how multiple tables should be converted with an additional rowid column.
         :param pulumi.Input[str] display_name: Optional. A human readable name
-        :param pulumi.Input[pulumi.InputType['EntityMoveArgs']] entity_move: Optional. Rule to specify how multiple entities should be relocated into a different schema.
-        :param pulumi.Input[pulumi.InputType['MappingRuleFilterArgs']] filter: The rule filter
-        :param pulumi.Input[pulumi.InputType['FilterTableColumnsArgs']] filter_table_columns: Optional. Rule to specify the list of columns to include or exclude from a table.
+        :param pulumi.Input[Union['EntityMoveArgs', 'EntityMoveArgsDict']] entity_move: Optional. Rule to specify how multiple entities should be relocated into a different schema.
+        :param pulumi.Input[Union['MappingRuleFilterArgs', 'MappingRuleFilterArgsDict']] filter: The rule filter
+        :param pulumi.Input[Union['FilterTableColumnsArgs', 'FilterTableColumnsArgsDict']] filter_table_columns: Optional. Rule to specify the list of columns to include or exclude from a table.
         :param pulumi.Input[str] mapping_rule_id: Required. The ID of the rule to create.
-        :param pulumi.Input[pulumi.InputType['MultiColumnDatatypeChangeArgs']] multi_column_data_type_change: Optional. Rule to specify how multiple columns should be converted to a different data type.
-        :param pulumi.Input[pulumi.InputType['MultiEntityRenameArgs']] multi_entity_rename: Optional. Rule to specify how multiple entities should be renamed.
+        :param pulumi.Input[Union['MultiColumnDatatypeChangeArgs', 'MultiColumnDatatypeChangeArgsDict']] multi_column_data_type_change: Optional. Rule to specify how multiple columns should be converted to a different data type.
+        :param pulumi.Input[Union['MultiEntityRenameArgs', 'MultiEntityRenameArgsDict']] multi_entity_rename: Optional. Rule to specify how multiple entities should be renamed.
         :param pulumi.Input[str] name: Full name of the mapping rule resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{set}/mappingRule/{rule}.
         :param pulumi.Input[str] request_id: A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[str] rule_order: The order in which the rule is applied. Lower order rules are applied before higher value rules so they may end up being overridden.
         :param pulumi.Input['MappingRuleRuleScope'] rule_scope: The rule scope
-        :param pulumi.Input[pulumi.InputType['SetTablePrimaryKeyArgs']] set_table_primary_key: Optional. Rule to specify the primary key for a table
-        :param pulumi.Input[pulumi.InputType['SingleColumnChangeArgs']] single_column_change: Optional. Rule to specify how a single column is converted.
-        :param pulumi.Input[pulumi.InputType['SingleEntityRenameArgs']] single_entity_rename: Optional. Rule to specify how a single entity should be renamed.
-        :param pulumi.Input[pulumi.InputType['SinglePackageChangeArgs']] single_package_change: Optional. Rule to specify how a single package is converted.
-        :param pulumi.Input[pulumi.InputType['SourceSqlChangeArgs']] source_sql_change: Optional. Rule to change the sql code for an entity, for example, function, procedure.
+        :param pulumi.Input[Union['SetTablePrimaryKeyArgs', 'SetTablePrimaryKeyArgsDict']] set_table_primary_key: Optional. Rule to specify the primary key for a table
+        :param pulumi.Input[Union['SingleColumnChangeArgs', 'SingleColumnChangeArgsDict']] single_column_change: Optional. Rule to specify how a single column is converted.
+        :param pulumi.Input[Union['SingleEntityRenameArgs', 'SingleEntityRenameArgsDict']] single_entity_rename: Optional. Rule to specify how a single entity should be renamed.
+        :param pulumi.Input[Union['SinglePackageChangeArgs', 'SinglePackageChangeArgsDict']] single_package_change: Optional. Rule to specify how a single package is converted.
+        :param pulumi.Input[Union['SourceSqlChangeArgs', 'SourceSqlChangeArgsDict']] source_sql_change: Optional. Rule to change the sql code for an entity, for example, function, procedure.
         :param pulumi.Input['MappingRuleState'] state: Optional. The mapping rule state
         """
         ...
@@ -434,27 +434,27 @@ class MappingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditional_column_set_value: Optional[pulumi.Input[pulumi.InputType['ConditionalColumnSetValueArgs']]] = None,
+                 conditional_column_set_value: Optional[pulumi.Input[Union['ConditionalColumnSetValueArgs', 'ConditionalColumnSetValueArgsDict']]] = None,
                  conversion_workspace_id: Optional[pulumi.Input[str]] = None,
-                 convert_rowid_column: Optional[pulumi.Input[pulumi.InputType['ConvertRowIdToColumnArgs']]] = None,
+                 convert_rowid_column: Optional[pulumi.Input[Union['ConvertRowIdToColumnArgs', 'ConvertRowIdToColumnArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 entity_move: Optional[pulumi.Input[pulumi.InputType['EntityMoveArgs']]] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['MappingRuleFilterArgs']]] = None,
-                 filter_table_columns: Optional[pulumi.Input[pulumi.InputType['FilterTableColumnsArgs']]] = None,
+                 entity_move: Optional[pulumi.Input[Union['EntityMoveArgs', 'EntityMoveArgsDict']]] = None,
+                 filter: Optional[pulumi.Input[Union['MappingRuleFilterArgs', 'MappingRuleFilterArgsDict']]] = None,
+                 filter_table_columns: Optional[pulumi.Input[Union['FilterTableColumnsArgs', 'FilterTableColumnsArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mapping_rule_id: Optional[pulumi.Input[str]] = None,
-                 multi_column_data_type_change: Optional[pulumi.Input[pulumi.InputType['MultiColumnDatatypeChangeArgs']]] = None,
-                 multi_entity_rename: Optional[pulumi.Input[pulumi.InputType['MultiEntityRenameArgs']]] = None,
+                 multi_column_data_type_change: Optional[pulumi.Input[Union['MultiColumnDatatypeChangeArgs', 'MultiColumnDatatypeChangeArgsDict']]] = None,
+                 multi_entity_rename: Optional[pulumi.Input[Union['MultiEntityRenameArgs', 'MultiEntityRenameArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rule_order: Optional[pulumi.Input[str]] = None,
                  rule_scope: Optional[pulumi.Input['MappingRuleRuleScope']] = None,
-                 set_table_primary_key: Optional[pulumi.Input[pulumi.InputType['SetTablePrimaryKeyArgs']]] = None,
-                 single_column_change: Optional[pulumi.Input[pulumi.InputType['SingleColumnChangeArgs']]] = None,
-                 single_entity_rename: Optional[pulumi.Input[pulumi.InputType['SingleEntityRenameArgs']]] = None,
-                 single_package_change: Optional[pulumi.Input[pulumi.InputType['SinglePackageChangeArgs']]] = None,
-                 source_sql_change: Optional[pulumi.Input[pulumi.InputType['SourceSqlChangeArgs']]] = None,
+                 set_table_primary_key: Optional[pulumi.Input[Union['SetTablePrimaryKeyArgs', 'SetTablePrimaryKeyArgsDict']]] = None,
+                 single_column_change: Optional[pulumi.Input[Union['SingleColumnChangeArgs', 'SingleColumnChangeArgsDict']]] = None,
+                 single_entity_rename: Optional[pulumi.Input[Union['SingleEntityRenameArgs', 'SingleEntityRenameArgsDict']]] = None,
+                 single_package_change: Optional[pulumi.Input[Union['SinglePackageChangeArgs', 'SinglePackageChangeArgsDict']]] = None,
+                 source_sql_change: Optional[pulumi.Input[Union['SourceSqlChangeArgs', 'SourceSqlChangeArgsDict']]] = None,
                  state: Optional[pulumi.Input['MappingRuleState']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)

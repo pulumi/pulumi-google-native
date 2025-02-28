@@ -117,10 +117,10 @@ class CompositeType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompositeTypeLabelEntryArgs', 'CompositeTypeLabelEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
+                 template_contents: Optional[pulumi.Input[Union['TemplateContentsArgs', 'TemplateContentsArgsDict']]] = None,
                  __props__=None):
         """
         Creates a composite type.
@@ -128,9 +128,9 @@ class CompositeType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]] labels: Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CompositeTypeLabelEntryArgs', 'CompositeTypeLabelEntryArgsDict']]]] labels: Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         :param pulumi.Input[str] name: Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-        :param pulumi.Input[pulumi.InputType['TemplateContentsArgs']] template_contents: Files for the template type.
+        :param pulumi.Input[Union['TemplateContentsArgs', 'TemplateContentsArgsDict']] template_contents: Files for the template type.
         """
         ...
     @overload
@@ -158,10 +158,10 @@ class CompositeType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompositeTypeLabelEntryArgs', 'CompositeTypeLabelEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
+                 template_contents: Optional[pulumi.Input[Union['TemplateContentsArgs', 'TemplateContentsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

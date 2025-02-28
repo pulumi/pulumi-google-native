@@ -117,7 +117,7 @@ class Template(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 environment: Optional[pulumi.Input[pulumi.InputType['RuntimeEnvironmentArgs']]] = None,
+                 environment: Optional[pulumi.Input[Union['RuntimeEnvironmentArgs', 'RuntimeEnvironmentArgsDict']]] = None,
                  gcs_path: Optional[pulumi.Input[str]] = None,
                  job_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -132,7 +132,7 @@ class Template(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RuntimeEnvironmentArgs']] environment: The runtime environment for the job.
+        :param pulumi.Input[Union['RuntimeEnvironmentArgs', 'RuntimeEnvironmentArgsDict']] environment: The runtime environment for the job.
         :param pulumi.Input[str] gcs_path: A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
         :param pulumi.Input[str] job_name: The job name to use for the created job.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
@@ -165,7 +165,7 @@ class Template(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 environment: Optional[pulumi.Input[pulumi.InputType['RuntimeEnvironmentArgs']]] = None,
+                 environment: Optional[pulumi.Input[Union['RuntimeEnvironmentArgs', 'RuntimeEnvironmentArgsDict']]] = None,
                  gcs_path: Optional[pulumi.Input[str]] = None,
                  job_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

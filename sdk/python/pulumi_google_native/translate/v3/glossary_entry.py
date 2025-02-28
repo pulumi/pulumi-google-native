@@ -130,8 +130,8 @@ class GlossaryEntry(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 terms_pair: Optional[pulumi.Input[pulumi.InputType['GlossaryTermsPairArgs']]] = None,
-                 terms_set: Optional[pulumi.Input[pulumi.InputType['GlossaryTermsSetArgs']]] = None,
+                 terms_pair: Optional[pulumi.Input[Union['GlossaryTermsPairArgs', 'GlossaryTermsPairArgsDict']]] = None,
+                 terms_set: Optional[pulumi.Input[Union['GlossaryTermsSetArgs', 'GlossaryTermsSetArgsDict']]] = None,
                  __props__=None):
         """
         Creates a glossary entry.
@@ -140,8 +140,8 @@ class GlossaryEntry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Describes the glossary entry.
         :param pulumi.Input[str] name: The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
-        :param pulumi.Input[pulumi.InputType['GlossaryTermsPairArgs']] terms_pair: Used for an unidirectional glossary.
-        :param pulumi.Input[pulumi.InputType['GlossaryTermsSetArgs']] terms_set: Used for an equivalent term sets glossary.
+        :param pulumi.Input[Union['GlossaryTermsPairArgs', 'GlossaryTermsPairArgsDict']] terms_pair: Used for an unidirectional glossary.
+        :param pulumi.Input[Union['GlossaryTermsSetArgs', 'GlossaryTermsSetArgsDict']] terms_set: Used for an equivalent term sets glossary.
         """
         ...
     @overload
@@ -172,8 +172,8 @@ class GlossaryEntry(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 terms_pair: Optional[pulumi.Input[pulumi.InputType['GlossaryTermsPairArgs']]] = None,
-                 terms_set: Optional[pulumi.Input[pulumi.InputType['GlossaryTermsSetArgs']]] = None,
+                 terms_pair: Optional[pulumi.Input[Union['GlossaryTermsPairArgs', 'GlossaryTermsPairArgsDict']]] = None,
+                 terms_set: Optional[pulumi.Input[Union['GlossaryTermsSetArgs', 'GlossaryTermsSetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

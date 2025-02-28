@@ -161,11 +161,11 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_stream_config: Optional[pulumi.Input[pulumi.InputType['ChangeStreamConfigArgs']]] = None,
-                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ColumnFamilyArgs']]]]] = None,
+                 change_stream_config: Optional[pulumi.Input[Union['ChangeStreamConfigArgs', 'ChangeStreamConfigArgsDict']]] = None,
+                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ColumnFamilyArgs', 'ColumnFamilyArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  granularity: Optional[pulumi.Input['TableGranularity']] = None,
-                 initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]]] = None,
+                 initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SplitArgs', 'SplitArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -176,11 +176,11 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ChangeStreamConfigArgs']] change_stream_config: If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ColumnFamilyArgs']]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
+        :param pulumi.Input[Union['ChangeStreamConfigArgs', 'ChangeStreamConfigArgsDict']] change_stream_config: If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ColumnFamilyArgs', 'ColumnFamilyArgsDict']]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         :param pulumi.Input[bool] deletion_protection: Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
         :param pulumi.Input['TableGranularity'] granularity: Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]] initial_splits: The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SplitArgs', 'SplitArgsDict']]]] initial_splits: The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
         :param pulumi.Input[str] name: The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
         :param pulumi.Input[str] table_id: The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
         """
@@ -208,11 +208,11 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_stream_config: Optional[pulumi.Input[pulumi.InputType['ChangeStreamConfigArgs']]] = None,
-                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ColumnFamilyArgs']]]]] = None,
+                 change_stream_config: Optional[pulumi.Input[Union['ChangeStreamConfigArgs', 'ChangeStreamConfigArgsDict']]] = None,
+                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ColumnFamilyArgs', 'ColumnFamilyArgsDict']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  granularity: Optional[pulumi.Input['TableGranularity']] = None,
-                 initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]]] = None,
+                 initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SplitArgs', 'SplitArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,

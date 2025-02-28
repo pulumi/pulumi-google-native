@@ -182,8 +182,8 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input[pulumi.InputType['GoogleIamAdminV1WorkforcePoolProviderOidcArgs']]] = None,
-                 saml: Optional[pulumi.Input[pulumi.InputType['GoogleIamAdminV1WorkforcePoolProviderSamlArgs']]] = None,
+                 oidc: Optional[pulumi.Input[Union['GoogleIamAdminV1WorkforcePoolProviderOidcArgs', 'GoogleIamAdminV1WorkforcePoolProviderOidcArgsDict']]] = None,
+                 saml: Optional[pulumi.Input[Union['GoogleIamAdminV1WorkforcePoolProviderSamlArgs', 'GoogleIamAdminV1WorkforcePoolProviderSamlArgsDict']]] = None,
                  workforce_pool_id: Optional[pulumi.Input[str]] = None,
                  workforce_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -198,8 +198,8 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A user-specified display name for the provider. Cannot exceed 32 characters.
-        :param pulumi.Input[pulumi.InputType['GoogleIamAdminV1WorkforcePoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider configuration.
-        :param pulumi.Input[pulumi.InputType['GoogleIamAdminV1WorkforcePoolProviderSamlArgs']] saml: A SAML identity provider configuration.
+        :param pulumi.Input[Union['GoogleIamAdminV1WorkforcePoolProviderOidcArgs', 'GoogleIamAdminV1WorkforcePoolProviderOidcArgsDict']] oidc: An OpenId Connect 1.0 identity provider configuration.
+        :param pulumi.Input[Union['GoogleIamAdminV1WorkforcePoolProviderSamlArgs', 'GoogleIamAdminV1WorkforcePoolProviderSamlArgsDict']] saml: A SAML identity provider configuration.
         :param pulumi.Input[str] workforce_pool_provider_id: Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
         ...
@@ -233,8 +233,8 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 oidc: Optional[pulumi.Input[pulumi.InputType['GoogleIamAdminV1WorkforcePoolProviderOidcArgs']]] = None,
-                 saml: Optional[pulumi.Input[pulumi.InputType['GoogleIamAdminV1WorkforcePoolProviderSamlArgs']]] = None,
+                 oidc: Optional[pulumi.Input[Union['GoogleIamAdminV1WorkforcePoolProviderOidcArgs', 'GoogleIamAdminV1WorkforcePoolProviderOidcArgsDict']]] = None,
+                 saml: Optional[pulumi.Input[Union['GoogleIamAdminV1WorkforcePoolProviderSamlArgs', 'GoogleIamAdminV1WorkforcePoolProviderSamlArgsDict']]] = None,
                  workforce_pool_id: Optional[pulumi.Input[str]] = None,
                  workforce_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):

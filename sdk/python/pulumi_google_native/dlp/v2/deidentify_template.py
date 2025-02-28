@@ -123,7 +123,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyConfigArgs']]] = None,
+                 deidentify_config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2DeidentifyConfigArgs', 'GooglePrivacyDlpV2DeidentifyConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -136,7 +136,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyConfigArgs']] deidentify_config: The core content of the template.
+        :param pulumi.Input[Union['GooglePrivacyDlpV2DeidentifyConfigArgs', 'GooglePrivacyDlpV2DeidentifyConfigArgsDict']] deidentify_config: The core content of the template.
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[str] location: Deprecated. This field has no effect.
@@ -167,7 +167,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deidentify_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2DeidentifyConfigArgs']]] = None,
+                 deidentify_config: Optional[pulumi.Input[Union['GooglePrivacyDlpV2DeidentifyConfigArgs', 'GooglePrivacyDlpV2DeidentifyConfigArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,

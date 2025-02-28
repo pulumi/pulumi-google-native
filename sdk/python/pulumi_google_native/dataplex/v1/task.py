@@ -189,15 +189,15 @@ class Task(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskExecutionSpecArgs', 'GoogleCloudDataplexV1TaskExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']]] = None,
+                 notebook: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs', 'GoogleCloudDataplexV1TaskNotebookTaskConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskSparkTaskConfigArgs', 'GoogleCloudDataplexV1TaskSparkTaskConfigArgsDict']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
-                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']]] = None,
+                 trigger_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskTriggerSpecArgs', 'GoogleCloudDataplexV1TaskTriggerSpecArgsDict']]] = None,
                  __props__=None):
         """
         Creates a task resource within a lake.
@@ -207,12 +207,12 @@ class Task(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. Description of the task.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskExecutionSpecArgs']] execution_spec: Spec related to how a task is executed.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1TaskExecutionSpecArgs', 'GoogleCloudDataplexV1TaskExecutionSpecArgsDict']] execution_spec: Spec related to how a task is executed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the task.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']] notebook: Config related to running scheduled Notebooks.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']] spark: Config related to running custom Spark tasks.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs', 'GoogleCloudDataplexV1TaskNotebookTaskConfigArgsDict']] notebook: Config related to running scheduled Notebooks.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1TaskSparkTaskConfigArgs', 'GoogleCloudDataplexV1TaskSparkTaskConfigArgsDict']] spark: Config related to running custom Spark tasks.
         :param pulumi.Input[str] task_id: Required. Task identifier.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']] trigger_spec: Spec related to how often and when a task should be triggered.
+        :param pulumi.Input[Union['GoogleCloudDataplexV1TaskTriggerSpecArgs', 'GoogleCloudDataplexV1TaskTriggerSpecArgsDict']] trigger_spec: Spec related to how often and when a task should be triggered.
         """
         ...
     @overload
@@ -241,15 +241,15 @@ class Task(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 execution_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskExecutionSpecArgs']]] = None,
+                 execution_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskExecutionSpecArgs', 'GoogleCloudDataplexV1TaskExecutionSpecArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 notebook: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']]] = None,
+                 notebook: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs', 'GoogleCloudDataplexV1TaskNotebookTaskConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']]] = None,
+                 spark: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskSparkTaskConfigArgs', 'GoogleCloudDataplexV1TaskSparkTaskConfigArgsDict']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
-                 trigger_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']]] = None,
+                 trigger_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1TaskTriggerSpecArgs', 'GoogleCloudDataplexV1TaskTriggerSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

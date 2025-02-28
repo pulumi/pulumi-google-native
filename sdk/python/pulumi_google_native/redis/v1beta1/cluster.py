@@ -181,7 +181,7 @@ class Cluster(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PscConfigArgs']]]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']]]]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -195,7 +195,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input['ClusterAuthorizationMode'] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         :param pulumi.Input[str] cluster_id: Required. The logical name of the Redis cluster in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PscConfigArgs']]]] psc_configs: Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']]]] psc_configs: Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[int] shard_count: Number of shards for the Redis cluster.
@@ -230,7 +230,7 @@ class Cluster(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PscConfigArgs']]]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PscConfigArgs', 'PscConfigArgsDict']]]]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,

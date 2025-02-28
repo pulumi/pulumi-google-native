@@ -320,25 +320,25 @@ class BatchPredictionJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs']]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs', 'GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgsDict']]] = None,
                  disable_container_logging: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
-                 explanation_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ExplanationSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
+                 explanation_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ExplanationSpecArgs', 'GoogleCloudAiplatformV1beta1ExplanationSpecArgsDict']]] = None,
                  generate_explanation: Optional[pulumi.Input[bool]] = None,
-                 input_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs']]] = None,
-                 instance_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs']]] = None,
+                 input_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgsDict']]] = None,
+                 instance_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 manual_batch_tuning_parameters: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs']]] = None,
+                 manual_batch_tuning_parameters: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs', 'GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgsDict']]] = None,
                  model: Optional[pulumi.Input[str]] = None,
-                 model_monitoring_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs']]] = None,
-                 model_monitoring_stats_anomalies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs']]]]] = None,
+                 model_monitoring_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgsDict']]] = None,
+                 model_monitoring_stats_anomalies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgsDict']]]]] = None,
                  model_parameters: Optional[Any] = None,
-                 output_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs']]] = None,
+                 output_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 unmanaged_container_model: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs']]] = None,
+                 unmanaged_container_model: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs', 'GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgsDict']]] = None,
                  __props__=None):
         """
         Creates a BatchPredictionJob. A BatchPredictionJob once created will right away be attempted to start.
@@ -346,23 +346,23 @@ class BatchPredictionJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs']] dedicated_resources: The config of resources used by the Model during the batch prediction. If the Model supports DEDICATED_RESOURCES this config may be provided (and the job will use these resources), if the Model doesn't support AUTOMATIC_RESOURCES, this config must be provided.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs', 'GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgsDict']] dedicated_resources: The config of resources used by the Model during the batch prediction. If the Model supports DEDICATED_RESOURCES this config may be provided (and the job will use these resources), if the Model doesn't support AUTOMATIC_RESOURCES, this config must be provided.
         :param pulumi.Input[bool] disable_container_logging: For custom-trained Models and AutoML Tabular Models, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Cloud Logging by default. Please note that the logs incur cost, which are subject to [Cloud Logging pricing](https://cloud.google.com/logging/pricing). User can disable container logging by setting this flag to true.
         :param pulumi.Input[str] display_name: The user-defined name of this BatchPredictionJob.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']] encryption_spec: Customer-managed encryption key options for a BatchPredictionJob. If this is set, then all resources created by the BatchPredictionJob will be encrypted with the provided encryption key.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ExplanationSpecArgs']] explanation_spec: Explanation configuration for this BatchPredictionJob. Can be specified only if generate_explanation is set to `true`. This value overrides the value of Model.explanation_spec. All fields of explanation_spec are optional in the request. If a field of the explanation_spec object is not populated, the corresponding field of the Model.explanation_spec object is inherited.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key options for a BatchPredictionJob. If this is set, then all resources created by the BatchPredictionJob will be encrypted with the provided encryption key.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1ExplanationSpecArgs', 'GoogleCloudAiplatformV1beta1ExplanationSpecArgsDict']] explanation_spec: Explanation configuration for this BatchPredictionJob. Can be specified only if generate_explanation is set to `true`. This value overrides the value of Model.explanation_spec. All fields of explanation_spec are optional in the request. If a field of the explanation_spec object is not populated, the corresponding field of the Model.explanation_spec object is inherited.
         :param pulumi.Input[bool] generate_explanation: Generate explanation with the batch prediction results. When set to `true`, the batch prediction output changes based on the `predictions_format` field of the BatchPredictionJob.output_config object: * `bigquery`: output includes a column named `explanation`. The value is a struct that conforms to the Explanation object. * `jsonl`: The JSON objects on each line include an additional entry keyed `explanation`. The value of the entry is a JSON object that conforms to the Explanation object. * `csv`: Generating explanations for CSV format is not supported. If this field is set to true, either the Model.explanation_spec or explanation_spec must be populated.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs']] input_config: Input configuration of the instances on which predictions are performed. The schema of any single instance may be specified via the Model's PredictSchemata's instance_schema_uri.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs']] instance_config: Configuration for how to convert batch prediction input instances to the prediction instances that are sent to the Model.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgsDict']] input_config: Input configuration of the instances on which predictions are performed. The schema of any single instance may be specified via the Model's PredictSchemata's instance_schema_uri.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgsDict']] instance_config: Configuration for how to convert batch prediction input instances to the prediction instances that are sent to the Model.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize BatchPredictionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs']] manual_batch_tuning_parameters: Immutable. Parameters configuring the batch behavior. Currently only applicable when dedicated_resources are used (in other cases Vertex AI does the tuning itself).
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs', 'GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgsDict']] manual_batch_tuning_parameters: Immutable. Parameters configuring the batch behavior. Currently only applicable when dedicated_resources are used (in other cases Vertex AI does the tuning itself).
         :param pulumi.Input[str] model: The name of the Model resource that produces the predictions via this job, must share the same ancestor Location. Starting this job has no impact on any existing deployments of the Model and their resources. Exactly one of model and unmanaged_container_model must be set. The model resource name may contain version id or version alias to specify the version. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` if no version is specified, the default version will be deployed. The model resource could also be a publisher model. Example: `publishers/{publisher}/models/{model}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs']] model_monitoring_config: Model monitoring config will be used for analysis model behaviors, based on the input and output to the batch prediction job, as well as the provided training dataset.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs']]]] model_monitoring_stats_anomalies: Get batch prediction job monitoring statistics.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgsDict']] model_monitoring_config: Model monitoring config will be used for analysis model behaviors, based on the input and output to the batch prediction job, as well as the provided training dataset.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgsDict']]]] model_monitoring_stats_anomalies: Get batch prediction job monitoring statistics.
         :param Any model_parameters: The parameters that govern the predictions. The schema of the parameters may be specified via the Model's PredictSchemata's parameters_schema_uri.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs']] output_config: The Configuration specifying where output predictions should be written. The schema of any single prediction may be specified as a concatenation of Model's PredictSchemata's instance_schema_uri and prediction_schema_uri.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgsDict']] output_config: The Configuration specifying where output predictions should be written. The schema of any single prediction may be specified as a concatenation of Model's PredictSchemata's instance_schema_uri and prediction_schema_uri.
         :param pulumi.Input[str] service_account: The service account that the DeployedModel's container runs as. If not specified, a system generated one will be used, which has minimal permissions and the custom container, if used, may not have enough permission to access other Google Cloud resources. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs']] unmanaged_container_model: Contains model information necessary to perform batch prediction without requiring uploading to model registry. Exactly one of model and unmanaged_container_model must be set.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs', 'GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgsDict']] unmanaged_container_model: Contains model information necessary to perform batch prediction without requiring uploading to model registry. Exactly one of model and unmanaged_container_model must be set.
         """
         ...
     @overload
@@ -389,25 +389,25 @@ class BatchPredictionJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs']]] = None,
+                 dedicated_resources: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgs', 'GoogleCloudAiplatformV1beta1BatchDedicatedResourcesArgsDict']]] = None,
                  disable_container_logging: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1EncryptionSpecArgs']]] = None,
-                 explanation_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ExplanationSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1EncryptionSpecArgs', 'GoogleCloudAiplatformV1beta1EncryptionSpecArgsDict']]] = None,
+                 explanation_spec: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ExplanationSpecArgs', 'GoogleCloudAiplatformV1beta1ExplanationSpecArgsDict']]] = None,
                  generate_explanation: Optional[pulumi.Input[bool]] = None,
-                 input_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs']]] = None,
-                 instance_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs']]] = None,
+                 input_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigArgsDict']]] = None,
+                 instance_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 manual_batch_tuning_parameters: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs']]] = None,
+                 manual_batch_tuning_parameters: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs', 'GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgsDict']]] = None,
                  model: Optional[pulumi.Input[str]] = None,
-                 model_monitoring_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs']]] = None,
-                 model_monitoring_stats_anomalies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs']]]]] = None,
+                 model_monitoring_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringConfigArgsDict']]] = None,
+                 model_monitoring_stats_anomalies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgs', 'GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesArgsDict']]]]] = None,
                  model_parameters: Optional[Any] = None,
-                 output_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs']]] = None,
+                 output_config: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgs', 'GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 unmanaged_container_model: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs']]] = None,
+                 unmanaged_container_model: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgs', 'GoogleCloudAiplatformV1beta1UnmanagedContainerModelArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

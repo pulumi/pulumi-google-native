@@ -221,35 +221,35 @@ class Flow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3AdvancedSettingsArgs', 'GoogleCloudDialogflowCxV3AdvancedSettingsArgsDict']]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]]] = None,
-                 knowledge_connector_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']]] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EventHandlerArgs', 'GoogleCloudDialogflowCxV3EventHandlerArgsDict']]]]] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs', 'GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nlu_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3NluSettingsArgs']]] = None,
+                 nlu_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3NluSettingsArgs', 'GoogleCloudDialogflowCxV3NluSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]]] = None,
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3TransitionRouteArgs', 'GoogleCloudDialogflowCxV3TransitionRouteArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates a flow in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3AdvancedSettingsArgs', 'GoogleCloudDialogflowCxV3AdvancedSettingsArgsDict']] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]] event_handlers: A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']] knowledge_connector_settings: Optional. Knowledge connector configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EventHandlerArgs', 'GoogleCloudDialogflowCxV3EventHandlerArgsDict']]]] event_handlers: A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs', 'GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Optional. Knowledge connector configuration.
         :param pulumi.Input[str] language_code: The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3NluSettingsArgs']] nlu_settings: NLU related settings of the flow.
+        :param pulumi.Input[Union['GoogleCloudDialogflowCxV3NluSettingsArgs', 'GoogleCloudDialogflowCxV3NluSettingsArgsDict']] nlu_settings: NLU related settings of the flow.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]] transition_routes: A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3TransitionRouteArgs', 'GoogleCloudDialogflowCxV3TransitionRouteArgsDict']]]] transition_routes: A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
         """
         ...
     @overload
@@ -275,19 +275,19 @@ class Flow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AdvancedSettingsArgs']]] = None,
+                 advanced_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3AdvancedSettingsArgs', 'GoogleCloudDialogflowCxV3AdvancedSettingsArgsDict']]] = None,
                  agent_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]]] = None,
-                 knowledge_connector_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs']]] = None,
+                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3EventHandlerArgs', 'GoogleCloudDialogflowCxV3EventHandlerArgsDict']]]]] = None,
+                 knowledge_connector_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgs', 'GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsArgsDict']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 nlu_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3NluSettingsArgs']]] = None,
+                 nlu_settings: Optional[pulumi.Input[Union['GoogleCloudDialogflowCxV3NluSettingsArgs', 'GoogleCloudDialogflowCxV3NluSettingsArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]]] = None,
+                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GoogleCloudDialogflowCxV3TransitionRouteArgs', 'GoogleCloudDialogflowCxV3TransitionRouteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

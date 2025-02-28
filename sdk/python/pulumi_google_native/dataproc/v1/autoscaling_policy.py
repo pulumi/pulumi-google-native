@@ -124,13 +124,13 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
+                 basic_algorithm: Optional[pulumi.Input[Union['BasicAutoscalingAlgorithmArgs', 'BasicAutoscalingAlgorithmArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
+                 secondary_worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
                  __props__=None):
         """
         Creates new autoscaling policy.
@@ -140,8 +140,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] worker_config: Describes how the autoscaler will operate for primary workers.
+        :param pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
+        :param pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']] worker_config: Describes how the autoscaler will operate for primary workers.
         """
         ...
     @overload
@@ -168,13 +168,13 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
+                 basic_algorithm: Optional[pulumi.Input[Union['BasicAutoscalingAlgorithmArgs', 'BasicAutoscalingAlgorithmArgsDict']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
+                 secondary_worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
+                 worker_config: Optional[pulumi.Input[Union['InstanceGroupAutoscalingPolicyConfigArgs', 'InstanceGroupAutoscalingPolicyConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -113,7 +113,7 @@ class FeatureOnlineStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs']]] = None,
+                 bigtable: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs', 'GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -126,7 +126,7 @@ class FeatureOnlineStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs']] bigtable: Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
+        :param pulumi.Input[Union['GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs', 'GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgsDict']] bigtable: Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[str] feature_online_store_id: Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
@@ -156,7 +156,7 @@ class FeatureOnlineStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigtable: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs']]] = None,
+                 bigtable: Optional[pulumi.Input[Union['GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs', 'GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgsDict']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,

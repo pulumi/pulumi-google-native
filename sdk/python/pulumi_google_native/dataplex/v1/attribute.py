@@ -188,7 +188,7 @@ class Attribute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_access_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAccessSpecArgs']]] = None,
+                 data_access_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataAccessSpecArgs', 'GoogleCloudDataplexV1DataAccessSpecArgsDict']]] = None,
                  data_attribute_id: Optional[pulumi.Input[str]] = None,
                  data_taxonomy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -198,7 +198,7 @@ class Attribute(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_access_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ResourceAccessSpecArgs']]] = None,
+                 resource_access_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1ResourceAccessSpecArgs', 'GoogleCloudDataplexV1ResourceAccessSpecArgsDict']]] = None,
                  __props__=None):
         """
         Create a DataAttribute resource.
@@ -206,14 +206,14 @@ class Attribute(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAccessSpecArgs']] data_access_spec: Optional. Specified when applied to data stored on the resource (eg: rows, columns in BigQuery Tables).
+        :param pulumi.Input[Union['GoogleCloudDataplexV1DataAccessSpecArgs', 'GoogleCloudDataplexV1DataAccessSpecArgsDict']] data_access_spec: Optional. Specified when applied to data stored on the resource (eg: rows, columns in BigQuery Tables).
         :param pulumi.Input[str] data_attribute_id: Required. DataAttribute identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the DataTaxonomy.
         :param pulumi.Input[str] description: Optional. Description of the DataAttribute.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataAttribute.
         :param pulumi.Input[str] parent_id: Optional. The ID of the parent DataAttribute resource, should belong to the same data taxonomy. Circular dependency in parent chain is not valid. Maximum depth of the hierarchy allowed is 4. a -> b -> c -> d -> e, depth = 4
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ResourceAccessSpecArgs']] resource_access_spec: Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
+        :param pulumi.Input[Union['GoogleCloudDataplexV1ResourceAccessSpecArgs', 'GoogleCloudDataplexV1ResourceAccessSpecArgsDict']] resource_access_spec: Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
         """
         ...
     @overload
@@ -240,7 +240,7 @@ class Attribute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_access_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAccessSpecArgs']]] = None,
+                 data_access_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1DataAccessSpecArgs', 'GoogleCloudDataplexV1DataAccessSpecArgsDict']]] = None,
                  data_attribute_id: Optional[pulumi.Input[str]] = None,
                  data_taxonomy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -250,7 +250,7 @@ class Attribute(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_access_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ResourceAccessSpecArgs']]] = None,
+                 resource_access_spec: Optional[pulumi.Input[Union['GoogleCloudDataplexV1ResourceAccessSpecArgs', 'GoogleCloudDataplexV1ResourceAccessSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

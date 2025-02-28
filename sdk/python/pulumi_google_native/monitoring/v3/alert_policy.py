@@ -247,39 +247,39 @@ class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_strategy: Optional[pulumi.Input[pulumi.InputType['AlertStrategyArgs']]] = None,
+                 alert_strategy: Optional[pulumi.Input[Union['AlertStrategyArgs', 'AlertStrategyArgsDict']]] = None,
                  combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
-                 creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConditionArgs', 'ConditionArgsDict']]]]] = None,
+                 creation_record: Optional[pulumi.Input[Union['MutationRecordArgs', 'MutationRecordArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 documentation: Optional[pulumi.Input[pulumi.InputType['DocumentationArgs']]] = None,
+                 documentation: Optional[pulumi.Input[Union['DocumentationArgs', 'DocumentationArgsDict']]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 mutation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
+                 mutation_record: Optional[pulumi.Input[Union['MutationRecordArgs', 'MutationRecordArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['AlertPolicySeverity']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
+                 validity: Optional[pulumi.Input[Union['StatusArgs', 'StatusArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AlertStrategyArgs']] alert_strategy: Control over how this alert policy's notification channels are notified.
+        :param pulumi.Input[Union['AlertStrategyArgs', 'AlertStrategyArgsDict']] alert_strategy: Control over how this alert policy's notification channels are notified.
         :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
-        :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConditionArgs', 'ConditionArgsDict']]]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
+        :param pulumi.Input[Union['MutationRecordArgs', 'MutationRecordArgsDict']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name is not a unique key of the AlertPolicy.
-        :param pulumi.Input[pulumi.InputType['DocumentationArgs']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation.
+        :param pulumi.Input[Union['DocumentationArgs', 'DocumentationArgsDict']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. On write, the default interpretation if unset is that the policy is enabled. On read, clients should not make any assumption about the state if it has not been populated. The field should always be populated on List and Get operations, unless a field projection has been specified that strips it out.
-        :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] mutation_record: A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
+        :param pulumi.Input[Union['MutationRecordArgs', 'MutationRecordArgsDict']] mutation_record: A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] name: Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
         :param pulumi.Input['AlertPolicySeverity'] severity: Optional. The severity of an alert policy indicates how important incidents generated by that policy are. The severity level will be displayed on the Incident detail page and in notifications.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.Note that Prometheus {alert name} is a valid Prometheus label names (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels), whereas Prometheus {rule group} is an unrestricted UTF-8 string. This means that they cannot be stored as-is in user labels, because they may contain characters that are not allowed in user-label values.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] validity: Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
+        :param pulumi.Input[Union['StatusArgs', 'StatusArgsDict']] validity: Read-only description of how the alert policy is invalid. This field is only set when the alert policy is invalid. An invalid alert policy will not generate incidents.
         """
         ...
     @overload
@@ -305,20 +305,20 @@ class AlertPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_strategy: Optional[pulumi.Input[pulumi.InputType['AlertStrategyArgs']]] = None,
+                 alert_strategy: Optional[pulumi.Input[Union['AlertStrategyArgs', 'AlertStrategyArgsDict']]] = None,
                  combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
-                 creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConditionArgs', 'ConditionArgsDict']]]]] = None,
+                 creation_record: Optional[pulumi.Input[Union['MutationRecordArgs', 'MutationRecordArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 documentation: Optional[pulumi.Input[pulumi.InputType['DocumentationArgs']]] = None,
+                 documentation: Optional[pulumi.Input[Union['DocumentationArgs', 'DocumentationArgsDict']]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 mutation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
+                 mutation_record: Optional[pulumi.Input[Union['MutationRecordArgs', 'MutationRecordArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['AlertPolicySeverity']] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 validity: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
+                 validity: Optional[pulumi.Input[Union['StatusArgs', 'StatusArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

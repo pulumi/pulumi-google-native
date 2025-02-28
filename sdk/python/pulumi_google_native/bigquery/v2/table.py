@@ -353,27 +353,27 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biglake_configuration: Optional[pulumi.Input[pulumi.InputType['BigLakeConfigurationArgs']]] = None,
-                 clustering: Optional[pulumi.Input[pulumi.InputType['ClusteringArgs']]] = None,
+                 biglake_configuration: Optional[pulumi.Input[Union['BigLakeConfigurationArgs', 'BigLakeConfigurationArgsDict']]] = None,
+                 clustering: Optional[pulumi.Input[Union['ClusteringArgs', 'ClusteringArgsDict']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 external_data_configuration: Optional[pulumi.Input[pulumi.InputType['ExternalDataConfigurationArgs']]] = None,
+                 external_data_configuration: Optional[pulumi.Input[Union['ExternalDataConfigurationArgs', 'ExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 materialized_view: Optional[pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']]] = None,
+                 materialized_view: Optional[pulumi.Input[Union['MaterializedViewDefinitionArgs', 'MaterializedViewDefinitionArgsDict']]] = None,
                  max_staleness: Optional[pulumi.Input[str]] = None,
-                 model: Optional[pulumi.Input[pulumi.InputType['ModelDefinitionArgs']]] = None,
+                 model: Optional[pulumi.Input[Union['ModelDefinitionArgs', 'ModelDefinitionArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
+                 range_partitioning: Optional[pulumi.Input[Union['RangePartitioningArgs', 'RangePartitioningArgsDict']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
-                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableConstraintsArgs']]] = None,
-                 table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
-                 time_partitioning: Optional[pulumi.Input[pulumi.InputType['TimePartitioningArgs']]] = None,
-                 view: Optional[pulumi.Input[pulumi.InputType['ViewDefinitionArgs']]] = None,
+                 schema: Optional[pulumi.Input[Union['TableSchemaArgs', 'TableSchemaArgsDict']]] = None,
+                 table_constraints: Optional[pulumi.Input[Union['TableConstraintsArgs', 'TableConstraintsArgsDict']]] = None,
+                 table_reference: Optional[pulumi.Input[Union['TableReferenceArgs', 'TableReferenceArgsDict']]] = None,
+                 time_partitioning: Optional[pulumi.Input[Union['TimePartitioningArgs', 'TimePartitioningArgsDict']]] = None,
+                 view: Optional[pulumi.Input[Union['ViewDefinitionArgs', 'ViewDefinitionArgsDict']]] = None,
                  __props__=None):
         """
         Creates a new, empty table in the dataset.
@@ -381,25 +381,25 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BigLakeConfigurationArgs']] biglake_configuration: [Optional] Specifies the configuration of a BigLake managed table.
-        :param pulumi.Input[pulumi.InputType['ClusteringArgs']] clustering: [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+        :param pulumi.Input[Union['BigLakeConfigurationArgs', 'BigLakeConfigurationArgsDict']] biglake_configuration: [Optional] Specifies the configuration of a BigLake managed table.
+        :param pulumi.Input[Union['ClusteringArgs', 'ClusteringArgsDict']] clustering: [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[str] description: [Optional] A user-friendly description of this table.
-        :param pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']] encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
+        :param pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']] encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
         :param pulumi.Input[str] expiration_time: [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
-        :param pulumi.Input[pulumi.InputType['ExternalDataConfigurationArgs']] external_data_configuration: [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        :param pulumi.Input[Union['ExternalDataConfigurationArgs', 'ExternalDataConfigurationArgsDict']] external_data_configuration: [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for this table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-        :param pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']] materialized_view: [Optional] Materialized view definition.
+        :param pulumi.Input[Union['MaterializedViewDefinitionArgs', 'MaterializedViewDefinitionArgsDict']] materialized_view: [Optional] Materialized view definition.
         :param pulumi.Input[str] max_staleness: [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
-        :param pulumi.Input[pulumi.InputType['ModelDefinitionArgs']] model: [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
-        :param pulumi.Input[pulumi.InputType['RangePartitioningArgs']] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        :param pulumi.Input[Union['ModelDefinitionArgs', 'ModelDefinitionArgsDict']] model: [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+        :param pulumi.Input[Union['RangePartitioningArgs', 'RangePartitioningArgsDict']] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
-        :param pulumi.Input[pulumi.InputType['TableSchemaArgs']] schema: [Optional] Describes the schema of this table.
-        :param pulumi.Input[pulumi.InputType['TableConstraintsArgs']] table_constraints: [Optional] The table constraints on the table.
-        :param pulumi.Input[pulumi.InputType['TableReferenceArgs']] table_reference: [Required] Reference describing the ID of this table.
-        :param pulumi.Input[pulumi.InputType['TimePartitioningArgs']] time_partitioning: Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-        :param pulumi.Input[pulumi.InputType['ViewDefinitionArgs']] view: [Optional] The view definition.
+        :param pulumi.Input[Union['TableSchemaArgs', 'TableSchemaArgsDict']] schema: [Optional] Describes the schema of this table.
+        :param pulumi.Input[Union['TableConstraintsArgs', 'TableConstraintsArgsDict']] table_constraints: [Optional] The table constraints on the table.
+        :param pulumi.Input[Union['TableReferenceArgs', 'TableReferenceArgsDict']] table_reference: [Required] Reference describing the ID of this table.
+        :param pulumi.Input[Union['TimePartitioningArgs', 'TimePartitioningArgsDict']] time_partitioning: Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        :param pulumi.Input[Union['ViewDefinitionArgs', 'ViewDefinitionArgsDict']] view: [Optional] The view definition.
         """
         ...
     @overload
@@ -426,27 +426,27 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biglake_configuration: Optional[pulumi.Input[pulumi.InputType['BigLakeConfigurationArgs']]] = None,
-                 clustering: Optional[pulumi.Input[pulumi.InputType['ClusteringArgs']]] = None,
+                 biglake_configuration: Optional[pulumi.Input[Union['BigLakeConfigurationArgs', 'BigLakeConfigurationArgsDict']]] = None,
+                 clustering: Optional[pulumi.Input[Union['ClusteringArgs', 'ClusteringArgsDict']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
+                 encryption_configuration: Optional[pulumi.Input[Union['EncryptionConfigurationArgs', 'EncryptionConfigurationArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[str]] = None,
-                 external_data_configuration: Optional[pulumi.Input[pulumi.InputType['ExternalDataConfigurationArgs']]] = None,
+                 external_data_configuration: Optional[pulumi.Input[Union['ExternalDataConfigurationArgs', 'ExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 materialized_view: Optional[pulumi.Input[pulumi.InputType['MaterializedViewDefinitionArgs']]] = None,
+                 materialized_view: Optional[pulumi.Input[Union['MaterializedViewDefinitionArgs', 'MaterializedViewDefinitionArgsDict']]] = None,
                  max_staleness: Optional[pulumi.Input[str]] = None,
-                 model: Optional[pulumi.Input[pulumi.InputType['ModelDefinitionArgs']]] = None,
+                 model: Optional[pulumi.Input[Union['ModelDefinitionArgs', 'ModelDefinitionArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
+                 range_partitioning: Optional[pulumi.Input[Union['RangePartitioningArgs', 'RangePartitioningArgsDict']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
-                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableConstraintsArgs']]] = None,
-                 table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
-                 time_partitioning: Optional[pulumi.Input[pulumi.InputType['TimePartitioningArgs']]] = None,
-                 view: Optional[pulumi.Input[pulumi.InputType['ViewDefinitionArgs']]] = None,
+                 schema: Optional[pulumi.Input[Union['TableSchemaArgs', 'TableSchemaArgsDict']]] = None,
+                 table_constraints: Optional[pulumi.Input[Union['TableConstraintsArgs', 'TableConstraintsArgsDict']]] = None,
+                 table_reference: Optional[pulumi.Input[Union['TableReferenceArgs', 'TableReferenceArgsDict']]] = None,
+                 time_partitioning: Optional[pulumi.Input[Union['TimePartitioningArgs', 'TimePartitioningArgsDict']]] = None,
+                 view: Optional[pulumi.Input[Union['ViewDefinitionArgs', 'ViewDefinitionArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
