@@ -46,16 +46,16 @@ jobs:
       with:
         lfs: true
     - name: Install Go
-      uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
+      uses: actions/setup-go@0aaccfd150d50ccaeb58ebd88d36e91967a5f35b # v5.4.0
       with:
         go-version: 1.21.x
         cache-dependency-path: "**/*.sum"
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@cd6b2b78ad38bdd294341cda064ec0692b06215b # v1.14.0
+      uses: jaxxstorm/action-install-gh-release@4304621e8c48d66093a8a214af5d5b5bc3b3d943 # v2.0.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/actions@13b8b7177d6fb736766875dac9b78aab07bd785f # v6.0.1
+      uses: pulumi/actions@9519177da243fd32cab35cdbf19cce1ab7472fcc # v6.2.0
     - name: Cleanup SDK Folder
       run: make clean
     - name: Preparing Git Branch
@@ -101,7 +101,7 @@ jobs:
         source_branch: generate-sdk/${{ github.run_id }}-${{ github.run_number }}
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
-      uses: 8398a7/action-slack@28ba43ae48961b90635b50953d216767a6bea486 # v3.16.2
+      uses: 8398a7/action-slack@1750b5085f3ec60384090fb7c52965ef822e869e # v3.18.0
       with:
         author_name: Failure during automated SDK generation
         fields: repo,commit,author,action
