@@ -7,11 +7,11 @@
 
 # Native Google Cloud Pulumi Provider (developer preview)
 
+> **This provider is unmaintained.** New and existing users should prefer the [Google Cloud Classic Provider (`pulumi-gcp`)](https://github.com/pulumi/pulumi-gcp), which is actively maintained and covers the Google Cloud surface area. No further releases or fixes are planned for `pulumi-google-native`.
+
 The native Google Cloud Provider for Pulumi lets you provision Google Cloud resources in your cloud programs.
 
 This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
-
-> **Warning:** Google Cloud Native is available in developer preview. While upstream changes continue to be delivered, active development is paused. Breaking changes may be introduced in minor version releases.
 
 To use this package, [install the Pulumi CLI](https://www.pulumi.com/docs/get-started/install/).
 
