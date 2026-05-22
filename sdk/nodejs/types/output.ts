@@ -24506,6 +24506,20 @@ export namespace cloudsearch {
         }
 
         /**
+         * A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request.
+         */
+        export interface ContextAttributeResponse {
+            /**
+             * The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched.
+             */
+            name: string;
+            /**
+             * Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the array is 32 characters. The value will be normalized (lower-cased) before being matched.
+             */
+            values: string[];
+        }
+
+        /**
          * Restriction on Datasource.
          */
         export interface DataSourceRestrictionResponse {
@@ -24538,6 +24552,30 @@ export namespace cloudsearch {
         }
 
         /**
+         * List of date values.
+         */
+        export interface DateValuesResponse {
+            values: outputs.cloudsearch.v1.DateResponse[];
+        }
+
+        /**
+         * List of double values.
+         */
+        export interface DoubleValuesResponse {
+            values: number[];
+        }
+
+        /**
+         * List of enum values.
+         */
+        export interface EnumValuesResponse {
+            /**
+             * The maximum allowable length for string values is 32 characters.
+             */
+            values: string[];
+        }
+
+        /**
          * Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
          */
         export interface FacetOptionsResponse {
@@ -24561,6 +24599,17 @@ export namespace cloudsearch {
              * Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
              */
             sourceName: string;
+        }
+
+        export interface FieldViolationResponse {
+            /**
+             * The description of the error.
+             */
+            description: string;
+            /**
+             * Path of field with violation.
+             */
+            field: string;
         }
 
         /**
@@ -24601,6 +24650,16 @@ export namespace cloudsearch {
         }
 
         /**
+         * List of html values.
+         */
+        export interface HtmlValuesResponse {
+            /**
+             * The maximum allowable length for html values is 2048 characters.
+             */
+            values: string[];
+        }
+
+        /**
          * Used to specify integer faceting options.
          */
         export interface IntegerFacetingOptionsResponse {
@@ -24608,6 +24667,222 @@ export namespace cloudsearch {
              * Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
              */
             integerBuckets: string[];
+        }
+
+        /**
+         * List of integer values.
+         */
+        export interface IntegerValuesResponse {
+            values: string[];
+        }
+
+        /**
+         * Represents an interaction between a user and an item.
+         */
+        export interface InteractionResponse {
+            /**
+             * The time when the user acted on the item. If multiple actions of the same type exist for a single user, only the most recent action is recorded.
+             */
+            interactionTime: string;
+            /**
+             * The user that acted on the item.
+             */
+            principal: outputs.cloudsearch.v1.PrincipalResponse;
+            type: string;
+        }
+
+        /**
+         * Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+         */
+        export interface ItemAclResponse {
+            /**
+             * Sets the type of access rules to apply when an item inherits its ACL from a parent. This should always be set in tandem with the inheritAclFrom field. Also, when the inheritAclFrom field is set, this field should be set to a valid AclInheritanceType.
+             */
+            aclInheritanceType: string;
+            /**
+             * List of principals who are explicitly denied access to the item in search results. While principals are denied access by default, use denied readers to handle exceptions and override the list allowed readers. The maximum number of elements is 100.
+             */
+            deniedReaders: outputs.cloudsearch.v1.PrincipalResponse[];
+            /**
+             * The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters.
+             */
+            inheritAclFrom: string;
+            /**
+             * Optional. List of owners for the item. This field has no bearing on document access permissions. It does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number of elements is 5.
+             */
+            owners: outputs.cloudsearch.v1.PrincipalResponse[];
+            /**
+             * List of principals who are allowed to see the item in search results. Optional if inheriting permissions from another item or if the item is not intended to be visible, such as virtual containers. The maximum number of elements is 1000.
+             */
+            readers: outputs.cloudsearch.v1.PrincipalResponse[];
+        }
+
+        /**
+         * Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded.
+         */
+        export interface ItemContentResponse {
+            /**
+             * Upload reference ID of a previously uploaded content via write method.
+             */
+            contentDataRef: outputs.cloudsearch.v1.UploadItemRefResponse;
+            contentFormat: string;
+            /**
+             * Hashing info calculated and provided by the API client for content. Can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+             */
+            hash: string;
+            /**
+             * Content that is supplied inlined within the update method. The maximum length is 102400 bytes (100 KiB).
+             */
+            inlineContent: string;
+        }
+
+        /**
+         * Available metadata fields for the item.
+         */
+        export interface ItemMetadataResponse {
+            /**
+             * The name of the container for this item. Deletion of the container item leads to automatic deletion of this item. Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item, use the inheritAclFrom field. The maximum length is 1536 characters.
+             */
+            containerName: string;
+            /**
+             * The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The maximum length is 32 characters.
+             */
+            contentLanguage: string;
+            /**
+             * A set of named attributes associated with the item. This can be used for influencing the ranking of the item based on the context in the request. The maximum number of elements is 10.
+             */
+            contextAttributes: outputs.cloudsearch.v1.ContextAttributeResponse[];
+            /**
+             * The time when the item was created in the source repository.
+             */
+            createTime: string;
+            /**
+             * Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+             */
+            hash: string;
+            /**
+             * A list of interactions for the item. Interactions are used to improve Search quality, but are not exposed to end users. The maximum number of elements is 1000.
+             */
+            interactions: outputs.cloudsearch.v1.InteractionResponse[];
+            /**
+             * Additional keywords or phrases that should match the item. Used internally for user generated content. The maximum number of elements is 100. The maximum length is 8192 characters.
+             */
+            keywords: string[];
+            /**
+             * The original mime-type of ItemContent.content in the source repository. The maximum length is 256 characters.
+             */
+            mimeType: string;
+            /**
+             * The type of the item. This should correspond to the name of an object definition in the schema registered for the data source. For example, if the schema for the data source contains an object definition with name 'document', then item indexing requests for objects of that type should set objectType to 'document'. The maximum length is 256 characters.
+             */
+            objectType: string;
+            /**
+             * Additional search quality metadata of the item
+             */
+            searchQualityMetadata: outputs.cloudsearch.v1.SearchQualityMetadataResponse;
+            /**
+             * Link to the source repository serving the data. Seach results apply this link to the title. Whitespace or special characters may cause Cloud Seach result links to trigger a redirect notice; to avoid this, encode the URL. The maximum length is 2048 characters.
+             */
+            sourceRepositoryUrl: string;
+            /**
+             * The title of the item. If given, this will be the displayed title of the Search result. The maximum length is 2048 characters.
+             */
+            title: string;
+            /**
+             * The time when the item was last modified in the source repository.
+             */
+            updateTime: string;
+        }
+
+        /**
+         * This contains item's status and any errors.
+         */
+        export interface ItemStatusResponse {
+            /**
+             * Status code.
+             */
+            code: string;
+            /**
+             * Error details in case the item is in ERROR state.
+             */
+            processingErrors: outputs.cloudsearch.v1.ProcessingErrorResponse[];
+            /**
+             * Repository error reported by connector.
+             */
+            repositoryErrors: outputs.cloudsearch.v1.RepositoryErrorResponse[];
+        }
+
+        /**
+         * Available structured data fields for the item.
+         */
+        export interface ItemStructuredDataResponse {
+            /**
+             * Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+             */
+            hash: string;
+            /**
+             * The structured data object that should conform to a registered object definition in the schema for the data source.
+             */
+            object: outputs.cloudsearch.v1.StructuredDataObjectResponse;
+        }
+
+        /**
+         * A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`.
+         */
+        export interface NamedPropertyResponse {
+            booleanValue: boolean;
+            dateValues: outputs.cloudsearch.v1.DateValuesResponse;
+            doubleValues: outputs.cloudsearch.v1.DoubleValuesResponse;
+            enumValues: outputs.cloudsearch.v1.EnumValuesResponse;
+            htmlValues: outputs.cloudsearch.v1.HtmlValuesResponse;
+            integerValues: outputs.cloudsearch.v1.IntegerValuesResponse;
+            /**
+             * The name of the property. This name should correspond to the name of the property that was registered for object definition in the schema. The maximum allowable length for this property is 256 characters.
+             */
+            name: string;
+            objectValues: outputs.cloudsearch.v1.ObjectValuesResponse;
+            textValues: outputs.cloudsearch.v1.TextValuesResponse;
+            timestampValues: outputs.cloudsearch.v1.TimestampValuesResponse;
+        }
+
+        /**
+         * List of object values.
+         */
+        export interface ObjectValuesResponse {
+            values: outputs.cloudsearch.v1.StructuredDataObjectResponse[];
+        }
+
+        /**
+         * Reference to a user, group, or domain.
+         */
+        export interface PrincipalResponse {
+            /**
+             * This principal is a group identified using an external identity. The name field must specify the group resource name with this format: identitysources/{source_id}/groups/{ID}
+             */
+            groupResourceName: string;
+            /**
+             * This principal is a Google Workspace user, group or domain.
+             */
+            gsuitePrincipal: outputs.cloudsearch.v1.GSuitePrincipalResponse;
+            /**
+             * This principal is a user identified using an external identity. The name field must specify the user resource name with this format: identitysources/{source_id}/users/{ID}
+             */
+            userResourceName: string;
+        }
+
+        export interface ProcessingErrorResponse {
+            /**
+             * Error code indicating the nature of the error.
+             */
+            code: string;
+            /**
+             * The description of the error.
+             */
+            errorMessage: string;
+            /**
+             * In case the item fields are invalid, this field contains the details about the validation errors.
+             */
+            fieldViolations: outputs.cloudsearch.v1.FieldViolationResponse[];
         }
 
         /**
@@ -24625,6 +24900,24 @@ export namespace cloudsearch {
         }
 
         /**
+         * Errors when the connector is communicating to the source repository.
+         */
+        export interface RepositoryErrorResponse {
+            /**
+             * Message that describes the error. The maximum allowable length of the message is 8192 characters.
+             */
+            errorMessage: string;
+            /**
+             * Error codes. Matches the definition of HTTP status codes.
+             */
+            httpStatusCode: number;
+            /**
+             * The type of error.
+             */
+            type: string;
+        }
+
+        /**
          * Scoring configurations for a source while processing a Search or Suggest request.
          */
         export interface ScoringConfigResponse {
@@ -24636,6 +24929,16 @@ export namespace cloudsearch {
              * Whether to personalize the results. By default, personal signals will be used to boost results.
              */
             disablePersonalization: boolean;
+        }
+
+        /**
+         * Additional search quality metadata of the item.
+         */
+        export interface SearchQualityMetadataResponse {
+            /**
+             * An indication of the quality of the item, used to influence search quality. Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0.
+             */
+            quality: number;
         }
 
         export interface SortOptionsResponse {
@@ -24703,6 +25006,43 @@ export namespace cloudsearch {
              * Importance of the source.
              */
             sourceImportance: string;
+        }
+
+        /**
+         * A structured data object consisting of named properties.
+         */
+        export interface StructuredDataObjectResponse {
+            /**
+             * The properties for the object. The maximum number of elements is 1000.
+             */
+            properties: outputs.cloudsearch.v1.NamedPropertyResponse[];
+        }
+
+        /**
+         * List of text values.
+         */
+        export interface TextValuesResponse {
+            /**
+             * The maximum allowable length for text values is 2048 characters.
+             */
+            values: string[];
+        }
+
+        /**
+         * List of timestamp values.
+         */
+        export interface TimestampValuesResponse {
+            values: string[];
+        }
+
+        /**
+         * Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef.
+         */
+        export interface UploadItemRefResponse {
+            /**
+             * The name of the content reference. The maximum length is 2048 characters.
+             */
+            name: string;
         }
 
         export interface ValueFilterResponse {

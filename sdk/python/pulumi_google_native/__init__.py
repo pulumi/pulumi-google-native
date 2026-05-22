@@ -508,6 +508,7 @@ _utilities.register(
    "google-native:aiplatform/v1:IndexEndpoint": "IndexEndpoint",
    "google-native:aiplatform/v1:MetadataSchema": "MetadataSchema",
    "google-native:aiplatform/v1:MetadataStore": "MetadataStore",
+   "google-native:aiplatform/v1:Model": "Model",
    "google-native:aiplatform/v1:ModelDeploymentMonitoringJob": "ModelDeploymentMonitoringJob",
    "google-native:aiplatform/v1:NasJob": "NasJob",
    "google-native:aiplatform/v1:NotebookRuntimeTemplate": "NotebookRuntimeTemplate",
@@ -562,6 +563,7 @@ _utilities.register(
    "google-native:aiplatform/v1beta1:IndexEndpoint": "IndexEndpoint",
    "google-native:aiplatform/v1beta1:MetadataSchema": "MetadataSchema",
    "google-native:aiplatform/v1beta1:MetadataStore": "MetadataStore",
+   "google-native:aiplatform/v1beta1:Model": "Model",
    "google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob": "ModelDeploymentMonitoringJob",
    "google-native:aiplatform/v1beta1:ModelIamBinding": "ModelIamBinding",
    "google-native:aiplatform/v1beta1:ModelIamMember": "ModelIamMember",
@@ -1462,6 +1464,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.cloudsearch.v1",
   "classes": {
    "google-native:cloudsearch/v1:DataSource": "DataSource",
+   "google-native:cloudsearch/v1:Item": "Item",
    "google-native:cloudsearch/v1:SearchApplication": "SearchApplication"
   }
  },

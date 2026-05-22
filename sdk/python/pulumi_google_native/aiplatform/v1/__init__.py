@@ -55,6 +55,7 @@ from .get_index import *
 from .get_index_endpoint import *
 from .get_metadata_schema import *
 from .get_metadata_store import *
+from .get_model import *
 from .get_model_deployment_monitoring_job import *
 from .get_nas_job import *
 from .get_notebook_runtime_template import *
@@ -73,6 +74,7 @@ from .index import *
 from .index_endpoint import *
 from .metadata_schema import *
 from .metadata_store import *
+from .model import *
 from .model_deployment_monitoring_job import *
 from .nas_job import *
 from .notebook_runtime_template import *

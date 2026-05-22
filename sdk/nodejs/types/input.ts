@@ -18611,6 +18611,16 @@ export namespace cloudsearch {
         }
 
         /**
+         * Shared request debug options for all cloudsearch RPC methods.
+         */
+        export interface DebugOptionsArgs {
+            /**
+             * If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+             */
+            enableDebugging?: pulumi.Input<boolean>;
+        }
+
+        /**
          * Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
          */
         export interface FacetOptionsArgs {

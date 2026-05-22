@@ -26305,6 +26305,14 @@
                 }
             }
         },
+        "google-native:cloudsearch/v1:ContextAttributeResponse": {
+            "properties": {
+                "name": {},
+                "values": {
+                    "items": {}
+                }
+            }
+        },
         "google-native:cloudsearch/v1:DataSourceRestriction": {
             "properties": {
                 "filterOptions": {
@@ -26355,6 +26363,34 @@
                 }
             }
         },
+        "google-native:cloudsearch/v1:DateValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:DateResponse"
+                    }
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:DebugOptions": {
+            "properties": {
+                "enableDebugging": {}
+            }
+        },
+        "google-native:cloudsearch/v1:DoubleValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {}
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:EnumValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {}
+                }
+            }
+        },
         "google-native:cloudsearch/v1:FacetOptions": {
             "properties": {
                 "integerFacetingOptions": {
@@ -26379,6 +26415,12 @@
                 "objectType": {},
                 "operatorName": {},
                 "sourceName": {}
+            }
+        },
+        "google-native:cloudsearch/v1:FieldViolationResponse": {
+            "properties": {
+                "description": {},
+                "field": {}
             }
         },
         "google-native:cloudsearch/v1:Filter": {
@@ -26431,6 +26473,13 @@
                 "gsuiteUserEmail": {}
             }
         },
+        "google-native:cloudsearch/v1:HtmlValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {}
+                }
+            }
+        },
         "google-native:cloudsearch/v1:IntegerFacetingOptions": {
             "properties": {
                 "integerBuckets": {
@@ -26442,6 +26491,172 @@
             "properties": {
                 "integerBuckets": {
                     "items": {}
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:IntegerValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {}
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:InteractionResponse": {
+            "properties": {
+                "interactionTime": {
+                    "format": "google-datetime"
+                },
+                "principal": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:PrincipalResponse"
+                },
+                "type": {}
+            }
+        },
+        "google-native:cloudsearch/v1:ItemAclResponse": {
+            "properties": {
+                "aclInheritanceType": {},
+                "deniedReaders": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:PrincipalResponse"
+                    }
+                },
+                "inheritAclFrom": {},
+                "owners": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:PrincipalResponse"
+                    }
+                },
+                "readers": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:PrincipalResponse"
+                    }
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:ItemContentResponse": {
+            "properties": {
+                "contentDataRef": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:UploadItemRefResponse"
+                },
+                "contentFormat": {},
+                "hash": {},
+                "inlineContent": {
+                    "format": "byte"
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:ItemMetadataResponse": {
+            "properties": {
+                "containerName": {},
+                "contentLanguage": {},
+                "contextAttributes": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:ContextAttributeResponse"
+                    }
+                },
+                "createTime": {
+                    "format": "google-datetime"
+                },
+                "hash": {},
+                "interactions": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:InteractionResponse"
+                    }
+                },
+                "keywords": {
+                    "items": {}
+                },
+                "mimeType": {},
+                "objectType": {},
+                "searchQualityMetadata": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:SearchQualityMetadataResponse"
+                },
+                "sourceRepositoryUrl": {},
+                "title": {},
+                "updateTime": {
+                    "format": "google-datetime"
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:ItemStatusResponse": {
+            "properties": {
+                "code": {},
+                "processingErrors": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:ProcessingErrorResponse"
+                    }
+                },
+                "repositoryErrors": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:RepositoryErrorResponse"
+                    }
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:ItemStructuredDataResponse": {
+            "properties": {
+                "hash": {},
+                "object": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:StructuredDataObjectResponse"
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:NamedPropertyResponse": {
+            "properties": {
+                "booleanValue": {},
+                "dateValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:DateValuesResponse"
+                },
+                "doubleValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:DoubleValuesResponse"
+                },
+                "enumValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:EnumValuesResponse"
+                },
+                "htmlValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:HtmlValuesResponse"
+                },
+                "integerValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:IntegerValuesResponse"
+                },
+                "name": {},
+                "objectValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:ObjectValuesResponse"
+                },
+                "textValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:TextValuesResponse"
+                },
+                "timestampValues": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:TimestampValuesResponse"
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:ObjectValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:StructuredDataObjectResponse"
+                    }
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:PrincipalResponse": {
+            "properties": {
+                "groupResourceName": {},
+                "gsuitePrincipal": {
+                    "$ref": "#/types/google-native:cloudsearch/v1:GSuitePrincipalResponse"
+                },
+                "userResourceName": {}
+            }
+        },
+        "google-native:cloudsearch/v1:ProcessingErrorResponse": {
+            "properties": {
+                "code": {},
+                "errorMessage": {},
+                "fieldViolations": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:FieldViolationResponse"
+                    }
                 }
             }
         },
@@ -26457,6 +26672,15 @@
                 "forceVerbatimMode": {}
             }
         },
+        "google-native:cloudsearch/v1:RepositoryErrorResponse": {
+            "properties": {
+                "errorMessage": {},
+                "httpStatusCode": {
+                    "format": "int32"
+                },
+                "type": {}
+            }
+        },
         "google-native:cloudsearch/v1:ScoringConfig": {
             "properties": {
                 "disableFreshness": {},
@@ -26467,6 +26691,13 @@
             "properties": {
                 "disableFreshness": {},
                 "disablePersonalization": {}
+            }
+        },
+        "google-native:cloudsearch/v1:SearchQualityMetadataResponse": {
+            "properties": {
+                "quality": {
+                    "format": "double"
+                }
             }
         },
         "google-native:cloudsearch/v1:SortOptions": {
@@ -26553,6 +26784,34 @@
         "google-native:cloudsearch/v1:SourceScoringConfigResponse": {
             "properties": {
                 "sourceImportance": {}
+            }
+        },
+        "google-native:cloudsearch/v1:StructuredDataObjectResponse": {
+            "properties": {
+                "properties": {
+                    "items": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:NamedPropertyResponse"
+                    }
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:TextValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {}
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:TimestampValuesResponse": {
+            "properties": {
+                "values": {
+                    "items": {}
+                }
+            }
+        },
+        "google-native:cloudsearch/v1:UploadItemRefResponse": {
+            "properties": {
+                "name": {}
             }
         },
         "google-native:cloudsearch/v1:Value": {
@@ -150898,6 +151157,220 @@
                 "projectsId": "project"
             }
         },
+        "google-native:aiplatform/v1:Model": {
+            "create": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1/projects/{projectsId}/locations/{locationsId}/models:upload",
+                    "values": [
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "sdkProperties": {
+                    "artifactUri": {
+                        "container": "model"
+                    },
+                    "containerSpec": {
+                        "container": "model"
+                    },
+                    "description": {
+                        "container": "model"
+                    },
+                    "displayName": {
+                        "container": "model"
+                    },
+                    "encryptionSpec": {
+                        "container": "model"
+                    },
+                    "etag": {
+                        "container": "model"
+                    },
+                    "explanationSpec": {
+                        "container": "model"
+                    },
+                    "labels": {
+                        "container": "model"
+                    },
+                    "metadata": {
+                        "container": "model"
+                    },
+                    "metadataSchemaUri": {
+                        "container": "model"
+                    },
+                    "modelId": {},
+                    "name": {
+                        "container": "model"
+                    },
+                    "parentModel": {},
+                    "pipelineJob": {
+                        "container": "model"
+                    },
+                    "predictSchemata": {
+                        "container": "model"
+                    },
+                    "serviceAccount": {},
+                    "versionAliases": {
+                        "container": "model"
+                    },
+                    "versionDescription": {
+                        "container": "model"
+                    }
+                },
+                "verb": "POST",
+                "operations": {
+                    "template": "https://aiplatform.googleapis.com/v1/{+name}",
+                    "values": [
+                        {
+                            "name": "name",
+                            "sdkName": "name",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "autoname": {
+                    "fieldName": "{name}"
+                }
+            },
+            "read": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+                    "values": [
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "modelsId",
+                            "sdkName": "modelId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "verb": "GET"
+            },
+            "update": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}?updateMask={updateMask}",
+                    "values": [
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "modelsId",
+                            "sdkName": "modelId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "updateMask",
+                            "sdkName": "updateMask",
+                            "kind": "query"
+                        }
+                    ]
+                },
+                "sdkProperties": {
+                    "artifactUri": {
+                        "forceNew": true
+                    },
+                    "containerSpec": {
+                        "$ref": "#/types/google-native:aiplatform/v1:GoogleCloudAiplatformV1ModelContainerSpec"
+                    },
+                    "description": {},
+                    "displayName": {
+                        "required": true
+                    },
+                    "encryptionSpec": {
+                        "$ref": "#/types/google-native:aiplatform/v1:GoogleCloudAiplatformV1EncryptionSpec"
+                    },
+                    "etag": {},
+                    "explanationSpec": {
+                        "$ref": "#/types/google-native:aiplatform/v1:GoogleCloudAiplatformV1ExplanationSpec"
+                    },
+                    "labels": {},
+                    "metadata": {
+                        "$ref": "pulumi.json#/Any",
+                        "forceNew": true
+                    },
+                    "metadataSchemaUri": {
+                        "forceNew": true
+                    },
+                    "name": {},
+                    "pipelineJob": {},
+                    "predictSchemata": {
+                        "$ref": "#/types/google-native:aiplatform/v1:GoogleCloudAiplatformV1PredictSchemata"
+                    },
+                    "versionAliases": {
+                        "items": {}
+                    },
+                    "versionDescription": {}
+                },
+                "verb": "PATCH",
+                "updateMask": {
+                    "queryParamName": "updateMask"
+                }
+            },
+            "delete": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+                    "values": [
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "modelsId",
+                            "sdkName": "modelId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "verb": "DELETE",
+                "operations": {
+                    "template": "https://aiplatform.googleapis.com/v1/{+name}",
+                    "values": [
+                        {
+                            "name": "name",
+                            "sdkName": "name",
+                            "kind": "path"
+                        }
+                    ]
+                }
+            },
+            "rootUrl": "https://aiplatform.googleapis.com/",
+            "formDataUpload": {},
+            "idPath": "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+            "idParams": {
+                "locationsId": "location",
+                "modelsId": "modelId",
+                "projectsId": "project"
+            }
+        },
         "google-native:aiplatform/v1:ModelDeploymentMonitoringJob": {
             "create": {
                 "endpoint": {
@@ -157760,6 +158233,216 @@
             "idParams": {
                 "locationsId": "location",
                 "metadataStoresId": "metadataStoreId",
+                "projectsId": "project"
+            }
+        },
+        "google-native:aiplatform/v1beta1:Model": {
+            "create": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1beta1/projects/{projectsId}/locations/{locationsId}/models:upload",
+                    "values": [
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "sdkProperties": {
+                    "artifactUri": {
+                        "container": "model"
+                    },
+                    "containerSpec": {
+                        "container": "model"
+                    },
+                    "description": {
+                        "container": "model"
+                    },
+                    "displayName": {
+                        "container": "model"
+                    },
+                    "encryptionSpec": {
+                        "container": "model"
+                    },
+                    "etag": {
+                        "container": "model"
+                    },
+                    "explanationSpec": {
+                        "container": "model"
+                    },
+                    "labels": {
+                        "container": "model"
+                    },
+                    "metadata": {
+                        "container": "model"
+                    },
+                    "metadataSchemaUri": {
+                        "container": "model"
+                    },
+                    "modelId": {},
+                    "name": {
+                        "container": "model"
+                    },
+                    "parentModel": {},
+                    "predictSchemata": {
+                        "container": "model"
+                    },
+                    "serviceAccount": {},
+                    "versionAliases": {
+                        "container": "model"
+                    },
+                    "versionDescription": {
+                        "container": "model"
+                    }
+                },
+                "verb": "POST",
+                "operations": {
+                    "template": "https://aiplatform.googleapis.com/v1beta1/{+name}",
+                    "values": [
+                        {
+                            "name": "name",
+                            "sdkName": "name",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "autoname": {
+                    "fieldName": "{name}"
+                }
+            },
+            "read": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1beta1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+                    "values": [
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "modelsId",
+                            "sdkName": "modelId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "verb": "GET"
+            },
+            "update": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1beta1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}?updateMask={updateMask}",
+                    "values": [
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "modelsId",
+                            "sdkName": "modelId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "updateMask",
+                            "sdkName": "updateMask",
+                            "kind": "query"
+                        }
+                    ]
+                },
+                "sdkProperties": {
+                    "artifactUri": {
+                        "forceNew": true
+                    },
+                    "containerSpec": {
+                        "$ref": "#/types/google-native:aiplatform/v1beta1:GoogleCloudAiplatformV1beta1ModelContainerSpec"
+                    },
+                    "description": {},
+                    "displayName": {
+                        "required": true
+                    },
+                    "encryptionSpec": {
+                        "$ref": "#/types/google-native:aiplatform/v1beta1:GoogleCloudAiplatformV1beta1EncryptionSpec"
+                    },
+                    "etag": {},
+                    "explanationSpec": {
+                        "$ref": "#/types/google-native:aiplatform/v1beta1:GoogleCloudAiplatformV1beta1ExplanationSpec"
+                    },
+                    "labels": {},
+                    "metadata": {
+                        "$ref": "pulumi.json#/Any",
+                        "forceNew": true
+                    },
+                    "metadataSchemaUri": {
+                        "forceNew": true
+                    },
+                    "name": {},
+                    "predictSchemata": {
+                        "$ref": "#/types/google-native:aiplatform/v1beta1:GoogleCloudAiplatformV1beta1PredictSchemata"
+                    },
+                    "versionAliases": {
+                        "items": {}
+                    },
+                    "versionDescription": {}
+                },
+                "verb": "PATCH",
+                "updateMask": {
+                    "queryParamName": "updateMask"
+                }
+            },
+            "delete": {
+                "endpoint": {
+                    "template": "https://aiplatform.googleapis.com/v1beta1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+                    "values": [
+                        {
+                            "name": "locationsId",
+                            "sdkName": "location",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "modelsId",
+                            "sdkName": "modelId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "projectsId",
+                            "sdkName": "project",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "verb": "DELETE",
+                "operations": {
+                    "template": "https://aiplatform.googleapis.com/v1beta1/{+name}",
+                    "values": [
+                        {
+                            "name": "name",
+                            "sdkName": "name",
+                            "kind": "path"
+                        }
+                    ]
+                }
+            },
+            "rootUrl": "https://aiplatform.googleapis.com/",
+            "formDataUpload": {},
+            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+            "idParams": {
+                "locationsId": "location",
+                "modelsId": "modelId",
                 "projectsId": "project"
             }
         },
@@ -221594,6 +222277,90 @@
             "idPath": "v1/settings/datasources/{datasourcesId}",
             "idParams": {
                 "datasourcesId": "name"
+            }
+        },
+        "google-native:cloudsearch/v1:Item": {
+            "create": {
+                "endpoint": {
+                    "template": "https://cloudsearch.googleapis.com/v1/indexing/datasources/{datasourcesId}/items/{itemsId}:upload",
+                    "values": [
+                        {
+                            "name": "datasourcesId",
+                            "sdkName": "datasourceId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "itemsId",
+                            "sdkName": "itemId",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "sdkProperties": {
+                    "connectorName": {},
+                    "debugOptions": {
+                        "$ref": "#/types/google-native:cloudsearch/v1:DebugOptions"
+                    }
+                },
+                "verb": "POST",
+                "autoname": {}
+            },
+            "read": {
+                "endpoint": {
+                    "template": "https://cloudsearch.googleapis.com/v1/indexing/datasources/{datasourcesId}/items/{itemsId}",
+                    "values": [
+                        {
+                            "name": "datasourcesId",
+                            "sdkName": "datasourceId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "itemsId",
+                            "sdkName": "itemId",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "verb": "GET"
+            },
+            "update": {
+                "endpoint": {},
+                "updateMask": {}
+            },
+            "delete": {
+                "endpoint": {
+                    "template": "https://cloudsearch.googleapis.com/v1/indexing/datasources/{datasourcesId}/items/{itemsId}?mode={mode}\u0026version={version}",
+                    "values": [
+                        {
+                            "name": "datasourcesId",
+                            "sdkName": "datasourceId",
+                            "kind": "path"
+                        },
+                        {
+                            "name": "itemsId",
+                            "sdkName": "itemId",
+                            "kind": "path"
+                        }
+                    ]
+                },
+                "verb": "DELETE",
+                "operations": {
+                    "template": "https://cloudsearch.googleapis.com/v1/{+name}",
+                    "values": [
+                        {
+                            "name": "name",
+                            "sdkName": "name",
+                            "kind": "path"
+                        }
+                    ]
+                }
+            },
+            "rootUrl": "https://cloudsearch.googleapis.com/",
+            "formDataUpload": {},
+            "idPath": "v1/indexing/datasources/{datasourcesId}/items/{itemsId}",
+            "idParams": {
+                "datasourcesId": "datasourceId",
+                "itemsId": "itemId"
             }
         },
         "google-native:cloudsearch/v1:SearchApplication": {
@@ -461726,6 +462493,29 @@
             },
             "verb": "GET"
         },
+        "google-native:aiplatform/v1:getModel": {
+            "url": {
+                "template": "https://aiplatform.googleapis.com/v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+                "values": [
+                    {
+                        "name": "projectsId",
+                        "sdkName": "project",
+                        "kind": "path"
+                    },
+                    {
+                        "name": "locationsId",
+                        "sdkName": "location",
+                        "kind": "path"
+                    },
+                    {
+                        "name": "modelsId",
+                        "sdkName": "modelId",
+                        "kind": "path"
+                    }
+                ]
+            },
+            "verb": "GET"
+        },
         "google-native:aiplatform/v1:getModelDeploymentMonitoringJob": {
             "url": {
                 "template": "https://aiplatform.googleapis.com/v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}",
@@ -462729,6 +463519,29 @@
                     {
                         "name": "metadataStoresId",
                         "sdkName": "metadataStoreId",
+                        "kind": "path"
+                    }
+                ]
+            },
+            "verb": "GET"
+        },
+        "google-native:aiplatform/v1beta1:getModel": {
+            "url": {
+                "template": "https://aiplatform.googleapis.com/v1beta1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
+                "values": [
+                    {
+                        "name": "projectsId",
+                        "sdkName": "project",
+                        "kind": "path"
+                    },
+                    {
+                        "name": "locationsId",
+                        "sdkName": "location",
+                        "kind": "path"
+                    },
+                    {
+                        "name": "modelsId",
+                        "sdkName": "modelId",
                         "kind": "path"
                     }
                 ]
@@ -469786,6 +470599,33 @@
                     {
                         "name": "datasourcesId",
                         "sdkName": "datasourceId",
+                        "kind": "path"
+                    }
+                ]
+            },
+            "verb": "GET"
+        },
+        "google-native:cloudsearch/v1:getItem": {
+            "url": {
+                "template": "https://cloudsearch.googleapis.com/v1/indexing/datasources/{datasourcesId}/items/{itemsId}",
+                "values": [
+                    {
+                        "name": "connectorName",
+                        "kind": "query"
+                    },
+                    {
+                        "name": "debugOptions.enableDebugging",
+                        "sdkName": "debugOptionsEnableDebugging",
+                        "kind": "query"
+                    },
+                    {
+                        "name": "datasourcesId",
+                        "sdkName": "datasourceId",
+                        "kind": "path"
+                    },
+                    {
+                        "name": "itemsId",
+                        "sdkName": "itemId",
                         "kind": "path"
                     }
                 ]

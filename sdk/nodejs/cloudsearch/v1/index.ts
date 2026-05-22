@@ -15,10 +15,20 @@ export const getDataSource: typeof import("./getDataSource").getDataSource = nul
 export const getDataSourceOutput: typeof import("./getDataSource").getDataSourceOutput = null as any;
 utilities.lazyLoad(exports, ["getDataSource","getDataSourceOutput"], () => require("./getDataSource"));
 
+export { GetItemArgs, GetItemResult, GetItemOutputArgs } from "./getItem";
+export const getItem: typeof import("./getItem").getItem = null as any;
+export const getItemOutput: typeof import("./getItem").getItemOutput = null as any;
+utilities.lazyLoad(exports, ["getItem","getItemOutput"], () => require("./getItem"));
+
 export { GetSearchApplicationArgs, GetSearchApplicationResult, GetSearchApplicationOutputArgs } from "./getSearchApplication";
 export const getSearchApplication: typeof import("./getSearchApplication").getSearchApplication = null as any;
 export const getSearchApplicationOutput: typeof import("./getSearchApplication").getSearchApplicationOutput = null as any;
 utilities.lazyLoad(exports, ["getSearchApplication","getSearchApplicationOutput"], () => require("./getSearchApplication"));
+
+export { ItemArgs } from "./item";
+export type Item = import("./item").Item;
+export const Item: typeof import("./item").Item = null as any;
+utilities.lazyLoad(exports, ["Item"], () => require("./item"));
 
 export { SearchApplicationArgs } from "./searchApplication";
 export type SearchApplication = import("./searchApplication").SearchApplication;
@@ -35,6 +45,8 @@ const _module = {
         switch (type) {
             case "google-native:cloudsearch/v1:DataSource":
                 return new DataSource(name, <any>undefined, { urn })
+            case "google-native:cloudsearch/v1:Item":
+                return new Item(name, <any>undefined, { urn })
             case "google-native:cloudsearch/v1:SearchApplication":
                 return new SearchApplication(name, <any>undefined, { urn })
             default:
